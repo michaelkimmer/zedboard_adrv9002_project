@@ -1,0 +1,2 @@
+arm-none-eabi-ar qc libspips.a CMakeFiles/spips.dir/xspips.c.obj CMakeFiles/spips.dir/xspips_g.c.obj CMakeFiles/spips.dir/xspips_hw.c.obj CMakeFiles/spips.dir/xspips_options.c.obj CMakeFiles/spips.dir/xspips_selftest.c.obj CMakeFiles/spips.dir/xspips_sinit.c.obj
+C:/Xilinx/Vitis/2023.2/gnu/aarch32/nt/gcc-arm-none-eabi/bin/arm-none-eabi-ranlib.exe libspips.a

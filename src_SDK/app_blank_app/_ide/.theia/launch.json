@@ -1,0 +1,29 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "tcf-debug",
+      "request": "launch",
+      "name": "app_blank_app_hw_1",
+      "debugType": "emb-linux",
+      "attachToRunningProcessOptions": {
+        "linuxTargetMode": "standalone",
+        "attachToPid": []
+      },
+      "target": {
+        "targetConnectionId": "Linux Agent",
+        "peersIniPath": "../../../.peers.ini",
+        "file": "C:/zedboard_adrv9002_project/src_SDK/app_blank_app/build/app_blank_app.elf",
+        "remoteFilePath": "/run/media/mmcblk0p1/app_blank_app.elf"
+      },
+      "env": {},
+      "replaceNativeEnv": false,
+      "arguments": "",
+      "workingDirectory": "/run/media/mmcblk0p1",
+      "stopAtMain": true,
+      "stopAtProgramEntry": false,
+      "autoAttachProcessChildren": false,
+      "internalConsoleOptions": "openOnSessionStart"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "app_blank_app",
+  "type": "HOST",
+  "platform": "C:\\zedboard_adrv9002_project\\src_SDK\\platform_system_top\\export\\platform_system_top\\platform_system_top.xpfm",
+  "domain": "linux_ps7_cortexa9",
+  "cpuInstance": "cortex-a9",
+  "cpuType": "cortex-a9",
+  "os": "linux",
+  "sysroot": "",
+  "configuration": {
+    "componentType": "HOST",
+    "hostToolchainConfigurations": []
+  },
+  "domainRealName": "linux_ps7_cortexa9",
+  "applicationFlow": "EMBEDDED",
+  "previousBuildStatusMap": {
+    "hw": "SUCCESS"
+  }
+}
