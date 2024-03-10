@@ -1,10 +1,11 @@
 // Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+// Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-// Date        : Sun Mar 10 23:35:53 2024
-// Host        : PC_HP running 64-bit major release  (build 9200)
+// Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
+// Date        : Mon Mar 11 00:21:35 2024
+// Host        : ASUS_ROG running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
-//               c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_adrv9001_tx1_dma_0/system_axi_adrv9001_tx1_dma_0_sim_netlist.v
+//               c:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_adrv9001_tx1_dma_0/system_axi_adrv9001_tx1_dma_0_sim_netlist.v
 // Design      : system_axi_adrv9001_tx1_dma_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -13,7 +14,7 @@
 `timescale 1 ps / 1 ps
 
 (* CHECK_LICENSE_TYPE = "system_axi_adrv9001_tx1_dma_0,axi_dmac,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* IP_DEFINITION_SOURCE = "package_project" *) 
-(* X_CORE_INFO = "axi_dmac,Vivado 2022.2" *) 
+(* X_CORE_INFO = "axi_dmac,Vivado 2023.2.2" *) 
 (* NotValidForBitStream *)
 module system_axi_adrv9001_tx1_dma_0
    (s_axi_aclk,
@@ -6000,7 +6001,7 @@ module system_axi_adrv9001_tx1_dma_0_axi_dmac_response_manager
     \FSM_sequential_state_reg[1]_0 ,
     \measured_burst_length_reg[6]_0 ,
     \cdc_sync_stage1_reg[0] ,
-    \zerodeep.cdc_sync_fifo_ram_reg0 ,
+    id0,
     m_axis_aclk,
     Q,
     s_axi_aclk,
@@ -6018,7 +6019,7 @@ module system_axi_adrv9001_tx1_dma_0_axi_dmac_response_manager
   output \FSM_sequential_state_reg[1]_0 ;
   output [6:0]\measured_burst_length_reg[6]_0 ;
   input [0:0]\cdc_sync_stage1_reg[0] ;
-  input \zerodeep.cdc_sync_fifo_ram_reg0 ;
+  input id0;
   input m_axis_aclk;
   input [0:0]Q;
   input s_axi_aclk;
@@ -6039,6 +6040,7 @@ module system_axi_adrv9001_tx1_dma_0_axi_dmac_response_manager
   wire i_dest_response_fifo_n_13;
   wire i_dest_response_fifo_n_15;
   wire i_dest_response_fifo_n_8;
+  wire id0;
   wire m_axis_aclk;
   wire \measured_burst_length[6]_i_1_n_0 ;
   wire \measured_burst_length[6]_i_2_n_0 ;
@@ -6072,7 +6074,6 @@ module system_axi_adrv9001_tx1_dma_0_axi_dmac_response_manager
   wire up_response_ready;
   wire up_response_valid;
   wire \up_transfer_id_eot[1]_i_3_n_0 ;
-  wire \zerodeep.cdc_sync_fifo_ram_reg0 ;
   wire \zerodeep.s_axis_waddr_reg ;
 
   LUT2 #(
@@ -6159,6 +6160,7 @@ module system_axi_adrv9001_tx1_dma_0_axi_dmac_response_manager
         .SS(\measured_burst_length[6]_i_1_n_0 ),
         .\cdc_sync_stage1_reg[0] (\cdc_sync_stage1_reg[0] ),
         .\cdc_sync_stage2_reg[0] (\cdc_sync_stage2_reg[0] ),
+        .id0(id0),
         .m_axis_aclk(m_axis_aclk),
         .nx_state15_in(nx_state15_in),
         .out({response_dest_data_burst_length,response_dest_partial,i_dest_response_fifo_n_8}),
@@ -6170,7 +6172,6 @@ module system_axi_adrv9001_tx1_dma_0_axi_dmac_response_manager
         .to_complete_count(to_complete_count),
         .up_response_ready(up_response_ready),
         .up_response_valid(up_response_valid),
-        .\zerodeep.cdc_sync_fifo_ram_reg0 (\zerodeep.cdc_sync_fifo_ram_reg0 ),
         .\zerodeep.s_axis_waddr_reg_0 (\zerodeep.s_axis_waddr_reg ));
   LUT3 #(
     .INIT(8'h40)) 
@@ -6700,7 +6701,7 @@ endmodule
 (* ORIG_REF_NAME = "dest_axi_stream" *) 
 module system_axi_adrv9001_tx1_dma_0_dest_axi_stream
    (\response_id_reg[3] ,
-    \zerodeep.cdc_sync_fifo_ram_reg0 ,
+    id0,
     dbg_ids0,
     \response_id_reg[1] ,
     \response_id_reg[0] ,
@@ -6722,7 +6723,7 @@ module system_axi_adrv9001_tx1_dma_0_dest_axi_stream
     data_eot,
     dest_fifo_last);
   output \response_id_reg[3] ;
-  output \zerodeep.cdc_sync_fifo_ram_reg0 ;
+  output id0;
   output [0:0]dbg_ids0;
   output \response_id_reg[1] ;
   output \response_id_reg[0] ;
@@ -6756,6 +6757,7 @@ module system_axi_adrv9001_tx1_dma_0_dest_axi_stream
   wire dest_fifo_valid;
   wire [0:0]enabled_reg;
   wire [3:0]g;
+  wire id0;
   wire \id[3]_i_1__1_n_0 ;
   wire [2:0]inc_id_return;
   wire m_axis_aclk;
@@ -6770,7 +6772,6 @@ module system_axi_adrv9001_tx1_dma_0_dest_axi_stream
   wire \response_id_reg[0]_1 ;
   wire \response_id_reg[1] ;
   wire \response_id_reg[3] ;
-  wire \zerodeep.cdc_sync_fifo_ram_reg0 ;
 
   FDRE #(
     .INIT(1'b0)) 
@@ -6808,7 +6809,7 @@ module system_axi_adrv9001_tx1_dma_0_dest_axi_stream
   system_axi_adrv9001_tx1_dma_0_response_generator i_response_generator
        (.data_enabled(data_enabled),
         .dest_enabled(dest_enabled),
-        .enabled_reg_0(\zerodeep.cdc_sync_fifo_ram_reg0 ),
+        .enabled_reg_0(id0),
         .enabled_reg_1(enabled_reg),
         .enabled_reg_2(g[1]),
         .enabled_reg_3(g[2]),
@@ -7206,6 +7207,7 @@ module system_axi_adrv9001_tx1_dma_0_request_arb
         .dest_fifo_valid(dest_fifo_valid),
         .enabled_reg(dest_id_reduced_msb_next_reg),
         .g(g),
+        .id0(\i_response_generator/id0 ),
         .m_axis_aclk(m_axis_aclk),
         .m_axis_ready(m_axis_ready),
         .m_axis_ready_0(i_dest_dma_stream_n_12),
@@ -7216,8 +7218,7 @@ module system_axi_adrv9001_tx1_dma_0_request_arb
         .\response_id_reg[0]_0 (i_response_manager_n_0),
         .\response_id_reg[0]_1 (i_response_manager_n_1),
         .\response_id_reg[1] (id[1]),
-        .\response_id_reg[3] (id[2]),
-        .\zerodeep.cdc_sync_fifo_ram_reg0 (\i_response_generator/id0 ));
+        .\response_id_reg[3] (id[2]));
   system_axi_adrv9001_tx1_dma_0_util_axis_fifo__parameterized0 i_dest_req_fifo
        (.D(s_axis_data__0),
         .Q(Q),
@@ -7260,6 +7261,7 @@ module system_axi_adrv9001_tx1_dma_0_request_arb
         .Q(Q),
         .\cdc_sync_stage1_reg[0] (dest_id_reduced_msb_next_reg),
         .\cdc_sync_stage2_reg[0] (i_response_manager_n_1),
+        .id0(\i_response_generator/id0 ),
         .m_axis_aclk(m_axis_aclk),
         .\measured_burst_length_reg[6]_0 (\measured_burst_length_reg[6] ),
         .p_3_in(p_3_in),
@@ -7272,7 +7274,6 @@ module system_axi_adrv9001_tx1_dma_0_request_arb
         .up_eot(up_eot),
         .up_response_ready(up_response_ready),
         .up_response_valid(up_response_valid),
-        .\zerodeep.cdc_sync_fifo_ram_reg0 (\i_response_generator/id0 ),
         .\zerodeep.s_axis_waddr_reg (i_response_manager_n_0));
   system_axi_adrv9001_tx1_dma_0_src_axi_mm i_src_dma_mm
        (.E(src_req_dest_address_cur0),
@@ -14624,7 +14625,7 @@ module system_axi_adrv9001_tx1_dma_0_util_axis_fifo__parameterized2
     E,
     response_ready_reg,
     \cdc_sync_stage1_reg[0] ,
-    \zerodeep.cdc_sync_fifo_ram_reg0 ,
+    id0,
     m_axis_aclk,
     Q,
     s_axi_aclk,
@@ -14648,7 +14649,7 @@ module system_axi_adrv9001_tx1_dma_0_util_axis_fifo__parameterized2
   output [0:0]E;
   output response_ready_reg;
   input [0:0]\cdc_sync_stage1_reg[0] ;
-  input \zerodeep.cdc_sync_fifo_ram_reg0 ;
+  input id0;
   input m_axis_aclk;
   input [0:0]Q;
   input s_axi_aclk;
@@ -14676,6 +14677,7 @@ module system_axi_adrv9001_tx1_dma_0_util_axis_fifo__parameterized2
   wire [0:0]SS;
   wire [0:0]\cdc_sync_stage1_reg[0] ;
   wire \cdc_sync_stage2_reg[0] ;
+  wire id0;
   wire m_axis_aclk;
   wire nx_state15_in;
   wire response_dest_ready;
@@ -14687,7 +14689,6 @@ module system_axi_adrv9001_tx1_dma_0_util_axis_fifo__parameterized2
   wire up_response_ready;
   wire up_response_valid;
   (* RTL_KEEP = "yes" *) wire [8:0]\zerodeep.cdc_sync_fifo_ram ;
-  wire \zerodeep.cdc_sync_fifo_ram_reg0 ;
   wire \zerodeep.i_waddr_sync_n_4 ;
   wire \zerodeep.m_axis_raddr_reg_n_0 ;
   wire \zerodeep.s_axis_waddr_i_2_n_0 ;
@@ -14737,7 +14738,7 @@ module system_axi_adrv9001_tx1_dma_0_util_axis_fifo__parameterized2
   (* KEEP = "yes" *) 
   FDRE \zerodeep.cdc_sync_fifo_ram_reg[0] 
        (.C(m_axis_aclk),
-        .CE(\zerodeep.cdc_sync_fifo_ram_reg0 ),
+        .CE(id0),
         .D(response_eot),
         .Q(\zerodeep.cdc_sync_fifo_ram [0]),
         .R(1'b0));
@@ -14784,7 +14785,7 @@ module system_axi_adrv9001_tx1_dma_0_util_axis_fifo__parameterized2
     .INIT(1'b0)) 
     \zerodeep.s_axis_waddr_reg 
        (.C(m_axis_aclk),
-        .CE(\zerodeep.cdc_sync_fifo_ram_reg0 ),
+        .CE(id0),
         .D(\zerodeep.s_axis_waddr_i_2_n_0 ),
         .Q(\zerodeep.s_axis_waddr_reg_0 ),
         .R(\cdc_sync_stage1_reg[0] ));

@@ -4,7 +4,7 @@
     "xci_name": "system_axi_hp1_interconnect_0",
     "cell_name": "axi_hp1_interconnect",
     "component_reference": "xilinx.com:ip:smartconnect:1.0",
-    "ip_revision": "19",
+    "ip_revision": "22",
     "gen_directory": "../../../../../../adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_hp1_interconnect_0",
     "parameters": {
       "component_parameters": {
@@ -36,12 +36,12 @@
       },
       "runtime_parameters": {
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],
-        "IPREVISION": [ { "value": "19" } ],
+        "IPREVISION": [ { "value": "22" } ],
         "MANAGED": [ { "value": "TRUE" } ],
         "OUTPUTDIR": [ { "value": "../../../../../../adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_hp1_interconnect_0" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "../../ipshared" } ],
-        "SWVERSION": [ { "value": "2022.2" } ],
+        "SWVERSION": [ { "value": "2023.2.2" } ],
         "SYNTHESISFLOW": [ { "value": "OUT_OF_CONTEXT" } ]
       }
     },

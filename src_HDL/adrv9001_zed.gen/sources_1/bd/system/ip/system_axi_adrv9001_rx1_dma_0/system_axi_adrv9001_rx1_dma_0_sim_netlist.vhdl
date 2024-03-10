@@ -1,10 +1,11 @@
 -- Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+-- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
--- Date        : Sun Mar 10 23:31:12 2024
--- Host        : PC_HP running 64-bit major release  (build 9200)
+-- Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
+-- Date        : Mon Mar 11 00:19:50 2024
+-- Host        : ASUS_ROG running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_adrv9001_rx1_dma_0/system_axi_adrv9001_rx1_dma_0_sim_netlist.vhdl
+--               c:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_adrv9001_rx1_dma_0/system_axi_adrv9001_rx1_dma_0_sim_netlist.vhdl
 -- Design      : system_axi_adrv9001_rx1_dma_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -11395,7 +11396,7 @@ entity system_axi_adrv9001_rx1_dma_0_dest_axi_mm is
     m_dest_axi_aclk : in STD_LOGIC;
     dest_burst_info_write : in STD_LOGIC;
     Q : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    \zerodeep.axis_data_d_reg[5]\ : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    \zerodeep.axis_data_d_reg[1]\ : in STD_LOGIC_VECTOR ( 3 downto 0 );
     \id_reg[0]_1\ : in STD_LOGIC_VECTOR ( 0 to 0 );
     id0 : in STD_LOGIC;
     bl_ready_reg : in STD_LOGIC;
@@ -11424,46 +11425,25 @@ architecture STRUCTURE of system_axi_adrv9001_rx1_dma_0_dest_axi_mm is
   signal \^id_reg[2]_0\ : STD_LOGIC;
   signal \^id_reg[3]\ : STD_LOGIC;
   signal \^id_reg[3]_0\ : STD_LOGIC;
-  signal NLW_bl_mem_reg_0_15_0_5_DOA_UNCONNECTED : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal NLW_bl_mem_reg_0_15_0_5_DOD_UNCONNECTED : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal NLW_bl_mem_reg_0_15_6_7_SPO_UNCONNECTED : STD_LOGIC;
-  signal \NLW_bl_mem_reg_0_15_6_7__0_SPO_UNCONNECTED\ : STD_LOGIC;
+  signal NLW_bl_mem_reg_0_15_6_7_DOD_UNCONNECTED : STD_LOGIC_VECTOR ( 1 downto 0 );
   attribute METHODOLOGY_DRC_VIOS : string;
-  attribute METHODOLOGY_DRC_VIOS of bl_mem_reg_0_15_0_5 : label is "";
-  attribute RTL_RAM_BITS : integer;
-  attribute RTL_RAM_BITS of bl_mem_reg_0_15_0_5 : label is 128;
-  attribute RTL_RAM_NAME : string;
-  attribute RTL_RAM_NAME of bl_mem_reg_0_15_0_5 : label is "i_transfer/i_request_arb/i_dest_dma_mm/bl_mem_reg_0_15_0_5";
-  attribute RTL_RAM_TYPE : string;
-  attribute RTL_RAM_TYPE of bl_mem_reg_0_15_0_5 : label is "RAM_SDP";
-  attribute ram_addr_begin : integer;
-  attribute ram_addr_begin of bl_mem_reg_0_15_0_5 : label is 0;
-  attribute ram_addr_end : integer;
-  attribute ram_addr_end of bl_mem_reg_0_15_0_5 : label is 15;
-  attribute ram_offset : integer;
-  attribute ram_offset of bl_mem_reg_0_15_0_5 : label is 0;
-  attribute ram_slice_begin : integer;
-  attribute ram_slice_begin of bl_mem_reg_0_15_0_5 : label is 0;
-  attribute ram_slice_end : integer;
-  attribute ram_slice_end of bl_mem_reg_0_15_0_5 : label is 5;
   attribute METHODOLOGY_DRC_VIOS of bl_mem_reg_0_15_6_7 : label is "";
+  attribute RTL_RAM_BITS : integer;
   attribute RTL_RAM_BITS of bl_mem_reg_0_15_6_7 : label is 128;
+  attribute RTL_RAM_NAME : string;
   attribute RTL_RAM_NAME of bl_mem_reg_0_15_6_7 : label is "i_transfer/i_request_arb/i_dest_dma_mm/bl_mem_reg_0_15_6_7";
+  attribute RTL_RAM_TYPE : string;
   attribute RTL_RAM_TYPE of bl_mem_reg_0_15_6_7 : label is "RAM_SDP";
+  attribute ram_addr_begin : integer;
   attribute ram_addr_begin of bl_mem_reg_0_15_6_7 : label is 0;
+  attribute ram_addr_end : integer;
   attribute ram_addr_end of bl_mem_reg_0_15_6_7 : label is 15;
+  attribute ram_offset : integer;
   attribute ram_offset of bl_mem_reg_0_15_6_7 : label is 0;
+  attribute ram_slice_begin : integer;
   attribute ram_slice_begin of bl_mem_reg_0_15_6_7 : label is 6;
+  attribute ram_slice_end : integer;
   attribute ram_slice_end of bl_mem_reg_0_15_6_7 : label is 7;
-  attribute METHODOLOGY_DRC_VIOS of \bl_mem_reg_0_15_6_7__0\ : label is "";
-  attribute RTL_RAM_BITS of \bl_mem_reg_0_15_6_7__0\ : label is 128;
-  attribute RTL_RAM_NAME of \bl_mem_reg_0_15_6_7__0\ : label is "i_transfer/i_request_arb/i_dest_dma_mm/bl_mem_reg_0_15_6_7";
-  attribute RTL_RAM_TYPE of \bl_mem_reg_0_15_6_7__0\ : label is "RAM_SDP";
-  attribute ram_addr_begin of \bl_mem_reg_0_15_6_7__0\ : label is 0;
-  attribute ram_addr_end of \bl_mem_reg_0_15_6_7__0\ : label is 15;
-  attribute ram_offset of \bl_mem_reg_0_15_6_7__0\ : label is 0;
-  attribute ram_slice_begin of \bl_mem_reg_0_15_6_7__0\ : label is 6;
-  attribute ram_slice_end of \bl_mem_reg_0_15_6_7__0\ : label is 7;
 begin
   \id_reg[0]\ <= \^id_reg[0]\;
   \id_reg[0]_0\ <= \^id_reg[0]_0\;
@@ -11473,7 +11453,7 @@ begin
   \id_reg[2]_0\ <= \^id_reg[2]_0\;
   \id_reg[3]\ <= \^id_reg[3]\;
   \id_reg[3]_0\ <= \^id_reg[3]_0\;
-bl_mem_reg_0_15_0_5: unisim.vcomponents.RAM32M
+bl_mem_reg_0_15_6_7: unisim.vcomponents.RAM32M
      port map (
       ADDRA(4) => '0',
       ADDRA(3) => \^id_reg[3]\,
@@ -11491,52 +11471,18 @@ bl_mem_reg_0_15_0_5: unisim.vcomponents.RAM32M
       ADDRC(1) => \^id_reg[1]\,
       ADDRC(0) => \^id_reg[0]\,
       ADDRD(4) => '0',
-      ADDRD(3 downto 0) => \zerodeep.axis_data_d_reg[5]\(3 downto 0),
-      DIA(1 downto 0) => B"11",
+      ADDRD(3 downto 0) => \zerodeep.axis_data_d_reg[1]\(3 downto 0),
+      DIA(1) => '0',
+      DIA(0) => Q(3),
       DIB(1) => Q(0),
       DIB(0) => '1',
       DIC(1 downto 0) => Q(2 downto 1),
       DID(1 downto 0) => B"00",
-      DOA(1 downto 0) => NLW_bl_mem_reg_0_15_0_5_DOA_UNCONNECTED(1 downto 0),
+      DOA(1) => D(0),
+      DOA(0) => D(5),
       DOB(1 downto 0) => D(2 downto 1),
       DOC(1 downto 0) => D(4 downto 3),
-      DOD(1 downto 0) => NLW_bl_mem_reg_0_15_0_5_DOD_UNCONNECTED(1 downto 0),
-      WCLK => m_dest_axi_aclk,
-      WE => dest_burst_info_write
-    );
-bl_mem_reg_0_15_6_7: unisim.vcomponents.RAM32X1D
-     port map (
-      A0 => \zerodeep.axis_data_d_reg[5]\(0),
-      A1 => \zerodeep.axis_data_d_reg[5]\(1),
-      A2 => \zerodeep.axis_data_d_reg[5]\(2),
-      A3 => \zerodeep.axis_data_d_reg[5]\(3),
-      A4 => '0',
-      D => Q(3),
-      DPO => D(5),
-      DPRA0 => \^id_reg[0]\,
-      DPRA1 => \^id_reg[1]\,
-      DPRA2 => \^id_reg[2]\,
-      DPRA3 => \^id_reg[3]\,
-      DPRA4 => '0',
-      SPO => NLW_bl_mem_reg_0_15_6_7_SPO_UNCONNECTED,
-      WCLK => m_dest_axi_aclk,
-      WE => dest_burst_info_write
-    );
-\bl_mem_reg_0_15_6_7__0\: unisim.vcomponents.RAM32X1D
-     port map (
-      A0 => \zerodeep.axis_data_d_reg[5]\(0),
-      A1 => \zerodeep.axis_data_d_reg[5]\(1),
-      A2 => \zerodeep.axis_data_d_reg[5]\(2),
-      A3 => \zerodeep.axis_data_d_reg[5]\(3),
-      A4 => '0',
-      D => '0',
-      DPO => D(0),
-      DPRA0 => \^id_reg[0]\,
-      DPRA1 => \^id_reg[1]\,
-      DPRA2 => \^id_reg[2]\,
-      DPRA3 => \^id_reg[3]\,
-      DPRA4 => '0',
-      SPO => \NLW_bl_mem_reg_0_15_6_7__0_SPO_UNCONNECTED\,
+      DOD(1 downto 0) => NLW_bl_mem_reg_0_15_6_7_DOD_UNCONNECTED(1 downto 0),
       WCLK => m_dest_axi_aclk,
       WE => dest_burst_info_write
     );
@@ -15452,7 +15398,7 @@ i_dest_dma_mm: entity work.system_axi_adrv9001_rx1_dma_0_dest_axi_mm
       \out\(25 downto 0) => dest_req_dest_address(25 downto 0),
       req_ready_reg => i_dest_req_fifo_n_27,
       req_ready_reg_0 => i_dest_req_fifo_n_26,
-      \zerodeep.axis_data_d_reg[5]\(3 downto 0) => \^q\(3 downto 0)
+      \zerodeep.axis_data_d_reg[1]\(3 downto 0) => \^q\(3 downto 0)
     );
 i_dest_req_fifo: entity work.\system_axi_adrv9001_rx1_dma_0_util_axis_fifo__parameterized1\
      port map (
@@ -18242,7 +18188,7 @@ entity system_axi_adrv9001_rx1_dma_0 is
   attribute IP_DEFINITION_SOURCE : string;
   attribute IP_DEFINITION_SOURCE of system_axi_adrv9001_rx1_dma_0 : entity is "package_project";
   attribute X_CORE_INFO : string;
-  attribute X_CORE_INFO of system_axi_adrv9001_rx1_dma_0 : entity is "axi_dmac,Vivado 2022.2";
+  attribute X_CORE_INFO of system_axi_adrv9001_rx1_dma_0 : entity is "axi_dmac,Vivado 2023.2.2";
 end system_axi_adrv9001_rx1_dma_0;
 
 architecture STRUCTURE of system_axi_adrv9001_rx1_dma_0 is

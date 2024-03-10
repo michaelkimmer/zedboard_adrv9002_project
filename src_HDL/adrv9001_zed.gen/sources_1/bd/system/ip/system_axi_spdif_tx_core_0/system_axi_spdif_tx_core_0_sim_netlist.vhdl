@@ -1,10 +1,11 @@
 -- Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+-- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
--- Date        : Sun Mar 10 23:23:25 2024
--- Host        : PC_HP running 64-bit major release  (build 9200)
+-- Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
+-- Date        : Mon Mar 11 00:26:04 2024
+-- Host        : ASUS_ROG running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_spdif_tx_core_0/system_axi_spdif_tx_core_0_sim_netlist.vhdl
+--               c:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_spdif_tx_core_0/system_axi_spdif_tx_core_0_sim_netlist.vhdl
 -- Design      : system_axi_spdif_tx_core_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -221,7 +222,10 @@ FSM_sequential_rd_state_reg: unisim.vcomponents.FDRE
       O => \rd_addr[1]_i_1_n_0\
     );
 \rd_addr_reg[0]\: unisim.vcomponents.FDRE
-     port map (
+    generic map(
+      INIT => '0'
+    )
+        port map (
       C => s_axi_aclk,
       CE => '1',
       D => \rd_addr[0]_i_1_n_0\,
@@ -229,7 +233,10 @@ FSM_sequential_rd_state_reg: unisim.vcomponents.FDRE
       R => '0'
     );
 \rd_addr_reg[1]\: unisim.vcomponents.FDRE
-     port map (
+    generic map(
+      INIT => '0'
+    )
+        port map (
       C => s_axi_aclk,
       CE => '1',
       D => \rd_addr[1]_i_1_n_0\,
@@ -4414,7 +4421,7 @@ entity system_axi_spdif_tx_core_0 is
   attribute ip_definition_source : string;
   attribute ip_definition_source of system_axi_spdif_tx_core_0 : entity is "package_project";
   attribute x_core_info : string;
-  attribute x_core_info of system_axi_spdif_tx_core_0 : entity is "axi_spdif_tx,Vivado 2022.2";
+  attribute x_core_info of system_axi_spdif_tx_core_0 : entity is "axi_spdif_tx,Vivado 2023.2.2";
 end system_axi_spdif_tx_core_0;
 
 architecture STRUCTURE of system_axi_spdif_tx_core_0 is
@@ -4436,7 +4443,7 @@ architecture STRUCTURE of system_axi_spdif_tx_core_0 is
   attribute S_AXI_DATA_WIDTH : integer;
   attribute S_AXI_DATA_WIDTH of U0 : label is 32;
   attribute x_interface_info : string;
-  attribute x_interface_info of dma_req_aclk : signal is "xilinx.com:signal:clock:1.0 dma_req_dma_ack_signal_clock CLK, xilinx.com:signal:clock:1.0 dma_req_aclk CLK";
+  attribute x_interface_info of dma_req_aclk : signal is "xilinx.com:signal:clock:1.0 dma_req_aclk CLK, xilinx.com:signal:clock:1.0 dma_req_dma_ack_signal_clock CLK";
   attribute x_interface_parameter : string;
   attribute x_interface_parameter of dma_req_aclk : signal is "XIL_INTERFACENAME dma_req_aclk, ASSOCIATED_RESET dma_req_rstn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, ASSOCIATED_BUSIF dma_req:dma_ack, INSERT_VIP 0, XIL_INTERFACENAME dma_req_dma_ack_signal_clock, ASSOCIATED_BUSIF dma_req:dma_ack, ASSOCIATED_RESET dma_req_rstn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, INSERT_VIP 0";
   attribute x_interface_info of dma_req_daready : signal is "xilinx.com:interface:axis:1.0 dma_ack TREADY";

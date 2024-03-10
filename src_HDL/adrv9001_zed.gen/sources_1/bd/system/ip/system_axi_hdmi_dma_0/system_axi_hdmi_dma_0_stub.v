@@ -1,10 +1,11 @@
 // Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+// Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-// Date        : Sun Mar 10 23:22:46 2024
-// Host        : PC_HP running 64-bit major release  (build 9200)
+// Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
+// Date        : Mon Mar 11 00:23:13 2024
+// Host        : ASUS_ROG running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
-//               c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_hdmi_dma_0/system_axi_hdmi_dma_0_stub.v
+//               c:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_hdmi_dma_0/system_axi_hdmi_dma_0_stub.v
 // Design      : system_axi_hdmi_dma_0
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7z020clg484-1
@@ -13,7 +14,7 @@
 // This empty module with port declaration file causes synthesis tools to infer a black box for IP.
 // The synthesis directives are for Synopsys Synplify support to prevent IO buffer insertion.
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
-(* X_CORE_INFO = "axi_dmac,Vivado 2022.2" *)
+(* X_CORE_INFO = "axi_dmac,Vivado 2023.2.2" *)
 module system_axi_hdmi_dma_0(s_axi_aclk, s_axi_aresetn, s_axi_awvalid, 
   s_axi_awaddr, s_axi_awready, s_axi_awprot, s_axi_wvalid, s_axi_wdata, s_axi_wstrb, 
   s_axi_wready, s_axi_bvalid, s_axi_bresp, s_axi_bready, s_axi_arvalid, s_axi_araddr, 
@@ -23,8 +24,11 @@ module system_axi_hdmi_dma_0(s_axi_aclk, s_axi_aresetn, s_axi_awvalid,
   m_src_axi_arcache, m_src_axi_rdata, m_src_axi_rready, m_src_axi_rvalid, m_src_axi_rresp, 
   m_src_axi_rlast, m_axis_aclk, m_axis_ready, m_axis_valid, m_axis_data, m_axis_strb, 
   m_axis_keep, m_axis_user, m_axis_id, m_axis_dest, m_axis_last, m_axis_xfer_req)
-/* synthesis syn_black_box black_box_pad_pin="s_axi_aclk,s_axi_aresetn,s_axi_awvalid,s_axi_awaddr[10:0],s_axi_awready,s_axi_awprot[2:0],s_axi_wvalid,s_axi_wdata[31:0],s_axi_wstrb[3:0],s_axi_wready,s_axi_bvalid,s_axi_bresp[1:0],s_axi_bready,s_axi_arvalid,s_axi_araddr[10:0],s_axi_arready,s_axi_arprot[2:0],s_axi_rvalid,s_axi_rready,s_axi_rresp[1:0],s_axi_rdata[31:0],irq,m_src_axi_aclk,m_src_axi_aresetn,m_src_axi_arready,m_src_axi_arvalid,m_src_axi_araddr[28:0],m_src_axi_arlen[3:0],m_src_axi_arsize[2:0],m_src_axi_arburst[1:0],m_src_axi_arprot[2:0],m_src_axi_arcache[3:0],m_src_axi_rdata[63:0],m_src_axi_rready,m_src_axi_rvalid,m_src_axi_rresp[1:0],m_src_axi_rlast,m_axis_aclk,m_axis_ready,m_axis_valid,m_axis_data[63:0],m_axis_strb[7:0],m_axis_keep[7:0],m_axis_user[0:0],m_axis_id[7:0],m_axis_dest[3:0],m_axis_last,m_axis_xfer_req" */;
-  input s_axi_aclk;
+/* synthesis syn_black_box black_box_pad_pin="s_axi_aresetn,s_axi_awvalid,s_axi_awaddr[10:0],s_axi_awready,s_axi_awprot[2:0],s_axi_wvalid,s_axi_wdata[31:0],s_axi_wstrb[3:0],s_axi_wready,s_axi_bvalid,s_axi_bresp[1:0],s_axi_bready,s_axi_arvalid,s_axi_araddr[10:0],s_axi_arready,s_axi_arprot[2:0],s_axi_rvalid,s_axi_rready,s_axi_rresp[1:0],s_axi_rdata[31:0],irq,m_src_axi_aresetn,m_src_axi_arready,m_src_axi_arvalid,m_src_axi_araddr[28:0],m_src_axi_arlen[3:0],m_src_axi_arsize[2:0],m_src_axi_arburst[1:0],m_src_axi_arprot[2:0],m_src_axi_arcache[3:0],m_src_axi_rdata[63:0],m_src_axi_rready,m_src_axi_rvalid,m_src_axi_rresp[1:0],m_src_axi_rlast,m_axis_ready,m_axis_valid,m_axis_data[63:0],m_axis_strb[7:0],m_axis_keep[7:0],m_axis_user[0:0],m_axis_id[7:0],m_axis_dest[3:0],m_axis_last,m_axis_xfer_req" */
+/* synthesis syn_force_seq_prim="s_axi_aclk" */
+/* synthesis syn_force_seq_prim="m_src_axi_aclk" */
+/* synthesis syn_force_seq_prim="m_axis_aclk" */;
+  input s_axi_aclk /* synthesis syn_isclock = 1 */;
   input s_axi_aresetn;
   input s_axi_awvalid;
   input [10:0]s_axi_awaddr;
@@ -46,7 +50,7 @@ module system_axi_hdmi_dma_0(s_axi_aclk, s_axi_aresetn, s_axi_awvalid,
   output [1:0]s_axi_rresp;
   output [31:0]s_axi_rdata;
   output irq;
-  input m_src_axi_aclk;
+  input m_src_axi_aclk /* synthesis syn_isclock = 1 */;
   input m_src_axi_aresetn;
   input m_src_axi_arready;
   output m_src_axi_arvalid;
@@ -61,7 +65,7 @@ module system_axi_hdmi_dma_0(s_axi_aclk, s_axi_aresetn, s_axi_awvalid,
   input m_src_axi_rvalid;
   input [1:0]m_src_axi_rresp;
   input m_src_axi_rlast;
-  input m_axis_aclk;
+  input m_axis_aclk /* synthesis syn_isclock = 1 */;
   input m_axis_ready;
   output m_axis_valid;
   output [63:0]m_axis_data;

@@ -1,10 +1,11 @@
 // Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+// Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-// Date        : Sun Mar 10 23:24:50 2024
-// Host        : PC_HP running 64-bit major release  (build 9200)
+// Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
+// Date        : Mon Mar 11 00:24:41 2024
+// Host        : ASUS_ROG running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
-//               c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_i2s_adi_0/system_axi_i2s_adi_0_sim_netlist.v
+//               c:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_i2s_adi_0/system_axi_i2s_adi_0_sim_netlist.v
 // Design      : system_axi_i2s_adi_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -13,7 +14,7 @@
 `timescale 1 ps / 1 ps
 
 (* CHECK_LICENSE_TYPE = "system_axi_i2s_adi_0,axi_i2s_adi,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* ip_definition_source = "package_project" *) 
-(* x_core_info = "axi_i2s_adi,Vivado 2022.2" *) 
+(* x_core_info = "axi_i2s_adi,Vivado 2023.2.2" *) 
 (* NotValidForBitStream *)
 module system_axi_i2s_adi_0
    (data_clk_i,
@@ -66,7 +67,7 @@ module system_axi_i2s_adi_0
   (* x_interface_info = "analog.com:interface:i2s:1.0 i2s SDATA_OUT" *) output [0:0]sdata_o;
   (* x_interface_info = "analog.com:interface:i2s:1.0 i2s SDATA_IN" *) input [0:0]sdata_i;
   (* x_interface_info = "xilinx.com:signal:clock:1.0 dma_req_tx_aclk CLK, xilinx.com:signal:clock:1.0 dma_req_tx_dma_ack_tx_signal_clock CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME dma_req_tx_aclk, ASSOCIATED_RESET dma_req_tx_rstn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, ASSOCIATED_BUSIF dma_req_tx:dma_ack_tx, INSERT_VIP 0, XIL_INTERFACENAME dma_req_tx_dma_ack_tx_signal_clock, ASSOCIATED_BUSIF dma_req_tx:dma_ack_tx, ASSOCIATED_RESET dma_req_tx_rstn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, INSERT_VIP 0" *) input dma_req_tx_aclk;
-  (* x_interface_info = "xilinx.com:signal:reset:1.0 dma_req_tx_rstn RST, xilinx.com:signal:reset:1.0 dma_req_tx_dma_ack_tx_signal_reset RST" *) (* x_interface_parameter = "XIL_INTERFACENAME dma_req_tx_rstn, POLARITY ACTIVE_LOW, INSERT_VIP 0, XIL_INTERFACENAME dma_req_tx_dma_ack_tx_signal_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input dma_req_tx_rstn;
+  (* x_interface_info = "xilinx.com:signal:reset:1.0 dma_req_tx_dma_ack_tx_signal_reset RST, xilinx.com:signal:reset:1.0 dma_req_tx_rstn RST" *) (* x_interface_parameter = "XIL_INTERFACENAME dma_req_tx_rstn, POLARITY ACTIVE_LOW, INSERT_VIP 0, XIL_INTERFACENAME dma_req_tx_dma_ack_tx_signal_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input dma_req_tx_rstn;
   (* x_interface_info = "xilinx.com:interface:axis:1.0 dma_ack_tx TVALID" *) (* x_interface_parameter = "XIL_INTERFACENAME dma_ack_tx, TDATA_NUM_BYTES 0, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 2, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, LAYERED_METADATA undef, INSERT_VIP 0" *) input dma_req_tx_davalid;
   (* x_interface_info = "xilinx.com:interface:axis:1.0 dma_ack_tx TUSER" *) input [1:0]dma_req_tx_datype;
   (* x_interface_info = "xilinx.com:interface:axis:1.0 dma_ack_tx TREADY" *) output dma_req_tx_daready;
@@ -74,8 +75,8 @@ module system_axi_i2s_adi_0
   (* x_interface_info = "xilinx.com:interface:axis:1.0 dma_req_tx TUSER" *) output [1:0]dma_req_tx_drtype;
   (* x_interface_info = "xilinx.com:interface:axis:1.0 dma_req_tx TLAST" *) output dma_req_tx_drlast;
   (* x_interface_info = "xilinx.com:interface:axis:1.0 dma_req_tx TREADY" *) input dma_req_tx_drready;
-  (* x_interface_info = "xilinx.com:signal:clock:1.0 dma_req_rx_dma_ack_rx_signal_clock CLK, xilinx.com:signal:clock:1.0 dma_req_rx_aclk CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME dma_req_rx_aclk, ASSOCIATED_RESET dma_req_rx_rstn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, ASSOCIATED_BUSIF dma_req_rx:dma_ack_rx, INSERT_VIP 0, XIL_INTERFACENAME dma_req_rx_dma_ack_rx_signal_clock, ASSOCIATED_BUSIF dma_req_rx:dma_ack_rx, ASSOCIATED_RESET dma_req_rx_rstn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, INSERT_VIP 0" *) input dma_req_rx_aclk;
-  (* x_interface_info = "xilinx.com:signal:reset:1.0 dma_req_rx_rstn RST, xilinx.com:signal:reset:1.0 dma_req_rx_dma_ack_rx_signal_reset RST" *) (* x_interface_parameter = "XIL_INTERFACENAME dma_req_rx_rstn, POLARITY ACTIVE_LOW, INSERT_VIP 0, XIL_INTERFACENAME dma_req_rx_dma_ack_rx_signal_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input dma_req_rx_rstn;
+  (* x_interface_info = "xilinx.com:signal:clock:1.0 dma_req_rx_aclk CLK, xilinx.com:signal:clock:1.0 dma_req_rx_dma_ack_rx_signal_clock CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME dma_req_rx_aclk, ASSOCIATED_RESET dma_req_rx_rstn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, ASSOCIATED_BUSIF dma_req_rx:dma_ack_rx, INSERT_VIP 0, XIL_INTERFACENAME dma_req_rx_dma_ack_rx_signal_clock, ASSOCIATED_BUSIF dma_req_rx:dma_ack_rx, ASSOCIATED_RESET dma_req_rx_rstn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, INSERT_VIP 0" *) input dma_req_rx_aclk;
+  (* x_interface_info = "xilinx.com:signal:reset:1.0 dma_req_rx_dma_ack_rx_signal_reset RST, xilinx.com:signal:reset:1.0 dma_req_rx_rstn RST" *) (* x_interface_parameter = "XIL_INTERFACENAME dma_req_rx_rstn, POLARITY ACTIVE_LOW, INSERT_VIP 0, XIL_INTERFACENAME dma_req_rx_dma_ack_rx_signal_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input dma_req_rx_rstn;
   (* x_interface_info = "xilinx.com:interface:axis:1.0 dma_ack_rx TVALID" *) (* x_interface_parameter = "XIL_INTERFACENAME dma_ack_rx, TDATA_NUM_BYTES 0, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 2, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, LAYERED_METADATA undef, INSERT_VIP 0" *) input dma_req_rx_davalid;
   (* x_interface_info = "xilinx.com:interface:axis:1.0 dma_ack_rx TUSER" *) input [1:0]dma_req_rx_datype;
   (* x_interface_info = "xilinx.com:interface:axis:1.0 dma_ack_rx TREADY" *) output dma_req_rx_daready;
@@ -561,25 +562,33 @@ module system_axi_i2s_adi_0_axi_ctrlif
         .I1(s_axi_arvalid),
         .I2(FSM_sequential_rd_state_reg_0),
         .O(\rd_addr[3]_i_1_n_0 ));
-  FDRE \rd_addr_reg[0] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \rd_addr_reg[0] 
        (.C(s_axi_aclk),
         .CE(\rd_addr[3]_i_1_n_0 ),
         .D(s_axi_araddr[0]),
         .Q(rd_addr__0[0]),
         .R(1'b0));
-  FDRE \rd_addr_reg[1] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \rd_addr_reg[1] 
        (.C(s_axi_aclk),
         .CE(\rd_addr[3]_i_1_n_0 ),
         .D(s_axi_araddr[1]),
         .Q(rd_addr__0[1]),
         .R(1'b0));
-  FDRE \rd_addr_reg[2] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \rd_addr_reg[2] 
        (.C(s_axi_aclk),
         .CE(\rd_addr[3]_i_1_n_0 ),
         .D(s_axi_araddr[2]),
         .Q(rd_addr__0[2]),
         .R(1'b0));
-  FDRE \rd_addr_reg[3] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \rd_addr_reg[3] 
        (.C(s_axi_aclk),
         .CE(\rd_addr[3]_i_1_n_0 ),
         .D(s_axi_araddr[3]),

@@ -4,7 +4,7 @@
     "xci_name": "system_sys_concat_intc_0",
     "cell_name": "sys_concat_intc",
     "component_reference": "xilinx.com:ip:xlconcat:2.1",
-    "ip_revision": "4",
+    "ip_revision": "5",
     "gen_directory": "../../../../../../adrv9001_zed.gen/sources_1/bd/system/ip/system_sys_concat_intc_0",
     "parameters": {
       "component_parameters": {
@@ -138,7 +138,7 @@
         "IN125_WIDTH": [ { "value": "1", "value_permission": "bd_and_user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "IN126_WIDTH": [ { "value": "1", "value_permission": "bd_and_user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "IN127_WIDTH": [ { "value": "1", "value_permission": "bd_and_user", "resolve_type": "user", "format": "long", "usage": "all" } ],
-        "dout_width": [ { "value": "16", "value_permission": "bd", "resolve_type": "user", "format": "long", "usage": "all" } ]
+        "dout_width": [ { "value": "16", "value_src": "user", "value_permission": "bd", "resolve_type": "user", "format": "long", "usage": "all" } ]
       },
       "model_parameters": {
         "IN0_WIDTH": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
@@ -289,12 +289,12 @@
       },
       "runtime_parameters": {
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],
-        "IPREVISION": [ { "value": "4" } ],
+        "IPREVISION": [ { "value": "5" } ],
         "MANAGED": [ { "value": "TRUE" } ],
         "OUTPUTDIR": [ { "value": "../../../../../../adrv9001_zed.gen/sources_1/bd/system/ip/system_sys_concat_intc_0" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "../../ipshared" } ],
-        "SWVERSION": [ { "value": "2022.2" } ],
+        "SWVERSION": [ { "value": "2023.2.2" } ],
         "SYNTHESISFLOW": [ { "value": "GLOBAL" } ]
       }
     },

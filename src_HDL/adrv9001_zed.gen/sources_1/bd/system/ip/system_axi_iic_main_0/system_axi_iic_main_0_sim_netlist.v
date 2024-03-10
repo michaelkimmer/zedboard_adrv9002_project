@@ -1,10 +1,11 @@
 // Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+// Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-// Date        : Sun Mar 10 23:18:36 2024
-// Host        : PC_HP running 64-bit major release  (build 9200)
+// Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
+// Date        : Mon Mar 11 00:26:17 2024
+// Host        : ASUS_ROG running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
-//               c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_iic_main_0/system_axi_iic_main_0_sim_netlist.v
+//               c:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_iic_main_0/system_axi_iic_main_0_sim_netlist.v
 // Design      : system_axi_iic_main_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -12,7 +13,7 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "system_axi_iic_main_0,axi_iic,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "axi_iic,Vivado 2022.2" *) 
+(* CHECK_LICENSE_TYPE = "system_axi_iic_main_0,axi_iic,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "axi_iic,Vivado 2023.2.2" *) 
 (* NotValidForBitStream *)
 module system_axi_iic_main_0
    (s_axi_aclk,
@@ -374,8 +375,8 @@ module system_axi_iic_main_0_SRL_FIFO
         .I3(Rc_addr[0]),
         .O(\Addr_Counters[1].FDRE_I_0 ));
   (* box_type = "PRIMITIVE" *) 
-  (* srl_bus_name = "U0/\X_IIC/READ_FIFO_I/FIFO_RAM " *) 
-  (* srl_name = "U0/\X_IIC/READ_FIFO_I/FIFO_RAM[0].SRL16E_I " *) 
+  (* srl_bus_name = "U0/\\X_IIC/READ_FIFO_I/FIFO_RAM " *) 
+  (* srl_name = "U0/\\X_IIC/READ_FIFO_I/FIFO_RAM[0].SRL16E_I " *) 
   SRL16E #(
     .INIT(16'h0000),
     .IS_CLK_INVERTED(1'b0)) 
@@ -389,8 +390,8 @@ module system_axi_iic_main_0_SRL_FIFO
         .D(\FIFO_RAM[0].SRL16E_I_0 [7]),
         .Q(Rc_fifo_data[0]));
   (* box_type = "PRIMITIVE" *) 
-  (* srl_bus_name = "U0/\X_IIC/READ_FIFO_I/FIFO_RAM " *) 
-  (* srl_name = "U0/\X_IIC/READ_FIFO_I/FIFO_RAM[1].SRL16E_I " *) 
+  (* srl_bus_name = "U0/\\X_IIC/READ_FIFO_I/FIFO_RAM " *) 
+  (* srl_name = "U0/\\X_IIC/READ_FIFO_I/FIFO_RAM[1].SRL16E_I " *) 
   SRL16E #(
     .INIT(16'h0000),
     .IS_CLK_INVERTED(1'b0)) 
@@ -404,8 +405,8 @@ module system_axi_iic_main_0_SRL_FIFO
         .D(\FIFO_RAM[0].SRL16E_I_0 [6]),
         .Q(Rc_fifo_data[1]));
   (* box_type = "PRIMITIVE" *) 
-  (* srl_bus_name = "U0/\X_IIC/READ_FIFO_I/FIFO_RAM " *) 
-  (* srl_name = "U0/\X_IIC/READ_FIFO_I/FIFO_RAM[2].SRL16E_I " *) 
+  (* srl_bus_name = "U0/\\X_IIC/READ_FIFO_I/FIFO_RAM " *) 
+  (* srl_name = "U0/\\X_IIC/READ_FIFO_I/FIFO_RAM[2].SRL16E_I " *) 
   SRL16E #(
     .INIT(16'h0000),
     .IS_CLK_INVERTED(1'b0)) 
@@ -419,8 +420,8 @@ module system_axi_iic_main_0_SRL_FIFO
         .D(\FIFO_RAM[0].SRL16E_I_0 [5]),
         .Q(Rc_fifo_data[2]));
   (* box_type = "PRIMITIVE" *) 
-  (* srl_bus_name = "U0/\X_IIC/READ_FIFO_I/FIFO_RAM " *) 
-  (* srl_name = "U0/\X_IIC/READ_FIFO_I/FIFO_RAM[3].SRL16E_I " *) 
+  (* srl_bus_name = "U0/\\X_IIC/READ_FIFO_I/FIFO_RAM " *) 
+  (* srl_name = "U0/\\X_IIC/READ_FIFO_I/FIFO_RAM[3].SRL16E_I " *) 
   SRL16E #(
     .INIT(16'h0000),
     .IS_CLK_INVERTED(1'b0)) 
@@ -434,8 +435,8 @@ module system_axi_iic_main_0_SRL_FIFO
         .D(\FIFO_RAM[0].SRL16E_I_0 [4]),
         .Q(Rc_fifo_data[3]));
   (* box_type = "PRIMITIVE" *) 
-  (* srl_bus_name = "U0/\X_IIC/READ_FIFO_I/FIFO_RAM " *) 
-  (* srl_name = "U0/\X_IIC/READ_FIFO_I/FIFO_RAM[4].SRL16E_I " *) 
+  (* srl_bus_name = "U0/\\X_IIC/READ_FIFO_I/FIFO_RAM " *) 
+  (* srl_name = "U0/\\X_IIC/READ_FIFO_I/FIFO_RAM[4].SRL16E_I " *) 
   SRL16E #(
     .INIT(16'h0000),
     .IS_CLK_INVERTED(1'b0)) 
@@ -449,8 +450,8 @@ module system_axi_iic_main_0_SRL_FIFO
         .D(\FIFO_RAM[0].SRL16E_I_0 [3]),
         .Q(Rc_fifo_data[4]));
   (* box_type = "PRIMITIVE" *) 
-  (* srl_bus_name = "U0/\X_IIC/READ_FIFO_I/FIFO_RAM " *) 
-  (* srl_name = "U0/\X_IIC/READ_FIFO_I/FIFO_RAM[5].SRL16E_I " *) 
+  (* srl_bus_name = "U0/\\X_IIC/READ_FIFO_I/FIFO_RAM " *) 
+  (* srl_name = "U0/\\X_IIC/READ_FIFO_I/FIFO_RAM[5].SRL16E_I " *) 
   SRL16E #(
     .INIT(16'h0000),
     .IS_CLK_INVERTED(1'b0)) 
@@ -464,8 +465,8 @@ module system_axi_iic_main_0_SRL_FIFO
         .D(\FIFO_RAM[0].SRL16E_I_0 [2]),
         .Q(Rc_fifo_data[5]));
   (* box_type = "PRIMITIVE" *) 
-  (* srl_bus_name = "U0/\X_IIC/READ_FIFO_I/FIFO_RAM " *) 
-  (* srl_name = "U0/\X_IIC/READ_FIFO_I/FIFO_RAM[6].SRL16E_I " *) 
+  (* srl_bus_name = "U0/\\X_IIC/READ_FIFO_I/FIFO_RAM " *) 
+  (* srl_name = "U0/\\X_IIC/READ_FIFO_I/FIFO_RAM[6].SRL16E_I " *) 
   SRL16E #(
     .INIT(16'h0000),
     .IS_CLK_INVERTED(1'b0)) 
@@ -479,8 +480,8 @@ module system_axi_iic_main_0_SRL_FIFO
         .D(\FIFO_RAM[0].SRL16E_I_0 [1]),
         .Q(Rc_fifo_data[6]));
   (* box_type = "PRIMITIVE" *) 
-  (* srl_bus_name = "U0/\X_IIC/READ_FIFO_I/FIFO_RAM " *) 
-  (* srl_name = "U0/\X_IIC/READ_FIFO_I/FIFO_RAM[7].SRL16E_I " *) 
+  (* srl_bus_name = "U0/\\X_IIC/READ_FIFO_I/FIFO_RAM " *) 
+  (* srl_name = "U0/\\X_IIC/READ_FIFO_I/FIFO_RAM[7].SRL16E_I " *) 
   SRL16E #(
     .INIT(16'h0000),
     .IS_CLK_INVERTED(1'b0)) 
@@ -743,8 +744,8 @@ module system_axi_iic_main_0_SRL_FIFO_0
        (.I0(Tx_addr_0[0]),
         .O(p_0_in));
   (* box_type = "PRIMITIVE" *) 
-  (* srl_bus_name = "U0/\X_IIC/WRITE_FIFO_I/FIFO_RAM " *) 
-  (* srl_name = "U0/\X_IIC/WRITE_FIFO_I/FIFO_RAM[0].SRL16E_I " *) 
+  (* srl_bus_name = "U0/\\X_IIC/WRITE_FIFO_I/FIFO_RAM " *) 
+  (* srl_name = "U0/\\X_IIC/WRITE_FIFO_I/FIFO_RAM[0].SRL16E_I " *) 
   SRL16E #(
     .INIT(16'h0000),
     .IS_CLK_INVERTED(1'b0)) 
@@ -758,8 +759,8 @@ module system_axi_iic_main_0_SRL_FIFO_0
         .D(s_axi_wdata[7]),
         .Q(Tx_fifo_data_0[7]));
   (* box_type = "PRIMITIVE" *) 
-  (* srl_bus_name = "U0/\X_IIC/WRITE_FIFO_I/FIFO_RAM " *) 
-  (* srl_name = "U0/\X_IIC/WRITE_FIFO_I/FIFO_RAM[1].SRL16E_I " *) 
+  (* srl_bus_name = "U0/\\X_IIC/WRITE_FIFO_I/FIFO_RAM " *) 
+  (* srl_name = "U0/\\X_IIC/WRITE_FIFO_I/FIFO_RAM[1].SRL16E_I " *) 
   SRL16E #(
     .INIT(16'h0000),
     .IS_CLK_INVERTED(1'b0)) 
@@ -773,8 +774,8 @@ module system_axi_iic_main_0_SRL_FIFO_0
         .D(s_axi_wdata[6]),
         .Q(Tx_fifo_data_0[6]));
   (* box_type = "PRIMITIVE" *) 
-  (* srl_bus_name = "U0/\X_IIC/WRITE_FIFO_I/FIFO_RAM " *) 
-  (* srl_name = "U0/\X_IIC/WRITE_FIFO_I/FIFO_RAM[2].SRL16E_I " *) 
+  (* srl_bus_name = "U0/\\X_IIC/WRITE_FIFO_I/FIFO_RAM " *) 
+  (* srl_name = "U0/\\X_IIC/WRITE_FIFO_I/FIFO_RAM[2].SRL16E_I " *) 
   SRL16E #(
     .INIT(16'h0000),
     .IS_CLK_INVERTED(1'b0)) 
@@ -788,8 +789,8 @@ module system_axi_iic_main_0_SRL_FIFO_0
         .D(s_axi_wdata[5]),
         .Q(Tx_fifo_data_0[5]));
   (* box_type = "PRIMITIVE" *) 
-  (* srl_bus_name = "U0/\X_IIC/WRITE_FIFO_I/FIFO_RAM " *) 
-  (* srl_name = "U0/\X_IIC/WRITE_FIFO_I/FIFO_RAM[3].SRL16E_I " *) 
+  (* srl_bus_name = "U0/\\X_IIC/WRITE_FIFO_I/FIFO_RAM " *) 
+  (* srl_name = "U0/\\X_IIC/WRITE_FIFO_I/FIFO_RAM[3].SRL16E_I " *) 
   SRL16E #(
     .INIT(16'h0000),
     .IS_CLK_INVERTED(1'b0)) 
@@ -803,8 +804,8 @@ module system_axi_iic_main_0_SRL_FIFO_0
         .D(s_axi_wdata[4]),
         .Q(Tx_fifo_data_0[4]));
   (* box_type = "PRIMITIVE" *) 
-  (* srl_bus_name = "U0/\X_IIC/WRITE_FIFO_I/FIFO_RAM " *) 
-  (* srl_name = "U0/\X_IIC/WRITE_FIFO_I/FIFO_RAM[4].SRL16E_I " *) 
+  (* srl_bus_name = "U0/\\X_IIC/WRITE_FIFO_I/FIFO_RAM " *) 
+  (* srl_name = "U0/\\X_IIC/WRITE_FIFO_I/FIFO_RAM[4].SRL16E_I " *) 
   SRL16E #(
     .INIT(16'h0000),
     .IS_CLK_INVERTED(1'b0)) 
@@ -818,8 +819,8 @@ module system_axi_iic_main_0_SRL_FIFO_0
         .D(s_axi_wdata[3]),
         .Q(Tx_fifo_data_0[3]));
   (* box_type = "PRIMITIVE" *) 
-  (* srl_bus_name = "U0/\X_IIC/WRITE_FIFO_I/FIFO_RAM " *) 
-  (* srl_name = "U0/\X_IIC/WRITE_FIFO_I/FIFO_RAM[5].SRL16E_I " *) 
+  (* srl_bus_name = "U0/\\X_IIC/WRITE_FIFO_I/FIFO_RAM " *) 
+  (* srl_name = "U0/\\X_IIC/WRITE_FIFO_I/FIFO_RAM[5].SRL16E_I " *) 
   SRL16E #(
     .INIT(16'h0000),
     .IS_CLK_INVERTED(1'b0)) 
@@ -833,8 +834,8 @@ module system_axi_iic_main_0_SRL_FIFO_0
         .D(s_axi_wdata[2]),
         .Q(Tx_fifo_data_0[2]));
   (* box_type = "PRIMITIVE" *) 
-  (* srl_bus_name = "U0/\X_IIC/WRITE_FIFO_I/FIFO_RAM " *) 
-  (* srl_name = "U0/\X_IIC/WRITE_FIFO_I/FIFO_RAM[6].SRL16E_I " *) 
+  (* srl_bus_name = "U0/\\X_IIC/WRITE_FIFO_I/FIFO_RAM " *) 
+  (* srl_name = "U0/\\X_IIC/WRITE_FIFO_I/FIFO_RAM[6].SRL16E_I " *) 
   SRL16E #(
     .INIT(16'h0000),
     .IS_CLK_INVERTED(1'b0)) 
@@ -848,8 +849,8 @@ module system_axi_iic_main_0_SRL_FIFO_0
         .D(s_axi_wdata[1]),
         .Q(Tx_fifo_data_0[1]));
   (* box_type = "PRIMITIVE" *) 
-  (* srl_bus_name = "U0/\X_IIC/WRITE_FIFO_I/FIFO_RAM " *) 
-  (* srl_name = "U0/\X_IIC/WRITE_FIFO_I/FIFO_RAM[7].SRL16E_I " *) 
+  (* srl_bus_name = "U0/\\X_IIC/WRITE_FIFO_I/FIFO_RAM " *) 
+  (* srl_name = "U0/\\X_IIC/WRITE_FIFO_I/FIFO_RAM[7].SRL16E_I " *) 
   SRL16E #(
     .INIT(16'h0000),
     .IS_CLK_INVERTED(1'b0)) 
@@ -1117,8 +1118,8 @@ module system_axi_iic_main_0_SRL_FIFO__parameterized0
         .I3(\Addr_Counters[2].FDRE_I_n_0 ),
         .O(\Addr_Counters[1].FDRE_I_0 ));
   (* box_type = "PRIMITIVE" *) 
-  (* srl_bus_name = "U0/\X_IIC/WRITE_FIFO_CTRL_I/FIFO_RAM " *) 
-  (* srl_name = "U0/\X_IIC/WRITE_FIFO_CTRL_I/FIFO_RAM[0].SRL16E_I " *) 
+  (* srl_bus_name = "U0/\\X_IIC/WRITE_FIFO_CTRL_I/FIFO_RAM " *) 
+  (* srl_name = "U0/\\X_IIC/WRITE_FIFO_CTRL_I/FIFO_RAM[0].SRL16E_I " *) 
   SRL16E #(
     .INIT(16'h0000),
     .IS_CLK_INVERTED(1'b0)) 
@@ -1132,8 +1133,8 @@ module system_axi_iic_main_0_SRL_FIFO__parameterized0
         .D(ctrlFifoDin[0]),
         .Q(dynamic_MSMS[0]));
   (* box_type = "PRIMITIVE" *) 
-  (* srl_bus_name = "U0/\X_IIC/WRITE_FIFO_CTRL_I/FIFO_RAM " *) 
-  (* srl_name = "U0/\X_IIC/WRITE_FIFO_CTRL_I/FIFO_RAM[1].SRL16E_I " *) 
+  (* srl_bus_name = "U0/\\X_IIC/WRITE_FIFO_CTRL_I/FIFO_RAM " *) 
+  (* srl_name = "U0/\\X_IIC/WRITE_FIFO_CTRL_I/FIFO_RAM[1].SRL16E_I " *) 
   SRL16E #(
     .INIT(16'h0000),
     .IS_CLK_INVERTED(1'b0)) 

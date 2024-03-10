@@ -1,10 +1,11 @@
 -- Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+-- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
--- Date        : Sun Mar 10 23:36:37 2024
--- Host        : PC_HP running 64-bit major release  (build 9200)
+-- Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
+-- Date        : Mon Mar 11 00:21:35 2024
+-- Host        : ASUS_ROG running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_adrv9001_tx2_dma_0/system_axi_adrv9001_tx2_dma_0_sim_netlist.vhdl
+--               c:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_adrv9001_tx2_dma_0/system_axi_adrv9001_tx2_dma_0_sim_netlist.vhdl
 -- Design      : system_axi_adrv9001_tx2_dma_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -10248,7 +10249,7 @@ use UNISIM.VCOMPONENTS.ALL;
 entity system_axi_adrv9001_tx2_dma_0_dest_axi_stream is
   port (
     \response_id_reg[3]\ : out STD_LOGIC;
-    \zerodeep.cdc_sync_fifo_ram_reg0\ : out STD_LOGIC;
+    id0 : out STD_LOGIC;
     dbg_ids0 : out STD_LOGIC_VECTOR ( 0 to 0 );
     \response_id_reg[1]\ : out STD_LOGIC;
     \response_id_reg[0]\ : out STD_LOGIC;
@@ -10344,7 +10345,7 @@ i_response_generator: entity work.system_axi_adrv9001_tx2_dma_0_response_generat
      port map (
       data_enabled => data_enabled,
       dest_enabled => dest_enabled,
-      enabled_reg_0 => \zerodeep.cdc_sync_fifo_ram_reg0\,
+      enabled_reg_0 => id0,
       enabled_reg_1(0) => enabled_reg(0),
       enabled_reg_2 => \^g\(1),
       enabled_reg_3 => \^id_reg[2]_0\,
@@ -12043,7 +12044,7 @@ entity \system_axi_adrv9001_tx2_dma_0_util_axis_fifo__parameterized2\ is
     E : out STD_LOGIC_VECTOR ( 0 to 0 );
     response_ready_reg : out STD_LOGIC;
     \cdc_sync_stage1_reg[0]\ : in STD_LOGIC_VECTOR ( 0 to 0 );
-    \zerodeep.cdc_sync_fifo_ram_reg0\ : in STD_LOGIC;
+    id0 : in STD_LOGIC;
     m_axis_aclk : in STD_LOGIC;
     Q : in STD_LOGIC_VECTOR ( 0 to 0 );
     s_axi_aclk : in STD_LOGIC;
@@ -12144,7 +12145,7 @@ i_7: unisim.vcomponents.LUT1
 \zerodeep.cdc_sync_fifo_ram_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => m_axis_aclk,
-      CE => \zerodeep.cdc_sync_fifo_ram_reg0\,
+      CE => id0,
       D => response_eot,
       Q => \zerodeep.cdc_sync_fifo_ram\(0),
       R => '0'
@@ -12204,7 +12205,7 @@ i_7: unisim.vcomponents.LUT1
     )
         port map (
       C => m_axis_aclk,
-      CE => \zerodeep.cdc_sync_fifo_ram_reg0\,
+      CE => id0,
       D => \zerodeep.s_axis_waddr_i_2_n_0\,
       Q => \^zerodeep.s_axis_waddr_reg_0\,
       R => \cdc_sync_stage1_reg[0]\(0)
@@ -14140,7 +14141,7 @@ entity system_axi_adrv9001_tx2_dma_0_axi_dmac_response_manager is
     \FSM_sequential_state_reg[1]_0\ : out STD_LOGIC;
     \measured_burst_length_reg[6]_0\ : out STD_LOGIC_VECTOR ( 6 downto 0 );
     \cdc_sync_stage1_reg[0]\ : in STD_LOGIC_VECTOR ( 0 to 0 );
-    \zerodeep.cdc_sync_fifo_ram_reg0\ : in STD_LOGIC;
+    id0 : in STD_LOGIC;
     m_axis_aclk : in STD_LOGIC;
     Q : in STD_LOGIC_VECTOR ( 0 to 0 );
     s_axi_aclk : in STD_LOGIC;
@@ -14297,6 +14298,7 @@ i_dest_response_fifo: entity work.\system_axi_adrv9001_tx2_dma_0_util_axis_fifo_
       SS(0) => \measured_burst_length[6]_i_1_n_0\,
       \cdc_sync_stage1_reg[0]\(0) => \cdc_sync_stage1_reg[0]\(0),
       \cdc_sync_stage2_reg[0]\ => \cdc_sync_stage2_reg[0]\,
+      id0 => id0,
       m_axis_aclk => m_axis_aclk,
       nx_state15_in => nx_state15_in,
       \out\(8 downto 2) => response_dest_data_burst_length(6 downto 0),
@@ -14310,7 +14312,6 @@ i_dest_response_fifo: entity work.\system_axi_adrv9001_tx2_dma_0_util_axis_fifo_
       to_complete_count(1 downto 0) => to_complete_count(1 downto 0),
       up_response_ready => up_response_ready,
       up_response_valid => \^up_response_valid\,
-      \zerodeep.cdc_sync_fifo_ram_reg0\ => \zerodeep.cdc_sync_fifo_ram_reg0\,
       \zerodeep.s_axis_waddr_reg_0\ => \zerodeep.s_axis_waddr_reg\
     );
 \measured_burst_length[6]_i_1\: unisim.vcomponents.LUT3
@@ -16143,6 +16144,7 @@ i_dest_dma_stream: entity work.system_axi_adrv9001_tx2_dma_0_dest_axi_stream
       enabled_reg(0) => dest_id_reduced_msb_next_reg(0),
       g(2) => g(3),
       g(1 downto 0) => g(1 downto 0),
+      id0 => \i_response_generator/id0\,
       \id_reg[2]_0\ => \^id_reg[2]\(0),
       m_axis_aclk => m_axis_aclk,
       m_axis_ready => m_axis_ready,
@@ -16154,8 +16156,7 @@ i_dest_dma_stream: entity work.system_axi_adrv9001_tx2_dma_0_dest_axi_stream
       \response_id_reg[0]_0\ => i_response_manager_n_0,
       \response_id_reg[0]_1\ => i_response_manager_n_1,
       \response_id_reg[1]\ => \^response_id_reg[3]\(1),
-      \response_id_reg[3]\ => \^response_id_reg[3]\(2),
-      \zerodeep.cdc_sync_fifo_ram_reg0\ => \i_response_generator/id0\
+      \response_id_reg[3]\ => \^response_id_reg[3]\(2)
     );
 i_dest_req_fifo: entity work.\system_axi_adrv9001_tx2_dma_0_util_axis_fifo__parameterized0\
      port map (
@@ -16208,6 +16209,7 @@ i_response_manager: entity work.system_axi_adrv9001_tx2_dma_0_axi_dmac_response_
       Q(0) => Q(0),
       \cdc_sync_stage1_reg[0]\(0) => dest_id_reduced_msb_next_reg(0),
       \cdc_sync_stage2_reg[0]\ => i_response_manager_n_1,
+      id0 => \i_response_generator/id0\,
       m_axis_aclk => m_axis_aclk,
       \measured_burst_length_reg[6]_0\(6 downto 0) => \measured_burst_length_reg[6]\(6 downto 0),
       p_3_in(0) => p_3_in(0),
@@ -16220,7 +16222,6 @@ i_response_manager: entity work.system_axi_adrv9001_tx2_dma_0_axi_dmac_response_
       up_eot => up_eot,
       up_response_ready => up_response_ready,
       up_response_valid => up_response_valid,
-      \zerodeep.cdc_sync_fifo_ram_reg0\ => \i_response_generator/id0\,
       \zerodeep.s_axis_waddr_reg\ => i_response_manager_n_0
     );
 i_src_dma_mm: entity work.system_axi_adrv9001_tx2_dma_0_src_axi_mm
@@ -17708,7 +17709,7 @@ entity system_axi_adrv9001_tx2_dma_0 is
   attribute IP_DEFINITION_SOURCE : string;
   attribute IP_DEFINITION_SOURCE of system_axi_adrv9001_tx2_dma_0 : entity is "package_project";
   attribute X_CORE_INFO : string;
-  attribute X_CORE_INFO of system_axi_adrv9001_tx2_dma_0 : entity is "axi_dmac,Vivado 2022.2";
+  attribute X_CORE_INFO of system_axi_adrv9001_tx2_dma_0 : entity is "axi_dmac,Vivado 2023.2.2";
 end system_axi_adrv9001_tx2_dma_0;
 
 architecture STRUCTURE of system_axi_adrv9001_tx2_dma_0 is

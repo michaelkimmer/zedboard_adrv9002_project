@@ -4,14 +4,14 @@
     "xci_name": "system_sys_logic_inv_0",
     "cell_name": "sys_logic_inv",
     "component_reference": "xilinx.com:ip:util_vector_logic:2.0",
-    "ip_revision": "2",
+    "ip_revision": "3",
     "gen_directory": "../../../../../../adrv9001_zed.gen/sources_1/bd/system/ip/system_sys_logic_inv_0",
     "parameters": {
       "component_parameters": {
         "Component_Name": [ { "value": "system_sys_logic_inv_0", "resolve_type": "user", "usage": "all" } ],
         "C_SIZE": [ { "value": "1", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "C_OPERATION": [ { "value": "not", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
-        "LOGO_FILE": [ { "value": "data/sym_notgate.png", "resolve_type": "user", "enabled": false, "usage": "all" } ]
+        "LOGO_FILE": [ { "value": "data/sym_notgate.png", "value_src": "user", "resolve_type": "user", "enabled": false, "usage": "all" } ]
       },
       "model_parameters": {
         "C_OPERATION": [ { "value": "not", "resolve_type": "generated", "usage": "all" } ],
@@ -34,12 +34,12 @@
       },
       "runtime_parameters": {
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],
-        "IPREVISION": [ { "value": "2" } ],
+        "IPREVISION": [ { "value": "3" } ],
         "MANAGED": [ { "value": "TRUE" } ],
         "OUTPUTDIR": [ { "value": "../../../../../../adrv9001_zed.gen/sources_1/bd/system/ip/system_sys_logic_inv_0" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "../../ipshared" } ],
-        "SWVERSION": [ { "value": "2022.2" } ],
+        "SWVERSION": [ { "value": "2023.2.2" } ],
         "SYNTHESISFLOW": [ { "value": "OUT_OF_CONTEXT" } ]
       }
     },
