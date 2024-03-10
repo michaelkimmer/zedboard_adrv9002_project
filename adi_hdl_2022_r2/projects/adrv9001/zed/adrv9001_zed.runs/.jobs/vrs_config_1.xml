@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<Runs Version="1" Minor="0">
+	<Run Id="system_sys_ps7_0_synth_1" LaunchDir="C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.runs/system_sys_ps7_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_axi_iic_main_0_synth_1" LaunchDir="C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.runs/system_axi_iic_main_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_sys_i2c_mixer_0_synth_1" LaunchDir="C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.runs/system_sys_i2c_mixer_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_sys_rstgen_0_synth_1" LaunchDir="C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.runs/system_sys_rstgen_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_sys_200m_rstgen_0_synth_1" LaunchDir="C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.runs/system_sys_200m_rstgen_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_sys_logic_inv_0_synth_1" LaunchDir="C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.runs/system_sys_logic_inv_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_axi_hdmi_clkgen_0_synth_1" LaunchDir="C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.runs/system_axi_hdmi_clkgen_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_axi_hdmi_core_0_synth_1" LaunchDir="C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.runs/system_axi_hdmi_core_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_axi_hdmi_dma_0_synth_1" LaunchDir="C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.runs/system_axi_hdmi_dma_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_sys_audio_clkgen_0_synth_1" LaunchDir="C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.runs/system_sys_audio_clkgen_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_axi_spdif_tx_core_0_synth_1" LaunchDir="C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.runs/system_axi_spdif_tx_core_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_axi_i2s_adi_0_synth_1" LaunchDir="C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.runs/system_axi_i2s_adi_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_axi_iic_fmc_0_synth_1" LaunchDir="C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.runs/system_axi_iic_fmc_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_axi_sysid_0_0_synth_1" LaunchDir="C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.runs/system_axi_sysid_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_rom_sys_0_0_synth_1" LaunchDir="C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.runs/system_rom_sys_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_xbar_0_synth_1" LaunchDir="C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.runs/system_xbar_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_axi_hp0_interconnect_0_synth_1" LaunchDir="C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.runs/system_axi_hp0_interconnect_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_axi_adrv9001_0_synth_1" LaunchDir="C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.runs/system_axi_adrv9001_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_axi_adrv9001_rx1_dma_0_synth_1" LaunchDir="C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.runs/system_axi_adrv9001_rx1_dma_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_util_adc_1_pack_0_synth_1" LaunchDir="C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.runs/system_util_adc_1_pack_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_axi_adrv9001_rx2_dma_0_synth_1" LaunchDir="C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.runs/system_axi_adrv9001_rx2_dma_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_util_adc_2_pack_0_synth_1" LaunchDir="C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.runs/system_util_adc_2_pack_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_axi_adrv9001_tx1_dma_0_synth_1" LaunchDir="C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.runs/system_axi_adrv9001_tx1_dma_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_util_dac_1_upack_0_synth_1" LaunchDir="C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.runs/system_util_dac_1_upack_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_axi_adrv9001_tx2_dma_0_synth_1" LaunchDir="C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.runs/system_axi_adrv9001_tx2_dma_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_util_dac_2_upack_0_synth_1" LaunchDir="C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.runs/system_util_dac_2_upack_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_axi_hp1_interconnect_0_synth_1" LaunchDir="C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.runs/system_axi_hp1_interconnect_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_auto_pc_0_synth_1" LaunchDir="C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.runs/system_auto_pc_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="synth_1" LaunchDir="C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.runs/synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado">
+		<Parent Id="system_sys_ps7_0_synth_1"/>
+		<Parent Id="system_axi_iic_main_0_synth_1"/>
+		<Parent Id="system_sys_i2c_mixer_0_synth_1"/>
+		<Parent Id="system_sys_rstgen_0_synth_1"/>
+		<Parent Id="system_sys_200m_rstgen_0_synth_1"/>
+		<Parent Id="system_sys_logic_inv_0_synth_1"/>
+		<Parent Id="system_axi_hdmi_clkgen_0_synth_1"/>
+		<Parent Id="system_axi_hdmi_core_0_synth_1"/>
+		<Parent Id="system_axi_hdmi_dma_0_synth_1"/>
+		<Parent Id="system_sys_audio_clkgen_0_synth_1"/>
+		<Parent Id="system_axi_spdif_tx_core_0_synth_1"/>
+		<Parent Id="system_axi_i2s_adi_0_synth_1"/>
+		<Parent Id="system_axi_iic_fmc_0_synth_1"/>
+		<Parent Id="system_axi_sysid_0_0_synth_1"/>
+		<Parent Id="system_rom_sys_0_0_synth_1"/>
+		<Parent Id="system_xbar_0_synth_1"/>
+		<Parent Id="system_axi_hp0_interconnect_0_synth_1"/>
+		<Parent Id="system_axi_adrv9001_0_synth_1"/>
+		<Parent Id="system_axi_adrv9001_rx1_dma_0_synth_1"/>
+		<Parent Id="system_util_adc_1_pack_0_synth_1"/>
+		<Parent Id="system_axi_adrv9001_rx2_dma_0_synth_1"/>
+		<Parent Id="system_util_adc_2_pack_0_synth_1"/>
+		<Parent Id="system_axi_adrv9001_tx1_dma_0_synth_1"/>
+		<Parent Id="system_util_dac_1_upack_0_synth_1"/>
+		<Parent Id="system_axi_adrv9001_tx2_dma_0_synth_1"/>
+		<Parent Id="system_util_dac_2_upack_0_synth_1"/>
+		<Parent Id="system_axi_hp1_interconnect_0_synth_1"/>
+		<Parent Id="system_auto_pc_0_synth_1"/>
+	</Run>
+	<Parameters>
+		<Parameter Name="runs.monitorLSFJobs" Val="true" Type="bool"/>
+		<Parameter Name="runs.enableClusterConf" Val="true" Type="bool"/>
+	</Parameters>
+</Runs>
+

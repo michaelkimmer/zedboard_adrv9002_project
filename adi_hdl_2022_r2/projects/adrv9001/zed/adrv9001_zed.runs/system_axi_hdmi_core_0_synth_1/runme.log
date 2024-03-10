@@ -1,0 +1,696 @@
+
+*** Running vivado
+    with args -log system_axi_hdmi_core_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source system_axi_hdmi_core_0.tcl
+
+
+
+****** Vivado v2022.2 (64-bit)
+  **** SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
+  **** IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+source system_axi_hdmi_core_0.tcl -notrace
+create_project: Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 508.348 ; gain = 82.516
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/zedboard_adrv9002_project/adi_hdl_2022_r2/library'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2022.2/data/ip'.
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: system_axi_hdmi_core_0
+Command: synth_design -top system_axi_hdmi_core_0 -part xc7z020clg484-1 -incremental_mode off -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Device 21-403] Loading part xc7z020clg484-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 7644
+INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [C:/Xilinx/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1357.203 ; gain = 408.438
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'system_axi_hdmi_core_0' [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_hdmi_core_0/synth/system_axi_hdmi_core_0.v:53]
+INFO: [Synth 8-6157] synthesizing module 'axi_hdmi_tx' [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/b4d4/axi_hdmi_tx.v:38]
+INFO: [Synth 8-6157] synthesizing module 'ODDR' [C:/Xilinx/Vivado/2022.2/scripts/rt/data/unisim_comp.v:94268]
+INFO: [Synth 8-6155] done synthesizing module 'ODDR' (0#1) [C:/Xilinx/Vivado/2022.2/scripts/rt/data/unisim_comp.v:94268]
+INFO: [Synth 8-6157] synthesizing module 'up_axi' [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/up_axi.v:38]
+INFO: [Synth 8-6155] done synthesizing module 'up_axi' (0#1) [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/up_axi.v:38]
+INFO: [Synth 8-6157] synthesizing module 'up_hdmi_tx' [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/up_hdmi_tx.v:38]
+INFO: [Synth 8-6157] synthesizing module 'ad_rst' [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/ad_rst.v:38]
+INFO: [Synth 8-6155] done synthesizing module 'ad_rst' (0#1) [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/ad_rst.v:38]
+INFO: [Synth 8-6157] synthesizing module 'up_xfer_cntrl' [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/up_xfer_cntrl.v:38]
+INFO: [Synth 8-6155] done synthesizing module 'up_xfer_cntrl' (0#1) [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/up_xfer_cntrl.v:38]
+INFO: [Synth 8-6157] synthesizing module 'up_xfer_status' [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/up_xfer_status.v:38]
+INFO: [Synth 8-6155] done synthesizing module 'up_xfer_status' (0#1) [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/up_xfer_status.v:38]
+INFO: [Synth 8-6157] synthesizing module 'up_clock_mon' [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/up_clock_mon.v:38]
+INFO: [Synth 8-6155] done synthesizing module 'up_clock_mon' (0#1) [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/up_clock_mon.v:38]
+INFO: [Synth 8-6157] synthesizing module 'up_xfer_status__parameterized0' [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/up_xfer_status.v:38]
+INFO: [Synth 8-6155] done synthesizing module 'up_xfer_status__parameterized0' (0#1) [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/up_xfer_status.v:38]
+INFO: [Synth 8-6155] done synthesizing module 'up_hdmi_tx' (0#1) [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/up_hdmi_tx.v:38]
+INFO: [Synth 8-6157] synthesizing module 'axi_hdmi_tx_vdma' [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/b4d4/axi_hdmi_tx_vdma.v:39]
+INFO: [Synth 8-6155] done synthesizing module 'axi_hdmi_tx_vdma' (0#1) [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/b4d4/axi_hdmi_tx_vdma.v:39]
+INFO: [Synth 8-6157] synthesizing module 'axi_hdmi_tx_core' [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/b4d4/axi_hdmi_tx_core.v:39]
+INFO: [Synth 8-6157] synthesizing module 'ad_mem' [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/ad_mem.v:38]
+INFO: [Synth 8-6155] done synthesizing module 'ad_mem' (0#1) [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/ad_mem.v:38]
+INFO: [Synth 8-6157] synthesizing module 'ad_csc_RGB2CrYCb' [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/ad_csc_RGB2CrYCb.v:44]
+INFO: [Synth 8-6157] synthesizing module 'ad_csc' [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/ad_csc.v:39]
+INFO: [Synth 8-6155] done synthesizing module 'ad_csc' (0#1) [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/ad_csc.v:39]
+INFO: [Synth 8-6157] synthesizing module 'ad_csc__parameterized0' [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/ad_csc.v:39]
+INFO: [Synth 8-6155] done synthesizing module 'ad_csc__parameterized0' (0#1) [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/ad_csc.v:39]
+INFO: [Synth 8-6155] done synthesizing module 'ad_csc_RGB2CrYCb' (0#1) [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/ad_csc_RGB2CrYCb.v:44]
+INFO: [Synth 8-6157] synthesizing module 'ad_ss_444to422' [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/ad_ss_444to422.v:39]
+INFO: [Synth 8-6155] done synthesizing module 'ad_ss_444to422' (0#1) [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/ad_ss_444to422.v:39]
+INFO: [Synth 8-6157] synthesizing module 'axi_hdmi_tx_es' [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/b4d4/axi_hdmi_tx_es.v:39]
+INFO: [Synth 8-6155] done synthesizing module 'axi_hdmi_tx_es' (0#1) [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/b4d4/axi_hdmi_tx_es.v:39]
+INFO: [Synth 8-6155] done synthesizing module 'axi_hdmi_tx_core' (0#1) [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/b4d4/axi_hdmi_tx_core.v:39]
+INFO: [Synth 8-6155] done synthesizing module 'axi_hdmi_tx' (0#1) [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/b4d4/axi_hdmi_tx.v:38]
+INFO: [Synth 8-6155] done synthesizing module 'system_axi_hdmi_core_0' (0#1) [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_hdmi_core_0/synth/system_axi_hdmi_core_0.v:53]
+WARNING: [Synth 8-3301] Unused top level parameter/generic CMOS_LVDS_N
+WARNING: [Synth 8-6014] Unused sequential element hdmi_24_hsync_reg was removed.  [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/b4d4/axi_hdmi_tx_core.v:478]
+WARNING: [Synth 8-6014] Unused sequential element hdmi_24_vsync_reg was removed.  [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/b4d4/axi_hdmi_tx_core.v:479]
+WARNING: [Synth 8-6014] Unused sequential element hdmi_24_data_e_reg was removed.  [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/b4d4/axi_hdmi_tx_core.v:480]
+WARNING: [Synth 8-6014] Unused sequential element vga_hsync_reg was removed.  [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/b4d4/axi_hdmi_tx_core.v:484]
+WARNING: [Synth 8-6014] Unused sequential element vga_vsync_reg was removed.  [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/b4d4/axi_hdmi_tx_core.v:485]
+WARNING: [Synth 8-7129] Port hdmi_hl_active[15] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_hl_active[14] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_hl_active[13] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_hl_active[12] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_hl_active[11] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_hl_active[10] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_hl_active[9] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_hl_active[8] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_hl_active[7] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_hl_active[6] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_hl_active[5] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_hl_active[4] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_hl_active[3] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_hl_active[2] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_hl_active[1] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_hl_active[0] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_vf_active[15] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_vf_active[14] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_vf_active[13] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_vf_active[12] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_vf_active[11] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_vf_active[10] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_vf_active[9] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_vf_active[8] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_vf_active[7] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_vf_active[6] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_vf_active[5] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_vf_active[4] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_vf_active[3] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_vf_active[2] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_vf_active[1] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_vf_active[0] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vdma_data[63] in module axi_hdmi_tx_vdma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vdma_data[62] in module axi_hdmi_tx_vdma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vdma_data[61] in module axi_hdmi_tx_vdma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vdma_data[60] in module axi_hdmi_tx_vdma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vdma_data[59] in module axi_hdmi_tx_vdma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vdma_data[58] in module axi_hdmi_tx_vdma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vdma_data[57] in module axi_hdmi_tx_vdma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vdma_data[56] in module axi_hdmi_tx_vdma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vdma_data[31] in module axi_hdmi_tx_vdma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vdma_data[30] in module axi_hdmi_tx_vdma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vdma_data[29] in module axi_hdmi_tx_vdma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vdma_data[28] in module axi_hdmi_tx_vdma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vdma_data[27] in module axi_hdmi_tx_vdma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vdma_data[26] in module axi_hdmi_tx_vdma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vdma_data[25] in module axi_hdmi_tx_vdma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vdma_data[24] in module axi_hdmi_tx_vdma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port up_axi_awaddr[1] in module up_axi is either unconnected or has no load
+WARNING: [Synth 8-7129] Port up_axi_awaddr[0] in module up_axi is either unconnected or has no load
+WARNING: [Synth 8-7129] Port up_axi_wstrb[3] in module up_axi is either unconnected or has no load
+WARNING: [Synth 8-7129] Port up_axi_wstrb[2] in module up_axi is either unconnected or has no load
+WARNING: [Synth 8-7129] Port up_axi_wstrb[1] in module up_axi is either unconnected or has no load
+WARNING: [Synth 8-7129] Port up_axi_wstrb[0] in module up_axi is either unconnected or has no load
+WARNING: [Synth 8-7129] Port up_axi_araddr[1] in module up_axi is either unconnected or has no load
+WARNING: [Synth 8-7129] Port up_axi_araddr[0] in module up_axi is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awprot[2] in module axi_hdmi_tx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awprot[1] in module axi_hdmi_tx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awprot[0] in module axi_hdmi_tx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_arprot[2] in module axi_hdmi_tx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_arprot[1] in module axi_hdmi_tx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_arprot[0] in module axi_hdmi_tx is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 1463.512 ; gain = 514.746
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 1463.512 ; gain = 514.746
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 1463.512 ; gain = 514.746
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.161 . Memory (MB): peak = 1463.613 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 1 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_xfer_cntrl_constr.xdc] for cell 'inst'
+Finished Parsing XDC File [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_xfer_cntrl_constr.xdc] for cell 'inst'
+Parsing XDC File [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/ad_rst_constr.xdc] for cell 'inst'
+Finished Parsing XDC File [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/ad_rst_constr.xdc] for cell 'inst'
+Parsing XDC File [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_xfer_status_constr.xdc] for cell 'inst'
+Finished Parsing XDC File [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_xfer_status_constr.xdc] for cell 'inst'
+Parsing XDC File [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc] for cell 'inst'
+Finished Parsing XDC File [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc] for cell 'inst'
+Parsing XDC File [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_hdmi_core_0/axi_hdmi_tx_constr.xdc] for cell 'inst'
+Finished Parsing XDC File [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_hdmi_core_0/axi_hdmi_tx_constr.xdc] for cell 'inst'
+Parsing XDC File [C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.runs/system_axi_hdmi_core_0_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.runs/system_axi_hdmi_core_0_synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1569.336 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.180 . Memory (MB): peak = 1569.438 ; gain = 0.102
+INFO: [Designutils 20-5008] Incremental synthesis strategy off
+INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [C:/Xilinx/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:35 ; elapsed = 00:00:43 . Memory (MB): peak = 1569.438 ; gain = 620.672
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg484-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:35 ; elapsed = 00:00:43 . Memory (MB): peak = 1569.438 ; gain = 620.672
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property ASYNC_REG = true for inst/i_up/i_xfer_cntrl/up_xfer_state_i. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_xfer_cntrl_constr.xdc, line 2).
+Applied set_property ASYNC_REG = true for inst/i_up/i_xfer_cntrl/up_xfer_state_m1_i. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_xfer_cntrl_constr.xdc, line 2).
+Applied set_property ASYNC_REG = true for inst/i_up/i_xfer_cntrl/up_xfer_state_m1_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_xfer_cntrl_constr.xdc, line 2).
+Applied set_property ASYNC_REG = true for inst/i_up/i_xfer_cntrl/up_xfer_state_m2_i. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_xfer_cntrl_constr.xdc, line 2).
+Applied set_property ASYNC_REG = true for inst/i_up/i_xfer_cntrl/up_xfer_state_m2_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_xfer_cntrl_constr.xdc, line 2).
+Applied set_property ASYNC_REG = true for inst/i_up/i_xfer_cntrl/up_xfer_state_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_xfer_cntrl_constr.xdc, line 2).
+Applied set_property ASYNC_REG = true for inst/i_up/i_xfer_cntrl/d_xfer_toggle_m1_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_xfer_cntrl_constr.xdc, line 3).
+Applied set_property ASYNC_REG = true for inst/i_up/i_xfer_cntrl/d_xfer_toggle_m2_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_xfer_cntrl_constr.xdc, line 3).
+Applied set_property ASYNC_REG = true for inst/i_up/i_xfer_cntrl/d_xfer_toggle_m3_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_xfer_cntrl_constr.xdc, line 3).
+Applied set_property ASYNC_REG = true for inst/i_up/i_core_rst_reg/rst_async_d1_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/ad_rst_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_up/i_core_rst_reg/rst_async_d2_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/ad_rst_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_up/i_vdma_rst_reg/rst_async_d1_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/ad_rst_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_up/i_vdma_rst_reg/rst_async_d2_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/ad_rst_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_up/i_core_rst_reg/rst_sync_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/ad_rst_constr.xdc, line 5).
+Applied set_property ASYNC_REG = true for inst/i_up/i_vdma_rst_reg/rst_sync_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/ad_rst_constr.xdc, line 5).
+Applied set_property ASYNC_REG = true for inst/i_up/i_vdma_xfer_status/d_xfer_state_m1_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_xfer_status_constr.xdc, line 2).
+Applied set_property ASYNC_REG = true for inst/i_up/i_vdma_xfer_status/d_xfer_state_m2_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_xfer_status_constr.xdc, line 2).
+Applied set_property ASYNC_REG = true for inst/i_up/i_vdma_xfer_status/d_xfer_state_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_xfer_status_constr.xdc, line 2).
+Applied set_property ASYNC_REG = true for inst/i_up/i_xfer_status/d_xfer_state_m1_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_xfer_status_constr.xdc, line 2).
+Applied set_property ASYNC_REG = true for inst/i_up/i_xfer_status/d_xfer_state_m2_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_xfer_status_constr.xdc, line 2).
+Applied set_property ASYNC_REG = true for inst/i_up/i_xfer_status/d_xfer_state_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_xfer_status_constr.xdc, line 2).
+Applied set_property ASYNC_REG = true for inst/i_up/i_vdma_xfer_status/up_xfer_toggle_m1_i. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_xfer_status_constr.xdc, line 3).
+Applied set_property ASYNC_REG = true for inst/i_up/i_vdma_xfer_status/up_xfer_toggle_m1_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_xfer_status_constr.xdc, line 3).
+Applied set_property ASYNC_REG = true for inst/i_up/i_vdma_xfer_status/up_xfer_toggle_m2_i. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_xfer_status_constr.xdc, line 3).
+Applied set_property ASYNC_REG = true for inst/i_up/i_vdma_xfer_status/up_xfer_toggle_m2_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_xfer_status_constr.xdc, line 3).
+Applied set_property ASYNC_REG = true for inst/i_up/i_vdma_xfer_status/up_xfer_toggle_m3_i. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_xfer_status_constr.xdc, line 3).
+Applied set_property ASYNC_REG = true for inst/i_up/i_vdma_xfer_status/up_xfer_toggle_m3_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_xfer_status_constr.xdc, line 3).
+Applied set_property ASYNC_REG = true for inst/i_up/i_xfer_status/up_xfer_toggle_m1_i. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_xfer_status_constr.xdc, line 3).
+Applied set_property ASYNC_REG = true for inst/i_up/i_xfer_status/up_xfer_toggle_m1_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_xfer_status_constr.xdc, line 3).
+Applied set_property ASYNC_REG = true for inst/i_up/i_xfer_status/up_xfer_toggle_m2_i. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_xfer_status_constr.xdc, line 3).
+Applied set_property ASYNC_REG = true for inst/i_up/i_xfer_status/up_xfer_toggle_m2_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_xfer_status_constr.xdc, line 3).
+Applied set_property ASYNC_REG = true for inst/i_up/i_xfer_status/up_xfer_toggle_m3_i. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_xfer_status_constr.xdc, line 3).
+Applied set_property ASYNC_REG = true for inst/i_up/i_xfer_status/up_xfer_toggle_m3_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_xfer_status_constr.xdc, line 3).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_count_running_m1_i. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 2).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_count_running_m1_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 2).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_count_running_m2_i. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 2).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_count_running_m2_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 2).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_count_running_m3_i. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 2).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_count_running_m3_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 2).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/d_count_run_m1_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 3).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/d_count_run_m2_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 3).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/d_count_run_m3_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 3).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_d_count_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_d_count_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_d_count_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_d_count_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_d_count_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_d_count_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_d_count_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_d_count_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_d_count_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_d_count_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_d_count_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_d_count_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_d_count_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_d_count_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_d_count_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_d_count_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_d_count_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_d_count_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_d_count_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_d_count_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_d_count_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_d_count_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_d_count_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_d_count_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_d_count_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_d_count_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_d_count_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_d_count_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_d_count_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_d_count_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_d_count_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_up/i_clock_mon/up_d_count_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/xilinx/common/up_clock_mon_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_vdma/vdma_fs_toggle_m1_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_hdmi_core_0/axi_hdmi_tx_constr.xdc, line 2).
+Applied set_property ASYNC_REG = true for inst/i_vdma/vdma_fs_toggle_m2_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_hdmi_core_0/axi_hdmi_tx_constr.xdc, line 2).
+Applied set_property ASYNC_REG = true for inst/i_vdma/vdma_fs_toggle_m3_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_hdmi_core_0/axi_hdmi_tx_constr.xdc, line 2).
+Applied set_property ASYNC_REG = true for inst/i_vdma/vdma_raddr_g_m1_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_hdmi_core_0/axi_hdmi_tx_constr.xdc, line 3).
+Applied set_property ASYNC_REG = true for inst/i_vdma/vdma_raddr_g_m1_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_hdmi_core_0/axi_hdmi_tx_constr.xdc, line 3).
+Applied set_property ASYNC_REG = true for inst/i_vdma/vdma_raddr_g_m1_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_hdmi_core_0/axi_hdmi_tx_constr.xdc, line 3).
+Applied set_property ASYNC_REG = true for inst/i_vdma/vdma_raddr_g_m1_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_hdmi_core_0/axi_hdmi_tx_constr.xdc, line 3).
+Applied set_property ASYNC_REG = true for inst/i_vdma/vdma_raddr_g_m1_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_hdmi_core_0/axi_hdmi_tx_constr.xdc, line 3).
+Applied set_property ASYNC_REG = true for inst/i_vdma/vdma_raddr_g_m1_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_hdmi_core_0/axi_hdmi_tx_constr.xdc, line 3).
+Applied set_property ASYNC_REG = true for inst/i_vdma/vdma_raddr_g_m1_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_hdmi_core_0/axi_hdmi_tx_constr.xdc, line 3).
+Applied set_property ASYNC_REG = true for inst/i_vdma/vdma_raddr_g_m1_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_hdmi_core_0/axi_hdmi_tx_constr.xdc, line 3).
+Applied set_property ASYNC_REG = true for inst/i_vdma/vdma_raddr_g_m1_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_hdmi_core_0/axi_hdmi_tx_constr.xdc, line 3).
+Applied set_property ASYNC_REG = true for inst/i_vdma/vdma_raddr_g_m2_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_hdmi_core_0/axi_hdmi_tx_constr.xdc, line 3).
+Applied set_property ASYNC_REG = true for inst/i_vdma/vdma_raddr_g_m2_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_hdmi_core_0/axi_hdmi_tx_constr.xdc, line 3).
+Applied set_property ASYNC_REG = true for inst/i_vdma/vdma_raddr_g_m2_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_hdmi_core_0/axi_hdmi_tx_constr.xdc, line 3).
+Applied set_property ASYNC_REG = true for inst/i_vdma/vdma_raddr_g_m2_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_hdmi_core_0/axi_hdmi_tx_constr.xdc, line 3).
+Applied set_property ASYNC_REG = true for inst/i_vdma/vdma_raddr_g_m2_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_hdmi_core_0/axi_hdmi_tx_constr.xdc, line 3).
+Applied set_property ASYNC_REG = true for inst/i_vdma/vdma_raddr_g_m2_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_hdmi_core_0/axi_hdmi_tx_constr.xdc, line 3).
+Applied set_property ASYNC_REG = true for inst/i_vdma/vdma_raddr_g_m2_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_hdmi_core_0/axi_hdmi_tx_constr.xdc, line 3).
+Applied set_property ASYNC_REG = true for inst/i_vdma/vdma_raddr_g_m2_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_hdmi_core_0/axi_hdmi_tx_constr.xdc, line 3).
+Applied set_property ASYNC_REG = true for inst/i_vdma/vdma_raddr_g_m2_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_hdmi_core_0/axi_hdmi_tx_constr.xdc, line 3).
+Applied set_property ASYNC_REG = true for inst/i_tx_core/hdmi_fs_ret_toggle_m1_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_hdmi_core_0/axi_hdmi_tx_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_tx_core/hdmi_fs_ret_toggle_m2_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_hdmi_core_0/axi_hdmi_tx_constr.xdc, line 4).
+Applied set_property ASYNC_REG = true for inst/i_tx_core/hdmi_fs_ret_toggle_m3_reg. (constraint file  c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_hdmi_core_0/axi_hdmi_tx_constr.xdc, line 4).
+Applied set_property KEEP_HIERARCHY = SOFT for inst. (constraint file  C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.runs/system_axi_hdmi_core_0_synth_1/dont_touch.xdc, line 9).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:35 ; elapsed = 00:00:43 . Memory (MB): peak = 1569.438 ; gain = 620.672
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-3936] Found unconnected internal register 's_data_3_reg' and it is trimmed from '26' to '24' bits. [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/ad_csc.v:115]
+WARNING: [Synth 8-3936] Found unconnected internal register 'data_3_reg' and it is trimmed from '26' to '24' bits. [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/ad_csc.v:109]
+WARNING: [Synth 8-3936] Found unconnected internal register 'data_d2_reg' and it is trimmed from '24' to '8' bits. [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/ad_csc.v:93]
+WARNING: [Synth 8-3936] Found unconnected internal register 's_data_2_reg' and it is trimmed from '26' to '24' bits. [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/ad_csc.v:114]
+WARNING: [Synth 8-3936] Found unconnected internal register 'data_2_reg' and it is trimmed from '26' to '24' bits. [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/ad_csc.v:108]
+WARNING: [Synth 8-3936] Found unconnected internal register 'data_d1_reg' and it is trimmed from '24' to '16' bits. [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/ad_csc.v:92]
+WARNING: [Synth 8-3936] Found unconnected internal register 's_data_1_reg' and it is trimmed from '26' to '24' bits. [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/ad_csc.v:113]
+WARNING: [Synth 8-3936] Found unconnected internal register 'data_1_reg' and it is trimmed from '26' to '24' bits. [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/ad_csc.v:107]
+WARNING: [Synth 8-3936] Found unconnected internal register 's_data_3_reg' and it is trimmed from '26' to '24' bits. [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/ad_csc.v:115]
+WARNING: [Synth 8-3936] Found unconnected internal register 'data_3_reg' and it is trimmed from '26' to '24' bits. [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/ad_csc.v:109]
+WARNING: [Synth 8-3936] Found unconnected internal register 'data_d2_reg' and it is trimmed from '24' to '8' bits. [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/ad_csc.v:93]
+WARNING: [Synth 8-3936] Found unconnected internal register 's_data_2_reg' and it is trimmed from '26' to '24' bits. [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/ad_csc.v:114]
+WARNING: [Synth 8-3936] Found unconnected internal register 'data_2_reg' and it is trimmed from '26' to '24' bits. [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/ad_csc.v:108]
+WARNING: [Synth 8-3936] Found unconnected internal register 'data_d1_reg' and it is trimmed from '24' to '16' bits. [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/ad_csc.v:92]
+WARNING: [Synth 8-3936] Found unconnected internal register 's_data_1_reg' and it is trimmed from '26' to '24' bits. [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/ad_csc.v:113]
+WARNING: [Synth 8-3936] Found unconnected internal register 'data_1_reg' and it is trimmed from '26' to '24' bits. [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/common/ad_csc.v:107]
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:37 ; elapsed = 00:00:46 . Memory (MB): peak = 1569.438 ; gain = 620.672
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   16 Bit       Adders := 2     
+	   3 Input   10 Bit       Adders := 2     
+	   2 Input   10 Bit       Adders := 1     
+	   2 Input    9 Bit       Adders := 1     
+	   3 Input    9 Bit       Adders := 1     
+	   2 Input    6 Bit       Adders := 3     
+	   2 Input    5 Bit       Adders := 2     
++---XORs : 
+	   2 Input      1 Bit         XORs := 24    
++---Registers : 
+	              236 Bit    Registers := 2     
+	               48 Bit    Registers := 3     
+	               36 Bit    Registers := 1     
+	               32 Bit    Registers := 6     
+	               24 Bit    Registers := 13    
+	               16 Bit    Registers := 21    
+	               14 Bit    Registers := 2     
+	               10 Bit    Registers := 1     
+	                9 Bit    Registers := 14    
+	                8 Bit    Registers := 5     
+	                6 Bit    Registers := 3     
+	                5 Bit    Registers := 10    
+	                3 Bit    Registers := 3     
+	                2 Bit    Registers := 12    
+	                1 Bit    Registers := 140   
++---RAMs : 
+	              24K Bit	(512 X 48 bit)          RAMs := 1     
++---Muxes : 
+	   2 Input   32 Bit        Muxes := 4     
+	   2 Input   24 Bit        Muxes := 2     
+	   4 Input   24 Bit        Muxes := 1     
+	   2 Input   16 Bit        Muxes := 6     
+	   5 Input   16 Bit        Muxes := 2     
+	   2 Input   10 Bit        Muxes := 2     
+	   2 Input    8 Bit        Muxes := 6     
+	   2 Input    5 Bit        Muxes := 4     
+	   2 Input    3 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 48    
+	   3 Input    1 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+DSP Report: Generating DSP i_csc_RGB2CrYCb/j_csc_1_Cb/s_data_1_reg, operation Mode is: (C:0xffffff800000)+((A:0x3fffda0e)*B2)'.
+DSP Report: register i_csc_RGB2CrYCb/j_csc_1_Cb/s_data_1_reg is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Cb/s_data_1_reg.
+DSP Report: register i_csc_RGB2CrYCb/j_csc_1_Cb/s_data_1_reg is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Cb/s_data_1_reg.
+DSP Report: register i_csc_RGB2CrYCb/j_csc_1_Cb/data_1_reg is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Cb/s_data_1_reg.
+DSP Report: operator i_csc_RGB2CrYCb/j_csc_1_Cb/s_data_10 is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Cb/s_data_1_reg.
+DSP Report: operator i_csc_RGB2CrYCb/j_csc_1_Cb/data_10 is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Cb/s_data_1_reg.
+DSP Report: Generating DSP i_csc_RGB2CrYCb/j_csc_1_Cb/s_data_2_reg, operation Mode is: (PCIN+((A:0x3fffb582)*B'')')'.
+DSP Report: register i_csc_RGB2CrYCb/j_csc_1_Cb/s_data_2_reg is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Cb/s_data_2_reg.
+DSP Report: register i_csc_RGB2CrYCb/j_csc_1_Cb/s_data_2_reg is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Cb/s_data_2_reg.
+DSP Report: register i_csc_RGB2CrYCb/j_csc_1_Cb/s_data_2_reg is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Cb/s_data_2_reg.
+DSP Report: register i_csc_RGB2CrYCb/j_csc_1_Cb/data_2_reg is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Cb/s_data_2_reg.
+DSP Report: operator i_csc_RGB2CrYCb/j_csc_1_Cb/s_data_20 is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Cb/s_data_2_reg.
+DSP Report: operator i_csc_RGB2CrYCb/j_csc_1_Cb/data_20 is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Cb/s_data_2_reg.
+DSP Report: Generating DSP i_csc_RGB2CrYCb/j_csc_1_Cb/s_data_3_reg, operation Mode is: (PCIN+((A:0x7070)*B'')')'.
+DSP Report: register i_csc_RGB2CrYCb/j_csc_1_Cb/s_data_3_reg is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Cb/s_data_3_reg.
+DSP Report: register i_csc_RGB2CrYCb/j_csc_1_Cb/s_data_3_reg is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Cb/s_data_3_reg.
+DSP Report: register i_csc_RGB2CrYCb/j_csc_1_Cb/s_data_3_reg is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Cb/s_data_3_reg.
+DSP Report: register i_csc_RGB2CrYCb/j_csc_1_Cb/data_3_reg is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Cb/s_data_3_reg.
+DSP Report: operator i_csc_RGB2CrYCb/j_csc_1_Cb/s_data_30 is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Cb/s_data_3_reg.
+DSP Report: operator i_csc_RGB2CrYCb/j_csc_1_Cb/data_30 is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Cb/s_data_3_reg.
+DSP Report: Generating DSP i_csc_RGB2CrYCb/j_csc_1_Y/s_data_1_reg, operation Mode is: (C:0x100000)+((A:0x41bd)*B2)'.
+DSP Report: register i_csc_RGB2CrYCb/j_csc_1_Y/s_data_1_reg is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Y/s_data_1_reg.
+DSP Report: register i_csc_RGB2CrYCb/j_csc_1_Y/s_data_1_reg is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Y/s_data_1_reg.
+DSP Report: register i_csc_RGB2CrYCb/j_csc_1_Y/data_1_reg is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Y/s_data_1_reg.
+DSP Report: operator i_csc_RGB2CrYCb/j_csc_1_Y/s_data_10 is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Y/s_data_1_reg.
+DSP Report: operator i_csc_RGB2CrYCb/j_csc_1_Y/data_10 is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Y/s_data_1_reg.
+DSP Report: Generating DSP i_csc_RGB2CrYCb/j_csc_1_Y/s_data_2_reg, operation Mode is: (PCIN+((A:0x810f)*B'')')'.
+DSP Report: register i_csc_RGB2CrYCb/j_csc_1_Y/s_data_2_reg is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Y/s_data_2_reg.
+DSP Report: register i_csc_RGB2CrYCb/j_csc_1_Cb/s_data_2_reg is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Y/s_data_2_reg.
+DSP Report: register i_csc_RGB2CrYCb/j_csc_1_Y/s_data_2_reg is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Y/s_data_2_reg.
+DSP Report: register i_csc_RGB2CrYCb/j_csc_1_Y/data_2_reg is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Y/s_data_2_reg.
+DSP Report: operator i_csc_RGB2CrYCb/j_csc_1_Y/s_data_20 is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Y/s_data_2_reg.
+DSP Report: operator i_csc_RGB2CrYCb/j_csc_1_Y/data_20 is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Y/s_data_2_reg.
+DSP Report: Generating DSP i_csc_RGB2CrYCb/j_csc_1_Y/s_data_3_reg, operation Mode is: (PCIN+((A:0x1910)*B'')')'.
+DSP Report: register i_csc_RGB2CrYCb/j_csc_1_Y/s_data_3_reg is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Y/s_data_3_reg.
+DSP Report: register i_csc_RGB2CrYCb/j_csc_1_Y/s_data_3_reg is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Y/s_data_3_reg.
+DSP Report: register i_csc_RGB2CrYCb/j_csc_1_Y/s_data_3_reg is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Y/s_data_3_reg.
+DSP Report: register i_csc_RGB2CrYCb/j_csc_1_Y/data_3_reg is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Y/s_data_3_reg.
+DSP Report: operator i_csc_RGB2CrYCb/j_csc_1_Y/s_data_30 is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Y/s_data_3_reg.
+DSP Report: operator i_csc_RGB2CrYCb/j_csc_1_Y/data_30 is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Y/s_data_3_reg.
+DSP Report: Generating DSP i_csc_RGB2CrYCb/j_csc_1_Cr/s_data_1_reg, operation Mode is: (C:0xffffff800000)+((A:0x7070)*B2)'.
+DSP Report: register i_csc_RGB2CrYCb/j_csc_1_Cr/s_data_1_reg is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Cr/s_data_1_reg.
+DSP Report: register i_csc_RGB2CrYCb/j_csc_1_Cr/s_data_1_reg is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Cr/s_data_1_reg.
+DSP Report: register i_csc_RGB2CrYCb/j_csc_1_Cr/data_1_reg is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Cr/s_data_1_reg.
+DSP Report: operator i_csc_RGB2CrYCb/j_csc_1_Cr/s_data_10 is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Cr/s_data_1_reg.
+DSP Report: operator i_csc_RGB2CrYCb/j_csc_1_Cr/data_10 is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Cr/s_data_1_reg.
+DSP Report: Generating DSP i_csc_RGB2CrYCb/j_csc_1_Cr/s_data_2_reg, operation Mode is: (PCIN+((A:0x3fffa1d9)*B'')')'.
+DSP Report: register i_csc_RGB2CrYCb/j_csc_1_Cr/s_data_2_reg is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Cr/s_data_2_reg.
+DSP Report: register i_csc_RGB2CrYCb/j_csc_1_Cr/s_data_2_reg is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Cr/s_data_2_reg.
+DSP Report: register i_csc_RGB2CrYCb/j_csc_1_Cr/s_data_2_reg is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Cr/s_data_2_reg.
+DSP Report: register i_csc_RGB2CrYCb/j_csc_1_Cr/data_2_reg is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Cr/s_data_2_reg.
+DSP Report: operator i_csc_RGB2CrYCb/j_csc_1_Cr/s_data_20 is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Cr/s_data_2_reg.
+DSP Report: operator i_csc_RGB2CrYCb/j_csc_1_Cr/data_20 is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Cr/s_data_2_reg.
+DSP Report: Generating DSP i_csc_RGB2CrYCb/j_csc_1_Cr/s_data_3_reg, operation Mode is: (PCIN+((A:0x3fffedb7)*B'')')'.
+DSP Report: register i_csc_RGB2CrYCb/j_csc_1_Cr/s_data_3_reg is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Cr/s_data_3_reg.
+DSP Report: register i_csc_RGB2CrYCb/j_csc_1_Cr/s_data_3_reg is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Cr/s_data_3_reg.
+DSP Report: register i_csc_RGB2CrYCb/j_csc_1_Cr/s_data_3_reg is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Cr/s_data_3_reg.
+DSP Report: register i_csc_RGB2CrYCb/j_csc_1_Cr/data_3_reg is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Cr/s_data_3_reg.
+DSP Report: operator i_csc_RGB2CrYCb/j_csc_1_Cr/s_data_30 is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Cr/s_data_3_reg.
+DSP Report: operator i_csc_RGB2CrYCb/j_csc_1_Cr/data_30 is absorbed into DSP i_csc_RGB2CrYCb/j_csc_1_Cr/s_data_3_reg.
+WARNING: [Synth 8-7129] Port hdmi_hl_active[15] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_hl_active[14] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_hl_active[13] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_hl_active[12] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_hl_active[11] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_hl_active[10] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_hl_active[9] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_hl_active[8] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_hl_active[7] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_hl_active[6] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_hl_active[5] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_hl_active[4] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_hl_active[3] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_hl_active[2] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_hl_active[1] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_hl_active[0] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_vf_active[15] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_vf_active[14] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_vf_active[13] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_vf_active[12] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_vf_active[11] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_vf_active[10] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_vf_active[9] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_vf_active[8] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_vf_active[7] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_vf_active[6] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_vf_active[5] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_vf_active[4] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_vf_active[3] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_vf_active[2] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_vf_active[1] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port hdmi_vf_active[0] in module axi_hdmi_tx_core is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vdma_data[63] in module axi_hdmi_tx_vdma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vdma_data[62] in module axi_hdmi_tx_vdma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vdma_data[61] in module axi_hdmi_tx_vdma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vdma_data[60] in module axi_hdmi_tx_vdma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vdma_data[59] in module axi_hdmi_tx_vdma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vdma_data[58] in module axi_hdmi_tx_vdma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vdma_data[57] in module axi_hdmi_tx_vdma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vdma_data[56] in module axi_hdmi_tx_vdma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vdma_data[31] in module axi_hdmi_tx_vdma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vdma_data[30] in module axi_hdmi_tx_vdma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vdma_data[29] in module axi_hdmi_tx_vdma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vdma_data[28] in module axi_hdmi_tx_vdma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vdma_data[27] in module axi_hdmi_tx_vdma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vdma_data[26] in module axi_hdmi_tx_vdma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vdma_data[25] in module axi_hdmi_tx_vdma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vdma_data[24] in module axi_hdmi_tx_vdma is either unconnected or has no load
+WARNING: [Synth 8-7129] Port up_axi_awaddr[1] in module up_axi is either unconnected or has no load
+WARNING: [Synth 8-7129] Port up_axi_awaddr[0] in module up_axi is either unconnected or has no load
+WARNING: [Synth 8-7129] Port up_axi_wstrb[3] in module up_axi is either unconnected or has no load
+WARNING: [Synth 8-7129] Port up_axi_wstrb[2] in module up_axi is either unconnected or has no load
+WARNING: [Synth 8-7129] Port up_axi_wstrb[1] in module up_axi is either unconnected or has no load
+WARNING: [Synth 8-7129] Port up_axi_wstrb[0] in module up_axi is either unconnected or has no load
+WARNING: [Synth 8-7129] Port up_axi_araddr[1] in module up_axi is either unconnected or has no load
+WARNING: [Synth 8-7129] Port up_axi_araddr[0] in module up_axi is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awprot[2] in module axi_hdmi_tx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awprot[1] in module axi_hdmi_tx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_awprot[0] in module axi_hdmi_tx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_arprot[2] in module axi_hdmi_tx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_arprot[1] in module axi_hdmi_tx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_arprot[0] in module axi_hdmi_tx is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:50 ; elapsed = 00:01:05 . Memory (MB): peak = 1569.438 ; gain = 620.672
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Preliminary Mapping Report (see note below)
++------------+---------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name | RTL Object                | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++------------+---------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|inst        | i_tx_core/i_mem/m_ram_reg | 512 x 48(NO_CHANGE)    | W |   | 512 x 48(WRITE_FIRST)  |   | R | Port A and B     | 0      | 1      | 
++------------+---------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
+
+DSP: Preliminary Mapping Report (see note below. The ' indicates corresponding REG is set)
++-----------------+-----------------------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name      | DSP Mapping                             | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++-----------------+-----------------------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|axi_hdmi_tx_core | (C:0xffffff800000)+((A:0x3fffda0e)*B2)' | 9      | 15     | 24     | -      | 24     | 1    | 0    | 0    | -    | -     | 1    | 1    | 
+|axi_hdmi_tx_core | (PCIN+((A:0x3fffb582)*B'')')'           | 16     | 9      | -      | -      | 24     | 0    | 2    | -    | -    | -     | 1    | 1    | 
+|axi_hdmi_tx_core | (PCIN+((A:0x7070)*B'')')'               | 16     | 9      | -      | -      | 24     | 0    | 2    | -    | -    | -     | 1    | 1    | 
+|axi_hdmi_tx_core | (C:0x100000)+((A:0x41bd)*B2)'           | 9      | 16     | 22     | -      | 24     | 1    | 0    | 0    | -    | -     | 1    | 1    | 
+|axi_hdmi_tx_core | (PCIN+((A:0x810f)*B'')')'               | 17     | 9      | -      | -      | 24     | 0    | 2    | -    | -    | -     | 1    | 1    | 
+|axi_hdmi_tx_core | (PCIN+((A:0x1910)*B'')')'               | 14     | 9      | -      | -      | 24     | 0    | 2    | -    | -    | -     | 1    | 1    | 
+|axi_hdmi_tx_core | (C:0xffffff800000)+((A:0x7070)*B2)'     | 9      | 16     | 24     | -      | 24     | 1    | 0    | 0    | -    | -     | 1    | 1    | 
+|axi_hdmi_tx_core | (PCIN+((A:0x3fffa1d9)*B'')')'           | 16     | 9      | -      | -      | 24     | 0    | 2    | -    | -    | -     | 1    | 1    | 
+|axi_hdmi_tx_core | (PCIN+((A:0x3fffedb7)*B'')')'           | 14     | 9      | -      | -      | 24     | 0    | 2    | -    | -    | -     | 1    | 1    | 
++-----------------+-----------------------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:14 ; elapsed = 00:01:37 . Memory (MB): peak = 1569.438 ; gain = 620.672
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:01:14 ; elapsed = 00:01:37 . Memory (MB): peak = 1569.438 ; gain = 620.672
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Final Mapping Report
++------------+---------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name | RTL Object                | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++------------+---------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|inst        | i_tx_core/i_mem/m_ram_reg | 512 x 48(NO_CHANGE)    | W |   | 512 x 48(WRITE_FIRST)  |   | R | Port A and B     | 0      | 1      | 
++------------+---------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:16 ; elapsed = 00:01:39 . Memory (MB): peak = 1569.438 ; gain = 620.672
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:27 ; elapsed = 00:01:53 . Memory (MB): peak = 1569.438 ; gain = 620.672
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:27 ; elapsed = 00:01:53 . Memory (MB): peak = 1569.438 ; gain = 620.672
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:27 ; elapsed = 00:01:53 . Memory (MB): peak = 1569.438 ; gain = 620.672
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:27 ; elapsed = 00:01:53 . Memory (MB): peak = 1569.438 ; gain = 620.672
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:27 ; elapsed = 00:01:54 . Memory (MB): peak = 1569.438 ; gain = 620.672
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:27 ; elapsed = 00:01:54 . Memory (MB): peak = 1569.438 ; gain = 620.672
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Static Shift Register Report:
++------------+------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|Module Name | RTL Name                                             | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
++------------+------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|axi_hdmi_tx | i_tx_core/hdmi_vsync_reg                             | 4      | 1     | NO           | NO                 | YES               | 1      | 0       | 
+|axi_hdmi_tx | i_tx_core/hdmi_hsync_reg                             | 4      | 1     | NO           | NO                 | YES               | 1      | 0       | 
+|axi_hdmi_tx | i_tx_core/i_ss_444to422/s422_sync_reg[4]             | 4      | 2     | NO           | NO                 | YES               | 2      | 0       | 
+|axi_hdmi_tx | i_tx_core/i_csc_RGB2CrYCb/j_csc_1_Cr/sync_4_m_reg[4] | 4      | 3     | NO           | NO                 | YES               | 3      | 0       | 
++------------+------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+DSP Final Report (the ' indicates corresponding REG is set)
++-----------------+------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name      | DSP Mapping      | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++-----------------+------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|axi_hdmi_tx_core | (C+(A'*B)')'     | 8      | 18     | 48     | -      | 0      | 1    | 0    | 0    | -    | -     | 1    | 1    | 
+|axi_hdmi_tx_core | (PCIN+(A*B'')')' | 30     | 8      | -      | -      | 0      | 0    | 2    | -    | -    | -     | 1    | 1    | 
+|axi_hdmi_tx_core | (PCIN+(A*B'')')' | 15     | 8      | -      | -      | 24     | 0    | 2    | -    | -    | -     | 1    | 1    | 
+|axi_hdmi_tx_core | (C+(A'*B)')'     | 8      | 15     | 48     | -      | 0      | 1    | 0    | 0    | -    | -     | 1    | 1    | 
+|axi_hdmi_tx_core | (PCIN+(A*B'')')' | 30     | 8      | -      | -      | 0      | 0    | 2    | -    | -    | -     | 1    | 1    | 
+|axi_hdmi_tx_core | (PCIN+(A*B'')')' | 30     | 8      | -      | -      | 24     | 0    | 2    | -    | -    | -     | 1    | 1    | 
+|axi_hdmi_tx_core | (C+(A'*B)')'     | 8      | 15     | 21     | -      | 0      | 1    | 0    | 0    | -    | -     | 1    | 1    | 
+|axi_hdmi_tx_core | (PCIN+(A*B'')')' | 16     | 8      | -      | -      | 0      | 0    | 2    | -    | -    | -     | 1    | 1    | 
+|axi_hdmi_tx_core | (PCIN+(A*B'')')' | 13     | 8      | -      | -      | 24     | 0    | 2    | -    | -    | -     | 1    | 1    | 
++-----------------+------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |CARRY4   |    80|
+|2     |DSP48E1  |     9|
+|4     |LUT1     |    45|
+|5     |LUT2     |    86|
+|6     |LUT3     |   119|
+|7     |LUT4     |   227|
+|8     |LUT5     |   115|
+|9     |LUT6     |   232|
+|10    |MUXF7    |     2|
+|11    |ODDR     |     1|
+|12    |RAMB36E1 |     1|
+|13    |SRL16E   |     7|
+|14    |FDCE     |   533|
+|15    |FDPE     |    25|
+|16    |FDRE     |   927|
+|17    |FDSE     |     3|
++------+---------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:27 ; elapsed = 00:01:54 . Memory (MB): peak = 1569.438 ; gain = 620.672
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 79 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:06 ; elapsed = 00:01:48 . Memory (MB): peak = 1569.438 ; gain = 514.746
+Synthesis Optimization Complete : Time (s): cpu = 00:01:28 ; elapsed = 00:01:54 . Memory (MB): peak = 1569.438 ; gain = 620.672
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.107 . Memory (MB): peak = 1569.438 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 93 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1569.438 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete, checksum: a9b48303
+INFO: [Common 17-83] Releasing license: Synthesis
+59 Infos, 147 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:39 ; elapsed = 00:02:08 . Memory (MB): peak = 1569.438 ; gain = 1023.348
+INFO: [Common 17-1381] The checkpoint 'C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.runs/system_axi_hdmi_core_0_synth_1/system_axi_hdmi_core_0.dcp' has been generated.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP system_axi_hdmi_core_0, cache-ID = 72c6656caa9f33c3
+INFO: [Coretcl 2-1174] Renamed 17 cell refs.
+INFO: [Common 17-1381] The checkpoint 'C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.runs/system_axi_hdmi_core_0_synth_1/system_axi_hdmi_core_0.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file system_axi_hdmi_core_0_utilization_synth.rpt -pb system_axi_hdmi_core_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sun Mar 10 23:22:47 2024...

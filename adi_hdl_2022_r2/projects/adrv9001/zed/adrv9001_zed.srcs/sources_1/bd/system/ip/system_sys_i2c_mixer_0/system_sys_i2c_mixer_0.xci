@@ -1,0 +1,75 @@
+{
+  "schema": "xilinx.com:schema:json_instance:1.0",
+  "ip_inst": {
+    "xci_name": "system_sys_i2c_mixer_0",
+    "cell_name": "sys_i2c_mixer",
+    "component_reference": "analog.com:user:util_i2c_mixer:1.0",
+    "ip_revision": "1",
+    "gen_directory": "../../../../../../adrv9001_zed.gen/sources_1/bd/system/ip/system_sys_i2c_mixer_0",
+    "parameters": {
+      "component_parameters": {
+        "C_WIDTH": [ { "value": "2", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "Component_Name": [ { "value": "system_sys_i2c_mixer_0", "resolve_type": "user", "usage": "all" } ]
+      },
+      "model_parameters": {
+        "C_WIDTH": [ { "value": "2", "resolve_type": "generated", "format": "long", "usage": "all" } ]
+      },
+      "project_parameters": {
+        "ARCHITECTURE": [ { "value": "zynq" } ],
+        "BASE_BOARD_PART": [ { "value": "" } ],
+        "BOARD_CONNECTIONS": [ { "value": "" } ],
+        "DEVICE": [ { "value": "xc7z020" } ],
+        "PACKAGE": [ { "value": "clg484" } ],
+        "PREFHDL": [ { "value": "VERILOG" } ],
+        "SILICON_REVISION": [ { "value": "" } ],
+        "SIMULATOR_LANGUAGE": [ { "value": "MIXED" } ],
+        "SPEEDGRADE": [ { "value": "-1" } ],
+        "STATIC_POWER": [ { "value": "" } ],
+        "TEMPERATURE_GRADE": [ { "value": "" } ],
+        "USE_RDI_CUSTOMIZATION": [ { "value": "TRUE" } ],
+        "USE_RDI_GENERATION": [ { "value": "TRUE" } ]
+      },
+      "runtime_parameters": {
+        "IPCONTEXT": [ { "value": "IP_Integrator" } ],
+        "IPREVISION": [ { "value": "1" } ],
+        "MANAGED": [ { "value": "TRUE" } ],
+        "OUTPUTDIR": [ { "value": "../../../../../../adrv9001_zed.gen/sources_1/bd/system/ip/system_sys_i2c_mixer_0" } ],
+        "SELECTEDSIMMODEL": [ { "value": "" } ],
+        "SHAREDDIR": [ { "value": "../../ipshared" } ],
+        "SWVERSION": [ { "value": "2022.2" } ],
+        "SYNTHESISFLOW": [ { "value": "OUT_OF_CONTEXT" } ]
+      }
+    },
+    "boundary": {
+      "ports": {
+        "upstream_scl_T": [ { "direction": "in" } ],
+        "upstream_scl_I": [ { "direction": "in" } ],
+        "upstream_scl_O": [ { "direction": "out" } ],
+        "upstream_sda_T": [ { "direction": "in" } ],
+        "upstream_sda_I": [ { "direction": "in" } ],
+        "upstream_sda_O": [ { "direction": "out" } ],
+        "downstream_scl_T": [ { "direction": "out" } ],
+        "downstream_scl_I": [ { "direction": "in", "size_left": "1", "size_right": "0" } ],
+        "downstream_scl_O": [ { "direction": "out", "size_left": "1", "size_right": "0" } ],
+        "downstream_sda_T": [ { "direction": "out" } ],
+        "downstream_sda_I": [ { "direction": "in", "size_left": "1", "size_right": "0" } ],
+        "downstream_sda_O": [ { "direction": "out", "size_left": "1", "size_right": "0" } ]
+      },
+      "interfaces": {
+        "upstream": {
+          "vlnv": "xilinx.com:interface:iic:1.0",
+          "abstraction_type": "xilinx.com:interface:iic_rtl:1.0",
+          "mode": "slave",
+          "port_maps": {
+            "SCL_O": [ { "physical_name": "upstream_scl_I" } ],
+            "SCL_I": [ { "physical_name": "upstream_scl_O" } ],
+            "SCL_T": [ { "physical_name": "upstream_scl_T" } ],
+            "SDA_O": [ { "physical_name": "upstream_sda_I" } ],
+            "SDA_I": [ { "physical_name": "upstream_sda_O" } ],
+            "SDA_T": [ { "physical_name": "upstream_sda_T" } ]
+          }
+        }
+      }
+    }
+  }
+}
