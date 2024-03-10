@@ -1,10 +1,11 @@
 // Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+// Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-// Date        : Sun Mar 10 23:20:09 2024
-// Host        : PC_HP running 64-bit major release  (build 9200)
+// Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
+// Date        : Mon Mar 11 00:27:42 2024
+// Host        : ASUS_ROG running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
-//               c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_sys_200m_rstgen_0/system_sys_200m_rstgen_0_sim_netlist.v
+//               c:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.gen/sources_1/bd/system/ip/system_sys_200m_rstgen_0/system_sys_200m_rstgen_0_sim_netlist.v
 // Design      : system_sys_200m_rstgen_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -12,7 +13,7 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "system_sys_200m_rstgen_0,proc_sys_reset,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "proc_sys_reset,Vivado 2022.2" *) 
+(* CHECK_LICENSE_TYPE = "system_sys_200m_rstgen_0,proc_sys_reset,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "proc_sys_reset,Vivado 2023.2.2" *) 
 (* NotValidForBitStream *)
 module system_sys_200m_rstgen_0
    (slowest_sync_clk,
@@ -314,7 +315,7 @@ module system_sys_200m_rstgen_0_lpf
   (* XILINX_LEGACY_PRIM = "SRL16" *) 
   (* XILINX_TRANSFORM_PINMAP = "VCC:CE" *) 
   (* box_type = "PRIMITIVE" *) 
-  (* srl_name = "U0/\EXT_LPF/POR_SRL_I " *) 
+  (* srl_name = "U0/\\EXT_LPF/POR_SRL_I " *) 
   SRL16E #(
     .INIT(16'hFFFF)) 
     POR_SRL_I

@@ -1,10 +1,11 @@
 // Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+// Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-// Date        : Sun Mar 10 23:31:11 2024
-// Host        : PC_HP running 64-bit major release  (build 9200)
+// Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
+// Date        : Mon Mar 11 00:19:50 2024
+// Host        : ASUS_ROG running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
-//               c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_adrv9001_rx1_dma_0/system_axi_adrv9001_rx1_dma_0_sim_netlist.v
+//               c:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_adrv9001_rx1_dma_0/system_axi_adrv9001_rx1_dma_0_sim_netlist.v
 // Design      : system_axi_adrv9001_rx1_dma_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -13,7 +14,7 @@
 `timescale 1 ps / 1 ps
 
 (* CHECK_LICENSE_TYPE = "system_axi_adrv9001_rx1_dma_0,axi_dmac,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* IP_DEFINITION_SOURCE = "package_project" *) 
-(* X_CORE_INFO = "axi_dmac,Vivado 2022.2" *) 
+(* X_CORE_INFO = "axi_dmac,Vivado 2023.2.2" *) 
 (* NotValidForBitStream *)
 module system_axi_adrv9001_rx1_dma_0
    (s_axi_aclk,
@@ -7030,7 +7031,7 @@ module system_axi_adrv9001_rx1_dma_0_dest_axi_mm
     m_dest_axi_aclk,
     dest_burst_info_write,
     Q,
-    \zerodeep.axis_data_d_reg[5] ,
+    \zerodeep.axis_data_d_reg[1] ,
     \id_reg[0]_1 ,
     id0,
     bl_ready_reg,
@@ -7064,7 +7065,7 @@ module system_axi_adrv9001_rx1_dma_0_dest_axi_mm
   input m_dest_axi_aclk;
   input dest_burst_info_write;
   input [3:0]Q;
-  input [3:0]\zerodeep.axis_data_d_reg[5] ;
+  input [3:0]\zerodeep.axis_data_d_reg[1] ;
   input [0:0]\id_reg[0]_1 ;
   input id0;
   input bl_ready_reg;
@@ -7113,84 +7114,31 @@ module system_axi_adrv9001_rx1_dma_0_dest_axi_mm
   wire [25:0]out;
   wire req_ready_reg;
   wire req_ready_reg_0;
-  wire [3:0]\zerodeep.axis_data_d_reg[5] ;
-  wire [1:0]NLW_bl_mem_reg_0_15_0_5_DOA_UNCONNECTED;
-  wire [1:0]NLW_bl_mem_reg_0_15_0_5_DOD_UNCONNECTED;
-  wire NLW_bl_mem_reg_0_15_6_7_SPO_UNCONNECTED;
-  wire NLW_bl_mem_reg_0_15_6_7__0_SPO_UNCONNECTED;
+  wire [3:0]\zerodeep.axis_data_d_reg[1] ;
+  wire [1:0]NLW_bl_mem_reg_0_15_6_7_DOD_UNCONNECTED;
 
   (* METHODOLOGY_DRC_VIOS = "" *) 
   (* RTL_RAM_BITS = "128" *) 
-  (* RTL_RAM_NAME = "i_transfer/i_request_arb/i_dest_dma_mm/bl_mem_reg_0_15_0_5" *) 
+  (* RTL_RAM_NAME = "i_transfer/i_request_arb/i_dest_dma_mm/bl_mem_reg_0_15_6_7" *) 
   (* RTL_RAM_TYPE = "RAM_SDP" *) 
   (* ram_addr_begin = "0" *) 
   (* ram_addr_end = "15" *) 
   (* ram_offset = "0" *) 
-  (* ram_slice_begin = "0" *) 
-  (* ram_slice_end = "5" *) 
-  RAM32M bl_mem_reg_0_15_0_5
+  (* ram_slice_begin = "6" *) 
+  (* ram_slice_end = "7" *) 
+  RAM32M bl_mem_reg_0_15_6_7
        (.ADDRA({1'b0,\id_reg[3] ,\id_reg[2] ,\id_reg[1] ,\id_reg[0] }),
         .ADDRB({1'b0,\id_reg[3] ,\id_reg[2] ,\id_reg[1] ,\id_reg[0] }),
         .ADDRC({1'b0,\id_reg[3] ,\id_reg[2] ,\id_reg[1] ,\id_reg[0] }),
-        .ADDRD({1'b0,\zerodeep.axis_data_d_reg[5] }),
-        .DIA({1'b1,1'b1}),
+        .ADDRD({1'b0,\zerodeep.axis_data_d_reg[1] }),
+        .DIA({1'b0,Q[3]}),
         .DIB({Q[0],1'b1}),
         .DIC(Q[2:1]),
         .DID({1'b0,1'b0}),
-        .DOA(NLW_bl_mem_reg_0_15_0_5_DOA_UNCONNECTED[1:0]),
+        .DOA({D[0],D[5]}),
         .DOB(D[2:1]),
         .DOC(D[4:3]),
-        .DOD(NLW_bl_mem_reg_0_15_0_5_DOD_UNCONNECTED[1:0]),
-        .WCLK(m_dest_axi_aclk),
-        .WE(dest_burst_info_write));
-  (* METHODOLOGY_DRC_VIOS = "" *) 
-  (* RTL_RAM_BITS = "128" *) 
-  (* RTL_RAM_NAME = "i_transfer/i_request_arb/i_dest_dma_mm/bl_mem_reg_0_15_6_7" *) 
-  (* RTL_RAM_TYPE = "RAM_SDP" *) 
-  (* ram_addr_begin = "0" *) 
-  (* ram_addr_end = "15" *) 
-  (* ram_offset = "0" *) 
-  (* ram_slice_begin = "6" *) 
-  (* ram_slice_end = "7" *) 
-  RAM32X1D bl_mem_reg_0_15_6_7
-       (.A0(\zerodeep.axis_data_d_reg[5] [0]),
-        .A1(\zerodeep.axis_data_d_reg[5] [1]),
-        .A2(\zerodeep.axis_data_d_reg[5] [2]),
-        .A3(\zerodeep.axis_data_d_reg[5] [3]),
-        .A4(1'b0),
-        .D(Q[3]),
-        .DPO(D[5]),
-        .DPRA0(\id_reg[0] ),
-        .DPRA1(\id_reg[1] ),
-        .DPRA2(\id_reg[2] ),
-        .DPRA3(\id_reg[3] ),
-        .DPRA4(1'b0),
-        .SPO(NLW_bl_mem_reg_0_15_6_7_SPO_UNCONNECTED),
-        .WCLK(m_dest_axi_aclk),
-        .WE(dest_burst_info_write));
-  (* METHODOLOGY_DRC_VIOS = "" *) 
-  (* RTL_RAM_BITS = "128" *) 
-  (* RTL_RAM_NAME = "i_transfer/i_request_arb/i_dest_dma_mm/bl_mem_reg_0_15_6_7" *) 
-  (* RTL_RAM_TYPE = "RAM_SDP" *) 
-  (* ram_addr_begin = "0" *) 
-  (* ram_addr_end = "15" *) 
-  (* ram_offset = "0" *) 
-  (* ram_slice_begin = "6" *) 
-  (* ram_slice_end = "7" *) 
-  RAM32X1D bl_mem_reg_0_15_6_7__0
-       (.A0(\zerodeep.axis_data_d_reg[5] [0]),
-        .A1(\zerodeep.axis_data_d_reg[5] [1]),
-        .A2(\zerodeep.axis_data_d_reg[5] [2]),
-        .A3(\zerodeep.axis_data_d_reg[5] [3]),
-        .A4(1'b0),
-        .D(1'b0),
-        .DPO(D[0]),
-        .DPRA0(\id_reg[0] ),
-        .DPRA1(\id_reg[1] ),
-        .DPRA2(\id_reg[2] ),
-        .DPRA3(\id_reg[3] ),
-        .DPRA4(1'b0),
-        .SPO(NLW_bl_mem_reg_0_15_6_7__0_SPO_UNCONNECTED),
+        .DOD(NLW_bl_mem_reg_0_15_6_7_DOD_UNCONNECTED[1:0]),
         .WCLK(m_dest_axi_aclk),
         .WE(dest_burst_info_write));
   system_axi_adrv9001_rx1_dma_0_address_generator i_addr_gen
@@ -7552,7 +7500,7 @@ module system_axi_adrv9001_rx1_dma_0_request_arb
         .out(dest_req_dest_address),
         .req_ready_reg(i_dest_req_fifo_n_27),
         .req_ready_reg_0(i_dest_req_fifo_n_26),
-        .\zerodeep.axis_data_d_reg[5] (Q));
+        .\zerodeep.axis_data_d_reg[1] (Q));
   system_axi_adrv9001_rx1_dma_0_util_axis_fifo__parameterized1 i_dest_req_fifo
        (.D(s_axis_data__0),
         .\cdc_sync_stage1_reg[0] (dest_valid_reg),

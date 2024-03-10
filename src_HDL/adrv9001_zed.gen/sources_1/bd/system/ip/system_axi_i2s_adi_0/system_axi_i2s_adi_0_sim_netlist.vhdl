@@ -1,10 +1,11 @@
 -- Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+-- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
--- Date        : Sun Mar 10 23:24:50 2024
--- Host        : PC_HP running 64-bit major release  (build 9200)
+-- Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
+-- Date        : Mon Mar 11 00:24:41 2024
+-- Host        : ASUS_ROG running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_i2s_adi_0/system_axi_i2s_adi_0_sim_netlist.vhdl
+--               c:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_i2s_adi_0/system_axi_i2s_adi_0_sim_netlist.vhdl
 -- Design      : system_axi_i2s_adi_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -347,7 +348,10 @@ FSM_sequential_rd_state_reg: unisim.vcomponents.FDRE
       O => \rd_addr[3]_i_1_n_0\
     );
 \rd_addr_reg[0]\: unisim.vcomponents.FDRE
-     port map (
+    generic map(
+      INIT => '0'
+    )
+        port map (
       C => s_axi_aclk,
       CE => \rd_addr[3]_i_1_n_0\,
       D => s_axi_araddr(0),
@@ -355,7 +359,10 @@ FSM_sequential_rd_state_reg: unisim.vcomponents.FDRE
       R => '0'
     );
 \rd_addr_reg[1]\: unisim.vcomponents.FDRE
-     port map (
+    generic map(
+      INIT => '0'
+    )
+        port map (
       C => s_axi_aclk,
       CE => \rd_addr[3]_i_1_n_0\,
       D => s_axi_araddr(1),
@@ -363,7 +370,10 @@ FSM_sequential_rd_state_reg: unisim.vcomponents.FDRE
       R => '0'
     );
 \rd_addr_reg[2]\: unisim.vcomponents.FDRE
-     port map (
+    generic map(
+      INIT => '0'
+    )
+        port map (
       C => s_axi_aclk,
       CE => \rd_addr[3]_i_1_n_0\,
       D => s_axi_araddr(2),
@@ -371,7 +381,10 @@ FSM_sequential_rd_state_reg: unisim.vcomponents.FDRE
       R => '0'
     );
 \rd_addr_reg[3]\: unisim.vcomponents.FDRE
-     port map (
+    generic map(
+      INIT => '0'
+    )
+        port map (
       C => s_axi_aclk,
       CE => \rd_addr[3]_i_1_n_0\,
       D => s_axi_araddr(3),
@@ -6123,7 +6136,7 @@ entity system_axi_i2s_adi_0 is
   attribute ip_definition_source : string;
   attribute ip_definition_source of system_axi_i2s_adi_0 : entity is "package_project";
   attribute x_core_info : string;
-  attribute x_core_info of system_axi_i2s_adi_0 : entity is "axi_i2s_adi,Vivado 2022.2";
+  attribute x_core_info of system_axi_i2s_adi_0 : entity is "axi_i2s_adi,Vivado 2023.2.2";
 end system_axi_i2s_adi_0;
 
 architecture STRUCTURE of system_axi_i2s_adi_0 is
@@ -6168,7 +6181,7 @@ architecture STRUCTURE of system_axi_i2s_adi_0 is
   attribute x_interface_info of data_clk_i : signal is "xilinx.com:signal:clock:1.0 i2s_signal_clock CLK";
   attribute x_interface_parameter : string;
   attribute x_interface_parameter of data_clk_i : signal is "XIL_INTERFACENAME i2s_signal_clock, ASSOCIATED_BUSIF i2s, FREQ_HZ 12287988, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_sys_audio_clkgen_0_clk_out1, INSERT_VIP 0";
-  attribute x_interface_info of dma_req_rx_aclk : signal is "xilinx.com:signal:clock:1.0 dma_req_rx_dma_ack_rx_signal_clock CLK, xilinx.com:signal:clock:1.0 dma_req_rx_aclk CLK";
+  attribute x_interface_info of dma_req_rx_aclk : signal is "xilinx.com:signal:clock:1.0 dma_req_rx_aclk CLK, xilinx.com:signal:clock:1.0 dma_req_rx_dma_ack_rx_signal_clock CLK";
   attribute x_interface_parameter of dma_req_rx_aclk : signal is "XIL_INTERFACENAME dma_req_rx_aclk, ASSOCIATED_RESET dma_req_rx_rstn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, ASSOCIATED_BUSIF dma_req_rx:dma_ack_rx, INSERT_VIP 0, XIL_INTERFACENAME dma_req_rx_dma_ack_rx_signal_clock, ASSOCIATED_BUSIF dma_req_rx:dma_ack_rx, ASSOCIATED_RESET dma_req_rx_rstn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, INSERT_VIP 0";
   attribute x_interface_info of dma_req_rx_daready : signal is "xilinx.com:interface:axis:1.0 dma_ack_rx TREADY";
   attribute x_interface_info of dma_req_rx_davalid : signal is "xilinx.com:interface:axis:1.0 dma_ack_rx TVALID";
@@ -6177,7 +6190,7 @@ architecture STRUCTURE of system_axi_i2s_adi_0 is
   attribute x_interface_info of dma_req_rx_drready : signal is "xilinx.com:interface:axis:1.0 dma_req_rx TREADY";
   attribute x_interface_info of dma_req_rx_drvalid : signal is "xilinx.com:interface:axis:1.0 dma_req_rx TVALID";
   attribute x_interface_parameter of dma_req_rx_drvalid : signal is "XIL_INTERFACENAME dma_req_rx, TDATA_NUM_BYTES 0, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 2, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 1, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, LAYERED_METADATA undef, INSERT_VIP 0";
-  attribute x_interface_info of dma_req_rx_rstn : signal is "xilinx.com:signal:reset:1.0 dma_req_rx_rstn RST, xilinx.com:signal:reset:1.0 dma_req_rx_dma_ack_rx_signal_reset RST";
+  attribute x_interface_info of dma_req_rx_rstn : signal is "xilinx.com:signal:reset:1.0 dma_req_rx_dma_ack_rx_signal_reset RST, xilinx.com:signal:reset:1.0 dma_req_rx_rstn RST";
   attribute x_interface_parameter of dma_req_rx_rstn : signal is "XIL_INTERFACENAME dma_req_rx_rstn, POLARITY ACTIVE_LOW, INSERT_VIP 0, XIL_INTERFACENAME dma_req_rx_dma_ack_rx_signal_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   attribute x_interface_info of dma_req_tx_aclk : signal is "xilinx.com:signal:clock:1.0 dma_req_tx_aclk CLK, xilinx.com:signal:clock:1.0 dma_req_tx_dma_ack_tx_signal_clock CLK";
   attribute x_interface_parameter of dma_req_tx_aclk : signal is "XIL_INTERFACENAME dma_req_tx_aclk, ASSOCIATED_RESET dma_req_tx_rstn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, ASSOCIATED_BUSIF dma_req_tx:dma_ack_tx, INSERT_VIP 0, XIL_INTERFACENAME dma_req_tx_dma_ack_tx_signal_clock, ASSOCIATED_BUSIF dma_req_tx:dma_ack_tx, ASSOCIATED_RESET dma_req_tx_rstn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, INSERT_VIP 0";
@@ -6188,7 +6201,7 @@ architecture STRUCTURE of system_axi_i2s_adi_0 is
   attribute x_interface_info of dma_req_tx_drready : signal is "xilinx.com:interface:axis:1.0 dma_req_tx TREADY";
   attribute x_interface_info of dma_req_tx_drvalid : signal is "xilinx.com:interface:axis:1.0 dma_req_tx TVALID";
   attribute x_interface_parameter of dma_req_tx_drvalid : signal is "XIL_INTERFACENAME dma_req_tx, TDATA_NUM_BYTES 0, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 2, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 1, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, LAYERED_METADATA undef, INSERT_VIP 0";
-  attribute x_interface_info of dma_req_tx_rstn : signal is "xilinx.com:signal:reset:1.0 dma_req_tx_rstn RST, xilinx.com:signal:reset:1.0 dma_req_tx_dma_ack_tx_signal_reset RST";
+  attribute x_interface_info of dma_req_tx_rstn : signal is "xilinx.com:signal:reset:1.0 dma_req_tx_dma_ack_tx_signal_reset RST, xilinx.com:signal:reset:1.0 dma_req_tx_rstn RST";
   attribute x_interface_parameter of dma_req_tx_rstn : signal is "XIL_INTERFACENAME dma_req_tx_rstn, POLARITY ACTIVE_LOW, INSERT_VIP 0, XIL_INTERFACENAME dma_req_tx_dma_ack_tx_signal_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   attribute x_interface_info of s_axi_aclk : signal is "xilinx.com:signal:clock:1.0 s_axi_aclk CLK";
   attribute x_interface_parameter of s_axi_aclk : signal is "XIL_INTERFACENAME s_axi_aclk, ASSOCIATED_BUSIF s_axi, ASSOCIATED_RESET s_axi_aresetn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, INSERT_VIP 0";

@@ -1,21 +1,21 @@
--- (c) Copyright 1995-2024 Xilinx, Inc. All rights reserved.
+-- (c) Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+-- (c) Copyright 2022-2024 Advanced Micro Devices, Inc. All rights reserved.
 -- 
 -- This file contains confidential and proprietary information
--- of Xilinx, Inc. and is protected under U.S. and
--- international copyright and other intellectual property
--- laws.
+-- of AMD and is protected under U.S. and international copyright
+-- and other intellectual property laws.
 -- 
 -- DISCLAIMER
 -- This disclaimer is not a license and does not grant any
 -- rights to the materials distributed herewith. Except as
 -- otherwise provided in a valid license issued to you by
--- Xilinx, and to the maximum extent permitted by applicable
+-- AMD, and to the maximum extent permitted by applicable
 -- law: (1) THESE MATERIALS ARE MADE AVAILABLE "AS IS" AND
--- WITH ALL FAULTS, AND XILINX HEREBY DISCLAIMS ALL WARRANTIES
+-- WITH ALL FAULTS, AND AMD HEREBY DISCLAIMS ALL WARRANTIES
 -- AND CONDITIONS, EXPRESS, IMPLIED, OR STATUTORY, INCLUDING
 -- BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, NON-
 -- INFRINGEMENT, OR FITNESS FOR ANY PARTICULAR PURPOSE; and
--- (2) Xilinx shall not be liable (whether in contract or tort,
+-- (2) AMD shall not be liable (whether in contract or tort,
 -- including negligence, or under any other theory of
 -- liability) for any loss or damage of any kind or nature
 -- related to, arising under or in connection with these
@@ -24,11 +24,11 @@
 -- (including loss of data, profits, goodwill, or any type of
 -- loss or damage suffered as a result of any action brought
 -- by a third party) even if such damage or loss was
--- reasonably foreseeable or Xilinx had been advised of the
+-- reasonably foreseeable or AMD had been advised of the
 -- possibility of the same.
 -- 
 -- CRITICAL APPLICATIONS
--- Xilinx products are not designed or intended to be fail-
+-- AMD products are not designed or intended to be fail-
 -- safe, or for use in any application requiring fail-safe
 -- performance, such as life-support or safety devices or
 -- systems, Class III medical devices, nuclear facilities,
@@ -37,7 +37,7 @@
 -- injury, or severe property or environmental damage
 -- (individually and collectively, "Critical
 -- Applications"). Customer assumes the sole risk and
--- liability of any use of Xilinx products in Critical
+-- liability of any use of AMD products in Critical
 -- Applications, subject only to applicable laws and
 -- regulations governing limitations on product liability.
 -- 
@@ -178,7 +178,7 @@ ARCHITECTURE system_axi_i2s_adi_0_arch OF system_axi_i2s_adi_0 IS
     );
   END COMPONENT axi_i2s_adi;
   ATTRIBUTE X_CORE_INFO : STRING;
-  ATTRIBUTE X_CORE_INFO OF system_axi_i2s_adi_0_arch: ARCHITECTURE IS "axi_i2s_adi,Vivado 2022.2";
+  ATTRIBUTE X_CORE_INFO OF system_axi_i2s_adi_0_arch: ARCHITECTURE IS "axi_i2s_adi,Vivado 2023.2.2";
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF system_axi_i2s_adi_0_arch : ARCHITECTURE IS "system_axi_i2s_adi_0,axi_i2s_adi,{}";
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
@@ -189,7 +189,7 @@ ARCHITECTURE system_axi_i2s_adi_0_arch OF system_axi_i2s_adi_0 IS
   ATTRIBUTE X_INTERFACE_PARAMETER OF data_clk_i: SIGNAL IS "XIL_INTERFACENAME i2s_signal_clock, ASSOCIATED_BUSIF i2s, FREQ_HZ 12287988, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_sys_audio_clkgen_0_clk_out1, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF data_clk_i: SIGNAL IS "xilinx.com:signal:clock:1.0 i2s_signal_clock CLK";
   ATTRIBUTE X_INTERFACE_PARAMETER OF dma_req_rx_aclk: SIGNAL IS "XIL_INTERFACENAME dma_req_rx_aclk, ASSOCIATED_RESET dma_req_rx_rstn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, ASSOCIATED_BUSIF dma_req_rx:dma_ack_rx, INSERT_VIP 0, XIL_INTERFACENAME dma_req_rx_dma_ack_rx_signal_clock, ASSOCIATED_BUSIF dma_req_rx:dma_ack_rx, ASSOCIATED_RESET dma_req_rx_rstn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, INSERT_VIP 0";
-  ATTRIBUTE X_INTERFACE_INFO OF dma_req_rx_aclk: SIGNAL IS "xilinx.com:signal:clock:1.0 dma_req_rx_dma_ack_rx_signal_clock CLK, xilinx.com:signal:clock:1.0 dma_req_rx_aclk CLK";
+  ATTRIBUTE X_INTERFACE_INFO OF dma_req_rx_aclk: SIGNAL IS "xilinx.com:signal:clock:1.0 dma_req_rx_aclk CLK, xilinx.com:signal:clock:1.0 dma_req_rx_dma_ack_rx_signal_clock CLK";
   ATTRIBUTE X_INTERFACE_INFO OF dma_req_rx_daready: SIGNAL IS "xilinx.com:interface:axis:1.0 dma_ack_rx TREADY";
   ATTRIBUTE X_INTERFACE_INFO OF dma_req_rx_datype: SIGNAL IS "xilinx.com:interface:axis:1.0 dma_ack_rx TUSER";
   ATTRIBUTE X_INTERFACE_PARAMETER OF dma_req_rx_davalid: SIGNAL IS "XIL_INTERFACENAME dma_ack_rx, TDATA_NUM_BYTES 0, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 2, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, LAYERED_METADATA undef, INSERT_VIP 0";
@@ -200,7 +200,7 @@ ARCHITECTURE system_axi_i2s_adi_0_arch OF system_axi_i2s_adi_0 IS
   ATTRIBUTE X_INTERFACE_PARAMETER OF dma_req_rx_drvalid: SIGNAL IS "XIL_INTERFACENAME dma_req_rx, TDATA_NUM_BYTES 0, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 2, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 1, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, LAYERED_METADATA undef, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF dma_req_rx_drvalid: SIGNAL IS "xilinx.com:interface:axis:1.0 dma_req_rx TVALID";
   ATTRIBUTE X_INTERFACE_PARAMETER OF dma_req_rx_rstn: SIGNAL IS "XIL_INTERFACENAME dma_req_rx_rstn, POLARITY ACTIVE_LOW, INSERT_VIP 0, XIL_INTERFACENAME dma_req_rx_dma_ack_rx_signal_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0";
-  ATTRIBUTE X_INTERFACE_INFO OF dma_req_rx_rstn: SIGNAL IS "xilinx.com:signal:reset:1.0 dma_req_rx_rstn RST, xilinx.com:signal:reset:1.0 dma_req_rx_dma_ack_rx_signal_reset RST";
+  ATTRIBUTE X_INTERFACE_INFO OF dma_req_rx_rstn: SIGNAL IS "xilinx.com:signal:reset:1.0 dma_req_rx_dma_ack_rx_signal_reset RST, xilinx.com:signal:reset:1.0 dma_req_rx_rstn RST";
   ATTRIBUTE X_INTERFACE_PARAMETER OF dma_req_tx_aclk: SIGNAL IS "XIL_INTERFACENAME dma_req_tx_aclk, ASSOCIATED_RESET dma_req_tx_rstn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, ASSOCIATED_BUSIF dma_req_tx:dma_ack_tx, INSERT_VIP 0, XIL_INTERFACENAME dma_req_tx_dma_ack_tx_signal_clock, ASSOCIATED_BUSIF dma_req_tx:dma_ack_tx, ASSOCIATED_RESET dma_req_tx_rstn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF dma_req_tx_aclk: SIGNAL IS "xilinx.com:signal:clock:1.0 dma_req_tx_aclk CLK, xilinx.com:signal:clock:1.0 dma_req_tx_dma_ack_tx_signal_clock CLK";
   ATTRIBUTE X_INTERFACE_INFO OF dma_req_tx_daready: SIGNAL IS "xilinx.com:interface:axis:1.0 dma_ack_tx TREADY";
@@ -213,7 +213,7 @@ ARCHITECTURE system_axi_i2s_adi_0_arch OF system_axi_i2s_adi_0 IS
   ATTRIBUTE X_INTERFACE_PARAMETER OF dma_req_tx_drvalid: SIGNAL IS "XIL_INTERFACENAME dma_req_tx, TDATA_NUM_BYTES 0, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 2, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 1, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, LAYERED_METADATA undef, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF dma_req_tx_drvalid: SIGNAL IS "xilinx.com:interface:axis:1.0 dma_req_tx TVALID";
   ATTRIBUTE X_INTERFACE_PARAMETER OF dma_req_tx_rstn: SIGNAL IS "XIL_INTERFACENAME dma_req_tx_rstn, POLARITY ACTIVE_LOW, INSERT_VIP 0, XIL_INTERFACENAME dma_req_tx_dma_ack_tx_signal_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0";
-  ATTRIBUTE X_INTERFACE_INFO OF dma_req_tx_rstn: SIGNAL IS "xilinx.com:signal:reset:1.0 dma_req_tx_rstn RST, xilinx.com:signal:reset:1.0 dma_req_tx_dma_ack_tx_signal_reset RST";
+  ATTRIBUTE X_INTERFACE_INFO OF dma_req_tx_rstn: SIGNAL IS "xilinx.com:signal:reset:1.0 dma_req_tx_dma_ack_tx_signal_reset RST, xilinx.com:signal:reset:1.0 dma_req_tx_rstn RST";
   ATTRIBUTE X_INTERFACE_INFO OF lrclk_o: SIGNAL IS "analog.com:interface:i2s:1.0 i2s LRCLK";
   ATTRIBUTE X_INTERFACE_PARAMETER OF s_axi_aclk: SIGNAL IS "XIL_INTERFACENAME s_axi_aclk, ASSOCIATED_BUSIF s_axi, ASSOCIATED_RESET s_axi_aresetn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF s_axi_aclk: SIGNAL IS "xilinx.com:signal:clock:1.0 s_axi_aclk CLK";

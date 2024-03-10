@@ -1,10 +1,11 @@
 // Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+// Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-// Date        : Sun Mar 10 23:22:46 2024
-// Host        : PC_HP running 64-bit major release  (build 9200)
+// Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
+// Date        : Mon Mar 11 00:23:21 2024
+// Host        : ASUS_ROG running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
-//               c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_hdmi_core_0/system_axi_hdmi_core_0_sim_netlist.v
+//               c:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_hdmi_core_0/system_axi_hdmi_core_0_sim_netlist.v
 // Design      : system_axi_hdmi_core_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -13,7 +14,7 @@
 `timescale 1 ps / 1 ps
 
 (* CHECK_LICENSE_TYPE = "system_axi_hdmi_core_0,axi_hdmi_tx,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* IP_DEFINITION_SOURCE = "package_project" *) 
-(* X_CORE_INFO = "axi_hdmi_tx,Vivado 2022.2" *) 
+(* X_CORE_INFO = "axi_hdmi_tx,Vivado 2023.2.2" *) 
 (* NotValidForBitStream *)
 module system_axi_hdmi_core_0
    (reference_clk,
@@ -630,8 +631,8 @@ module system_axi_hdmi_core_0_ad_csc
         .RSTM(1'b0),
         .RSTP(1'b0),
         .UNDERFLOW(NLW_s_data_3_reg_UNDERFLOW_UNCONNECTED));
-  (* srl_bus_name = "inst/\i_tx_core/i_csc_RGB2CrYCb/j_csc_1_Cr/sync_3_m_reg " *) 
-  (* srl_name = "inst/\i_tx_core/i_csc_RGB2CrYCb/j_csc_1_Cr/sync_3_m_reg[0]_srl3 " *) 
+  (* srl_bus_name = "inst/\\i_tx_core/i_csc_RGB2CrYCb/j_csc_1_Cr/sync_3_m_reg " *) 
+  (* srl_name = "inst/\\i_tx_core/i_csc_RGB2CrYCb/j_csc_1_Cr/sync_3_m_reg[0]_srl3 " *) 
   SRL16E \sync_3_m_reg[0]_srl3 
        (.A0(1'b0),
         .A1(1'b1),
@@ -641,8 +642,8 @@ module system_axi_hdmi_core_0_ad_csc
         .CLK(reference_clk),
         .D(hdmi_data_e),
         .Q(\sync_3_m_reg[0]_srl3_n_0 ));
-  (* srl_bus_name = "inst/\i_tx_core/i_csc_RGB2CrYCb/j_csc_1_Cr/sync_3_m_reg " *) 
-  (* srl_name = "inst/\i_tx_core/i_csc_RGB2CrYCb/j_csc_1_Cr/sync_3_m_reg[3]_srl3 " *) 
+  (* srl_bus_name = "inst/\\i_tx_core/i_csc_RGB2CrYCb/j_csc_1_Cr/sync_3_m_reg " *) 
+  (* srl_name = "inst/\\i_tx_core/i_csc_RGB2CrYCb/j_csc_1_Cr/sync_3_m_reg[3]_srl3 " *) 
   SRL16E \sync_3_m_reg[3]_srl3 
        (.A0(1'b0),
         .A1(1'b1),
@@ -652,8 +653,8 @@ module system_axi_hdmi_core_0_ad_csc
         .CLK(reference_clk),
         .D(hdmi_vsync),
         .Q(\sync_3_m_reg[3]_srl3_n_0 ));
-  (* srl_bus_name = "inst/\i_tx_core/i_csc_RGB2CrYCb/j_csc_1_Cr/sync_3_m_reg " *) 
-  (* srl_name = "inst/\i_tx_core/i_csc_RGB2CrYCb/j_csc_1_Cr/sync_3_m_reg[4]_srl3 " *) 
+  (* srl_bus_name = "inst/\\i_tx_core/i_csc_RGB2CrYCb/j_csc_1_Cr/sync_3_m_reg " *) 
+  (* srl_name = "inst/\\i_tx_core/i_csc_RGB2CrYCb/j_csc_1_Cr/sync_3_m_reg[4]_srl3 " *) 
   SRL16E \sync_3_m_reg[4]_srl3 
        (.A0(1'b0),
         .A1(1'b1),
@@ -2230,7 +2231,6 @@ module system_axi_hdmi_core_0_ad_ss_444to422
   wire hdmi_ss_hsync_s;
   wire hdmi_ss_vsync_s;
   wire [7:0]p_0_in;
-  wire [8:1]p_0_in0_in;
   wire [7:0]p_1_in;
   wire reference_clk;
   wire \s422_data[10]_i_1_n_0 ;
@@ -2243,22 +2243,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
   wire \s422_data[9]_i_1_n_0 ;
   wire [15:0]\s422_data_reg[15]_0 ;
   wire \s422_sync_reg_n_0_[0] ;
-  wire \s444_data_2d_reg_n_0_[0] ;
-  wire \s444_data_2d_reg_n_0_[10] ;
-  wire \s444_data_2d_reg_n_0_[11] ;
-  wire \s444_data_2d_reg_n_0_[12] ;
-  wire \s444_data_2d_reg_n_0_[13] ;
-  wire \s444_data_2d_reg_n_0_[14] ;
-  wire \s444_data_2d_reg_n_0_[15] ;
-  wire \s444_data_2d_reg_n_0_[1] ;
-  wire \s444_data_2d_reg_n_0_[2] ;
-  wire \s444_data_2d_reg_n_0_[3] ;
-  wire \s444_data_2d_reg_n_0_[4] ;
-  wire \s444_data_2d_reg_n_0_[5] ;
-  wire \s444_data_2d_reg_n_0_[6] ;
-  wire \s444_data_2d_reg_n_0_[7] ;
-  wire \s444_data_2d_reg_n_0_[8] ;
-  wire \s444_data_2d_reg_n_0_[9] ;
+  wire [23:0]s444_data_2d;
   wire \s444_data_3d_reg_n_0_[0] ;
   wire \s444_data_3d_reg_n_0_[10] ;
   wire \s444_data_3d_reg_n_0_[11] ;
@@ -2316,7 +2301,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     .INIT(8'hE8)) 
     \cb[1]_i_2 
        (.I0(\s444_data_3d_reg_n_0_[2] ),
-        .I1(\s444_data_2d_reg_n_0_[1] ),
+        .I1(s444_data_2d[1]),
         .I2(\s444_data_d_reg_n_0_[2] ),
         .O(\cb[1]_i_2_n_0 ));
   LUT3 #(
@@ -2324,14 +2309,14 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     \cb[1]_i_3 
        (.I0(\s444_data_d_reg_n_0_[2] ),
         .I1(\s444_data_3d_reg_n_0_[2] ),
-        .I2(\s444_data_2d_reg_n_0_[1] ),
+        .I2(s444_data_2d[1]),
         .O(\cb[1]_i_3_n_0 ));
   (* HLUTNM = "lutpair1" *) 
   LUT4 #(
     .INIT(16'h6996)) 
     \cb[1]_i_4 
        (.I0(\s444_data_3d_reg_n_0_[3] ),
-        .I1(\s444_data_2d_reg_n_0_[2] ),
+        .I1(s444_data_2d[2]),
         .I2(\s444_data_d_reg_n_0_[3] ),
         .I3(\cb[1]_i_2_n_0 ),
         .O(\cb[1]_i_4_n_0 ));
@@ -2340,16 +2325,16 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     .INIT(32'h69969696)) 
     \cb[1]_i_5 
        (.I0(\s444_data_3d_reg_n_0_[2] ),
-        .I1(\s444_data_2d_reg_n_0_[1] ),
+        .I1(s444_data_2d[1]),
         .I2(\s444_data_d_reg_n_0_[2] ),
-        .I3(\s444_data_2d_reg_n_0_[0] ),
+        .I3(s444_data_2d[0]),
         .I4(\s444_data_3d_reg_n_0_[1] ),
         .O(\cb[1]_i_5_n_0 ));
   LUT3 #(
     .INIT(8'h96)) 
     \cb[1]_i_6 
        (.I0(\s444_data_3d_reg_n_0_[1] ),
-        .I1(\s444_data_2d_reg_n_0_[0] ),
+        .I1(s444_data_2d[0]),
         .I2(\s444_data_d_reg_n_0_[1] ),
         .O(\cb[1]_i_6_n_0 ));
   LUT2 #(
@@ -2363,7 +2348,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     .INIT(8'hE8)) 
     \cb[5]_i_2 
        (.I0(\s444_data_3d_reg_n_0_[6] ),
-        .I1(\s444_data_2d_reg_n_0_[5] ),
+        .I1(s444_data_2d[5]),
         .I2(\s444_data_d_reg_n_0_[6] ),
         .O(\cb[5]_i_2_n_0 ));
   (* HLUTNM = "lutpair3" *) 
@@ -2371,7 +2356,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     .INIT(8'hE8)) 
     \cb[5]_i_3 
        (.I0(\s444_data_3d_reg_n_0_[5] ),
-        .I1(\s444_data_2d_reg_n_0_[4] ),
+        .I1(s444_data_2d[4]),
         .I2(\s444_data_d_reg_n_0_[5] ),
         .O(\cb[5]_i_3_n_0 ));
   (* HLUTNM = "lutpair2" *) 
@@ -2379,7 +2364,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     .INIT(8'hE8)) 
     \cb[5]_i_4 
        (.I0(\s444_data_3d_reg_n_0_[4] ),
-        .I1(\s444_data_2d_reg_n_0_[3] ),
+        .I1(s444_data_2d[3]),
         .I2(\s444_data_d_reg_n_0_[4] ),
         .O(\cb[5]_i_4_n_0 ));
   (* HLUTNM = "lutpair1" *) 
@@ -2387,14 +2372,14 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     .INIT(8'hE8)) 
     \cb[5]_i_5 
        (.I0(\s444_data_3d_reg_n_0_[3] ),
-        .I1(\s444_data_2d_reg_n_0_[2] ),
+        .I1(s444_data_2d[2]),
         .I2(\s444_data_d_reg_n_0_[3] ),
         .O(\cb[5]_i_5_n_0 ));
   LUT4 #(
     .INIT(16'h6996)) 
     \cb[5]_i_6 
        (.I0(\cb[5]_i_2_n_0 ),
-        .I1(\s444_data_2d_reg_n_0_[6] ),
+        .I1(s444_data_2d[6]),
         .I2(\s444_data_3d_reg_n_0_[7] ),
         .I3(\s444_data_d_reg_n_0_[7] ),
         .O(\cb[5]_i_6_n_0 ));
@@ -2403,7 +2388,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     .INIT(16'h6996)) 
     \cb[5]_i_7 
        (.I0(\s444_data_3d_reg_n_0_[6] ),
-        .I1(\s444_data_2d_reg_n_0_[5] ),
+        .I1(s444_data_2d[5]),
         .I2(\s444_data_d_reg_n_0_[6] ),
         .I3(\cb[5]_i_3_n_0 ),
         .O(\cb[5]_i_7_n_0 ));
@@ -2412,7 +2397,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     .INIT(16'h6996)) 
     \cb[5]_i_8 
        (.I0(\s444_data_3d_reg_n_0_[5] ),
-        .I1(\s444_data_2d_reg_n_0_[4] ),
+        .I1(s444_data_2d[4]),
         .I2(\s444_data_d_reg_n_0_[5] ),
         .I3(\cb[5]_i_4_n_0 ),
         .O(\cb[5]_i_8_n_0 ));
@@ -2421,7 +2406,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     .INIT(16'h6996)) 
     \cb[5]_i_9 
        (.I0(\s444_data_3d_reg_n_0_[4] ),
-        .I1(\s444_data_2d_reg_n_0_[3] ),
+        .I1(s444_data_2d[3]),
         .I2(\s444_data_d_reg_n_0_[4] ),
         .I3(\cb[5]_i_5_n_0 ),
         .O(\cb[5]_i_9_n_0 ));
@@ -2429,9 +2414,9 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     .INIT(16'h17E8)) 
     \cb[7]_i_2 
        (.I0(\s444_data_d_reg_n_0_[7] ),
-        .I1(\s444_data_2d_reg_n_0_[6] ),
+        .I1(s444_data_2d[6]),
         .I2(\s444_data_3d_reg_n_0_[7] ),
-        .I3(\s444_data_2d_reg_n_0_[7] ),
+        .I3(s444_data_2d[7]),
         .O(\cb[7]_i_2_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
@@ -2515,7 +2500,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
        (.CI(\cb_reg[5]_i_1_n_0 ),
         .CO({\NLW_cb_reg[7]_i_1_CO_UNCONNECTED [3:2],p_0_in[7],\NLW_cb_reg[7]_i_1_CO_UNCONNECTED [0]}),
         .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,\s444_data_2d_reg_n_0_[7] }),
+        .DI({1'b0,1'b0,1'b0,s444_data_2d[7]}),
         .O({\NLW_cb_reg[7]_i_1_O_UNCONNECTED [3:1],p_0_in[6]}),
         .S({1'b0,1'b0,1'b1,\cb[7]_i_2_n_0 }));
   (* HLUTNM = "lutpair5" *) 
@@ -2523,7 +2508,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     .INIT(8'hE8)) 
     \cr[1]_i_2 
        (.I0(\s444_data_3d_reg_n_0_[18] ),
-        .I1(p_0_in0_in[2]),
+        .I1(s444_data_2d[17]),
         .I2(p_1_in[2]),
         .O(\cr[1]_i_2_n_0 ));
   LUT3 #(
@@ -2531,14 +2516,14 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     \cr[1]_i_3 
        (.I0(p_1_in[2]),
         .I1(\s444_data_3d_reg_n_0_[18] ),
-        .I2(p_0_in0_in[2]),
+        .I2(s444_data_2d[17]),
         .O(\cr[1]_i_3_n_0 ));
   (* HLUTNM = "lutpair6" *) 
   LUT4 #(
     .INIT(16'h6996)) 
     \cr[1]_i_4 
        (.I0(\s444_data_3d_reg_n_0_[19] ),
-        .I1(p_0_in0_in[3]),
+        .I1(s444_data_2d[18]),
         .I2(p_1_in[3]),
         .I3(\cr[1]_i_2_n_0 ),
         .O(\cr[1]_i_4_n_0 ));
@@ -2547,16 +2532,16 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     .INIT(32'h69969696)) 
     \cr[1]_i_5 
        (.I0(\s444_data_3d_reg_n_0_[18] ),
-        .I1(p_0_in0_in[2]),
+        .I1(s444_data_2d[17]),
         .I2(p_1_in[2]),
-        .I3(p_0_in0_in[1]),
+        .I3(s444_data_2d[16]),
         .I4(\s444_data_3d_reg_n_0_[17] ),
         .O(\cr[1]_i_5_n_0 ));
   LUT3 #(
     .INIT(8'h96)) 
     \cr[1]_i_6 
        (.I0(\s444_data_3d_reg_n_0_[17] ),
-        .I1(p_0_in0_in[1]),
+        .I1(s444_data_2d[16]),
         .I2(p_1_in[1]),
         .O(\cr[1]_i_6_n_0 ));
   LUT2 #(
@@ -2570,7 +2555,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     .INIT(8'hE8)) 
     \cr[5]_i_2 
        (.I0(\s444_data_3d_reg_n_0_[22] ),
-        .I1(p_0_in0_in[6]),
+        .I1(s444_data_2d[21]),
         .I2(p_1_in[6]),
         .O(\cr[5]_i_2_n_0 ));
   (* HLUTNM = "lutpair8" *) 
@@ -2578,7 +2563,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     .INIT(8'hE8)) 
     \cr[5]_i_3 
        (.I0(\s444_data_3d_reg_n_0_[21] ),
-        .I1(p_0_in0_in[5]),
+        .I1(s444_data_2d[20]),
         .I2(p_1_in[5]),
         .O(\cr[5]_i_3_n_0 ));
   (* HLUTNM = "lutpair7" *) 
@@ -2586,7 +2571,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     .INIT(8'hE8)) 
     \cr[5]_i_4 
        (.I0(\s444_data_3d_reg_n_0_[20] ),
-        .I1(p_0_in0_in[4]),
+        .I1(s444_data_2d[19]),
         .I2(p_1_in[4]),
         .O(\cr[5]_i_4_n_0 ));
   (* HLUTNM = "lutpair6" *) 
@@ -2594,14 +2579,14 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     .INIT(8'hE8)) 
     \cr[5]_i_5 
        (.I0(\s444_data_3d_reg_n_0_[19] ),
-        .I1(p_0_in0_in[3]),
+        .I1(s444_data_2d[18]),
         .I2(p_1_in[3]),
         .O(\cr[5]_i_5_n_0 ));
   LUT4 #(
     .INIT(16'h6996)) 
     \cr[5]_i_6 
        (.I0(\cr[5]_i_2_n_0 ),
-        .I1(p_0_in0_in[7]),
+        .I1(s444_data_2d[22]),
         .I2(\s444_data_3d_reg_n_0_[23] ),
         .I3(p_1_in[7]),
         .O(\cr[5]_i_6_n_0 ));
@@ -2610,7 +2595,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     .INIT(16'h6996)) 
     \cr[5]_i_7 
        (.I0(\s444_data_3d_reg_n_0_[22] ),
-        .I1(p_0_in0_in[6]),
+        .I1(s444_data_2d[21]),
         .I2(p_1_in[6]),
         .I3(\cr[5]_i_3_n_0 ),
         .O(\cr[5]_i_7_n_0 ));
@@ -2619,7 +2604,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     .INIT(16'h6996)) 
     \cr[5]_i_8 
        (.I0(\s444_data_3d_reg_n_0_[21] ),
-        .I1(p_0_in0_in[5]),
+        .I1(s444_data_2d[20]),
         .I2(p_1_in[5]),
         .I3(\cr[5]_i_4_n_0 ),
         .O(\cr[5]_i_8_n_0 ));
@@ -2628,7 +2613,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     .INIT(16'h6996)) 
     \cr[5]_i_9 
        (.I0(\s444_data_3d_reg_n_0_[20] ),
-        .I1(p_0_in0_in[4]),
+        .I1(s444_data_2d[19]),
         .I2(p_1_in[4]),
         .I3(\cr[5]_i_5_n_0 ),
         .O(\cr[5]_i_9_n_0 ));
@@ -2636,9 +2621,9 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     .INIT(16'h17E8)) 
     \cr[7]_i_2 
        (.I0(p_1_in[7]),
-        .I1(p_0_in0_in[7]),
+        .I1(s444_data_2d[22]),
         .I2(\s444_data_3d_reg_n_0_[23] ),
-        .I3(p_0_in0_in[8]),
+        .I3(s444_data_2d[23]),
         .O(\cr[7]_i_2_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
@@ -2740,7 +2725,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
        (.CI(\cr_reg[5]_i_1_n_0 ),
         .CO({\NLW_cr_reg[7]_i_1_CO_UNCONNECTED [3:2],cr_s[9],\NLW_cr_reg[7]_i_1_CO_UNCONNECTED [0]}),
         .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,p_0_in0_in[8]}),
+        .DI({1'b0,1'b0,1'b0,s444_data_2d[23]}),
         .O({\NLW_cr_reg[7]_i_1_O_UNCONNECTED [3:1],cr_s[8]}),
         .S({1'b0,1'b0,1'b1,\cr[7]_i_2_n_0 }));
   LUT3 #(
@@ -2954,7 +2939,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
        (.C(reference_clk),
         .CE(\s444_sync_d_reg_n_0_[0] ),
         .D(\s444_data_d_reg_n_0_[0] ),
-        .Q(\s444_data_2d_reg_n_0_[0] ),
+        .Q(s444_data_2d[0]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -2962,7 +2947,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
        (.C(reference_clk),
         .CE(\s444_sync_d_reg_n_0_[0] ),
         .D(\s444_data_d_reg_n_0_[10] ),
-        .Q(\s444_data_2d_reg_n_0_[10] ),
+        .Q(s444_data_2d[10]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -2970,7 +2955,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
        (.C(reference_clk),
         .CE(\s444_sync_d_reg_n_0_[0] ),
         .D(\s444_data_d_reg_n_0_[11] ),
-        .Q(\s444_data_2d_reg_n_0_[11] ),
+        .Q(s444_data_2d[11]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -2978,7 +2963,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
        (.C(reference_clk),
         .CE(\s444_sync_d_reg_n_0_[0] ),
         .D(\s444_data_d_reg_n_0_[12] ),
-        .Q(\s444_data_2d_reg_n_0_[12] ),
+        .Q(s444_data_2d[12]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -2986,7 +2971,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
        (.C(reference_clk),
         .CE(\s444_sync_d_reg_n_0_[0] ),
         .D(\s444_data_d_reg_n_0_[13] ),
-        .Q(\s444_data_2d_reg_n_0_[13] ),
+        .Q(s444_data_2d[13]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -2994,7 +2979,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
        (.C(reference_clk),
         .CE(\s444_sync_d_reg_n_0_[0] ),
         .D(\s444_data_d_reg_n_0_[14] ),
-        .Q(\s444_data_2d_reg_n_0_[14] ),
+        .Q(s444_data_2d[14]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3002,7 +2987,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
        (.C(reference_clk),
         .CE(\s444_sync_d_reg_n_0_[0] ),
         .D(\s444_data_d_reg_n_0_[15] ),
-        .Q(\s444_data_2d_reg_n_0_[15] ),
+        .Q(s444_data_2d[15]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3010,7 +2995,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
        (.C(reference_clk),
         .CE(\s444_sync_d_reg_n_0_[0] ),
         .D(p_1_in[0]),
-        .Q(p_0_in0_in[1]),
+        .Q(s444_data_2d[16]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3018,7 +3003,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
        (.C(reference_clk),
         .CE(\s444_sync_d_reg_n_0_[0] ),
         .D(p_1_in[1]),
-        .Q(p_0_in0_in[2]),
+        .Q(s444_data_2d[17]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3026,7 +3011,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
        (.C(reference_clk),
         .CE(\s444_sync_d_reg_n_0_[0] ),
         .D(p_1_in[2]),
-        .Q(p_0_in0_in[3]),
+        .Q(s444_data_2d[18]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3034,7 +3019,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
        (.C(reference_clk),
         .CE(\s444_sync_d_reg_n_0_[0] ),
         .D(p_1_in[3]),
-        .Q(p_0_in0_in[4]),
+        .Q(s444_data_2d[19]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3042,7 +3027,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
        (.C(reference_clk),
         .CE(\s444_sync_d_reg_n_0_[0] ),
         .D(\s444_data_d_reg_n_0_[1] ),
-        .Q(\s444_data_2d_reg_n_0_[1] ),
+        .Q(s444_data_2d[1]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3050,7 +3035,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
        (.C(reference_clk),
         .CE(\s444_sync_d_reg_n_0_[0] ),
         .D(p_1_in[4]),
-        .Q(p_0_in0_in[5]),
+        .Q(s444_data_2d[20]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3058,7 +3043,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
        (.C(reference_clk),
         .CE(\s444_sync_d_reg_n_0_[0] ),
         .D(p_1_in[5]),
-        .Q(p_0_in0_in[6]),
+        .Q(s444_data_2d[21]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3066,7 +3051,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
        (.C(reference_clk),
         .CE(\s444_sync_d_reg_n_0_[0] ),
         .D(p_1_in[6]),
-        .Q(p_0_in0_in[7]),
+        .Q(s444_data_2d[22]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3074,7 +3059,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
        (.C(reference_clk),
         .CE(\s444_sync_d_reg_n_0_[0] ),
         .D(p_1_in[7]),
-        .Q(p_0_in0_in[8]),
+        .Q(s444_data_2d[23]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3082,7 +3067,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
        (.C(reference_clk),
         .CE(\s444_sync_d_reg_n_0_[0] ),
         .D(\s444_data_d_reg_n_0_[2] ),
-        .Q(\s444_data_2d_reg_n_0_[2] ),
+        .Q(s444_data_2d[2]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3090,7 +3075,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
        (.C(reference_clk),
         .CE(\s444_sync_d_reg_n_0_[0] ),
         .D(\s444_data_d_reg_n_0_[3] ),
-        .Q(\s444_data_2d_reg_n_0_[3] ),
+        .Q(s444_data_2d[3]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3098,7 +3083,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
        (.C(reference_clk),
         .CE(\s444_sync_d_reg_n_0_[0] ),
         .D(\s444_data_d_reg_n_0_[4] ),
-        .Q(\s444_data_2d_reg_n_0_[4] ),
+        .Q(s444_data_2d[4]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3106,7 +3091,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
        (.C(reference_clk),
         .CE(\s444_sync_d_reg_n_0_[0] ),
         .D(\s444_data_d_reg_n_0_[5] ),
-        .Q(\s444_data_2d_reg_n_0_[5] ),
+        .Q(s444_data_2d[5]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3114,7 +3099,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
        (.C(reference_clk),
         .CE(\s444_sync_d_reg_n_0_[0] ),
         .D(\s444_data_d_reg_n_0_[6] ),
-        .Q(\s444_data_2d_reg_n_0_[6] ),
+        .Q(s444_data_2d[6]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3122,7 +3107,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
        (.C(reference_clk),
         .CE(\s444_sync_d_reg_n_0_[0] ),
         .D(\s444_data_d_reg_n_0_[7] ),
-        .Q(\s444_data_2d_reg_n_0_[7] ),
+        .Q(s444_data_2d[7]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3130,7 +3115,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
        (.C(reference_clk),
         .CE(\s444_sync_d_reg_n_0_[0] ),
         .D(\s444_data_d_reg_n_0_[8] ),
-        .Q(\s444_data_2d_reg_n_0_[8] ),
+        .Q(s444_data_2d[8]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3138,14 +3123,14 @@ module system_axi_hdmi_core_0_ad_ss_444to422
        (.C(reference_clk),
         .CE(\s444_sync_d_reg_n_0_[0] ),
         .D(\s444_data_d_reg_n_0_[9] ),
-        .Q(\s444_data_2d_reg_n_0_[9] ),
+        .Q(s444_data_2d[9]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \s444_data_3d_reg[0] 
        (.C(reference_clk),
         .CE(s444_sync_2d),
-        .D(\s444_data_2d_reg_n_0_[0] ),
+        .D(s444_data_2d[0]),
         .Q(\s444_data_3d_reg_n_0_[0] ),
         .R(1'b0));
   FDRE #(
@@ -3153,7 +3138,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     \s444_data_3d_reg[10] 
        (.C(reference_clk),
         .CE(s444_sync_2d),
-        .D(\s444_data_2d_reg_n_0_[10] ),
+        .D(s444_data_2d[10]),
         .Q(\s444_data_3d_reg_n_0_[10] ),
         .R(1'b0));
   FDRE #(
@@ -3161,7 +3146,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     \s444_data_3d_reg[11] 
        (.C(reference_clk),
         .CE(s444_sync_2d),
-        .D(\s444_data_2d_reg_n_0_[11] ),
+        .D(s444_data_2d[11]),
         .Q(\s444_data_3d_reg_n_0_[11] ),
         .R(1'b0));
   FDRE #(
@@ -3169,7 +3154,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     \s444_data_3d_reg[12] 
        (.C(reference_clk),
         .CE(s444_sync_2d),
-        .D(\s444_data_2d_reg_n_0_[12] ),
+        .D(s444_data_2d[12]),
         .Q(\s444_data_3d_reg_n_0_[12] ),
         .R(1'b0));
   FDRE #(
@@ -3177,7 +3162,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     \s444_data_3d_reg[13] 
        (.C(reference_clk),
         .CE(s444_sync_2d),
-        .D(\s444_data_2d_reg_n_0_[13] ),
+        .D(s444_data_2d[13]),
         .Q(\s444_data_3d_reg_n_0_[13] ),
         .R(1'b0));
   FDRE #(
@@ -3185,7 +3170,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     \s444_data_3d_reg[14] 
        (.C(reference_clk),
         .CE(s444_sync_2d),
-        .D(\s444_data_2d_reg_n_0_[14] ),
+        .D(s444_data_2d[14]),
         .Q(\s444_data_3d_reg_n_0_[14] ),
         .R(1'b0));
   FDRE #(
@@ -3193,7 +3178,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     \s444_data_3d_reg[15] 
        (.C(reference_clk),
         .CE(s444_sync_2d),
-        .D(\s444_data_2d_reg_n_0_[15] ),
+        .D(s444_data_2d[15]),
         .Q(\s444_data_3d_reg_n_0_[15] ),
         .R(1'b0));
   FDRE #(
@@ -3201,7 +3186,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     \s444_data_3d_reg[16] 
        (.C(reference_clk),
         .CE(s444_sync_2d),
-        .D(p_0_in0_in[1]),
+        .D(s444_data_2d[16]),
         .Q(\s444_data_3d_reg_n_0_[16] ),
         .R(1'b0));
   FDRE #(
@@ -3209,7 +3194,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     \s444_data_3d_reg[17] 
        (.C(reference_clk),
         .CE(s444_sync_2d),
-        .D(p_0_in0_in[2]),
+        .D(s444_data_2d[17]),
         .Q(\s444_data_3d_reg_n_0_[17] ),
         .R(1'b0));
   FDRE #(
@@ -3217,7 +3202,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     \s444_data_3d_reg[18] 
        (.C(reference_clk),
         .CE(s444_sync_2d),
-        .D(p_0_in0_in[3]),
+        .D(s444_data_2d[18]),
         .Q(\s444_data_3d_reg_n_0_[18] ),
         .R(1'b0));
   FDRE #(
@@ -3225,7 +3210,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     \s444_data_3d_reg[19] 
        (.C(reference_clk),
         .CE(s444_sync_2d),
-        .D(p_0_in0_in[4]),
+        .D(s444_data_2d[19]),
         .Q(\s444_data_3d_reg_n_0_[19] ),
         .R(1'b0));
   FDRE #(
@@ -3233,7 +3218,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     \s444_data_3d_reg[1] 
        (.C(reference_clk),
         .CE(s444_sync_2d),
-        .D(\s444_data_2d_reg_n_0_[1] ),
+        .D(s444_data_2d[1]),
         .Q(\s444_data_3d_reg_n_0_[1] ),
         .R(1'b0));
   FDRE #(
@@ -3241,7 +3226,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     \s444_data_3d_reg[20] 
        (.C(reference_clk),
         .CE(s444_sync_2d),
-        .D(p_0_in0_in[5]),
+        .D(s444_data_2d[20]),
         .Q(\s444_data_3d_reg_n_0_[20] ),
         .R(1'b0));
   FDRE #(
@@ -3249,7 +3234,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     \s444_data_3d_reg[21] 
        (.C(reference_clk),
         .CE(s444_sync_2d),
-        .D(p_0_in0_in[6]),
+        .D(s444_data_2d[21]),
         .Q(\s444_data_3d_reg_n_0_[21] ),
         .R(1'b0));
   FDRE #(
@@ -3257,7 +3242,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     \s444_data_3d_reg[22] 
        (.C(reference_clk),
         .CE(s444_sync_2d),
-        .D(p_0_in0_in[7]),
+        .D(s444_data_2d[22]),
         .Q(\s444_data_3d_reg_n_0_[22] ),
         .R(1'b0));
   FDRE #(
@@ -3265,7 +3250,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     \s444_data_3d_reg[23] 
        (.C(reference_clk),
         .CE(s444_sync_2d),
-        .D(p_0_in0_in[8]),
+        .D(s444_data_2d[23]),
         .Q(\s444_data_3d_reg_n_0_[23] ),
         .R(1'b0));
   FDRE #(
@@ -3273,7 +3258,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     \s444_data_3d_reg[2] 
        (.C(reference_clk),
         .CE(s444_sync_2d),
-        .D(\s444_data_2d_reg_n_0_[2] ),
+        .D(s444_data_2d[2]),
         .Q(\s444_data_3d_reg_n_0_[2] ),
         .R(1'b0));
   FDRE #(
@@ -3281,7 +3266,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     \s444_data_3d_reg[3] 
        (.C(reference_clk),
         .CE(s444_sync_2d),
-        .D(\s444_data_2d_reg_n_0_[3] ),
+        .D(s444_data_2d[3]),
         .Q(\s444_data_3d_reg_n_0_[3] ),
         .R(1'b0));
   FDRE #(
@@ -3289,7 +3274,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     \s444_data_3d_reg[4] 
        (.C(reference_clk),
         .CE(s444_sync_2d),
-        .D(\s444_data_2d_reg_n_0_[4] ),
+        .D(s444_data_2d[4]),
         .Q(\s444_data_3d_reg_n_0_[4] ),
         .R(1'b0));
   FDRE #(
@@ -3297,7 +3282,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     \s444_data_3d_reg[5] 
        (.C(reference_clk),
         .CE(s444_sync_2d),
-        .D(\s444_data_2d_reg_n_0_[5] ),
+        .D(s444_data_2d[5]),
         .Q(\s444_data_3d_reg_n_0_[5] ),
         .R(1'b0));
   FDRE #(
@@ -3305,7 +3290,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     \s444_data_3d_reg[6] 
        (.C(reference_clk),
         .CE(s444_sync_2d),
-        .D(\s444_data_2d_reg_n_0_[6] ),
+        .D(s444_data_2d[6]),
         .Q(\s444_data_3d_reg_n_0_[6] ),
         .R(1'b0));
   FDRE #(
@@ -3313,7 +3298,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     \s444_data_3d_reg[7] 
        (.C(reference_clk),
         .CE(s444_sync_2d),
-        .D(\s444_data_2d_reg_n_0_[7] ),
+        .D(s444_data_2d[7]),
         .Q(\s444_data_3d_reg_n_0_[7] ),
         .R(1'b0));
   FDRE #(
@@ -3321,7 +3306,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     \s444_data_3d_reg[8] 
        (.C(reference_clk),
         .CE(s444_sync_2d),
-        .D(\s444_data_2d_reg_n_0_[8] ),
+        .D(s444_data_2d[8]),
         .Q(\s444_data_3d_reg_n_0_[8] ),
         .R(1'b0));
   FDRE #(
@@ -3329,7 +3314,7 @@ module system_axi_hdmi_core_0_ad_ss_444to422
     \s444_data_3d_reg[9] 
        (.C(reference_clk),
         .CE(s444_sync_2d),
-        .D(\s444_data_2d_reg_n_0_[9] ),
+        .D(s444_data_2d[9]),
         .Q(\s444_data_3d_reg_n_0_[9] ),
         .R(1'b0));
   FDRE #(
@@ -3540,8 +3525,8 @@ module system_axi_hdmi_core_0_ad_ss_444to422
         .D(s444_sync_2d),
         .Q(s444_sync_3d),
         .R(1'b0));
-  (* srl_bus_name = "inst/\i_tx_core/i_ss_444to422/s444_sync_3d_reg " *) 
-  (* srl_name = "inst/\i_tx_core/i_ss_444to422/s444_sync_3d_reg[3]_srl3 " *) 
+  (* srl_bus_name = "inst/\\i_tx_core/i_ss_444to422/s444_sync_3d_reg " *) 
+  (* srl_name = "inst/\\i_tx_core/i_ss_444to422/s444_sync_3d_reg[3]_srl3 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
     \s444_sync_3d_reg[3]_srl3 
@@ -3553,8 +3538,8 @@ module system_axi_hdmi_core_0_ad_ss_444to422
         .CLK(reference_clk),
         .D(hdmi_clip_vs_d),
         .Q(\s444_sync_3d_reg[3]_srl3_n_0 ));
-  (* srl_bus_name = "inst/\i_tx_core/i_ss_444to422/s444_sync_3d_reg " *) 
-  (* srl_name = "inst/\i_tx_core/i_ss_444to422/s444_sync_3d_reg[4]_srl3 " *) 
+  (* srl_bus_name = "inst/\\i_tx_core/i_ss_444to422/s444_sync_3d_reg " *) 
+  (* srl_name = "inst/\\i_tx_core/i_ss_444to422/s444_sync_3d_reg[4]_srl3 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
     \s444_sync_3d_reg[4]_srl3 
@@ -3691,6 +3676,7 @@ module system_axi_hdmi_core_0_axi_hdmi_tx
   wire [15:0]hdmi_he_max_s;
   wire [15:0]hdmi_he_min_s;
   wire [14:0]hdmi_hl_width_s;
+  wire [15:14]hdmi_hl_width_s_1;
   wire [15:0]hdmi_hs_count_reg;
   wire [15:0]hdmi_hs_width_s;
   wire hdmi_out_clk;
@@ -3703,6 +3689,7 @@ module system_axi_hdmi_core_0_axi_hdmi_tx
   wire [15:0]hdmi_ve_max_s;
   wire [15:0]hdmi_ve_min_s;
   wire [14:0]hdmi_vf_width_s;
+  wire [15:14]hdmi_vf_width_s_0;
   wire [15:0]hdmi_vs_count_reg;
   wire [15:0]hdmi_vs_width_s;
   wire i_tx_core_n_100;
@@ -3716,10 +3703,10 @@ module system_axi_hdmi_core_0_axi_hdmi_tx
   wire i_tx_core_n_108;
   wire i_tx_core_n_109;
   wire i_tx_core_n_110;
-  wire i_tx_core_n_63;
-  wire i_tx_core_n_64;
-  wire i_tx_core_n_65;
-  wire i_tx_core_n_66;
+  wire i_tx_core_n_111;
+  wire i_tx_core_n_112;
+  wire i_tx_core_n_113;
+  wire i_tx_core_n_114;
   wire i_tx_core_n_67;
   wire i_tx_core_n_68;
   wire i_tx_core_n_69;
@@ -3740,10 +3727,10 @@ module system_axi_hdmi_core_0_axi_hdmi_tx
   wire i_tx_core_n_84;
   wire i_tx_core_n_85;
   wire i_tx_core_n_86;
-  wire i_tx_core_n_95;
-  wire i_tx_core_n_96;
-  wire i_tx_core_n_97;
-  wire i_tx_core_n_98;
+  wire i_tx_core_n_87;
+  wire i_tx_core_n_88;
+  wire i_tx_core_n_89;
+  wire i_tx_core_n_90;
   wire i_tx_core_n_99;
   wire i_up_axi_n_38;
   wire i_up_axi_n_39;
@@ -3824,7 +3811,7 @@ module system_axi_hdmi_core_0_axi_hdmi_tx
   wire i_up_n_407;
   wire i_up_n_408;
   wire i_up_n_409;
-  wire i_up_n_411;
+  wire i_up_n_410;
   wire i_up_n_412;
   wire i_up_n_413;
   wire i_up_n_414;
@@ -3943,7 +3930,9 @@ module system_axi_hdmi_core_0_axi_hdmi_tx
   wire i_up_n_527;
   wire i_up_n_528;
   wire i_up_n_529;
+  wire i_up_n_530;
   wire i_up_n_531;
+  wire i_up_n_533;
   wire p_0_in;
   wire [1:0]p_10_in;
   wire [7:0]p_1_in2_in;
@@ -4141,79 +4130,83 @@ module system_axi_hdmi_core_0_axi_hdmi_tx
         .R(NLW_i_clk_oddr_R_UNCONNECTED),
         .S(NLW_i_clk_oddr_S_UNCONNECTED));
   system_axi_hdmi_core_0_axi_hdmi_tx_core i_tx_core
-       (.D({i_up_n_480,i_up_n_481,i_up_n_482,i_up_n_483,i_up_n_484,i_up_n_485,i_up_n_486,i_up_n_487,i_up_n_488,i_up_n_489,i_up_n_490,i_up_n_491,i_up_n_492,i_up_n_493,i_up_n_494,i_up_n_495,i_up_n_496,i_up_n_497,i_up_n_498,i_up_n_499,i_up_n_500,i_up_n_501,i_up_n_502,i_up_n_503}),
-        .DI({i_up_n_415,i_up_n_416,i_up_n_417,i_up_n_418}),
+       (.D({i_up_n_482,i_up_n_483,i_up_n_484,i_up_n_485,i_up_n_486,i_up_n_487,i_up_n_488,i_up_n_489,i_up_n_490,i_up_n_491,i_up_n_492,i_up_n_493,i_up_n_494,i_up_n_495,i_up_n_496,i_up_n_497,i_up_n_498,i_up_n_499,i_up_n_500,i_up_n_501,i_up_n_502,i_up_n_503,i_up_n_504,i_up_n_505}),
+        .DI({i_up_n_416,i_up_n_417,i_up_n_418,i_up_n_419}),
         .E(vdma_wr_s),
+        .O(hdmi_hl_width_s_1),
         .Q(vdma_waddr_s),
         .S({i_up_n_406,i_up_n_407,i_up_n_408,i_up_n_409}),
+        .\d_data_cntrl_int_reg[110] (hdmi_vf_width_s_0),
         .hdmi_16_data(hdmi_16_data),
         .hdmi_16_data_e(hdmi_16_data_e),
         .hdmi_16_data_e_d_reg_0({hdmi_ss_bypass_s,hdmi_csc_bypass_s,hdmi_hl_width_s,hdmi_hs_width_s,hdmi_he_max_s,hdmi_he_min_s,hdmi_vf_width_s,hdmi_vs_width_s,hdmi_ve_max_s,hdmi_ve_min_s,hdmi_clip_max_s,hdmi_clip_min_s}),
         .hdmi_16_hsync(hdmi_16_hsync),
         .hdmi_16_vsync(hdmi_16_vsync),
-        .\hdmi_24_csc_data_reg[23]_0 ({p_1_in2_in,i_tx_core_n_95,i_tx_core_n_96,i_tx_core_n_97,i_tx_core_n_98,i_tx_core_n_99,i_tx_core_n_100,i_tx_core_n_101,i_tx_core_n_102,i_tx_core_n_103,i_tx_core_n_104,i_tx_core_n_105,i_tx_core_n_106,i_tx_core_n_107,i_tx_core_n_108,i_tx_core_n_109,i_tx_core_n_110}),
-        .\hdmi_clip_data_reg[15]_0 ({i_up_n_517,i_up_n_518,i_up_n_519,i_up_n_520}),
-        .\hdmi_clip_data_reg[15]_1 ({i_up_n_513,i_up_n_514,i_up_n_515,i_up_n_516}),
-        .\hdmi_clip_data_reg[23]_0 ({i_up_n_525,i_up_n_526,i_up_n_527,i_up_n_528}),
-        .\hdmi_clip_data_reg[23]_1 ({i_up_n_521,i_up_n_522,i_up_n_523,i_up_n_524}),
-        .\hdmi_clip_data_reg[7]_0 ({i_up_n_509,i_up_n_510,i_up_n_511,i_up_n_512}),
-        .\hdmi_clip_data_reg[7]_1 ({i_up_n_505,i_up_n_506,i_up_n_507,i_up_n_508}),
+        .\hdmi_24_csc_data_reg[23]_0 ({p_1_in2_in,i_tx_core_n_99,i_tx_core_n_100,i_tx_core_n_101,i_tx_core_n_102,i_tx_core_n_103,i_tx_core_n_104,i_tx_core_n_105,i_tx_core_n_106,i_tx_core_n_107,i_tx_core_n_108,i_tx_core_n_109,i_tx_core_n_110,i_tx_core_n_111,i_tx_core_n_112,i_tx_core_n_113,i_tx_core_n_114}),
+        .\hdmi_clip_data_reg[15]_0 ({i_up_n_519,i_up_n_520,i_up_n_521,i_up_n_522}),
+        .\hdmi_clip_data_reg[15]_1 ({i_up_n_515,i_up_n_516,i_up_n_517,i_up_n_518}),
+        .\hdmi_clip_data_reg[23]_0 ({i_up_n_527,i_up_n_528,i_up_n_529,i_up_n_530}),
+        .\hdmi_clip_data_reg[23]_1 ({i_up_n_523,i_up_n_524,i_up_n_525,i_up_n_526}),
+        .\hdmi_clip_data_reg[7]_0 ({i_up_n_511,i_up_n_512,i_up_n_513,i_up_n_514}),
+        .\hdmi_clip_data_reg[7]_1 ({i_up_n_507,i_up_n_508,i_up_n_509,i_up_n_510}),
         .hdmi_enable0(hdmi_enable0),
-        .hdmi_fs2_carry__0_0({i_up_n_411,i_up_n_412,i_up_n_413,i_up_n_414}),
-        .hdmi_fs_reg_0({i_up_n_422,i_up_n_423}),
+        .hdmi_fs2_carry__0_0({i_up_n_412,i_up_n_413,i_up_n_414,i_up_n_415}),
+        .hdmi_fs_reg_0({i_up_n_423,i_up_n_424}),
         .hdmi_fs_ret(hdmi_fs_ret),
         .hdmi_fs_toggle_s(hdmi_fs_toggle_s),
         .\hdmi_fs_waddr_reg[8]_0 (vdma_fs_waddr_s),
-        .hdmi_hs1_carry__0_0({i_up_n_425,i_up_n_426,i_up_n_427,i_up_n_428}),
-        .hdmi_hs_2d_reg_srl3_i_1_0({i_up_n_429,i_up_n_430,i_up_n_431,i_up_n_432}),
+        .hdmi_hs1_carry__0_0({i_up_n_426,i_up_n_427,i_up_n_428,i_up_n_429}),
+        .hdmi_hs_2d_reg_srl3_i_1_0({i_up_n_430,i_up_n_431,i_up_n_432,i_up_n_433}),
         .hdmi_hs_count0_carry__0_i_6_0({i_up_n_219,i_up_n_220,i_up_n_221}),
         .hdmi_hs_count0_carry__0_i_8_0({i_up_n_398,i_up_n_399,i_up_n_400,i_up_n_401}),
         .hdmi_hs_count0_carry_i_6_0({i_up_n_402,i_up_n_403,i_up_n_404,i_up_n_405}),
-        .hdmi_hs_de1_carry__0_0({i_up_n_464,i_up_n_465,i_up_n_466,i_up_n_467}),
-        .\hdmi_hs_de1_inferred__0/i__carry__0_0 ({i_up_n_472,i_up_n_473,i_up_n_474,i_up_n_475}),
-        .hdmi_hs_de_reg_0({i_up_n_468,i_up_n_469,i_up_n_470,i_up_n_471}),
-        .hdmi_hs_de_reg_1({i_up_n_476,i_up_n_477,i_up_n_478,i_up_n_479}),
+        .hdmi_hs_de1_carry__0_0({i_up_n_466,i_up_n_467,i_up_n_468,i_up_n_469}),
+        .\hdmi_hs_de1_inferred__0/i__carry__0_0 ({i_up_n_474,i_up_n_475,i_up_n_476,i_up_n_477}),
+        .hdmi_hs_de_reg_0({i_up_n_470,i_up_n_471,i_up_n_472,i_up_n_473}),
+        .hdmi_hs_de_reg_1({i_up_n_478,i_up_n_479,i_up_n_480,i_up_n_481}),
         .\hdmi_raddr_g_reg[8]_0 (hdmi_raddr_g_s),
         .hdmi_status_s(hdmi_status_s),
         .hdmi_tpm_data0(hdmi_tpm_data0),
         .\hdmi_tpm_data_reg[23]_0 (hdmi_tpm_data_reg),
         .hdmi_tpm_oos_s(hdmi_tpm_oos_s),
-        .hdmi_vs_2d_reg_srl3_i_1_0({i_up_n_419,i_up_n_420,i_up_n_421}),
-        .hdmi_vs_2d_reg_srl3_i_1_1(i_up_n_424),
-        .hdmi_vs_count0_carry__0_i_6_0({i_up_n_433,i_up_n_434,i_up_n_435}),
-        .hdmi_vs_count0_carry__0_i_8_0({i_up_n_436,i_up_n_437,i_up_n_438,i_up_n_439}),
-        .hdmi_vs_count0_carry_i_6_0({i_up_n_440,i_up_n_441,i_up_n_442,i_up_n_443}),
-        .hdmi_vs_count0_carry_i_8_0({i_up_n_444,i_up_n_445,i_up_n_446,i_up_n_447}),
+        .hdmi_vs_2d_reg_srl3_i_1_0({i_up_n_420,i_up_n_421,i_up_n_422}),
+        .hdmi_vs_2d_reg_srl3_i_1_1(i_up_n_425),
+        .hdmi_vs_count0_carry__0_i_6_0({i_up_n_434,i_up_n_435,i_up_n_436}),
+        .hdmi_vs_count0_carry__0_i_8_0({i_up_n_437,i_up_n_438,i_up_n_439,i_up_n_440}),
+        .hdmi_vs_count0_carry_i_6_0({i_up_n_441,i_up_n_442,i_up_n_443,i_up_n_444}),
+        .hdmi_vs_count0_carry_i_8_0({i_up_n_445,i_up_n_446,i_up_n_447,i_up_n_448}),
+        .\hdmi_vs_count_reg[0]_0 (i_up_n_410),
+        .\hdmi_vs_count_reg[0]_1 (i_up_n_449),
         .\hdmi_vs_count_reg[15]_0 (hdmi_vs_count_reg),
-        .hdmi_vs_de1_carry__0_0({i_up_n_448,i_up_n_449,i_up_n_450,i_up_n_451}),
-        .\hdmi_vs_de1_inferred__0/i__carry__0_0 ({i_up_n_456,i_up_n_457,i_up_n_458,i_up_n_459}),
-        .hdmi_vs_de_reg_0({i_up_n_452,i_up_n_453,i_up_n_454,i_up_n_455}),
-        .hdmi_vs_de_reg_1({i_up_n_460,i_up_n_461,i_up_n_462,i_up_n_463}),
-        .m_ram_reg(i_tx_core_n_63),
-        .m_ram_reg_0(i_tx_core_n_64),
-        .m_ram_reg_1(i_tx_core_n_65),
-        .m_ram_reg_10(i_tx_core_n_74),
-        .m_ram_reg_11(i_tx_core_n_75),
-        .m_ram_reg_12(i_tx_core_n_76),
-        .m_ram_reg_13(i_tx_core_n_77),
-        .m_ram_reg_14(i_tx_core_n_78),
-        .m_ram_reg_15(i_tx_core_n_79),
-        .m_ram_reg_16(i_tx_core_n_80),
-        .m_ram_reg_17(i_tx_core_n_81),
-        .m_ram_reg_18(i_tx_core_n_82),
-        .m_ram_reg_19(i_tx_core_n_83),
-        .m_ram_reg_2(i_tx_core_n_66),
-        .m_ram_reg_20(i_tx_core_n_84),
-        .m_ram_reg_21(i_tx_core_n_85),
-        .m_ram_reg_22(i_tx_core_n_86),
+        .hdmi_vs_de1_carry__0_0({i_up_n_450,i_up_n_451,i_up_n_452,i_up_n_453}),
+        .\hdmi_vs_de1_inferred__0/i__carry__0_0 ({i_up_n_458,i_up_n_459,i_up_n_460,i_up_n_461}),
+        .hdmi_vs_de_reg_0({i_up_n_454,i_up_n_455,i_up_n_456,i_up_n_457}),
+        .hdmi_vs_de_reg_1({i_up_n_462,i_up_n_463,i_up_n_464,i_up_n_465}),
+        .m_ram_reg(i_tx_core_n_67),
+        .m_ram_reg_0(i_tx_core_n_68),
+        .m_ram_reg_1(i_tx_core_n_69),
+        .m_ram_reg_10(i_tx_core_n_78),
+        .m_ram_reg_11(i_tx_core_n_79),
+        .m_ram_reg_12(i_tx_core_n_80),
+        .m_ram_reg_13(i_tx_core_n_81),
+        .m_ram_reg_14(i_tx_core_n_82),
+        .m_ram_reg_15(i_tx_core_n_83),
+        .m_ram_reg_16(i_tx_core_n_84),
+        .m_ram_reg_17(i_tx_core_n_85),
+        .m_ram_reg_18(i_tx_core_n_86),
+        .m_ram_reg_19(i_tx_core_n_87),
+        .m_ram_reg_2(i_tx_core_n_70),
+        .m_ram_reg_20(i_tx_core_n_88),
+        .m_ram_reg_21(i_tx_core_n_89),
+        .m_ram_reg_22(i_tx_core_n_90),
         .m_ram_reg_23(vdma_wdata_s),
-        .m_ram_reg_3(i_tx_core_n_67),
-        .m_ram_reg_4(i_tx_core_n_68),
-        .m_ram_reg_5(i_tx_core_n_69),
-        .m_ram_reg_6(i_tx_core_n_70),
-        .m_ram_reg_7(i_tx_core_n_71),
-        .m_ram_reg_8(i_tx_core_n_72),
-        .m_ram_reg_9(i_tx_core_n_73),
+        .m_ram_reg_3(i_tx_core_n_71),
+        .m_ram_reg_4(i_tx_core_n_72),
+        .m_ram_reg_5(i_tx_core_n_73),
+        .m_ram_reg_6(i_tx_core_n_74),
+        .m_ram_reg_7(i_tx_core_n_75),
+        .m_ram_reg_8(i_tx_core_n_76),
+        .m_ram_reg_9(i_tx_core_n_77),
         .out(hdmi_hs_count_reg),
         .reference_clk(reference_clk),
         .reference_rst(reference_rst),
@@ -4221,88 +4214,92 @@ module system_axi_hdmi_core_0_axi_hdmi_tx
         .vdma_fs_ret_toggle_s(vdma_fs_ret_toggle_s));
   system_axi_hdmi_core_0_up_hdmi_tx i_up
        (.AR(reference_rst),
-        .D({i_up_n_480,i_up_n_481,i_up_n_482,i_up_n_483,i_up_n_484,i_up_n_485,i_up_n_486,i_up_n_487,i_up_n_488,i_up_n_489,i_up_n_490,i_up_n_491,i_up_n_492,i_up_n_493,i_up_n_494,i_up_n_495,i_up_n_496,i_up_n_497,i_up_n_498,i_up_n_499,i_up_n_500,i_up_n_501,i_up_n_502,i_up_n_503}),
-        .DI({i_up_n_415,i_up_n_416,i_up_n_417,i_up_n_418}),
+        .D({i_up_n_482,i_up_n_483,i_up_n_484,i_up_n_485,i_up_n_486,i_up_n_487,i_up_n_488,i_up_n_489,i_up_n_490,i_up_n_491,i_up_n_492,i_up_n_493,i_up_n_494,i_up_n_495,i_up_n_496,i_up_n_497,i_up_n_498,i_up_n_499,i_up_n_500,i_up_n_501,i_up_n_502,i_up_n_503,i_up_n_504,i_up_n_505}),
+        .DI({i_up_n_416,i_up_n_417,i_up_n_418,i_up_n_419}),
         .E(up_clip_min0),
+        .O(hdmi_hl_width_s_1),
         .Q({up_raddr_s[8],up_raddr_s[4],up_raddr_s[1:0]}),
         .S({i_up_n_406,i_up_n_407,i_up_n_408,i_up_n_409}),
-        .\d_data_cntrl_int_reg[100] ({i_up_n_444,i_up_n_445,i_up_n_446,i_up_n_447}),
-        .\d_data_cntrl_int_reg[104] ({i_up_n_440,i_up_n_441,i_up_n_442,i_up_n_443}),
-        .\d_data_cntrl_int_reg[108] ({i_up_n_436,i_up_n_437,i_up_n_438,i_up_n_439}),
-        .\d_data_cntrl_int_reg[111] ({i_up_n_433,i_up_n_434,i_up_n_435}),
-        .\d_data_cntrl_int_reg[135] ({i_up_n_472,i_up_n_473,i_up_n_474,i_up_n_475}),
-        .\d_data_cntrl_int_reg[143] ({i_up_n_476,i_up_n_477,i_up_n_478,i_up_n_479}),
-        .\d_data_cntrl_int_reg[14] ({i_up_n_513,i_up_n_514,i_up_n_515,i_up_n_516}),
-        .\d_data_cntrl_int_reg[14]_0 ({i_up_n_517,i_up_n_518,i_up_n_519,i_up_n_520}),
-        .\d_data_cntrl_int_reg[151] ({i_up_n_464,i_up_n_465,i_up_n_466,i_up_n_467}),
-        .\d_data_cntrl_int_reg[159] ({i_up_n_468,i_up_n_469,i_up_n_470,i_up_n_471}),
-        .\d_data_cntrl_int_reg[167] ({i_up_n_425,i_up_n_426,i_up_n_427,i_up_n_428}),
-        .\d_data_cntrl_int_reg[175] ({i_up_n_429,i_up_n_430,i_up_n_431,i_up_n_432}),
+        .\d_data_cntrl_int_reg[100] ({i_up_n_445,i_up_n_446,i_up_n_447,i_up_n_448}),
+        .\d_data_cntrl_int_reg[104] ({i_up_n_441,i_up_n_442,i_up_n_443,i_up_n_444}),
+        .\d_data_cntrl_int_reg[108] ({i_up_n_437,i_up_n_438,i_up_n_439,i_up_n_440}),
+        .\d_data_cntrl_int_reg[111] ({i_up_n_434,i_up_n_435,i_up_n_436}),
+        .\d_data_cntrl_int_reg[135] ({i_up_n_474,i_up_n_475,i_up_n_476,i_up_n_477}),
+        .\d_data_cntrl_int_reg[143] ({i_up_n_478,i_up_n_479,i_up_n_480,i_up_n_481}),
+        .\d_data_cntrl_int_reg[14] ({i_up_n_515,i_up_n_516,i_up_n_517,i_up_n_518}),
+        .\d_data_cntrl_int_reg[14]_0 ({i_up_n_519,i_up_n_520,i_up_n_521,i_up_n_522}),
+        .\d_data_cntrl_int_reg[151] ({i_up_n_466,i_up_n_467,i_up_n_468,i_up_n_469}),
+        .\d_data_cntrl_int_reg[159] ({i_up_n_470,i_up_n_471,i_up_n_472,i_up_n_473}),
+        .\d_data_cntrl_int_reg[167] ({i_up_n_426,i_up_n_427,i_up_n_428,i_up_n_429}),
+        .\d_data_cntrl_int_reg[175] ({i_up_n_430,i_up_n_431,i_up_n_432,i_up_n_433}),
         .\d_data_cntrl_int_reg[184] ({i_up_n_402,i_up_n_403,i_up_n_404,i_up_n_405}),
         .\d_data_cntrl_int_reg[188] ({i_up_n_398,i_up_n_399,i_up_n_400,i_up_n_401}),
         .\d_data_cntrl_int_reg[191] ({i_up_n_219,i_up_n_220,i_up_n_221}),
-        .\d_data_cntrl_int_reg[22] ({i_up_n_521,i_up_n_522,i_up_n_523,i_up_n_524}),
-        .\d_data_cntrl_int_reg[22]_0 ({i_up_n_525,i_up_n_526,i_up_n_527,i_up_n_528}),
+        .\d_data_cntrl_int_reg[22] ({i_up_n_523,i_up_n_524,i_up_n_525,i_up_n_526}),
+        .\d_data_cntrl_int_reg[22]_0 ({i_up_n_527,i_up_n_528,i_up_n_529,i_up_n_530}),
         .\d_data_cntrl_int_reg[235] ({hdmi_ss_bypass_s,hdmi_csc_bypass_s,hdmi_hl_width_s,hdmi_hs_width_s,hdmi_he_max_s,hdmi_he_min_s,hdmi_vf_width_s,hdmi_vs_width_s,hdmi_ve_max_s,hdmi_ve_min_s,hdmi_clip_max_s,hdmi_clip_min_s}),
-        .\d_data_cntrl_int_reg[55] ({i_up_n_456,i_up_n_457,i_up_n_458,i_up_n_459}),
-        .\d_data_cntrl_int_reg[63] ({i_up_n_460,i_up_n_461,i_up_n_462,i_up_n_463}),
-        .\d_data_cntrl_int_reg[6] ({i_up_n_505,i_up_n_506,i_up_n_507,i_up_n_508}),
-        .\d_data_cntrl_int_reg[6]_0 ({i_up_n_509,i_up_n_510,i_up_n_511,i_up_n_512}),
-        .\d_data_cntrl_int_reg[71] ({i_up_n_448,i_up_n_449,i_up_n_450,i_up_n_451}),
-        .\d_data_cntrl_int_reg[79] ({i_up_n_452,i_up_n_453,i_up_n_454,i_up_n_455}),
-        .\d_data_cntrl_int_reg[90] ({i_up_n_411,i_up_n_412,i_up_n_413,i_up_n_414}),
-        .\d_data_cntrl_int_reg[93] ({i_up_n_419,i_up_n_420,i_up_n_421}),
-        .\d_data_cntrl_int_reg[95] ({i_up_n_422,i_up_n_423}),
-        .\d_data_cntrl_int_reg[95]_0 (i_up_n_424),
+        .\d_data_cntrl_int_reg[55] ({i_up_n_458,i_up_n_459,i_up_n_460,i_up_n_461}),
+        .\d_data_cntrl_int_reg[63] ({i_up_n_462,i_up_n_463,i_up_n_464,i_up_n_465}),
+        .\d_data_cntrl_int_reg[6] ({i_up_n_507,i_up_n_508,i_up_n_509,i_up_n_510}),
+        .\d_data_cntrl_int_reg[6]_0 ({i_up_n_511,i_up_n_512,i_up_n_513,i_up_n_514}),
+        .\d_data_cntrl_int_reg[71] ({i_up_n_450,i_up_n_451,i_up_n_452,i_up_n_453}),
+        .\d_data_cntrl_int_reg[79] ({i_up_n_454,i_up_n_455,i_up_n_456,i_up_n_457}),
+        .\d_data_cntrl_int_reg[90] ({i_up_n_412,i_up_n_413,i_up_n_414,i_up_n_415}),
+        .\d_data_cntrl_int_reg[93] ({i_up_n_420,i_up_n_421,i_up_n_422}),
+        .\d_data_cntrl_int_reg[95] ({i_up_n_423,i_up_n_424}),
+        .\d_data_cntrl_int_reg[95]_0 (i_up_n_425),
         .data7(data7),
-        .\hdmi_clip_data1_inferred__1/i__carry ({p_1_in2_in,i_tx_core_n_95,i_tx_core_n_96,i_tx_core_n_97,i_tx_core_n_98,i_tx_core_n_99,i_tx_core_n_100,i_tx_core_n_101,i_tx_core_n_102,i_tx_core_n_103,i_tx_core_n_104,i_tx_core_n_105,i_tx_core_n_106,i_tx_core_n_107,i_tx_core_n_108,i_tx_core_n_109,i_tx_core_n_110}),
-        .\hdmi_data_reg[0] (i_tx_core_n_64),
-        .\hdmi_data_reg[1] (i_tx_core_n_65),
-        .\hdmi_data_reg[2] (i_tx_core_n_63),
-        .\hdmi_data_reg[3] (i_tx_core_n_67),
-        .\hdmi_data_reg[4] (i_tx_core_n_68),
-        .\hdmi_data_reg[5] (i_tx_core_n_66),
-        .\hdmi_data_reg[6] (i_tx_core_n_70),
-        .\hdmi_data_reg[7] (i_tx_core_n_71),
+        .\hdmi_clip_data1_inferred__1/i__carry ({p_1_in2_in,i_tx_core_n_99,i_tx_core_n_100,i_tx_core_n_101,i_tx_core_n_102,i_tx_core_n_103,i_tx_core_n_104,i_tx_core_n_105,i_tx_core_n_106,i_tx_core_n_107,i_tx_core_n_108,i_tx_core_n_109,i_tx_core_n_110,i_tx_core_n_111,i_tx_core_n_112,i_tx_core_n_113,i_tx_core_n_114}),
+        .\hdmi_data_reg[0] (i_tx_core_n_68),
+        .\hdmi_data_reg[1] (i_tx_core_n_69),
+        .\hdmi_data_reg[2] (i_tx_core_n_67),
+        .\hdmi_data_reg[3] (i_tx_core_n_71),
+        .\hdmi_data_reg[4] (i_tx_core_n_72),
+        .\hdmi_data_reg[5] (i_tx_core_n_70),
+        .\hdmi_data_reg[6] (i_tx_core_n_74),
+        .\hdmi_data_reg[7] (i_tx_core_n_75),
         .hdmi_enable0(hdmi_enable0),
         .hdmi_fs_ret(hdmi_fs_ret),
+        .\hdmi_hs_count_reg[15] (i_up_n_410),
         .hdmi_status_s(hdmi_status_s),
         .hdmi_tpm_data0(hdmi_tpm_data0),
         .hdmi_tpm_oos_s(hdmi_tpm_oos_s),
         .hdmi_vs1_carry__0(hdmi_vs_count_reg),
+        .hdmi_vs_count0_carry__0(hdmi_vf_width_s_0),
+        .\hdmi_vs_count_reg[15] (i_up_n_449),
         .out(hdmi_hs_count_reg),
         .p_0_in(p_0_in),
         .p_10_in(p_10_in),
         .p_9_in(p_9_in),
         .reference_clk(reference_clk),
-        .rst_reg(i_up_n_504),
+        .rst_reg(i_up_n_506),
         .s_axi_aclk(s_axi_aclk),
         .s_axi_aresetn(s_axi_aresetn),
         .s_data_1_reg(hdmi_tpm_data_reg),
-        .s_data_1_reg_0(i_tx_core_n_80),
-        .s_data_1_reg_1(i_tx_core_n_78),
-        .s_data_1_reg_2(i_tx_core_n_83),
-        .s_data_1_reg_3(i_tx_core_n_81),
-        .s_data_1_reg_4(i_tx_core_n_82),
-        .s_data_1_reg_5(i_tx_core_n_86),
-        .s_data_1_reg_6(i_tx_core_n_84),
-        .s_data_1_reg_7(i_tx_core_n_85),
-        .s_data_2_reg(i_tx_core_n_69),
-        .s_data_2_reg_0(i_tx_core_n_74),
-        .s_data_2_reg_1(i_tx_core_n_72),
-        .s_data_2_reg_2(i_tx_core_n_73),
-        .s_data_2_reg_3(i_tx_core_n_77),
-        .s_data_2_reg_4(i_tx_core_n_75),
-        .s_data_2_reg_5(i_tx_core_n_76),
-        .s_data_2_reg_6(i_tx_core_n_79),
+        .s_data_1_reg_0(i_tx_core_n_84),
+        .s_data_1_reg_1(i_tx_core_n_82),
+        .s_data_1_reg_2(i_tx_core_n_87),
+        .s_data_1_reg_3(i_tx_core_n_85),
+        .s_data_1_reg_4(i_tx_core_n_86),
+        .s_data_1_reg_5(i_tx_core_n_90),
+        .s_data_1_reg_6(i_tx_core_n_88),
+        .s_data_1_reg_7(i_tx_core_n_89),
+        .s_data_2_reg(i_tx_core_n_73),
+        .s_data_2_reg_0(i_tx_core_n_78),
+        .s_data_2_reg_1(i_tx_core_n_76),
+        .s_data_2_reg_2(i_tx_core_n_77),
+        .s_data_2_reg_3(i_tx_core_n_81),
+        .s_data_2_reg_4(i_tx_core_n_79),
+        .s_data_2_reg_5(i_tx_core_n_80),
+        .s_data_2_reg_6(i_tx_core_n_83),
         .\up_clip_max_reg[23]_0 (up_clip_max0),
         .\up_clip_min_reg[1]_0 (i_up_n_216),
         .\up_const_rgb_reg[0]_0 (i_up_n_217),
         .\up_const_rgb_reg[23]_0 (up_const_rgb0),
         .up_csc_bypass_reg_0(i_up_axi_n_93),
         .\up_d_count_reg[31] (up_d_count),
-        .\up_data_status_int_reg[0] (i_up_n_529),
-        .\up_data_status_int_reg[0]_0 (i_up_n_531),
+        .\up_data_status_int_reg[0] (i_up_n_531),
+        .\up_data_status_int_reg[0]_0 (i_up_n_533),
         .up_hdmi_tpm_oos_reg_0(i_up_axi_n_43),
         .\up_he_min_reg[15]_0 (up_he_max0),
         .\up_hl_width_reg[15]_0 (up_hl_active0),
@@ -4381,7 +4378,7 @@ module system_axi_hdmi_core_0_axi_hdmi_tx
         .s_axi_wvalid(s_axi_wvalid),
         .up_axi_rvalid_int_reg_0(s_axi_rvalid),
         .\up_d_count_reg[31] ({i_up_axi_n_55,i_up_axi_n_56,i_up_axi_n_57,i_up_axi_n_58,i_up_axi_n_59,i_up_axi_n_60,i_up_axi_n_61,i_up_axi_n_62,i_up_axi_n_63,i_up_axi_n_64,i_up_axi_n_65,i_up_axi_n_66,i_up_axi_n_67,i_up_axi_n_68,i_up_axi_n_69,i_up_axi_n_70,i_up_axi_n_71,i_up_axi_n_72,i_up_axi_n_73,i_up_axi_n_74,i_up_axi_n_75,i_up_axi_n_76,i_up_axi_n_77,i_up_axi_n_78,i_up_axi_n_79,i_up_axi_n_80,i_up_axi_n_81,i_up_axi_n_82,i_up_axi_n_83,i_up_axi_n_84,i_up_axi_n_85,i_up_axi_n_86}),
-        .up_hdmi_tpm_oos_reg(i_up_n_529),
+        .up_hdmi_tpm_oos_reg(i_up_n_531),
         .up_rack_s(up_rack_s),
         .\up_raddr_int_reg[8]_0 ({up_raddr_s[8],up_raddr_s[4],up_raddr_s[1:0]}),
         .\up_rdata_d_reg[31]_0 (up_rdata_s),
@@ -4414,7 +4411,7 @@ module system_axi_hdmi_core_0_axi_hdmi_tx
         .up_rreq_s(up_rreq_s),
         .up_ss_bypass_reg({up_data_cntrl[235:215],up_data_cntrl[212:209],up_data_cntrl[207],up_data_cntrl[199:192],up_data_cntrl[182:181],up_data_cntrl[178:176],up_data_cntrl[162:147],up_data_cntrl[145:135],up_data_cntrl[132:127],up_data_cntrl[119:115],up_data_cntrl[113:112],up_data_cntrl[98:96],up_data_cntrl[82:67],up_data_cntrl[65:55],up_data_cntrl[52:26],up_data_cntrl[24:2],up_data_cntrl[0]}),
         .up_vdma_ovf_s(up_vdma_ovf_s),
-        .up_vdma_tpm_oos_reg(i_up_n_531),
+        .up_vdma_tpm_oos_reg(i_up_n_533),
         .up_vdma_unf_s(up_vdma_unf_s),
         .up_wack_s(up_wack_s),
         .\up_waddr_int_reg[0]_0 (up_hs_width0),
@@ -4450,7 +4447,7 @@ module system_axi_hdmi_core_0_axi_hdmi_tx
         .vdma_ovf_s(vdma_ovf_s),
         .vdma_ready(vdma_ready),
         .vdma_rst(vdma_rst),
-        .\vdma_tpm_data_reg[22]_0 (i_up_n_504),
+        .\vdma_tpm_data_reg[22]_0 (i_up_n_506),
         .vdma_tpm_oos_s(vdma_tpm_oos_s),
         .vdma_unf_s(vdma_unf_s),
         .vdma_valid(vdma_valid),
@@ -4464,6 +4461,8 @@ module system_axi_hdmi_core_0_axi_hdmi_tx_core
     hdmi_16_data_e,
     hdmi_fs_ret,
     hdmi_status_s,
+    O,
+    \d_data_cntrl_int_reg[110] ,
     hdmi_fs_toggle_s,
     hdmi_tpm_oos_s,
     out,
@@ -4510,6 +4509,7 @@ module system_axi_hdmi_core_0_axi_hdmi_tx_core
     hdmi_hs_count0_carry_i_6_0,
     hdmi_hs_count0_carry__0_i_8_0,
     hdmi_hs_count0_carry__0_i_6_0,
+    \hdmi_vs_count_reg[0]_0 ,
     DI,
     hdmi_vs_2d_reg_srl3_i_1_0,
     hdmi_vs_2d_reg_srl3_i_1_1,
@@ -4519,6 +4519,7 @@ module system_axi_hdmi_core_0_axi_hdmi_tx_core
     hdmi_vs_count0_carry_i_6_0,
     hdmi_vs_count0_carry__0_i_8_0,
     hdmi_vs_count0_carry__0_i_6_0,
+    \hdmi_vs_count_reg[0]_1 ,
     hdmi_vs_de1_carry__0_0,
     hdmi_vs_de_reg_0,
     \hdmi_vs_de1_inferred__0/i__carry__0_0 ,
@@ -4542,6 +4543,8 @@ module system_axi_hdmi_core_0_axi_hdmi_tx_core
   output hdmi_16_data_e;
   output hdmi_fs_ret;
   output hdmi_status_s;
+  output [1:0]O;
+  output [1:0]\d_data_cntrl_int_reg[110] ;
   output hdmi_fs_toggle_s;
   output hdmi_tpm_oos_s;
   output [15:0]out;
@@ -4588,6 +4591,7 @@ module system_axi_hdmi_core_0_axi_hdmi_tx_core
   input [3:0]hdmi_hs_count0_carry_i_6_0;
   input [3:0]hdmi_hs_count0_carry__0_i_8_0;
   input [2:0]hdmi_hs_count0_carry__0_i_6_0;
+  input [0:0]\hdmi_vs_count_reg[0]_0 ;
   input [3:0]DI;
   input [2:0]hdmi_vs_2d_reg_srl3_i_1_0;
   input [0:0]hdmi_vs_2d_reg_srl3_i_1_1;
@@ -4597,6 +4601,7 @@ module system_axi_hdmi_core_0_axi_hdmi_tx_core
   input [3:0]hdmi_vs_count0_carry_i_6_0;
   input [3:0]hdmi_vs_count0_carry__0_i_8_0;
   input [2:0]hdmi_vs_count0_carry__0_i_6_0;
+  input [0:0]\hdmi_vs_count_reg[0]_1 ;
   input [3:0]hdmi_vs_de1_carry__0_0;
   input [3:0]hdmi_vs_de_reg_0;
   input [3:0]\hdmi_vs_de1_inferred__0/i__carry__0_0 ;
@@ -4619,9 +4624,11 @@ module system_axi_hdmi_core_0_axi_hdmi_tx_core
   wire [23:0]D;
   wire [3:0]DI;
   wire [0:0]E;
+  wire [1:0]O;
   wire [8:0]Q;
   wire [3:0]S;
   wire [7:0]b2g_return;
+  wire [1:0]\d_data_cntrl_int_reg[110] ;
   wire [15:0]hdmi_16_data;
   wire [15:0]hdmi_16_data_d;
   wire \hdmi_16_data_d[0]_i_1_n_0 ;
@@ -4788,7 +4795,7 @@ module system_axi_hdmi_core_0_axi_hdmi_tx_core
   wire hdmi_fs_toggle_s;
   wire [8:0]hdmi_fs_waddr;
   wire [8:0]\hdmi_fs_waddr_reg[8]_0 ;
-  wire [15:1]hdmi_hl_width_s;
+  wire [13:1]hdmi_hl_width_s;
   wire hdmi_hl_width_s_carry__0_n_0;
   wire hdmi_hl_width_s_carry__0_n_1;
   wire hdmi_hl_width_s_carry__0_n_2;
@@ -4827,7 +4834,6 @@ module system_axi_hdmi_core_0_axi_hdmi_tx_core
   wire hdmi_hs_count0_carry__0_i_2_n_0;
   wire hdmi_hs_count0_carry__0_i_3_n_0;
   wire hdmi_hs_count0_carry__0_i_4_n_0;
-  wire hdmi_hs_count0_carry__0_i_5_n_0;
   wire [2:0]hdmi_hs_count0_carry__0_i_6_0;
   wire hdmi_hs_count0_carry__0_i_6_n_0;
   wire hdmi_hs_count0_carry__0_i_7_n_0;
@@ -4982,7 +4988,7 @@ module system_axi_hdmi_core_0_axi_hdmi_tx_core
   wire hdmi_tpm_oos0_carry_n_2;
   wire hdmi_tpm_oos0_carry_n_3;
   wire hdmi_tpm_oos_s;
-  wire [15:1]hdmi_vf_width_s;
+  wire [13:1]hdmi_vf_width_s;
   wire hdmi_vf_width_s_carry__0_n_0;
   wire hdmi_vf_width_s_carry__0_n_1;
   wire hdmi_vf_width_s_carry__0_n_2;
@@ -5022,7 +5028,6 @@ module system_axi_hdmi_core_0_axi_hdmi_tx_core
   wire hdmi_vs_count0_carry__0_i_2_n_0;
   wire hdmi_vs_count0_carry__0_i_3_n_0;
   wire hdmi_vs_count0_carry__0_i_4_n_0;
-  wire hdmi_vs_count0_carry__0_i_5_n_0;
   wire [2:0]hdmi_vs_count0_carry__0_i_6_0;
   wire hdmi_vs_count0_carry__0_i_6_n_0;
   wire hdmi_vs_count0_carry__0_i_7_n_0;
@@ -5047,6 +5052,8 @@ module system_axi_hdmi_core_0_axi_hdmi_tx_core
   wire hdmi_vs_count0_carry_n_2;
   wire hdmi_vs_count0_carry_n_3;
   wire \hdmi_vs_count[0]_i_3_n_0 ;
+  wire [0:0]\hdmi_vs_count_reg[0]_0 ;
+  wire [0:0]\hdmi_vs_count_reg[0]_1 ;
   wire \hdmi_vs_count_reg[0]_i_2_n_0 ;
   wire \hdmi_vs_count_reg[0]_i_2_n_1 ;
   wire \hdmi_vs_count_reg[0]_i_2_n_2 ;
@@ -7018,7 +7025,7 @@ module system_axi_hdmi_core_0_axi_hdmi_tx_core
         .CO({NLW_hdmi_hl_width_s_carry__2_CO_UNCONNECTED[3:2],hdmi_hl_width_s_carry__2_n_2,hdmi_hl_width_s_carry__2_n_3}),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,hdmi_16_data_e_d_reg_0[173:172]}),
-        .O({NLW_hdmi_hl_width_s_carry__2_O_UNCONNECTED[3],hdmi_hl_width_s[15:13]}),
+        .O({NLW_hdmi_hl_width_s_carry__2_O_UNCONNECTED[3],O,hdmi_hl_width_s[13]}),
         .S({1'b0,hdmi_hs_count0_carry__0_i_6_0}));
   (* COMPARATOR_THRESHOLD = "11" *) 
   CARRY4 hdmi_hs1_carry
@@ -7100,7 +7107,7 @@ module system_axi_hdmi_core_0_axi_hdmi_tx_core
         .I2(hdmi_16_data_e_d_reg_0[143]),
         .I3(out[0]),
         .O(hdmi_hs1_carry_i_4_n_0));
-  (* srl_name = "inst/\i_tx_core/hdmi_hs_2d_reg_srl3 " *) 
+  (* srl_name = "inst/\\i_tx_core/hdmi_hs_2d_reg_srl3 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
     hdmi_hs_2d_reg_srl3
@@ -7133,14 +7140,14 @@ module system_axi_hdmi_core_0_axi_hdmi_tx_core
         .CYINIT(1'b0),
         .DI({hdmi_hs_count0_carry__0_i_1_n_0,hdmi_hs_count0_carry__0_i_2_n_0,hdmi_hs_count0_carry__0_i_3_n_0,hdmi_hs_count0_carry__0_i_4_n_0}),
         .O(NLW_hdmi_hs_count0_carry__0_O_UNCONNECTED[3:0]),
-        .S({hdmi_hs_count0_carry__0_i_5_n_0,hdmi_hs_count0_carry__0_i_6_n_0,hdmi_hs_count0_carry__0_i_7_n_0,hdmi_hs_count0_carry__0_i_8_n_0}));
+        .S({\hdmi_vs_count_reg[0]_0 ,hdmi_hs_count0_carry__0_i_6_n_0,hdmi_hs_count0_carry__0_i_7_n_0,hdmi_hs_count0_carry__0_i_8_n_0}));
   LUT4 #(
     .INIT(16'h22B2)) 
     hdmi_hs_count0_carry__0_i_1
        (.I0(out[15]),
-        .I1(hdmi_hl_width_s[15]),
+        .I1(O[1]),
         .I2(out[14]),
-        .I3(hdmi_hl_width_s[14]),
+        .I3(O[0]),
         .O(hdmi_hs_count0_carry__0_i_1_n_0));
   LUT4 #(
     .INIT(16'h22B2)) 
@@ -7166,14 +7173,6 @@ module system_axi_hdmi_core_0_axi_hdmi_tx_core
         .I2(out[8]),
         .I3(hdmi_hl_width_s[8]),
         .O(hdmi_hs_count0_carry__0_i_4_n_0));
-  LUT4 #(
-    .INIT(16'h9009)) 
-    hdmi_hs_count0_carry__0_i_5
-       (.I0(hdmi_hl_width_s[15]),
-        .I1(out[15]),
-        .I2(hdmi_hl_width_s[14]),
-        .I3(out[14]),
-        .O(hdmi_hs_count0_carry__0_i_5_n_0));
   LUT4 #(
     .INIT(16'h9009)) 
     hdmi_hs_count0_carry__0_i_6
@@ -8151,7 +8150,7 @@ module system_axi_hdmi_core_0_axi_hdmi_tx_core
         .CO({NLW_hdmi_vf_width_s_carry__2_CO_UNCONNECTED[3:2],hdmi_vf_width_s_carry__2_n_2,hdmi_vf_width_s_carry__2_n_3}),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,hdmi_16_data_e_d_reg_0[110:109]}),
-        .O({NLW_hdmi_vf_width_s_carry__2_O_UNCONNECTED[3],hdmi_vf_width_s[15:13]}),
+        .O({NLW_hdmi_vf_width_s_carry__2_O_UNCONNECTED[3],\d_data_cntrl_int_reg[110] ,hdmi_vf_width_s[13]}),
         .S({1'b0,hdmi_vs_count0_carry__0_i_6_0}));
   (* COMPARATOR_THRESHOLD = "11" *) 
   CARRY4 hdmi_vs1_carry
@@ -8233,7 +8232,7 @@ module system_axi_hdmi_core_0_axi_hdmi_tx_core
         .I2(\hdmi_vs_count_reg[15]_0 [0]),
         .I3(hdmi_16_data_e_d_reg_0[80]),
         .O(hdmi_vs1_carry_i_8_n_0));
-  (* srl_name = "inst/\i_tx_core/hdmi_vs_2d_reg_srl3 " *) 
+  (* srl_name = "inst/\\i_tx_core/hdmi_vs_2d_reg_srl3 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
     hdmi_vs_2d_reg_srl3
@@ -8267,14 +8266,14 @@ module system_axi_hdmi_core_0_axi_hdmi_tx_core
         .CYINIT(1'b0),
         .DI({hdmi_vs_count0_carry__0_i_1_n_0,hdmi_vs_count0_carry__0_i_2_n_0,hdmi_vs_count0_carry__0_i_3_n_0,hdmi_vs_count0_carry__0_i_4_n_0}),
         .O(NLW_hdmi_vs_count0_carry__0_O_UNCONNECTED[3:0]),
-        .S({hdmi_vs_count0_carry__0_i_5_n_0,hdmi_vs_count0_carry__0_i_6_n_0,hdmi_vs_count0_carry__0_i_7_n_0,hdmi_vs_count0_carry__0_i_8_n_0}));
+        .S({\hdmi_vs_count_reg[0]_1 ,hdmi_vs_count0_carry__0_i_6_n_0,hdmi_vs_count0_carry__0_i_7_n_0,hdmi_vs_count0_carry__0_i_8_n_0}));
   LUT4 #(
     .INIT(16'h22B2)) 
     hdmi_vs_count0_carry__0_i_1
        (.I0(\hdmi_vs_count_reg[15]_0 [15]),
-        .I1(hdmi_vf_width_s[15]),
+        .I1(\d_data_cntrl_int_reg[110] [1]),
         .I2(\hdmi_vs_count_reg[15]_0 [14]),
-        .I3(hdmi_vf_width_s[14]),
+        .I3(\d_data_cntrl_int_reg[110] [0]),
         .O(hdmi_vs_count0_carry__0_i_1_n_0));
   LUT4 #(
     .INIT(16'h22B2)) 
@@ -8300,14 +8299,6 @@ module system_axi_hdmi_core_0_axi_hdmi_tx_core
         .I2(\hdmi_vs_count_reg[15]_0 [8]),
         .I3(hdmi_vf_width_s[8]),
         .O(hdmi_vs_count0_carry__0_i_4_n_0));
-  LUT4 #(
-    .INIT(16'h9009)) 
-    hdmi_vs_count0_carry__0_i_5
-       (.I0(hdmi_vf_width_s[15]),
-        .I1(\hdmi_vs_count_reg[15]_0 [15]),
-        .I2(hdmi_vf_width_s[14]),
-        .I3(\hdmi_vs_count_reg[15]_0 [14]),
-        .O(hdmi_vs_count0_carry__0_i_5_n_0));
   LUT4 #(
     .INIT(16'h9009)) 
     hdmi_vs_count0_carry__0_i_6
@@ -16020,6 +16011,7 @@ module system_axi_hdmi_core_0_up_hdmi_tx
     \d_data_cntrl_int_reg[188] ,
     \d_data_cntrl_int_reg[184] ,
     S,
+    \hdmi_hs_count_reg[15] ,
     hdmi_enable0,
     \d_data_cntrl_int_reg[90] ,
     DI,
@@ -16032,6 +16024,7 @@ module system_axi_hdmi_core_0_up_hdmi_tx
     \d_data_cntrl_int_reg[108] ,
     \d_data_cntrl_int_reg[104] ,
     \d_data_cntrl_int_reg[100] ,
+    \hdmi_vs_count_reg[15] ,
     \d_data_cntrl_int_reg[71] ,
     \d_data_cntrl_int_reg[79] ,
     \d_data_cntrl_int_reg[55] ,
@@ -16072,8 +16065,10 @@ module system_axi_hdmi_core_0_up_hdmi_tx
     s_axi_aresetn,
     Q,
     hdmi_fs_ret,
-    hdmi_vs1_carry__0,
+    O,
     out,
+    hdmi_vs1_carry__0,
+    hdmi_vs_count0_carry__0,
     \hdmi_data_reg[1] ,
     s_data_1_reg,
     \hdmi_data_reg[2] ,
@@ -16157,6 +16152,7 @@ module system_axi_hdmi_core_0_up_hdmi_tx
   output [3:0]\d_data_cntrl_int_reg[188] ;
   output [3:0]\d_data_cntrl_int_reg[184] ;
   output [3:0]S;
+  output [0:0]\hdmi_hs_count_reg[15] ;
   output hdmi_enable0;
   output [3:0]\d_data_cntrl_int_reg[90] ;
   output [3:0]DI;
@@ -16169,6 +16165,7 @@ module system_axi_hdmi_core_0_up_hdmi_tx
   output [3:0]\d_data_cntrl_int_reg[108] ;
   output [3:0]\d_data_cntrl_int_reg[104] ;
   output [3:0]\d_data_cntrl_int_reg[100] ;
+  output [0:0]\hdmi_vs_count_reg[15] ;
   output [3:0]\d_data_cntrl_int_reg[71] ;
   output [3:0]\d_data_cntrl_int_reg[79] ;
   output [3:0]\d_data_cntrl_int_reg[55] ;
@@ -16209,8 +16206,10 @@ module system_axi_hdmi_core_0_up_hdmi_tx
   input s_axi_aresetn;
   input [3:0]Q;
   input hdmi_fs_ret;
-  input [15:0]hdmi_vs1_carry__0;
+  input [1:0]O;
   input [15:0]out;
+  input [15:0]hdmi_vs1_carry__0;
+  input [1:0]hdmi_vs_count0_carry__0;
   input \hdmi_data_reg[1] ;
   input [23:0]s_data_1_reg;
   input \hdmi_data_reg[2] ;
@@ -16260,6 +16259,7 @@ module system_axi_hdmi_core_0_up_hdmi_tx
   wire [23:0]D;
   wire [3:0]DI;
   wire [0:0]E;
+  wire [1:0]O;
   wire [3:0]Q;
   wire [3:0]S;
   wire [3:0]\d_data_cntrl_int_reg[100] ;
@@ -16302,10 +16302,13 @@ module system_axi_hdmi_core_0_up_hdmi_tx
   wire \hdmi_data_reg[7] ;
   wire hdmi_enable0;
   wire hdmi_fs_ret;
+  wire [0:0]\hdmi_hs_count_reg[15] ;
   wire hdmi_status_s;
   wire hdmi_tpm_data0;
   wire hdmi_tpm_oos_s;
   wire [15:0]hdmi_vs1_carry__0;
+  wire [1:0]hdmi_vs_count0_carry__0;
+  wire [0:0]\hdmi_vs_count_reg[15] ;
   wire [15:0]out;
   wire p_0_in;
   wire [1:0]p_10_in;
@@ -16435,6 +16438,7 @@ module system_axi_hdmi_core_0_up_hdmi_tx
   system_axi_hdmi_core_0_up_xfer_cntrl i_xfer_cntrl
        (.D(D),
         .DI(DI),
+        .O(O),
         .S(S),
         .\d_data_cntrl_int_reg[0]_0 (AR),
         .\d_data_cntrl_int_reg[100]_0 (\d_data_cntrl_int_reg[100] ),
@@ -16475,7 +16479,10 @@ module system_axi_hdmi_core_0_up_hdmi_tx
         .\hdmi_data_reg[6] (\hdmi_data_reg[6] ),
         .\hdmi_data_reg[7] (\hdmi_data_reg[7] ),
         .hdmi_enable0(hdmi_enable0),
+        .\hdmi_hs_count_reg[15] (\hdmi_hs_count_reg[15] ),
         .hdmi_vs1_carry__0(hdmi_vs1_carry__0),
+        .hdmi_vs_count0_carry__0(hdmi_vs_count0_carry__0),
+        .\hdmi_vs_count_reg[15] (\hdmi_vs_count_reg[15] ),
         .out(out),
         .reference_clk(reference_clk),
         .s_axi_aclk(s_axi_aclk),
@@ -19081,6 +19088,7 @@ module system_axi_hdmi_core_0_up_xfer_cntrl
     \d_data_cntrl_int_reg[188]_0 ,
     \d_data_cntrl_int_reg[184]_0 ,
     S,
+    \hdmi_hs_count_reg[15] ,
     hdmi_enable0,
     \d_data_cntrl_int_reg[90]_0 ,
     DI,
@@ -19093,6 +19101,7 @@ module system_axi_hdmi_core_0_up_xfer_cntrl
     \d_data_cntrl_int_reg[108]_0 ,
     \d_data_cntrl_int_reg[104]_0 ,
     \d_data_cntrl_int_reg[100]_0 ,
+    \hdmi_vs_count_reg[15] ,
     \d_data_cntrl_int_reg[71]_0 ,
     \d_data_cntrl_int_reg[79]_0 ,
     \d_data_cntrl_int_reg[55]_0 ,
@@ -19112,8 +19121,10 @@ module system_axi_hdmi_core_0_up_xfer_cntrl
     reference_clk,
     \d_data_cntrl_int_reg[0]_0 ,
     s_axi_aresetn,
-    hdmi_vs1_carry__0,
+    O,
     out,
+    hdmi_vs1_carry__0,
+    hdmi_vs_count0_carry__0,
     \hdmi_data_reg[1] ,
     s_data_1_reg,
     \hdmi_data_reg[2] ,
@@ -19147,6 +19158,7 @@ module system_axi_hdmi_core_0_up_xfer_cntrl
   output [3:0]\d_data_cntrl_int_reg[188]_0 ;
   output [3:0]\d_data_cntrl_int_reg[184]_0 ;
   output [3:0]S;
+  output [0:0]\hdmi_hs_count_reg[15] ;
   output hdmi_enable0;
   output [3:0]\d_data_cntrl_int_reg[90]_0 ;
   output [3:0]DI;
@@ -19159,6 +19171,7 @@ module system_axi_hdmi_core_0_up_xfer_cntrl
   output [3:0]\d_data_cntrl_int_reg[108]_0 ;
   output [3:0]\d_data_cntrl_int_reg[104]_0 ;
   output [3:0]\d_data_cntrl_int_reg[100]_0 ;
+  output [0:0]\hdmi_vs_count_reg[15] ;
   output [3:0]\d_data_cntrl_int_reg[71]_0 ;
   output [3:0]\d_data_cntrl_int_reg[79]_0 ;
   output [3:0]\d_data_cntrl_int_reg[55]_0 ;
@@ -19178,8 +19191,10 @@ module system_axi_hdmi_core_0_up_xfer_cntrl
   input reference_clk;
   input \d_data_cntrl_int_reg[0]_0 ;
   input s_axi_aresetn;
-  input [15:0]hdmi_vs1_carry__0;
+  input [1:0]O;
   input [15:0]out;
+  input [15:0]hdmi_vs1_carry__0;
+  input [1:0]hdmi_vs_count0_carry__0;
   input \hdmi_data_reg[1] ;
   input [23:0]s_data_1_reg;
   input \hdmi_data_reg[2] ;
@@ -19210,6 +19225,7 @@ module system_axi_hdmi_core_0_up_xfer_cntrl
 
   wire [23:0]D;
   wire [3:0]DI;
+  wire [1:0]O;
   wire [3:0]S;
   wire \d_data_cntrl_int_reg[0]_0 ;
   wire [3:0]\d_data_cntrl_int_reg[100]_0 ;
@@ -19257,9 +19273,12 @@ module system_axi_hdmi_core_0_up_xfer_cntrl
   wire \hdmi_data_reg[7] ;
   wire hdmi_enable0;
   wire [15:15]hdmi_hl_width_s;
+  wire [0:0]\hdmi_hs_count_reg[15] ;
   wire [1:0]hdmi_srcsel_s;
   wire [15:15]hdmi_vf_width_s;
   wire [15:0]hdmi_vs1_carry__0;
+  wire [1:0]hdmi_vs_count0_carry__0;
+  wire [0:0]\hdmi_vs_count_reg[15] ;
   wire [15:0]out;
   wire [5:0]p_0_in__0;
   wire p_2_in;
@@ -21308,6 +21327,14 @@ module system_axi_hdmi_core_0_up_xfer_cntrl
         .O(\d_data_cntrl_int_reg[167]_0 [0]));
   LUT4 #(
     .INIT(16'h9009)) 
+    hdmi_hs_count0_carry__0_i_5
+       (.I0(O[1]),
+        .I1(out[15]),
+        .I2(O[0]),
+        .I3(out[14]),
+        .O(\hdmi_hs_count_reg[15] ));
+  LUT4 #(
+    .INIT(16'h9009)) 
     hdmi_hs_de1_carry__0_i_5
        (.I0(\d_data_cntrl_int_reg[235]_0 [142]),
         .I1(out[15]),
@@ -21509,6 +21536,14 @@ module system_axi_hdmi_core_0_up_xfer_cntrl
         .I2(\d_data_cntrl_int_reg[235]_0 [80]),
         .I3(hdmi_vs1_carry__0[0]),
         .O(DI[0]));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    hdmi_vs_count0_carry__0_i_5
+       (.I0(hdmi_vs_count0_carry__0[1]),
+        .I1(hdmi_vs1_carry__0[15]),
+        .I2(hdmi_vs_count0_carry__0[0]),
+        .I3(hdmi_vs1_carry__0[14]),
+        .O(\hdmi_vs_count_reg[15] ));
   LUT4 #(
     .INIT(16'h9009)) 
     hdmi_vs_de1_carry__0_i_5

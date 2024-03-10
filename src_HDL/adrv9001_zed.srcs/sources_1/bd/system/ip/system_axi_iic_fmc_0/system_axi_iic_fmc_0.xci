@@ -4,7 +4,7 @@
     "xci_name": "system_axi_iic_fmc_0",
     "cell_name": "axi_iic_fmc",
     "component_reference": "xilinx.com:ip:axi_iic:2.1",
-    "ip_revision": "3",
+    "ip_revision": "6",
     "gen_directory": "../../../../../../adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_iic_fmc_0",
     "parameters": {
       "component_parameters": {
@@ -57,12 +57,12 @@
       },
       "runtime_parameters": {
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],
-        "IPREVISION": [ { "value": "3" } ],
+        "IPREVISION": [ { "value": "6" } ],
         "MANAGED": [ { "value": "TRUE" } ],
         "OUTPUTDIR": [ { "value": "../../../../../../adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_iic_fmc_0" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "../../ipshared" } ],
-        "SWVERSION": [ { "value": "2022.2" } ],
+        "SWVERSION": [ { "value": "2023.2.2" } ],
         "SYNTHESISFLOW": [ { "value": "OUT_OF_CONTEXT" } ]
       }
     },

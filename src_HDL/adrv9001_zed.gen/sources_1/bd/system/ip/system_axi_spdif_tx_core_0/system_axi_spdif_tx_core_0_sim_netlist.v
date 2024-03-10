@@ -1,10 +1,11 @@
 // Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+// Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-// Date        : Sun Mar 10 23:23:25 2024
-// Host        : PC_HP running 64-bit major release  (build 9200)
+// Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
+// Date        : Mon Mar 11 00:26:04 2024
+// Host        : ASUS_ROG running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
-//               c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_spdif_tx_core_0/system_axi_spdif_tx_core_0_sim_netlist.v
+//               c:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_spdif_tx_core_0/system_axi_spdif_tx_core_0_sim_netlist.v
 // Design      : system_axi_spdif_tx_core_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -13,7 +14,7 @@
 `timescale 1 ps / 1 ps
 
 (* CHECK_LICENSE_TYPE = "system_axi_spdif_tx_core_0,axi_spdif_tx,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* ip_definition_source = "package_project" *) 
-(* x_core_info = "axi_spdif_tx,Vivado 2022.2" *) 
+(* x_core_info = "axi_spdif_tx,Vivado 2023.2.2" *) 
 (* NotValidForBitStream *)
 module system_axi_spdif_tx_core_0
    (spdif_data_clk,
@@ -71,7 +72,7 @@ module system_axi_spdif_tx_core_0
   (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi BRESP" *) output [1:0]s_axi_bresp;
   (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi BVALID" *) output s_axi_bvalid;
   (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi AWREADY" *) output s_axi_awready;
-  (* x_interface_info = "xilinx.com:signal:clock:1.0 dma_req_dma_ack_signal_clock CLK, xilinx.com:signal:clock:1.0 dma_req_aclk CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME dma_req_aclk, ASSOCIATED_RESET dma_req_rstn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, ASSOCIATED_BUSIF dma_req:dma_ack, INSERT_VIP 0, XIL_INTERFACENAME dma_req_dma_ack_signal_clock, ASSOCIATED_BUSIF dma_req:dma_ack, ASSOCIATED_RESET dma_req_rstn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, INSERT_VIP 0" *) input dma_req_aclk;
+  (* x_interface_info = "xilinx.com:signal:clock:1.0 dma_req_aclk CLK, xilinx.com:signal:clock:1.0 dma_req_dma_ack_signal_clock CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME dma_req_aclk, ASSOCIATED_RESET dma_req_rstn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, ASSOCIATED_BUSIF dma_req:dma_ack, INSERT_VIP 0, XIL_INTERFACENAME dma_req_dma_ack_signal_clock, ASSOCIATED_BUSIF dma_req:dma_ack, ASSOCIATED_RESET dma_req_rstn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, INSERT_VIP 0" *) input dma_req_aclk;
   (* x_interface_info = "xilinx.com:signal:reset:1.0 dma_req_rstn RST, xilinx.com:signal:reset:1.0 dma_req_dma_ack_signal_reset RST" *) (* x_interface_parameter = "XIL_INTERFACENAME dma_req_rstn, POLARITY ACTIVE_LOW, INSERT_VIP 0, XIL_INTERFACENAME dma_req_dma_ack_signal_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input dma_req_rstn;
   (* x_interface_info = "xilinx.com:interface:axis:1.0 dma_ack TVALID" *) (* x_interface_parameter = "XIL_INTERFACENAME dma_ack, TDATA_NUM_BYTES 0, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 2, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, LAYERED_METADATA undef, INSERT_VIP 0" *) input dma_req_davalid;
   (* x_interface_info = "xilinx.com:interface:axis:1.0 dma_ack TUSER" *) input [1:0]dma_req_datype;
@@ -361,13 +362,17 @@ module system_axi_spdif_tx_core_0_axi_ctrlif
         .I3(s_axi_arvalid),
         .I4(\rd_addr_reg_n_0_[1] ),
         .O(\rd_addr[1]_i_1_n_0 ));
-  FDRE \rd_addr_reg[0] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \rd_addr_reg[0] 
        (.C(s_axi_aclk),
         .CE(1'b1),
         .D(\rd_addr[0]_i_1_n_0 ),
         .Q(\rd_addr_reg_n_0_[0] ),
         .R(1'b0));
-  FDRE \rd_addr_reg[1] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \rd_addr_reg[1] 
        (.C(s_axi_aclk),
         .CE(1'b1),
         .D(\rd_addr[1]_i_1_n_0 ),

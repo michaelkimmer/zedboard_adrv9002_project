@@ -4,7 +4,7 @@
     "xci_name": "bd_31bd_s03mmu_0",
     "cell_name": "s03_mmu",
     "component_reference": "xilinx.com:ip:sc_mmu:1.0",
-    "ip_revision": "11",
+    "ip_revision": "12",
     "gen_directory": ".",
     "parameters": {
       "component_parameters": {
@@ -2092,8 +2092,8 @@
         "C_SEG_BASE_ADDR_ARRAY": [ { "value": "0x0000000000000000", "resolve_type": "generated", "format": "bitString", "usage": "all" } ],
         "C_SEG_SIZE_ARRAY": [ { "value": "0x0000001d", "resolve_type": "generated", "format": "bitString", "usage": "all" } ],
         "C_SEG_SEP_ROUTE_ARRAY": [ { "value": "0x0000000000000000", "resolve_type": "generated", "format": "bitString", "usage": "all" } ],
-        "C_SEG_SUPPORTS_READ_ARRAY": [ { "value": "0x1", "resolve_type": "generated", "format": "bitString", "usage": "all" } ],
-        "C_SEG_SUPPORTS_WRITE_ARRAY": [ { "value": "0x1", "resolve_type": "generated", "format": "bitString", "usage": "all" } ],
+        "C_SEG_SUPPORTS_READ_ARRAY": [ { "value": "0b1", "resolve_type": "generated", "format": "bitString", "usage": "all" } ],
+        "C_SEG_SUPPORTS_WRITE_ARRAY": [ { "value": "0b1", "resolve_type": "generated", "format": "bitString", "usage": "all" } ],
         "C_SEG_SECURE_READ_ARRAY": [ { "value": "0b0", "resolve_type": "generated", "format": "bitString", "usage": "all" } ],
         "C_SEG_SECURE_WRITE_ARRAY": [ { "value": "0b0", "resolve_type": "generated", "format": "bitString", "usage": "all" } ],
         "C_NUM_MSC": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
@@ -2130,18 +2130,16 @@
         "SIMULATOR_LANGUAGE": [ { "value": "MIXED" } ],
         "SPEEDGRADE": [ { "value": "-1" } ],
         "STATIC_POWER": [ { "value": "" } ],
-        "TEMPERATURE_GRADE": [ { "value": "" } ],
-        "USE_RDI_CUSTOMIZATION": [ { "value": "TRUE" } ],
-        "USE_RDI_GENERATION": [ { "value": "TRUE" } ]
+        "TEMPERATURE_GRADE": [ { "value": "" } ]
       },
       "runtime_parameters": {
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],
-        "IPREVISION": [ { "value": "11" } ],
+        "IPREVISION": [ { "value": "12" } ],
         "MANAGED": [ { "value": "TRUE" } ],
         "OUTPUTDIR": [ { "value": "." } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "../../../../../ipshared" } ],
-        "SWVERSION": [ { "value": "2022.2" } ],
+        "SWVERSION": [ { "value": "2023.2.2" } ],
         "SYNTHESISFLOW": [ { "value": "GLOBAL" } ]
       }
     },

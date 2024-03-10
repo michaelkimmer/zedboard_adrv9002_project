@@ -4,7 +4,7 @@
     "xci_name": "system_GND_1_0",
     "cell_name": "GND_1",
     "component_reference": "xilinx.com:ip:xlconstant:1.1",
-    "ip_revision": "7",
+    "ip_revision": "8",
     "gen_directory": "../../../../../../adrv9001_zed.gen/sources_1/bd/system/ip/system_GND_1_0",
     "parameters": {
       "component_parameters": {
@@ -33,12 +33,12 @@
       },
       "runtime_parameters": {
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],
-        "IPREVISION": [ { "value": "7" } ],
+        "IPREVISION": [ { "value": "8" } ],
         "MANAGED": [ { "value": "TRUE" } ],
         "OUTPUTDIR": [ { "value": "../../../../../../adrv9001_zed.gen/sources_1/bd/system/ip/system_GND_1_0" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "../../ipshared" } ],
-        "SWVERSION": [ { "value": "2022.2" } ],
+        "SWVERSION": [ { "value": "2023.2.2" } ],
         "SYNTHESISFLOW": [ { "value": "GLOBAL" } ]
       }
     },

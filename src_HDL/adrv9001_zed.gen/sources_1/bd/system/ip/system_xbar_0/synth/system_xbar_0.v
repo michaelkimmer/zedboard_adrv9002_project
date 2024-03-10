@@ -1,21 +1,21 @@
-// (c) Copyright 1995-2024 Xilinx, Inc. All rights reserved.
+// (c) Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+// (c) Copyright 2022-2024 Advanced Micro Devices, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
-// of Xilinx, Inc. and is protected under U.S. and
-// international copyright and other intellectual property
-// laws.
+// of AMD and is protected under U.S. and international copyright
+// and other intellectual property laws.
 // 
 // DISCLAIMER
 // This disclaimer is not a license and does not grant any
 // rights to the materials distributed herewith. Except as
 // otherwise provided in a valid license issued to you by
-// Xilinx, and to the maximum extent permitted by applicable
+// AMD, and to the maximum extent permitted by applicable
 // law: (1) THESE MATERIALS ARE MADE AVAILABLE "AS IS" AND
-// WITH ALL FAULTS, AND XILINX HEREBY DISCLAIMS ALL WARRANTIES
+// WITH ALL FAULTS, AND AMD HEREBY DISCLAIMS ALL WARRANTIES
 // AND CONDITIONS, EXPRESS, IMPLIED, OR STATUTORY, INCLUDING
 // BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, NON-
 // INFRINGEMENT, OR FITNESS FOR ANY PARTICULAR PURPOSE; and
-// (2) Xilinx shall not be liable (whether in contract or tort,
+// (2) AMD shall not be liable (whether in contract or tort,
 // including negligence, or under any other theory of
 // liability) for any loss or damage of any kind or nature
 // related to, arising under or in connection with these
@@ -24,11 +24,11 @@
 // (including loss of data, profits, goodwill, or any type of
 // loss or damage suffered as a result of any action brought
 // by a third party) even if such damage or loss was
-// reasonably foreseeable or Xilinx had been advised of the
+// reasonably foreseeable or AMD had been advised of the
 // possibility of the same.
 // 
 // CRITICAL APPLICATIONS
-// Xilinx products are not designed or intended to be fail-
+// AMD products are not designed or intended to be fail-
 // safe, or for use in any application requiring fail-safe
 // performance, such as life-support or safety devices or
 // systems, Class III medical devices, nuclear facilities,
@@ -37,7 +37,7 @@
 // injury, or severe property or environmental damage
 // (individually and collectively, "Critical
 // Applications"). Customer assumes the sole risk and
-// liability of any use of Xilinx products in Critical
+// liability of any use of AMD products in Critical
 // Applications, subject only to applicable laws and
 // regulations governing limitations on product liability.
 // 
@@ -48,14 +48,14 @@
 
 
 // IP VLNV: xilinx.com:ip:axi_crossbar:2.1
-// IP Revision: 28
+// IP Revision: 31
 
-(* X_CORE_INFO = "axi_crossbar_v2_1_28_axi_crossbar,Vivado 2022.2" *)
-(* CHECK_LICENSE_TYPE = "system_xbar_0,axi_crossbar_v2_1_28_axi_crossbar,{}" *)
-(* CORE_GENERATION_INFO = "system_xbar_0,axi_crossbar_v2_1_28_axi_crossbar,{x_ipProduct=Vivado 2022.2,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=axi_crossbar,x_ipVersion=2.1,x_ipCoreRevision=28,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_FAMILY=zynq,C_NUM_SLAVE_SLOTS=1,C_NUM_MASTER_SLOTS=13,C_AXI_ID_WIDTH=1,C_AXI_ADDR_WIDTH=32,C_AXI_DATA_WIDTH=32,C_AXI_PROTOCOL=2,C_NUM_ADDR_RANGES=1,C_M_AXI_BASE_ADDR=0x0000000044a600000000000044a500000000000044a400000000000044a300000000000044a000000000000041620000000000007760000000000\
-00075c000000000000070e000000000000043000000000000007900000000000000450000000000000041600000,C_M_AXI_ADDR_WIDTH=0x0000000c0000000c0000000c0000000c000000100000000c0000001000000010000000100000000c00000010000000100000000c,C_S_AXI_BASE_ID=0x00000000,C_S_AXI_THREAD_ID_WIDTH=0x00000000,C_AXI_SUPPORTS_USER_SIGNALS=0,C_AXI_AWUSER_WIDTH=1,C_AXI_ARUSER_WIDTH=1,C_AXI_WUSER_WIDTH=1,C_AXI_RUSER_WIDTH=1,C_AXI_BUSER_WIDTH=1,C_M_AXI_WRITE_CONNECTIVITY=0x00000001000000010000000100000001000000010000000100000001000\
-000010000000100000001000000010000000100000001,C_M_AXI_READ_CONNECTIVITY=0x00000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001,C_R_REGISTER=1,C_S_AXI_SINGLE_THREAD=0x00000001,C_S_AXI_WRITE_ACCEPTANCE=0x00000001,C_S_AXI_READ_ACCEPTANCE=0x00000001,C_M_AXI_WRITE_ISSUING=0x00000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001,C_M_AXI_READ_ISSUING=0x00000001000000010000000100000001000000010000000100\
-000001000000010000000100000001000000010000000100000001,C_S_AXI_ARB_PRIORITY=0x00000000,C_M_AXI_SECURE=0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000,C_CONNECTIVITY_MODE=0}" *)
+(* X_CORE_INFO = "axi_crossbar_v2_1_31_axi_crossbar,Vivado 2023.2.2" *)
+(* CHECK_LICENSE_TYPE = "system_xbar_0,axi_crossbar_v2_1_31_axi_crossbar,{}" *)
+(* CORE_GENERATION_INFO = "system_xbar_0,axi_crossbar_v2_1_31_axi_crossbar,{x_ipProduct=Vivado 2023.2.2,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=axi_crossbar,x_ipVersion=2.1,x_ipCoreRevision=31,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_FAMILY=zynq,C_NUM_SLAVE_SLOTS=1,C_NUM_MASTER_SLOTS=13,C_AXI_ID_WIDTH=1,C_AXI_ADDR_WIDTH=32,C_AXI_DATA_WIDTH=32,C_AXI_PROTOCOL=2,C_NUM_ADDR_RANGES=1,C_M_AXI_BASE_ADDR=0x0000000044a600000000000044a500000000000044a400000000000044a300000000000044a0000000000000416200000000000077600000000\
+0000075c000000000000070e000000000000043000000000000007900000000000000450000000000000041600000,C_M_AXI_ADDR_WIDTH=0x0000000c0000000c0000000c0000000c000000100000000c0000001000000010000000100000000c00000010000000100000000c,C_S_AXI_BASE_ID=0x00000000,C_S_AXI_THREAD_ID_WIDTH=0x00000000,C_AXI_SUPPORTS_USER_SIGNALS=0,C_AXI_AWUSER_WIDTH=1,C_AXI_ARUSER_WIDTH=1,C_AXI_WUSER_WIDTH=1,C_AXI_RUSER_WIDTH=1,C_AXI_BUSER_WIDTH=1,C_M_AXI_WRITE_CONNECTIVITY=0x000000010000000100000001000000010000000100000001000000010\
+00000010000000100000001000000010000000100000001,C_M_AXI_READ_CONNECTIVITY=0x00000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001,C_R_REGISTER=1,C_S_AXI_SINGLE_THREAD=0x00000001,C_S_AXI_WRITE_ACCEPTANCE=0x00000001,C_S_AXI_READ_ACCEPTANCE=0x00000001,C_M_AXI_WRITE_ISSUING=0x00000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001,C_M_AXI_READ_ISSUING=0x000000010000000100000001000000010000000100000001\
+00000001000000010000000100000001000000010000000100000001,C_S_AXI_ARB_PRIORITY=0x00000000,C_M_AXI_SECURE=0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000,C_CONNECTIVITY_MODE=0}" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module system_xbar_0 (
   aclk,
@@ -219,7 +219,7 @@ TH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS
 .0 M08_AXI RREADY [0:0] [8:8], xilinx.com:interface:aximm:1.0 M09_AXI RREADY [0:0] [9:9], xilinx.com:interface:aximm:1.0 M10_AXI RREADY [0:0] [10:10], xilinx.com:interface:aximm:1.0 M11_AXI RREADY [0:0] [11:11], xilinx.com:interface:aximm:1.0 M12_AXI RREADY [0:0] [12:12]" *)
 output wire [12 : 0] m_axi_rready;
 
-  axi_crossbar_v2_1_28_axi_crossbar #(
+  axi_crossbar_v2_1_31_axi_crossbar #(
     .C_FAMILY("zynq"),
     .C_NUM_SLAVE_SLOTS(1),
     .C_NUM_MASTER_SLOTS(13),
