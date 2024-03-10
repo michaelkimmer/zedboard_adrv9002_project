@@ -1,0 +1,7 @@
+//arch = zynq; split = false; format = BIN
+the_ROM_image:
+{
+	[bootloader]C:\zedboard_adrv9002_project\src_SDK\platform_system_top\export\platform_system_top\sw\boot\fsbl.elf
+	C:\zedboard_adrv9002_project\src_SDK\system_linux\_ide\bitstream\system_top.bit
+	C:\zedboard_adrv9002_project\src_SDK\analog_copy\bootgen_sysfiles\u-boot_zynq_zed.elf
+}

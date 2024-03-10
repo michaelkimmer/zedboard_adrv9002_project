@@ -1,0 +1,28 @@
+{
+  "modelVersion": "1.0",
+  "projectName": "system_linux",
+  "platform": "C:\\zedboard_adrv9002_project\\src_SDK\\platform_system_top\\export\\platform_system_top\\platform_system_top.xpfm",
+  "externalComponentRefs": [
+    "app_blank_app"
+  ],
+  "components": [],
+  "buildConfigurations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "supportedTargets": [
+        "HW_EMU",
+        "HW"
+      ]
+    }
+  ],
+  "activeBuildConfigId": "default",
+  "hostMode": "x86",
+  "previousBuildStatusMap": {
+    "sw_emu": "NEW",
+    "hw_emu": "NEW",
+    "hw": "SUCCESS"
+  },
+  "isDirty": true,
+  "applicationFlow": "EMBEDDED"
+}
