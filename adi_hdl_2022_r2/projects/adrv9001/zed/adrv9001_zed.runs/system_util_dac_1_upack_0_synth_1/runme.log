@@ -1,0 +1,341 @@
+
+*** Running vivado
+    with args -log system_util_dac_1_upack_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source system_util_dac_1_upack_0.tcl
+
+
+
+****** Vivado v2022.2 (64-bit)
+  **** SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
+  **** IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+source system_util_dac_1_upack_0.tcl -notrace
+create_project: Time (s): cpu = 00:00:10 ; elapsed = 00:00:17 . Memory (MB): peak = 507.668 ; gain = 81.695
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/zedboard_adrv9002_project/adi_hdl_2022_r2/library'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2022.2/data/ip'.
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: system_util_dac_1_upack_0
+Command: synth_design -top system_util_dac_1_upack_0 -part xc7z020clg484-1 -incremental_mode off -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Device 21-403] Loading part xc7z020clg484-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 5688
+INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [C:/Xilinx/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:12 ; elapsed = 00:00:17 . Memory (MB): peak = 1355.758 ; gain = 408.492
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'system_util_dac_1_upack_0' [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_util_dac_1_upack_0/synth/system_util_dac_1_upack_0.v:53]
+INFO: [Synth 8-6157] synthesizing module 'util_upack2' [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/4268/util_upack2.v:38]
+INFO: [Synth 8-6157] synthesizing module 'util_upack2_impl' [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/4268/util_upack2_impl.v:38]
+INFO: [Synth 8-6157] synthesizing module 'pack_shell' [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/util_pack_common/pack_shell.v:38]
+INFO: [Synth 8-6157] synthesizing module 'pack_network' [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/util_pack_common/pack_network.v:38]
+INFO: [Synth 8-6157] synthesizing module 'pack_ctrl' [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/util_pack_common/pack_ctrl.v:38]
+INFO: [Synth 8-6155] done synthesizing module 'pack_ctrl' (0#1) [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/util_pack_common/pack_ctrl.v:38]
+INFO: [Synth 8-6157] synthesizing module 'pack_interconnect' [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/util_pack_common/pack_interconnect.v:38]
+INFO: [Synth 8-6157] synthesizing module 'ad_perfect_shuffle' [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/common/ad_perfect_shuffle.v:26]
+INFO: [Synth 8-6155] done synthesizing module 'ad_perfect_shuffle' (0#1) [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/common/ad_perfect_shuffle.v:26]
+INFO: [Synth 8-6155] done synthesizing module 'pack_interconnect' (0#1) [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/util_pack_common/pack_interconnect.v:38]
+INFO: [Synth 8-6155] done synthesizing module 'pack_network' (0#1) [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/util_pack_common/pack_network.v:38]
+INFO: [Synth 8-6157] synthesizing module 'ad_perfect_shuffle__parameterized0' [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/common/ad_perfect_shuffle.v:26]
+INFO: [Synth 8-6155] done synthesizing module 'ad_perfect_shuffle__parameterized0' (0#1) [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/common/ad_perfect_shuffle.v:26]
+INFO: [Synth 8-6157] synthesizing module 'pack_network__parameterized0' [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/util_pack_common/pack_network.v:38]
+INFO: [Synth 8-6157] synthesizing module 'pack_ctrl__parameterized0' [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/util_pack_common/pack_ctrl.v:38]
+INFO: [Synth 8-6155] done synthesizing module 'pack_ctrl__parameterized0' (0#1) [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/util_pack_common/pack_ctrl.v:38]
+INFO: [Synth 8-6157] synthesizing module 'pack_interconnect__parameterized0' [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/util_pack_common/pack_interconnect.v:38]
+INFO: [Synth 8-6157] synthesizing module 'ad_perfect_shuffle__parameterized1' [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/common/ad_perfect_shuffle.v:26]
+INFO: [Synth 8-6155] done synthesizing module 'ad_perfect_shuffle__parameterized1' (0#1) [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/common/ad_perfect_shuffle.v:26]
+INFO: [Synth 8-6155] done synthesizing module 'pack_interconnect__parameterized0' (0#1) [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/util_pack_common/pack_interconnect.v:38]
+INFO: [Synth 8-6155] done synthesizing module 'pack_network__parameterized0' (0#1) [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/util_pack_common/pack_network.v:38]
+INFO: [Synth 8-6155] done synthesizing module 'pack_shell' (0#1) [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/util_pack_common/pack_shell.v:38]
+INFO: [Synth 8-6157] synthesizing module 'ad_perfect_shuffle__parameterized2' [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/common/ad_perfect_shuffle.v:26]
+INFO: [Synth 8-6155] done synthesizing module 'ad_perfect_shuffle__parameterized2' (0#1) [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/common/ad_perfect_shuffle.v:26]
+INFO: [Synth 8-6155] done synthesizing module 'util_upack2_impl' (0#1) [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/4268/util_upack2_impl.v:38]
+INFO: [Synth 8-6155] done synthesizing module 'util_upack2' (0#1) [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/4268/util_upack2.v:38]
+INFO: [Synth 8-6155] done synthesizing module 'system_util_dac_1_upack_0' (0#1) [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ip/system_util_dac_1_upack_0/synth/system_util_dac_1_upack_0.v:53]
+WARNING: [Synth 8-3301] Unused top level parameter/generic CMOS_LVDS_N
+WARNING: [Synth 8-7129] Port rotate[1] in module pack_ctrl__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port prefix_count[7] in module pack_ctrl__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port prefix_count[5] in module pack_ctrl__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port prefix_count[4] in module pack_ctrl__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port prefix_count[3] in module pack_ctrl__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port prefix_count[1] in module pack_ctrl__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port prefix_count[0] in module pack_ctrl__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port prefix_count[23] in module pack_ctrl is either unconnected or has no load
+WARNING: [Synth 8-7129] Port prefix_count[22] in module pack_ctrl is either unconnected or has no load
+WARNING: [Synth 8-7129] Port prefix_count[21] in module pack_ctrl is either unconnected or has no load
+WARNING: [Synth 8-7129] Port prefix_count[17] in module pack_ctrl is either unconnected or has no load
+WARNING: [Synth 8-7129] Port prefix_count[16] in module pack_ctrl is either unconnected or has no load
+WARNING: [Synth 8-7129] Port prefix_count[15] in module pack_ctrl is either unconnected or has no load
+WARNING: [Synth 8-7129] Port prefix_count[11] in module pack_ctrl is either unconnected or has no load
+WARNING: [Synth 8-7129] Port prefix_count[10] in module pack_ctrl is either unconnected or has no load
+WARNING: [Synth 8-7129] Port prefix_count[9] in module pack_ctrl is either unconnected or has no load
+WARNING: [Synth 8-7129] Port prefix_count[5] in module pack_ctrl is either unconnected or has no load
+WARNING: [Synth 8-7129] Port prefix_count[4] in module pack_ctrl is either unconnected or has no load
+WARNING: [Synth 8-7129] Port prefix_count[3] in module pack_ctrl is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fifo_rd_en[3] in module util_upack2_impl is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fifo_rd_en[2] in module util_upack2_impl is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fifo_rd_en[1] in module util_upack2_impl is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_4 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_5 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_6 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_7 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_8 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_9 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_10 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_11 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_12 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_13 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_14 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_15 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_16 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_17 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_18 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_19 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_20 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_21 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_22 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_23 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_24 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_25 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_26 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_27 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_28 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_29 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_30 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_31 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_32 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_33 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_34 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_35 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_36 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_37 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_38 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_39 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_40 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_41 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_42 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_43 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_44 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_45 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_46 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_47 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_48 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_49 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_50 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_51 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_52 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_53 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_54 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_55 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_56 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_57 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_58 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_59 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_60 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_61 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_62 in module util_upack2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_63 in module util_upack2 is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:16 ; elapsed = 00:00:24 . Memory (MB): peak = 1453.656 ; gain = 506.391
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:16 ; elapsed = 00:00:24 . Memory (MB): peak = 1453.656 ; gain = 506.391
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:16 ; elapsed = 00:00:24 . Memory (MB): peak = 1453.656 ; gain = 506.391
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.053 . Memory (MB): peak = 1453.656 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1495.340 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.057 . Memory (MB): peak = 1495.348 ; gain = 0.008
+INFO: [Designutils 20-5008] Incremental synthesis strategy off
+INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [C:/Xilinx/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:34 ; elapsed = 00:00:45 . Memory (MB): peak = 1495.348 ; gain = 548.082
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg484-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:34 ; elapsed = 00:00:45 . Memory (MB): peak = 1495.348 ; gain = 548.082
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:34 ; elapsed = 00:00:45 . Memory (MB): peak = 1495.348 ; gain = 548.082
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:35 ; elapsed = 00:00:46 . Memory (MB): peak = 1495.348 ; gain = 548.082
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input   32 Bit       Adders := 8     
+	   3 Input    3 Bit       Adders := 1     
+	   2 Input    3 Bit       Adders := 3     
+	   2 Input    2 Bit       Adders := 5     
+	   4 Input    2 Bit       Adders := 1     
+	   3 Input    2 Bit       Adders := 1     
+	   3 Input    1 Bit       Adders := 2     
++---Registers : 
+	               64 Bit    Registers := 1     
+	               32 Bit    Registers := 1     
+	               16 Bit    Registers := 1     
+	                4 Bit    Registers := 2     
+	                3 Bit    Registers := 1     
+	                2 Bit    Registers := 4     
+	                1 Bit    Registers := 8     
++---Muxes : 
+	   4 Input   16 Bit        Muxes := 8     
+	   2 Input   16 Bit        Muxes := 4     
+	   2 Input    1 Bit        Muxes := 5     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+INFO: [Synth 8-3936] Found unconnected internal register 'inst/i_upack/i_pack_shell/gen_prefix_count[3].prefix_count_reg' and it is trimmed from '2' to '1' bits. [c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.gen/sources_1/bd/system/ipshared/util_pack_common/pack_shell.v:218]
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:40 ; elapsed = 00:00:52 . Memory (MB): peak = 1495.348 ; gain = 548.082
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:54 ; elapsed = 00:01:07 . Memory (MB): peak = 1495.348 ; gain = 548.082
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:54 ; elapsed = 00:01:08 . Memory (MB): peak = 1495.348 ; gain = 548.082
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:54 ; elapsed = 00:01:08 . Memory (MB): peak = 1495.348 ; gain = 548.082
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:05 ; elapsed = 00:01:19 . Memory (MB): peak = 1495.348 ; gain = 548.082
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:05 ; elapsed = 00:01:19 . Memory (MB): peak = 1495.348 ; gain = 548.082
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:05 ; elapsed = 00:01:19 . Memory (MB): peak = 1495.348 ; gain = 548.082
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:05 ; elapsed = 00:01:19 . Memory (MB): peak = 1495.348 ; gain = 548.082
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:05 ; elapsed = 00:01:19 . Memory (MB): peak = 1495.348 ; gain = 548.082
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:05 ; elapsed = 00:01:19 . Memory (MB): peak = 1495.348 ; gain = 548.082
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-----+------+
+|      |Cell |Count |
++------+-----+------+
+|1     |LUT2 |     6|
+|2     |LUT3 |    72|
+|3     |LUT4 |     8|
+|4     |LUT5 |    69|
+|5     |LUT6 |     3|
+|6     |FDRE |   128|
++------+-----+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:05 ; elapsed = 00:01:19 . Memory (MB): peak = 1495.348 ; gain = 548.082
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:44 ; elapsed = 00:01:14 . Memory (MB): peak = 1495.348 ; gain = 506.391
+Synthesis Optimization Complete : Time (s): cpu = 00:01:05 ; elapsed = 00:01:20 . Memory (MB): peak = 1495.348 ; gain = 548.082
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.017 . Memory (MB): peak = 1495.348 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1499.109 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete, checksum: 3b70164d
+INFO: [Common 17-83] Releasing license: Synthesis
+48 Infos, 84 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:17 ; elapsed = 00:01:36 . Memory (MB): peak = 1499.109 ; gain = 953.777
+INFO: [Common 17-1381] The checkpoint 'C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.runs/system_util_dac_1_upack_0_synth_1/system_util_dac_1_upack_0.dcp' has been generated.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP system_util_dac_1_upack_0, cache-ID = 0ca0343b888ebf8b
+INFO: [Coretcl 2-1174] Renamed 5 cell refs.
+INFO: [Common 17-1381] The checkpoint 'C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/adrv9001_zed.runs/system_util_dac_1_upack_0_synth_1/system_util_dac_1_upack_0.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file system_util_dac_1_upack_0_utilization_synth.rpt -pb system_util_dac_1_upack_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sun Mar 10 23:36:15 2024...
