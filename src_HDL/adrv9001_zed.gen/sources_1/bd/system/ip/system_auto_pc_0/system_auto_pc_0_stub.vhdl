@@ -2,10 +2,10 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
--- Date        : Mon Mar 11 00:20:05 2024
+-- Date        : Sat Apr  6 00:36:02 2024
 -- Host        : ASUS_ROG running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub
---               c:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.gen/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top system_auto_pc_0 -prefix
+--               system_auto_pc_0_ system_auto_pc_0_stub.vhdl
 -- Design      : system_auto_pc_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7z020clg484-1

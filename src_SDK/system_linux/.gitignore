@@ -13,5 +13,5 @@
 #Ignore lock files
 .lock
 
-.bin
+# .bin # version the output for SD card
 .pdi

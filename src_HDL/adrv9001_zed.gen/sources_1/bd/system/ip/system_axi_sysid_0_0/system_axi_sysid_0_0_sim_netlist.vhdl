@@ -2,10 +2,10 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
--- Date        : Mon Mar 11 00:26:32 2024
+-- Date        : Sat Apr  6 00:28:49 2024
 -- Host        : ASUS_ROG running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               c:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_sysid_0_0/system_axi_sysid_0_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top system_axi_sysid_0_0 -prefix
+--               system_axi_sysid_0_0_ system_axi_sysid_0_0_sim_netlist.vhdl
 -- Design      : system_axi_sysid_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -47,8 +47,6 @@ entity system_axi_sysid_0_0_up_axi is
     sys_rom_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
     pr_rom_data : in STD_LOGIC_VECTOR ( 31 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of system_axi_sysid_0_0_up_axi : entity is "up_axi";
 end system_axi_sysid_0_0_up_axi;
 
 architecture STRUCTURE of system_axi_sysid_0_0_up_axi is
@@ -3142,8 +3140,6 @@ entity system_axi_sysid_0_0_axi_sysid is
     sys_rom_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
     pr_rom_data : in STD_LOGIC_VECTOR ( 31 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of system_axi_sysid_0_0_axi_sysid : entity is "axi_sysid";
 end system_axi_sysid_0_0_axi_sysid;
 
 architecture STRUCTURE of system_axi_sysid_0_0_axi_sysid is

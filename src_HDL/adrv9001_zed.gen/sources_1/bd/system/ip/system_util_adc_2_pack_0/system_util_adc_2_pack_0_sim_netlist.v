@@ -2,10 +2,10 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-// Date        : Mon Mar 11 00:30:37 2024
+// Date        : Sat Apr  6 00:35:49 2024
 // Host        : ASUS_ROG running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               c:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.gen/sources_1/bd/system/ip/system_util_adc_2_pack_0/system_util_adc_2_pack_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top system_util_adc_2_pack_0 -prefix
+//               system_util_adc_2_pack_0_ system_util_adc_2_pack_0_sim_netlist.v
 // Design      : system_util_adc_2_pack_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -13,62 +13,6 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "system_util_adc_2_pack_0,util_cpack2,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* IP_DEFINITION_SOURCE = "package_project" *) 
-(* X_CORE_INFO = "util_cpack2,Vivado 2023.2.2" *) 
-(* NotValidForBitStream *)
-module system_util_adc_2_pack_0
-   (clk,
-    reset,
-    enable_0,
-    enable_1,
-    fifo_wr_en,
-    fifo_wr_overflow,
-    fifo_wr_data_0,
-    fifo_wr_data_1,
-    packed_fifo_wr_en,
-    packed_fifo_wr_overflow,
-    packed_fifo_wr_sync,
-    packed_fifo_wr_data);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 packed_fifo_wr_signal_clock CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME packed_fifo_wr_signal_clock, ASSOCIATED_BUSIF packed_fifo_wr, ASSOCIATED_RESET reset, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_axi_adrv9001_0_adc_2_clk, INSERT_VIP 0" *) input clk;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 packed_fifo_wr_signal_reset RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME packed_fifo_wr_signal_reset, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *) input reset;
-  input enable_0;
-  input enable_1;
-  input fifo_wr_en;
-  output fifo_wr_overflow;
-  input [15:0]fifo_wr_data_0;
-  input [15:0]fifo_wr_data_1;
-  (* X_INTERFACE_INFO = "analog.com:interface:fifo_wr:1.0 packed_fifo_wr EN" *) output packed_fifo_wr_en;
-  (* X_INTERFACE_INFO = "analog.com:interface:fifo_wr:1.0 packed_fifo_wr OVERFLOW" *) input packed_fifo_wr_overflow;
-  (* X_INTERFACE_INFO = "analog.com:interface:fifo_wr:1.0 packed_fifo_wr SYNC" *) output packed_fifo_wr_sync;
-  (* X_INTERFACE_INFO = "analog.com:interface:fifo_wr:1.0 packed_fifo_wr DATA" *) output [31:0]packed_fifo_wr_data;
-
-  wire clk;
-  wire enable_0;
-  wire enable_1;
-  wire [15:0]fifo_wr_data_0;
-  wire [15:0]fifo_wr_data_1;
-  wire fifo_wr_en;
-  wire [31:0]packed_fifo_wr_data;
-  wire packed_fifo_wr_en;
-  wire packed_fifo_wr_overflow;
-  wire packed_fifo_wr_sync;
-  wire reset;
-
-  assign fifo_wr_overflow = packed_fifo_wr_overflow;
-  system_util_adc_2_pack_0_util_cpack2 inst
-       (.clk(clk),
-        .enable_0(enable_0),
-        .enable_1(enable_1),
-        .fifo_wr_data_0(fifo_wr_data_0),
-        .fifo_wr_data_1(fifo_wr_data_1),
-        .fifo_wr_en(fifo_wr_en),
-        .packed_fifo_wr_data(packed_fifo_wr_data),
-        .packed_fifo_wr_en(packed_fifo_wr_en),
-        .packed_fifo_wr_sync(packed_fifo_wr_sync),
-        .reset(reset));
-endmodule
-
-(* ORIG_REF_NAME = "pack_interconnect" *) 
 module system_util_adc_2_pack_0_pack_interconnect
    (D,
     fifo_wr_data_0,
@@ -342,7 +286,6 @@ module system_util_adc_2_pack_0_pack_interconnect
         .O(D[9]));
 endmodule
 
-(* ORIG_REF_NAME = "pack_network" *) 
 module system_util_adc_2_pack_0_pack_network
    (E,
     D,
@@ -402,7 +345,6 @@ module system_util_adc_2_pack_0_pack_network
         .p_0_in(p_0_in));
 endmodule
 
-(* ORIG_REF_NAME = "pack_shell" *) 
 module system_util_adc_2_pack_0_pack_shell
    (E,
     fifo_wr_en_0,
@@ -699,7 +641,61 @@ module system_util_adc_2_pack_0_pack_shell
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "util_cpack2" *) 
+(* CHECK_LICENSE_TYPE = "system_util_adc_2_pack_0,util_cpack2,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* IP_DEFINITION_SOURCE = "package_project" *) 
+(* X_CORE_INFO = "util_cpack2,Vivado 2023.2.2" *) 
+(* NotValidForBitStream *)
+module system_util_adc_2_pack_0
+   (clk,
+    reset,
+    enable_0,
+    enable_1,
+    fifo_wr_en,
+    fifo_wr_overflow,
+    fifo_wr_data_0,
+    fifo_wr_data_1,
+    packed_fifo_wr_en,
+    packed_fifo_wr_overflow,
+    packed_fifo_wr_sync,
+    packed_fifo_wr_data);
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 packed_fifo_wr_signal_clock CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME packed_fifo_wr_signal_clock, ASSOCIATED_BUSIF packed_fifo_wr, ASSOCIATED_RESET reset, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_axi_adrv9001_0_adc_2_clk, INSERT_VIP 0" *) input clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 packed_fifo_wr_signal_reset RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME packed_fifo_wr_signal_reset, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *) input reset;
+  input enable_0;
+  input enable_1;
+  input fifo_wr_en;
+  output fifo_wr_overflow;
+  input [15:0]fifo_wr_data_0;
+  input [15:0]fifo_wr_data_1;
+  (* X_INTERFACE_INFO = "analog.com:interface:fifo_wr:1.0 packed_fifo_wr EN" *) output packed_fifo_wr_en;
+  (* X_INTERFACE_INFO = "analog.com:interface:fifo_wr:1.0 packed_fifo_wr OVERFLOW" *) input packed_fifo_wr_overflow;
+  (* X_INTERFACE_INFO = "analog.com:interface:fifo_wr:1.0 packed_fifo_wr SYNC" *) output packed_fifo_wr_sync;
+  (* X_INTERFACE_INFO = "analog.com:interface:fifo_wr:1.0 packed_fifo_wr DATA" *) output [31:0]packed_fifo_wr_data;
+
+  wire clk;
+  wire enable_0;
+  wire enable_1;
+  wire [15:0]fifo_wr_data_0;
+  wire [15:0]fifo_wr_data_1;
+  wire fifo_wr_en;
+  wire [31:0]packed_fifo_wr_data;
+  wire packed_fifo_wr_en;
+  wire packed_fifo_wr_overflow;
+  wire packed_fifo_wr_sync;
+  wire reset;
+
+  assign fifo_wr_overflow = packed_fifo_wr_overflow;
+  system_util_adc_2_pack_0_util_cpack2 inst
+       (.clk(clk),
+        .enable_0(enable_0),
+        .enable_1(enable_1),
+        .fifo_wr_data_0(fifo_wr_data_0),
+        .fifo_wr_data_1(fifo_wr_data_1),
+        .fifo_wr_en(fifo_wr_en),
+        .packed_fifo_wr_data(packed_fifo_wr_data),
+        .packed_fifo_wr_en(packed_fifo_wr_en),
+        .packed_fifo_wr_sync(packed_fifo_wr_sync),
+        .reset(reset));
+endmodule
+
 module system_util_adc_2_pack_0_util_cpack2
    (packed_fifo_wr_data,
     packed_fifo_wr_en,
@@ -746,7 +742,6 @@ module system_util_adc_2_pack_0_util_cpack2
         .reset(reset));
 endmodule
 
-(* ORIG_REF_NAME = "util_cpack2_impl" *) 
 module system_util_adc_2_pack_0_util_cpack2_impl
    (packed_fifo_wr_data,
     packed_fifo_wr_en,

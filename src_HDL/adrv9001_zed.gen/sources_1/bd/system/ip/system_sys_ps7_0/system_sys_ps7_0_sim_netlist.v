@@ -2,7 +2,7 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-// Date        : Mon Mar 11 00:29:19 2024
+// Date        : Sat Apr  6 01:20:40 2024
 // Host        : ASUS_ROG running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.gen/sources_1/bd/system/ip/system_sys_ps7_0/system_sys_ps7_0_sim_netlist.v

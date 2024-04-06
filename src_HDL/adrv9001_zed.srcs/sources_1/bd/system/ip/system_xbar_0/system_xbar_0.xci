@@ -2,7 +2,7 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "system_xbar_0",
-    "cell_name": "axi_cpu_interconnect_upgraded_ipi/xbar",
+    "cell_name": "axi_cpu_interconnect/xbar",
     "component_reference": "xilinx.com:ip:axi_crossbar:2.1",
     "ip_revision": "31",
     "gen_directory": "../../../../../../adrv9001_zed.gen/sources_1/bd/system/ip/system_xbar_0",
@@ -1242,7 +1242,7 @@
       },
       "project_parameters": {
         "ARCHITECTURE": [ { "value": "zynq" } ],
-        "BASE_BOARD_PART": [ { "value": "" } ],
+        "BASE_BOARD_PART": [ { "value": "avnet.com:zedboard:part0:1.4" } ],
         "BOARD_CONNECTIONS": [ { "value": "" } ],
         "DEVICE": [ { "value": "xc7z020" } ],
         "PACKAGE": [ { "value": "clg484" } ],

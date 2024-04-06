@@ -69,7 +69,7 @@ output wire [31 : 0] rom_data;
   sysid_rom #(
     .ROM_WIDTH(32),
     .ROM_ADDR_BITS(9),
-    .PATH_TO_FILE("C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/mem_init_sys.txt")
+    .PATH_TO_FILE("c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/mem_init_sys.txt")
   ) inst (
     .clk(clk),
     .rom_addr(rom_addr),

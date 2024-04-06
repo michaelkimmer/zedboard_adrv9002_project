@@ -4,6 +4,9 @@
 -- Generating done
 -- Build files have been written to: C:/zedboard_adrv9002_project/src_SDK/platform_system_top/zynq_fsbl/zynq_fsbl_bsp/libsrc/build_configs/gen_bsp
 -- Cache values
+// BOARD
+BOARD:STRING=zedboard
+
 // Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel ...
 CMAKE_BUILD_TYPE:STRING=
 

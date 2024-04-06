@@ -2,10 +2,10 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-// Date        : Mon Mar 11 00:27:29 2024
+// Date        : Sat Apr  6 00:34:29 2024
 // Host        : ASUS_ROG running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               c:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.gen/sources_1/bd/system/ip/system_rom_sys_0_0/system_rom_sys_0_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top system_rom_sys_0_0 -prefix
+//               system_rom_sys_0_0_ system_rom_sys_0_0_sim_netlist.v
 // Design      : system_rom_sys_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -13,36 +13,6 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "system_rom_sys_0_0,sysid_rom,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* IP_DEFINITION_SOURCE = "package_project" *) 
-(* X_CORE_INFO = "sysid_rom,Vivado 2023.2.2" *) 
-(* NotValidForBitStream *)
-module system_rom_sys_0_0
-   (clk,
-    rom_addr,
-    rom_data);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, INSERT_VIP 0" *) input clk;
-  input [8:0]rom_addr;
-  output [31:0]rom_data;
-
-  wire \<const0> ;
-  wire clk;
-  wire [8:0]rom_addr;
-  wire [31:0]\^rom_data ;
-
-  assign rom_data[31:24] = \^rom_data [31:24];
-  assign rom_data[23] = \<const0> ;
-  assign rom_data[22:16] = \^rom_data [22:16];
-  assign rom_data[15] = \<const0> ;
-  assign rom_data[14:0] = \^rom_data [14:0];
-  GND GND
-       (.G(\<const0> ));
-  system_rom_sys_0_0_sysid_rom inst
-       (.clk(clk),
-        .rom_addr(rom_addr),
-        .rom_data({\^rom_data [31:24],\^rom_data [22:16],\^rom_data [14:0]}));
-endmodule
-
-(* ORIG_REF_NAME = "sysid_rom" *) 
 module system_rom_sys_0_0_sysid_rom
    (rom_data,
     rom_addr,
@@ -937,6 +907,35 @@ module system_rom_sys_0_0_sysid_rom
         .D(\rom_data[9]_i_1_n_0 ),
         .Q(rom_data[9]),
         .R(rom_addr[6]));
+endmodule
+
+(* CHECK_LICENSE_TYPE = "system_rom_sys_0_0,sysid_rom,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* IP_DEFINITION_SOURCE = "package_project" *) 
+(* X_CORE_INFO = "sysid_rom,Vivado 2023.2.2" *) 
+(* NotValidForBitStream *)
+module system_rom_sys_0_0
+   (clk,
+    rom_addr,
+    rom_data);
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, INSERT_VIP 0" *) input clk;
+  input [8:0]rom_addr;
+  output [31:0]rom_data;
+
+  wire \<const0> ;
+  wire clk;
+  wire [8:0]rom_addr;
+  wire [31:0]\^rom_data ;
+
+  assign rom_data[31:24] = \^rom_data [31:24];
+  assign rom_data[23] = \<const0> ;
+  assign rom_data[22:16] = \^rom_data [22:16];
+  assign rom_data[15] = \<const0> ;
+  assign rom_data[14:0] = \^rom_data [14:0];
+  GND GND
+       (.G(\<const0> ));
+  system_rom_sys_0_0_sysid_rom inst
+       (.clk(clk),
+        .rom_addr(rom_addr),
+        .rom_data({\^rom_data [31:24],\^rom_data [22:16],\^rom_data [14:0]}));
 endmodule
 `ifndef GLBL
 `define GLBL

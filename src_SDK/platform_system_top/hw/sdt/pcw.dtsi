@@ -911,7 +911,7 @@
 			xlnx,pcw-qspi-grp-io1-enable = <0>;
 			xlnx,s-axi-gp1-id-width = <6>;
 			xlnx,pcw-uiparam-ddr-bl = <8>;
-			xlnx,pcw-peripheral-board-preset = "None";
+			xlnx,pcw-peripheral-board-preset = "part0";
 			xlnx,pcw-en-emio-wp-sdio0 = <0>;
 			xlnx,pcw-p2f-usb1-intr = <0>;
 			xlnx,pcw-en-emio-wp-sdio1 = <0>;

@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xF3029E9DEC2B9FB0",
+      "boundary_crc": "0xF3029E9D5C3C175E",
       "device": "xc7z020clg484-1",
       "gen_directory": "../../../../adrv9001_zed.gen/sources_1/bd/system",
       "name": "system",
@@ -2306,9 +2306,6 @@
         "parameters": {
           "NUM_PORTS": {
             "value": "16"
-          },
-          "dout_width": {
-            "value": "16"
           }
         }
       },
@@ -2411,7 +2408,7 @@
             },
             "parameters": {
               "master_id": {
-                "value": "1"
+                "value": "5"
               }
             }
           }
@@ -2536,7 +2533,7 @@
         "inst_hier_path": "rom_sys_0",
         "parameters": {
           "PATH_TO_FILE": {
-            "value": "C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/mem_init_sys.txt"
+            "value": "c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/mem_init_sys.txt"
           },
           "ROM_ADDR_BITS": {
             "value": "9"
@@ -4117,7 +4114,7 @@
             },
             "parameters": {
               "master_id": {
-                "value": "2"
+                "value": "4"
               }
             }
           }
@@ -4190,7 +4187,7 @@
             },
             "parameters": {
               "master_id": {
-                "value": "3"
+                "value": "2"
               }
             }
           }
@@ -4260,7 +4257,7 @@
             },
             "parameters": {
               "master_id": {
-                "value": "4"
+                "value": "3"
               }
             }
           }
@@ -4330,7 +4327,7 @@
             },
             "parameters": {
               "master_id": {
-                "value": "5"
+                "value": "1"
               }
             }
           }
