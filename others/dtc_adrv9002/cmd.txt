@@ -1,0 +1,2 @@
+
+dtc -I dtb -O dts device_tree.dtb -o device_tree.dts
