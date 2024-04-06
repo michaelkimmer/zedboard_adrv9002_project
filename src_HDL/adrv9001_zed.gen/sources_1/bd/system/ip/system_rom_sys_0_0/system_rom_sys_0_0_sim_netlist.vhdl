@@ -2,10 +2,10 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
--- Date        : Mon Mar 11 00:27:29 2024
+-- Date        : Sat Apr  6 00:34:29 2024
 -- Host        : ASUS_ROG running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               c:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.gen/sources_1/bd/system/ip/system_rom_sys_0_0/system_rom_sys_0_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top system_rom_sys_0_0 -prefix
+--               system_rom_sys_0_0_ system_rom_sys_0_0_sim_netlist.vhdl
 -- Design      : system_rom_sys_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -21,8 +21,6 @@ entity system_rom_sys_0_0_sysid_rom is
     rom_addr : in STD_LOGIC_VECTOR ( 8 downto 0 );
     clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of system_rom_sys_0_0_sysid_rom : entity is "sysid_rom";
 end system_rom_sys_0_0_sysid_rom;
 
 architecture STRUCTURE of system_rom_sys_0_0_sysid_rom is

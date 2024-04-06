@@ -1,0 +1,18 @@
+#-----------------------------------------------------------
+# Vivado v2023.2.2 (64-bit)
+# SW Build 4126759 on Thu Feb  8 23:53:51 MST 2024
+# IP Build 4126054 on Fri Feb  9 11:39:09 MST 2024
+# SharedData Build 4115275 on Tue Jan 30 00:40:57 MST 2024
+# Start of session at: Sat Apr  6 01:41:16 2024
+# Process ID: 9996
+# Current directory: C:/zedboard_adrv9002_project/src_HDL
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent6284 C:\zedboard_adrv9002_project\src_HDL\adrv9001_zed.xpr
+# Log file: C:/zedboard_adrv9002_project/src_HDL/vivado.log
+# Journal file: C:/zedboard_adrv9002_project/src_HDL\vivado.jou
+# Running On: ASUS_ROG, OS: Windows, CPU Frequency: 2304 MHz, CPU Physical cores: 4, Host memory: 17028 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.xpr
+update_compile_order -fileset sources_1
+delete_runs "impl_1_copy_1"
+write_hw_platform -fixed -include_bit -force -file C:/zedboard_adrv9002_project/src_HDL/system_top.xsa

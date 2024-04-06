@@ -122,12 +122,6 @@ system_sys_ps7_0_sc::system_sys_ps7_0_sc(const sc_core::sc_module_name& nm) : sc
   mp_impl = new processing_system7_v5_5_tlm("inst", model_param_props);
 
   // initialize AXI sockets
-  DMA0_REQ_socket = mp_impl->DMA0_REQ_socket;
-  DMA0_ACK_socket = mp_impl->DMA0_ACK_socket;
-  DMA1_REQ_socket = mp_impl->DMA1_REQ_socket;
-  DMA1_ACK_socket = mp_impl->DMA1_ACK_socket;
-  DMA2_REQ_socket = mp_impl->DMA2_REQ_socket;
-  DMA2_ACK_socket = mp_impl->DMA2_ACK_socket;
   M_AXI_GP0_rd_socket = mp_impl->M_AXI_GP0_rd_socket;
   M_AXI_GP0_wr_socket = mp_impl->M_AXI_GP0_wr_socket;
   S_AXI_HP0_rd_socket = mp_impl->S_AXI_HP0_rd_socket;

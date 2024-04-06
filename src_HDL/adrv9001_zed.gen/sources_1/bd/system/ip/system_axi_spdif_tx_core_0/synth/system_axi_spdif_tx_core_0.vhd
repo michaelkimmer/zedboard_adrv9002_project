@@ -149,7 +149,7 @@ ARCHITECTURE system_axi_spdif_tx_core_0_arch OF system_axi_spdif_tx_core_0 IS
   ATTRIBUTE IP_DEFINITION_SOURCE OF system_axi_spdif_tx_core_0_arch: ARCHITECTURE IS "package_project";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
-  ATTRIBUTE X_INTERFACE_PARAMETER OF dma_req_aclk: SIGNAL IS "XIL_INTERFACENAME dma_req_aclk, ASSOCIATED_RESET dma_req_rstn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, ASSOCIATED_BUSIF dma_req:dma_ack, INSERT_VIP 0, XIL_INTERFACENAME dma_req_dma_ack_signal_clock, ASSOCIATED_BUSIF dma_req:dma_ack, ASSOCIATED_RESET dma_req_rstn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF dma_req_aclk: SIGNAL IS "XIL_INTERFACENAME dma_req_aclk, ASSOCIATED_RESET dma_req_rstn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0, XIL_INTERFACENAME dma_req_dma_ack_signal_clock, ASSOCIATED_BUSIF dma_req:dma_ack, ASSOCIATED_RESET dma_req_rstn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF dma_req_aclk: SIGNAL IS "xilinx.com:signal:clock:1.0 dma_req_aclk CLK, xilinx.com:signal:clock:1.0 dma_req_dma_ack_signal_clock CLK";
   ATTRIBUTE X_INTERFACE_INFO OF dma_req_daready: SIGNAL IS "xilinx.com:interface:axis:1.0 dma_ack TREADY";
   ATTRIBUTE X_INTERFACE_INFO OF dma_req_datype: SIGNAL IS "xilinx.com:interface:axis:1.0 dma_ack TUSER";
@@ -161,7 +161,7 @@ ARCHITECTURE system_axi_spdif_tx_core_0_arch OF system_axi_spdif_tx_core_0 IS
   ATTRIBUTE X_INTERFACE_PARAMETER OF dma_req_drvalid: SIGNAL IS "XIL_INTERFACENAME dma_req, TDATA_NUM_BYTES 0, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 2, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 1, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, LAYERED_METADATA undef, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF dma_req_drvalid: SIGNAL IS "xilinx.com:interface:axis:1.0 dma_req TVALID";
   ATTRIBUTE X_INTERFACE_PARAMETER OF dma_req_rstn: SIGNAL IS "XIL_INTERFACENAME dma_req_rstn, POLARITY ACTIVE_LOW, INSERT_VIP 0, XIL_INTERFACENAME dma_req_dma_ack_signal_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0";
-  ATTRIBUTE X_INTERFACE_INFO OF dma_req_rstn: SIGNAL IS "xilinx.com:signal:reset:1.0 dma_req_rstn RST, xilinx.com:signal:reset:1.0 dma_req_dma_ack_signal_reset RST";
+  ATTRIBUTE X_INTERFACE_INFO OF dma_req_rstn: SIGNAL IS "xilinx.com:signal:reset:1.0 dma_req_dma_ack_signal_reset RST, xilinx.com:signal:reset:1.0 dma_req_rstn RST";
   ATTRIBUTE X_INTERFACE_PARAMETER OF s_axi_aclk: SIGNAL IS "XIL_INTERFACENAME s_axi_aclk, ASSOCIATED_BUSIF s_axi, ASSOCIATED_RESET s_axi_aresetn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF s_axi_aclk: SIGNAL IS "xilinx.com:signal:clock:1.0 s_axi_aclk CLK";
   ATTRIBUTE X_INTERFACE_INFO OF s_axi_araddr: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi ARADDR";

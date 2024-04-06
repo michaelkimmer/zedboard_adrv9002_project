@@ -2,10 +2,10 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
--- Date        : Mon Mar 11 00:28:59 2024
+-- Date        : Sat Apr  6 00:30:04 2024
 -- Host        : ASUS_ROG running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               c:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.gen/sources_1/bd/system/ip/system_sys_logic_inv_0/system_sys_logic_inv_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top system_sys_logic_inv_0 -prefix
+--               system_sys_logic_inv_0_ system_sys_logic_inv_0_sim_netlist.vhdl
 -- Design      : system_sys_logic_inv_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.

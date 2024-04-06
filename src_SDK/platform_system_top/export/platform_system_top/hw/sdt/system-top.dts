@@ -3,6 +3,8 @@
 #include "pl.dtsi"
 #include "pcw.dtsi"
 / {
+	board = "zedboard";
+	compatible = "xlnx,zedboard";
 	device_id = "7z020";
 	slrcount = <1>;
 	ps7_ddr_0_memory: memory@00100000 {

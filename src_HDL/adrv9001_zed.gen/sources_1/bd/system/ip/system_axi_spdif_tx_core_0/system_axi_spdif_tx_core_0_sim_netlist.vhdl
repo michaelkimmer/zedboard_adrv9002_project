@@ -2,10 +2,10 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
--- Date        : Mon Mar 11 00:26:04 2024
+-- Date        : Sat Apr  6 00:32:44 2024
 -- Host        : ASUS_ROG running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               c:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_spdif_tx_core_0/system_axi_spdif_tx_core_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top system_axi_spdif_tx_core_0 -prefix
+--               system_axi_spdif_tx_core_0_ system_axi_spdif_tx_core_0_sim_netlist.vhdl
 -- Design      : system_axi_spdif_tx_core_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -37,8 +37,6 @@ entity system_axi_spdif_tx_core_0_axi_ctrlif is
     s_axi_bready : in STD_LOGIC;
     s_axi_araddr : in STD_LOGIC_VECTOR ( 1 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of system_axi_spdif_tx_core_0_axi_ctrlif : entity is "axi_ctrlif";
 end system_axi_spdif_tx_core_0_axi_ctrlif;
 
 architecture STRUCTURE of system_axi_spdif_tx_core_0_axi_ctrlif is
@@ -630,8 +628,6 @@ entity system_axi_spdif_tx_core_0_dma_fifo is
     \state[0]_i_2\ : in STD_LOGIC;
     \state[0]_i_2_0\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of system_axi_spdif_tx_core_0_dma_fifo : entity is "dma_fifo";
 end system_axi_spdif_tx_core_0_dma_fifo;
 
 architecture STRUCTURE of system_axi_spdif_tx_core_0_dma_fifo is
@@ -1384,8 +1380,6 @@ entity system_axi_spdif_tx_core_0_tx_encoder is
     spdif_out_i_11_0 : in STD_LOGIC_VECTOR ( 5 downto 0 );
     D : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of system_axi_spdif_tx_core_0_tx_encoder : entity is "tx_encoder";
 end system_axi_spdif_tx_core_0_tx_encoder;
 
 architecture STRUCTURE of system_axi_spdif_tx_core_0_tx_encoder is
@@ -3447,8 +3441,6 @@ entity system_axi_spdif_tx_core_0_pl330_dma_fifo is
     dma_req_datype : in STD_LOGIC_VECTOR ( 1 downto 0 );
     dma_req_aclk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of system_axi_spdif_tx_core_0_pl330_dma_fifo : entity is "pl330_dma_fifo";
 end system_axi_spdif_tx_core_0_pl330_dma_fifo;
 
 architecture STRUCTURE of system_axi_spdif_tx_core_0_pl330_dma_fifo is
@@ -3641,8 +3633,6 @@ entity system_axi_spdif_tx_core_0_axi_spdif_tx is
   attribute DEVICE_FAMILY of system_axi_spdif_tx_core_0_axi_spdif_tx : entity is "virtex6";
   attribute DMA_TYPE : integer;
   attribute DMA_TYPE of system_axi_spdif_tx_core_0_axi_spdif_tx : entity is 1;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of system_axi_spdif_tx_core_0_axi_spdif_tx : entity is "axi_spdif_tx";
   attribute S_AXI_ADDRESS_WIDTH : integer;
   attribute S_AXI_ADDRESS_WIDTH of system_axi_spdif_tx_core_0_axi_spdif_tx : entity is 16;
   attribute S_AXI_DATA_WIDTH : integer;
@@ -4445,7 +4435,7 @@ architecture STRUCTURE of system_axi_spdif_tx_core_0 is
   attribute x_interface_info : string;
   attribute x_interface_info of dma_req_aclk : signal is "xilinx.com:signal:clock:1.0 dma_req_aclk CLK, xilinx.com:signal:clock:1.0 dma_req_dma_ack_signal_clock CLK";
   attribute x_interface_parameter : string;
-  attribute x_interface_parameter of dma_req_aclk : signal is "XIL_INTERFACENAME dma_req_aclk, ASSOCIATED_RESET dma_req_rstn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, ASSOCIATED_BUSIF dma_req:dma_ack, INSERT_VIP 0, XIL_INTERFACENAME dma_req_dma_ack_signal_clock, ASSOCIATED_BUSIF dma_req:dma_ack, ASSOCIATED_RESET dma_req_rstn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, INSERT_VIP 0";
+  attribute x_interface_parameter of dma_req_aclk : signal is "XIL_INTERFACENAME dma_req_aclk, ASSOCIATED_RESET dma_req_rstn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0, XIL_INTERFACENAME dma_req_dma_ack_signal_clock, ASSOCIATED_BUSIF dma_req:dma_ack, ASSOCIATED_RESET dma_req_rstn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, INSERT_VIP 0";
   attribute x_interface_info of dma_req_daready : signal is "xilinx.com:interface:axis:1.0 dma_ack TREADY";
   attribute x_interface_info of dma_req_davalid : signal is "xilinx.com:interface:axis:1.0 dma_ack TVALID";
   attribute x_interface_parameter of dma_req_davalid : signal is "XIL_INTERFACENAME dma_ack, TDATA_NUM_BYTES 0, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 2, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, LAYERED_METADATA undef, INSERT_VIP 0";
@@ -4453,7 +4443,7 @@ architecture STRUCTURE of system_axi_spdif_tx_core_0 is
   attribute x_interface_info of dma_req_drready : signal is "xilinx.com:interface:axis:1.0 dma_req TREADY";
   attribute x_interface_info of dma_req_drvalid : signal is "xilinx.com:interface:axis:1.0 dma_req TVALID";
   attribute x_interface_parameter of dma_req_drvalid : signal is "XIL_INTERFACENAME dma_req, TDATA_NUM_BYTES 0, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 2, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 1, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, LAYERED_METADATA undef, INSERT_VIP 0";
-  attribute x_interface_info of dma_req_rstn : signal is "xilinx.com:signal:reset:1.0 dma_req_rstn RST, xilinx.com:signal:reset:1.0 dma_req_dma_ack_signal_reset RST";
+  attribute x_interface_info of dma_req_rstn : signal is "xilinx.com:signal:reset:1.0 dma_req_dma_ack_signal_reset RST, xilinx.com:signal:reset:1.0 dma_req_rstn RST";
   attribute x_interface_parameter of dma_req_rstn : signal is "XIL_INTERFACENAME dma_req_rstn, POLARITY ACTIVE_LOW, INSERT_VIP 0, XIL_INTERFACENAME dma_req_dma_ack_signal_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   attribute x_interface_info of s_axi_aclk : signal is "xilinx.com:signal:clock:1.0 s_axi_aclk CLK";
   attribute x_interface_parameter of s_axi_aclk : signal is "XIL_INTERFACENAME s_axi_aclk, ASSOCIATED_BUSIF s_axi, ASSOCIATED_RESET s_axi_aresetn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, INSERT_VIP 0";

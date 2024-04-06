@@ -10,17 +10,17 @@
       "component_parameters": {
         "ROM_WIDTH": [ { "value": "32", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "ROM_ADDR_BITS": [ { "value": "9", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
-        "PATH_TO_FILE": [ { "value": "C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/mem_init_sys.txt", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
+        "PATH_TO_FILE": [ { "value": "c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/mem_init_sys.txt", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
         "Component_Name": [ { "value": "system_rom_sys_0_0", "resolve_type": "user", "usage": "all" } ]
       },
       "model_parameters": {
         "ROM_WIDTH": [ { "value": "32", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "ROM_ADDR_BITS": [ { "value": "9", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "PATH_TO_FILE": [ { "value": "C:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/mem_init_sys.txt", "resolve_type": "generated", "usage": "all" } ]
+        "PATH_TO_FILE": [ { "value": "c:/zedboard_adrv9002_project/adi_hdl_2022_r2/projects/adrv9001/zed/mem_init_sys.txt", "resolve_type": "generated", "usage": "all" } ]
       },
       "project_parameters": {
         "ARCHITECTURE": [ { "value": "zynq" } ],
-        "BASE_BOARD_PART": [ { "value": "" } ],
+        "BASE_BOARD_PART": [ { "value": "avnet.com:zedboard:part0:1.4" } ],
         "BOARD_CONNECTIONS": [ { "value": "" } ],
         "DEVICE": [ { "value": "xc7z020" } ],
         "PACKAGE": [ { "value": "clg484" } ],
@@ -29,9 +29,7 @@
         "SIMULATOR_LANGUAGE": [ { "value": "MIXED" } ],
         "SPEEDGRADE": [ { "value": "-1" } ],
         "STATIC_POWER": [ { "value": "" } ],
-        "TEMPERATURE_GRADE": [ { "value": "" } ],
-        "USE_RDI_CUSTOMIZATION": [ { "value": "TRUE" } ],
-        "USE_RDI_GENERATION": [ { "value": "TRUE" } ]
+        "TEMPERATURE_GRADE": [ { "value": "" } ]
       },
       "runtime_parameters": {
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],

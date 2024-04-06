@@ -573,7 +573,7 @@
                 "value": "0"
               },
               "MEP_IDENTIFIER": {
-                "value": "1"
+                "value": "5"
               },
               "MEP_IDENTIFIER_WIDTH": {
                 "value": "3"
@@ -1394,7 +1394,7 @@
                 "value": "0b0"
               },
               "SSC001_ROUTE": {
-                "value": "0b1"
+                "value": "0b0"
               },
               "SSC002_ROUTE": {
                 "value": "0b0"
@@ -1406,7 +1406,7 @@
                 "value": "0b0"
               },
               "SSC005_ROUTE": {
-                "value": "0b0"
+                "value": "0b1"
               },
               "SSC006_ROUTE": {
                 "value": "0b0"

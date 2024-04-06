@@ -2,10 +2,10 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-// Date        : Mon Mar 11 00:26:04 2024
+// Date        : Sat Apr  6 00:32:44 2024
 // Host        : ASUS_ROG running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               c:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_spdif_tx_core_0/system_axi_spdif_tx_core_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top system_axi_spdif_tx_core_0 -prefix
+//               system_axi_spdif_tx_core_0_ system_axi_spdif_tx_core_0_sim_netlist.v
 // Design      : system_axi_spdif_tx_core_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -13,167 +13,6 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "system_axi_spdif_tx_core_0,axi_spdif_tx,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* ip_definition_source = "package_project" *) 
-(* x_core_info = "axi_spdif_tx,Vivado 2023.2.2" *) 
-(* NotValidForBitStream *)
-module system_axi_spdif_tx_core_0
-   (spdif_data_clk,
-    spdif_tx_o,
-    s_axi_aclk,
-    s_axi_aresetn,
-    s_axi_awaddr,
-    s_axi_awprot,
-    s_axi_awvalid,
-    s_axi_wdata,
-    s_axi_wstrb,
-    s_axi_wvalid,
-    s_axi_bready,
-    s_axi_araddr,
-    s_axi_arprot,
-    s_axi_arvalid,
-    s_axi_rready,
-    s_axi_arready,
-    s_axi_rdata,
-    s_axi_rresp,
-    s_axi_rvalid,
-    s_axi_wready,
-    s_axi_bresp,
-    s_axi_bvalid,
-    s_axi_awready,
-    dma_req_aclk,
-    dma_req_rstn,
-    dma_req_davalid,
-    dma_req_datype,
-    dma_req_daready,
-    dma_req_drvalid,
-    dma_req_drtype,
-    dma_req_drlast,
-    dma_req_drready);
-  (* x_interface_info = "xilinx.com:signal:clock:1.0 spdif_data_clk CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME spdif_data_clk, FREQ_HZ 12287988, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_sys_audio_clkgen_0_clk_out1, INSERT_VIP 0" *) input spdif_data_clk;
-  output spdif_tx_o;
-  (* x_interface_info = "xilinx.com:signal:clock:1.0 s_axi_aclk CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME s_axi_aclk, ASSOCIATED_BUSIF s_axi, ASSOCIATED_RESET s_axi_aresetn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, INSERT_VIP 0" *) input s_axi_aclk;
-  (* x_interface_info = "xilinx.com:signal:reset:1.0 s_axi_aresetn RST" *) (* x_interface_parameter = "XIL_INTERFACENAME s_axi_aresetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input s_axi_aresetn;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi AWADDR" *) (* x_interface_parameter = "XIL_INTERFACENAME s_axi, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 100000000, ID_WIDTH 0, ADDR_WIDTH 16, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 1, NUM_WRITE_OUTSTANDING 1, MAX_BURST_LENGTH 1, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0" *) input [15:0]s_axi_awaddr;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi AWPROT" *) input [2:0]s_axi_awprot;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi AWVALID" *) input s_axi_awvalid;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi WDATA" *) input [31:0]s_axi_wdata;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi WSTRB" *) input [3:0]s_axi_wstrb;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi WVALID" *) input s_axi_wvalid;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi BREADY" *) input s_axi_bready;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi ARADDR" *) input [15:0]s_axi_araddr;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi ARPROT" *) input [2:0]s_axi_arprot;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi ARVALID" *) input s_axi_arvalid;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi RREADY" *) input s_axi_rready;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi ARREADY" *) output s_axi_arready;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi RDATA" *) output [31:0]s_axi_rdata;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi RRESP" *) output [1:0]s_axi_rresp;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi RVALID" *) output s_axi_rvalid;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi WREADY" *) output s_axi_wready;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi BRESP" *) output [1:0]s_axi_bresp;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi BVALID" *) output s_axi_bvalid;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi AWREADY" *) output s_axi_awready;
-  (* x_interface_info = "xilinx.com:signal:clock:1.0 dma_req_aclk CLK, xilinx.com:signal:clock:1.0 dma_req_dma_ack_signal_clock CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME dma_req_aclk, ASSOCIATED_RESET dma_req_rstn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, ASSOCIATED_BUSIF dma_req:dma_ack, INSERT_VIP 0, XIL_INTERFACENAME dma_req_dma_ack_signal_clock, ASSOCIATED_BUSIF dma_req:dma_ack, ASSOCIATED_RESET dma_req_rstn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, INSERT_VIP 0" *) input dma_req_aclk;
-  (* x_interface_info = "xilinx.com:signal:reset:1.0 dma_req_rstn RST, xilinx.com:signal:reset:1.0 dma_req_dma_ack_signal_reset RST" *) (* x_interface_parameter = "XIL_INTERFACENAME dma_req_rstn, POLARITY ACTIVE_LOW, INSERT_VIP 0, XIL_INTERFACENAME dma_req_dma_ack_signal_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input dma_req_rstn;
-  (* x_interface_info = "xilinx.com:interface:axis:1.0 dma_ack TVALID" *) (* x_interface_parameter = "XIL_INTERFACENAME dma_ack, TDATA_NUM_BYTES 0, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 2, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, LAYERED_METADATA undef, INSERT_VIP 0" *) input dma_req_davalid;
-  (* x_interface_info = "xilinx.com:interface:axis:1.0 dma_ack TUSER" *) input [1:0]dma_req_datype;
-  (* x_interface_info = "xilinx.com:interface:axis:1.0 dma_ack TREADY" *) output dma_req_daready;
-  (* x_interface_info = "xilinx.com:interface:axis:1.0 dma_req TVALID" *) (* x_interface_parameter = "XIL_INTERFACENAME dma_req, TDATA_NUM_BYTES 0, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 2, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 1, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, LAYERED_METADATA undef, INSERT_VIP 0" *) output dma_req_drvalid;
-  (* x_interface_info = "xilinx.com:interface:axis:1.0 dma_req TUSER" *) output [1:0]dma_req_drtype;
-  (* x_interface_info = "xilinx.com:interface:axis:1.0 dma_req TLAST" *) output dma_req_drlast;
-  (* x_interface_info = "xilinx.com:interface:axis:1.0 dma_req TREADY" *) input dma_req_drready;
-
-  wire \<const0> ;
-  wire \<const1> ;
-  wire dma_req_aclk;
-  wire [1:0]dma_req_datype;
-  wire dma_req_davalid;
-  wire dma_req_drready;
-  wire [1:1]\^dma_req_drtype ;
-  wire dma_req_drvalid;
-  wire dma_req_rstn;
-  wire s_axi_aclk;
-  wire [15:0]s_axi_araddr;
-  wire s_axi_aresetn;
-  wire s_axi_arready;
-  wire s_axi_arvalid;
-  wire [15:0]s_axi_awaddr;
-  wire s_axi_awready;
-  wire s_axi_awvalid;
-  wire s_axi_bready;
-  wire s_axi_bvalid;
-  wire [31:0]s_axi_rdata;
-  wire s_axi_rready;
-  wire s_axi_rvalid;
-  wire [31:0]s_axi_wdata;
-  wire s_axi_wready;
-  wire s_axi_wvalid;
-  wire spdif_data_clk;
-  wire spdif_tx_o;
-  wire NLW_U0_dma_req_daready_UNCONNECTED;
-  wire NLW_U0_dma_req_drlast_UNCONNECTED;
-  wire NLW_U0_s_axis_tready_UNCONNECTED;
-  wire [0:0]NLW_U0_dma_req_drtype_UNCONNECTED;
-  wire [1:0]NLW_U0_s_axi_bresp_UNCONNECTED;
-  wire [1:0]NLW_U0_s_axi_rresp_UNCONNECTED;
-
-  assign dma_req_daready = \<const1> ;
-  assign dma_req_drlast = \<const0> ;
-  assign dma_req_drtype[1] = \^dma_req_drtype [1];
-  assign dma_req_drtype[0] = \<const0> ;
-  assign s_axi_bresp[1] = \<const0> ;
-  assign s_axi_bresp[0] = \<const0> ;
-  assign s_axi_rresp[1] = \<const0> ;
-  assign s_axi_rresp[0] = \<const0> ;
-  GND GND
-       (.G(\<const0> ));
-  (* DEVICE_FAMILY = "virtex6" *) 
-  (* DMA_TYPE = "1" *) 
-  (* S_AXI_ADDRESS_WIDTH = "16" *) 
-  (* S_AXI_DATA_WIDTH = "32" *) 
-  system_axi_spdif_tx_core_0_axi_spdif_tx U0
-       (.dma_req_aclk(dma_req_aclk),
-        .dma_req_daready(NLW_U0_dma_req_daready_UNCONNECTED),
-        .dma_req_datype(dma_req_datype),
-        .dma_req_davalid(dma_req_davalid),
-        .dma_req_drlast(NLW_U0_dma_req_drlast_UNCONNECTED),
-        .dma_req_drready(dma_req_drready),
-        .dma_req_drtype({\^dma_req_drtype ,NLW_U0_dma_req_drtype_UNCONNECTED[0]}),
-        .dma_req_drvalid(dma_req_drvalid),
-        .dma_req_rstn(dma_req_rstn),
-        .s_axi_aclk(s_axi_aclk),
-        .s_axi_araddr({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,s_axi_araddr[3:2],1'b0,1'b0}),
-        .s_axi_aresetn(s_axi_aresetn),
-        .s_axi_arprot({1'b0,1'b0,1'b0}),
-        .s_axi_arready(s_axi_arready),
-        .s_axi_arvalid(s_axi_arvalid),
-        .s_axi_awaddr({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,s_axi_awaddr[3:2],1'b0,1'b0}),
-        .s_axi_awprot({1'b0,1'b0,1'b0}),
-        .s_axi_awready(s_axi_awready),
-        .s_axi_awvalid(s_axi_awvalid),
-        .s_axi_bready(s_axi_bready),
-        .s_axi_bresp(NLW_U0_s_axi_bresp_UNCONNECTED[1:0]),
-        .s_axi_bvalid(s_axi_bvalid),
-        .s_axi_rdata(s_axi_rdata),
-        .s_axi_rready(s_axi_rready),
-        .s_axi_rresp(NLW_U0_s_axi_rresp_UNCONNECTED[1:0]),
-        .s_axi_rvalid(s_axi_rvalid),
-        .s_axi_wdata(s_axi_wdata),
-        .s_axi_wready(s_axi_wready),
-        .s_axi_wstrb({1'b0,1'b0,1'b0,1'b0}),
-        .s_axi_wvalid(s_axi_wvalid),
-        .s_axis_aclk(1'b0),
-        .s_axis_aresetn(1'b0),
-        .s_axis_tdata({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .s_axis_tlast(1'b0),
-        .s_axis_tready(NLW_U0_s_axis_tready_UNCONNECTED),
-        .s_axis_tvalid(1'b0),
-        .spdif_data_clk(spdif_data_clk),
-        .spdif_tx_o(spdif_tx_o));
-  VCC VCC
-       (.P(\<const1> ));
-endmodule
-
-(* ORIG_REF_NAME = "axi_ctrlif" *) 
 module system_axi_spdif_tx_core_0_axi_ctrlif
    (FSM_sequential_rd_state_reg_0,
     E,
@@ -642,8 +481,8 @@ module system_axi_spdif_tx_core_0_axi_ctrlif
         .O(s_axi_rdata[9]));
 endmodule
 
-(* DEVICE_FAMILY = "virtex6" *) (* DMA_TYPE = "1" *) (* ORIG_REF_NAME = "axi_spdif_tx" *) 
-(* S_AXI_ADDRESS_WIDTH = "16" *) (* S_AXI_DATA_WIDTH = "32" *) 
+(* DEVICE_FAMILY = "virtex6" *) (* DMA_TYPE = "1" *) (* S_AXI_ADDRESS_WIDTH = "16" *) 
+(* S_AXI_DATA_WIDTH = "32" *) 
 module system_axi_spdif_tx_core_0_axi_spdif_tx
    (spdif_data_clk,
     spdif_tx_o,
@@ -1272,7 +1111,6 @@ module system_axi_spdif_tx_core_0_axi_spdif_tx
         .\state_reg[0]_0 (dma_req_drvalid));
 endmodule
 
-(* ORIG_REF_NAME = "dma_fifo" *) 
 module system_axi_spdif_tx_core_0_dma_fifo
    (ADDRC,
     not_empty_reg_0,
@@ -1875,7 +1713,6 @@ module system_axi_spdif_tx_core_0_dma_fifo
         .R(\rd_addr[2]_i_1_n_0 ));
 endmodule
 
-(* ORIG_REF_NAME = "pl330_dma_fifo" *) 
 module system_axi_spdif_tx_core_0_pl330_dma_fifo
    (\rd_addr_reg[0] ,
     not_empty_reg,
@@ -2053,7 +1890,166 @@ module system_axi_spdif_tx_core_0_pl330_dma_fifo
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "tx_encoder" *) 
+(* CHECK_LICENSE_TYPE = "system_axi_spdif_tx_core_0,axi_spdif_tx,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* ip_definition_source = "package_project" *) 
+(* x_core_info = "axi_spdif_tx,Vivado 2023.2.2" *) 
+(* NotValidForBitStream *)
+module system_axi_spdif_tx_core_0
+   (spdif_data_clk,
+    spdif_tx_o,
+    s_axi_aclk,
+    s_axi_aresetn,
+    s_axi_awaddr,
+    s_axi_awprot,
+    s_axi_awvalid,
+    s_axi_wdata,
+    s_axi_wstrb,
+    s_axi_wvalid,
+    s_axi_bready,
+    s_axi_araddr,
+    s_axi_arprot,
+    s_axi_arvalid,
+    s_axi_rready,
+    s_axi_arready,
+    s_axi_rdata,
+    s_axi_rresp,
+    s_axi_rvalid,
+    s_axi_wready,
+    s_axi_bresp,
+    s_axi_bvalid,
+    s_axi_awready,
+    dma_req_aclk,
+    dma_req_rstn,
+    dma_req_davalid,
+    dma_req_datype,
+    dma_req_daready,
+    dma_req_drvalid,
+    dma_req_drtype,
+    dma_req_drlast,
+    dma_req_drready);
+  (* x_interface_info = "xilinx.com:signal:clock:1.0 spdif_data_clk CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME spdif_data_clk, FREQ_HZ 12287988, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_sys_audio_clkgen_0_clk_out1, INSERT_VIP 0" *) input spdif_data_clk;
+  output spdif_tx_o;
+  (* x_interface_info = "xilinx.com:signal:clock:1.0 s_axi_aclk CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME s_axi_aclk, ASSOCIATED_BUSIF s_axi, ASSOCIATED_RESET s_axi_aresetn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, INSERT_VIP 0" *) input s_axi_aclk;
+  (* x_interface_info = "xilinx.com:signal:reset:1.0 s_axi_aresetn RST" *) (* x_interface_parameter = "XIL_INTERFACENAME s_axi_aresetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input s_axi_aresetn;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi AWADDR" *) (* x_interface_parameter = "XIL_INTERFACENAME s_axi, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 100000000, ID_WIDTH 0, ADDR_WIDTH 16, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 1, NUM_WRITE_OUTSTANDING 1, MAX_BURST_LENGTH 1, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0" *) input [15:0]s_axi_awaddr;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi AWPROT" *) input [2:0]s_axi_awprot;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi AWVALID" *) input s_axi_awvalid;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi WDATA" *) input [31:0]s_axi_wdata;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi WSTRB" *) input [3:0]s_axi_wstrb;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi WVALID" *) input s_axi_wvalid;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi BREADY" *) input s_axi_bready;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi ARADDR" *) input [15:0]s_axi_araddr;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi ARPROT" *) input [2:0]s_axi_arprot;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi ARVALID" *) input s_axi_arvalid;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi RREADY" *) input s_axi_rready;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi ARREADY" *) output s_axi_arready;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi RDATA" *) output [31:0]s_axi_rdata;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi RRESP" *) output [1:0]s_axi_rresp;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi RVALID" *) output s_axi_rvalid;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi WREADY" *) output s_axi_wready;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi BRESP" *) output [1:0]s_axi_bresp;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi BVALID" *) output s_axi_bvalid;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi AWREADY" *) output s_axi_awready;
+  (* x_interface_info = "xilinx.com:signal:clock:1.0 dma_req_aclk CLK, xilinx.com:signal:clock:1.0 dma_req_dma_ack_signal_clock CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME dma_req_aclk, ASSOCIATED_RESET dma_req_rstn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0, XIL_INTERFACENAME dma_req_dma_ack_signal_clock, ASSOCIATED_BUSIF dma_req:dma_ack, ASSOCIATED_RESET dma_req_rstn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, INSERT_VIP 0" *) input dma_req_aclk;
+  (* x_interface_info = "xilinx.com:signal:reset:1.0 dma_req_dma_ack_signal_reset RST, xilinx.com:signal:reset:1.0 dma_req_rstn RST" *) (* x_interface_parameter = "XIL_INTERFACENAME dma_req_rstn, POLARITY ACTIVE_LOW, INSERT_VIP 0, XIL_INTERFACENAME dma_req_dma_ack_signal_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input dma_req_rstn;
+  (* x_interface_info = "xilinx.com:interface:axis:1.0 dma_ack TVALID" *) (* x_interface_parameter = "XIL_INTERFACENAME dma_ack, TDATA_NUM_BYTES 0, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 2, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, LAYERED_METADATA undef, INSERT_VIP 0" *) input dma_req_davalid;
+  (* x_interface_info = "xilinx.com:interface:axis:1.0 dma_ack TUSER" *) input [1:0]dma_req_datype;
+  (* x_interface_info = "xilinx.com:interface:axis:1.0 dma_ack TREADY" *) output dma_req_daready;
+  (* x_interface_info = "xilinx.com:interface:axis:1.0 dma_req TVALID" *) (* x_interface_parameter = "XIL_INTERFACENAME dma_req, TDATA_NUM_BYTES 0, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 2, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 1, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, LAYERED_METADATA undef, INSERT_VIP 0" *) output dma_req_drvalid;
+  (* x_interface_info = "xilinx.com:interface:axis:1.0 dma_req TUSER" *) output [1:0]dma_req_drtype;
+  (* x_interface_info = "xilinx.com:interface:axis:1.0 dma_req TLAST" *) output dma_req_drlast;
+  (* x_interface_info = "xilinx.com:interface:axis:1.0 dma_req TREADY" *) input dma_req_drready;
+
+  wire \<const0> ;
+  wire \<const1> ;
+  wire dma_req_aclk;
+  wire [1:0]dma_req_datype;
+  wire dma_req_davalid;
+  wire dma_req_drready;
+  wire [1:1]\^dma_req_drtype ;
+  wire dma_req_drvalid;
+  wire dma_req_rstn;
+  wire s_axi_aclk;
+  wire [15:0]s_axi_araddr;
+  wire s_axi_aresetn;
+  wire s_axi_arready;
+  wire s_axi_arvalid;
+  wire [15:0]s_axi_awaddr;
+  wire s_axi_awready;
+  wire s_axi_awvalid;
+  wire s_axi_bready;
+  wire s_axi_bvalid;
+  wire [31:0]s_axi_rdata;
+  wire s_axi_rready;
+  wire s_axi_rvalid;
+  wire [31:0]s_axi_wdata;
+  wire s_axi_wready;
+  wire s_axi_wvalid;
+  wire spdif_data_clk;
+  wire spdif_tx_o;
+  wire NLW_U0_dma_req_daready_UNCONNECTED;
+  wire NLW_U0_dma_req_drlast_UNCONNECTED;
+  wire NLW_U0_s_axis_tready_UNCONNECTED;
+  wire [0:0]NLW_U0_dma_req_drtype_UNCONNECTED;
+  wire [1:0]NLW_U0_s_axi_bresp_UNCONNECTED;
+  wire [1:0]NLW_U0_s_axi_rresp_UNCONNECTED;
+
+  assign dma_req_daready = \<const1> ;
+  assign dma_req_drlast = \<const0> ;
+  assign dma_req_drtype[1] = \^dma_req_drtype [1];
+  assign dma_req_drtype[0] = \<const0> ;
+  assign s_axi_bresp[1] = \<const0> ;
+  assign s_axi_bresp[0] = \<const0> ;
+  assign s_axi_rresp[1] = \<const0> ;
+  assign s_axi_rresp[0] = \<const0> ;
+  GND GND
+       (.G(\<const0> ));
+  (* DEVICE_FAMILY = "virtex6" *) 
+  (* DMA_TYPE = "1" *) 
+  (* S_AXI_ADDRESS_WIDTH = "16" *) 
+  (* S_AXI_DATA_WIDTH = "32" *) 
+  system_axi_spdif_tx_core_0_axi_spdif_tx U0
+       (.dma_req_aclk(dma_req_aclk),
+        .dma_req_daready(NLW_U0_dma_req_daready_UNCONNECTED),
+        .dma_req_datype(dma_req_datype),
+        .dma_req_davalid(dma_req_davalid),
+        .dma_req_drlast(NLW_U0_dma_req_drlast_UNCONNECTED),
+        .dma_req_drready(dma_req_drready),
+        .dma_req_drtype({\^dma_req_drtype ,NLW_U0_dma_req_drtype_UNCONNECTED[0]}),
+        .dma_req_drvalid(dma_req_drvalid),
+        .dma_req_rstn(dma_req_rstn),
+        .s_axi_aclk(s_axi_aclk),
+        .s_axi_araddr({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,s_axi_araddr[3:2],1'b0,1'b0}),
+        .s_axi_aresetn(s_axi_aresetn),
+        .s_axi_arprot({1'b0,1'b0,1'b0}),
+        .s_axi_arready(s_axi_arready),
+        .s_axi_arvalid(s_axi_arvalid),
+        .s_axi_awaddr({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,s_axi_awaddr[3:2],1'b0,1'b0}),
+        .s_axi_awprot({1'b0,1'b0,1'b0}),
+        .s_axi_awready(s_axi_awready),
+        .s_axi_awvalid(s_axi_awvalid),
+        .s_axi_bready(s_axi_bready),
+        .s_axi_bresp(NLW_U0_s_axi_bresp_UNCONNECTED[1:0]),
+        .s_axi_bvalid(s_axi_bvalid),
+        .s_axi_rdata(s_axi_rdata),
+        .s_axi_rready(s_axi_rready),
+        .s_axi_rresp(NLW_U0_s_axi_rresp_UNCONNECTED[1:0]),
+        .s_axi_rvalid(s_axi_rvalid),
+        .s_axi_wdata(s_axi_wdata),
+        .s_axi_wready(s_axi_wready),
+        .s_axi_wstrb({1'b0,1'b0,1'b0,1'b0}),
+        .s_axi_wvalid(s_axi_wvalid),
+        .s_axis_aclk(1'b0),
+        .s_axis_aresetn(1'b0),
+        .s_axis_tdata({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .s_axis_tlast(1'b0),
+        .s_axis_tready(NLW_U0_s_axis_tready_UNCONNECTED),
+        .s_axis_tvalid(1'b0),
+        .spdif_data_clk(spdif_data_clk),
+        .spdif_tx_o(spdif_tx_o));
+  VCC VCC
+       (.P(\<const1> ));
+endmodule
+
 module system_axi_spdif_tx_core_0_tx_encoder
    (spdif_tx_o,
     sample_data_ack,

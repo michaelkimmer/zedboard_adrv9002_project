@@ -1674,7 +1674,7 @@
                 "value": "0"
               },
               "MEP_IDENTIFIER": {
-                "value": "2"
+                "value": "4"
               },
               "MEP_IDENTIFIER_WIDTH": {
                 "value": "3"
@@ -2644,7 +2644,7 @@
                 "value": "0"
               },
               "MEP_IDENTIFIER": {
-                "value": "3"
+                "value": "2"
               },
               "MEP_IDENTIFIER_WIDTH": {
                 "value": "3"
@@ -3611,7 +3611,7 @@
                 "value": "0"
               },
               "MEP_IDENTIFIER": {
-                "value": "4"
+                "value": "3"
               },
               "MEP_IDENTIFIER_WIDTH": {
                 "value": "3"
@@ -4399,7 +4399,7 @@
                 "value": "0"
               },
               "MEP_IDENTIFIER": {
-                "value": "5"
+                "value": "1"
               },
               "MEP_IDENTIFIER_WIDTH": {
                 "value": "3"
@@ -6175,19 +6175,19 @@
                 "value": "0b0000"
               },
               "SSC001_ROUTE": {
-                "value": "0b0000"
+                "value": "0b1000"
               },
               "SSC002_ROUTE": {
-                "value": "0b0001"
-              },
-              "SSC003_ROUTE": {
                 "value": "0b0010"
               },
-              "SSC004_ROUTE": {
+              "SSC003_ROUTE": {
                 "value": "0b0100"
               },
+              "SSC004_ROUTE": {
+                "value": "0b0001"
+              },
               "SSC005_ROUTE": {
-                "value": "0b1000"
+                "value": "0b0000"
               },
               "SSC006_ROUTE": {
                 "value": "0b0000"
