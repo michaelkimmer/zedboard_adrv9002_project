@@ -4576,7 +4576,7 @@
       },
       "IP_802_11p_0": {
         "vlnv": "xilinx.com:user:IP_802_11p:1.0",
-        "ip_revision": "4",
+        "ip_revision": "5",
         "xci_name": "system_IP_802_11p_0_0",
         "xci_path": "ip\\system_IP_802_11p_0_0\\system_IP_802_11p_0_0.xci",
         "inst_hier_path": "IP_802_11p_0"
@@ -5544,8 +5544,8 @@
           "axi_iic_main/s_axi_aclk",
           "sys_rstgen/slowest_sync_clk",
           "axi_cpu_interconnect/M13_ACLK",
-          "IP_802_11p_0/s00_axi_aclk",
-          "IP_802_11p_0/CLOCK"
+          "IP_802_11p_0/CLOCK",
+          "IP_802_11p_0/s00_axi_aclk"
         ]
       },
       "sys_cpu_reset": {

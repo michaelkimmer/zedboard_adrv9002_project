@@ -1,0 +1,671 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0xCA82B26243D032A6",
+      "device": "xc7z020clg484-1",
+      "gen_directory": "../../../../edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0",
+      "name": "block_design_0",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2023.2.2",
+      "validated": "true"
+    },
+    "design_tree": {
+      "rx_clock_domain_cros_0": "",
+      "data_interleaver_0": "",
+      "data_delay_0": "",
+      "act_power_0": "",
+      "timing_acquisition_8_0": ""
+    },
+    "ports": {
+      "RESET": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "default"
+          }
+        }
+      },
+      "CLOCK": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "ASSOCIATED_RESET": {
+            "value": "RESET",
+            "value_src": "default"
+          },
+          "CLK_DOMAIN": {
+            "value": "block_design_0_CLOCK_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "RX_VALID": {
+        "direction": "I"
+      },
+      "RX_ENABLE": {
+        "direction": "I"
+      },
+      "RX_CLOCK": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "ASSOCIATED_RESET": {
+            "value": "RX_RESET",
+            "value_src": "default"
+          },
+          "CLK_DOMAIN": {
+            "value": "block_design_0_RX_CLOCK_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "RX_RESET": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "default"
+          }
+        }
+      },
+      "RX_IDATA": {
+        "direction": "I",
+        "left": "15",
+        "right": "0"
+      },
+      "RX_QDATA": {
+        "direction": "I",
+        "left": "15",
+        "right": "0"
+      },
+      "POWER": {
+        "direction": "O",
+        "left": "7",
+        "right": "0"
+      },
+      "DETECTION_THRESHOLD": {
+        "direction": "I",
+        "left": "23",
+        "right": "0"
+      }
+    },
+    "components": {
+      "rx_clock_domain_cros_0": {
+        "vlnv": "xilinx.com:module_ref:rx_clock_domain_crossing:1.0",
+        "ip_revision": "1712410342",
+        "xci_name": "block_design_0_rx_clock_domain_cros_0_0",
+        "xci_path": "ip\\block_design_0_rx_clock_domain_cros_0_0\\block_design_0_rx_clock_domain_cros_0_0.xci",
+        "inst_hier_path": "rx_clock_domain_cros_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "rx_clock_domain_crossing",
+          "boundary_crc": "0x0"
+        },
+        "interface_ports": {
+          "RX": {
+            "mode": "Slave",
+            "vlnv_bus_definition": "analog.com:interface:fifo_rd:1.0",
+            "vlnv": "analog.com:interface:fifo_rd_rtl:1.0",
+            "port_maps": {
+              "VALID": {
+                "physical_name": "RX_VALID",
+                "direction": "I"
+              }
+            }
+          }
+        },
+        "ports": {
+          "RESET": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "CLOCK": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "RESET",
+                "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "block_design_0_CLOCK_0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "RX_CLOCK": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "RX_RESET",
+                "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "block_design_0_RX_CLOCK_0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "RX_RESET": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "RX_ENABLE": {
+            "direction": "I"
+          },
+          "RX_IDATA": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "RX_QDATA": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "IDATA": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "QDATA": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "DATA_STROBE": {
+            "direction": "O"
+          }
+        }
+      },
+      "data_interleaver_0": {
+        "vlnv": "xilinx.com:module_ref:data_interleaver:1.0",
+        "ip_revision": "1712410417",
+        "xci_name": "block_design_0_data_interleaver_0_0",
+        "xci_path": "ip\\block_design_0_data_interleaver_0_0\\block_design_0_data_interleaver_0_0.xci",
+        "inst_hier_path": "data_interleaver_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "data_interleaver",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "RESET": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "CLOCK": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "RESET",
+                "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "block_design_0_CLOCK_0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "IDATA_IN": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "QDATA_IN": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "DATA_IN_STROBE": {
+            "direction": "I"
+          },
+          "IDATA_OUT": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "QDATA_OUT": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "DATA_OUT_STROBE": {
+            "direction": "O"
+          }
+        }
+      },
+      "data_delay_0": {
+        "vlnv": "xilinx.com:module_ref:data_delay:1.0",
+        "ip_revision": "1712410460",
+        "xci_name": "block_design_0_data_delay_0_0",
+        "xci_path": "ip\\block_design_0_data_delay_0_0\\block_design_0_data_delay_0_0.xci",
+        "inst_hier_path": "data_delay_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "data_delay",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "RESET": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "CLOCK": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "RESET",
+                "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "block_design_0_CLOCK_0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "IDATA_IN": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "QDATA_IN": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "DATA_IN_STROBE": {
+            "direction": "I"
+          },
+          "DATA_OUT_STROBE": {
+            "direction": "O"
+          },
+          "IDATA_OUT": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "QDATA_OUT": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "IDATA_OUT_DELAY_16": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "QDATA_OUT_DELAY_16": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "IDATA_OUT_DELAY_32": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "QDATA_OUT_DELAY_32": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "IDATA_OUT_DELAY_64": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "QDATA_OUT_DELAY_64": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          }
+        }
+      },
+      "act_power_0": {
+        "vlnv": "xilinx.com:module_ref:act_power:1.0",
+        "ip_revision": "1712410496",
+        "xci_name": "block_design_0_act_power_0_0",
+        "xci_path": "ip\\block_design_0_act_power_0_0\\block_design_0_act_power_0_0.xci",
+        "inst_hier_path": "act_power_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "act_power",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "RESET": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "CLOCK": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "RESET",
+                "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "block_design_0_CLOCK_0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "IDATA": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "QDATA": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "DATA_STROBE": {
+            "direction": "I"
+          },
+          "POWER": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          }
+        }
+      },
+      "timing_acquisition_8_0": {
+        "vlnv": "xilinx.com:module_ref:timing_acquisition_802_11p:1.0",
+        "ip_revision": "1712410626",
+        "xci_name": "block_design_0_timing_acquisition_8_0_0",
+        "xci_path": "ip\\block_design_0_timing_acquisition_8_0_0\\block_design_0_timing_acquisition_8_0_0.xci",
+        "inst_hier_path": "timing_acquisition_8_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "timing_acquisition_802_11p",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "RESET": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "CLOCK": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "RESET",
+                "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "block_design_0_CLOCK_0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "DATA_STROBE": {
+            "direction": "I"
+          },
+          "IDATA": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "QDATA": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "IDATA_DELAY_16": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "QDATA_DELAY_16": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "IDATA_DELAY_32": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "QDATA_DELAY_32": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "DETECTION_THRESHOLD": {
+            "direction": "I",
+            "left": "23",
+            "right": "0"
+          },
+          "DETECTION_STROBE": {
+            "direction": "O"
+          },
+          "DETECTION_SIGNAL_DETECTED": {
+            "direction": "O"
+          },
+          "DETECTION_XCORR": {
+            "direction": "O",
+            "left": "23",
+            "right": "0"
+          },
+          "CONTINUOUS_XCORR": {
+            "direction": "O",
+            "left": "23",
+            "right": "0"
+          },
+          "DETECTION_STS_AUTOCORR_I": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "DETECTION_STS_AUTOCORR_Q": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          }
+        }
+      }
+    },
+    "nets": {
+      "CLOCK_0_1": {
+        "ports": [
+          "CLOCK",
+          "rx_clock_domain_cros_0/CLOCK",
+          "data_interleaver_0/CLOCK",
+          "data_delay_0/CLOCK",
+          "act_power_0/CLOCK",
+          "timing_acquisition_8_0/CLOCK"
+        ]
+      },
+      "DETECTION_THRESHOLD_0_1": {
+        "ports": [
+          "DETECTION_THRESHOLD",
+          "timing_acquisition_8_0/DETECTION_THRESHOLD"
+        ]
+      },
+      "RESET_0_1": {
+        "ports": [
+          "RESET",
+          "rx_clock_domain_cros_0/RESET",
+          "data_interleaver_0/RESET",
+          "data_delay_0/RESET",
+          "act_power_0/RESET",
+          "timing_acquisition_8_0/RESET"
+        ]
+      },
+      "RX_CLOCK_0_1": {
+        "ports": [
+          "RX_CLOCK",
+          "rx_clock_domain_cros_0/RX_CLOCK"
+        ]
+      },
+      "RX_ENABLE_0_1": {
+        "ports": [
+          "RX_ENABLE",
+          "rx_clock_domain_cros_0/RX_ENABLE"
+        ]
+      },
+      "RX_IDATA_0_1": {
+        "ports": [
+          "RX_IDATA",
+          "rx_clock_domain_cros_0/RX_IDATA"
+        ]
+      },
+      "RX_QDATA_0_1": {
+        "ports": [
+          "RX_QDATA",
+          "rx_clock_domain_cros_0/RX_QDATA"
+        ]
+      },
+      "RX_RESET_0_1": {
+        "ports": [
+          "RX_RESET",
+          "rx_clock_domain_cros_0/RX_RESET"
+        ]
+      },
+      "RX_VALID_0_1": {
+        "ports": [
+          "RX_VALID",
+          "rx_clock_domain_cros_0/RX_VALID"
+        ]
+      },
+      "act_power_0_POWER": {
+        "ports": [
+          "act_power_0/POWER",
+          "POWER"
+        ]
+      },
+      "data_delay_0_DATA_OUT_STROBE": {
+        "ports": [
+          "data_delay_0/DATA_OUT_STROBE",
+          "act_power_0/DATA_STROBE",
+          "timing_acquisition_8_0/DATA_STROBE"
+        ]
+      },
+      "data_delay_0_IDATA_OUT": {
+        "ports": [
+          "data_delay_0/IDATA_OUT",
+          "act_power_0/IDATA",
+          "timing_acquisition_8_0/IDATA"
+        ]
+      },
+      "data_delay_0_IDATA_OUT_DELAY_16": {
+        "ports": [
+          "data_delay_0/IDATA_OUT_DELAY_16",
+          "timing_acquisition_8_0/IDATA_DELAY_16"
+        ]
+      },
+      "data_delay_0_IDATA_OUT_DELAY_32": {
+        "ports": [
+          "data_delay_0/IDATA_OUT_DELAY_32",
+          "timing_acquisition_8_0/IDATA_DELAY_32"
+        ]
+      },
+      "data_delay_0_QDATA_OUT": {
+        "ports": [
+          "data_delay_0/QDATA_OUT",
+          "act_power_0/QDATA",
+          "timing_acquisition_8_0/QDATA"
+        ]
+      },
+      "data_delay_0_QDATA_OUT_DELAY_16": {
+        "ports": [
+          "data_delay_0/QDATA_OUT_DELAY_16",
+          "timing_acquisition_8_0/QDATA_DELAY_16"
+        ]
+      },
+      "data_delay_0_QDATA_OUT_DELAY_32": {
+        "ports": [
+          "data_delay_0/QDATA_OUT_DELAY_32",
+          "timing_acquisition_8_0/QDATA_DELAY_32"
+        ]
+      },
+      "data_interleaver_0_DATA_OUT_STROBE": {
+        "ports": [
+          "data_interleaver_0/DATA_OUT_STROBE",
+          "data_delay_0/DATA_IN_STROBE"
+        ]
+      },
+      "data_interleaver_0_IDATA_OUT": {
+        "ports": [
+          "data_interleaver_0/IDATA_OUT",
+          "data_delay_0/IDATA_IN"
+        ]
+      },
+      "data_interleaver_0_QDATA_OUT": {
+        "ports": [
+          "data_interleaver_0/QDATA_OUT",
+          "data_delay_0/QDATA_IN"
+        ]
+      },
+      "rx_clock_domain_cros_0_DATA_STROBE": {
+        "ports": [
+          "rx_clock_domain_cros_0/DATA_STROBE",
+          "data_interleaver_0/DATA_IN_STROBE"
+        ]
+      },
+      "rx_clock_domain_cros_0_IDATA": {
+        "ports": [
+          "rx_clock_domain_cros_0/IDATA",
+          "data_interleaver_0/IDATA_IN"
+        ]
+      },
+      "rx_clock_domain_cros_0_QDATA": {
+        "ports": [
+          "rx_clock_domain_cros_0/QDATA",
+          "data_interleaver_0/QDATA_IN"
+        ]
+      }
+    }
+  }
+}

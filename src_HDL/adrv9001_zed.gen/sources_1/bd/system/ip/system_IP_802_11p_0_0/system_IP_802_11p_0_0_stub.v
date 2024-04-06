@@ -2,7 +2,7 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-// Date        : Sat Apr  6 02:59:55 2024
+// Date        : Sat Apr  6 16:05:32 2024
 // Host        : ASUS_ROG running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               c:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.gen/sources_1/bd/system/ip/system_IP_802_11p_0_0/system_IP_802_11p_0_0_stub.v
@@ -21,9 +21,10 @@ module system_IP_802_11p_0_0(CLOCK, RX_CLOCK, RX_ENABLE, RX_IDATA, RX_QDATA,
   s00_axi_wready, s00_axi_bresp, s00_axi_bvalid, s00_axi_bready, s00_axi_araddr, 
   s00_axi_arprot, s00_axi_arvalid, s00_axi_arready, s00_axi_rdata, s00_axi_rresp, 
   s00_axi_rvalid, s00_axi_rready)
-/* synthesis syn_black_box black_box_pad_pin="CLOCK,RX_CLOCK,RX_ENABLE,RX_IDATA[15:0],RX_QDATA[15:0],RX_RESET,RX_VALID,SW[7:0],LEDS[7:0],s00_axi_aresetn,s00_axi_awaddr[10:0],s00_axi_awprot[2:0],s00_axi_awvalid,s00_axi_awready,s00_axi_wdata[31:0],s00_axi_wstrb[3:0],s00_axi_wvalid,s00_axi_wready,s00_axi_bresp[1:0],s00_axi_bvalid,s00_axi_bready,s00_axi_araddr[10:0],s00_axi_arprot[2:0],s00_axi_arvalid,s00_axi_arready,s00_axi_rdata[31:0],s00_axi_rresp[1:0],s00_axi_rvalid,s00_axi_rready" */
+/* synthesis syn_black_box black_box_pad_pin="RX_CLOCK,RX_ENABLE,RX_IDATA[15:0],RX_QDATA[15:0],RX_RESET,RX_VALID,SW[7:0],LEDS[7:0],s00_axi_aresetn,s00_axi_awaddr[10:0],s00_axi_awprot[2:0],s00_axi_awvalid,s00_axi_awready,s00_axi_wdata[31:0],s00_axi_wstrb[3:0],s00_axi_wvalid,s00_axi_wready,s00_axi_bresp[1:0],s00_axi_bvalid,s00_axi_bready,s00_axi_araddr[10:0],s00_axi_arprot[2:0],s00_axi_arvalid,s00_axi_arready,s00_axi_rdata[31:0],s00_axi_rresp[1:0],s00_axi_rvalid,s00_axi_rready" */
+/* synthesis syn_force_seq_prim="CLOCK" */
 /* synthesis syn_force_seq_prim="s00_axi_aclk" */;
-  input CLOCK;
+  input CLOCK /* synthesis syn_isclock = 1 */;
   input RX_CLOCK;
   input RX_ENABLE;
   input [15:0]RX_IDATA;
