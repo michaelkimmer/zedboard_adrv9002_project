@@ -2,7 +2,7 @@
 //Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-//Date        : Sat Apr  6 00:26:16 2024
+//Date        : Sat Apr  6 02:53:38 2024
 //Host        : ASUS_ROG running 64-bit major release  (build 9200)
 //Command     : generate_target system_wrapper.bd
 //Design      : system_wrapper
@@ -11,7 +11,9 @@
 `timescale 1 ps / 1 ps
 
 module system_wrapper
-   (adc1_div_clk,
+   (LEDS,
+    SW,
+    adc1_div_clk,
     adc2_div_clk,
     dac1_div_clk,
     dac2_div_clk,
@@ -126,6 +128,8 @@ module system_wrapper
     tx2_strobe_out_n,
     tx2_strobe_out_p,
     tx_output_enable);
+  output [7:0]LEDS;
+  input [7:0]SW;
   output adc1_div_clk;
   output adc2_div_clk;
   output dac1_div_clk;
@@ -242,6 +246,8 @@ module system_wrapper
   output tx2_strobe_out_p;
   input tx_output_enable;
 
+  wire [7:0]LEDS;
+  wire [7:0]SW;
   wire adc1_div_clk;
   wire adc2_div_clk;
   wire dac1_div_clk;
@@ -375,7 +381,9 @@ module system_wrapper
         .O(iic_fmc_sda_i),
         .T(iic_fmc_sda_t));
   system system_i
-       (.adc1_div_clk(adc1_div_clk),
+       (.LEDS(LEDS),
+        .SW(SW),
+        .adc1_div_clk(adc1_div_clk),
         .adc2_div_clk(adc2_div_clk),
         .dac1_div_clk(dac1_div_clk),
         .dac2_div_clk(dac2_div_clk),

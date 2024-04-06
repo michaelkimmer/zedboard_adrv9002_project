@@ -80,6 +80,7 @@ include_folder: include
 lib_folder: lib
 libsrc_folder: libsrc
 drv_info:
+  IP_802_11p_0: None
   axi_adrv9001: None
   axi_adrv9001_rx1_dma: None
   axi_adrv9001_rx2_dma: None

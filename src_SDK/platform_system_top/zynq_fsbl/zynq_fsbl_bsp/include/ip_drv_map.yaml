@@ -1,3 +1,6 @@
+IP_802_11p_0:
+- IP_802_11p
+- None
 axi_adrv9001:
 - axi_adrv9001
 - None
