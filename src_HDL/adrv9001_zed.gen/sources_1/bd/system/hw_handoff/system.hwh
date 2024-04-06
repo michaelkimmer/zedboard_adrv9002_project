@@ -1,9 +1,19 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Apr  6 00:27:07 2024" VIVADOVERSION="2023.2.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Apr  6 02:53:50 2024" VIVADOVERSION="2023.2.2">
 
   <SYSTEMINFO ARCH="zynq" BOARD="avnet.com:zedboard:part0:1.4" DEVICE="7z020" NAME="system" PACKAGE="clg484" SPEEDGRADE="-1"/>
 
   <EXTERNALPORTS>
+    <PORT DIR="O" LEFT="7" NAME="LEDS" RIGHT="0" SIGIS="undef" SIGNAME="IP_802_11p_0_LEDS">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="IP_802_11p_0" PORT="LEDS"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="7" NAME="SW" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_SW">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="IP_802_11p_0" PORT="SW"/>
+      </CONNECTIONS>
+    </PORT>
     <PORT DIR="O" NAME="adc1_div_clk" SIGIS="undef" SIGNAME="axi_adrv9001_adc_1_clk">
       <CONNECTIONS>
         <CONNECTION INSTANCE="axi_adrv9001" PORT="adc_1_clk"/>
@@ -89,7 +99,7 @@
         <CONNECTION INSTANCE="sys_ps7" PORT="DDR_RAS_n"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="IO" NAME="ddr_reset_n" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="sys_ps7_DDR_DRSTB">
+    <PORT DIR="IO" NAME="ddr_reset_n" SIGIS="rst" SIGNAME="sys_ps7_DDR_DRSTB">
       <CONNECTIONS>
         <CONNECTION INSTANCE="sys_ps7" PORT="DDR_DRSTB"/>
       </CONNECTIONS>
@@ -692,6 +702,230 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
+    <MODULE COREREVISION="4" FULLNAME="/IP_802_11p_0" HWVERSION="1.0" INSTANCE="IP_802_11p_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="IP_802_11p" VLNV="xilinx.com:user:IP_802_11p:1.0">
+      <DOCUMENTS/>
+      <ADDRESSBLOCKS>
+        <ADDRESSBLOCK ACCESS="" INTERFACE="S00_AXI" NAME="S00_AXI_reg" RANGE="4096" USAGE="register"/>
+      </ADDRESSBLOCKS>
+      <PARAMETERS>
+        <PARAMETER NAME="C_S00_AXI_ADDR_WIDTH" VALUE="11"/>
+        <PARAMETER NAME="C_S00_AXI_DATA_WIDTH" VALUE="32"/>
+        <PARAMETER NAME="Component_Name" VALUE="system_IP_802_11p_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+        <PARAMETER NAME="C_S00_AXI_BASEADDR" VALUE="0x50000000"/>
+        <PARAMETER NAME="C_S00_AXI_HIGHADDR" VALUE="0x50000FFF"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLOCK" SIGIS="clk" SIGNAME="sys_ps7_FCLK_CLK0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="sys_ps7" PORT="FCLK_CLK0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="LEDS" RIGHT="0" SIGIS="undef" SIGNAME="IP_802_11p_0_LEDS">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="LEDS"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="RX_CLOCK" SIGIS="clk" SIGNAME="axi_adrv9001_adc_1_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_adrv9001" PORT="adc_1_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="RX_ENABLE" SIGIS="undef" SIGNAME="axi_adrv9001_adc_1_enable_i0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_adrv9001" PORT="adc_1_enable_i0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="RX_IDATA" RIGHT="0" SIGIS="undef" SIGNAME="axi_adrv9001_adc_1_data_i0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_adrv9001" PORT="adc_1_data_i0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="RX_QDATA" RIGHT="0" SIGIS="undef" SIGNAME="axi_adrv9001_adc_1_data_q0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_adrv9001" PORT="adc_1_data_q0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="RX_RESET" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="axi_adrv9001_adc_1_rst">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_adrv9001" PORT="adc_1_rst"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="RX_VALID" SIGIS="undef" SIGNAME="axi_adrv9001_adc_1_valid_i0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_adrv9001" PORT="adc_1_valid_i0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="SW" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_SW">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="SW"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="s00_axi_aclk" SIGIS="clk" SIGNAME="sys_ps7_FCLK_CLK0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="sys_ps7" PORT="FCLK_CLK0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="10" NAME="s00_axi_araddr" RIGHT="0" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_araddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_cpu_interconnect" PORT="M13_AXI_araddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s00_axi_aresetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="sys_rstgen_peripheral_aresetn">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="sys_rstgen" PORT="peripheral_aresetn"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="s00_axi_arprot" RIGHT="0" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_arprot">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_cpu_interconnect" PORT="M13_AXI_arprot"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="s00_axi_arready" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_arready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_cpu_interconnect" PORT="M13_AXI_arready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s00_axi_arvalid" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_arvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_cpu_interconnect" PORT="M13_AXI_arvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="10" NAME="s00_axi_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_awaddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_cpu_interconnect" PORT="M13_AXI_awaddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="s00_axi_awprot" RIGHT="0" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_awprot">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_cpu_interconnect" PORT="M13_AXI_awprot"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="s00_axi_awready" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_awready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_cpu_interconnect" PORT="M13_AXI_awready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s00_axi_awvalid" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_awvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_cpu_interconnect" PORT="M13_AXI_awvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s00_axi_bready" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_bready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_cpu_interconnect" PORT="M13_AXI_bready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="s00_axi_bresp" RIGHT="0" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_bresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_cpu_interconnect" PORT="M13_AXI_bresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="s00_axi_bvalid" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_bvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_cpu_interconnect" PORT="M13_AXI_bvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="s00_axi_rdata" RIGHT="0" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_cpu_interconnect" PORT="M13_AXI_rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s00_axi_rready" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_rready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_cpu_interconnect" PORT="M13_AXI_rready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="s00_axi_rresp" RIGHT="0" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_rresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_cpu_interconnect" PORT="M13_AXI_rresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="s00_axi_rvalid" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_rvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_cpu_interconnect" PORT="M13_AXI_rvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="s00_axi_wdata" RIGHT="0" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_cpu_interconnect" PORT="M13_AXI_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="s00_axi_wready" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_wready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_cpu_interconnect" PORT="M13_AXI_wready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="s00_axi_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_wstrb">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_cpu_interconnect" PORT="M13_AXI_wstrb"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s00_axi_wvalid" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_wvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_cpu_interconnect" PORT="M13_AXI_wvalid"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES>
+        <BUSINTERFACE BUSNAME="axi_cpu_interconnect_M13_AXI" DATAWIDTH="32" NAME="S00_AXI" TYPE="SLAVE" VLNV="xilinx.com:interface:aximm:1.0">
+          <PARAMETER NAME="ADDR_WIDTH" VALUE="11"/>
+          <PARAMETER NAME="ARUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="AWUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="BUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="system_sys_ps7_0_FCLK_CLK0"/>
+          <PARAMETER NAME="DATA_WIDTH" VALUE="32"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
+          <PARAMETER NAME="HAS_BRESP" VALUE="1"/>
+          <PARAMETER NAME="HAS_BURST" VALUE="0"/>
+          <PARAMETER NAME="HAS_CACHE" VALUE="0"/>
+          <PARAMETER NAME="HAS_LOCK" VALUE="0"/>
+          <PARAMETER NAME="HAS_PROT" VALUE="1"/>
+          <PARAMETER NAME="HAS_QOS" VALUE="0"/>
+          <PARAMETER NAME="HAS_REGION" VALUE="0"/>
+          <PARAMETER NAME="HAS_RRESP" VALUE="1"/>
+          <PARAMETER NAME="HAS_WSTRB" VALUE="1"/>
+          <PARAMETER NAME="ID_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
+          <PARAMETER NAME="MAX_BURST_LENGTH" VALUE="1"/>
+          <PARAMETER NAME="NUM_READ_OUTSTANDING" VALUE="1"/>
+          <PARAMETER NAME="NUM_READ_THREADS" VALUE="1"/>
+          <PARAMETER NAME="NUM_WRITE_OUTSTANDING" VALUE="1"/>
+          <PARAMETER NAME="NUM_WRITE_THREADS" VALUE="1"/>
+          <PARAMETER NAME="PHASE" VALUE="0.0"/>
+          <PARAMETER NAME="PROTOCOL" VALUE="AXI4LITE"/>
+          <PARAMETER NAME="READ_WRITE_MODE" VALUE="READ_WRITE"/>
+          <PARAMETER NAME="RUSER_BITS_PER_BYTE" VALUE="0"/>
+          <PARAMETER NAME="RUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="SUPPORTS_NARROW_BURST" VALUE="0"/>
+          <PARAMETER NAME="WIZ_DATA_WIDTH" VALUE="32"/>
+          <PARAMETER NAME="WIZ_NUM_REG" VALUE="512"/>
+          <PARAMETER NAME="WUSER_BITS_PER_BYTE" VALUE="0"/>
+          <PARAMETER NAME="WUSER_WIDTH" VALUE="0"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="ARADDR" PHYSICAL="s00_axi_araddr"/>
+            <PORTMAP LOGICAL="ARPROT" PHYSICAL="s00_axi_arprot"/>
+            <PORTMAP LOGICAL="ARREADY" PHYSICAL="s00_axi_arready"/>
+            <PORTMAP LOGICAL="ARVALID" PHYSICAL="s00_axi_arvalid"/>
+            <PORTMAP LOGICAL="AWADDR" PHYSICAL="s00_axi_awaddr"/>
+            <PORTMAP LOGICAL="AWPROT" PHYSICAL="s00_axi_awprot"/>
+            <PORTMAP LOGICAL="AWREADY" PHYSICAL="s00_axi_awready"/>
+            <PORTMAP LOGICAL="AWVALID" PHYSICAL="s00_axi_awvalid"/>
+            <PORTMAP LOGICAL="BREADY" PHYSICAL="s00_axi_bready"/>
+            <PORTMAP LOGICAL="BRESP" PHYSICAL="s00_axi_bresp"/>
+            <PORTMAP LOGICAL="BVALID" PHYSICAL="s00_axi_bvalid"/>
+            <PORTMAP LOGICAL="RDATA" PHYSICAL="s00_axi_rdata"/>
+            <PORTMAP LOGICAL="RREADY" PHYSICAL="s00_axi_rready"/>
+            <PORTMAP LOGICAL="RRESP" PHYSICAL="s00_axi_rresp"/>
+            <PORTMAP LOGICAL="RVALID" PHYSICAL="s00_axi_rvalid"/>
+            <PORTMAP LOGICAL="WDATA" PHYSICAL="s00_axi_wdata"/>
+            <PORTMAP LOGICAL="WREADY" PHYSICAL="s00_axi_wready"/>
+            <PORTMAP LOGICAL="WSTRB" PHYSICAL="s00_axi_wstrb"/>
+            <PORTMAP LOGICAL="WVALID" PHYSICAL="s00_axi_wvalid"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+      </BUSINTERFACES>
+    </MODULE>
     <MODULE COREREVISION="1" FULLNAME="/axi_adrv9001" HWVERSION="1.0" INSTANCE="axi_adrv9001" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="axi_adrv9001" VLNV="analog.com:user:axi_adrv9001:1.0">
       <DOCUMENTS/>
       <ADDRESSBLOCKS>
@@ -728,11 +962,13 @@
             <CONNECTION INSTANCE="axi_adrv9001_rx1_dma" PORT="fifo_wr_clk"/>
             <CONNECTION INSTANCE="util_adc_1_pack" PORT="clk"/>
             <CONNECTION INSTANCE="External_Ports" PORT="adc1_div_clk"/>
+            <CONNECTION INSTANCE="IP_802_11p_0" PORT="RX_CLOCK"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="adc_1_data_i0" RIGHT="0" SIGIS="undef" SIGNAME="axi_adrv9001_adc_1_data_i0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="util_adc_1_pack" PORT="fifo_wr_data_0"/>
+            <CONNECTION INSTANCE="IP_802_11p_0" PORT="RX_IDATA"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="adc_1_data_i1" RIGHT="0" SIGIS="undef" SIGNAME="axi_adrv9001_adc_1_data_i1">
@@ -743,6 +979,7 @@
         <PORT DIR="O" LEFT="15" NAME="adc_1_data_q0" RIGHT="0" SIGIS="undef" SIGNAME="axi_adrv9001_adc_1_data_q0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="util_adc_1_pack" PORT="fifo_wr_data_1"/>
+            <CONNECTION INSTANCE="IP_802_11p_0" PORT="RX_QDATA"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="adc_1_data_q1" RIGHT="0" SIGIS="undef" SIGNAME="axi_adrv9001_adc_1_data_q1">
@@ -758,6 +995,7 @@
         <PORT DIR="O" NAME="adc_1_enable_i0" SIGIS="undef" SIGNAME="axi_adrv9001_adc_1_enable_i0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="util_adc_1_pack" PORT="enable_0"/>
+            <CONNECTION INSTANCE="IP_802_11p_0" PORT="RX_ENABLE"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="adc_1_enable_i1" SIGIS="undef" SIGNAME="axi_adrv9001_adc_1_enable_i1">
@@ -778,11 +1016,13 @@
         <PORT DIR="O" NAME="adc_1_rst" SIGIS="rst" SIGNAME="axi_adrv9001_adc_1_rst">
           <CONNECTIONS>
             <CONNECTION INSTANCE="util_adc_1_pack" PORT="reset"/>
+            <CONNECTION INSTANCE="IP_802_11p_0" PORT="RX_RESET"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="adc_1_valid_i0" SIGIS="undef" SIGNAME="axi_adrv9001_adc_1_valid_i0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="util_adc_1_pack" PORT="fifo_wr_en"/>
+            <CONNECTION INSTANCE="IP_802_11p_0" PORT="RX_VALID"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="adc_1_valid_i1" SIGIS="undef"/>
@@ -3146,7 +3386,7 @@
         <PARAMETER NAME="M63_HAS_REGSLICE" VALUE="0"/>
         <PARAMETER NAME="M63_ISSUANCE" VALUE="0"/>
         <PARAMETER NAME="M63_SECURE" VALUE="0"/>
-        <PARAMETER NAME="NUM_MI" VALUE="13"/>
+        <PARAMETER NAME="NUM_MI" VALUE="14"/>
         <PARAMETER NAME="NUM_SI" VALUE="1"/>
         <PARAMETER NAME="PCHK_MAX_RD_BURSTS" VALUE="2"/>
         <PARAMETER NAME="PCHK_MAX_WR_BURSTS" VALUE="2"/>
@@ -4560,6 +4800,111 @@
             <CONNECTION INSTANCE="axi_adrv9001_tx2_dma" PORT="s_axi_wvalid"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" NAME="M13_ACLK" SIGIS="clk" SIGNAME="sys_ps7_FCLK_CLK0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="sys_ps7" PORT="FCLK_CLK0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M13_ARESETN" SIGIS="rst" SIGNAME="sys_rstgen_peripheral_aresetn">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="sys_rstgen" PORT="peripheral_aresetn"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M13_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_araddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_802_11p_0" PORT="s00_axi_araddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="2" NAME="M13_AXI_arprot" RIGHT="0" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_arprot">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_802_11p_0" PORT="s00_axi_arprot"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M13_AXI_arready" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_arready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_802_11p_0" PORT="s00_axi_arready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M13_AXI_arvalid" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_arvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_802_11p_0" PORT="s00_axi_arvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M13_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_awaddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_802_11p_0" PORT="s00_axi_awaddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="2" NAME="M13_AXI_awprot" RIGHT="0" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_awprot">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_802_11p_0" PORT="s00_axi_awprot"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M13_AXI_awready" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_awready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_802_11p_0" PORT="s00_axi_awready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M13_AXI_awvalid" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_awvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_802_11p_0" PORT="s00_axi_awvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M13_AXI_bready" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_bready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_802_11p_0" PORT="s00_axi_bready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M13_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_bresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_802_11p_0" PORT="s00_axi_bresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M13_AXI_bvalid" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_bvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_802_11p_0" PORT="s00_axi_bvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="M13_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_802_11p_0" PORT="s00_axi_rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M13_AXI_rready" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_rready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_802_11p_0" PORT="s00_axi_rready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M13_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_rresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_802_11p_0" PORT="s00_axi_rresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M13_AXI_rvalid" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_rvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_802_11p_0" PORT="s00_axi_rvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M13_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_802_11p_0" PORT="s00_axi_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M13_AXI_wready" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_wready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_802_11p_0" PORT="s00_axi_wready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="M13_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_wstrb">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_802_11p_0" PORT="s00_axi_wstrb"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M13_AXI_wvalid" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_wvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="IP_802_11p_0" PORT="s00_axi_wvalid"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="I" NAME="S00_ACLK" SIGIS="clk" SIGNAME="sys_ps7_FCLK_CLK0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="sys_ps7" PORT="FCLK_CLK0"/>
@@ -5097,6 +5442,29 @@
             <PORTMAP LOGICAL="WREADY" PHYSICAL="M12_AXI_wready"/>
             <PORTMAP LOGICAL="WSTRB" PHYSICAL="M12_AXI_wstrb"/>
             <PORTMAP LOGICAL="WVALID" PHYSICAL="M12_AXI_wvalid"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="axi_cpu_interconnect_M13_AXI" DATAWIDTH="32" NAME="M13_AXI" TYPE="MASTER" VLNV="xilinx.com:interface:aximm:1.0">
+          <PORTMAPS>
+            <PORTMAP LOGICAL="ARADDR" PHYSICAL="M13_AXI_araddr"/>
+            <PORTMAP LOGICAL="ARPROT" PHYSICAL="M13_AXI_arprot"/>
+            <PORTMAP LOGICAL="ARREADY" PHYSICAL="M13_AXI_arready"/>
+            <PORTMAP LOGICAL="ARVALID" PHYSICAL="M13_AXI_arvalid"/>
+            <PORTMAP LOGICAL="AWADDR" PHYSICAL="M13_AXI_awaddr"/>
+            <PORTMAP LOGICAL="AWPROT" PHYSICAL="M13_AXI_awprot"/>
+            <PORTMAP LOGICAL="AWREADY" PHYSICAL="M13_AXI_awready"/>
+            <PORTMAP LOGICAL="AWVALID" PHYSICAL="M13_AXI_awvalid"/>
+            <PORTMAP LOGICAL="BREADY" PHYSICAL="M13_AXI_bready"/>
+            <PORTMAP LOGICAL="BRESP" PHYSICAL="M13_AXI_bresp"/>
+            <PORTMAP LOGICAL="BVALID" PHYSICAL="M13_AXI_bvalid"/>
+            <PORTMAP LOGICAL="RDATA" PHYSICAL="M13_AXI_rdata"/>
+            <PORTMAP LOGICAL="RREADY" PHYSICAL="M13_AXI_rready"/>
+            <PORTMAP LOGICAL="RRESP" PHYSICAL="M13_AXI_rresp"/>
+            <PORTMAP LOGICAL="RVALID" PHYSICAL="M13_AXI_rvalid"/>
+            <PORTMAP LOGICAL="WDATA" PHYSICAL="M13_AXI_wdata"/>
+            <PORTMAP LOGICAL="WREADY" PHYSICAL="M13_AXI_wready"/>
+            <PORTMAP LOGICAL="WSTRB" PHYSICAL="M13_AXI_wstrb"/>
+            <PORTMAP LOGICAL="WVALID" PHYSICAL="M13_AXI_wvalid"/>
           </PORTMAPS>
         </BUSINTERFACE>
       </BUSINTERFACES>
@@ -10752,6 +11120,15 @@
       <ADDRESSBLOCKS>
         <ADDRESSBLOCK ACCESS="" INTERFACE="S_AXI_HP1" NAME="HP1_DDR_LOWOCM" RANGE="536870912" USAGE="memory"/>
       </ADDRESSBLOCKS>
+      <ADDRESSBLOCKS>
+        <ADDRESSBLOCK ACCESS="" INTERFACE="S_AXI_HP1" NAME="HP1_DDR_LOWOCM" RANGE="536870912" USAGE="memory"/>
+      </ADDRESSBLOCKS>
+      <ADDRESSBLOCKS>
+        <ADDRESSBLOCK ACCESS="" INTERFACE="S_AXI_HP1" NAME="HP1_DDR_LOWOCM" RANGE="536870912" USAGE="memory"/>
+      </ADDRESSBLOCKS>
+      <ADDRESSBLOCKS>
+        <ADDRESSBLOCK ACCESS="" INTERFACE="S_AXI_HP0" NAME="HP0_DDR_LOWOCM" RANGE="536870912" USAGE="memory"/>
+      </ADDRESSBLOCKS>
       <PARAMETERS>
         <PARAMETER NAME="C_DM_WIDTH" VALUE="4"/>
         <PARAMETER NAME="C_DQS_WIDTH" VALUE="4"/>
@@ -11947,6 +12324,9 @@
             <CONNECTION INSTANCE="axi_iic_fmc" PORT="s_axi_aclk"/>
             <CONNECTION INSTANCE="axi_iic_main" PORT="s_axi_aclk"/>
             <CONNECTION INSTANCE="sys_rstgen" PORT="slowest_sync_clk"/>
+            <CONNECTION INSTANCE="axi_cpu_interconnect" PORT="M13_ACLK"/>
+            <CONNECTION INSTANCE="IP_802_11p_0" PORT="s00_axi_aclk"/>
+            <CONNECTION INSTANCE="IP_802_11p_0" PORT="CLOCK"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="200000000" DIR="O" NAME="FCLK_CLK1" SIGIS="clk" SIGNAME="sys_ps7_FCLK_CLK1">
@@ -13012,6 +13392,7 @@
         <MEMRANGE ADDRESSBLOCK="axi_lite" BASENAME="C_BASEADDR" BASEVALUE="0x44A50000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x44A50FFF" INSTANCE="axi_adrv9001_tx1_dma" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="s_axi"/>
         <MEMRANGE ADDRESSBLOCK="axi_lite" BASENAME="C_BASEADDR" BASEVALUE="0x44A60000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x44A60FFF" INSTANCE="axi_adrv9001_tx2_dma" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="s_axi"/>
         <MEMRANGE ADDRESSBLOCK="axi_lite" BASENAME="C_BASEADDR" BASEVALUE="0x45000000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x4500FFFF" INSTANCE="axi_sysid_0" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="s_axi"/>
+        <MEMRANGE ADDRESSBLOCK="S00_AXI_reg" BASENAME="C_S00_AXI_BASEADDR" BASEVALUE="0x50000000" HIGHNAME="C_S00_AXI_HIGHADDR" HIGHVALUE="0x50000FFF" INSTANCE="IP_802_11p_0" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="S00_AXI"/>
         <MEMRANGE ADDRESSBLOCK="axi_lite" BASENAME="C_BASEADDR" BASEVALUE="0x70E00000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x70E0FFFF" INSTANCE="axi_hdmi_core" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="s_axi"/>
         <MEMRANGE ADDRESSBLOCK="axi_lite" BASENAME="C_BASEADDR" BASEVALUE="0x75C00000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x75C0FFFF" INSTANCE="axi_spdif_tx_core" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="s_axi"/>
         <MEMRANGE ADDRESSBLOCK="axi_lite" BASENAME="C_BASEADDR" BASEVALUE="0x77600000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x7760FFFF" INSTANCE="axi_i2s_adi" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="s_axi"/>
@@ -13027,6 +13408,7 @@
         <PERIPHERAL INSTANCE="axi_adrv9001_tx1_dma"/>
         <PERIPHERAL INSTANCE="axi_adrv9001_tx2_dma"/>
         <PERIPHERAL INSTANCE="axi_sysid_0"/>
+        <PERIPHERAL INSTANCE="IP_802_11p_0"/>
         <PERIPHERAL INSTANCE="axi_hdmi_core"/>
         <PERIPHERAL INSTANCE="axi_spdif_tx_core"/>
         <PERIPHERAL INSTANCE="axi_i2s_adi"/>
@@ -13105,6 +13487,8 @@
             <CONNECTION INSTANCE="axi_iic_fmc" PORT="s_axi_aresetn"/>
             <CONNECTION INSTANCE="axi_iic_main" PORT="s_axi_aresetn"/>
             <CONNECTION INSTANCE="sys_audio_clkgen" PORT="resetn"/>
+            <CONNECTION INSTANCE="axi_cpu_interconnect" PORT="M13_ARESETN"/>
+            <CONNECTION INSTANCE="IP_802_11p_0" PORT="s00_axi_aresetn"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="0" NAME="peripheral_reset" POLARITY="ACTIVE_HIGH" RIGHT="0" SIGIS="rst"/>

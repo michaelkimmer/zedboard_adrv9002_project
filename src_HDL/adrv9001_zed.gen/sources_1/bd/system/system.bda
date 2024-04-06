@@ -442,6 +442,24 @@
             },
             "V17": {
                 "VT": "AC",
+                "BA": "0x50000000",
+                "HA": "0x50000FFF",
+                "BP": "C_S00_AXI_BASEADDR",
+                "HP": "C_S00_AXI_HIGHADDR",
+                "MA": "Data",
+                "MX": "/sys_ps7",
+                "MI": "M_AXI_GP0",
+                "MS": "SEG_IP_802_11p_0_S00_AXI_reg",
+                "MV": "xilinx.com:ip:processing_system7:5.5",
+                "SX": "/IP_802_11p_0",
+                "SI": "S00_AXI",
+                "SS": "S00_AXI_reg",
+                "SV": "xilinx.com:user:IP_802_11p:1.0",
+                "TM": "both",
+                "TU": "register"
+            },
+            "V18": {
+                "VT": "AC",
                 "BA": "0x70E00000",
                 "HA": "0x70E0FFFF",
                 "BP": "C_BASEADDR",
@@ -458,7 +476,7 @@
                 "TM": "both",
                 "TU": "register"
             },
-            "V18": {
+            "V19": {
                 "VT": "AC",
                 "BA": "0x75C00000",
                 "HA": "0x75C0FFFF",
@@ -476,7 +494,7 @@
                 "TM": "both",
                 "TU": "register"
             },
-            "V19": {
+            "V20": {
                 "VT": "AC",
                 "BA": "0x77600000",
                 "HA": "0x7760FFFF",
@@ -494,7 +512,7 @@
                 "TM": "both",
                 "TU": "register"
             },
-            "V20": {
+            "V21": {
                 "VT": "AC",
                 "BA": "0x79000000",
                 "HA": "0x7900FFFF",
@@ -609,6 +627,11 @@
             },
             {
                 "src": "V20",
+                "trg": "V2",
+                "EH": "2"
+            },
+            {
+                "src": "V21",
                 "trg": "V2",
                 "EH": "2"
             }

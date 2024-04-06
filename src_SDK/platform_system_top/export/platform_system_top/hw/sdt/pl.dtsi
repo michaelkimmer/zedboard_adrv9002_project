@@ -4,6 +4,19 @@
 		compatible = "simple-bus";
 		#address-cells = <1>;
 		#size-cells = <1>;
+		IP_802_11p_0: IP_802_11p@50000000 {
+			xlnx,s00-axi-data-width = <32>;
+			xlnx,rable = <0>;
+			compatible = "xlnx,IP-802-11p-1.0";
+			status = "okay";
+			clock-names = "CLOCK" , "RX_CLOCK" , "s00_axi_aclk";
+			xlnx,s00-axi-addr-width = <11>;
+			xlnx,ip-name = "IP_802_11p";
+			xlnx,edk-iptype = "PERIPHERAL";
+			reg = <0x50000000 0x1000>;
+			clocks = <&clkc 15>, <&misc_clk_0>, <&clkc 15>;
+			xlnx,name = "IP_802_11p_0";
+		};
 		axi_adrv9001: axi_adrv9001@44a00000 {
 			compatible = "xlnx,axi-adrv9001-1.0";
 			xlnx,common-2r2t-support = <1>;

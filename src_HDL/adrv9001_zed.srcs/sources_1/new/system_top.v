@@ -188,6 +188,11 @@ module system_top (
   wire            tdd_sync_i;
   wire            tdd_sync_cntr;
 
+  // wires for my SW and LEDS from bd !!
+  wire    [ 7:0]  SW;
+  wire    [ 7:0]  LEDS;
+  wire    [31:0]  gpio_bd_orig;
+  
   // instantiations
 
   // multi-ssi synchronization
@@ -202,7 +207,8 @@ module system_top (
     .dio_t(gpio_t[31:0]),
     .dio_i(gpio_o[31:0]),
     .dio_o(gpio_i[31:0]),
-    .dio_p(gpio_bd));
+    // Connect this to new orig version !!
+    .dio_p(gpio_bd_orig)); // .dio_p(gpio_bd)); // before
 
   ad_iobuf #(
     .DATA_WIDTH(16)
@@ -260,6 +266,10 @@ module system_top (
     .dio_p (iic_mux_sda));
 
   system_wrapper i_system_wrapper (
+     // connect wires SW and LEDS to bd !!
+    .SW (SW),
+    .LEDS (LEDS),
+    
     .ddr_addr (ddr_addr),
     .ddr_ba (ddr_ba),
     .ddr_cas_n (ddr_cas_n),
@@ -390,5 +400,11 @@ module system_top (
   assign rx2_enable = vadj_err ? 1'bz : rx2_enable_s;
   assign tx1_enable = vadj_err ? 1'bz : tx1_enable_s;
   assign tx2_enable = vadj_err ? 1'bz : tx2_enable_s;
+  
+  // Connect my LEDS and SW directly to FPGA I/O (gpio_bd), connect remaining gpio_bd as they were !!
+  assign gpio_bd[31:27] = gpio_bd_orig[31:27];
+  assign gpio_bd[18:0]  = gpio_bd_orig[18:0];
+  assign gpio_bd[26:19] = LEDS; // gpio_bd[26:19] NOT connected to gpio_bd_orig[26:19]!!
+  assign SW             = gpio_bd[18:11]; // SW just input -- leave connected gpio_bd[18:11] to gpio_bd_orig[18:11]
 
 endmodule
