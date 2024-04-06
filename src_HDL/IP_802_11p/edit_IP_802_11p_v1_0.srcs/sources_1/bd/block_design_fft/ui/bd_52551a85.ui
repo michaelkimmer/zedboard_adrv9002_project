@@ -1,0 +1,31 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.25",
+   "Default View_TopLeft":"-190,-38",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0
+#  -string -flagsOSRD
+preplace port M_AXIS_DATA -pg 1 -lvl 2 -x 400 -y 60 -defaultsOSRD
+preplace port S_AXIS_CONFIG -pg 1 -lvl 0 -x 0 -y 90 -defaultsOSRD
+preplace port S_AXIS_DATA -pg 1 -lvl 0 -x 0 -y 60 -defaultsOSRD
+preplace port port-id_aclk -pg 1 -lvl 0 -x 0 -y 120 -defaultsOSRD
+preplace port port-id_aresetn -pg 1 -lvl 0 -x 0 -y 150 -defaultsOSRD
+preplace port port-id_event_data_in_channel_halt -pg 1 -lvl 2 -x 400 -y 180 -defaultsOSRD
+preplace port port-id_event_frame_started -pg 1 -lvl 2 -x 400 -y 90 -defaultsOSRD
+preplace port port-id_event_tlast_missing -pg 1 -lvl 2 -x 400 -y 150 -defaultsOSRD
+preplace port port-id_event_tlast_unexpected -pg 1 -lvl 2 -x 400 -y 120 -defaultsOSRD
+preplace inst xfft_0 -pg 1 -lvl 1 -x 190 -y 100 -defaultsOSRD
+preplace netloc aclk_0_1 1 0 1 20J 110n
+preplace netloc aresetn_0_1 1 0 1 20J 130n
+preplace netloc xfft_0_event_data_in_channel_halt 1 1 1 360J 140n
+preplace netloc xfft_0_event_frame_started 1 1 1 380J 80n
+preplace netloc xfft_0_event_tlast_missing 1 1 1 370J 120n
+preplace netloc xfft_0_event_tlast_unexpected 1 1 1 380J 100n
+preplace netloc xfft_0_M_AXIS_DATA 1 1 1 NJ 60
+preplace netloc S_AXIS_CONFIG_0_1 1 0 1 NJ 90
+preplace netloc S_AXIS_DATA_0_1 1 0 1 20J 60n
+levelinfo -pg 1 0 190 400
+pagesize -pg 1 -db -bbox -sgen -150 0 620 200
+"
+}
+

@@ -315,7 +315,7 @@ preplace netloc sys_ps7_FIXED_IO 1 5 2 NJ 1250 3640J
 preplace netloc util_adc_1_pack_packed_fifo_wr 1 2 1 1130 1440n
 preplace netloc util_adc_2_pack_packed_fifo_wr 1 2 1 1220 1680n
 levelinfo -pg 1 -130 190 800 1510 2280 2810 3400 3680
-pagesize -pg 1 -db -bbox -sgen -310 -10 3850 3610
+pagesize -pg 1 -db -bbox -sgen -310 -10 3860 3610
 "
 }
 {

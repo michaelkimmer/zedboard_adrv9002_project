@@ -1,0 +1,12 @@
+vhdl xil_defaultlib  \
+"../../../bd/block_design_0/ip/block_design_0_rx_clock_domain_cros_0_0/sim/block_design_0_rx_clock_domain_cros_0_0.vhd" \
+"../../../bd/block_design_0/ip/block_design_0_data_interleaver_0_0/sim/block_design_0_data_interleaver_0_0.vhd" \
+"../../../bd/block_design_0/ip/block_design_0_data_delay_0_0/sim/block_design_0_data_delay_0_0.vhd" \
+"../../../bd/block_design_0/ip/block_design_0_act_power_0_0/sim/block_design_0_act_power_0_0.vhd" \
+"../../../bd/block_design_0/ip/block_design_0_timing_acquisition_8_0_0/sim/block_design_0_timing_acquisition_8_0_0.vhd" \
+"../../../bd/block_design_0/ip/block_design_0_receiver_802_11p_0_0/sim/block_design_0_receiver_802_11p_0_0.vhd" \
+"../../../bd/block_design_0/ip/block_design_0_ila_0_0/sim/block_design_0_ila_0_0.vhd" \
+"../../../bd/block_design_0/sim/block_design_0.vhd" \
+
+# Do not sort compile order
+nosort

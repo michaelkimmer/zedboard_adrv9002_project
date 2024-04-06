@@ -1,0 +1,38 @@
+{
+	"version": "1.0",
+	"modules": {
+		"block_design_rotation": {
+			"proto_instances": {
+				"/cordic_0/M_AXIS_DOUT": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "m_axis_dout_tdata[31:0]"},
+						"TLAST": { "actual": "m_axis_dout_tlast"},
+						"TVALID": { "actual": "m_axis_dout_tvalid"}
+					}
+				},
+				"/cordic_0/S_AXIS_CARTESIAN": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "s_axis_cartesian_tdata[31:0]"},
+						"TLAST": { "actual": "s_axis_cartesian_tlast"},
+						"TVALID": { "actual": "s_axis_cartesian_tvalid"}
+					}
+				},
+				"/cordic_0/S_AXIS_PHASE": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "s_axis_phase_tdata[15:0]"},
+						"TVALID": { "actual": "s_axis_phase_tvalid"}
+					}
+				}
+			}
+		}
+	}
+}

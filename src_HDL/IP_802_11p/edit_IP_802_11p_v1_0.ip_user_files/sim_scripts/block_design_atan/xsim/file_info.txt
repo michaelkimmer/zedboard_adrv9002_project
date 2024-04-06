@@ -1,0 +1,3 @@
+block_design_atan_cordic_0_0.vhd,vhdl,xil_defaultlib,../../../bd/block_design_atan/ip/block_design_atan_cordic_0_0/sim/block_design_atan_cordic_0_0.vhd,
+block_design_atan.vhd,vhdl,xil_defaultlib,../../../bd/block_design_atan/sim/block_design_atan.vhd,
+glbl.v,Verilog,xil_defaultlib,glbl.v

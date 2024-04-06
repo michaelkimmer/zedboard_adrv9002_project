@@ -1,50 +1,69 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"0.371209",
-   "Default View_TopLeft":"-334,-649",
+   "Default View_ScaleFactor":"0.348039",
+   "Default View_TopLeft":"-244,-382",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0
 #  -string -flagsOSRD
-preplace port port-id_RESET -pg 1 -lvl 0 -x -90 -y 50 -defaultsOSRD
-preplace port port-id_CLOCK -pg 1 -lvl 0 -x -90 -y -170 -defaultsOSRD
-preplace port port-id_RX_VALID -pg 1 -lvl 0 -x -90 -y 20 -defaultsOSRD
-preplace port port-id_RX_ENABLE -pg 1 -lvl 0 -x -90 -y 140 -defaultsOSRD
-preplace port port-id_RX_CLOCK -pg 1 -lvl 0 -x -90 -y -20 -defaultsOSRD
-preplace port port-id_RX_RESET -pg 1 -lvl 0 -x -90 -y 230 -defaultsOSRD
-preplace portBus RX_IDATA -pg 1 -lvl 0 -x -90 -y 170 -defaultsOSRD
-preplace portBus RX_QDATA -pg 1 -lvl 0 -x -90 -y 200 -defaultsOSRD
-preplace portBus POWER -pg 1 -lvl 6 -x 2410 -y -240 -defaultsOSRD
-preplace portBus DETECTION_THRESHOLD -pg 1 -lvl 0 -x -90 -y 100 -defaultsOSRD
-preplace inst rx_clock_domain_cros_0 -pg 1 -lvl 1 -x 150 -y -20 -defaultsOSRD
-preplace inst data_interleaver_0 -pg 1 -lvl 2 -x 500 -y -60 -defaultsOSRD
-preplace inst data_delay_0 -pg 1 -lvl 3 -x 950 -y -60 -defaultsOSRD
-preplace inst act_power_0 -pg 1 -lvl 5 -x 2140 -y -240 -defaultsOSRD
-preplace inst timing_acquisition_8_0 -pg 1 -lvl 4 -x 1640 -y 240 -defaultsOSRD
-preplace netloc RESET_0_1 1 0 5 -50J -160 320 -160 760 -200 1370 -280 N
-preplace netloc CLOCK_0_1 1 0 5 -20J -170 310 40 750 -210 1380 -260 N
-preplace netloc RX_VALID_0_1 1 0 1 -40J -80n
-preplace netloc RX_ENABLE_0_1 1 0 1 -30J 20n
-preplace netloc RX_CLOCK_0_1 1 0 1 NJ -20
-preplace netloc RX_RESET_0_1 1 0 1 -20J 0n
-preplace netloc RX_IDATA_0_1 1 0 1 -10J 40n
-preplace netloc RX_QDATA_0_1 1 0 1 0J 60n
-preplace netloc rx_clock_domain_cros_0_DATA_STROBE 1 1 1 330 -20n
-preplace netloc rx_clock_domain_cros_0_QDATA 1 1 1 320 -40n
-preplace netloc rx_clock_domain_cros_0_IDATA 1 1 1 300 -60n
-preplace netloc data_interleaver_0_IDATA_OUT 1 2 1 690 -80n
-preplace netloc data_interleaver_0_QDATA_OUT 1 2 1 680 -60n
-preplace netloc data_interleaver_0_DATA_OUT_STROBE 1 2 1 670 -40n
-preplace netloc data_delay_0_DATA_OUT_STROBE 1 3 2 1390 -200 N
-preplace netloc data_delay_0_IDATA_OUT 1 3 2 1350 -240 N
-preplace netloc data_delay_0_QDATA_OUT 1 3 2 1360 -220 N
-preplace netloc act_power_0_POWER 1 5 1 N -240
-preplace netloc data_delay_0_IDATA_OUT_DELAY_16 1 3 1 1170 -80n
-preplace netloc data_delay_0_QDATA_OUT_DELAY_16 1 3 1 1160 -60n
-preplace netloc DETECTION_THRESHOLD_0_1 1 0 4 -70J 330 NJ 330 NJ 330 NJ
-preplace netloc data_delay_0_IDATA_OUT_DELAY_32 1 3 1 1150 -40n
-preplace netloc data_delay_0_QDATA_OUT_DELAY_32 1 3 1 1140 -20n
-levelinfo -pg 1 -90 150 500 950 1640 2140 2410
-pagesize -pg 1 -db -bbox -sgen -350 -340 2540 440
+preplace port port-id_RESET -pg 1 -lvl 0 -x 0 -y 260 -defaultsOSRD
+preplace port port-id_CLOCK -pg 1 -lvl 0 -x 0 -y 290 -defaultsOSRD
+preplace port port-id_RX_VALID -pg 1 -lvl 0 -x 0 -y 230 -defaultsOSRD
+preplace port port-id_RX_ENABLE -pg 1 -lvl 0 -x 0 -y 380 -defaultsOSRD
+preplace port port-id_RX_CLOCK -pg 1 -lvl 0 -x 0 -y 320 -defaultsOSRD
+preplace port port-id_RX_RESET -pg 1 -lvl 0 -x 0 -y 350 -defaultsOSRD
+preplace port port-id_FPGA_REG_WRITE_STROBE -pg 1 -lvl 7 -x 2560 -y 80 -defaultsOSRD
+preplace portBus RX_IDATA -pg 1 -lvl 0 -x 0 -y 410 -defaultsOSRD
+preplace portBus RX_QDATA -pg 1 -lvl 0 -x 0 -y 440 -defaultsOSRD
+preplace portBus POWER -pg 1 -lvl 7 -x 2560 -y 740 -defaultsOSRD
+preplace portBus DETECTION_THRESHOLD -pg 1 -lvl 0 -x 0 -y 160 -defaultsOSRD
+preplace portBus FPGA_REG_WRITE_ADDRESS -pg 1 -lvl 7 -x 2560 -y 110 -defaultsOSRD
+preplace portBus FPGA_REG_WRITE_DATA -pg 1 -lvl 7 -x 2560 -y 710 -defaultsOSRD
+preplace inst rx_clock_domain_cros_0 -pg 1 -lvl 1 -x 190 -y 340 -defaultsOSRD
+preplace inst data_interleaver_0 -pg 1 -lvl 2 -x 520 -y 320 -defaultsOSRD
+preplace inst data_delay_0 -pg 1 -lvl 3 -x 890 -y 300 -defaultsOSRD
+preplace inst act_power_0 -pg 1 -lvl 5 -x 2010 -y 650 -defaultsOSRD
+preplace inst timing_acquisition_8_0 -pg 1 -lvl 4 -x 1390 -y 270 -defaultsOSRD
+preplace inst receiver_802_11p_0 -pg 1 -lvl 5 -x 2010 -y 170 -defaultsOSRD
+preplace inst ila_0 -pg 1 -lvl 6 -x 2450 -y 480 -defaultsOSRD
+preplace netloc CLOCK_0_1 1 0 6 40 200 340 220 690 440 1080 450 1700 340 2270J
+preplace netloc DETECTION_THRESHOLD_0_1 1 0 4 NJ 160 NJ 160 NJ 160 1120J
+preplace netloc RESET_0_1 1 0 5 30 190 350 190 700 150 1090 440 1690
+preplace netloc RX_CLOCK_0_1 1 0 1 20J 320n
+preplace netloc RX_ENABLE_0_1 1 0 1 NJ 380
+preplace netloc RX_IDATA_0_1 1 0 1 40J 400n
+preplace netloc RX_QDATA_0_1 1 0 1 20J 420n
+preplace netloc RX_RESET_0_1 1 0 1 20J 350n
+preplace netloc RX_VALID_0_1 1 0 1 20J 230n
+preplace netloc act_power_0_POWER 1 5 2 2280 740 NJ
+preplace netloc data_delay_0_DATA_OUT_STROBE 1 3 3 1110 120 1640 350 2300J
+preplace netloc data_delay_0_IDATA_OUT 1 3 3 1100 110 1650 360 2320J
+preplace netloc data_delay_0_IDATA_OUT_DELAY_16 1 3 1 N 280
+preplace netloc data_delay_0_IDATA_OUT_DELAY_32 1 3 3 1140 420 NJ 420 2340J
+preplace netloc data_delay_0_QDATA_OUT 1 3 3 1110 460 1680 370 NJ
+preplace netloc data_delay_0_QDATA_OUT_DELAY_16 1 3 1 N 300
+preplace netloc data_delay_0_QDATA_OUT_DELAY_32 1 3 3 1130 430 NJ 430 2270J
+preplace netloc data_interleaver_0_DATA_OUT_STROBE 1 2 1 N 340
+preplace netloc data_interleaver_0_IDATA_OUT 1 2 1 N 300
+preplace netloc data_interleaver_0_QDATA_OUT 1 2 1 N 320
+preplace netloc rx_clock_domain_cros_0_DATA_STROBE 1 1 1 N 360
+preplace netloc rx_clock_domain_cros_0_IDATA 1 1 1 N 320
+preplace netloc rx_clock_domain_cros_0_QDATA 1 1 1 N 340
+preplace netloc timing_acquisition_8_0_DETECTION_STROBE 1 4 2 1720 450 NJ
+preplace netloc timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED 1 4 2 1710 470 NJ
+preplace netloc timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I 1 4 2 1730 530 NJ
+preplace netloc timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q 1 4 2 1740 540 2320J
+preplace netloc timing_acquisition_8_0_DETECTION_XCORR 1 4 2 1670 490 NJ
+preplace netloc timing_acquisition_8_0_CONTINUOUS_XCORR 1 4 2 1660 510 NJ
+preplace netloc receiver_802_11p_0_ATAN_PHASE_OUT_DEBUG 1 5 1 2290 260n
+preplace netloc receiver_802_11p_0_ATAN_PHASE_OUT_STROBE_DEBUG 1 5 1 2310 240n
+preplace netloc receiver_802_11p_0_ATAN_AUTOCORR_Q_DEBUG 1 5 1 2330 220n
+preplace netloc receiver_802_11p_0_ATAN_AUTOCORR_I_DEBUG 1 5 1 2350 200n
+preplace netloc receiver_802_11p_0_ATAN_AUTOCORR_STROBE_DEBUG 1 5 1 2360 180n
+preplace netloc receiver_802_11p_0_FPGA_REG_WRITE_STROBE 1 5 2 NJ 80 NJ
+preplace netloc receiver_802_11p_0_FPGA_REG_WRITE_ADDRESS 1 5 2 2360J 110 NJ
+preplace netloc receiver_802_11p_0_FPGA_REG_WRITE_DATA 1 4 3 1750 550 2270J 710 NJ
+levelinfo -pg 1 0 190 520 890 1390 2010 2450 2560
+pagesize -pg 1 -db -bbox -sgen -250 0 2820 760
 "
 }
-
+0

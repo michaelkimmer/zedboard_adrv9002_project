@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xCA82B26243D032A6",
+      "boundary_crc": "0x1F5D2432DB6C4F46",
       "device": "xc7z020clg484-1",
       "gen_directory": "../../../../edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0",
       "name": "block_design_0",
@@ -15,7 +15,9 @@
       "data_interleaver_0": "",
       "data_delay_0": "",
       "act_power_0": "",
-      "timing_acquisition_8_0": ""
+      "timing_acquisition_8_0": "",
+      "receiver_802_11p_0": "",
+      "ila_0": ""
     },
     "ports": {
       "RESET": {
@@ -130,6 +132,19 @@
       "DETECTION_THRESHOLD": {
         "direction": "I",
         "left": "23",
+        "right": "0"
+      },
+      "FPGA_REG_WRITE_STROBE": {
+        "direction": "O"
+      },
+      "FPGA_REG_WRITE_ADDRESS": {
+        "direction": "O",
+        "left": "8",
+        "right": "0"
+      },
+      "FPGA_REG_WRITE_DATA": {
+        "direction": "O",
+        "left": "31",
         "right": "0"
       }
     },
@@ -514,6 +529,182 @@
             "right": "0"
           }
         }
+      },
+      "receiver_802_11p_0": {
+        "vlnv": "xilinx.com:module_ref:receiver_802_11p:1.0",
+        "ip_revision": "1712416076",
+        "xci_name": "block_design_0_receiver_802_11p_0_0",
+        "xci_path": "ip\\block_design_0_receiver_802_11p_0_0\\block_design_0_receiver_802_11p_0_0.xci",
+        "inst_hier_path": "receiver_802_11p_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "receiver_802_11p",
+          "boundary_crc": "0x0"
+        },
+        "interface_ports": {
+          "FPGA_REG_WRITE": {
+            "mode": "Slave",
+            "vlnv_bus_definition": "analog.com:interface:fifo_rd:1.0",
+            "vlnv": "analog.com:interface:fifo_rd_rtl:1.0",
+            "port_maps": {
+              "DATA": {
+                "physical_name": "FPGA_REG_WRITE_DATA",
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              }
+            }
+          },
+          "fft_event_in_channel_halt": {
+            "mode": "Slave",
+            "vlnv_bus_definition": "analog.com:interface:fifo_rd:1.0",
+            "vlnv": "analog.com:interface:fifo_rd_rtl:1.0",
+            "port_maps": {
+              "DATA": {
+                "physical_name": "fft_event_data_in_channel_halt",
+                "direction": "O"
+              }
+            }
+          }
+        },
+        "ports": {
+          "RESET": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "CLOCK": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "RESET",
+                "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "block_design_0_CLOCK_0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "IDATA_IN": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "QDATA_IN": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "DATA_IN_STROBE": {
+            "direction": "I"
+          },
+          "DETECTION_STROBE": {
+            "direction": "I"
+          },
+          "DETECTION_SIGNAL_DETECTED": {
+            "direction": "I"
+          },
+          "DETECTION_STS_AUTOCORR_I": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "DETECTION_STS_AUTOCORR_Q": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "FPGA_REG_WRITE_STROBE": {
+            "direction": "O"
+          },
+          "FPGA_REG_WRITE_ADDRESS": {
+            "direction": "O",
+            "left": "8",
+            "right": "0"
+          },
+          "fft_event_frame_started": {
+            "direction": "O"
+          },
+          "fft_event_tlast_missing": {
+            "direction": "O"
+          },
+          "fft_event_tlast_unexpected": {
+            "direction": "O"
+          },
+          "ATAN_AUTOCORR_STROBE_DEBUG": {
+            "direction": "O"
+          },
+          "ATAN_AUTOCORR_I_DEBUG": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "ATAN_AUTOCORR_Q_DEBUG": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "ATAN_PHASE_OUT_STROBE_DEBUG": {
+            "direction": "O"
+          },
+          "ATAN_PHASE_OUT_DEBUG": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          }
+        }
+      },
+      "ila_0": {
+        "vlnv": "xilinx.com:ip:ila:6.2",
+        "ip_revision": "14",
+        "xci_name": "block_design_0_ila_0_0",
+        "xci_path": "ip\\block_design_0_ila_0_0\\block_design_0_ila_0_0.xci",
+        "inst_hier_path": "ila_0",
+        "parameters": {
+          "C_MONITOR_TYPE": {
+            "value": "Native"
+          },
+          "C_NUM_OF_PROBES": {
+            "value": "17"
+          },
+          "C_PROBE10_WIDTH": {
+            "value": "32"
+          },
+          "C_PROBE11_WIDTH": {
+            "value": "32"
+          },
+          "C_PROBE13_WIDTH": {
+            "value": "32"
+          },
+          "C_PROBE14_WIDTH": {
+            "value": "32"
+          },
+          "C_PROBE16_WIDTH": {
+            "value": "16"
+          },
+          "C_PROBE1_WIDTH": {
+            "value": "16"
+          },
+          "C_PROBE2_WIDTH": {
+            "value": "16"
+          },
+          "C_PROBE3_WIDTH": {
+            "value": "16"
+          },
+          "C_PROBE4_WIDTH": {
+            "value": "16"
+          },
+          "C_PROBE5_WIDTH": {
+            "value": "8"
+          },
+          "C_PROBE8_WIDTH": {
+            "value": "24"
+          },
+          "C_PROBE9_WIDTH": {
+            "value": "24"
+          }
+        }
       }
     },
     "nets": {
@@ -524,7 +715,9 @@
           "data_interleaver_0/CLOCK",
           "data_delay_0/CLOCK",
           "act_power_0/CLOCK",
-          "timing_acquisition_8_0/CLOCK"
+          "timing_acquisition_8_0/CLOCK",
+          "ila_0/clk",
+          "receiver_802_11p_0/CLOCK"
         ]
       },
       "DETECTION_THRESHOLD_0_1": {
@@ -540,7 +733,8 @@
           "data_interleaver_0/RESET",
           "data_delay_0/RESET",
           "act_power_0/RESET",
-          "timing_acquisition_8_0/RESET"
+          "timing_acquisition_8_0/RESET",
+          "receiver_802_11p_0/RESET"
         ]
       },
       "RX_CLOCK_0_1": {
@@ -582,21 +776,26 @@
       "act_power_0_POWER": {
         "ports": [
           "act_power_0/POWER",
-          "POWER"
+          "POWER",
+          "ila_0/probe5"
         ]
       },
       "data_delay_0_DATA_OUT_STROBE": {
         "ports": [
           "data_delay_0/DATA_OUT_STROBE",
           "act_power_0/DATA_STROBE",
-          "timing_acquisition_8_0/DATA_STROBE"
+          "timing_acquisition_8_0/DATA_STROBE",
+          "ila_0/probe0",
+          "receiver_802_11p_0/DATA_IN_STROBE"
         ]
       },
       "data_delay_0_IDATA_OUT": {
         "ports": [
           "data_delay_0/IDATA_OUT",
           "act_power_0/IDATA",
-          "timing_acquisition_8_0/IDATA"
+          "timing_acquisition_8_0/IDATA",
+          "ila_0/probe1",
+          "receiver_802_11p_0/IDATA_IN"
         ]
       },
       "data_delay_0_IDATA_OUT_DELAY_16": {
@@ -608,14 +807,17 @@
       "data_delay_0_IDATA_OUT_DELAY_32": {
         "ports": [
           "data_delay_0/IDATA_OUT_DELAY_32",
-          "timing_acquisition_8_0/IDATA_DELAY_32"
+          "timing_acquisition_8_0/IDATA_DELAY_32",
+          "ila_0/probe3"
         ]
       },
       "data_delay_0_QDATA_OUT": {
         "ports": [
           "data_delay_0/QDATA_OUT",
           "act_power_0/QDATA",
-          "timing_acquisition_8_0/QDATA"
+          "timing_acquisition_8_0/QDATA",
+          "ila_0/probe2",
+          "receiver_802_11p_0/QDATA_IN"
         ]
       },
       "data_delay_0_QDATA_OUT_DELAY_16": {
@@ -627,7 +829,8 @@
       "data_delay_0_QDATA_OUT_DELAY_32": {
         "ports": [
           "data_delay_0/QDATA_OUT_DELAY_32",
-          "timing_acquisition_8_0/QDATA_DELAY_32"
+          "timing_acquisition_8_0/QDATA_DELAY_32",
+          "ila_0/probe4"
         ]
       },
       "data_interleaver_0_DATA_OUT_STROBE": {
@@ -648,6 +851,54 @@
           "data_delay_0/QDATA_IN"
         ]
       },
+      "receiver_802_11p_0_ATAN_AUTOCORR_I_DEBUG": {
+        "ports": [
+          "receiver_802_11p_0/ATAN_AUTOCORR_I_DEBUG",
+          "ila_0/probe13"
+        ]
+      },
+      "receiver_802_11p_0_ATAN_AUTOCORR_Q_DEBUG": {
+        "ports": [
+          "receiver_802_11p_0/ATAN_AUTOCORR_Q_DEBUG",
+          "ila_0/probe14"
+        ]
+      },
+      "receiver_802_11p_0_ATAN_AUTOCORR_STROBE_DEBUG": {
+        "ports": [
+          "receiver_802_11p_0/ATAN_AUTOCORR_STROBE_DEBUG",
+          "ila_0/probe12"
+        ]
+      },
+      "receiver_802_11p_0_ATAN_PHASE_OUT_DEBUG": {
+        "ports": [
+          "receiver_802_11p_0/ATAN_PHASE_OUT_DEBUG",
+          "ila_0/probe16"
+        ]
+      },
+      "receiver_802_11p_0_ATAN_PHASE_OUT_STROBE_DEBUG": {
+        "ports": [
+          "receiver_802_11p_0/ATAN_PHASE_OUT_STROBE_DEBUG",
+          "ila_0/probe15"
+        ]
+      },
+      "receiver_802_11p_0_FPGA_REG_WRITE_ADDRESS": {
+        "ports": [
+          "receiver_802_11p_0/FPGA_REG_WRITE_ADDRESS",
+          "FPGA_REG_WRITE_ADDRESS"
+        ]
+      },
+      "receiver_802_11p_0_FPGA_REG_WRITE_DATA": {
+        "ports": [
+          "receiver_802_11p_0/FPGA_REG_WRITE_DATA",
+          "FPGA_REG_WRITE_DATA"
+        ]
+      },
+      "receiver_802_11p_0_FPGA_REG_WRITE_STROBE": {
+        "ports": [
+          "receiver_802_11p_0/FPGA_REG_WRITE_STROBE",
+          "FPGA_REG_WRITE_STROBE"
+        ]
+      },
       "rx_clock_domain_cros_0_DATA_STROBE": {
         "ports": [
           "rx_clock_domain_cros_0/DATA_STROBE",
@@ -664,6 +915,46 @@
         "ports": [
           "rx_clock_domain_cros_0/QDATA",
           "data_interleaver_0/QDATA_IN"
+        ]
+      },
+      "timing_acquisition_8_0_CONTINUOUS_XCORR": {
+        "ports": [
+          "timing_acquisition_8_0/CONTINUOUS_XCORR",
+          "ila_0/probe9"
+        ]
+      },
+      "timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED": {
+        "ports": [
+          "timing_acquisition_8_0/DETECTION_SIGNAL_DETECTED",
+          "ila_0/probe7",
+          "receiver_802_11p_0/DETECTION_SIGNAL_DETECTED"
+        ]
+      },
+      "timing_acquisition_8_0_DETECTION_STROBE": {
+        "ports": [
+          "timing_acquisition_8_0/DETECTION_STROBE",
+          "ila_0/probe6",
+          "receiver_802_11p_0/DETECTION_STROBE"
+        ]
+      },
+      "timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I": {
+        "ports": [
+          "timing_acquisition_8_0/DETECTION_STS_AUTOCORR_I",
+          "ila_0/probe10",
+          "receiver_802_11p_0/DETECTION_STS_AUTOCORR_I"
+        ]
+      },
+      "timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q": {
+        "ports": [
+          "timing_acquisition_8_0/DETECTION_STS_AUTOCORR_Q",
+          "ila_0/probe11",
+          "receiver_802_11p_0/DETECTION_STS_AUTOCORR_Q"
+        ]
+      },
+      "timing_acquisition_8_0_DETECTION_XCORR": {
+        "ports": [
+          "timing_acquisition_8_0/DETECTION_XCORR",
+          "ila_0/probe8"
         ]
       }
     }

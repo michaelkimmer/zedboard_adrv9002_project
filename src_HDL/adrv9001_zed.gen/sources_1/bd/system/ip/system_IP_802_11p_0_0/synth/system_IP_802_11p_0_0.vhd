@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:user:IP_802_11p:1.0
--- IP Revision: 5
+-- IP Revision: 6
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -91,7 +91,7 @@ END system_IP_802_11p_0_0;
 ARCHITECTURE system_IP_802_11p_0_0_arch OF system_IP_802_11p_0_0 IS
   ATTRIBUTE DowngradeIPIdentifiedWarnings : STRING;
   ATTRIBUTE DowngradeIPIdentifiedWarnings OF system_IP_802_11p_0_0_arch: ARCHITECTURE IS "yes";
-  COMPONENT IP_802_11p_v1_0 IS
+  COMPONENT block_design_fft IS
     GENERIC (
       C_S00_AXI_DATA_WIDTH : INTEGER;
       C_S00_AXI_ADDR_WIDTH : INTEGER
@@ -128,13 +128,13 @@ ARCHITECTURE system_IP_802_11p_0_0_arch OF system_IP_802_11p_0_0 IS
       s00_axi_rvalid : OUT STD_LOGIC;
       s00_axi_rready : IN STD_LOGIC
     );
-  END COMPONENT IP_802_11p_v1_0;
+  END COMPONENT block_design_fft;
   ATTRIBUTE X_CORE_INFO : STRING;
-  ATTRIBUTE X_CORE_INFO OF system_IP_802_11p_0_0_arch: ARCHITECTURE IS "IP_802_11p_v1_0,Vivado 2023.2.2";
+  ATTRIBUTE X_CORE_INFO OF system_IP_802_11p_0_0_arch: ARCHITECTURE IS "block_design_fft,Vivado 2023.2.2";
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
-  ATTRIBUTE CHECK_LICENSE_TYPE OF system_IP_802_11p_0_0_arch : ARCHITECTURE IS "system_IP_802_11p_0_0,IP_802_11p_v1_0,{}";
+  ATTRIBUTE CHECK_LICENSE_TYPE OF system_IP_802_11p_0_0_arch : ARCHITECTURE IS "system_IP_802_11p_0_0,block_design_fft,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF system_IP_802_11p_0_0_arch: ARCHITECTURE IS "system_IP_802_11p_0_0,IP_802_11p_v1_0,{x_ipProduct=Vivado 2023.2.2,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=IP_802_11p,x_ipVersion=1.0,x_ipCoreRevision=5,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_S00_AXI_DATA_WIDTH=32,C_S00_AXI_ADDR_WIDTH=11}";
+  ATTRIBUTE CORE_GENERATION_INFO OF system_IP_802_11p_0_0_arch: ARCHITECTURE IS "system_IP_802_11p_0_0,block_design_fft,{x_ipProduct=Vivado 2023.2.2,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=IP_802_11p,x_ipVersion=1.0,x_ipCoreRevision=6,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_S00_AXI_DATA_WIDTH=32,C_S00_AXI_ADDR_WIDTH=11}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER OF CLOCK: SIGNAL IS "XIL_INTERFACENAME CLOCK, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, INSERT_VIP 0";
@@ -169,7 +169,7 @@ ARCHITECTURE system_IP_802_11p_0_0_arch OF system_IP_802_11p_0_0 IS
   ATTRIBUTE X_INTERFACE_INFO OF s00_axi_wstrb: SIGNAL IS "xilinx.com:interface:aximm:1.0 S00_AXI WSTRB";
   ATTRIBUTE X_INTERFACE_INFO OF s00_axi_wvalid: SIGNAL IS "xilinx.com:interface:aximm:1.0 S00_AXI WVALID";
 BEGIN
-  U0 : IP_802_11p_v1_0
+  U0 : block_design_fft
     GENERIC MAP (
       C_S00_AXI_DATA_WIDTH => 32,
       C_S00_AXI_ADDR_WIDTH => 11

@@ -2,7 +2,7 @@
 --Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
---Date        : Sat Apr  6 15:42:17 2024
+--Date        : Sat Apr  6 17:28:12 2024
 --Host        : ASUS_ROG running 64-bit major release  (build 9200)
 --Command     : generate_target block_design_0.bd
 --Design      : block_design_0
@@ -16,6 +16,9 @@ entity block_design_0 is
   port (
     CLOCK : in STD_LOGIC;
     DETECTION_THRESHOLD : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    FPGA_REG_WRITE_ADDRESS : out STD_LOGIC_VECTOR ( 8 downto 0 );
+    FPGA_REG_WRITE_DATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    FPGA_REG_WRITE_STROBE : out STD_LOGIC;
     POWER : out STD_LOGIC_VECTOR ( 7 downto 0 );
     RESET : in STD_LOGIC;
     RX_CLOCK : in STD_LOGIC;
@@ -26,7 +29,7 @@ entity block_design_0 is
     RX_VALID : in STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of block_design_0 : entity is "block_design_0,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=block_design_0,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=5,numReposBlks=5,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=5,numPkgbdBlks=0,bdsource=USER,synth_mode=Hierarchical}";
+  attribute CORE_GENERATION_INFO of block_design_0 : entity is "block_design_0,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=block_design_0,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=7,numReposBlks=7,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=6,numPkgbdBlks=0,bdsource=USER,synth_mode=Hierarchical}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of block_design_0 : entity is "block_design_0.hwdef";
 end block_design_0;
@@ -107,6 +110,53 @@ architecture STRUCTURE of block_design_0 is
     DETECTION_STS_AUTOCORR_Q : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   end component block_design_0_timing_acquisition_8_0_0;
+  component block_design_0_receiver_802_11p_0_0 is
+  port (
+    RESET : in STD_LOGIC;
+    CLOCK : in STD_LOGIC;
+    IDATA_IN : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    QDATA_IN : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    DATA_IN_STROBE : in STD_LOGIC;
+    DETECTION_STROBE : in STD_LOGIC;
+    DETECTION_SIGNAL_DETECTED : in STD_LOGIC;
+    DETECTION_STS_AUTOCORR_I : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    DETECTION_STS_AUTOCORR_Q : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    FPGA_REG_WRITE_STROBE : out STD_LOGIC;
+    FPGA_REG_WRITE_ADDRESS : out STD_LOGIC_VECTOR ( 8 downto 0 );
+    FPGA_REG_WRITE_DATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    fft_event_data_in_channel_halt : out STD_LOGIC;
+    fft_event_frame_started : out STD_LOGIC;
+    fft_event_tlast_missing : out STD_LOGIC;
+    fft_event_tlast_unexpected : out STD_LOGIC;
+    ATAN_AUTOCORR_STROBE_DEBUG : out STD_LOGIC;
+    ATAN_AUTOCORR_I_DEBUG : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    ATAN_AUTOCORR_Q_DEBUG : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    ATAN_PHASE_OUT_STROBE_DEBUG : out STD_LOGIC;
+    ATAN_PHASE_OUT_DEBUG : out STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component block_design_0_receiver_802_11p_0_0;
+  component block_design_0_ila_0_0 is
+  port (
+    clk : in STD_LOGIC;
+    probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe2 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe3 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe4 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe5 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe6 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe7 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe8 : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    probe9 : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    probe10 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    probe11 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    probe12 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe13 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    probe14 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    probe15 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe16 : in STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component block_design_0_ila_0_0;
   signal CLOCK_0_1 : STD_LOGIC;
   signal DETECTION_THRESHOLD_0_1 : STD_LOGIC_VECTOR ( 23 downto 0 );
   signal RESET_0_1 : STD_LOGIC;
@@ -127,17 +177,29 @@ architecture STRUCTURE of block_design_0 is
   signal data_interleaver_0_DATA_OUT_STROBE : STD_LOGIC;
   signal data_interleaver_0_IDATA_OUT : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal data_interleaver_0_QDATA_OUT : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal receiver_802_11p_0_ATAN_AUTOCORR_I_DEBUG : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal receiver_802_11p_0_ATAN_AUTOCORR_Q_DEBUG : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal receiver_802_11p_0_ATAN_AUTOCORR_STROBE_DEBUG : STD_LOGIC;
+  signal receiver_802_11p_0_ATAN_PHASE_OUT_DEBUG : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal receiver_802_11p_0_ATAN_PHASE_OUT_STROBE_DEBUG : STD_LOGIC;
+  signal receiver_802_11p_0_FPGA_REG_WRITE_ADDRESS : STD_LOGIC_VECTOR ( 8 downto 0 );
+  signal receiver_802_11p_0_FPGA_REG_WRITE_DATA : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal receiver_802_11p_0_FPGA_REG_WRITE_STROBE : STD_LOGIC;
   signal rx_clock_domain_cros_0_DATA_STROBE : STD_LOGIC;
   signal rx_clock_domain_cros_0_IDATA : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal rx_clock_domain_cros_0_QDATA : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal timing_acquisition_8_0_CONTINUOUS_XCORR : STD_LOGIC_VECTOR ( 23 downto 0 );
+  signal timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED : STD_LOGIC;
+  signal timing_acquisition_8_0_DETECTION_STROBE : STD_LOGIC;
+  signal timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal timing_acquisition_8_0_DETECTION_XCORR : STD_LOGIC_VECTOR ( 23 downto 0 );
   signal NLW_data_delay_0_IDATA_OUT_DELAY_64_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal NLW_data_delay_0_QDATA_OUT_DELAY_64_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal NLW_timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED_UNCONNECTED : STD_LOGIC;
-  signal NLW_timing_acquisition_8_0_DETECTION_STROBE_UNCONNECTED : STD_LOGIC;
-  signal NLW_timing_acquisition_8_0_CONTINUOUS_XCORR_UNCONNECTED : STD_LOGIC_VECTOR ( 23 downto 0 );
-  signal NLW_timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal NLW_timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal NLW_timing_acquisition_8_0_DETECTION_XCORR_UNCONNECTED : STD_LOGIC_VECTOR ( 23 downto 0 );
+  signal NLW_receiver_802_11p_0_fft_event_data_in_channel_halt_UNCONNECTED : STD_LOGIC;
+  signal NLW_receiver_802_11p_0_fft_event_frame_started_UNCONNECTED : STD_LOGIC;
+  signal NLW_receiver_802_11p_0_fft_event_tlast_missing_UNCONNECTED : STD_LOGIC;
+  signal NLW_receiver_802_11p_0_fft_event_tlast_unexpected_UNCONNECTED : STD_LOGIC;
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of CLOCK : signal is "xilinx.com:signal:clock:1.0 CLK.CLOCK CLK";
   attribute X_INTERFACE_PARAMETER : string;
@@ -151,6 +213,9 @@ architecture STRUCTURE of block_design_0 is
 begin
   CLOCK_0_1 <= CLOCK;
   DETECTION_THRESHOLD_0_1(23 downto 0) <= DETECTION_THRESHOLD(23 downto 0);
+  FPGA_REG_WRITE_ADDRESS(8 downto 0) <= receiver_802_11p_0_FPGA_REG_WRITE_ADDRESS(8 downto 0);
+  FPGA_REG_WRITE_DATA(31 downto 0) <= receiver_802_11p_0_FPGA_REG_WRITE_DATA(31 downto 0);
+  FPGA_REG_WRITE_STROBE <= receiver_802_11p_0_FPGA_REG_WRITE_STROBE;
   POWER(7 downto 0) <= act_power_0_POWER(7 downto 0);
   RESET_0_1 <= RESET;
   RX_CLOCK_0_1 <= RX_CLOCK;
@@ -196,6 +261,51 @@ data_interleaver_0: component block_design_0_data_interleaver_0_0
       QDATA_OUT(15 downto 0) => data_interleaver_0_QDATA_OUT(15 downto 0),
       RESET => RESET_0_1
     );
+ila_0: component block_design_0_ila_0_0
+     port map (
+      clk => CLOCK_0_1,
+      probe0(0) => data_delay_0_DATA_OUT_STROBE,
+      probe1(15 downto 0) => data_delay_0_IDATA_OUT(15 downto 0),
+      probe10(31 downto 0) => timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I(31 downto 0),
+      probe11(31 downto 0) => timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q(31 downto 0),
+      probe12(0) => receiver_802_11p_0_ATAN_AUTOCORR_STROBE_DEBUG,
+      probe13(31 downto 0) => receiver_802_11p_0_ATAN_AUTOCORR_I_DEBUG(31 downto 0),
+      probe14(31 downto 0) => receiver_802_11p_0_ATAN_AUTOCORR_Q_DEBUG(31 downto 0),
+      probe15(0) => receiver_802_11p_0_ATAN_PHASE_OUT_STROBE_DEBUG,
+      probe16(15 downto 0) => receiver_802_11p_0_ATAN_PHASE_OUT_DEBUG(15 downto 0),
+      probe2(15 downto 0) => data_delay_0_QDATA_OUT(15 downto 0),
+      probe3(15 downto 0) => data_delay_0_IDATA_OUT_DELAY_32(15 downto 0),
+      probe4(15 downto 0) => data_delay_0_QDATA_OUT_DELAY_32(15 downto 0),
+      probe5(7 downto 0) => act_power_0_POWER(7 downto 0),
+      probe6(0) => timing_acquisition_8_0_DETECTION_STROBE,
+      probe7(0) => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
+      probe8(23 downto 0) => timing_acquisition_8_0_DETECTION_XCORR(23 downto 0),
+      probe9(23 downto 0) => timing_acquisition_8_0_CONTINUOUS_XCORR(23 downto 0)
+    );
+receiver_802_11p_0: component block_design_0_receiver_802_11p_0_0
+     port map (
+      ATAN_AUTOCORR_I_DEBUG(31 downto 0) => receiver_802_11p_0_ATAN_AUTOCORR_I_DEBUG(31 downto 0),
+      ATAN_AUTOCORR_Q_DEBUG(31 downto 0) => receiver_802_11p_0_ATAN_AUTOCORR_Q_DEBUG(31 downto 0),
+      ATAN_AUTOCORR_STROBE_DEBUG => receiver_802_11p_0_ATAN_AUTOCORR_STROBE_DEBUG,
+      ATAN_PHASE_OUT_DEBUG(15 downto 0) => receiver_802_11p_0_ATAN_PHASE_OUT_DEBUG(15 downto 0),
+      ATAN_PHASE_OUT_STROBE_DEBUG => receiver_802_11p_0_ATAN_PHASE_OUT_STROBE_DEBUG,
+      CLOCK => CLOCK_0_1,
+      DATA_IN_STROBE => data_delay_0_DATA_OUT_STROBE,
+      DETECTION_SIGNAL_DETECTED => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
+      DETECTION_STROBE => timing_acquisition_8_0_DETECTION_STROBE,
+      DETECTION_STS_AUTOCORR_I(31 downto 0) => timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I(31 downto 0),
+      DETECTION_STS_AUTOCORR_Q(31 downto 0) => timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q(31 downto 0),
+      FPGA_REG_WRITE_ADDRESS(8 downto 0) => receiver_802_11p_0_FPGA_REG_WRITE_ADDRESS(8 downto 0),
+      FPGA_REG_WRITE_DATA(31 downto 0) => receiver_802_11p_0_FPGA_REG_WRITE_DATA(31 downto 0),
+      FPGA_REG_WRITE_STROBE => receiver_802_11p_0_FPGA_REG_WRITE_STROBE,
+      IDATA_IN(15 downto 0) => data_delay_0_IDATA_OUT(15 downto 0),
+      QDATA_IN(15 downto 0) => data_delay_0_QDATA_OUT(15 downto 0),
+      RESET => RESET_0_1,
+      fft_event_data_in_channel_halt => NLW_receiver_802_11p_0_fft_event_data_in_channel_halt_UNCONNECTED,
+      fft_event_frame_started => NLW_receiver_802_11p_0_fft_event_frame_started_UNCONNECTED,
+      fft_event_tlast_missing => NLW_receiver_802_11p_0_fft_event_tlast_missing_UNCONNECTED,
+      fft_event_tlast_unexpected => NLW_receiver_802_11p_0_fft_event_tlast_unexpected_UNCONNECTED
+    );
 rx_clock_domain_cros_0: component block_design_0_rx_clock_domain_cros_0_0
      port map (
       CLOCK => CLOCK_0_1,
@@ -213,14 +323,14 @@ rx_clock_domain_cros_0: component block_design_0_rx_clock_domain_cros_0_0
 timing_acquisition_8_0: component block_design_0_timing_acquisition_8_0_0
      port map (
       CLOCK => CLOCK_0_1,
-      CONTINUOUS_XCORR(23 downto 0) => NLW_timing_acquisition_8_0_CONTINUOUS_XCORR_UNCONNECTED(23 downto 0),
+      CONTINUOUS_XCORR(23 downto 0) => timing_acquisition_8_0_CONTINUOUS_XCORR(23 downto 0),
       DATA_STROBE => data_delay_0_DATA_OUT_STROBE,
-      DETECTION_SIGNAL_DETECTED => NLW_timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED_UNCONNECTED,
-      DETECTION_STROBE => NLW_timing_acquisition_8_0_DETECTION_STROBE_UNCONNECTED,
-      DETECTION_STS_AUTOCORR_I(31 downto 0) => NLW_timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I_UNCONNECTED(31 downto 0),
-      DETECTION_STS_AUTOCORR_Q(31 downto 0) => NLW_timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q_UNCONNECTED(31 downto 0),
+      DETECTION_SIGNAL_DETECTED => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
+      DETECTION_STROBE => timing_acquisition_8_0_DETECTION_STROBE,
+      DETECTION_STS_AUTOCORR_I(31 downto 0) => timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I(31 downto 0),
+      DETECTION_STS_AUTOCORR_Q(31 downto 0) => timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q(31 downto 0),
       DETECTION_THRESHOLD(23 downto 0) => DETECTION_THRESHOLD_0_1(23 downto 0),
-      DETECTION_XCORR(23 downto 0) => NLW_timing_acquisition_8_0_DETECTION_XCORR_UNCONNECTED(23 downto 0),
+      DETECTION_XCORR(23 downto 0) => timing_acquisition_8_0_DETECTION_XCORR(23 downto 0),
       IDATA(15 downto 0) => data_delay_0_IDATA_OUT(15 downto 0),
       IDATA_DELAY_16(15 downto 0) => data_delay_0_IDATA_OUT_DELAY_16(15 downto 0),
       IDATA_DELAY_32(15 downto 0) => data_delay_0_IDATA_OUT_DELAY_32(15 downto 0),

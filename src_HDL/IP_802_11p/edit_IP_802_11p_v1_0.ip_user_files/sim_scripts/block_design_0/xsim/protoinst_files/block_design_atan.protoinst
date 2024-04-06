@@ -1,0 +1,28 @@
+{
+	"version": "1.0",
+	"modules": {
+		"block_design_atan": {
+			"proto_instances": {
+				"/cordic_0/M_AXIS_DOUT": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "m_axis_dout_tdata[15:0]"},
+						"TVALID": { "actual": "m_axis_dout_tvalid"}
+					}
+				},
+				"/cordic_0/S_AXIS_CARTESIAN": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "s_axis_cartesian_tdata[63:0]"},
+						"TREADY": { "actual": "s_axis_cartesian_tready"},
+						"TVALID": { "actual": "s_axis_cartesian_tvalid"}
+					}
+				}
+			}
+		}
+	}
+}
