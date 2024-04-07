@@ -637,19 +637,19 @@ libsrc/xiltimer/src/core/scutimer/clean:
 # All Build rule for target.
 libsrc/CMakeFiles/combined.dir/all: libsrc/devcfg/src/CMakeFiles/devcfg.dir/all
 libsrc/CMakeFiles/combined.dir/all: libsrc/coresightps_dcc/src/CMakeFiles/coresightps_dcc.dir/all
-libsrc/CMakeFiles/combined.dir/all: libsrc/emacps/src/CMakeFiles/emacps.dir/all
 libsrc/CMakeFiles/combined.dir/all: libsrc/dmaps/src/CMakeFiles/dmaps.dir/all
 libsrc/CMakeFiles/combined.dir/all: libsrc/gpiops/src/CMakeFiles/gpiops.dir/all
-libsrc/CMakeFiles/combined.dir/all: libsrc/scugic/src/CMakeFiles/scugic.dir/all
+libsrc/CMakeFiles/combined.dir/all: libsrc/emacps/src/CMakeFiles/emacps.dir/all
 libsrc/CMakeFiles/combined.dir/all: libsrc/qspips/src/CMakeFiles/qspips.dir/all
-libsrc/CMakeFiles/combined.dir/all: libsrc/iic/src/CMakeFiles/iic.dir/all
+libsrc/CMakeFiles/combined.dir/all: libsrc/scugic/src/CMakeFiles/scugic.dir/all
 libsrc/CMakeFiles/combined.dir/all: libsrc/scutimer/src/CMakeFiles/scutimer.dir/all
+libsrc/CMakeFiles/combined.dir/all: libsrc/iic/src/CMakeFiles/iic.dir/all
 libsrc/CMakeFiles/combined.dir/all: libsrc/sdps/src/CMakeFiles/sdps.dir/all
 libsrc/CMakeFiles/combined.dir/all: libsrc/spips/src/CMakeFiles/spips.dir/all
 libsrc/CMakeFiles/combined.dir/all: libsrc/scuwdt/src/CMakeFiles/scuwdt.dir/all
-libsrc/CMakeFiles/combined.dir/all: libsrc/usbps/src/CMakeFiles/usbps.dir/all
-libsrc/CMakeFiles/combined.dir/all: libsrc/uartps/src/CMakeFiles/uartps.dir/all
 libsrc/CMakeFiles/combined.dir/all: libsrc/xadcps/src/CMakeFiles/xadcps.dir/all
+libsrc/CMakeFiles/combined.dir/all: libsrc/uartps/src/CMakeFiles/uartps.dir/all
+libsrc/CMakeFiles/combined.dir/all: libsrc/usbps/src/CMakeFiles/usbps.dir/all
 	$(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/combined.dir/build.make libsrc/CMakeFiles/combined.dir/depend
 	$(MAKE) $(MAKESILENT) -f libsrc/CMakeFiles/combined.dir/build.make libsrc/CMakeFiles/combined.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:/zedboard_adrv9002_project/src_SDK/platform_system_top/zynq_fsbl/zynq_fsbl_bsp/libsrc/build_configs/gen_bsp/CMakeFiles --progress-num= "Built target combined"

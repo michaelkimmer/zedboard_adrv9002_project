@@ -7,6 +7,6 @@
 # of Vivado)
 ################################################################################
 create_clock -name CLOCK -period 10 [get_ports CLOCK]
-create_clock -name RX_CLOCK -period 10 [get_ports RX_CLOCK]
+create_clock -name RX_CLOCK -period 100 [get_ports RX_CLOCK]
 
 ################################################################################

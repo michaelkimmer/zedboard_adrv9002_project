@@ -6,22 +6,6 @@
   <spirit:version>1.0</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
-      <spirit:name>RX</spirit:name>
-      <spirit:busType spirit:vendor="analog.com" spirit:library="interface" spirit:name="fifo_rd" spirit:version="1.0"/>
-      <spirit:abstractionType spirit:vendor="analog.com" spirit:library="interface" spirit:name="fifo_rd_rtl" spirit:version="1.0"/>
-      <spirit:slave/>
-      <spirit:portMaps>
-        <spirit:portMap>
-          <spirit:logicalPort>
-            <spirit:name>VALID</spirit:name>
-          </spirit:logicalPort>
-          <spirit:physicalPort>
-            <spirit:name>RX_VALID</spirit:name>
-          </spirit:physicalPort>
-        </spirit:portMap>
-      </spirit:portMaps>
-    </spirit:busInterface>
-    <spirit:busInterface>
       <spirit:name>RESET</spirit:name>
       <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="reset" spirit:version="1.0"/>
       <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="reset_rtl" spirit:version="1.0"/>
@@ -109,7 +93,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>cb5cda89</spirit:value>
+            <spirit:value>e2e76d95</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -122,7 +106,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>cb5cda89</spirit:value>
+            <spirit:value>e2e76d95</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -341,8 +325,8 @@
       <xilinx:designToolContexts>
         <xilinx:designToolContext>IPI</xilinx:designToolContext>
       </xilinx:designToolContexts>
-      <xilinx:coreRevision>1712410342</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2024-04-06T13:32:22Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>1712449417</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2024-04-07T00:23:37Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2023.2.2</xilinx:xilinxVersion>
