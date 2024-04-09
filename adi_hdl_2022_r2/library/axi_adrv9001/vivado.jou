@@ -1,13 +1,29 @@
 #-----------------------------------------------------------
-# Vivado v2022.2 (64-bit)
-# SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
-# IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
-# Start of session at: Sun Mar 10 23:06:00 2024
-# Process ID: 16912
+# Vivado v2023.2.2 (64-bit)
+# SW Build 4126759 on Thu Feb  8 23:53:51 MST 2024
+# IP Build 4126054 on Fri Feb  9 11:39:09 MST 2024
+# SharedData Build 4115275 on Tue Jan 30 00:40:57 MST 2024
+# Start of session at: Tue Apr  9 18:50:27 2024
+# Process ID: 15880
 # Current directory: C:/zedboard_adrv9002_project/adi_hdl_2022_r2/library/axi_adrv9001
-# Command line: vivado.exe -mode batch -source axi_adrv9001_ip.tcl
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent3628 C:\zedboard_adrv9002_project\adi_hdl_2022_r2\library\axi_adrv9001\axi_adrv9001.xpr
 # Log file: C:/zedboard_adrv9002_project/adi_hdl_2022_r2/library/axi_adrv9001/vivado.log
 # Journal file: C:/zedboard_adrv9002_project/adi_hdl_2022_r2/library/axi_adrv9001\vivado.jou
-# Running On: PC_HP, OS: Windows, CPU Frequency: 1190 MHz, CPU Physical cores: 2, Host memory: 16848 MB
+# Running On: ASUS_ROG, OS: Windows, CPU Frequency: 2304 MHz, CPU Physical cores: 4, Host memory: 17028 MB
 #-----------------------------------------------------------
-source axi_adrv9001_ip.tcl
+start_gui
+open_project -part xc7z020clg484-1 C:/zedboard_adrv9002_project/adi_hdl_2022_r2/library/axi_adrv9001/axi_adrv9001.xpr
+update_compile_order -fileset sources_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+set_property  ip_repo_paths  {} [current_project]
+update_ip_catalog
+set_property  ip_repo_paths  C:/zedboard_adrv9002_project/adi_hdl_2022_r2/library [current_project]
+update_ip_catalog
+add_files -norecurse {C:/zedboard_adrv9002_project/adi_hdl_2022_r2/library/util_cdc/sync_bits.v C:/zedboard_adrv9002_project/adi_hdl_2022_r2/library/util_cdc/sync_event.v}
+add_files -norecurse C:/zedboard_adrv9002_project/adi_hdl_2022_r2/library/common/ad_iqcor.v
+update_compile_order -fileset sources_1
+add_files -norecurse C:/zedboard_adrv9002_project/adi_hdl_2022_r2/library/xilinx/common/ad_dcfilter.v
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1

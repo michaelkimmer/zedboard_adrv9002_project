@@ -1,0 +1,5 @@
+set_property SRC_FILE_INFO {cfile:C:/zedboard_adrv9002_project/adi_hdl_2022_r2/library/axi_adrv9001/axi_adrv9001_constr.xdc rfile:../../../axi_adrv9001_constr.xdc id:1} [current_design]
+set_property src_info {type:XDC file:1 line:4 export:INPUT save:INPUT read:READ} [current_design]
+set_false_path -through  [get_pins -hier *i_idelay/CNTVALUEOUT]
+set_property src_info {type:XDC file:1 line:5 export:INPUT save:INPUT read:READ} [current_design]
+set_false_path -through  [get_pins -hier *i_idelay/CNTVALUEIN]

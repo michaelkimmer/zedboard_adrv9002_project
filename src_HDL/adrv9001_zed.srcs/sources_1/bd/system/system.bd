@@ -4168,8 +4168,20 @@
           "CMOS_LVDS_N": {
             "value": "1"
           },
+          "DEV_PACKAGE": {
+            "value": "14"
+          },
+          "FPGA_FAMILY": {
+            "value": "4"
+          },
+          "FPGA_TECHNOLOGY": {
+            "value": "1"
+          },
           "RX_USE_BUFG": {
             "value": "1"
+          },
+          "SPEED_GRADE": {
+            "value": "10"
           },
           "TX_USE_BUFG": {
             "value": "1"
@@ -5463,9 +5475,9 @@
         "ports": [
           "sys_ps7/FCLK_CLK1",
           "axi_hdmi_clkgen/clk",
-          "axi_adrv9001/delay_clk",
           "sys_200m_rstgen/slowest_sync_clk",
-          "sys_audio_clkgen/clk_in1"
+          "sys_audio_clkgen/clk_in1",
+          "axi_adrv9001/delay_clk"
         ]
       },
       "sys_200m_reset": {
@@ -5513,7 +5525,6 @@
           "axi_spdif_tx_core/s_axi_aclk",
           "axi_i2s_adi/s_axi_aclk",
           "sys_ps7/S_AXI_HP0_ACLK",
-          "axi_adrv9001/s_axi_aclk",
           "axi_adrv9001_rx1_dma/s_axi_aclk",
           "axi_adrv9001_rx2_dma/s_axi_aclk",
           "axi_adrv9001_tx1_dma/s_axi_aclk",
@@ -5545,7 +5556,8 @@
           "sys_rstgen/slowest_sync_clk",
           "axi_cpu_interconnect/M13_ACLK",
           "IP_802_11p_0/CLOCK",
-          "IP_802_11p_0/s00_axi_aclk"
+          "IP_802_11p_0/s00_axi_aclk",
+          "axi_adrv9001/s_axi_aclk"
         ]
       },
       "sys_cpu_reset": {
@@ -5566,7 +5578,6 @@
           "axi_hdmi_core/s_axi_aresetn",
           "axi_spdif_tx_core/s_axi_aresetn",
           "axi_i2s_adi/s_axi_aresetn",
-          "axi_adrv9001/s_axi_aresetn",
           "axi_adrv9001_rx1_dma/s_axi_aresetn",
           "axi_adrv9001_rx2_dma/s_axi_aresetn",
           "axi_adrv9001_tx1_dma/s_axi_aresetn",
@@ -5596,7 +5607,8 @@
           "axi_iic_main/s_axi_aresetn",
           "sys_audio_clkgen/resetn",
           "axi_cpu_interconnect/M13_ARESETN",
-          "IP_802_11p_0/s00_axi_aresetn"
+          "IP_802_11p_0/s00_axi_aresetn",
+          "axi_adrv9001/s_axi_aresetn"
         ]
       },
       "sys_i2c_mixer_downstream_scl_O": {

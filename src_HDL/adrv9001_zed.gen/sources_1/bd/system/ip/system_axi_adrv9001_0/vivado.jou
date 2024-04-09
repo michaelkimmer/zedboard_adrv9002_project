@@ -1,0 +1,15 @@
+#-----------------------------------------------------------
+# Vivado v2023.2.2 (64-bit)
+# SW Build 4126759 on Thu Feb  8 23:53:51 MST 2024
+# IP Build 4126054 on Fri Feb  9 11:39:09 MST 2024
+# SharedData Build 4115275 on Tue Jan 30 00:40:57 MST 2024
+# Start of session at: Tue Apr  9 19:31:53 2024
+# Process ID: 19044
+# Current directory: C:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_adrv9001_0
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent5596 C:\zedboard_adrv9002_project\src_HDL\adrv9001_zed.gen\sources_1\bd\system\ip\system_axi_adrv9001_0\system_axi_adrv9001_0.dcp
+# Log file: C:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_adrv9001_0/vivado.log
+# Journal file: C:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_adrv9001_0\vivado.jou
+# Running On: ASUS_ROG, OS: Windows, CPU Frequency: 2304 MHz, CPU Physical cores: 4, Host memory: 17028 MB
+#-----------------------------------------------------------
+start_gui
+open_checkpoint C:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_adrv9001_0/system_axi_adrv9001_0.dcp

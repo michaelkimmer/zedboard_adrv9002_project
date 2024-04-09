@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Apr  7 17:32:35 2024" VIVADOVERSION="2023.2.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Apr  9 19:20:38 2024" VIVADOVERSION="2023.2.2">
 
   <SYSTEMINFO ARCH="zynq" BOARD="avnet.com:zedboard:part0:1.4" DEVICE="7z020" NAME="system" PACKAGE="clg484" SPEEDGRADE="-1"/>
 
@@ -12294,7 +12294,6 @@
             <CONNECTION INSTANCE="axi_spdif_tx_core" PORT="s_axi_aclk"/>
             <CONNECTION INSTANCE="axi_i2s_adi" PORT="s_axi_aclk"/>
             <CONNECTION INSTANCE="sys_ps7" PORT="S_AXI_HP0_ACLK"/>
-            <CONNECTION INSTANCE="axi_adrv9001" PORT="s_axi_aclk"/>
             <CONNECTION INSTANCE="axi_adrv9001_rx1_dma" PORT="s_axi_aclk"/>
             <CONNECTION INSTANCE="axi_adrv9001_rx2_dma" PORT="s_axi_aclk"/>
             <CONNECTION INSTANCE="axi_adrv9001_tx1_dma" PORT="s_axi_aclk"/>
@@ -12327,14 +12326,15 @@
             <CONNECTION INSTANCE="axi_cpu_interconnect" PORT="M13_ACLK"/>
             <CONNECTION INSTANCE="IP_802_11p_0" PORT="CLOCK"/>
             <CONNECTION INSTANCE="IP_802_11p_0" PORT="s00_axi_aclk"/>
+            <CONNECTION INSTANCE="axi_adrv9001" PORT="s_axi_aclk"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="200000000" DIR="O" NAME="FCLK_CLK1" SIGIS="clk" SIGNAME="sys_ps7_FCLK_CLK1">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_hdmi_clkgen" PORT="clk"/>
-            <CONNECTION INSTANCE="axi_adrv9001" PORT="delay_clk"/>
             <CONNECTION INSTANCE="sys_200m_rstgen" PORT="slowest_sync_clk"/>
             <CONNECTION INSTANCE="sys_audio_clkgen" PORT="clk_in1"/>
+            <CONNECTION INSTANCE="axi_adrv9001" PORT="delay_clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="FCLK_RESET0_N" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="sys_ps7_FCLK_RESET0_N">
@@ -13458,7 +13458,6 @@
             <CONNECTION INSTANCE="axi_hdmi_core" PORT="s_axi_aresetn"/>
             <CONNECTION INSTANCE="axi_spdif_tx_core" PORT="s_axi_aresetn"/>
             <CONNECTION INSTANCE="axi_i2s_adi" PORT="s_axi_aresetn"/>
-            <CONNECTION INSTANCE="axi_adrv9001" PORT="s_axi_aresetn"/>
             <CONNECTION INSTANCE="axi_adrv9001_rx1_dma" PORT="s_axi_aresetn"/>
             <CONNECTION INSTANCE="axi_adrv9001_rx2_dma" PORT="s_axi_aresetn"/>
             <CONNECTION INSTANCE="axi_adrv9001_tx1_dma" PORT="s_axi_aresetn"/>
@@ -13489,6 +13488,7 @@
             <CONNECTION INSTANCE="sys_audio_clkgen" PORT="resetn"/>
             <CONNECTION INSTANCE="axi_cpu_interconnect" PORT="M13_ARESETN"/>
             <CONNECTION INSTANCE="IP_802_11p_0" PORT="s00_axi_aresetn"/>
+            <CONNECTION INSTANCE="axi_adrv9001" PORT="s_axi_aresetn"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="0" NAME="peripheral_reset" POLARITY="ACTIVE_HIGH" RIGHT="0" SIGIS="rst"/>

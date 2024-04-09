@@ -177,26 +177,29 @@ module axi_adrv9001_tx_channel #(
 
   // dds
 
-  ad_dds #(
-    .DISABLE (DDS_DISABLE),
-    .DDS_DW (16),
-    .PHASE_DW (16),
-    .DDS_TYPE (DAC_DDS_TYPE),
-    .CORDIC_DW (DAC_DDS_CORDIC_DW),
-    .CORDIC_PHASE_DW (DAC_DDS_CORDIC_PHASE_DW),
-    .CLK_RATIO (1)
-  ) i_dds (
-    .clk (dac_clk),
-    .dac_dds_format (dac_dds_format),
-    .dac_data_sync (dac_data_sync),
-    .dac_valid (dac_data_out_req),
-    .tone_1_scale (dac_dds_scale_1_s),
-    .tone_2_scale (dac_dds_scale_2_s),
-    .tone_1_init_offset (dac_dds_init_1_s),
-    .tone_2_init_offset (dac_dds_init_2_s),
-    .tone_1_freq_word (dac_dds_incr_1_s),
-    .tone_2_freq_word (dac_dds_incr_2_s),
-    .dac_dds_data (dac_dds_data_s));
+  // ad_dds #(
+  //   .DISABLE (DDS_DISABLE),
+  //   .DDS_DW (16),
+  //   .PHASE_DW (16),
+  //   .DDS_TYPE (DAC_DDS_TYPE),
+  //   .CORDIC_DW (DAC_DDS_CORDIC_DW),
+  //   .CORDIC_PHASE_DW (DAC_DDS_CORDIC_PHASE_DW),
+  //   .CLK_RATIO (1)
+  // ) i_dds (
+  //   .clk (dac_clk),
+  //   .dac_dds_format (dac_dds_format),
+  //   .dac_data_sync (dac_data_sync),
+  //   .dac_valid (dac_data_out_req),
+  //   .tone_1_scale (dac_dds_scale_1_s),
+  //   .tone_2_scale (dac_dds_scale_2_s),
+  //   .tone_1_init_offset (dac_dds_init_1_s),
+  //   .tone_2_init_offset (dac_dds_init_2_s),
+  //   .tone_1_freq_word (dac_dds_incr_1_s),
+  //   .tone_2_freq_word (dac_dds_incr_2_s),
+  //   .dac_dds_data (dac_dds_data_s));
+
+  // Note: DDS (in 6x channels takes too much LUTs)
+  assign dac_dds_data_s = 16'b0;
 
   // single channel processor
 
