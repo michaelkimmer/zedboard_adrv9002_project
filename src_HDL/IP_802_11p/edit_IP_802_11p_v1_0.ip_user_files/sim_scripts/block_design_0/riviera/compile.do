@@ -55,9 +55,7 @@ vcom -work xil_defaultlib -93  -incr \
 "../../../bd/block_design_0/ip/block_design_0_data_delay_0_0/sim/block_design_0_data_delay_0_0.vhd" \
 "../../../bd/block_design_0/ip/block_design_0_act_power_0_0/sim/block_design_0_act_power_0_0.vhd" \
 "../../../bd/block_design_0/ip/block_design_0_timing_acquisition_8_0_0/sim/block_design_0_timing_acquisition_8_0_0.vhd" \
-"../../../bd/block_design_0/ip/block_design_0_receiver_802_11p_0_0/sim/block_design_0_receiver_802_11p_0_0.vhd" \
-"../../../bd/block_design_0/ip/block_design_0_atan_block_0_0/sim/block_design_0_atan_block_0_0.vhd" \
-"../../../bd/block_design_0/ip/block_design_0_rotation_block_0_0/sim/block_design_0_rotation_block_0_0.vhd" \
+"../../../bd/block_design_0/ip/block_design_0_fft_ofdm_0_1/sim/block_design_0_fft_ofdm_0_1.vhd" \
 
 vcom -work xbip_utils_v3_0_12 -93  -incr \
 "../../../../edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ipshared/c513/hdl/xbip_utils_v3_0_vh_rfs.vhd" \
@@ -106,15 +104,18 @@ vcom -work xfft_v9_1_11 -93  -incr \
 
 vcom -work xil_defaultlib -93  -incr \
 "../../../bd/block_design_0/ip/block_design_0_xfft_0_0/sim/block_design_0_xfft_0_0.vhd" \
-"../../../bd/block_design_0/ip/block_design_0_fft_ofdm_0_1/sim/block_design_0_fft_ofdm_0_1.vhd" \
 
 vcom -work cordic_v6_0_21 -93  -incr \
 "../../../../edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ipshared/be20/hdl/cordic_v6_0_vh_rfs.vhd" \
 
 vcom -work xil_defaultlib -93  -incr \
 "../../../bd/block_design_0/ip/block_design_0_cordic_0_0/sim/block_design_0_cordic_0_0.vhd" \
+"../../../bd/block_design_0/ip/block_design_0_atan_block_0_0/sim/block_design_0_atan_block_0_0.vhd" \
+"../../../bd/block_design_0/ip/block_design_0_rotation_block_0_0/sim/block_design_0_rotation_block_0_0.vhd" \
 "../../../bd/block_design_0/ip/block_design_0_cordic_0_1/sim/block_design_0_cordic_0_1.vhd" \
 "../../../bd/block_design_0/ip/block_design_0_ila_0_0/sim/block_design_0_ila_0_0.vhd" \
+"../../../bd/block_design_0/ip/block_design_0_equalizer_time_frequ_0_0/sim/block_design_0_equalizer_time_frequ_0_0.vhd" \
+"../../../bd/block_design_0/ip/block_design_0_axi_regs_mux_0_0/sim/block_design_0_axi_regs_mux_0_0.vhd" \
 "../../../bd/block_design_0/sim/block_design_0.vhd" \
 
 vlog -work xil_defaultlib \

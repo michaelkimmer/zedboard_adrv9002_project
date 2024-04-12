@@ -2,8 +2,8 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
--- Date        : Sun Apr  7 17:06:42 2024
--- Host        : ASUS_ROG running 64-bit major release  (build 9200)
+-- Date        : Fri Apr 12 17:26:26 2024
+-- Host        : lab817_01 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_rotation_block_0_0/block_design_0_rotation_block_0_0_sim_netlist.vhdl
 -- Design      : block_design_0_rotation_block_0_0
@@ -36,20 +36,23 @@ entity block_design_0_rotation_block_0_0_rotation_block is
     ROTATION_IDATA_IN : in STD_LOGIC_VECTOR ( 15 downto 0 );
     ROTATION_QDATA_IN : in STD_LOGIC_VECTOR ( 15 downto 0 );
     ROTATION_PHASE_NEW_DIFF_STROBE : in STD_LOGIC;
-    ROTATION_PHASE_NEW_DIFF : in STD_LOGIC_VECTOR ( 13 downto 0 )
+    ROTATION_PHASE_NEW_DIFF : in STD_LOGIC_VECTOR ( 17 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of block_design_0_rotation_block_0_0_rotation_block : entity is "rotation_block";
 end block_design_0_rotation_block_0_0_rotation_block;
 
 architecture STRUCTURE of block_design_0_rotation_block_0_0_rotation_block is
-  signal ACT_PHASE : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal \ACT_PHASE[11]_i_2_n_0\ : STD_LOGIC;
   signal \ACT_PHASE[11]_i_3_n_0\ : STD_LOGIC;
   signal \ACT_PHASE[11]_i_4_n_0\ : STD_LOGIC;
   signal \ACT_PHASE[11]_i_5_n_0\ : STD_LOGIC;
   signal \ACT_PHASE[15]_i_2_n_0\ : STD_LOGIC;
   signal \ACT_PHASE[15]_i_3_n_0\ : STD_LOGIC;
+  signal \ACT_PHASE[15]_i_4_n_0\ : STD_LOGIC;
+  signal \ACT_PHASE[15]_i_5_n_0\ : STD_LOGIC;
+  signal \ACT_PHASE[19]_i_2_n_0\ : STD_LOGIC;
+  signal \ACT_PHASE[19]_i_3_n_0\ : STD_LOGIC;
   signal \ACT_PHASE[3]_i_2_n_0\ : STD_LOGIC;
   signal \ACT_PHASE[3]_i_3_n_0\ : STD_LOGIC;
   signal \ACT_PHASE[3]_i_4_n_0\ : STD_LOGIC;
@@ -62,7 +65,11 @@ architecture STRUCTURE of block_design_0_rotation_block_0_0_rotation_block is
   signal \ACT_PHASE_reg[11]_i_1_n_1\ : STD_LOGIC;
   signal \ACT_PHASE_reg[11]_i_1_n_2\ : STD_LOGIC;
   signal \ACT_PHASE_reg[11]_i_1_n_3\ : STD_LOGIC;
+  signal \ACT_PHASE_reg[15]_i_1_n_0\ : STD_LOGIC;
+  signal \ACT_PHASE_reg[15]_i_1_n_1\ : STD_LOGIC;
+  signal \ACT_PHASE_reg[15]_i_1_n_2\ : STD_LOGIC;
   signal \ACT_PHASE_reg[15]_i_1_n_3\ : STD_LOGIC;
+  signal \ACT_PHASE_reg[19]_i_1_n_3\ : STD_LOGIC;
   signal \ACT_PHASE_reg[3]_i_1_n_0\ : STD_LOGIC;
   signal \ACT_PHASE_reg[3]_i_1_n_1\ : STD_LOGIC;
   signal \ACT_PHASE_reg[3]_i_1_n_2\ : STD_LOGIC;
@@ -71,12 +78,20 @@ architecture STRUCTURE of block_design_0_rotation_block_0_0_rotation_block is
   signal \ACT_PHASE_reg[7]_i_1_n_1\ : STD_LOGIC;
   signal \ACT_PHASE_reg[7]_i_1_n_2\ : STD_LOGIC;
   signal \ACT_PHASE_reg[7]_i_1_n_3\ : STD_LOGIC;
-  signal ARG : STD_LOGIC_VECTOR ( 13 downto 0 );
+  signal \ACT_PHASE_reg_n_0_[0]\ : STD_LOGIC;
+  signal \ACT_PHASE_reg_n_0_[1]\ : STD_LOGIC;
+  signal \ACT_PHASE_reg_n_0_[2]\ : STD_LOGIC;
+  signal \ACT_PHASE_reg_n_0_[3]\ : STD_LOGIC;
+  signal ARG : STD_LOGIC_VECTOR ( 17 downto 0 );
   signal \PHASE_DIFF_reg_n_0_[0]\ : STD_LOGIC;
   signal \PHASE_DIFF_reg_n_0_[10]\ : STD_LOGIC;
   signal \PHASE_DIFF_reg_n_0_[11]\ : STD_LOGIC;
   signal \PHASE_DIFF_reg_n_0_[12]\ : STD_LOGIC;
   signal \PHASE_DIFF_reg_n_0_[13]\ : STD_LOGIC;
+  signal \PHASE_DIFF_reg_n_0_[14]\ : STD_LOGIC;
+  signal \PHASE_DIFF_reg_n_0_[15]\ : STD_LOGIC;
+  signal \PHASE_DIFF_reg_n_0_[16]\ : STD_LOGIC;
+  signal \PHASE_DIFF_reg_n_0_[17]\ : STD_LOGIC;
   signal \PHASE_DIFF_reg_n_0_[1]\ : STD_LOGIC;
   signal \PHASE_DIFF_reg_n_0_[2]\ : STD_LOGIC;
   signal \PHASE_DIFF_reg_n_0_[3]\ : STD_LOGIC;
@@ -86,11 +101,13 @@ architecture STRUCTURE of block_design_0_rotation_block_0_0_rotation_block is
   signal \PHASE_DIFF_reg_n_0_[7]\ : STD_LOGIC;
   signal \PHASE_DIFF_reg_n_0_[8]\ : STD_LOGIC;
   signal \PHASE_DIFF_reg_n_0_[9]\ : STD_LOGIC;
-  signal \NLW_ACT_PHASE_reg[15]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 1 );
-  signal \NLW_ACT_PHASE_reg[15]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 2 );
+  signal p_0_in : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal \NLW_ACT_PHASE_reg[19]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 1 );
+  signal \NLW_ACT_PHASE_reg[19]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 2 );
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \ACT_PHASE_reg[11]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \ACT_PHASE_reg[15]_i_1\ : label is 35;
+  attribute ADDER_THRESHOLD of \ACT_PHASE_reg[19]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \ACT_PHASE_reg[3]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \ACT_PHASE_reg[7]_i_1\ : label is 35;
   attribute x_interface_info : string;
@@ -189,7 +206,7 @@ begin
       INIT => X"6"
     )
         port map (
-      I0 => ACT_PHASE(11),
+      I0 => p_0_in(7),
       I1 => \PHASE_DIFF_reg_n_0_[11]\,
       O => \ACT_PHASE[11]_i_2_n_0\
     );
@@ -198,7 +215,7 @@ begin
       INIT => X"6"
     )
         port map (
-      I0 => ACT_PHASE(10),
+      I0 => p_0_in(6),
       I1 => \PHASE_DIFF_reg_n_0_[10]\,
       O => \ACT_PHASE[11]_i_3_n_0\
     );
@@ -207,7 +224,7 @@ begin
       INIT => X"6"
     )
         port map (
-      I0 => ACT_PHASE(9),
+      I0 => p_0_in(5),
       I1 => \PHASE_DIFF_reg_n_0_[9]\,
       O => \ACT_PHASE[11]_i_4_n_0\
     );
@@ -216,7 +233,7 @@ begin
       INIT => X"6"
     )
         port map (
-      I0 => ACT_PHASE(8),
+      I0 => p_0_in(4),
       I1 => \PHASE_DIFF_reg_n_0_[8]\,
       O => \ACT_PHASE[11]_i_5_n_0\
     );
@@ -225,8 +242,8 @@ begin
       INIT => X"6"
     )
         port map (
-      I0 => ACT_PHASE(15),
-      I1 => \PHASE_DIFF_reg_n_0_[13]\,
+      I0 => p_0_in(11),
+      I1 => \PHASE_DIFF_reg_n_0_[15]\,
       O => \ACT_PHASE[15]_i_2_n_0\
     );
 \ACT_PHASE[15]_i_3\: unisim.vcomponents.LUT2
@@ -234,16 +251,52 @@ begin
       INIT => X"6"
     )
         port map (
-      I0 => ACT_PHASE(12),
-      I1 => \PHASE_DIFF_reg_n_0_[12]\,
+      I0 => p_0_in(10),
+      I1 => \PHASE_DIFF_reg_n_0_[14]\,
       O => \ACT_PHASE[15]_i_3_n_0\
+    );
+\ACT_PHASE[15]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_0_in(9),
+      I1 => \PHASE_DIFF_reg_n_0_[13]\,
+      O => \ACT_PHASE[15]_i_4_n_0\
+    );
+\ACT_PHASE[15]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_0_in(8),
+      I1 => \PHASE_DIFF_reg_n_0_[12]\,
+      O => \ACT_PHASE[15]_i_5_n_0\
+    );
+\ACT_PHASE[19]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_0_in(15),
+      I1 => \PHASE_DIFF_reg_n_0_[17]\,
+      O => \ACT_PHASE[19]_i_2_n_0\
+    );
+\ACT_PHASE[19]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => p_0_in(12),
+      I1 => \PHASE_DIFF_reg_n_0_[16]\,
+      O => \ACT_PHASE[19]_i_3_n_0\
     );
 \ACT_PHASE[3]_i_2\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"6"
     )
         port map (
-      I0 => ACT_PHASE(3),
+      I0 => \ACT_PHASE_reg_n_0_[3]\,
       I1 => \PHASE_DIFF_reg_n_0_[3]\,
       O => \ACT_PHASE[3]_i_2_n_0\
     );
@@ -252,7 +305,7 @@ begin
       INIT => X"6"
     )
         port map (
-      I0 => ACT_PHASE(2),
+      I0 => \ACT_PHASE_reg_n_0_[2]\,
       I1 => \PHASE_DIFF_reg_n_0_[2]\,
       O => \ACT_PHASE[3]_i_3_n_0\
     );
@@ -261,7 +314,7 @@ begin
       INIT => X"6"
     )
         port map (
-      I0 => ACT_PHASE(1),
+      I0 => \ACT_PHASE_reg_n_0_[1]\,
       I1 => \PHASE_DIFF_reg_n_0_[1]\,
       O => \ACT_PHASE[3]_i_4_n_0\
     );
@@ -270,7 +323,7 @@ begin
       INIT => X"6"
     )
         port map (
-      I0 => ACT_PHASE(0),
+      I0 => \ACT_PHASE_reg_n_0_[0]\,
       I1 => \PHASE_DIFF_reg_n_0_[0]\,
       O => \ACT_PHASE[3]_i_5_n_0\
     );
@@ -279,7 +332,7 @@ begin
       INIT => X"6"
     )
         port map (
-      I0 => ACT_PHASE(7),
+      I0 => p_0_in(3),
       I1 => \PHASE_DIFF_reg_n_0_[7]\,
       O => \ACT_PHASE[7]_i_2_n_0\
     );
@@ -288,7 +341,7 @@ begin
       INIT => X"6"
     )
         port map (
-      I0 => ACT_PHASE(6),
+      I0 => p_0_in(2),
       I1 => \PHASE_DIFF_reg_n_0_[6]\,
       O => \ACT_PHASE[7]_i_3_n_0\
     );
@@ -297,7 +350,7 @@ begin
       INIT => X"6"
     )
         port map (
-      I0 => ACT_PHASE(5),
+      I0 => p_0_in(1),
       I1 => \PHASE_DIFF_reg_n_0_[5]\,
       O => \ACT_PHASE[7]_i_4_n_0\
     );
@@ -306,7 +359,7 @@ begin
       INIT => X"6"
     )
         port map (
-      I0 => ACT_PHASE(4),
+      I0 => p_0_in(0),
       I1 => \PHASE_DIFF_reg_n_0_[4]\,
       O => \ACT_PHASE[7]_i_5_n_0\
     );
@@ -319,7 +372,7 @@ begin
       CE => ROTATION_DATA_IN_STROBE,
       CLR => RESET,
       D => ARG(0),
-      Q => ACT_PHASE(0)
+      Q => \ACT_PHASE_reg_n_0_[0]\
     );
 \ACT_PHASE_reg[10]\: unisim.vcomponents.FDCE
     generic map(
@@ -330,7 +383,7 @@ begin
       CE => ROTATION_DATA_IN_STROBE,
       CLR => RESET,
       D => ARG(10),
-      Q => ACT_PHASE(10)
+      Q => p_0_in(6)
     );
 \ACT_PHASE_reg[11]\: unisim.vcomponents.FDCE
     generic map(
@@ -341,7 +394,7 @@ begin
       CE => ROTATION_DATA_IN_STROBE,
       CLR => RESET,
       D => ARG(11),
-      Q => ACT_PHASE(11)
+      Q => p_0_in(7)
     );
 \ACT_PHASE_reg[11]_i_1\: unisim.vcomponents.CARRY4
      port map (
@@ -351,7 +404,7 @@ begin
       CO(1) => \ACT_PHASE_reg[11]_i_1_n_2\,
       CO(0) => \ACT_PHASE_reg[11]_i_1_n_3\,
       CYINIT => '0',
-      DI(3 downto 0) => ACT_PHASE(11 downto 8),
+      DI(3 downto 0) => p_0_in(7 downto 4),
       O(3 downto 0) => ARG(11 downto 8),
       S(3) => \ACT_PHASE[11]_i_2_n_0\,
       S(2) => \ACT_PHASE[11]_i_3_n_0\,
@@ -367,7 +420,29 @@ begin
       CE => ROTATION_DATA_IN_STROBE,
       CLR => RESET,
       D => ARG(12),
-      Q => ACT_PHASE(12)
+      Q => p_0_in(8)
+    );
+\ACT_PHASE_reg[13]\: unisim.vcomponents.FDCE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => ROTATION_DATA_IN_STROBE,
+      CLR => RESET,
+      D => ARG(13),
+      Q => p_0_in(9)
+    );
+\ACT_PHASE_reg[14]\: unisim.vcomponents.FDCE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => ROTATION_DATA_IN_STROBE,
+      CLR => RESET,
+      D => ARG(14),
+      Q => p_0_in(10)
     );
 \ACT_PHASE_reg[15]\: unisim.vcomponents.FDCE
     generic map(
@@ -377,22 +452,59 @@ begin
       C => CLOCK,
       CE => ROTATION_DATA_IN_STROBE,
       CLR => RESET,
-      D => ARG(13),
-      Q => ACT_PHASE(15)
+      D => ARG(15),
+      Q => p_0_in(11)
     );
 \ACT_PHASE_reg[15]_i_1\: unisim.vcomponents.CARRY4
      port map (
       CI => \ACT_PHASE_reg[11]_i_1_n_0\,
-      CO(3 downto 1) => \NLW_ACT_PHASE_reg[15]_i_1_CO_UNCONNECTED\(3 downto 1),
+      CO(3) => \ACT_PHASE_reg[15]_i_1_n_0\,
+      CO(2) => \ACT_PHASE_reg[15]_i_1_n_1\,
+      CO(1) => \ACT_PHASE_reg[15]_i_1_n_2\,
       CO(0) => \ACT_PHASE_reg[15]_i_1_n_3\,
       CYINIT => '0',
+      DI(3 downto 0) => p_0_in(11 downto 8),
+      O(3 downto 0) => ARG(15 downto 12),
+      S(3) => \ACT_PHASE[15]_i_2_n_0\,
+      S(2) => \ACT_PHASE[15]_i_3_n_0\,
+      S(1) => \ACT_PHASE[15]_i_4_n_0\,
+      S(0) => \ACT_PHASE[15]_i_5_n_0\
+    );
+\ACT_PHASE_reg[16]\: unisim.vcomponents.FDCE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => ROTATION_DATA_IN_STROBE,
+      CLR => RESET,
+      D => ARG(16),
+      Q => p_0_in(12)
+    );
+\ACT_PHASE_reg[19]\: unisim.vcomponents.FDCE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => ROTATION_DATA_IN_STROBE,
+      CLR => RESET,
+      D => ARG(17),
+      Q => p_0_in(15)
+    );
+\ACT_PHASE_reg[19]_i_1\: unisim.vcomponents.CARRY4
+     port map (
+      CI => \ACT_PHASE_reg[15]_i_1_n_0\,
+      CO(3 downto 1) => \NLW_ACT_PHASE_reg[19]_i_1_CO_UNCONNECTED\(3 downto 1),
+      CO(0) => \ACT_PHASE_reg[19]_i_1_n_3\,
+      CYINIT => '0',
       DI(3 downto 1) => B"000",
-      DI(0) => ACT_PHASE(12),
-      O(3 downto 2) => \NLW_ACT_PHASE_reg[15]_i_1_O_UNCONNECTED\(3 downto 2),
-      O(1 downto 0) => ARG(13 downto 12),
+      DI(0) => p_0_in(12),
+      O(3 downto 2) => \NLW_ACT_PHASE_reg[19]_i_1_O_UNCONNECTED\(3 downto 2),
+      O(1 downto 0) => ARG(17 downto 16),
       S(3 downto 2) => B"00",
-      S(1) => \ACT_PHASE[15]_i_2_n_0\,
-      S(0) => \ACT_PHASE[15]_i_3_n_0\
+      S(1) => \ACT_PHASE[19]_i_2_n_0\,
+      S(0) => \ACT_PHASE[19]_i_3_n_0\
     );
 \ACT_PHASE_reg[1]\: unisim.vcomponents.FDCE
     generic map(
@@ -403,7 +515,7 @@ begin
       CE => ROTATION_DATA_IN_STROBE,
       CLR => RESET,
       D => ARG(1),
-      Q => ACT_PHASE(1)
+      Q => \ACT_PHASE_reg_n_0_[1]\
     );
 \ACT_PHASE_reg[2]\: unisim.vcomponents.FDCE
     generic map(
@@ -414,7 +526,7 @@ begin
       CE => ROTATION_DATA_IN_STROBE,
       CLR => RESET,
       D => ARG(2),
-      Q => ACT_PHASE(2)
+      Q => \ACT_PHASE_reg_n_0_[2]\
     );
 \ACT_PHASE_reg[3]\: unisim.vcomponents.FDCE
     generic map(
@@ -425,7 +537,7 @@ begin
       CE => ROTATION_DATA_IN_STROBE,
       CLR => RESET,
       D => ARG(3),
-      Q => ACT_PHASE(3)
+      Q => \ACT_PHASE_reg_n_0_[3]\
     );
 \ACT_PHASE_reg[3]_i_1\: unisim.vcomponents.CARRY4
      port map (
@@ -435,7 +547,10 @@ begin
       CO(1) => \ACT_PHASE_reg[3]_i_1_n_2\,
       CO(0) => \ACT_PHASE_reg[3]_i_1_n_3\,
       CYINIT => '0',
-      DI(3 downto 0) => ACT_PHASE(3 downto 0),
+      DI(3) => \ACT_PHASE_reg_n_0_[3]\,
+      DI(2) => \ACT_PHASE_reg_n_0_[2]\,
+      DI(1) => \ACT_PHASE_reg_n_0_[1]\,
+      DI(0) => \ACT_PHASE_reg_n_0_[0]\,
       O(3 downto 0) => ARG(3 downto 0),
       S(3) => \ACT_PHASE[3]_i_2_n_0\,
       S(2) => \ACT_PHASE[3]_i_3_n_0\,
@@ -451,7 +566,7 @@ begin
       CE => ROTATION_DATA_IN_STROBE,
       CLR => RESET,
       D => ARG(4),
-      Q => ACT_PHASE(4)
+      Q => p_0_in(0)
     );
 \ACT_PHASE_reg[5]\: unisim.vcomponents.FDCE
     generic map(
@@ -462,7 +577,7 @@ begin
       CE => ROTATION_DATA_IN_STROBE,
       CLR => RESET,
       D => ARG(5),
-      Q => ACT_PHASE(5)
+      Q => p_0_in(1)
     );
 \ACT_PHASE_reg[6]\: unisim.vcomponents.FDCE
     generic map(
@@ -473,7 +588,7 @@ begin
       CE => ROTATION_DATA_IN_STROBE,
       CLR => RESET,
       D => ARG(6),
-      Q => ACT_PHASE(6)
+      Q => p_0_in(2)
     );
 \ACT_PHASE_reg[7]\: unisim.vcomponents.FDCE
     generic map(
@@ -484,7 +599,7 @@ begin
       CE => ROTATION_DATA_IN_STROBE,
       CLR => RESET,
       D => ARG(7),
-      Q => ACT_PHASE(7)
+      Q => p_0_in(3)
     );
 \ACT_PHASE_reg[7]_i_1\: unisim.vcomponents.CARRY4
      port map (
@@ -494,7 +609,7 @@ begin
       CO(1) => \ACT_PHASE_reg[7]_i_1_n_2\,
       CO(0) => \ACT_PHASE_reg[7]_i_1_n_3\,
       CYINIT => '0',
-      DI(3 downto 0) => ACT_PHASE(7 downto 4),
+      DI(3 downto 0) => p_0_in(3 downto 0),
       O(3 downto 0) => ARG(7 downto 4),
       S(3) => \ACT_PHASE[7]_i_2_n_0\,
       S(2) => \ACT_PHASE[7]_i_3_n_0\,
@@ -510,7 +625,7 @@ begin
       CE => ROTATION_DATA_IN_STROBE,
       CLR => RESET,
       D => ARG(8),
-      Q => ACT_PHASE(8)
+      Q => p_0_in(4)
     );
 \ACT_PHASE_reg[9]\: unisim.vcomponents.FDCE
     generic map(
@@ -521,7 +636,7 @@ begin
       CE => ROTATION_DATA_IN_STROBE,
       CLR => RESET,
       D => ARG(9),
-      Q => ACT_PHASE(9)
+      Q => p_0_in(5)
     );
 \IDATA_IN_BUFF_reg[0]\: unisim.vcomponents.FDCE
     generic map(
@@ -753,6 +868,50 @@ begin
       CLR => RESET,
       D => ROTATION_PHASE_NEW_DIFF(13),
       Q => \PHASE_DIFF_reg_n_0_[13]\
+    );
+\PHASE_DIFF_reg[14]\: unisim.vcomponents.FDCE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => ROTATION_PHASE_NEW_DIFF_STROBE,
+      CLR => RESET,
+      D => ROTATION_PHASE_NEW_DIFF(14),
+      Q => \PHASE_DIFF_reg_n_0_[14]\
+    );
+\PHASE_DIFF_reg[15]\: unisim.vcomponents.FDCE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => ROTATION_PHASE_NEW_DIFF_STROBE,
+      CLR => RESET,
+      D => ROTATION_PHASE_NEW_DIFF(15),
+      Q => \PHASE_DIFF_reg_n_0_[15]\
+    );
+\PHASE_DIFF_reg[16]\: unisim.vcomponents.FDCE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => ROTATION_PHASE_NEW_DIFF_STROBE,
+      CLR => RESET,
+      D => ROTATION_PHASE_NEW_DIFF(16),
+      Q => \PHASE_DIFF_reg_n_0_[16]\
+    );
+\PHASE_DIFF_reg[17]\: unisim.vcomponents.FDCE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => ROTATION_PHASE_NEW_DIFF_STROBE,
+      CLR => RESET,
+      D => ROTATION_PHASE_NEW_DIFF(17),
+      Q => \PHASE_DIFF_reg_n_0_[17]\
     );
 \PHASE_DIFF_reg[1]\: unisim.vcomponents.FDCE
     generic map(
@@ -1433,7 +1592,7 @@ S_AXIS_CARTESIAN_tvalid_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => ROTATION_DATA_IN_STROBE,
       CLR => RESET,
-      D => ACT_PHASE(0),
+      D => p_0_in(0),
       Q => S_AXIS_PHASE_tdata(0)
     );
 \S_AXIS_PHASE_tdata_reg[10]\: unisim.vcomponents.FDCE
@@ -1444,7 +1603,7 @@ S_AXIS_CARTESIAN_tvalid_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => ROTATION_DATA_IN_STROBE,
       CLR => RESET,
-      D => ACT_PHASE(10),
+      D => p_0_in(10),
       Q => S_AXIS_PHASE_tdata(10)
     );
 \S_AXIS_PHASE_tdata_reg[11]\: unisim.vcomponents.FDCE
@@ -1455,7 +1614,7 @@ S_AXIS_CARTESIAN_tvalid_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => ROTATION_DATA_IN_STROBE,
       CLR => RESET,
-      D => ACT_PHASE(11),
+      D => p_0_in(11),
       Q => S_AXIS_PHASE_tdata(11)
     );
 \S_AXIS_PHASE_tdata_reg[12]\: unisim.vcomponents.FDCE
@@ -1466,7 +1625,7 @@ S_AXIS_CARTESIAN_tvalid_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => ROTATION_DATA_IN_STROBE,
       CLR => RESET,
-      D => ACT_PHASE(12),
+      D => p_0_in(12),
       Q => S_AXIS_PHASE_tdata(12)
     );
 \S_AXIS_PHASE_tdata_reg[15]\: unisim.vcomponents.FDCE
@@ -1477,7 +1636,7 @@ S_AXIS_CARTESIAN_tvalid_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => ROTATION_DATA_IN_STROBE,
       CLR => RESET,
-      D => ACT_PHASE(15),
+      D => p_0_in(15),
       Q => S_AXIS_PHASE_tdata(13)
     );
 \S_AXIS_PHASE_tdata_reg[1]\: unisim.vcomponents.FDCE
@@ -1488,7 +1647,7 @@ S_AXIS_CARTESIAN_tvalid_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => ROTATION_DATA_IN_STROBE,
       CLR => RESET,
-      D => ACT_PHASE(1),
+      D => p_0_in(1),
       Q => S_AXIS_PHASE_tdata(1)
     );
 \S_AXIS_PHASE_tdata_reg[2]\: unisim.vcomponents.FDCE
@@ -1499,7 +1658,7 @@ S_AXIS_CARTESIAN_tvalid_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => ROTATION_DATA_IN_STROBE,
       CLR => RESET,
-      D => ACT_PHASE(2),
+      D => p_0_in(2),
       Q => S_AXIS_PHASE_tdata(2)
     );
 \S_AXIS_PHASE_tdata_reg[3]\: unisim.vcomponents.FDCE
@@ -1510,7 +1669,7 @@ S_AXIS_CARTESIAN_tvalid_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => ROTATION_DATA_IN_STROBE,
       CLR => RESET,
-      D => ACT_PHASE(3),
+      D => p_0_in(3),
       Q => S_AXIS_PHASE_tdata(3)
     );
 \S_AXIS_PHASE_tdata_reg[4]\: unisim.vcomponents.FDCE
@@ -1521,7 +1680,7 @@ S_AXIS_CARTESIAN_tvalid_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => ROTATION_DATA_IN_STROBE,
       CLR => RESET,
-      D => ACT_PHASE(4),
+      D => p_0_in(4),
       Q => S_AXIS_PHASE_tdata(4)
     );
 \S_AXIS_PHASE_tdata_reg[5]\: unisim.vcomponents.FDCE
@@ -1532,7 +1691,7 @@ S_AXIS_CARTESIAN_tvalid_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => ROTATION_DATA_IN_STROBE,
       CLR => RESET,
-      D => ACT_PHASE(5),
+      D => p_0_in(5),
       Q => S_AXIS_PHASE_tdata(5)
     );
 \S_AXIS_PHASE_tdata_reg[6]\: unisim.vcomponents.FDCE
@@ -1543,7 +1702,7 @@ S_AXIS_CARTESIAN_tvalid_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => ROTATION_DATA_IN_STROBE,
       CLR => RESET,
-      D => ACT_PHASE(6),
+      D => p_0_in(6),
       Q => S_AXIS_PHASE_tdata(6)
     );
 \S_AXIS_PHASE_tdata_reg[7]\: unisim.vcomponents.FDCE
@@ -1554,7 +1713,7 @@ S_AXIS_CARTESIAN_tvalid_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => ROTATION_DATA_IN_STROBE,
       CLR => RESET,
-      D => ACT_PHASE(7),
+      D => p_0_in(7),
       Q => S_AXIS_PHASE_tdata(7)
     );
 \S_AXIS_PHASE_tdata_reg[8]\: unisim.vcomponents.FDCE
@@ -1565,7 +1724,7 @@ S_AXIS_CARTESIAN_tvalid_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => ROTATION_DATA_IN_STROBE,
       CLR => RESET,
-      D => ACT_PHASE(8),
+      D => p_0_in(8),
       Q => S_AXIS_PHASE_tdata(8)
     );
 \S_AXIS_PHASE_tdata_reg[9]\: unisim.vcomponents.FDCE
@@ -1576,7 +1735,7 @@ S_AXIS_CARTESIAN_tvalid_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => ROTATION_DATA_IN_STROBE,
       CLR => RESET,
-      D => ACT_PHASE(9),
+      D => p_0_in(9),
       Q => S_AXIS_PHASE_tdata(9)
     );
 S_AXIS_PHASE_tvalid_reg: unisim.vcomponents.FDCE
@@ -1604,7 +1763,7 @@ entity block_design_0_rotation_block_0_0 is
     ROTATION_IDATA_IN : in STD_LOGIC_VECTOR ( 15 downto 0 );
     ROTATION_QDATA_IN : in STD_LOGIC_VECTOR ( 15 downto 0 );
     ROTATION_PHASE_NEW_DIFF_STROBE : in STD_LOGIC;
-    ROTATION_PHASE_NEW_DIFF : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    ROTATION_PHASE_NEW_DIFF : in STD_LOGIC_VECTOR ( 19 downto 0 );
     ROTATION_DATA_OUT_STROBE : out STD_LOGIC;
     ROTATION_DATA_OUT_MARKER : out STD_LOGIC;
     ROTATION_IDATA_OUT : out STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -1684,7 +1843,7 @@ U0: entity work.block_design_0_rotation_block_0_0_rotation_block
       ROTATION_DATA_OUT_STROBE => ROTATION_DATA_OUT_STROBE,
       ROTATION_IDATA_IN(15 downto 0) => ROTATION_IDATA_IN(15 downto 0),
       ROTATION_IDATA_OUT(15 downto 0) => ROTATION_IDATA_OUT(15 downto 0),
-      ROTATION_PHASE_NEW_DIFF(13 downto 0) => ROTATION_PHASE_NEW_DIFF(13 downto 0),
+      ROTATION_PHASE_NEW_DIFF(17 downto 0) => ROTATION_PHASE_NEW_DIFF(17 downto 0),
       ROTATION_PHASE_NEW_DIFF_STROBE => ROTATION_PHASE_NEW_DIFF_STROBE,
       ROTATION_QDATA_IN(15 downto 0) => ROTATION_QDATA_IN(15 downto 0),
       ROTATION_QDATA_OUT(15 downto 0) => ROTATION_QDATA_OUT(15 downto 0),

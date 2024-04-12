@@ -1,21 +1,22 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Apr  7 17:12:48 2024" VIVADOVERSION="2023.2.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Apr 12 17:23:43 2024" VIVADOVERSION="2023.2.2">
 
   <SYSTEMINFO ARCH="zynq" BOARD="avnet.com:zedboard:part0:1.4" DEVICE="7z020" NAME="block_design_0" PACKAGE="clg484" SPEEDGRADE="-1"/>
 
   <EXTERNALPORTS>
     <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLOCK" SIGIS="clk" SIGNAME="External_Ports_CLOCK">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="data_interleaver_0" PORT="CLOCK"/>
-        <CONNECTION INSTANCE="data_delay_0" PORT="CLOCK"/>
-        <CONNECTION INSTANCE="act_power_0" PORT="CLOCK"/>
-        <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="CLOCK"/>
-        <CONNECTION INSTANCE="rx_clock_domain_cros_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="hier_fft_ofdm_fft_ofdm_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="hier_atan_atan_block_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="hier_rotation_rotation_block_0" PORT="CLOCK"/>
+        <CONNECTION INSTANCE="rx_clock_domain_cros_0" PORT="CLOCK"/>
+        <CONNECTION INSTANCE="act_power_0" PORT="CLOCK"/>
+        <CONNECTION INSTANCE="data_interleaver_0" PORT="CLOCK"/>
+        <CONNECTION INSTANCE="data_delay_0" PORT="CLOCK"/>
+        <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="CLOCK"/>
+        <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="CLOCK"/>
+        <CONNECTION INSTANCE="axi_regs_mux_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="ila_0" PORT="clk"/>
-        <CONNECTION INSTANCE="receiver_802_11p_0" PORT="CLOCK"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" LEFT="23" NAME="DETECTION_THRESHOLD" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_DETECTION_THRESHOLD">
@@ -23,19 +24,19 @@
         <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="DETECTION_THRESHOLD"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" LEFT="8" NAME="FPGA_REG_WRITE_ADDRESS" RIGHT="0" SIGIS="undef" SIGNAME="receiver_802_11p_0_FPGA_REG_WRITE_ADDRESS">
+    <PORT DIR="O" LEFT="8" NAME="FPGA_REG_WRITE_ADDRESS" RIGHT="0" SIGIS="undef" SIGNAME="axi_regs_mux_0_FPGA_REG_WRITE_ADDRESS">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="receiver_802_11p_0" PORT="FPGA_REG_WRITE_ADDRESS"/>
+        <CONNECTION INSTANCE="axi_regs_mux_0" PORT="FPGA_REG_WRITE_ADDRESS"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" LEFT="31" NAME="FPGA_REG_WRITE_DATA" RIGHT="0" SIGIS="undef" SIGNAME="receiver_802_11p_0_FPGA_REG_WRITE_DATA">
+    <PORT DIR="O" LEFT="31" NAME="FPGA_REG_WRITE_DATA" RIGHT="0" SIGIS="undef" SIGNAME="axi_regs_mux_0_FPGA_REG_WRITE_DATA">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="receiver_802_11p_0" PORT="FPGA_REG_WRITE_DATA"/>
+        <CONNECTION INSTANCE="axi_regs_mux_0" PORT="FPGA_REG_WRITE_DATA"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" NAME="FPGA_REG_WRITE_STROBE" SIGIS="undef" SIGNAME="receiver_802_11p_0_FPGA_REG_WRITE_STROBE">
+    <PORT DIR="O" NAME="FPGA_REG_WRITE_STROBE" SIGIS="undef" SIGNAME="axi_regs_mux_0_FPGA_REG_WRITE_STROBE">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="receiver_802_11p_0" PORT="FPGA_REG_WRITE_STROBE"/>
+        <CONNECTION INSTANCE="axi_regs_mux_0" PORT="FPGA_REG_WRITE_STROBE"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="O" LEFT="7" NAME="POWER" RIGHT="0" SIGIS="undef" SIGNAME="act_power_0_POWER">
@@ -45,15 +46,16 @@
     </PORT>
     <PORT DIR="I" NAME="RESET" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_RESET">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="data_interleaver_0" PORT="RESET"/>
-        <CONNECTION INSTANCE="data_delay_0" PORT="RESET"/>
-        <CONNECTION INSTANCE="act_power_0" PORT="RESET"/>
-        <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="RESET"/>
-        <CONNECTION INSTANCE="rx_clock_domain_cros_0" PORT="RESET"/>
         <CONNECTION INSTANCE="hier_fft_ofdm_fft_ofdm_0" PORT="RESET"/>
         <CONNECTION INSTANCE="hier_atan_atan_block_0" PORT="RESET"/>
         <CONNECTION INSTANCE="hier_rotation_rotation_block_0" PORT="RESET"/>
-        <CONNECTION INSTANCE="receiver_802_11p_0" PORT="RESET"/>
+        <CONNECTION INSTANCE="rx_clock_domain_cros_0" PORT="RESET"/>
+        <CONNECTION INSTANCE="act_power_0" PORT="RESET"/>
+        <CONNECTION INSTANCE="data_interleaver_0" PORT="RESET"/>
+        <CONNECTION INSTANCE="data_delay_0" PORT="RESET"/>
+        <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="RESET"/>
+        <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="RESET"/>
+        <CONNECTION INSTANCE="axi_regs_mux_0" PORT="RESET"/>
       </CONNECTIONS>
     </PORT>
     <PORT CLKFREQUENCY="10000000" DIR="I" NAME="RX_CLOCK" SIGIS="clk" SIGNAME="External_Ports_RX_CLOCK">
@@ -86,12 +88,17 @@
         <CONNECTION INSTANCE="rx_clock_domain_cros_0" PORT="RX_VALID"/>
       </CONNECTIONS>
     </PORT>
+    <PORT DIR="I" LEFT="7" NAME="SELECT_AXI_REGS_MODE" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_SELECT_AXI_REGS_MODE">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="axi_regs_mux_0" PORT="SELECT_AXI_REGS_MODE"/>
+      </CONNECTIONS>
+    </PORT>
   </EXTERNALPORTS>
 
   <EXTERNALINTERFACES/>
 
   <MODULES>
-    <MODULE COREREVISION="1712410496" FULLNAME="/act_power_0" HWVERSION="1.0" INSTANCE="act_power_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="act_power" VLNV="xilinx.com:module_ref:act_power:1.0">
+    <MODULE COREREVISION="1712601685" FULLNAME="/act_power_0" HWVERSION="1.0" INSTANCE="act_power_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="act_power" VLNV="xilinx.com:module_ref:act_power:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_act_power_0_0"/>
@@ -132,7 +139,97 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1712410460" FULLNAME="/data_delay_0" HWVERSION="1.0" INSTANCE="data_delay_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="data_delay" VLNV="xilinx.com:module_ref:data_delay:1.0">
+    <MODULE COREREVISION="1712932417" FULLNAME="/axi_regs_mux_0" HWVERSION="1.0" INSTANCE="axi_regs_mux_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="axi_regs_mux" VLNV="xilinx.com:module_ref:axi_regs_mux:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="block_design_0_axi_regs_mux_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLOCK" SIGIS="clk" SIGNAME="External_Ports_CLOCK">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="CLOCK"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="DATA_STROBE" SIGIS="undef" SIGNAME="data_delay_0_DATA_OUT_STROBE">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="data_delay_0" PORT="DATA_OUT_STROBE"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="EQUALIZER_REG_WRITE_DATA" RIGHT="0" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_FPGA_REG_WRITE_DATA">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="FPGA_REG_WRITE_DATA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="EQUALIZER_REG_WRITE_STROBE_PHASE_1" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_FPGA_REG_WRITE_STROBE_PHASE_1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="FPGA_REG_WRITE_STROBE_PHASE_1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="EQUALIZER_REG_WRITE_STROBE_PHASE_2" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_FPGA_REG_WRITE_STROBE_PHASE_2">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="FPGA_REG_WRITE_STROBE_PHASE_2"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="FFT_DATA_FIRST_SYMBOL_MARKER" SIGIS="undef" SIGNAME="hier_fft_ofdm_fft_ofdm_0_FFT_DATA_OUT_FIRST_SYMBOL_MARKER">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_fft_ofdm_fft_ofdm_0" PORT="FFT_DATA_OUT_FIRST_SYMBOL_MARKER"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="FFT_DATA_VALID" SIGIS="undef" SIGNAME="hier_fft_ofdm_fft_ofdm_0_FFT_DATA_OUT_VALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_fft_ofdm_fft_ofdm_0" PORT="FFT_DATA_OUT_VALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="23" NAME="FFT_IDATA" RIGHT="0" SIGIS="undef" SIGNAME="hier_fft_ofdm_fft_ofdm_0_FFT_IDATA_OUT">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_fft_ofdm_fft_ofdm_0" PORT="FFT_IDATA_OUT"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="23" NAME="FFT_QDATA" RIGHT="0" SIGIS="undef" SIGNAME="hier_fft_ofdm_fft_ofdm_0_FFT_QDATA_OUT">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_fft_ofdm_fft_ofdm_0" PORT="FFT_QDATA_OUT"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="8" NAME="FPGA_REG_WRITE_ADDRESS" RIGHT="0" SIGIS="undef" SIGNAME="axi_regs_mux_0_FPGA_REG_WRITE_ADDRESS">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="FPGA_REG_WRITE_ADDRESS"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="FPGA_REG_WRITE_DATA" RIGHT="0" SIGIS="undef" SIGNAME="axi_regs_mux_0_FPGA_REG_WRITE_DATA">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="FPGA_REG_WRITE_DATA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="FPGA_REG_WRITE_STROBE" SIGIS="undef" SIGNAME="axi_regs_mux_0_FPGA_REG_WRITE_STROBE">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="FPGA_REG_WRITE_STROBE"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="IDATA" RIGHT="0" SIGIS="undef" SIGNAME="data_delay_0_IDATA_OUT">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="data_delay_0" PORT="IDATA_OUT"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="QDATA" RIGHT="0" SIGIS="undef" SIGNAME="data_delay_0_QDATA_OUT">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="data_delay_0" PORT="QDATA_OUT"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="RESET" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_RESET">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="RESET"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="SELECT_AXI_REGS_MODE" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_SELECT_AXI_REGS_MODE">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="SELECT_AXI_REGS_MODE"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1712601686" FULLNAME="/data_delay_0" HWVERSION="1.0" INSTANCE="data_delay_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="data_delay" VLNV="xilinx.com:module_ref:data_delay:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_data_delay_0_0"/>
@@ -153,8 +250,9 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="act_power_0" PORT="DATA_STROBE"/>
             <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="DATA_STROBE"/>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="DATA_IN_STROBE"/>
+            <CONNECTION INSTANCE="axi_regs_mux_0" PORT="DATA_STROBE"/>
             <CONNECTION INSTANCE="ila_0" PORT="probe0"/>
-            <CONNECTION INSTANCE="receiver_802_11p_0" PORT="DATA_IN_STROBE"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="15" NAME="IDATA_IN" RIGHT="0" SIGIS="undef" SIGNAME="data_interleaver_0_IDATA_OUT">
@@ -166,8 +264,9 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="act_power_0" PORT="IDATA"/>
             <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="IDATA"/>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="IDATA_IN"/>
+            <CONNECTION INSTANCE="axi_regs_mux_0" PORT="IDATA"/>
             <CONNECTION INSTANCE="ila_0" PORT="probe1"/>
-            <CONNECTION INSTANCE="receiver_802_11p_0" PORT="IDATA_IN"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="IDATA_OUT_DELAY_16" RIGHT="0" SIGIS="undef" SIGNAME="data_delay_0_IDATA_OUT_DELAY_16">
@@ -191,8 +290,9 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="act_power_0" PORT="QDATA"/>
             <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="QDATA"/>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="QDATA_IN"/>
+            <CONNECTION INSTANCE="axi_regs_mux_0" PORT="QDATA"/>
             <CONNECTION INSTANCE="ila_0" PORT="probe2"/>
-            <CONNECTION INSTANCE="receiver_802_11p_0" PORT="QDATA_IN"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="QDATA_OUT_DELAY_16" RIGHT="0" SIGIS="undef" SIGNAME="data_delay_0_QDATA_OUT_DELAY_16">
@@ -215,7 +315,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1712410417" FULLNAME="/data_interleaver_0" HWVERSION="1.0" INSTANCE="data_interleaver_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="data_interleaver" VLNV="xilinx.com:module_ref:data_interleaver:1.0">
+    <MODULE COREREVISION="1712601686" FULLNAME="/data_interleaver_0" HWVERSION="1.0" INSTANCE="data_interleaver_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="data_interleaver" VLNV="xilinx.com:module_ref:data_interleaver:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="interleave_period" VALUE="2"/>
@@ -266,38 +366,39 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1712502067" FULLNAME="/hier_atan/atan_block_0" HWVERSION="1.0" INSTANCE="hier_atan_atan_block_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="atan_block" VLNV="xilinx.com:module_ref:atan_block:1.0">
+    <MODULE COREREVISION="1712923017" FULLNAME="/equalizer_time_frequ_0" HWVERSION="1.0" INSTANCE="equalizer_time_frequ_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="equalizer_time_frequency" VLNV="xilinx.com:module_ref:equalizer_time_frequency:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="Component_Name" VALUE="block_design_0_atan_block_0_0"/>
+        <PARAMETER NAME="Component_Name" VALUE="block_design_0_equalizer_time_frequ_0_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="31" NAME="ATAN_AUTOCORR_I" RIGHT="0" SIGIS="undef" SIGNAME="receiver_802_11p_0_ATAN_AUTOCORR_I">
+        <PORT DIR="O" LEFT="31" NAME="ATAN_AUTOCORR_I" RIGHT="0" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_ATAN_AUTOCORR_I">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="receiver_802_11p_0" PORT="ATAN_AUTOCORR_I"/>
+            <CONNECTION INSTANCE="hier_atan_atan_block_0" PORT="ATAN_AUTOCORR_I"/>
+            <CONNECTION INSTANCE="ila_0" PORT="probe11"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="ATAN_AUTOCORR_Q" RIGHT="0" SIGIS="undef" SIGNAME="receiver_802_11p_0_ATAN_AUTOCORR_Q">
+        <PORT DIR="O" LEFT="31" NAME="ATAN_AUTOCORR_Q" RIGHT="0" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_ATAN_AUTOCORR_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="receiver_802_11p_0" PORT="ATAN_AUTOCORR_Q"/>
+            <CONNECTION INSTANCE="hier_atan_atan_block_0" PORT="ATAN_AUTOCORR_Q"/>
+            <CONNECTION INSTANCE="ila_0" PORT="probe12"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="ATAN_AUTOCORR_STROBE" SIGIS="undef" SIGNAME="receiver_802_11p_0_ATAN_AUTOCORR_STROBE">
+        <PORT DIR="O" NAME="ATAN_AUTOCORR_STROBE" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_ATAN_AUTOCORR_STROBE">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="receiver_802_11p_0" PORT="ATAN_AUTOCORR_STROBE"/>
+            <CONNECTION INSTANCE="hier_atan_atan_block_0" PORT="ATAN_AUTOCORR_STROBE"/>
+            <CONNECTION INSTANCE="ila_0" PORT="probe10"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="15" NAME="ATAN_PHASE_OUT" RIGHT="0" SIGIS="undef" SIGNAME="hier_atan_atan_block_0_ATAN_PHASE_OUT">
+        <PORT DIR="I" LEFT="19" NAME="ATAN_PHASE_OUT" RIGHT="0" SIGIS="undef" SIGNAME="hier_atan_atan_block_0_ATAN_PHASE_OUT">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ila_0" PORT="probe14"/>
-            <CONNECTION INSTANCE="receiver_802_11p_0" PORT="ATAN_PHASE_OUT"/>
+            <CONNECTION INSTANCE="hier_atan_atan_block_0" PORT="ATAN_PHASE_OUT"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="ATAN_PHASE_OUT_STROBE" SIGIS="undef" SIGNAME="hier_atan_atan_block_0_ATAN_PHASE_OUT_STROBE">
+        <PORT DIR="I" NAME="ATAN_PHASE_OUT_STROBE" SIGIS="undef" SIGNAME="hier_atan_atan_block_0_ATAN_PHASE_OUT_STROBE">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ila_0" PORT="probe13"/>
-            <CONNECTION INSTANCE="receiver_802_11p_0" PORT="ATAN_PHASE_OUT_STROBE"/>
+            <CONNECTION INSTANCE="hier_atan_atan_block_0" PORT="ATAN_PHASE_OUT_STROBE"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLOCK" SIGIS="clk" SIGNAME="External_Ports_CLOCK">
@@ -305,7 +406,185 @@
             <CONNECTION INSTANCE="External_Ports" PORT="CLOCK"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="M_AXIS_DOUT_tdata" RIGHT="0" SIGIS="undef" SIGNAME="hier_atan_atan_block_0_M_AXIS_DOUT_tdata">
+        <PORT DIR="I" NAME="DATA_IN_STROBE" SIGIS="undef" SIGNAME="data_delay_0_DATA_OUT_STROBE">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="data_delay_0" PORT="DATA_OUT_STROBE"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="DETECTION_SIGNAL_DETECTED" SIGIS="undef" SIGNAME="timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="DETECTION_SIGNAL_DETECTED"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="DETECTION_STROBE" SIGIS="undef" SIGNAME="timing_acquisition_8_0_DETECTION_STROBE">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="DETECTION_STROBE"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="DETECTION_STS_AUTOCORR_I" RIGHT="0" SIGIS="undef" SIGNAME="timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="DETECTION_STS_AUTOCORR_I"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="DETECTION_STS_AUTOCORR_Q" RIGHT="0" SIGIS="undef" SIGNAME="timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="DETECTION_STS_AUTOCORR_Q"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="FFT_DATA_IN_FIRST_SYMBOL_MARKER" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_FFT_DATA_IN_FIRST_SYMBOL_MARKER">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_fft_ofdm_fft_ofdm_0" PORT="FFT_DATA_IN_FIRST_SYMBOL_MARKER"/>
+            <CONNECTION INSTANCE="ila_0" PORT="probe28"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="FFT_DATA_IN_START" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_FFT_DATA_IN_START">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_fft_ofdm_fft_ofdm_0" PORT="FFT_DATA_IN_START"/>
+            <CONNECTION INSTANCE="ila_0" PORT="probe16"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="FFT_DATA_IN_STROBE" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_FFT_DATA_IN_STROBE">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_fft_ofdm_fft_ofdm_0" PORT="FFT_DATA_IN_STROBE"/>
+            <CONNECTION INSTANCE="ila_0" PORT="probe15"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="FFT_IDATA_IN" RIGHT="0" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_FFT_IDATA_IN">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_fft_ofdm_fft_ofdm_0" PORT="FFT_IDATA_IN"/>
+            <CONNECTION INSTANCE="ila_0" PORT="probe17"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="FFT_QDATA_IN" RIGHT="0" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_FFT_QDATA_IN">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_fft_ofdm_fft_ofdm_0" PORT="FFT_QDATA_IN"/>
+            <CONNECTION INSTANCE="ila_0" PORT="probe18"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="FPGA_REG_WRITE_DATA" RIGHT="0" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_FPGA_REG_WRITE_DATA">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_regs_mux_0" PORT="EQUALIZER_REG_WRITE_DATA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="FPGA_REG_WRITE_STROBE_PHASE_1" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_FPGA_REG_WRITE_STROBE_PHASE_1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_regs_mux_0" PORT="EQUALIZER_REG_WRITE_STROBE_PHASE_1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="FPGA_REG_WRITE_STROBE_PHASE_2" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_FPGA_REG_WRITE_STROBE_PHASE_2">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_regs_mux_0" PORT="EQUALIZER_REG_WRITE_STROBE_PHASE_2"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="IDATA_IN" RIGHT="0" SIGIS="undef" SIGNAME="data_delay_0_IDATA_OUT">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="data_delay_0" PORT="IDATA_OUT"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="QDATA_IN" RIGHT="0" SIGIS="undef" SIGNAME="data_delay_0_QDATA_OUT">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="data_delay_0" PORT="QDATA_OUT"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="RESET" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_RESET">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="RESET"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="ROTATION_DATA_IN_MARKER" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_ROTATION_DATA_IN_MARKER">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_rotation_block_0" PORT="ROTATION_DATA_IN_MARKER"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="ROTATION_DATA_IN_STROBE" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_ROTATION_DATA_IN_STROBE">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_rotation_block_0" PORT="ROTATION_DATA_IN_STROBE"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="ROTATION_DATA_OUT_MARKER" SIGIS="undef" SIGNAME="hier_rotation_rotation_block_0_ROTATION_DATA_OUT_MARKER">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_rotation_block_0" PORT="ROTATION_DATA_OUT_MARKER"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="ROTATION_DATA_OUT_STROBE" SIGIS="undef" SIGNAME="hier_rotation_rotation_block_0_ROTATION_DATA_OUT_STROBE">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_rotation_block_0" PORT="ROTATION_DATA_OUT_STROBE"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="ROTATION_IDATA_IN" RIGHT="0" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_ROTATION_IDATA_IN">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_rotation_block_0" PORT="ROTATION_IDATA_IN"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="ROTATION_IDATA_OUT" RIGHT="0" SIGIS="undef" SIGNAME="hier_rotation_rotation_block_0_ROTATION_IDATA_OUT">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_rotation_block_0" PORT="ROTATION_IDATA_OUT"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="19" NAME="ROTATION_PHASE_NEW_DIFF" RIGHT="0" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_ROTATION_PHASE_NEW_DIFF">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_rotation_block_0" PORT="ROTATION_PHASE_NEW_DIFF"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="ROTATION_PHASE_NEW_DIFF_STROBE" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_ROTATION_PHASE_NEW_DIFF_STROBE">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_rotation_block_0" PORT="ROTATION_PHASE_NEW_DIFF_STROBE"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="ROTATION_QDATA_IN" RIGHT="0" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_ROTATION_QDATA_IN">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_rotation_block_0" PORT="ROTATION_QDATA_IN"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="ROTATION_QDATA_OUT" RIGHT="0" SIGIS="undef" SIGNAME="hier_rotation_rotation_block_0_ROTATION_QDATA_OUT">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_rotation_block_0" PORT="ROTATION_QDATA_OUT"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="STOP_RX_DONE" SIGIS="undef"/>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1712935385" FULLNAME="/hier_atan/atan_block_0" HWVERSION="1.0" INSTANCE="hier_atan_atan_block_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="atan_block" VLNV="xilinx.com:module_ref:atan_block:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="block_design_0_atan_block_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="31" NAME="ATAN_AUTOCORR_I" RIGHT="0" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_ATAN_AUTOCORR_I">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="ATAN_AUTOCORR_I"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="ATAN_AUTOCORR_Q" RIGHT="0" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_ATAN_AUTOCORR_Q">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="ATAN_AUTOCORR_Q"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="ATAN_AUTOCORR_STROBE" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_ATAN_AUTOCORR_STROBE">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="ATAN_AUTOCORR_STROBE"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="19" NAME="ATAN_PHASE_OUT" RIGHT="0" SIGIS="undef" SIGNAME="hier_atan_atan_block_0_ATAN_PHASE_OUT">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="ATAN_PHASE_OUT"/>
+            <CONNECTION INSTANCE="ila_0" PORT="probe14"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="ATAN_PHASE_OUT_STROBE" SIGIS="undef" SIGNAME="hier_atan_atan_block_0_ATAN_PHASE_OUT_STROBE">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="ATAN_PHASE_OUT_STROBE"/>
+            <CONNECTION INSTANCE="ila_0" PORT="probe13"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLOCK" SIGIS="clk" SIGNAME="External_Ports_CLOCK">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="CLOCK"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="23" NAME="M_AXIS_DOUT_tdata" RIGHT="0" SIGIS="undef" SIGNAME="hier_atan_atan_block_0_M_AXIS_DOUT_tdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="hier_atan_cordic_0" PORT="m_axis_dout_tdata"/>
           </CONNECTIONS>
@@ -355,9 +634,9 @@
           <PARAMETER NAME="HAS_TREADY" VALUE="0"/>
           <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
           <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
-          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_real {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value real} enabled {attribs {resolve_type generated dependency polar_mag_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_mag_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_mag_fractwidth format long minimum {} maximum {}} value -2} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}} field_phase {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase} enabled {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_phase_width format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type generated dependency polar_phase_offset format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_phase_fractwidth format long minimum {} maximum {}} value 13} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}}}}} TDATA_WIDTH 16 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_cartesian_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value cartesian_tuser} enabled {attribs {resolve_type generated dependency cart_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency cart_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_phase_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase_tuser} enabled {attribs {resolve_type generated dependency phase_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency phase_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency phase_offset format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}}}} TUSER_WIDTH 0}"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 20} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_real {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value real} enabled {attribs {resolve_type generated dependency polar_mag_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_mag_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_mag_fractwidth format long minimum {} maximum {}} value -2} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}} field_phase {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase} enabled {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_phase_width format long minimum {} maximum {}} value 20} bitoffset {attribs {resolve_type generated dependency polar_phase_offset format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_phase_fractwidth format long minimum {} maximum {}} value 17} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}}}}} TDATA_WIDTH 24 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_cartesian_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value cartesian_tuser} enabled {attribs {resolve_type generated dependency cart_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency cart_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_phase_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase_tuser} enabled {attribs {resolve_type generated dependency phase_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency phase_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency phase_offset format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}}}} TUSER_WIDTH 0}"/>
           <PARAMETER NAME="PHASE" VALUE="0.0"/>
-          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="2"/>
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="3"/>
           <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
@@ -408,9 +687,9 @@
         <PARAMETER NAME="C_HAS_S_AXIS_PHASE_TUSER" VALUE="0"/>
         <PARAMETER NAME="C_INPUT_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_ITERATIONS" VALUE="0"/>
-        <PARAMETER NAME="C_M_AXIS_DOUT_TDATA_WIDTH" VALUE="16"/>
+        <PARAMETER NAME="C_M_AXIS_DOUT_TDATA_WIDTH" VALUE="24"/>
         <PARAMETER NAME="C_M_AXIS_DOUT_TUSER_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_OUTPUT_WIDTH" VALUE="16"/>
+        <PARAMETER NAME="C_OUTPUT_WIDTH" VALUE="20"/>
         <PARAMETER NAME="C_PHASE_FORMAT" VALUE="1"/>
         <PARAMETER NAME="C_PIPELINE_MODE" VALUE="-1"/>
         <PARAMETER NAME="C_PRECISION" VALUE="0"/>
@@ -433,7 +712,7 @@
         <PARAMETER NAME="Functional_Selection" VALUE="Arc_Tan"/>
         <PARAMETER NAME="Input_Width" VALUE="32"/>
         <PARAMETER NAME="Iterations" VALUE="0"/>
-        <PARAMETER NAME="Output_Width" VALUE="16"/>
+        <PARAMETER NAME="Output_Width" VALUE="20"/>
         <PARAMETER NAME="Phase_Format" VALUE="Scaled_Radians"/>
         <PARAMETER NAME="Pipelining_Mode" VALUE="Optimal"/>
         <PARAMETER NAME="Precision" VALUE="0"/>
@@ -461,7 +740,7 @@
             <CONNECTION INSTANCE="hier_atan_atan_block_0" PORT="aresetn"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="15" NAME="m_axis_dout_tdata" RIGHT="0" SIGIS="undef" SIGNAME="hier_atan_atan_block_0_M_AXIS_DOUT_tdata">
+        <PORT DIR="O" LEFT="23" NAME="m_axis_dout_tdata" RIGHT="0" SIGIS="undef" SIGNAME="hier_atan_atan_block_0_M_AXIS_DOUT_tdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="hier_atan_atan_block_0" PORT="M_AXIS_DOUT_tdata"/>
           </CONNECTIONS>
@@ -516,9 +795,9 @@
           <PARAMETER NAME="HAS_TREADY" VALUE="0"/>
           <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
           <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
-          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_real {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value real} enabled {attribs {resolve_type generated dependency polar_mag_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_mag_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_mag_fractwidth format long minimum {} maximum {}} value -2} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}} field_phase {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase} enabled {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_phase_width format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type generated dependency polar_phase_offset format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_phase_fractwidth format long minimum {} maximum {}} value 13} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}}}}} TDATA_WIDTH 16 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_cartesian_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value cartesian_tuser} enabled {attribs {resolve_type generated dependency cart_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency cart_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_phase_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase_tuser} enabled {attribs {resolve_type generated dependency phase_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency phase_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency phase_offset format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}}}} TUSER_WIDTH 0}"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 20} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_real {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value real} enabled {attribs {resolve_type generated dependency polar_mag_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_mag_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_mag_fractwidth format long minimum {} maximum {}} value -2} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}} field_phase {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase} enabled {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_phase_width format long minimum {} maximum {}} value 20} bitoffset {attribs {resolve_type generated dependency polar_phase_offset format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_phase_fractwidth format long minimum {} maximum {}} value 17} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}}}}} TDATA_WIDTH 24 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_cartesian_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value cartesian_tuser} enabled {attribs {resolve_type generated dependency cart_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency cart_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_phase_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase_tuser} enabled {attribs {resolve_type generated dependency phase_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency phase_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency phase_offset format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}}}} TUSER_WIDTH 0}"/>
           <PARAMETER NAME="PHASE" VALUE="0.0"/>
-          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="2"/>
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="3"/>
           <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
@@ -529,7 +808,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="1712502754" FULLNAME="/hier_fft_ofdm/fft_ofdm_0" HWVERSION="1.0" INSTANCE="hier_fft_ofdm_fft_ofdm_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="fft_ofdm" VLNV="xilinx.com:module_ref:fft_ofdm:1.0">
+    <MODULE COREREVISION="1712935385" FULLNAME="/hier_fft_ofdm/fft_ofdm_0" HWVERSION="1.0" INSTANCE="hier_fft_ofdm_fft_ofdm_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="fft_ofdm" VLNV="xilinx.com:module_ref:fft_ofdm:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_fft_ofdm_0_1"/>
@@ -541,44 +820,58 @@
             <CONNECTION INSTANCE="External_Ports" PORT="CLOCK"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="FFT_DATA_IN_START" SIGIS="undef" SIGNAME="receiver_802_11p_0_FFT_DATA_IN_START">
+        <PORT DIR="I" NAME="FFT_DATA_IN_FIRST_SYMBOL_MARKER" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_FFT_DATA_IN_FIRST_SYMBOL_MARKER">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="receiver_802_11p_0" PORT="FFT_DATA_IN_START"/>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="FFT_DATA_IN_FIRST_SYMBOL_MARKER"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="FFT_DATA_IN_STROBE" SIGIS="undef" SIGNAME="receiver_802_11p_0_FFT_DATA_IN_STROBE">
+        <PORT DIR="I" NAME="FFT_DATA_IN_START" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_FFT_DATA_IN_START">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="receiver_802_11p_0" PORT="FFT_DATA_IN_STROBE"/>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="FFT_DATA_IN_START"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="FFT_DATA_IN_STROBE" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_FFT_DATA_IN_STROBE">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="FFT_DATA_IN_STROBE"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="FFT_DATA_OUT_FIRST_SYMBOL_MARKER" SIGIS="undef" SIGNAME="hier_fft_ofdm_fft_ofdm_0_FFT_DATA_OUT_FIRST_SYMBOL_MARKER">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_regs_mux_0" PORT="FFT_DATA_FIRST_SYMBOL_MARKER"/>
+            <CONNECTION INSTANCE="ila_0" PORT="probe27"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="FFT_DATA_OUT_LAST" SIGIS="undef" SIGNAME="hier_fft_ofdm_fft_ofdm_0_FFT_DATA_OUT_LAST">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="receiver_802_11p_0" PORT="FFT_DATA_OUT_LAST"/>
+            <CONNECTION INSTANCE="ila_0" PORT="probe20"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="FFT_DATA_OUT_VALID" SIGIS="undef" SIGNAME="hier_fft_ofdm_fft_ofdm_0_FFT_DATA_OUT_VALID">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="receiver_802_11p_0" PORT="FFT_DATA_OUT_VALID"/>
+            <CONNECTION INSTANCE="axi_regs_mux_0" PORT="FFT_DATA_VALID"/>
+            <CONNECTION INSTANCE="ila_0" PORT="probe19"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="FFT_IDATA_IN" RIGHT="0" SIGIS="undef" SIGNAME="receiver_802_11p_0_FFT_IDATA_IN">
+        <PORT DIR="I" LEFT="15" NAME="FFT_IDATA_IN" RIGHT="0" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_FFT_IDATA_IN">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="receiver_802_11p_0" PORT="FFT_IDATA_IN"/>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="FFT_IDATA_IN"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="23" NAME="FFT_IDATA_OUT" RIGHT="0" SIGIS="undef" SIGNAME="hier_fft_ofdm_fft_ofdm_0_FFT_IDATA_OUT">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="receiver_802_11p_0" PORT="FFT_IDATA_OUT"/>
+            <CONNECTION INSTANCE="axi_regs_mux_0" PORT="FFT_IDATA"/>
+            <CONNECTION INSTANCE="ila_0" PORT="probe21"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="FFT_QDATA_IN" RIGHT="0" SIGIS="undef" SIGNAME="receiver_802_11p_0_FFT_QDATA_IN">
+        <PORT DIR="I" LEFT="15" NAME="FFT_QDATA_IN" RIGHT="0" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_FFT_QDATA_IN">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="receiver_802_11p_0" PORT="FFT_QDATA_IN"/>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="FFT_QDATA_IN"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="23" NAME="FFT_QDATA_OUT" RIGHT="0" SIGIS="undef" SIGNAME="hier_fft_ofdm_fft_ofdm_0_FFT_QDATA_OUT">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="receiver_802_11p_0" PORT="FFT_QDATA_OUT"/>
+            <CONNECTION INSTANCE="axi_regs_mux_0" PORT="FFT_QDATA"/>
+            <CONNECTION INSTANCE="ila_0" PORT="probe22"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="47" NAME="M_AXIS_DATA_tdata" RIGHT="0" SIGIS="undef" SIGNAME="hier_fft_ofdm_fft_ofdm_0_M_AXIS_DATA_tdata">
@@ -789,10 +1082,26 @@
             <CONNECTION INSTANCE="hier_fft_ofdm_fft_ofdm_0" PORT="aresetn"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="event_data_in_channel_halt" SENSITIVITY="EDGE_RISING" SIGIS="INTERRUPT"/>
-        <PORT DIR="O" NAME="event_frame_started" SENSITIVITY="EDGE_RISING" SIGIS="INTERRUPT"/>
-        <PORT DIR="O" NAME="event_tlast_missing" SENSITIVITY="EDGE_RISING" SIGIS="INTERRUPT"/>
-        <PORT DIR="O" NAME="event_tlast_unexpected" SENSITIVITY="EDGE_RISING" SIGIS="INTERRUPT"/>
+        <PORT DIR="O" NAME="event_data_in_channel_halt" SENSITIVITY="EDGE_RISING" SIGIS="INTERRUPT" SIGNAME="hier_fft_ofdm_xfft_0_event_data_in_channel_halt">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ila_0" PORT="probe26"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="event_frame_started" SENSITIVITY="EDGE_RISING" SIGIS="INTERRUPT" SIGNAME="hier_fft_ofdm_xfft_0_event_frame_started">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ila_0" PORT="probe23"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="event_tlast_missing" SENSITIVITY="EDGE_RISING" SIGIS="INTERRUPT" SIGNAME="hier_fft_ofdm_xfft_0_event_tlast_missing">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ila_0" PORT="probe25"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="event_tlast_unexpected" SENSITIVITY="EDGE_RISING" SIGIS="INTERRUPT" SIGNAME="hier_fft_ofdm_xfft_0_event_tlast_unexpected">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ila_0" PORT="probe24"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" LEFT="47" NAME="m_axis_data_tdata" RIGHT="0" SIGIS="undef" SIGNAME="hier_fft_ofdm_fft_ofdm_0_M_AXIS_DATA_tdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="hier_fft_ofdm_fft_ofdm_0" PORT="M_AXIS_DATA_tdata"/>
@@ -1084,7 +1393,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="1712502069" FULLNAME="/hier_rotation/rotation_block_0" HWVERSION="1.0" INSTANCE="hier_rotation_rotation_block_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="rotation_block" VLNV="xilinx.com:module_ref:rotation_block:1.0">
+    <MODULE COREREVISION="1712935385" FULLNAME="/hier_rotation/rotation_block_0" HWVERSION="1.0" INSTANCE="hier_rotation_rotation_block_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="rotation_block" VLNV="xilinx.com:module_ref:rotation_block:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_rotation_block_0_0"/>
@@ -1116,54 +1425,54 @@
             <CONNECTION INSTANCE="External_Ports" PORT="RESET"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="ROTATION_DATA_IN_MARKER" SIGIS="undef" SIGNAME="receiver_802_11p_0_ROTATION_DATA_IN_MARKER">
+        <PORT DIR="I" NAME="ROTATION_DATA_IN_MARKER" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_ROTATION_DATA_IN_MARKER">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="receiver_802_11p_0" PORT="ROTATION_DATA_IN_MARKER"/>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="ROTATION_DATA_IN_MARKER"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="ROTATION_DATA_IN_STROBE" SIGIS="undef" SIGNAME="receiver_802_11p_0_ROTATION_DATA_IN_STROBE">
+        <PORT DIR="I" NAME="ROTATION_DATA_IN_STROBE" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_ROTATION_DATA_IN_STROBE">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="receiver_802_11p_0" PORT="ROTATION_DATA_IN_STROBE"/>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="ROTATION_DATA_IN_STROBE"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="ROTATION_DATA_OUT_MARKER" SIGIS="undef" SIGNAME="hier_rotation_rotation_block_0_ROTATION_DATA_OUT_MARKER">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="receiver_802_11p_0" PORT="ROTATION_DATA_OUT_MARKER"/>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="ROTATION_DATA_OUT_MARKER"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="ROTATION_DATA_OUT_STROBE" SIGIS="undef" SIGNAME="hier_rotation_rotation_block_0_ROTATION_DATA_OUT_STROBE">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="receiver_802_11p_0" PORT="ROTATION_DATA_OUT_STROBE"/>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="ROTATION_DATA_OUT_STROBE"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="ROTATION_IDATA_IN" RIGHT="0" SIGIS="undef" SIGNAME="receiver_802_11p_0_ROTATION_IDATA_IN">
+        <PORT DIR="I" LEFT="15" NAME="ROTATION_IDATA_IN" RIGHT="0" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_ROTATION_IDATA_IN">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="receiver_802_11p_0" PORT="ROTATION_IDATA_IN"/>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="ROTATION_IDATA_IN"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="ROTATION_IDATA_OUT" RIGHT="0" SIGIS="undef" SIGNAME="hier_rotation_rotation_block_0_ROTATION_IDATA_OUT">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="receiver_802_11p_0" PORT="ROTATION_IDATA_OUT"/>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="ROTATION_IDATA_OUT"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="ROTATION_PHASE_NEW_DIFF" RIGHT="0" SIGIS="undef" SIGNAME="receiver_802_11p_0_ROTATION_PHASE_NEW_DIFF">
+        <PORT DIR="I" LEFT="19" NAME="ROTATION_PHASE_NEW_DIFF" RIGHT="0" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_ROTATION_PHASE_NEW_DIFF">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="receiver_802_11p_0" PORT="ROTATION_PHASE_NEW_DIFF"/>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="ROTATION_PHASE_NEW_DIFF"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="ROTATION_PHASE_NEW_DIFF_STROBE" SIGIS="undef" SIGNAME="receiver_802_11p_0_ROTATION_PHASE_NEW_DIFF_STROBE">
+        <PORT DIR="I" NAME="ROTATION_PHASE_NEW_DIFF_STROBE" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_ROTATION_PHASE_NEW_DIFF_STROBE">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="receiver_802_11p_0" PORT="ROTATION_PHASE_NEW_DIFF_STROBE"/>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="ROTATION_PHASE_NEW_DIFF_STROBE"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="ROTATION_QDATA_IN" RIGHT="0" SIGIS="undef" SIGNAME="receiver_802_11p_0_ROTATION_QDATA_IN">
+        <PORT DIR="I" LEFT="15" NAME="ROTATION_QDATA_IN" RIGHT="0" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_ROTATION_QDATA_IN">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="receiver_802_11p_0" PORT="ROTATION_QDATA_IN"/>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="ROTATION_QDATA_IN"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="ROTATION_QDATA_OUT" RIGHT="0" SIGIS="undef" SIGNAME="hier_rotation_rotation_block_0_ROTATION_QDATA_OUT">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="receiver_802_11p_0" PORT="ROTATION_QDATA_OUT"/>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="ROTATION_QDATA_OUT"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="S_AXIS_CARTESIAN_tdata" RIGHT="0" SIGIS="undef" SIGNAME="hier_rotation_cordic_0_s_axis_cartesian_tdata">
@@ -1296,7 +1605,7 @@
         <PARAMETER NAME="C_MU_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_NEXT_SLAVE" VALUE="0"/>
         <PARAMETER NAME="C_NUM_MONITOR_SLOTS" VALUE="1"/>
-        <PARAMETER NAME="C_NUM_OF_PROBES" VALUE="15"/>
+        <PARAMETER NAME="C_NUM_OF_PROBES" VALUE="29"/>
         <PARAMETER NAME="C_PIPE_IFACE" VALUE="1"/>
         <PARAMETER NAME="C_PROBE0_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE0_TYPE" VALUE="0"/>
@@ -1537,7 +1846,7 @@
         <PARAMETER NAME="C_PROBE149_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE14_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE14_TYPE" VALUE="0"/>
-        <PARAMETER NAME="C_PROBE14_WIDTH" VALUE="16"/>
+        <PARAMETER NAME="C_PROBE14_WIDTH" VALUE="20"/>
         <PARAMETER NAME="C_PROBE150_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE150_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_PROBE150_WIDTH" VALUE="1"/>
@@ -1636,7 +1945,7 @@
         <PARAMETER NAME="C_PROBE179_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE17_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE17_TYPE" VALUE="0"/>
-        <PARAMETER NAME="C_PROBE17_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_PROBE17_WIDTH" VALUE="16"/>
         <PARAMETER NAME="C_PROBE180_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE180_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_PROBE180_WIDTH" VALUE="1"/>
@@ -1669,7 +1978,7 @@
         <PARAMETER NAME="C_PROBE189_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE18_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE18_TYPE" VALUE="0"/>
-        <PARAMETER NAME="C_PROBE18_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_PROBE18_WIDTH" VALUE="16"/>
         <PARAMETER NAME="C_PROBE190_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE190_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_PROBE190_WIDTH" VALUE="1"/>
@@ -1771,7 +2080,7 @@
         <PARAMETER NAME="C_PROBE219_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE21_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE21_TYPE" VALUE="0"/>
-        <PARAMETER NAME="C_PROBE21_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_PROBE21_WIDTH" VALUE="24"/>
         <PARAMETER NAME="C_PROBE220_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE220_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_PROBE220_WIDTH" VALUE="1"/>
@@ -1804,7 +2113,7 @@
         <PARAMETER NAME="C_PROBE229_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE22_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE22_TYPE" VALUE="0"/>
-        <PARAMETER NAME="C_PROBE22_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_PROBE22_WIDTH" VALUE="24"/>
         <PARAMETER NAME="C_PROBE230_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE230_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_PROBE230_WIDTH" VALUE="1"/>
@@ -4376,7 +4685,7 @@
         <PARAMETER NAME="C_SLOT_0_AXIS_TUSER_WIDTH" VALUE="8"/>
         <PARAMETER NAME="C_SLOT_0_AXI_ARUSER_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_0_AXI_AWUSER_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_SLOT_0_AXI_BUSER_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_SLOT_0_AXI_BUSER_WIDTH" VALUE="24"/>
         <PARAMETER NAME="C_SLOT_0_AXI_ID_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_0_AXI_PROTOCOL" VALUE="AXI4"/>
         <PARAMETER NAME="C_SLOT_0_AXI_RUSER_WIDTH" VALUE="1"/>
@@ -4459,19 +4768,19 @@
             <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="CONTINUOUS_XCORR"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="probe10" RIGHT="0" SIGIS="undef" SIGNAME="receiver_802_11p_0_ATAN_AUTOCORR_STROBE">
+        <PORT DIR="I" LEFT="0" NAME="probe10" RIGHT="0" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_ATAN_AUTOCORR_STROBE">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="receiver_802_11p_0" PORT="ATAN_AUTOCORR_STROBE"/>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="ATAN_AUTOCORR_STROBE"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="probe11" RIGHT="0" SIGIS="undef" SIGNAME="receiver_802_11p_0_ATAN_AUTOCORR_I">
+        <PORT DIR="I" LEFT="31" NAME="probe11" RIGHT="0" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_ATAN_AUTOCORR_I">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="receiver_802_11p_0" PORT="ATAN_AUTOCORR_I"/>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="ATAN_AUTOCORR_I"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="probe12" RIGHT="0" SIGIS="undef" SIGNAME="receiver_802_11p_0_ATAN_AUTOCORR_Q">
+        <PORT DIR="I" LEFT="31" NAME="probe12" RIGHT="0" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_ATAN_AUTOCORR_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="receiver_802_11p_0" PORT="ATAN_AUTOCORR_Q"/>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="ATAN_AUTOCORR_Q"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="0" NAME="probe13" RIGHT="0" SIGIS="undef" SIGNAME="hier_atan_atan_block_0_ATAN_PHASE_OUT_STROBE">
@@ -4479,203 +4788,85 @@
             <CONNECTION INSTANCE="hier_atan_atan_block_0" PORT="ATAN_PHASE_OUT_STROBE"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="probe14" RIGHT="0" SIGIS="undef" SIGNAME="hier_atan_atan_block_0_ATAN_PHASE_OUT">
+        <PORT DIR="I" LEFT="19" NAME="probe14" RIGHT="0" SIGIS="undef" SIGNAME="hier_atan_atan_block_0_ATAN_PHASE_OUT">
           <CONNECTIONS>
             <CONNECTION INSTANCE="hier_atan_atan_block_0" PORT="ATAN_PHASE_OUT"/>
           </CONNECTIONS>
         </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE COREREVISION="1712502752" FULLNAME="/receiver_802_11p_0" HWVERSION="1.0" INSTANCE="receiver_802_11p_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="receiver_802_11p" VLNV="xilinx.com:module_ref:receiver_802_11p:1.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="Component_Name" VALUE="block_design_0_receiver_802_11p_0_0"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="O" LEFT="31" NAME="ATAN_AUTOCORR_I" RIGHT="0" SIGIS="undef" SIGNAME="receiver_802_11p_0_ATAN_AUTOCORR_I">
+        <PORT DIR="I" LEFT="0" NAME="probe15" RIGHT="0" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_FFT_DATA_IN_STROBE">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="hier_atan_atan_block_0" PORT="ATAN_AUTOCORR_I"/>
-            <CONNECTION INSTANCE="ila_0" PORT="probe11"/>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="FFT_DATA_IN_STROBE"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="ATAN_AUTOCORR_Q" RIGHT="0" SIGIS="undef" SIGNAME="receiver_802_11p_0_ATAN_AUTOCORR_Q">
+        <PORT DIR="I" LEFT="0" NAME="probe16" RIGHT="0" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_FFT_DATA_IN_START">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="hier_atan_atan_block_0" PORT="ATAN_AUTOCORR_Q"/>
-            <CONNECTION INSTANCE="ila_0" PORT="probe12"/>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="FFT_DATA_IN_START"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="ATAN_AUTOCORR_STROBE" SIGIS="undef" SIGNAME="receiver_802_11p_0_ATAN_AUTOCORR_STROBE">
+        <PORT DIR="I" LEFT="15" NAME="probe17" RIGHT="0" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_FFT_IDATA_IN">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="hier_atan_atan_block_0" PORT="ATAN_AUTOCORR_STROBE"/>
-            <CONNECTION INSTANCE="ila_0" PORT="probe10"/>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="FFT_IDATA_IN"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="ATAN_PHASE_OUT" RIGHT="0" SIGIS="undef" SIGNAME="hier_atan_atan_block_0_ATAN_PHASE_OUT">
+        <PORT DIR="I" LEFT="15" NAME="probe18" RIGHT="0" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_FFT_QDATA_IN">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="hier_atan_atan_block_0" PORT="ATAN_PHASE_OUT"/>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="FFT_QDATA_IN"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="ATAN_PHASE_OUT_STROBE" SIGIS="undef" SIGNAME="hier_atan_atan_block_0_ATAN_PHASE_OUT_STROBE">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="hier_atan_atan_block_0" PORT="ATAN_PHASE_OUT_STROBE"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLOCK" SIGIS="clk" SIGNAME="External_Ports_CLOCK">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="CLOCK"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="DATA_IN_STROBE" SIGIS="undef" SIGNAME="data_delay_0_DATA_OUT_STROBE">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="data_delay_0" PORT="DATA_OUT_STROBE"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="DETECTION_SIGNAL_DETECTED" SIGIS="undef" SIGNAME="timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="DETECTION_SIGNAL_DETECTED"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="DETECTION_STROBE" SIGIS="undef" SIGNAME="timing_acquisition_8_0_DETECTION_STROBE">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="DETECTION_STROBE"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="DETECTION_STS_AUTOCORR_I" RIGHT="0" SIGIS="undef" SIGNAME="timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="DETECTION_STS_AUTOCORR_I"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="DETECTION_STS_AUTOCORR_Q" RIGHT="0" SIGIS="undef" SIGNAME="timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="DETECTION_STS_AUTOCORR_Q"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="FFT_DATA_IN_START" SIGIS="undef" SIGNAME="receiver_802_11p_0_FFT_DATA_IN_START">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="hier_fft_ofdm_fft_ofdm_0" PORT="FFT_DATA_IN_START"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="FFT_DATA_IN_STROBE" SIGIS="undef" SIGNAME="receiver_802_11p_0_FFT_DATA_IN_STROBE">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="hier_fft_ofdm_fft_ofdm_0" PORT="FFT_DATA_IN_STROBE"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="FFT_DATA_OUT_LAST" SIGIS="undef" SIGNAME="hier_fft_ofdm_fft_ofdm_0_FFT_DATA_OUT_LAST">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="hier_fft_ofdm_fft_ofdm_0" PORT="FFT_DATA_OUT_LAST"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="FFT_DATA_OUT_VALID" SIGIS="undef" SIGNAME="hier_fft_ofdm_fft_ofdm_0_FFT_DATA_OUT_VALID">
+        <PORT DIR="I" LEFT="0" NAME="probe19" RIGHT="0" SIGIS="undef" SIGNAME="hier_fft_ofdm_fft_ofdm_0_FFT_DATA_OUT_VALID">
           <CONNECTIONS>
             <CONNECTION INSTANCE="hier_fft_ofdm_fft_ofdm_0" PORT="FFT_DATA_OUT_VALID"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="15" NAME="FFT_IDATA_IN" RIGHT="0" SIGIS="undef" SIGNAME="receiver_802_11p_0_FFT_IDATA_IN">
+        <PORT DIR="I" LEFT="0" NAME="probe20" RIGHT="0" SIGIS="undef" SIGNAME="hier_fft_ofdm_fft_ofdm_0_FFT_DATA_OUT_LAST">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="hier_fft_ofdm_fft_ofdm_0" PORT="FFT_IDATA_IN"/>
+            <CONNECTION INSTANCE="hier_fft_ofdm_fft_ofdm_0" PORT="FFT_DATA_OUT_LAST"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="23" NAME="FFT_IDATA_OUT" RIGHT="0" SIGIS="undef" SIGNAME="hier_fft_ofdm_fft_ofdm_0_FFT_IDATA_OUT">
+        <PORT DIR="I" LEFT="23" NAME="probe21" RIGHT="0" SIGIS="undef" SIGNAME="hier_fft_ofdm_fft_ofdm_0_FFT_IDATA_OUT">
           <CONNECTIONS>
             <CONNECTION INSTANCE="hier_fft_ofdm_fft_ofdm_0" PORT="FFT_IDATA_OUT"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="15" NAME="FFT_QDATA_IN" RIGHT="0" SIGIS="undef" SIGNAME="receiver_802_11p_0_FFT_QDATA_IN">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="hier_fft_ofdm_fft_ofdm_0" PORT="FFT_QDATA_IN"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="23" NAME="FFT_QDATA_OUT" RIGHT="0" SIGIS="undef" SIGNAME="hier_fft_ofdm_fft_ofdm_0_FFT_QDATA_OUT">
+        <PORT DIR="I" LEFT="23" NAME="probe22" RIGHT="0" SIGIS="undef" SIGNAME="hier_fft_ofdm_fft_ofdm_0_FFT_QDATA_OUT">
           <CONNECTIONS>
             <CONNECTION INSTANCE="hier_fft_ofdm_fft_ofdm_0" PORT="FFT_QDATA_OUT"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="8" NAME="FPGA_REG_WRITE_ADDRESS" RIGHT="0" SIGIS="undef" SIGNAME="receiver_802_11p_0_FPGA_REG_WRITE_ADDRESS">
+        <PORT DIR="I" LEFT="0" NAME="probe23" RIGHT="0" SIGIS="undef" SIGNAME="hier_fft_ofdm_xfft_0_event_frame_started">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="FPGA_REG_WRITE_ADDRESS"/>
+            <CONNECTION INSTANCE="hier_fft_ofdm_xfft_0" PORT="event_frame_started"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="FPGA_REG_WRITE_DATA" RIGHT="0" SIGIS="undef" SIGNAME="receiver_802_11p_0_FPGA_REG_WRITE_DATA">
+        <PORT DIR="I" LEFT="0" NAME="probe24" RIGHT="0" SIGIS="undef" SIGNAME="hier_fft_ofdm_xfft_0_event_tlast_unexpected">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="FPGA_REG_WRITE_DATA"/>
+            <CONNECTION INSTANCE="hier_fft_ofdm_xfft_0" PORT="event_tlast_unexpected"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="FPGA_REG_WRITE_STROBE" SIGIS="undef" SIGNAME="receiver_802_11p_0_FPGA_REG_WRITE_STROBE">
+        <PORT DIR="I" LEFT="0" NAME="probe25" RIGHT="0" SIGIS="undef" SIGNAME="hier_fft_ofdm_xfft_0_event_tlast_missing">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="FPGA_REG_WRITE_STROBE"/>
+            <CONNECTION INSTANCE="hier_fft_ofdm_xfft_0" PORT="event_tlast_missing"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="IDATA_IN" RIGHT="0" SIGIS="undef" SIGNAME="data_delay_0_IDATA_OUT">
+        <PORT DIR="I" LEFT="0" NAME="probe26" RIGHT="0" SIGIS="undef" SIGNAME="hier_fft_ofdm_xfft_0_event_data_in_channel_halt">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="data_delay_0" PORT="IDATA_OUT"/>
+            <CONNECTION INSTANCE="hier_fft_ofdm_xfft_0" PORT="event_data_in_channel_halt"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="QDATA_IN" RIGHT="0" SIGIS="undef" SIGNAME="data_delay_0_QDATA_OUT">
+        <PORT DIR="I" LEFT="0" NAME="probe27" RIGHT="0" SIGIS="undef" SIGNAME="hier_fft_ofdm_fft_ofdm_0_FFT_DATA_OUT_FIRST_SYMBOL_MARKER">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="data_delay_0" PORT="QDATA_OUT"/>
+            <CONNECTION INSTANCE="hier_fft_ofdm_fft_ofdm_0" PORT="FFT_DATA_OUT_FIRST_SYMBOL_MARKER"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="RESET" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_RESET">
+        <PORT DIR="I" LEFT="0" NAME="probe28" RIGHT="0" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_FFT_DATA_IN_FIRST_SYMBOL_MARKER">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="RESET"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="ROTATION_DATA_IN_MARKER" SIGIS="undef" SIGNAME="receiver_802_11p_0_ROTATION_DATA_IN_MARKER">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="hier_rotation_rotation_block_0" PORT="ROTATION_DATA_IN_MARKER"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="ROTATION_DATA_IN_STROBE" SIGIS="undef" SIGNAME="receiver_802_11p_0_ROTATION_DATA_IN_STROBE">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="hier_rotation_rotation_block_0" PORT="ROTATION_DATA_IN_STROBE"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="ROTATION_DATA_OUT_MARKER" SIGIS="undef" SIGNAME="hier_rotation_rotation_block_0_ROTATION_DATA_OUT_MARKER">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="hier_rotation_rotation_block_0" PORT="ROTATION_DATA_OUT_MARKER"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="ROTATION_DATA_OUT_STROBE" SIGIS="undef" SIGNAME="hier_rotation_rotation_block_0_ROTATION_DATA_OUT_STROBE">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="hier_rotation_rotation_block_0" PORT="ROTATION_DATA_OUT_STROBE"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="15" NAME="ROTATION_IDATA_IN" RIGHT="0" SIGIS="undef" SIGNAME="receiver_802_11p_0_ROTATION_IDATA_IN">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="hier_rotation_rotation_block_0" PORT="ROTATION_IDATA_IN"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="15" NAME="ROTATION_IDATA_OUT" RIGHT="0" SIGIS="undef" SIGNAME="hier_rotation_rotation_block_0_ROTATION_IDATA_OUT">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="hier_rotation_rotation_block_0" PORT="ROTATION_IDATA_OUT"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="15" NAME="ROTATION_PHASE_NEW_DIFF" RIGHT="0" SIGIS="undef" SIGNAME="receiver_802_11p_0_ROTATION_PHASE_NEW_DIFF">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="hier_rotation_rotation_block_0" PORT="ROTATION_PHASE_NEW_DIFF"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="ROTATION_PHASE_NEW_DIFF_STROBE" SIGIS="undef" SIGNAME="receiver_802_11p_0_ROTATION_PHASE_NEW_DIFF_STROBE">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="hier_rotation_rotation_block_0" PORT="ROTATION_PHASE_NEW_DIFF_STROBE"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="15" NAME="ROTATION_QDATA_IN" RIGHT="0" SIGIS="undef" SIGNAME="receiver_802_11p_0_ROTATION_QDATA_IN">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="hier_rotation_rotation_block_0" PORT="ROTATION_QDATA_IN"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="15" NAME="ROTATION_QDATA_OUT" RIGHT="0" SIGIS="undef" SIGNAME="hier_rotation_rotation_block_0_ROTATION_QDATA_OUT">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="hier_rotation_rotation_block_0" PORT="ROTATION_QDATA_OUT"/>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="FFT_DATA_IN_FIRST_SYMBOL_MARKER"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1712449417" FULLNAME="/rx_clock_domain_cros_0" HWVERSION="1.0" INSTANCE="rx_clock_domain_cros_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="rx_clock_domain_crossing" VLNV="xilinx.com:module_ref:rx_clock_domain_crossing:1.0">
+    <MODULE COREREVISION="1712601684" FULLNAME="/rx_clock_domain_cros_0" HWVERSION="1.0" INSTANCE="rx_clock_domain_cros_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="rx_clock_domain_crossing" VLNV="xilinx.com:module_ref:rx_clock_domain_crossing:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="buffer_depth" VALUE="3"/>
@@ -4741,7 +4932,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1712410626" FULLNAME="/timing_acquisition_8_0" HWVERSION="1.0" INSTANCE="timing_acquisition_8_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="timing_acquisition_802_11p" VLNV="xilinx.com:module_ref:timing_acquisition_802_11p:1.0">
+    <MODULE COREREVISION="1712601687" FULLNAME="/timing_acquisition_8_0" HWVERSION="1.0" INSTANCE="timing_acquisition_8_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="timing_acquisition_802_11p" VLNV="xilinx.com:module_ref:timing_acquisition_802_11p:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="INPUT_WIDTH" VALUE="16"/>
@@ -4768,24 +4959,24 @@
         </PORT>
         <PORT DIR="O" NAME="DETECTION_SIGNAL_DETECTED" SIGIS="undef" SIGNAME="timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED">
           <CONNECTIONS>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="DETECTION_SIGNAL_DETECTED"/>
             <CONNECTION INSTANCE="ila_0" PORT="probe7"/>
-            <CONNECTION INSTANCE="receiver_802_11p_0" PORT="DETECTION_SIGNAL_DETECTED"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="DETECTION_STROBE" SIGIS="undef" SIGNAME="timing_acquisition_8_0_DETECTION_STROBE">
           <CONNECTIONS>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="DETECTION_STROBE"/>
             <CONNECTION INSTANCE="ila_0" PORT="probe6"/>
-            <CONNECTION INSTANCE="receiver_802_11p_0" PORT="DETECTION_STROBE"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="DETECTION_STS_AUTOCORR_I" RIGHT="0" SIGIS="undef" SIGNAME="timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="receiver_802_11p_0" PORT="DETECTION_STS_AUTOCORR_I"/>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="DETECTION_STS_AUTOCORR_I"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="DETECTION_STS_AUTOCORR_Q" RIGHT="0" SIGIS="undef" SIGNAME="timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="receiver_802_11p_0" PORT="DETECTION_STS_AUTOCORR_Q"/>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="DETECTION_STS_AUTOCORR_Q"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="23" NAME="DETECTION_THRESHOLD" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_DETECTION_THRESHOLD">

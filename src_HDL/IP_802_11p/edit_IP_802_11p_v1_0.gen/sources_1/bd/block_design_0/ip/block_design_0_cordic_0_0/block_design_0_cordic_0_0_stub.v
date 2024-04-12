@@ -2,8 +2,8 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-// Date        : Sun Apr  7 17:05:05 2024
-// Host        : ASUS_ROG running 64-bit major release  (build 9200)
+// Date        : Fri Apr 12 17:25:59 2024
+// Host        : lab817_01 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_cordic_0_0/block_design_0_cordic_0_0_stub.v
 // Design      : block_design_0_cordic_0_0
@@ -17,7 +17,7 @@
 (* x_core_info = "cordic_v6_0_21,Vivado 2023.2.2" *)
 module block_design_0_cordic_0_0(aclk, aresetn, s_axis_cartesian_tvalid, 
   s_axis_cartesian_tready, s_axis_cartesian_tdata, m_axis_dout_tvalid, m_axis_dout_tdata)
-/* synthesis syn_black_box black_box_pad_pin="aresetn,s_axis_cartesian_tvalid,s_axis_cartesian_tready,s_axis_cartesian_tdata[63:0],m_axis_dout_tvalid,m_axis_dout_tdata[15:0]" */
+/* synthesis syn_black_box black_box_pad_pin="aresetn,s_axis_cartesian_tvalid,s_axis_cartesian_tready,s_axis_cartesian_tdata[63:0],m_axis_dout_tvalid,m_axis_dout_tdata[23:0]" */
 /* synthesis syn_force_seq_prim="aclk" */;
   input aclk /* synthesis syn_isclock = 1 */;
   input aresetn;
@@ -25,5 +25,5 @@ module block_design_0_cordic_0_0(aclk, aresetn, s_axis_cartesian_tvalid,
   output s_axis_cartesian_tready;
   input [63:0]s_axis_cartesian_tdata;
   output m_axis_dout_tvalid;
-  output [15:0]m_axis_dout_tdata;
+  output [23:0]m_axis_dout_tdata;
 endmodule

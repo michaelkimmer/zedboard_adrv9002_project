@@ -32,7 +32,7 @@ preamble(length(short_seq_time)) = preamble(length(short_seq_time)) + short_seq_
 %% Set parameters
 % Set DATARATE
 %   6, 9, 12, 18, 24, 36, 48, and 54 (Support of 6, 12, and 24 data rates is mandatory.)
-DATARATE = 36; % --- 6: Coding rate 1/2, BPSK --- 36: Coding rate 3/4, 16-QAM ---
+DATARATE = 6; % --- 6: Coding rate 1/2, BPSK --- 36: Coding rate 3/4, 16-QAM ---
 
 %% Create SIGNAL symbol
 %   SIGNAL symbol is not scrambled
@@ -156,6 +156,27 @@ tx_signal(length(preamble)-1+length(SIGNAL_ofdm_modulated_signal)) = tx_signal(l
 % Write signal to file
 filename = "signal_802_11p.txt";
 writematrix(tx_signal.', filename);
+
+% Write signal to file -- in int16 + zero padded
+max_val = 2^14;
+padding = 100;
+filename_int = "signal_802_11p_int.txt";
+tx_signal_normed = max_val * tx_signal.'/ max(max(abs(real(tx_signal))), max(abs(imag(tx_signal))));
+tx_signal_int16 = int16([real(tx_signal_normed), imag(tx_signal_normed)]);
+
+tx_signal_int16_padded = [zeros(padding, 2); tx_signal_int16; zeros(padding, 2)];
+writematrix(tx_signal_int16_padded, filename_int);
+
+% Simulate freq offset
+f0 = 20e3; % set offset
+fs = 10e6;
+t = (0:length(tx_signal_normed)-1).'/fs;
+tx_signal_normed_rotated = tx_signal_normed .* exp(1i*2*pi*t*f0);
+tx_signal_rotated_int16 = int16([real(tx_signal_normed_rotated), imag(tx_signal_normed_rotated)]);
+
+filename_rotated_int = "signal_802_11p_rotated_int.txt";
+tx_signal_rotated_int16_padded = [zeros(padding, 2); tx_signal_rotated_int16; zeros(padding, 2)];
+writematrix(tx_signal_rotated_int16_padded, filename_rotated_int);
 
 %% Plot 
 % Whole signal

@@ -2,8 +2,8 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
--- Date        : Sun Apr  7 17:04:10 2024
--- Host        : ASUS_ROG running 64-bit major release  (build 9200)
+-- Date        : Fri Apr 12 17:26:26 2024
+-- Host        : lab817_01 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_atan_block_0_0/block_design_0_atan_block_0_0_sim_netlist.vhdl
 -- Design      : block_design_0_atan_block_0_0
@@ -19,14 +19,14 @@ entity block_design_0_atan_block_0_0_atan_block is
   port (
     ATAN_PHASE_OUT_STROBE : out STD_LOGIC;
     S_AXIS_CARTESIAN_tvalid : out STD_LOGIC;
-    ATAN_PHASE_OUT : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    ATAN_PHASE_OUT : out STD_LOGIC_VECTOR ( 19 downto 0 );
     S_AXIS_CARTESIAN_tdata : out STD_LOGIC_VECTOR ( 63 downto 0 );
     M_AXIS_DOUT_tvalid : in STD_LOGIC;
     CLOCK : in STD_LOGIC;
     RESET : in STD_LOGIC;
     ATAN_AUTOCORR_STROBE : in STD_LOGIC;
     S_AXIS_CARTESIAN_tready : in STD_LOGIC;
-    M_AXIS_DOUT_tdata : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    M_AXIS_DOUT_tdata : in STD_LOGIC_VECTOR ( 19 downto 0 );
     ATAN_AUTOCORR_I : in STD_LOGIC_VECTOR ( 31 downto 0 );
     ATAN_AUTOCORR_Q : in STD_LOGIC_VECTOR ( 31 downto 0 )
   );
@@ -194,6 +194,50 @@ ATAN_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDCE
       CLR => RESET,
       D => M_AXIS_DOUT_tdata(15),
       Q => ATAN_PHASE_OUT(15)
+    );
+\ATAN_PHASE_OUT_reg[16]\: unisim.vcomponents.FDCE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => M_AXIS_DOUT_tvalid,
+      CLR => RESET,
+      D => M_AXIS_DOUT_tdata(16),
+      Q => ATAN_PHASE_OUT(16)
+    );
+\ATAN_PHASE_OUT_reg[17]\: unisim.vcomponents.FDCE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => M_AXIS_DOUT_tvalid,
+      CLR => RESET,
+      D => M_AXIS_DOUT_tdata(17),
+      Q => ATAN_PHASE_OUT(17)
+    );
+\ATAN_PHASE_OUT_reg[18]\: unisim.vcomponents.FDCE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => M_AXIS_DOUT_tvalid,
+      CLR => RESET,
+      D => M_AXIS_DOUT_tdata(18),
+      Q => ATAN_PHASE_OUT(18)
+    );
+\ATAN_PHASE_OUT_reg[19]\: unisim.vcomponents.FDCE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => M_AXIS_DOUT_tvalid,
+      CLR => RESET,
+      D => M_AXIS_DOUT_tdata(19),
+      Q => ATAN_PHASE_OUT(19)
     );
 \ATAN_PHASE_OUT_reg[1]\: unisim.vcomponents.FDCE
     generic map(
@@ -1032,10 +1076,10 @@ entity block_design_0_atan_block_0_0 is
     ATAN_AUTOCORR_I : in STD_LOGIC_VECTOR ( 31 downto 0 );
     ATAN_AUTOCORR_Q : in STD_LOGIC_VECTOR ( 31 downto 0 );
     ATAN_PHASE_OUT_STROBE : out STD_LOGIC;
-    ATAN_PHASE_OUT : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    ATAN_PHASE_OUT : out STD_LOGIC_VECTOR ( 19 downto 0 );
     aclk : out STD_LOGIC;
     aresetn : out STD_LOGIC;
-    M_AXIS_DOUT_tdata : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    M_AXIS_DOUT_tdata : in STD_LOGIC_VECTOR ( 23 downto 0 );
     M_AXIS_DOUT_tvalid : in STD_LOGIC;
     S_AXIS_CARTESIAN_tdata : out STD_LOGIC_VECTOR ( 63 downto 0 );
     S_AXIS_CARTESIAN_tready : in STD_LOGIC;
@@ -1070,7 +1114,7 @@ architecture STRUCTURE of block_design_0_atan_block_0_0 is
   attribute x_interface_info of aresetn : signal is "xilinx.com:signal:reset:1.0 aresetn_intf RST";
   attribute x_interface_parameter of aresetn : signal is "XIL_INTERFACENAME aresetn_intf, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   attribute x_interface_info of M_AXIS_DOUT_tdata : signal is "xilinx.com:interface:axis:1.0 M_AXIS_DOUT TDATA";
-  attribute x_interface_parameter of M_AXIS_DOUT_tdata : signal is "XIL_INTERFACENAME M_AXIS_DOUT, TDATA_NUM_BYTES 2, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 0, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN block_design_atan_aclk_0, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_real {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value real} enabled {attribs {resolve_type generated dependency polar_mag_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_mag_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_mag_fractwidth format long minimum {} maximum {}} value -2} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}} field_phase {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase} enabled {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_phase_width format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type generated dependency polar_phase_offset format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_phase_fractwidth format long minimum {} maximum {}} value 13} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}}}}} TDATA_WIDTH 16 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_cartesian_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value cartesian_tuser} enabled {attribs {resolve_type generated dependency cart_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency cart_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_phase_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase_tuser} enabled {attribs {resolve_type generated dependency phase_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency phase_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency phase_offset format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}}}} TUSER_WIDTH 0}, INSERT_VIP 0";
+  attribute x_interface_parameter of M_AXIS_DOUT_tdata : signal is "XIL_INTERFACENAME M_AXIS_DOUT, TDATA_NUM_BYTES 3, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 0, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN block_design_atan_aclk_0, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 20} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_real {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value real} enabled {attribs {resolve_type generated dependency polar_mag_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_mag_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_mag_fractwidth format long minimum {} maximum {}} value -2} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}} field_phase {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase} enabled {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_phase_width format long minimum {} maximum {}} value 20} bitoffset {attribs {resolve_type generated dependency polar_phase_offset format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_phase_fractwidth format long minimum {} maximum {}} value 17} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}}}}} TDATA_WIDTH 24 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_cartesian_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value cartesian_tuser} enabled {attribs {resolve_type generated dependency cart_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency cart_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_phase_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase_tuser} enabled {attribs {resolve_type generated dependency phase_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency phase_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency phase_offset format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}}}} TUSER_WIDTH 0}, INSERT_VIP 0";
   attribute x_interface_info of S_AXIS_CARTESIAN_tdata : signal is "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA";
   attribute x_interface_parameter of S_AXIS_CARTESIAN_tdata : signal is "XIL_INTERFACENAME S_AXIS_CARTESIAN, TDATA_NUM_BYTES 8, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN block_design_atan_aclk_0, LAYERED_METADATA undef, INSERT_VIP 0";
 begin
@@ -1081,10 +1125,10 @@ U0: entity work.block_design_0_atan_block_0_0_atan_block
       ATAN_AUTOCORR_I(31 downto 0) => ATAN_AUTOCORR_I(31 downto 0),
       ATAN_AUTOCORR_Q(31 downto 0) => ATAN_AUTOCORR_Q(31 downto 0),
       ATAN_AUTOCORR_STROBE => ATAN_AUTOCORR_STROBE,
-      ATAN_PHASE_OUT(15 downto 0) => ATAN_PHASE_OUT(15 downto 0),
+      ATAN_PHASE_OUT(19 downto 0) => ATAN_PHASE_OUT(19 downto 0),
       ATAN_PHASE_OUT_STROBE => ATAN_PHASE_OUT_STROBE,
       CLOCK => \^clock\,
-      M_AXIS_DOUT_tdata(15 downto 0) => M_AXIS_DOUT_tdata(15 downto 0),
+      M_AXIS_DOUT_tdata(19 downto 0) => M_AXIS_DOUT_tdata(19 downto 0),
       M_AXIS_DOUT_tvalid => M_AXIS_DOUT_tvalid,
       RESET => RESET,
       S_AXIS_CARTESIAN_tdata(63 downto 0) => S_AXIS_CARTESIAN_tdata(63 downto 0),

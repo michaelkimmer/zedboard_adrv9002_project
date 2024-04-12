@@ -4588,7 +4588,7 @@
       },
       "IP_802_11p_0": {
         "vlnv": "xilinx.com:user:IP_802_11p:1.0",
-        "ip_revision": "6",
+        "ip_revision": "7",
         "xci_name": "system_IP_802_11p_0_0",
         "xci_path": "ip\\system_IP_802_11p_0_0\\system_IP_802_11p_0_0.xci",
         "inst_hier_path": "IP_802_11p_0"
@@ -5555,9 +5555,9 @@
           "axi_iic_main/s_axi_aclk",
           "sys_rstgen/slowest_sync_clk",
           "axi_cpu_interconnect/M13_ACLK",
+          "axi_adrv9001/s_axi_aclk",
           "IP_802_11p_0/CLOCK",
-          "IP_802_11p_0/s00_axi_aclk",
-          "axi_adrv9001/s_axi_aclk"
+          "IP_802_11p_0/s00_axi_aclk"
         ]
       },
       "sys_cpu_reset": {
@@ -5607,8 +5607,8 @@
           "axi_iic_main/s_axi_aresetn",
           "sys_audio_clkgen/resetn",
           "axi_cpu_interconnect/M13_ARESETN",
-          "IP_802_11p_0/s00_axi_aresetn",
-          "axi_adrv9001/s_axi_aresetn"
+          "axi_adrv9001/s_axi_aresetn",
+          "IP_802_11p_0/s00_axi_aresetn"
         ]
       },
       "sys_i2c_mixer_downstream_scl_O": {

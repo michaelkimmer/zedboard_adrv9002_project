@@ -8,7 +8,7 @@
 					"ports": {
 						"ACLK": { "actual": "aclk"},
 						"ARESETN": { "actual": "aresetn"},
-						"TDATA": { "actual": "M_AXIS_DOUT_tdata[15:0]"},
+						"TDATA": { "actual": "M_AXIS_DOUT_tdata[23:0]"},
 						"TVALID": { "actual": "M_AXIS_DOUT_tvalid"}
 					}
 				},
@@ -27,7 +27,7 @@
 					"ports": {
 						"ACLK": { "actual": "aclk"},
 						"ARESETN": { "actual": "aresetn"},
-						"TDATA": { "actual": "m_axis_dout_tdata[15:0]"},
+						"TDATA": { "actual": "m_axis_dout_tdata[23:0]"},
 						"TVALID": { "actual": "m_axis_dout_tvalid"}
 					}
 				},

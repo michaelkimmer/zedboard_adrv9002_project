@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x1F5D2432DF2B9BC6",
+      "boundary_crc": "0x742B26E26260AF40",
       "device": "xc7z020clg484-1",
       "gen_directory": "../../../../edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0",
       "name": "block_design_0",
@@ -16,7 +16,6 @@
       "data_delay_0": "",
       "act_power_0": "",
       "timing_acquisition_8_0": "",
-      "receiver_802_11p_0": "",
       "hier_fft_ofdm": {
         "fft_ofdm_0": "",
         "xfft_0": ""
@@ -29,7 +28,9 @@
         "rotation_block_0": "",
         "cordic_0": ""
       },
-      "ila_0": ""
+      "ila_0": "",
+      "equalizer_time_frequ_0": "",
+      "axi_regs_mux_0": ""
     },
     "ports": {
       "RESET": {
@@ -157,12 +158,17 @@
         "direction": "O",
         "left": "31",
         "right": "0"
+      },
+      "SELECT_AXI_REGS_MODE": {
+        "direction": "I",
+        "left": "7",
+        "right": "0"
       }
     },
     "components": {
       "rx_clock_domain_cros_0": {
         "vlnv": "xilinx.com:module_ref:rx_clock_domain_crossing:1.0",
-        "ip_revision": "1712449417",
+        "ip_revision": "1712601684",
         "xci_name": "block_design_0_rx_clock_domain_cros_0_0",
         "xci_path": "ip\\block_design_0_rx_clock_domain_cros_0_0\\block_design_0_rx_clock_domain_cros_0_0.xci",
         "inst_hier_path": "rx_clock_domain_cros_0",
@@ -245,7 +251,7 @@
       },
       "data_interleaver_0": {
         "vlnv": "xilinx.com:module_ref:data_interleaver:1.0",
-        "ip_revision": "1712410417",
+        "ip_revision": "1712601686",
         "xci_name": "block_design_0_data_interleaver_0_0",
         "xci_path": "ip\\block_design_0_data_interleaver_0_0\\block_design_0_data_interleaver_0_0.xci",
         "inst_hier_path": "data_interleaver_0",
@@ -303,7 +309,7 @@
       },
       "data_delay_0": {
         "vlnv": "xilinx.com:module_ref:data_delay:1.0",
-        "ip_revision": "1712410460",
+        "ip_revision": "1712601686",
         "xci_name": "block_design_0_data_delay_0_0",
         "xci_path": "ip\\block_design_0_data_delay_0_0\\block_design_0_data_delay_0_0.xci",
         "inst_hier_path": "data_delay_0",
@@ -391,7 +397,7 @@
       },
       "act_power_0": {
         "vlnv": "xilinx.com:module_ref:act_power:1.0",
-        "ip_revision": "1712410496",
+        "ip_revision": "1712601685",
         "xci_name": "block_design_0_act_power_0_0",
         "xci_path": "ip\\block_design_0_act_power_0_0\\block_design_0_act_power_0_0.xci",
         "inst_hier_path": "act_power_0",
@@ -441,7 +447,7 @@
       },
       "timing_acquisition_8_0": {
         "vlnv": "xilinx.com:module_ref:timing_acquisition_802_11p:1.0",
-        "ip_revision": "1712410626",
+        "ip_revision": "1712601687",
         "xci_name": "block_design_0_timing_acquisition_8_0_0",
         "xci_path": "ip\\block_design_0_timing_acquisition_8_0_0\\block_design_0_timing_acquisition_8_0_0.xci",
         "inst_hier_path": "timing_acquisition_8_0",
@@ -535,173 +541,6 @@
           }
         }
       },
-      "receiver_802_11p_0": {
-        "vlnv": "xilinx.com:module_ref:receiver_802_11p:1.0",
-        "ip_revision": "1712502752",
-        "xci_name": "block_design_0_receiver_802_11p_0_0",
-        "xci_path": "ip\\block_design_0_receiver_802_11p_0_0\\block_design_0_receiver_802_11p_0_0.xci",
-        "inst_hier_path": "receiver_802_11p_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "receiver_802_11p",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "RESET": {
-            "type": "rst",
-            "direction": "I"
-          },
-          "CLOCK": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "ASSOCIATED_RESET": {
-                "value": "RESET",
-                "value_src": "constant"
-              },
-              "CLK_DOMAIN": {
-                "value": "block_design_0_CLOCK",
-                "value_src": "default_prop"
-              }
-            }
-          },
-          "IDATA_IN": {
-            "direction": "I",
-            "left": "15",
-            "right": "0"
-          },
-          "QDATA_IN": {
-            "direction": "I",
-            "left": "15",
-            "right": "0"
-          },
-          "DATA_IN_STROBE": {
-            "direction": "I"
-          },
-          "DETECTION_STROBE": {
-            "direction": "I"
-          },
-          "DETECTION_SIGNAL_DETECTED": {
-            "direction": "I"
-          },
-          "DETECTION_STS_AUTOCORR_I": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "DETECTION_STS_AUTOCORR_Q": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "FPGA_REG_WRITE_STROBE": {
-            "direction": "O"
-          },
-          "FPGA_REG_WRITE_ADDRESS": {
-            "direction": "O",
-            "left": "8",
-            "right": "0"
-          },
-          "FPGA_REG_WRITE_DATA": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "ATAN_AUTOCORR_STROBE": {
-            "direction": "O"
-          },
-          "ATAN_AUTOCORR_I": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "ATAN_AUTOCORR_Q": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "ATAN_PHASE_OUT_STROBE": {
-            "direction": "I"
-          },
-          "ATAN_PHASE_OUT": {
-            "direction": "I",
-            "left": "15",
-            "right": "0"
-          },
-          "ROTATION_DATA_IN_STROBE": {
-            "direction": "O"
-          },
-          "ROTATION_DATA_IN_MARKER": {
-            "direction": "O"
-          },
-          "ROTATION_IDATA_IN": {
-            "direction": "O",
-            "left": "15",
-            "right": "0"
-          },
-          "ROTATION_QDATA_IN": {
-            "direction": "O",
-            "left": "15",
-            "right": "0"
-          },
-          "ROTATION_PHASE_NEW_DIFF_STROBE": {
-            "direction": "O"
-          },
-          "ROTATION_PHASE_NEW_DIFF": {
-            "direction": "O",
-            "left": "15",
-            "right": "0"
-          },
-          "ROTATION_DATA_OUT_STROBE": {
-            "direction": "I"
-          },
-          "ROTATION_DATA_OUT_MARKER": {
-            "direction": "I"
-          },
-          "ROTATION_IDATA_OUT": {
-            "direction": "I",
-            "left": "15",
-            "right": "0"
-          },
-          "ROTATION_QDATA_OUT": {
-            "direction": "I",
-            "left": "15",
-            "right": "0"
-          },
-          "FFT_IDATA_IN": {
-            "direction": "O",
-            "left": "15",
-            "right": "0"
-          },
-          "FFT_QDATA_IN": {
-            "direction": "O",
-            "left": "15",
-            "right": "0"
-          },
-          "FFT_DATA_IN_STROBE": {
-            "direction": "O"
-          },
-          "FFT_DATA_IN_START": {
-            "direction": "O"
-          },
-          "FFT_IDATA_OUT": {
-            "direction": "I",
-            "left": "23",
-            "right": "0"
-          },
-          "FFT_QDATA_OUT": {
-            "direction": "I",
-            "left": "23",
-            "right": "0"
-          },
-          "FFT_DATA_OUT_VALID": {
-            "direction": "I"
-          },
-          "FFT_DATA_OUT_LAST": {
-            "direction": "I"
-          }
-        }
-      },
       "hier_fft_ofdm": {
         "ports": {
           "RESET": {
@@ -743,12 +582,34 @@
           },
           "FFT_DATA_OUT_LAST": {
             "direction": "O"
+          },
+          "event_frame_started": {
+            "type": "intr",
+            "direction": "O"
+          },
+          "event_tlast_unexpected": {
+            "type": "intr",
+            "direction": "O"
+          },
+          "event_tlast_missing": {
+            "type": "intr",
+            "direction": "O"
+          },
+          "event_data_in_channel_halt": {
+            "type": "intr",
+            "direction": "O"
+          },
+          "FFT_DATA_IN_FIRST_SYMBOL_MARKER": {
+            "direction": "I"
+          },
+          "FFT_DATA_OUT_FIRST_SYMBOL_MARKER": {
+            "direction": "O"
           }
         },
         "components": {
           "fft_ofdm_0": {
             "vlnv": "xilinx.com:module_ref:fft_ofdm:1.0",
-            "ip_revision": "1712502754",
+            "ip_revision": "1712935385",
             "xci_name": "block_design_0_fft_ofdm_0_1",
             "xci_path": "ip\\block_design_0_fft_ofdm_0_1\\block_design_0_fft_ofdm_0_1.xci",
             "inst_hier_path": "hier_fft_ofdm/fft_ofdm_0",
@@ -1048,6 +909,9 @@
               "FFT_DATA_IN_START": {
                 "direction": "I"
               },
+              "FFT_DATA_IN_FIRST_SYMBOL_MARKER": {
+                "direction": "I"
+              },
               "FFT_IDATA_OUT": {
                 "direction": "O",
                 "left": "23",
@@ -1062,6 +926,9 @@
                 "direction": "O"
               },
               "FFT_DATA_OUT_LAST": {
+                "direction": "O"
+              },
+              "FFT_DATA_OUT_FIRST_SYMBOL_MARKER": {
                 "direction": "O"
               },
               "aclk": {
@@ -1176,6 +1043,12 @@
           }
         },
         "nets": {
+          "FFT_DATA_IN_FIRST_SYMBOL_MARKER_1": {
+            "ports": [
+              "FFT_DATA_IN_FIRST_SYMBOL_MARKER",
+              "fft_ofdm_0/FFT_DATA_IN_FIRST_SYMBOL_MARKER"
+            ]
+          },
           "Net": {
             "ports": [
               "RESET",
@@ -1186,6 +1059,12 @@
             "ports": [
               "CLOCK",
               "fft_ofdm_0/CLOCK"
+            ]
+          },
+          "fft_ofdm_0_FFT_DATA_OUT_FIRST_SYMBOL_MARKER": {
+            "ports": [
+              "fft_ofdm_0/FFT_DATA_OUT_FIRST_SYMBOL_MARKER",
+              "FFT_DATA_OUT_FIRST_SYMBOL_MARKER"
             ]
           },
           "fft_ofdm_0_FFT_DATA_OUT_LAST": {
@@ -1247,6 +1126,30 @@
               "FFT_QDATA_IN",
               "fft_ofdm_0/FFT_QDATA_IN"
             ]
+          },
+          "xfft_0_event_data_in_channel_halt": {
+            "ports": [
+              "xfft_0/event_data_in_channel_halt",
+              "event_data_in_channel_halt"
+            ]
+          },
+          "xfft_0_event_frame_started": {
+            "ports": [
+              "xfft_0/event_frame_started",
+              "event_frame_started"
+            ]
+          },
+          "xfft_0_event_tlast_missing": {
+            "ports": [
+              "xfft_0/event_tlast_missing",
+              "event_tlast_missing"
+            ]
+          },
+          "xfft_0_event_tlast_unexpected": {
+            "ports": [
+              "xfft_0/event_tlast_unexpected",
+              "event_tlast_unexpected"
+            ]
           }
         }
       },
@@ -1278,7 +1181,7 @@
           },
           "ATAN_PHASE_OUT": {
             "direction": "O",
-            "left": "15",
+            "left": "19",
             "right": "0"
           }
         },
@@ -1306,7 +1209,7 @@
                 "value": "32"
               },
               "Output_Width": {
-                "value": "16"
+                "value": "20"
               },
               "Phase_Format": {
                 "value": "Scaled_Radians"
@@ -1318,7 +1221,7 @@
           },
           "atan_block_0": {
             "vlnv": "xilinx.com:module_ref:atan_block:1.0",
-            "ip_revision": "1712502067",
+            "ip_revision": "1712935385",
             "xci_name": "block_design_0_atan_block_0_0",
             "xci_path": "ip\\block_design_0_atan_block_0_0\\block_design_0_atan_block_0_0.xci",
             "inst_hier_path": "hier_atan/atan_block_0",
@@ -1334,7 +1237,7 @@
                 "vlnv": "xilinx.com:interface:axis_rtl:1.0",
                 "parameters": {
                   "TDATA_NUM_BYTES": {
-                    "value": "2",
+                    "value": "3",
                     "value_src": "constant"
                   },
                   "TDEST_WIDTH": {
@@ -1373,15 +1276,15 @@
                     "value": [
                       "xilinx.com:interface:datatypes:1.0 {",
                       "TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {}",
-                      "maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_real {name {attribs {resolve_type immediate dependency {}",
+                      "maximum {}} value 20} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_real {name {attribs {resolve_type immediate dependency {}",
                       "format string minimum {} maximum {}} value real} enabled {attribs {resolve_type generated dependency polar_mag_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs",
                       "{resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_mag_width format long minimum {} maximum {}} value 0}",
                       "bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_mag_fractwidth format",
                       "long minimum {} maximum {}} value -2} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}} field_phase {name {attribs {resolve_type immediate",
                       "dependency {} format string minimum {} maximum {}} value phase} enabled {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true} datatype {name {attribs",
-                      "{resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_phase_width format long minimum {} maximum {}} value 16}",
+                      "{resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_phase_width format long minimum {} maximum {}} value 20}",
                       "bitoffset {attribs {resolve_type generated dependency polar_phase_offset format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency",
-                      "polar_phase_fractwidth format long minimum {} maximum {}} value 13} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}}}}} TDATA_WIDTH 16 TUSER",
+                      "polar_phase_fractwidth format long minimum {} maximum {}} value 17} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}}}}} TDATA_WIDTH 24 TUSER",
                       "{datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}}",
                       "value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_cartesian_tuser {name {attribs {resolve_type immediate dependency {} format",
                       "string minimum {} maximum {}} value cartesian_tuser} enabled {attribs {resolve_type generated dependency cart_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs",
@@ -1400,7 +1303,7 @@
                   "TDATA": {
                     "physical_name": "M_AXIS_DOUT_tdata",
                     "direction": "I",
-                    "left": "15",
+                    "left": "23",
                     "right": "0"
                   },
                   "TVALID": {
@@ -1518,7 +1421,7 @@
               },
               "ATAN_PHASE_OUT": {
                 "direction": "O",
-                "left": "15",
+                "left": "19",
                 "right": "0"
               },
               "aclk": {
@@ -1678,7 +1581,7 @@
           },
           "ROTATION_PHASE_NEW_DIFF": {
             "direction": "I",
-            "left": "15",
+            "left": "19",
             "right": "0"
           },
           "ROTATION_DATA_OUT_STROBE": {
@@ -1701,7 +1604,7 @@
         "components": {
           "rotation_block_0": {
             "vlnv": "xilinx.com:module_ref:rotation_block:1.0",
-            "ip_revision": "1712502069",
+            "ip_revision": "1712935385",
             "xci_name": "block_design_0_rotation_block_0_0",
             "xci_path": "ip\\block_design_0_rotation_block_0_0\\block_design_0_rotation_block_0_0.xci",
             "inst_hier_path": "hier_rotation/rotation_block_0",
@@ -1974,7 +1877,7 @@
               },
               "ROTATION_PHASE_NEW_DIFF": {
                 "direction": "I",
-                "left": "15",
+                "left": "19",
                 "right": "0"
               },
               "ROTATION_DATA_OUT_STROBE": {
@@ -2056,6 +1959,12 @@
             "parameters": {
               "ARESETN": {
                 "value": "true"
+              },
+              "Input_Width": {
+                "value": "16"
+              },
+              "Output_Width": {
+                "value": "16"
               },
               "Phase_Format": {
                 "value": "Scaled_Radians"
@@ -2187,7 +2096,7 @@
             "value": "Native"
           },
           "C_NUM_OF_PROBES": {
-            "value": "15"
+            "value": "29"
           },
           "C_PROBE11_WIDTH": {
             "value": "32"
@@ -2196,10 +2105,22 @@
             "value": "32"
           },
           "C_PROBE14_WIDTH": {
+            "value": "20"
+          },
+          "C_PROBE17_WIDTH": {
+            "value": "16"
+          },
+          "C_PROBE18_WIDTH": {
             "value": "16"
           },
           "C_PROBE1_WIDTH": {
             "value": "16"
+          },
+          "C_PROBE21_WIDTH": {
+            "value": "24"
+          },
+          "C_PROBE22_WIDTH": {
+            "value": "24"
           },
           "C_PROBE2_WIDTH": {
             "value": "16"
@@ -2220,22 +2141,268 @@
             "value": "24"
           }
         }
+      },
+      "equalizer_time_frequ_0": {
+        "vlnv": "xilinx.com:module_ref:equalizer_time_frequency:1.0",
+        "ip_revision": "1712923017",
+        "xci_name": "block_design_0_equalizer_time_frequ_0_0",
+        "xci_path": "ip\\block_design_0_equalizer_time_frequ_0_0\\block_design_0_equalizer_time_frequ_0_0.xci",
+        "inst_hier_path": "equalizer_time_frequ_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "equalizer_time_frequency",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "RESET": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "CLOCK": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "RESET",
+                "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "block_design_0_CLOCK",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "IDATA_IN": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "QDATA_IN": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "DATA_IN_STROBE": {
+            "direction": "I"
+          },
+          "DETECTION_STROBE": {
+            "direction": "I"
+          },
+          "DETECTION_SIGNAL_DETECTED": {
+            "direction": "I"
+          },
+          "DETECTION_STS_AUTOCORR_I": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "DETECTION_STS_AUTOCORR_Q": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "FPGA_REG_WRITE_STROBE_PHASE_1": {
+            "direction": "O"
+          },
+          "FPGA_REG_WRITE_STROBE_PHASE_2": {
+            "direction": "O"
+          },
+          "FPGA_REG_WRITE_DATA": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "STOP_RX_DONE": {
+            "direction": "I"
+          },
+          "ATAN_AUTOCORR_STROBE": {
+            "direction": "O"
+          },
+          "ATAN_AUTOCORR_I": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "ATAN_AUTOCORR_Q": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "ATAN_PHASE_OUT_STROBE": {
+            "direction": "I"
+          },
+          "ATAN_PHASE_OUT": {
+            "direction": "I",
+            "left": "19",
+            "right": "0"
+          },
+          "ROTATION_DATA_IN_STROBE": {
+            "direction": "O"
+          },
+          "ROTATION_DATA_IN_MARKER": {
+            "direction": "O"
+          },
+          "ROTATION_IDATA_IN": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "ROTATION_QDATA_IN": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "ROTATION_PHASE_NEW_DIFF_STROBE": {
+            "direction": "O"
+          },
+          "ROTATION_PHASE_NEW_DIFF": {
+            "direction": "O",
+            "left": "19",
+            "right": "0"
+          },
+          "ROTATION_DATA_OUT_STROBE": {
+            "direction": "I"
+          },
+          "ROTATION_DATA_OUT_MARKER": {
+            "direction": "I"
+          },
+          "ROTATION_IDATA_OUT": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "ROTATION_QDATA_OUT": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "FFT_IDATA_IN": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "FFT_QDATA_IN": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "FFT_DATA_IN_STROBE": {
+            "direction": "O"
+          },
+          "FFT_DATA_IN_START": {
+            "direction": "O"
+          },
+          "FFT_DATA_IN_FIRST_SYMBOL_MARKER": {
+            "direction": "O"
+          }
+        }
+      },
+      "axi_regs_mux_0": {
+        "vlnv": "xilinx.com:module_ref:axi_regs_mux:1.0",
+        "ip_revision": "1712932417",
+        "xci_name": "block_design_0_axi_regs_mux_0_0",
+        "xci_path": "ip\\block_design_0_axi_regs_mux_0_0\\block_design_0_axi_regs_mux_0_0.xci",
+        "inst_hier_path": "axi_regs_mux_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "axi_regs_mux",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "RESET": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "CLOCK": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "RESET",
+                "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "block_design_0_CLOCK",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "SELECT_AXI_REGS_MODE": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "EQUALIZER_REG_WRITE_STROBE_PHASE_1": {
+            "direction": "I"
+          },
+          "EQUALIZER_REG_WRITE_STROBE_PHASE_2": {
+            "direction": "I"
+          },
+          "EQUALIZER_REG_WRITE_DATA": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "DATA_STROBE": {
+            "direction": "I"
+          },
+          "IDATA": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "QDATA": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "FFT_IDATA": {
+            "direction": "I",
+            "left": "23",
+            "right": "0"
+          },
+          "FFT_QDATA": {
+            "direction": "I",
+            "left": "23",
+            "right": "0"
+          },
+          "FFT_DATA_VALID": {
+            "direction": "I"
+          },
+          "FFT_DATA_FIRST_SYMBOL_MARKER": {
+            "direction": "I"
+          },
+          "FPGA_REG_WRITE_ADDRESS": {
+            "direction": "O",
+            "left": "8",
+            "right": "0"
+          },
+          "FPGA_REG_WRITE_DATA": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "FPGA_REG_WRITE_STROBE": {
+            "direction": "O"
+          }
+        }
       }
     },
     "nets": {
       "CLOCK_0_1": {
         "ports": [
           "CLOCK",
-          "data_interleaver_0/CLOCK",
-          "data_delay_0/CLOCK",
-          "act_power_0/CLOCK",
-          "timing_acquisition_8_0/CLOCK",
-          "rx_clock_domain_cros_0/CLOCK",
           "hier_fft_ofdm/CLOCK",
           "hier_atan/CLOCK",
           "hier_rotation/CLOCK",
-          "ila_0/clk",
-          "receiver_802_11p_0/CLOCK"
+          "rx_clock_domain_cros_0/CLOCK",
+          "act_power_0/CLOCK",
+          "data_interleaver_0/CLOCK",
+          "data_delay_0/CLOCK",
+          "timing_acquisition_8_0/CLOCK",
+          "equalizer_time_frequ_0/CLOCK",
+          "axi_regs_mux_0/CLOCK",
+          "ila_0/clk"
         ]
       },
       "DETECTION_THRESHOLD_0_1": {
@@ -2247,15 +2414,16 @@
       "RESET_0_1": {
         "ports": [
           "RESET",
-          "data_interleaver_0/RESET",
-          "data_delay_0/RESET",
-          "act_power_0/RESET",
-          "timing_acquisition_8_0/RESET",
-          "rx_clock_domain_cros_0/RESET",
           "hier_fft_ofdm/RESET",
           "hier_atan/RESET",
           "hier_rotation/RESET",
-          "receiver_802_11p_0/RESET"
+          "rx_clock_domain_cros_0/RESET",
+          "act_power_0/RESET",
+          "data_interleaver_0/RESET",
+          "data_delay_0/RESET",
+          "timing_acquisition_8_0/RESET",
+          "equalizer_time_frequ_0/RESET",
+          "axi_regs_mux_0/RESET"
         ]
       },
       "RX_CLOCK_0_1": {
@@ -2294,6 +2462,12 @@
           "rx_clock_domain_cros_0/RX_VALID"
         ]
       },
+      "SELECT_AXI_REGS_MODE_0_1": {
+        "ports": [
+          "SELECT_AXI_REGS_MODE",
+          "axi_regs_mux_0/SELECT_AXI_REGS_MODE"
+        ]
+      },
       "act_power_0_POWER": {
         "ports": [
           "act_power_0/POWER",
@@ -2301,13 +2475,26 @@
           "ila_0/probe5"
         ]
       },
+      "axi_regs_mux_0_FPGA_REG_WRITE_DATA": {
+        "ports": [
+          "axi_regs_mux_0/FPGA_REG_WRITE_DATA",
+          "FPGA_REG_WRITE_DATA"
+        ]
+      },
+      "axi_regs_mux_0_FPGA_REG_WRITE_STROBE": {
+        "ports": [
+          "axi_regs_mux_0/FPGA_REG_WRITE_STROBE",
+          "FPGA_REG_WRITE_STROBE"
+        ]
+      },
       "data_delay_0_DATA_OUT_STROBE": {
         "ports": [
           "data_delay_0/DATA_OUT_STROBE",
           "act_power_0/DATA_STROBE",
           "timing_acquisition_8_0/DATA_STROBE",
-          "ila_0/probe0",
-          "receiver_802_11p_0/DATA_IN_STROBE"
+          "equalizer_time_frequ_0/DATA_IN_STROBE",
+          "axi_regs_mux_0/DATA_STROBE",
+          "ila_0/probe0"
         ]
       },
       "data_delay_0_IDATA_OUT": {
@@ -2315,8 +2502,9 @@
           "data_delay_0/IDATA_OUT",
           "act_power_0/IDATA",
           "timing_acquisition_8_0/IDATA",
-          "ila_0/probe1",
-          "receiver_802_11p_0/IDATA_IN"
+          "equalizer_time_frequ_0/IDATA_IN",
+          "axi_regs_mux_0/IDATA",
+          "ila_0/probe1"
         ]
       },
       "data_delay_0_IDATA_OUT_DELAY_16": {
@@ -2337,8 +2525,9 @@
           "data_delay_0/QDATA_OUT",
           "act_power_0/QDATA",
           "timing_acquisition_8_0/QDATA",
-          "ila_0/probe2",
-          "receiver_802_11p_0/QDATA_IN"
+          "equalizer_time_frequ_0/QDATA_IN",
+          "axi_regs_mux_0/QDATA",
+          "ila_0/probe2"
         ]
       },
       "data_delay_0_QDATA_OUT_DELAY_16": {
@@ -2372,165 +2561,216 @@
           "data_delay_0/QDATA_IN"
         ]
       },
+      "equalizer_time_frequ_0_FFT_DATA_IN_FIRST_SYMBOL_MARKER": {
+        "ports": [
+          "equalizer_time_frequ_0/FFT_DATA_IN_FIRST_SYMBOL_MARKER",
+          "hier_fft_ofdm/FFT_DATA_IN_FIRST_SYMBOL_MARKER",
+          "ila_0/probe28"
+        ]
+      },
+      "equalizer_time_frequ_0_FPGA_REG_WRITE_DATA": {
+        "ports": [
+          "equalizer_time_frequ_0/FPGA_REG_WRITE_DATA",
+          "axi_regs_mux_0/EQUALIZER_REG_WRITE_DATA"
+        ]
+      },
+      "equalizer_time_frequ_0_FPGA_REG_WRITE_STROBE_PHASE_1": {
+        "ports": [
+          "equalizer_time_frequ_0/FPGA_REG_WRITE_STROBE_PHASE_1",
+          "axi_regs_mux_0/EQUALIZER_REG_WRITE_STROBE_PHASE_1"
+        ]
+      },
+      "equalizer_time_frequ_0_FPGA_REG_WRITE_STROBE_PHASE_2": {
+        "ports": [
+          "equalizer_time_frequ_0/FPGA_REG_WRITE_STROBE_PHASE_2",
+          "axi_regs_mux_0/EQUALIZER_REG_WRITE_STROBE_PHASE_2"
+        ]
+      },
+      "equalizer_time_frequ_0_ROTATION_DATA_IN_MARKER": {
+        "ports": [
+          "equalizer_time_frequ_0/ROTATION_DATA_IN_MARKER",
+          "hier_rotation/ROTATION_DATA_IN_MARKER"
+        ]
+      },
+      "equalizer_time_frequ_0_ROTATION_DATA_IN_STROBE": {
+        "ports": [
+          "equalizer_time_frequ_0/ROTATION_DATA_IN_STROBE",
+          "hier_rotation/ROTATION_DATA_IN_STROBE"
+        ]
+      },
+      "equalizer_time_frequ_0_ROTATION_IDATA_IN": {
+        "ports": [
+          "equalizer_time_frequ_0/ROTATION_IDATA_IN",
+          "hier_rotation/ROTATION_IDATA_IN"
+        ]
+      },
+      "equalizer_time_frequ_0_ROTATION_PHASE_NEW_DIFF": {
+        "ports": [
+          "equalizer_time_frequ_0/ROTATION_PHASE_NEW_DIFF",
+          "hier_rotation/ROTATION_PHASE_NEW_DIFF"
+        ]
+      },
+      "equalizer_time_frequ_0_ROTATION_PHASE_NEW_DIFF_STROBE": {
+        "ports": [
+          "equalizer_time_frequ_0/ROTATION_PHASE_NEW_DIFF_STROBE",
+          "hier_rotation/ROTATION_PHASE_NEW_DIFF_STROBE"
+        ]
+      },
+      "equalizer_time_frequ_0_ROTATION_QDATA_IN": {
+        "ports": [
+          "equalizer_time_frequ_0/ROTATION_QDATA_IN",
+          "hier_rotation/ROTATION_QDATA_IN"
+        ]
+      },
       "fft_ofdm_0_FFT_DATA_OUT_LAST": {
         "ports": [
           "hier_fft_ofdm/FFT_DATA_OUT_LAST",
-          "receiver_802_11p_0/FFT_DATA_OUT_LAST"
+          "ila_0/probe20"
         ]
       },
       "fft_ofdm_0_FFT_DATA_OUT_VALID": {
         "ports": [
           "hier_fft_ofdm/FFT_DATA_OUT_VALID",
-          "receiver_802_11p_0/FFT_DATA_OUT_VALID"
+          "axi_regs_mux_0/FFT_DATA_VALID",
+          "ila_0/probe19"
         ]
       },
       "fft_ofdm_0_FFT_IDATA_OUT": {
         "ports": [
           "hier_fft_ofdm/FFT_IDATA_OUT",
-          "receiver_802_11p_0/FFT_IDATA_OUT"
+          "axi_regs_mux_0/FFT_IDATA",
+          "ila_0/probe21"
         ]
       },
       "fft_ofdm_0_FFT_QDATA_OUT": {
         "ports": [
           "hier_fft_ofdm/FFT_QDATA_OUT",
-          "receiver_802_11p_0/FFT_QDATA_OUT"
+          "axi_regs_mux_0/FFT_QDATA",
+          "ila_0/probe22"
         ]
       },
       "hier_atan_ATAN_PHASE_OUT": {
         "ports": [
           "hier_atan/ATAN_PHASE_OUT",
-          "ila_0/probe14",
-          "receiver_802_11p_0/ATAN_PHASE_OUT"
+          "equalizer_time_frequ_0/ATAN_PHASE_OUT",
+          "ila_0/probe14"
         ]
       },
       "hier_atan_ATAN_PHASE_OUT_STROBE": {
         "ports": [
           "hier_atan/ATAN_PHASE_OUT_STROBE",
-          "ila_0/probe13",
-          "receiver_802_11p_0/ATAN_PHASE_OUT_STROBE"
+          "equalizer_time_frequ_0/ATAN_PHASE_OUT_STROBE",
+          "ila_0/probe13"
+        ]
+      },
+      "hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER": {
+        "ports": [
+          "hier_fft_ofdm/FFT_DATA_OUT_FIRST_SYMBOL_MARKER",
+          "axi_regs_mux_0/FFT_DATA_FIRST_SYMBOL_MARKER",
+          "ila_0/probe27"
+        ]
+      },
+      "hier_fft_ofdm_event_data_in_channel_halt": {
+        "ports": [
+          "hier_fft_ofdm/event_data_in_channel_halt",
+          "ila_0/probe26"
+        ]
+      },
+      "hier_fft_ofdm_event_frame_started": {
+        "ports": [
+          "hier_fft_ofdm/event_frame_started",
+          "ila_0/probe23"
+        ]
+      },
+      "hier_fft_ofdm_event_tlast_missing": {
+        "ports": [
+          "hier_fft_ofdm/event_tlast_missing",
+          "ila_0/probe25"
+        ]
+      },
+      "hier_fft_ofdm_event_tlast_unexpected": {
+        "ports": [
+          "hier_fft_ofdm/event_tlast_unexpected",
+          "ila_0/probe24"
         ]
       },
       "receiver_802_11p_0_ATAN_AUTOCORR_I": {
         "ports": [
-          "receiver_802_11p_0/ATAN_AUTOCORR_I",
+          "equalizer_time_frequ_0/ATAN_AUTOCORR_I",
           "hier_atan/ATAN_AUTOCORR_I",
           "ila_0/probe11"
         ]
       },
       "receiver_802_11p_0_ATAN_AUTOCORR_Q": {
         "ports": [
-          "receiver_802_11p_0/ATAN_AUTOCORR_Q",
+          "equalizer_time_frequ_0/ATAN_AUTOCORR_Q",
           "hier_atan/ATAN_AUTOCORR_Q",
           "ila_0/probe12"
         ]
       },
       "receiver_802_11p_0_ATAN_AUTOCORR_STROBE": {
         "ports": [
-          "receiver_802_11p_0/ATAN_AUTOCORR_STROBE",
+          "equalizer_time_frequ_0/ATAN_AUTOCORR_STROBE",
           "hier_atan/ATAN_AUTOCORR_STROBE",
           "ila_0/probe10"
         ]
       },
       "receiver_802_11p_0_FFT_DATA_IN_START": {
         "ports": [
-          "receiver_802_11p_0/FFT_DATA_IN_START",
-          "hier_fft_ofdm/FFT_DATA_IN_START"
+          "equalizer_time_frequ_0/FFT_DATA_IN_START",
+          "hier_fft_ofdm/FFT_DATA_IN_START",
+          "ila_0/probe16"
         ]
       },
       "receiver_802_11p_0_FFT_DATA_IN_STROBE": {
         "ports": [
-          "receiver_802_11p_0/FFT_DATA_IN_STROBE",
-          "hier_fft_ofdm/FFT_DATA_IN_STROBE"
+          "equalizer_time_frequ_0/FFT_DATA_IN_STROBE",
+          "hier_fft_ofdm/FFT_DATA_IN_STROBE",
+          "ila_0/probe15"
         ]
       },
       "receiver_802_11p_0_FFT_IDATA_IN": {
         "ports": [
-          "receiver_802_11p_0/FFT_IDATA_IN",
-          "hier_fft_ofdm/FFT_IDATA_IN"
+          "equalizer_time_frequ_0/FFT_IDATA_IN",
+          "hier_fft_ofdm/FFT_IDATA_IN",
+          "ila_0/probe17"
         ]
       },
       "receiver_802_11p_0_FFT_QDATA_IN": {
         "ports": [
-          "receiver_802_11p_0/FFT_QDATA_IN",
-          "hier_fft_ofdm/FFT_QDATA_IN"
+          "equalizer_time_frequ_0/FFT_QDATA_IN",
+          "hier_fft_ofdm/FFT_QDATA_IN",
+          "ila_0/probe18"
         ]
       },
       "receiver_802_11p_0_FPGA_REG_WRITE_ADDRESS": {
         "ports": [
-          "receiver_802_11p_0/FPGA_REG_WRITE_ADDRESS",
+          "axi_regs_mux_0/FPGA_REG_WRITE_ADDRESS",
           "FPGA_REG_WRITE_ADDRESS"
-        ]
-      },
-      "receiver_802_11p_0_FPGA_REG_WRITE_DATA": {
-        "ports": [
-          "receiver_802_11p_0/FPGA_REG_WRITE_DATA",
-          "FPGA_REG_WRITE_DATA"
-        ]
-      },
-      "receiver_802_11p_0_FPGA_REG_WRITE_STROBE": {
-        "ports": [
-          "receiver_802_11p_0/FPGA_REG_WRITE_STROBE",
-          "FPGA_REG_WRITE_STROBE"
-        ]
-      },
-      "receiver_802_11p_0_ROTATION_DATA_IN_MARKER": {
-        "ports": [
-          "receiver_802_11p_0/ROTATION_DATA_IN_MARKER",
-          "hier_rotation/ROTATION_DATA_IN_MARKER"
-        ]
-      },
-      "receiver_802_11p_0_ROTATION_DATA_IN_STROBE": {
-        "ports": [
-          "receiver_802_11p_0/ROTATION_DATA_IN_STROBE",
-          "hier_rotation/ROTATION_DATA_IN_STROBE"
-        ]
-      },
-      "receiver_802_11p_0_ROTATION_IDATA_IN": {
-        "ports": [
-          "receiver_802_11p_0/ROTATION_IDATA_IN",
-          "hier_rotation/ROTATION_IDATA_IN"
-        ]
-      },
-      "receiver_802_11p_0_ROTATION_PHASE_NEW_DIFF": {
-        "ports": [
-          "receiver_802_11p_0/ROTATION_PHASE_NEW_DIFF",
-          "hier_rotation/ROTATION_PHASE_NEW_DIFF"
-        ]
-      },
-      "receiver_802_11p_0_ROTATION_PHASE_NEW_DIFF_STROBE": {
-        "ports": [
-          "receiver_802_11p_0/ROTATION_PHASE_NEW_DIFF_STROBE",
-          "hier_rotation/ROTATION_PHASE_NEW_DIFF_STROBE"
-        ]
-      },
-      "receiver_802_11p_0_ROTATION_QDATA_IN": {
-        "ports": [
-          "receiver_802_11p_0/ROTATION_QDATA_IN",
-          "hier_rotation/ROTATION_QDATA_IN"
         ]
       },
       "rotation_block_0_ROTATION_DATA_OUT_MARKER": {
         "ports": [
           "hier_rotation/ROTATION_DATA_OUT_MARKER",
-          "receiver_802_11p_0/ROTATION_DATA_OUT_MARKER"
+          "equalizer_time_frequ_0/ROTATION_DATA_OUT_MARKER"
         ]
       },
       "rotation_block_0_ROTATION_DATA_OUT_STROBE": {
         "ports": [
           "hier_rotation/ROTATION_DATA_OUT_STROBE",
-          "receiver_802_11p_0/ROTATION_DATA_OUT_STROBE"
+          "equalizer_time_frequ_0/ROTATION_DATA_OUT_STROBE"
         ]
       },
       "rotation_block_0_ROTATION_IDATA_OUT": {
         "ports": [
           "hier_rotation/ROTATION_IDATA_OUT",
-          "receiver_802_11p_0/ROTATION_IDATA_OUT"
+          "equalizer_time_frequ_0/ROTATION_IDATA_OUT"
         ]
       },
       "rotation_block_0_ROTATION_QDATA_OUT": {
         "ports": [
           "hier_rotation/ROTATION_QDATA_OUT",
-          "receiver_802_11p_0/ROTATION_QDATA_OUT"
+          "equalizer_time_frequ_0/ROTATION_QDATA_OUT"
         ]
       },
       "rx_clock_domain_cros_0_DATA_STROBE": {
@@ -2560,27 +2800,27 @@
       "timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED": {
         "ports": [
           "timing_acquisition_8_0/DETECTION_SIGNAL_DETECTED",
-          "ila_0/probe7",
-          "receiver_802_11p_0/DETECTION_SIGNAL_DETECTED"
+          "equalizer_time_frequ_0/DETECTION_SIGNAL_DETECTED",
+          "ila_0/probe7"
         ]
       },
       "timing_acquisition_8_0_DETECTION_STROBE": {
         "ports": [
           "timing_acquisition_8_0/DETECTION_STROBE",
-          "ila_0/probe6",
-          "receiver_802_11p_0/DETECTION_STROBE"
+          "equalizer_time_frequ_0/DETECTION_STROBE",
+          "ila_0/probe6"
         ]
       },
       "timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I": {
         "ports": [
           "timing_acquisition_8_0/DETECTION_STS_AUTOCORR_I",
-          "receiver_802_11p_0/DETECTION_STS_AUTOCORR_I"
+          "equalizer_time_frequ_0/DETECTION_STS_AUTOCORR_I"
         ]
       },
       "timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q": {
         "ports": [
           "timing_acquisition_8_0/DETECTION_STS_AUTOCORR_Q",
-          "receiver_802_11p_0/DETECTION_STS_AUTOCORR_Q"
+          "equalizer_time_frequ_0/DETECTION_STS_AUTOCORR_Q"
         ]
       },
       "timing_acquisition_8_0_DETECTION_XCORR": {

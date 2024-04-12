@@ -2,8 +2,8 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-// Date        : Sun Apr  7 17:06:42 2024
-// Host        : ASUS_ROG running 64-bit major release  (build 9200)
+// Date        : Fri Apr 12 17:26:26 2024
+// Host        : lab817_01 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_rotation_block_0_0/block_design_0_rotation_block_0_0_sim_netlist.v
 // Design      : block_design_0_rotation_block_0_0
@@ -46,7 +46,7 @@ module block_design_0_rotation_block_0_0
   (* x_interface_ignore = "TRUE" *) input [15:0]ROTATION_IDATA_IN;
   (* x_interface_ignore = "TRUE" *) input [15:0]ROTATION_QDATA_IN;
   (* x_interface_ignore = "TRUE" *) input ROTATION_PHASE_NEW_DIFF_STROBE;
-  (* x_interface_ignore = "TRUE" *) input [15:0]ROTATION_PHASE_NEW_DIFF;
+  (* x_interface_ignore = "TRUE" *) input [19:0]ROTATION_PHASE_NEW_DIFF;
   output ROTATION_DATA_OUT_STROBE;
   output ROTATION_DATA_OUT_MARKER;
   output [15:0]ROTATION_IDATA_OUT;
@@ -73,7 +73,7 @@ module block_design_0_rotation_block_0_0
   wire ROTATION_DATA_OUT_STROBE;
   wire [15:0]ROTATION_IDATA_IN;
   wire [15:0]ROTATION_IDATA_OUT;
-  wire [15:0]ROTATION_PHASE_NEW_DIFF;
+  wire [19:0]ROTATION_PHASE_NEW_DIFF;
   wire ROTATION_PHASE_NEW_DIFF_STROBE;
   wire [15:0]ROTATION_QDATA_IN;
   wire [15:0]ROTATION_QDATA_OUT;
@@ -101,7 +101,7 @@ module block_design_0_rotation_block_0_0
         .ROTATION_DATA_OUT_STROBE(ROTATION_DATA_OUT_STROBE),
         .ROTATION_IDATA_IN(ROTATION_IDATA_IN),
         .ROTATION_IDATA_OUT(ROTATION_IDATA_OUT),
-        .ROTATION_PHASE_NEW_DIFF(ROTATION_PHASE_NEW_DIFF[13:0]),
+        .ROTATION_PHASE_NEW_DIFF(ROTATION_PHASE_NEW_DIFF[17:0]),
         .ROTATION_PHASE_NEW_DIFF_STROBE(ROTATION_PHASE_NEW_DIFF_STROBE),
         .ROTATION_QDATA_IN(ROTATION_QDATA_IN),
         .ROTATION_QDATA_OUT(ROTATION_QDATA_OUT),
@@ -158,15 +158,18 @@ module block_design_0_rotation_block_0_0_rotation_block
   input [15:0]ROTATION_IDATA_IN;
   input [15:0]ROTATION_QDATA_IN;
   input ROTATION_PHASE_NEW_DIFF_STROBE;
-  input [13:0]ROTATION_PHASE_NEW_DIFF;
+  input [17:0]ROTATION_PHASE_NEW_DIFF;
 
-  wire [15:0]ACT_PHASE;
   wire \ACT_PHASE[11]_i_2_n_0 ;
   wire \ACT_PHASE[11]_i_3_n_0 ;
   wire \ACT_PHASE[11]_i_4_n_0 ;
   wire \ACT_PHASE[11]_i_5_n_0 ;
   wire \ACT_PHASE[15]_i_2_n_0 ;
   wire \ACT_PHASE[15]_i_3_n_0 ;
+  wire \ACT_PHASE[15]_i_4_n_0 ;
+  wire \ACT_PHASE[15]_i_5_n_0 ;
+  wire \ACT_PHASE[19]_i_2_n_0 ;
+  wire \ACT_PHASE[19]_i_3_n_0 ;
   wire \ACT_PHASE[3]_i_2_n_0 ;
   wire \ACT_PHASE[3]_i_3_n_0 ;
   wire \ACT_PHASE[3]_i_4_n_0 ;
@@ -179,7 +182,11 @@ module block_design_0_rotation_block_0_0_rotation_block
   wire \ACT_PHASE_reg[11]_i_1_n_1 ;
   wire \ACT_PHASE_reg[11]_i_1_n_2 ;
   wire \ACT_PHASE_reg[11]_i_1_n_3 ;
+  wire \ACT_PHASE_reg[15]_i_1_n_0 ;
+  wire \ACT_PHASE_reg[15]_i_1_n_1 ;
+  wire \ACT_PHASE_reg[15]_i_1_n_2 ;
   wire \ACT_PHASE_reg[15]_i_1_n_3 ;
+  wire \ACT_PHASE_reg[19]_i_1_n_3 ;
   wire \ACT_PHASE_reg[3]_i_1_n_0 ;
   wire \ACT_PHASE_reg[3]_i_1_n_1 ;
   wire \ACT_PHASE_reg[3]_i_1_n_2 ;
@@ -188,7 +195,11 @@ module block_design_0_rotation_block_0_0_rotation_block
   wire \ACT_PHASE_reg[7]_i_1_n_1 ;
   wire \ACT_PHASE_reg[7]_i_1_n_2 ;
   wire \ACT_PHASE_reg[7]_i_1_n_3 ;
-  wire [13:0]ARG;
+  wire \ACT_PHASE_reg_n_0_[0] ;
+  wire \ACT_PHASE_reg_n_0_[1] ;
+  wire \ACT_PHASE_reg_n_0_[2] ;
+  wire \ACT_PHASE_reg_n_0_[3] ;
+  wire [17:0]ARG;
   wire CLOCK;
   wire [31:0]M_AXIS_DOUT_tdata;
   wire M_AXIS_DOUT_tlast;
@@ -198,6 +209,10 @@ module block_design_0_rotation_block_0_0_rotation_block
   wire \PHASE_DIFF_reg_n_0_[11] ;
   wire \PHASE_DIFF_reg_n_0_[12] ;
   wire \PHASE_DIFF_reg_n_0_[13] ;
+  wire \PHASE_DIFF_reg_n_0_[14] ;
+  wire \PHASE_DIFF_reg_n_0_[15] ;
+  wire \PHASE_DIFF_reg_n_0_[16] ;
+  wire \PHASE_DIFF_reg_n_0_[17] ;
   wire \PHASE_DIFF_reg_n_0_[1] ;
   wire \PHASE_DIFF_reg_n_0_[2] ;
   wire \PHASE_DIFF_reg_n_0_[3] ;
@@ -214,7 +229,7 @@ module block_design_0_rotation_block_0_0_rotation_block
   wire ROTATION_DATA_OUT_STROBE;
   wire [15:0]ROTATION_IDATA_IN;
   wire [15:0]ROTATION_IDATA_OUT;
-  wire [13:0]ROTATION_PHASE_NEW_DIFF;
+  wire [17:0]ROTATION_PHASE_NEW_DIFF;
   wire ROTATION_PHASE_NEW_DIFF_STROBE;
   wire [15:0]ROTATION_QDATA_IN;
   wire [15:0]ROTATION_QDATA_OUT;
@@ -223,91 +238,116 @@ module block_design_0_rotation_block_0_0_rotation_block
   wire S_AXIS_CARTESIAN_tvalid;
   wire [13:0]S_AXIS_PHASE_tdata;
   wire S_AXIS_PHASE_tvalid;
-  wire [3:1]\NLW_ACT_PHASE_reg[15]_i_1_CO_UNCONNECTED ;
-  wire [3:2]\NLW_ACT_PHASE_reg[15]_i_1_O_UNCONNECTED ;
+  wire [15:0]p_0_in;
+  wire [3:1]\NLW_ACT_PHASE_reg[19]_i_1_CO_UNCONNECTED ;
+  wire [3:2]\NLW_ACT_PHASE_reg[19]_i_1_O_UNCONNECTED ;
 
   LUT2 #(
     .INIT(4'h6)) 
     \ACT_PHASE[11]_i_2 
-       (.I0(ACT_PHASE[11]),
+       (.I0(p_0_in[7]),
         .I1(\PHASE_DIFF_reg_n_0_[11] ),
         .O(\ACT_PHASE[11]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h6)) 
     \ACT_PHASE[11]_i_3 
-       (.I0(ACT_PHASE[10]),
+       (.I0(p_0_in[6]),
         .I1(\PHASE_DIFF_reg_n_0_[10] ),
         .O(\ACT_PHASE[11]_i_3_n_0 ));
   LUT2 #(
     .INIT(4'h6)) 
     \ACT_PHASE[11]_i_4 
-       (.I0(ACT_PHASE[9]),
+       (.I0(p_0_in[5]),
         .I1(\PHASE_DIFF_reg_n_0_[9] ),
         .O(\ACT_PHASE[11]_i_4_n_0 ));
   LUT2 #(
     .INIT(4'h6)) 
     \ACT_PHASE[11]_i_5 
-       (.I0(ACT_PHASE[8]),
+       (.I0(p_0_in[4]),
         .I1(\PHASE_DIFF_reg_n_0_[8] ),
         .O(\ACT_PHASE[11]_i_5_n_0 ));
   LUT2 #(
     .INIT(4'h6)) 
     \ACT_PHASE[15]_i_2 
-       (.I0(ACT_PHASE[15]),
-        .I1(\PHASE_DIFF_reg_n_0_[13] ),
+       (.I0(p_0_in[11]),
+        .I1(\PHASE_DIFF_reg_n_0_[15] ),
         .O(\ACT_PHASE[15]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h6)) 
     \ACT_PHASE[15]_i_3 
-       (.I0(ACT_PHASE[12]),
-        .I1(\PHASE_DIFF_reg_n_0_[12] ),
+       (.I0(p_0_in[10]),
+        .I1(\PHASE_DIFF_reg_n_0_[14] ),
         .O(\ACT_PHASE[15]_i_3_n_0 ));
   LUT2 #(
     .INIT(4'h6)) 
+    \ACT_PHASE[15]_i_4 
+       (.I0(p_0_in[9]),
+        .I1(\PHASE_DIFF_reg_n_0_[13] ),
+        .O(\ACT_PHASE[15]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \ACT_PHASE[15]_i_5 
+       (.I0(p_0_in[8]),
+        .I1(\PHASE_DIFF_reg_n_0_[12] ),
+        .O(\ACT_PHASE[15]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \ACT_PHASE[19]_i_2 
+       (.I0(p_0_in[15]),
+        .I1(\PHASE_DIFF_reg_n_0_[17] ),
+        .O(\ACT_PHASE[19]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \ACT_PHASE[19]_i_3 
+       (.I0(p_0_in[12]),
+        .I1(\PHASE_DIFF_reg_n_0_[16] ),
+        .O(\ACT_PHASE[19]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
     \ACT_PHASE[3]_i_2 
-       (.I0(ACT_PHASE[3]),
+       (.I0(\ACT_PHASE_reg_n_0_[3] ),
         .I1(\PHASE_DIFF_reg_n_0_[3] ),
         .O(\ACT_PHASE[3]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h6)) 
     \ACT_PHASE[3]_i_3 
-       (.I0(ACT_PHASE[2]),
+       (.I0(\ACT_PHASE_reg_n_0_[2] ),
         .I1(\PHASE_DIFF_reg_n_0_[2] ),
         .O(\ACT_PHASE[3]_i_3_n_0 ));
   LUT2 #(
     .INIT(4'h6)) 
     \ACT_PHASE[3]_i_4 
-       (.I0(ACT_PHASE[1]),
+       (.I0(\ACT_PHASE_reg_n_0_[1] ),
         .I1(\PHASE_DIFF_reg_n_0_[1] ),
         .O(\ACT_PHASE[3]_i_4_n_0 ));
   LUT2 #(
     .INIT(4'h6)) 
     \ACT_PHASE[3]_i_5 
-       (.I0(ACT_PHASE[0]),
+       (.I0(\ACT_PHASE_reg_n_0_[0] ),
         .I1(\PHASE_DIFF_reg_n_0_[0] ),
         .O(\ACT_PHASE[3]_i_5_n_0 ));
   LUT2 #(
     .INIT(4'h6)) 
     \ACT_PHASE[7]_i_2 
-       (.I0(ACT_PHASE[7]),
+       (.I0(p_0_in[3]),
         .I1(\PHASE_DIFF_reg_n_0_[7] ),
         .O(\ACT_PHASE[7]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h6)) 
     \ACT_PHASE[7]_i_3 
-       (.I0(ACT_PHASE[6]),
+       (.I0(p_0_in[2]),
         .I1(\PHASE_DIFF_reg_n_0_[6] ),
         .O(\ACT_PHASE[7]_i_3_n_0 ));
   LUT2 #(
     .INIT(4'h6)) 
     \ACT_PHASE[7]_i_4 
-       (.I0(ACT_PHASE[5]),
+       (.I0(p_0_in[1]),
         .I1(\PHASE_DIFF_reg_n_0_[5] ),
         .O(\ACT_PHASE[7]_i_4_n_0 ));
   LUT2 #(
     .INIT(4'h6)) 
     \ACT_PHASE[7]_i_5 
-       (.I0(ACT_PHASE[4]),
+       (.I0(p_0_in[0]),
         .I1(\PHASE_DIFF_reg_n_0_[4] ),
         .O(\ACT_PHASE[7]_i_5_n_0 ));
   FDCE #(
@@ -317,7 +357,7 @@ module block_design_0_rotation_block_0_0_rotation_block
         .CE(ROTATION_DATA_IN_STROBE),
         .CLR(RESET),
         .D(ARG[0]),
-        .Q(ACT_PHASE[0]));
+        .Q(\ACT_PHASE_reg_n_0_[0] ));
   FDCE #(
     .INIT(1'b0)) 
     \ACT_PHASE_reg[10] 
@@ -325,7 +365,7 @@ module block_design_0_rotation_block_0_0_rotation_block
         .CE(ROTATION_DATA_IN_STROBE),
         .CLR(RESET),
         .D(ARG[10]),
-        .Q(ACT_PHASE[10]));
+        .Q(p_0_in[6]));
   FDCE #(
     .INIT(1'b0)) 
     \ACT_PHASE_reg[11] 
@@ -333,13 +373,13 @@ module block_design_0_rotation_block_0_0_rotation_block
         .CE(ROTATION_DATA_IN_STROBE),
         .CLR(RESET),
         .D(ARG[11]),
-        .Q(ACT_PHASE[11]));
+        .Q(p_0_in[7]));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 \ACT_PHASE_reg[11]_i_1 
        (.CI(\ACT_PHASE_reg[7]_i_1_n_0 ),
         .CO({\ACT_PHASE_reg[11]_i_1_n_0 ,\ACT_PHASE_reg[11]_i_1_n_1 ,\ACT_PHASE_reg[11]_i_1_n_2 ,\ACT_PHASE_reg[11]_i_1_n_3 }),
         .CYINIT(1'b0),
-        .DI(ACT_PHASE[11:8]),
+        .DI(p_0_in[7:4]),
         .O(ARG[11:8]),
         .S({\ACT_PHASE[11]_i_2_n_0 ,\ACT_PHASE[11]_i_3_n_0 ,\ACT_PHASE[11]_i_4_n_0 ,\ACT_PHASE[11]_i_5_n_0 }));
   FDCE #(
@@ -349,23 +389,63 @@ module block_design_0_rotation_block_0_0_rotation_block
         .CE(ROTATION_DATA_IN_STROBE),
         .CLR(RESET),
         .D(ARG[12]),
-        .Q(ACT_PHASE[12]));
+        .Q(p_0_in[8]));
+  FDCE #(
+    .INIT(1'b0)) 
+    \ACT_PHASE_reg[13] 
+       (.C(CLOCK),
+        .CE(ROTATION_DATA_IN_STROBE),
+        .CLR(RESET),
+        .D(ARG[13]),
+        .Q(p_0_in[9]));
+  FDCE #(
+    .INIT(1'b0)) 
+    \ACT_PHASE_reg[14] 
+       (.C(CLOCK),
+        .CE(ROTATION_DATA_IN_STROBE),
+        .CLR(RESET),
+        .D(ARG[14]),
+        .Q(p_0_in[10]));
   FDCE #(
     .INIT(1'b0)) 
     \ACT_PHASE_reg[15] 
        (.C(CLOCK),
         .CE(ROTATION_DATA_IN_STROBE),
         .CLR(RESET),
-        .D(ARG[13]),
-        .Q(ACT_PHASE[15]));
+        .D(ARG[15]),
+        .Q(p_0_in[11]));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 \ACT_PHASE_reg[15]_i_1 
        (.CI(\ACT_PHASE_reg[11]_i_1_n_0 ),
-        .CO({\NLW_ACT_PHASE_reg[15]_i_1_CO_UNCONNECTED [3:1],\ACT_PHASE_reg[15]_i_1_n_3 }),
+        .CO({\ACT_PHASE_reg[15]_i_1_n_0 ,\ACT_PHASE_reg[15]_i_1_n_1 ,\ACT_PHASE_reg[15]_i_1_n_2 ,\ACT_PHASE_reg[15]_i_1_n_3 }),
         .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,ACT_PHASE[12]}),
-        .O({\NLW_ACT_PHASE_reg[15]_i_1_O_UNCONNECTED [3:2],ARG[13:12]}),
-        .S({1'b0,1'b0,\ACT_PHASE[15]_i_2_n_0 ,\ACT_PHASE[15]_i_3_n_0 }));
+        .DI(p_0_in[11:8]),
+        .O(ARG[15:12]),
+        .S({\ACT_PHASE[15]_i_2_n_0 ,\ACT_PHASE[15]_i_3_n_0 ,\ACT_PHASE[15]_i_4_n_0 ,\ACT_PHASE[15]_i_5_n_0 }));
+  FDCE #(
+    .INIT(1'b0)) 
+    \ACT_PHASE_reg[16] 
+       (.C(CLOCK),
+        .CE(ROTATION_DATA_IN_STROBE),
+        .CLR(RESET),
+        .D(ARG[16]),
+        .Q(p_0_in[12]));
+  FDCE #(
+    .INIT(1'b0)) 
+    \ACT_PHASE_reg[19] 
+       (.C(CLOCK),
+        .CE(ROTATION_DATA_IN_STROBE),
+        .CLR(RESET),
+        .D(ARG[17]),
+        .Q(p_0_in[15]));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY4 \ACT_PHASE_reg[19]_i_1 
+       (.CI(\ACT_PHASE_reg[15]_i_1_n_0 ),
+        .CO({\NLW_ACT_PHASE_reg[19]_i_1_CO_UNCONNECTED [3:1],\ACT_PHASE_reg[19]_i_1_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,p_0_in[12]}),
+        .O({\NLW_ACT_PHASE_reg[19]_i_1_O_UNCONNECTED [3:2],ARG[17:16]}),
+        .S({1'b0,1'b0,\ACT_PHASE[19]_i_2_n_0 ,\ACT_PHASE[19]_i_3_n_0 }));
   FDCE #(
     .INIT(1'b0)) 
     \ACT_PHASE_reg[1] 
@@ -373,7 +453,7 @@ module block_design_0_rotation_block_0_0_rotation_block
         .CE(ROTATION_DATA_IN_STROBE),
         .CLR(RESET),
         .D(ARG[1]),
-        .Q(ACT_PHASE[1]));
+        .Q(\ACT_PHASE_reg_n_0_[1] ));
   FDCE #(
     .INIT(1'b0)) 
     \ACT_PHASE_reg[2] 
@@ -381,7 +461,7 @@ module block_design_0_rotation_block_0_0_rotation_block
         .CE(ROTATION_DATA_IN_STROBE),
         .CLR(RESET),
         .D(ARG[2]),
-        .Q(ACT_PHASE[2]));
+        .Q(\ACT_PHASE_reg_n_0_[2] ));
   FDCE #(
     .INIT(1'b0)) 
     \ACT_PHASE_reg[3] 
@@ -389,13 +469,13 @@ module block_design_0_rotation_block_0_0_rotation_block
         .CE(ROTATION_DATA_IN_STROBE),
         .CLR(RESET),
         .D(ARG[3]),
-        .Q(ACT_PHASE[3]));
+        .Q(\ACT_PHASE_reg_n_0_[3] ));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 \ACT_PHASE_reg[3]_i_1 
        (.CI(1'b0),
         .CO({\ACT_PHASE_reg[3]_i_1_n_0 ,\ACT_PHASE_reg[3]_i_1_n_1 ,\ACT_PHASE_reg[3]_i_1_n_2 ,\ACT_PHASE_reg[3]_i_1_n_3 }),
         .CYINIT(1'b0),
-        .DI(ACT_PHASE[3:0]),
+        .DI({\ACT_PHASE_reg_n_0_[3] ,\ACT_PHASE_reg_n_0_[2] ,\ACT_PHASE_reg_n_0_[1] ,\ACT_PHASE_reg_n_0_[0] }),
         .O(ARG[3:0]),
         .S({\ACT_PHASE[3]_i_2_n_0 ,\ACT_PHASE[3]_i_3_n_0 ,\ACT_PHASE[3]_i_4_n_0 ,\ACT_PHASE[3]_i_5_n_0 }));
   FDCE #(
@@ -405,7 +485,7 @@ module block_design_0_rotation_block_0_0_rotation_block
         .CE(ROTATION_DATA_IN_STROBE),
         .CLR(RESET),
         .D(ARG[4]),
-        .Q(ACT_PHASE[4]));
+        .Q(p_0_in[0]));
   FDCE #(
     .INIT(1'b0)) 
     \ACT_PHASE_reg[5] 
@@ -413,7 +493,7 @@ module block_design_0_rotation_block_0_0_rotation_block
         .CE(ROTATION_DATA_IN_STROBE),
         .CLR(RESET),
         .D(ARG[5]),
-        .Q(ACT_PHASE[5]));
+        .Q(p_0_in[1]));
   FDCE #(
     .INIT(1'b0)) 
     \ACT_PHASE_reg[6] 
@@ -421,7 +501,7 @@ module block_design_0_rotation_block_0_0_rotation_block
         .CE(ROTATION_DATA_IN_STROBE),
         .CLR(RESET),
         .D(ARG[6]),
-        .Q(ACT_PHASE[6]));
+        .Q(p_0_in[2]));
   FDCE #(
     .INIT(1'b0)) 
     \ACT_PHASE_reg[7] 
@@ -429,13 +509,13 @@ module block_design_0_rotation_block_0_0_rotation_block
         .CE(ROTATION_DATA_IN_STROBE),
         .CLR(RESET),
         .D(ARG[7]),
-        .Q(ACT_PHASE[7]));
+        .Q(p_0_in[3]));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 \ACT_PHASE_reg[7]_i_1 
        (.CI(\ACT_PHASE_reg[3]_i_1_n_0 ),
         .CO({\ACT_PHASE_reg[7]_i_1_n_0 ,\ACT_PHASE_reg[7]_i_1_n_1 ,\ACT_PHASE_reg[7]_i_1_n_2 ,\ACT_PHASE_reg[7]_i_1_n_3 }),
         .CYINIT(1'b0),
-        .DI(ACT_PHASE[7:4]),
+        .DI(p_0_in[3:0]),
         .O(ARG[7:4]),
         .S({\ACT_PHASE[7]_i_2_n_0 ,\ACT_PHASE[7]_i_3_n_0 ,\ACT_PHASE[7]_i_4_n_0 ,\ACT_PHASE[7]_i_5_n_0 }));
   FDCE #(
@@ -445,7 +525,7 @@ module block_design_0_rotation_block_0_0_rotation_block
         .CE(ROTATION_DATA_IN_STROBE),
         .CLR(RESET),
         .D(ARG[8]),
-        .Q(ACT_PHASE[8]));
+        .Q(p_0_in[4]));
   FDCE #(
     .INIT(1'b0)) 
     \ACT_PHASE_reg[9] 
@@ -453,7 +533,7 @@ module block_design_0_rotation_block_0_0_rotation_block
         .CE(ROTATION_DATA_IN_STROBE),
         .CLR(RESET),
         .D(ARG[9]),
-        .Q(ACT_PHASE[9]));
+        .Q(p_0_in[5]));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
   FDCE #(
     .INIT(1'b0)) 
@@ -638,6 +718,38 @@ module block_design_0_rotation_block_0_0_rotation_block
         .CLR(RESET),
         .D(ROTATION_PHASE_NEW_DIFF[13]),
         .Q(\PHASE_DIFF_reg_n_0_[13] ));
+  FDCE #(
+    .INIT(1'b0)) 
+    \PHASE_DIFF_reg[14] 
+       (.C(CLOCK),
+        .CE(ROTATION_PHASE_NEW_DIFF_STROBE),
+        .CLR(RESET),
+        .D(ROTATION_PHASE_NEW_DIFF[14]),
+        .Q(\PHASE_DIFF_reg_n_0_[14] ));
+  FDCE #(
+    .INIT(1'b0)) 
+    \PHASE_DIFF_reg[15] 
+       (.C(CLOCK),
+        .CE(ROTATION_PHASE_NEW_DIFF_STROBE),
+        .CLR(RESET),
+        .D(ROTATION_PHASE_NEW_DIFF[15]),
+        .Q(\PHASE_DIFF_reg_n_0_[15] ));
+  FDCE #(
+    .INIT(1'b0)) 
+    \PHASE_DIFF_reg[16] 
+       (.C(CLOCK),
+        .CE(ROTATION_PHASE_NEW_DIFF_STROBE),
+        .CLR(RESET),
+        .D(ROTATION_PHASE_NEW_DIFF[16]),
+        .Q(\PHASE_DIFF_reg_n_0_[16] ));
+  FDCE #(
+    .INIT(1'b0)) 
+    \PHASE_DIFF_reg[17] 
+       (.C(CLOCK),
+        .CE(ROTATION_PHASE_NEW_DIFF_STROBE),
+        .CLR(RESET),
+        .D(ROTATION_PHASE_NEW_DIFF[17]),
+        .Q(\PHASE_DIFF_reg_n_0_[17] ));
   FDCE #(
     .INIT(1'b0)) 
     \PHASE_DIFF_reg[1] 
@@ -1186,7 +1298,7 @@ module block_design_0_rotation_block_0_0_rotation_block
        (.C(CLOCK),
         .CE(ROTATION_DATA_IN_STROBE),
         .CLR(RESET),
-        .D(ACT_PHASE[0]),
+        .D(p_0_in[0]),
         .Q(S_AXIS_PHASE_tdata[0]));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_PHASE TDATA" *) 
   FDCE #(
@@ -1195,7 +1307,7 @@ module block_design_0_rotation_block_0_0_rotation_block
        (.C(CLOCK),
         .CE(ROTATION_DATA_IN_STROBE),
         .CLR(RESET),
-        .D(ACT_PHASE[10]),
+        .D(p_0_in[10]),
         .Q(S_AXIS_PHASE_tdata[10]));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_PHASE TDATA" *) 
   FDCE #(
@@ -1204,7 +1316,7 @@ module block_design_0_rotation_block_0_0_rotation_block
        (.C(CLOCK),
         .CE(ROTATION_DATA_IN_STROBE),
         .CLR(RESET),
-        .D(ACT_PHASE[11]),
+        .D(p_0_in[11]),
         .Q(S_AXIS_PHASE_tdata[11]));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_PHASE TDATA" *) 
   FDCE #(
@@ -1213,7 +1325,7 @@ module block_design_0_rotation_block_0_0_rotation_block
        (.C(CLOCK),
         .CE(ROTATION_DATA_IN_STROBE),
         .CLR(RESET),
-        .D(ACT_PHASE[12]),
+        .D(p_0_in[12]),
         .Q(S_AXIS_PHASE_tdata[12]));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_PHASE TDATA" *) 
   FDCE #(
@@ -1222,7 +1334,7 @@ module block_design_0_rotation_block_0_0_rotation_block
        (.C(CLOCK),
         .CE(ROTATION_DATA_IN_STROBE),
         .CLR(RESET),
-        .D(ACT_PHASE[15]),
+        .D(p_0_in[15]),
         .Q(S_AXIS_PHASE_tdata[13]));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_PHASE TDATA" *) 
   FDCE #(
@@ -1231,7 +1343,7 @@ module block_design_0_rotation_block_0_0_rotation_block
        (.C(CLOCK),
         .CE(ROTATION_DATA_IN_STROBE),
         .CLR(RESET),
-        .D(ACT_PHASE[1]),
+        .D(p_0_in[1]),
         .Q(S_AXIS_PHASE_tdata[1]));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_PHASE TDATA" *) 
   FDCE #(
@@ -1240,7 +1352,7 @@ module block_design_0_rotation_block_0_0_rotation_block
        (.C(CLOCK),
         .CE(ROTATION_DATA_IN_STROBE),
         .CLR(RESET),
-        .D(ACT_PHASE[2]),
+        .D(p_0_in[2]),
         .Q(S_AXIS_PHASE_tdata[2]));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_PHASE TDATA" *) 
   FDCE #(
@@ -1249,7 +1361,7 @@ module block_design_0_rotation_block_0_0_rotation_block
        (.C(CLOCK),
         .CE(ROTATION_DATA_IN_STROBE),
         .CLR(RESET),
-        .D(ACT_PHASE[3]),
+        .D(p_0_in[3]),
         .Q(S_AXIS_PHASE_tdata[3]));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_PHASE TDATA" *) 
   FDCE #(
@@ -1258,7 +1370,7 @@ module block_design_0_rotation_block_0_0_rotation_block
        (.C(CLOCK),
         .CE(ROTATION_DATA_IN_STROBE),
         .CLR(RESET),
-        .D(ACT_PHASE[4]),
+        .D(p_0_in[4]),
         .Q(S_AXIS_PHASE_tdata[4]));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_PHASE TDATA" *) 
   FDCE #(
@@ -1267,7 +1379,7 @@ module block_design_0_rotation_block_0_0_rotation_block
        (.C(CLOCK),
         .CE(ROTATION_DATA_IN_STROBE),
         .CLR(RESET),
-        .D(ACT_PHASE[5]),
+        .D(p_0_in[5]),
         .Q(S_AXIS_PHASE_tdata[5]));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_PHASE TDATA" *) 
   FDCE #(
@@ -1276,7 +1388,7 @@ module block_design_0_rotation_block_0_0_rotation_block
        (.C(CLOCK),
         .CE(ROTATION_DATA_IN_STROBE),
         .CLR(RESET),
-        .D(ACT_PHASE[6]),
+        .D(p_0_in[6]),
         .Q(S_AXIS_PHASE_tdata[6]));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_PHASE TDATA" *) 
   FDCE #(
@@ -1285,7 +1397,7 @@ module block_design_0_rotation_block_0_0_rotation_block
        (.C(CLOCK),
         .CE(ROTATION_DATA_IN_STROBE),
         .CLR(RESET),
-        .D(ACT_PHASE[7]),
+        .D(p_0_in[7]),
         .Q(S_AXIS_PHASE_tdata[7]));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_PHASE TDATA" *) 
   FDCE #(
@@ -1294,7 +1406,7 @@ module block_design_0_rotation_block_0_0_rotation_block
        (.C(CLOCK),
         .CE(ROTATION_DATA_IN_STROBE),
         .CLR(RESET),
-        .D(ACT_PHASE[8]),
+        .D(p_0_in[8]),
         .Q(S_AXIS_PHASE_tdata[8]));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_PHASE TDATA" *) 
   FDCE #(
@@ -1303,7 +1415,7 @@ module block_design_0_rotation_block_0_0_rotation_block
        (.C(CLOCK),
         .CE(ROTATION_DATA_IN_STROBE),
         .CLR(RESET),
-        .D(ACT_PHASE[9]),
+        .D(p_0_in[9]),
         .Q(S_AXIS_PHASE_tdata[9]));
   (* equivalent_register_removal = "no" *) 
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_PHASE TVALID" *) 

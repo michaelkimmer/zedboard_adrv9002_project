@@ -46,7 +46,7 @@ architecture Behavioral of atan_simulation is
           ATAN_AUTOCORR_I : in STD_LOGIC_VECTOR ( 31 downto 0 );
           ATAN_AUTOCORR_Q : in STD_LOGIC_VECTOR ( 31 downto 0 );
           ATAN_AUTOCORR_STROBE : in STD_LOGIC;
-          ATAN_PHASE_OUT : out STD_LOGIC_VECTOR ( 15 downto 0 );
+          ATAN_PHASE_OUT : out STD_LOGIC_VECTOR ( 19 downto 0 );
           ATAN_PHASE_OUT_STROBE : out STD_LOGIC;
           CLOCK : in STD_LOGIC;
           RESET : in STD_LOGIC
@@ -65,7 +65,7 @@ architecture Behavioral of atan_simulation is
     signal ATAN_AUTOCORR_Q : std_logic_vector(31 downto 0) := x"f0000000";
 
     signal ATAN_PHASE_OUT_STROBE : std_logic := '0';
-    signal ATAN_PHASE_OUT        : std_logic_vector(15 downto 0) := (others=>'0');
+    signal ATAN_PHASE_OUT        : std_logic_vector(19 downto 0) := (others=>'0');
     
 begin
 

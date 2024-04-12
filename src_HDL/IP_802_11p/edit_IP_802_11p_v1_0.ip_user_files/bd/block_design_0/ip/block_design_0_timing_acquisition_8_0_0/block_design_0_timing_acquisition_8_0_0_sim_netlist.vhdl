@@ -2,8 +2,8 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
--- Date        : Sun Apr  7 17:08:09 2024
--- Host        : ASUS_ROG running 64-bit major release  (build 9200)
+-- Date        : Fri Apr 12 17:26:11 2024
+-- Host        : lab817_01 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_timing_acquisition_8_0_0/block_design_0_timing_acquisition_8_0_0_sim_netlist.vhdl
 -- Design      : block_design_0_timing_acquisition_8_0_0
@@ -105875,7 +105875,7 @@ architecture STRUCTURE of block_design_0_timing_acquisition_8_0_0 is
   attribute x_interface_info : string;
   attribute x_interface_info of CLOCK : signal is "xilinx.com:signal:clock:1.0 CLOCK CLK";
   attribute x_interface_parameter : string;
-  attribute x_interface_parameter of CLOCK : signal is "XIL_INTERFACENAME CLOCK, ASSOCIATED_RESET RESET, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN block_design_0_CLOCK_0, INSERT_VIP 0";
+  attribute x_interface_parameter of CLOCK : signal is "XIL_INTERFACENAME CLOCK, ASSOCIATED_RESET RESET, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN block_design_0_CLOCK, INSERT_VIP 0";
   attribute x_interface_info of RESET : signal is "xilinx.com:signal:reset:1.0 RESET RST";
   attribute x_interface_parameter of RESET : signal is "XIL_INTERFACENAME RESET, POLARITY ACTIVE_LOW, INSERT_VIP 0";
 begin
