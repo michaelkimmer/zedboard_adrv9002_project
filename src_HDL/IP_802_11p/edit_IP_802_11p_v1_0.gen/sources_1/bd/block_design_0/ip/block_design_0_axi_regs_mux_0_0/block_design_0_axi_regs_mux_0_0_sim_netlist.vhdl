@@ -2,7 +2,7 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
--- Date        : Fri Apr 12 17:28:37 2024
+-- Date        : Mon Apr 15 14:38:26 2024
 -- Host        : lab817_01 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_axi_regs_mux_0_0/block_design_0_axi_regs_mux_0_0_sim_netlist.vhdl
@@ -27,6 +27,7 @@ entity block_design_0_axi_regs_mux_0_0_axi_regs_mux is
     FFT_IDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
     EQUALIZER_REG_WRITE_DATA : in STD_LOGIC_VECTOR ( 31 downto 0 );
     QDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    FFT_QDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
     SELECT_AXI_REGS_MODE : in STD_LOGIC_VECTOR ( 7 downto 0 );
     EQUALIZER_REG_WRITE_STROBE_PHASE_2 : in STD_LOGIC;
     DATA_STROBE : in STD_LOGIC;
@@ -790,7 +791,7 @@ begin
       I0 => \FPGA_REG_WRITE_DATA[31]_i_2_n_0\,
       I1 => QDATA(0),
       I2 => \FPGA_REG_WRITE_DATA[31]_i_3_n_0\,
-      I3 => FFT_IDATA(0),
+      I3 => FFT_QDATA(0),
       I4 => EQUALIZER_REG_WRITE_DATA(16),
       I5 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
       O => \FPGA_REG_WRITE_DATA[16]_i_1_n_0\
@@ -803,7 +804,7 @@ begin
       I0 => \FPGA_REG_WRITE_DATA[31]_i_2_n_0\,
       I1 => QDATA(1),
       I2 => \FPGA_REG_WRITE_DATA[31]_i_3_n_0\,
-      I3 => FFT_IDATA(1),
+      I3 => FFT_QDATA(1),
       I4 => EQUALIZER_REG_WRITE_DATA(17),
       I5 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
       O => \FPGA_REG_WRITE_DATA[17]_i_1_n_0\
@@ -816,7 +817,7 @@ begin
       I0 => \FPGA_REG_WRITE_DATA[31]_i_2_n_0\,
       I1 => QDATA(2),
       I2 => \FPGA_REG_WRITE_DATA[31]_i_3_n_0\,
-      I3 => FFT_IDATA(2),
+      I3 => FFT_QDATA(2),
       I4 => EQUALIZER_REG_WRITE_DATA(18),
       I5 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
       O => \FPGA_REG_WRITE_DATA[18]_i_1_n_0\
@@ -829,7 +830,7 @@ begin
       I0 => \FPGA_REG_WRITE_DATA[31]_i_2_n_0\,
       I1 => QDATA(3),
       I2 => \FPGA_REG_WRITE_DATA[31]_i_3_n_0\,
-      I3 => FFT_IDATA(3),
+      I3 => FFT_QDATA(3),
       I4 => EQUALIZER_REG_WRITE_DATA(19),
       I5 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
       O => \FPGA_REG_WRITE_DATA[19]_i_1_n_0\
@@ -855,7 +856,7 @@ begin
       I0 => \FPGA_REG_WRITE_DATA[31]_i_2_n_0\,
       I1 => QDATA(4),
       I2 => \FPGA_REG_WRITE_DATA[31]_i_3_n_0\,
-      I3 => FFT_IDATA(4),
+      I3 => FFT_QDATA(4),
       I4 => EQUALIZER_REG_WRITE_DATA(20),
       I5 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
       O => \FPGA_REG_WRITE_DATA[20]_i_1_n_0\
@@ -868,7 +869,7 @@ begin
       I0 => \FPGA_REG_WRITE_DATA[31]_i_2_n_0\,
       I1 => QDATA(5),
       I2 => \FPGA_REG_WRITE_DATA[31]_i_3_n_0\,
-      I3 => FFT_IDATA(5),
+      I3 => FFT_QDATA(5),
       I4 => EQUALIZER_REG_WRITE_DATA(21),
       I5 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
       O => \FPGA_REG_WRITE_DATA[21]_i_1_n_0\
@@ -881,7 +882,7 @@ begin
       I0 => \FPGA_REG_WRITE_DATA[31]_i_2_n_0\,
       I1 => QDATA(6),
       I2 => \FPGA_REG_WRITE_DATA[31]_i_3_n_0\,
-      I3 => FFT_IDATA(6),
+      I3 => FFT_QDATA(6),
       I4 => EQUALIZER_REG_WRITE_DATA(22),
       I5 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
       O => \FPGA_REG_WRITE_DATA[22]_i_1_n_0\
@@ -894,7 +895,7 @@ begin
       I0 => \FPGA_REG_WRITE_DATA[31]_i_2_n_0\,
       I1 => QDATA(7),
       I2 => \FPGA_REG_WRITE_DATA[31]_i_3_n_0\,
-      I3 => FFT_IDATA(7),
+      I3 => FFT_QDATA(7),
       I4 => EQUALIZER_REG_WRITE_DATA(23),
       I5 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
       O => \FPGA_REG_WRITE_DATA[23]_i_1_n_0\
@@ -907,7 +908,7 @@ begin
       I0 => \FPGA_REG_WRITE_DATA[31]_i_2_n_0\,
       I1 => QDATA(8),
       I2 => \FPGA_REG_WRITE_DATA[31]_i_3_n_0\,
-      I3 => FFT_IDATA(8),
+      I3 => FFT_QDATA(8),
       I4 => EQUALIZER_REG_WRITE_DATA(24),
       I5 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
       O => \FPGA_REG_WRITE_DATA[24]_i_1_n_0\
@@ -920,7 +921,7 @@ begin
       I0 => \FPGA_REG_WRITE_DATA[31]_i_2_n_0\,
       I1 => QDATA(9),
       I2 => \FPGA_REG_WRITE_DATA[31]_i_3_n_0\,
-      I3 => FFT_IDATA(9),
+      I3 => FFT_QDATA(9),
       I4 => EQUALIZER_REG_WRITE_DATA(25),
       I5 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
       O => \FPGA_REG_WRITE_DATA[25]_i_1_n_0\
@@ -933,7 +934,7 @@ begin
       I0 => \FPGA_REG_WRITE_DATA[31]_i_2_n_0\,
       I1 => QDATA(10),
       I2 => \FPGA_REG_WRITE_DATA[31]_i_3_n_0\,
-      I3 => FFT_IDATA(10),
+      I3 => FFT_QDATA(10),
       I4 => EQUALIZER_REG_WRITE_DATA(26),
       I5 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
       O => \FPGA_REG_WRITE_DATA[26]_i_1_n_0\
@@ -946,7 +947,7 @@ begin
       I0 => \FPGA_REG_WRITE_DATA[31]_i_2_n_0\,
       I1 => QDATA(11),
       I2 => \FPGA_REG_WRITE_DATA[31]_i_3_n_0\,
-      I3 => FFT_IDATA(11),
+      I3 => FFT_QDATA(11),
       I4 => EQUALIZER_REG_WRITE_DATA(27),
       I5 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
       O => \FPGA_REG_WRITE_DATA[27]_i_1_n_0\
@@ -959,7 +960,7 @@ begin
       I0 => \FPGA_REG_WRITE_DATA[31]_i_2_n_0\,
       I1 => QDATA(12),
       I2 => \FPGA_REG_WRITE_DATA[31]_i_3_n_0\,
-      I3 => FFT_IDATA(12),
+      I3 => FFT_QDATA(12),
       I4 => EQUALIZER_REG_WRITE_DATA(28),
       I5 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
       O => \FPGA_REG_WRITE_DATA[28]_i_1_n_0\
@@ -972,7 +973,7 @@ begin
       I0 => \FPGA_REG_WRITE_DATA[31]_i_2_n_0\,
       I1 => QDATA(13),
       I2 => \FPGA_REG_WRITE_DATA[31]_i_3_n_0\,
-      I3 => FFT_IDATA(13),
+      I3 => FFT_QDATA(13),
       I4 => EQUALIZER_REG_WRITE_DATA(29),
       I5 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
       O => \FPGA_REG_WRITE_DATA[29]_i_1_n_0\
@@ -998,7 +999,7 @@ begin
       I0 => \FPGA_REG_WRITE_DATA[31]_i_2_n_0\,
       I1 => QDATA(14),
       I2 => \FPGA_REG_WRITE_DATA[31]_i_3_n_0\,
-      I3 => FFT_IDATA(14),
+      I3 => FFT_QDATA(14),
       I4 => EQUALIZER_REG_WRITE_DATA(30),
       I5 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
       O => \FPGA_REG_WRITE_DATA[30]_i_1_n_0\
@@ -1011,7 +1012,7 @@ begin
       I0 => \FPGA_REG_WRITE_DATA[31]_i_2_n_0\,
       I1 => QDATA(15),
       I2 => \FPGA_REG_WRITE_DATA[31]_i_3_n_0\,
-      I3 => FFT_IDATA(15),
+      I3 => FFT_QDATA(15),
       I4 => EQUALIZER_REG_WRITE_DATA(31),
       I5 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
       O => \FPGA_REG_WRITE_DATA[31]_i_1_n_0\
@@ -1577,6 +1578,8 @@ entity block_design_0_axi_regs_mux_0_0 is
   attribute CHECK_LICENSE_TYPE of block_design_0_axi_regs_mux_0_0 : entity is "block_design_0_axi_regs_mux_0_0,axi_regs_mux,{}";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of block_design_0_axi_regs_mux_0_0 : entity is "yes";
+  attribute ip_definition_source : string;
+  attribute ip_definition_source of block_design_0_axi_regs_mux_0_0 : entity is "module_ref";
   attribute x_core_info : string;
   attribute x_core_info of block_design_0_axi_regs_mux_0_0 : entity is "axi_regs_mux,Vivado 2023.2.2";
 end block_design_0_axi_regs_mux_0_0;
@@ -1606,6 +1609,7 @@ U0: entity work.block_design_0_axi_regs_mux_0_0_axi_regs_mux
       EQUALIZER_REG_WRITE_STROBE_PHASE_2 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
       FFT_DATA_VALID => FFT_DATA_VALID,
       FFT_IDATA(15 downto 0) => FFT_IDATA(23 downto 8),
+      FFT_QDATA(15 downto 0) => FFT_QDATA(23 downto 8),
       FPGA_REG_WRITE_ADDRESS(8 downto 0) => FPGA_REG_WRITE_ADDRESS(8 downto 0),
       FPGA_REG_WRITE_DATA(31 downto 0) => FPGA_REG_WRITE_DATA(31 downto 0),
       FPGA_REG_WRITE_STROBE => FPGA_REG_WRITE_STROBE,

@@ -17,6 +17,9 @@ from time import sleep
 # import adi #ADI iio-library
 import os
 
+# ADI IIO
+import adi
+import iio
 
 # Parameters & AXI functions
 from access_axi_regs import *
@@ -158,6 +161,8 @@ class Settings_Tab(ttk.Frame):
 
         ## Build Channel Tab
 
+        self.root = root
+
         self.act_row = 0 #used for actual grid position
         
         # settings description label
@@ -172,6 +177,7 @@ class Settings_Tab(ttk.Frame):
         buttons_num_cols = 3     # Number of columns in the button matrix
 
         # Control button matrix
+        self.buttons_matrix_names = ("Load stream & profile", None, None, None, None, None, None, None, None)
         self.buttons_matrix = self.build_buttons_matrix(root, self.act_row + 2, buttons_num_rows, buttons_num_cols)
         
         # Input field: Freqs + Gains
@@ -190,7 +196,7 @@ class Settings_Tab(ttk.Frame):
         self.log = self.build_log()
 
 
-    ################## Build Channel Tab methods ##################
+    ################## Build Settings Tab methods ##################
     def build_settings_description_label(self):
         settings_description_label = tk.Label(self, text="Control ZedBoard & ADRV9002:", font=("Helvetica", 12))
         settings_description_label.grid(row=self.act_row, column=0, columnspan=2, padx=5, pady=5, sticky="W") 
@@ -296,8 +302,6 @@ class Settings_Tab(ttk.Frame):
 
     def build_buttons_matrix(self, root, act_row, buttons_num_rows, buttons_num_cols):
         
-        buttons_matrix_names = ("Load stream & profile", None, None, None, None, None, None, None, None)
-
         # build matrix of buttons
         buttonframe = tk.Frame(self)
         buttonframe.grid(row=act_row, column=0, columnspan=2, rowspan = buttons_num_rows, padx=5, pady=5)
@@ -308,9 +312,12 @@ class Settings_Tab(ttk.Frame):
                 btn_idx = i * buttons_num_cols + j
 
                 if (i == 1 or i == 2) and j == 0:
+                    idx = i-1
+
                     # Build comboboxes
                     selected_interference = tk.StringVar()
-                    combobox = ttk.Combobox(buttonframe, textvariable=selected_interference) #(postcommand executes before opening) # What after clicking !!! TODO
+                    combobox = ttk.Combobox(buttonframe, textvariable=selected_interference) #(postcommand executes before opening) 
+                    combobox.bind("<<ComboboxSelected>>", lambda event, idx=idx: self.state_combobox_update(event, idx))  # Executes with value change
                     combobox.grid(row=i, column=j, padx=5, pady=5, sticky="we")
                     combobox['state'] = 'readonly' # prevent typing a value
                     if i == 1:
@@ -322,12 +329,12 @@ class Settings_Tab(ttk.Frame):
                     # Use then: combobox.get()
                     comboboxes.append(combobox)
 
-                elif btn_idx < len(buttons_matrix_names) and buttons_matrix_names[btn_idx] is not None:
-                    button = tk.Button(buttonframe, text=buttons_matrix_names[btn_idx], command=lambda root=root, idx=btn_idx: self.buttons_matrix_button_clicked(root, idx))
+                elif btn_idx < len(self.buttons_matrix_names) and self.buttons_matrix_names[btn_idx] is not None:
+                    button = tk.Button(buttonframe, text=self.buttons_matrix_names[btn_idx], command=lambda root=root, idx=btn_idx: self.buttons_matrix_button_clicked(root, idx))
                     button.grid(row=i, column=j, padx=5, pady=5, sticky="we")
                     buttons.append(button)
                 else:
-                    button = tk.Button(buttonframe, text=f"Unused Button {btn_idx}", command=lambda idx=btn_idx: self.other_button_clicked(idx))
+                    button = tk.Button(buttonframe, text=f"Unused Button {btn_idx}", command=lambda idx=btn_idx: self.buttons_matrix_button_clicked(root, idx))
                     button.grid(row=i, column=j, padx=5, pady=5, sticky="we")
                     buttons.append(button)
 
@@ -417,44 +424,44 @@ class Settings_Tab(ttk.Frame):
 
     ################# Channel Tab Callback methods ################
 
-    # Connect / Disconnect? 
+    # Connect IIO? 
     def connect_iio_button_clicked(self, root):
-        label_text_beginning = "Connection status: "
-        
-        if root.connected: #Disconnect
-            try:
-                root.ser.close()
-                root.ser = None
-            except:
-                pass
-            root.connected = False
-            root.tab1.connection_indicator.description_label.config(text = label_text_beginning + "Disconnected") #could be done better
-            root.tab2.connection_indicator.description_label.config(text = label_text_beginning + "Disconnected") #could be done better
-            root.tab1.connection_indicator.buttons.config(text = "Connect") #could be done better
-            root.tab2.connection_indicator.buttons.config(text = "Connect") #could be done better
-            self.log_write_line("Disconnected")
-        else: #Connect
-            try:
-                port = self.connection_indicator.input_fields[1].get()
-                if port.strip() == "": 
-                    self.log_write_line("Select port !") 
-                    return
-                root.ser = make_connection(port)
-            except:
-                self.log_write_line("Connection failed !")
-            else:
-                root.connected = True
-                root.tab1.connection_indicator.description_label.config(text = label_text_beginning + port) #could be done better
-                root.tab2.connection_indicator.description_label.config(text = label_text_beginning + port) #could be done better
-                root.tab1.connection_indicator.buttons.config(text = "Disconnect") #could be done better
-                root.tab2.connection_indicator.buttons.config(text = "Disconnect") #could be done better
-                self.log_write_line("Connected to " + port)
 
-        # update port Combobox
-    def port_combobox_update(self):
-        available_ports = find_available_ports()
-        available_ports.sort()
-        self.connection_indicator.input_fields[1]['values'] = available_ports
+            try:
+                root.iio_context = adi.adrv9002(uri="ip:analog.local")
+            except:
+                self.log_write_line("IIO connection to ADRV9002 Failed (Context couldn't be created) !")
+                self.connection_indicator.description_labels[0].config(text = "Connection IIO: Failed")
+            else:
+                self.log_write_line("IIO connection to ADRV9002 created")
+                self.connection_indicator.description_labels[0].config(text = "Connection IIO: Connected")
+                
+
+
+    # Check AXI regs availability
+    def check_axi_button_clicked(self, root):
+        if os.name == "nt":
+            self.connection_indicator.description_labels[1].config(text = "Connection AXI: Failed")
+            self.log_write_line("Connection AXI: Failed (AXI Registers are available only on the ZedBoard) !")
+
+        else:
+            # Try write-read from axi register TODO
+
+            # Try read
+            TRY_READ_ADDRESS = 0
+            try:
+                read_axi_data([TRY_READ_ADDRESS, TRY_READ_ADDRESS])
+            except:
+                self.log_write_line("AXI connection to ZedBoard Failed (Could not read AXI register) !")
+                self.connection_indicator.description_labels[1].config(text = "Connection AXI: Failed")
+            else:
+                self.log_write_line("AXI connection to ZedBoard: OK")
+                self.connection_indicator.description_labels[1].config(text = "Connection AXI: Connected")
+            
+
+
+
+
 
     # Clear log
     def log_clear_button_clicked(self):
@@ -465,34 +472,71 @@ class Settings_Tab(ttk.Frame):
    
     # buttons_matrix_button_clicked
     def buttons_matrix_button_clicked(self, root, btn_idx):
-        cmds = self.buttons_matrix_commands[btn_idx]
+        
+        # Load Stream and Profile
+        if btn_idx == 0:
+            stream = './stream_1.bin'
+            profile = './profile_1.json'
+            try:
+                # Check connection + (if not -- try to connect first) 
+                if root.iio_context is None:
+                    self.connect_iio_button_clicked(root)
 
-        if type(cmds) is not tuple:
-            cmds = (cmds, )
+                # Write Stream + Profile
+                root.iio_context.write_stream_profile(stream, profile)
 
-            # turn off features
-            if self.buttons_matrix_names[btn_idx] in ("Channel Reset", "Channel OFF"): 
-                #uncheck & enable all features 
-                for check_value in self.interferences.input_fields:
-                    check_value[0].set(0) #self.interferences.input_fields[i][0].set(0) # uncheck the checkbutton
-                    check_value[1].config(state= tk.NORMAL)
-                # unlock all parameters
-                for row in self.interferences.input_fields:
-                    for i in range(3, 7):
-                        row[i].config(state= tk.NORMAL)                        
-
+                # Turn off RX and TX
+                root.iio_context.rx_ensm_mode_chan0 = "calibrated"
+                root.iio_context.tx_ensm_mode_chan0 = "calibrated"
                 
+            except:
+                self.log_write_line("Stream and Profile loading: Failed !")
+            else:
+                self.log_write_line("Stream and Profile loading: OK")
+
+        # TODO: Add other buttons !!
 
 
-                # Disappear overflow label
-                self.interferences.value_labels.configure(text="Selected combination of interferences and multipaths amplitudes is OK", fg="light gray")
+        else:
+            self.other_button_clicked(btn_idx)
+
+
+
+    def state_combobox_update(self, event, idx):
+        combobox = self.buttons_matrix.input_fields[idx]
+        value = combobox.get()
+
+        try:
+            # Change RX state
+            if idx == 0:
+                if value == "RX calibrated":
+                    self.root.iio_context.rx_ensm_mode_chan0 = "calibrated"
+
+                elif value == "RX primed":
+                    self.root.iio_context.rx_ensm_mode_chan0 = "primed"
+
+                elif value == "RX rf_enabled":
+                    self.root.iio_context.rx_ensm_mode_chan0 = "rf_enabled"
+
+
+            # Change TX state
+            elif idx == 1:
+                if value == "TX calibrated":
+                    self.root.iio_context.tx_ensm_mode_chan0 = "calibrated"
+
+                elif value == "TX primed":
+                    self.root.iio_context.tx_ensm_mode_chan0 = "primed"
+
+                elif value == "TX rf_enabled":
+                    self.root.iio_context.tx_ensm_mode_chan0 = "rf_enabled"
+        except:
+            self.log_write_line(f"State change -- {value}: Failed !")
+        else:
+            self.log_write_line(f"State change -- {value}: OK")
+
             
           
 
-        for cmd in cmds:
-            # Send the cmd
-            self.try_send_cmd_and_log(root, cmd, del_cmd_line=False)
-            sleep(0.01) # 10ms ok?
 
     # interferences_checkbutton_clicked
     def interferences_checkbutton_clicked(self, root, idx):
@@ -570,71 +614,64 @@ class Settings_Tab(ttk.Frame):
             return
         
         if idx == 0:
-            # Change RX Center Frequency
-            self.try_send_cmd_and_log(root, f"CFQ:RX {value}Hz", del_cmd_line=False, force_second_channel=True) #CFQ:RX 30000000Hz #only in STANDBY or CALIBRATED !
+            # Change RX Center Frequency 
+            try:
+                # root.iio_context.tx0_lo = value # (IIO error with versions of IIO --> next line OK)
+                root.iio_context._set_iio_attr("altvoltage0", "RX1_LO_frequency", True, str(round(value)))
+            except:
+                self.log_write_line("Change RX Center Frequency: Failed !")
+            else:
+                self.log_write_line("Change RX Center Frequency: OK")
+                self.input_fields_matrix.value_labels[idx].config(text = f"{value/1e6} MHz")
+                self.input_fields_matrix.value_labels[idx].config(text = f"{value/1e6} MHz")
 
             # Determine change success??? !!
 
-            root.tab1.input_fields_matrix.value_labels[idx].config(text = f"{value/1e6} MHz")
-            root.tab2.input_fields_matrix.value_labels[idx].config(text = f"{value/1e6} MHz")
 
         elif idx == 1:
-            # Change TX Center Frequency
-            self.try_send_cmd_and_log(root, f"CFQ:TX {value}Hz", del_cmd_line=False, force_second_channel=True) #CFQ:RX 30000000Hz #only in STANDBY or CALIBRATED !
+            # Change TX Center Frequency 
+            try:
+                # root.iio_context.tx0_lo = value # (IIO error with versions of IIO --> next line OK)
+                root.iio_context._set_iio_attr("altvoltage2", "TX1_LO_frequency", True, str(round(value)))
+            except:
+                self.log_write_line("Change TX Center Frequency: Failed !")
+            else:
+                self.log_write_line("Change TX Center Frequency: OK")
+                self.input_fields_matrix.value_labels[idx].config(text = f"{value/1e6} MHz")
+                self.input_fields_matrix.value_labels[idx].config(text = f"{value/1e6} MHz")
 
             # Determine change success??? !!
-            root.tab1.input_fields_matrix.value_labels[idx].config(text = f"{value/1e6} MHz")
-            root.tab2.input_fields_matrix.value_labels[idx].config(text = f"{value/1e6} MHz")
+
+
 
         elif idx == 2:
-
-            # invert value from dB to table index 0dB-->255, then -=0.5dB-->-=1index  
-            value_index = 255 - int(value*2)
-
-            if root.drive_both_channels:
-                # Change Rx Gain offset
-                self.try_send_cmd_and_log(root, f"RXG:{value_index}", del_cmd_line=False, force_second_channel=True) 
-
-                root.tab1.input_fields_matrix.value_labels[idx].config(text = f"{value} dB")
-                root.tab2.input_fields_matrix.value_labels[idx].config(text = f"{value} dB")
+            # Change RX Gain 
+            try:
+                root.iio_context.rx_hardwaregain_chan0 = value
+            except:
+                self.log_write_line("Change RX Gain: Failed !")
             else:
-                # Change Rx Gain offset
-                self.try_send_cmd_and_log(root, f"RXG:{value_index}", del_cmd_line=False) 
-
+                self.log_write_line("Change RX Gain: OK")
+                self.input_fields_matrix.value_labels[idx].config(text = f"{value} dB")
                 self.input_fields_matrix.value_labels[idx].config(text = f"{value} dB")
 
+
+
+
         elif idx == 3:
+            value_tx_gain = value / 1000 # mdB-->dB
 
-            if root.drive_both_channels:
-                # Change Tx attenuation offset
-                self.try_send_cmd_and_log(root, f"TAT:{value}mdB", del_cmd_line=False, force_second_channel=True) 
-
-                root.tab1.input_fields_matrix.value_labels[idx].config(text = f"{value} mdB")
-                root.tab2.input_fields_matrix.value_labels[idx].config(text = f"{value} mdB")
+            # Change TX Attenuation 
+            try:
+                root.iio_context.tx_hardwaregain_chan0 = value_tx_gain
+            except:
+                self.log_write_line("Change TX Attenuation: Failed !")
             else:
-                # Change Tx attenuation offset
-                self.try_send_cmd_and_log(root, f"TAT:{value}mdB", del_cmd_line=False) 
-
+                self.log_write_line("Change TX Attenuation: OK")
+                self.input_fields_matrix.value_labels[idx].config(text = f"{value} mdB")
                 self.input_fields_matrix.value_labels[idx].config(text = f"{value} mdB")
                 
 
-    # drive both_channels_button_clicked
-    def drive_both_channels_button_clicked(self, root):
-        # update info
-        action = self.buttons_matrix.input_fields[0].get()
-        root.drive_both_channels = bool(action)
-
-        # disable/enable the other Tab
-        tab_text = root.tabControl.tab(root.tabControl.select(), "text")
-        if action:
-            next_state = "disabled"
-        else:
-            next_state = "normal"
-
-        if tab_text == "Channel 1":
-            root.tabControl.tab(1, state=next_state)
-        elif tab_text == "Channel 2":
-            root.tabControl.tab(0, state=next_state)
 
 
 
@@ -653,52 +690,6 @@ class Settings_Tab(ttk.Frame):
         self.log.value_labels.insert(tk.END, line + "\n")
         self.log.value_labels.config(state=tk.DISABLED) 
         self.log.value_labels.yview("moveto", 1.0) # scroll down
-
-    def try_send_cmd_and_log(self, root, cmd, del_cmd_line=False, try_second_channel = True, force_second_channel=False):
-        success = True
-        try:
-            cmd_bytes = bytes(cmd + "\r\n", 'utf-8') #example: ser.write(b"f32: 0x00000C01 0x00000000\r\n") 
-            root.ser.write(cmd_bytes) 
-        except:
-            self.log_write_line("Send error !")
-            success = False
-        else:
-            # on Success -- delete from cmd_line.input_fields 
-
-            # write to log
-            self.log_write_line(f"Sent: {cmd}") 
-
-        # try second channel
-        tab_text = root.tabControl.tab(root.tabControl.select(), "text")
-        if ((try_second_channel and root.drive_both_channels) or force_second_channel) and cmd[0:3].lower() not in ("f32", "ini", "cfg", "emd", "chs"):
-            if tab_text == "Channel 1":
-                currtab_cmd = "CHS:1"
-                nexttab_cmd = "CHS:2"
-            else:
-                currtab_cmd = "CHS:2"
-                nexttab_cmd = "CHS:1"
-            #change tab
-            sleep(0.010) 
-            self.try_send_cmd_and_log(root, nexttab_cmd, del_cmd_line=False, try_second_channel = False)
-            #send the CMD
-            sleep(0.010) 
-            self.try_send_cmd_and_log(root, cmd, del_cmd_line=False, try_second_channel = False)
-            #restore tab
-            sleep(0.010) 
-            self.try_send_cmd_and_log(root, currtab_cmd, del_cmd_line=False, try_second_channel = False)
-        elif ((try_second_channel and root.drive_both_channels) or force_second_channel) and cmd[0:3].lower() == "f32":
-            if tab_text == "Channel 1":
-                currtab_cmd_prefix = "C"
-                nexttab_cmd_prefix = "D"
-            else:
-                currtab_cmd_prefix = "D"
-                nexttab_cmd_prefix = "C"
-            #send the altered f32 cmd --> replace first occurence of 0x00000C by 0x00000C/D
-            cmd2 = cmd.replace('0x00000'+currtab_cmd_prefix, '0x00000'+nexttab_cmd_prefix, 1)
-            sleep(0.010) 
-            self.try_send_cmd_and_log(root, cmd2, del_cmd_line=False, try_second_channel = False)            
-
-        return success
 
 
 
@@ -851,8 +842,9 @@ class Reception_Tab(ttk.Frame):
 
         x_real = x_real_int.astype(np.float32, casting='safe')
         x_imag = x_imag_int.astype(np.float32, casting='safe')
-
+        
         x = x_real + (1j * x_imag)
+        x_ampl = np.abs(x)
 
 
         # Plot the data
@@ -860,9 +852,11 @@ class Reception_Tab(ttk.Frame):
 
         title = self.time_graph[1].get_title()
         self.time_graph[1].clear()
-        self.time_graph[1].plot(t, x_real, color="blue")
-        self.time_graph[1].plot(t, x_imag, color="red")
+        self.time_graph[1].plot(t, x_real, color="blue", label="real")
+        self.time_graph[1].plot(t, x_imag, color="red", label="imag")
+        self.time_graph[1].plot(t, x_ampl, color="green", label="amplitude")
         self.time_graph[1].set_title(title)
+        # self.time_graph[1].legend()
         self.time_graph[0].draw()
 
         title = self.freq_graph[1].get_title()
@@ -911,6 +905,8 @@ class Reception_Tab(ttk.Frame):
 class Constellation_Tab(ttk.Frame):
     def __init__(self, root, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
+        self.root = root
 
         self.act_row = 0 #used for actual grid position
         
@@ -1095,6 +1091,8 @@ class Constellation_Tab(ttk.Frame):
 class Realtime_Tab(ttk.Frame):
     def __init__(self, root, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
+        self.root = root
 
         self.active = False
 
@@ -1319,7 +1317,8 @@ class GUI_class():
         # self.root.after(100, self.serial_get_line_loop) #check for incomming data (must then call itself) !!! 
 
 
-        
+        # ADI context
+        self.iio_context = None
 
         ###### build GUI ######
         

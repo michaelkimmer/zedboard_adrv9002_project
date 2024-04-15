@@ -2144,7 +2144,7 @@
       },
       "equalizer_time_frequ_0": {
         "vlnv": "xilinx.com:module_ref:equalizer_time_frequency:1.0",
-        "ip_revision": "1712923017",
+        "ip_revision": "1713184635",
         "xci_name": "block_design_0_equalizer_time_frequ_0_0",
         "xci_path": "ip\\block_design_0_equalizer_time_frequ_0_0\\block_design_0_equalizer_time_frequ_0_0.xci",
         "inst_hier_path": "equalizer_time_frequ_0",
@@ -2299,7 +2299,7 @@
       },
       "axi_regs_mux_0": {
         "vlnv": "xilinx.com:module_ref:axi_regs_mux:1.0",
-        "ip_revision": "1712932417",
+        "ip_revision": "1713120991",
         "xci_name": "block_design_0_axi_regs_mux_0_0",
         "xci_path": "ip\\block_design_0_axi_regs_mux_0_0\\block_design_0_axi_regs_mux_0_0.xci",
         "inst_hier_path": "axi_regs_mux_0",
@@ -2400,9 +2400,9 @@
           "data_interleaver_0/CLOCK",
           "data_delay_0/CLOCK",
           "timing_acquisition_8_0/CLOCK",
-          "equalizer_time_frequ_0/CLOCK",
+          "ila_0/clk",
           "axi_regs_mux_0/CLOCK",
-          "ila_0/clk"
+          "equalizer_time_frequ_0/CLOCK"
         ]
       },
       "DETECTION_THRESHOLD_0_1": {
@@ -2422,8 +2422,8 @@
           "data_interleaver_0/RESET",
           "data_delay_0/RESET",
           "timing_acquisition_8_0/RESET",
-          "equalizer_time_frequ_0/RESET",
-          "axi_regs_mux_0/RESET"
+          "axi_regs_mux_0/RESET",
+          "equalizer_time_frequ_0/RESET"
         ]
       },
       "RX_CLOCK_0_1": {
@@ -2492,9 +2492,9 @@
           "data_delay_0/DATA_OUT_STROBE",
           "act_power_0/DATA_STROBE",
           "timing_acquisition_8_0/DATA_STROBE",
-          "equalizer_time_frequ_0/DATA_IN_STROBE",
+          "ila_0/probe0",
           "axi_regs_mux_0/DATA_STROBE",
-          "ila_0/probe0"
+          "equalizer_time_frequ_0/DATA_IN_STROBE"
         ]
       },
       "data_delay_0_IDATA_OUT": {
@@ -2502,9 +2502,9 @@
           "data_delay_0/IDATA_OUT",
           "act_power_0/IDATA",
           "timing_acquisition_8_0/IDATA",
-          "equalizer_time_frequ_0/IDATA_IN",
+          "ila_0/probe1",
           "axi_regs_mux_0/IDATA",
-          "ila_0/probe1"
+          "equalizer_time_frequ_0/IDATA_IN"
         ]
       },
       "data_delay_0_IDATA_OUT_DELAY_16": {
@@ -2525,9 +2525,9 @@
           "data_delay_0/QDATA_OUT",
           "act_power_0/QDATA",
           "timing_acquisition_8_0/QDATA",
-          "equalizer_time_frequ_0/QDATA_IN",
+          "ila_0/probe2",
           "axi_regs_mux_0/QDATA",
-          "ila_0/probe2"
+          "equalizer_time_frequ_0/QDATA_IN"
         ]
       },
       "data_delay_0_QDATA_OUT_DELAY_16": {
@@ -2631,43 +2631,43 @@
       "fft_ofdm_0_FFT_DATA_OUT_VALID": {
         "ports": [
           "hier_fft_ofdm/FFT_DATA_OUT_VALID",
-          "axi_regs_mux_0/FFT_DATA_VALID",
-          "ila_0/probe19"
+          "ila_0/probe19",
+          "axi_regs_mux_0/FFT_DATA_VALID"
         ]
       },
       "fft_ofdm_0_FFT_IDATA_OUT": {
         "ports": [
           "hier_fft_ofdm/FFT_IDATA_OUT",
-          "axi_regs_mux_0/FFT_IDATA",
-          "ila_0/probe21"
+          "ila_0/probe21",
+          "axi_regs_mux_0/FFT_IDATA"
         ]
       },
       "fft_ofdm_0_FFT_QDATA_OUT": {
         "ports": [
           "hier_fft_ofdm/FFT_QDATA_OUT",
-          "axi_regs_mux_0/FFT_QDATA",
-          "ila_0/probe22"
+          "ila_0/probe22",
+          "axi_regs_mux_0/FFT_QDATA"
         ]
       },
       "hier_atan_ATAN_PHASE_OUT": {
         "ports": [
           "hier_atan/ATAN_PHASE_OUT",
-          "equalizer_time_frequ_0/ATAN_PHASE_OUT",
-          "ila_0/probe14"
+          "ila_0/probe14",
+          "equalizer_time_frequ_0/ATAN_PHASE_OUT"
         ]
       },
       "hier_atan_ATAN_PHASE_OUT_STROBE": {
         "ports": [
           "hier_atan/ATAN_PHASE_OUT_STROBE",
-          "equalizer_time_frequ_0/ATAN_PHASE_OUT_STROBE",
-          "ila_0/probe13"
+          "ila_0/probe13",
+          "equalizer_time_frequ_0/ATAN_PHASE_OUT_STROBE"
         ]
       },
       "hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER": {
         "ports": [
           "hier_fft_ofdm/FFT_DATA_OUT_FIRST_SYMBOL_MARKER",
-          "axi_regs_mux_0/FFT_DATA_FIRST_SYMBOL_MARKER",
-          "ila_0/probe27"
+          "ila_0/probe27",
+          "axi_regs_mux_0/FFT_DATA_FIRST_SYMBOL_MARKER"
         ]
       },
       "hier_fft_ofdm_event_data_in_channel_halt": {
@@ -2800,15 +2800,15 @@
       "timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED": {
         "ports": [
           "timing_acquisition_8_0/DETECTION_SIGNAL_DETECTED",
-          "equalizer_time_frequ_0/DETECTION_SIGNAL_DETECTED",
-          "ila_0/probe7"
+          "ila_0/probe7",
+          "equalizer_time_frequ_0/DETECTION_SIGNAL_DETECTED"
         ]
       },
       "timing_acquisition_8_0_DETECTION_STROBE": {
         "ports": [
           "timing_acquisition_8_0/DETECTION_STROBE",
-          "equalizer_time_frequ_0/DETECTION_STROBE",
-          "ila_0/probe6"
+          "ila_0/probe6",
+          "equalizer_time_frequ_0/DETECTION_STROBE"
         ]
       },
       "timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I": {

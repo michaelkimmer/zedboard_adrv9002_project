@@ -2,7 +2,7 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-// Date        : Fri Apr 12 17:28:37 2024
+// Date        : Mon Apr 15 14:38:26 2024
 // Host        : lab817_01 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_axi_regs_mux_0_0/block_design_0_axi_regs_mux_0_0_sim_netlist.v
@@ -13,7 +13,8 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "block_design_0_axi_regs_mux_0_0,axi_regs_mux,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "axi_regs_mux,Vivado 2023.2.2" *) 
+(* CHECK_LICENSE_TYPE = "block_design_0_axi_regs_mux_0_0,axi_regs_mux,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* ip_definition_source = "module_ref" *) 
+(* x_core_info = "axi_regs_mux,Vivado 2023.2.2" *) 
 (* NotValidForBitStream *)
 module block_design_0_axi_regs_mux_0_0
    (RESET,
@@ -56,6 +57,7 @@ module block_design_0_axi_regs_mux_0_0
   wire EQUALIZER_REG_WRITE_STROBE_PHASE_2;
   wire FFT_DATA_VALID;
   wire [23:0]FFT_IDATA;
+  wire [23:0]FFT_QDATA;
   wire [8:0]FPGA_REG_WRITE_ADDRESS;
   wire [31:0]FPGA_REG_WRITE_DATA;
   wire FPGA_REG_WRITE_STROBE;
@@ -72,6 +74,7 @@ module block_design_0_axi_regs_mux_0_0
         .EQUALIZER_REG_WRITE_STROBE_PHASE_2(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
         .FFT_DATA_VALID(FFT_DATA_VALID),
         .FFT_IDATA(FFT_IDATA[23:8]),
+        .FFT_QDATA(FFT_QDATA[23:8]),
         .FPGA_REG_WRITE_ADDRESS(FPGA_REG_WRITE_ADDRESS),
         .FPGA_REG_WRITE_DATA(FPGA_REG_WRITE_DATA),
         .FPGA_REG_WRITE_STROBE(FPGA_REG_WRITE_STROBE),
@@ -93,6 +96,7 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
     FFT_IDATA,
     EQUALIZER_REG_WRITE_DATA,
     QDATA,
+    FFT_QDATA,
     SELECT_AXI_REGS_MODE,
     EQUALIZER_REG_WRITE_STROBE_PHASE_2,
     DATA_STROBE,
@@ -107,6 +111,7 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
   input [15:0]FFT_IDATA;
   input [31:0]EQUALIZER_REG_WRITE_DATA;
   input [15:0]QDATA;
+  input [15:0]FFT_QDATA;
   input [7:0]SELECT_AXI_REGS_MODE;
   input EQUALIZER_REG_WRITE_STROBE_PHASE_2;
   input DATA_STROBE;
@@ -122,6 +127,7 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
   wire EQUALIZER_REG_WRITE_STROBE_PHASE_2;
   wire FFT_DATA_VALID;
   wire [15:0]FFT_IDATA;
+  wire [15:0]FFT_QDATA;
   wire [8:0]FPGA_REG_WRITE_ADDRESS;
   wire \FPGA_REG_WRITE_ADDRESS[0]_i_1_n_0 ;
   wire \FPGA_REG_WRITE_ADDRESS[1]_i_1_n_0 ;
@@ -682,7 +688,7 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
        (.I0(\FPGA_REG_WRITE_DATA[31]_i_2_n_0 ),
         .I1(QDATA[0]),
         .I2(\FPGA_REG_WRITE_DATA[31]_i_3_n_0 ),
-        .I3(FFT_IDATA[0]),
+        .I3(FFT_QDATA[0]),
         .I4(EQUALIZER_REG_WRITE_DATA[16]),
         .I5(\FPGA_REG_WRITE_DATA[31]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[16]_i_1_n_0 ));
@@ -692,7 +698,7 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
        (.I0(\FPGA_REG_WRITE_DATA[31]_i_2_n_0 ),
         .I1(QDATA[1]),
         .I2(\FPGA_REG_WRITE_DATA[31]_i_3_n_0 ),
-        .I3(FFT_IDATA[1]),
+        .I3(FFT_QDATA[1]),
         .I4(EQUALIZER_REG_WRITE_DATA[17]),
         .I5(\FPGA_REG_WRITE_DATA[31]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[17]_i_1_n_0 ));
@@ -702,7 +708,7 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
        (.I0(\FPGA_REG_WRITE_DATA[31]_i_2_n_0 ),
         .I1(QDATA[2]),
         .I2(\FPGA_REG_WRITE_DATA[31]_i_3_n_0 ),
-        .I3(FFT_IDATA[2]),
+        .I3(FFT_QDATA[2]),
         .I4(EQUALIZER_REG_WRITE_DATA[18]),
         .I5(\FPGA_REG_WRITE_DATA[31]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[18]_i_1_n_0 ));
@@ -712,7 +718,7 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
        (.I0(\FPGA_REG_WRITE_DATA[31]_i_2_n_0 ),
         .I1(QDATA[3]),
         .I2(\FPGA_REG_WRITE_DATA[31]_i_3_n_0 ),
-        .I3(FFT_IDATA[3]),
+        .I3(FFT_QDATA[3]),
         .I4(EQUALIZER_REG_WRITE_DATA[19]),
         .I5(\FPGA_REG_WRITE_DATA[31]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[19]_i_1_n_0 ));
@@ -732,7 +738,7 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
        (.I0(\FPGA_REG_WRITE_DATA[31]_i_2_n_0 ),
         .I1(QDATA[4]),
         .I2(\FPGA_REG_WRITE_DATA[31]_i_3_n_0 ),
-        .I3(FFT_IDATA[4]),
+        .I3(FFT_QDATA[4]),
         .I4(EQUALIZER_REG_WRITE_DATA[20]),
         .I5(\FPGA_REG_WRITE_DATA[31]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[20]_i_1_n_0 ));
@@ -742,7 +748,7 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
        (.I0(\FPGA_REG_WRITE_DATA[31]_i_2_n_0 ),
         .I1(QDATA[5]),
         .I2(\FPGA_REG_WRITE_DATA[31]_i_3_n_0 ),
-        .I3(FFT_IDATA[5]),
+        .I3(FFT_QDATA[5]),
         .I4(EQUALIZER_REG_WRITE_DATA[21]),
         .I5(\FPGA_REG_WRITE_DATA[31]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[21]_i_1_n_0 ));
@@ -752,7 +758,7 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
        (.I0(\FPGA_REG_WRITE_DATA[31]_i_2_n_0 ),
         .I1(QDATA[6]),
         .I2(\FPGA_REG_WRITE_DATA[31]_i_3_n_0 ),
-        .I3(FFT_IDATA[6]),
+        .I3(FFT_QDATA[6]),
         .I4(EQUALIZER_REG_WRITE_DATA[22]),
         .I5(\FPGA_REG_WRITE_DATA[31]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[22]_i_1_n_0 ));
@@ -762,7 +768,7 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
        (.I0(\FPGA_REG_WRITE_DATA[31]_i_2_n_0 ),
         .I1(QDATA[7]),
         .I2(\FPGA_REG_WRITE_DATA[31]_i_3_n_0 ),
-        .I3(FFT_IDATA[7]),
+        .I3(FFT_QDATA[7]),
         .I4(EQUALIZER_REG_WRITE_DATA[23]),
         .I5(\FPGA_REG_WRITE_DATA[31]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[23]_i_1_n_0 ));
@@ -772,7 +778,7 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
        (.I0(\FPGA_REG_WRITE_DATA[31]_i_2_n_0 ),
         .I1(QDATA[8]),
         .I2(\FPGA_REG_WRITE_DATA[31]_i_3_n_0 ),
-        .I3(FFT_IDATA[8]),
+        .I3(FFT_QDATA[8]),
         .I4(EQUALIZER_REG_WRITE_DATA[24]),
         .I5(\FPGA_REG_WRITE_DATA[31]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[24]_i_1_n_0 ));
@@ -782,7 +788,7 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
        (.I0(\FPGA_REG_WRITE_DATA[31]_i_2_n_0 ),
         .I1(QDATA[9]),
         .I2(\FPGA_REG_WRITE_DATA[31]_i_3_n_0 ),
-        .I3(FFT_IDATA[9]),
+        .I3(FFT_QDATA[9]),
         .I4(EQUALIZER_REG_WRITE_DATA[25]),
         .I5(\FPGA_REG_WRITE_DATA[31]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[25]_i_1_n_0 ));
@@ -792,7 +798,7 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
        (.I0(\FPGA_REG_WRITE_DATA[31]_i_2_n_0 ),
         .I1(QDATA[10]),
         .I2(\FPGA_REG_WRITE_DATA[31]_i_3_n_0 ),
-        .I3(FFT_IDATA[10]),
+        .I3(FFT_QDATA[10]),
         .I4(EQUALIZER_REG_WRITE_DATA[26]),
         .I5(\FPGA_REG_WRITE_DATA[31]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[26]_i_1_n_0 ));
@@ -802,7 +808,7 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
        (.I0(\FPGA_REG_WRITE_DATA[31]_i_2_n_0 ),
         .I1(QDATA[11]),
         .I2(\FPGA_REG_WRITE_DATA[31]_i_3_n_0 ),
-        .I3(FFT_IDATA[11]),
+        .I3(FFT_QDATA[11]),
         .I4(EQUALIZER_REG_WRITE_DATA[27]),
         .I5(\FPGA_REG_WRITE_DATA[31]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[27]_i_1_n_0 ));
@@ -812,7 +818,7 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
        (.I0(\FPGA_REG_WRITE_DATA[31]_i_2_n_0 ),
         .I1(QDATA[12]),
         .I2(\FPGA_REG_WRITE_DATA[31]_i_3_n_0 ),
-        .I3(FFT_IDATA[12]),
+        .I3(FFT_QDATA[12]),
         .I4(EQUALIZER_REG_WRITE_DATA[28]),
         .I5(\FPGA_REG_WRITE_DATA[31]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[28]_i_1_n_0 ));
@@ -822,7 +828,7 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
        (.I0(\FPGA_REG_WRITE_DATA[31]_i_2_n_0 ),
         .I1(QDATA[13]),
         .I2(\FPGA_REG_WRITE_DATA[31]_i_3_n_0 ),
-        .I3(FFT_IDATA[13]),
+        .I3(FFT_QDATA[13]),
         .I4(EQUALIZER_REG_WRITE_DATA[29]),
         .I5(\FPGA_REG_WRITE_DATA[31]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[29]_i_1_n_0 ));
@@ -842,7 +848,7 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
        (.I0(\FPGA_REG_WRITE_DATA[31]_i_2_n_0 ),
         .I1(QDATA[14]),
         .I2(\FPGA_REG_WRITE_DATA[31]_i_3_n_0 ),
-        .I3(FFT_IDATA[14]),
+        .I3(FFT_QDATA[14]),
         .I4(EQUALIZER_REG_WRITE_DATA[30]),
         .I5(\FPGA_REG_WRITE_DATA[31]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[30]_i_1_n_0 ));
@@ -852,7 +858,7 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
        (.I0(\FPGA_REG_WRITE_DATA[31]_i_2_n_0 ),
         .I1(QDATA[15]),
         .I2(\FPGA_REG_WRITE_DATA[31]_i_3_n_0 ),
-        .I3(FFT_IDATA[15]),
+        .I3(FFT_QDATA[15]),
         .I4(EQUALIZER_REG_WRITE_DATA[31]),
         .I5(\FPGA_REG_WRITE_DATA[31]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[31]_i_1_n_0 ));

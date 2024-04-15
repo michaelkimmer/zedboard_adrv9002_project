@@ -2,7 +2,7 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-// Date        : Fri Apr 12 17:28:48 2024
+// Date        : Mon Apr 15 14:38:55 2024
 // Host        : lab817_01 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_equalizer_time_frequ_0_0/block_design_0_equalizer_time_frequ_0_0_sim_netlist.v
@@ -13,7 +13,8 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "block_design_0_equalizer_time_frequ_0_0,equalizer_time_frequency,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "equalizer_time_frequency,Vivado 2023.2.2" *) 
+(* CHECK_LICENSE_TYPE = "block_design_0_equalizer_time_frequ_0_0,equalizer_time_frequency,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* ip_definition_source = "module_ref" *) 
+(* x_core_info = "equalizer_time_frequency,Vivado 2023.2.2" *) 
 (* NotValidForBitStream *)
 module block_design_0_equalizer_time_frequ_0_0
    (RESET,

@@ -2,7 +2,7 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
--- Date        : Fri Apr 12 17:28:48 2024
+-- Date        : Mon Apr 15 14:38:56 2024
 -- Host        : lab817_01 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_equalizer_time_frequ_0_0/block_design_0_equalizer_time_frequ_0_0_sim_netlist.vhdl
@@ -61158,6 +61158,8 @@ entity block_design_0_equalizer_time_frequ_0_0 is
   attribute CHECK_LICENSE_TYPE of block_design_0_equalizer_time_frequ_0_0 : entity is "block_design_0_equalizer_time_frequ_0_0,equalizer_time_frequency,{}";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of block_design_0_equalizer_time_frequ_0_0 : entity is "yes";
+  attribute ip_definition_source : string;
+  attribute ip_definition_source of block_design_0_equalizer_time_frequ_0_0 : entity is "module_ref";
   attribute x_core_info : string;
   attribute x_core_info of block_design_0_equalizer_time_frequ_0_0 : entity is "equalizer_time_frequency,Vivado 2023.2.2";
 end block_design_0_equalizer_time_frequ_0_0;
