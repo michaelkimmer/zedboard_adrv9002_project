@@ -4588,7 +4588,7 @@
       },
       "IP_802_11p_0": {
         "vlnv": "xilinx.com:user:IP_802_11p:1.0",
-        "ip_revision": "8",
+        "ip_revision": "10",
         "xci_name": "system_IP_802_11p_0_0",
         "xci_path": "ip\\system_IP_802_11p_0_0\\system_IP_802_11p_0_0.xci",
         "inst_hier_path": "IP_802_11p_0"

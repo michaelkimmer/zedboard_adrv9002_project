@@ -2,12 +2,125 @@
 --Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
---Date        : Mon Apr 15 14:37:36 2024
+--Date        : Tue Apr 16 20:20:38 2024
 --Host        : lab817_01 running 64-bit major release  (build 9200)
 --Command     : generate_target block_design_0.bd
 --Design      : block_design_0
 --Purpose     : IP block netlist
 ----------------------------------------------------------------------------------
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+library UNISIM;
+use UNISIM.VCOMPONENTS.ALL;
+entity hier_atan_constellation_imp_1BWRZUQ is
+  port (
+    ATAN_CONSTELLATION_IN_CNTR : in STD_LOGIC_VECTOR ( 5 downto 0 );
+    ATAN_CONSTELLATION_IN_I : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    ATAN_CONSTELLATION_IN_Q : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    ATAN_CONSTELLATION_IN_STROBE : in STD_LOGIC;
+    ATAN_CONSTELLATION_PHASE_OUT : out STD_LOGIC_VECTOR ( 23 downto 0 );
+    ATAN_CONSTELLATION_PHASE_OUT_CNTR : out STD_LOGIC_VECTOR ( 5 downto 0 );
+    ATAN_CONSTELLATION_PHASE_OUT_STROBE : out STD_LOGIC;
+    CLOCK : in STD_LOGIC;
+    RESET : in STD_LOGIC
+  );
+end hier_atan_constellation_imp_1BWRZUQ;
+
+architecture STRUCTURE of hier_atan_constellation_imp_1BWRZUQ is
+  component block_design_0_atan_constellation_b_0_0 is
+  port (
+    RESET : in STD_LOGIC;
+    CLOCK : in STD_LOGIC;
+    ATAN_CONSTELLATION_IN_STROBE : in STD_LOGIC;
+    ATAN_CONSTELLATION_IN_I : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    ATAN_CONSTELLATION_IN_Q : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    ATAN_CONSTELLATION_IN_CNTR : in STD_LOGIC_VECTOR ( 5 downto 0 );
+    ATAN_CONSTELLATION_PHASE_OUT_STROBE : out STD_LOGIC;
+    ATAN_CONSTELLATION_PHASE_OUT : out STD_LOGIC_VECTOR ( 23 downto 0 );
+    ATAN_CONSTELLATION_PHASE_OUT_CNTR : out STD_LOGIC_VECTOR ( 5 downto 0 );
+    aclk : out STD_LOGIC;
+    aresetn : out STD_LOGIC;
+    M_AXIS_DOUT_tdata : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    M_AXIS_DOUT_tuser : in STD_LOGIC_VECTOR ( 5 downto 0 );
+    M_AXIS_DOUT_tvalid : in STD_LOGIC;
+    S_AXIS_CARTESIAN_tdata : out STD_LOGIC_VECTOR ( 47 downto 0 );
+    S_AXIS_CARTESIAN_tuser : out STD_LOGIC_VECTOR ( 5 downto 0 );
+    S_AXIS_CARTESIAN_tready : in STD_LOGIC;
+    S_AXIS_CARTESIAN_tvalid : out STD_LOGIC
+  );
+  end component block_design_0_atan_constellation_b_0_0;
+  component block_design_0_cordic_0_2 is
+  port (
+    aclk : in STD_LOGIC;
+    aresetn : in STD_LOGIC;
+    s_axis_cartesian_tvalid : in STD_LOGIC;
+    s_axis_cartesian_tuser : in STD_LOGIC_VECTOR ( 5 downto 0 );
+    s_axis_cartesian_tdata : in STD_LOGIC_VECTOR ( 47 downto 0 );
+    m_axis_dout_tvalid : out STD_LOGIC;
+    m_axis_dout_tuser : out STD_LOGIC_VECTOR ( 5 downto 0 );
+    m_axis_dout_tdata : out STD_LOGIC_VECTOR ( 23 downto 0 )
+  );
+  end component block_design_0_cordic_0_2;
+  signal ATAN_CONSTELLATION_IN_CNTR_1 : STD_LOGIC_VECTOR ( 5 downto 0 );
+  signal ATAN_CONSTELLATION_IN_I_1 : STD_LOGIC_VECTOR ( 23 downto 0 );
+  signal ATAN_CONSTELLATION_IN_Q_1 : STD_LOGIC_VECTOR ( 23 downto 0 );
+  signal ATAN_CONSTELLATION_IN_STROBE_1 : STD_LOGIC;
+  signal CLOCK_0_1 : STD_LOGIC;
+  signal RESET_0_1 : STD_LOGIC;
+  signal atan_constellation_b_0_ATAN_CONSTELLATION_PHASE_OUT : STD_LOGIC_VECTOR ( 23 downto 0 );
+  signal atan_constellation_b_0_ATAN_CONSTELLATION_PHASE_OUT_CNTR : STD_LOGIC_VECTOR ( 5 downto 0 );
+  signal atan_constellation_b_0_ATAN_CONSTELLATION_PHASE_OUT_STROBE : STD_LOGIC;
+  signal atan_constellation_b_0_S_AXIS_CARTESIAN_TDATA : STD_LOGIC_VECTOR ( 47 downto 0 );
+  signal atan_constellation_b_0_S_AXIS_CARTESIAN_TUSER : STD_LOGIC_VECTOR ( 5 downto 0 );
+  signal atan_constellation_b_0_S_AXIS_CARTESIAN_TVALID : STD_LOGIC;
+  signal atan_constellation_b_0_aclk : STD_LOGIC;
+  signal atan_constellation_b_0_aresetn : STD_LOGIC;
+  signal cordic_0_M_AXIS_DOUT_TDATA : STD_LOGIC_VECTOR ( 23 downto 0 );
+  signal cordic_0_M_AXIS_DOUT_TUSER : STD_LOGIC_VECTOR ( 5 downto 0 );
+  signal cordic_0_M_AXIS_DOUT_TVALID : STD_LOGIC;
+begin
+  ATAN_CONSTELLATION_IN_CNTR_1(5 downto 0) <= ATAN_CONSTELLATION_IN_CNTR(5 downto 0);
+  ATAN_CONSTELLATION_IN_I_1(23 downto 0) <= ATAN_CONSTELLATION_IN_I(23 downto 0);
+  ATAN_CONSTELLATION_IN_Q_1(23 downto 0) <= ATAN_CONSTELLATION_IN_Q(23 downto 0);
+  ATAN_CONSTELLATION_IN_STROBE_1 <= ATAN_CONSTELLATION_IN_STROBE;
+  ATAN_CONSTELLATION_PHASE_OUT(23 downto 0) <= atan_constellation_b_0_ATAN_CONSTELLATION_PHASE_OUT(23 downto 0);
+  ATAN_CONSTELLATION_PHASE_OUT_CNTR(5 downto 0) <= atan_constellation_b_0_ATAN_CONSTELLATION_PHASE_OUT_CNTR(5 downto 0);
+  ATAN_CONSTELLATION_PHASE_OUT_STROBE <= atan_constellation_b_0_ATAN_CONSTELLATION_PHASE_OUT_STROBE;
+  CLOCK_0_1 <= CLOCK;
+  RESET_0_1 <= RESET;
+atan_constellation_b_0: component block_design_0_atan_constellation_b_0_0
+     port map (
+      ATAN_CONSTELLATION_IN_CNTR(5 downto 0) => ATAN_CONSTELLATION_IN_CNTR_1(5 downto 0),
+      ATAN_CONSTELLATION_IN_I(23 downto 0) => ATAN_CONSTELLATION_IN_I_1(23 downto 0),
+      ATAN_CONSTELLATION_IN_Q(23 downto 0) => ATAN_CONSTELLATION_IN_Q_1(23 downto 0),
+      ATAN_CONSTELLATION_IN_STROBE => ATAN_CONSTELLATION_IN_STROBE_1,
+      ATAN_CONSTELLATION_PHASE_OUT(23 downto 0) => atan_constellation_b_0_ATAN_CONSTELLATION_PHASE_OUT(23 downto 0),
+      ATAN_CONSTELLATION_PHASE_OUT_CNTR(5 downto 0) => atan_constellation_b_0_ATAN_CONSTELLATION_PHASE_OUT_CNTR(5 downto 0),
+      ATAN_CONSTELLATION_PHASE_OUT_STROBE => atan_constellation_b_0_ATAN_CONSTELLATION_PHASE_OUT_STROBE,
+      CLOCK => CLOCK_0_1,
+      M_AXIS_DOUT_tdata(23 downto 0) => cordic_0_M_AXIS_DOUT_TDATA(23 downto 0),
+      M_AXIS_DOUT_tuser(5 downto 0) => cordic_0_M_AXIS_DOUT_TUSER(5 downto 0),
+      M_AXIS_DOUT_tvalid => cordic_0_M_AXIS_DOUT_TVALID,
+      RESET => RESET_0_1,
+      S_AXIS_CARTESIAN_tdata(47 downto 0) => atan_constellation_b_0_S_AXIS_CARTESIAN_TDATA(47 downto 0),
+      S_AXIS_CARTESIAN_tready => '1',
+      S_AXIS_CARTESIAN_tuser(5 downto 0) => atan_constellation_b_0_S_AXIS_CARTESIAN_TUSER(5 downto 0),
+      S_AXIS_CARTESIAN_tvalid => atan_constellation_b_0_S_AXIS_CARTESIAN_TVALID,
+      aclk => atan_constellation_b_0_aclk,
+      aresetn => atan_constellation_b_0_aresetn
+    );
+cordic_0: component block_design_0_cordic_0_2
+     port map (
+      aclk => atan_constellation_b_0_aclk,
+      aresetn => atan_constellation_b_0_aresetn,
+      m_axis_dout_tdata(23 downto 0) => cordic_0_M_AXIS_DOUT_TDATA(23 downto 0),
+      m_axis_dout_tuser(5 downto 0) => cordic_0_M_AXIS_DOUT_TUSER(5 downto 0),
+      m_axis_dout_tvalid => cordic_0_M_AXIS_DOUT_TVALID,
+      s_axis_cartesian_tdata(47 downto 0) => atan_constellation_b_0_S_AXIS_CARTESIAN_TDATA(47 downto 0),
+      s_axis_cartesian_tuser(5 downto 0) => atan_constellation_b_0_S_AXIS_CARTESIAN_TUSER(5 downto 0),
+      s_axis_cartesian_tvalid => atan_constellation_b_0_S_AXIS_CARTESIAN_TVALID
+    );
+end STRUCTURE;
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
@@ -274,6 +387,137 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
+entity hier_rotation_constellation_imp_EG5J2R is
+  port (
+    CLOCK : in STD_LOGIC;
+    RESET : in STD_LOGIC;
+    ROTATION_CONSTELLATION_CNTR_IN : in STD_LOGIC_VECTOR ( 5 downto 0 );
+    ROTATION_CONSTELLATION_DATA_IN_STROBE : in STD_LOGIC;
+    ROTATION_CONSTELLATION_DATA_OUT_CNTR : out STD_LOGIC_VECTOR ( 5 downto 0 );
+    ROTATION_CONSTELLATION_DATA_OUT_STROBE : out STD_LOGIC;
+    ROTATION_CONSTELLATION_IDATA_IN : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    ROTATION_CONSTELLATION_IDATA_OUT : out STD_LOGIC_VECTOR ( 23 downto 0 );
+    ROTATION_CONSTELLATION_PHASE_IN : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    ROTATION_CONSTELLATION_QDATA_IN : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    ROTATION_CONSTELLATION_QDATA_OUT : out STD_LOGIC_VECTOR ( 23 downto 0 )
+  );
+end hier_rotation_constellation_imp_EG5J2R;
+
+architecture STRUCTURE of hier_rotation_constellation_imp_EG5J2R is
+  component block_design_0_cordic_0_3 is
+  port (
+    aclk : in STD_LOGIC;
+    aresetn : in STD_LOGIC;
+    s_axis_phase_tvalid : in STD_LOGIC;
+    s_axis_phase_tdata : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    s_axis_cartesian_tvalid : in STD_LOGIC;
+    s_axis_cartesian_tuser : in STD_LOGIC_VECTOR ( 5 downto 0 );
+    s_axis_cartesian_tdata : in STD_LOGIC_VECTOR ( 47 downto 0 );
+    m_axis_dout_tvalid : out STD_LOGIC;
+    m_axis_dout_tuser : out STD_LOGIC_VECTOR ( 5 downto 0 );
+    m_axis_dout_tdata : out STD_LOGIC_VECTOR ( 47 downto 0 )
+  );
+  end component block_design_0_cordic_0_3;
+  component block_design_0_rotation_constellati_0_0 is
+  port (
+    RESET : in STD_LOGIC;
+    CLOCK : in STD_LOGIC;
+    ROTATION_CONSTELLATION_DATA_IN_STROBE : in STD_LOGIC;
+    ROTATION_CONSTELLATION_IDATA_IN : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    ROTATION_CONSTELLATION_QDATA_IN : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    ROTATION_CONSTELLATION_PHASE_IN : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    ROTATION_CONSTELLATION_CNTR_IN : in STD_LOGIC_VECTOR ( 5 downto 0 );
+    ROTATION_CONSTELLATION_DATA_OUT_STROBE : out STD_LOGIC;
+    ROTATION_CONSTELLATION_IDATA_OUT : out STD_LOGIC_VECTOR ( 23 downto 0 );
+    ROTATION_CONSTELLATION_QDATA_OUT : out STD_LOGIC_VECTOR ( 23 downto 0 );
+    ROTATION_CONSTELLATION_DATA_OUT_CNTR : out STD_LOGIC_VECTOR ( 5 downto 0 );
+    M_AXIS_DOUT_tdata : in STD_LOGIC_VECTOR ( 47 downto 0 );
+    M_AXIS_DOUT_tuser : in STD_LOGIC_VECTOR ( 5 downto 0 );
+    M_AXIS_DOUT_tvalid : in STD_LOGIC;
+    S_AXIS_CARTESIAN_tdata : out STD_LOGIC_VECTOR ( 47 downto 0 );
+    S_AXIS_CARTESIAN_tuser : out STD_LOGIC_VECTOR ( 5 downto 0 );
+    S_AXIS_CARTESIAN_tvalid : out STD_LOGIC;
+    S_AXIS_PHASE_tdata : out STD_LOGIC_VECTOR ( 23 downto 0 );
+    S_AXIS_PHASE_tvalid : out STD_LOGIC;
+    aclk : out STD_LOGIC;
+    aresetn : out STD_LOGIC
+  );
+  end component block_design_0_rotation_constellati_0_0;
+  signal CLOCK_0_1 : STD_LOGIC;
+  signal RESET_0_1 : STD_LOGIC;
+  signal ROTATION_CONSTELLATION_CNTR_IN_1 : STD_LOGIC_VECTOR ( 5 downto 0 );
+  signal ROTATION_CONSTELLATION_DATA_IN_STROBE_1 : STD_LOGIC;
+  signal ROTATION_CONSTELLATION_IDATA_IN_1 : STD_LOGIC_VECTOR ( 23 downto 0 );
+  signal ROTATION_CONSTELLATION_PHASE_IN_1 : STD_LOGIC_VECTOR ( 23 downto 0 );
+  signal ROTATION_CONSTELLATION_QDATA_IN_1 : STD_LOGIC_VECTOR ( 23 downto 0 );
+  signal cordic_0_M_AXIS_DOUT_TDATA : STD_LOGIC_VECTOR ( 47 downto 0 );
+  signal cordic_0_M_AXIS_DOUT_TUSER : STD_LOGIC_VECTOR ( 5 downto 0 );
+  signal cordic_0_M_AXIS_DOUT_TVALID : STD_LOGIC;
+  signal rotation_constellati_0_ROTATION_CONSTELLATION_DATA_OUT_CNTR : STD_LOGIC_VECTOR ( 5 downto 0 );
+  signal rotation_constellati_0_ROTATION_CONSTELLATION_DATA_OUT_STROBE : STD_LOGIC;
+  signal rotation_constellati_0_ROTATION_CONSTELLATION_IDATA_OUT : STD_LOGIC_VECTOR ( 23 downto 0 );
+  signal rotation_constellati_0_ROTATION_CONSTELLATION_QDATA_OUT : STD_LOGIC_VECTOR ( 23 downto 0 );
+  signal rotation_constellati_0_S_AXIS_CARTESIAN_TDATA : STD_LOGIC_VECTOR ( 47 downto 0 );
+  signal rotation_constellati_0_S_AXIS_CARTESIAN_TUSER : STD_LOGIC_VECTOR ( 5 downto 0 );
+  signal rotation_constellati_0_S_AXIS_CARTESIAN_TVALID : STD_LOGIC;
+  signal rotation_constellati_0_S_AXIS_PHASE_TDATA : STD_LOGIC_VECTOR ( 23 downto 0 );
+  signal rotation_constellati_0_S_AXIS_PHASE_TVALID : STD_LOGIC;
+  signal rotation_constellati_0_aclk : STD_LOGIC;
+  signal rotation_constellati_0_aresetn : STD_LOGIC;
+begin
+  CLOCK_0_1 <= CLOCK;
+  RESET_0_1 <= RESET;
+  ROTATION_CONSTELLATION_CNTR_IN_1(5 downto 0) <= ROTATION_CONSTELLATION_CNTR_IN(5 downto 0);
+  ROTATION_CONSTELLATION_DATA_IN_STROBE_1 <= ROTATION_CONSTELLATION_DATA_IN_STROBE;
+  ROTATION_CONSTELLATION_DATA_OUT_CNTR(5 downto 0) <= rotation_constellati_0_ROTATION_CONSTELLATION_DATA_OUT_CNTR(5 downto 0);
+  ROTATION_CONSTELLATION_DATA_OUT_STROBE <= rotation_constellati_0_ROTATION_CONSTELLATION_DATA_OUT_STROBE;
+  ROTATION_CONSTELLATION_IDATA_IN_1(23 downto 0) <= ROTATION_CONSTELLATION_IDATA_IN(23 downto 0);
+  ROTATION_CONSTELLATION_IDATA_OUT(23 downto 0) <= rotation_constellati_0_ROTATION_CONSTELLATION_IDATA_OUT(23 downto 0);
+  ROTATION_CONSTELLATION_PHASE_IN_1(23 downto 0) <= ROTATION_CONSTELLATION_PHASE_IN(23 downto 0);
+  ROTATION_CONSTELLATION_QDATA_IN_1(23 downto 0) <= ROTATION_CONSTELLATION_QDATA_IN(23 downto 0);
+  ROTATION_CONSTELLATION_QDATA_OUT(23 downto 0) <= rotation_constellati_0_ROTATION_CONSTELLATION_QDATA_OUT(23 downto 0);
+cordic_0: component block_design_0_cordic_0_3
+     port map (
+      aclk => rotation_constellati_0_aclk,
+      aresetn => rotation_constellati_0_aresetn,
+      m_axis_dout_tdata(47 downto 0) => cordic_0_M_AXIS_DOUT_TDATA(47 downto 0),
+      m_axis_dout_tuser(5 downto 0) => cordic_0_M_AXIS_DOUT_TUSER(5 downto 0),
+      m_axis_dout_tvalid => cordic_0_M_AXIS_DOUT_TVALID,
+      s_axis_cartesian_tdata(47 downto 0) => rotation_constellati_0_S_AXIS_CARTESIAN_TDATA(47 downto 0),
+      s_axis_cartesian_tuser(5 downto 0) => rotation_constellati_0_S_AXIS_CARTESIAN_TUSER(5 downto 0),
+      s_axis_cartesian_tvalid => rotation_constellati_0_S_AXIS_CARTESIAN_TVALID,
+      s_axis_phase_tdata(23 downto 0) => rotation_constellati_0_S_AXIS_PHASE_TDATA(23 downto 0),
+      s_axis_phase_tvalid => rotation_constellati_0_S_AXIS_PHASE_TVALID
+    );
+rotation_constellati_0: component block_design_0_rotation_constellati_0_0
+     port map (
+      CLOCK => CLOCK_0_1,
+      M_AXIS_DOUT_tdata(47 downto 0) => cordic_0_M_AXIS_DOUT_TDATA(47 downto 0),
+      M_AXIS_DOUT_tuser(5 downto 0) => cordic_0_M_AXIS_DOUT_TUSER(5 downto 0),
+      M_AXIS_DOUT_tvalid => cordic_0_M_AXIS_DOUT_TVALID,
+      RESET => RESET_0_1,
+      ROTATION_CONSTELLATION_CNTR_IN(5 downto 0) => ROTATION_CONSTELLATION_CNTR_IN_1(5 downto 0),
+      ROTATION_CONSTELLATION_DATA_IN_STROBE => ROTATION_CONSTELLATION_DATA_IN_STROBE_1,
+      ROTATION_CONSTELLATION_DATA_OUT_CNTR(5 downto 0) => rotation_constellati_0_ROTATION_CONSTELLATION_DATA_OUT_CNTR(5 downto 0),
+      ROTATION_CONSTELLATION_DATA_OUT_STROBE => rotation_constellati_0_ROTATION_CONSTELLATION_DATA_OUT_STROBE,
+      ROTATION_CONSTELLATION_IDATA_IN(23 downto 0) => ROTATION_CONSTELLATION_IDATA_IN_1(23 downto 0),
+      ROTATION_CONSTELLATION_IDATA_OUT(23 downto 0) => rotation_constellati_0_ROTATION_CONSTELLATION_IDATA_OUT(23 downto 0),
+      ROTATION_CONSTELLATION_PHASE_IN(23 downto 0) => ROTATION_CONSTELLATION_PHASE_IN_1(23 downto 0),
+      ROTATION_CONSTELLATION_QDATA_IN(23 downto 0) => ROTATION_CONSTELLATION_QDATA_IN_1(23 downto 0),
+      ROTATION_CONSTELLATION_QDATA_OUT(23 downto 0) => rotation_constellati_0_ROTATION_CONSTELLATION_QDATA_OUT(23 downto 0),
+      S_AXIS_CARTESIAN_tdata(47 downto 0) => rotation_constellati_0_S_AXIS_CARTESIAN_TDATA(47 downto 0),
+      S_AXIS_CARTESIAN_tuser(5 downto 0) => rotation_constellati_0_S_AXIS_CARTESIAN_TUSER(5 downto 0),
+      S_AXIS_CARTESIAN_tvalid => rotation_constellati_0_S_AXIS_CARTESIAN_TVALID,
+      S_AXIS_PHASE_tdata(23 downto 0) => rotation_constellati_0_S_AXIS_PHASE_TDATA(23 downto 0),
+      S_AXIS_PHASE_tvalid => rotation_constellati_0_S_AXIS_PHASE_TVALID,
+      aclk => rotation_constellati_0_aclk,
+      aresetn => rotation_constellati_0_aresetn
+    );
+end STRUCTURE;
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+library UNISIM;
+use UNISIM.VCOMPONENTS.ALL;
 entity hier_rotation_imp_OQQOO0 is
   port (
     CLOCK : in STD_LOGIC;
@@ -428,7 +672,7 @@ entity block_design_0 is
     SELECT_AXI_REGS_MODE : in STD_LOGIC_VECTOR ( 7 downto 0 )
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of block_design_0 : entity is "block_design_0,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=block_design_0,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=17,numReposBlks=14,numNonXlnxBlks=0,numHierBlks=3,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=10,numPkgbdBlks=0,bdsource=USER,synth_mode=Hierarchical}";
+  attribute CORE_GENERATION_INFO of block_design_0 : entity is "block_design_0,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=block_design_0,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=24,numReposBlks=19,numNonXlnxBlks=0,numHierBlks=5,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=13,numPkgbdBlks=0,bdsource=USER,synth_mode=Hierarchical}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of block_design_0 : entity is "block_design_0.hwdef";
 end block_design_0;
@@ -540,7 +784,11 @@ architecture STRUCTURE of block_design_0 is
     probe25 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe26 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe27 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe28 : in STD_LOGIC_VECTOR ( 0 to 0 )
+    probe28 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe29 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe30 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe31 : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    probe32 : in STD_LOGIC_VECTOR ( 23 downto 0 )
   );
   end component block_design_0_ila_0_0;
   component block_design_0_equalizer_time_frequ_0_0 is
@@ -595,11 +843,46 @@ architecture STRUCTURE of block_design_0 is
     FFT_QDATA : in STD_LOGIC_VECTOR ( 23 downto 0 );
     FFT_DATA_VALID : in STD_LOGIC;
     FFT_DATA_FIRST_SYMBOL_MARKER : in STD_LOGIC;
+    CONSTELLATION_IDATA : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    CONSTELLATION_QDATA : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    CONSTELLATION_DATA_VALID : in STD_LOGIC;
+    CONSTELLATION_DATA_FIRST_SYMBOL_MARKER : in STD_LOGIC;
     FPGA_REG_WRITE_ADDRESS : out STD_LOGIC_VECTOR ( 8 downto 0 );
     FPGA_REG_WRITE_DATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
     FPGA_REG_WRITE_STROBE : out STD_LOGIC
   );
   end component block_design_0_axi_regs_mux_0_0;
+  component block_design_0_constellation_tracker_0_0 is
+  port (
+    RESET : in STD_LOGIC;
+    CLOCK : in STD_LOGIC;
+    FFT_IDATA_IN : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    FFT_QDATA_IN : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    FFT_DATA_IN_VALID : in STD_LOGIC;
+    FFT_DATA_IN_LAST : in STD_LOGIC;
+    FFT_DATA_IN_FIRST_SYMBOL_MARKER : in STD_LOGIC;
+    CONSTELLATION_IDATA_OUT : out STD_LOGIC_VECTOR ( 23 downto 0 );
+    CONSTELLATION_QDATA_OUT : out STD_LOGIC_VECTOR ( 23 downto 0 );
+    CONSTELLATION_DATA_OUT_VALID : out STD_LOGIC;
+    CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER : out STD_LOGIC;
+    ATAN_CONSTELLATION_IN_STROBE : out STD_LOGIC;
+    ATAN_CONSTELLATION_IN_I : out STD_LOGIC_VECTOR ( 23 downto 0 );
+    ATAN_CONSTELLATION_IN_Q : out STD_LOGIC_VECTOR ( 23 downto 0 );
+    ATAN_CONSTELLATION_IN_CNTR : out STD_LOGIC_VECTOR ( 5 downto 0 );
+    ATAN_CONSTELLATION_PHASE_OUT_STROBE : in STD_LOGIC;
+    ATAN_CONSTELLATION_PHASE_OUT : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    ATAN_CONSTELLATION_PHASE_OUT_CNTR : in STD_LOGIC_VECTOR ( 5 downto 0 );
+    ROTATION_CONSTELLATION_DATA_IN_STROBE : out STD_LOGIC;
+    ROTATION_CONSTELLATION_IDATA_IN : out STD_LOGIC_VECTOR ( 23 downto 0 );
+    ROTATION_CONSTELLATION_QDATA_IN : out STD_LOGIC_VECTOR ( 23 downto 0 );
+    ROTATION_CONSTELLATION_PHASE_IN : out STD_LOGIC_VECTOR ( 23 downto 0 );
+    ROTATION_CONSTELLATION_CNTR_IN : out STD_LOGIC_VECTOR ( 5 downto 0 );
+    ROTATION_CONSTELLATION_DATA_OUT_STROBE : in STD_LOGIC;
+    ROTATION_CONSTELLATION_IDATA_OUT : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    ROTATION_CONSTELLATION_QDATA_OUT : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    ROTATION_CONSTELLATION_DATA_OUT_CNTR : in STD_LOGIC_VECTOR ( 5 downto 0 )
+  );
+  end component block_design_0_constellation_tracker_0_0;
   signal CLOCK_0_1 : STD_LOGIC;
   signal DETECTION_THRESHOLD_0_1 : STD_LOGIC_VECTOR ( 23 downto 0 );
   signal RESET_0_1 : STD_LOGIC;
@@ -613,6 +896,19 @@ architecture STRUCTURE of block_design_0 is
   signal act_power_0_POWER : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal axi_regs_mux_0_FPGA_REG_WRITE_DATA : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal axi_regs_mux_0_FPGA_REG_WRITE_STROBE : STD_LOGIC;
+  signal constellation_tracker_0_ATAN_CONSTELLATION_IN_CNTR : STD_LOGIC_VECTOR ( 5 downto 0 );
+  signal constellation_tracker_0_ATAN_CONSTELLATION_IN_I : STD_LOGIC_VECTOR ( 23 downto 0 );
+  signal constellation_tracker_0_ATAN_CONSTELLATION_IN_Q : STD_LOGIC_VECTOR ( 23 downto 0 );
+  signal constellation_tracker_0_ATAN_CONSTELLATION_IN_STROBE : STD_LOGIC;
+  signal constellation_tracker_0_CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER : STD_LOGIC;
+  signal constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID : STD_LOGIC;
+  signal constellation_tracker_0_CONSTELLATION_IDATA_OUT : STD_LOGIC_VECTOR ( 23 downto 0 );
+  signal constellation_tracker_0_CONSTELLATION_QDATA_OUT : STD_LOGIC_VECTOR ( 23 downto 0 );
+  signal constellation_tracker_0_ROTATION_CONSTELLATION_CNTR_IN : STD_LOGIC_VECTOR ( 5 downto 0 );
+  signal constellation_tracker_0_ROTATION_CONSTELLATION_DATA_IN_STROBE : STD_LOGIC;
+  signal constellation_tracker_0_ROTATION_CONSTELLATION_IDATA_IN : STD_LOGIC_VECTOR ( 23 downto 0 );
+  signal constellation_tracker_0_ROTATION_CONSTELLATION_PHASE_IN : STD_LOGIC_VECTOR ( 23 downto 0 );
+  signal constellation_tracker_0_ROTATION_CONSTELLATION_QDATA_IN : STD_LOGIC_VECTOR ( 23 downto 0 );
   signal data_delay_0_DATA_OUT_STROBE : STD_LOGIC;
   signal data_delay_0_IDATA_OUT : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal data_delay_0_IDATA_OUT_DELAY_16 : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -639,11 +935,18 @@ architecture STRUCTURE of block_design_0 is
   signal fft_ofdm_0_FFT_QDATA_OUT : STD_LOGIC_VECTOR ( 23 downto 0 );
   signal hier_atan_ATAN_PHASE_OUT : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal hier_atan_ATAN_PHASE_OUT_STROBE : STD_LOGIC;
+  signal hier_atan_constellation_ATAN_CONSTELLATION_PHASE_OUT : STD_LOGIC_VECTOR ( 23 downto 0 );
+  signal hier_atan_constellation_ATAN_CONSTELLATION_PHASE_OUT_CNTR : STD_LOGIC_VECTOR ( 5 downto 0 );
+  signal hier_atan_constellation_ATAN_CONSTELLATION_PHASE_OUT_STROBE : STD_LOGIC;
   signal hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER : STD_LOGIC;
   signal hier_fft_ofdm_event_data_in_channel_halt : STD_LOGIC;
   signal hier_fft_ofdm_event_frame_started : STD_LOGIC;
   signal hier_fft_ofdm_event_tlast_missing : STD_LOGIC;
   signal hier_fft_ofdm_event_tlast_unexpected : STD_LOGIC;
+  signal hier_rotation_constellation_ROTATION_CONSTELLATION_DATA_OUT_CNTR : STD_LOGIC_VECTOR ( 5 downto 0 );
+  signal hier_rotation_constellation_ROTATION_CONSTELLATION_DATA_OUT_STROBE : STD_LOGIC;
+  signal hier_rotation_constellation_ROTATION_CONSTELLATION_IDATA_OUT : STD_LOGIC_VECTOR ( 23 downto 0 );
+  signal hier_rotation_constellation_ROTATION_CONSTELLATION_QDATA_OUT : STD_LOGIC_VECTOR ( 23 downto 0 );
   signal receiver_802_11p_0_ATAN_AUTOCORR_I : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal receiver_802_11p_0_ATAN_AUTOCORR_Q : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal receiver_802_11p_0_ATAN_AUTOCORR_STROBE : STD_LOGIC;
@@ -704,6 +1007,10 @@ act_power_0: component block_design_0_act_power_0_0
 axi_regs_mux_0: component block_design_0_axi_regs_mux_0_0
      port map (
       CLOCK => CLOCK_0_1,
+      CONSTELLATION_DATA_FIRST_SYMBOL_MARKER => constellation_tracker_0_CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER,
+      CONSTELLATION_DATA_VALID => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
+      CONSTELLATION_IDATA(23 downto 0) => constellation_tracker_0_CONSTELLATION_IDATA_OUT(23 downto 0),
+      CONSTELLATION_QDATA(23 downto 0) => constellation_tracker_0_CONSTELLATION_QDATA_OUT(23 downto 0),
       DATA_STROBE => data_delay_0_DATA_OUT_STROBE,
       EQUALIZER_REG_WRITE_DATA(31 downto 0) => equalizer_time_frequ_0_FPGA_REG_WRITE_DATA(31 downto 0),
       EQUALIZER_REG_WRITE_STROBE_PHASE_1 => equalizer_time_frequ_0_FPGA_REG_WRITE_STROBE_PHASE_1,
@@ -719,6 +1026,36 @@ axi_regs_mux_0: component block_design_0_axi_regs_mux_0_0
       QDATA(15 downto 0) => data_delay_0_QDATA_OUT(15 downto 0),
       RESET => RESET_0_1,
       SELECT_AXI_REGS_MODE(7 downto 0) => SELECT_AXI_REGS_MODE_0_1(7 downto 0)
+    );
+constellation_tracker_0: component block_design_0_constellation_tracker_0_0
+     port map (
+      ATAN_CONSTELLATION_IN_CNTR(5 downto 0) => constellation_tracker_0_ATAN_CONSTELLATION_IN_CNTR(5 downto 0),
+      ATAN_CONSTELLATION_IN_I(23 downto 0) => constellation_tracker_0_ATAN_CONSTELLATION_IN_I(23 downto 0),
+      ATAN_CONSTELLATION_IN_Q(23 downto 0) => constellation_tracker_0_ATAN_CONSTELLATION_IN_Q(23 downto 0),
+      ATAN_CONSTELLATION_IN_STROBE => constellation_tracker_0_ATAN_CONSTELLATION_IN_STROBE,
+      ATAN_CONSTELLATION_PHASE_OUT(23 downto 0) => hier_atan_constellation_ATAN_CONSTELLATION_PHASE_OUT(23 downto 0),
+      ATAN_CONSTELLATION_PHASE_OUT_CNTR(5 downto 0) => hier_atan_constellation_ATAN_CONSTELLATION_PHASE_OUT_CNTR(5 downto 0),
+      ATAN_CONSTELLATION_PHASE_OUT_STROBE => hier_atan_constellation_ATAN_CONSTELLATION_PHASE_OUT_STROBE,
+      CLOCK => CLOCK_0_1,
+      CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER => constellation_tracker_0_CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER,
+      CONSTELLATION_DATA_OUT_VALID => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
+      CONSTELLATION_IDATA_OUT(23 downto 0) => constellation_tracker_0_CONSTELLATION_IDATA_OUT(23 downto 0),
+      CONSTELLATION_QDATA_OUT(23 downto 0) => constellation_tracker_0_CONSTELLATION_QDATA_OUT(23 downto 0),
+      FFT_DATA_IN_FIRST_SYMBOL_MARKER => hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER,
+      FFT_DATA_IN_LAST => fft_ofdm_0_FFT_DATA_OUT_LAST,
+      FFT_DATA_IN_VALID => fft_ofdm_0_FFT_DATA_OUT_VALID,
+      FFT_IDATA_IN(23 downto 0) => fft_ofdm_0_FFT_IDATA_OUT(23 downto 0),
+      FFT_QDATA_IN(23 downto 0) => fft_ofdm_0_FFT_QDATA_OUT(23 downto 0),
+      RESET => RESET_0_1,
+      ROTATION_CONSTELLATION_CNTR_IN(5 downto 0) => constellation_tracker_0_ROTATION_CONSTELLATION_CNTR_IN(5 downto 0),
+      ROTATION_CONSTELLATION_DATA_IN_STROBE => constellation_tracker_0_ROTATION_CONSTELLATION_DATA_IN_STROBE,
+      ROTATION_CONSTELLATION_DATA_OUT_CNTR(5 downto 0) => hier_rotation_constellation_ROTATION_CONSTELLATION_DATA_OUT_CNTR(5 downto 0),
+      ROTATION_CONSTELLATION_DATA_OUT_STROBE => hier_rotation_constellation_ROTATION_CONSTELLATION_DATA_OUT_STROBE,
+      ROTATION_CONSTELLATION_IDATA_IN(23 downto 0) => constellation_tracker_0_ROTATION_CONSTELLATION_IDATA_IN(23 downto 0),
+      ROTATION_CONSTELLATION_IDATA_OUT(23 downto 0) => hier_rotation_constellation_ROTATION_CONSTELLATION_IDATA_OUT(23 downto 0),
+      ROTATION_CONSTELLATION_PHASE_IN(23 downto 0) => constellation_tracker_0_ROTATION_CONSTELLATION_PHASE_IN(23 downto 0),
+      ROTATION_CONSTELLATION_QDATA_IN(23 downto 0) => constellation_tracker_0_ROTATION_CONSTELLATION_QDATA_IN(23 downto 0),
+      ROTATION_CONSTELLATION_QDATA_OUT(23 downto 0) => hier_rotation_constellation_ROTATION_CONSTELLATION_QDATA_OUT(23 downto 0)
     );
 data_delay_0: component block_design_0_data_delay_0_0
      port map (
@@ -794,6 +1131,18 @@ hier_atan: entity work.hier_atan_imp_GD512
       CLOCK => CLOCK_0_1,
       RESET => RESET_0_1
     );
+hier_atan_constellation: entity work.hier_atan_constellation_imp_1BWRZUQ
+     port map (
+      ATAN_CONSTELLATION_IN_CNTR(5 downto 0) => constellation_tracker_0_ATAN_CONSTELLATION_IN_CNTR(5 downto 0),
+      ATAN_CONSTELLATION_IN_I(23 downto 0) => constellation_tracker_0_ATAN_CONSTELLATION_IN_I(23 downto 0),
+      ATAN_CONSTELLATION_IN_Q(23 downto 0) => constellation_tracker_0_ATAN_CONSTELLATION_IN_Q(23 downto 0),
+      ATAN_CONSTELLATION_IN_STROBE => constellation_tracker_0_ATAN_CONSTELLATION_IN_STROBE,
+      ATAN_CONSTELLATION_PHASE_OUT(23 downto 0) => hier_atan_constellation_ATAN_CONSTELLATION_PHASE_OUT(23 downto 0),
+      ATAN_CONSTELLATION_PHASE_OUT_CNTR(5 downto 0) => hier_atan_constellation_ATAN_CONSTELLATION_PHASE_OUT_CNTR(5 downto 0),
+      ATAN_CONSTELLATION_PHASE_OUT_STROBE => hier_atan_constellation_ATAN_CONSTELLATION_PHASE_OUT_STROBE,
+      CLOCK => CLOCK_0_1,
+      RESET => RESET_0_1
+    );
 hier_fft_ofdm: entity work.hier_fft_ofdm_imp_1SUMJVQ
      port map (
       CLOCK => CLOCK_0_1,
@@ -828,6 +1177,20 @@ hier_rotation: entity work.hier_rotation_imp_OQQOO0
       ROTATION_QDATA_IN(15 downto 0) => equalizer_time_frequ_0_ROTATION_QDATA_IN(15 downto 0),
       ROTATION_QDATA_OUT(15 downto 0) => rotation_block_0_ROTATION_QDATA_OUT(15 downto 0)
     );
+hier_rotation_constellation: entity work.hier_rotation_constellation_imp_EG5J2R
+     port map (
+      CLOCK => CLOCK_0_1,
+      RESET => RESET_0_1,
+      ROTATION_CONSTELLATION_CNTR_IN(5 downto 0) => constellation_tracker_0_ROTATION_CONSTELLATION_CNTR_IN(5 downto 0),
+      ROTATION_CONSTELLATION_DATA_IN_STROBE => constellation_tracker_0_ROTATION_CONSTELLATION_DATA_IN_STROBE,
+      ROTATION_CONSTELLATION_DATA_OUT_CNTR(5 downto 0) => hier_rotation_constellation_ROTATION_CONSTELLATION_DATA_OUT_CNTR(5 downto 0),
+      ROTATION_CONSTELLATION_DATA_OUT_STROBE => hier_rotation_constellation_ROTATION_CONSTELLATION_DATA_OUT_STROBE,
+      ROTATION_CONSTELLATION_IDATA_IN(23 downto 0) => constellation_tracker_0_ROTATION_CONSTELLATION_IDATA_IN(23 downto 0),
+      ROTATION_CONSTELLATION_IDATA_OUT(23 downto 0) => hier_rotation_constellation_ROTATION_CONSTELLATION_IDATA_OUT(23 downto 0),
+      ROTATION_CONSTELLATION_PHASE_IN(23 downto 0) => constellation_tracker_0_ROTATION_CONSTELLATION_PHASE_IN(23 downto 0),
+      ROTATION_CONSTELLATION_QDATA_IN(23 downto 0) => constellation_tracker_0_ROTATION_CONSTELLATION_QDATA_IN(23 downto 0),
+      ROTATION_CONSTELLATION_QDATA_OUT(23 downto 0) => hier_rotation_constellation_ROTATION_CONSTELLATION_QDATA_OUT(23 downto 0)
+    );
 ila_0: component block_design_0_ila_0_0
      port map (
       clk => CLOCK_0_1,
@@ -853,7 +1216,11 @@ ila_0: component block_design_0_ila_0_0
       probe26(0) => hier_fft_ofdm_event_data_in_channel_halt,
       probe27(0) => hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER,
       probe28(0) => equalizer_time_frequ_0_FFT_DATA_IN_FIRST_SYMBOL_MARKER,
+      probe29(0) => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
       probe3(15 downto 0) => data_delay_0_IDATA_OUT_DELAY_32(15 downto 0),
+      probe30(0) => constellation_tracker_0_CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER,
+      probe31(23 downto 0) => constellation_tracker_0_CONSTELLATION_IDATA_OUT(23 downto 0),
+      probe32(23 downto 0) => constellation_tracker_0_CONSTELLATION_QDATA_OUT(23 downto 0),
       probe4(15 downto 0) => data_delay_0_QDATA_OUT_DELAY_32(15 downto 0),
       probe5(7 downto 0) => act_power_0_POWER(7 downto 0),
       probe6(0) => timing_acquisition_8_0_DETECTION_STROBE,

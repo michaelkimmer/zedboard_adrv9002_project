@@ -1222,6 +1222,218 @@ class Realtime_Tab(ttk.Frame):
         self.log.value_labels.yview("moveto", 1.0) # scroll down
 
 
+# AXI Registers tab
+class AXI_Regs_Tab(ttk.Frame):
+    def __init__(self, root, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.root = root
+
+        self.act_row = 0 #used for actual grid position
+        
+        ## Build Registers Tab
+
+        # write registers entry line
+        self.write_addresses_entries = self.build_write_addresses_entries(root)
+
+        # read registers entry line
+        self.read_addresses_entries = self.build_read_addresses_entries(root)
+
+        # log
+        self.log = self.build_log()
+     
+
+    ################## Build AXI Registers Tab methods ##################
+    def build_write_addresses_entries(self, root):
+
+        # Write regs label
+        description_label = tk.Label(self, text="Write to Axi registers:", font=("Helvetica", 12))
+        description_label.grid(row=self.act_row, column=0, columnspan=2, padx=5, pady=5, sticky="W") 
+        self.act_row += 1
+
+        # Build address-value input fields
+        input_fields = []
+
+        # Address
+        placeholder = "Address"
+        val_range = [0, 1, AXI_ADDRESS_NUM] #[start, step, numOfVals]
+        input_field = PlaceholderEntry_withValues(self, placeholder=placeholder, val_range=val_range)
+        input_field.grid(row=self.act_row, column=0, padx=5, pady=5)
+        input_fields.append(input_field)
+
+        # Value
+        placeholder = "Value [uint32]"
+        val_range = [0, 1, round(2**32)] #[start, step, numOfVals]
+        input_field = PlaceholderEntry_withValues(self, placeholder=placeholder, val_range=val_range)
+        input_field.grid(row=self.act_row, column=1, padx=5, pady=5)
+        input_fields.append(input_field)
+
+        
+        # Read button
+        connect_button = tk.Button(self, text="Write", command=lambda: self.write_button_clicked(root))
+        connect_button.grid(row=self.act_row, column=2, padx=5, pady=5, sticky="WE") 
+
+
+        self.act_row += 1
+
+        return input_fields
+
+    def build_read_addresses_entries(self, root):
+
+        # Read regs label
+        description_label = tk.Label(self, text="Read Axi registers:", font=("Helvetica", 12))
+        description_label.grid(row=self.act_row, column=0, columnspan=2, padx=5, pady=5, sticky="W") 
+        self.act_row += 1
+
+
+        # Build addresses input fields
+        input_fields = []
+
+        # Start address
+        placeholder = "Start address"
+        val_range = [0, 1, AXI_ADDRESS_NUM] #[start, step, numOfVals]
+        input_field = PlaceholderEntry_withValues(self, placeholder=placeholder, val_range=val_range)
+        input_field.grid(row=self.act_row, column=0, padx=5, pady=5)
+        input_fields.append(input_field)
+
+        # End address
+        placeholder = "End address"
+        val_range = [0, 1, AXI_ADDRESS_NUM] #[start, step, numOfVals]
+        input_field = PlaceholderEntry_withValues(self, placeholder=placeholder, val_range=val_range)
+        input_field.grid(row=self.act_row, column=1, padx=5, pady=5)
+        input_fields.append(input_field)
+
+        
+        # Read button
+        connect_button = tk.Button(self, text="Read", command=lambda: self.read_button_clicked(root))
+        connect_button.grid(row=self.act_row, column=2, padx=5, pady=5, sticky="WE") 
+
+
+        self.act_row += 1
+
+        return input_fields
+
+    def build_log(self):        
+        description_label = tk.Label(self, text="Log:", font=("Helvetica", 12))
+        description_label.grid(row=self.act_row, column=0, columnspan=1, padx=5, pady=5, sticky="WN") 
+        
+        # Log of sent items
+        value_label = tk.Text(self, state=tk.DISABLED, width=100, height=15, font=("Helvetica", 8)) #width & height not optimal
+        value_label.grid(row=self.act_row, column=1, columnspan=4, padx=5, pady=5, sticky="we") 
+        
+        # Create the Vertical Scrollbar
+        scrollbar = tk.Scrollbar(self, command=value_label.yview)
+        scrollbar.grid(row=self.act_row, column=4, sticky='nse')
+        # Configure the Text widget to use the scrollbar
+        value_label.config(yscrollcommand=scrollbar.set)
+        
+        # Clear button
+        clear_button = tk.Button(self, text="Clear", command=lambda: self.log_clear_button_clicked())
+        clear_button.grid(row=self.act_row, column=5, padx=5, pady=5, sticky="N") 
+
+        log = Group_wrapper()
+        log.description_label = description_label
+        log.value_labels = value_label
+        log.buttons = clear_button
+        
+        self.act_row += 1
+        
+        return log
+
+    ################# AXI Registers Tab Callback methods ################
+    # Read new data from FPGA AXI regs
+    def read_button_clicked(self, root):
+        #confirm the entries (the last changed can be not refreshed)
+        self.read_addresses_entries[0]._add_placeholder(None)
+        self.read_addresses_entries[1]._add_placeholder(None)
+
+        # Read addresses
+        addresses = [self.read_addresses_entries[0].get(), self.read_addresses_entries[1].get()]
+
+        # Check addresses 
+        try:
+            addresses[0] = int(self.read_addresses_entries[0].get())
+            addresses[1] = int(self.read_addresses_entries[1].get())
+        except:
+            self.log_write_line("Fill entry with integer !")
+            return
+        if addresses[0] > addresses[1]:
+            self.log_write_line(f"Check addresses' order !")
+            return
+
+        # Set the FPGA to output FFT samples TODO
+
+
+        # Read AXI registers 
+        regs = read_axi_data(addresses)
+        N_data = regs.shape[0]
+
+        # Extract the data (Q at MSB !)
+        x_real_int = (regs & 0x0000ffff).astype(np.int16, casting='unsafe') * 2**8 #axi cannot transfer least byte --> rounding
+        x_imag_int = np.right_shift(regs & 0xffff0000, 16).astype(np.int16, casting='unsafe') * 2**8 #axi cannot transfer least byte --> rounding
+        
+
+        x_real = x_real_int.astype(np.float32, casting='safe')
+        x_imag = x_imag_int.astype(np.float32, casting='safe')
+
+        # x = x_real + (1j * x_imag)
+
+        # Clear log + Write all values
+        self.log_clear_button_clicked()
+
+        for i in range(N_data):
+            self.log_write_line(f"Reg {addresses[0] + i}: uint32--{regs[i]}, [int16, int16]--[imag, real]--[{x_imag[i]}, {x_real[i]}]")
+            # TODO better format
+
+
+
+
+    # Write new data from FPGA AXI reg
+    def write_button_clicked(self, root):
+        #confirm the entries (the last changed can be not refreshed)
+        self.write_addresses_entries[0]._add_placeholder(None)
+        self.write_addresses_entries[1]._add_placeholder(None)
+
+        # Read addresses
+        address = self.write_addresses_entries[0].get()
+        value = self.write_addresses_entries[1].get()
+
+        # Check addresses 
+        try:
+            address = int(address)
+            value = np.array([int(value)], dtype=np.uint32)
+        except:
+            self.log_write_line("Fill entry with integer !")
+            return
+
+ 
+        # Write to AXI reg
+        try:
+            write_axi_data(address, value)
+        except:
+            self.log_write_line("Write error !")
+        else:
+            self.log_write_line(f"Written {value} to {address}")
+
+            #TODO: clear the fields?
+            #TODO: readback
+
+
+
+
+    # Clear log
+    def log_clear_button_clicked(self):
+        self.log.value_labels.config(state=tk.NORMAL)
+        self.log.value_labels.delete('1.0', tk.END)
+        self.log.value_labels.config(state=tk.DISABLED) 
+
+    #write to log
+    def log_write_line(self, line):
+        self.log.value_labels.config(state=tk.NORMAL)
+        self.log.value_labels.insert(tk.END, line + "\n")
+        self.log.value_labels.config(state=tk.DISABLED) 
+        self.log.value_labels.yview("moveto", 1.0) # scroll down
+
 
 
 
@@ -1329,14 +1541,16 @@ class GUI_class():
         self.tab2 = Reception_Tab(self, self.tabControl)
         self.tab3 = Constellation_Tab(self, self.tabControl)
         self.tab4 = Realtime_Tab(self, self.tabControl)
-        self.tab5 = Help_Tab(self, self.tabControl)
+        self.tab5 = AXI_Regs_Tab(self, self.tabControl)
+        self.tab6 = Help_Tab(self, self.tabControl)
 
         
         self.tabControl.add(self.tab1, text ='Settings')
         self.tabControl.add(self.tab2, text ='RX Samples')
         self.tabControl.add(self.tab3, text ='RX Constellation')
         self.tabControl.add(self.tab4, text ='RX Realtime')
-        self.tabControl.add(self.tab5, text ='Help')
+        self.tabControl.add(self.tab5, text ='AXI Registers')
+        self.tabControl.add(self.tab6, text ='Help')
         self.tabControl.pack(expand = 1, fill ="both")
         
 

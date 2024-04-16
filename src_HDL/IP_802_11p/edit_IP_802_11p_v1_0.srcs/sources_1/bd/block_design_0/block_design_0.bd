@@ -30,7 +30,16 @@
       },
       "ila_0": "",
       "equalizer_time_frequ_0": "",
-      "axi_regs_mux_0": ""
+      "axi_regs_mux_0": "",
+      "hier_atan_constellation": {
+        "atan_constellation_b_0": "",
+        "cordic_0": ""
+      },
+      "hier_rotation_constellation": {
+        "cordic_0": "",
+        "rotation_constellati_0": ""
+      },
+      "constellation_tracker_0": ""
     },
     "ports": {
       "RESET": {
@@ -2096,7 +2105,7 @@
             "value": "Native"
           },
           "C_NUM_OF_PROBES": {
-            "value": "29"
+            "value": "33"
           },
           "C_PROBE11_WIDTH": {
             "value": "32"
@@ -2124,6 +2133,12 @@
           },
           "C_PROBE2_WIDTH": {
             "value": "16"
+          },
+          "C_PROBE31_WIDTH": {
+            "value": "24"
+          },
+          "C_PROBE32_WIDTH": {
+            "value": "24"
           },
           "C_PROBE3_WIDTH": {
             "value": "16"
@@ -2299,7 +2314,7 @@
       },
       "axi_regs_mux_0": {
         "vlnv": "xilinx.com:module_ref:axi_regs_mux:1.0",
-        "ip_revision": "1713120991",
+        "ip_revision": "1713291591",
         "xci_name": "block_design_0_axi_regs_mux_0_0",
         "xci_path": "ip\\block_design_0_axi_regs_mux_0_0\\block_design_0_axi_regs_mux_0_0.xci",
         "inst_hier_path": "axi_regs_mux_0",
@@ -2372,6 +2387,22 @@
           "FFT_DATA_FIRST_SYMBOL_MARKER": {
             "direction": "I"
           },
+          "CONSTELLATION_IDATA": {
+            "direction": "I",
+            "left": "23",
+            "right": "0"
+          },
+          "CONSTELLATION_QDATA": {
+            "direction": "I",
+            "left": "23",
+            "right": "0"
+          },
+          "CONSTELLATION_DATA_VALID": {
+            "direction": "I"
+          },
+          "CONSTELLATION_DATA_FIRST_SYMBOL_MARKER": {
+            "direction": "I"
+          },
           "FPGA_REG_WRITE_ADDRESS": {
             "direction": "O",
             "left": "8",
@@ -2384,6 +2415,1136 @@
           },
           "FPGA_REG_WRITE_STROBE": {
             "direction": "O"
+          }
+        }
+      },
+      "hier_atan_constellation": {
+        "ports": {
+          "RESET": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "CLOCK": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "ATAN_CONSTELLATION_IN_STROBE": {
+            "direction": "I"
+          },
+          "ATAN_CONSTELLATION_IN_I": {
+            "direction": "I",
+            "left": "23",
+            "right": "0"
+          },
+          "ATAN_CONSTELLATION_IN_Q": {
+            "direction": "I",
+            "left": "23",
+            "right": "0"
+          },
+          "ATAN_CONSTELLATION_IN_CNTR": {
+            "direction": "I",
+            "left": "5",
+            "right": "0"
+          },
+          "ATAN_CONSTELLATION_PHASE_OUT_STROBE": {
+            "direction": "O"
+          },
+          "ATAN_CONSTELLATION_PHASE_OUT": {
+            "direction": "O",
+            "left": "23",
+            "right": "0"
+          },
+          "ATAN_CONSTELLATION_PHASE_OUT_CNTR": {
+            "direction": "O",
+            "left": "5",
+            "right": "0"
+          }
+        },
+        "components": {
+          "atan_constellation_b_0": {
+            "vlnv": "xilinx.com:module_ref:atan_constellation_block:1.0",
+            "ip_revision": "1713277135",
+            "xci_name": "block_design_0_atan_constellation_b_0_0",
+            "xci_path": "ip\\block_design_0_atan_constellation_b_0_0\\block_design_0_atan_constellation_b_0_0.xci",
+            "inst_hier_path": "hier_atan_constellation/atan_constellation_b_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "atan_constellation_block",
+              "boundary_crc": "0x0"
+            },
+            "interface_ports": {
+              "M_AXIS_DOUT": {
+                "mode": "Slave",
+                "vlnv_bus_definition": "xilinx.com:interface:axis:1.0",
+                "vlnv": "xilinx.com:interface:axis_rtl:1.0",
+                "parameters": {
+                  "TDATA_NUM_BYTES": {
+                    "value": "3",
+                    "value_src": "constant"
+                  },
+                  "TDEST_WIDTH": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "TID_WIDTH": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "TUSER_WIDTH": {
+                    "value": "6",
+                    "value_src": "constant"
+                  },
+                  "HAS_TREADY": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "HAS_TSTRB": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "HAS_TKEEP": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "HAS_TLAST": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "CLK_DOMAIN": {
+                    "value": "block_design_atan_aclk_0",
+                    "value_src": "constant"
+                  },
+                  "LAYERED_METADATA": {
+                    "value": [
+                      "xilinx.com:interface:datatypes:1.0 {",
+                      "TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {}",
+                      "maximum {}} value 24} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_real {name {attribs {resolve_type immediate dependency {}",
+                      "format string minimum {} maximum {}} value real} enabled {attribs {resolve_type generated dependency polar_mag_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs",
+                      "{resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_mag_width format long minimum {} maximum {}} value 0}",
+                      "bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_mag_fractwidth format",
+                      "long minimum {} maximum {}} value -2} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}} field_phase {name {attribs {resolve_type immediate",
+                      "dependency {} format string minimum {} maximum {}} value phase} enabled {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true} datatype {name {attribs",
+                      "{resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_phase_width format long minimum {} maximum {}} value 24}",
+                      "bitoffset {attribs {resolve_type generated dependency polar_phase_offset format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency",
+                      "polar_phase_fractwidth format long minimum {} maximum {}} value 21} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}}}}} TDATA_WIDTH 24 TUSER",
+                      "{datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}}",
+                      "value 6} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_cartesian_tuser {name {attribs {resolve_type immediate dependency {} format",
+                      "string minimum {} maximum {}} value cartesian_tuser} enabled {attribs {resolve_type generated dependency cart_enabled format bool minimum {} maximum {}} value true} datatype {name {attribs",
+                      "{resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency cart_width format long minimum {} maximum {}} value 6}",
+                      "bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}}",
+                      "value false}}}} field_phase_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase_tuser} enabled {attribs {resolve_type generated dependency",
+                      "phase_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs",
+                      "{resolve_type generated dependency phase_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency phase_offset format long minimum {} maximum {}} value",
+                      "6} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}}}} TUSER_WIDTH 6",
+                      "}"
+                    ],
+                    "value_src": "ip_prop"
+                  }
+                },
+                "port_maps": {
+                  "TDATA": {
+                    "physical_name": "M_AXIS_DOUT_tdata",
+                    "direction": "I",
+                    "left": "23",
+                    "right": "0"
+                  },
+                  "TUSER": {
+                    "physical_name": "M_AXIS_DOUT_tuser",
+                    "direction": "I",
+                    "left": "5",
+                    "right": "0"
+                  },
+                  "TVALID": {
+                    "physical_name": "M_AXIS_DOUT_tvalid",
+                    "direction": "I"
+                  }
+                }
+              },
+              "S_AXIS_CARTESIAN": {
+                "mode": "Master",
+                "vlnv_bus_definition": "xilinx.com:interface:axis:1.0",
+                "vlnv": "xilinx.com:interface:axis_rtl:1.0",
+                "parameters": {
+                  "TDATA_NUM_BYTES": {
+                    "value": "6",
+                    "value_src": "constant"
+                  },
+                  "TDEST_WIDTH": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "TID_WIDTH": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "TUSER_WIDTH": {
+                    "value": "6",
+                    "value_src": "constant"
+                  },
+                  "HAS_TREADY": {
+                    "value": "1",
+                    "value_src": "constant"
+                  },
+                  "HAS_TSTRB": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "HAS_TKEEP": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "HAS_TLAST": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "FREQ_HZ": {
+                    "value": "100000000",
+                    "value_src": "constant"
+                  },
+                  "PHASE": {
+                    "value": "0.0",
+                    "value_src": "constant"
+                  },
+                  "CLK_DOMAIN": {
+                    "value": "block_design_atan_aclk_0",
+                    "value_src": "constant"
+                  },
+                  "LAYERED_METADATA": {
+                    "value": "undef",
+                    "value_src": "constant"
+                  },
+                  "INSERT_VIP": {
+                    "value": "0",
+                    "value_src": "constant"
+                  }
+                },
+                "port_maps": {
+                  "TDATA": {
+                    "physical_name": "S_AXIS_CARTESIAN_tdata",
+                    "direction": "O",
+                    "left": "47",
+                    "right": "0"
+                  },
+                  "TUSER": {
+                    "physical_name": "S_AXIS_CARTESIAN_tuser",
+                    "direction": "O",
+                    "left": "5",
+                    "right": "0"
+                  },
+                  "TVALID": {
+                    "physical_name": "S_AXIS_CARTESIAN_tvalid",
+                    "direction": "O"
+                  },
+                  "TREADY": {
+                    "physical_name": "S_AXIS_CARTESIAN_tready",
+                    "direction": "I"
+                  }
+                }
+              }
+            },
+            "ports": {
+              "RESET": {
+                "type": "rst",
+                "direction": "I"
+              },
+              "CLOCK": {
+                "type": "clk",
+                "direction": "I",
+                "parameters": {
+                  "CLK_DOMAIN": {
+                    "value": "block_design_0_CLOCK",
+                    "value_src": "default_prop"
+                  }
+                }
+              },
+              "ATAN_CONSTELLATION_IN_STROBE": {
+                "direction": "I"
+              },
+              "ATAN_CONSTELLATION_IN_I": {
+                "direction": "I",
+                "left": "23",
+                "right": "0"
+              },
+              "ATAN_CONSTELLATION_IN_Q": {
+                "direction": "I",
+                "left": "23",
+                "right": "0"
+              },
+              "ATAN_CONSTELLATION_IN_CNTR": {
+                "direction": "I",
+                "left": "5",
+                "right": "0"
+              },
+              "ATAN_CONSTELLATION_PHASE_OUT_STROBE": {
+                "direction": "O"
+              },
+              "ATAN_CONSTELLATION_PHASE_OUT": {
+                "direction": "O",
+                "left": "23",
+                "right": "0"
+              },
+              "ATAN_CONSTELLATION_PHASE_OUT_CNTR": {
+                "direction": "O",
+                "left": "5",
+                "right": "0"
+              },
+              "aclk": {
+                "type": "clk",
+                "direction": "O",
+                "parameters": {
+                  "ASSOCIATED_BUSIF": {
+                    "value": "M_AXIS_DOUT:S_AXIS_PHASE:S_AXIS_CARTESIAN",
+                    "value_src": "constant"
+                  },
+                  "ASSOCIATED_RESET": {
+                    "value": "aresetn",
+                    "value_src": "constant"
+                  },
+                  "ASSOCIATED_CLKEN": {
+                    "value": "aclken",
+                    "value_src": "constant"
+                  },
+                  "FREQ_HZ": {
+                    "value": "100000000",
+                    "value_src": "constant"
+                  },
+                  "FREQ_TOLERANCE_HZ": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "PHASE": {
+                    "value": "0.0",
+                    "value_src": "constant"
+                  },
+                  "CLK_DOMAIN": {
+                    "value": "block_design_atan_aclk_0",
+                    "value_src": "constant"
+                  },
+                  "INSERT_VIP": {
+                    "value": "0",
+                    "value_src": "constant"
+                  }
+                }
+              },
+              "aresetn": {
+                "type": "rst",
+                "direction": "O",
+                "parameters": {
+                  "POLARITY": {
+                    "value": "ACTIVE_LOW",
+                    "value_src": "constant"
+                  },
+                  "INSERT_VIP": {
+                    "value": "0",
+                    "value_src": "constant"
+                  }
+                }
+              }
+            }
+          },
+          "cordic_0": {
+            "vlnv": "xilinx.com:ip:cordic:6.0",
+            "ip_revision": "21",
+            "xci_name": "block_design_0_cordic_0_2",
+            "xci_path": "ip\\block_design_0_cordic_0_2\\block_design_0_cordic_0_2.xci",
+            "inst_hier_path": "hier_atan_constellation/cordic_0",
+            "parameters": {
+              "ARESETN": {
+                "value": "true"
+              },
+              "Architectural_Configuration": {
+                "value": "Parallel"
+              },
+              "Compensation_Scaling": {
+                "value": "No_Scale_Compensation"
+              },
+              "Data_Format": {
+                "value": "SignedFraction"
+              },
+              "Functional_Selection": {
+                "value": "Arc_Tan"
+              },
+              "Input_Width": {
+                "value": "24"
+              },
+              "Output_Width": {
+                "value": "24"
+              },
+              "Phase_Format": {
+                "value": "Scaled_Radians"
+              },
+              "Pipelining_Mode": {
+                "value": "Maximum"
+              },
+              "cartesian_has_tuser": {
+                "value": "true"
+              },
+              "cartesian_tuser_width": {
+                "value": "6"
+              }
+            }
+          }
+        },
+        "interface_nets": {
+          "atan_constellation_b_0_S_AXIS_CARTESIAN": {
+            "interface_ports": [
+              "atan_constellation_b_0/S_AXIS_CARTESIAN",
+              "cordic_0/S_AXIS_CARTESIAN"
+            ]
+          },
+          "cordic_0_M_AXIS_DOUT": {
+            "interface_ports": [
+              "cordic_0/M_AXIS_DOUT",
+              "atan_constellation_b_0/M_AXIS_DOUT"
+            ]
+          }
+        },
+        "nets": {
+          "ATAN_CONSTELLATION_IN_CNTR_1": {
+            "ports": [
+              "ATAN_CONSTELLATION_IN_CNTR",
+              "atan_constellation_b_0/ATAN_CONSTELLATION_IN_CNTR"
+            ]
+          },
+          "ATAN_CONSTELLATION_IN_I_1": {
+            "ports": [
+              "ATAN_CONSTELLATION_IN_I",
+              "atan_constellation_b_0/ATAN_CONSTELLATION_IN_I"
+            ]
+          },
+          "ATAN_CONSTELLATION_IN_Q_1": {
+            "ports": [
+              "ATAN_CONSTELLATION_IN_Q",
+              "atan_constellation_b_0/ATAN_CONSTELLATION_IN_Q"
+            ]
+          },
+          "ATAN_CONSTELLATION_IN_STROBE_1": {
+            "ports": [
+              "ATAN_CONSTELLATION_IN_STROBE",
+              "atan_constellation_b_0/ATAN_CONSTELLATION_IN_STROBE"
+            ]
+          },
+          "CLOCK_0_1": {
+            "ports": [
+              "CLOCK",
+              "atan_constellation_b_0/CLOCK"
+            ]
+          },
+          "RESET_0_1": {
+            "ports": [
+              "RESET",
+              "atan_constellation_b_0/RESET"
+            ]
+          },
+          "atan_constellation_b_0_ATAN_CONSTELLATION_PHASE_OUT": {
+            "ports": [
+              "atan_constellation_b_0/ATAN_CONSTELLATION_PHASE_OUT",
+              "ATAN_CONSTELLATION_PHASE_OUT"
+            ]
+          },
+          "atan_constellation_b_0_ATAN_CONSTELLATION_PHASE_OUT_CNTR": {
+            "ports": [
+              "atan_constellation_b_0/ATAN_CONSTELLATION_PHASE_OUT_CNTR",
+              "ATAN_CONSTELLATION_PHASE_OUT_CNTR"
+            ]
+          },
+          "atan_constellation_b_0_ATAN_CONSTELLATION_PHASE_OUT_STROBE": {
+            "ports": [
+              "atan_constellation_b_0/ATAN_CONSTELLATION_PHASE_OUT_STROBE",
+              "ATAN_CONSTELLATION_PHASE_OUT_STROBE"
+            ]
+          },
+          "atan_constellation_b_0_aclk": {
+            "ports": [
+              "atan_constellation_b_0/aclk",
+              "cordic_0/aclk"
+            ]
+          },
+          "atan_constellation_b_0_aresetn": {
+            "ports": [
+              "atan_constellation_b_0/aresetn",
+              "cordic_0/aresetn"
+            ]
+          }
+        }
+      },
+      "hier_rotation_constellation": {
+        "ports": {
+          "RESET": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "CLOCK": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "ROTATION_CONSTELLATION_DATA_IN_STROBE": {
+            "direction": "I"
+          },
+          "ROTATION_CONSTELLATION_IDATA_IN": {
+            "direction": "I",
+            "left": "23",
+            "right": "0"
+          },
+          "ROTATION_CONSTELLATION_QDATA_IN": {
+            "direction": "I",
+            "left": "23",
+            "right": "0"
+          },
+          "ROTATION_CONSTELLATION_PHASE_IN": {
+            "direction": "I",
+            "left": "23",
+            "right": "0"
+          },
+          "ROTATION_CONSTELLATION_CNTR_IN": {
+            "direction": "I",
+            "left": "5",
+            "right": "0"
+          },
+          "ROTATION_CONSTELLATION_DATA_OUT_STROBE": {
+            "direction": "O"
+          },
+          "ROTATION_CONSTELLATION_IDATA_OUT": {
+            "direction": "O",
+            "left": "23",
+            "right": "0"
+          },
+          "ROTATION_CONSTELLATION_QDATA_OUT": {
+            "direction": "O",
+            "left": "23",
+            "right": "0"
+          },
+          "ROTATION_CONSTELLATION_DATA_OUT_CNTR": {
+            "direction": "O",
+            "left": "5",
+            "right": "0"
+          }
+        },
+        "components": {
+          "cordic_0": {
+            "vlnv": "xilinx.com:ip:cordic:6.0",
+            "ip_revision": "21",
+            "xci_name": "block_design_0_cordic_0_3",
+            "xci_path": "ip\\block_design_0_cordic_0_3\\block_design_0_cordic_0_3.xci",
+            "inst_hier_path": "hier_rotation_constellation/cordic_0",
+            "parameters": {
+              "ARESETN": {
+                "value": "true"
+              },
+              "Input_Width": {
+                "value": "24"
+              },
+              "Output_Width": {
+                "value": "24"
+              },
+              "Phase_Format": {
+                "value": "Scaled_Radians"
+              },
+              "cartesian_has_tlast": {
+                "value": "false"
+              },
+              "cartesian_has_tuser": {
+                "value": "true"
+              },
+              "cartesian_tuser_width": {
+                "value": "6"
+              },
+              "out_tlast_behv": {
+                "value": "Null"
+              }
+            }
+          },
+          "rotation_constellati_0": {
+            "vlnv": "xilinx.com:module_ref:rotation_constellation_block:1.0",
+            "ip_revision": "1713277061",
+            "xci_name": "block_design_0_rotation_constellati_0_0",
+            "xci_path": "ip\\block_design_0_rotation_constellati_0_0\\block_design_0_rotation_constellati_0_0.xci",
+            "inst_hier_path": "hier_rotation_constellation/rotation_constellati_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "rotation_constellation_block",
+              "boundary_crc": "0x0"
+            },
+            "interface_ports": {
+              "M_AXIS_DOUT": {
+                "mode": "Slave",
+                "vlnv_bus_definition": "xilinx.com:interface:axis:1.0",
+                "vlnv": "xilinx.com:interface:axis_rtl:1.0",
+                "parameters": {
+                  "TDATA_NUM_BYTES": {
+                    "value": "6",
+                    "value_src": "constant"
+                  },
+                  "TDEST_WIDTH": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "TID_WIDTH": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "TUSER_WIDTH": {
+                    "value": "6",
+                    "value_src": "constant"
+                  },
+                  "HAS_TREADY": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "HAS_TSTRB": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "HAS_TKEEP": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "HAS_TLAST": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "CLK_DOMAIN": {
+                    "value": "block_design_rotation_aclk_0",
+                    "value_src": "constant"
+                  },
+                  "LAYERED_METADATA": {
+                    "value": [
+                      "xilinx.com:interface:datatypes:1.0 {",
+                      "TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {}",
+                      "maximum {}} value 48} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} complex {bitwidth {attribs {resolve_type generated dependency complex_width",
+                      "format long minimum {} maximum {}} value 24} stride {attribs {resolve_type generated dependency complex_stride format long minimum {} maximum {}} value 24} realfirst {attribs {resolve_type immediate",
+                      "dependency {} format bool minimum {} maximum {}} value true} real {fixed {fractwidth {attribs {resolve_type generated dependency complex_fractwidth format long minimum {} maximum {}} value 22} signed",
+                      "{attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}}} TDATA_WIDTH 48 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string",
+                      "minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 6} bitoffset {attribs {resolve_type immediate dependency {} format",
+                      "long minimum {} maximum {}} value 0} struct {field_cartesian_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value cartesian_tuser} enabled {attribs",
+                      "{resolve_type generated dependency cart_enabled format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value",
+                      "{}} bitwidth {attribs {resolve_type generated dependency cart_width format long minimum {} maximum {}} value 6} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum",
+                      "{}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_phase_tuser {name {attribs {resolve_type immediate dependency {}",
+                      "format string minimum {} maximum {}} value phase_tuser} enabled {attribs {resolve_type generated dependency phase_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs",
+                      "{resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency phase_width format long minimum {} maximum {}} value 0}",
+                      "bitoffset {attribs {resolve_type generated dependency phase_offset format long minimum {} maximum {}} value 6} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {}",
+                      "maximum {}} value false}}}}}}} TUSER_WIDTH 6",
+                      "}"
+                    ],
+                    "value_src": "ip_prop"
+                  }
+                },
+                "port_maps": {
+                  "TDATA": {
+                    "physical_name": "M_AXIS_DOUT_tdata",
+                    "direction": "I",
+                    "left": "47",
+                    "right": "0"
+                  },
+                  "TUSER": {
+                    "physical_name": "M_AXIS_DOUT_tuser",
+                    "direction": "I",
+                    "left": "5",
+                    "right": "0"
+                  },
+                  "TVALID": {
+                    "physical_name": "M_AXIS_DOUT_tvalid",
+                    "direction": "I"
+                  }
+                }
+              },
+              "S_AXIS_CARTESIAN": {
+                "mode": "Master",
+                "vlnv_bus_definition": "xilinx.com:interface:axis:1.0",
+                "vlnv": "xilinx.com:interface:axis_rtl:1.0",
+                "parameters": {
+                  "TDATA_NUM_BYTES": {
+                    "value": "6",
+                    "value_src": "constant"
+                  },
+                  "TDEST_WIDTH": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "TID_WIDTH": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "TUSER_WIDTH": {
+                    "value": "6",
+                    "value_src": "constant"
+                  },
+                  "HAS_TREADY": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "HAS_TSTRB": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "HAS_TKEEP": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "HAS_TLAST": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "FREQ_HZ": {
+                    "value": "100000000",
+                    "value_src": "constant"
+                  },
+                  "PHASE": {
+                    "value": "0.0",
+                    "value_src": "constant"
+                  },
+                  "CLK_DOMAIN": {
+                    "value": "block_design_rotation_aclk_0",
+                    "value_src": "constant"
+                  },
+                  "LAYERED_METADATA": {
+                    "value": "undef",
+                    "value_src": "constant"
+                  },
+                  "INSERT_VIP": {
+                    "value": "0",
+                    "value_src": "constant"
+                  }
+                },
+                "port_maps": {
+                  "TDATA": {
+                    "physical_name": "S_AXIS_CARTESIAN_tdata",
+                    "direction": "O",
+                    "left": "47",
+                    "right": "0"
+                  },
+                  "TUSER": {
+                    "physical_name": "S_AXIS_CARTESIAN_tuser",
+                    "direction": "O",
+                    "left": "5",
+                    "right": "0"
+                  },
+                  "TVALID": {
+                    "physical_name": "S_AXIS_CARTESIAN_tvalid",
+                    "direction": "O"
+                  }
+                }
+              },
+              "S_AXIS_PHASE": {
+                "mode": "Master",
+                "vlnv_bus_definition": "xilinx.com:interface:axis:1.0",
+                "vlnv": "xilinx.com:interface:axis_rtl:1.0",
+                "parameters": {
+                  "TDATA_NUM_BYTES": {
+                    "value": "3",
+                    "value_src": "constant"
+                  },
+                  "TDEST_WIDTH": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "TID_WIDTH": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "TUSER_WIDTH": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "HAS_TREADY": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "HAS_TSTRB": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "HAS_TKEEP": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "HAS_TLAST": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "FREQ_HZ": {
+                    "value": "100000000",
+                    "value_src": "constant"
+                  },
+                  "PHASE": {
+                    "value": "0.0",
+                    "value_src": "constant"
+                  },
+                  "CLK_DOMAIN": {
+                    "value": "block_design_rotation_aclk_0",
+                    "value_src": "constant"
+                  },
+                  "LAYERED_METADATA": {
+                    "value": "undef",
+                    "value_src": "constant"
+                  },
+                  "INSERT_VIP": {
+                    "value": "0",
+                    "value_src": "constant"
+                  }
+                },
+                "port_maps": {
+                  "TDATA": {
+                    "physical_name": "S_AXIS_PHASE_tdata",
+                    "direction": "O",
+                    "left": "23",
+                    "right": "0"
+                  },
+                  "TVALID": {
+                    "physical_name": "S_AXIS_PHASE_tvalid",
+                    "direction": "O"
+                  }
+                }
+              }
+            },
+            "ports": {
+              "RESET": {
+                "type": "rst",
+                "direction": "I"
+              },
+              "CLOCK": {
+                "type": "clk",
+                "direction": "I",
+                "parameters": {
+                  "CLK_DOMAIN": {
+                    "value": "block_design_0_CLOCK",
+                    "value_src": "default_prop"
+                  }
+                }
+              },
+              "ROTATION_CONSTELLATION_DATA_IN_STROBE": {
+                "direction": "I"
+              },
+              "ROTATION_CONSTELLATION_IDATA_IN": {
+                "direction": "I",
+                "left": "23",
+                "right": "0"
+              },
+              "ROTATION_CONSTELLATION_QDATA_IN": {
+                "direction": "I",
+                "left": "23",
+                "right": "0"
+              },
+              "ROTATION_CONSTELLATION_PHASE_IN": {
+                "direction": "I",
+                "left": "23",
+                "right": "0"
+              },
+              "ROTATION_CONSTELLATION_CNTR_IN": {
+                "direction": "I",
+                "left": "5",
+                "right": "0"
+              },
+              "ROTATION_CONSTELLATION_DATA_OUT_STROBE": {
+                "direction": "O"
+              },
+              "ROTATION_CONSTELLATION_IDATA_OUT": {
+                "direction": "O",
+                "left": "23",
+                "right": "0"
+              },
+              "ROTATION_CONSTELLATION_QDATA_OUT": {
+                "direction": "O",
+                "left": "23",
+                "right": "0"
+              },
+              "ROTATION_CONSTELLATION_DATA_OUT_CNTR": {
+                "direction": "O",
+                "left": "5",
+                "right": "0"
+              },
+              "aclk": {
+                "type": "clk",
+                "direction": "O",
+                "parameters": {
+                  "ASSOCIATED_BUSIF": {
+                    "value": "M_AXIS_DOUT:S_AXIS_PHASE:S_AXIS_CARTESIAN",
+                    "value_src": "constant"
+                  },
+                  "ASSOCIATED_RESET": {
+                    "value": "aresetn",
+                    "value_src": "constant"
+                  },
+                  "ASSOCIATED_CLKEN": {
+                    "value": "aclken",
+                    "value_src": "constant"
+                  },
+                  "FREQ_HZ": {
+                    "value": "100000000",
+                    "value_src": "constant"
+                  },
+                  "FREQ_TOLERANCE_HZ": {
+                    "value": "0",
+                    "value_src": "constant"
+                  },
+                  "PHASE": {
+                    "value": "0.0",
+                    "value_src": "constant"
+                  },
+                  "CLK_DOMAIN": {
+                    "value": "block_design_rotation_aclk_0",
+                    "value_src": "constant"
+                  },
+                  "INSERT_VIP": {
+                    "value": "0",
+                    "value_src": "constant"
+                  }
+                }
+              },
+              "aresetn": {
+                "type": "rst",
+                "direction": "O",
+                "parameters": {
+                  "POLARITY": {
+                    "value": "ACTIVE_LOW",
+                    "value_src": "constant"
+                  },
+                  "INSERT_VIP": {
+                    "value": "0",
+                    "value_src": "constant"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "interface_nets": {
+          "cordic_0_M_AXIS_DOUT": {
+            "interface_ports": [
+              "rotation_constellati_0/M_AXIS_DOUT",
+              "cordic_0/M_AXIS_DOUT"
+            ]
+          },
+          "rotation_constellati_0_S_AXIS_CARTESIAN": {
+            "interface_ports": [
+              "rotation_constellati_0/S_AXIS_CARTESIAN",
+              "cordic_0/S_AXIS_CARTESIAN"
+            ]
+          },
+          "rotation_constellati_0_S_AXIS_PHASE": {
+            "interface_ports": [
+              "cordic_0/S_AXIS_PHASE",
+              "rotation_constellati_0/S_AXIS_PHASE"
+            ]
+          }
+        },
+        "nets": {
+          "CLOCK_0_1": {
+            "ports": [
+              "CLOCK",
+              "rotation_constellati_0/CLOCK"
+            ]
+          },
+          "RESET_0_1": {
+            "ports": [
+              "RESET",
+              "rotation_constellati_0/RESET"
+            ]
+          },
+          "ROTATION_CONSTELLATION_CNTR_IN_1": {
+            "ports": [
+              "ROTATION_CONSTELLATION_CNTR_IN",
+              "rotation_constellati_0/ROTATION_CONSTELLATION_CNTR_IN"
+            ]
+          },
+          "ROTATION_CONSTELLATION_DATA_IN_STROBE_1": {
+            "ports": [
+              "ROTATION_CONSTELLATION_DATA_IN_STROBE",
+              "rotation_constellati_0/ROTATION_CONSTELLATION_DATA_IN_STROBE"
+            ]
+          },
+          "ROTATION_CONSTELLATION_IDATA_IN_1": {
+            "ports": [
+              "ROTATION_CONSTELLATION_IDATA_IN",
+              "rotation_constellati_0/ROTATION_CONSTELLATION_IDATA_IN"
+            ]
+          },
+          "ROTATION_CONSTELLATION_PHASE_IN_1": {
+            "ports": [
+              "ROTATION_CONSTELLATION_PHASE_IN",
+              "rotation_constellati_0/ROTATION_CONSTELLATION_PHASE_IN"
+            ]
+          },
+          "ROTATION_CONSTELLATION_QDATA_IN_1": {
+            "ports": [
+              "ROTATION_CONSTELLATION_QDATA_IN",
+              "rotation_constellati_0/ROTATION_CONSTELLATION_QDATA_IN"
+            ]
+          },
+          "rotation_constellati_0_ROTATION_CONSTELLATION_DATA_OUT_CNTR": {
+            "ports": [
+              "rotation_constellati_0/ROTATION_CONSTELLATION_DATA_OUT_CNTR",
+              "ROTATION_CONSTELLATION_DATA_OUT_CNTR"
+            ]
+          },
+          "rotation_constellati_0_ROTATION_CONSTELLATION_DATA_OUT_STROBE": {
+            "ports": [
+              "rotation_constellati_0/ROTATION_CONSTELLATION_DATA_OUT_STROBE",
+              "ROTATION_CONSTELLATION_DATA_OUT_STROBE"
+            ]
+          },
+          "rotation_constellati_0_ROTATION_CONSTELLATION_IDATA_OUT": {
+            "ports": [
+              "rotation_constellati_0/ROTATION_CONSTELLATION_IDATA_OUT",
+              "ROTATION_CONSTELLATION_IDATA_OUT"
+            ]
+          },
+          "rotation_constellati_0_ROTATION_CONSTELLATION_QDATA_OUT": {
+            "ports": [
+              "rotation_constellati_0/ROTATION_CONSTELLATION_QDATA_OUT",
+              "ROTATION_CONSTELLATION_QDATA_OUT"
+            ]
+          },
+          "rotation_constellati_0_aclk": {
+            "ports": [
+              "rotation_constellati_0/aclk",
+              "cordic_0/aclk"
+            ]
+          },
+          "rotation_constellati_0_aresetn": {
+            "ports": [
+              "rotation_constellati_0/aresetn",
+              "cordic_0/aresetn"
+            ]
+          }
+        }
+      },
+      "constellation_tracker_0": {
+        "vlnv": "xilinx.com:module_ref:constellation_tracker:1.0",
+        "ip_revision": "1713290982",
+        "xci_name": "block_design_0_constellation_tracker_0_0",
+        "xci_path": "ip\\block_design_0_constellation_tracker_0_0\\block_design_0_constellation_tracker_0_0.xci",
+        "inst_hier_path": "constellation_tracker_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "constellation_tracker",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "RESET": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "CLOCK": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "RESET",
+                "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "block_design_0_CLOCK",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "FFT_IDATA_IN": {
+            "direction": "I",
+            "left": "23",
+            "right": "0"
+          },
+          "FFT_QDATA_IN": {
+            "direction": "I",
+            "left": "23",
+            "right": "0"
+          },
+          "FFT_DATA_IN_VALID": {
+            "direction": "I"
+          },
+          "FFT_DATA_IN_LAST": {
+            "direction": "I"
+          },
+          "FFT_DATA_IN_FIRST_SYMBOL_MARKER": {
+            "direction": "I"
+          },
+          "CONSTELLATION_IDATA_OUT": {
+            "direction": "O",
+            "left": "23",
+            "right": "0"
+          },
+          "CONSTELLATION_QDATA_OUT": {
+            "direction": "O",
+            "left": "23",
+            "right": "0"
+          },
+          "CONSTELLATION_DATA_OUT_VALID": {
+            "direction": "O"
+          },
+          "CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER": {
+            "direction": "O"
+          },
+          "ATAN_CONSTELLATION_IN_STROBE": {
+            "direction": "O"
+          },
+          "ATAN_CONSTELLATION_IN_I": {
+            "direction": "O",
+            "left": "23",
+            "right": "0"
+          },
+          "ATAN_CONSTELLATION_IN_Q": {
+            "direction": "O",
+            "left": "23",
+            "right": "0"
+          },
+          "ATAN_CONSTELLATION_IN_CNTR": {
+            "direction": "O",
+            "left": "5",
+            "right": "0"
+          },
+          "ATAN_CONSTELLATION_PHASE_OUT_STROBE": {
+            "direction": "I"
+          },
+          "ATAN_CONSTELLATION_PHASE_OUT": {
+            "direction": "I",
+            "left": "23",
+            "right": "0"
+          },
+          "ATAN_CONSTELLATION_PHASE_OUT_CNTR": {
+            "direction": "I",
+            "left": "5",
+            "right": "0"
+          },
+          "ROTATION_CONSTELLATION_DATA_IN_STROBE": {
+            "direction": "O"
+          },
+          "ROTATION_CONSTELLATION_IDATA_IN": {
+            "direction": "O",
+            "left": "23",
+            "right": "0"
+          },
+          "ROTATION_CONSTELLATION_QDATA_IN": {
+            "direction": "O",
+            "left": "23",
+            "right": "0"
+          },
+          "ROTATION_CONSTELLATION_PHASE_IN": {
+            "direction": "O",
+            "left": "23",
+            "right": "0"
+          },
+          "ROTATION_CONSTELLATION_CNTR_IN": {
+            "direction": "O",
+            "left": "5",
+            "right": "0"
+          },
+          "ROTATION_CONSTELLATION_DATA_OUT_STROBE": {
+            "direction": "I"
+          },
+          "ROTATION_CONSTELLATION_IDATA_OUT": {
+            "direction": "I",
+            "left": "23",
+            "right": "0"
+          },
+          "ROTATION_CONSTELLATION_QDATA_OUT": {
+            "direction": "I",
+            "left": "23",
+            "right": "0"
+          },
+          "ROTATION_CONSTELLATION_DATA_OUT_CNTR": {
+            "direction": "I",
+            "left": "5",
+            "right": "0"
           }
         }
       }
@@ -2401,8 +3562,11 @@
           "data_delay_0/CLOCK",
           "timing_acquisition_8_0/CLOCK",
           "ila_0/clk",
-          "axi_regs_mux_0/CLOCK",
-          "equalizer_time_frequ_0/CLOCK"
+          "equalizer_time_frequ_0/CLOCK",
+          "hier_atan_constellation/CLOCK",
+          "hier_rotation_constellation/CLOCK",
+          "constellation_tracker_0/CLOCK",
+          "axi_regs_mux_0/CLOCK"
         ]
       },
       "DETECTION_THRESHOLD_0_1": {
@@ -2422,8 +3586,11 @@
           "data_interleaver_0/RESET",
           "data_delay_0/RESET",
           "timing_acquisition_8_0/RESET",
-          "axi_regs_mux_0/RESET",
-          "equalizer_time_frequ_0/RESET"
+          "equalizer_time_frequ_0/RESET",
+          "hier_atan_constellation/RESET",
+          "hier_rotation_constellation/RESET",
+          "constellation_tracker_0/RESET",
+          "axi_regs_mux_0/RESET"
         ]
       },
       "RX_CLOCK_0_1": {
@@ -2487,14 +3654,96 @@
           "FPGA_REG_WRITE_STROBE"
         ]
       },
+      "constellation_tracker_0_ATAN_CONSTELLATION_IN_CNTR": {
+        "ports": [
+          "constellation_tracker_0/ATAN_CONSTELLATION_IN_CNTR",
+          "hier_atan_constellation/ATAN_CONSTELLATION_IN_CNTR"
+        ]
+      },
+      "constellation_tracker_0_ATAN_CONSTELLATION_IN_I": {
+        "ports": [
+          "constellation_tracker_0/ATAN_CONSTELLATION_IN_I",
+          "hier_atan_constellation/ATAN_CONSTELLATION_IN_I"
+        ]
+      },
+      "constellation_tracker_0_ATAN_CONSTELLATION_IN_Q": {
+        "ports": [
+          "constellation_tracker_0/ATAN_CONSTELLATION_IN_Q",
+          "hier_atan_constellation/ATAN_CONSTELLATION_IN_Q"
+        ]
+      },
+      "constellation_tracker_0_ATAN_CONSTELLATION_IN_STROBE": {
+        "ports": [
+          "constellation_tracker_0/ATAN_CONSTELLATION_IN_STROBE",
+          "hier_atan_constellation/ATAN_CONSTELLATION_IN_STROBE"
+        ]
+      },
+      "constellation_tracker_0_CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER": {
+        "ports": [
+          "constellation_tracker_0/CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER",
+          "ila_0/probe30",
+          "axi_regs_mux_0/CONSTELLATION_DATA_FIRST_SYMBOL_MARKER"
+        ]
+      },
+      "constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID": {
+        "ports": [
+          "constellation_tracker_0/CONSTELLATION_DATA_OUT_VALID",
+          "ila_0/probe29",
+          "axi_regs_mux_0/CONSTELLATION_DATA_VALID"
+        ]
+      },
+      "constellation_tracker_0_CONSTELLATION_IDATA_OUT": {
+        "ports": [
+          "constellation_tracker_0/CONSTELLATION_IDATA_OUT",
+          "ila_0/probe31",
+          "axi_regs_mux_0/CONSTELLATION_IDATA"
+        ]
+      },
+      "constellation_tracker_0_CONSTELLATION_QDATA_OUT": {
+        "ports": [
+          "constellation_tracker_0/CONSTELLATION_QDATA_OUT",
+          "ila_0/probe32",
+          "axi_regs_mux_0/CONSTELLATION_QDATA"
+        ]
+      },
+      "constellation_tracker_0_ROTATION_CONSTELLATION_CNTR_IN": {
+        "ports": [
+          "constellation_tracker_0/ROTATION_CONSTELLATION_CNTR_IN",
+          "hier_rotation_constellation/ROTATION_CONSTELLATION_CNTR_IN"
+        ]
+      },
+      "constellation_tracker_0_ROTATION_CONSTELLATION_DATA_IN_STROBE": {
+        "ports": [
+          "constellation_tracker_0/ROTATION_CONSTELLATION_DATA_IN_STROBE",
+          "hier_rotation_constellation/ROTATION_CONSTELLATION_DATA_IN_STROBE"
+        ]
+      },
+      "constellation_tracker_0_ROTATION_CONSTELLATION_IDATA_IN": {
+        "ports": [
+          "constellation_tracker_0/ROTATION_CONSTELLATION_IDATA_IN",
+          "hier_rotation_constellation/ROTATION_CONSTELLATION_IDATA_IN"
+        ]
+      },
+      "constellation_tracker_0_ROTATION_CONSTELLATION_PHASE_IN": {
+        "ports": [
+          "constellation_tracker_0/ROTATION_CONSTELLATION_PHASE_IN",
+          "hier_rotation_constellation/ROTATION_CONSTELLATION_PHASE_IN"
+        ]
+      },
+      "constellation_tracker_0_ROTATION_CONSTELLATION_QDATA_IN": {
+        "ports": [
+          "constellation_tracker_0/ROTATION_CONSTELLATION_QDATA_IN",
+          "hier_rotation_constellation/ROTATION_CONSTELLATION_QDATA_IN"
+        ]
+      },
       "data_delay_0_DATA_OUT_STROBE": {
         "ports": [
           "data_delay_0/DATA_OUT_STROBE",
           "act_power_0/DATA_STROBE",
           "timing_acquisition_8_0/DATA_STROBE",
           "ila_0/probe0",
-          "axi_regs_mux_0/DATA_STROBE",
-          "equalizer_time_frequ_0/DATA_IN_STROBE"
+          "equalizer_time_frequ_0/DATA_IN_STROBE",
+          "axi_regs_mux_0/DATA_STROBE"
         ]
       },
       "data_delay_0_IDATA_OUT": {
@@ -2503,8 +3752,8 @@
           "act_power_0/IDATA",
           "timing_acquisition_8_0/IDATA",
           "ila_0/probe1",
-          "axi_regs_mux_0/IDATA",
-          "equalizer_time_frequ_0/IDATA_IN"
+          "equalizer_time_frequ_0/IDATA_IN",
+          "axi_regs_mux_0/IDATA"
         ]
       },
       "data_delay_0_IDATA_OUT_DELAY_16": {
@@ -2526,8 +3775,8 @@
           "act_power_0/QDATA",
           "timing_acquisition_8_0/QDATA",
           "ila_0/probe2",
-          "axi_regs_mux_0/QDATA",
-          "equalizer_time_frequ_0/QDATA_IN"
+          "equalizer_time_frequ_0/QDATA_IN",
+          "axi_regs_mux_0/QDATA"
         ]
       },
       "data_delay_0_QDATA_OUT_DELAY_16": {
@@ -2625,13 +3874,15 @@
       "fft_ofdm_0_FFT_DATA_OUT_LAST": {
         "ports": [
           "hier_fft_ofdm/FFT_DATA_OUT_LAST",
-          "ila_0/probe20"
+          "ila_0/probe20",
+          "constellation_tracker_0/FFT_DATA_IN_LAST"
         ]
       },
       "fft_ofdm_0_FFT_DATA_OUT_VALID": {
         "ports": [
           "hier_fft_ofdm/FFT_DATA_OUT_VALID",
           "ila_0/probe19",
+          "constellation_tracker_0/FFT_DATA_IN_VALID",
           "axi_regs_mux_0/FFT_DATA_VALID"
         ]
       },
@@ -2639,6 +3890,7 @@
         "ports": [
           "hier_fft_ofdm/FFT_IDATA_OUT",
           "ila_0/probe21",
+          "constellation_tracker_0/FFT_IDATA_IN",
           "axi_regs_mux_0/FFT_IDATA"
         ]
       },
@@ -2646,6 +3898,7 @@
         "ports": [
           "hier_fft_ofdm/FFT_QDATA_OUT",
           "ila_0/probe22",
+          "constellation_tracker_0/FFT_QDATA_IN",
           "axi_regs_mux_0/FFT_QDATA"
         ]
       },
@@ -2663,10 +3916,29 @@
           "equalizer_time_frequ_0/ATAN_PHASE_OUT_STROBE"
         ]
       },
+      "hier_atan_constellation_ATAN_CONSTELLATION_PHASE_OUT": {
+        "ports": [
+          "hier_atan_constellation/ATAN_CONSTELLATION_PHASE_OUT",
+          "constellation_tracker_0/ATAN_CONSTELLATION_PHASE_OUT"
+        ]
+      },
+      "hier_atan_constellation_ATAN_CONSTELLATION_PHASE_OUT_CNTR": {
+        "ports": [
+          "hier_atan_constellation/ATAN_CONSTELLATION_PHASE_OUT_CNTR",
+          "constellation_tracker_0/ATAN_CONSTELLATION_PHASE_OUT_CNTR"
+        ]
+      },
+      "hier_atan_constellation_ATAN_CONSTELLATION_PHASE_OUT_STROBE": {
+        "ports": [
+          "hier_atan_constellation/ATAN_CONSTELLATION_PHASE_OUT_STROBE",
+          "constellation_tracker_0/ATAN_CONSTELLATION_PHASE_OUT_STROBE"
+        ]
+      },
       "hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER": {
         "ports": [
           "hier_fft_ofdm/FFT_DATA_OUT_FIRST_SYMBOL_MARKER",
           "ila_0/probe27",
+          "constellation_tracker_0/FFT_DATA_IN_FIRST_SYMBOL_MARKER",
           "axi_regs_mux_0/FFT_DATA_FIRST_SYMBOL_MARKER"
         ]
       },
@@ -2692,6 +3964,30 @@
         "ports": [
           "hier_fft_ofdm/event_tlast_unexpected",
           "ila_0/probe24"
+        ]
+      },
+      "hier_rotation_constellation_ROTATION_CONSTELLATION_DATA_OUT_CNTR": {
+        "ports": [
+          "hier_rotation_constellation/ROTATION_CONSTELLATION_DATA_OUT_CNTR",
+          "constellation_tracker_0/ROTATION_CONSTELLATION_DATA_OUT_CNTR"
+        ]
+      },
+      "hier_rotation_constellation_ROTATION_CONSTELLATION_DATA_OUT_STROBE": {
+        "ports": [
+          "hier_rotation_constellation/ROTATION_CONSTELLATION_DATA_OUT_STROBE",
+          "constellation_tracker_0/ROTATION_CONSTELLATION_DATA_OUT_STROBE"
+        ]
+      },
+      "hier_rotation_constellation_ROTATION_CONSTELLATION_IDATA_OUT": {
+        "ports": [
+          "hier_rotation_constellation/ROTATION_CONSTELLATION_IDATA_OUT",
+          "constellation_tracker_0/ROTATION_CONSTELLATION_IDATA_OUT"
+        ]
+      },
+      "hier_rotation_constellation_ROTATION_CONSTELLATION_QDATA_OUT": {
+        "ports": [
+          "hier_rotation_constellation/ROTATION_CONSTELLATION_QDATA_OUT",
+          "constellation_tracker_0/ROTATION_CONSTELLATION_QDATA_OUT"
         ]
       },
       "receiver_802_11p_0_ATAN_AUTOCORR_I": {

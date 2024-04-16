@@ -157,7 +157,7 @@ tx_signal(length(preamble)-1+length(SIGNAL_ofdm_modulated_signal)) = tx_signal(l
 filename = "signal_802_11p.txt";
 writematrix(tx_signal.', filename);
 
-% Write signal to file -- in int16 + zero padded
+%% Write signal to file -- in int16 + zero padded
 max_val = 2^14;
 padding = 100;
 filename_int = "signal_802_11p_int.txt";

@@ -40,7 +40,7 @@ sdr_adrv9002.dds_single_tone(-3000000, 0.9, channel=0)
 
 # Create a sinewave waveform
 fc = 1000000
-N = 2**21
+N = 2**22
 ts = 1 / float(fs)
 t = np.arange(0, N * ts, ts)
 i = np.cos(2 * np.pi * t * fc) * 2 ** 14

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Apr 15 14:37:37 2024" VIVADOVERSION="2023.2.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Apr 16 20:20:39 2024" VIVADOVERSION="2023.2.2">
 
   <SYSTEMINFO ARCH="zynq" BOARD="avnet.com:zedboard:part0:1.4" DEVICE="7z020" NAME="block_design_0" PACKAGE="clg484" SPEEDGRADE="-1"/>
 
@@ -15,8 +15,11 @@
         <CONNECTION INSTANCE="data_delay_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="ila_0" PORT="clk"/>
-        <CONNECTION INSTANCE="axi_regs_mux_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="CLOCK"/>
+        <CONNECTION INSTANCE="hier_atan_constellation_atan_constellation_b_0" PORT="CLOCK"/>
+        <CONNECTION INSTANCE="hier_rotation_constellation_rotation_constellati_0" PORT="CLOCK"/>
+        <CONNECTION INSTANCE="constellation_tracker_0" PORT="CLOCK"/>
+        <CONNECTION INSTANCE="axi_regs_mux_0" PORT="CLOCK"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" LEFT="23" NAME="DETECTION_THRESHOLD" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_DETECTION_THRESHOLD">
@@ -54,8 +57,11 @@
         <CONNECTION INSTANCE="data_interleaver_0" PORT="RESET"/>
         <CONNECTION INSTANCE="data_delay_0" PORT="RESET"/>
         <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="RESET"/>
-        <CONNECTION INSTANCE="axi_regs_mux_0" PORT="RESET"/>
         <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="RESET"/>
+        <CONNECTION INSTANCE="hier_atan_constellation_atan_constellation_b_0" PORT="RESET"/>
+        <CONNECTION INSTANCE="hier_rotation_constellation_rotation_constellati_0" PORT="RESET"/>
+        <CONNECTION INSTANCE="constellation_tracker_0" PORT="RESET"/>
+        <CONNECTION INSTANCE="axi_regs_mux_0" PORT="RESET"/>
       </CONNECTIONS>
     </PORT>
     <PORT CLKFREQUENCY="10000000" DIR="I" NAME="RX_CLOCK" SIGIS="clk" SIGNAME="External_Ports_RX_CLOCK">
@@ -139,7 +145,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1713120991" FULLNAME="/axi_regs_mux_0" HWVERSION="1.0" INSTANCE="axi_regs_mux_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="axi_regs_mux" VLNV="xilinx.com:module_ref:axi_regs_mux:1.0">
+    <MODULE COREREVISION="1713291591" FULLNAME="/axi_regs_mux_0" HWVERSION="1.0" INSTANCE="axi_regs_mux_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="axi_regs_mux" VLNV="xilinx.com:module_ref:axi_regs_mux:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_axi_regs_mux_0_0"/>
@@ -149,6 +155,26 @@
         <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLOCK" SIGIS="clk" SIGNAME="External_Ports_CLOCK">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="CLOCK"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="CONSTELLATION_DATA_FIRST_SYMBOL_MARKER" SIGIS="undef" SIGNAME="constellation_tracker_0_CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="constellation_tracker_0" PORT="CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="CONSTELLATION_DATA_VALID" SIGIS="undef" SIGNAME="constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="constellation_tracker_0" PORT="CONSTELLATION_DATA_OUT_VALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="23" NAME="CONSTELLATION_IDATA" RIGHT="0" SIGIS="undef" SIGNAME="constellation_tracker_0_CONSTELLATION_IDATA_OUT">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="constellation_tracker_0" PORT="CONSTELLATION_IDATA_OUT"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="23" NAME="CONSTELLATION_QDATA" RIGHT="0" SIGIS="undef" SIGNAME="constellation_tracker_0_CONSTELLATION_QDATA_OUT">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="constellation_tracker_0" PORT="CONSTELLATION_QDATA_OUT"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="DATA_STROBE" SIGIS="undef" SIGNAME="data_delay_0_DATA_OUT_STROBE">
@@ -229,6 +255,155 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
+    <MODULE COREREVISION="1713290982" FULLNAME="/constellation_tracker_0" HWVERSION="1.0" INSTANCE="constellation_tracker_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="constellation_tracker" VLNV="xilinx.com:module_ref:constellation_tracker:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="block_design_0_constellation_tracker_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="O" LEFT="5" NAME="ATAN_CONSTELLATION_IN_CNTR" RIGHT="0" SIGIS="undef" SIGNAME="constellation_tracker_0_ATAN_CONSTELLATION_IN_CNTR">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_atan_constellation_atan_constellation_b_0" PORT="ATAN_CONSTELLATION_IN_CNTR"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="23" NAME="ATAN_CONSTELLATION_IN_I" RIGHT="0" SIGIS="undef" SIGNAME="constellation_tracker_0_ATAN_CONSTELLATION_IN_I">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_atan_constellation_atan_constellation_b_0" PORT="ATAN_CONSTELLATION_IN_I"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="23" NAME="ATAN_CONSTELLATION_IN_Q" RIGHT="0" SIGIS="undef" SIGNAME="constellation_tracker_0_ATAN_CONSTELLATION_IN_Q">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_atan_constellation_atan_constellation_b_0" PORT="ATAN_CONSTELLATION_IN_Q"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="ATAN_CONSTELLATION_IN_STROBE" SIGIS="undef" SIGNAME="constellation_tracker_0_ATAN_CONSTELLATION_IN_STROBE">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_atan_constellation_atan_constellation_b_0" PORT="ATAN_CONSTELLATION_IN_STROBE"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="23" NAME="ATAN_CONSTELLATION_PHASE_OUT" RIGHT="0" SIGIS="undef" SIGNAME="hier_atan_constellation_atan_constellation_b_0_ATAN_CONSTELLATION_PHASE_OUT">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_atan_constellation_atan_constellation_b_0" PORT="ATAN_CONSTELLATION_PHASE_OUT"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="5" NAME="ATAN_CONSTELLATION_PHASE_OUT_CNTR" RIGHT="0" SIGIS="undef" SIGNAME="hier_atan_constellation_atan_constellation_b_0_ATAN_CONSTELLATION_PHASE_OUT_CNTR">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_atan_constellation_atan_constellation_b_0" PORT="ATAN_CONSTELLATION_PHASE_OUT_CNTR"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="ATAN_CONSTELLATION_PHASE_OUT_STROBE" SIGIS="undef" SIGNAME="hier_atan_constellation_atan_constellation_b_0_ATAN_CONSTELLATION_PHASE_OUT_STROBE">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_atan_constellation_atan_constellation_b_0" PORT="ATAN_CONSTELLATION_PHASE_OUT_STROBE"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLOCK" SIGIS="clk" SIGNAME="External_Ports_CLOCK">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="CLOCK"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER" SIGIS="undef" SIGNAME="constellation_tracker_0_CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ila_0" PORT="probe30"/>
+            <CONNECTION INSTANCE="axi_regs_mux_0" PORT="CONSTELLATION_DATA_FIRST_SYMBOL_MARKER"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="CONSTELLATION_DATA_OUT_VALID" SIGIS="undef" SIGNAME="constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ila_0" PORT="probe29"/>
+            <CONNECTION INSTANCE="axi_regs_mux_0" PORT="CONSTELLATION_DATA_VALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="23" NAME="CONSTELLATION_IDATA_OUT" RIGHT="0" SIGIS="undef" SIGNAME="constellation_tracker_0_CONSTELLATION_IDATA_OUT">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ila_0" PORT="probe31"/>
+            <CONNECTION INSTANCE="axi_regs_mux_0" PORT="CONSTELLATION_IDATA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="23" NAME="CONSTELLATION_QDATA_OUT" RIGHT="0" SIGIS="undef" SIGNAME="constellation_tracker_0_CONSTELLATION_QDATA_OUT">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ila_0" PORT="probe32"/>
+            <CONNECTION INSTANCE="axi_regs_mux_0" PORT="CONSTELLATION_QDATA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="FFT_DATA_IN_FIRST_SYMBOL_MARKER" SIGIS="undef" SIGNAME="hier_fft_ofdm_fft_ofdm_0_FFT_DATA_OUT_FIRST_SYMBOL_MARKER">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_fft_ofdm_fft_ofdm_0" PORT="FFT_DATA_OUT_FIRST_SYMBOL_MARKER"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="FFT_DATA_IN_LAST" SIGIS="undef" SIGNAME="hier_fft_ofdm_fft_ofdm_0_FFT_DATA_OUT_LAST">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_fft_ofdm_fft_ofdm_0" PORT="FFT_DATA_OUT_LAST"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="FFT_DATA_IN_VALID" SIGIS="undef" SIGNAME="hier_fft_ofdm_fft_ofdm_0_FFT_DATA_OUT_VALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_fft_ofdm_fft_ofdm_0" PORT="FFT_DATA_OUT_VALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="23" NAME="FFT_IDATA_IN" RIGHT="0" SIGIS="undef" SIGNAME="hier_fft_ofdm_fft_ofdm_0_FFT_IDATA_OUT">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_fft_ofdm_fft_ofdm_0" PORT="FFT_IDATA_OUT"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="23" NAME="FFT_QDATA_IN" RIGHT="0" SIGIS="undef" SIGNAME="hier_fft_ofdm_fft_ofdm_0_FFT_QDATA_OUT">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_fft_ofdm_fft_ofdm_0" PORT="FFT_QDATA_OUT"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="RESET" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_RESET">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="RESET"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="5" NAME="ROTATION_CONSTELLATION_CNTR_IN" RIGHT="0" SIGIS="undef" SIGNAME="constellation_tracker_0_ROTATION_CONSTELLATION_CNTR_IN">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_constellation_rotation_constellati_0" PORT="ROTATION_CONSTELLATION_CNTR_IN"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="ROTATION_CONSTELLATION_DATA_IN_STROBE" SIGIS="undef" SIGNAME="constellation_tracker_0_ROTATION_CONSTELLATION_DATA_IN_STROBE">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_constellation_rotation_constellati_0" PORT="ROTATION_CONSTELLATION_DATA_IN_STROBE"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="5" NAME="ROTATION_CONSTELLATION_DATA_OUT_CNTR" RIGHT="0" SIGIS="undef" SIGNAME="hier_rotation_constellation_rotation_constellati_0_ROTATION_CONSTELLATION_DATA_OUT_CNTR">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_constellation_rotation_constellati_0" PORT="ROTATION_CONSTELLATION_DATA_OUT_CNTR"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="ROTATION_CONSTELLATION_DATA_OUT_STROBE" SIGIS="undef" SIGNAME="hier_rotation_constellation_rotation_constellati_0_ROTATION_CONSTELLATION_DATA_OUT_STROBE">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_constellation_rotation_constellati_0" PORT="ROTATION_CONSTELLATION_DATA_OUT_STROBE"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="23" NAME="ROTATION_CONSTELLATION_IDATA_IN" RIGHT="0" SIGIS="undef" SIGNAME="constellation_tracker_0_ROTATION_CONSTELLATION_IDATA_IN">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_constellation_rotation_constellati_0" PORT="ROTATION_CONSTELLATION_IDATA_IN"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="23" NAME="ROTATION_CONSTELLATION_IDATA_OUT" RIGHT="0" SIGIS="undef" SIGNAME="hier_rotation_constellation_rotation_constellati_0_ROTATION_CONSTELLATION_IDATA_OUT">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_constellation_rotation_constellati_0" PORT="ROTATION_CONSTELLATION_IDATA_OUT"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="23" NAME="ROTATION_CONSTELLATION_PHASE_IN" RIGHT="0" SIGIS="undef" SIGNAME="constellation_tracker_0_ROTATION_CONSTELLATION_PHASE_IN">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_constellation_rotation_constellati_0" PORT="ROTATION_CONSTELLATION_PHASE_IN"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="23" NAME="ROTATION_CONSTELLATION_QDATA_IN" RIGHT="0" SIGIS="undef" SIGNAME="constellation_tracker_0_ROTATION_CONSTELLATION_QDATA_IN">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_constellation_rotation_constellati_0" PORT="ROTATION_CONSTELLATION_QDATA_IN"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="23" NAME="ROTATION_CONSTELLATION_QDATA_OUT" RIGHT="0" SIGIS="undef" SIGNAME="hier_rotation_constellation_rotation_constellati_0_ROTATION_CONSTELLATION_QDATA_OUT">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_constellation_rotation_constellati_0" PORT="ROTATION_CONSTELLATION_QDATA_OUT"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
     <MODULE COREREVISION="1712601686" FULLNAME="/data_delay_0" HWVERSION="1.0" INSTANCE="data_delay_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="data_delay" VLNV="xilinx.com:module_ref:data_delay:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
@@ -251,8 +426,8 @@
             <CONNECTION INSTANCE="act_power_0" PORT="DATA_STROBE"/>
             <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="DATA_STROBE"/>
             <CONNECTION INSTANCE="ila_0" PORT="probe0"/>
-            <CONNECTION INSTANCE="axi_regs_mux_0" PORT="DATA_STROBE"/>
             <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="DATA_IN_STROBE"/>
+            <CONNECTION INSTANCE="axi_regs_mux_0" PORT="DATA_STROBE"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="15" NAME="IDATA_IN" RIGHT="0" SIGIS="undef" SIGNAME="data_interleaver_0_IDATA_OUT">
@@ -265,8 +440,8 @@
             <CONNECTION INSTANCE="act_power_0" PORT="IDATA"/>
             <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="IDATA"/>
             <CONNECTION INSTANCE="ila_0" PORT="probe1"/>
-            <CONNECTION INSTANCE="axi_regs_mux_0" PORT="IDATA"/>
             <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="IDATA_IN"/>
+            <CONNECTION INSTANCE="axi_regs_mux_0" PORT="IDATA"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="IDATA_OUT_DELAY_16" RIGHT="0" SIGIS="undef" SIGNAME="data_delay_0_IDATA_OUT_DELAY_16">
@@ -291,8 +466,8 @@
             <CONNECTION INSTANCE="act_power_0" PORT="QDATA"/>
             <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="QDATA"/>
             <CONNECTION INSTANCE="ila_0" PORT="probe2"/>
-            <CONNECTION INSTANCE="axi_regs_mux_0" PORT="QDATA"/>
             <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="QDATA_IN"/>
+            <CONNECTION INSTANCE="axi_regs_mux_0" PORT="QDATA"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="QDATA_OUT_DELAY_16" RIGHT="0" SIGIS="undef" SIGNAME="data_delay_0_QDATA_OUT_DELAY_16">
@@ -667,6 +842,289 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
+    <MODULE COREREVISION="1713277135" FULLNAME="/hier_atan_constellation/atan_constellation_b_0" HWVERSION="1.0" INSTANCE="hier_atan_constellation_atan_constellation_b_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="atan_constellation_block" VLNV="xilinx.com:module_ref:atan_constellation_block:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="block_design_0_atan_constellation_b_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="5" NAME="ATAN_CONSTELLATION_IN_CNTR" RIGHT="0" SIGIS="undef" SIGNAME="constellation_tracker_0_ATAN_CONSTELLATION_IN_CNTR">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="constellation_tracker_0" PORT="ATAN_CONSTELLATION_IN_CNTR"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="23" NAME="ATAN_CONSTELLATION_IN_I" RIGHT="0" SIGIS="undef" SIGNAME="constellation_tracker_0_ATAN_CONSTELLATION_IN_I">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="constellation_tracker_0" PORT="ATAN_CONSTELLATION_IN_I"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="23" NAME="ATAN_CONSTELLATION_IN_Q" RIGHT="0" SIGIS="undef" SIGNAME="constellation_tracker_0_ATAN_CONSTELLATION_IN_Q">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="constellation_tracker_0" PORT="ATAN_CONSTELLATION_IN_Q"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="ATAN_CONSTELLATION_IN_STROBE" SIGIS="undef" SIGNAME="constellation_tracker_0_ATAN_CONSTELLATION_IN_STROBE">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="constellation_tracker_0" PORT="ATAN_CONSTELLATION_IN_STROBE"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="23" NAME="ATAN_CONSTELLATION_PHASE_OUT" RIGHT="0" SIGIS="undef" SIGNAME="hier_atan_constellation_atan_constellation_b_0_ATAN_CONSTELLATION_PHASE_OUT">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="constellation_tracker_0" PORT="ATAN_CONSTELLATION_PHASE_OUT"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="5" NAME="ATAN_CONSTELLATION_PHASE_OUT_CNTR" RIGHT="0" SIGIS="undef" SIGNAME="hier_atan_constellation_atan_constellation_b_0_ATAN_CONSTELLATION_PHASE_OUT_CNTR">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="constellation_tracker_0" PORT="ATAN_CONSTELLATION_PHASE_OUT_CNTR"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="ATAN_CONSTELLATION_PHASE_OUT_STROBE" SIGIS="undef" SIGNAME="hier_atan_constellation_atan_constellation_b_0_ATAN_CONSTELLATION_PHASE_OUT_STROBE">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="constellation_tracker_0" PORT="ATAN_CONSTELLATION_PHASE_OUT_STROBE"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLOCK" SIGIS="clk" SIGNAME="External_Ports_CLOCK">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="CLOCK"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="23" NAME="M_AXIS_DOUT_tdata" RIGHT="0" SIGIS="undef" SIGNAME="hier_atan_constellation_atan_constellation_b_0_M_AXIS_DOUT_tdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_atan_constellation_cordic_0" PORT="m_axis_dout_tdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="5" NAME="M_AXIS_DOUT_tuser" RIGHT="0" SIGIS="undef" SIGNAME="hier_atan_constellation_atan_constellation_b_0_M_AXIS_DOUT_tuser">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_atan_constellation_cordic_0" PORT="m_axis_dout_tuser"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M_AXIS_DOUT_tvalid" SIGIS="undef" SIGNAME="hier_atan_constellation_atan_constellation_b_0_M_AXIS_DOUT_tvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_atan_constellation_cordic_0" PORT="m_axis_dout_tvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="RESET" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_RESET">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="RESET"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="47" NAME="S_AXIS_CARTESIAN_tdata" RIGHT="0" SIGIS="undef" SIGNAME="hier_atan_constellation_atan_constellation_b_0_S_AXIS_CARTESIAN_tdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_atan_constellation_cordic_0" PORT="s_axis_cartesian_tdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="5" NAME="S_AXIS_CARTESIAN_tuser" RIGHT="0" SIGIS="undef" SIGNAME="hier_atan_constellation_atan_constellation_b_0_S_AXIS_CARTESIAN_tuser">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_atan_constellation_cordic_0" PORT="s_axis_cartesian_tuser"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="S_AXIS_CARTESIAN_tvalid" SIGIS="undef" SIGNAME="hier_atan_constellation_atan_constellation_b_0_S_AXIS_CARTESIAN_tvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_atan_constellation_cordic_0" PORT="s_axis_cartesian_tvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="100000000" DIR="O" NAME="aclk" SIGIS="clk" SIGNAME="hier_atan_constellation_atan_constellation_b_0_aclk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_atan_constellation_cordic_0" PORT="aclk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="aresetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="hier_atan_constellation_atan_constellation_b_0_aresetn">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_atan_constellation_cordic_0" PORT="aresetn"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES>
+        <BUSINTERFACE BUSNAME="hier_atan_constellation_cordic_0_M_AXIS_DOUT" NAME="M_AXIS_DOUT" TYPE="TARGET" VLNV="xilinx.com:interface:axis:1.0">
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="block_design_atan_aclk_0"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
+          <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+          <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
+          <PARAMETER NAME="HAS_TREADY" VALUE="0"/>
+          <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+          <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 24} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_real {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value real} enabled {attribs {resolve_type generated dependency polar_mag_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_mag_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_mag_fractwidth format long minimum {} maximum {}} value -2} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}} field_phase {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase} enabled {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_phase_width format long minimum {} maximum {}} value 24} bitoffset {attribs {resolve_type generated dependency polar_phase_offset format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_phase_fractwidth format long minimum {} maximum {}} value 21} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}}}}} TDATA_WIDTH 24 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 6} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_cartesian_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value cartesian_tuser} enabled {attribs {resolve_type generated dependency cart_enabled format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency cart_width format long minimum {} maximum {}} value 6} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_phase_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase_tuser} enabled {attribs {resolve_type generated dependency phase_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency phase_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency phase_offset format long minimum {} maximum {}} value 6} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}}}} TUSER_WIDTH 6}"/>
+          <PARAMETER NAME="PHASE" VALUE="0.0"/>
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="3"/>
+          <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TUSER_WIDTH" VALUE="6"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="TDATA" PHYSICAL="M_AXIS_DOUT_tdata"/>
+            <PORTMAP LOGICAL="TUSER" PHYSICAL="M_AXIS_DOUT_tuser"/>
+            <PORTMAP LOGICAL="TVALID" PHYSICAL="M_AXIS_DOUT_tvalid"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="hier_atan_constellation_atan_constellation_b_0_S_AXIS_CARTESIAN" NAME="S_AXIS_CARTESIAN" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="block_design_atan_aclk_0"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
+          <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+          <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
+          <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
+          <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+          <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="undef"/>
+          <PARAMETER NAME="PHASE" VALUE="0.0"/>
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="6"/>
+          <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TUSER_WIDTH" VALUE="6"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="TDATA" PHYSICAL="S_AXIS_CARTESIAN_tdata"/>
+            <PORTMAP LOGICAL="TUSER" PHYSICAL="S_AXIS_CARTESIAN_tuser"/>
+            <PORTMAP LOGICAL="TVALID" PHYSICAL="S_AXIS_CARTESIAN_tvalid"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+      </BUSINTERFACES>
+    </MODULE>
+    <MODULE COREREVISION="21" FULLNAME="/hier_atan_constellation/cordic_0" HWVERSION="6.0" INSTANCE="hier_atan_constellation_cordic_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="cordic" VLNV="xilinx.com:ip:cordic:6.0">
+      <DOCUMENTS>
+        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=cordic;v=v6_0;d=pg105-cordic.pdf"/>
+      </DOCUMENTS>
+      <PARAMETERS>
+        <PARAMETER NAME="C_ARCHITECTURE" VALUE="2"/>
+        <PARAMETER NAME="C_COARSE_ROTATE" VALUE="1"/>
+        <PARAMETER NAME="C_CORDIC_FUNCTION" VALUE="3"/>
+        <PARAMETER NAME="C_DATA_FORMAT" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_ACLK" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_ACLKEN" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_ARESETN" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_S_AXIS_CARTESIAN" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_S_AXIS_CARTESIAN_TLAST" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_S_AXIS_CARTESIAN_TUSER" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_S_AXIS_PHASE" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_S_AXIS_PHASE_TLAST" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_S_AXIS_PHASE_TUSER" VALUE="0"/>
+        <PARAMETER NAME="C_INPUT_WIDTH" VALUE="24"/>
+        <PARAMETER NAME="C_ITERATIONS" VALUE="0"/>
+        <PARAMETER NAME="C_M_AXIS_DOUT_TDATA_WIDTH" VALUE="24"/>
+        <PARAMETER NAME="C_M_AXIS_DOUT_TUSER_WIDTH" VALUE="6"/>
+        <PARAMETER NAME="C_OUTPUT_WIDTH" VALUE="24"/>
+        <PARAMETER NAME="C_PHASE_FORMAT" VALUE="1"/>
+        <PARAMETER NAME="C_PIPELINE_MODE" VALUE="-2"/>
+        <PARAMETER NAME="C_PRECISION" VALUE="0"/>
+        <PARAMETER NAME="C_ROUND_MODE" VALUE="0"/>
+        <PARAMETER NAME="C_SCALE_COMP" VALUE="0"/>
+        <PARAMETER NAME="C_S_AXIS_CARTESIAN_TDATA_WIDTH" VALUE="48"/>
+        <PARAMETER NAME="C_S_AXIS_CARTESIAN_TUSER_WIDTH" VALUE="6"/>
+        <PARAMETER NAME="C_S_AXIS_PHASE_TDATA_WIDTH" VALUE="24"/>
+        <PARAMETER NAME="C_S_AXIS_PHASE_TUSER_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_THROTTLE_SCHEME" VALUE="3"/>
+        <PARAMETER NAME="C_TLAST_RESOLUTION" VALUE="0"/>
+        <PARAMETER NAME="C_XDEVICEFAMILY" VALUE="zynq"/>
+        <PARAMETER NAME="ACLKEN" VALUE="false"/>
+        <PARAMETER NAME="ARESETN" VALUE="true"/>
+        <PARAMETER NAME="Architectural_Configuration" VALUE="Parallel"/>
+        <PARAMETER NAME="Coarse_Rotation" VALUE="true"/>
+        <PARAMETER NAME="Compensation_Scaling" VALUE="No_Scale_Compensation"/>
+        <PARAMETER NAME="Component_Name" VALUE="block_design_0_cordic_0_2"/>
+        <PARAMETER NAME="Data_Format" VALUE="SignedFraction"/>
+        <PARAMETER NAME="Functional_Selection" VALUE="Arc_Tan"/>
+        <PARAMETER NAME="Input_Width" VALUE="24"/>
+        <PARAMETER NAME="Iterations" VALUE="0"/>
+        <PARAMETER NAME="Output_Width" VALUE="24"/>
+        <PARAMETER NAME="Phase_Format" VALUE="Scaled_Radians"/>
+        <PARAMETER NAME="Pipelining_Mode" VALUE="Maximum"/>
+        <PARAMETER NAME="Precision" VALUE="0"/>
+        <PARAMETER NAME="Round_Mode" VALUE="Truncate"/>
+        <PARAMETER NAME="cartesian_has_tlast" VALUE="false"/>
+        <PARAMETER NAME="cartesian_has_tuser" VALUE="true"/>
+        <PARAMETER NAME="cartesian_tuser_width" VALUE="6"/>
+        <PARAMETER NAME="flow_control" VALUE="NonBlocking"/>
+        <PARAMETER NAME="optimize_goal" VALUE="Performance"/>
+        <PARAMETER NAME="out_tlast_behv" VALUE="Null"/>
+        <PARAMETER NAME="out_tready" VALUE="false"/>
+        <PARAMETER NAME="phase_has_tlast" VALUE="false"/>
+        <PARAMETER NAME="phase_has_tuser" VALUE="false"/>
+        <PARAMETER NAME="phase_tuser_width" VALUE="1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="aclk" SIGIS="clk" SIGNAME="hier_atan_constellation_atan_constellation_b_0_aclk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_atan_constellation_atan_constellation_b_0" PORT="aclk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="aresetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="hier_atan_constellation_atan_constellation_b_0_aresetn">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_atan_constellation_atan_constellation_b_0" PORT="aresetn"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="23" NAME="m_axis_dout_tdata" RIGHT="0" SIGIS="undef" SIGNAME="hier_atan_constellation_atan_constellation_b_0_M_AXIS_DOUT_tdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_atan_constellation_atan_constellation_b_0" PORT="M_AXIS_DOUT_tdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="5" NAME="m_axis_dout_tuser" RIGHT="0" SIGIS="undef" SIGNAME="hier_atan_constellation_atan_constellation_b_0_M_AXIS_DOUT_tuser">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_atan_constellation_atan_constellation_b_0" PORT="M_AXIS_DOUT_tuser"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="m_axis_dout_tvalid" SIGIS="undef" SIGNAME="hier_atan_constellation_atan_constellation_b_0_M_AXIS_DOUT_tvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_atan_constellation_atan_constellation_b_0" PORT="M_AXIS_DOUT_tvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="47" NAME="s_axis_cartesian_tdata" RIGHT="0" SIGIS="undef" SIGNAME="hier_atan_constellation_atan_constellation_b_0_S_AXIS_CARTESIAN_tdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_atan_constellation_atan_constellation_b_0" PORT="S_AXIS_CARTESIAN_tdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="5" NAME="s_axis_cartesian_tuser" RIGHT="0" SIGIS="undef" SIGNAME="hier_atan_constellation_atan_constellation_b_0_S_AXIS_CARTESIAN_tuser">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_atan_constellation_atan_constellation_b_0" PORT="S_AXIS_CARTESIAN_tuser"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s_axis_cartesian_tvalid" SIGIS="undef" SIGNAME="hier_atan_constellation_atan_constellation_b_0_S_AXIS_CARTESIAN_tvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_atan_constellation_atan_constellation_b_0" PORT="S_AXIS_CARTESIAN_tvalid"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES>
+        <BUSINTERFACE BUSNAME="hier_atan_constellation_atan_constellation_b_0_S_AXIS_CARTESIAN" NAME="S_AXIS_CARTESIAN" TYPE="TARGET" VLNV="xilinx.com:interface:axis:1.0">
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="block_design_atan_aclk_0"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
+          <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+          <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
+          <PARAMETER NAME="HAS_TREADY" VALUE="0"/>
+          <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+          <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="undef"/>
+          <PARAMETER NAME="PHASE" VALUE="0.0"/>
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="6"/>
+          <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TUSER_WIDTH" VALUE="6"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="TDATA" PHYSICAL="s_axis_cartesian_tdata"/>
+            <PORTMAP LOGICAL="TUSER" PHYSICAL="s_axis_cartesian_tuser"/>
+            <PORTMAP LOGICAL="TVALID" PHYSICAL="s_axis_cartesian_tvalid"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="hier_atan_constellation_cordic_0_M_AXIS_DOUT" NAME="M_AXIS_DOUT" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="block_design_atan_aclk_0"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
+          <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+          <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
+          <PARAMETER NAME="HAS_TREADY" VALUE="0"/>
+          <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+          <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 24} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_real {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value real} enabled {attribs {resolve_type generated dependency polar_mag_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_mag_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_mag_fractwidth format long minimum {} maximum {}} value -2} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}} field_phase {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase} enabled {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_phase_width format long minimum {} maximum {}} value 24} bitoffset {attribs {resolve_type generated dependency polar_phase_offset format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_phase_fractwidth format long minimum {} maximum {}} value 21} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}}}}} TDATA_WIDTH 24 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 6} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_cartesian_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value cartesian_tuser} enabled {attribs {resolve_type generated dependency cart_enabled format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency cart_width format long minimum {} maximum {}} value 6} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_phase_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase_tuser} enabled {attribs {resolve_type generated dependency phase_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency phase_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency phase_offset format long minimum {} maximum {}} value 6} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}}}} TUSER_WIDTH 6}"/>
+          <PARAMETER NAME="PHASE" VALUE="0.0"/>
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="3"/>
+          <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TUSER_WIDTH" VALUE="6"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="TDATA" PHYSICAL="m_axis_dout_tdata"/>
+            <PORTMAP LOGICAL="TUSER" PHYSICAL="m_axis_dout_tuser"/>
+            <PORTMAP LOGICAL="TVALID" PHYSICAL="m_axis_dout_tvalid"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+      </BUSINTERFACES>
+    </MODULE>
     <MODULE COREREVISION="21" FULLNAME="/hier_atan/cordic_0" HWVERSION="6.0" INSTANCE="hier_atan_cordic_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="cordic" VLNV="xilinx.com:ip:cordic:6.0">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=cordic;v=v6_0;d=pg105-cordic.pdf"/>
@@ -838,17 +1296,20 @@
         <PORT DIR="O" NAME="FFT_DATA_OUT_FIRST_SYMBOL_MARKER" SIGIS="undef" SIGNAME="hier_fft_ofdm_fft_ofdm_0_FFT_DATA_OUT_FIRST_SYMBOL_MARKER">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ila_0" PORT="probe27"/>
+            <CONNECTION INSTANCE="constellation_tracker_0" PORT="FFT_DATA_IN_FIRST_SYMBOL_MARKER"/>
             <CONNECTION INSTANCE="axi_regs_mux_0" PORT="FFT_DATA_FIRST_SYMBOL_MARKER"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="FFT_DATA_OUT_LAST" SIGIS="undef" SIGNAME="hier_fft_ofdm_fft_ofdm_0_FFT_DATA_OUT_LAST">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ila_0" PORT="probe20"/>
+            <CONNECTION INSTANCE="constellation_tracker_0" PORT="FFT_DATA_IN_LAST"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="FFT_DATA_OUT_VALID" SIGIS="undef" SIGNAME="hier_fft_ofdm_fft_ofdm_0_FFT_DATA_OUT_VALID">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ila_0" PORT="probe19"/>
+            <CONNECTION INSTANCE="constellation_tracker_0" PORT="FFT_DATA_IN_VALID"/>
             <CONNECTION INSTANCE="axi_regs_mux_0" PORT="FFT_DATA_VALID"/>
           </CONNECTIONS>
         </PORT>
@@ -860,6 +1321,7 @@
         <PORT DIR="O" LEFT="23" NAME="FFT_IDATA_OUT" RIGHT="0" SIGIS="undef" SIGNAME="hier_fft_ofdm_fft_ofdm_0_FFT_IDATA_OUT">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ila_0" PORT="probe21"/>
+            <CONNECTION INSTANCE="constellation_tracker_0" PORT="FFT_IDATA_IN"/>
             <CONNECTION INSTANCE="axi_regs_mux_0" PORT="FFT_IDATA"/>
           </CONNECTIONS>
         </PORT>
@@ -871,6 +1333,7 @@
         <PORT DIR="O" LEFT="23" NAME="FFT_QDATA_OUT" RIGHT="0" SIGIS="undef" SIGNAME="hier_fft_ofdm_fft_ofdm_0_FFT_QDATA_OUT">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ila_0" PORT="probe22"/>
+            <CONNECTION INSTANCE="constellation_tracker_0" PORT="FFT_QDATA_IN"/>
             <CONNECTION INSTANCE="axi_regs_mux_0" PORT="FFT_QDATA"/>
           </CONNECTIONS>
         </PORT>
@@ -1213,6 +1676,357 @@
             <PORTMAP LOGICAL="TDATA" PHYSICAL="s_axis_config_tdata"/>
             <PORTMAP LOGICAL="TREADY" PHYSICAL="s_axis_config_tready"/>
             <PORTMAP LOGICAL="TVALID" PHYSICAL="s_axis_config_tvalid"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+      </BUSINTERFACES>
+    </MODULE>
+    <MODULE COREREVISION="21" FULLNAME="/hier_rotation_constellation/cordic_0" HWVERSION="6.0" INSTANCE="hier_rotation_constellation_cordic_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="cordic" VLNV="xilinx.com:ip:cordic:6.0">
+      <DOCUMENTS>
+        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=cordic;v=v6_0;d=pg105-cordic.pdf"/>
+      </DOCUMENTS>
+      <PARAMETERS>
+        <PARAMETER NAME="C_ARCHITECTURE" VALUE="2"/>
+        <PARAMETER NAME="C_COARSE_ROTATE" VALUE="1"/>
+        <PARAMETER NAME="C_CORDIC_FUNCTION" VALUE="0"/>
+        <PARAMETER NAME="C_DATA_FORMAT" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_ACLK" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_ACLKEN" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_ARESETN" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_S_AXIS_CARTESIAN" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_S_AXIS_CARTESIAN_TLAST" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_S_AXIS_CARTESIAN_TUSER" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_S_AXIS_PHASE" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_S_AXIS_PHASE_TLAST" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_S_AXIS_PHASE_TUSER" VALUE="0"/>
+        <PARAMETER NAME="C_INPUT_WIDTH" VALUE="24"/>
+        <PARAMETER NAME="C_ITERATIONS" VALUE="0"/>
+        <PARAMETER NAME="C_M_AXIS_DOUT_TDATA_WIDTH" VALUE="48"/>
+        <PARAMETER NAME="C_M_AXIS_DOUT_TUSER_WIDTH" VALUE="6"/>
+        <PARAMETER NAME="C_OUTPUT_WIDTH" VALUE="24"/>
+        <PARAMETER NAME="C_PHASE_FORMAT" VALUE="1"/>
+        <PARAMETER NAME="C_PIPELINE_MODE" VALUE="-2"/>
+        <PARAMETER NAME="C_PRECISION" VALUE="0"/>
+        <PARAMETER NAME="C_ROUND_MODE" VALUE="0"/>
+        <PARAMETER NAME="C_SCALE_COMP" VALUE="0"/>
+        <PARAMETER NAME="C_S_AXIS_CARTESIAN_TDATA_WIDTH" VALUE="48"/>
+        <PARAMETER NAME="C_S_AXIS_CARTESIAN_TUSER_WIDTH" VALUE="6"/>
+        <PARAMETER NAME="C_S_AXIS_PHASE_TDATA_WIDTH" VALUE="24"/>
+        <PARAMETER NAME="C_S_AXIS_PHASE_TUSER_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_THROTTLE_SCHEME" VALUE="3"/>
+        <PARAMETER NAME="C_TLAST_RESOLUTION" VALUE="0"/>
+        <PARAMETER NAME="C_XDEVICEFAMILY" VALUE="zynq"/>
+        <PARAMETER NAME="ACLKEN" VALUE="false"/>
+        <PARAMETER NAME="ARESETN" VALUE="true"/>
+        <PARAMETER NAME="Architectural_Configuration" VALUE="Parallel"/>
+        <PARAMETER NAME="Coarse_Rotation" VALUE="true"/>
+        <PARAMETER NAME="Compensation_Scaling" VALUE="No_Scale_Compensation"/>
+        <PARAMETER NAME="Component_Name" VALUE="block_design_0_cordic_0_3"/>
+        <PARAMETER NAME="Data_Format" VALUE="SignedFraction"/>
+        <PARAMETER NAME="Functional_Selection" VALUE="Rotate"/>
+        <PARAMETER NAME="Input_Width" VALUE="24"/>
+        <PARAMETER NAME="Iterations" VALUE="0"/>
+        <PARAMETER NAME="Output_Width" VALUE="24"/>
+        <PARAMETER NAME="Phase_Format" VALUE="Scaled_Radians"/>
+        <PARAMETER NAME="Pipelining_Mode" VALUE="Maximum"/>
+        <PARAMETER NAME="Precision" VALUE="0"/>
+        <PARAMETER NAME="Round_Mode" VALUE="Truncate"/>
+        <PARAMETER NAME="cartesian_has_tlast" VALUE="false"/>
+        <PARAMETER NAME="cartesian_has_tuser" VALUE="true"/>
+        <PARAMETER NAME="cartesian_tuser_width" VALUE="6"/>
+        <PARAMETER NAME="flow_control" VALUE="NonBlocking"/>
+        <PARAMETER NAME="optimize_goal" VALUE="Performance"/>
+        <PARAMETER NAME="out_tlast_behv" VALUE="Null"/>
+        <PARAMETER NAME="out_tready" VALUE="false"/>
+        <PARAMETER NAME="phase_has_tlast" VALUE="false"/>
+        <PARAMETER NAME="phase_has_tuser" VALUE="false"/>
+        <PARAMETER NAME="phase_tuser_width" VALUE="1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="aclk" SIGIS="clk" SIGNAME="hier_rotation_constellation_rotation_constellati_0_aclk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_constellation_rotation_constellati_0" PORT="aclk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="aresetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="hier_rotation_constellation_rotation_constellati_0_aresetn">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_constellation_rotation_constellati_0" PORT="aresetn"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="47" NAME="m_axis_dout_tdata" RIGHT="0" SIGIS="undef" SIGNAME="hier_rotation_constellation_cordic_0_m_axis_dout_tdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_constellation_rotation_constellati_0" PORT="M_AXIS_DOUT_tdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="5" NAME="m_axis_dout_tuser" RIGHT="0" SIGIS="undef" SIGNAME="hier_rotation_constellation_cordic_0_m_axis_dout_tuser">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_constellation_rotation_constellati_0" PORT="M_AXIS_DOUT_tuser"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="m_axis_dout_tvalid" SIGIS="undef" SIGNAME="hier_rotation_constellation_cordic_0_m_axis_dout_tvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_constellation_rotation_constellati_0" PORT="M_AXIS_DOUT_tvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="47" NAME="s_axis_cartesian_tdata" RIGHT="0" SIGIS="undef" SIGNAME="hier_rotation_constellation_cordic_0_s_axis_cartesian_tdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_constellation_rotation_constellati_0" PORT="S_AXIS_CARTESIAN_tdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="5" NAME="s_axis_cartesian_tuser" RIGHT="0" SIGIS="undef" SIGNAME="hier_rotation_constellation_cordic_0_s_axis_cartesian_tuser">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_constellation_rotation_constellati_0" PORT="S_AXIS_CARTESIAN_tuser"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s_axis_cartesian_tvalid" SIGIS="undef" SIGNAME="hier_rotation_constellation_cordic_0_s_axis_cartesian_tvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_constellation_rotation_constellati_0" PORT="S_AXIS_CARTESIAN_tvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="23" NAME="s_axis_phase_tdata" RIGHT="0" SIGIS="undef" SIGNAME="hier_rotation_constellation_cordic_0_s_axis_phase_tdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_constellation_rotation_constellati_0" PORT="S_AXIS_PHASE_tdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s_axis_phase_tvalid" SIGIS="undef" SIGNAME="hier_rotation_constellation_cordic_0_s_axis_phase_tvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_constellation_rotation_constellati_0" PORT="S_AXIS_PHASE_tvalid"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES>
+        <BUSINTERFACE BUSNAME="hier_rotation_constellation_rotation_constellati_0_S_AXIS_CARTESIAN" NAME="S_AXIS_CARTESIAN" TYPE="TARGET" VLNV="xilinx.com:interface:axis:1.0">
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="block_design_rotation_aclk_0"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
+          <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+          <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
+          <PARAMETER NAME="HAS_TREADY" VALUE="0"/>
+          <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+          <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="undef"/>
+          <PARAMETER NAME="PHASE" VALUE="0.0"/>
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="6"/>
+          <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TUSER_WIDTH" VALUE="6"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="TDATA" PHYSICAL="s_axis_cartesian_tdata"/>
+            <PORTMAP LOGICAL="TUSER" PHYSICAL="s_axis_cartesian_tuser"/>
+            <PORTMAP LOGICAL="TVALID" PHYSICAL="s_axis_cartesian_tvalid"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="hier_rotation_constellation_rotation_constellati_0_S_AXIS_PHASE" NAME="S_AXIS_PHASE" TYPE="TARGET" VLNV="xilinx.com:interface:axis:1.0">
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="block_design_rotation_aclk_0"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
+          <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+          <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
+          <PARAMETER NAME="HAS_TREADY" VALUE="0"/>
+          <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+          <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="undef"/>
+          <PARAMETER NAME="PHASE" VALUE="0.0"/>
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="3"/>
+          <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="TDATA" PHYSICAL="s_axis_phase_tdata"/>
+            <PORTMAP LOGICAL="TVALID" PHYSICAL="s_axis_phase_tvalid"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="hier_rotation_constellation_cordic_0_M_AXIS_DOUT" NAME="M_AXIS_DOUT" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="block_design_rotation_aclk_0"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
+          <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+          <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
+          <PARAMETER NAME="HAS_TREADY" VALUE="0"/>
+          <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+          <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 48} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} complex {bitwidth {attribs {resolve_type generated dependency complex_width format long minimum {} maximum {}} value 24} stride {attribs {resolve_type generated dependency complex_stride format long minimum {} maximum {}} value 24} realfirst {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true} real {fixed {fractwidth {attribs {resolve_type generated dependency complex_fractwidth format long minimum {} maximum {}} value 22} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}}} TDATA_WIDTH 48 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 6} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_cartesian_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value cartesian_tuser} enabled {attribs {resolve_type generated dependency cart_enabled format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency cart_width format long minimum {} maximum {}} value 6} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_phase_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase_tuser} enabled {attribs {resolve_type generated dependency phase_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency phase_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency phase_offset format long minimum {} maximum {}} value 6} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}}}} TUSER_WIDTH 6}"/>
+          <PARAMETER NAME="PHASE" VALUE="0.0"/>
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="6"/>
+          <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TUSER_WIDTH" VALUE="6"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="TDATA" PHYSICAL="m_axis_dout_tdata"/>
+            <PORTMAP LOGICAL="TUSER" PHYSICAL="m_axis_dout_tuser"/>
+            <PORTMAP LOGICAL="TVALID" PHYSICAL="m_axis_dout_tvalid"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+      </BUSINTERFACES>
+    </MODULE>
+    <MODULE COREREVISION="1713277061" FULLNAME="/hier_rotation_constellation/rotation_constellati_0" HWVERSION="1.0" INSTANCE="hier_rotation_constellation_rotation_constellati_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="rotation_constellation_block" VLNV="xilinx.com:module_ref:rotation_constellation_block:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="block_design_0_rotation_constellati_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLOCK" SIGIS="clk" SIGNAME="External_Ports_CLOCK">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="CLOCK"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="47" NAME="M_AXIS_DOUT_tdata" RIGHT="0" SIGIS="undef" SIGNAME="hier_rotation_constellation_cordic_0_m_axis_dout_tdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_constellation_cordic_0" PORT="m_axis_dout_tdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="5" NAME="M_AXIS_DOUT_tuser" RIGHT="0" SIGIS="undef" SIGNAME="hier_rotation_constellation_cordic_0_m_axis_dout_tuser">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_constellation_cordic_0" PORT="m_axis_dout_tuser"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M_AXIS_DOUT_tvalid" SIGIS="undef" SIGNAME="hier_rotation_constellation_cordic_0_m_axis_dout_tvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_constellation_cordic_0" PORT="m_axis_dout_tvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="RESET" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_RESET">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="RESET"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="5" NAME="ROTATION_CONSTELLATION_CNTR_IN" RIGHT="0" SIGIS="undef" SIGNAME="constellation_tracker_0_ROTATION_CONSTELLATION_CNTR_IN">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="constellation_tracker_0" PORT="ROTATION_CONSTELLATION_CNTR_IN"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="ROTATION_CONSTELLATION_DATA_IN_STROBE" SIGIS="undef" SIGNAME="constellation_tracker_0_ROTATION_CONSTELLATION_DATA_IN_STROBE">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="constellation_tracker_0" PORT="ROTATION_CONSTELLATION_DATA_IN_STROBE"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="5" NAME="ROTATION_CONSTELLATION_DATA_OUT_CNTR" RIGHT="0" SIGIS="undef" SIGNAME="hier_rotation_constellation_rotation_constellati_0_ROTATION_CONSTELLATION_DATA_OUT_CNTR">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="constellation_tracker_0" PORT="ROTATION_CONSTELLATION_DATA_OUT_CNTR"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="ROTATION_CONSTELLATION_DATA_OUT_STROBE" SIGIS="undef" SIGNAME="hier_rotation_constellation_rotation_constellati_0_ROTATION_CONSTELLATION_DATA_OUT_STROBE">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="constellation_tracker_0" PORT="ROTATION_CONSTELLATION_DATA_OUT_STROBE"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="23" NAME="ROTATION_CONSTELLATION_IDATA_IN" RIGHT="0" SIGIS="undef" SIGNAME="constellation_tracker_0_ROTATION_CONSTELLATION_IDATA_IN">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="constellation_tracker_0" PORT="ROTATION_CONSTELLATION_IDATA_IN"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="23" NAME="ROTATION_CONSTELLATION_IDATA_OUT" RIGHT="0" SIGIS="undef" SIGNAME="hier_rotation_constellation_rotation_constellati_0_ROTATION_CONSTELLATION_IDATA_OUT">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="constellation_tracker_0" PORT="ROTATION_CONSTELLATION_IDATA_OUT"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="23" NAME="ROTATION_CONSTELLATION_PHASE_IN" RIGHT="0" SIGIS="undef" SIGNAME="constellation_tracker_0_ROTATION_CONSTELLATION_PHASE_IN">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="constellation_tracker_0" PORT="ROTATION_CONSTELLATION_PHASE_IN"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="23" NAME="ROTATION_CONSTELLATION_QDATA_IN" RIGHT="0" SIGIS="undef" SIGNAME="constellation_tracker_0_ROTATION_CONSTELLATION_QDATA_IN">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="constellation_tracker_0" PORT="ROTATION_CONSTELLATION_QDATA_IN"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="23" NAME="ROTATION_CONSTELLATION_QDATA_OUT" RIGHT="0" SIGIS="undef" SIGNAME="hier_rotation_constellation_rotation_constellati_0_ROTATION_CONSTELLATION_QDATA_OUT">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="constellation_tracker_0" PORT="ROTATION_CONSTELLATION_QDATA_OUT"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="47" NAME="S_AXIS_CARTESIAN_tdata" RIGHT="0" SIGIS="undef" SIGNAME="hier_rotation_constellation_cordic_0_s_axis_cartesian_tdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_constellation_cordic_0" PORT="s_axis_cartesian_tdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="5" NAME="S_AXIS_CARTESIAN_tuser" RIGHT="0" SIGIS="undef" SIGNAME="hier_rotation_constellation_cordic_0_s_axis_cartesian_tuser">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_constellation_cordic_0" PORT="s_axis_cartesian_tuser"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="S_AXIS_CARTESIAN_tvalid" SIGIS="undef" SIGNAME="hier_rotation_constellation_cordic_0_s_axis_cartesian_tvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_constellation_cordic_0" PORT="s_axis_cartesian_tvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="23" NAME="S_AXIS_PHASE_tdata" RIGHT="0" SIGIS="undef" SIGNAME="hier_rotation_constellation_cordic_0_s_axis_phase_tdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_constellation_cordic_0" PORT="s_axis_phase_tdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="S_AXIS_PHASE_tvalid" SIGIS="undef" SIGNAME="hier_rotation_constellation_cordic_0_s_axis_phase_tvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_constellation_cordic_0" PORT="s_axis_phase_tvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="100000000" DIR="O" NAME="aclk" SIGIS="clk" SIGNAME="hier_rotation_constellation_rotation_constellati_0_aclk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_constellation_cordic_0" PORT="aclk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="aresetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="hier_rotation_constellation_rotation_constellati_0_aresetn">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_rotation_constellation_cordic_0" PORT="aresetn"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES>
+        <BUSINTERFACE BUSNAME="hier_rotation_constellation_cordic_0_M_AXIS_DOUT" NAME="M_AXIS_DOUT" TYPE="TARGET" VLNV="xilinx.com:interface:axis:1.0">
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="block_design_rotation_aclk_0"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
+          <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+          <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
+          <PARAMETER NAME="HAS_TREADY" VALUE="0"/>
+          <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+          <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 48} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} complex {bitwidth {attribs {resolve_type generated dependency complex_width format long minimum {} maximum {}} value 24} stride {attribs {resolve_type generated dependency complex_stride format long minimum {} maximum {}} value 24} realfirst {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true} real {fixed {fractwidth {attribs {resolve_type generated dependency complex_fractwidth format long minimum {} maximum {}} value 22} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}}} TDATA_WIDTH 48 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 6} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_cartesian_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value cartesian_tuser} enabled {attribs {resolve_type generated dependency cart_enabled format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency cart_width format long minimum {} maximum {}} value 6} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_phase_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase_tuser} enabled {attribs {resolve_type generated dependency phase_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency phase_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency phase_offset format long minimum {} maximum {}} value 6} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}}}} TUSER_WIDTH 6}"/>
+          <PARAMETER NAME="PHASE" VALUE="0.0"/>
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="6"/>
+          <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TUSER_WIDTH" VALUE="6"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="TDATA" PHYSICAL="M_AXIS_DOUT_tdata"/>
+            <PORTMAP LOGICAL="TUSER" PHYSICAL="M_AXIS_DOUT_tuser"/>
+            <PORTMAP LOGICAL="TVALID" PHYSICAL="M_AXIS_DOUT_tvalid"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="hier_rotation_constellation_rotation_constellati_0_S_AXIS_CARTESIAN" NAME="S_AXIS_CARTESIAN" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="block_design_rotation_aclk_0"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
+          <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+          <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
+          <PARAMETER NAME="HAS_TREADY" VALUE="0"/>
+          <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+          <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="undef"/>
+          <PARAMETER NAME="PHASE" VALUE="0.0"/>
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="6"/>
+          <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TUSER_WIDTH" VALUE="6"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="TDATA" PHYSICAL="S_AXIS_CARTESIAN_tdata"/>
+            <PORTMAP LOGICAL="TUSER" PHYSICAL="S_AXIS_CARTESIAN_tuser"/>
+            <PORTMAP LOGICAL="TVALID" PHYSICAL="S_AXIS_CARTESIAN_tvalid"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="hier_rotation_constellation_rotation_constellati_0_S_AXIS_PHASE" NAME="S_AXIS_PHASE" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="block_design_rotation_aclk_0"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
+          <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+          <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
+          <PARAMETER NAME="HAS_TREADY" VALUE="0"/>
+          <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+          <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="undef"/>
+          <PARAMETER NAME="PHASE" VALUE="0.0"/>
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="3"/>
+          <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="TDATA" PHYSICAL="S_AXIS_PHASE_tdata"/>
+            <PORTMAP LOGICAL="TVALID" PHYSICAL="S_AXIS_PHASE_tvalid"/>
           </PORTMAPS>
         </BUSINTERFACE>
       </BUSINTERFACES>
@@ -1605,7 +2419,7 @@
         <PARAMETER NAME="C_MU_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_NEXT_SLAVE" VALUE="0"/>
         <PARAMETER NAME="C_NUM_MONITOR_SLOTS" VALUE="1"/>
-        <PARAMETER NAME="C_NUM_OF_PROBES" VALUE="29"/>
+        <PARAMETER NAME="C_NUM_OF_PROBES" VALUE="33"/>
         <PARAMETER NAME="C_PIPE_IFACE" VALUE="1"/>
         <PARAMETER NAME="C_PROBE0_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE0_TYPE" VALUE="0"/>
@@ -2413,7 +3227,7 @@
         <PARAMETER NAME="C_PROBE319_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE31_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE31_TYPE" VALUE="0"/>
-        <PARAMETER NAME="C_PROBE31_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_PROBE31_WIDTH" VALUE="24"/>
         <PARAMETER NAME="C_PROBE320_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE320_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_PROBE320_WIDTH" VALUE="1"/>
@@ -2446,7 +3260,7 @@
         <PARAMETER NAME="C_PROBE329_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE32_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE32_TYPE" VALUE="0"/>
-        <PARAMETER NAME="C_PROBE32_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_PROBE32_WIDTH" VALUE="24"/>
         <PARAMETER NAME="C_PROBE330_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE330_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_PROBE330_WIDTH" VALUE="1"/>
@@ -4861,6 +5675,26 @@
         <PORT DIR="I" LEFT="0" NAME="probe28" RIGHT="0" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_FFT_DATA_IN_FIRST_SYMBOL_MARKER">
           <CONNECTIONS>
             <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="FFT_DATA_IN_FIRST_SYMBOL_MARKER"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe29" RIGHT="0" SIGIS="undef" SIGNAME="constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="constellation_tracker_0" PORT="CONSTELLATION_DATA_OUT_VALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe30" RIGHT="0" SIGIS="undef" SIGNAME="constellation_tracker_0_CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="constellation_tracker_0" PORT="CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="23" NAME="probe31" RIGHT="0" SIGIS="undef" SIGNAME="constellation_tracker_0_CONSTELLATION_IDATA_OUT">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="constellation_tracker_0" PORT="CONSTELLATION_IDATA_OUT"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="23" NAME="probe32" RIGHT="0" SIGIS="undef" SIGNAME="constellation_tracker_0_CONSTELLATION_QDATA_OUT">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="constellation_tracker_0" PORT="CONSTELLATION_QDATA_OUT"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
