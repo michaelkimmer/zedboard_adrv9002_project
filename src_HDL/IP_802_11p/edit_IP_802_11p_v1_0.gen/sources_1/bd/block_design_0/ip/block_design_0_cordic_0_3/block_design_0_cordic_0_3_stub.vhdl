@@ -2,10 +2,10 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
--- Date        : Tue Apr 16 17:32:41 2024
+-- Date        : Tue Apr 16 17:32:38 2024
 -- Host        : lab817_01 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub
---               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_cordic_0_3/block_design_0_cordic_0_3_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top block_design_0_cordic_0_3 -prefix
+--               block_design_0_cordic_0_3_ block_design_0_cordic_0_3_stub.vhdl
 -- Design      : block_design_0_cordic_0_3
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7z020clg484-1

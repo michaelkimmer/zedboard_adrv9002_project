@@ -1318,7 +1318,7 @@ class AXI_Regs_Tab(ttk.Frame):
         description_label.grid(row=self.act_row, column=0, columnspan=1, padx=5, pady=5, sticky="WN") 
         
         # Log of sent items
-        value_label = tk.Text(self, state=tk.DISABLED, width=100, height=15, font=("Helvetica", 8)) #width & height not optimal
+        value_label = tk.Text(self, state=tk.DISABLED, width=100, height=2*15, font=("Helvetica", 8)) #width & height not optimal
         value_label.grid(row=self.act_row, column=1, columnspan=4, padx=5, pady=5, sticky="we") 
         
         # Create the Vertical Scrollbar
@@ -1382,7 +1382,9 @@ class AXI_Regs_Tab(ttk.Frame):
         self.log_clear_button_clicked()
 
         for i in range(N_data):
-            self.log_write_line(f"Reg {addresses[0] + i}: uint32--{regs[i]}, [int16, int16]--[imag, real]--[{x_imag[i]}, {x_real[i]}]")
+            hex_val = "00000000" + hex(int(regs[i]))[2:]
+            hex_val = hex_val[-8:]
+            self.log_write_line(f"Reg {addresses[0] + i}:\t hex -- 0x{hex_val},\t\t\t uint32 -- {regs[i]},\t\t\t [int16, int16] -- [imag, real] -- [{x_imag_int[i]}, {x_real_int[i]}]")
             # TODO better format
 
 

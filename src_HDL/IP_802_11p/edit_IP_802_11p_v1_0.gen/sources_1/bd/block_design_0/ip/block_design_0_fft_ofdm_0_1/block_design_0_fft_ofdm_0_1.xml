@@ -598,7 +598,7 @@ atatype {name {attribs {resolve_type immediate dependency {} format string minim
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Apr 16 12:39:57 UTC 2024</spirit:value>
+            <spirit:value>Tue Apr 16 23:04:57 UTC 2024</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>

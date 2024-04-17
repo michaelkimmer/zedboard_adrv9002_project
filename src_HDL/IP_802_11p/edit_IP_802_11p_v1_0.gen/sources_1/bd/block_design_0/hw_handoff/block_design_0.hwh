@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Apr 16 20:20:39 2024" VIVADOVERSION="2023.2.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Apr 17 00:59:34 2024" VIVADOVERSION="2023.2.2">
 
   <SYSTEMINFO ARCH="zynq" BOARD="avnet.com:zedboard:part0:1.4" DEVICE="7z020" NAME="block_design_0" PACKAGE="clg484" SPEEDGRADE="-1"/>
 
@@ -12,14 +12,14 @@
         <CONNECTION INSTANCE="rx_clock_domain_cros_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="act_power_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="data_interleaver_0" PORT="CLOCK"/>
-        <CONNECTION INSTANCE="data_delay_0" PORT="CLOCK"/>
-        <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="ila_0" PORT="clk"/>
-        <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="hier_atan_constellation_atan_constellation_b_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="hier_rotation_constellation_rotation_constellati_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="constellation_tracker_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="axi_regs_mux_0" PORT="CLOCK"/>
+        <CONNECTION INSTANCE="data_delay_0" PORT="CLOCK"/>
+        <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="CLOCK"/>
+        <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="CLOCK"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" LEFT="23" NAME="DETECTION_THRESHOLD" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_DETECTION_THRESHOLD">
@@ -55,13 +55,13 @@
         <CONNECTION INSTANCE="rx_clock_domain_cros_0" PORT="RESET"/>
         <CONNECTION INSTANCE="act_power_0" PORT="RESET"/>
         <CONNECTION INSTANCE="data_interleaver_0" PORT="RESET"/>
-        <CONNECTION INSTANCE="data_delay_0" PORT="RESET"/>
-        <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="RESET"/>
-        <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="RESET"/>
         <CONNECTION INSTANCE="hier_atan_constellation_atan_constellation_b_0" PORT="RESET"/>
         <CONNECTION INSTANCE="hier_rotation_constellation_rotation_constellati_0" PORT="RESET"/>
         <CONNECTION INSTANCE="constellation_tracker_0" PORT="RESET"/>
         <CONNECTION INSTANCE="axi_regs_mux_0" PORT="RESET"/>
+        <CONNECTION INSTANCE="data_delay_0" PORT="RESET"/>
+        <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="RESET"/>
+        <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="RESET"/>
       </CONNECTIONS>
     </PORT>
     <PORT CLKFREQUENCY="10000000" DIR="I" NAME="RX_CLOCK" SIGIS="clk" SIGNAME="External_Ports_RX_CLOCK">
@@ -404,7 +404,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1712601686" FULLNAME="/data_delay_0" HWVERSION="1.0" INSTANCE="data_delay_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="data_delay" VLNV="xilinx.com:module_ref:data_delay:1.0">
+    <MODULE COREREVISION="1713308112" FULLNAME="/data_delay_0" HWVERSION="1.0" INSTANCE="data_delay_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="data_delay" VLNV="xilinx.com:module_ref:data_delay:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_data_delay_0_0"/>
@@ -424,10 +424,10 @@
         <PORT DIR="O" NAME="DATA_OUT_STROBE" SIGIS="undef" SIGNAME="data_delay_0_DATA_OUT_STROBE">
           <CONNECTIONS>
             <CONNECTION INSTANCE="act_power_0" PORT="DATA_STROBE"/>
-            <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="DATA_STROBE"/>
             <CONNECTION INSTANCE="ila_0" PORT="probe0"/>
-            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="DATA_IN_STROBE"/>
             <CONNECTION INSTANCE="axi_regs_mux_0" PORT="DATA_STROBE"/>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="DATA_IN_STROBE"/>
+            <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="DATA_STROBE"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="15" NAME="IDATA_IN" RIGHT="0" SIGIS="undef" SIGNAME="data_interleaver_0_IDATA_OUT">
@@ -438,10 +438,10 @@
         <PORT DIR="O" LEFT="15" NAME="IDATA_OUT" RIGHT="0" SIGIS="undef" SIGNAME="data_delay_0_IDATA_OUT">
           <CONNECTIONS>
             <CONNECTION INSTANCE="act_power_0" PORT="IDATA"/>
-            <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="IDATA"/>
             <CONNECTION INSTANCE="ila_0" PORT="probe1"/>
-            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="IDATA_IN"/>
             <CONNECTION INSTANCE="axi_regs_mux_0" PORT="IDATA"/>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="IDATA_IN"/>
+            <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="IDATA"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="IDATA_OUT_DELAY_16" RIGHT="0" SIGIS="undef" SIGNAME="data_delay_0_IDATA_OUT_DELAY_16">
@@ -451,11 +451,20 @@
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="IDATA_OUT_DELAY_32" RIGHT="0" SIGIS="undef" SIGNAME="data_delay_0_IDATA_OUT_DELAY_32">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="IDATA_DELAY_32"/>
             <CONNECTION INSTANCE="ila_0" PORT="probe3"/>
+            <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="IDATA_DELAY_32"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="15" NAME="IDATA_OUT_DELAY_64" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="15" NAME="IDATA_OUT_DELAY_48" RIGHT="0" SIGIS="undef" SIGNAME="data_delay_0_IDATA_OUT_DELAY_48">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="IDATA_DELAY_48"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="IDATA_OUT_DELAY_64" RIGHT="0" SIGIS="undef" SIGNAME="data_delay_0_IDATA_OUT_DELAY_64">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="IDATA_DELAY_64"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="I" LEFT="15" NAME="QDATA_IN" RIGHT="0" SIGIS="undef" SIGNAME="data_interleaver_0_QDATA_OUT">
           <CONNECTIONS>
             <CONNECTION INSTANCE="data_interleaver_0" PORT="QDATA_OUT"/>
@@ -464,10 +473,10 @@
         <PORT DIR="O" LEFT="15" NAME="QDATA_OUT" RIGHT="0" SIGIS="undef" SIGNAME="data_delay_0_QDATA_OUT">
           <CONNECTIONS>
             <CONNECTION INSTANCE="act_power_0" PORT="QDATA"/>
-            <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="QDATA"/>
             <CONNECTION INSTANCE="ila_0" PORT="probe2"/>
-            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="QDATA_IN"/>
             <CONNECTION INSTANCE="axi_regs_mux_0" PORT="QDATA"/>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="QDATA_IN"/>
+            <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="QDATA"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="QDATA_OUT_DELAY_16" RIGHT="0" SIGIS="undef" SIGNAME="data_delay_0_QDATA_OUT_DELAY_16">
@@ -477,11 +486,20 @@
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="QDATA_OUT_DELAY_32" RIGHT="0" SIGIS="undef" SIGNAME="data_delay_0_QDATA_OUT_DELAY_32">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="QDATA_DELAY_32"/>
             <CONNECTION INSTANCE="ila_0" PORT="probe4"/>
+            <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="QDATA_DELAY_32"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="15" NAME="QDATA_OUT_DELAY_64" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="15" NAME="QDATA_OUT_DELAY_48" RIGHT="0" SIGIS="undef" SIGNAME="data_delay_0_QDATA_OUT_DELAY_48">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="QDATA_DELAY_48"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="QDATA_OUT_DELAY_64" RIGHT="0" SIGIS="undef" SIGNAME="data_delay_0_QDATA_OUT_DELAY_64">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="QDATA_DELAY_64"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="I" NAME="RESET" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_RESET">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="RESET"/>
@@ -541,7 +559,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1713184635" FULLNAME="/equalizer_time_frequ_0" HWVERSION="1.0" INSTANCE="equalizer_time_frequ_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="equalizer_time_frequency" VLNV="xilinx.com:module_ref:equalizer_time_frequency:1.0">
+    <MODULE COREREVISION="1713308131" FULLNAME="/equalizer_time_frequ_0" HWVERSION="1.0" INSTANCE="equalizer_time_frequ_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="equalizer_time_frequency" VLNV="xilinx.com:module_ref:equalizer_time_frequency:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_equalizer_time_frequ_0_0"/>
@@ -5766,7 +5784,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1712601687" FULLNAME="/timing_acquisition_8_0" HWVERSION="1.0" INSTANCE="timing_acquisition_8_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="timing_acquisition_802_11p" VLNV="xilinx.com:module_ref:timing_acquisition_802_11p:1.0">
+    <MODULE COREREVISION="1713308326" FULLNAME="/timing_acquisition_8_0" HWVERSION="1.0" INSTANCE="timing_acquisition_8_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="timing_acquisition_802_11p" VLNV="xilinx.com:module_ref:timing_acquisition_802_11p:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="INPUT_WIDTH" VALUE="16"/>
@@ -5838,6 +5856,16 @@
             <CONNECTION INSTANCE="data_delay_0" PORT="IDATA_OUT_DELAY_32"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" LEFT="15" NAME="IDATA_DELAY_48" RIGHT="0" SIGIS="undef" SIGNAME="data_delay_0_IDATA_OUT_DELAY_48">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="data_delay_0" PORT="IDATA_OUT_DELAY_48"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="IDATA_DELAY_64" RIGHT="0" SIGIS="undef" SIGNAME="data_delay_0_IDATA_OUT_DELAY_64">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="data_delay_0" PORT="IDATA_OUT_DELAY_64"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="I" LEFT="15" NAME="QDATA" RIGHT="0" SIGIS="undef" SIGNAME="data_delay_0_QDATA_OUT">
           <CONNECTIONS>
             <CONNECTION INSTANCE="data_delay_0" PORT="QDATA_OUT"/>
@@ -5851,6 +5879,16 @@
         <PORT DIR="I" LEFT="15" NAME="QDATA_DELAY_32" RIGHT="0" SIGIS="undef" SIGNAME="data_delay_0_QDATA_OUT_DELAY_32">
           <CONNECTIONS>
             <CONNECTION INSTANCE="data_delay_0" PORT="QDATA_OUT_DELAY_32"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="QDATA_DELAY_48" RIGHT="0" SIGIS="undef" SIGNAME="data_delay_0_QDATA_OUT_DELAY_48">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="data_delay_0" PORT="QDATA_OUT_DELAY_48"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="QDATA_DELAY_64" RIGHT="0" SIGIS="undef" SIGNAME="data_delay_0_QDATA_OUT_DELAY_64">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="data_delay_0" PORT="QDATA_OUT_DELAY_64"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="RESET" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_RESET">

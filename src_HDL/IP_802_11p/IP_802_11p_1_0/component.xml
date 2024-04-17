@@ -329,7 +329,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>61a8db94</spirit:value>
+            <spirit:value>ef1f12a8</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -354,7 +354,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>7eb94c27</spirit:value>
+            <spirit:value>2acaa442</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -368,7 +368,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>c49889be</spirit:value>
+            <spirit:value>6b5a7d7e</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -382,7 +382,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>080b65eb</spirit:value>
+            <spirit:value>0e5443b4</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -396,7 +396,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>45a2f450</spirit:value>
+            <spirit:value>16328387</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1020,11 +1020,6 @@
         <spirit:userFileType>CHECKSUM_9d011921</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>hdl/IP_802_11p_v1_0.vhd</spirit:name>
-        <spirit:fileType>vhdlSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_6f602e6b</spirit:userFileType>
-      </spirit:file>
-      <spirit:file>
         <spirit:name>../edit_IP_802_11p_v1_0.srcs/sources_1/bd/block_design_0/ip/block_design_0_cordic_0_2/block_design_0_cordic_0_2.xci</spirit:name>
         <spirit:userFileType>xci</spirit:userFileType>
         <spirit:userFileType>CELL_NAME_hier_atan_constellation/cordic_0</spirit:userFileType>
@@ -1058,6 +1053,11 @@
         <spirit:name>../edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_constellation_tracker_0_0/synth/block_design_0_constellation_tracker_0_0.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>CHECKSUM_57a519aa</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>hdl/IP_802_11p_v1_0.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:userFileType>CHECKSUM_143081af</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
@@ -1209,10 +1209,6 @@
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>hdl/IP_802_11p_v1_0.vhd</spirit:name>
-        <spirit:fileType>vhdlSource</spirit:fileType>
-      </spirit:file>
-      <spirit:file>
         <spirit:name>../edit_IP_802_11p_v1_0.srcs/sources_1/bd/block_design_0/ip/block_design_0_cordic_0_2/block_design_0_cordic_0_2.xci</spirit:name>
         <spirit:userFileType>xci</spirit:userFileType>
         <spirit:userFileType>CELL_NAME_hier_atan_constellation/cordic_0</spirit:userFileType>
@@ -1244,6 +1240,10 @@
       </spirit:file>
       <spirit:file>
         <spirit:name>../edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_constellation_tracker_0_0/sim/block_design_0_constellation_tracker_0_0.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>hdl/IP_802_11p_v1_0.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
     </spirit:fileSet>
@@ -1405,14 +1405,14 @@
         <xilinx:xpmLibrary>XPM_CDC</xilinx:xpmLibrary>
         <xilinx:xpmLibrary>XPM_MEMORY</xilinx:xpmLibrary>
       </xilinx:xpmLibraries>
-      <xilinx:coreRevision>10</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2024-04-16T18:25:41Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>11</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2024-04-16T23:14:47Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2023.2.2</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="52e76a8a"/>
       <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="ed1368d5"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="1c6469d7"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="1fc2707f"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="50d44012"/>
       <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="4bb1fc3b"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="54dbd281"/>

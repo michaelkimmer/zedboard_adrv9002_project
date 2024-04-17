@@ -4,7 +4,7 @@
     "xci_name": "block_design_0_data_delay_0_0",
     "cell_name": "data_delay_0",
     "component_reference": "xilinx.com:module_ref:data_delay:1.0",
-    "ip_revision": "1712601686",
+    "ip_revision": "1713308112",
     "gen_directory": "../../../../../../edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_data_delay_0_0",
     "parameters": {
       "component_parameters": {
@@ -25,7 +25,7 @@
       },
       "runtime_parameters": {
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],
-        "IPREVISION": [ { "value": "1712601686" } ],
+        "IPREVISION": [ { "value": "1713308112" } ],
         "MANAGED": [ { "value": "TRUE" } ],
         "OUTPUTDIR": [ { "value": "../../../../../../edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_data_delay_0_0" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
@@ -41,15 +41,17 @@
         "IDATA_IN": [ { "direction": "in", "size_left": "15", "size_right": "0" } ],
         "QDATA_IN": [ { "direction": "in", "size_left": "15", "size_right": "0" } ],
         "DATA_IN_STROBE": [ { "direction": "in" } ],
-        "DATA_OUT_STROBE": [ { "direction": "out" } ],
-        "IDATA_OUT": [ { "direction": "out", "size_left": "15", "size_right": "0" } ],
-        "QDATA_OUT": [ { "direction": "out", "size_left": "15", "size_right": "0" } ],
-        "IDATA_OUT_DELAY_16": [ { "direction": "out", "size_left": "15", "size_right": "0" } ],
-        "QDATA_OUT_DELAY_16": [ { "direction": "out", "size_left": "15", "size_right": "0" } ],
-        "IDATA_OUT_DELAY_32": [ { "direction": "out", "size_left": "15", "size_right": "0" } ],
-        "QDATA_OUT_DELAY_32": [ { "direction": "out", "size_left": "15", "size_right": "0" } ],
-        "IDATA_OUT_DELAY_64": [ { "direction": "out", "size_left": "15", "size_right": "0" } ],
-        "QDATA_OUT_DELAY_64": [ { "direction": "out", "size_left": "15", "size_right": "0" } ]
+        "DATA_OUT_STROBE": [ { "direction": "out", "driver_value": "0x0" } ],
+        "IDATA_OUT": [ { "direction": "out", "size_left": "15", "size_right": "0", "driver_value": "0" } ],
+        "QDATA_OUT": [ { "direction": "out", "size_left": "15", "size_right": "0", "driver_value": "0" } ],
+        "IDATA_OUT_DELAY_16": [ { "direction": "out", "size_left": "15", "size_right": "0", "driver_value": "0" } ],
+        "QDATA_OUT_DELAY_16": [ { "direction": "out", "size_left": "15", "size_right": "0", "driver_value": "0" } ],
+        "IDATA_OUT_DELAY_32": [ { "direction": "out", "size_left": "15", "size_right": "0", "driver_value": "0" } ],
+        "QDATA_OUT_DELAY_32": [ { "direction": "out", "size_left": "15", "size_right": "0", "driver_value": "0" } ],
+        "IDATA_OUT_DELAY_48": [ { "direction": "out", "size_left": "15", "size_right": "0", "driver_value": "0" } ],
+        "QDATA_OUT_DELAY_48": [ { "direction": "out", "size_left": "15", "size_right": "0", "driver_value": "0" } ],
+        "IDATA_OUT_DELAY_64": [ { "direction": "out", "size_left": "15", "size_right": "0", "driver_value": "0" } ],
+        "QDATA_OUT_DELAY_64": [ { "direction": "out", "size_left": "15", "size_right": "0", "driver_value": "0" } ]
       },
       "interfaces": {
         "RESET": {

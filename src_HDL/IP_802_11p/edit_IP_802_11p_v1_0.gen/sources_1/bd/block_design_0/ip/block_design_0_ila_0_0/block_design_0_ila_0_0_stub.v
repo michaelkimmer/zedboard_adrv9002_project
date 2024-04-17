@@ -2,10 +2,10 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-// Date        : Tue Apr 16 17:33:05 2024
+// Date        : Tue Apr 16 17:33:03 2024
 // Host        : lab817_01 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub
-//               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_ila_0_0/block_design_0_ila_0_0_stub.v
+// Command     : write_verilog -force -mode synth_stub -rename_top block_design_0_ila_0_0 -prefix
+//               block_design_0_ila_0_0_ block_design_0_ila_0_0_stub.v
 // Design      : block_design_0_ila_0_0
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7z020clg484-1

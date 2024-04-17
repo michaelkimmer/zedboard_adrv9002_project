@@ -2,8 +2,8 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-// Date        : Tue Apr 16 14:39:18 2024
-// Host        : lab817_01 running 64-bit major release  (build 9200)
+// Date        : Wed Apr 17 01:03:18 2024
+// Host        : ASUS_ROG running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_data_delay_0_0/block_design_0_data_delay_0_0_sim_netlist.v
 // Design      : block_design_0_data_delay_0_0
@@ -29,6 +29,8 @@ module block_design_0_data_delay_0_0
     QDATA_OUT_DELAY_16,
     IDATA_OUT_DELAY_32,
     QDATA_OUT_DELAY_32,
+    IDATA_OUT_DELAY_48,
+    QDATA_OUT_DELAY_48,
     IDATA_OUT_DELAY_64,
     QDATA_OUT_DELAY_64);
   (* x_interface_info = "xilinx.com:signal:reset:1.0 RESET RST" *) (* x_interface_parameter = "XIL_INTERFACENAME RESET, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input RESET;
@@ -43,6 +45,8 @@ module block_design_0_data_delay_0_0
   output [15:0]QDATA_OUT_DELAY_16;
   output [15:0]IDATA_OUT_DELAY_32;
   output [15:0]QDATA_OUT_DELAY_32;
+  output [15:0]IDATA_OUT_DELAY_48;
+  output [15:0]QDATA_OUT_DELAY_48;
   output [15:0]IDATA_OUT_DELAY_64;
   output [15:0]QDATA_OUT_DELAY_64;
 
@@ -53,11 +57,13 @@ module block_design_0_data_delay_0_0
   wire [15:0]IDATA_OUT;
   wire [15:0]IDATA_OUT_DELAY_16;
   wire [15:0]IDATA_OUT_DELAY_32;
+  wire [15:0]IDATA_OUT_DELAY_48;
   wire [15:0]IDATA_OUT_DELAY_64;
   wire [15:0]QDATA_IN;
   wire [15:0]QDATA_OUT;
   wire [15:0]QDATA_OUT_DELAY_16;
   wire [15:0]QDATA_OUT_DELAY_32;
+  wire [15:0]QDATA_OUT_DELAY_48;
   wire [15:0]QDATA_OUT_DELAY_64;
   wire RESET;
 
@@ -69,11 +75,13 @@ module block_design_0_data_delay_0_0
         .IDATA_OUT(IDATA_OUT),
         .IDATA_OUT_DELAY_16(IDATA_OUT_DELAY_16),
         .IDATA_OUT_DELAY_32(IDATA_OUT_DELAY_32),
+        .IDATA_OUT_DELAY_48(IDATA_OUT_DELAY_48),
         .IDATA_OUT_DELAY_64(IDATA_OUT_DELAY_64),
         .QDATA_IN(QDATA_IN),
         .QDATA_OUT(QDATA_OUT),
         .QDATA_OUT_DELAY_16(QDATA_OUT_DELAY_16),
         .QDATA_OUT_DELAY_32(QDATA_OUT_DELAY_32),
+        .QDATA_OUT_DELAY_48(QDATA_OUT_DELAY_48),
         .QDATA_OUT_DELAY_64(QDATA_OUT_DELAY_64),
         .RESET(RESET));
 endmodule
@@ -86,6 +94,8 @@ module block_design_0_data_delay_0_0_data_delay
     QDATA_OUT_DELAY_16,
     IDATA_OUT_DELAY_32,
     QDATA_OUT_DELAY_32,
+    IDATA_OUT_DELAY_48,
+    QDATA_OUT_DELAY_48,
     IDATA_OUT_DELAY_64,
     QDATA_OUT_DELAY_64,
     DATA_OUT_STROBE,
@@ -100,6 +110,8 @@ module block_design_0_data_delay_0_0_data_delay
   output [15:0]QDATA_OUT_DELAY_16;
   output [15:0]IDATA_OUT_DELAY_32;
   output [15:0]QDATA_OUT_DELAY_32;
+  output [15:0]IDATA_OUT_DELAY_48;
+  output [15:0]QDATA_OUT_DELAY_48;
   output [15:0]IDATA_OUT_DELAY_64;
   output [15:0]QDATA_OUT_DELAY_64;
   output DATA_OUT_STROBE;
@@ -176,60 +188,76 @@ module block_design_0_data_delay_0_0_data_delay
   wire \DELAY_REG_I_reg[31][7]_U0_DELAY_REG_I_reg_c_13_n_0 ;
   wire \DELAY_REG_I_reg[31][8]_U0_DELAY_REG_I_reg_c_13_n_0 ;
   wire \DELAY_REG_I_reg[31][9]_U0_DELAY_REG_I_reg_c_13_n_0 ;
-  wire \DELAY_REG_I_reg[62][0]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ;
-  wire \DELAY_REG_I_reg[62][10]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ;
-  wire \DELAY_REG_I_reg[62][11]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ;
-  wire \DELAY_REG_I_reg[62][12]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ;
-  wire \DELAY_REG_I_reg[62][13]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ;
-  wire \DELAY_REG_I_reg[62][14]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ;
-  wire \DELAY_REG_I_reg[62][15]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ;
-  wire \DELAY_REG_I_reg[62][1]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ;
-  wire \DELAY_REG_I_reg[62][2]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ;
-  wire \DELAY_REG_I_reg[62][3]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ;
-  wire \DELAY_REG_I_reg[62][4]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ;
-  wire \DELAY_REG_I_reg[62][5]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ;
-  wire \DELAY_REG_I_reg[62][6]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ;
-  wire \DELAY_REG_I_reg[62][7]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ;
-  wire \DELAY_REG_I_reg[62][8]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ;
-  wire \DELAY_REG_I_reg[62][9]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ;
-  wire \DELAY_REG_I_reg[63][0]_U0_DELAY_REG_I_reg_c_29_n_0 ;
-  wire \DELAY_REG_I_reg[63][10]_U0_DELAY_REG_I_reg_c_29_n_0 ;
-  wire \DELAY_REG_I_reg[63][11]_U0_DELAY_REG_I_reg_c_29_n_0 ;
-  wire \DELAY_REG_I_reg[63][12]_U0_DELAY_REG_I_reg_c_29_n_0 ;
-  wire \DELAY_REG_I_reg[63][13]_U0_DELAY_REG_I_reg_c_29_n_0 ;
-  wire \DELAY_REG_I_reg[63][14]_U0_DELAY_REG_I_reg_c_29_n_0 ;
-  wire \DELAY_REG_I_reg[63][15]_U0_DELAY_REG_I_reg_c_29_n_0 ;
-  wire \DELAY_REG_I_reg[63][1]_U0_DELAY_REG_I_reg_c_29_n_0 ;
-  wire \DELAY_REG_I_reg[63][2]_U0_DELAY_REG_I_reg_c_29_n_0 ;
-  wire \DELAY_REG_I_reg[63][3]_U0_DELAY_REG_I_reg_c_29_n_0 ;
-  wire \DELAY_REG_I_reg[63][4]_U0_DELAY_REG_I_reg_c_29_n_0 ;
-  wire \DELAY_REG_I_reg[63][5]_U0_DELAY_REG_I_reg_c_29_n_0 ;
-  wire \DELAY_REG_I_reg[63][6]_U0_DELAY_REG_I_reg_c_29_n_0 ;
-  wire \DELAY_REG_I_reg[63][7]_U0_DELAY_REG_I_reg_c_29_n_0 ;
-  wire \DELAY_REG_I_reg[63][8]_U0_DELAY_REG_I_reg_c_29_n_0 ;
-  wire \DELAY_REG_I_reg[63][9]_U0_DELAY_REG_I_reg_c_29_n_0 ;
+  wire \DELAY_REG_I_reg[46][0]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_I_reg[46][10]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_I_reg[46][11]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_I_reg[46][12]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_I_reg[46][13]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_I_reg[46][14]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_I_reg[46][15]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_I_reg[46][1]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_I_reg[46][2]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_I_reg[46][3]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_I_reg[46][4]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_I_reg[46][5]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_I_reg[46][6]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_I_reg[46][7]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_I_reg[46][8]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_I_reg[46][9]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_I_reg[47][0]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_I_reg[47][10]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_I_reg[47][11]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_I_reg[47][12]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_I_reg[47][13]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_I_reg[47][14]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_I_reg[47][15]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_I_reg[47][1]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_I_reg[47][2]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_I_reg[47][3]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_I_reg[47][4]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_I_reg[47][5]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_I_reg[47][6]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_I_reg[47][7]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_I_reg[47][8]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_I_reg[47][9]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_I_reg[62][0]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_I_reg[62][10]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_I_reg[62][11]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_I_reg[62][12]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_I_reg[62][13]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_I_reg[62][14]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_I_reg[62][15]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_I_reg[62][1]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_I_reg[62][2]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_I_reg[62][3]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_I_reg[62][4]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_I_reg[62][5]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_I_reg[62][6]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_I_reg[62][7]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_I_reg[62][8]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_I_reg[62][9]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_I_reg[63][0]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_I_reg[63][10]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_I_reg[63][11]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_I_reg[63][12]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_I_reg[63][13]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_I_reg[63][14]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_I_reg[63][15]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_I_reg[63][1]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_I_reg[63][2]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_I_reg[63][3]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_I_reg[63][4]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_I_reg[63][5]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_I_reg[63][6]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_I_reg[63][7]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_I_reg[63][8]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_I_reg[63][9]_U0_DELAY_REG_I_reg_c_13_n_0 ;
   wire DELAY_REG_I_reg_c_0_n_0;
   wire DELAY_REG_I_reg_c_10_n_0;
   wire DELAY_REG_I_reg_c_11_n_0;
   wire DELAY_REG_I_reg_c_12_n_0;
   wire DELAY_REG_I_reg_c_13_n_0;
-  wire DELAY_REG_I_reg_c_14_n_0;
-  wire DELAY_REG_I_reg_c_15_n_0;
-  wire DELAY_REG_I_reg_c_16_n_0;
-  wire DELAY_REG_I_reg_c_17_n_0;
-  wire DELAY_REG_I_reg_c_18_n_0;
-  wire DELAY_REG_I_reg_c_19_n_0;
   wire DELAY_REG_I_reg_c_1_n_0;
-  wire DELAY_REG_I_reg_c_20_n_0;
-  wire DELAY_REG_I_reg_c_21_n_0;
-  wire DELAY_REG_I_reg_c_22_n_0;
-  wire DELAY_REG_I_reg_c_23_n_0;
-  wire DELAY_REG_I_reg_c_24_n_0;
-  wire DELAY_REG_I_reg_c_25_n_0;
-  wire DELAY_REG_I_reg_c_26_n_0;
-  wire DELAY_REG_I_reg_c_27_n_0;
-  wire DELAY_REG_I_reg_c_28_n_0;
-  wire DELAY_REG_I_reg_c_29_n_0;
   wire DELAY_REG_I_reg_c_2_n_0;
   wire DELAY_REG_I_reg_c_3_n_0;
   wire DELAY_REG_I_reg_c_4_n_0;
@@ -280,8 +308,24 @@ module block_design_0_data_delay_0_0_data_delay
   wire DELAY_REG_I_reg_gate__44_n_0;
   wire DELAY_REG_I_reg_gate__45_n_0;
   wire DELAY_REG_I_reg_gate__46_n_0;
+  wire DELAY_REG_I_reg_gate__47_n_0;
+  wire DELAY_REG_I_reg_gate__48_n_0;
+  wire DELAY_REG_I_reg_gate__49_n_0;
   wire DELAY_REG_I_reg_gate__4_n_0;
+  wire DELAY_REG_I_reg_gate__50_n_0;
+  wire DELAY_REG_I_reg_gate__51_n_0;
+  wire DELAY_REG_I_reg_gate__52_n_0;
+  wire DELAY_REG_I_reg_gate__53_n_0;
+  wire DELAY_REG_I_reg_gate__54_n_0;
+  wire DELAY_REG_I_reg_gate__55_n_0;
+  wire DELAY_REG_I_reg_gate__56_n_0;
+  wire DELAY_REG_I_reg_gate__57_n_0;
+  wire DELAY_REG_I_reg_gate__58_n_0;
+  wire DELAY_REG_I_reg_gate__59_n_0;
   wire DELAY_REG_I_reg_gate__5_n_0;
+  wire DELAY_REG_I_reg_gate__60_n_0;
+  wire DELAY_REG_I_reg_gate__61_n_0;
+  wire DELAY_REG_I_reg_gate__62_n_0;
   wire DELAY_REG_I_reg_gate__6_n_0;
   wire DELAY_REG_I_reg_gate__7_n_0;
   wire DELAY_REG_I_reg_gate__8_n_0;
@@ -351,38 +395,70 @@ module block_design_0_data_delay_0_0_data_delay
   wire \DELAY_REG_Q_reg[31][7]_U0_DELAY_REG_I_reg_c_13_n_0 ;
   wire \DELAY_REG_Q_reg[31][8]_U0_DELAY_REG_I_reg_c_13_n_0 ;
   wire \DELAY_REG_Q_reg[31][9]_U0_DELAY_REG_I_reg_c_13_n_0 ;
-  wire \DELAY_REG_Q_reg[62][0]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ;
-  wire \DELAY_REG_Q_reg[62][10]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ;
-  wire \DELAY_REG_Q_reg[62][11]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ;
-  wire \DELAY_REG_Q_reg[62][12]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ;
-  wire \DELAY_REG_Q_reg[62][13]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ;
-  wire \DELAY_REG_Q_reg[62][14]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ;
-  wire \DELAY_REG_Q_reg[62][15]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ;
-  wire \DELAY_REG_Q_reg[62][1]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ;
-  wire \DELAY_REG_Q_reg[62][2]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ;
-  wire \DELAY_REG_Q_reg[62][3]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ;
-  wire \DELAY_REG_Q_reg[62][4]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ;
-  wire \DELAY_REG_Q_reg[62][5]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ;
-  wire \DELAY_REG_Q_reg[62][6]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ;
-  wire \DELAY_REG_Q_reg[62][7]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ;
-  wire \DELAY_REG_Q_reg[62][8]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ;
-  wire \DELAY_REG_Q_reg[62][9]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ;
-  wire \DELAY_REG_Q_reg[63][0]_U0_DELAY_REG_I_reg_c_29_n_0 ;
-  wire \DELAY_REG_Q_reg[63][10]_U0_DELAY_REG_I_reg_c_29_n_0 ;
-  wire \DELAY_REG_Q_reg[63][11]_U0_DELAY_REG_I_reg_c_29_n_0 ;
-  wire \DELAY_REG_Q_reg[63][12]_U0_DELAY_REG_I_reg_c_29_n_0 ;
-  wire \DELAY_REG_Q_reg[63][13]_U0_DELAY_REG_I_reg_c_29_n_0 ;
-  wire \DELAY_REG_Q_reg[63][14]_U0_DELAY_REG_I_reg_c_29_n_0 ;
-  wire \DELAY_REG_Q_reg[63][15]_U0_DELAY_REG_I_reg_c_29_n_0 ;
-  wire \DELAY_REG_Q_reg[63][1]_U0_DELAY_REG_I_reg_c_29_n_0 ;
-  wire \DELAY_REG_Q_reg[63][2]_U0_DELAY_REG_I_reg_c_29_n_0 ;
-  wire \DELAY_REG_Q_reg[63][3]_U0_DELAY_REG_I_reg_c_29_n_0 ;
-  wire \DELAY_REG_Q_reg[63][4]_U0_DELAY_REG_I_reg_c_29_n_0 ;
-  wire \DELAY_REG_Q_reg[63][5]_U0_DELAY_REG_I_reg_c_29_n_0 ;
-  wire \DELAY_REG_Q_reg[63][6]_U0_DELAY_REG_I_reg_c_29_n_0 ;
-  wire \DELAY_REG_Q_reg[63][7]_U0_DELAY_REG_I_reg_c_29_n_0 ;
-  wire \DELAY_REG_Q_reg[63][8]_U0_DELAY_REG_I_reg_c_29_n_0 ;
-  wire \DELAY_REG_Q_reg[63][9]_U0_DELAY_REG_I_reg_c_29_n_0 ;
+  wire \DELAY_REG_Q_reg[46][0]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_Q_reg[46][10]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_Q_reg[46][11]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_Q_reg[46][12]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_Q_reg[46][13]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_Q_reg[46][14]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_Q_reg[46][15]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_Q_reg[46][1]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_Q_reg[46][2]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_Q_reg[46][3]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_Q_reg[46][4]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_Q_reg[46][5]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_Q_reg[46][6]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_Q_reg[46][7]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_Q_reg[46][8]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_Q_reg[46][9]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_Q_reg[47][0]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_Q_reg[47][10]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_Q_reg[47][11]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_Q_reg[47][12]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_Q_reg[47][13]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_Q_reg[47][14]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_Q_reg[47][15]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_Q_reg[47][1]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_Q_reg[47][2]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_Q_reg[47][3]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_Q_reg[47][4]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_Q_reg[47][5]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_Q_reg[47][6]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_Q_reg[47][7]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_Q_reg[47][8]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_Q_reg[47][9]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_Q_reg[62][0]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_Q_reg[62][10]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_Q_reg[62][11]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_Q_reg[62][12]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_Q_reg[62][13]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_Q_reg[62][14]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_Q_reg[62][15]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_Q_reg[62][1]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_Q_reg[62][2]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_Q_reg[62][3]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_Q_reg[62][4]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_Q_reg[62][5]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_Q_reg[62][6]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_Q_reg[62][7]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_Q_reg[62][8]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_Q_reg[62][9]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ;
+  wire \DELAY_REG_Q_reg[63][0]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_Q_reg[63][10]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_Q_reg[63][11]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_Q_reg[63][12]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_Q_reg[63][13]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_Q_reg[63][14]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_Q_reg[63][15]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_Q_reg[63][1]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_Q_reg[63][2]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_Q_reg[63][3]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_Q_reg[63][4]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_Q_reg[63][5]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_Q_reg[63][6]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_Q_reg[63][7]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_Q_reg[63][8]_U0_DELAY_REG_I_reg_c_13_n_0 ;
+  wire \DELAY_REG_Q_reg[63][9]_U0_DELAY_REG_I_reg_c_13_n_0 ;
   wire DELAY_REG_Q_reg_gate__0_n_0;
   wire DELAY_REG_Q_reg_gate__10_n_0;
   wire DELAY_REG_Q_reg_gate__11_n_0;
@@ -424,8 +500,24 @@ module block_design_0_data_delay_0_0_data_delay
   wire DELAY_REG_Q_reg_gate__44_n_0;
   wire DELAY_REG_Q_reg_gate__45_n_0;
   wire DELAY_REG_Q_reg_gate__46_n_0;
+  wire DELAY_REG_Q_reg_gate__47_n_0;
+  wire DELAY_REG_Q_reg_gate__48_n_0;
+  wire DELAY_REG_Q_reg_gate__49_n_0;
   wire DELAY_REG_Q_reg_gate__4_n_0;
+  wire DELAY_REG_Q_reg_gate__50_n_0;
+  wire DELAY_REG_Q_reg_gate__51_n_0;
+  wire DELAY_REG_Q_reg_gate__52_n_0;
+  wire DELAY_REG_Q_reg_gate__53_n_0;
+  wire DELAY_REG_Q_reg_gate__54_n_0;
+  wire DELAY_REG_Q_reg_gate__55_n_0;
+  wire DELAY_REG_Q_reg_gate__56_n_0;
+  wire DELAY_REG_Q_reg_gate__57_n_0;
+  wire DELAY_REG_Q_reg_gate__58_n_0;
+  wire DELAY_REG_Q_reg_gate__59_n_0;
   wire DELAY_REG_Q_reg_gate__5_n_0;
+  wire DELAY_REG_Q_reg_gate__60_n_0;
+  wire DELAY_REG_Q_reg_gate__61_n_0;
+  wire DELAY_REG_Q_reg_gate__62_n_0;
   wire DELAY_REG_Q_reg_gate__6_n_0;
   wire DELAY_REG_Q_reg_gate__7_n_0;
   wire DELAY_REG_Q_reg_gate__8_n_0;
@@ -435,47 +527,19 @@ module block_design_0_data_delay_0_0_data_delay
   wire [15:0]IDATA_OUT;
   wire [15:0]IDATA_OUT_DELAY_16;
   wire [15:0]IDATA_OUT_DELAY_32;
+  wire [15:0]IDATA_OUT_DELAY_48;
   wire [15:0]IDATA_OUT_DELAY_64;
   wire [15:0]QDATA_IN;
   wire [15:0]QDATA_OUT;
   wire [15:0]QDATA_OUT_DELAY_16;
   wire [15:0]QDATA_OUT_DELAY_32;
+  wire [15:0]QDATA_OUT_DELAY_48;
   wire [15:0]QDATA_OUT_DELAY_64;
   wire RESET;
-  wire \NLW_DELAY_REG_I_reg[62][0]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ;
-  wire \NLW_DELAY_REG_I_reg[62][10]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ;
-  wire \NLW_DELAY_REG_I_reg[62][11]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ;
-  wire \NLW_DELAY_REG_I_reg[62][12]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ;
-  wire \NLW_DELAY_REG_I_reg[62][13]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ;
-  wire \NLW_DELAY_REG_I_reg[62][14]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ;
-  wire \NLW_DELAY_REG_I_reg[62][15]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ;
-  wire \NLW_DELAY_REG_I_reg[62][1]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ;
-  wire \NLW_DELAY_REG_I_reg[62][2]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ;
-  wire \NLW_DELAY_REG_I_reg[62][3]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ;
-  wire \NLW_DELAY_REG_I_reg[62][4]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ;
-  wire \NLW_DELAY_REG_I_reg[62][5]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ;
-  wire \NLW_DELAY_REG_I_reg[62][6]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ;
-  wire \NLW_DELAY_REG_I_reg[62][7]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ;
-  wire \NLW_DELAY_REG_I_reg[62][8]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ;
-  wire \NLW_DELAY_REG_I_reg[62][9]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ;
-  wire \NLW_DELAY_REG_Q_reg[62][0]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ;
-  wire \NLW_DELAY_REG_Q_reg[62][10]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ;
-  wire \NLW_DELAY_REG_Q_reg[62][11]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ;
-  wire \NLW_DELAY_REG_Q_reg[62][12]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ;
-  wire \NLW_DELAY_REG_Q_reg[62][13]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ;
-  wire \NLW_DELAY_REG_Q_reg[62][14]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ;
-  wire \NLW_DELAY_REG_Q_reg[62][15]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ;
-  wire \NLW_DELAY_REG_Q_reg[62][1]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ;
-  wire \NLW_DELAY_REG_Q_reg[62][2]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ;
-  wire \NLW_DELAY_REG_Q_reg[62][3]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ;
-  wire \NLW_DELAY_REG_Q_reg[62][4]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ;
-  wire \NLW_DELAY_REG_Q_reg[62][5]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ;
-  wire \NLW_DELAY_REG_Q_reg[62][6]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ;
-  wire \NLW_DELAY_REG_Q_reg[62][7]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ;
-  wire \NLW_DELAY_REG_Q_reg[62][8]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ;
-  wire \NLW_DELAY_REG_Q_reg[62][9]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ;
 
-  FDCE DATA_OUT_STROBE_reg
+  FDCE #(
+    .INIT(1'b0)) 
+    DATA_OUT_STROBE_reg
        (.C(CLOCK),
         .CE(1'b1),
         .CLR(RESET),
@@ -1409,277 +1473,709 @@ module block_design_0_data_delay_0_0_data_delay
         .CLR(RESET),
         .D(DELAY_REG_I_reg_gate__21_n_0),
         .Q(IDATA_OUT_DELAY_32[9]));
-  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
-  (* srl_name = "\\U0/DELAY_REG_I_reg[62][0]_srl30_U0_DELAY_REG_I_reg_c_28 " *) 
-  SRLC32E #(
-    .INIT(32'h00000000)) 
-    \DELAY_REG_I_reg[62][0]_srl30_U0_DELAY_REG_I_reg_c_28 
-       (.A({1'b1,1'b1,1'b1,1'b0,1'b1}),
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[46] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[46][0]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[46][0]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(IDATA_OUT_DELAY_32[0]),
-        .Q(\DELAY_REG_I_reg[62][0]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q31(\NLW_DELAY_REG_I_reg[62][0]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ));
-  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
-  (* srl_name = "\\U0/DELAY_REG_I_reg[62][10]_srl30_U0_DELAY_REG_I_reg_c_28 " *) 
-  SRLC32E #(
-    .INIT(32'h00000000)) 
-    \DELAY_REG_I_reg[62][10]_srl30_U0_DELAY_REG_I_reg_c_28 
-       (.A({1'b1,1'b1,1'b1,1'b0,1'b1}),
+        .Q(\DELAY_REG_I_reg[46][0]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[46] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[46][10]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[46][10]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(IDATA_OUT_DELAY_32[10]),
-        .Q(\DELAY_REG_I_reg[62][10]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q31(\NLW_DELAY_REG_I_reg[62][10]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ));
-  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
-  (* srl_name = "\\U0/DELAY_REG_I_reg[62][11]_srl30_U0_DELAY_REG_I_reg_c_28 " *) 
-  SRLC32E #(
-    .INIT(32'h00000000)) 
-    \DELAY_REG_I_reg[62][11]_srl30_U0_DELAY_REG_I_reg_c_28 
-       (.A({1'b1,1'b1,1'b1,1'b0,1'b1}),
+        .Q(\DELAY_REG_I_reg[46][10]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[46] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[46][11]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[46][11]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(IDATA_OUT_DELAY_32[11]),
-        .Q(\DELAY_REG_I_reg[62][11]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q31(\NLW_DELAY_REG_I_reg[62][11]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ));
-  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
-  (* srl_name = "\\U0/DELAY_REG_I_reg[62][12]_srl30_U0_DELAY_REG_I_reg_c_28 " *) 
-  SRLC32E #(
-    .INIT(32'h00000000)) 
-    \DELAY_REG_I_reg[62][12]_srl30_U0_DELAY_REG_I_reg_c_28 
-       (.A({1'b1,1'b1,1'b1,1'b0,1'b1}),
+        .Q(\DELAY_REG_I_reg[46][11]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[46] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[46][12]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[46][12]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(IDATA_OUT_DELAY_32[12]),
-        .Q(\DELAY_REG_I_reg[62][12]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q31(\NLW_DELAY_REG_I_reg[62][12]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ));
-  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
-  (* srl_name = "\\U0/DELAY_REG_I_reg[62][13]_srl30_U0_DELAY_REG_I_reg_c_28 " *) 
-  SRLC32E #(
-    .INIT(32'h00000000)) 
-    \DELAY_REG_I_reg[62][13]_srl30_U0_DELAY_REG_I_reg_c_28 
-       (.A({1'b1,1'b1,1'b1,1'b0,1'b1}),
+        .Q(\DELAY_REG_I_reg[46][12]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[46] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[46][13]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[46][13]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(IDATA_OUT_DELAY_32[13]),
-        .Q(\DELAY_REG_I_reg[62][13]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q31(\NLW_DELAY_REG_I_reg[62][13]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ));
-  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
-  (* srl_name = "\\U0/DELAY_REG_I_reg[62][14]_srl30_U0_DELAY_REG_I_reg_c_28 " *) 
-  SRLC32E #(
-    .INIT(32'h00000000)) 
-    \DELAY_REG_I_reg[62][14]_srl30_U0_DELAY_REG_I_reg_c_28 
-       (.A({1'b1,1'b1,1'b1,1'b0,1'b1}),
+        .Q(\DELAY_REG_I_reg[46][13]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[46] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[46][14]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[46][14]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(IDATA_OUT_DELAY_32[14]),
-        .Q(\DELAY_REG_I_reg[62][14]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q31(\NLW_DELAY_REG_I_reg[62][14]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ));
-  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
-  (* srl_name = "\\U0/DELAY_REG_I_reg[62][15]_srl30_U0_DELAY_REG_I_reg_c_28 " *) 
-  SRLC32E #(
-    .INIT(32'h00000000)) 
-    \DELAY_REG_I_reg[62][15]_srl30_U0_DELAY_REG_I_reg_c_28 
-       (.A({1'b1,1'b1,1'b1,1'b0,1'b1}),
+        .Q(\DELAY_REG_I_reg[46][14]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[46] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[46][15]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[46][15]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(IDATA_OUT_DELAY_32[15]),
-        .Q(\DELAY_REG_I_reg[62][15]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q31(\NLW_DELAY_REG_I_reg[62][15]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ));
-  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
-  (* srl_name = "\\U0/DELAY_REG_I_reg[62][1]_srl30_U0_DELAY_REG_I_reg_c_28 " *) 
-  SRLC32E #(
-    .INIT(32'h00000000)) 
-    \DELAY_REG_I_reg[62][1]_srl30_U0_DELAY_REG_I_reg_c_28 
-       (.A({1'b1,1'b1,1'b1,1'b0,1'b1}),
+        .Q(\DELAY_REG_I_reg[46][15]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[46] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[46][1]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[46][1]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(IDATA_OUT_DELAY_32[1]),
-        .Q(\DELAY_REG_I_reg[62][1]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q31(\NLW_DELAY_REG_I_reg[62][1]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ));
-  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
-  (* srl_name = "\\U0/DELAY_REG_I_reg[62][2]_srl30_U0_DELAY_REG_I_reg_c_28 " *) 
-  SRLC32E #(
-    .INIT(32'h00000000)) 
-    \DELAY_REG_I_reg[62][2]_srl30_U0_DELAY_REG_I_reg_c_28 
-       (.A({1'b1,1'b1,1'b1,1'b0,1'b1}),
+        .Q(\DELAY_REG_I_reg[46][1]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[46] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[46][2]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[46][2]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(IDATA_OUT_DELAY_32[2]),
-        .Q(\DELAY_REG_I_reg[62][2]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q31(\NLW_DELAY_REG_I_reg[62][2]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ));
-  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
-  (* srl_name = "\\U0/DELAY_REG_I_reg[62][3]_srl30_U0_DELAY_REG_I_reg_c_28 " *) 
-  SRLC32E #(
-    .INIT(32'h00000000)) 
-    \DELAY_REG_I_reg[62][3]_srl30_U0_DELAY_REG_I_reg_c_28 
-       (.A({1'b1,1'b1,1'b1,1'b0,1'b1}),
+        .Q(\DELAY_REG_I_reg[46][2]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[46] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[46][3]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[46][3]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(IDATA_OUT_DELAY_32[3]),
-        .Q(\DELAY_REG_I_reg[62][3]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q31(\NLW_DELAY_REG_I_reg[62][3]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ));
-  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
-  (* srl_name = "\\U0/DELAY_REG_I_reg[62][4]_srl30_U0_DELAY_REG_I_reg_c_28 " *) 
-  SRLC32E #(
-    .INIT(32'h00000000)) 
-    \DELAY_REG_I_reg[62][4]_srl30_U0_DELAY_REG_I_reg_c_28 
-       (.A({1'b1,1'b1,1'b1,1'b0,1'b1}),
+        .Q(\DELAY_REG_I_reg[46][3]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[46] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[46][4]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[46][4]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(IDATA_OUT_DELAY_32[4]),
-        .Q(\DELAY_REG_I_reg[62][4]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q31(\NLW_DELAY_REG_I_reg[62][4]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ));
-  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
-  (* srl_name = "\\U0/DELAY_REG_I_reg[62][5]_srl30_U0_DELAY_REG_I_reg_c_28 " *) 
-  SRLC32E #(
-    .INIT(32'h00000000)) 
-    \DELAY_REG_I_reg[62][5]_srl30_U0_DELAY_REG_I_reg_c_28 
-       (.A({1'b1,1'b1,1'b1,1'b0,1'b1}),
+        .Q(\DELAY_REG_I_reg[46][4]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[46] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[46][5]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[46][5]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(IDATA_OUT_DELAY_32[5]),
-        .Q(\DELAY_REG_I_reg[62][5]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q31(\NLW_DELAY_REG_I_reg[62][5]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ));
-  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
-  (* srl_name = "\\U0/DELAY_REG_I_reg[62][6]_srl30_U0_DELAY_REG_I_reg_c_28 " *) 
-  SRLC32E #(
-    .INIT(32'h00000000)) 
-    \DELAY_REG_I_reg[62][6]_srl30_U0_DELAY_REG_I_reg_c_28 
-       (.A({1'b1,1'b1,1'b1,1'b0,1'b1}),
+        .Q(\DELAY_REG_I_reg[46][5]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[46] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[46][6]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[46][6]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(IDATA_OUT_DELAY_32[6]),
-        .Q(\DELAY_REG_I_reg[62][6]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q31(\NLW_DELAY_REG_I_reg[62][6]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ));
-  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
-  (* srl_name = "\\U0/DELAY_REG_I_reg[62][7]_srl30_U0_DELAY_REG_I_reg_c_28 " *) 
-  SRLC32E #(
-    .INIT(32'h00000000)) 
-    \DELAY_REG_I_reg[62][7]_srl30_U0_DELAY_REG_I_reg_c_28 
-       (.A({1'b1,1'b1,1'b1,1'b0,1'b1}),
+        .Q(\DELAY_REG_I_reg[46][6]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[46] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[46][7]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[46][7]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(IDATA_OUT_DELAY_32[7]),
-        .Q(\DELAY_REG_I_reg[62][7]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q31(\NLW_DELAY_REG_I_reg[62][7]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ));
-  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
-  (* srl_name = "\\U0/DELAY_REG_I_reg[62][8]_srl30_U0_DELAY_REG_I_reg_c_28 " *) 
-  SRLC32E #(
-    .INIT(32'h00000000)) 
-    \DELAY_REG_I_reg[62][8]_srl30_U0_DELAY_REG_I_reg_c_28 
-       (.A({1'b1,1'b1,1'b1,1'b0,1'b1}),
+        .Q(\DELAY_REG_I_reg[46][7]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[46] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[46][8]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[46][8]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(IDATA_OUT_DELAY_32[8]),
-        .Q(\DELAY_REG_I_reg[62][8]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q31(\NLW_DELAY_REG_I_reg[62][8]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ));
-  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
-  (* srl_name = "\\U0/DELAY_REG_I_reg[62][9]_srl30_U0_DELAY_REG_I_reg_c_28 " *) 
-  SRLC32E #(
-    .INIT(32'h00000000)) 
-    \DELAY_REG_I_reg[62][9]_srl30_U0_DELAY_REG_I_reg_c_28 
-       (.A({1'b1,1'b1,1'b1,1'b0,1'b1}),
+        .Q(\DELAY_REG_I_reg[46][8]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[46] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[46][9]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[46][9]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(IDATA_OUT_DELAY_32[9]),
-        .Q(\DELAY_REG_I_reg[62][9]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q31(\NLW_DELAY_REG_I_reg[62][9]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ));
-  FDRE \DELAY_REG_I_reg[63][0]_U0_DELAY_REG_I_reg_c_29 
+        .Q(\DELAY_REG_I_reg[46][9]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  FDRE \DELAY_REG_I_reg[47][0]_U0_DELAY_REG_I_reg_c_13 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
-        .D(\DELAY_REG_I_reg[62][0]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q(\DELAY_REG_I_reg[63][0]_U0_DELAY_REG_I_reg_c_29_n_0 ),
+        .D(\DELAY_REG_I_reg[46][0]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_I_reg[47][0]_U0_DELAY_REG_I_reg_c_13_n_0 ),
         .R(1'b0));
-  FDRE \DELAY_REG_I_reg[63][10]_U0_DELAY_REG_I_reg_c_29 
+  FDRE \DELAY_REG_I_reg[47][10]_U0_DELAY_REG_I_reg_c_13 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
-        .D(\DELAY_REG_I_reg[62][10]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q(\DELAY_REG_I_reg[63][10]_U0_DELAY_REG_I_reg_c_29_n_0 ),
+        .D(\DELAY_REG_I_reg[46][10]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_I_reg[47][10]_U0_DELAY_REG_I_reg_c_13_n_0 ),
         .R(1'b0));
-  FDRE \DELAY_REG_I_reg[63][11]_U0_DELAY_REG_I_reg_c_29 
+  FDRE \DELAY_REG_I_reg[47][11]_U0_DELAY_REG_I_reg_c_13 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
-        .D(\DELAY_REG_I_reg[62][11]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q(\DELAY_REG_I_reg[63][11]_U0_DELAY_REG_I_reg_c_29_n_0 ),
+        .D(\DELAY_REG_I_reg[46][11]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_I_reg[47][11]_U0_DELAY_REG_I_reg_c_13_n_0 ),
         .R(1'b0));
-  FDRE \DELAY_REG_I_reg[63][12]_U0_DELAY_REG_I_reg_c_29 
+  FDRE \DELAY_REG_I_reg[47][12]_U0_DELAY_REG_I_reg_c_13 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
-        .D(\DELAY_REG_I_reg[62][12]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q(\DELAY_REG_I_reg[63][12]_U0_DELAY_REG_I_reg_c_29_n_0 ),
+        .D(\DELAY_REG_I_reg[46][12]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_I_reg[47][12]_U0_DELAY_REG_I_reg_c_13_n_0 ),
         .R(1'b0));
-  FDRE \DELAY_REG_I_reg[63][13]_U0_DELAY_REG_I_reg_c_29 
+  FDRE \DELAY_REG_I_reg[47][13]_U0_DELAY_REG_I_reg_c_13 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
-        .D(\DELAY_REG_I_reg[62][13]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q(\DELAY_REG_I_reg[63][13]_U0_DELAY_REG_I_reg_c_29_n_0 ),
+        .D(\DELAY_REG_I_reg[46][13]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_I_reg[47][13]_U0_DELAY_REG_I_reg_c_13_n_0 ),
         .R(1'b0));
-  FDRE \DELAY_REG_I_reg[63][14]_U0_DELAY_REG_I_reg_c_29 
+  FDRE \DELAY_REG_I_reg[47][14]_U0_DELAY_REG_I_reg_c_13 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
-        .D(\DELAY_REG_I_reg[62][14]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q(\DELAY_REG_I_reg[63][14]_U0_DELAY_REG_I_reg_c_29_n_0 ),
+        .D(\DELAY_REG_I_reg[46][14]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_I_reg[47][14]_U0_DELAY_REG_I_reg_c_13_n_0 ),
         .R(1'b0));
-  FDRE \DELAY_REG_I_reg[63][15]_U0_DELAY_REG_I_reg_c_29 
+  FDRE \DELAY_REG_I_reg[47][15]_U0_DELAY_REG_I_reg_c_13 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
-        .D(\DELAY_REG_I_reg[62][15]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q(\DELAY_REG_I_reg[63][15]_U0_DELAY_REG_I_reg_c_29_n_0 ),
+        .D(\DELAY_REG_I_reg[46][15]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_I_reg[47][15]_U0_DELAY_REG_I_reg_c_13_n_0 ),
         .R(1'b0));
-  FDRE \DELAY_REG_I_reg[63][1]_U0_DELAY_REG_I_reg_c_29 
+  FDRE \DELAY_REG_I_reg[47][1]_U0_DELAY_REG_I_reg_c_13 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
-        .D(\DELAY_REG_I_reg[62][1]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q(\DELAY_REG_I_reg[63][1]_U0_DELAY_REG_I_reg_c_29_n_0 ),
+        .D(\DELAY_REG_I_reg[46][1]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_I_reg[47][1]_U0_DELAY_REG_I_reg_c_13_n_0 ),
         .R(1'b0));
-  FDRE \DELAY_REG_I_reg[63][2]_U0_DELAY_REG_I_reg_c_29 
+  FDRE \DELAY_REG_I_reg[47][2]_U0_DELAY_REG_I_reg_c_13 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
-        .D(\DELAY_REG_I_reg[62][2]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q(\DELAY_REG_I_reg[63][2]_U0_DELAY_REG_I_reg_c_29_n_0 ),
+        .D(\DELAY_REG_I_reg[46][2]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_I_reg[47][2]_U0_DELAY_REG_I_reg_c_13_n_0 ),
         .R(1'b0));
-  FDRE \DELAY_REG_I_reg[63][3]_U0_DELAY_REG_I_reg_c_29 
+  FDRE \DELAY_REG_I_reg[47][3]_U0_DELAY_REG_I_reg_c_13 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
-        .D(\DELAY_REG_I_reg[62][3]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q(\DELAY_REG_I_reg[63][3]_U0_DELAY_REG_I_reg_c_29_n_0 ),
+        .D(\DELAY_REG_I_reg[46][3]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_I_reg[47][3]_U0_DELAY_REG_I_reg_c_13_n_0 ),
         .R(1'b0));
-  FDRE \DELAY_REG_I_reg[63][4]_U0_DELAY_REG_I_reg_c_29 
+  FDRE \DELAY_REG_I_reg[47][4]_U0_DELAY_REG_I_reg_c_13 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
-        .D(\DELAY_REG_I_reg[62][4]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q(\DELAY_REG_I_reg[63][4]_U0_DELAY_REG_I_reg_c_29_n_0 ),
+        .D(\DELAY_REG_I_reg[46][4]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_I_reg[47][4]_U0_DELAY_REG_I_reg_c_13_n_0 ),
         .R(1'b0));
-  FDRE \DELAY_REG_I_reg[63][5]_U0_DELAY_REG_I_reg_c_29 
+  FDRE \DELAY_REG_I_reg[47][5]_U0_DELAY_REG_I_reg_c_13 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
-        .D(\DELAY_REG_I_reg[62][5]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q(\DELAY_REG_I_reg[63][5]_U0_DELAY_REG_I_reg_c_29_n_0 ),
+        .D(\DELAY_REG_I_reg[46][5]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_I_reg[47][5]_U0_DELAY_REG_I_reg_c_13_n_0 ),
         .R(1'b0));
-  FDRE \DELAY_REG_I_reg[63][6]_U0_DELAY_REG_I_reg_c_29 
+  FDRE \DELAY_REG_I_reg[47][6]_U0_DELAY_REG_I_reg_c_13 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
-        .D(\DELAY_REG_I_reg[62][6]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q(\DELAY_REG_I_reg[63][6]_U0_DELAY_REG_I_reg_c_29_n_0 ),
+        .D(\DELAY_REG_I_reg[46][6]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_I_reg[47][6]_U0_DELAY_REG_I_reg_c_13_n_0 ),
         .R(1'b0));
-  FDRE \DELAY_REG_I_reg[63][7]_U0_DELAY_REG_I_reg_c_29 
+  FDRE \DELAY_REG_I_reg[47][7]_U0_DELAY_REG_I_reg_c_13 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
-        .D(\DELAY_REG_I_reg[62][7]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q(\DELAY_REG_I_reg[63][7]_U0_DELAY_REG_I_reg_c_29_n_0 ),
+        .D(\DELAY_REG_I_reg[46][7]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_I_reg[47][7]_U0_DELAY_REG_I_reg_c_13_n_0 ),
         .R(1'b0));
-  FDRE \DELAY_REG_I_reg[63][8]_U0_DELAY_REG_I_reg_c_29 
+  FDRE \DELAY_REG_I_reg[47][8]_U0_DELAY_REG_I_reg_c_13 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
-        .D(\DELAY_REG_I_reg[62][8]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q(\DELAY_REG_I_reg[63][8]_U0_DELAY_REG_I_reg_c_29_n_0 ),
+        .D(\DELAY_REG_I_reg[46][8]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_I_reg[47][8]_U0_DELAY_REG_I_reg_c_13_n_0 ),
         .R(1'b0));
-  FDRE \DELAY_REG_I_reg[63][9]_U0_DELAY_REG_I_reg_c_29 
+  FDRE \DELAY_REG_I_reg[47][9]_U0_DELAY_REG_I_reg_c_13 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
-        .D(\DELAY_REG_I_reg[62][9]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q(\DELAY_REG_I_reg[63][9]_U0_DELAY_REG_I_reg_c_29_n_0 ),
+        .D(\DELAY_REG_I_reg[46][9]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_I_reg[47][9]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .R(1'b0));
+  FDCE \DELAY_REG_I_reg[48][0] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .CLR(RESET),
+        .D(DELAY_REG_I_reg_gate__46_n_0),
+        .Q(IDATA_OUT_DELAY_48[0]));
+  FDCE \DELAY_REG_I_reg[48][10] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .CLR(RESET),
+        .D(DELAY_REG_I_reg_gate__36_n_0),
+        .Q(IDATA_OUT_DELAY_48[10]));
+  FDCE \DELAY_REG_I_reg[48][11] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .CLR(RESET),
+        .D(DELAY_REG_I_reg_gate__35_n_0),
+        .Q(IDATA_OUT_DELAY_48[11]));
+  FDCE \DELAY_REG_I_reg[48][12] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .CLR(RESET),
+        .D(DELAY_REG_I_reg_gate__34_n_0),
+        .Q(IDATA_OUT_DELAY_48[12]));
+  FDCE \DELAY_REG_I_reg[48][13] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .CLR(RESET),
+        .D(DELAY_REG_I_reg_gate__33_n_0),
+        .Q(IDATA_OUT_DELAY_48[13]));
+  FDCE \DELAY_REG_I_reg[48][14] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .CLR(RESET),
+        .D(DELAY_REG_I_reg_gate__32_n_0),
+        .Q(IDATA_OUT_DELAY_48[14]));
+  FDCE \DELAY_REG_I_reg[48][15] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .CLR(RESET),
+        .D(DELAY_REG_I_reg_gate__31_n_0),
+        .Q(IDATA_OUT_DELAY_48[15]));
+  FDCE \DELAY_REG_I_reg[48][1] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .CLR(RESET),
+        .D(DELAY_REG_I_reg_gate__45_n_0),
+        .Q(IDATA_OUT_DELAY_48[1]));
+  FDCE \DELAY_REG_I_reg[48][2] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .CLR(RESET),
+        .D(DELAY_REG_I_reg_gate__44_n_0),
+        .Q(IDATA_OUT_DELAY_48[2]));
+  FDCE \DELAY_REG_I_reg[48][3] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .CLR(RESET),
+        .D(DELAY_REG_I_reg_gate__43_n_0),
+        .Q(IDATA_OUT_DELAY_48[3]));
+  FDCE \DELAY_REG_I_reg[48][4] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .CLR(RESET),
+        .D(DELAY_REG_I_reg_gate__42_n_0),
+        .Q(IDATA_OUT_DELAY_48[4]));
+  FDCE \DELAY_REG_I_reg[48][5] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .CLR(RESET),
+        .D(DELAY_REG_I_reg_gate__41_n_0),
+        .Q(IDATA_OUT_DELAY_48[5]));
+  FDCE \DELAY_REG_I_reg[48][6] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .CLR(RESET),
+        .D(DELAY_REG_I_reg_gate__40_n_0),
+        .Q(IDATA_OUT_DELAY_48[6]));
+  FDCE \DELAY_REG_I_reg[48][7] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .CLR(RESET),
+        .D(DELAY_REG_I_reg_gate__39_n_0),
+        .Q(IDATA_OUT_DELAY_48[7]));
+  FDCE \DELAY_REG_I_reg[48][8] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .CLR(RESET),
+        .D(DELAY_REG_I_reg_gate__38_n_0),
+        .Q(IDATA_OUT_DELAY_48[8]));
+  FDCE \DELAY_REG_I_reg[48][9] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .CLR(RESET),
+        .D(DELAY_REG_I_reg_gate__37_n_0),
+        .Q(IDATA_OUT_DELAY_48[9]));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[62][0]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[62][0]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(IDATA_OUT_DELAY_48[0]),
+        .Q(\DELAY_REG_I_reg[62][0]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[62][10]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[62][10]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(IDATA_OUT_DELAY_48[10]),
+        .Q(\DELAY_REG_I_reg[62][10]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[62][11]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[62][11]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(IDATA_OUT_DELAY_48[11]),
+        .Q(\DELAY_REG_I_reg[62][11]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[62][12]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[62][12]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(IDATA_OUT_DELAY_48[12]),
+        .Q(\DELAY_REG_I_reg[62][12]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[62][13]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[62][13]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(IDATA_OUT_DELAY_48[13]),
+        .Q(\DELAY_REG_I_reg[62][13]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[62][14]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[62][14]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(IDATA_OUT_DELAY_48[14]),
+        .Q(\DELAY_REG_I_reg[62][14]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[62][15]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[62][15]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(IDATA_OUT_DELAY_48[15]),
+        .Q(\DELAY_REG_I_reg[62][15]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[62][1]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[62][1]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(IDATA_OUT_DELAY_48[1]),
+        .Q(\DELAY_REG_I_reg[62][1]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[62][2]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[62][2]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(IDATA_OUT_DELAY_48[2]),
+        .Q(\DELAY_REG_I_reg[62][2]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[62][3]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[62][3]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(IDATA_OUT_DELAY_48[3]),
+        .Q(\DELAY_REG_I_reg[62][3]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[62][4]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[62][4]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(IDATA_OUT_DELAY_48[4]),
+        .Q(\DELAY_REG_I_reg[62][4]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[62][5]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[62][5]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(IDATA_OUT_DELAY_48[5]),
+        .Q(\DELAY_REG_I_reg[62][5]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[62][6]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[62][6]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(IDATA_OUT_DELAY_48[6]),
+        .Q(\DELAY_REG_I_reg[62][6]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[62][7]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[62][7]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(IDATA_OUT_DELAY_48[7]),
+        .Q(\DELAY_REG_I_reg[62][7]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[62][8]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[62][8]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(IDATA_OUT_DELAY_48[8]),
+        .Q(\DELAY_REG_I_reg[62][8]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[62][9]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[62][9]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(IDATA_OUT_DELAY_48[9]),
+        .Q(\DELAY_REG_I_reg[62][9]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  FDRE \DELAY_REG_I_reg[63][0]_U0_DELAY_REG_I_reg_c_13 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_I_reg[62][0]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_I_reg[63][0]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .R(1'b0));
+  FDRE \DELAY_REG_I_reg[63][10]_U0_DELAY_REG_I_reg_c_13 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_I_reg[62][10]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_I_reg[63][10]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .R(1'b0));
+  FDRE \DELAY_REG_I_reg[63][11]_U0_DELAY_REG_I_reg_c_13 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_I_reg[62][11]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_I_reg[63][11]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .R(1'b0));
+  FDRE \DELAY_REG_I_reg[63][12]_U0_DELAY_REG_I_reg_c_13 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_I_reg[62][12]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_I_reg[63][12]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .R(1'b0));
+  FDRE \DELAY_REG_I_reg[63][13]_U0_DELAY_REG_I_reg_c_13 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_I_reg[62][13]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_I_reg[63][13]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .R(1'b0));
+  FDRE \DELAY_REG_I_reg[63][14]_U0_DELAY_REG_I_reg_c_13 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_I_reg[62][14]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_I_reg[63][14]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .R(1'b0));
+  FDRE \DELAY_REG_I_reg[63][15]_U0_DELAY_REG_I_reg_c_13 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_I_reg[62][15]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_I_reg[63][15]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .R(1'b0));
+  FDRE \DELAY_REG_I_reg[63][1]_U0_DELAY_REG_I_reg_c_13 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_I_reg[62][1]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_I_reg[63][1]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .R(1'b0));
+  FDRE \DELAY_REG_I_reg[63][2]_U0_DELAY_REG_I_reg_c_13 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_I_reg[62][2]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_I_reg[63][2]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .R(1'b0));
+  FDRE \DELAY_REG_I_reg[63][3]_U0_DELAY_REG_I_reg_c_13 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_I_reg[62][3]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_I_reg[63][3]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .R(1'b0));
+  FDRE \DELAY_REG_I_reg[63][4]_U0_DELAY_REG_I_reg_c_13 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_I_reg[62][4]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_I_reg[63][4]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .R(1'b0));
+  FDRE \DELAY_REG_I_reg[63][5]_U0_DELAY_REG_I_reg_c_13 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_I_reg[62][5]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_I_reg[63][5]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .R(1'b0));
+  FDRE \DELAY_REG_I_reg[63][6]_U0_DELAY_REG_I_reg_c_13 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_I_reg[62][6]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_I_reg[63][6]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .R(1'b0));
+  FDRE \DELAY_REG_I_reg[63][7]_U0_DELAY_REG_I_reg_c_13 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_I_reg[62][7]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_I_reg[63][7]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .R(1'b0));
+  FDRE \DELAY_REG_I_reg[63][8]_U0_DELAY_REG_I_reg_c_13 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_I_reg[62][8]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_I_reg[63][8]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .R(1'b0));
+  FDRE \DELAY_REG_I_reg[63][9]_U0_DELAY_REG_I_reg_c_13 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_I_reg[62][9]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_I_reg[63][9]_U0_DELAY_REG_I_reg_c_13_n_0 ),
         .R(1'b0));
   FDCE DELAY_REG_I_reg_c
        (.C(CLOCK),
@@ -1723,108 +2219,12 @@ module block_design_0_data_delay_0_0_data_delay
         .CLR(RESET),
         .D(DELAY_REG_I_reg_c_12_n_0),
         .Q(DELAY_REG_I_reg_c_13_n_0));
-  FDCE DELAY_REG_I_reg_c_14
-       (.C(CLOCK),
-        .CE(DATA_IN_STROBE),
-        .CLR(RESET),
-        .D(DELAY_REG_I_reg_c_13_n_0),
-        .Q(DELAY_REG_I_reg_c_14_n_0));
-  FDCE DELAY_REG_I_reg_c_15
-       (.C(CLOCK),
-        .CE(DATA_IN_STROBE),
-        .CLR(RESET),
-        .D(DELAY_REG_I_reg_c_14_n_0),
-        .Q(DELAY_REG_I_reg_c_15_n_0));
-  FDCE DELAY_REG_I_reg_c_16
-       (.C(CLOCK),
-        .CE(DATA_IN_STROBE),
-        .CLR(RESET),
-        .D(DELAY_REG_I_reg_c_15_n_0),
-        .Q(DELAY_REG_I_reg_c_16_n_0));
-  FDCE DELAY_REG_I_reg_c_17
-       (.C(CLOCK),
-        .CE(DATA_IN_STROBE),
-        .CLR(RESET),
-        .D(DELAY_REG_I_reg_c_16_n_0),
-        .Q(DELAY_REG_I_reg_c_17_n_0));
-  FDCE DELAY_REG_I_reg_c_18
-       (.C(CLOCK),
-        .CE(DATA_IN_STROBE),
-        .CLR(RESET),
-        .D(DELAY_REG_I_reg_c_17_n_0),
-        .Q(DELAY_REG_I_reg_c_18_n_0));
-  FDCE DELAY_REG_I_reg_c_19
-       (.C(CLOCK),
-        .CE(DATA_IN_STROBE),
-        .CLR(RESET),
-        .D(DELAY_REG_I_reg_c_18_n_0),
-        .Q(DELAY_REG_I_reg_c_19_n_0));
   FDCE DELAY_REG_I_reg_c_2
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
         .CLR(RESET),
         .D(DELAY_REG_I_reg_c_1_n_0),
         .Q(DELAY_REG_I_reg_c_2_n_0));
-  FDCE DELAY_REG_I_reg_c_20
-       (.C(CLOCK),
-        .CE(DATA_IN_STROBE),
-        .CLR(RESET),
-        .D(DELAY_REG_I_reg_c_19_n_0),
-        .Q(DELAY_REG_I_reg_c_20_n_0));
-  FDCE DELAY_REG_I_reg_c_21
-       (.C(CLOCK),
-        .CE(DATA_IN_STROBE),
-        .CLR(RESET),
-        .D(DELAY_REG_I_reg_c_20_n_0),
-        .Q(DELAY_REG_I_reg_c_21_n_0));
-  FDCE DELAY_REG_I_reg_c_22
-       (.C(CLOCK),
-        .CE(DATA_IN_STROBE),
-        .CLR(RESET),
-        .D(DELAY_REG_I_reg_c_21_n_0),
-        .Q(DELAY_REG_I_reg_c_22_n_0));
-  FDCE DELAY_REG_I_reg_c_23
-       (.C(CLOCK),
-        .CE(DATA_IN_STROBE),
-        .CLR(RESET),
-        .D(DELAY_REG_I_reg_c_22_n_0),
-        .Q(DELAY_REG_I_reg_c_23_n_0));
-  FDCE DELAY_REG_I_reg_c_24
-       (.C(CLOCK),
-        .CE(DATA_IN_STROBE),
-        .CLR(RESET),
-        .D(DELAY_REG_I_reg_c_23_n_0),
-        .Q(DELAY_REG_I_reg_c_24_n_0));
-  FDCE DELAY_REG_I_reg_c_25
-       (.C(CLOCK),
-        .CE(DATA_IN_STROBE),
-        .CLR(RESET),
-        .D(DELAY_REG_I_reg_c_24_n_0),
-        .Q(DELAY_REG_I_reg_c_25_n_0));
-  FDCE DELAY_REG_I_reg_c_26
-       (.C(CLOCK),
-        .CE(DATA_IN_STROBE),
-        .CLR(RESET),
-        .D(DELAY_REG_I_reg_c_25_n_0),
-        .Q(DELAY_REG_I_reg_c_26_n_0));
-  FDCE DELAY_REG_I_reg_c_27
-       (.C(CLOCK),
-        .CE(DATA_IN_STROBE),
-        .CLR(RESET),
-        .D(DELAY_REG_I_reg_c_26_n_0),
-        .Q(DELAY_REG_I_reg_c_27_n_0));
-  FDCE DELAY_REG_I_reg_c_28
-       (.C(CLOCK),
-        .CE(DATA_IN_STROBE),
-        .CLR(RESET),
-        .D(DELAY_REG_I_reg_c_27_n_0),
-        .Q(DELAY_REG_I_reg_c_28_n_0));
-  FDCE DELAY_REG_I_reg_c_29
-       (.C(CLOCK),
-        .CE(DATA_IN_STROBE),
-        .CLR(RESET),
-        .D(DELAY_REG_I_reg_c_28_n_0),
-        .Q(DELAY_REG_I_reg_c_29_n_0));
   FDCE DELAY_REG_I_reg_c_3
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
@@ -2053,64 +2453,64 @@ module block_design_0_data_delay_0_0_data_delay
   LUT2 #(
     .INIT(4'h8)) 
     DELAY_REG_I_reg_gate__31
-       (.I0(\DELAY_REG_I_reg[63][15]_U0_DELAY_REG_I_reg_c_29_n_0 ),
-        .I1(DELAY_REG_I_reg_c_29_n_0),
+       (.I0(\DELAY_REG_I_reg[47][15]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
         .O(DELAY_REG_I_reg_gate__31_n_0));
   (* SOFT_HLUTNM = "soft_lutpair32" *) 
   LUT2 #(
     .INIT(4'h8)) 
     DELAY_REG_I_reg_gate__32
-       (.I0(\DELAY_REG_I_reg[63][14]_U0_DELAY_REG_I_reg_c_29_n_0 ),
-        .I1(DELAY_REG_I_reg_c_29_n_0),
+       (.I0(\DELAY_REG_I_reg[47][14]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
         .O(DELAY_REG_I_reg_gate__32_n_0));
   (* SOFT_HLUTNM = "soft_lutpair33" *) 
   LUT2 #(
     .INIT(4'h8)) 
     DELAY_REG_I_reg_gate__33
-       (.I0(\DELAY_REG_I_reg[63][13]_U0_DELAY_REG_I_reg_c_29_n_0 ),
-        .I1(DELAY_REG_I_reg_c_29_n_0),
+       (.I0(\DELAY_REG_I_reg[47][13]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
         .O(DELAY_REG_I_reg_gate__33_n_0));
   (* SOFT_HLUTNM = "soft_lutpair33" *) 
   LUT2 #(
     .INIT(4'h8)) 
     DELAY_REG_I_reg_gate__34
-       (.I0(\DELAY_REG_I_reg[63][12]_U0_DELAY_REG_I_reg_c_29_n_0 ),
-        .I1(DELAY_REG_I_reg_c_29_n_0),
+       (.I0(\DELAY_REG_I_reg[47][12]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
         .O(DELAY_REG_I_reg_gate__34_n_0));
   (* SOFT_HLUTNM = "soft_lutpair34" *) 
   LUT2 #(
     .INIT(4'h8)) 
     DELAY_REG_I_reg_gate__35
-       (.I0(\DELAY_REG_I_reg[63][11]_U0_DELAY_REG_I_reg_c_29_n_0 ),
-        .I1(DELAY_REG_I_reg_c_29_n_0),
+       (.I0(\DELAY_REG_I_reg[47][11]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
         .O(DELAY_REG_I_reg_gate__35_n_0));
   (* SOFT_HLUTNM = "soft_lutpair34" *) 
   LUT2 #(
     .INIT(4'h8)) 
     DELAY_REG_I_reg_gate__36
-       (.I0(\DELAY_REG_I_reg[63][10]_U0_DELAY_REG_I_reg_c_29_n_0 ),
-        .I1(DELAY_REG_I_reg_c_29_n_0),
+       (.I0(\DELAY_REG_I_reg[47][10]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
         .O(DELAY_REG_I_reg_gate__36_n_0));
   (* SOFT_HLUTNM = "soft_lutpair35" *) 
   LUT2 #(
     .INIT(4'h8)) 
     DELAY_REG_I_reg_gate__37
-       (.I0(\DELAY_REG_I_reg[63][9]_U0_DELAY_REG_I_reg_c_29_n_0 ),
-        .I1(DELAY_REG_I_reg_c_29_n_0),
+       (.I0(\DELAY_REG_I_reg[47][9]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
         .O(DELAY_REG_I_reg_gate__37_n_0));
   (* SOFT_HLUTNM = "soft_lutpair35" *) 
   LUT2 #(
     .INIT(4'h8)) 
     DELAY_REG_I_reg_gate__38
-       (.I0(\DELAY_REG_I_reg[63][8]_U0_DELAY_REG_I_reg_c_29_n_0 ),
-        .I1(DELAY_REG_I_reg_c_29_n_0),
+       (.I0(\DELAY_REG_I_reg[47][8]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
         .O(DELAY_REG_I_reg_gate__38_n_0));
   (* SOFT_HLUTNM = "soft_lutpair36" *) 
   LUT2 #(
     .INIT(4'h8)) 
     DELAY_REG_I_reg_gate__39
-       (.I0(\DELAY_REG_I_reg[63][7]_U0_DELAY_REG_I_reg_c_29_n_0 ),
-        .I1(DELAY_REG_I_reg_c_29_n_0),
+       (.I0(\DELAY_REG_I_reg[47][7]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
         .O(DELAY_REG_I_reg_gate__39_n_0));
   (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT2 #(
@@ -2123,51 +2523,72 @@ module block_design_0_data_delay_0_0_data_delay
   LUT2 #(
     .INIT(4'h8)) 
     DELAY_REG_I_reg_gate__40
-       (.I0(\DELAY_REG_I_reg[63][6]_U0_DELAY_REG_I_reg_c_29_n_0 ),
-        .I1(DELAY_REG_I_reg_c_29_n_0),
+       (.I0(\DELAY_REG_I_reg[47][6]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
         .O(DELAY_REG_I_reg_gate__40_n_0));
   (* SOFT_HLUTNM = "soft_lutpair37" *) 
   LUT2 #(
     .INIT(4'h8)) 
     DELAY_REG_I_reg_gate__41
-       (.I0(\DELAY_REG_I_reg[63][5]_U0_DELAY_REG_I_reg_c_29_n_0 ),
-        .I1(DELAY_REG_I_reg_c_29_n_0),
+       (.I0(\DELAY_REG_I_reg[47][5]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
         .O(DELAY_REG_I_reg_gate__41_n_0));
   (* SOFT_HLUTNM = "soft_lutpair37" *) 
   LUT2 #(
     .INIT(4'h8)) 
     DELAY_REG_I_reg_gate__42
-       (.I0(\DELAY_REG_I_reg[63][4]_U0_DELAY_REG_I_reg_c_29_n_0 ),
-        .I1(DELAY_REG_I_reg_c_29_n_0),
+       (.I0(\DELAY_REG_I_reg[47][4]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
         .O(DELAY_REG_I_reg_gate__42_n_0));
   (* SOFT_HLUTNM = "soft_lutpair38" *) 
   LUT2 #(
     .INIT(4'h8)) 
     DELAY_REG_I_reg_gate__43
-       (.I0(\DELAY_REG_I_reg[63][3]_U0_DELAY_REG_I_reg_c_29_n_0 ),
-        .I1(DELAY_REG_I_reg_c_29_n_0),
+       (.I0(\DELAY_REG_I_reg[47][3]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
         .O(DELAY_REG_I_reg_gate__43_n_0));
   (* SOFT_HLUTNM = "soft_lutpair38" *) 
   LUT2 #(
     .INIT(4'h8)) 
     DELAY_REG_I_reg_gate__44
-       (.I0(\DELAY_REG_I_reg[63][2]_U0_DELAY_REG_I_reg_c_29_n_0 ),
-        .I1(DELAY_REG_I_reg_c_29_n_0),
+       (.I0(\DELAY_REG_I_reg[47][2]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
         .O(DELAY_REG_I_reg_gate__44_n_0));
   (* SOFT_HLUTNM = "soft_lutpair39" *) 
   LUT2 #(
     .INIT(4'h8)) 
     DELAY_REG_I_reg_gate__45
-       (.I0(\DELAY_REG_I_reg[63][1]_U0_DELAY_REG_I_reg_c_29_n_0 ),
-        .I1(DELAY_REG_I_reg_c_29_n_0),
+       (.I0(\DELAY_REG_I_reg[47][1]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
         .O(DELAY_REG_I_reg_gate__45_n_0));
   (* SOFT_HLUTNM = "soft_lutpair39" *) 
   LUT2 #(
     .INIT(4'h8)) 
     DELAY_REG_I_reg_gate__46
-       (.I0(\DELAY_REG_I_reg[63][0]_U0_DELAY_REG_I_reg_c_29_n_0 ),
-        .I1(DELAY_REG_I_reg_c_29_n_0),
+       (.I0(\DELAY_REG_I_reg[47][0]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
         .O(DELAY_REG_I_reg_gate__46_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair48" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    DELAY_REG_I_reg_gate__47
+       (.I0(\DELAY_REG_I_reg[63][15]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
+        .O(DELAY_REG_I_reg_gate__47_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair48" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    DELAY_REG_I_reg_gate__48
+       (.I0(\DELAY_REG_I_reg[63][14]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
+        .O(DELAY_REG_I_reg_gate__48_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair49" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    DELAY_REG_I_reg_gate__49
+       (.I0(\DELAY_REG_I_reg[63][13]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
+        .O(DELAY_REG_I_reg_gate__49_n_0));
   (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT2 #(
     .INIT(4'h8)) 
@@ -2175,6 +2596,76 @@ module block_design_0_data_delay_0_0_data_delay
        (.I0(\DELAY_REG_I_reg[15][9]_U0_DELAY_REG_I_reg_c_13_n_0 ),
         .I1(DELAY_REG_I_reg_c_13_n_0),
         .O(DELAY_REG_I_reg_gate__5_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair49" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    DELAY_REG_I_reg_gate__50
+       (.I0(\DELAY_REG_I_reg[63][12]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
+        .O(DELAY_REG_I_reg_gate__50_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair50" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    DELAY_REG_I_reg_gate__51
+       (.I0(\DELAY_REG_I_reg[63][11]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
+        .O(DELAY_REG_I_reg_gate__51_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair50" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    DELAY_REG_I_reg_gate__52
+       (.I0(\DELAY_REG_I_reg[63][10]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
+        .O(DELAY_REG_I_reg_gate__52_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair51" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    DELAY_REG_I_reg_gate__53
+       (.I0(\DELAY_REG_I_reg[63][9]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
+        .O(DELAY_REG_I_reg_gate__53_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair51" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    DELAY_REG_I_reg_gate__54
+       (.I0(\DELAY_REG_I_reg[63][8]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
+        .O(DELAY_REG_I_reg_gate__54_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair52" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    DELAY_REG_I_reg_gate__55
+       (.I0(\DELAY_REG_I_reg[63][7]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
+        .O(DELAY_REG_I_reg_gate__55_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair52" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    DELAY_REG_I_reg_gate__56
+       (.I0(\DELAY_REG_I_reg[63][6]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
+        .O(DELAY_REG_I_reg_gate__56_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair53" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    DELAY_REG_I_reg_gate__57
+       (.I0(\DELAY_REG_I_reg[63][5]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
+        .O(DELAY_REG_I_reg_gate__57_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair53" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    DELAY_REG_I_reg_gate__58
+       (.I0(\DELAY_REG_I_reg[63][4]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
+        .O(DELAY_REG_I_reg_gate__58_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair54" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    DELAY_REG_I_reg_gate__59
+       (.I0(\DELAY_REG_I_reg[63][3]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
+        .O(DELAY_REG_I_reg_gate__59_n_0));
   (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT2 #(
     .INIT(4'h8)) 
@@ -2182,6 +2673,27 @@ module block_design_0_data_delay_0_0_data_delay
        (.I0(\DELAY_REG_I_reg[15][8]_U0_DELAY_REG_I_reg_c_13_n_0 ),
         .I1(DELAY_REG_I_reg_c_13_n_0),
         .O(DELAY_REG_I_reg_gate__6_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair54" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    DELAY_REG_I_reg_gate__60
+       (.I0(\DELAY_REG_I_reg[63][2]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
+        .O(DELAY_REG_I_reg_gate__60_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair55" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    DELAY_REG_I_reg_gate__61
+       (.I0(\DELAY_REG_I_reg[63][1]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
+        .O(DELAY_REG_I_reg_gate__61_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair55" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    DELAY_REG_I_reg_gate__62
+       (.I0(\DELAY_REG_I_reg[63][0]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
+        .O(DELAY_REG_I_reg_gate__62_n_0));
   (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT2 #(
     .INIT(4'h8)) 
@@ -3131,277 +3643,709 @@ module block_design_0_data_delay_0_0_data_delay
         .CLR(RESET),
         .D(DELAY_REG_Q_reg_gate__21_n_0),
         .Q(QDATA_OUT_DELAY_32[9]));
-  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
-  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][0]_srl30_U0_DELAY_REG_I_reg_c_28 " *) 
-  SRLC32E #(
-    .INIT(32'h00000000)) 
-    \DELAY_REG_Q_reg[62][0]_srl30_U0_DELAY_REG_I_reg_c_28 
-       (.A({1'b1,1'b1,1'b1,1'b0,1'b1}),
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[46] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[46][0]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[46][0]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(QDATA_OUT_DELAY_32[0]),
-        .Q(\DELAY_REG_Q_reg[62][0]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q31(\NLW_DELAY_REG_Q_reg[62][0]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ));
-  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
-  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][10]_srl30_U0_DELAY_REG_I_reg_c_28 " *) 
-  SRLC32E #(
-    .INIT(32'h00000000)) 
-    \DELAY_REG_Q_reg[62][10]_srl30_U0_DELAY_REG_I_reg_c_28 
-       (.A({1'b1,1'b1,1'b1,1'b0,1'b1}),
+        .Q(\DELAY_REG_Q_reg[46][0]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[46] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[46][10]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[46][10]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(QDATA_OUT_DELAY_32[10]),
-        .Q(\DELAY_REG_Q_reg[62][10]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q31(\NLW_DELAY_REG_Q_reg[62][10]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ));
-  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
-  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][11]_srl30_U0_DELAY_REG_I_reg_c_28 " *) 
-  SRLC32E #(
-    .INIT(32'h00000000)) 
-    \DELAY_REG_Q_reg[62][11]_srl30_U0_DELAY_REG_I_reg_c_28 
-       (.A({1'b1,1'b1,1'b1,1'b0,1'b1}),
+        .Q(\DELAY_REG_Q_reg[46][10]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[46] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[46][11]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[46][11]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(QDATA_OUT_DELAY_32[11]),
-        .Q(\DELAY_REG_Q_reg[62][11]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q31(\NLW_DELAY_REG_Q_reg[62][11]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ));
-  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
-  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][12]_srl30_U0_DELAY_REG_I_reg_c_28 " *) 
-  SRLC32E #(
-    .INIT(32'h00000000)) 
-    \DELAY_REG_Q_reg[62][12]_srl30_U0_DELAY_REG_I_reg_c_28 
-       (.A({1'b1,1'b1,1'b1,1'b0,1'b1}),
+        .Q(\DELAY_REG_Q_reg[46][11]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[46] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[46][12]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[46][12]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(QDATA_OUT_DELAY_32[12]),
-        .Q(\DELAY_REG_Q_reg[62][12]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q31(\NLW_DELAY_REG_Q_reg[62][12]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ));
-  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
-  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][13]_srl30_U0_DELAY_REG_I_reg_c_28 " *) 
-  SRLC32E #(
-    .INIT(32'h00000000)) 
-    \DELAY_REG_Q_reg[62][13]_srl30_U0_DELAY_REG_I_reg_c_28 
-       (.A({1'b1,1'b1,1'b1,1'b0,1'b1}),
+        .Q(\DELAY_REG_Q_reg[46][12]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[46] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[46][13]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[46][13]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(QDATA_OUT_DELAY_32[13]),
-        .Q(\DELAY_REG_Q_reg[62][13]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q31(\NLW_DELAY_REG_Q_reg[62][13]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ));
-  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
-  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][14]_srl30_U0_DELAY_REG_I_reg_c_28 " *) 
-  SRLC32E #(
-    .INIT(32'h00000000)) 
-    \DELAY_REG_Q_reg[62][14]_srl30_U0_DELAY_REG_I_reg_c_28 
-       (.A({1'b1,1'b1,1'b1,1'b0,1'b1}),
+        .Q(\DELAY_REG_Q_reg[46][13]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[46] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[46][14]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[46][14]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(QDATA_OUT_DELAY_32[14]),
-        .Q(\DELAY_REG_Q_reg[62][14]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q31(\NLW_DELAY_REG_Q_reg[62][14]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ));
-  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
-  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][15]_srl30_U0_DELAY_REG_I_reg_c_28 " *) 
-  SRLC32E #(
-    .INIT(32'h00000000)) 
-    \DELAY_REG_Q_reg[62][15]_srl30_U0_DELAY_REG_I_reg_c_28 
-       (.A({1'b1,1'b1,1'b1,1'b0,1'b1}),
+        .Q(\DELAY_REG_Q_reg[46][14]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[46] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[46][15]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[46][15]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(QDATA_OUT_DELAY_32[15]),
-        .Q(\DELAY_REG_Q_reg[62][15]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q31(\NLW_DELAY_REG_Q_reg[62][15]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ));
-  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
-  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][1]_srl30_U0_DELAY_REG_I_reg_c_28 " *) 
-  SRLC32E #(
-    .INIT(32'h00000000)) 
-    \DELAY_REG_Q_reg[62][1]_srl30_U0_DELAY_REG_I_reg_c_28 
-       (.A({1'b1,1'b1,1'b1,1'b0,1'b1}),
+        .Q(\DELAY_REG_Q_reg[46][15]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[46] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[46][1]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[46][1]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(QDATA_OUT_DELAY_32[1]),
-        .Q(\DELAY_REG_Q_reg[62][1]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q31(\NLW_DELAY_REG_Q_reg[62][1]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ));
-  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
-  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][2]_srl30_U0_DELAY_REG_I_reg_c_28 " *) 
-  SRLC32E #(
-    .INIT(32'h00000000)) 
-    \DELAY_REG_Q_reg[62][2]_srl30_U0_DELAY_REG_I_reg_c_28 
-       (.A({1'b1,1'b1,1'b1,1'b0,1'b1}),
+        .Q(\DELAY_REG_Q_reg[46][1]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[46] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[46][2]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[46][2]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(QDATA_OUT_DELAY_32[2]),
-        .Q(\DELAY_REG_Q_reg[62][2]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q31(\NLW_DELAY_REG_Q_reg[62][2]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ));
-  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
-  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][3]_srl30_U0_DELAY_REG_I_reg_c_28 " *) 
-  SRLC32E #(
-    .INIT(32'h00000000)) 
-    \DELAY_REG_Q_reg[62][3]_srl30_U0_DELAY_REG_I_reg_c_28 
-       (.A({1'b1,1'b1,1'b1,1'b0,1'b1}),
+        .Q(\DELAY_REG_Q_reg[46][2]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[46] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[46][3]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[46][3]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(QDATA_OUT_DELAY_32[3]),
-        .Q(\DELAY_REG_Q_reg[62][3]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q31(\NLW_DELAY_REG_Q_reg[62][3]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ));
-  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
-  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][4]_srl30_U0_DELAY_REG_I_reg_c_28 " *) 
-  SRLC32E #(
-    .INIT(32'h00000000)) 
-    \DELAY_REG_Q_reg[62][4]_srl30_U0_DELAY_REG_I_reg_c_28 
-       (.A({1'b1,1'b1,1'b1,1'b0,1'b1}),
+        .Q(\DELAY_REG_Q_reg[46][3]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[46] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[46][4]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[46][4]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(QDATA_OUT_DELAY_32[4]),
-        .Q(\DELAY_REG_Q_reg[62][4]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q31(\NLW_DELAY_REG_Q_reg[62][4]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ));
-  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
-  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][5]_srl30_U0_DELAY_REG_I_reg_c_28 " *) 
-  SRLC32E #(
-    .INIT(32'h00000000)) 
-    \DELAY_REG_Q_reg[62][5]_srl30_U0_DELAY_REG_I_reg_c_28 
-       (.A({1'b1,1'b1,1'b1,1'b0,1'b1}),
+        .Q(\DELAY_REG_Q_reg[46][4]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[46] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[46][5]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[46][5]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(QDATA_OUT_DELAY_32[5]),
-        .Q(\DELAY_REG_Q_reg[62][5]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q31(\NLW_DELAY_REG_Q_reg[62][5]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ));
-  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
-  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][6]_srl30_U0_DELAY_REG_I_reg_c_28 " *) 
-  SRLC32E #(
-    .INIT(32'h00000000)) 
-    \DELAY_REG_Q_reg[62][6]_srl30_U0_DELAY_REG_I_reg_c_28 
-       (.A({1'b1,1'b1,1'b1,1'b0,1'b1}),
+        .Q(\DELAY_REG_Q_reg[46][5]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[46] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[46][6]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[46][6]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(QDATA_OUT_DELAY_32[6]),
-        .Q(\DELAY_REG_Q_reg[62][6]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q31(\NLW_DELAY_REG_Q_reg[62][6]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ));
-  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
-  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][7]_srl30_U0_DELAY_REG_I_reg_c_28 " *) 
-  SRLC32E #(
-    .INIT(32'h00000000)) 
-    \DELAY_REG_Q_reg[62][7]_srl30_U0_DELAY_REG_I_reg_c_28 
-       (.A({1'b1,1'b1,1'b1,1'b0,1'b1}),
+        .Q(\DELAY_REG_Q_reg[46][6]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[46] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[46][7]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[46][7]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(QDATA_OUT_DELAY_32[7]),
-        .Q(\DELAY_REG_Q_reg[62][7]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q31(\NLW_DELAY_REG_Q_reg[62][7]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ));
-  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
-  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][8]_srl30_U0_DELAY_REG_I_reg_c_28 " *) 
-  SRLC32E #(
-    .INIT(32'h00000000)) 
-    \DELAY_REG_Q_reg[62][8]_srl30_U0_DELAY_REG_I_reg_c_28 
-       (.A({1'b1,1'b1,1'b1,1'b0,1'b1}),
+        .Q(\DELAY_REG_Q_reg[46][7]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[46] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[46][8]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[46][8]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(QDATA_OUT_DELAY_32[8]),
-        .Q(\DELAY_REG_Q_reg[62][8]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q31(\NLW_DELAY_REG_Q_reg[62][8]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ));
-  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
-  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][9]_srl30_U0_DELAY_REG_I_reg_c_28 " *) 
-  SRLC32E #(
-    .INIT(32'h00000000)) 
-    \DELAY_REG_Q_reg[62][9]_srl30_U0_DELAY_REG_I_reg_c_28 
-       (.A({1'b1,1'b1,1'b1,1'b0,1'b1}),
+        .Q(\DELAY_REG_Q_reg[46][8]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[46] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[46][9]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[46][9]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(QDATA_OUT_DELAY_32[9]),
-        .Q(\DELAY_REG_Q_reg[62][9]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q31(\NLW_DELAY_REG_Q_reg[62][9]_srl30_U0_DELAY_REG_I_reg_c_28_Q31_UNCONNECTED ));
-  FDRE \DELAY_REG_Q_reg[63][0]_U0_DELAY_REG_I_reg_c_29 
+        .Q(\DELAY_REG_Q_reg[46][9]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  FDRE \DELAY_REG_Q_reg[47][0]_U0_DELAY_REG_I_reg_c_13 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
-        .D(\DELAY_REG_Q_reg[62][0]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q(\DELAY_REG_Q_reg[63][0]_U0_DELAY_REG_I_reg_c_29_n_0 ),
+        .D(\DELAY_REG_Q_reg[46][0]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_Q_reg[47][0]_U0_DELAY_REG_I_reg_c_13_n_0 ),
         .R(1'b0));
-  FDRE \DELAY_REG_Q_reg[63][10]_U0_DELAY_REG_I_reg_c_29 
+  FDRE \DELAY_REG_Q_reg[47][10]_U0_DELAY_REG_I_reg_c_13 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
-        .D(\DELAY_REG_Q_reg[62][10]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q(\DELAY_REG_Q_reg[63][10]_U0_DELAY_REG_I_reg_c_29_n_0 ),
+        .D(\DELAY_REG_Q_reg[46][10]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_Q_reg[47][10]_U0_DELAY_REG_I_reg_c_13_n_0 ),
         .R(1'b0));
-  FDRE \DELAY_REG_Q_reg[63][11]_U0_DELAY_REG_I_reg_c_29 
+  FDRE \DELAY_REG_Q_reg[47][11]_U0_DELAY_REG_I_reg_c_13 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
-        .D(\DELAY_REG_Q_reg[62][11]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q(\DELAY_REG_Q_reg[63][11]_U0_DELAY_REG_I_reg_c_29_n_0 ),
+        .D(\DELAY_REG_Q_reg[46][11]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_Q_reg[47][11]_U0_DELAY_REG_I_reg_c_13_n_0 ),
         .R(1'b0));
-  FDRE \DELAY_REG_Q_reg[63][12]_U0_DELAY_REG_I_reg_c_29 
+  FDRE \DELAY_REG_Q_reg[47][12]_U0_DELAY_REG_I_reg_c_13 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
-        .D(\DELAY_REG_Q_reg[62][12]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q(\DELAY_REG_Q_reg[63][12]_U0_DELAY_REG_I_reg_c_29_n_0 ),
+        .D(\DELAY_REG_Q_reg[46][12]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_Q_reg[47][12]_U0_DELAY_REG_I_reg_c_13_n_0 ),
         .R(1'b0));
-  FDRE \DELAY_REG_Q_reg[63][13]_U0_DELAY_REG_I_reg_c_29 
+  FDRE \DELAY_REG_Q_reg[47][13]_U0_DELAY_REG_I_reg_c_13 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
-        .D(\DELAY_REG_Q_reg[62][13]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q(\DELAY_REG_Q_reg[63][13]_U0_DELAY_REG_I_reg_c_29_n_0 ),
+        .D(\DELAY_REG_Q_reg[46][13]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_Q_reg[47][13]_U0_DELAY_REG_I_reg_c_13_n_0 ),
         .R(1'b0));
-  FDRE \DELAY_REG_Q_reg[63][14]_U0_DELAY_REG_I_reg_c_29 
+  FDRE \DELAY_REG_Q_reg[47][14]_U0_DELAY_REG_I_reg_c_13 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
-        .D(\DELAY_REG_Q_reg[62][14]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q(\DELAY_REG_Q_reg[63][14]_U0_DELAY_REG_I_reg_c_29_n_0 ),
+        .D(\DELAY_REG_Q_reg[46][14]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_Q_reg[47][14]_U0_DELAY_REG_I_reg_c_13_n_0 ),
         .R(1'b0));
-  FDRE \DELAY_REG_Q_reg[63][15]_U0_DELAY_REG_I_reg_c_29 
+  FDRE \DELAY_REG_Q_reg[47][15]_U0_DELAY_REG_I_reg_c_13 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
-        .D(\DELAY_REG_Q_reg[62][15]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q(\DELAY_REG_Q_reg[63][15]_U0_DELAY_REG_I_reg_c_29_n_0 ),
+        .D(\DELAY_REG_Q_reg[46][15]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_Q_reg[47][15]_U0_DELAY_REG_I_reg_c_13_n_0 ),
         .R(1'b0));
-  FDRE \DELAY_REG_Q_reg[63][1]_U0_DELAY_REG_I_reg_c_29 
+  FDRE \DELAY_REG_Q_reg[47][1]_U0_DELAY_REG_I_reg_c_13 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
-        .D(\DELAY_REG_Q_reg[62][1]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q(\DELAY_REG_Q_reg[63][1]_U0_DELAY_REG_I_reg_c_29_n_0 ),
+        .D(\DELAY_REG_Q_reg[46][1]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_Q_reg[47][1]_U0_DELAY_REG_I_reg_c_13_n_0 ),
         .R(1'b0));
-  FDRE \DELAY_REG_Q_reg[63][2]_U0_DELAY_REG_I_reg_c_29 
+  FDRE \DELAY_REG_Q_reg[47][2]_U0_DELAY_REG_I_reg_c_13 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
-        .D(\DELAY_REG_Q_reg[62][2]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q(\DELAY_REG_Q_reg[63][2]_U0_DELAY_REG_I_reg_c_29_n_0 ),
+        .D(\DELAY_REG_Q_reg[46][2]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_Q_reg[47][2]_U0_DELAY_REG_I_reg_c_13_n_0 ),
         .R(1'b0));
-  FDRE \DELAY_REG_Q_reg[63][3]_U0_DELAY_REG_I_reg_c_29 
+  FDRE \DELAY_REG_Q_reg[47][3]_U0_DELAY_REG_I_reg_c_13 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
-        .D(\DELAY_REG_Q_reg[62][3]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q(\DELAY_REG_Q_reg[63][3]_U0_DELAY_REG_I_reg_c_29_n_0 ),
+        .D(\DELAY_REG_Q_reg[46][3]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_Q_reg[47][3]_U0_DELAY_REG_I_reg_c_13_n_0 ),
         .R(1'b0));
-  FDRE \DELAY_REG_Q_reg[63][4]_U0_DELAY_REG_I_reg_c_29 
+  FDRE \DELAY_REG_Q_reg[47][4]_U0_DELAY_REG_I_reg_c_13 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
-        .D(\DELAY_REG_Q_reg[62][4]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q(\DELAY_REG_Q_reg[63][4]_U0_DELAY_REG_I_reg_c_29_n_0 ),
+        .D(\DELAY_REG_Q_reg[46][4]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_Q_reg[47][4]_U0_DELAY_REG_I_reg_c_13_n_0 ),
         .R(1'b0));
-  FDRE \DELAY_REG_Q_reg[63][5]_U0_DELAY_REG_I_reg_c_29 
+  FDRE \DELAY_REG_Q_reg[47][5]_U0_DELAY_REG_I_reg_c_13 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
-        .D(\DELAY_REG_Q_reg[62][5]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q(\DELAY_REG_Q_reg[63][5]_U0_DELAY_REG_I_reg_c_29_n_0 ),
+        .D(\DELAY_REG_Q_reg[46][5]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_Q_reg[47][5]_U0_DELAY_REG_I_reg_c_13_n_0 ),
         .R(1'b0));
-  FDRE \DELAY_REG_Q_reg[63][6]_U0_DELAY_REG_I_reg_c_29 
+  FDRE \DELAY_REG_Q_reg[47][6]_U0_DELAY_REG_I_reg_c_13 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
-        .D(\DELAY_REG_Q_reg[62][6]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q(\DELAY_REG_Q_reg[63][6]_U0_DELAY_REG_I_reg_c_29_n_0 ),
+        .D(\DELAY_REG_Q_reg[46][6]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_Q_reg[47][6]_U0_DELAY_REG_I_reg_c_13_n_0 ),
         .R(1'b0));
-  FDRE \DELAY_REG_Q_reg[63][7]_U0_DELAY_REG_I_reg_c_29 
+  FDRE \DELAY_REG_Q_reg[47][7]_U0_DELAY_REG_I_reg_c_13 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
-        .D(\DELAY_REG_Q_reg[62][7]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q(\DELAY_REG_Q_reg[63][7]_U0_DELAY_REG_I_reg_c_29_n_0 ),
+        .D(\DELAY_REG_Q_reg[46][7]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_Q_reg[47][7]_U0_DELAY_REG_I_reg_c_13_n_0 ),
         .R(1'b0));
-  FDRE \DELAY_REG_Q_reg[63][8]_U0_DELAY_REG_I_reg_c_29 
+  FDRE \DELAY_REG_Q_reg[47][8]_U0_DELAY_REG_I_reg_c_13 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
-        .D(\DELAY_REG_Q_reg[62][8]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q(\DELAY_REG_Q_reg[63][8]_U0_DELAY_REG_I_reg_c_29_n_0 ),
+        .D(\DELAY_REG_Q_reg[46][8]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_Q_reg[47][8]_U0_DELAY_REG_I_reg_c_13_n_0 ),
         .R(1'b0));
-  FDRE \DELAY_REG_Q_reg[63][9]_U0_DELAY_REG_I_reg_c_29 
+  FDRE \DELAY_REG_Q_reg[47][9]_U0_DELAY_REG_I_reg_c_13 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
-        .D(\DELAY_REG_Q_reg[62][9]_srl30_U0_DELAY_REG_I_reg_c_28_n_0 ),
-        .Q(\DELAY_REG_Q_reg[63][9]_U0_DELAY_REG_I_reg_c_29_n_0 ),
+        .D(\DELAY_REG_Q_reg[46][9]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_Q_reg[47][9]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .R(1'b0));
+  FDCE \DELAY_REG_Q_reg[48][0] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .CLR(RESET),
+        .D(DELAY_REG_Q_reg_gate__46_n_0),
+        .Q(QDATA_OUT_DELAY_48[0]));
+  FDCE \DELAY_REG_Q_reg[48][10] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .CLR(RESET),
+        .D(DELAY_REG_Q_reg_gate__36_n_0),
+        .Q(QDATA_OUT_DELAY_48[10]));
+  FDCE \DELAY_REG_Q_reg[48][11] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .CLR(RESET),
+        .D(DELAY_REG_Q_reg_gate__35_n_0),
+        .Q(QDATA_OUT_DELAY_48[11]));
+  FDCE \DELAY_REG_Q_reg[48][12] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .CLR(RESET),
+        .D(DELAY_REG_Q_reg_gate__34_n_0),
+        .Q(QDATA_OUT_DELAY_48[12]));
+  FDCE \DELAY_REG_Q_reg[48][13] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .CLR(RESET),
+        .D(DELAY_REG_Q_reg_gate__33_n_0),
+        .Q(QDATA_OUT_DELAY_48[13]));
+  FDCE \DELAY_REG_Q_reg[48][14] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .CLR(RESET),
+        .D(DELAY_REG_Q_reg_gate__32_n_0),
+        .Q(QDATA_OUT_DELAY_48[14]));
+  FDCE \DELAY_REG_Q_reg[48][15] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .CLR(RESET),
+        .D(DELAY_REG_Q_reg_gate__31_n_0),
+        .Q(QDATA_OUT_DELAY_48[15]));
+  FDCE \DELAY_REG_Q_reg[48][1] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .CLR(RESET),
+        .D(DELAY_REG_Q_reg_gate__45_n_0),
+        .Q(QDATA_OUT_DELAY_48[1]));
+  FDCE \DELAY_REG_Q_reg[48][2] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .CLR(RESET),
+        .D(DELAY_REG_Q_reg_gate__44_n_0),
+        .Q(QDATA_OUT_DELAY_48[2]));
+  FDCE \DELAY_REG_Q_reg[48][3] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .CLR(RESET),
+        .D(DELAY_REG_Q_reg_gate__43_n_0),
+        .Q(QDATA_OUT_DELAY_48[3]));
+  FDCE \DELAY_REG_Q_reg[48][4] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .CLR(RESET),
+        .D(DELAY_REG_Q_reg_gate__42_n_0),
+        .Q(QDATA_OUT_DELAY_48[4]));
+  FDCE \DELAY_REG_Q_reg[48][5] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .CLR(RESET),
+        .D(DELAY_REG_Q_reg_gate__41_n_0),
+        .Q(QDATA_OUT_DELAY_48[5]));
+  FDCE \DELAY_REG_Q_reg[48][6] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .CLR(RESET),
+        .D(DELAY_REG_Q_reg_gate__40_n_0),
+        .Q(QDATA_OUT_DELAY_48[6]));
+  FDCE \DELAY_REG_Q_reg[48][7] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .CLR(RESET),
+        .D(DELAY_REG_Q_reg_gate__39_n_0),
+        .Q(QDATA_OUT_DELAY_48[7]));
+  FDCE \DELAY_REG_Q_reg[48][8] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .CLR(RESET),
+        .D(DELAY_REG_Q_reg_gate__38_n_0),
+        .Q(QDATA_OUT_DELAY_48[8]));
+  FDCE \DELAY_REG_Q_reg[48][9] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .CLR(RESET),
+        .D(DELAY_REG_Q_reg_gate__37_n_0),
+        .Q(QDATA_OUT_DELAY_48[9]));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][0]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[62][0]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(QDATA_OUT_DELAY_48[0]),
+        .Q(\DELAY_REG_Q_reg[62][0]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][10]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[62][10]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(QDATA_OUT_DELAY_48[10]),
+        .Q(\DELAY_REG_Q_reg[62][10]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][11]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[62][11]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(QDATA_OUT_DELAY_48[11]),
+        .Q(\DELAY_REG_Q_reg[62][11]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][12]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[62][12]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(QDATA_OUT_DELAY_48[12]),
+        .Q(\DELAY_REG_Q_reg[62][12]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][13]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[62][13]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(QDATA_OUT_DELAY_48[13]),
+        .Q(\DELAY_REG_Q_reg[62][13]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][14]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[62][14]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(QDATA_OUT_DELAY_48[14]),
+        .Q(\DELAY_REG_Q_reg[62][14]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][15]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[62][15]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(QDATA_OUT_DELAY_48[15]),
+        .Q(\DELAY_REG_Q_reg[62][15]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][1]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[62][1]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(QDATA_OUT_DELAY_48[1]),
+        .Q(\DELAY_REG_Q_reg[62][1]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][2]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[62][2]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(QDATA_OUT_DELAY_48[2]),
+        .Q(\DELAY_REG_Q_reg[62][2]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][3]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[62][3]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(QDATA_OUT_DELAY_48[3]),
+        .Q(\DELAY_REG_Q_reg[62][3]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][4]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[62][4]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(QDATA_OUT_DELAY_48[4]),
+        .Q(\DELAY_REG_Q_reg[62][4]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][5]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[62][5]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(QDATA_OUT_DELAY_48[5]),
+        .Q(\DELAY_REG_Q_reg[62][5]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][6]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[62][6]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(QDATA_OUT_DELAY_48[6]),
+        .Q(\DELAY_REG_Q_reg[62][6]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][7]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[62][7]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(QDATA_OUT_DELAY_48[7]),
+        .Q(\DELAY_REG_Q_reg[62][7]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][8]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[62][8]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(QDATA_OUT_DELAY_48[8]),
+        .Q(\DELAY_REG_Q_reg[62][8]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][9]_srl14_U0_DELAY_REG_I_reg_c_12 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[62][9]_srl14_U0_DELAY_REG_I_reg_c_12 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(QDATA_OUT_DELAY_48[9]),
+        .Q(\DELAY_REG_Q_reg[62][9]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ));
+  FDRE \DELAY_REG_Q_reg[63][0]_U0_DELAY_REG_I_reg_c_13 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_Q_reg[62][0]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_Q_reg[63][0]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .R(1'b0));
+  FDRE \DELAY_REG_Q_reg[63][10]_U0_DELAY_REG_I_reg_c_13 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_Q_reg[62][10]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_Q_reg[63][10]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .R(1'b0));
+  FDRE \DELAY_REG_Q_reg[63][11]_U0_DELAY_REG_I_reg_c_13 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_Q_reg[62][11]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_Q_reg[63][11]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .R(1'b0));
+  FDRE \DELAY_REG_Q_reg[63][12]_U0_DELAY_REG_I_reg_c_13 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_Q_reg[62][12]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_Q_reg[63][12]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .R(1'b0));
+  FDRE \DELAY_REG_Q_reg[63][13]_U0_DELAY_REG_I_reg_c_13 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_Q_reg[62][13]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_Q_reg[63][13]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .R(1'b0));
+  FDRE \DELAY_REG_Q_reg[63][14]_U0_DELAY_REG_I_reg_c_13 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_Q_reg[62][14]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_Q_reg[63][14]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .R(1'b0));
+  FDRE \DELAY_REG_Q_reg[63][15]_U0_DELAY_REG_I_reg_c_13 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_Q_reg[62][15]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_Q_reg[63][15]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .R(1'b0));
+  FDRE \DELAY_REG_Q_reg[63][1]_U0_DELAY_REG_I_reg_c_13 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_Q_reg[62][1]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_Q_reg[63][1]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .R(1'b0));
+  FDRE \DELAY_REG_Q_reg[63][2]_U0_DELAY_REG_I_reg_c_13 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_Q_reg[62][2]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_Q_reg[63][2]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .R(1'b0));
+  FDRE \DELAY_REG_Q_reg[63][3]_U0_DELAY_REG_I_reg_c_13 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_Q_reg[62][3]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_Q_reg[63][3]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .R(1'b0));
+  FDRE \DELAY_REG_Q_reg[63][4]_U0_DELAY_REG_I_reg_c_13 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_Q_reg[62][4]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_Q_reg[63][4]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .R(1'b0));
+  FDRE \DELAY_REG_Q_reg[63][5]_U0_DELAY_REG_I_reg_c_13 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_Q_reg[62][5]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_Q_reg[63][5]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .R(1'b0));
+  FDRE \DELAY_REG_Q_reg[63][6]_U0_DELAY_REG_I_reg_c_13 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_Q_reg[62][6]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_Q_reg[63][6]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .R(1'b0));
+  FDRE \DELAY_REG_Q_reg[63][7]_U0_DELAY_REG_I_reg_c_13 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_Q_reg[62][7]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_Q_reg[63][7]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .R(1'b0));
+  FDRE \DELAY_REG_Q_reg[63][8]_U0_DELAY_REG_I_reg_c_13 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_Q_reg[62][8]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_Q_reg[63][8]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .R(1'b0));
+  FDRE \DELAY_REG_Q_reg[63][9]_U0_DELAY_REG_I_reg_c_13 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_Q_reg[62][9]_srl14_U0_DELAY_REG_I_reg_c_12_n_0 ),
+        .Q(\DELAY_REG_Q_reg[63][9]_U0_DELAY_REG_I_reg_c_13_n_0 ),
         .R(1'b0));
   (* SOFT_HLUTNM = "soft_lutpair8" *) 
   LUT2 #(
@@ -3589,64 +4533,64 @@ module block_design_0_data_delay_0_0_data_delay
   LUT2 #(
     .INIT(4'h8)) 
     DELAY_REG_Q_reg_gate__31
-       (.I0(\DELAY_REG_Q_reg[63][15]_U0_DELAY_REG_I_reg_c_29_n_0 ),
-        .I1(DELAY_REG_I_reg_c_29_n_0),
+       (.I0(\DELAY_REG_Q_reg[47][15]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
         .O(DELAY_REG_Q_reg_gate__31_n_0));
   (* SOFT_HLUTNM = "soft_lutpair40" *) 
   LUT2 #(
     .INIT(4'h8)) 
     DELAY_REG_Q_reg_gate__32
-       (.I0(\DELAY_REG_Q_reg[63][14]_U0_DELAY_REG_I_reg_c_29_n_0 ),
-        .I1(DELAY_REG_I_reg_c_29_n_0),
+       (.I0(\DELAY_REG_Q_reg[47][14]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
         .O(DELAY_REG_Q_reg_gate__32_n_0));
   (* SOFT_HLUTNM = "soft_lutpair41" *) 
   LUT2 #(
     .INIT(4'h8)) 
     DELAY_REG_Q_reg_gate__33
-       (.I0(\DELAY_REG_Q_reg[63][13]_U0_DELAY_REG_I_reg_c_29_n_0 ),
-        .I1(DELAY_REG_I_reg_c_29_n_0),
+       (.I0(\DELAY_REG_Q_reg[47][13]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
         .O(DELAY_REG_Q_reg_gate__33_n_0));
   (* SOFT_HLUTNM = "soft_lutpair41" *) 
   LUT2 #(
     .INIT(4'h8)) 
     DELAY_REG_Q_reg_gate__34
-       (.I0(\DELAY_REG_Q_reg[63][12]_U0_DELAY_REG_I_reg_c_29_n_0 ),
-        .I1(DELAY_REG_I_reg_c_29_n_0),
+       (.I0(\DELAY_REG_Q_reg[47][12]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
         .O(DELAY_REG_Q_reg_gate__34_n_0));
   (* SOFT_HLUTNM = "soft_lutpair42" *) 
   LUT2 #(
     .INIT(4'h8)) 
     DELAY_REG_Q_reg_gate__35
-       (.I0(\DELAY_REG_Q_reg[63][11]_U0_DELAY_REG_I_reg_c_29_n_0 ),
-        .I1(DELAY_REG_I_reg_c_29_n_0),
+       (.I0(\DELAY_REG_Q_reg[47][11]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
         .O(DELAY_REG_Q_reg_gate__35_n_0));
   (* SOFT_HLUTNM = "soft_lutpair42" *) 
   LUT2 #(
     .INIT(4'h8)) 
     DELAY_REG_Q_reg_gate__36
-       (.I0(\DELAY_REG_Q_reg[63][10]_U0_DELAY_REG_I_reg_c_29_n_0 ),
-        .I1(DELAY_REG_I_reg_c_29_n_0),
+       (.I0(\DELAY_REG_Q_reg[47][10]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
         .O(DELAY_REG_Q_reg_gate__36_n_0));
   (* SOFT_HLUTNM = "soft_lutpair43" *) 
   LUT2 #(
     .INIT(4'h8)) 
     DELAY_REG_Q_reg_gate__37
-       (.I0(\DELAY_REG_Q_reg[63][9]_U0_DELAY_REG_I_reg_c_29_n_0 ),
-        .I1(DELAY_REG_I_reg_c_29_n_0),
+       (.I0(\DELAY_REG_Q_reg[47][9]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
         .O(DELAY_REG_Q_reg_gate__37_n_0));
   (* SOFT_HLUTNM = "soft_lutpair43" *) 
   LUT2 #(
     .INIT(4'h8)) 
     DELAY_REG_Q_reg_gate__38
-       (.I0(\DELAY_REG_Q_reg[63][8]_U0_DELAY_REG_I_reg_c_29_n_0 ),
-        .I1(DELAY_REG_I_reg_c_29_n_0),
+       (.I0(\DELAY_REG_Q_reg[47][8]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
         .O(DELAY_REG_Q_reg_gate__38_n_0));
   (* SOFT_HLUTNM = "soft_lutpair44" *) 
   LUT2 #(
     .INIT(4'h8)) 
     DELAY_REG_Q_reg_gate__39
-       (.I0(\DELAY_REG_Q_reg[63][7]_U0_DELAY_REG_I_reg_c_29_n_0 ),
-        .I1(DELAY_REG_I_reg_c_29_n_0),
+       (.I0(\DELAY_REG_Q_reg[47][7]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
         .O(DELAY_REG_Q_reg_gate__39_n_0));
   (* SOFT_HLUTNM = "soft_lutpair10" *) 
   LUT2 #(
@@ -3659,51 +4603,72 @@ module block_design_0_data_delay_0_0_data_delay
   LUT2 #(
     .INIT(4'h8)) 
     DELAY_REG_Q_reg_gate__40
-       (.I0(\DELAY_REG_Q_reg[63][6]_U0_DELAY_REG_I_reg_c_29_n_0 ),
-        .I1(DELAY_REG_I_reg_c_29_n_0),
+       (.I0(\DELAY_REG_Q_reg[47][6]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
         .O(DELAY_REG_Q_reg_gate__40_n_0));
   (* SOFT_HLUTNM = "soft_lutpair45" *) 
   LUT2 #(
     .INIT(4'h8)) 
     DELAY_REG_Q_reg_gate__41
-       (.I0(\DELAY_REG_Q_reg[63][5]_U0_DELAY_REG_I_reg_c_29_n_0 ),
-        .I1(DELAY_REG_I_reg_c_29_n_0),
+       (.I0(\DELAY_REG_Q_reg[47][5]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
         .O(DELAY_REG_Q_reg_gate__41_n_0));
   (* SOFT_HLUTNM = "soft_lutpair45" *) 
   LUT2 #(
     .INIT(4'h8)) 
     DELAY_REG_Q_reg_gate__42
-       (.I0(\DELAY_REG_Q_reg[63][4]_U0_DELAY_REG_I_reg_c_29_n_0 ),
-        .I1(DELAY_REG_I_reg_c_29_n_0),
+       (.I0(\DELAY_REG_Q_reg[47][4]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
         .O(DELAY_REG_Q_reg_gate__42_n_0));
   (* SOFT_HLUTNM = "soft_lutpair46" *) 
   LUT2 #(
     .INIT(4'h8)) 
     DELAY_REG_Q_reg_gate__43
-       (.I0(\DELAY_REG_Q_reg[63][3]_U0_DELAY_REG_I_reg_c_29_n_0 ),
-        .I1(DELAY_REG_I_reg_c_29_n_0),
+       (.I0(\DELAY_REG_Q_reg[47][3]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
         .O(DELAY_REG_Q_reg_gate__43_n_0));
   (* SOFT_HLUTNM = "soft_lutpair46" *) 
   LUT2 #(
     .INIT(4'h8)) 
     DELAY_REG_Q_reg_gate__44
-       (.I0(\DELAY_REG_Q_reg[63][2]_U0_DELAY_REG_I_reg_c_29_n_0 ),
-        .I1(DELAY_REG_I_reg_c_29_n_0),
+       (.I0(\DELAY_REG_Q_reg[47][2]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
         .O(DELAY_REG_Q_reg_gate__44_n_0));
   (* SOFT_HLUTNM = "soft_lutpair47" *) 
   LUT2 #(
     .INIT(4'h8)) 
     DELAY_REG_Q_reg_gate__45
-       (.I0(\DELAY_REG_Q_reg[63][1]_U0_DELAY_REG_I_reg_c_29_n_0 ),
-        .I1(DELAY_REG_I_reg_c_29_n_0),
+       (.I0(\DELAY_REG_Q_reg[47][1]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
         .O(DELAY_REG_Q_reg_gate__45_n_0));
   (* SOFT_HLUTNM = "soft_lutpair47" *) 
   LUT2 #(
     .INIT(4'h8)) 
     DELAY_REG_Q_reg_gate__46
-       (.I0(\DELAY_REG_Q_reg[63][0]_U0_DELAY_REG_I_reg_c_29_n_0 ),
-        .I1(DELAY_REG_I_reg_c_29_n_0),
+       (.I0(\DELAY_REG_Q_reg[47][0]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
         .O(DELAY_REG_Q_reg_gate__46_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair56" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    DELAY_REG_Q_reg_gate__47
+       (.I0(\DELAY_REG_Q_reg[63][15]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
+        .O(DELAY_REG_Q_reg_gate__47_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair56" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    DELAY_REG_Q_reg_gate__48
+       (.I0(\DELAY_REG_Q_reg[63][14]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
+        .O(DELAY_REG_Q_reg_gate__48_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair57" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    DELAY_REG_Q_reg_gate__49
+       (.I0(\DELAY_REG_Q_reg[63][13]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
+        .O(DELAY_REG_Q_reg_gate__49_n_0));
   (* SOFT_HLUTNM = "soft_lutpair11" *) 
   LUT2 #(
     .INIT(4'h8)) 
@@ -3711,6 +4676,76 @@ module block_design_0_data_delay_0_0_data_delay
        (.I0(\DELAY_REG_Q_reg[15][9]_U0_DELAY_REG_I_reg_c_13_n_0 ),
         .I1(DELAY_REG_I_reg_c_13_n_0),
         .O(DELAY_REG_Q_reg_gate__5_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair57" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    DELAY_REG_Q_reg_gate__50
+       (.I0(\DELAY_REG_Q_reg[63][12]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
+        .O(DELAY_REG_Q_reg_gate__50_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair58" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    DELAY_REG_Q_reg_gate__51
+       (.I0(\DELAY_REG_Q_reg[63][11]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
+        .O(DELAY_REG_Q_reg_gate__51_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair58" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    DELAY_REG_Q_reg_gate__52
+       (.I0(\DELAY_REG_Q_reg[63][10]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
+        .O(DELAY_REG_Q_reg_gate__52_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair59" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    DELAY_REG_Q_reg_gate__53
+       (.I0(\DELAY_REG_Q_reg[63][9]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
+        .O(DELAY_REG_Q_reg_gate__53_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair59" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    DELAY_REG_Q_reg_gate__54
+       (.I0(\DELAY_REG_Q_reg[63][8]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
+        .O(DELAY_REG_Q_reg_gate__54_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair60" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    DELAY_REG_Q_reg_gate__55
+       (.I0(\DELAY_REG_Q_reg[63][7]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
+        .O(DELAY_REG_Q_reg_gate__55_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair60" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    DELAY_REG_Q_reg_gate__56
+       (.I0(\DELAY_REG_Q_reg[63][6]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
+        .O(DELAY_REG_Q_reg_gate__56_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair61" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    DELAY_REG_Q_reg_gate__57
+       (.I0(\DELAY_REG_Q_reg[63][5]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
+        .O(DELAY_REG_Q_reg_gate__57_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair61" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    DELAY_REG_Q_reg_gate__58
+       (.I0(\DELAY_REG_Q_reg[63][4]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
+        .O(DELAY_REG_Q_reg_gate__58_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair62" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    DELAY_REG_Q_reg_gate__59
+       (.I0(\DELAY_REG_Q_reg[63][3]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
+        .O(DELAY_REG_Q_reg_gate__59_n_0));
   (* SOFT_HLUTNM = "soft_lutpair11" *) 
   LUT2 #(
     .INIT(4'h8)) 
@@ -3718,6 +4753,27 @@ module block_design_0_data_delay_0_0_data_delay
        (.I0(\DELAY_REG_Q_reg[15][8]_U0_DELAY_REG_I_reg_c_13_n_0 ),
         .I1(DELAY_REG_I_reg_c_13_n_0),
         .O(DELAY_REG_Q_reg_gate__6_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair62" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    DELAY_REG_Q_reg_gate__60
+       (.I0(\DELAY_REG_Q_reg[63][2]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
+        .O(DELAY_REG_Q_reg_gate__60_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair63" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    DELAY_REG_Q_reg_gate__61
+       (.I0(\DELAY_REG_Q_reg[63][1]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
+        .O(DELAY_REG_Q_reg_gate__61_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair63" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    DELAY_REG_Q_reg_gate__62
+       (.I0(\DELAY_REG_Q_reg[63][0]_U0_DELAY_REG_I_reg_c_13_n_0 ),
+        .I1(DELAY_REG_I_reg_c_13_n_0),
+        .O(DELAY_REG_Q_reg_gate__62_n_0));
   (* SOFT_HLUTNM = "soft_lutpair12" *) 
   LUT2 #(
     .INIT(4'h8)) 
@@ -3743,193 +4799,193 @@ module block_design_0_data_delay_0_0_data_delay
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
         .CLR(RESET),
-        .D(DELAY_REG_I_reg_gate__46_n_0),
+        .D(DELAY_REG_I_reg_gate__62_n_0),
         .Q(IDATA_OUT_DELAY_64[0]));
   FDCE \IDATA_OUT_DELAY_64_reg[10] 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
         .CLR(RESET),
-        .D(DELAY_REG_I_reg_gate__36_n_0),
+        .D(DELAY_REG_I_reg_gate__52_n_0),
         .Q(IDATA_OUT_DELAY_64[10]));
   FDCE \IDATA_OUT_DELAY_64_reg[11] 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
         .CLR(RESET),
-        .D(DELAY_REG_I_reg_gate__35_n_0),
+        .D(DELAY_REG_I_reg_gate__51_n_0),
         .Q(IDATA_OUT_DELAY_64[11]));
   FDCE \IDATA_OUT_DELAY_64_reg[12] 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
         .CLR(RESET),
-        .D(DELAY_REG_I_reg_gate__34_n_0),
+        .D(DELAY_REG_I_reg_gate__50_n_0),
         .Q(IDATA_OUT_DELAY_64[12]));
   FDCE \IDATA_OUT_DELAY_64_reg[13] 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
         .CLR(RESET),
-        .D(DELAY_REG_I_reg_gate__33_n_0),
+        .D(DELAY_REG_I_reg_gate__49_n_0),
         .Q(IDATA_OUT_DELAY_64[13]));
   FDCE \IDATA_OUT_DELAY_64_reg[14] 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
         .CLR(RESET),
-        .D(DELAY_REG_I_reg_gate__32_n_0),
+        .D(DELAY_REG_I_reg_gate__48_n_0),
         .Q(IDATA_OUT_DELAY_64[14]));
   FDCE \IDATA_OUT_DELAY_64_reg[15] 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
         .CLR(RESET),
-        .D(DELAY_REG_I_reg_gate__31_n_0),
+        .D(DELAY_REG_I_reg_gate__47_n_0),
         .Q(IDATA_OUT_DELAY_64[15]));
   FDCE \IDATA_OUT_DELAY_64_reg[1] 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
         .CLR(RESET),
-        .D(DELAY_REG_I_reg_gate__45_n_0),
+        .D(DELAY_REG_I_reg_gate__61_n_0),
         .Q(IDATA_OUT_DELAY_64[1]));
   FDCE \IDATA_OUT_DELAY_64_reg[2] 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
         .CLR(RESET),
-        .D(DELAY_REG_I_reg_gate__44_n_0),
+        .D(DELAY_REG_I_reg_gate__60_n_0),
         .Q(IDATA_OUT_DELAY_64[2]));
   FDCE \IDATA_OUT_DELAY_64_reg[3] 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
         .CLR(RESET),
-        .D(DELAY_REG_I_reg_gate__43_n_0),
+        .D(DELAY_REG_I_reg_gate__59_n_0),
         .Q(IDATA_OUT_DELAY_64[3]));
   FDCE \IDATA_OUT_DELAY_64_reg[4] 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
         .CLR(RESET),
-        .D(DELAY_REG_I_reg_gate__42_n_0),
+        .D(DELAY_REG_I_reg_gate__58_n_0),
         .Q(IDATA_OUT_DELAY_64[4]));
   FDCE \IDATA_OUT_DELAY_64_reg[5] 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
         .CLR(RESET),
-        .D(DELAY_REG_I_reg_gate__41_n_0),
+        .D(DELAY_REG_I_reg_gate__57_n_0),
         .Q(IDATA_OUT_DELAY_64[5]));
   FDCE \IDATA_OUT_DELAY_64_reg[6] 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
         .CLR(RESET),
-        .D(DELAY_REG_I_reg_gate__40_n_0),
+        .D(DELAY_REG_I_reg_gate__56_n_0),
         .Q(IDATA_OUT_DELAY_64[6]));
   FDCE \IDATA_OUT_DELAY_64_reg[7] 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
         .CLR(RESET),
-        .D(DELAY_REG_I_reg_gate__39_n_0),
+        .D(DELAY_REG_I_reg_gate__55_n_0),
         .Q(IDATA_OUT_DELAY_64[7]));
   FDCE \IDATA_OUT_DELAY_64_reg[8] 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
         .CLR(RESET),
-        .D(DELAY_REG_I_reg_gate__38_n_0),
+        .D(DELAY_REG_I_reg_gate__54_n_0),
         .Q(IDATA_OUT_DELAY_64[8]));
   FDCE \IDATA_OUT_DELAY_64_reg[9] 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
         .CLR(RESET),
-        .D(DELAY_REG_I_reg_gate__37_n_0),
+        .D(DELAY_REG_I_reg_gate__53_n_0),
         .Q(IDATA_OUT_DELAY_64[9]));
   FDCE \QDATA_OUT_DELAY_64_reg[0] 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
         .CLR(RESET),
-        .D(DELAY_REG_Q_reg_gate__46_n_0),
+        .D(DELAY_REG_Q_reg_gate__62_n_0),
         .Q(QDATA_OUT_DELAY_64[0]));
   FDCE \QDATA_OUT_DELAY_64_reg[10] 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
         .CLR(RESET),
-        .D(DELAY_REG_Q_reg_gate__36_n_0),
+        .D(DELAY_REG_Q_reg_gate__52_n_0),
         .Q(QDATA_OUT_DELAY_64[10]));
   FDCE \QDATA_OUT_DELAY_64_reg[11] 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
         .CLR(RESET),
-        .D(DELAY_REG_Q_reg_gate__35_n_0),
+        .D(DELAY_REG_Q_reg_gate__51_n_0),
         .Q(QDATA_OUT_DELAY_64[11]));
   FDCE \QDATA_OUT_DELAY_64_reg[12] 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
         .CLR(RESET),
-        .D(DELAY_REG_Q_reg_gate__34_n_0),
+        .D(DELAY_REG_Q_reg_gate__50_n_0),
         .Q(QDATA_OUT_DELAY_64[12]));
   FDCE \QDATA_OUT_DELAY_64_reg[13] 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
         .CLR(RESET),
-        .D(DELAY_REG_Q_reg_gate__33_n_0),
+        .D(DELAY_REG_Q_reg_gate__49_n_0),
         .Q(QDATA_OUT_DELAY_64[13]));
   FDCE \QDATA_OUT_DELAY_64_reg[14] 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
         .CLR(RESET),
-        .D(DELAY_REG_Q_reg_gate__32_n_0),
+        .D(DELAY_REG_Q_reg_gate__48_n_0),
         .Q(QDATA_OUT_DELAY_64[14]));
   FDCE \QDATA_OUT_DELAY_64_reg[15] 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
         .CLR(RESET),
-        .D(DELAY_REG_Q_reg_gate__31_n_0),
+        .D(DELAY_REG_Q_reg_gate__47_n_0),
         .Q(QDATA_OUT_DELAY_64[15]));
   FDCE \QDATA_OUT_DELAY_64_reg[1] 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
         .CLR(RESET),
-        .D(DELAY_REG_Q_reg_gate__45_n_0),
+        .D(DELAY_REG_Q_reg_gate__61_n_0),
         .Q(QDATA_OUT_DELAY_64[1]));
   FDCE \QDATA_OUT_DELAY_64_reg[2] 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
         .CLR(RESET),
-        .D(DELAY_REG_Q_reg_gate__44_n_0),
+        .D(DELAY_REG_Q_reg_gate__60_n_0),
         .Q(QDATA_OUT_DELAY_64[2]));
   FDCE \QDATA_OUT_DELAY_64_reg[3] 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
         .CLR(RESET),
-        .D(DELAY_REG_Q_reg_gate__43_n_0),
+        .D(DELAY_REG_Q_reg_gate__59_n_0),
         .Q(QDATA_OUT_DELAY_64[3]));
   FDCE \QDATA_OUT_DELAY_64_reg[4] 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
         .CLR(RESET),
-        .D(DELAY_REG_Q_reg_gate__42_n_0),
+        .D(DELAY_REG_Q_reg_gate__58_n_0),
         .Q(QDATA_OUT_DELAY_64[4]));
   FDCE \QDATA_OUT_DELAY_64_reg[5] 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
         .CLR(RESET),
-        .D(DELAY_REG_Q_reg_gate__41_n_0),
+        .D(DELAY_REG_Q_reg_gate__57_n_0),
         .Q(QDATA_OUT_DELAY_64[5]));
   FDCE \QDATA_OUT_DELAY_64_reg[6] 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
         .CLR(RESET),
-        .D(DELAY_REG_Q_reg_gate__40_n_0),
+        .D(DELAY_REG_Q_reg_gate__56_n_0),
         .Q(QDATA_OUT_DELAY_64[6]));
   FDCE \QDATA_OUT_DELAY_64_reg[7] 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
         .CLR(RESET),
-        .D(DELAY_REG_Q_reg_gate__39_n_0),
+        .D(DELAY_REG_Q_reg_gate__55_n_0),
         .Q(QDATA_OUT_DELAY_64[7]));
   FDCE \QDATA_OUT_DELAY_64_reg[8] 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
         .CLR(RESET),
-        .D(DELAY_REG_Q_reg_gate__38_n_0),
+        .D(DELAY_REG_Q_reg_gate__54_n_0),
         .Q(QDATA_OUT_DELAY_64[8]));
   FDCE \QDATA_OUT_DELAY_64_reg[9] 
        (.C(CLOCK),
         .CE(DATA_IN_STROBE),
         .CLR(RESET),
-        .D(DELAY_REG_Q_reg_gate__37_n_0),
+        .D(DELAY_REG_Q_reg_gate__53_n_0),
         .Q(QDATA_OUT_DELAY_64[9]));
 endmodule
 `ifndef GLBL
