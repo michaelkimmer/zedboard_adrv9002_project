@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:module_ref:act_power:1.0
--- IP Revision: 1712601685
+-- IP Revision: 1713378738
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;

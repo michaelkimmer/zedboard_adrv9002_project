@@ -15,7 +15,7 @@ use IEEE.NUMERIC_STD.ALL;
 entity Parallel_STS_FIR_Filter is
     Generic (
         INPUT_WIDTH  : integer := 16; 
-        OUTPUT_WIDTH : integer := 20    
+        OUTPUT_WIDTH : integer := 28    
     );
     Port ( 
            RESET    : in std_logic;
@@ -60,9 +60,9 @@ architecture Behavioral of Parallel_STS_FIR_Filter is
 
     
 
-    constant MAC_MULTIPLY_WIDTH : integer := INPUT_WIDTH + 4; -- decrease width after first multiplications to original ?
-    constant MAC_ADDING_WIDTH   : integer := MAC_MULTIPLY_WIDTH + 1; 
-    constant ACCUMULATOR_WIDTH  : integer := MAC_ADDING_WIDTH + 4;  -- Change "+4"==log2(FILTER_TAPS) with new FILTER_TAPS !!
+    constant MAC_MULTIPLY_WIDTH : integer := INPUT_WIDTH + 7; --23b
+    constant MAC_ADDING_WIDTH   : integer := MAC_MULTIPLY_WIDTH + 1; --24b
+    constant ACCUMULATOR_WIDTH  : integer := MAC_ADDING_WIDTH + 4;  -- 28b (added 16 samples --> +4b)
   
     -- Input buffer regs (Timing -- make 1 before each MAC)
     type input_registers is array(0 to FILTER_TAPS-1) of signed(INPUT_WIDTH-1 downto 0);
@@ -167,17 +167,17 @@ begin
                 INPUT_REG_I(i) <= signed(IDATA_IN);  
                 INPUT_REG_Q(i) <= signed(QDATA_IN); 
 
-                -- Multiply input and resize back [16+4b=20b]  -- Note: multiplplying is resized automatically [delay=+1]
+                -- Multiply input and resize back [16+7b=23b]  -- Note: multiplplying is resized automatically [delay=+1]
                 MULT_REG_II(i) <= resize((INPUT_REG_I(i) * COEFFS_I(i)) / 2**((INPUT_WIDTH)+(COEFF_WIDTH-1)-(MAC_MULTIPLY_WIDTH)), MAC_MULTIPLY_WIDTH);
                 MULT_REG_IQ(i) <= resize((INPUT_REG_I(i) * COEFFS_Q(i)) / 2**((INPUT_WIDTH)+(COEFF_WIDTH-1)-(MAC_MULTIPLY_WIDTH)), MAC_MULTIPLY_WIDTH);
                 MULT_REG_QI(i) <= resize((INPUT_REG_Q(i) * COEFFS_I(i)) / 2**((INPUT_WIDTH)+(COEFF_WIDTH-1)-(MAC_MULTIPLY_WIDTH)), MAC_MULTIPLY_WIDTH);
                 MULT_REG_QQ(i) <= resize((INPUT_REG_Q(i) * COEFFS_Q(i)) / 2**((INPUT_WIDTH)+(COEFF_WIDTH-1)-(MAC_MULTIPLY_WIDTH)), MAC_MULTIPLY_WIDTH); 
 
-                -- Add complex multiplies [16+4+1b=21b]  -- Note: Adding needs to be resized manually! [delay=+1]
+                -- Add complex multiplies [23b+1b=24b]  -- Note: Adding needs to be resized manually! [delay=+1]
                 ADD_REG_I(i) <= resize(MULT_REG_II(i), MAC_ADDING_WIDTH) - resize(MULT_REG_QQ(i), MAC_ADDING_WIDTH);
                 ADD_REG_Q(i) <= resize(MULT_REG_IQ(i), MAC_ADDING_WIDTH) + resize(MULT_REG_QI(i), MAC_ADDING_WIDTH);
 
-                -- Add complex Multiplies to accumulators [16+4+1+4b=25b] [delay=+1]
+                -- Add complex Multiplies to accumulators [24b+4b=28b] [delay=+1]
                 if (i < FILTER_TAPS-1) then
                     -- All but oldes samples
                     ACCUMULATOR_I(i) <= ACCUMULATOR_I(i+1) + resize(ADD_REG_I(i), ACCUMULATOR_WIDTH);
@@ -192,12 +192,12 @@ begin
             end loop; 
 
                 -- Compute output power (actual sq. of XCORR amplitude) (+delay accumulator for output) [output 20b] [delay=+2]
-                POWER_II <= resize((ACCUMULATOR_I(0) * ACCUMULATOR_I(0)) / 2**((ACCUMULATOR_WIDTH-1)+(ACCUMULATOR_WIDTH)-(OUTPUT_WIDTH)), OUTPUT_WIDTH);
+                POWER_II <= resize((ACCUMULATOR_I(0) * ACCUMULATOR_I(0)) / 2**((ACCUMULATOR_WIDTH-1)+(ACCUMULATOR_WIDTH)-(OUTPUT_WIDTH)), OUTPUT_WIDTH); -- keep 28b
                 POWER_QQ <= resize((ACCUMULATOR_Q(0) * ACCUMULATOR_Q(0)) / 2**((ACCUMULATOR_WIDTH-1)+(ACCUMULATOR_WIDTH)-(OUTPUT_WIDTH)), OUTPUT_WIDTH);
                 ACCUMULATOR_I_DELAY(1) <= ACCUMULATOR_I(0);
                 ACCUMULATOR_Q_DELAY(1) <= ACCUMULATOR_Q(0);
 
-                POWER <= unsigned(POWER_II) + unsigned(POWER_QQ); -- sign bit is always zero --> unsigned ok [still 20b]
+                POWER <= unsigned(POWER_II) + unsigned(POWER_QQ); -- sign bit is always zero --> unsigned ok [still 28b]
                 ACCUMULATOR_I_DELAY(0) <= ACCUMULATOR_I_DELAY(1);
                 ACCUMULATOR_Q_DELAY(0) <= ACCUMULATOR_Q_DELAY(1);
     

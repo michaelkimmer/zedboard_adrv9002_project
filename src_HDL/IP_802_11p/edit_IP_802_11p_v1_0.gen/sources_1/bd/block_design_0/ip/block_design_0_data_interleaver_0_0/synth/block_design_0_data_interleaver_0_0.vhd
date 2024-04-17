@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:module_ref:data_interleaver:1.0
--- IP Revision: 1712601686
+-- IP Revision: 1713378737
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -89,7 +89,7 @@ ARCHITECTURE block_design_0_data_interleaver_0_0_arch OF block_design_0_data_int
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF block_design_0_data_interleaver_0_0_arch : ARCHITECTURE IS "block_design_0_data_interleaver_0_0,data_interleaver,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF block_design_0_data_interleaver_0_0_arch: ARCHITECTURE IS "block_design_0_data_interleaver_0_0,data_interleaver,{x_ipProduct=Vivado 2023.2.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=data_interleaver,x_ipVersion=1.0,x_ipCoreRevision=1712601686,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,interleave_period=2}";
+  ATTRIBUTE CORE_GENERATION_INFO OF block_design_0_data_interleaver_0_0_arch: ARCHITECTURE IS "block_design_0_data_interleaver_0_0,data_interleaver,{x_ipProduct=Vivado 2023.2.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=data_interleaver,x_ipVersion=1.0,x_ipCoreRevision=1713378737,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,interleave_period=2}";
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
   ATTRIBUTE IP_DEFINITION_SOURCE OF block_design_0_data_interleaver_0_0_arch: ARCHITECTURE IS "module_ref";
   ATTRIBUTE X_INTERFACE_INFO : STRING;

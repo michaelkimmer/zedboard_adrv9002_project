@@ -35,7 +35,7 @@ use IEEE.NUMERIC_STD.ALL;
 entity timing_acquisition_802_11p is
     Generic (
         INPUT_WIDTH  : integer := 16;
-        OUTPUT_WIDTH : integer := 24;
+        OUTPUT_WIDTH : integer := 32;
         OUTPUT_AUTOCORR_WIDTH : integer := 32
     );
     Port(
@@ -82,7 +82,7 @@ architecture Behavioral of timing_acquisition_802_11p is
     component Parallel_STS_FIR_Filter is
         Generic (
             INPUT_WIDTH  : integer := INPUT_WIDTH;  -- 16
-            OUTPUT_WIDTH : integer := FIR_WIDTH     -- 20
+            OUTPUT_WIDTH : integer := FIR_WIDTH     -- 28
         );
         Port ( 
                RESET    : in std_logic;
@@ -113,7 +113,7 @@ architecture Behavioral of timing_acquisition_802_11p is
 
     -- Buffer for adding power from STSs
     constant STS_REG_LENGTH       : integer := (STS_REPETITIONS-1) * STS_PERIOD + 1; -- after last adding -- only one register !
-    constant STS_REG_WIDTH : integer := OUTPUT_WIDTH; -- (== FIR_WIDTH + 4, == 24)
+    constant STS_REG_WIDTH : integer := OUTPUT_WIDTH; -- (== FIR_WIDTH + 4 == OUTPUT_WIDTH, == 32)
     type shift_register_t is array (0 to STS_REG_LENGTH-1) of unsigned(STS_REG_WIDTH-1 downto 0);
     signal SHIFT_REGISTER  :  shift_register_t := (others=>(others=>'0'));
 
@@ -257,8 +257,8 @@ begin
 
             elsif rising_edge(CLOCK) then
                 -- rename data to vars
-                VAR_XCORR     := SHIFT_REGISTER(STS_REG_LENGTH-1)(DETECTION_THRESHOLD'LENGTH-1 downto 0);
-                VAR_THRESHOLD := unsigned(DETECTION_THRESHOLD);
+                VAR_XCORR     := SHIFT_REGISTER(STS_REG_LENGTH-1); --32b
+                VAR_THRESHOLD := unsigned(DETECTION_THRESHOLD); --32b
 
                 -- new incomming FIR sample
                 if DATA_FIR_STROBE = '1' then

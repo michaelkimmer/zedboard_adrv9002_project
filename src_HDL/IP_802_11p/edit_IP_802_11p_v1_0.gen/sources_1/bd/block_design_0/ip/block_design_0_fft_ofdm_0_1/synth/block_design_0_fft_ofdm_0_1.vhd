@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:module_ref:fft_ofdm:1.0
--- IP Revision: 1712935385
+-- IP Revision: 1713378740
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -118,7 +118,7 @@ ARCHITECTURE block_design_0_fft_ofdm_0_1_arch OF block_design_0_fft_ofdm_0_1 IS
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF block_design_0_fft_ofdm_0_1_arch : ARCHITECTURE IS "block_design_0_fft_ofdm_0_1,fft_ofdm,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF block_design_0_fft_ofdm_0_1_arch: ARCHITECTURE IS "block_design_0_fft_ofdm_0_1,fft_ofdm,{x_ipProduct=Vivado 2023.2.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=fft_ofdm,x_ipVersion=1.0,x_ipCoreRevision=1712935385,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
+  ATTRIBUTE CORE_GENERATION_INFO OF block_design_0_fft_ofdm_0_1_arch: ARCHITECTURE IS "block_design_0_fft_ofdm_0_1,fft_ofdm,{x_ipProduct=Vivado 2023.2.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=fft_ofdm,x_ipVersion=1.0,x_ipCoreRevision=1713378740,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
   ATTRIBUTE IP_DEFINITION_SOURCE OF block_design_0_fft_ofdm_0_1_arch: ARCHITECTURE IS "module_ref";
   ATTRIBUTE X_INTERFACE_INFO : STRING;

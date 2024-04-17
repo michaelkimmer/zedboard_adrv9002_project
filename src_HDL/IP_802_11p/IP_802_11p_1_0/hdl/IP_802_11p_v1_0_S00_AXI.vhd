@@ -643,7 +643,7 @@ architecture arch_imp of IP_802_11p_v1_0_S00_AXI is
 	component block_design_0_wrapper is
 		port (
         CLOCK : in STD_LOGIC;
-		DETECTION_THRESHOLD : in STD_LOGIC_VECTOR ( 23 downto 0 );
+		DETECTION_THRESHOLD : in STD_LOGIC_VECTOR ( 31 downto 0 );
         POWER : out STD_LOGIC_VECTOR ( 7 downto 0 );
         RESET : in STD_LOGIC;
         RX_CLOCK : in STD_LOGIC;
@@ -8584,7 +8584,7 @@ begin
 	block_design_0_wrapper_inst : block_design_0_wrapper
 	port map (
 	    RESET				 => slv_reg0(0), 		   -- RESET from slv_reg0 !!
-		DETECTION_THRESHOLD  => slv_reg1(23 downto 0), -- DETECTION_THRESHOLD from slv_reg1 !!
+		DETECTION_THRESHOLD  => slv_reg1(31 downto 0), -- DETECTION_THRESHOLD from slv_reg1 !!
 		SELECT_AXI_REGS_MODE => slv_reg2(7 downto 0),
 
 		CLOCK => CLOCK, 

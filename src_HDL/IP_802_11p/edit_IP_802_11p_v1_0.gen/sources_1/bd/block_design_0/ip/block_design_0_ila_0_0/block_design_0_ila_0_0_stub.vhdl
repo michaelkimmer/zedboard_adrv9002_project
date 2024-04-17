@@ -2,10 +2,10 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
--- Date        : Tue Apr 16 17:33:03 2024
+-- Date        : Wed Apr 17 20:38:31 2024
 -- Host        : lab817_01 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub -rename_top block_design_0_ila_0_0 -prefix
---               block_design_0_ila_0_0_ block_design_0_ila_0_0_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub
+--               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_ila_0_0/block_design_0_ila_0_0_stub.vhdl
 -- Design      : block_design_0_ila_0_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7z020clg484-1
@@ -24,8 +24,8 @@ entity block_design_0_ila_0_0 is
     probe5 : in STD_LOGIC_VECTOR ( 7 downto 0 );
     probe6 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe7 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe8 : in STD_LOGIC_VECTOR ( 23 downto 0 );
-    probe9 : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    probe8 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    probe9 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe10 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe11 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe12 : in STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -57,7 +57,7 @@ architecture stub of block_design_0_ila_0_0 is
 attribute syn_black_box : boolean;
 attribute black_box_pad_pin : string;
 attribute syn_black_box of stub : architecture is true;
-attribute black_box_pad_pin of stub : architecture is "clk,probe0[0:0],probe1[15:0],probe2[15:0],probe3[15:0],probe4[15:0],probe5[7:0],probe6[0:0],probe7[0:0],probe8[23:0],probe9[23:0],probe10[0:0],probe11[31:0],probe12[31:0],probe13[0:0],probe14[19:0],probe15[0:0],probe16[0:0],probe17[15:0],probe18[15:0],probe19[0:0],probe20[0:0],probe21[23:0],probe22[23:0],probe23[0:0],probe24[0:0],probe25[0:0],probe26[0:0],probe27[0:0],probe28[0:0],probe29[0:0],probe30[0:0],probe31[23:0],probe32[23:0]";
+attribute black_box_pad_pin of stub : architecture is "clk,probe0[0:0],probe1[15:0],probe2[15:0],probe3[15:0],probe4[15:0],probe5[7:0],probe6[0:0],probe7[0:0],probe8[31:0],probe9[31:0],probe10[0:0],probe11[31:0],probe12[31:0],probe13[0:0],probe14[19:0],probe15[0:0],probe16[0:0],probe17[15:0],probe18[15:0],probe19[0:0],probe20[0:0],probe21[23:0],probe22[23:0],probe23[0:0],probe24[0:0],probe25[0:0],probe26[0:0],probe27[0:0],probe28[0:0],probe29[0:0],probe30[0:0],probe31[23:0],probe32[23:0]";
 attribute x_core_info : string;
 attribute x_core_info of stub : architecture is "ila,Vivado 2023.2.2";
 begin

@@ -2,8 +2,8 @@
 --Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
---Date        : Wed Apr 17 00:59:33 2024
---Host        : ASUS_ROG running 64-bit major release  (build 9200)
+--Date        : Wed Apr 17 20:35:57 2024
+--Host        : lab817_01 running 64-bit major release  (build 9200)
 --Command     : generate_target block_design_0.bd
 --Design      : block_design_0
 --Purpose     : IP block netlist
@@ -657,7 +657,7 @@ use UNISIM.VCOMPONENTS.ALL;
 entity block_design_0 is
   port (
     CLOCK : in STD_LOGIC;
-    DETECTION_THRESHOLD : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    DETECTION_THRESHOLD : in STD_LOGIC_VECTOR ( 31 downto 0 );
     FPGA_REG_WRITE_ADDRESS : out STD_LOGIC_VECTOR ( 8 downto 0 );
     FPGA_REG_WRITE_DATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
     FPGA_REG_WRITE_STROBE : out STD_LOGIC;
@@ -750,11 +750,11 @@ architecture STRUCTURE of block_design_0 is
     QDATA_DELAY_48 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     IDATA_DELAY_64 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     QDATA_DELAY_64 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    DETECTION_THRESHOLD : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    DETECTION_THRESHOLD : in STD_LOGIC_VECTOR ( 31 downto 0 );
     DETECTION_STROBE : out STD_LOGIC;
     DETECTION_SIGNAL_DETECTED : out STD_LOGIC;
-    DETECTION_XCORR : out STD_LOGIC_VECTOR ( 23 downto 0 );
-    CONTINUOUS_XCORR : out STD_LOGIC_VECTOR ( 23 downto 0 );
+    DETECTION_XCORR : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    CONTINUOUS_XCORR : out STD_LOGIC_VECTOR ( 31 downto 0 );
     DETECTION_STS_AUTOCORR_I : out STD_LOGIC_VECTOR ( 31 downto 0 );
     DETECTION_STS_AUTOCORR_Q : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
@@ -770,8 +770,8 @@ architecture STRUCTURE of block_design_0 is
     probe5 : in STD_LOGIC_VECTOR ( 7 downto 0 );
     probe6 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe7 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe8 : in STD_LOGIC_VECTOR ( 23 downto 0 );
-    probe9 : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    probe8 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    probe9 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe10 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe11 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe12 : in STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -890,7 +890,7 @@ architecture STRUCTURE of block_design_0 is
   );
   end component block_design_0_constellation_tracker_0_0;
   signal CLOCK_0_1 : STD_LOGIC;
-  signal DETECTION_THRESHOLD_0_1 : STD_LOGIC_VECTOR ( 23 downto 0 );
+  signal DETECTION_THRESHOLD_0_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal RESET_0_1 : STD_LOGIC;
   signal RX_CLOCK_0_1 : STD_LOGIC;
   signal RX_ENABLE_0_1 : STD_LOGIC;
@@ -972,12 +972,12 @@ architecture STRUCTURE of block_design_0 is
   signal rx_clock_domain_cros_0_DATA_STROBE : STD_LOGIC;
   signal rx_clock_domain_cros_0_IDATA : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal rx_clock_domain_cros_0_QDATA : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal timing_acquisition_8_0_CONTINUOUS_XCORR : STD_LOGIC_VECTOR ( 23 downto 0 );
+  signal timing_acquisition_8_0_CONTINUOUS_XCORR : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED : STD_LOGIC;
   signal timing_acquisition_8_0_DETECTION_STROBE : STD_LOGIC;
   signal timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal timing_acquisition_8_0_DETECTION_XCORR : STD_LOGIC_VECTOR ( 23 downto 0 );
+  signal timing_acquisition_8_0_DETECTION_XCORR : STD_LOGIC_VECTOR ( 31 downto 0 );
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of CLOCK : signal is "xilinx.com:signal:clock:1.0 CLK.CLOCK CLK";
   attribute X_INTERFACE_PARAMETER : string;
@@ -990,7 +990,7 @@ architecture STRUCTURE of block_design_0 is
   attribute X_INTERFACE_PARAMETER of RX_RESET : signal is "XIL_INTERFACENAME RST.RX_RESET, INSERT_VIP 0, POLARITY ACTIVE_LOW";
 begin
   CLOCK_0_1 <= CLOCK;
-  DETECTION_THRESHOLD_0_1(23 downto 0) <= DETECTION_THRESHOLD(23 downto 0);
+  DETECTION_THRESHOLD_0_1(31 downto 0) <= DETECTION_THRESHOLD(31 downto 0);
   FPGA_REG_WRITE_ADDRESS(8 downto 0) <= receiver_802_11p_0_FPGA_REG_WRITE_ADDRESS(8 downto 0);
   FPGA_REG_WRITE_DATA(31 downto 0) <= axi_regs_mux_0_FPGA_REG_WRITE_DATA(31 downto 0);
   FPGA_REG_WRITE_STROBE <= axi_regs_mux_0_FPGA_REG_WRITE_STROBE;
@@ -1235,8 +1235,8 @@ ila_0: component block_design_0_ila_0_0
       probe5(7 downto 0) => act_power_0_POWER(7 downto 0),
       probe6(0) => timing_acquisition_8_0_DETECTION_STROBE,
       probe7(0) => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
-      probe8(23 downto 0) => timing_acquisition_8_0_DETECTION_XCORR(23 downto 0),
-      probe9(23 downto 0) => timing_acquisition_8_0_CONTINUOUS_XCORR(23 downto 0)
+      probe8(31 downto 0) => timing_acquisition_8_0_DETECTION_XCORR(31 downto 0),
+      probe9(31 downto 0) => timing_acquisition_8_0_CONTINUOUS_XCORR(31 downto 0)
     );
 rx_clock_domain_cros_0: component block_design_0_rx_clock_domain_cros_0_0
      port map (
@@ -1255,14 +1255,14 @@ rx_clock_domain_cros_0: component block_design_0_rx_clock_domain_cros_0_0
 timing_acquisition_8_0: component block_design_0_timing_acquisition_8_0_0
      port map (
       CLOCK => CLOCK_0_1,
-      CONTINUOUS_XCORR(23 downto 0) => timing_acquisition_8_0_CONTINUOUS_XCORR(23 downto 0),
+      CONTINUOUS_XCORR(31 downto 0) => timing_acquisition_8_0_CONTINUOUS_XCORR(31 downto 0),
       DATA_STROBE => data_delay_0_DATA_OUT_STROBE,
       DETECTION_SIGNAL_DETECTED => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
       DETECTION_STROBE => timing_acquisition_8_0_DETECTION_STROBE,
       DETECTION_STS_AUTOCORR_I(31 downto 0) => timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I(31 downto 0),
       DETECTION_STS_AUTOCORR_Q(31 downto 0) => timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q(31 downto 0),
-      DETECTION_THRESHOLD(23 downto 0) => DETECTION_THRESHOLD_0_1(23 downto 0),
-      DETECTION_XCORR(23 downto 0) => timing_acquisition_8_0_DETECTION_XCORR(23 downto 0),
+      DETECTION_THRESHOLD(31 downto 0) => DETECTION_THRESHOLD_0_1(31 downto 0),
+      DETECTION_XCORR(31 downto 0) => timing_acquisition_8_0_DETECTION_XCORR(31 downto 0),
       IDATA(15 downto 0) => data_delay_0_IDATA_OUT(15 downto 0),
       IDATA_DELAY_16(15 downto 0) => data_delay_0_IDATA_OUT_DELAY_16(15 downto 0),
       IDATA_DELAY_32(15 downto 0) => data_delay_0_IDATA_OUT_DELAY_32(15 downto 0),

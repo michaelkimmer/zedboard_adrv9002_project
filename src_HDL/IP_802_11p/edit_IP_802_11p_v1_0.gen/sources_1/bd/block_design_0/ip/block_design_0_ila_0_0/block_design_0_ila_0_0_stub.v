@@ -2,10 +2,10 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-// Date        : Tue Apr 16 17:33:03 2024
+// Date        : Wed Apr 17 20:38:31 2024
 // Host        : lab817_01 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub -rename_top block_design_0_ila_0_0 -prefix
-//               block_design_0_ila_0_0_ block_design_0_ila_0_0_stub.v
+// Command     : write_verilog -force -mode synth_stub
+//               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_ila_0_0/block_design_0_ila_0_0_stub.v
 // Design      : block_design_0_ila_0_0
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7z020clg484-1
@@ -19,7 +19,7 @@ module block_design_0_ila_0_0(clk, probe0, probe1, probe2, probe3, probe4, probe
   probe6, probe7, probe8, probe9, probe10, probe11, probe12, probe13, probe14, probe15, probe16, probe17, 
   probe18, probe19, probe20, probe21, probe22, probe23, probe24, probe25, probe26, probe27, probe28, 
   probe29, probe30, probe31, probe32)
-/* synthesis syn_black_box black_box_pad_pin="probe0[0:0],probe1[15:0],probe2[15:0],probe3[15:0],probe4[15:0],probe5[7:0],probe6[0:0],probe7[0:0],probe8[23:0],probe9[23:0],probe10[0:0],probe11[31:0],probe12[31:0],probe13[0:0],probe14[19:0],probe15[0:0],probe16[0:0],probe17[15:0],probe18[15:0],probe19[0:0],probe20[0:0],probe21[23:0],probe22[23:0],probe23[0:0],probe24[0:0],probe25[0:0],probe26[0:0],probe27[0:0],probe28[0:0],probe29[0:0],probe30[0:0],probe31[23:0],probe32[23:0]" */
+/* synthesis syn_black_box black_box_pad_pin="probe0[0:0],probe1[15:0],probe2[15:0],probe3[15:0],probe4[15:0],probe5[7:0],probe6[0:0],probe7[0:0],probe8[31:0],probe9[31:0],probe10[0:0],probe11[31:0],probe12[31:0],probe13[0:0],probe14[19:0],probe15[0:0],probe16[0:0],probe17[15:0],probe18[15:0],probe19[0:0],probe20[0:0],probe21[23:0],probe22[23:0],probe23[0:0],probe24[0:0],probe25[0:0],probe26[0:0],probe27[0:0],probe28[0:0],probe29[0:0],probe30[0:0],probe31[23:0],probe32[23:0]" */
 /* synthesis syn_force_seq_prim="clk" */;
   input clk /* synthesis syn_isclock = 1 */;
   input [0:0]probe0;
@@ -30,8 +30,8 @@ module block_design_0_ila_0_0(clk, probe0, probe1, probe2, probe3, probe4, probe
   input [7:0]probe5;
   input [0:0]probe6;
   input [0:0]probe7;
-  input [23:0]probe8;
-  input [23:0]probe9;
+  input [31:0]probe8;
+  input [31:0]probe9;
   input [0:0]probe10;
   input [31:0]probe11;
   input [31:0]probe12;

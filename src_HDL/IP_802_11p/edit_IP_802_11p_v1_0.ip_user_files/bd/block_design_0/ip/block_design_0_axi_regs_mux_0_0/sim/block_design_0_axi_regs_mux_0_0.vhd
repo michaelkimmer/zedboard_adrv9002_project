@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:module_ref:axi_regs_mux:1.0
--- IP Revision: 1713291591
+-- IP Revision: 1713378742
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
