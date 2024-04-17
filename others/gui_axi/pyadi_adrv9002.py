@@ -27,7 +27,7 @@ sdr_adrv9002.tx_cyclic_buffer = False
 sdr_adrv9002.tx_cyclic_buffer = True
 
 ## sdr_adrv9002.tx0_lo = 2400e6 # ADI error (wrong implementation) !!
-fc = 2.4e9
+fc = 5.9e9
 sdr_adrv9002._set_iio_attr("altvoltage2", "TX1_LO_frequency", True, str(round(fc)))
 
 

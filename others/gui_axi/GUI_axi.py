@@ -190,7 +190,7 @@ class Settings_Tab(ttk.Frame):
         
         # Transmitter control
         num_interf = 3
-        self.interferences = self.build_transmitting(root)
+        self.transmitting = self.build_transmitting(root)
         
         # log
         self.log = self.build_log()
@@ -324,10 +324,12 @@ class Settings_Tab(ttk.Frame):
                         combobox['values'] = ["RX calibrated", "RX primed", "RX rf_enabled"]
                     else:
                         combobox['values'] = ["TX calibrated", "TX primed", "TX rf_enabled"]
+                    # combobox.current(0)
                     # combobox.set(combobox['values'][1]) 
                     # selected_interference.set(combobox['values'][0])
                     # Use then: combobox.get()
                     comboboxes.append(combobox)
+
 
                 elif btn_idx < len(self.buttons_matrix_names) and self.buttons_matrix_names[btn_idx] is not None:
                     button = tk.Button(buttonframe, text=self.buttons_matrix_names[btn_idx], command=lambda root=root, idx=btn_idx: self.buttons_matrix_button_clicked(root, idx))
@@ -353,47 +355,51 @@ class Settings_Tab(ttk.Frame):
 
         self.act_row += 1
 
-        # build TX Control
 
-        interference_lines = []
-        # input_fields = []
-        for i_line in range(3):
+        ## build TX Control
 
-            # Checkbutton
-            CheckVar = tk.IntVar()
-            checkbutton = tk.Checkbutton(self, text = str(i_line), variable = CheckVar, onvalue = 1, offvalue = 0, height=1, command=lambda root=root, idx=i_line: self.interferences_checkbutton_clicked(root, idx)) 
-            checkbutton.grid(row=i_line+self.act_row, column=0, columnspan=1, padx=5, pady=5, sticky="W") 
+        # Frame for buttons
+        buttonframe = tk.Frame(self)
+        buttonframe.grid(row=self.act_row, column=0, columnspan=1, padx=5, pady=5, sticky="W") 
 
-            
-            
-            # build a combobox
-            selected_interference = tk.StringVar()
-            combobox = ttk.Combobox(self, textvariable=selected_interference) #postcommand executes before opening
-            combobox.grid(row=i_line+self.act_row, column=1, columnspan=1, padx=5, pady=5)
-            combobox['state'] = 'readonly' # prevent typing a value
-            combobox['values'] = ["Tone"]
-            combobox.current(0) # set default value
-            # build input_fields
-            input_field0 = PlaceholderEntry_withValues(self, placeholder="Freq from Center [Hz]", val_range=[-(2**23)* 9.6e6/2**24, 9.6e6/2**24, 2**24])
-            input_field0.grid(row=i_line+self.act_row, column=2, padx=5, pady=5)
-            input_field1 = PlaceholderEntry_withValues(self, placeholder="Amplitude [dBFS]", dB_bool=True, val_range=[0, 1, 2**15])
-            input_field1.grid(row=i_line+self.act_row, column=3, padx=5, pady=5)
-            input_field2 = PlaceholderEntry_withValues(self, placeholder="Phase [deg]", val_range=[0, 0.5, 360*2])
-            input_field2.grid(row=i_line+self.act_row, column=4, columnspan=2, padx=5, pady=5)
-       
-            
-            interference_line = (CheckVar, checkbutton, selected_interference, combobox, input_field0, input_field1, input_field2) #then use CheckVar.get()
-            interference_lines.append(interference_line)
-            
-        interferences = Group_wrapper()
-        interferences.description_label = description_label
-        interferences.input_fields = interference_lines
+        # Checkbutton
+        CheckVar = tk.IntVar()
+        checkbutton = tk.Checkbutton(buttonframe, text = "TX Periodically", variable = CheckVar, onvalue = 1, offvalue = 0, height=1, command=lambda root=root: self.transmitting_checkbutton_clicked(root)) 
+        checkbutton.grid(row=self.act_row, column=0, columnspan=1, padx=5, pady=5, sticky="W") 
+
+        # TX Once button
+        button = tk.Button(buttonframe, text=f"TX Once", command=lambda root=root: self.transmitting_button_clicked(root))
+        button.grid(row=self.act_row, column=1, columnspan=1, padx=5, pady=5, sticky="WE") 
         
-        self.act_row += 3
+        
+        # build a combobox
+        selected_interference = tk.StringVar()
+        combobox = ttk.Combobox(self, textvariable=selected_interference) #postcommand executes before opening
+        combobox.grid(row=self.act_row, column=1, columnspan=1, padx=5, pady=5)
+        combobox['state'] = 'readonly' # prevent typing a value
+        combobox['values'] = ["Tone", "BPSK buffer", "16-QAM buffer", "BPSK buffer (4 symbols)", "16-QAM buffer (4 symbols)"]
+        combobox.current(0) # set default value
+        # build input_fields
+        input_field0 = PlaceholderEntry_withValues(self, placeholder="Freq from Center [Hz]", val_range=[-3e6, 1, 2*(3e6)+1])
+        input_field0.grid(row=self.act_row, column=2, padx=5, pady=5)
+        input_field1 = PlaceholderEntry_withValues(self, placeholder="Amplitude [dBFS]", dB_bool=True, val_range=[0, 1, 2**15])
+        input_field1.grid(row=self.act_row, column=3, padx=5, pady=5)
+    
+        
+        transmitting_line = [CheckVar, checkbutton, button, selected_interference, combobox, input_field0, input_field1] #then use CheckVar.get()
 
-        return interferences
+
+        self.act_row += 1
+            
+        transmitting = Group_wrapper()
+        transmitting.description_label = description_label
+        transmitting.input_fields = transmitting_line
+        
+        
+        return transmitting
     
     
+
     def build_log(self):        
         description_label = tk.Label(self, text="Log:", font=("Helvetica", 12))
         description_label.grid(row=self.act_row, column=0, columnspan=1, padx=5, pady=5, sticky="WN") 
@@ -422,13 +428,13 @@ class Settings_Tab(ttk.Frame):
         return log
     
 
-    ################# Channel Tab Callback methods ################
+    ################# Settings Tab Callback methods ################
 
     # Connect IIO? 
     def connect_iio_button_clicked(self, root):
 
             try:
-                root.iio_context = adi.adrv9002(uri="ip:analog.local")
+                root.iio_context = adi.adrv9002(uri="ip:192.168.1.12") # uri="ip:192.168.1.12", uri="ip:analog.local"
             except:
                 self.log_write_line("IIO connection to ADRV9002 Failed (Context couldn't be created) !")
                 self.connection_indicator.description_labels[0].config(text = "Connection IIO: Failed")
@@ -459,24 +465,14 @@ class Settings_Tab(ttk.Frame):
                 self.connection_indicator.description_labels[1].config(text = "Connection AXI: Connected")
             
 
-
-
-
-
-    # Clear log
-    def log_clear_button_clicked(self):
-        self.log.value_labels.config(state=tk.NORMAL)
-        self.log.value_labels.delete('1.0', tk.END)
-        self.log.value_labels.config(state=tk.DISABLED) 
-
    
     # buttons_matrix_button_clicked
     def buttons_matrix_button_clicked(self, root, btn_idx):
         
         # Load Stream and Profile
         if btn_idx == 0:
-            stream = './stream_1.bin'
-            profile = './profile_1.json'
+            stream = './data/stream_1.bin'
+            profile = './data/profile_1.json'
             try:
                 # Check connection + (if not -- try to connect first) 
                 if root.iio_context is None:
@@ -502,6 +498,7 @@ class Settings_Tab(ttk.Frame):
 
 
 
+    # Select ADRV9002 state -- comboboxes
     def state_combobox_update(self, event, idx):
         combobox = self.buttons_matrix.input_fields[idx]
         value = combobox.get()
@@ -535,75 +532,6 @@ class Settings_Tab(ttk.Frame):
             self.log_write_line(f"State change -- {value}: OK")
 
             
-          
-
-
-    # interferences_checkbutton_clicked
-    def interferences_checkbutton_clicked(self, root, idx):
-        idx_hex_str = f"0{hex(idx)[2:]}"[-2:]
-        action = self.interferences.input_fields[idx][0].get() #activate/deactivate
-        interference_type = self.interferences.input_fields[idx][2].get() #can be used later !!
-
-
-        if action:
-            
-            # send parameters about the interference and turn it ON
-
-            #confirm the entries (the last changed can be not refreshed)
-            for entry in (self.interferences.input_fields[idx][i] for i in range(4,7)):
-                entry._add_placeholder(None)
-            #check validity of entries
-            if None in (self.interferences.input_fields[idx][i].act_val_int for i in range(4,7)):
-                self.log_write_line("Fill all entries with numbers !")
-                self.interferences.input_fields[idx][0].set(0) # uncheck the checkbutton
-                return
-            
-            # make VHDL parameters format !
-            freq = self.interferences.input_fields[idx][4].act_val_int
-            amplitude = self.interferences.input_fields[idx][5].act_val_int
-            phase = self.interferences.input_fields[idx][6].act_val_int
-
-
-            # conversion
-            freq = freq - 2**23
-            if freq < 0:
-                #make 2nd complement somehow
-                freq = 2**24 + freq
-            amplitude = amplitude
-            phase = phase/2 * 2**24 // 360
-
-            #ints
-            freq = int(freq)
-            amplitude = int(amplitude)
-            phase = int(phase)
-            
-            #strings
-            freq_hex_str = f"00000{hex(freq)[2:]}"[-6:]
-            amplitude_hex_str = f"00000{hex(amplitude)[2:]}"[-6:]
-            phase_hex_str = f"00000{hex(phase)[2:]}"[-6:]
-
-
-            # lock parameters
-            for i in range(3, 7):
-                self.interferences.input_fields[idx][i].config(state= tk.DISABLED)
-
-
-
-        # (dis-)appear overflow label
-        amplitudessum = 0
-        for i in range(3):
-            checked, amplitude = self.interferences.input_fields[i][0].get(), self.interferences.input_fields[i][5].act_val_int
-            if checked and amplitude is not None:
-                amplitudessum += amplitude #integer OK
-                
-        if amplitudessum < 2**15 * 10**(-5/20): # x <= -5dBFS
-            self.interferences.value_labels.configure(text="Selected combination of interferences and multipaths amplitudes is OK", fg="light gray")
-        elif amplitudessum < 2**15: # x > -5dBFS, x < 0dBFS
-            self.interferences.value_labels.configure(text="Selected combination of amplitudes can cause nonlinearities! (signal can exceed -5 dBFS)", fg="grey")
-        else: # x >= 0dBFS -- overflow!
-            self.interferences.value_labels.configure(text="Selected combination of amplitudes can cause overflow!", fg="#FF0000") # red
-        
-
         
     # input_fields_matrix button clicked
     def input_fields_matrix_button_clicked(self, root, idx):
@@ -673,6 +601,150 @@ class Settings_Tab(ttk.Frame):
                 
 
 
+    # transmitting_kbutton_clicked -- TX Once
+    def transmitting_button_clicked(self, root, cyclic=False):
+        #confirm the entries (the last changed can be not refreshed)
+        for entry in (self.transmitting.input_fields[i] for i in [5,6]):
+            entry._add_placeholder(None)
+
+        # Get action params
+        checkbutton_val = self.transmitting.input_fields[0].get() #activate/deactivate
+        tx_type = self.transmitting.input_fields[3].get() 
+
+        # Stop TX first
+        if checkbutton_val and cyclic is False:
+            self.log_write_line("Stop TX first !")
+            return -1
+        
+        # Get TX params
+        freq_shift = self.transmitting.input_fields[5].act_val_int
+        amplitude = self.transmitting.input_fields[6].act_val_int
+
+        # Check integers !!!!!!
+        try:
+            freq_shift = int(freq_shift) - 3e6 #norm
+            amplitude = int(amplitude)
+        except:
+            self.log_write_line("Fill entry with integer !")
+            return -1
+
+
+        # Destroy and Set IIO buffer
+        try:
+            root.iio_context.tx_destroy_buffer()
+            root.iio_context.disable_dds() # DDS is turned on after destroying cyclic buffer !!
+        except:
+            return -1
+            
+        try:
+            fs = int(root.iio_context.rx0_sample_rate)
+
+            if cyclic:
+                root.iio_context.tx_cyclic_buffer = True
+            else:
+                root.iio_context.tx_cyclic_buffer = False
+        except:
+            self.log_write_line("Setting (non-)cyclic IIO buffer error !")
+            return -1
+            
+        # Generate IQ samples
+        if tx_type == "Tone":
+            N_iq = 2**22
+            iq = np.ones((N_iq))
+
+        elif tx_type == "BPSK buffer":
+            filename = "./data/signals/signal_802_11p_DATARATE6_j.txt"
+            iq = np.loadtxt(filename, dtype=np.complex128)
+            iq = np.concatenate((iq, np.zeros(iq.shape))) # pad with zeros
+            if fs == 20000000:
+                iq = np.repeat(iq, 2) #Bad sampling freq (20e6 instead of 10e6)
+
+        elif tx_type == "16-QAM buffer":
+            filename = "./data/signals/signal_802_11p_DATARATE36_j.txt"
+            iq = np.loadtxt(filename, dtype=np.complex128)
+            iq = np.concatenate((iq, np.zeros(iq.shape))) # pad with zeros
+            if fs == 20000000:
+                iq = np.repeat(iq, 2) #Bad sampling freq (20e6 instead of 10e6)
+
+        elif tx_type == "BPSK buffer (4 symbols)":
+            filename = "./data/signals/signal_802_11p_DATARATE6_j.txt"
+            sampes_num = 320+4*80
+            iq = np.loadtxt(filename, dtype=np.complex128)
+            iq = np.concatenate((iq[0:sampes_num], np.zeros((sampes_num)))) # pad with zeros
+            if fs == 20000000:
+                iq = np.repeat(iq, 2) #Bad sampling freq (20e6 instead of 10e6)
+                
+        elif tx_type == "16-QAM buffer (4 symbols)":
+            filename = "./data/signals/signal_802_11p_DATARATE36_j.txt"
+            sampes_num = 320+4*80
+            iq = np.loadtxt(filename, dtype=np.complex128)
+            iq = np.concatenate((iq[0:sampes_num], np.zeros((sampes_num)))) # pad with zeros
+            if fs == 20000000:
+                iq = np.repeat(iq, 2) #Bad sampling freq (20e6 instead of 10e6)
+                
+        else:
+            self.log_write_line("Not supported type of data !")
+            return -1
+        
+
+        # Freq shift
+        ts = 1 / float(fs)
+        t = np.arange(0, iq.shape[0] * ts, ts)
+        iq = iq * np.exp(1j * 2 * np.pi * t * freq_shift)
+
+        # Change amplitude
+        max_val = np.max(np.abs(iq))
+        iq = iq / max_val * (amplitude/2**15) * (2**15 - 1) 
+
+
+        # Send data
+        try:
+            root.iio_context.tx(iq)
+        except:
+            self.log_write_line("TX error !")
+            return -1
+        
+        # All OK
+        return 0
+        
+
+ 
+    # transmitting_checkbutton_clicked -- TX Periodically
+    def transmitting_checkbutton_clicked(self, root):
+        #confirm the entries (the last changed can be not refreshed)
+        for entry in (self.transmitting.input_fields[i] for i in [5,6]):
+            entry._add_placeholder(None)
+
+        # Get action params
+        checkbutton_val = self.transmitting.input_fields[0].get() #activate/deactivate
+
+
+        if checkbutton_val:
+            # start TX
+            error = self.transmitting_button_clicked(root, cyclic=True)
+            if error:
+                checkbutton_val = self.transmitting.input_fields[0].set(0)
+                return
+            
+            # lock parameters
+            for i in [4,5,6]:
+                self.transmitting.input_fields[i].config(state= tk.DISABLED)
+
+        else:
+            # End TX
+            try:
+                root.iio_context.tx_destroy_buffer()
+                root.iio_context.disable_dds() # DDS is turned on after destroying cyclic buffer !!
+            except:
+                self.log_write_line("Couldn't destroy IIO buffer !")
+                return
+
+            # unlock parameters
+            for i in [4,5,6]:
+                self.transmitting.input_fields[i].config(state= tk.NORMAL)
+
+
+
 
 
     # Other buttons (not assigned)
@@ -684,6 +756,12 @@ class Settings_Tab(ttk.Frame):
 
 
     ################## Other methods ##################
+    # Clear log
+    def log_clear_button_clicked(self):
+        self.log.value_labels.config(state=tk.NORMAL)
+        self.log.value_labels.delete('1.0', tk.END)
+        self.log.value_labels.config(state=tk.DISABLED) 
+
     #write to log
     def log_write_line(self, line):
         self.log.value_labels.config(state=tk.NORMAL)
