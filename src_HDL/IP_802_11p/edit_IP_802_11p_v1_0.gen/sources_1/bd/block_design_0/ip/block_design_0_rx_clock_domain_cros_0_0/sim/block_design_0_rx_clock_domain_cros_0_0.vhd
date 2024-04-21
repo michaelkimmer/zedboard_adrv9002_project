@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:module_ref:rx_clock_domain_crossing:1.0
--- IP Revision: 1713692825
+-- IP Revision: 1713734471
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;

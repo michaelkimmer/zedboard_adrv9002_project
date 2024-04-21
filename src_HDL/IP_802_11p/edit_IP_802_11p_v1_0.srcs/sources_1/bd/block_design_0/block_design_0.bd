@@ -178,7 +178,7 @@
     "components": {
       "rx_clock_domain_cros_0": {
         "vlnv": "xilinx.com:module_ref:rx_clock_domain_crossing:1.0",
-        "ip_revision": "1713692825",
+        "ip_revision": "1713734471",
         "xci_name": "block_design_0_rx_clock_domain_cros_0_0",
         "xci_path": "ip\\block_design_0_rx_clock_domain_cros_0_0\\block_design_0_rx_clock_domain_cros_0_0.xci",
         "inst_hier_path": "rx_clock_domain_cros_0",
@@ -467,7 +467,7 @@
       },
       "timing_acquisition_8_0": {
         "vlnv": "xilinx.com:module_ref:timing_acquisition_802_11p:1.0",
-        "ip_revision": "1713692835",
+        "ip_revision": "1713734474",
         "xci_name": "block_design_0_timing_acquisition_8_0_0",
         "xci_path": "ip\\block_design_0_timing_acquisition_8_0_0\\block_design_0_timing_acquisition_8_0_0.xci",
         "inst_hier_path": "timing_acquisition_8_0",
@@ -649,7 +649,7 @@
         "components": {
           "fft_ofdm_0": {
             "vlnv": "xilinx.com:module_ref:fft_ofdm:1.0",
-            "ip_revision": "1713692823",
+            "ip_revision": "1713734473",
             "xci_name": "block_design_0_fft_ofdm_0_1",
             "xci_path": "ip\\block_design_0_fft_ofdm_0_1\\block_design_0_fft_ofdm_0_1.xci",
             "inst_hier_path": "hier_fft_ofdm/fft_ofdm_0",
@@ -1644,7 +1644,7 @@
         "components": {
           "rotation_block_0": {
             "vlnv": "xilinx.com:module_ref:rotation_block:1.0",
-            "ip_revision": "1713692837",
+            "ip_revision": "1713734475",
             "xci_name": "block_design_0_rotation_block_0_0",
             "xci_path": "ip\\block_design_0_rotation_block_0_0\\block_design_0_rotation_block_0_0.xci",
             "inst_hier_path": "hier_rotation/rotation_block_0",
@@ -2199,7 +2199,7 @@
       },
       "equalizer_time_frequ_0": {
         "vlnv": "xilinx.com:module_ref:equalizer_time_frequency:1.0",
-        "ip_revision": "1713692833",
+        "ip_revision": "1713734472",
         "xci_name": "block_design_0_equalizer_time_frequ_0_0",
         "xci_path": "ip\\block_design_0_equalizer_time_frequ_0_0\\block_design_0_equalizer_time_frequ_0_0.xci",
         "inst_hier_path": "equalizer_time_frequ_0",
@@ -2996,7 +2996,7 @@
           },
           "rotation_constellati_0": {
             "vlnv": "xilinx.com:module_ref:rotation_constellation_block:1.0",
-            "ip_revision": "1713692839",
+            "ip_revision": "1713734477",
             "xci_name": "block_design_0_rotation_constellati_0_0",
             "xci_path": "ip\\block_design_0_rotation_constellati_0_0\\block_design_0_rotation_constellati_0_0.xci",
             "inst_hier_path": "hier_rotation_constellation/rotation_constellati_0",
@@ -3590,7 +3590,7 @@
       },
       "demapper_0": {
         "vlnv": "xilinx.com:module_ref:demapper:1.0",
-        "ip_revision": "1713706939",
+        "ip_revision": "1713734470",
         "xci_name": "block_design_0_demapper_0_0",
         "xci_path": "ip\\block_design_0_demapper_0_0\\block_design_0_demapper_0_0.xci",
         "inst_hier_path": "demapper_0",
@@ -3673,15 +3673,15 @@
           "ila_0/clk",
           "hier_atan_constellation/CLOCK",
           "hier_rotation_constellation/CLOCK",
-          "rx_clock_domain_cros_0/CLOCK",
           "data_interleaver_0/CLOCK",
           "axi_regs_mux_0/CLOCK",
           "data_delay_0/CLOCK",
           "act_power_0/CLOCK",
-          "equalizer_time_frequ_0/CLOCK",
-          "timing_acquisition_8_0/CLOCK",
           "constellation_tracker_0/CLOCK",
-          "demapper_0/CLOCK"
+          "demapper_0/CLOCK",
+          "rx_clock_domain_cros_0/CLOCK",
+          "equalizer_time_frequ_0/CLOCK",
+          "timing_acquisition_8_0/CLOCK"
         ]
       },
       "DETECTION_THRESHOLD_0_1": {
@@ -3698,15 +3698,15 @@
           "hier_rotation/RESET",
           "hier_atan_constellation/RESET",
           "hier_rotation_constellation/RESET",
-          "rx_clock_domain_cros_0/RESET",
           "data_interleaver_0/RESET",
           "axi_regs_mux_0/RESET",
           "data_delay_0/RESET",
           "act_power_0/RESET",
-          "equalizer_time_frequ_0/RESET",
-          "timing_acquisition_8_0/RESET",
           "constellation_tracker_0/RESET",
-          "demapper_0/RESET"
+          "demapper_0/RESET",
+          "rx_clock_domain_cros_0/RESET",
+          "equalizer_time_frequ_0/RESET",
+          "timing_acquisition_8_0/RESET"
         ]
       },
       "RX_CLOCK_0_1": {
