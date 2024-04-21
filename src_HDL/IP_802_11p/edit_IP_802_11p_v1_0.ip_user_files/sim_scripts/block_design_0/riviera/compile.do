@@ -121,6 +121,7 @@ vcom -work xil_defaultlib -93  -incr \
 "../../../bd/block_design_0/ip/block_design_0_cordic_0_3/sim/block_design_0_cordic_0_3.vhd" \
 "../../../bd/block_design_0/ip/block_design_0_rotation_constellati_0_0/sim/block_design_0_rotation_constellati_0_0.vhd" \
 "../../../bd/block_design_0/ip/block_design_0_constellation_tracker_0_0/sim/block_design_0_constellation_tracker_0_0.vhd" \
+"../../../bd/block_design_0/ip/block_design_0_demapper_0_0/sim/block_design_0_demapper_0_0.vhd" \
 "../../../bd/block_design_0/sim/block_design_0.vhd" \
 
 vlog -work xil_defaultlib \

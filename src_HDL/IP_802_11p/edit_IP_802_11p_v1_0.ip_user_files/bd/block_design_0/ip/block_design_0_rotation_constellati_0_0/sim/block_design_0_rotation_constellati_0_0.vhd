@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:module_ref:rotation_constellation_block:1.0
--- IP Revision: 1713378743
+-- IP Revision: 1713692839
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;

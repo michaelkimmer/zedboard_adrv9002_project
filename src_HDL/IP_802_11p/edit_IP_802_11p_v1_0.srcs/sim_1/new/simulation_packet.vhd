@@ -47,7 +47,7 @@ architecture Behavioral of simulation_packet is
       component block_design_0_wrapper is
         port (
           CLOCK : in STD_LOGIC;
-          DETECTION_THRESHOLD : in STD_LOGIC_VECTOR ( 23 downto 0 );
+          DETECTION_THRESHOLD : in STD_LOGIC_VECTOR ( 31 downto 0 );
           FPGA_REG_WRITE_ADDRESS : out STD_LOGIC_VECTOR ( 8 downto 0 );
           FPGA_REG_WRITE_DATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
           FPGA_REG_WRITE_STROBE : out STD_LOGIC;
@@ -88,7 +88,7 @@ begin
         RESET          => RESET,
         CLOCK          => CLOCK,
     
-        DETECTION_THRESHOLD => std_logic_vector(to_unsigned(1024, 24)),
+        DETECTION_THRESHOLD => std_logic_vector(to_unsigned(10000, 32)),
         -- FPGA_REG_WRITE_ADDRESS : out STD_LOGIC_VECTOR ( 8 downto 0 );
         -- FPGA_REG_WRITE_DATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
         -- FPGA_REG_WRITE_STROBE : out STD_LOGIC;
