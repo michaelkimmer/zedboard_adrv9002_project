@@ -2,7 +2,7 @@
 --Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
---Date        : Sun Apr 21 23:21:41 2024
+--Date        : Mon Apr 22 16:09:09 2024
 --Host        : ASUS_ROG running 64-bit major release  (build 9200)
 --Command     : generate_target block_design_0.bd
 --Design      : block_design_0
@@ -732,6 +732,7 @@ architecture STRUCTURE of block_design_0 is
     IDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
     QDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
     DATA_STROBE : in STD_LOGIC;
+    POWER_STROBE : out STD_LOGIC;
     POWER : out STD_LOGIC_VECTOR ( 7 downto 0 )
   );
   end component block_design_0_act_power_0_0;
@@ -770,36 +771,7 @@ architecture STRUCTURE of block_design_0 is
     probe5 : in STD_LOGIC_VECTOR ( 7 downto 0 );
     probe6 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe7 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe8 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    probe9 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    probe10 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe11 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    probe12 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    probe13 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe14 : in STD_LOGIC_VECTOR ( 19 downto 0 );
-    probe15 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe16 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe17 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe18 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe19 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe20 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe21 : in STD_LOGIC_VECTOR ( 23 downto 0 );
-    probe22 : in STD_LOGIC_VECTOR ( 23 downto 0 );
-    probe23 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe24 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe25 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe26 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe27 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe28 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe29 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe30 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe31 : in STD_LOGIC_VECTOR ( 23 downto 0 );
-    probe32 : in STD_LOGIC_VECTOR ( 23 downto 0 );
-    probe33 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe34 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe35 : in STD_LOGIC_VECTOR ( 51 downto 0 );
-    probe36 : in STD_LOGIC_VECTOR ( 103 downto 0 );
-    probe37 : in STD_LOGIC_VECTOR ( 207 downto 0 )
+    probe8 : in STD_LOGIC_VECTOR ( 51 downto 0 )
   );
   end component block_design_0_ila_0_0;
   component block_design_0_equalizer_time_frequ_0_0 is
@@ -950,9 +922,7 @@ architecture STRUCTURE of block_design_0 is
   signal data_interleaver_0_DATA_OUT_STROBE : STD_LOGIC;
   signal data_interleaver_0_IDATA_OUT : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal data_interleaver_0_QDATA_OUT : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal demapper_0_DEMAPPING_16QAM : STD_LOGIC_VECTOR ( 207 downto 0 );
   signal demapper_0_DEMAPPING_BPSK : STD_LOGIC_VECTOR ( 51 downto 0 );
-  signal demapper_0_DEMAPPING_QPSK : STD_LOGIC_VECTOR ( 103 downto 0 );
   signal demapper_0_DEMAPPING_START_MARKER : STD_LOGIC;
   signal demapper_0_DEMAPPING_STROBE : STD_LOGIC;
   signal equalizer_time_frequ_0_FFT_DATA_IN_FIRST_SYMBOL_MARKER : STD_LOGIC;
@@ -975,10 +945,6 @@ architecture STRUCTURE of block_design_0 is
   signal hier_atan_constellation_ATAN_CONSTELLATION_PHASE_OUT_CNTR : STD_LOGIC_VECTOR ( 5 downto 0 );
   signal hier_atan_constellation_ATAN_CONSTELLATION_PHASE_OUT_STROBE : STD_LOGIC;
   signal hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER : STD_LOGIC;
-  signal hier_fft_ofdm_event_data_in_channel_halt : STD_LOGIC;
-  signal hier_fft_ofdm_event_frame_started : STD_LOGIC;
-  signal hier_fft_ofdm_event_tlast_missing : STD_LOGIC;
-  signal hier_fft_ofdm_event_tlast_unexpected : STD_LOGIC;
   signal hier_rotation_constellation_ROTATION_CONSTELLATION_DATA_OUT_CNTR : STD_LOGIC_VECTOR ( 5 downto 0 );
   signal hier_rotation_constellation_ROTATION_CONSTELLATION_DATA_OUT_STROBE : STD_LOGIC;
   signal hier_rotation_constellation_ROTATION_CONSTELLATION_IDATA_OUT : STD_LOGIC_VECTOR ( 23 downto 0 );
@@ -998,12 +964,19 @@ architecture STRUCTURE of block_design_0 is
   signal rx_clock_domain_cros_0_DATA_STROBE : STD_LOGIC;
   signal rx_clock_domain_cros_0_IDATA : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal rx_clock_domain_cros_0_QDATA : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal timing_acquisition_8_0_CONTINUOUS_XCORR : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED : STD_LOGIC;
   signal timing_acquisition_8_0_DETECTION_STROBE : STD_LOGIC;
   signal timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal timing_acquisition_8_0_DETECTION_XCORR : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal NLW_act_power_0_POWER_STROBE_UNCONNECTED : STD_LOGIC;
+  signal NLW_demapper_0_DEMAPPING_16QAM_UNCONNECTED : STD_LOGIC_VECTOR ( 207 downto 0 );
+  signal NLW_demapper_0_DEMAPPING_QPSK_UNCONNECTED : STD_LOGIC_VECTOR ( 103 downto 0 );
+  signal NLW_hier_fft_ofdm_event_data_in_channel_halt_UNCONNECTED : STD_LOGIC;
+  signal NLW_hier_fft_ofdm_event_frame_started_UNCONNECTED : STD_LOGIC;
+  signal NLW_hier_fft_ofdm_event_tlast_missing_UNCONNECTED : STD_LOGIC;
+  signal NLW_hier_fft_ofdm_event_tlast_unexpected_UNCONNECTED : STD_LOGIC;
+  signal NLW_timing_acquisition_8_0_CONTINUOUS_XCORR_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal NLW_timing_acquisition_8_0_DETECTION_XCORR_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of CLOCK : signal is "xilinx.com:signal:clock:1.0 CLK.CLOCK CLK";
   attribute X_INTERFACE_PARAMETER : string;
@@ -1035,6 +1008,7 @@ act_power_0: component block_design_0_act_power_0_0
       DATA_STROBE => data_delay_0_DATA_OUT_STROBE,
       IDATA(15 downto 0) => data_delay_0_IDATA_OUT(15 downto 0),
       POWER(7 downto 0) => act_power_0_POWER(7 downto 0),
+      POWER_STROBE => NLW_act_power_0_POWER_STROBE_UNCONNECTED,
       QDATA(15 downto 0) => data_delay_0_QDATA_OUT(15 downto 0),
       RESET => RESET_0_1
     );
@@ -1128,9 +1102,9 @@ demapper_0: component block_design_0_demapper_0_0
       CONSTELLATION_DATA_IN_VALID => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
       CONSTELLATION_IDATA_IN(23 downto 0) => constellation_tracker_0_CONSTELLATION_IDATA_OUT(23 downto 0),
       CONSTELLATION_QDATA_IN(23 downto 0) => constellation_tracker_0_CONSTELLATION_QDATA_OUT(23 downto 0),
-      DEMAPPING_16QAM(207 downto 0) => demapper_0_DEMAPPING_16QAM(207 downto 0),
+      DEMAPPING_16QAM(207 downto 0) => NLW_demapper_0_DEMAPPING_16QAM_UNCONNECTED(207 downto 0),
       DEMAPPING_BPSK(51 downto 0) => demapper_0_DEMAPPING_BPSK(51 downto 0),
-      DEMAPPING_QPSK(103 downto 0) => demapper_0_DEMAPPING_QPSK(103 downto 0),
+      DEMAPPING_QPSK(103 downto 0) => NLW_demapper_0_DEMAPPING_QPSK_UNCONNECTED(103 downto 0),
       DEMAPPING_START_MARKER => demapper_0_DEMAPPING_START_MARKER,
       DEMAPPING_STROBE => demapper_0_DEMAPPING_STROBE,
       RESET => RESET_0_1,
@@ -1208,10 +1182,10 @@ hier_fft_ofdm: entity work.hier_fft_ofdm_imp_1SUMJVQ
       FFT_QDATA_IN(15 downto 0) => receiver_802_11p_0_FFT_QDATA_IN(15 downto 0),
       FFT_QDATA_OUT(23 downto 0) => fft_ofdm_0_FFT_QDATA_OUT(23 downto 0),
       RESET => RESET_0_1,
-      event_data_in_channel_halt => hier_fft_ofdm_event_data_in_channel_halt,
-      event_frame_started => hier_fft_ofdm_event_frame_started,
-      event_tlast_missing => hier_fft_ofdm_event_tlast_missing,
-      event_tlast_unexpected => hier_fft_ofdm_event_tlast_unexpected
+      event_data_in_channel_halt => NLW_hier_fft_ofdm_event_data_in_channel_halt_UNCONNECTED,
+      event_frame_started => NLW_hier_fft_ofdm_event_frame_started_UNCONNECTED,
+      event_tlast_missing => NLW_hier_fft_ofdm_event_tlast_missing_UNCONNECTED,
+      event_tlast_unexpected => NLW_hier_fft_ofdm_event_tlast_unexpected_UNCONNECTED
     );
 hier_rotation: entity work.hier_rotation_imp_OQQOO0
      port map (
@@ -1246,43 +1220,81 @@ ila_0: component block_design_0_ila_0_0
      port map (
       clk => CLOCK_0_1,
       probe0(0) => data_delay_0_DATA_OUT_STROBE,
-      probe1(15 downto 0) => data_delay_0_IDATA_OUT(15 downto 0),
-      probe10(0) => receiver_802_11p_0_ATAN_AUTOCORR_STROBE,
-      probe11(31 downto 0) => receiver_802_11p_0_ATAN_AUTOCORR_I(31 downto 0),
-      probe12(31 downto 0) => receiver_802_11p_0_ATAN_AUTOCORR_Q(31 downto 0),
-      probe13(0) => hier_atan_ATAN_PHASE_OUT_STROBE,
-      probe14(19 downto 0) => hier_atan_ATAN_PHASE_OUT(19 downto 0),
-      probe15(0) => receiver_802_11p_0_FFT_DATA_IN_STROBE,
-      probe16(0) => receiver_802_11p_0_FFT_DATA_IN_START,
-      probe17(15 downto 0) => receiver_802_11p_0_FFT_IDATA_IN(15 downto 0),
-      probe18(15 downto 0) => receiver_802_11p_0_FFT_QDATA_IN(15 downto 0),
-      probe19(0) => fft_ofdm_0_FFT_DATA_OUT_VALID,
-      probe2(15 downto 0) => data_delay_0_QDATA_OUT(15 downto 0),
-      probe20(0) => fft_ofdm_0_FFT_DATA_OUT_LAST,
-      probe21(23 downto 0) => fft_ofdm_0_FFT_IDATA_OUT(23 downto 0),
-      probe22(23 downto 0) => fft_ofdm_0_FFT_QDATA_OUT(23 downto 0),
-      probe23(0) => hier_fft_ofdm_event_frame_started,
-      probe24(0) => hier_fft_ofdm_event_tlast_unexpected,
-      probe25(0) => hier_fft_ofdm_event_tlast_missing,
-      probe26(0) => hier_fft_ofdm_event_data_in_channel_halt,
-      probe27(0) => hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER,
-      probe28(0) => equalizer_time_frequ_0_FFT_DATA_IN_FIRST_SYMBOL_MARKER,
-      probe29(0) => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
-      probe3(15 downto 0) => data_delay_0_IDATA_OUT_DELAY_32(15 downto 0),
-      probe30(0) => constellation_tracker_0_CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER,
-      probe31(23 downto 0) => constellation_tracker_0_CONSTELLATION_IDATA_OUT(23 downto 0),
-      probe32(23 downto 0) => constellation_tracker_0_CONSTELLATION_QDATA_OUT(23 downto 0),
-      probe33(0) => demapper_0_DEMAPPING_STROBE,
-      probe34(0) => demapper_0_DEMAPPING_START_MARKER,
-      probe35(51 downto 0) => demapper_0_DEMAPPING_BPSK(51 downto 0),
-      probe36(103 downto 0) => demapper_0_DEMAPPING_QPSK(103 downto 0),
-      probe37(207 downto 0) => demapper_0_DEMAPPING_16QAM(207 downto 0),
-      probe4(15 downto 0) => data_delay_0_QDATA_OUT_DELAY_32(15 downto 0),
-      probe5(7 downto 0) => act_power_0_POWER(7 downto 0),
-      probe6(0) => timing_acquisition_8_0_DETECTION_STROBE,
-      probe7(0) => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
-      probe8(31 downto 0) => timing_acquisition_8_0_DETECTION_XCORR(31 downto 0),
-      probe9(31 downto 0) => timing_acquisition_8_0_CONTINUOUS_XCORR(31 downto 0)
+      probe1(15) => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
+      probe1(14) => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
+      probe1(13) => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
+      probe1(12) => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
+      probe1(11) => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
+      probe1(10) => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
+      probe1(9) => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
+      probe1(8) => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
+      probe1(7) => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
+      probe1(6) => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
+      probe1(5) => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
+      probe1(4) => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
+      probe1(3) => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
+      probe1(2) => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
+      probe1(1) => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
+      probe1(0) => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
+      probe2(15) => fft_ofdm_0_FFT_DATA_OUT_VALID,
+      probe2(14) => fft_ofdm_0_FFT_DATA_OUT_VALID,
+      probe2(13) => fft_ofdm_0_FFT_DATA_OUT_VALID,
+      probe2(12) => fft_ofdm_0_FFT_DATA_OUT_VALID,
+      probe2(11) => fft_ofdm_0_FFT_DATA_OUT_VALID,
+      probe2(10) => fft_ofdm_0_FFT_DATA_OUT_VALID,
+      probe2(9) => fft_ofdm_0_FFT_DATA_OUT_VALID,
+      probe2(8) => fft_ofdm_0_FFT_DATA_OUT_VALID,
+      probe2(7) => fft_ofdm_0_FFT_DATA_OUT_VALID,
+      probe2(6) => fft_ofdm_0_FFT_DATA_OUT_VALID,
+      probe2(5) => fft_ofdm_0_FFT_DATA_OUT_VALID,
+      probe2(4) => fft_ofdm_0_FFT_DATA_OUT_VALID,
+      probe2(3) => fft_ofdm_0_FFT_DATA_OUT_VALID,
+      probe2(2) => fft_ofdm_0_FFT_DATA_OUT_VALID,
+      probe2(1) => fft_ofdm_0_FFT_DATA_OUT_VALID,
+      probe2(0) => fft_ofdm_0_FFT_DATA_OUT_VALID,
+      probe3(15) => hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER,
+      probe3(14) => hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER,
+      probe3(13) => hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER,
+      probe3(12) => hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER,
+      probe3(11) => hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER,
+      probe3(10) => hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER,
+      probe3(9) => hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER,
+      probe3(8) => hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER,
+      probe3(7) => hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER,
+      probe3(6) => hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER,
+      probe3(5) => hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER,
+      probe3(4) => hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER,
+      probe3(3) => hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER,
+      probe3(2) => hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER,
+      probe3(1) => hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER,
+      probe3(0) => hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER,
+      probe4(15) => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
+      probe4(14) => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
+      probe4(13) => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
+      probe4(12) => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
+      probe4(11) => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
+      probe4(10) => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
+      probe4(9) => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
+      probe4(8) => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
+      probe4(7) => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
+      probe4(6) => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
+      probe4(5) => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
+      probe4(4) => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
+      probe4(3) => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
+      probe4(2) => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
+      probe4(1) => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
+      probe4(0) => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
+      probe5(7) => constellation_tracker_0_CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER,
+      probe5(6) => constellation_tracker_0_CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER,
+      probe5(5) => constellation_tracker_0_CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER,
+      probe5(4) => constellation_tracker_0_CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER,
+      probe5(3) => constellation_tracker_0_CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER,
+      probe5(2) => constellation_tracker_0_CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER,
+      probe5(1) => constellation_tracker_0_CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER,
+      probe5(0) => constellation_tracker_0_CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER,
+      probe6(0) => demapper_0_DEMAPPING_START_MARKER,
+      probe7(0) => demapper_0_DEMAPPING_STROBE,
+      probe8(51 downto 0) => demapper_0_DEMAPPING_BPSK(51 downto 0)
     );
 rx_clock_domain_cros_0: component block_design_0_rx_clock_domain_cros_0_0
      port map (
@@ -1301,14 +1313,14 @@ rx_clock_domain_cros_0: component block_design_0_rx_clock_domain_cros_0_0
 timing_acquisition_8_0: component block_design_0_timing_acquisition_8_0_0
      port map (
       CLOCK => CLOCK_0_1,
-      CONTINUOUS_XCORR(31 downto 0) => timing_acquisition_8_0_CONTINUOUS_XCORR(31 downto 0),
+      CONTINUOUS_XCORR(31 downto 0) => NLW_timing_acquisition_8_0_CONTINUOUS_XCORR_UNCONNECTED(31 downto 0),
       DATA_STROBE => data_delay_0_DATA_OUT_STROBE,
       DETECTION_SIGNAL_DETECTED => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
       DETECTION_STROBE => timing_acquisition_8_0_DETECTION_STROBE,
       DETECTION_STS_AUTOCORR_I(31 downto 0) => timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I(31 downto 0),
       DETECTION_STS_AUTOCORR_Q(31 downto 0) => timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q(31 downto 0),
       DETECTION_THRESHOLD(31 downto 0) => DETECTION_THRESHOLD_0_1(31 downto 0),
-      DETECTION_XCORR(31 downto 0) => timing_acquisition_8_0_DETECTION_XCORR(31 downto 0),
+      DETECTION_XCORR(31 downto 0) => NLW_timing_acquisition_8_0_DETECTION_XCORR_UNCONNECTED(31 downto 0),
       IDATA(15 downto 0) => data_delay_0_IDATA_OUT(15 downto 0),
       IDATA_DELAY_16(15 downto 0) => data_delay_0_IDATA_OUT_DELAY_16(15 downto 0),
       IDATA_DELAY_32(15 downto 0) => data_delay_0_IDATA_OUT_DELAY_32(15 downto 0),

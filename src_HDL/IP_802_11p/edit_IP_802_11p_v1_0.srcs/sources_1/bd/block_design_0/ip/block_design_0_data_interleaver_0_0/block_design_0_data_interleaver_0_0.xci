@@ -4,7 +4,7 @@
     "xci_name": "block_design_0_data_interleaver_0_0",
     "cell_name": "data_interleaver_0",
     "component_reference": "xilinx.com:module_ref:data_interleaver:1.0",
-    "ip_revision": "1713692826",
+    "ip_revision": "1713794690",
     "gen_directory": "../../../../../../edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_data_interleaver_0_0",
     "parameters": {
       "component_parameters": {
@@ -29,7 +29,7 @@
       },
       "runtime_parameters": {
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],
-        "IPREVISION": [ { "value": "1713692826" } ],
+        "IPREVISION": [ { "value": "1713794690" } ],
         "MANAGED": [ { "value": "TRUE" } ],
         "OUTPUTDIR": [ { "value": "../../../../../../edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_data_interleaver_0_0" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
@@ -45,9 +45,9 @@
         "IDATA_IN": [ { "direction": "in", "size_left": "15", "size_right": "0" } ],
         "QDATA_IN": [ { "direction": "in", "size_left": "15", "size_right": "0" } ],
         "DATA_IN_STROBE": [ { "direction": "in" } ],
-        "IDATA_OUT": [ { "direction": "out", "size_left": "15", "size_right": "0" } ],
-        "QDATA_OUT": [ { "direction": "out", "size_left": "15", "size_right": "0" } ],
-        "DATA_OUT_STROBE": [ { "direction": "out" } ]
+        "IDATA_OUT": [ { "direction": "out", "size_left": "15", "size_right": "0", "driver_value": "0" } ],
+        "QDATA_OUT": [ { "direction": "out", "size_left": "15", "size_right": "0", "driver_value": "0" } ],
+        "DATA_OUT_STROBE": [ { "direction": "out", "driver_value": "0x0" } ]
       },
       "interfaces": {
         "RESET": {

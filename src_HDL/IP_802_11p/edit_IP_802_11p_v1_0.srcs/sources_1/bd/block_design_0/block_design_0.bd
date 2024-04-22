@@ -178,7 +178,7 @@
     "components": {
       "rx_clock_domain_cros_0": {
         "vlnv": "xilinx.com:module_ref:rx_clock_domain_crossing:1.0",
-        "ip_revision": "1713734471",
+        "ip_revision": "1713794694",
         "xci_name": "block_design_0_rx_clock_domain_cros_0_0",
         "xci_path": "ip\\block_design_0_rx_clock_domain_cros_0_0\\block_design_0_rx_clock_domain_cros_0_0.xci",
         "inst_hier_path": "rx_clock_domain_cros_0",
@@ -261,7 +261,7 @@
       },
       "data_interleaver_0": {
         "vlnv": "xilinx.com:module_ref:data_interleaver:1.0",
-        "ip_revision": "1713692826",
+        "ip_revision": "1713794690",
         "xci_name": "block_design_0_data_interleaver_0_0",
         "xci_path": "ip\\block_design_0_data_interleaver_0_0\\block_design_0_data_interleaver_0_0.xci",
         "inst_hier_path": "data_interleaver_0",
@@ -319,7 +319,7 @@
       },
       "data_delay_0": {
         "vlnv": "xilinx.com:module_ref:data_delay:1.0",
-        "ip_revision": "1713692830",
+        "ip_revision": "1713794692",
         "xci_name": "block_design_0_data_delay_0_0",
         "xci_path": "ip\\block_design_0_data_delay_0_0\\block_design_0_data_delay_0_0.xci",
         "inst_hier_path": "data_delay_0",
@@ -417,7 +417,7 @@
       },
       "act_power_0": {
         "vlnv": "xilinx.com:module_ref:act_power:1.0",
-        "ip_revision": "1713692832",
+        "ip_revision": "1713794693",
         "xci_name": "block_design_0_act_power_0_0",
         "xci_path": "ip\\block_design_0_act_power_0_0\\block_design_0_act_power_0_0.xci",
         "inst_hier_path": "act_power_0",
@@ -458,6 +458,9 @@
           "DATA_STROBE": {
             "direction": "I"
           },
+          "POWER_STROBE": {
+            "direction": "O"
+          },
           "POWER": {
             "direction": "O",
             "left": "7",
@@ -467,7 +470,7 @@
       },
       "timing_acquisition_8_0": {
         "vlnv": "xilinx.com:module_ref:timing_acquisition_802_11p:1.0",
-        "ip_revision": "1713734474",
+        "ip_revision": "1713794695",
         "xci_name": "block_design_0_timing_acquisition_8_0_0",
         "xci_path": "ip\\block_design_0_timing_acquisition_8_0_0\\block_design_0_timing_acquisition_8_0_0.xci",
         "inst_hier_path": "timing_acquisition_8_0",
@@ -2136,49 +2139,49 @@
             "value": "Native"
           },
           "C_NUM_OF_PROBES": {
-            "value": "38"
+            "value": "9"
           },
           "C_PROBE11_WIDTH": {
-            "value": "32"
+            "value": "1"
           },
           "C_PROBE12_WIDTH": {
-            "value": "32"
+            "value": "1"
           },
           "C_PROBE14_WIDTH": {
-            "value": "20"
+            "value": "1"
           },
           "C_PROBE17_WIDTH": {
-            "value": "16"
+            "value": "1"
           },
           "C_PROBE18_WIDTH": {
-            "value": "16"
+            "value": "1"
           },
           "C_PROBE1_WIDTH": {
             "value": "16"
           },
           "C_PROBE21_WIDTH": {
-            "value": "24"
+            "value": "1"
           },
           "C_PROBE22_WIDTH": {
-            "value": "24"
+            "value": "1"
           },
           "C_PROBE2_WIDTH": {
             "value": "16"
           },
           "C_PROBE31_WIDTH": {
-            "value": "24"
+            "value": "1"
           },
           "C_PROBE32_WIDTH": {
-            "value": "24"
+            "value": "1"
           },
           "C_PROBE35_WIDTH": {
-            "value": "52"
+            "value": "1"
           },
           "C_PROBE36_WIDTH": {
-            "value": "104"
+            "value": "1"
           },
           "C_PROBE37_WIDTH": {
-            "value": "208"
+            "value": "1"
           },
           "C_PROBE3_WIDTH": {
             "value": "16"
@@ -2190,10 +2193,10 @@
             "value": "8"
           },
           "C_PROBE8_WIDTH": {
-            "value": "32"
+            "value": "52"
           },
           "C_PROBE9_WIDTH": {
-            "value": "32"
+            "value": "1"
           }
         }
       },
@@ -3673,14 +3676,14 @@
           "ila_0/clk",
           "hier_atan_constellation/CLOCK",
           "hier_rotation_constellation/CLOCK",
-          "data_interleaver_0/CLOCK",
           "axi_regs_mux_0/CLOCK",
-          "data_delay_0/CLOCK",
-          "act_power_0/CLOCK",
           "constellation_tracker_0/CLOCK",
           "demapper_0/CLOCK",
-          "rx_clock_domain_cros_0/CLOCK",
           "equalizer_time_frequ_0/CLOCK",
+          "data_interleaver_0/CLOCK",
+          "data_delay_0/CLOCK",
+          "act_power_0/CLOCK",
+          "rx_clock_domain_cros_0/CLOCK",
           "timing_acquisition_8_0/CLOCK"
         ]
       },
@@ -3698,14 +3701,14 @@
           "hier_rotation/RESET",
           "hier_atan_constellation/RESET",
           "hier_rotation_constellation/RESET",
-          "data_interleaver_0/RESET",
           "axi_regs_mux_0/RESET",
-          "data_delay_0/RESET",
-          "act_power_0/RESET",
           "constellation_tracker_0/RESET",
           "demapper_0/RESET",
-          "rx_clock_domain_cros_0/RESET",
           "equalizer_time_frequ_0/RESET",
+          "data_interleaver_0/RESET",
+          "data_delay_0/RESET",
+          "act_power_0/RESET",
+          "rx_clock_domain_cros_0/RESET",
           "timing_acquisition_8_0/RESET"
         ]
       },
@@ -3754,8 +3757,7 @@
       "act_power_0_POWER": {
         "ports": [
           "act_power_0/POWER",
-          "POWER",
-          "ila_0/probe5"
+          "POWER"
         ]
       },
       "axi_regs_mux_0_FPGA_REG_WRITE_DATA": {
@@ -3797,23 +3799,22 @@
       "constellation_tracker_0_CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER": {
         "ports": [
           "constellation_tracker_0/CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER",
-          "ila_0/probe30",
           "axi_regs_mux_0/CONSTELLATION_DATA_FIRST_SYMBOL_MARKER",
-          "demapper_0/CONSTELLATION_DATA_IN_FIRST_SYMBOL_MARKER"
+          "demapper_0/CONSTELLATION_DATA_IN_FIRST_SYMBOL_MARKER",
+          "ila_0/probe5"
         ]
       },
       "constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID": {
         "ports": [
           "constellation_tracker_0/CONSTELLATION_DATA_OUT_VALID",
-          "ila_0/probe29",
           "axi_regs_mux_0/CONSTELLATION_DATA_VALID",
-          "demapper_0/CONSTELLATION_DATA_IN_VALID"
+          "demapper_0/CONSTELLATION_DATA_IN_VALID",
+          "ila_0/probe4"
         ]
       },
       "constellation_tracker_0_CONSTELLATION_IDATA_OUT": {
         "ports": [
           "constellation_tracker_0/CONSTELLATION_IDATA_OUT",
-          "ila_0/probe31",
           "axi_regs_mux_0/CONSTELLATION_IDATA",
           "demapper_0/CONSTELLATION_IDATA_IN"
         ]
@@ -3821,7 +3822,6 @@
       "constellation_tracker_0_CONSTELLATION_QDATA_OUT": {
         "ports": [
           "constellation_tracker_0/CONSTELLATION_QDATA_OUT",
-          "ila_0/probe32",
           "axi_regs_mux_0/CONSTELLATION_QDATA",
           "demapper_0/CONSTELLATION_QDATA_IN"
         ]
@@ -3861,18 +3861,17 @@
           "data_delay_0/DATA_OUT_STROBE",
           "ila_0/probe0",
           "axi_regs_mux_0/DATA_STROBE",
-          "act_power_0/DATA_STROBE",
           "equalizer_time_frequ_0/DATA_IN_STROBE",
+          "act_power_0/DATA_STROBE",
           "timing_acquisition_8_0/DATA_STROBE"
         ]
       },
       "data_delay_0_IDATA_OUT": {
         "ports": [
           "data_delay_0/IDATA_OUT",
-          "ila_0/probe1",
           "axi_regs_mux_0/IDATA",
-          "act_power_0/IDATA",
           "equalizer_time_frequ_0/IDATA_IN",
+          "act_power_0/IDATA",
           "timing_acquisition_8_0/IDATA"
         ]
       },
@@ -3885,7 +3884,6 @@
       "data_delay_0_IDATA_OUT_DELAY_32": {
         "ports": [
           "data_delay_0/IDATA_OUT_DELAY_32",
-          "ila_0/probe3",
           "timing_acquisition_8_0/IDATA_DELAY_32"
         ]
       },
@@ -3904,10 +3902,9 @@
       "data_delay_0_QDATA_OUT": {
         "ports": [
           "data_delay_0/QDATA_OUT",
-          "ila_0/probe2",
           "axi_regs_mux_0/QDATA",
-          "act_power_0/QDATA",
           "equalizer_time_frequ_0/QDATA_IN",
+          "act_power_0/QDATA",
           "timing_acquisition_8_0/QDATA"
         ]
       },
@@ -3920,7 +3917,6 @@
       "data_delay_0_QDATA_OUT_DELAY_32": {
         "ports": [
           "data_delay_0/QDATA_OUT_DELAY_32",
-          "ila_0/probe4",
           "timing_acquisition_8_0/QDATA_DELAY_32"
         ]
       },
@@ -3954,41 +3950,28 @@
           "data_delay_0/QDATA_IN"
         ]
       },
-      "demapper_0_DEMAPPING_16QAM": {
-        "ports": [
-          "demapper_0/DEMAPPING_16QAM",
-          "ila_0/probe37"
-        ]
-      },
       "demapper_0_DEMAPPING_BPSK": {
         "ports": [
           "demapper_0/DEMAPPING_BPSK",
-          "ila_0/probe35"
-        ]
-      },
-      "demapper_0_DEMAPPING_QPSK": {
-        "ports": [
-          "demapper_0/DEMAPPING_QPSK",
-          "ila_0/probe36"
+          "ila_0/probe8"
         ]
       },
       "demapper_0_DEMAPPING_START_MARKER": {
         "ports": [
           "demapper_0/DEMAPPING_START_MARKER",
-          "ila_0/probe34"
+          "ila_0/probe6"
         ]
       },
       "demapper_0_DEMAPPING_STROBE": {
         "ports": [
           "demapper_0/DEMAPPING_STROBE",
-          "ila_0/probe33"
+          "ila_0/probe7"
         ]
       },
       "equalizer_time_frequ_0_FFT_DATA_IN_FIRST_SYMBOL_MARKER": {
         "ports": [
           "equalizer_time_frequ_0/FFT_DATA_IN_FIRST_SYMBOL_MARKER",
-          "hier_fft_ofdm/FFT_DATA_IN_FIRST_SYMBOL_MARKER",
-          "ila_0/probe28"
+          "hier_fft_ofdm/FFT_DATA_IN_FIRST_SYMBOL_MARKER"
         ]
       },
       "equalizer_time_frequ_0_FPGA_REG_WRITE_DATA": {
@@ -4048,22 +4031,20 @@
       "fft_ofdm_0_FFT_DATA_OUT_LAST": {
         "ports": [
           "hier_fft_ofdm/FFT_DATA_OUT_LAST",
-          "ila_0/probe20",
           "constellation_tracker_0/FFT_DATA_IN_LAST"
         ]
       },
       "fft_ofdm_0_FFT_DATA_OUT_VALID": {
         "ports": [
           "hier_fft_ofdm/FFT_DATA_OUT_VALID",
-          "ila_0/probe19",
           "axi_regs_mux_0/FFT_DATA_VALID",
-          "constellation_tracker_0/FFT_DATA_IN_VALID"
+          "constellation_tracker_0/FFT_DATA_IN_VALID",
+          "ila_0/probe2"
         ]
       },
       "fft_ofdm_0_FFT_IDATA_OUT": {
         "ports": [
           "hier_fft_ofdm/FFT_IDATA_OUT",
-          "ila_0/probe21",
           "axi_regs_mux_0/FFT_IDATA",
           "constellation_tracker_0/FFT_IDATA_IN"
         ]
@@ -4071,7 +4052,6 @@
       "fft_ofdm_0_FFT_QDATA_OUT": {
         "ports": [
           "hier_fft_ofdm/FFT_QDATA_OUT",
-          "ila_0/probe22",
           "axi_regs_mux_0/FFT_QDATA",
           "constellation_tracker_0/FFT_QDATA_IN"
         ]
@@ -4079,14 +4059,12 @@
       "hier_atan_ATAN_PHASE_OUT": {
         "ports": [
           "hier_atan/ATAN_PHASE_OUT",
-          "ila_0/probe14",
           "equalizer_time_frequ_0/ATAN_PHASE_OUT"
         ]
       },
       "hier_atan_ATAN_PHASE_OUT_STROBE": {
         "ports": [
           "hier_atan/ATAN_PHASE_OUT_STROBE",
-          "ila_0/probe13",
           "equalizer_time_frequ_0/ATAN_PHASE_OUT_STROBE"
         ]
       },
@@ -4111,33 +4089,9 @@
       "hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER": {
         "ports": [
           "hier_fft_ofdm/FFT_DATA_OUT_FIRST_SYMBOL_MARKER",
-          "ila_0/probe27",
           "axi_regs_mux_0/FFT_DATA_FIRST_SYMBOL_MARKER",
-          "constellation_tracker_0/FFT_DATA_IN_FIRST_SYMBOL_MARKER"
-        ]
-      },
-      "hier_fft_ofdm_event_data_in_channel_halt": {
-        "ports": [
-          "hier_fft_ofdm/event_data_in_channel_halt",
-          "ila_0/probe26"
-        ]
-      },
-      "hier_fft_ofdm_event_frame_started": {
-        "ports": [
-          "hier_fft_ofdm/event_frame_started",
-          "ila_0/probe23"
-        ]
-      },
-      "hier_fft_ofdm_event_tlast_missing": {
-        "ports": [
-          "hier_fft_ofdm/event_tlast_missing",
-          "ila_0/probe25"
-        ]
-      },
-      "hier_fft_ofdm_event_tlast_unexpected": {
-        "ports": [
-          "hier_fft_ofdm/event_tlast_unexpected",
-          "ila_0/probe24"
+          "constellation_tracker_0/FFT_DATA_IN_FIRST_SYMBOL_MARKER",
+          "ila_0/probe3"
         ]
       },
       "hier_rotation_constellation_ROTATION_CONSTELLATION_DATA_OUT_CNTR": {
@@ -4167,50 +4121,43 @@
       "receiver_802_11p_0_ATAN_AUTOCORR_I": {
         "ports": [
           "equalizer_time_frequ_0/ATAN_AUTOCORR_I",
-          "hier_atan/ATAN_AUTOCORR_I",
-          "ila_0/probe11"
+          "hier_atan/ATAN_AUTOCORR_I"
         ]
       },
       "receiver_802_11p_0_ATAN_AUTOCORR_Q": {
         "ports": [
           "equalizer_time_frequ_0/ATAN_AUTOCORR_Q",
-          "hier_atan/ATAN_AUTOCORR_Q",
-          "ila_0/probe12"
+          "hier_atan/ATAN_AUTOCORR_Q"
         ]
       },
       "receiver_802_11p_0_ATAN_AUTOCORR_STROBE": {
         "ports": [
           "equalizer_time_frequ_0/ATAN_AUTOCORR_STROBE",
-          "hier_atan/ATAN_AUTOCORR_STROBE",
-          "ila_0/probe10"
+          "hier_atan/ATAN_AUTOCORR_STROBE"
         ]
       },
       "receiver_802_11p_0_FFT_DATA_IN_START": {
         "ports": [
           "equalizer_time_frequ_0/FFT_DATA_IN_START",
-          "hier_fft_ofdm/FFT_DATA_IN_START",
-          "ila_0/probe16"
+          "hier_fft_ofdm/FFT_DATA_IN_START"
         ]
       },
       "receiver_802_11p_0_FFT_DATA_IN_STROBE": {
         "ports": [
           "equalizer_time_frequ_0/FFT_DATA_IN_STROBE",
-          "hier_fft_ofdm/FFT_DATA_IN_STROBE",
-          "ila_0/probe15"
+          "hier_fft_ofdm/FFT_DATA_IN_STROBE"
         ]
       },
       "receiver_802_11p_0_FFT_IDATA_IN": {
         "ports": [
           "equalizer_time_frequ_0/FFT_IDATA_IN",
-          "hier_fft_ofdm/FFT_IDATA_IN",
-          "ila_0/probe17"
+          "hier_fft_ofdm/FFT_IDATA_IN"
         ]
       },
       "receiver_802_11p_0_FFT_QDATA_IN": {
         "ports": [
           "equalizer_time_frequ_0/FFT_QDATA_IN",
-          "hier_fft_ofdm/FFT_QDATA_IN",
-          "ila_0/probe18"
+          "hier_fft_ofdm/FFT_QDATA_IN"
         ]
       },
       "receiver_802_11p_0_FPGA_REG_WRITE_ADDRESS": {
@@ -4261,23 +4208,16 @@
           "data_interleaver_0/QDATA_IN"
         ]
       },
-      "timing_acquisition_8_0_CONTINUOUS_XCORR": {
-        "ports": [
-          "timing_acquisition_8_0/CONTINUOUS_XCORR",
-          "ila_0/probe9"
-        ]
-      },
       "timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED": {
         "ports": [
           "timing_acquisition_8_0/DETECTION_SIGNAL_DETECTED",
-          "ila_0/probe7",
-          "equalizer_time_frequ_0/DETECTION_SIGNAL_DETECTED"
+          "equalizer_time_frequ_0/DETECTION_SIGNAL_DETECTED",
+          "ila_0/probe1"
         ]
       },
       "timing_acquisition_8_0_DETECTION_STROBE": {
         "ports": [
           "timing_acquisition_8_0/DETECTION_STROBE",
-          "ila_0/probe6",
           "equalizer_time_frequ_0/DETECTION_STROBE"
         ]
       },
@@ -4291,12 +4231,6 @@
         "ports": [
           "timing_acquisition_8_0/DETECTION_STS_AUTOCORR_Q",
           "equalizer_time_frequ_0/DETECTION_STS_AUTOCORR_Q"
-        ]
-      },
-      "timing_acquisition_8_0_DETECTION_XCORR": {
-        "ports": [
-          "timing_acquisition_8_0/DETECTION_XCORR",
-          "ila_0/probe8"
         ]
       }
     }

@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:module_ref:act_power:1.0
--- IP Revision: 1713692832
+-- IP Revision: 1713794693
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -60,6 +60,7 @@ ENTITY block_design_0_act_power_0_0 IS
     IDATA : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
     QDATA : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
     DATA_STROBE : IN STD_LOGIC;
+    POWER_STROBE : OUT STD_LOGIC;
     POWER : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
   );
 END block_design_0_act_power_0_0;
@@ -74,6 +75,7 @@ ARCHITECTURE block_design_0_act_power_0_0_arch OF block_design_0_act_power_0_0 I
       IDATA : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
       QDATA : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
       DATA_STROBE : IN STD_LOGIC;
+      POWER_STROBE : OUT STD_LOGIC;
       POWER : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
     );
   END COMPONENT act_power;
@@ -91,6 +93,7 @@ BEGIN
       IDATA => IDATA,
       QDATA => QDATA,
       DATA_STROBE => DATA_STROBE,
+      POWER_STROBE => POWER_STROBE,
       POWER => POWER
     );
 END block_design_0_act_power_0_0_arch;
