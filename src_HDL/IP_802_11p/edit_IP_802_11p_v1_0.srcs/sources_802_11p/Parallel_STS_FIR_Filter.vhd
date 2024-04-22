@@ -65,7 +65,7 @@ architecture Behavioral of Parallel_STS_FIR_Filter is
     constant ACCUMULATOR_WIDTH  : integer range 0 to 63 := MAC_ADDING_WIDTH + 4;  -- 28b (added 16 samples --> +4b)
   
     -- Input buffer regs (Timing -- make 1 before each MAC)
-    type input_registers is array(0 to FILTER_TAPS-1) of signed(INPUT_WIDTH-1 downto 0);
+    type input_registers is array(0 to FILTER_TAPS-1) of signed(INPUT_WIDTH-1-2 downto 0); -- only 14b !
     signal INPUT_REG_I  : input_registers := (others=>(others=>'0'));
     signal INPUT_REG_Q  : input_registers := (others=>(others=>'0'));
 
@@ -164,15 +164,15 @@ begin
 
             -- Recompute all stages [delay=+15 newest sample gets to the end of fir output]
             for i in 0 to FILTER_TAPS-1 loop
-                -- Buffer new data [16b] (new get first to the 0th accumulator) (Timing -- make 1 before each MAC) [delay=+1]
-                INPUT_REG_I(i) <= signed(IDATA_IN);  
-                INPUT_REG_Q(i) <= signed(QDATA_IN); 
+                -- Buffer new data [16b --> 14b !] (new get first to the 0th accumulator) (Timing -- make 1 before each MAC) [delay=+1]
+                INPUT_REG_I(i) <= signed(IDATA_IN(15 downto 2));  
+                INPUT_REG_Q(i) <= signed(QDATA_IN(15 downto 2)); 
 
-                -- Multiply input and resize back [16+7b=23b]  -- Note: multiplplying is resized automatically [delay=+1]
-                MULT_REG_II(i) <= resize((INPUT_REG_I(i) * COEFFS_I(i)) / 2**((INPUT_WIDTH)+(COEFF_WIDTH-1)-(MAC_MULTIPLY_WIDTH)), MAC_MULTIPLY_WIDTH);
-                MULT_REG_IQ(i) <= resize((INPUT_REG_I(i) * COEFFS_Q(i)) / 2**((INPUT_WIDTH)+(COEFF_WIDTH-1)-(MAC_MULTIPLY_WIDTH)), MAC_MULTIPLY_WIDTH);
-                MULT_REG_QI(i) <= resize((INPUT_REG_Q(i) * COEFFS_I(i)) / 2**((INPUT_WIDTH)+(COEFF_WIDTH-1)-(MAC_MULTIPLY_WIDTH)), MAC_MULTIPLY_WIDTH);
-                MULT_REG_QQ(i) <= resize((INPUT_REG_Q(i) * COEFFS_Q(i)) / 2**((INPUT_WIDTH)+(COEFF_WIDTH-1)-(MAC_MULTIPLY_WIDTH)), MAC_MULTIPLY_WIDTH); 
+                -- Multiply input and resize back [14b+16b-7b=23b]  -- Note: multiplplying is resized automatically [delay=+1]
+                MULT_REG_II(i) <= resize((INPUT_REG_I(i) * COEFFS_I(i)) / 2**7, 30-7); 
+                MULT_REG_IQ(i) <= resize((INPUT_REG_I(i) * COEFFS_Q(i)) / 2**7, 30-7); 
+                MULT_REG_QI(i) <= resize((INPUT_REG_Q(i) * COEFFS_I(i)) / 2**7, 30-7); 
+                MULT_REG_QQ(i) <= resize((INPUT_REG_Q(i) * COEFFS_Q(i)) / 2**7, 30-7); 
 
                 -- Add complex multiplies [23b+1b=24b]  -- Note: Adding needs to be resized manually! [delay=+1]
                 ADD_REG_I(i) <= resize(MULT_REG_II(i), MAC_ADDING_WIDTH) - resize(MULT_REG_QQ(i), MAC_ADDING_WIDTH);
@@ -192,9 +192,9 @@ begin
 
             end loop; 
 
-                -- Compute output power (actual sq. of XCORR amplitude) (+delay accumulator for output) [output 20b] [delay=+2]
-                POWER_II <= resize((ACCUMULATOR_I(0) * ACCUMULATOR_I(0)) / 2**((ACCUMULATOR_WIDTH-1)+(ACCUMULATOR_WIDTH)-(OUTPUT_WIDTH)), OUTPUT_WIDTH); -- keep 28b
-                POWER_QQ <= resize((ACCUMULATOR_Q(0) * ACCUMULATOR_Q(0)) / 2**((ACCUMULATOR_WIDTH-1)+(ACCUMULATOR_WIDTH)-(OUTPUT_WIDTH)), OUTPUT_WIDTH);
+                -- Compute output power (actual sq. of XCORR amplitude) (+delay accumulator for output) [output 28b] [delay=+2]
+                POWER_II <= resize((ACCUMULATOR_I(0)(27 downto 13) * ACCUMULATOR_I(0)(27 downto 13)) / 2**2, 30-2); -- keep OUTPUT_WIDTH 28b !!
+                POWER_QQ <= resize((ACCUMULATOR_Q(0)(27 downto 13) * ACCUMULATOR_Q(0)(27 downto 13)) / 2**2, 30-2);
                 ACCUMULATOR_I_DELAY(1) <= ACCUMULATOR_I(0);
                 ACCUMULATOR_Q_DELAY(1) <= ACCUMULATOR_Q(0);
 
