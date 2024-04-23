@@ -2,10 +2,10 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-// Date        : Mon Apr 22 16:14:52 2024
-// Host        : ASUS_ROG running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub
-//               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_ila_0_0/block_design_0_ila_0_0_stub.v
+// Date        : Tue Apr 23 20:42:43 2024
+// Host        : lab817_01 running 64-bit major release  (build 9200)
+// Command     : write_verilog -force -mode synth_stub -rename_top block_design_0_ila_0_0 -prefix
+//               block_design_0_ila_0_0_ block_design_0_ila_0_0_stub.v
 // Design      : block_design_0_ila_0_0
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7z020clg484-1
@@ -16,8 +16,8 @@
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
 (* x_core_info = "ila,Vivado 2023.2.2" *)
 module block_design_0_ila_0_0(clk, probe0, probe1, probe2, probe3, probe4, probe5, 
-  probe6, probe7, probe8)
-/* synthesis syn_black_box black_box_pad_pin="probe0[0:0],probe1[15:0],probe2[15:0],probe3[15:0],probe4[15:0],probe5[7:0],probe6[0:0],probe7[0:0],probe8[51:0]" */
+  probe6, probe7, probe8, probe9, probe10)
+/* synthesis syn_black_box black_box_pad_pin="probe0[0:0],probe1[15:0],probe2[15:0],probe3[15:0],probe4[15:0],probe5[7:0],probe6[0:0],probe7[0:0],probe8[47:0],probe9[31:0],probe10[31:0]" */
 /* synthesis syn_force_seq_prim="clk" */;
   input clk /* synthesis syn_isclock = 1 */;
   input [0:0]probe0;
@@ -28,5 +28,7 @@ module block_design_0_ila_0_0(clk, probe0, probe1, probe2, probe3, probe4, probe
   input [7:0]probe5;
   input [0:0]probe6;
   input [0:0]probe7;
-  input [51:0]probe8;
+  input [47:0]probe8;
+  input [31:0]probe9;
+  input [31:0]probe10;
 endmodule

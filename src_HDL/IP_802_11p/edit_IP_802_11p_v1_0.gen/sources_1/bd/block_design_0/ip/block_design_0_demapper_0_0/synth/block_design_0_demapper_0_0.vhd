@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:module_ref:demapper:1.0
--- IP Revision: 1713734470
+-- IP Revision: 1713897932
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -64,9 +64,9 @@ ENTITY block_design_0_demapper_0_0 IS
     CONSTELLATION_DATA_IN_FIRST_SYMBOL_MARKER : IN STD_LOGIC;
     DEMAPPING_START_MARKER : OUT STD_LOGIC;
     DEMAPPING_STROBE : OUT STD_LOGIC;
-    DEMAPPING_BPSK : OUT STD_LOGIC_VECTOR(51 DOWNTO 0);
-    DEMAPPING_QPSK : OUT STD_LOGIC_VECTOR(103 DOWNTO 0);
-    DEMAPPING_16QAM : OUT STD_LOGIC_VECTOR(207 DOWNTO 0)
+    DEMAPPING_BPSK : OUT STD_LOGIC_VECTOR(0 TO 51);
+    DEMAPPING_QPSK : OUT STD_LOGIC_VECTOR(0 TO 103);
+    DEMAPPING_16QAM : OUT STD_LOGIC_VECTOR(0 TO 207)
   );
 END block_design_0_demapper_0_0;
 
@@ -84,9 +84,9 @@ ARCHITECTURE block_design_0_demapper_0_0_arch OF block_design_0_demapper_0_0 IS
       CONSTELLATION_DATA_IN_FIRST_SYMBOL_MARKER : IN STD_LOGIC;
       DEMAPPING_START_MARKER : OUT STD_LOGIC;
       DEMAPPING_STROBE : OUT STD_LOGIC;
-      DEMAPPING_BPSK : OUT STD_LOGIC_VECTOR(51 DOWNTO 0);
-      DEMAPPING_QPSK : OUT STD_LOGIC_VECTOR(103 DOWNTO 0);
-      DEMAPPING_16QAM : OUT STD_LOGIC_VECTOR(207 DOWNTO 0)
+      DEMAPPING_BPSK : OUT STD_LOGIC_VECTOR(0 TO 51);
+      DEMAPPING_QPSK : OUT STD_LOGIC_VECTOR(0 TO 103);
+      DEMAPPING_16QAM : OUT STD_LOGIC_VECTOR(0 TO 207)
     );
   END COMPONENT demapper;
   ATTRIBUTE X_CORE_INFO : STRING;
@@ -94,7 +94,7 @@ ARCHITECTURE block_design_0_demapper_0_0_arch OF block_design_0_demapper_0_0 IS
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF block_design_0_demapper_0_0_arch : ARCHITECTURE IS "block_design_0_demapper_0_0,demapper,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF block_design_0_demapper_0_0_arch: ARCHITECTURE IS "block_design_0_demapper_0_0,demapper,{x_ipProduct=Vivado 2023.2.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=demapper,x_ipVersion=1.0,x_ipCoreRevision=1713734470,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
+  ATTRIBUTE CORE_GENERATION_INFO OF block_design_0_demapper_0_0_arch: ARCHITECTURE IS "block_design_0_demapper_0_0,demapper,{x_ipProduct=Vivado 2023.2.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=demapper,x_ipVersion=1.0,x_ipCoreRevision=1713897932,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
   ATTRIBUTE IP_DEFINITION_SOURCE OF block_design_0_demapper_0_0_arch: ARCHITECTURE IS "module_ref";
   ATTRIBUTE X_INTERFACE_INFO : STRING;

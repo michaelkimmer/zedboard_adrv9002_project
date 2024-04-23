@@ -49,9 +49,9 @@ entity demapper is
    DEMAPPING_START_MARKER        : out std_logic := '0'; 
    DEMAPPING_STROBE              : out std_logic := '0'; 
 
-   DEMAPPING_BPSK              : out std_logic_vector(51 downto 0) := (others => '0');
-   DEMAPPING_QPSK              : out std_logic_vector(103 downto 0) := (others => '0');
-   DEMAPPING_16QAM             : out std_logic_vector(207 downto 0) := (others => '0')
+   DEMAPPING_BPSK              : out std_logic_vector(0 to 51) := (others => '0');
+   DEMAPPING_QPSK              : out std_logic_vector(0 to 103) := (others => '0');
+   DEMAPPING_16QAM             : out std_logic_vector(0 to 207) := (others => '0')
 
   );
 end demapper;
@@ -70,14 +70,14 @@ architecture Behavioral of demapper is
   -- signal  DEMAPPING_SYMBOL_START_MARKER   : std_logic := '0'; 
 
   signal  DEMAPPING_SUBCARRIER_BPSK  : std_logic := '0'; 
-  signal  DEMAPPING_SUBCARRIER_QPSK  : std_logic_vector(1 downto 0) := (others => '0');
-  signal  DEMAPPING_SUBCARRIER_16QAM : std_logic_vector(3 downto 0) := (others => '0');
+  signal  DEMAPPING_SUBCARRIER_QPSK  : std_logic_vector(0 to 1) := (others => '0');
+  signal  DEMAPPING_SUBCARRIER_16QAM : std_logic_vector(0 to 3) := (others => '0');
 
 
   -- output buffer (decoded OFDM symbol)
-  signal DEMAPPING_BPSK_BUFFER              : std_logic_vector(51 downto 0) := (others => '0');
-  signal DEMAPPING_QPSK_BUFFER              : std_logic_vector(103 downto 0) := (others => '0');
-  signal DEMAPPING_16QAM_BUFFER             : std_logic_vector(207 downto 0) := (others => '0');
+  signal DEMAPPING_BPSK_BUFFER              : std_logic_vector(0 to 51) := (others => '0');
+  signal DEMAPPING_QPSK_BUFFER              : std_logic_vector(0 to 103) := (others => '0');
+  signal DEMAPPING_16QAM_BUFFER             : std_logic_vector(0 to 207) := (others => '0');
 
   signal DEMAPPING_DONE            : std_logic := '0';
   signal DEMAPPING_DONE_FIRST_OFDM : std_logic := '0';
@@ -85,7 +85,7 @@ architecture Behavioral of demapper is
 
 
   -- state 
-  signal DEMAPPING_SUBCARRIER_CNTR : integer range 0 to 51 := 0; -- with 0th subcarrier ???!!!
+  signal DEMAPPING_SUBCARRIER_CNTR : integer range 0 to 51 := 0; -- without 0th subcarrier !
   signal CONSTELLATION_DATA_IN_VALID_OLD : std_logic := '0';
 
 
@@ -103,7 +103,7 @@ begin
     if RESET = '1' then
       -- Reset (local) Outputs
       DEMAPPING_SUBCARRIER_STROBE      <= '0';
-      DEMAPPING_SUBCARRIER_CNTR        <= 51;
+      DEMAPPING_SUBCARRIER_CNTR        <=  0;
       DEMAPPING_DONE_FIRST_OFDM_MEMORY <= '0';
 
       DEMAPPING_SUBCARRIER_BPSK    <= '0'; 
@@ -118,7 +118,7 @@ begin
         
       -- new OFDM symbol
       if CONSTELLATION_DATA_IN_VALID = '1' and CONSTELLATION_DATA_IN_VALID_OLD = '0' then
-        DEMAPPING_SUBCARRIER_CNTR <= 51;
+        DEMAPPING_SUBCARRIER_CNTR <= 0;
 
         if CONSTELLATION_DATA_IN_FIRST_SYMBOL_MARKER = '1' then
           DEMAPPING_DONE_FIRST_OFDM_MEMORY <= '1';
@@ -127,8 +127,8 @@ begin
         end if;
 
 
-      elsif DEMAPPING_SUBCARRIER_CNTR > 0 then
-        DEMAPPING_SUBCARRIER_CNTR <= DEMAPPING_SUBCARRIER_CNTR - 1;          
+      elsif DEMAPPING_SUBCARRIER_CNTR < 51 then
+        DEMAPPING_SUBCARRIER_CNTR <= DEMAPPING_SUBCARRIER_CNTR + 1;          
 
       end if;
 
@@ -144,37 +144,37 @@ begin
 
         -- QPSK
         if signed(CONSTELLATION_IDATA_IN) >= 0 then -- I
-          DEMAPPING_SUBCARRIER_QPSK(1) <= '1';
-        else
-          DEMAPPING_SUBCARRIER_QPSK(1) <= '0';
-        end if;        
-        
-        if signed(CONSTELLATION_QDATA_IN) >= 0 then -- Q
           DEMAPPING_SUBCARRIER_QPSK(0) <= '1';
         else
           DEMAPPING_SUBCARRIER_QPSK(0) <= '0';
+        end if;        
+        
+        if signed(CONSTELLATION_QDATA_IN) >= 0 then -- Q
+          DEMAPPING_SUBCARRIER_QPSK(1) <= '1';
+        else
+          DEMAPPING_SUBCARRIER_QPSK(1) <= '0';
         end if;
 
         -- 16QAM
         VAR_THRESH_16QAM := signed(THRESH_16QAM);
         if signed(CONSTELLATION_IDATA_IN) >= VAR_THRESH_16QAM then  -- I
-          DEMAPPING_SUBCARRIER_16QAM(3 downto 2) <= "10";
+          DEMAPPING_SUBCARRIER_16QAM(0 to 1) <= "10";
         elsif signed(CONSTELLATION_IDATA_IN) >= 0 then
-          DEMAPPING_SUBCARRIER_16QAM(3 downto 2) <= "11";
+          DEMAPPING_SUBCARRIER_16QAM(0 to 1) <= "11";
         elsif signed(CONSTELLATION_IDATA_IN) >= -VAR_THRESH_16QAM then
-          DEMAPPING_SUBCARRIER_16QAM(3 downto 2) <= "01";
+          DEMAPPING_SUBCARRIER_16QAM(0 to 1) <= "01";
         else
-          DEMAPPING_SUBCARRIER_16QAM(3 downto 2) <= "00";
+          DEMAPPING_SUBCARRIER_16QAM(0 to 1) <= "00";
         end if;
         
         if signed(CONSTELLATION_QDATA_IN) >= VAR_THRESH_16QAM then  -- Q
-          DEMAPPING_SUBCARRIER_16QAM(1 downto 0) <= "10";
+          DEMAPPING_SUBCARRIER_16QAM(2 to 3) <= "10";
         elsif signed(CONSTELLATION_QDATA_IN) >= 0 then
-          DEMAPPING_SUBCARRIER_16QAM(1 downto 0) <= "11";
+          DEMAPPING_SUBCARRIER_16QAM(2 to 3) <= "11";
         elsif signed(CONSTELLATION_QDATA_IN) >= -VAR_THRESH_16QAM then
-          DEMAPPING_SUBCARRIER_16QAM(1 downto 0) <= "01";
+          DEMAPPING_SUBCARRIER_16QAM(2 to 3) <= "01";
         else
-          DEMAPPING_SUBCARRIER_16QAM(1 downto 0) <= "00";
+          DEMAPPING_SUBCARRIER_16QAM(2 to 3) <= "00";
         end if;
 
 
@@ -219,13 +219,13 @@ begin
         DEMAPPING_BPSK_BUFFER(DEMAPPING_SUBCARRIER_CNTR) <= DEMAPPING_SUBCARRIER_BPSK;
 
         -- QPSK (2b)
-        DEMAPPING_QPSK_BUFFER(2*DEMAPPING_SUBCARRIER_CNTR+1 downto 2*DEMAPPING_SUBCARRIER_CNTR) <= DEMAPPING_SUBCARRIER_QPSK;        
+        DEMAPPING_QPSK_BUFFER(2*DEMAPPING_SUBCARRIER_CNTR to 2*DEMAPPING_SUBCARRIER_CNTR+1) <= DEMAPPING_SUBCARRIER_QPSK;        
 
         -- 16QAM (4b)
-        DEMAPPING_16QAM_BUFFER(4*DEMAPPING_SUBCARRIER_CNTR+3 downto 4*DEMAPPING_SUBCARRIER_CNTR) <= DEMAPPING_SUBCARRIER_16QAM;
+        DEMAPPING_16QAM_BUFFER(4*DEMAPPING_SUBCARRIER_CNTR to 4*DEMAPPING_SUBCARRIER_CNTR+3) <= DEMAPPING_SUBCARRIER_16QAM;
 
         -- new OFDM symbol done 
-        if DEMAPPING_SUBCARRIER_CNTR = 0 then
+        if DEMAPPING_SUBCARRIER_CNTR = 51 then
           DEMAPPING_DONE <= '1'; 
 
           -- first OFDM done

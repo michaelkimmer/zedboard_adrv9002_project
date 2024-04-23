@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:module_ref:atan_constellation_block:1.0
--- IP Revision: 1713692838
+-- IP Revision: 1713872618
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;

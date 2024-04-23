@@ -9,69 +9,21 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0"></ZoomStartTime>
-      <ZoomEndTime time="1,025"></ZoomEndTime>
-      <Cursor1Time time="0"></Cursor1Time>
+      <ZoomStartTime time="508"></ZoomStartTime>
+      <ZoomEndTime time="902"></ZoomEndTime>
+      <Cursor1Time time="738"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="412"></NameColumnWidth>
+      <NameColumnWidth column_width="388"></NameColumnWidth>
       <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="29" />
+   <WVObjectSize size="9" />
    <wave_markers>
    </wave_markers>
-   <wvobject fp_name="i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/act_power_0_POWER" type="array">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/act_power_0_POWER[7:0]</obj_property>
-      <obj_property name="ObjectShortName">act_power_0_POWER[7:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
    <wvobject fp_name="i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/data_delay_0_DATA_OUT_STROBE" type="logic">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/data_delay_0_DATA_OUT_STROBE</obj_property>
       <obj_property name="ObjectShortName">data_delay_0_DATA_OUT_STROBE</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject fp_name="i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/data_delay_0_IDATA_OUT" type="array">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/data_delay_0_IDATA_OUT[15:0]</obj_property>
-      <obj_property name="ObjectShortName">data_delay_0_IDATA_OUT[15:0]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject fp_name="i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/data_delay_0_QDATA_OUT" type="array">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/data_delay_0_QDATA_OUT[15:0]</obj_property>
-      <obj_property name="ObjectShortName">data_delay_0_QDATA_OUT[15:0]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject fp_name="i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/data_delay_0_IDATA_OUT_DELAY_32" type="array">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/data_delay_0_IDATA_OUT_DELAY_32[15:0]</obj_property>
-      <obj_property name="ObjectShortName">data_delay_0_IDATA_OUT_DELAY_32[15:0]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject fp_name="i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/data_delay_0_QDATA_OUT_DELAY_32" type="array">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/data_delay_0_QDATA_OUT_DELAY_32[15:0]</obj_property>
-      <obj_property name="ObjectShortName">data_delay_0_QDATA_OUT_DELAY_32[15:0]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject fp_name="i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/timing_acquisition_8_0_DETECTION_STROBE" type="logic">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/timing_acquisition_8_0_DETECTION_STROBE</obj_property>
-      <obj_property name="ObjectShortName">timing_acquisition_8_0_DETECTION_STROBE</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
@@ -86,153 +38,17 @@
    </wvobject>
    <wvobject fp_name="i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/timing_acquisition_8_0_DETECTION_XCORR" type="array">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/timing_acquisition_8_0_DETECTION_XCORR[23:0]</obj_property>
-      <obj_property name="ObjectShortName">timing_acquisition_8_0_DETECTION_XCORR[23:0]</obj_property>
+      <obj_property name="ElementShortName">i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/timing_acquisition_8_0_DETECTION_XCORR[31:0]</obj_property>
+      <obj_property name="ObjectShortName">timing_acquisition_8_0_DETECTION_XCORR[31:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
    <wvobject fp_name="i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/timing_acquisition_8_0_CONTINUOUS_XCORR" type="array">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/timing_acquisition_8_0_CONTINUOUS_XCORR[23:0]</obj_property>
-      <obj_property name="ObjectShortName">timing_acquisition_8_0_CONTINUOUS_XCORR[23:0]</obj_property>
+      <obj_property name="ElementShortName">i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/timing_acquisition_8_0_CONTINUOUS_XCORR[31:0]</obj_property>
+      <obj_property name="ObjectShortName">timing_acquisition_8_0_CONTINUOUS_XCORR[31:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject fp_name="i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/receiver_802_11p_0_ATAN_AUTOCORR_STROBE" type="logic">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/receiver_802_11p_0_ATAN_AUTOCORR_STROBE</obj_property>
-      <obj_property name="ObjectShortName">receiver_802_11p_0_ATAN_AUTOCORR_STROBE</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject fp_name="i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/receiver_802_11p_0_ATAN_AUTOCORR_I" type="array">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/receiver_802_11p_0_ATAN_AUTOCORR_I[31:0]</obj_property>
-      <obj_property name="ObjectShortName">receiver_802_11p_0_ATAN_AUTOCORR_I[31:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject fp_name="i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/receiver_802_11p_0_ATAN_AUTOCORR_Q" type="array">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/receiver_802_11p_0_ATAN_AUTOCORR_Q[31:0]</obj_property>
-      <obj_property name="ObjectShortName">receiver_802_11p_0_ATAN_AUTOCORR_Q[31:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject fp_name="i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/hier_atan_ATAN_PHASE_OUT_STROBE" type="logic">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/hier_atan_ATAN_PHASE_OUT_STROBE</obj_property>
-      <obj_property name="ObjectShortName">hier_atan_ATAN_PHASE_OUT_STROBE</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject fp_name="i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/hier_atan_ATAN_PHASE_OUT" type="array">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/hier_atan_ATAN_PHASE_OUT[19:0]</obj_property>
-      <obj_property name="ObjectShortName">hier_atan_ATAN_PHASE_OUT[19:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject fp_name="i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/receiver_802_11p_0_FFT_DATA_IN_STROBE" type="logic">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/receiver_802_11p_0_FFT_DATA_IN_STROBE</obj_property>
-      <obj_property name="ObjectShortName">receiver_802_11p_0_FFT_DATA_IN_STROBE</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject fp_name="i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/receiver_802_11p_0_FFT_DATA_IN_START" type="logic">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/receiver_802_11p_0_FFT_DATA_IN_START</obj_property>
-      <obj_property name="ObjectShortName">receiver_802_11p_0_FFT_DATA_IN_START</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject fp_name="i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/receiver_802_11p_0_FFT_IDATA_IN" type="array">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/receiver_802_11p_0_FFT_IDATA_IN[15:0]</obj_property>
-      <obj_property name="ObjectShortName">receiver_802_11p_0_FFT_IDATA_IN[15:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject fp_name="i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/receiver_802_11p_0_FFT_QDATA_IN" type="array">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/receiver_802_11p_0_FFT_QDATA_IN[15:0]</obj_property>
-      <obj_property name="ObjectShortName">receiver_802_11p_0_FFT_QDATA_IN[15:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject fp_name="i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/fft_ofdm_0_FFT_DATA_OUT_VALID" type="logic">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/fft_ofdm_0_FFT_DATA_OUT_VALID</obj_property>
-      <obj_property name="ObjectShortName">fft_ofdm_0_FFT_DATA_OUT_VALID</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject fp_name="i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/fft_ofdm_0_FFT_DATA_OUT_LAST" type="logic">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/fft_ofdm_0_FFT_DATA_OUT_LAST</obj_property>
-      <obj_property name="ObjectShortName">fft_ofdm_0_FFT_DATA_OUT_LAST</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject fp_name="i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/fft_ofdm_0_FFT_IDATA_OUT" type="array">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/fft_ofdm_0_FFT_IDATA_OUT[23:0]</obj_property>
-      <obj_property name="ObjectShortName">fft_ofdm_0_FFT_IDATA_OUT[23:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject fp_name="i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/fft_ofdm_0_FFT_QDATA_OUT" type="array">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/fft_ofdm_0_FFT_QDATA_OUT[23:0]</obj_property>
-      <obj_property name="ObjectShortName">fft_ofdm_0_FFT_QDATA_OUT[23:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject fp_name="i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/hier_fft_ofdm_event_frame_started" type="logic">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/hier_fft_ofdm_event_frame_started</obj_property>
-      <obj_property name="ObjectShortName">hier_fft_ofdm_event_frame_started</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject fp_name="i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/hier_fft_ofdm_event_tlast_unexpected" type="logic">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/hier_fft_ofdm_event_tlast_unexpected</obj_property>
-      <obj_property name="ObjectShortName">hier_fft_ofdm_event_tlast_unexpected</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject fp_name="i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/hier_fft_ofdm_event_tlast_missing" type="logic">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/hier_fft_ofdm_event_tlast_missing</obj_property>
-      <obj_property name="ObjectShortName">hier_fft_ofdm_event_tlast_missing</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject fp_name="i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/hier_fft_ofdm_event_data_in_channel_halt" type="logic">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/hier_fft_ofdm_event_data_in_channel_halt</obj_property>
-      <obj_property name="ObjectShortName">hier_fft_ofdm_event_data_in_channel_halt</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
@@ -240,15 +56,35 @@
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER</obj_property>
       <obj_property name="ObjectShortName">hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/equalizer_time_frequ_0_FFT_DATA_IN_FIRST_SYMBOL_MARKER" type="logic">
+   <wvobject fp_name="i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/fft_ofdm_0_FFT_DATA_OUT_VALID" type="logic">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/equalizer_time_frequ_0_FFT_DATA_IN_FIRST_SYMBOL_MARKER</obj_property>
-      <obj_property name="ObjectShortName">equalizer_time_frequ_0_FFT_DATA_IN_FIRST_SYMBOL_MARKER</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="ElementShortName">i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/fft_ofdm_0_FFT_DATA_OUT_VALID</obj_property>
+      <obj_property name="ObjectShortName">fft_ofdm_0_FFT_DATA_OUT_VALID</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/demapper_0_DEMAPPING_STROBE" type="logic">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/demapper_0_DEMAPPING_STROBE</obj_property>
+      <obj_property name="ObjectShortName">demapper_0_DEMAPPING_STROBE</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/demapper_0_DEMAPPING_START_MARKER" type="logic">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/demapper_0_DEMAPPING_START_MARKER</obj_property>
+      <obj_property name="ObjectShortName">demapper_0_DEMAPPING_START_MARKER</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/demapper_0_DEMAPPING_BPSK" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">i_system_wrapper/system_i/IP_802_11p_0/U0/IP_802_11p_v1_0_S00_AXI_inst/block_design_0_wrapper_inst/block_design_0_i/demapper_0_DEMAPPING_BPSK[51:0]</obj_property>
+      <obj_property name="ObjectShortName">demapper_0_DEMAPPING_BPSK[51:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>

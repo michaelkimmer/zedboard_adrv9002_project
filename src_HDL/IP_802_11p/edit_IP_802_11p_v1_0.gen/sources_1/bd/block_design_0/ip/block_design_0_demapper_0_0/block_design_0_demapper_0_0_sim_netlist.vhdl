@@ -2,8 +2,8 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
--- Date        : Mon Apr 22 16:12:03 2024
--- Host        : ASUS_ROG running 64-bit major release  (build 9200)
+-- Date        : Tue Apr 23 20:46:16 2024
+-- Host        : lab817_01 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_demapper_0_0/block_design_0_demapper_0_0_sim_netlist.vhdl
 -- Design      : block_design_0_demapper_0_0
@@ -18,9 +18,8 @@ use UNISIM.VCOMPONENTS.ALL;
 entity block_design_0_demapper_0_0_demapper is
   port (
     DEMAPPING_STROBE : out STD_LOGIC;
-    DEMAPPING_BPSK : out STD_LOGIC_VECTOR ( 51 downto 0 );
-    DEMAPPING_QPSK : out STD_LOGIC_VECTOR ( 103 downto 0 );
-    DEMAPPING_16QAM : out STD_LOGIC_VECTOR ( 207 downto 0 );
+    DEMAPPING_QPSK : out STD_LOGIC_VECTOR ( 0 to 103 );
+    DEMAPPING_16QAM : out STD_LOGIC_VECTOR ( 0 to 207 );
     DEMAPPING_START_MARKER : out STD_LOGIC;
     CONSTELLATION_QDATA_IN : in STD_LOGIC_VECTOR ( 23 downto 0 );
     CONSTELLATION_IDATA_IN : in STD_LOGIC_VECTOR ( 23 downto 0 );
@@ -36,93 +35,28 @@ end block_design_0_demapper_0_0_demapper;
 
 architecture STRUCTURE of block_design_0_demapper_0_0_demapper is
   signal CONSTELLATION_DATA_IN_VALID_OLD : STD_LOGIC;
-  signal DEMAPPING_16QAM_BUFFER : STD_LOGIC_VECTOR ( 207 downto 0 );
-  signal DEMAPPING_16QAM_BUFFER0 : STD_LOGIC_VECTOR ( 207 downto 60 );
-  signal DEMAPPING_BPSK_BUFFER : STD_LOGIC_VECTOR ( 51 downto 0 );
-  signal \DEMAPPING_BPSK_BUFFER[0]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[10]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[11]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[12]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[13]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[14]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[15]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[15]_i_2_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[16]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[17]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[18]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[19]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[1]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[20]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[21]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[22]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[23]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[24]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[25]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[26]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[27]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[28]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[29]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[2]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[30]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[31]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[31]_i_2_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[32]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[33]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[34]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[35]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[36]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[37]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[38]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[39]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[39]_i_2_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[3]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[40]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[41]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[42]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[43]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[44]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[44]_i_2_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[45]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[45]_i_2_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[46]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[46]_i_2_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[47]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[47]_i_2_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[47]_i_3_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[48]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[48]_i_2_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[49]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[49]_i_2_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[4]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[50]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[50]_i_2_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[51]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[51]_i_2_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[51]_i_3_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[5]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[6]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[7]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[7]_i_2_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[8]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_BPSK_BUFFER[9]_i_1_n_0\ : STD_LOGIC;
+  signal DEMAPPING_16QAM_BUFFER : STD_LOGIC_VECTOR ( 0 to 207 );
+  signal DEMAPPING_BPSK_BUFFER : STD_LOGIC_VECTOR ( 0 to 51 );
   signal DEMAPPING_DONE : STD_LOGIC;
   signal DEMAPPING_DONE_FIRST_OFDM_MEMORY : STD_LOGIC;
   signal DEMAPPING_DONE_FIRST_OFDM_MEMORY_i_1_n_0 : STD_LOGIC;
   signal DEMAPPING_DONE_FIRST_OFDM_i_1_n_0 : STD_LOGIC;
-  signal DEMAPPING_DONE_FIRST_OFDM_i_2_n_0 : STD_LOGIC;
   signal DEMAPPING_DONE_FIRST_OFDM_reg_n_0 : STD_LOGIC;
   signal DEMAPPING_DONE_i_1_n_0 : STD_LOGIC;
-  signal DEMAPPING_QPSK_BUFFER : STD_LOGIC_VECTOR ( 103 downto 0 );
-  signal DEMAPPING_QPSK_BUFFER0 : STD_LOGIC_VECTOR ( 103 downto 30 );
+  signal DEMAPPING_QPSK_BUFFER : STD_LOGIC_VECTOR ( 1 to 103 );
   signal \DEMAPPING_QPSK_BUFFER[101]_i_1_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[103]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_QPSK_BUFFER[103]_i_3_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[11]_i_1_n_0\ : STD_LOGIC;
+  signal \DEMAPPING_QPSK_BUFFER[11]_i_2_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[13]_i_1_n_0\ : STD_LOGIC;
+  signal \DEMAPPING_QPSK_BUFFER[13]_i_2_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[15]_i_1_n_0\ : STD_LOGIC;
+  signal \DEMAPPING_QPSK_BUFFER[15]_i_2_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[17]_i_1_n_0\ : STD_LOGIC;
+  signal \DEMAPPING_QPSK_BUFFER[17]_i_2_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[19]_i_1_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[1]_i_1_n_0\ : STD_LOGIC;
+  signal \DEMAPPING_QPSK_BUFFER[1]_i_2_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[21]_i_1_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[23]_i_1_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[25]_i_1_n_0\ : STD_LOGIC;
@@ -130,25 +64,29 @@ architecture STRUCTURE of block_design_0_demapper_0_0_demapper is
   signal \DEMAPPING_QPSK_BUFFER[29]_i_1_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[31]_i_1_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[33]_i_1_n_0\ : STD_LOGIC;
+  signal \DEMAPPING_QPSK_BUFFER[33]_i_2_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[35]_i_1_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[37]_i_1_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[39]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_QPSK_BUFFER[39]_i_3_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[3]_i_1_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[41]_i_1_n_0\ : STD_LOGIC;
+  signal \DEMAPPING_QPSK_BUFFER[41]_i_2_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[43]_i_1_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[45]_i_1_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[47]_i_1_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[49]_i_1_n_0\ : STD_LOGIC;
+  signal \DEMAPPING_QPSK_BUFFER[49]_i_2_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[51]_i_1_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[53]_i_1_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[55]_i_1_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[57]_i_1_n_0\ : STD_LOGIC;
+  signal \DEMAPPING_QPSK_BUFFER[57]_i_2_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[59]_i_1_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[5]_i_1_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[61]_i_1_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[63]_i_1_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[65]_i_1_n_0\ : STD_LOGIC;
+  signal \DEMAPPING_QPSK_BUFFER[65]_i_2_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[67]_i_1_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[69]_i_1_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[71]_i_1_n_0\ : STD_LOGIC;
@@ -158,6 +96,7 @@ architecture STRUCTURE of block_design_0_demapper_0_0_demapper is
   signal \DEMAPPING_QPSK_BUFFER[79]_i_1_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[7]_i_1_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[81]_i_1_n_0\ : STD_LOGIC;
+  signal \DEMAPPING_QPSK_BUFFER[81]_i_2_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[83]_i_1_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[85]_i_1_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[87]_i_1_n_0\ : STD_LOGIC;
@@ -166,12 +105,13 @@ architecture STRUCTURE of block_design_0_demapper_0_0_demapper is
   signal \DEMAPPING_QPSK_BUFFER[93]_i_1_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[95]_i_1_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[97]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_QPSK_BUFFER[97]_i_3_n_0\ : STD_LOGIC;
+  signal \DEMAPPING_QPSK_BUFFER[97]_i_2_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[99]_i_1_n_0\ : STD_LOGIC;
   signal \DEMAPPING_QPSK_BUFFER[9]_i_1_n_0\ : STD_LOGIC;
+  signal \DEMAPPING_QPSK_BUFFER[9]_i_2_n_0\ : STD_LOGIC;
   signal \^demapping_start_marker\ : STD_LOGIC;
   signal DEMAPPING_START_MARKER_i_1_n_0 : STD_LOGIC;
-  signal DEMAPPING_SUBCARRIER_16QAM : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal DEMAPPING_SUBCARRIER_16QAM : STD_LOGIC_VECTOR ( 0 to 3 );
   signal \DEMAPPING_SUBCARRIER_16QAM1_carry__0_i_1_n_0\ : STD_LOGIC;
   signal \DEMAPPING_SUBCARRIER_16QAM1_carry__0_i_2_n_0\ : STD_LOGIC;
   signal \DEMAPPING_SUBCARRIER_16QAM1_carry__0_i_3_n_0\ : STD_LOGIC;
@@ -291,16 +231,16 @@ architecture STRUCTURE of block_design_0_demapper_0_0_demapper is
   signal DEMAPPING_SUBCARRIER_16QAM2_carry_n_1 : STD_LOGIC;
   signal DEMAPPING_SUBCARRIER_16QAM2_carry_n_2 : STD_LOGIC;
   signal DEMAPPING_SUBCARRIER_16QAM2_carry_n_3 : STD_LOGIC;
-  signal \DEMAPPING_SUBCARRIER_16QAM[1]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_SUBCARRIER_16QAM[3]_i_1_n_0\ : STD_LOGIC;
+  signal \DEMAPPING_SUBCARRIER_16QAM[0]_i_1_n_0\ : STD_LOGIC;
+  signal \DEMAPPING_SUBCARRIER_16QAM[2]_i_1_n_0\ : STD_LOGIC;
   signal DEMAPPING_SUBCARRIER_BPSK : STD_LOGIC;
   signal DEMAPPING_SUBCARRIER_BPSK_i_1_n_0 : STD_LOGIC;
-  signal DEMAPPING_SUBCARRIER_CNTR1 : STD_LOGIC;
+  signal \DEMAPPING_SUBCARRIER_CNTR[4]_i_1_n_0\ : STD_LOGIC;
+  signal \DEMAPPING_SUBCARRIER_CNTR[4]_i_3_n_0\ : STD_LOGIC;
   signal \DEMAPPING_SUBCARRIER_CNTR[5]_i_1_n_0\ : STD_LOGIC;
-  signal \DEMAPPING_SUBCARRIER_CNTR[5]_i_4_n_0\ : STD_LOGIC;
   signal DEMAPPING_SUBCARRIER_CNTR_reg : STD_LOGIC_VECTOR ( 5 downto 0 );
-  signal DEMAPPING_SUBCARRIER_QPSK : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal \DEMAPPING_SUBCARRIER_QPSK[0]_i_1_n_0\ : STD_LOGIC;
+  signal DEMAPPING_SUBCARRIER_QPSK : STD_LOGIC_VECTOR ( 1 to 1 );
+  signal \DEMAPPING_SUBCARRIER_QPSK[1]_i_1_n_0\ : STD_LOGIC;
   signal \i__carry__0_i_1__0_n_0\ : STD_LOGIC;
   signal \i__carry__0_i_1__1_n_0\ : STD_LOGIC;
   signal \i__carry__0_i_1_n_0\ : STD_LOGIC;
@@ -389,53 +329,20 @@ architecture STRUCTURE of block_design_0_demapper_0_0_demapper is
   signal \NLW_DEMAPPING_SUBCARRIER_16QAM1_inferred__2/i__carry__1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal \NLW_DEMAPPING_SUBCARRIER_16QAM2_carry__4_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \DEMAPPING_16QAM_BUFFER[188]_i_1\ : label is "soft_lutpair21";
-  attribute SOFT_HLUTNM of \DEMAPPING_16QAM_BUFFER[189]_i_1\ : label is "soft_lutpair20";
-  attribute SOFT_HLUTNM of \DEMAPPING_16QAM_BUFFER[190]_i_1\ : label is "soft_lutpair19";
-  attribute SOFT_HLUTNM of \DEMAPPING_16QAM_BUFFER[191]_i_1\ : label is "soft_lutpair18";
-  attribute SOFT_HLUTNM of \DEMAPPING_16QAM_BUFFER[192]_i_1\ : label is "soft_lutpair5";
-  attribute SOFT_HLUTNM of \DEMAPPING_16QAM_BUFFER[193]_i_1\ : label is "soft_lutpair5";
-  attribute SOFT_HLUTNM of \DEMAPPING_16QAM_BUFFER[194]_i_1\ : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \DEMAPPING_16QAM_BUFFER[195]_i_1\ : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \DEMAPPING_16QAM_BUFFER[204]_i_1\ : label is "soft_lutpair21";
-  attribute SOFT_HLUTNM of \DEMAPPING_16QAM_BUFFER[205]_i_1\ : label is "soft_lutpair20";
-  attribute SOFT_HLUTNM of \DEMAPPING_16QAM_BUFFER[206]_i_1\ : label is "soft_lutpair19";
-  attribute SOFT_HLUTNM of \DEMAPPING_16QAM_BUFFER[207]_i_1\ : label is "soft_lutpair18";
-  attribute SOFT_HLUTNM of \DEMAPPING_16QAM_BUFFER[60]_i_1\ : label is "soft_lutpair27";
-  attribute SOFT_HLUTNM of \DEMAPPING_16QAM_BUFFER[61]_i_1\ : label is "soft_lutpair26";
-  attribute SOFT_HLUTNM of \DEMAPPING_16QAM_BUFFER[62]_i_1\ : label is "soft_lutpair25";
-  attribute SOFT_HLUTNM of \DEMAPPING_16QAM_BUFFER[63]_i_1\ : label is "soft_lutpair24";
-  attribute SOFT_HLUTNM of \DEMAPPING_16QAM_BUFFER[76]_i_1\ : label is "soft_lutpair27";
-  attribute SOFT_HLUTNM of \DEMAPPING_16QAM_BUFFER[77]_i_1\ : label is "soft_lutpair26";
-  attribute SOFT_HLUTNM of \DEMAPPING_16QAM_BUFFER[78]_i_1\ : label is "soft_lutpair25";
-  attribute SOFT_HLUTNM of \DEMAPPING_16QAM_BUFFER[79]_i_1\ : label is "soft_lutpair24";
-  attribute SOFT_HLUTNM of \DEMAPPING_BPSK_BUFFER[15]_i_2\ : label is "soft_lutpair15";
-  attribute SOFT_HLUTNM of \DEMAPPING_BPSK_BUFFER[39]_i_2\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \DEMAPPING_BPSK_BUFFER[44]_i_2\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of \DEMAPPING_BPSK_BUFFER[45]_i_2\ : label is "soft_lutpair10";
-  attribute SOFT_HLUTNM of \DEMAPPING_BPSK_BUFFER[46]_i_2\ : label is "soft_lutpair9";
-  attribute SOFT_HLUTNM of \DEMAPPING_BPSK_BUFFER[47]_i_2\ : label is "soft_lutpair15";
-  attribute SOFT_HLUTNM of \DEMAPPING_BPSK_BUFFER[47]_i_3\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of \DEMAPPING_BPSK_BUFFER[48]_i_2\ : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of \DEMAPPING_BPSK_BUFFER[49]_i_2\ : label is "soft_lutpair11";
-  attribute SOFT_HLUTNM of \DEMAPPING_BPSK_BUFFER[50]_i_2\ : label is "soft_lutpair10";
-  attribute SOFT_HLUTNM of \DEMAPPING_BPSK_BUFFER[51]_i_2\ : label is "soft_lutpair8";
-  attribute SOFT_HLUTNM of \DEMAPPING_BPSK_BUFFER[51]_i_3\ : label is "soft_lutpair9";
-  attribute SOFT_HLUTNM of \DEMAPPING_BPSK_BUFFER[7]_i_2\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of DEMAPPING_DONE_FIRST_OFDM_MEMORY_i_1 : label is "soft_lutpair6";
-  attribute SOFT_HLUTNM of DEMAPPING_DONE_FIRST_OFDM_i_2 : label is "soft_lutpair8";
-  attribute SOFT_HLUTNM of \DEMAPPING_QPSK_BUFFER[102]_i_1\ : label is "soft_lutpair17";
-  attribute SOFT_HLUTNM of \DEMAPPING_QPSK_BUFFER[103]_i_2\ : label is "soft_lutpair16";
-  attribute SOFT_HLUTNM of \DEMAPPING_QPSK_BUFFER[103]_i_3\ : label is "soft_lutpair14";
-  attribute SOFT_HLUTNM of \DEMAPPING_QPSK_BUFFER[30]_i_1\ : label is "soft_lutpair23";
-  attribute SOFT_HLUTNM of \DEMAPPING_QPSK_BUFFER[31]_i_2\ : label is "soft_lutpair22";
-  attribute SOFT_HLUTNM of \DEMAPPING_QPSK_BUFFER[38]_i_1\ : label is "soft_lutpair23";
-  attribute SOFT_HLUTNM of \DEMAPPING_QPSK_BUFFER[39]_i_2\ : label is "soft_lutpair22";
-  attribute SOFT_HLUTNM of \DEMAPPING_QPSK_BUFFER[39]_i_3\ : label is "soft_lutpair14";
-  attribute SOFT_HLUTNM of \DEMAPPING_QPSK_BUFFER[94]_i_1\ : label is "soft_lutpair17";
-  attribute SOFT_HLUTNM of \DEMAPPING_QPSK_BUFFER[95]_i_2\ : label is "soft_lutpair16";
-  attribute SOFT_HLUTNM of \DEMAPPING_QPSK_BUFFER[96]_i_1\ : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \DEMAPPING_QPSK_BUFFER[97]_i_2\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of DEMAPPING_DONE_FIRST_OFDM_MEMORY_i_1 : label is "soft_lutpair7";
+  attribute SOFT_HLUTNM of DEMAPPING_DONE_i_1 : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \DEMAPPING_QPSK_BUFFER[11]_i_2\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \DEMAPPING_QPSK_BUFFER[13]_i_2\ : label is "soft_lutpair8";
+  attribute SOFT_HLUTNM of \DEMAPPING_QPSK_BUFFER[15]_i_2\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \DEMAPPING_QPSK_BUFFER[17]_i_2\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \DEMAPPING_QPSK_BUFFER[1]_i_2\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \DEMAPPING_QPSK_BUFFER[33]_i_2\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \DEMAPPING_QPSK_BUFFER[41]_i_2\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \DEMAPPING_QPSK_BUFFER[49]_i_2\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \DEMAPPING_QPSK_BUFFER[57]_i_2\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \DEMAPPING_QPSK_BUFFER[65]_i_2\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \DEMAPPING_QPSK_BUFFER[97]_i_2\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \DEMAPPING_QPSK_BUFFER[9]_i_2\ : label is "soft_lutpair6";
   attribute COMPARATOR_THRESHOLD : integer;
   attribute COMPARATOR_THRESHOLD of DEMAPPING_SUBCARRIER_16QAM1_carry : label is 11;
   attribute COMPARATOR_THRESHOLD of \DEMAPPING_SUBCARRIER_16QAM1_carry__0\ : label is 11;
@@ -456,205 +363,16 @@ architecture STRUCTURE of block_design_0_demapper_0_0_demapper is
   attribute ADDER_THRESHOLD of \DEMAPPING_SUBCARRIER_16QAM2_carry__2\ : label is 35;
   attribute ADDER_THRESHOLD of \DEMAPPING_SUBCARRIER_16QAM2_carry__3\ : label is 35;
   attribute ADDER_THRESHOLD of \DEMAPPING_SUBCARRIER_16QAM2_carry__4\ : label is 35;
-  attribute SOFT_HLUTNM of \DEMAPPING_SUBCARRIER_16QAM[0]_i_1\ : label is "soft_lutpair12";
-  attribute SOFT_HLUTNM of \DEMAPPING_SUBCARRIER_16QAM[1]_i_1\ : label is "soft_lutpair12";
-  attribute SOFT_HLUTNM of \DEMAPPING_SUBCARRIER_16QAM[2]_i_1\ : label is "soft_lutpair13";
-  attribute SOFT_HLUTNM of \DEMAPPING_SUBCARRIER_16QAM[3]_i_1\ : label is "soft_lutpair13";
-  attribute SOFT_HLUTNM of \DEMAPPING_SUBCARRIER_CNTR[0]_i_1\ : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of \DEMAPPING_SUBCARRIER_CNTR[1]_i_1\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \DEMAPPING_SUBCARRIER_16QAM[0]_i_1\ : label is "soft_lutpair10";
+  attribute SOFT_HLUTNM of \DEMAPPING_SUBCARRIER_16QAM[1]_i_1\ : label is "soft_lutpair10";
+  attribute SOFT_HLUTNM of \DEMAPPING_SUBCARRIER_16QAM[2]_i_1\ : label is "soft_lutpair9";
+  attribute SOFT_HLUTNM of \DEMAPPING_SUBCARRIER_16QAM[3]_i_1\ : label is "soft_lutpair9";
+  attribute SOFT_HLUTNM of \DEMAPPING_SUBCARRIER_CNTR[0]_i_1\ : label is "soft_lutpair8";
+  attribute SOFT_HLUTNM of \DEMAPPING_SUBCARRIER_CNTR[1]_i_1\ : label is "soft_lutpair0";
   attribute SOFT_HLUTNM of \DEMAPPING_SUBCARRIER_CNTR[2]_i_1\ : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of \DEMAPPING_SUBCARRIER_CNTR[5]_i_3\ : label is "soft_lutpair6";
-  attribute SOFT_HLUTNM of \DEMAPPING_SUBCARRIER_CNTR[5]_i_4\ : label is "soft_lutpair11";
+  attribute SOFT_HLUTNM of \DEMAPPING_SUBCARRIER_CNTR[4]_i_3\ : label is "soft_lutpair7";
 begin
   DEMAPPING_START_MARKER <= \^demapping_start_marker\;
-\DEMAPPING_16QAM_BUFFER[188]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_16QAM(0),
-      I1 => \DEMAPPING_BPSK_BUFFER[47]_i_2_n_0\,
-      O => DEMAPPING_16QAM_BUFFER0(188)
-    );
-\DEMAPPING_16QAM_BUFFER[189]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_16QAM(1),
-      I1 => \DEMAPPING_BPSK_BUFFER[47]_i_2_n_0\,
-      O => DEMAPPING_16QAM_BUFFER0(189)
-    );
-\DEMAPPING_16QAM_BUFFER[190]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_16QAM(2),
-      I1 => \DEMAPPING_BPSK_BUFFER[47]_i_2_n_0\,
-      O => DEMAPPING_16QAM_BUFFER0(190)
-    );
-\DEMAPPING_16QAM_BUFFER[191]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_16QAM(3),
-      I1 => \DEMAPPING_BPSK_BUFFER[47]_i_2_n_0\,
-      O => DEMAPPING_16QAM_BUFFER0(191)
-    );
-\DEMAPPING_16QAM_BUFFER[192]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"0002"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_16QAM(0),
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => \DEMAPPING_BPSK_BUFFER[51]_i_2_n_0\,
-      O => DEMAPPING_16QAM_BUFFER0(192)
-    );
-\DEMAPPING_16QAM_BUFFER[193]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"0002"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_16QAM(1),
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => \DEMAPPING_BPSK_BUFFER[51]_i_2_n_0\,
-      O => DEMAPPING_16QAM_BUFFER0(193)
-    );
-\DEMAPPING_16QAM_BUFFER[194]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"0002"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_16QAM(2),
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => \DEMAPPING_BPSK_BUFFER[51]_i_2_n_0\,
-      O => DEMAPPING_16QAM_BUFFER0(194)
-    );
-\DEMAPPING_16QAM_BUFFER[195]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"0002"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_16QAM(3),
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => \DEMAPPING_BPSK_BUFFER[51]_i_2_n_0\,
-      O => DEMAPPING_16QAM_BUFFER0(195)
-    );
-\DEMAPPING_16QAM_BUFFER[204]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_16QAM(0),
-      I1 => \DEMAPPING_BPSK_BUFFER[51]_i_2_n_0\,
-      O => DEMAPPING_16QAM_BUFFER0(204)
-    );
-\DEMAPPING_16QAM_BUFFER[205]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_16QAM(1),
-      I1 => \DEMAPPING_BPSK_BUFFER[51]_i_2_n_0\,
-      O => DEMAPPING_16QAM_BUFFER0(205)
-    );
-\DEMAPPING_16QAM_BUFFER[206]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_16QAM(2),
-      I1 => \DEMAPPING_BPSK_BUFFER[51]_i_2_n_0\,
-      O => DEMAPPING_16QAM_BUFFER0(206)
-    );
-\DEMAPPING_16QAM_BUFFER[207]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_16QAM(3),
-      I1 => \DEMAPPING_BPSK_BUFFER[51]_i_2_n_0\,
-      O => DEMAPPING_16QAM_BUFFER0(207)
-    );
-\DEMAPPING_16QAM_BUFFER[60]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_16QAM(0),
-      I1 => \DEMAPPING_BPSK_BUFFER[15]_i_2_n_0\,
-      O => DEMAPPING_16QAM_BUFFER0(60)
-    );
-\DEMAPPING_16QAM_BUFFER[61]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_16QAM(1),
-      I1 => \DEMAPPING_BPSK_BUFFER[15]_i_2_n_0\,
-      O => DEMAPPING_16QAM_BUFFER0(61)
-    );
-\DEMAPPING_16QAM_BUFFER[62]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_16QAM(2),
-      I1 => \DEMAPPING_BPSK_BUFFER[15]_i_2_n_0\,
-      O => DEMAPPING_16QAM_BUFFER0(62)
-    );
-\DEMAPPING_16QAM_BUFFER[63]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_16QAM(3),
-      I1 => \DEMAPPING_BPSK_BUFFER[15]_i_2_n_0\,
-      O => DEMAPPING_16QAM_BUFFER0(63)
-    );
-\DEMAPPING_16QAM_BUFFER[76]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_16QAM(0),
-      I1 => \DEMAPPING_BPSK_BUFFER[31]_i_2_n_0\,
-      O => DEMAPPING_16QAM_BUFFER0(76)
-    );
-\DEMAPPING_16QAM_BUFFER[77]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_16QAM(1),
-      I1 => \DEMAPPING_BPSK_BUFFER[31]_i_2_n_0\,
-      O => DEMAPPING_16QAM_BUFFER0(77)
-    );
-\DEMAPPING_16QAM_BUFFER[78]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_16QAM(2),
-      I1 => \DEMAPPING_BPSK_BUFFER[31]_i_2_n_0\,
-      O => DEMAPPING_16QAM_BUFFER0(78)
-    );
-\DEMAPPING_16QAM_BUFFER[79]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_16QAM(3),
-      I1 => \DEMAPPING_BPSK_BUFFER[31]_i_2_n_0\,
-      O => DEMAPPING_16QAM_BUFFER0(79)
-    );
 \DEMAPPING_16QAM_BUFFER_reg[0]\: unisim.vcomponents.FDCE
     generic map(
       INIT => '0'
@@ -784,7 +502,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[5]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(62),
+      D => DEMAPPING_SUBCARRIER_16QAM(2),
       Q => DEMAPPING_16QAM_BUFFER(10)
     );
 \DEMAPPING_16QAM_BUFFER_reg[110]\: unisim.vcomponents.FDCE
@@ -905,7 +623,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[5]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(63),
+      D => DEMAPPING_SUBCARRIER_16QAM(3),
       Q => DEMAPPING_16QAM_BUFFER(11)
     );
 \DEMAPPING_16QAM_BUFFER_reg[120]\: unisim.vcomponents.FDCE
@@ -1026,7 +744,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[7]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(60),
+      D => DEMAPPING_SUBCARRIER_16QAM(0),
       Q => DEMAPPING_16QAM_BUFFER(12)
     );
 \DEMAPPING_16QAM_BUFFER_reg[130]\: unisim.vcomponents.FDCE
@@ -1059,7 +777,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[67]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(188),
+      D => DEMAPPING_SUBCARRIER_16QAM(0),
       Q => DEMAPPING_16QAM_BUFFER(132)
     );
 \DEMAPPING_16QAM_BUFFER_reg[133]\: unisim.vcomponents.FDCE
@@ -1070,7 +788,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[67]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(189),
+      D => DEMAPPING_SUBCARRIER_16QAM(1),
       Q => DEMAPPING_16QAM_BUFFER(133)
     );
 \DEMAPPING_16QAM_BUFFER_reg[134]\: unisim.vcomponents.FDCE
@@ -1081,7 +799,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[67]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(190),
+      D => DEMAPPING_SUBCARRIER_16QAM(2),
       Q => DEMAPPING_16QAM_BUFFER(134)
     );
 \DEMAPPING_16QAM_BUFFER_reg[135]\: unisim.vcomponents.FDCE
@@ -1092,7 +810,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[67]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(191),
+      D => DEMAPPING_SUBCARRIER_16QAM(3),
       Q => DEMAPPING_16QAM_BUFFER(135)
     );
 \DEMAPPING_16QAM_BUFFER_reg[136]\: unisim.vcomponents.FDCE
@@ -1103,7 +821,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[69]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(188),
+      D => DEMAPPING_SUBCARRIER_16QAM(0),
       Q => DEMAPPING_16QAM_BUFFER(136)
     );
 \DEMAPPING_16QAM_BUFFER_reg[137]\: unisim.vcomponents.FDCE
@@ -1114,7 +832,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[69]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(189),
+      D => DEMAPPING_SUBCARRIER_16QAM(1),
       Q => DEMAPPING_16QAM_BUFFER(137)
     );
 \DEMAPPING_16QAM_BUFFER_reg[138]\: unisim.vcomponents.FDCE
@@ -1125,7 +843,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[69]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(190),
+      D => DEMAPPING_SUBCARRIER_16QAM(2),
       Q => DEMAPPING_16QAM_BUFFER(138)
     );
 \DEMAPPING_16QAM_BUFFER_reg[139]\: unisim.vcomponents.FDCE
@@ -1136,7 +854,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[69]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(191),
+      D => DEMAPPING_SUBCARRIER_16QAM(3),
       Q => DEMAPPING_16QAM_BUFFER(139)
     );
 \DEMAPPING_16QAM_BUFFER_reg[13]\: unisim.vcomponents.FDCE
@@ -1147,7 +865,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[7]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(61),
+      D => DEMAPPING_SUBCARRIER_16QAM(1),
       Q => DEMAPPING_16QAM_BUFFER(13)
     );
 \DEMAPPING_16QAM_BUFFER_reg[140]\: unisim.vcomponents.FDCE
@@ -1158,7 +876,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[71]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(188),
+      D => DEMAPPING_SUBCARRIER_16QAM(0),
       Q => DEMAPPING_16QAM_BUFFER(140)
     );
 \DEMAPPING_16QAM_BUFFER_reg[141]\: unisim.vcomponents.FDCE
@@ -1169,7 +887,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[71]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(189),
+      D => DEMAPPING_SUBCARRIER_16QAM(1),
       Q => DEMAPPING_16QAM_BUFFER(141)
     );
 \DEMAPPING_16QAM_BUFFER_reg[142]\: unisim.vcomponents.FDCE
@@ -1180,7 +898,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[71]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(190),
+      D => DEMAPPING_SUBCARRIER_16QAM(2),
       Q => DEMAPPING_16QAM_BUFFER(142)
     );
 \DEMAPPING_16QAM_BUFFER_reg[143]\: unisim.vcomponents.FDCE
@@ -1191,7 +909,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[71]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(191),
+      D => DEMAPPING_SUBCARRIER_16QAM(3),
       Q => DEMAPPING_16QAM_BUFFER(143)
     );
 \DEMAPPING_16QAM_BUFFER_reg[144]\: unisim.vcomponents.FDCE
@@ -1202,7 +920,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[73]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(188),
+      D => DEMAPPING_SUBCARRIER_16QAM(0),
       Q => DEMAPPING_16QAM_BUFFER(144)
     );
 \DEMAPPING_16QAM_BUFFER_reg[145]\: unisim.vcomponents.FDCE
@@ -1213,7 +931,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[73]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(189),
+      D => DEMAPPING_SUBCARRIER_16QAM(1),
       Q => DEMAPPING_16QAM_BUFFER(145)
     );
 \DEMAPPING_16QAM_BUFFER_reg[146]\: unisim.vcomponents.FDCE
@@ -1224,7 +942,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[73]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(190),
+      D => DEMAPPING_SUBCARRIER_16QAM(2),
       Q => DEMAPPING_16QAM_BUFFER(146)
     );
 \DEMAPPING_16QAM_BUFFER_reg[147]\: unisim.vcomponents.FDCE
@@ -1235,7 +953,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[73]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(191),
+      D => DEMAPPING_SUBCARRIER_16QAM(3),
       Q => DEMAPPING_16QAM_BUFFER(147)
     );
 \DEMAPPING_16QAM_BUFFER_reg[148]\: unisim.vcomponents.FDCE
@@ -1246,7 +964,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[75]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(188),
+      D => DEMAPPING_SUBCARRIER_16QAM(0),
       Q => DEMAPPING_16QAM_BUFFER(148)
     );
 \DEMAPPING_16QAM_BUFFER_reg[149]\: unisim.vcomponents.FDCE
@@ -1257,7 +975,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[75]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(189),
+      D => DEMAPPING_SUBCARRIER_16QAM(1),
       Q => DEMAPPING_16QAM_BUFFER(149)
     );
 \DEMAPPING_16QAM_BUFFER_reg[14]\: unisim.vcomponents.FDCE
@@ -1268,7 +986,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[7]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(62),
+      D => DEMAPPING_SUBCARRIER_16QAM(2),
       Q => DEMAPPING_16QAM_BUFFER(14)
     );
 \DEMAPPING_16QAM_BUFFER_reg[150]\: unisim.vcomponents.FDCE
@@ -1279,7 +997,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[75]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(190),
+      D => DEMAPPING_SUBCARRIER_16QAM(2),
       Q => DEMAPPING_16QAM_BUFFER(150)
     );
 \DEMAPPING_16QAM_BUFFER_reg[151]\: unisim.vcomponents.FDCE
@@ -1290,7 +1008,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[75]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(191),
+      D => DEMAPPING_SUBCARRIER_16QAM(3),
       Q => DEMAPPING_16QAM_BUFFER(151)
     );
 \DEMAPPING_16QAM_BUFFER_reg[152]\: unisim.vcomponents.FDCE
@@ -1301,7 +1019,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[77]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(188),
+      D => DEMAPPING_SUBCARRIER_16QAM(0),
       Q => DEMAPPING_16QAM_BUFFER(152)
     );
 \DEMAPPING_16QAM_BUFFER_reg[153]\: unisim.vcomponents.FDCE
@@ -1312,7 +1030,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[77]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(189),
+      D => DEMAPPING_SUBCARRIER_16QAM(1),
       Q => DEMAPPING_16QAM_BUFFER(153)
     );
 \DEMAPPING_16QAM_BUFFER_reg[154]\: unisim.vcomponents.FDCE
@@ -1323,7 +1041,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[77]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(190),
+      D => DEMAPPING_SUBCARRIER_16QAM(2),
       Q => DEMAPPING_16QAM_BUFFER(154)
     );
 \DEMAPPING_16QAM_BUFFER_reg[155]\: unisim.vcomponents.FDCE
@@ -1334,7 +1052,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[77]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(191),
+      D => DEMAPPING_SUBCARRIER_16QAM(3),
       Q => DEMAPPING_16QAM_BUFFER(155)
     );
 \DEMAPPING_16QAM_BUFFER_reg[156]\: unisim.vcomponents.FDCE
@@ -1345,7 +1063,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[79]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(188),
+      D => DEMAPPING_SUBCARRIER_16QAM(0),
       Q => DEMAPPING_16QAM_BUFFER(156)
     );
 \DEMAPPING_16QAM_BUFFER_reg[157]\: unisim.vcomponents.FDCE
@@ -1356,7 +1074,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[79]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(189),
+      D => DEMAPPING_SUBCARRIER_16QAM(1),
       Q => DEMAPPING_16QAM_BUFFER(157)
     );
 \DEMAPPING_16QAM_BUFFER_reg[158]\: unisim.vcomponents.FDCE
@@ -1367,7 +1085,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[79]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(190),
+      D => DEMAPPING_SUBCARRIER_16QAM(2),
       Q => DEMAPPING_16QAM_BUFFER(158)
     );
 \DEMAPPING_16QAM_BUFFER_reg[159]\: unisim.vcomponents.FDCE
@@ -1378,7 +1096,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[79]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(191),
+      D => DEMAPPING_SUBCARRIER_16QAM(3),
       Q => DEMAPPING_16QAM_BUFFER(159)
     );
 \DEMAPPING_16QAM_BUFFER_reg[15]\: unisim.vcomponents.FDCE
@@ -1389,7 +1107,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[7]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(63),
+      D => DEMAPPING_SUBCARRIER_16QAM(3),
       Q => DEMAPPING_16QAM_BUFFER(15)
     );
 \DEMAPPING_16QAM_BUFFER_reg[160]\: unisim.vcomponents.FDCE
@@ -1444,7 +1162,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[83]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(188),
+      D => DEMAPPING_SUBCARRIER_16QAM(0),
       Q => DEMAPPING_16QAM_BUFFER(164)
     );
 \DEMAPPING_16QAM_BUFFER_reg[165]\: unisim.vcomponents.FDCE
@@ -1455,7 +1173,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[83]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(189),
+      D => DEMAPPING_SUBCARRIER_16QAM(1),
       Q => DEMAPPING_16QAM_BUFFER(165)
     );
 \DEMAPPING_16QAM_BUFFER_reg[166]\: unisim.vcomponents.FDCE
@@ -1466,7 +1184,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[83]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(190),
+      D => DEMAPPING_SUBCARRIER_16QAM(2),
       Q => DEMAPPING_16QAM_BUFFER(166)
     );
 \DEMAPPING_16QAM_BUFFER_reg[167]\: unisim.vcomponents.FDCE
@@ -1477,7 +1195,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[83]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(191),
+      D => DEMAPPING_SUBCARRIER_16QAM(3),
       Q => DEMAPPING_16QAM_BUFFER(167)
     );
 \DEMAPPING_16QAM_BUFFER_reg[168]\: unisim.vcomponents.FDCE
@@ -1488,7 +1206,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[85]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(188),
+      D => DEMAPPING_SUBCARRIER_16QAM(0),
       Q => DEMAPPING_16QAM_BUFFER(168)
     );
 \DEMAPPING_16QAM_BUFFER_reg[169]\: unisim.vcomponents.FDCE
@@ -1499,7 +1217,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[85]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(189),
+      D => DEMAPPING_SUBCARRIER_16QAM(1),
       Q => DEMAPPING_16QAM_BUFFER(169)
     );
 \DEMAPPING_16QAM_BUFFER_reg[16]\: unisim.vcomponents.FDCE
@@ -1510,7 +1228,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[9]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(60),
+      D => DEMAPPING_SUBCARRIER_16QAM(0),
       Q => DEMAPPING_16QAM_BUFFER(16)
     );
 \DEMAPPING_16QAM_BUFFER_reg[170]\: unisim.vcomponents.FDCE
@@ -1521,7 +1239,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[85]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(190),
+      D => DEMAPPING_SUBCARRIER_16QAM(2),
       Q => DEMAPPING_16QAM_BUFFER(170)
     );
 \DEMAPPING_16QAM_BUFFER_reg[171]\: unisim.vcomponents.FDCE
@@ -1532,7 +1250,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[85]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(191),
+      D => DEMAPPING_SUBCARRIER_16QAM(3),
       Q => DEMAPPING_16QAM_BUFFER(171)
     );
 \DEMAPPING_16QAM_BUFFER_reg[172]\: unisim.vcomponents.FDCE
@@ -1543,7 +1261,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[87]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(188),
+      D => DEMAPPING_SUBCARRIER_16QAM(0),
       Q => DEMAPPING_16QAM_BUFFER(172)
     );
 \DEMAPPING_16QAM_BUFFER_reg[173]\: unisim.vcomponents.FDCE
@@ -1554,7 +1272,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[87]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(189),
+      D => DEMAPPING_SUBCARRIER_16QAM(1),
       Q => DEMAPPING_16QAM_BUFFER(173)
     );
 \DEMAPPING_16QAM_BUFFER_reg[174]\: unisim.vcomponents.FDCE
@@ -1565,7 +1283,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[87]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(190),
+      D => DEMAPPING_SUBCARRIER_16QAM(2),
       Q => DEMAPPING_16QAM_BUFFER(174)
     );
 \DEMAPPING_16QAM_BUFFER_reg[175]\: unisim.vcomponents.FDCE
@@ -1576,7 +1294,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[87]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(191),
+      D => DEMAPPING_SUBCARRIER_16QAM(3),
       Q => DEMAPPING_16QAM_BUFFER(175)
     );
 \DEMAPPING_16QAM_BUFFER_reg[176]\: unisim.vcomponents.FDCE
@@ -1587,7 +1305,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[89]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(188),
+      D => DEMAPPING_SUBCARRIER_16QAM(0),
       Q => DEMAPPING_16QAM_BUFFER(176)
     );
 \DEMAPPING_16QAM_BUFFER_reg[177]\: unisim.vcomponents.FDCE
@@ -1598,7 +1316,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[89]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(189),
+      D => DEMAPPING_SUBCARRIER_16QAM(1),
       Q => DEMAPPING_16QAM_BUFFER(177)
     );
 \DEMAPPING_16QAM_BUFFER_reg[178]\: unisim.vcomponents.FDCE
@@ -1609,7 +1327,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[89]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(190),
+      D => DEMAPPING_SUBCARRIER_16QAM(2),
       Q => DEMAPPING_16QAM_BUFFER(178)
     );
 \DEMAPPING_16QAM_BUFFER_reg[179]\: unisim.vcomponents.FDCE
@@ -1620,7 +1338,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[89]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(191),
+      D => DEMAPPING_SUBCARRIER_16QAM(3),
       Q => DEMAPPING_16QAM_BUFFER(179)
     );
 \DEMAPPING_16QAM_BUFFER_reg[17]\: unisim.vcomponents.FDCE
@@ -1631,7 +1349,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[9]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(61),
+      D => DEMAPPING_SUBCARRIER_16QAM(1),
       Q => DEMAPPING_16QAM_BUFFER(17)
     );
 \DEMAPPING_16QAM_BUFFER_reg[180]\: unisim.vcomponents.FDCE
@@ -1642,7 +1360,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[91]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(188),
+      D => DEMAPPING_SUBCARRIER_16QAM(0),
       Q => DEMAPPING_16QAM_BUFFER(180)
     );
 \DEMAPPING_16QAM_BUFFER_reg[181]\: unisim.vcomponents.FDCE
@@ -1653,7 +1371,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[91]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(189),
+      D => DEMAPPING_SUBCARRIER_16QAM(1),
       Q => DEMAPPING_16QAM_BUFFER(181)
     );
 \DEMAPPING_16QAM_BUFFER_reg[182]\: unisim.vcomponents.FDCE
@@ -1664,7 +1382,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[91]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(190),
+      D => DEMAPPING_SUBCARRIER_16QAM(2),
       Q => DEMAPPING_16QAM_BUFFER(182)
     );
 \DEMAPPING_16QAM_BUFFER_reg[183]\: unisim.vcomponents.FDCE
@@ -1675,7 +1393,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[91]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(191),
+      D => DEMAPPING_SUBCARRIER_16QAM(3),
       Q => DEMAPPING_16QAM_BUFFER(183)
     );
 \DEMAPPING_16QAM_BUFFER_reg[184]\: unisim.vcomponents.FDCE
@@ -1686,7 +1404,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[93]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(188),
+      D => DEMAPPING_SUBCARRIER_16QAM(0),
       Q => DEMAPPING_16QAM_BUFFER(184)
     );
 \DEMAPPING_16QAM_BUFFER_reg[185]\: unisim.vcomponents.FDCE
@@ -1697,7 +1415,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[93]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(189),
+      D => DEMAPPING_SUBCARRIER_16QAM(1),
       Q => DEMAPPING_16QAM_BUFFER(185)
     );
 \DEMAPPING_16QAM_BUFFER_reg[186]\: unisim.vcomponents.FDCE
@@ -1708,7 +1426,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[93]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(190),
+      D => DEMAPPING_SUBCARRIER_16QAM(2),
       Q => DEMAPPING_16QAM_BUFFER(186)
     );
 \DEMAPPING_16QAM_BUFFER_reg[187]\: unisim.vcomponents.FDCE
@@ -1719,7 +1437,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[93]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(191),
+      D => DEMAPPING_SUBCARRIER_16QAM(3),
       Q => DEMAPPING_16QAM_BUFFER(187)
     );
 \DEMAPPING_16QAM_BUFFER_reg[188]\: unisim.vcomponents.FDCE
@@ -1730,7 +1448,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[95]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(188),
+      D => DEMAPPING_SUBCARRIER_16QAM(0),
       Q => DEMAPPING_16QAM_BUFFER(188)
     );
 \DEMAPPING_16QAM_BUFFER_reg[189]\: unisim.vcomponents.FDCE
@@ -1741,7 +1459,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[95]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(189),
+      D => DEMAPPING_SUBCARRIER_16QAM(1),
       Q => DEMAPPING_16QAM_BUFFER(189)
     );
 \DEMAPPING_16QAM_BUFFER_reg[18]\: unisim.vcomponents.FDCE
@@ -1752,7 +1470,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[9]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(62),
+      D => DEMAPPING_SUBCARRIER_16QAM(2),
       Q => DEMAPPING_16QAM_BUFFER(18)
     );
 \DEMAPPING_16QAM_BUFFER_reg[190]\: unisim.vcomponents.FDCE
@@ -1763,7 +1481,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[95]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(190),
+      D => DEMAPPING_SUBCARRIER_16QAM(2),
       Q => DEMAPPING_16QAM_BUFFER(190)
     );
 \DEMAPPING_16QAM_BUFFER_reg[191]\: unisim.vcomponents.FDCE
@@ -1774,7 +1492,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[95]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(191),
+      D => DEMAPPING_SUBCARRIER_16QAM(3),
       Q => DEMAPPING_16QAM_BUFFER(191)
     );
 \DEMAPPING_16QAM_BUFFER_reg[192]\: unisim.vcomponents.FDCE
@@ -1785,7 +1503,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[97]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(192),
+      D => DEMAPPING_SUBCARRIER_16QAM(0),
       Q => DEMAPPING_16QAM_BUFFER(192)
     );
 \DEMAPPING_16QAM_BUFFER_reg[193]\: unisim.vcomponents.FDCE
@@ -1796,7 +1514,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[97]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(193),
+      D => DEMAPPING_SUBCARRIER_16QAM(1),
       Q => DEMAPPING_16QAM_BUFFER(193)
     );
 \DEMAPPING_16QAM_BUFFER_reg[194]\: unisim.vcomponents.FDCE
@@ -1807,7 +1525,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[97]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(194),
+      D => DEMAPPING_SUBCARRIER_16QAM(2),
       Q => DEMAPPING_16QAM_BUFFER(194)
     );
 \DEMAPPING_16QAM_BUFFER_reg[195]\: unisim.vcomponents.FDCE
@@ -1818,7 +1536,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[97]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(195),
+      D => DEMAPPING_SUBCARRIER_16QAM(3),
       Q => DEMAPPING_16QAM_BUFFER(195)
     );
 \DEMAPPING_16QAM_BUFFER_reg[196]\: unisim.vcomponents.FDCE
@@ -1829,7 +1547,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[99]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(204),
+      D => DEMAPPING_SUBCARRIER_16QAM(0),
       Q => DEMAPPING_16QAM_BUFFER(196)
     );
 \DEMAPPING_16QAM_BUFFER_reg[197]\: unisim.vcomponents.FDCE
@@ -1840,7 +1558,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[99]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(205),
+      D => DEMAPPING_SUBCARRIER_16QAM(1),
       Q => DEMAPPING_16QAM_BUFFER(197)
     );
 \DEMAPPING_16QAM_BUFFER_reg[198]\: unisim.vcomponents.FDCE
@@ -1851,7 +1569,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[99]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(206),
+      D => DEMAPPING_SUBCARRIER_16QAM(2),
       Q => DEMAPPING_16QAM_BUFFER(198)
     );
 \DEMAPPING_16QAM_BUFFER_reg[199]\: unisim.vcomponents.FDCE
@@ -1862,7 +1580,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[99]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(207),
+      D => DEMAPPING_SUBCARRIER_16QAM(3),
       Q => DEMAPPING_16QAM_BUFFER(199)
     );
 \DEMAPPING_16QAM_BUFFER_reg[19]\: unisim.vcomponents.FDCE
@@ -1873,7 +1591,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[9]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(63),
+      D => DEMAPPING_SUBCARRIER_16QAM(3),
       Q => DEMAPPING_16QAM_BUFFER(19)
     );
 \DEMAPPING_16QAM_BUFFER_reg[1]\: unisim.vcomponents.FDCE
@@ -1895,7 +1613,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[101]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(204),
+      D => DEMAPPING_SUBCARRIER_16QAM(0),
       Q => DEMAPPING_16QAM_BUFFER(200)
     );
 \DEMAPPING_16QAM_BUFFER_reg[201]\: unisim.vcomponents.FDCE
@@ -1906,7 +1624,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[101]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(205),
+      D => DEMAPPING_SUBCARRIER_16QAM(1),
       Q => DEMAPPING_16QAM_BUFFER(201)
     );
 \DEMAPPING_16QAM_BUFFER_reg[202]\: unisim.vcomponents.FDCE
@@ -1917,7 +1635,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[101]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(206),
+      D => DEMAPPING_SUBCARRIER_16QAM(2),
       Q => DEMAPPING_16QAM_BUFFER(202)
     );
 \DEMAPPING_16QAM_BUFFER_reg[203]\: unisim.vcomponents.FDCE
@@ -1928,7 +1646,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[101]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(207),
+      D => DEMAPPING_SUBCARRIER_16QAM(3),
       Q => DEMAPPING_16QAM_BUFFER(203)
     );
 \DEMAPPING_16QAM_BUFFER_reg[204]\: unisim.vcomponents.FDCE
@@ -1939,7 +1657,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[103]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(204),
+      D => DEMAPPING_SUBCARRIER_16QAM(0),
       Q => DEMAPPING_16QAM_BUFFER(204)
     );
 \DEMAPPING_16QAM_BUFFER_reg[205]\: unisim.vcomponents.FDCE
@@ -1950,7 +1668,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[103]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(205),
+      D => DEMAPPING_SUBCARRIER_16QAM(1),
       Q => DEMAPPING_16QAM_BUFFER(205)
     );
 \DEMAPPING_16QAM_BUFFER_reg[206]\: unisim.vcomponents.FDCE
@@ -1961,7 +1679,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[103]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(206),
+      D => DEMAPPING_SUBCARRIER_16QAM(2),
       Q => DEMAPPING_16QAM_BUFFER(206)
     );
 \DEMAPPING_16QAM_BUFFER_reg[207]\: unisim.vcomponents.FDCE
@@ -1972,7 +1690,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[103]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(207),
+      D => DEMAPPING_SUBCARRIER_16QAM(3),
       Q => DEMAPPING_16QAM_BUFFER(207)
     );
 \DEMAPPING_16QAM_BUFFER_reg[20]\: unisim.vcomponents.FDCE
@@ -1983,7 +1701,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[11]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(60),
+      D => DEMAPPING_SUBCARRIER_16QAM(0),
       Q => DEMAPPING_16QAM_BUFFER(20)
     );
 \DEMAPPING_16QAM_BUFFER_reg[21]\: unisim.vcomponents.FDCE
@@ -1994,7 +1712,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[11]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(61),
+      D => DEMAPPING_SUBCARRIER_16QAM(1),
       Q => DEMAPPING_16QAM_BUFFER(21)
     );
 \DEMAPPING_16QAM_BUFFER_reg[22]\: unisim.vcomponents.FDCE
@@ -2005,7 +1723,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[11]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(62),
+      D => DEMAPPING_SUBCARRIER_16QAM(2),
       Q => DEMAPPING_16QAM_BUFFER(22)
     );
 \DEMAPPING_16QAM_BUFFER_reg[23]\: unisim.vcomponents.FDCE
@@ -2016,7 +1734,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[11]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(63),
+      D => DEMAPPING_SUBCARRIER_16QAM(3),
       Q => DEMAPPING_16QAM_BUFFER(23)
     );
 \DEMAPPING_16QAM_BUFFER_reg[24]\: unisim.vcomponents.FDCE
@@ -2027,7 +1745,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[13]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(60),
+      D => DEMAPPING_SUBCARRIER_16QAM(0),
       Q => DEMAPPING_16QAM_BUFFER(24)
     );
 \DEMAPPING_16QAM_BUFFER_reg[25]\: unisim.vcomponents.FDCE
@@ -2038,7 +1756,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[13]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(61),
+      D => DEMAPPING_SUBCARRIER_16QAM(1),
       Q => DEMAPPING_16QAM_BUFFER(25)
     );
 \DEMAPPING_16QAM_BUFFER_reg[26]\: unisim.vcomponents.FDCE
@@ -2049,7 +1767,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[13]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(62),
+      D => DEMAPPING_SUBCARRIER_16QAM(2),
       Q => DEMAPPING_16QAM_BUFFER(26)
     );
 \DEMAPPING_16QAM_BUFFER_reg[27]\: unisim.vcomponents.FDCE
@@ -2060,7 +1778,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[13]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(63),
+      D => DEMAPPING_SUBCARRIER_16QAM(3),
       Q => DEMAPPING_16QAM_BUFFER(27)
     );
 \DEMAPPING_16QAM_BUFFER_reg[28]\: unisim.vcomponents.FDCE
@@ -2071,7 +1789,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[15]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(60),
+      D => DEMAPPING_SUBCARRIER_16QAM(0),
       Q => DEMAPPING_16QAM_BUFFER(28)
     );
 \DEMAPPING_16QAM_BUFFER_reg[29]\: unisim.vcomponents.FDCE
@@ -2082,7 +1800,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[15]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(61),
+      D => DEMAPPING_SUBCARRIER_16QAM(1),
       Q => DEMAPPING_16QAM_BUFFER(29)
     );
 \DEMAPPING_16QAM_BUFFER_reg[2]\: unisim.vcomponents.FDCE
@@ -2104,7 +1822,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[15]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(62),
+      D => DEMAPPING_SUBCARRIER_16QAM(2),
       Q => DEMAPPING_16QAM_BUFFER(30)
     );
 \DEMAPPING_16QAM_BUFFER_reg[31]\: unisim.vcomponents.FDCE
@@ -2115,7 +1833,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[15]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(63),
+      D => DEMAPPING_SUBCARRIER_16QAM(3),
       Q => DEMAPPING_16QAM_BUFFER(31)
     );
 \DEMAPPING_16QAM_BUFFER_reg[32]\: unisim.vcomponents.FDCE
@@ -2170,7 +1888,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[19]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(60),
+      D => DEMAPPING_SUBCARRIER_16QAM(0),
       Q => DEMAPPING_16QAM_BUFFER(36)
     );
 \DEMAPPING_16QAM_BUFFER_reg[37]\: unisim.vcomponents.FDCE
@@ -2181,7 +1899,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[19]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(61),
+      D => DEMAPPING_SUBCARRIER_16QAM(1),
       Q => DEMAPPING_16QAM_BUFFER(37)
     );
 \DEMAPPING_16QAM_BUFFER_reg[38]\: unisim.vcomponents.FDCE
@@ -2192,7 +1910,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[19]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(62),
+      D => DEMAPPING_SUBCARRIER_16QAM(2),
       Q => DEMAPPING_16QAM_BUFFER(38)
     );
 \DEMAPPING_16QAM_BUFFER_reg[39]\: unisim.vcomponents.FDCE
@@ -2203,7 +1921,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[19]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(63),
+      D => DEMAPPING_SUBCARRIER_16QAM(3),
       Q => DEMAPPING_16QAM_BUFFER(39)
     );
 \DEMAPPING_16QAM_BUFFER_reg[3]\: unisim.vcomponents.FDCE
@@ -2225,7 +1943,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[21]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(60),
+      D => DEMAPPING_SUBCARRIER_16QAM(0),
       Q => DEMAPPING_16QAM_BUFFER(40)
     );
 \DEMAPPING_16QAM_BUFFER_reg[41]\: unisim.vcomponents.FDCE
@@ -2236,7 +1954,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[21]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(61),
+      D => DEMAPPING_SUBCARRIER_16QAM(1),
       Q => DEMAPPING_16QAM_BUFFER(41)
     );
 \DEMAPPING_16QAM_BUFFER_reg[42]\: unisim.vcomponents.FDCE
@@ -2247,7 +1965,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[21]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(62),
+      D => DEMAPPING_SUBCARRIER_16QAM(2),
       Q => DEMAPPING_16QAM_BUFFER(42)
     );
 \DEMAPPING_16QAM_BUFFER_reg[43]\: unisim.vcomponents.FDCE
@@ -2258,7 +1976,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[21]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(63),
+      D => DEMAPPING_SUBCARRIER_16QAM(3),
       Q => DEMAPPING_16QAM_BUFFER(43)
     );
 \DEMAPPING_16QAM_BUFFER_reg[44]\: unisim.vcomponents.FDCE
@@ -2269,7 +1987,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[23]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(60),
+      D => DEMAPPING_SUBCARRIER_16QAM(0),
       Q => DEMAPPING_16QAM_BUFFER(44)
     );
 \DEMAPPING_16QAM_BUFFER_reg[45]\: unisim.vcomponents.FDCE
@@ -2280,7 +1998,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[23]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(61),
+      D => DEMAPPING_SUBCARRIER_16QAM(1),
       Q => DEMAPPING_16QAM_BUFFER(45)
     );
 \DEMAPPING_16QAM_BUFFER_reg[46]\: unisim.vcomponents.FDCE
@@ -2291,7 +2009,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[23]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(62),
+      D => DEMAPPING_SUBCARRIER_16QAM(2),
       Q => DEMAPPING_16QAM_BUFFER(46)
     );
 \DEMAPPING_16QAM_BUFFER_reg[47]\: unisim.vcomponents.FDCE
@@ -2302,7 +2020,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[23]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(63),
+      D => DEMAPPING_SUBCARRIER_16QAM(3),
       Q => DEMAPPING_16QAM_BUFFER(47)
     );
 \DEMAPPING_16QAM_BUFFER_reg[48]\: unisim.vcomponents.FDCE
@@ -2313,7 +2031,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[25]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(60),
+      D => DEMAPPING_SUBCARRIER_16QAM(0),
       Q => DEMAPPING_16QAM_BUFFER(48)
     );
 \DEMAPPING_16QAM_BUFFER_reg[49]\: unisim.vcomponents.FDCE
@@ -2324,7 +2042,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[25]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(61),
+      D => DEMAPPING_SUBCARRIER_16QAM(1),
       Q => DEMAPPING_16QAM_BUFFER(49)
     );
 \DEMAPPING_16QAM_BUFFER_reg[4]\: unisim.vcomponents.FDCE
@@ -2335,7 +2053,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[3]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(60),
+      D => DEMAPPING_SUBCARRIER_16QAM(0),
       Q => DEMAPPING_16QAM_BUFFER(4)
     );
 \DEMAPPING_16QAM_BUFFER_reg[50]\: unisim.vcomponents.FDCE
@@ -2346,7 +2064,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[25]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(62),
+      D => DEMAPPING_SUBCARRIER_16QAM(2),
       Q => DEMAPPING_16QAM_BUFFER(50)
     );
 \DEMAPPING_16QAM_BUFFER_reg[51]\: unisim.vcomponents.FDCE
@@ -2357,7 +2075,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[25]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(63),
+      D => DEMAPPING_SUBCARRIER_16QAM(3),
       Q => DEMAPPING_16QAM_BUFFER(51)
     );
 \DEMAPPING_16QAM_BUFFER_reg[52]\: unisim.vcomponents.FDCE
@@ -2368,7 +2086,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[27]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(60),
+      D => DEMAPPING_SUBCARRIER_16QAM(0),
       Q => DEMAPPING_16QAM_BUFFER(52)
     );
 \DEMAPPING_16QAM_BUFFER_reg[53]\: unisim.vcomponents.FDCE
@@ -2379,7 +2097,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[27]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(61),
+      D => DEMAPPING_SUBCARRIER_16QAM(1),
       Q => DEMAPPING_16QAM_BUFFER(53)
     );
 \DEMAPPING_16QAM_BUFFER_reg[54]\: unisim.vcomponents.FDCE
@@ -2390,7 +2108,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[27]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(62),
+      D => DEMAPPING_SUBCARRIER_16QAM(2),
       Q => DEMAPPING_16QAM_BUFFER(54)
     );
 \DEMAPPING_16QAM_BUFFER_reg[55]\: unisim.vcomponents.FDCE
@@ -2401,7 +2119,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[27]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(63),
+      D => DEMAPPING_SUBCARRIER_16QAM(3),
       Q => DEMAPPING_16QAM_BUFFER(55)
     );
 \DEMAPPING_16QAM_BUFFER_reg[56]\: unisim.vcomponents.FDCE
@@ -2412,7 +2130,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[29]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(60),
+      D => DEMAPPING_SUBCARRIER_16QAM(0),
       Q => DEMAPPING_16QAM_BUFFER(56)
     );
 \DEMAPPING_16QAM_BUFFER_reg[57]\: unisim.vcomponents.FDCE
@@ -2423,7 +2141,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[29]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(61),
+      D => DEMAPPING_SUBCARRIER_16QAM(1),
       Q => DEMAPPING_16QAM_BUFFER(57)
     );
 \DEMAPPING_16QAM_BUFFER_reg[58]\: unisim.vcomponents.FDCE
@@ -2434,7 +2152,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[29]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(62),
+      D => DEMAPPING_SUBCARRIER_16QAM(2),
       Q => DEMAPPING_16QAM_BUFFER(58)
     );
 \DEMAPPING_16QAM_BUFFER_reg[59]\: unisim.vcomponents.FDCE
@@ -2445,7 +2163,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[29]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(63),
+      D => DEMAPPING_SUBCARRIER_16QAM(3),
       Q => DEMAPPING_16QAM_BUFFER(59)
     );
 \DEMAPPING_16QAM_BUFFER_reg[5]\: unisim.vcomponents.FDCE
@@ -2456,7 +2174,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[3]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(61),
+      D => DEMAPPING_SUBCARRIER_16QAM(1),
       Q => DEMAPPING_16QAM_BUFFER(5)
     );
 \DEMAPPING_16QAM_BUFFER_reg[60]\: unisim.vcomponents.FDCE
@@ -2467,7 +2185,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[31]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(60),
+      D => DEMAPPING_SUBCARRIER_16QAM(0),
       Q => DEMAPPING_16QAM_BUFFER(60)
     );
 \DEMAPPING_16QAM_BUFFER_reg[61]\: unisim.vcomponents.FDCE
@@ -2478,7 +2196,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[31]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(61),
+      D => DEMAPPING_SUBCARRIER_16QAM(1),
       Q => DEMAPPING_16QAM_BUFFER(61)
     );
 \DEMAPPING_16QAM_BUFFER_reg[62]\: unisim.vcomponents.FDCE
@@ -2489,7 +2207,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[31]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(62),
+      D => DEMAPPING_SUBCARRIER_16QAM(2),
       Q => DEMAPPING_16QAM_BUFFER(62)
     );
 \DEMAPPING_16QAM_BUFFER_reg[63]\: unisim.vcomponents.FDCE
@@ -2500,7 +2218,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[31]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(63),
+      D => DEMAPPING_SUBCARRIER_16QAM(3),
       Q => DEMAPPING_16QAM_BUFFER(63)
     );
 \DEMAPPING_16QAM_BUFFER_reg[64]\: unisim.vcomponents.FDCE
@@ -2555,7 +2273,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[35]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(76),
+      D => DEMAPPING_SUBCARRIER_16QAM(0),
       Q => DEMAPPING_16QAM_BUFFER(68)
     );
 \DEMAPPING_16QAM_BUFFER_reg[69]\: unisim.vcomponents.FDCE
@@ -2566,7 +2284,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[35]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(77),
+      D => DEMAPPING_SUBCARRIER_16QAM(1),
       Q => DEMAPPING_16QAM_BUFFER(69)
     );
 \DEMAPPING_16QAM_BUFFER_reg[6]\: unisim.vcomponents.FDCE
@@ -2577,7 +2295,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[3]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(62),
+      D => DEMAPPING_SUBCARRIER_16QAM(2),
       Q => DEMAPPING_16QAM_BUFFER(6)
     );
 \DEMAPPING_16QAM_BUFFER_reg[70]\: unisim.vcomponents.FDCE
@@ -2588,7 +2306,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[35]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(78),
+      D => DEMAPPING_SUBCARRIER_16QAM(2),
       Q => DEMAPPING_16QAM_BUFFER(70)
     );
 \DEMAPPING_16QAM_BUFFER_reg[71]\: unisim.vcomponents.FDCE
@@ -2599,7 +2317,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[35]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(79),
+      D => DEMAPPING_SUBCARRIER_16QAM(3),
       Q => DEMAPPING_16QAM_BUFFER(71)
     );
 \DEMAPPING_16QAM_BUFFER_reg[72]\: unisim.vcomponents.FDCE
@@ -2610,7 +2328,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[37]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(76),
+      D => DEMAPPING_SUBCARRIER_16QAM(0),
       Q => DEMAPPING_16QAM_BUFFER(72)
     );
 \DEMAPPING_16QAM_BUFFER_reg[73]\: unisim.vcomponents.FDCE
@@ -2621,7 +2339,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[37]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(77),
+      D => DEMAPPING_SUBCARRIER_16QAM(1),
       Q => DEMAPPING_16QAM_BUFFER(73)
     );
 \DEMAPPING_16QAM_BUFFER_reg[74]\: unisim.vcomponents.FDCE
@@ -2632,7 +2350,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[37]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(78),
+      D => DEMAPPING_SUBCARRIER_16QAM(2),
       Q => DEMAPPING_16QAM_BUFFER(74)
     );
 \DEMAPPING_16QAM_BUFFER_reg[75]\: unisim.vcomponents.FDCE
@@ -2643,7 +2361,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[37]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(79),
+      D => DEMAPPING_SUBCARRIER_16QAM(3),
       Q => DEMAPPING_16QAM_BUFFER(75)
     );
 \DEMAPPING_16QAM_BUFFER_reg[76]\: unisim.vcomponents.FDCE
@@ -2654,7 +2372,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[39]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(76),
+      D => DEMAPPING_SUBCARRIER_16QAM(0),
       Q => DEMAPPING_16QAM_BUFFER(76)
     );
 \DEMAPPING_16QAM_BUFFER_reg[77]\: unisim.vcomponents.FDCE
@@ -2665,7 +2383,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[39]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(77),
+      D => DEMAPPING_SUBCARRIER_16QAM(1),
       Q => DEMAPPING_16QAM_BUFFER(77)
     );
 \DEMAPPING_16QAM_BUFFER_reg[78]\: unisim.vcomponents.FDCE
@@ -2676,7 +2394,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[39]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(78),
+      D => DEMAPPING_SUBCARRIER_16QAM(2),
       Q => DEMAPPING_16QAM_BUFFER(78)
     );
 \DEMAPPING_16QAM_BUFFER_reg[79]\: unisim.vcomponents.FDCE
@@ -2687,7 +2405,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[39]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(79),
+      D => DEMAPPING_SUBCARRIER_16QAM(3),
       Q => DEMAPPING_16QAM_BUFFER(79)
     );
 \DEMAPPING_16QAM_BUFFER_reg[7]\: unisim.vcomponents.FDCE
@@ -2698,7 +2416,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[3]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(63),
+      D => DEMAPPING_SUBCARRIER_16QAM(3),
       Q => DEMAPPING_16QAM_BUFFER(7)
     );
 \DEMAPPING_16QAM_BUFFER_reg[80]\: unisim.vcomponents.FDCE
@@ -2819,7 +2537,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[5]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(60),
+      D => DEMAPPING_SUBCARRIER_16QAM(0),
       Q => DEMAPPING_16QAM_BUFFER(8)
     );
 \DEMAPPING_16QAM_BUFFER_reg[90]\: unisim.vcomponents.FDCE
@@ -2940,7 +2658,7 @@ begin
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[5]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_16QAM_BUFFER0(61),
+      D => DEMAPPING_SUBCARRIER_16QAM(1),
       Q => DEMAPPING_16QAM_BUFFER(9)
     );
 \DEMAPPING_16QAM_reg[0]\: unisim.vcomponents.FDCE
@@ -5231,829 +4949,15 @@ begin
       D => DEMAPPING_16QAM_BUFFER(9),
       Q => DEMAPPING_16QAM(9)
     );
-\DEMAPPING_BPSK_BUFFER[0]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFFFB00000008"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[7]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I5 => DEMAPPING_BPSK_BUFFER(0),
-      O => \DEMAPPING_BPSK_BUFFER[0]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[10]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFEFFF00002000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[15]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I4 => \DEMAPPING_BPSK_BUFFER[50]_i_2_n_0\,
-      I5 => DEMAPPING_BPSK_BUFFER(10),
-      O => \DEMAPPING_BPSK_BUFFER[10]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[11]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFEFFF00002000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[15]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I4 => \DEMAPPING_BPSK_BUFFER[51]_i_3_n_0\,
-      I5 => DEMAPPING_BPSK_BUFFER(11),
-      O => \DEMAPPING_BPSK_BUFFER[11]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[12]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFEFFF00002000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[15]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I4 => \DEMAPPING_BPSK_BUFFER[44]_i_2_n_0\,
-      I5 => DEMAPPING_BPSK_BUFFER(12),
-      O => \DEMAPPING_BPSK_BUFFER[12]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[13]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFEFFF00002000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[15]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I4 => \DEMAPPING_BPSK_BUFFER[45]_i_2_n_0\,
-      I5 => DEMAPPING_BPSK_BUFFER(13),
-      O => \DEMAPPING_BPSK_BUFFER[13]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[14]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFEFFF00002000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[15]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I4 => \DEMAPPING_BPSK_BUFFER[46]_i_2_n_0\,
-      I5 => DEMAPPING_BPSK_BUFFER(14),
-      O => \DEMAPPING_BPSK_BUFFER[14]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[15]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFEFFF00002000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[15]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I4 => \DEMAPPING_BPSK_BUFFER[47]_i_3_n_0\,
-      I5 => DEMAPPING_BPSK_BUFFER(15),
-      O => \DEMAPPING_BPSK_BUFFER[15]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[15]_i_2\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"E"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
-      O => \DEMAPPING_BPSK_BUFFER[15]_i_2_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[16]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFEFF00000200"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[31]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I4 => \DEMAPPING_BPSK_BUFFER[48]_i_2_n_0\,
-      I5 => DEMAPPING_BPSK_BUFFER(16),
-      O => \DEMAPPING_BPSK_BUFFER[16]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[17]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFEFF00000200"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[31]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I4 => \DEMAPPING_BPSK_BUFFER[49]_i_2_n_0\,
-      I5 => DEMAPPING_BPSK_BUFFER(17),
-      O => \DEMAPPING_BPSK_BUFFER[17]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[18]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFEFF00000200"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[31]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I4 => \DEMAPPING_BPSK_BUFFER[50]_i_2_n_0\,
-      I5 => DEMAPPING_BPSK_BUFFER(18),
-      O => \DEMAPPING_BPSK_BUFFER[18]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[19]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFEFF00000200"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[31]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I4 => \DEMAPPING_BPSK_BUFFER[51]_i_3_n_0\,
-      I5 => DEMAPPING_BPSK_BUFFER(19),
-      O => \DEMAPPING_BPSK_BUFFER[19]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[1]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFBFFFF00080000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[7]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I5 => DEMAPPING_BPSK_BUFFER(1),
-      O => \DEMAPPING_BPSK_BUFFER[1]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[20]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFEFF00000200"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[31]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I4 => \DEMAPPING_BPSK_BUFFER[44]_i_2_n_0\,
-      I5 => DEMAPPING_BPSK_BUFFER(20),
-      O => \DEMAPPING_BPSK_BUFFER[20]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[21]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFEFF00000200"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[31]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I4 => \DEMAPPING_BPSK_BUFFER[45]_i_2_n_0\,
-      I5 => DEMAPPING_BPSK_BUFFER(21),
-      O => \DEMAPPING_BPSK_BUFFER[21]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[22]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFEFF00000200"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[31]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I4 => \DEMAPPING_BPSK_BUFFER[46]_i_2_n_0\,
-      I5 => DEMAPPING_BPSK_BUFFER(22),
-      O => \DEMAPPING_BPSK_BUFFER[22]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[23]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFEFF00000200"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[31]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I4 => \DEMAPPING_BPSK_BUFFER[47]_i_3_n_0\,
-      I5 => DEMAPPING_BPSK_BUFFER(23),
-      O => \DEMAPPING_BPSK_BUFFER[23]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[24]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFEFFF00002000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[31]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I4 => \DEMAPPING_BPSK_BUFFER[48]_i_2_n_0\,
-      I5 => DEMAPPING_BPSK_BUFFER(24),
-      O => \DEMAPPING_BPSK_BUFFER[24]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[25]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFEFFF00002000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[31]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I4 => \DEMAPPING_BPSK_BUFFER[49]_i_2_n_0\,
-      I5 => DEMAPPING_BPSK_BUFFER(25),
-      O => \DEMAPPING_BPSK_BUFFER[25]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[26]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFEFFF00002000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[31]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I4 => \DEMAPPING_BPSK_BUFFER[50]_i_2_n_0\,
-      I5 => DEMAPPING_BPSK_BUFFER(26),
-      O => \DEMAPPING_BPSK_BUFFER[26]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[27]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFEFFF00002000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[31]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I4 => \DEMAPPING_BPSK_BUFFER[51]_i_3_n_0\,
-      I5 => DEMAPPING_BPSK_BUFFER(27),
-      O => \DEMAPPING_BPSK_BUFFER[27]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[28]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFEFFF00002000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[31]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I4 => \DEMAPPING_BPSK_BUFFER[44]_i_2_n_0\,
-      I5 => DEMAPPING_BPSK_BUFFER(28),
-      O => \DEMAPPING_BPSK_BUFFER[28]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[29]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFEFFF00002000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[31]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I4 => \DEMAPPING_BPSK_BUFFER[45]_i_2_n_0\,
-      I5 => DEMAPPING_BPSK_BUFFER(29),
-      O => \DEMAPPING_BPSK_BUFFER[29]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[2]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFBFFFF00080000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[7]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I5 => DEMAPPING_BPSK_BUFFER(2),
-      O => \DEMAPPING_BPSK_BUFFER[2]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[30]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFEFFF00002000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[31]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I4 => \DEMAPPING_BPSK_BUFFER[46]_i_2_n_0\,
-      I5 => DEMAPPING_BPSK_BUFFER(30),
-      O => \DEMAPPING_BPSK_BUFFER[30]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[31]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFEFFF00002000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[31]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I4 => \DEMAPPING_BPSK_BUFFER[47]_i_3_n_0\,
-      I5 => DEMAPPING_BPSK_BUFFER(31),
-      O => \DEMAPPING_BPSK_BUFFER[31]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[31]_i_2\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"B"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
-      O => \DEMAPPING_BPSK_BUFFER[31]_i_2_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[32]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFFFB00000008"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[39]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I5 => DEMAPPING_BPSK_BUFFER(32),
-      O => \DEMAPPING_BPSK_BUFFER[32]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[33]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFBFFFF00080000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[39]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I5 => DEMAPPING_BPSK_BUFFER(33),
-      O => \DEMAPPING_BPSK_BUFFER[33]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[34]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFBFFFF00080000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[39]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I5 => DEMAPPING_BPSK_BUFFER(34),
-      O => \DEMAPPING_BPSK_BUFFER[34]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[35]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FBFFFFFF08000000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[39]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I5 => DEMAPPING_BPSK_BUFFER(35),
-      O => \DEMAPPING_BPSK_BUFFER[35]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[36]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFFBF00000080"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[39]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I5 => DEMAPPING_BPSK_BUFFER(36),
-      O => \DEMAPPING_BPSK_BUFFER[36]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[37]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFBFFFFF00800000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[39]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I5 => DEMAPPING_BPSK_BUFFER(37),
-      O => \DEMAPPING_BPSK_BUFFER[37]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[38]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFBFFFFF00800000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[39]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I5 => DEMAPPING_BPSK_BUFFER(38),
-      O => \DEMAPPING_BPSK_BUFFER[38]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[39]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"BFFFFFFF80000000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[39]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I5 => DEMAPPING_BPSK_BUFFER(39),
-      O => \DEMAPPING_BPSK_BUFFER[39]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[39]_i_2\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"0200"
-    )
-        port map (
-      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
-      O => \DEMAPPING_BPSK_BUFFER[39]_i_2_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[3]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FBFFFFFF08000000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[7]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I5 => DEMAPPING_BPSK_BUFFER(3),
-      O => \DEMAPPING_BPSK_BUFFER[3]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[40]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFEFFF00002000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[47]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I4 => \DEMAPPING_BPSK_BUFFER[48]_i_2_n_0\,
-      I5 => DEMAPPING_BPSK_BUFFER(40),
-      O => \DEMAPPING_BPSK_BUFFER[40]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[41]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFEFFF00002000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[47]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I4 => \DEMAPPING_BPSK_BUFFER[49]_i_2_n_0\,
-      I5 => DEMAPPING_BPSK_BUFFER(41),
-      O => \DEMAPPING_BPSK_BUFFER[41]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[42]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFEFFF00002000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[47]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I4 => \DEMAPPING_BPSK_BUFFER[50]_i_2_n_0\,
-      I5 => DEMAPPING_BPSK_BUFFER(42),
-      O => \DEMAPPING_BPSK_BUFFER[42]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[43]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFEFFF00002000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[47]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I4 => \DEMAPPING_BPSK_BUFFER[51]_i_3_n_0\,
-      I5 => DEMAPPING_BPSK_BUFFER(43),
-      O => \DEMAPPING_BPSK_BUFFER[43]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[44]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFEFFF00002000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[47]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I4 => \DEMAPPING_BPSK_BUFFER[44]_i_2_n_0\,
-      I5 => DEMAPPING_BPSK_BUFFER(44),
-      O => \DEMAPPING_BPSK_BUFFER[44]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[44]_i_2\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"EF"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      O => \DEMAPPING_BPSK_BUFFER[44]_i_2_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[45]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFEFFF00002000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[47]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I4 => \DEMAPPING_BPSK_BUFFER[45]_i_2_n_0\,
-      I5 => DEMAPPING_BPSK_BUFFER(45),
-      O => \DEMAPPING_BPSK_BUFFER[45]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[45]_i_2\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"DF"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      O => \DEMAPPING_BPSK_BUFFER[45]_i_2_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[46]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFEFFF00002000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[47]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I4 => \DEMAPPING_BPSK_BUFFER[46]_i_2_n_0\,
-      I5 => DEMAPPING_BPSK_BUFFER(46),
-      O => \DEMAPPING_BPSK_BUFFER[46]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[46]_i_2\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"DF"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      O => \DEMAPPING_BPSK_BUFFER[46]_i_2_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[47]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFEFFF00002000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[47]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I4 => \DEMAPPING_BPSK_BUFFER[47]_i_3_n_0\,
-      I5 => DEMAPPING_BPSK_BUFFER(47),
-      O => \DEMAPPING_BPSK_BUFFER[47]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[47]_i_2\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"B"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
-      O => \DEMAPPING_BPSK_BUFFER[47]_i_2_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[47]_i_3\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"7F"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      O => \DEMAPPING_BPSK_BUFFER[47]_i_3_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[48]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFEFF00000200"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[51]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I4 => \DEMAPPING_BPSK_BUFFER[48]_i_2_n_0\,
-      I5 => DEMAPPING_BPSK_BUFFER(48),
-      O => \DEMAPPING_BPSK_BUFFER[48]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[48]_i_2\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"FE"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      O => \DEMAPPING_BPSK_BUFFER[48]_i_2_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[49]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFEFF00000200"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[51]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I4 => \DEMAPPING_BPSK_BUFFER[49]_i_2_n_0\,
-      I5 => DEMAPPING_BPSK_BUFFER(49),
-      O => \DEMAPPING_BPSK_BUFFER[49]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[49]_i_2\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"FD"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      O => \DEMAPPING_BPSK_BUFFER[49]_i_2_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[4]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFFBF00000080"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[7]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I5 => DEMAPPING_BPSK_BUFFER(4),
-      O => \DEMAPPING_BPSK_BUFFER[4]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[50]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFEFF00000200"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[51]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I4 => \DEMAPPING_BPSK_BUFFER[50]_i_2_n_0\,
-      I5 => DEMAPPING_BPSK_BUFFER(50),
-      O => \DEMAPPING_BPSK_BUFFER[50]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[50]_i_2\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"FD"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      O => \DEMAPPING_BPSK_BUFFER[50]_i_2_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[51]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFEFF00000200"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[51]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I4 => \DEMAPPING_BPSK_BUFFER[51]_i_3_n_0\,
-      I5 => DEMAPPING_BPSK_BUFFER(51),
-      O => \DEMAPPING_BPSK_BUFFER[51]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[51]_i_2\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"7"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
-      O => \DEMAPPING_BPSK_BUFFER[51]_i_2_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[51]_i_3\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"F7"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      O => \DEMAPPING_BPSK_BUFFER[51]_i_3_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[5]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFBFFFFF00800000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[7]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I5 => DEMAPPING_BPSK_BUFFER(5),
-      O => \DEMAPPING_BPSK_BUFFER[5]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[6]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFBFFFFF00800000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[7]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I5 => DEMAPPING_BPSK_BUFFER(6),
-      O => \DEMAPPING_BPSK_BUFFER[6]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[7]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"BFFFFFFF80000000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[7]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I5 => DEMAPPING_BPSK_BUFFER(7),
-      O => \DEMAPPING_BPSK_BUFFER[7]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[7]_i_2\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"0002"
-    )
-        port map (
-      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
-      O => \DEMAPPING_BPSK_BUFFER[7]_i_2_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[8]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFEFFF00002000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[15]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I4 => \DEMAPPING_BPSK_BUFFER[48]_i_2_n_0\,
-      I5 => DEMAPPING_BPSK_BUFFER(8),
-      O => \DEMAPPING_BPSK_BUFFER[8]_i_1_n_0\
-    );
-\DEMAPPING_BPSK_BUFFER[9]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFEFFF00002000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[15]_i_2_n_0\,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I4 => \DEMAPPING_BPSK_BUFFER[49]_i_2_n_0\,
-      I5 => DEMAPPING_BPSK_BUFFER(9),
-      O => \DEMAPPING_BPSK_BUFFER[9]_i_1_n_0\
-    );
 \DEMAPPING_BPSK_BUFFER_reg[0]\: unisim.vcomponents.FDCE
     generic map(
       INIT => '0'
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[1]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[0]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(0)
     );
 \DEMAPPING_BPSK_BUFFER_reg[10]\: unisim.vcomponents.FDCE
@@ -6062,9 +4966,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[21]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[10]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(10)
     );
 \DEMAPPING_BPSK_BUFFER_reg[11]\: unisim.vcomponents.FDCE
@@ -6073,9 +4977,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[23]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[11]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(11)
     );
 \DEMAPPING_BPSK_BUFFER_reg[12]\: unisim.vcomponents.FDCE
@@ -6084,9 +4988,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[25]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[12]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(12)
     );
 \DEMAPPING_BPSK_BUFFER_reg[13]\: unisim.vcomponents.FDCE
@@ -6095,9 +4999,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[27]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[13]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(13)
     );
 \DEMAPPING_BPSK_BUFFER_reg[14]\: unisim.vcomponents.FDCE
@@ -6106,9 +5010,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[29]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[14]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(14)
     );
 \DEMAPPING_BPSK_BUFFER_reg[15]\: unisim.vcomponents.FDCE
@@ -6117,9 +5021,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[31]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[15]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(15)
     );
 \DEMAPPING_BPSK_BUFFER_reg[16]\: unisim.vcomponents.FDCE
@@ -6128,9 +5032,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[33]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[16]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(16)
     );
 \DEMAPPING_BPSK_BUFFER_reg[17]\: unisim.vcomponents.FDCE
@@ -6139,9 +5043,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[35]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[17]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(17)
     );
 \DEMAPPING_BPSK_BUFFER_reg[18]\: unisim.vcomponents.FDCE
@@ -6150,9 +5054,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[37]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[18]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(18)
     );
 \DEMAPPING_BPSK_BUFFER_reg[19]\: unisim.vcomponents.FDCE
@@ -6161,9 +5065,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[39]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[19]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(19)
     );
 \DEMAPPING_BPSK_BUFFER_reg[1]\: unisim.vcomponents.FDCE
@@ -6172,9 +5076,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[3]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[1]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(1)
     );
 \DEMAPPING_BPSK_BUFFER_reg[20]\: unisim.vcomponents.FDCE
@@ -6183,9 +5087,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[41]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[20]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(20)
     );
 \DEMAPPING_BPSK_BUFFER_reg[21]\: unisim.vcomponents.FDCE
@@ -6194,9 +5098,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[43]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[21]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(21)
     );
 \DEMAPPING_BPSK_BUFFER_reg[22]\: unisim.vcomponents.FDCE
@@ -6205,9 +5109,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[45]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[22]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(22)
     );
 \DEMAPPING_BPSK_BUFFER_reg[23]\: unisim.vcomponents.FDCE
@@ -6216,9 +5120,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[47]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[23]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(23)
     );
 \DEMAPPING_BPSK_BUFFER_reg[24]\: unisim.vcomponents.FDCE
@@ -6227,9 +5131,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[49]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[24]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(24)
     );
 \DEMAPPING_BPSK_BUFFER_reg[25]\: unisim.vcomponents.FDCE
@@ -6238,9 +5142,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[51]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[25]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(25)
     );
 \DEMAPPING_BPSK_BUFFER_reg[26]\: unisim.vcomponents.FDCE
@@ -6249,9 +5153,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[53]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[26]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(26)
     );
 \DEMAPPING_BPSK_BUFFER_reg[27]\: unisim.vcomponents.FDCE
@@ -6260,9 +5164,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[55]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[27]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(27)
     );
 \DEMAPPING_BPSK_BUFFER_reg[28]\: unisim.vcomponents.FDCE
@@ -6271,9 +5175,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[57]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[28]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(28)
     );
 \DEMAPPING_BPSK_BUFFER_reg[29]\: unisim.vcomponents.FDCE
@@ -6282,9 +5186,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[59]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[29]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(29)
     );
 \DEMAPPING_BPSK_BUFFER_reg[2]\: unisim.vcomponents.FDCE
@@ -6293,9 +5197,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[5]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[2]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(2)
     );
 \DEMAPPING_BPSK_BUFFER_reg[30]\: unisim.vcomponents.FDCE
@@ -6304,9 +5208,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[61]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[30]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(30)
     );
 \DEMAPPING_BPSK_BUFFER_reg[31]\: unisim.vcomponents.FDCE
@@ -6315,9 +5219,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[63]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[31]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(31)
     );
 \DEMAPPING_BPSK_BUFFER_reg[32]\: unisim.vcomponents.FDCE
@@ -6326,9 +5230,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[65]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[32]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(32)
     );
 \DEMAPPING_BPSK_BUFFER_reg[33]\: unisim.vcomponents.FDCE
@@ -6337,9 +5241,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[67]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[33]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(33)
     );
 \DEMAPPING_BPSK_BUFFER_reg[34]\: unisim.vcomponents.FDCE
@@ -6348,9 +5252,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[69]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[34]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(34)
     );
 \DEMAPPING_BPSK_BUFFER_reg[35]\: unisim.vcomponents.FDCE
@@ -6359,9 +5263,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[71]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[35]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(35)
     );
 \DEMAPPING_BPSK_BUFFER_reg[36]\: unisim.vcomponents.FDCE
@@ -6370,9 +5274,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[73]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[36]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(36)
     );
 \DEMAPPING_BPSK_BUFFER_reg[37]\: unisim.vcomponents.FDCE
@@ -6381,9 +5285,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[75]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[37]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(37)
     );
 \DEMAPPING_BPSK_BUFFER_reg[38]\: unisim.vcomponents.FDCE
@@ -6392,9 +5296,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[77]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[38]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(38)
     );
 \DEMAPPING_BPSK_BUFFER_reg[39]\: unisim.vcomponents.FDCE
@@ -6403,9 +5307,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[79]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[39]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(39)
     );
 \DEMAPPING_BPSK_BUFFER_reg[3]\: unisim.vcomponents.FDCE
@@ -6414,9 +5318,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[7]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[3]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(3)
     );
 \DEMAPPING_BPSK_BUFFER_reg[40]\: unisim.vcomponents.FDCE
@@ -6425,9 +5329,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[81]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[40]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(40)
     );
 \DEMAPPING_BPSK_BUFFER_reg[41]\: unisim.vcomponents.FDCE
@@ -6436,9 +5340,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[83]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[41]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(41)
     );
 \DEMAPPING_BPSK_BUFFER_reg[42]\: unisim.vcomponents.FDCE
@@ -6447,9 +5351,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[85]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[42]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(42)
     );
 \DEMAPPING_BPSK_BUFFER_reg[43]\: unisim.vcomponents.FDCE
@@ -6458,9 +5362,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[87]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[43]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(43)
     );
 \DEMAPPING_BPSK_BUFFER_reg[44]\: unisim.vcomponents.FDCE
@@ -6469,9 +5373,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[89]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[44]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(44)
     );
 \DEMAPPING_BPSK_BUFFER_reg[45]\: unisim.vcomponents.FDCE
@@ -6480,9 +5384,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[91]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[45]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(45)
     );
 \DEMAPPING_BPSK_BUFFER_reg[46]\: unisim.vcomponents.FDCE
@@ -6491,9 +5395,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[93]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[46]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(46)
     );
 \DEMAPPING_BPSK_BUFFER_reg[47]\: unisim.vcomponents.FDCE
@@ -6502,9 +5406,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[95]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[47]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(47)
     );
 \DEMAPPING_BPSK_BUFFER_reg[48]\: unisim.vcomponents.FDCE
@@ -6513,9 +5417,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[97]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[48]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(48)
     );
 \DEMAPPING_BPSK_BUFFER_reg[49]\: unisim.vcomponents.FDCE
@@ -6524,9 +5428,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[99]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[49]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(49)
     );
 \DEMAPPING_BPSK_BUFFER_reg[4]\: unisim.vcomponents.FDCE
@@ -6535,9 +5439,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[9]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[4]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(4)
     );
 \DEMAPPING_BPSK_BUFFER_reg[50]\: unisim.vcomponents.FDCE
@@ -6546,9 +5450,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[101]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[50]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(50)
     );
 \DEMAPPING_BPSK_BUFFER_reg[51]\: unisim.vcomponents.FDCE
@@ -6557,9 +5461,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[103]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[51]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(51)
     );
 \DEMAPPING_BPSK_BUFFER_reg[5]\: unisim.vcomponents.FDCE
@@ -6568,9 +5472,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[11]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[5]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(5)
     );
 \DEMAPPING_BPSK_BUFFER_reg[6]\: unisim.vcomponents.FDCE
@@ -6579,9 +5483,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[13]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[6]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(6)
     );
 \DEMAPPING_BPSK_BUFFER_reg[7]\: unisim.vcomponents.FDCE
@@ -6590,9 +5494,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[15]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[7]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(7)
     );
 \DEMAPPING_BPSK_BUFFER_reg[8]\: unisim.vcomponents.FDCE
@@ -6601,9 +5505,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[17]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[8]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(8)
     );
 \DEMAPPING_BPSK_BUFFER_reg[9]\: unisim.vcomponents.FDCE
@@ -6612,9 +5516,9 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \DEMAPPING_QPSK_BUFFER[19]_i_1_n_0\,
       CLR => RESET,
-      D => \DEMAPPING_BPSK_BUFFER[9]_i_1_n_0\,
+      D => DEMAPPING_SUBCARRIER_BPSK,
       Q => DEMAPPING_BPSK_BUFFER(9)
     );
 \DEMAPPING_BPSK_reg[0]\: unisim.vcomponents.FDCE
@@ -6626,7 +5530,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(0),
-      Q => DEMAPPING_BPSK(0)
+      Q => DEMAPPING_QPSK(0)
     );
 \DEMAPPING_BPSK_reg[10]\: unisim.vcomponents.FDCE
     generic map(
@@ -6637,7 +5541,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(10),
-      Q => DEMAPPING_BPSK(10)
+      Q => DEMAPPING_QPSK(20)
     );
 \DEMAPPING_BPSK_reg[11]\: unisim.vcomponents.FDCE
     generic map(
@@ -6648,7 +5552,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(11),
-      Q => DEMAPPING_BPSK(11)
+      Q => DEMAPPING_QPSK(22)
     );
 \DEMAPPING_BPSK_reg[12]\: unisim.vcomponents.FDCE
     generic map(
@@ -6659,7 +5563,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(12),
-      Q => DEMAPPING_BPSK(12)
+      Q => DEMAPPING_QPSK(24)
     );
 \DEMAPPING_BPSK_reg[13]\: unisim.vcomponents.FDCE
     generic map(
@@ -6670,7 +5574,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(13),
-      Q => DEMAPPING_BPSK(13)
+      Q => DEMAPPING_QPSK(26)
     );
 \DEMAPPING_BPSK_reg[14]\: unisim.vcomponents.FDCE
     generic map(
@@ -6681,7 +5585,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(14),
-      Q => DEMAPPING_BPSK(14)
+      Q => DEMAPPING_QPSK(28)
     );
 \DEMAPPING_BPSK_reg[15]\: unisim.vcomponents.FDCE
     generic map(
@@ -6692,7 +5596,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(15),
-      Q => DEMAPPING_BPSK(15)
+      Q => DEMAPPING_QPSK(30)
     );
 \DEMAPPING_BPSK_reg[16]\: unisim.vcomponents.FDCE
     generic map(
@@ -6703,7 +5607,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(16),
-      Q => DEMAPPING_BPSK(16)
+      Q => DEMAPPING_QPSK(32)
     );
 \DEMAPPING_BPSK_reg[17]\: unisim.vcomponents.FDCE
     generic map(
@@ -6714,7 +5618,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(17),
-      Q => DEMAPPING_BPSK(17)
+      Q => DEMAPPING_QPSK(34)
     );
 \DEMAPPING_BPSK_reg[18]\: unisim.vcomponents.FDCE
     generic map(
@@ -6725,7 +5629,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(18),
-      Q => DEMAPPING_BPSK(18)
+      Q => DEMAPPING_QPSK(36)
     );
 \DEMAPPING_BPSK_reg[19]\: unisim.vcomponents.FDCE
     generic map(
@@ -6736,7 +5640,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(19),
-      Q => DEMAPPING_BPSK(19)
+      Q => DEMAPPING_QPSK(38)
     );
 \DEMAPPING_BPSK_reg[1]\: unisim.vcomponents.FDCE
     generic map(
@@ -6747,7 +5651,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(1),
-      Q => DEMAPPING_BPSK(1)
+      Q => DEMAPPING_QPSK(2)
     );
 \DEMAPPING_BPSK_reg[20]\: unisim.vcomponents.FDCE
     generic map(
@@ -6758,7 +5662,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(20),
-      Q => DEMAPPING_BPSK(20)
+      Q => DEMAPPING_QPSK(40)
     );
 \DEMAPPING_BPSK_reg[21]\: unisim.vcomponents.FDCE
     generic map(
@@ -6769,7 +5673,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(21),
-      Q => DEMAPPING_BPSK(21)
+      Q => DEMAPPING_QPSK(42)
     );
 \DEMAPPING_BPSK_reg[22]\: unisim.vcomponents.FDCE
     generic map(
@@ -6780,7 +5684,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(22),
-      Q => DEMAPPING_BPSK(22)
+      Q => DEMAPPING_QPSK(44)
     );
 \DEMAPPING_BPSK_reg[23]\: unisim.vcomponents.FDCE
     generic map(
@@ -6791,7 +5695,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(23),
-      Q => DEMAPPING_BPSK(23)
+      Q => DEMAPPING_QPSK(46)
     );
 \DEMAPPING_BPSK_reg[24]\: unisim.vcomponents.FDCE
     generic map(
@@ -6802,7 +5706,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(24),
-      Q => DEMAPPING_BPSK(24)
+      Q => DEMAPPING_QPSK(48)
     );
 \DEMAPPING_BPSK_reg[25]\: unisim.vcomponents.FDCE
     generic map(
@@ -6813,7 +5717,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(25),
-      Q => DEMAPPING_BPSK(25)
+      Q => DEMAPPING_QPSK(50)
     );
 \DEMAPPING_BPSK_reg[26]\: unisim.vcomponents.FDCE
     generic map(
@@ -6824,7 +5728,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(26),
-      Q => DEMAPPING_BPSK(26)
+      Q => DEMAPPING_QPSK(52)
     );
 \DEMAPPING_BPSK_reg[27]\: unisim.vcomponents.FDCE
     generic map(
@@ -6835,7 +5739,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(27),
-      Q => DEMAPPING_BPSK(27)
+      Q => DEMAPPING_QPSK(54)
     );
 \DEMAPPING_BPSK_reg[28]\: unisim.vcomponents.FDCE
     generic map(
@@ -6846,7 +5750,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(28),
-      Q => DEMAPPING_BPSK(28)
+      Q => DEMAPPING_QPSK(56)
     );
 \DEMAPPING_BPSK_reg[29]\: unisim.vcomponents.FDCE
     generic map(
@@ -6857,7 +5761,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(29),
-      Q => DEMAPPING_BPSK(29)
+      Q => DEMAPPING_QPSK(58)
     );
 \DEMAPPING_BPSK_reg[2]\: unisim.vcomponents.FDCE
     generic map(
@@ -6868,7 +5772,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(2),
-      Q => DEMAPPING_BPSK(2)
+      Q => DEMAPPING_QPSK(4)
     );
 \DEMAPPING_BPSK_reg[30]\: unisim.vcomponents.FDCE
     generic map(
@@ -6879,7 +5783,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(30),
-      Q => DEMAPPING_BPSK(30)
+      Q => DEMAPPING_QPSK(60)
     );
 \DEMAPPING_BPSK_reg[31]\: unisim.vcomponents.FDCE
     generic map(
@@ -6890,7 +5794,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(31),
-      Q => DEMAPPING_BPSK(31)
+      Q => DEMAPPING_QPSK(62)
     );
 \DEMAPPING_BPSK_reg[32]\: unisim.vcomponents.FDCE
     generic map(
@@ -6901,7 +5805,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(32),
-      Q => DEMAPPING_BPSK(32)
+      Q => DEMAPPING_QPSK(64)
     );
 \DEMAPPING_BPSK_reg[33]\: unisim.vcomponents.FDCE
     generic map(
@@ -6912,7 +5816,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(33),
-      Q => DEMAPPING_BPSK(33)
+      Q => DEMAPPING_QPSK(66)
     );
 \DEMAPPING_BPSK_reg[34]\: unisim.vcomponents.FDCE
     generic map(
@@ -6923,7 +5827,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(34),
-      Q => DEMAPPING_BPSK(34)
+      Q => DEMAPPING_QPSK(68)
     );
 \DEMAPPING_BPSK_reg[35]\: unisim.vcomponents.FDCE
     generic map(
@@ -6934,7 +5838,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(35),
-      Q => DEMAPPING_BPSK(35)
+      Q => DEMAPPING_QPSK(70)
     );
 \DEMAPPING_BPSK_reg[36]\: unisim.vcomponents.FDCE
     generic map(
@@ -6945,7 +5849,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(36),
-      Q => DEMAPPING_BPSK(36)
+      Q => DEMAPPING_QPSK(72)
     );
 \DEMAPPING_BPSK_reg[37]\: unisim.vcomponents.FDCE
     generic map(
@@ -6956,7 +5860,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(37),
-      Q => DEMAPPING_BPSK(37)
+      Q => DEMAPPING_QPSK(74)
     );
 \DEMAPPING_BPSK_reg[38]\: unisim.vcomponents.FDCE
     generic map(
@@ -6967,7 +5871,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(38),
-      Q => DEMAPPING_BPSK(38)
+      Q => DEMAPPING_QPSK(76)
     );
 \DEMAPPING_BPSK_reg[39]\: unisim.vcomponents.FDCE
     generic map(
@@ -6978,7 +5882,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(39),
-      Q => DEMAPPING_BPSK(39)
+      Q => DEMAPPING_QPSK(78)
     );
 \DEMAPPING_BPSK_reg[3]\: unisim.vcomponents.FDCE
     generic map(
@@ -6989,7 +5893,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(3),
-      Q => DEMAPPING_BPSK(3)
+      Q => DEMAPPING_QPSK(6)
     );
 \DEMAPPING_BPSK_reg[40]\: unisim.vcomponents.FDCE
     generic map(
@@ -7000,7 +5904,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(40),
-      Q => DEMAPPING_BPSK(40)
+      Q => DEMAPPING_QPSK(80)
     );
 \DEMAPPING_BPSK_reg[41]\: unisim.vcomponents.FDCE
     generic map(
@@ -7011,7 +5915,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(41),
-      Q => DEMAPPING_BPSK(41)
+      Q => DEMAPPING_QPSK(82)
     );
 \DEMAPPING_BPSK_reg[42]\: unisim.vcomponents.FDCE
     generic map(
@@ -7022,7 +5926,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(42),
-      Q => DEMAPPING_BPSK(42)
+      Q => DEMAPPING_QPSK(84)
     );
 \DEMAPPING_BPSK_reg[43]\: unisim.vcomponents.FDCE
     generic map(
@@ -7033,7 +5937,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(43),
-      Q => DEMAPPING_BPSK(43)
+      Q => DEMAPPING_QPSK(86)
     );
 \DEMAPPING_BPSK_reg[44]\: unisim.vcomponents.FDCE
     generic map(
@@ -7044,7 +5948,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(44),
-      Q => DEMAPPING_BPSK(44)
+      Q => DEMAPPING_QPSK(88)
     );
 \DEMAPPING_BPSK_reg[45]\: unisim.vcomponents.FDCE
     generic map(
@@ -7055,7 +5959,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(45),
-      Q => DEMAPPING_BPSK(45)
+      Q => DEMAPPING_QPSK(90)
     );
 \DEMAPPING_BPSK_reg[46]\: unisim.vcomponents.FDCE
     generic map(
@@ -7066,7 +5970,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(46),
-      Q => DEMAPPING_BPSK(46)
+      Q => DEMAPPING_QPSK(92)
     );
 \DEMAPPING_BPSK_reg[47]\: unisim.vcomponents.FDCE
     generic map(
@@ -7077,7 +5981,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(47),
-      Q => DEMAPPING_BPSK(47)
+      Q => DEMAPPING_QPSK(94)
     );
 \DEMAPPING_BPSK_reg[48]\: unisim.vcomponents.FDCE
     generic map(
@@ -7088,7 +5992,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(48),
-      Q => DEMAPPING_BPSK(48)
+      Q => DEMAPPING_QPSK(96)
     );
 \DEMAPPING_BPSK_reg[49]\: unisim.vcomponents.FDCE
     generic map(
@@ -7099,7 +6003,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(49),
-      Q => DEMAPPING_BPSK(49)
+      Q => DEMAPPING_QPSK(98)
     );
 \DEMAPPING_BPSK_reg[4]\: unisim.vcomponents.FDCE
     generic map(
@@ -7110,7 +6014,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(4),
-      Q => DEMAPPING_BPSK(4)
+      Q => DEMAPPING_QPSK(8)
     );
 \DEMAPPING_BPSK_reg[50]\: unisim.vcomponents.FDCE
     generic map(
@@ -7121,7 +6025,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(50),
-      Q => DEMAPPING_BPSK(50)
+      Q => DEMAPPING_QPSK(100)
     );
 \DEMAPPING_BPSK_reg[51]\: unisim.vcomponents.FDCE
     generic map(
@@ -7132,7 +6036,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(51),
-      Q => DEMAPPING_BPSK(51)
+      Q => DEMAPPING_QPSK(102)
     );
 \DEMAPPING_BPSK_reg[5]\: unisim.vcomponents.FDCE
     generic map(
@@ -7143,7 +6047,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(5),
-      Q => DEMAPPING_BPSK(5)
+      Q => DEMAPPING_QPSK(10)
     );
 \DEMAPPING_BPSK_reg[6]\: unisim.vcomponents.FDCE
     generic map(
@@ -7154,7 +6058,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(6),
-      Q => DEMAPPING_BPSK(6)
+      Q => DEMAPPING_QPSK(12)
     );
 \DEMAPPING_BPSK_reg[7]\: unisim.vcomponents.FDCE
     generic map(
@@ -7165,7 +6069,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(7),
-      Q => DEMAPPING_BPSK(7)
+      Q => DEMAPPING_QPSK(14)
     );
 \DEMAPPING_BPSK_reg[8]\: unisim.vcomponents.FDCE
     generic map(
@@ -7176,7 +6080,7 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(8),
-      Q => DEMAPPING_BPSK(8)
+      Q => DEMAPPING_QPSK(16)
     );
 \DEMAPPING_BPSK_reg[9]\: unisim.vcomponents.FDCE
     generic map(
@@ -7187,17 +6091,17 @@ begin
       CE => DEMAPPING_DONE,
       CLR => RESET,
       D => DEMAPPING_BPSK_BUFFER(9),
-      Q => DEMAPPING_BPSK(9)
+      Q => DEMAPPING_QPSK(18)
     );
 DEMAPPING_DONE_FIRST_OFDM_MEMORY_i_1: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"FB08"
+      INIT => X"BA8A"
     )
         port map (
-      I0 => CONSTELLATION_DATA_IN_FIRST_SYMBOL_MARKER,
-      I1 => CONSTELLATION_DATA_IN_VALID,
-      I2 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I3 => DEMAPPING_DONE_FIRST_OFDM_MEMORY,
+      I0 => DEMAPPING_DONE_FIRST_OFDM_MEMORY,
+      I1 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I2 => CONSTELLATION_DATA_IN_VALID,
+      I3 => CONSTELLATION_DATA_IN_FIRST_SYMBOL_MARKER,
       O => DEMAPPING_DONE_FIRST_OFDM_MEMORY_i_1_n_0
     );
 DEMAPPING_DONE_FIRST_OFDM_MEMORY_reg: unisim.vcomponents.FDCE
@@ -7213,26 +6117,16 @@ DEMAPPING_DONE_FIRST_OFDM_MEMORY_reg: unisim.vcomponents.FDCE
     );
 DEMAPPING_DONE_FIRST_OFDM_i_1: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFF000000100000"
+      INIT => X"FFFF000080000000"
     )
         port map (
-      I0 => DEMAPPING_DONE_FIRST_OFDM_i_2_n_0,
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I2 => DEMAPPING_DONE_FIRST_OFDM_MEMORY,
-      I3 => \DEMAPPING_SUBCARRIER_CNTR[5]_i_4_n_0\,
+      I0 => \DEMAPPING_QPSK_BUFFER[97]_i_2_n_0\,
+      I1 => DEMAPPING_DONE_FIRST_OFDM_MEMORY,
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
+      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
       I4 => CONSTELLATION_DATA_IN_VALID_OLD,
       I5 => DEMAPPING_DONE_FIRST_OFDM_reg_n_0,
       O => DEMAPPING_DONE_FIRST_OFDM_i_1_n_0
-    );
-DEMAPPING_DONE_FIRST_OFDM_i_2: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"FE"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
-      O => DEMAPPING_DONE_FIRST_OFDM_i_2_n_0
     );
 DEMAPPING_DONE_FIRST_OFDM_reg: unisim.vcomponents.FDCE
     generic map(
@@ -7245,17 +6139,16 @@ DEMAPPING_DONE_FIRST_OFDM_reg: unisim.vcomponents.FDCE
       D => DEMAPPING_DONE_FIRST_OFDM_i_1_n_0,
       Q => DEMAPPING_DONE_FIRST_OFDM_reg_n_0
     );
-DEMAPPING_DONE_i_1: unisim.vcomponents.LUT6
+DEMAPPING_DONE_i_1: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FFFF000000100000"
+      INIT => X"FF008000"
     )
         port map (
       I0 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
       I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I2 => \DEMAPPING_QPSK_BUFFER[97]_i_3_n_0\,
-      I3 => \DEMAPPING_BPSK_BUFFER[15]_i_2_n_0\,
-      I4 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I5 => DEMAPPING_DONE,
+      I2 => \DEMAPPING_QPSK_BUFFER[97]_i_2_n_0\,
+      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I4 => DEMAPPING_DONE,
       O => DEMAPPING_DONE_i_1_n_0
     );
 DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
@@ -7269,824 +6162,738 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       D => DEMAPPING_DONE_i_1_n_0,
       Q => DEMAPPING_DONE
     );
-\DEMAPPING_QPSK_BUFFER[101]_i_1\: unisim.vcomponents.LUT6
+\DEMAPPING_QPSK_BUFFER[101]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"0000000000080000"
+      INIT => X"0800"
     )
         port map (
-      I0 => \DEMAPPING_QPSK_BUFFER[103]_i_3_n_0\,
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
       I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
       I2 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I3 => \DEMAPPING_QPSK_BUFFER[97]_i_2_n_0\,
       O => \DEMAPPING_QPSK_BUFFER[101]_i_1_n_0\
     );
-\DEMAPPING_QPSK_BUFFER[102]_i_1\: unisim.vcomponents.LUT2
+\DEMAPPING_QPSK_BUFFER[103]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"2"
+      INIT => X"8000"
     )
         port map (
-      I0 => DEMAPPING_SUBCARRIER_QPSK(0),
-      I1 => \DEMAPPING_BPSK_BUFFER[51]_i_2_n_0\,
-      O => DEMAPPING_QPSK_BUFFER0(102)
-    );
-\DEMAPPING_QPSK_BUFFER[103]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0000000000800000"
-    )
-        port map (
-      I0 => \DEMAPPING_QPSK_BUFFER[103]_i_3_n_0\,
+      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
       I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I2 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I3 => \DEMAPPING_QPSK_BUFFER[97]_i_2_n_0\,
       O => \DEMAPPING_QPSK_BUFFER[103]_i_1_n_0\
-    );
-\DEMAPPING_QPSK_BUFFER[103]_i_2\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[51]_i_2_n_0\,
-      O => DEMAPPING_QPSK_BUFFER0(103)
-    );
-\DEMAPPING_QPSK_BUFFER[103]_i_3\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"8"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
-      I1 => CONSTELLATION_DATA_IN_VALID_OLD,
-      O => \DEMAPPING_QPSK_BUFFER[103]_i_3_n_0\
     );
 \DEMAPPING_QPSK_BUFFER[11]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000000000000800"
+      INIT => X"0000020000000000"
     )
         port map (
-      I0 => \DEMAPPING_QPSK_BUFFER[39]_i_3_n_0\,
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
       I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
       I4 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I5 => \DEMAPPING_QPSK_BUFFER[11]_i_2_n_0\,
       O => \DEMAPPING_QPSK_BUFFER[11]_i_1_n_0\
+    );
+\DEMAPPING_QPSK_BUFFER[11]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
+      O => \DEMAPPING_QPSK_BUFFER[11]_i_2_n_0\
     );
 \DEMAPPING_QPSK_BUFFER[13]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000000000000800"
+      INIT => X"0000020000000000"
     )
         port map (
-      I0 => \DEMAPPING_QPSK_BUFFER[39]_i_3_n_0\,
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
       I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
       I4 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I5 => \DEMAPPING_QPSK_BUFFER[13]_i_2_n_0\,
       O => \DEMAPPING_QPSK_BUFFER[13]_i_1_n_0\
+    );
+\DEMAPPING_QPSK_BUFFER[13]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
+      O => \DEMAPPING_QPSK_BUFFER[13]_i_2_n_0\
     );
 \DEMAPPING_QPSK_BUFFER[15]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000000000008000"
+      INIT => X"0000000000020000"
     )
         port map (
-      I0 => \DEMAPPING_QPSK_BUFFER[39]_i_3_n_0\,
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
+      I3 => \DEMAPPING_QPSK_BUFFER[15]_i_2_n_0\,
+      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
+      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
       O => \DEMAPPING_QPSK_BUFFER[15]_i_1_n_0\
     );
-\DEMAPPING_QPSK_BUFFER[17]_i_1\: unisim.vcomponents.LUT6
+\DEMAPPING_QPSK_BUFFER[15]_i_2\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"0000000000040000"
+      INIT => X"7"
     )
         port map (
-      I0 => \DEMAPPING_BPSK_BUFFER[15]_i_2_n_0\,
-      I1 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      O => \DEMAPPING_QPSK_BUFFER[17]_i_1_n_0\
+      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
+      O => \DEMAPPING_QPSK_BUFFER[15]_i_2_n_0\
     );
-\DEMAPPING_QPSK_BUFFER[19]_i_1\: unisim.vcomponents.LUT6
+\DEMAPPING_QPSK_BUFFER[17]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"0000000000080000"
+      INIT => X"0200"
     )
         port map (
-      I0 => \DEMAPPING_QPSK_BUFFER[39]_i_3_n_0\,
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
       I1 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
       I2 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
+      I3 => \DEMAPPING_QPSK_BUFFER[17]_i_2_n_0\,
+      O => \DEMAPPING_QPSK_BUFFER[17]_i_1_n_0\
+    );
+\DEMAPPING_QPSK_BUFFER[17]_i_2\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0100"
+    )
+        port map (
+      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
+      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      O => \DEMAPPING_QPSK_BUFFER[17]_i_2_n_0\
+    );
+\DEMAPPING_QPSK_BUFFER[19]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0800"
+    )
+        port map (
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
+      I3 => \DEMAPPING_QPSK_BUFFER[17]_i_2_n_0\,
       O => \DEMAPPING_QPSK_BUFFER[19]_i_1_n_0\
     );
-\DEMAPPING_QPSK_BUFFER[1]_i_1\: unisim.vcomponents.LUT6
+\DEMAPPING_QPSK_BUFFER[1]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"0000000000000004"
+      INIT => X"0200"
     )
         port map (
-      I0 => \DEMAPPING_BPSK_BUFFER[15]_i_2_n_0\,
-      I1 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
+      I3 => \DEMAPPING_QPSK_BUFFER[1]_i_2_n_0\,
       O => \DEMAPPING_QPSK_BUFFER[1]_i_1_n_0\
     );
-\DEMAPPING_QPSK_BUFFER[21]_i_1\: unisim.vcomponents.LUT6
+\DEMAPPING_QPSK_BUFFER[1]_i_2\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"0000000000080000"
+      INIT => X"0001"
     )
         port map (
-      I0 => \DEMAPPING_QPSK_BUFFER[39]_i_3_n_0\,
+      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
+      O => \DEMAPPING_QPSK_BUFFER[1]_i_2_n_0\
+    );
+\DEMAPPING_QPSK_BUFFER[21]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0800"
+    )
+        port map (
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
       I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
       I2 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
+      I3 => \DEMAPPING_QPSK_BUFFER[17]_i_2_n_0\,
       O => \DEMAPPING_QPSK_BUFFER[21]_i_1_n_0\
     );
-\DEMAPPING_QPSK_BUFFER[23]_i_1\: unisim.vcomponents.LUT6
+\DEMAPPING_QPSK_BUFFER[23]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"0000000000800000"
+      INIT => X"8000"
     )
         port map (
-      I0 => \DEMAPPING_QPSK_BUFFER[39]_i_3_n_0\,
+      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
       I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
+      I2 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I3 => \DEMAPPING_QPSK_BUFFER[17]_i_2_n_0\,
       O => \DEMAPPING_QPSK_BUFFER[23]_i_1_n_0\
     );
-\DEMAPPING_QPSK_BUFFER[25]_i_1\: unisim.vcomponents.LUT6
+\DEMAPPING_QPSK_BUFFER[25]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"0000000002000000"
+      INIT => X"0800"
     )
         port map (
-      I0 => \DEMAPPING_QPSK_BUFFER[39]_i_3_n_0\,
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
+      I3 => \DEMAPPING_QPSK_BUFFER[9]_i_2_n_0\,
       O => \DEMAPPING_QPSK_BUFFER[25]_i_1_n_0\
     );
 \DEMAPPING_QPSK_BUFFER[27]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000000008000000"
+      INIT => X"0000080000000000"
     )
         port map (
-      I0 => \DEMAPPING_QPSK_BUFFER[39]_i_3_n_0\,
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
       I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
+      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
+      I5 => \DEMAPPING_QPSK_BUFFER[11]_i_2_n_0\,
       O => \DEMAPPING_QPSK_BUFFER[27]_i_1_n_0\
     );
 \DEMAPPING_QPSK_BUFFER[29]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000000008000000"
+      INIT => X"0000080000000000"
     )
         port map (
-      I0 => \DEMAPPING_QPSK_BUFFER[39]_i_3_n_0\,
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
       I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
+      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
+      I5 => \DEMAPPING_QPSK_BUFFER[13]_i_2_n_0\,
       O => \DEMAPPING_QPSK_BUFFER[29]_i_1_n_0\
-    );
-\DEMAPPING_QPSK_BUFFER[30]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_QPSK(0),
-      I1 => \DEMAPPING_BPSK_BUFFER[15]_i_2_n_0\,
-      O => DEMAPPING_QPSK_BUFFER0(30)
     );
 \DEMAPPING_QPSK_BUFFER[31]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000000080000000"
+      INIT => X"0000000000080000"
     )
         port map (
-      I0 => \DEMAPPING_QPSK_BUFFER[39]_i_3_n_0\,
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
+      I3 => \DEMAPPING_QPSK_BUFFER[15]_i_2_n_0\,
+      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
       I5 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
       O => \DEMAPPING_QPSK_BUFFER[31]_i_1_n_0\
     );
-\DEMAPPING_QPSK_BUFFER[31]_i_2\: unisim.vcomponents.LUT2
+\DEMAPPING_QPSK_BUFFER[33]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"2"
+      INIT => X"0200"
     )
         port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[15]_i_2_n_0\,
-      O => DEMAPPING_QPSK_BUFFER0(31)
-    );
-\DEMAPPING_QPSK_BUFFER[33]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0000000000000004"
-    )
-        port map (
-      I0 => \DEMAPPING_BPSK_BUFFER[31]_i_2_n_0\,
-      I1 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      O => \DEMAPPING_QPSK_BUFFER[33]_i_1_n_0\
-    );
-\DEMAPPING_QPSK_BUFFER[35]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0000000000080000"
-    )
-        port map (
-      I0 => \DEMAPPING_QPSK_BUFFER[39]_i_3_n_0\,
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
       I1 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
       I2 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I3 => \DEMAPPING_QPSK_BUFFER[33]_i_2_n_0\,
+      O => \DEMAPPING_QPSK_BUFFER[33]_i_1_n_0\
+    );
+\DEMAPPING_QPSK_BUFFER[33]_i_2\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0002"
+    )
+        port map (
+      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
+      O => \DEMAPPING_QPSK_BUFFER[33]_i_2_n_0\
+    );
+\DEMAPPING_QPSK_BUFFER[35]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0800"
+    )
+        port map (
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
+      I3 => \DEMAPPING_QPSK_BUFFER[33]_i_2_n_0\,
       O => \DEMAPPING_QPSK_BUFFER[35]_i_1_n_0\
     );
-\DEMAPPING_QPSK_BUFFER[37]_i_1\: unisim.vcomponents.LUT6
+\DEMAPPING_QPSK_BUFFER[37]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"0000000000080000"
+      INIT => X"0800"
     )
         port map (
-      I0 => \DEMAPPING_QPSK_BUFFER[39]_i_3_n_0\,
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
       I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
       I2 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I3 => \DEMAPPING_QPSK_BUFFER[33]_i_2_n_0\,
       O => \DEMAPPING_QPSK_BUFFER[37]_i_1_n_0\
     );
-\DEMAPPING_QPSK_BUFFER[38]_i_1\: unisim.vcomponents.LUT2
+\DEMAPPING_QPSK_BUFFER[39]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"2"
+      INIT => X"8000"
     )
         port map (
-      I0 => DEMAPPING_SUBCARRIER_QPSK(0),
-      I1 => \DEMAPPING_BPSK_BUFFER[31]_i_2_n_0\,
-      O => DEMAPPING_QPSK_BUFFER0(38)
-    );
-\DEMAPPING_QPSK_BUFFER[39]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0000000000800000"
-    )
-        port map (
-      I0 => \DEMAPPING_QPSK_BUFFER[39]_i_3_n_0\,
+      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
       I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I2 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I3 => \DEMAPPING_QPSK_BUFFER[33]_i_2_n_0\,
       O => \DEMAPPING_QPSK_BUFFER[39]_i_1_n_0\
     );
-\DEMAPPING_QPSK_BUFFER[39]_i_2\: unisim.vcomponents.LUT2
+\DEMAPPING_QPSK_BUFFER[3]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"2"
+      INIT => X"0800"
     )
         port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[31]_i_2_n_0\,
-      O => DEMAPPING_QPSK_BUFFER0(39)
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
+      I3 => \DEMAPPING_QPSK_BUFFER[1]_i_2_n_0\,
+      O => \DEMAPPING_QPSK_BUFFER[3]_i_1_n_0\
     );
-\DEMAPPING_QPSK_BUFFER[39]_i_3\: unisim.vcomponents.LUT2
+\DEMAPPING_QPSK_BUFFER[41]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"2"
+      INIT => X"0200"
+    )
+        port map (
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
+      I3 => \DEMAPPING_QPSK_BUFFER[41]_i_2_n_0\,
+      O => \DEMAPPING_QPSK_BUFFER[41]_i_1_n_0\
+    );
+\DEMAPPING_QPSK_BUFFER[41]_i_2\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"1000"
+    )
+        port map (
+      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
+      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
+      O => \DEMAPPING_QPSK_BUFFER[41]_i_2_n_0\
+    );
+\DEMAPPING_QPSK_BUFFER[43]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0800"
+    )
+        port map (
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
+      I3 => \DEMAPPING_QPSK_BUFFER[41]_i_2_n_0\,
+      O => \DEMAPPING_QPSK_BUFFER[43]_i_1_n_0\
+    );
+\DEMAPPING_QPSK_BUFFER[45]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0800"
+    )
+        port map (
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
+      I3 => \DEMAPPING_QPSK_BUFFER[41]_i_2_n_0\,
+      O => \DEMAPPING_QPSK_BUFFER[45]_i_1_n_0\
+    );
+\DEMAPPING_QPSK_BUFFER[47]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"8000"
+    )
+        port map (
+      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
+      I2 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I3 => \DEMAPPING_QPSK_BUFFER[41]_i_2_n_0\,
+      O => \DEMAPPING_QPSK_BUFFER[47]_i_1_n_0\
+    );
+\DEMAPPING_QPSK_BUFFER[49]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0200"
+    )
+        port map (
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
+      I3 => \DEMAPPING_QPSK_BUFFER[49]_i_2_n_0\,
+      O => \DEMAPPING_QPSK_BUFFER[49]_i_1_n_0\
+    );
+\DEMAPPING_QPSK_BUFFER[49]_i_2\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0400"
+    )
+        port map (
+      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
+      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      O => \DEMAPPING_QPSK_BUFFER[49]_i_2_n_0\
+    );
+\DEMAPPING_QPSK_BUFFER[51]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0800"
+    )
+        port map (
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
+      I3 => \DEMAPPING_QPSK_BUFFER[49]_i_2_n_0\,
+      O => \DEMAPPING_QPSK_BUFFER[51]_i_1_n_0\
+    );
+\DEMAPPING_QPSK_BUFFER[53]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0800"
+    )
+        port map (
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
+      I3 => \DEMAPPING_QPSK_BUFFER[49]_i_2_n_0\,
+      O => \DEMAPPING_QPSK_BUFFER[53]_i_1_n_0\
+    );
+\DEMAPPING_QPSK_BUFFER[55]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"8000"
+    )
+        port map (
+      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
+      I2 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I3 => \DEMAPPING_QPSK_BUFFER[49]_i_2_n_0\,
+      O => \DEMAPPING_QPSK_BUFFER[55]_i_1_n_0\
+    );
+\DEMAPPING_QPSK_BUFFER[57]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0200"
+    )
+        port map (
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
+      I3 => \DEMAPPING_QPSK_BUFFER[57]_i_2_n_0\,
+      O => \DEMAPPING_QPSK_BUFFER[57]_i_1_n_0\
+    );
+\DEMAPPING_QPSK_BUFFER[57]_i_2\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"4000"
+    )
+        port map (
+      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
+      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
+      O => \DEMAPPING_QPSK_BUFFER[57]_i_2_n_0\
+    );
+\DEMAPPING_QPSK_BUFFER[59]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0800"
+    )
+        port map (
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
+      I3 => \DEMAPPING_QPSK_BUFFER[57]_i_2_n_0\,
+      O => \DEMAPPING_QPSK_BUFFER[59]_i_1_n_0\
+    );
+\DEMAPPING_QPSK_BUFFER[5]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0800"
+    )
+        port map (
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
+      I3 => \DEMAPPING_QPSK_BUFFER[1]_i_2_n_0\,
+      O => \DEMAPPING_QPSK_BUFFER[5]_i_1_n_0\
+    );
+\DEMAPPING_QPSK_BUFFER[61]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0800"
+    )
+        port map (
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
+      I3 => \DEMAPPING_QPSK_BUFFER[57]_i_2_n_0\,
+      O => \DEMAPPING_QPSK_BUFFER[61]_i_1_n_0\
+    );
+\DEMAPPING_QPSK_BUFFER[63]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"8000"
+    )
+        port map (
+      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
+      I2 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I3 => \DEMAPPING_QPSK_BUFFER[57]_i_2_n_0\,
+      O => \DEMAPPING_QPSK_BUFFER[63]_i_1_n_0\
+    );
+\DEMAPPING_QPSK_BUFFER[65]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0200"
+    )
+        port map (
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
+      I3 => \DEMAPPING_QPSK_BUFFER[65]_i_2_n_0\,
+      O => \DEMAPPING_QPSK_BUFFER[65]_i_1_n_0\
+    );
+\DEMAPPING_QPSK_BUFFER[65]_i_2\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0100"
+    )
+        port map (
+      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
+      O => \DEMAPPING_QPSK_BUFFER[65]_i_2_n_0\
+    );
+\DEMAPPING_QPSK_BUFFER[67]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0800"
+    )
+        port map (
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
+      I3 => \DEMAPPING_QPSK_BUFFER[65]_i_2_n_0\,
+      O => \DEMAPPING_QPSK_BUFFER[67]_i_1_n_0\
+    );
+\DEMAPPING_QPSK_BUFFER[69]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0800"
+    )
+        port map (
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
+      I3 => \DEMAPPING_QPSK_BUFFER[65]_i_2_n_0\,
+      O => \DEMAPPING_QPSK_BUFFER[69]_i_1_n_0\
+    );
+\DEMAPPING_QPSK_BUFFER[71]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"8000"
+    )
+        port map (
+      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
+      I2 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I3 => \DEMAPPING_QPSK_BUFFER[65]_i_2_n_0\,
+      O => \DEMAPPING_QPSK_BUFFER[71]_i_1_n_0\
+    );
+\DEMAPPING_QPSK_BUFFER[73]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0800"
     )
         port map (
       I0 => CONSTELLATION_DATA_IN_VALID_OLD,
       I1 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
-      O => \DEMAPPING_QPSK_BUFFER[39]_i_3_n_0\
-    );
-\DEMAPPING_QPSK_BUFFER[3]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0000000000000008"
-    )
-        port map (
-      I0 => \DEMAPPING_QPSK_BUFFER[39]_i_3_n_0\,
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      O => \DEMAPPING_QPSK_BUFFER[3]_i_1_n_0\
-    );
-\DEMAPPING_QPSK_BUFFER[41]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0000000000000400"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I1 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I2 => \DEMAPPING_BPSK_BUFFER[31]_i_2_n_0\,
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      O => \DEMAPPING_QPSK_BUFFER[41]_i_1_n_0\
-    );
-\DEMAPPING_QPSK_BUFFER[43]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0000040000000000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I1 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I2 => \DEMAPPING_BPSK_BUFFER[31]_i_2_n_0\,
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      O => \DEMAPPING_QPSK_BUFFER[43]_i_1_n_0\
-    );
-\DEMAPPING_QPSK_BUFFER[45]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0000040000000000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I1 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I2 => \DEMAPPING_BPSK_BUFFER[31]_i_2_n_0\,
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      O => \DEMAPPING_QPSK_BUFFER[45]_i_1_n_0\
-    );
-\DEMAPPING_QPSK_BUFFER[47]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0400000000000000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I1 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I2 => \DEMAPPING_BPSK_BUFFER[31]_i_2_n_0\,
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      O => \DEMAPPING_QPSK_BUFFER[47]_i_1_n_0\
-    );
-\DEMAPPING_QPSK_BUFFER[49]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0000000000040000"
-    )
-        port map (
-      I0 => \DEMAPPING_BPSK_BUFFER[31]_i_2_n_0\,
-      I1 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      O => \DEMAPPING_QPSK_BUFFER[49]_i_1_n_0\
-    );
-\DEMAPPING_QPSK_BUFFER[51]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0000000800000000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I1 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I2 => \DEMAPPING_BPSK_BUFFER[31]_i_2_n_0\,
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      O => \DEMAPPING_QPSK_BUFFER[51]_i_1_n_0\
-    );
-\DEMAPPING_QPSK_BUFFER[53]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0000000800000000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I1 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I2 => \DEMAPPING_BPSK_BUFFER[31]_i_2_n_0\,
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      O => \DEMAPPING_QPSK_BUFFER[53]_i_1_n_0\
-    );
-\DEMAPPING_QPSK_BUFFER[55]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0008000000000000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I1 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I2 => \DEMAPPING_BPSK_BUFFER[31]_i_2_n_0\,
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      O => \DEMAPPING_QPSK_BUFFER[55]_i_1_n_0\
-    );
-\DEMAPPING_QPSK_BUFFER[57]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0000000000000800"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I1 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I2 => \DEMAPPING_BPSK_BUFFER[31]_i_2_n_0\,
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      O => \DEMAPPING_QPSK_BUFFER[57]_i_1_n_0\
-    );
-\DEMAPPING_QPSK_BUFFER[59]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0000080000000000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I1 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I2 => \DEMAPPING_BPSK_BUFFER[31]_i_2_n_0\,
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      O => \DEMAPPING_QPSK_BUFFER[59]_i_1_n_0\
-    );
-\DEMAPPING_QPSK_BUFFER[5]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0000000000000008"
-    )
-        port map (
-      I0 => \DEMAPPING_QPSK_BUFFER[39]_i_3_n_0\,
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      O => \DEMAPPING_QPSK_BUFFER[5]_i_1_n_0\
-    );
-\DEMAPPING_QPSK_BUFFER[61]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0000080000000000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I1 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I2 => \DEMAPPING_BPSK_BUFFER[31]_i_2_n_0\,
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      O => \DEMAPPING_QPSK_BUFFER[61]_i_1_n_0\
-    );
-\DEMAPPING_QPSK_BUFFER[63]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0800000000000000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I1 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I2 => \DEMAPPING_BPSK_BUFFER[31]_i_2_n_0\,
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      O => \DEMAPPING_QPSK_BUFFER[63]_i_1_n_0\
-    );
-\DEMAPPING_QPSK_BUFFER[65]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0000000000000004"
-    )
-        port map (
-      I0 => \DEMAPPING_BPSK_BUFFER[47]_i_2_n_0\,
-      I1 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      O => \DEMAPPING_QPSK_BUFFER[65]_i_1_n_0\
-    );
-\DEMAPPING_QPSK_BUFFER[67]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0000000000000008"
-    )
-        port map (
-      I0 => \DEMAPPING_QPSK_BUFFER[103]_i_3_n_0\,
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      O => \DEMAPPING_QPSK_BUFFER[67]_i_1_n_0\
-    );
-\DEMAPPING_QPSK_BUFFER[69]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0000000000000008"
-    )
-        port map (
-      I0 => \DEMAPPING_QPSK_BUFFER[103]_i_3_n_0\,
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      O => \DEMAPPING_QPSK_BUFFER[69]_i_1_n_0\
-    );
-\DEMAPPING_QPSK_BUFFER[71]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0000000000000080"
-    )
-        port map (
-      I0 => \DEMAPPING_QPSK_BUFFER[103]_i_3_n_0\,
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      O => \DEMAPPING_QPSK_BUFFER[71]_i_1_n_0\
-    );
-\DEMAPPING_QPSK_BUFFER[73]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0000000000000200"
-    )
-        port map (
-      I0 => \DEMAPPING_QPSK_BUFFER[103]_i_3_n_0\,
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I3 => \DEMAPPING_QPSK_BUFFER[9]_i_2_n_0\,
       O => \DEMAPPING_QPSK_BUFFER[73]_i_1_n_0\
     );
 \DEMAPPING_QPSK_BUFFER[75]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000000000000800"
+      INIT => X"0000080000000000"
     )
         port map (
-      I0 => \DEMAPPING_QPSK_BUFFER[103]_i_3_n_0\,
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
       I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
       I4 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I5 => \DEMAPPING_QPSK_BUFFER[11]_i_2_n_0\,
       O => \DEMAPPING_QPSK_BUFFER[75]_i_1_n_0\
     );
 \DEMAPPING_QPSK_BUFFER[77]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000000000000800"
+      INIT => X"0000080000000000"
     )
         port map (
-      I0 => \DEMAPPING_QPSK_BUFFER[103]_i_3_n_0\,
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
       I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
       I4 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I5 => \DEMAPPING_QPSK_BUFFER[13]_i_2_n_0\,
       O => \DEMAPPING_QPSK_BUFFER[77]_i_1_n_0\
     );
 \DEMAPPING_QPSK_BUFFER[79]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000000000008000"
+      INIT => X"0000000000080000"
     )
         port map (
-      I0 => \DEMAPPING_QPSK_BUFFER[103]_i_3_n_0\,
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I3 => \DEMAPPING_QPSK_BUFFER[15]_i_2_n_0\,
+      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
+      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
       O => \DEMAPPING_QPSK_BUFFER[79]_i_1_n_0\
     );
-\DEMAPPING_QPSK_BUFFER[7]_i_1\: unisim.vcomponents.LUT6
+\DEMAPPING_QPSK_BUFFER[7]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"0000000000000080"
+      INIT => X"8000"
     )
         port map (
-      I0 => \DEMAPPING_QPSK_BUFFER[39]_i_3_n_0\,
+      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
       I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I2 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I3 => \DEMAPPING_QPSK_BUFFER[1]_i_2_n_0\,
       O => \DEMAPPING_QPSK_BUFFER[7]_i_1_n_0\
     );
-\DEMAPPING_QPSK_BUFFER[81]_i_1\: unisim.vcomponents.LUT6
+\DEMAPPING_QPSK_BUFFER[81]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"0000000000040000"
+      INIT => X"0200"
     )
         port map (
-      I0 => \DEMAPPING_BPSK_BUFFER[47]_i_2_n_0\,
-      I1 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      O => \DEMAPPING_QPSK_BUFFER[81]_i_1_n_0\
-    );
-\DEMAPPING_QPSK_BUFFER[83]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0000000000080000"
-    )
-        port map (
-      I0 => \DEMAPPING_QPSK_BUFFER[103]_i_3_n_0\,
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
       I1 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
       I2 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
+      I3 => \DEMAPPING_QPSK_BUFFER[81]_i_2_n_0\,
+      O => \DEMAPPING_QPSK_BUFFER[81]_i_1_n_0\
+    );
+\DEMAPPING_QPSK_BUFFER[81]_i_2\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0008"
+    )
+        port map (
+      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
       I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
+      O => \DEMAPPING_QPSK_BUFFER[81]_i_2_n_0\
+    );
+\DEMAPPING_QPSK_BUFFER[83]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0800"
+    )
+        port map (
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
+      I3 => \DEMAPPING_QPSK_BUFFER[81]_i_2_n_0\,
       O => \DEMAPPING_QPSK_BUFFER[83]_i_1_n_0\
     );
-\DEMAPPING_QPSK_BUFFER[85]_i_1\: unisim.vcomponents.LUT6
+\DEMAPPING_QPSK_BUFFER[85]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"0000000000080000"
+      INIT => X"0800"
     )
         port map (
-      I0 => \DEMAPPING_QPSK_BUFFER[103]_i_3_n_0\,
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
       I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
       I2 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
+      I3 => \DEMAPPING_QPSK_BUFFER[81]_i_2_n_0\,
       O => \DEMAPPING_QPSK_BUFFER[85]_i_1_n_0\
     );
-\DEMAPPING_QPSK_BUFFER[87]_i_1\: unisim.vcomponents.LUT6
+\DEMAPPING_QPSK_BUFFER[87]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"0000000000800000"
+      INIT => X"8000"
     )
         port map (
-      I0 => \DEMAPPING_QPSK_BUFFER[103]_i_3_n_0\,
+      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
       I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
+      I2 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I3 => \DEMAPPING_QPSK_BUFFER[81]_i_2_n_0\,
       O => \DEMAPPING_QPSK_BUFFER[87]_i_1_n_0\
     );
-\DEMAPPING_QPSK_BUFFER[89]_i_1\: unisim.vcomponents.LUT6
+\DEMAPPING_QPSK_BUFFER[89]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"0000000002000000"
+      INIT => X"8000"
     )
         port map (
-      I0 => \DEMAPPING_QPSK_BUFFER[103]_i_3_n_0\,
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
+      I3 => \DEMAPPING_QPSK_BUFFER[9]_i_2_n_0\,
       O => \DEMAPPING_QPSK_BUFFER[89]_i_1_n_0\
     );
 \DEMAPPING_QPSK_BUFFER[91]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000000008000000"
+      INIT => X"0000800000000000"
     )
         port map (
-      I0 => \DEMAPPING_QPSK_BUFFER[103]_i_3_n_0\,
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
       I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
+      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
+      I5 => \DEMAPPING_QPSK_BUFFER[11]_i_2_n_0\,
       O => \DEMAPPING_QPSK_BUFFER[91]_i_1_n_0\
     );
 \DEMAPPING_QPSK_BUFFER[93]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000000008000000"
+      INIT => X"0000800000000000"
     )
         port map (
-      I0 => \DEMAPPING_QPSK_BUFFER[103]_i_3_n_0\,
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
       I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
+      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
+      I5 => \DEMAPPING_QPSK_BUFFER[13]_i_2_n_0\,
       O => \DEMAPPING_QPSK_BUFFER[93]_i_1_n_0\
-    );
-\DEMAPPING_QPSK_BUFFER[94]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_QPSK(0),
-      I1 => \DEMAPPING_BPSK_BUFFER[47]_i_2_n_0\,
-      O => DEMAPPING_QPSK_BUFFER0(94)
     );
 \DEMAPPING_QPSK_BUFFER[95]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000000080000000"
+      INIT => X"0000000000800000"
     )
         port map (
-      I0 => \DEMAPPING_QPSK_BUFFER[103]_i_3_n_0\,
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
+      I3 => \DEMAPPING_QPSK_BUFFER[15]_i_2_n_0\,
+      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
       I5 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
       O => \DEMAPPING_QPSK_BUFFER[95]_i_1_n_0\
     );
-\DEMAPPING_QPSK_BUFFER[95]_i_2\: unisim.vcomponents.LUT2
+\DEMAPPING_QPSK_BUFFER[97]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"2"
+      INIT => X"0200"
     )
         port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
-      I1 => \DEMAPPING_BPSK_BUFFER[47]_i_2_n_0\,
-      O => DEMAPPING_QPSK_BUFFER0(95)
-    );
-\DEMAPPING_QPSK_BUFFER[96]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"0002"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_QPSK(0),
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => \DEMAPPING_BPSK_BUFFER[51]_i_2_n_0\,
-      O => DEMAPPING_QPSK_BUFFER0(96)
-    );
-\DEMAPPING_QPSK_BUFFER[97]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0000008000000000"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
-      I2 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I5 => \DEMAPPING_QPSK_BUFFER[97]_i_3_n_0\,
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
+      I3 => \DEMAPPING_QPSK_BUFFER[97]_i_2_n_0\,
       O => \DEMAPPING_QPSK_BUFFER[97]_i_1_n_0\
     );
 \DEMAPPING_QPSK_BUFFER[97]_i_2\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"0002"
+      INIT => X"0200"
     )
         port map (
-      I0 => DEMAPPING_SUBCARRIER_BPSK,
+      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
       I1 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
       I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I3 => \DEMAPPING_BPSK_BUFFER[51]_i_2_n_0\,
-      O => DEMAPPING_QPSK_BUFFER0(97)
+      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
+      O => \DEMAPPING_QPSK_BUFFER[97]_i_2_n_0\
     );
-\DEMAPPING_QPSK_BUFFER[97]_i_3\: unisim.vcomponents.LUT2
+\DEMAPPING_QPSK_BUFFER[99]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"1"
+      INIT => X"0800"
     )
         port map (
-      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      O => \DEMAPPING_QPSK_BUFFER[97]_i_3_n_0\
-    );
-\DEMAPPING_QPSK_BUFFER[99]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0000000000080000"
-    )
-        port map (
-      I0 => \DEMAPPING_QPSK_BUFFER[103]_i_3_n_0\,
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
       I1 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
       I2 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I3 => \DEMAPPING_QPSK_BUFFER[97]_i_2_n_0\,
       O => \DEMAPPING_QPSK_BUFFER[99]_i_1_n_0\
     );
-\DEMAPPING_QPSK_BUFFER[9]_i_1\: unisim.vcomponents.LUT6
+\DEMAPPING_QPSK_BUFFER[9]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"0000000000000200"
+      INIT => X"0200"
     )
         port map (
-      I0 => \DEMAPPING_QPSK_BUFFER[39]_i_3_n_0\,
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
+      I3 => \DEMAPPING_QPSK_BUFFER[9]_i_2_n_0\,
       O => \DEMAPPING_QPSK_BUFFER[9]_i_1_n_0\
     );
-\DEMAPPING_QPSK_BUFFER_reg[0]\: unisim.vcomponents.FDCE
+\DEMAPPING_QPSK_BUFFER[9]_i_2\: unisim.vcomponents.LUT4
     generic map(
-      INIT => '0'
+      INIT => X"0100"
     )
         port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[1]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_SUBCARRIER_QPSK(0),
-      Q => DEMAPPING_QPSK_BUFFER(0)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[100]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[101]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(102),
-      Q => DEMAPPING_QPSK_BUFFER(100)
+      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
+      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
+      O => \DEMAPPING_QPSK_BUFFER[9]_i_2_n_0\
     );
 \DEMAPPING_QPSK_BUFFER_reg[101]\: unisim.vcomponents.FDCE
     generic map(
@@ -8096,19 +6903,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[101]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(103),
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(101)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[102]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[103]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(102),
-      Q => DEMAPPING_QPSK_BUFFER(102)
     );
 \DEMAPPING_QPSK_BUFFER_reg[103]\: unisim.vcomponents.FDCE
     generic map(
@@ -8118,19 +6914,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[103]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(103),
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(103)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[10]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[11]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(30),
-      Q => DEMAPPING_QPSK_BUFFER(10)
     );
 \DEMAPPING_QPSK_BUFFER_reg[11]\: unisim.vcomponents.FDCE
     generic map(
@@ -8140,19 +6925,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[11]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(31),
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(11)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[12]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[13]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(30),
-      Q => DEMAPPING_QPSK_BUFFER(12)
     );
 \DEMAPPING_QPSK_BUFFER_reg[13]\: unisim.vcomponents.FDCE
     generic map(
@@ -8162,19 +6936,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[13]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(31),
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(13)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[14]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[15]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(30),
-      Q => DEMAPPING_QPSK_BUFFER(14)
     );
 \DEMAPPING_QPSK_BUFFER_reg[15]\: unisim.vcomponents.FDCE
     generic map(
@@ -8184,19 +6947,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[15]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(31),
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(15)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[16]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[17]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_SUBCARRIER_QPSK(0),
-      Q => DEMAPPING_QPSK_BUFFER(16)
     );
 \DEMAPPING_QPSK_BUFFER_reg[17]\: unisim.vcomponents.FDCE
     generic map(
@@ -8206,19 +6958,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[17]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_SUBCARRIER_BPSK,
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(17)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[18]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[19]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(30),
-      Q => DEMAPPING_QPSK_BUFFER(18)
     );
 \DEMAPPING_QPSK_BUFFER_reg[19]\: unisim.vcomponents.FDCE
     generic map(
@@ -8228,7 +6969,7 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[19]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(31),
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(19)
     );
 \DEMAPPING_QPSK_BUFFER_reg[1]\: unisim.vcomponents.FDCE
@@ -8239,19 +6980,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[1]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_SUBCARRIER_BPSK,
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(1)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[20]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[21]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(30),
-      Q => DEMAPPING_QPSK_BUFFER(20)
     );
 \DEMAPPING_QPSK_BUFFER_reg[21]\: unisim.vcomponents.FDCE
     generic map(
@@ -8261,19 +6991,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[21]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(31),
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(21)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[22]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[23]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(30),
-      Q => DEMAPPING_QPSK_BUFFER(22)
     );
 \DEMAPPING_QPSK_BUFFER_reg[23]\: unisim.vcomponents.FDCE
     generic map(
@@ -8283,19 +7002,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[23]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(31),
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(23)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[24]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[25]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(30),
-      Q => DEMAPPING_QPSK_BUFFER(24)
     );
 \DEMAPPING_QPSK_BUFFER_reg[25]\: unisim.vcomponents.FDCE
     generic map(
@@ -8305,19 +7013,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[25]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(31),
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(25)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[26]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[27]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(30),
-      Q => DEMAPPING_QPSK_BUFFER(26)
     );
 \DEMAPPING_QPSK_BUFFER_reg[27]\: unisim.vcomponents.FDCE
     generic map(
@@ -8327,19 +7024,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[27]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(31),
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(27)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[28]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[29]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(30),
-      Q => DEMAPPING_QPSK_BUFFER(28)
     );
 \DEMAPPING_QPSK_BUFFER_reg[29]\: unisim.vcomponents.FDCE
     generic map(
@@ -8349,30 +7035,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[29]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(31),
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(29)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[2]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[3]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(30),
-      Q => DEMAPPING_QPSK_BUFFER(2)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[30]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[31]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(30),
-      Q => DEMAPPING_QPSK_BUFFER(30)
     );
 \DEMAPPING_QPSK_BUFFER_reg[31]\: unisim.vcomponents.FDCE
     generic map(
@@ -8382,19 +7046,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[31]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(31),
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(31)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[32]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[33]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_SUBCARRIER_QPSK(0),
-      Q => DEMAPPING_QPSK_BUFFER(32)
     );
 \DEMAPPING_QPSK_BUFFER_reg[33]\: unisim.vcomponents.FDCE
     generic map(
@@ -8404,19 +7057,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[33]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_SUBCARRIER_BPSK,
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(33)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[34]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[35]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(38),
-      Q => DEMAPPING_QPSK_BUFFER(34)
     );
 \DEMAPPING_QPSK_BUFFER_reg[35]\: unisim.vcomponents.FDCE
     generic map(
@@ -8426,19 +7068,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[35]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(39),
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(35)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[36]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[37]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(38),
-      Q => DEMAPPING_QPSK_BUFFER(36)
     );
 \DEMAPPING_QPSK_BUFFER_reg[37]\: unisim.vcomponents.FDCE
     generic map(
@@ -8448,19 +7079,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[37]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(39),
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(37)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[38]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[39]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(38),
-      Q => DEMAPPING_QPSK_BUFFER(38)
     );
 \DEMAPPING_QPSK_BUFFER_reg[39]\: unisim.vcomponents.FDCE
     generic map(
@@ -8470,7 +7090,7 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[39]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(39),
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(39)
     );
 \DEMAPPING_QPSK_BUFFER_reg[3]\: unisim.vcomponents.FDCE
@@ -8481,19 +7101,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[3]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(31),
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(3)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[40]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[41]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_SUBCARRIER_QPSK(0),
-      Q => DEMAPPING_QPSK_BUFFER(40)
     );
 \DEMAPPING_QPSK_BUFFER_reg[41]\: unisim.vcomponents.FDCE
     generic map(
@@ -8503,19 +7112,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[41]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_SUBCARRIER_BPSK,
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(41)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[42]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[43]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_SUBCARRIER_QPSK(0),
-      Q => DEMAPPING_QPSK_BUFFER(42)
     );
 \DEMAPPING_QPSK_BUFFER_reg[43]\: unisim.vcomponents.FDCE
     generic map(
@@ -8525,19 +7123,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[43]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_SUBCARRIER_BPSK,
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(43)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[44]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[45]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_SUBCARRIER_QPSK(0),
-      Q => DEMAPPING_QPSK_BUFFER(44)
     );
 \DEMAPPING_QPSK_BUFFER_reg[45]\: unisim.vcomponents.FDCE
     generic map(
@@ -8547,19 +7134,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[45]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_SUBCARRIER_BPSK,
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(45)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[46]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[47]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_SUBCARRIER_QPSK(0),
-      Q => DEMAPPING_QPSK_BUFFER(46)
     );
 \DEMAPPING_QPSK_BUFFER_reg[47]\: unisim.vcomponents.FDCE
     generic map(
@@ -8569,19 +7145,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[47]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_SUBCARRIER_BPSK,
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(47)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[48]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[49]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_SUBCARRIER_QPSK(0),
-      Q => DEMAPPING_QPSK_BUFFER(48)
     );
 \DEMAPPING_QPSK_BUFFER_reg[49]\: unisim.vcomponents.FDCE
     generic map(
@@ -8591,30 +7156,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[49]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_SUBCARRIER_BPSK,
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(49)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[4]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[5]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(30),
-      Q => DEMAPPING_QPSK_BUFFER(4)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[50]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[51]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_SUBCARRIER_QPSK(0),
-      Q => DEMAPPING_QPSK_BUFFER(50)
     );
 \DEMAPPING_QPSK_BUFFER_reg[51]\: unisim.vcomponents.FDCE
     generic map(
@@ -8624,19 +7167,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[51]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_SUBCARRIER_BPSK,
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(51)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[52]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[53]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_SUBCARRIER_QPSK(0),
-      Q => DEMAPPING_QPSK_BUFFER(52)
     );
 \DEMAPPING_QPSK_BUFFER_reg[53]\: unisim.vcomponents.FDCE
     generic map(
@@ -8646,19 +7178,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[53]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_SUBCARRIER_BPSK,
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(53)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[54]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[55]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_SUBCARRIER_QPSK(0),
-      Q => DEMAPPING_QPSK_BUFFER(54)
     );
 \DEMAPPING_QPSK_BUFFER_reg[55]\: unisim.vcomponents.FDCE
     generic map(
@@ -8668,19 +7189,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[55]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_SUBCARRIER_BPSK,
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(55)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[56]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[57]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_SUBCARRIER_QPSK(0),
-      Q => DEMAPPING_QPSK_BUFFER(56)
     );
 \DEMAPPING_QPSK_BUFFER_reg[57]\: unisim.vcomponents.FDCE
     generic map(
@@ -8690,19 +7200,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[57]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_SUBCARRIER_BPSK,
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(57)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[58]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[59]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_SUBCARRIER_QPSK(0),
-      Q => DEMAPPING_QPSK_BUFFER(58)
     );
 \DEMAPPING_QPSK_BUFFER_reg[59]\: unisim.vcomponents.FDCE
     generic map(
@@ -8712,7 +7211,7 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[59]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_SUBCARRIER_BPSK,
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(59)
     );
 \DEMAPPING_QPSK_BUFFER_reg[5]\: unisim.vcomponents.FDCE
@@ -8723,19 +7222,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[5]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(31),
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(5)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[60]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[61]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_SUBCARRIER_QPSK(0),
-      Q => DEMAPPING_QPSK_BUFFER(60)
     );
 \DEMAPPING_QPSK_BUFFER_reg[61]\: unisim.vcomponents.FDCE
     generic map(
@@ -8745,19 +7233,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[61]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_SUBCARRIER_BPSK,
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(61)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[62]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[63]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_SUBCARRIER_QPSK(0),
-      Q => DEMAPPING_QPSK_BUFFER(62)
     );
 \DEMAPPING_QPSK_BUFFER_reg[63]\: unisim.vcomponents.FDCE
     generic map(
@@ -8767,19 +7244,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[63]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_SUBCARRIER_BPSK,
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(63)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[64]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[65]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_SUBCARRIER_QPSK(0),
-      Q => DEMAPPING_QPSK_BUFFER(64)
     );
 \DEMAPPING_QPSK_BUFFER_reg[65]\: unisim.vcomponents.FDCE
     generic map(
@@ -8789,19 +7255,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[65]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_SUBCARRIER_BPSK,
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(65)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[66]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[67]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(94),
-      Q => DEMAPPING_QPSK_BUFFER(66)
     );
 \DEMAPPING_QPSK_BUFFER_reg[67]\: unisim.vcomponents.FDCE
     generic map(
@@ -8811,19 +7266,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[67]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(95),
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(67)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[68]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[69]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(94),
-      Q => DEMAPPING_QPSK_BUFFER(68)
     );
 \DEMAPPING_QPSK_BUFFER_reg[69]\: unisim.vcomponents.FDCE
     generic map(
@@ -8833,30 +7277,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[69]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(95),
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(69)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[6]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[7]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(30),
-      Q => DEMAPPING_QPSK_BUFFER(6)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[70]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[71]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(94),
-      Q => DEMAPPING_QPSK_BUFFER(70)
     );
 \DEMAPPING_QPSK_BUFFER_reg[71]\: unisim.vcomponents.FDCE
     generic map(
@@ -8866,19 +7288,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[71]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(95),
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(71)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[72]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[73]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(94),
-      Q => DEMAPPING_QPSK_BUFFER(72)
     );
 \DEMAPPING_QPSK_BUFFER_reg[73]\: unisim.vcomponents.FDCE
     generic map(
@@ -8888,19 +7299,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[73]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(95),
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(73)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[74]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[75]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(94),
-      Q => DEMAPPING_QPSK_BUFFER(74)
     );
 \DEMAPPING_QPSK_BUFFER_reg[75]\: unisim.vcomponents.FDCE
     generic map(
@@ -8910,19 +7310,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[75]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(95),
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(75)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[76]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[77]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(94),
-      Q => DEMAPPING_QPSK_BUFFER(76)
     );
 \DEMAPPING_QPSK_BUFFER_reg[77]\: unisim.vcomponents.FDCE
     generic map(
@@ -8932,19 +7321,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[77]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(95),
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(77)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[78]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[79]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(94),
-      Q => DEMAPPING_QPSK_BUFFER(78)
     );
 \DEMAPPING_QPSK_BUFFER_reg[79]\: unisim.vcomponents.FDCE
     generic map(
@@ -8954,7 +7332,7 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[79]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(95),
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(79)
     );
 \DEMAPPING_QPSK_BUFFER_reg[7]\: unisim.vcomponents.FDCE
@@ -8965,19 +7343,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[7]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(31),
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(7)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[80]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[81]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_SUBCARRIER_QPSK(0),
-      Q => DEMAPPING_QPSK_BUFFER(80)
     );
 \DEMAPPING_QPSK_BUFFER_reg[81]\: unisim.vcomponents.FDCE
     generic map(
@@ -8987,19 +7354,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[81]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_SUBCARRIER_BPSK,
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(81)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[82]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[83]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(94),
-      Q => DEMAPPING_QPSK_BUFFER(82)
     );
 \DEMAPPING_QPSK_BUFFER_reg[83]\: unisim.vcomponents.FDCE
     generic map(
@@ -9009,19 +7365,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[83]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(95),
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(83)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[84]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[85]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(94),
-      Q => DEMAPPING_QPSK_BUFFER(84)
     );
 \DEMAPPING_QPSK_BUFFER_reg[85]\: unisim.vcomponents.FDCE
     generic map(
@@ -9031,19 +7376,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[85]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(95),
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(85)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[86]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[87]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(94),
-      Q => DEMAPPING_QPSK_BUFFER(86)
     );
 \DEMAPPING_QPSK_BUFFER_reg[87]\: unisim.vcomponents.FDCE
     generic map(
@@ -9053,19 +7387,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[87]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(95),
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(87)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[88]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[89]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(94),
-      Q => DEMAPPING_QPSK_BUFFER(88)
     );
 \DEMAPPING_QPSK_BUFFER_reg[89]\: unisim.vcomponents.FDCE
     generic map(
@@ -9075,30 +7398,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[89]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(95),
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(89)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[8]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[9]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(30),
-      Q => DEMAPPING_QPSK_BUFFER(8)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[90]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[91]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(94),
-      Q => DEMAPPING_QPSK_BUFFER(90)
     );
 \DEMAPPING_QPSK_BUFFER_reg[91]\: unisim.vcomponents.FDCE
     generic map(
@@ -9108,19 +7409,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[91]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(95),
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(91)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[92]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[93]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(94),
-      Q => DEMAPPING_QPSK_BUFFER(92)
     );
 \DEMAPPING_QPSK_BUFFER_reg[93]\: unisim.vcomponents.FDCE
     generic map(
@@ -9130,19 +7420,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[93]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(95),
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(93)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[94]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[95]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(94),
-      Q => DEMAPPING_QPSK_BUFFER(94)
     );
 \DEMAPPING_QPSK_BUFFER_reg[95]\: unisim.vcomponents.FDCE
     generic map(
@@ -9152,19 +7431,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[95]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(95),
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(95)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[96]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[97]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(96),
-      Q => DEMAPPING_QPSK_BUFFER(96)
     );
 \DEMAPPING_QPSK_BUFFER_reg[97]\: unisim.vcomponents.FDCE
     generic map(
@@ -9174,19 +7442,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[97]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(97),
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(97)
-    );
-\DEMAPPING_QPSK_BUFFER_reg[98]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \DEMAPPING_QPSK_BUFFER[99]_i_1_n_0\,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(102),
-      Q => DEMAPPING_QPSK_BUFFER(98)
     );
 \DEMAPPING_QPSK_BUFFER_reg[99]\: unisim.vcomponents.FDCE
     generic map(
@@ -9196,7 +7453,7 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[99]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(103),
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(99)
     );
 \DEMAPPING_QPSK_BUFFER_reg[9]\: unisim.vcomponents.FDCE
@@ -9207,30 +7464,8 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => \DEMAPPING_QPSK_BUFFER[9]_i_1_n_0\,
       CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER0(31),
+      D => DEMAPPING_SUBCARRIER_QPSK(1),
       Q => DEMAPPING_QPSK_BUFFER(9)
-    );
-\DEMAPPING_QPSK_reg[0]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(0),
-      Q => DEMAPPING_QPSK(0)
-    );
-\DEMAPPING_QPSK_reg[100]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(100),
-      Q => DEMAPPING_QPSK(100)
     );
 \DEMAPPING_QPSK_reg[101]\: unisim.vcomponents.FDCE
     generic map(
@@ -9243,17 +7478,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       D => DEMAPPING_QPSK_BUFFER(101),
       Q => DEMAPPING_QPSK(101)
     );
-\DEMAPPING_QPSK_reg[102]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(102),
-      Q => DEMAPPING_QPSK(102)
-    );
 \DEMAPPING_QPSK_reg[103]\: unisim.vcomponents.FDCE
     generic map(
       INIT => '0'
@@ -9264,17 +7488,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       CLR => RESET,
       D => DEMAPPING_QPSK_BUFFER(103),
       Q => DEMAPPING_QPSK(103)
-    );
-\DEMAPPING_QPSK_reg[10]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(10),
-      Q => DEMAPPING_QPSK(10)
     );
 \DEMAPPING_QPSK_reg[11]\: unisim.vcomponents.FDCE
     generic map(
@@ -9287,17 +7500,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       D => DEMAPPING_QPSK_BUFFER(11),
       Q => DEMAPPING_QPSK(11)
     );
-\DEMAPPING_QPSK_reg[12]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(12),
-      Q => DEMAPPING_QPSK(12)
-    );
 \DEMAPPING_QPSK_reg[13]\: unisim.vcomponents.FDCE
     generic map(
       INIT => '0'
@@ -9308,17 +7510,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       CLR => RESET,
       D => DEMAPPING_QPSK_BUFFER(13),
       Q => DEMAPPING_QPSK(13)
-    );
-\DEMAPPING_QPSK_reg[14]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(14),
-      Q => DEMAPPING_QPSK(14)
     );
 \DEMAPPING_QPSK_reg[15]\: unisim.vcomponents.FDCE
     generic map(
@@ -9331,17 +7522,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       D => DEMAPPING_QPSK_BUFFER(15),
       Q => DEMAPPING_QPSK(15)
     );
-\DEMAPPING_QPSK_reg[16]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(16),
-      Q => DEMAPPING_QPSK(16)
-    );
 \DEMAPPING_QPSK_reg[17]\: unisim.vcomponents.FDCE
     generic map(
       INIT => '0'
@@ -9352,17 +7532,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       CLR => RESET,
       D => DEMAPPING_QPSK_BUFFER(17),
       Q => DEMAPPING_QPSK(17)
-    );
-\DEMAPPING_QPSK_reg[18]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(18),
-      Q => DEMAPPING_QPSK(18)
     );
 \DEMAPPING_QPSK_reg[19]\: unisim.vcomponents.FDCE
     generic map(
@@ -9386,17 +7555,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       D => DEMAPPING_QPSK_BUFFER(1),
       Q => DEMAPPING_QPSK(1)
     );
-\DEMAPPING_QPSK_reg[20]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(20),
-      Q => DEMAPPING_QPSK(20)
-    );
 \DEMAPPING_QPSK_reg[21]\: unisim.vcomponents.FDCE
     generic map(
       INIT => '0'
@@ -9407,17 +7565,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       CLR => RESET,
       D => DEMAPPING_QPSK_BUFFER(21),
       Q => DEMAPPING_QPSK(21)
-    );
-\DEMAPPING_QPSK_reg[22]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(22),
-      Q => DEMAPPING_QPSK(22)
     );
 \DEMAPPING_QPSK_reg[23]\: unisim.vcomponents.FDCE
     generic map(
@@ -9430,17 +7577,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       D => DEMAPPING_QPSK_BUFFER(23),
       Q => DEMAPPING_QPSK(23)
     );
-\DEMAPPING_QPSK_reg[24]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(24),
-      Q => DEMAPPING_QPSK(24)
-    );
 \DEMAPPING_QPSK_reg[25]\: unisim.vcomponents.FDCE
     generic map(
       INIT => '0'
@@ -9451,17 +7587,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       CLR => RESET,
       D => DEMAPPING_QPSK_BUFFER(25),
       Q => DEMAPPING_QPSK(25)
-    );
-\DEMAPPING_QPSK_reg[26]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(26),
-      Q => DEMAPPING_QPSK(26)
     );
 \DEMAPPING_QPSK_reg[27]\: unisim.vcomponents.FDCE
     generic map(
@@ -9474,17 +7599,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       D => DEMAPPING_QPSK_BUFFER(27),
       Q => DEMAPPING_QPSK(27)
     );
-\DEMAPPING_QPSK_reg[28]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(28),
-      Q => DEMAPPING_QPSK(28)
-    );
 \DEMAPPING_QPSK_reg[29]\: unisim.vcomponents.FDCE
     generic map(
       INIT => '0'
@@ -9495,28 +7609,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       CLR => RESET,
       D => DEMAPPING_QPSK_BUFFER(29),
       Q => DEMAPPING_QPSK(29)
-    );
-\DEMAPPING_QPSK_reg[2]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(2),
-      Q => DEMAPPING_QPSK(2)
-    );
-\DEMAPPING_QPSK_reg[30]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(30),
-      Q => DEMAPPING_QPSK(30)
     );
 \DEMAPPING_QPSK_reg[31]\: unisim.vcomponents.FDCE
     generic map(
@@ -9529,17 +7621,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       D => DEMAPPING_QPSK_BUFFER(31),
       Q => DEMAPPING_QPSK(31)
     );
-\DEMAPPING_QPSK_reg[32]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(32),
-      Q => DEMAPPING_QPSK(32)
-    );
 \DEMAPPING_QPSK_reg[33]\: unisim.vcomponents.FDCE
     generic map(
       INIT => '0'
@@ -9550,17 +7631,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       CLR => RESET,
       D => DEMAPPING_QPSK_BUFFER(33),
       Q => DEMAPPING_QPSK(33)
-    );
-\DEMAPPING_QPSK_reg[34]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(34),
-      Q => DEMAPPING_QPSK(34)
     );
 \DEMAPPING_QPSK_reg[35]\: unisim.vcomponents.FDCE
     generic map(
@@ -9573,17 +7643,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       D => DEMAPPING_QPSK_BUFFER(35),
       Q => DEMAPPING_QPSK(35)
     );
-\DEMAPPING_QPSK_reg[36]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(36),
-      Q => DEMAPPING_QPSK(36)
-    );
 \DEMAPPING_QPSK_reg[37]\: unisim.vcomponents.FDCE
     generic map(
       INIT => '0'
@@ -9594,17 +7653,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       CLR => RESET,
       D => DEMAPPING_QPSK_BUFFER(37),
       Q => DEMAPPING_QPSK(37)
-    );
-\DEMAPPING_QPSK_reg[38]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(38),
-      Q => DEMAPPING_QPSK(38)
     );
 \DEMAPPING_QPSK_reg[39]\: unisim.vcomponents.FDCE
     generic map(
@@ -9628,17 +7676,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       D => DEMAPPING_QPSK_BUFFER(3),
       Q => DEMAPPING_QPSK(3)
     );
-\DEMAPPING_QPSK_reg[40]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(40),
-      Q => DEMAPPING_QPSK(40)
-    );
 \DEMAPPING_QPSK_reg[41]\: unisim.vcomponents.FDCE
     generic map(
       INIT => '0'
@@ -9649,17 +7686,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       CLR => RESET,
       D => DEMAPPING_QPSK_BUFFER(41),
       Q => DEMAPPING_QPSK(41)
-    );
-\DEMAPPING_QPSK_reg[42]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(42),
-      Q => DEMAPPING_QPSK(42)
     );
 \DEMAPPING_QPSK_reg[43]\: unisim.vcomponents.FDCE
     generic map(
@@ -9672,17 +7698,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       D => DEMAPPING_QPSK_BUFFER(43),
       Q => DEMAPPING_QPSK(43)
     );
-\DEMAPPING_QPSK_reg[44]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(44),
-      Q => DEMAPPING_QPSK(44)
-    );
 \DEMAPPING_QPSK_reg[45]\: unisim.vcomponents.FDCE
     generic map(
       INIT => '0'
@@ -9693,17 +7708,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       CLR => RESET,
       D => DEMAPPING_QPSK_BUFFER(45),
       Q => DEMAPPING_QPSK(45)
-    );
-\DEMAPPING_QPSK_reg[46]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(46),
-      Q => DEMAPPING_QPSK(46)
     );
 \DEMAPPING_QPSK_reg[47]\: unisim.vcomponents.FDCE
     generic map(
@@ -9716,17 +7720,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       D => DEMAPPING_QPSK_BUFFER(47),
       Q => DEMAPPING_QPSK(47)
     );
-\DEMAPPING_QPSK_reg[48]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(48),
-      Q => DEMAPPING_QPSK(48)
-    );
 \DEMAPPING_QPSK_reg[49]\: unisim.vcomponents.FDCE
     generic map(
       INIT => '0'
@@ -9737,28 +7730,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       CLR => RESET,
       D => DEMAPPING_QPSK_BUFFER(49),
       Q => DEMAPPING_QPSK(49)
-    );
-\DEMAPPING_QPSK_reg[4]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(4),
-      Q => DEMAPPING_QPSK(4)
-    );
-\DEMAPPING_QPSK_reg[50]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(50),
-      Q => DEMAPPING_QPSK(50)
     );
 \DEMAPPING_QPSK_reg[51]\: unisim.vcomponents.FDCE
     generic map(
@@ -9771,17 +7742,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       D => DEMAPPING_QPSK_BUFFER(51),
       Q => DEMAPPING_QPSK(51)
     );
-\DEMAPPING_QPSK_reg[52]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(52),
-      Q => DEMAPPING_QPSK(52)
-    );
 \DEMAPPING_QPSK_reg[53]\: unisim.vcomponents.FDCE
     generic map(
       INIT => '0'
@@ -9792,17 +7752,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       CLR => RESET,
       D => DEMAPPING_QPSK_BUFFER(53),
       Q => DEMAPPING_QPSK(53)
-    );
-\DEMAPPING_QPSK_reg[54]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(54),
-      Q => DEMAPPING_QPSK(54)
     );
 \DEMAPPING_QPSK_reg[55]\: unisim.vcomponents.FDCE
     generic map(
@@ -9815,17 +7764,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       D => DEMAPPING_QPSK_BUFFER(55),
       Q => DEMAPPING_QPSK(55)
     );
-\DEMAPPING_QPSK_reg[56]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(56),
-      Q => DEMAPPING_QPSK(56)
-    );
 \DEMAPPING_QPSK_reg[57]\: unisim.vcomponents.FDCE
     generic map(
       INIT => '0'
@@ -9836,17 +7774,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       CLR => RESET,
       D => DEMAPPING_QPSK_BUFFER(57),
       Q => DEMAPPING_QPSK(57)
-    );
-\DEMAPPING_QPSK_reg[58]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(58),
-      Q => DEMAPPING_QPSK(58)
     );
 \DEMAPPING_QPSK_reg[59]\: unisim.vcomponents.FDCE
     generic map(
@@ -9870,17 +7797,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       D => DEMAPPING_QPSK_BUFFER(5),
       Q => DEMAPPING_QPSK(5)
     );
-\DEMAPPING_QPSK_reg[60]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(60),
-      Q => DEMAPPING_QPSK(60)
-    );
 \DEMAPPING_QPSK_reg[61]\: unisim.vcomponents.FDCE
     generic map(
       INIT => '0'
@@ -9891,17 +7807,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       CLR => RESET,
       D => DEMAPPING_QPSK_BUFFER(61),
       Q => DEMAPPING_QPSK(61)
-    );
-\DEMAPPING_QPSK_reg[62]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(62),
-      Q => DEMAPPING_QPSK(62)
     );
 \DEMAPPING_QPSK_reg[63]\: unisim.vcomponents.FDCE
     generic map(
@@ -9914,17 +7819,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       D => DEMAPPING_QPSK_BUFFER(63),
       Q => DEMAPPING_QPSK(63)
     );
-\DEMAPPING_QPSK_reg[64]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(64),
-      Q => DEMAPPING_QPSK(64)
-    );
 \DEMAPPING_QPSK_reg[65]\: unisim.vcomponents.FDCE
     generic map(
       INIT => '0'
@@ -9935,17 +7829,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       CLR => RESET,
       D => DEMAPPING_QPSK_BUFFER(65),
       Q => DEMAPPING_QPSK(65)
-    );
-\DEMAPPING_QPSK_reg[66]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(66),
-      Q => DEMAPPING_QPSK(66)
     );
 \DEMAPPING_QPSK_reg[67]\: unisim.vcomponents.FDCE
     generic map(
@@ -9958,17 +7841,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       D => DEMAPPING_QPSK_BUFFER(67),
       Q => DEMAPPING_QPSK(67)
     );
-\DEMAPPING_QPSK_reg[68]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(68),
-      Q => DEMAPPING_QPSK(68)
-    );
 \DEMAPPING_QPSK_reg[69]\: unisim.vcomponents.FDCE
     generic map(
       INIT => '0'
@@ -9979,28 +7851,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       CLR => RESET,
       D => DEMAPPING_QPSK_BUFFER(69),
       Q => DEMAPPING_QPSK(69)
-    );
-\DEMAPPING_QPSK_reg[6]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(6),
-      Q => DEMAPPING_QPSK(6)
-    );
-\DEMAPPING_QPSK_reg[70]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(70),
-      Q => DEMAPPING_QPSK(70)
     );
 \DEMAPPING_QPSK_reg[71]\: unisim.vcomponents.FDCE
     generic map(
@@ -10013,17 +7863,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       D => DEMAPPING_QPSK_BUFFER(71),
       Q => DEMAPPING_QPSK(71)
     );
-\DEMAPPING_QPSK_reg[72]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(72),
-      Q => DEMAPPING_QPSK(72)
-    );
 \DEMAPPING_QPSK_reg[73]\: unisim.vcomponents.FDCE
     generic map(
       INIT => '0'
@@ -10034,17 +7873,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       CLR => RESET,
       D => DEMAPPING_QPSK_BUFFER(73),
       Q => DEMAPPING_QPSK(73)
-    );
-\DEMAPPING_QPSK_reg[74]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(74),
-      Q => DEMAPPING_QPSK(74)
     );
 \DEMAPPING_QPSK_reg[75]\: unisim.vcomponents.FDCE
     generic map(
@@ -10057,17 +7885,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       D => DEMAPPING_QPSK_BUFFER(75),
       Q => DEMAPPING_QPSK(75)
     );
-\DEMAPPING_QPSK_reg[76]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(76),
-      Q => DEMAPPING_QPSK(76)
-    );
 \DEMAPPING_QPSK_reg[77]\: unisim.vcomponents.FDCE
     generic map(
       INIT => '0'
@@ -10078,17 +7895,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       CLR => RESET,
       D => DEMAPPING_QPSK_BUFFER(77),
       Q => DEMAPPING_QPSK(77)
-    );
-\DEMAPPING_QPSK_reg[78]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(78),
-      Q => DEMAPPING_QPSK(78)
     );
 \DEMAPPING_QPSK_reg[79]\: unisim.vcomponents.FDCE
     generic map(
@@ -10112,17 +7918,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       D => DEMAPPING_QPSK_BUFFER(7),
       Q => DEMAPPING_QPSK(7)
     );
-\DEMAPPING_QPSK_reg[80]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(80),
-      Q => DEMAPPING_QPSK(80)
-    );
 \DEMAPPING_QPSK_reg[81]\: unisim.vcomponents.FDCE
     generic map(
       INIT => '0'
@@ -10133,17 +7928,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       CLR => RESET,
       D => DEMAPPING_QPSK_BUFFER(81),
       Q => DEMAPPING_QPSK(81)
-    );
-\DEMAPPING_QPSK_reg[82]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(82),
-      Q => DEMAPPING_QPSK(82)
     );
 \DEMAPPING_QPSK_reg[83]\: unisim.vcomponents.FDCE
     generic map(
@@ -10156,17 +7940,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       D => DEMAPPING_QPSK_BUFFER(83),
       Q => DEMAPPING_QPSK(83)
     );
-\DEMAPPING_QPSK_reg[84]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(84),
-      Q => DEMAPPING_QPSK(84)
-    );
 \DEMAPPING_QPSK_reg[85]\: unisim.vcomponents.FDCE
     generic map(
       INIT => '0'
@@ -10177,17 +7950,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       CLR => RESET,
       D => DEMAPPING_QPSK_BUFFER(85),
       Q => DEMAPPING_QPSK(85)
-    );
-\DEMAPPING_QPSK_reg[86]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(86),
-      Q => DEMAPPING_QPSK(86)
     );
 \DEMAPPING_QPSK_reg[87]\: unisim.vcomponents.FDCE
     generic map(
@@ -10200,17 +7962,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       D => DEMAPPING_QPSK_BUFFER(87),
       Q => DEMAPPING_QPSK(87)
     );
-\DEMAPPING_QPSK_reg[88]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(88),
-      Q => DEMAPPING_QPSK(88)
-    );
 \DEMAPPING_QPSK_reg[89]\: unisim.vcomponents.FDCE
     generic map(
       INIT => '0'
@@ -10221,28 +7972,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       CLR => RESET,
       D => DEMAPPING_QPSK_BUFFER(89),
       Q => DEMAPPING_QPSK(89)
-    );
-\DEMAPPING_QPSK_reg[8]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(8),
-      Q => DEMAPPING_QPSK(8)
-    );
-\DEMAPPING_QPSK_reg[90]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(90),
-      Q => DEMAPPING_QPSK(90)
     );
 \DEMAPPING_QPSK_reg[91]\: unisim.vcomponents.FDCE
     generic map(
@@ -10255,17 +7984,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       D => DEMAPPING_QPSK_BUFFER(91),
       Q => DEMAPPING_QPSK(91)
     );
-\DEMAPPING_QPSK_reg[92]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(92),
-      Q => DEMAPPING_QPSK(92)
-    );
 \DEMAPPING_QPSK_reg[93]\: unisim.vcomponents.FDCE
     generic map(
       INIT => '0'
@@ -10276,17 +7994,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       CLR => RESET,
       D => DEMAPPING_QPSK_BUFFER(93),
       Q => DEMAPPING_QPSK(93)
-    );
-\DEMAPPING_QPSK_reg[94]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(94),
-      Q => DEMAPPING_QPSK(94)
     );
 \DEMAPPING_QPSK_reg[95]\: unisim.vcomponents.FDCE
     generic map(
@@ -10299,17 +8006,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       D => DEMAPPING_QPSK_BUFFER(95),
       Q => DEMAPPING_QPSK(95)
     );
-\DEMAPPING_QPSK_reg[96]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(96),
-      Q => DEMAPPING_QPSK(96)
-    );
 \DEMAPPING_QPSK_reg[97]\: unisim.vcomponents.FDCE
     generic map(
       INIT => '0'
@@ -10320,17 +8016,6 @@ DEMAPPING_DONE_reg: unisim.vcomponents.FDCE
       CLR => RESET,
       D => DEMAPPING_QPSK_BUFFER(97),
       Q => DEMAPPING_QPSK(97)
-    );
-\DEMAPPING_QPSK_reg[98]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => DEMAPPING_DONE,
-      CLR => RESET,
-      D => DEMAPPING_QPSK_BUFFER(98),
-      Q => DEMAPPING_QPSK(98)
     );
 \DEMAPPING_QPSK_reg[99]\: unisim.vcomponents.FDCE
     generic map(
@@ -11140,26 +8825,16 @@ DEMAPPING_SUBCARRIER_16QAM2_carry_i_3: unisim.vcomponents.LUT1
       I0 => THRESH_16QAM(1),
       O => DEMAPPING_SUBCARRIER_16QAM2_carry_i_3_n_0
     );
-\DEMAPPING_SUBCARRIER_16QAM[0]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"0D"
-    )
-        port map (
-      I0 => CONSTELLATION_QDATA_IN(23),
-      I1 => \DEMAPPING_SUBCARRIER_16QAM1_carry__1_n_0\,
-      I2 => \DEMAPPING_SUBCARRIER_16QAM1_inferred__1/i__carry__1_n_0\,
-      O => p_5_out(0)
-    );
-\DEMAPPING_SUBCARRIER_16QAM[1]_i_1\: unisim.vcomponents.LUT2
+\DEMAPPING_SUBCARRIER_16QAM[0]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"B"
     )
         port map (
-      I0 => \DEMAPPING_SUBCARRIER_16QAM1_inferred__1/i__carry__1_n_0\,
-      I1 => CONSTELLATION_QDATA_IN(23),
-      O => \DEMAPPING_SUBCARRIER_16QAM[1]_i_1_n_0\
+      I0 => \DEMAPPING_SUBCARRIER_16QAM1_inferred__2/i__carry__1_n_0\,
+      I1 => CONSTELLATION_IDATA_IN(23),
+      O => \DEMAPPING_SUBCARRIER_16QAM[0]_i_1_n_0\
     );
-\DEMAPPING_SUBCARRIER_16QAM[2]_i_1\: unisim.vcomponents.LUT3
+\DEMAPPING_SUBCARRIER_16QAM[1]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"0D"
     )
@@ -11169,14 +8844,24 @@ DEMAPPING_SUBCARRIER_16QAM2_carry_i_3: unisim.vcomponents.LUT1
       I2 => \DEMAPPING_SUBCARRIER_16QAM1_inferred__2/i__carry__1_n_0\,
       O => p_5_out(2)
     );
-\DEMAPPING_SUBCARRIER_16QAM[3]_i_1\: unisim.vcomponents.LUT2
+\DEMAPPING_SUBCARRIER_16QAM[2]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"B"
     )
         port map (
-      I0 => \DEMAPPING_SUBCARRIER_16QAM1_inferred__2/i__carry__1_n_0\,
-      I1 => CONSTELLATION_IDATA_IN(23),
-      O => \DEMAPPING_SUBCARRIER_16QAM[3]_i_1_n_0\
+      I0 => \DEMAPPING_SUBCARRIER_16QAM1_inferred__1/i__carry__1_n_0\,
+      I1 => CONSTELLATION_QDATA_IN(23),
+      O => \DEMAPPING_SUBCARRIER_16QAM[2]_i_1_n_0\
+    );
+\DEMAPPING_SUBCARRIER_16QAM[3]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"0D"
+    )
+        port map (
+      I0 => CONSTELLATION_QDATA_IN(23),
+      I1 => \DEMAPPING_SUBCARRIER_16QAM1_carry__1_n_0\,
+      I2 => \DEMAPPING_SUBCARRIER_16QAM1_inferred__1/i__carry__1_n_0\,
+      O => p_5_out(0)
     );
 \DEMAPPING_SUBCARRIER_16QAM_reg[0]\: unisim.vcomponents.FDCE
     generic map(
@@ -11186,7 +8871,7 @@ DEMAPPING_SUBCARRIER_16QAM2_carry_i_3: unisim.vcomponents.LUT1
       C => CLOCK,
       CE => CONSTELLATION_DATA_IN_VALID,
       CLR => RESET,
-      D => p_5_out(0),
+      D => \DEMAPPING_SUBCARRIER_16QAM[0]_i_1_n_0\,
       Q => DEMAPPING_SUBCARRIER_16QAM(0)
     );
 \DEMAPPING_SUBCARRIER_16QAM_reg[1]\: unisim.vcomponents.FDCE
@@ -11197,7 +8882,7 @@ DEMAPPING_SUBCARRIER_16QAM2_carry_i_3: unisim.vcomponents.LUT1
       C => CLOCK,
       CE => CONSTELLATION_DATA_IN_VALID,
       CLR => RESET,
-      D => \DEMAPPING_SUBCARRIER_16QAM[1]_i_1_n_0\,
+      D => p_5_out(2),
       Q => DEMAPPING_SUBCARRIER_16QAM(1)
     );
 \DEMAPPING_SUBCARRIER_16QAM_reg[2]\: unisim.vcomponents.FDCE
@@ -11208,7 +8893,7 @@ DEMAPPING_SUBCARRIER_16QAM2_carry_i_3: unisim.vcomponents.LUT1
       C => CLOCK,
       CE => CONSTELLATION_DATA_IN_VALID,
       CLR => RESET,
-      D => p_5_out(2),
+      D => \DEMAPPING_SUBCARRIER_16QAM[2]_i_1_n_0\,
       Q => DEMAPPING_SUBCARRIER_16QAM(2)
     );
 \DEMAPPING_SUBCARRIER_16QAM_reg[3]\: unisim.vcomponents.FDCE
@@ -11219,7 +8904,7 @@ DEMAPPING_SUBCARRIER_16QAM2_carry_i_3: unisim.vcomponents.LUT1
       C => CLOCK,
       CE => CONSTELLATION_DATA_IN_VALID,
       CLR => RESET,
-      D => \DEMAPPING_SUBCARRIER_16QAM[3]_i_1_n_0\,
+      D => p_5_out(0),
       Q => DEMAPPING_SUBCARRIER_16QAM(3)
     );
 DEMAPPING_SUBCARRIER_BPSK_i_1: unisim.vcomponents.LUT1
@@ -11243,127 +8928,128 @@ DEMAPPING_SUBCARRIER_BPSK_reg: unisim.vcomponents.FDCE
     );
 \DEMAPPING_SUBCARRIER_CNTR[0]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"4F"
+      INIT => X"0D"
     )
         port map (
-      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I1 => CONSTELLATION_DATA_IN_VALID,
+      I0 => CONSTELLATION_DATA_IN_VALID,
+      I1 => CONSTELLATION_DATA_IN_VALID_OLD,
       I2 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
       O => p_0_in(0)
     );
 \DEMAPPING_SUBCARRIER_CNTR[1]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"F22F"
-    )
-        port map (
-      I0 => CONSTELLATION_DATA_IN_VALID,
-      I1 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      O => p_0_in(1)
-    );
-\DEMAPPING_SUBCARRIER_CNTR[2]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"E0EE1011"
+      INIT => X"6066"
     )
         port map (
       I0 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
       I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
       I2 => CONSTELLATION_DATA_IN_VALID_OLD,
       I3 => CONSTELLATION_DATA_IN_VALID,
+      O => p_0_in(1)
+    );
+\DEMAPPING_SUBCARRIER_CNTR[2]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"77078808"
+    )
+        port map (
+      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
+      I2 => CONSTELLATION_DATA_IN_VALID,
+      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
       I4 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
       O => p_0_in(2)
     );
 \DEMAPPING_SUBCARRIER_CNTR[3]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FE00FEFE01000101"
+      INIT => X"7F7F007F80800080"
     )
         port map (
       I0 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
       I1 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
       I2 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I3 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I4 => CONSTELLATION_DATA_IN_VALID,
+      I3 => CONSTELLATION_DATA_IN_VALID,
+      I4 => CONSTELLATION_DATA_IN_VALID_OLD,
       I5 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
       O => p_0_in(3)
     );
 \DEMAPPING_SUBCARRIER_CNTR[4]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"AAA9FFFFAAA9AAA9"
+      INIT => X"5755FFFFFFFFFFFF"
     )
         port map (
       I0 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
-      I2 => \DEMAPPING_SUBCARRIER_CNTR[5]_i_4_n_0\,
-      I3 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
+      I3 => \DEMAPPING_QPSK_BUFFER[15]_i_2_n_0\,
+      I4 => \DEMAPPING_SUBCARRIER_CNTR[4]_i_3_n_0\,
+      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
+      O => \DEMAPPING_SUBCARRIER_CNTR[4]_i_1_n_0\
+    );
+\DEMAPPING_SUBCARRIER_CNTR[4]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"DFDF00DF20200020"
+    )
+        port map (
+      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
+      I1 => \DEMAPPING_QPSK_BUFFER[15]_i_2_n_0\,
+      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I3 => CONSTELLATION_DATA_IN_VALID,
       I4 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I5 => CONSTELLATION_DATA_IN_VALID,
+      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
       O => p_0_in(4)
     );
-\DEMAPPING_SUBCARRIER_CNTR[5]_i_1\: unisim.vcomponents.LUT6
+\DEMAPPING_SUBCARRIER_CNTR[4]_i_3\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"FFFFFFFFFFFFFFFE"
+      INIT => X"B"
+    )
+        port map (
+      I0 => CONSTELLATION_DATA_IN_VALID_OLD,
+      I1 => CONSTELLATION_DATA_IN_VALID,
+      O => \DEMAPPING_SUBCARRIER_CNTR[4]_i_3_n_0\
+    );
+\DEMAPPING_SUBCARRIER_CNTR[5]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"CA"
     )
         port map (
       I0 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I2 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
-      I3 => DEMAPPING_SUBCARRIER_CNTR1,
-      I4 => \DEMAPPING_SUBCARRIER_CNTR[5]_i_4_n_0\,
-      I5 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
+      I1 => p_0_in(5),
+      I2 => \DEMAPPING_SUBCARRIER_CNTR[4]_i_1_n_0\,
       O => \DEMAPPING_SUBCARRIER_CNTR[5]_i_1_n_0\
     );
 \DEMAPPING_SUBCARRIER_CNTR[5]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"AAA9FFFFAAA9AAA9"
+      INIT => X"C0C0C0C060C0C0C0"
     )
         port map (
-      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
-      I2 => \DEMAPPING_BPSK_BUFFER[48]_i_2_n_0\,
+      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(3),
+      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(5),
+      I2 => \DEMAPPING_SUBCARRIER_CNTR[4]_i_3_n_0\,
       I3 => DEMAPPING_SUBCARRIER_CNTR_reg(4),
-      I4 => CONSTELLATION_DATA_IN_VALID_OLD,
-      I5 => CONSTELLATION_DATA_IN_VALID,
+      I4 => DEMAPPING_SUBCARRIER_CNTR_reg(2),
+      I5 => \DEMAPPING_QPSK_BUFFER[15]_i_2_n_0\,
       O => p_0_in(5)
     );
-\DEMAPPING_SUBCARRIER_CNTR[5]_i_3\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => CONSTELLATION_DATA_IN_VALID,
-      I1 => CONSTELLATION_DATA_IN_VALID_OLD,
-      O => DEMAPPING_SUBCARRIER_CNTR1
-    );
-\DEMAPPING_SUBCARRIER_CNTR[5]_i_4\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"E"
-    )
-        port map (
-      I0 => DEMAPPING_SUBCARRIER_CNTR_reg(0),
-      I1 => DEMAPPING_SUBCARRIER_CNTR_reg(1),
-      O => \DEMAPPING_SUBCARRIER_CNTR[5]_i_4_n_0\
-    );
-\DEMAPPING_SUBCARRIER_CNTR_reg[0]\: unisim.vcomponents.FDPE
+\DEMAPPING_SUBCARRIER_CNTR_reg[0]\: unisim.vcomponents.FDCE
     generic map(
       INIT => '0'
     )
         port map (
       C => CLOCK,
-      CE => \DEMAPPING_SUBCARRIER_CNTR[5]_i_1_n_0\,
+      CE => \DEMAPPING_SUBCARRIER_CNTR[4]_i_1_n_0\,
+      CLR => RESET,
       D => p_0_in(0),
-      PRE => RESET,
       Q => DEMAPPING_SUBCARRIER_CNTR_reg(0)
     );
-\DEMAPPING_SUBCARRIER_CNTR_reg[1]\: unisim.vcomponents.FDPE
+\DEMAPPING_SUBCARRIER_CNTR_reg[1]\: unisim.vcomponents.FDCE
     generic map(
       INIT => '0'
     )
         port map (
       C => CLOCK,
-      CE => \DEMAPPING_SUBCARRIER_CNTR[5]_i_1_n_0\,
+      CE => \DEMAPPING_SUBCARRIER_CNTR[4]_i_1_n_0\,
+      CLR => RESET,
       D => p_0_in(1),
-      PRE => RESET,
       Q => DEMAPPING_SUBCARRIER_CNTR_reg(1)
     );
 \DEMAPPING_SUBCARRIER_CNTR_reg[2]\: unisim.vcomponents.FDCE
@@ -11372,7 +9058,7 @@ DEMAPPING_SUBCARRIER_BPSK_reg: unisim.vcomponents.FDCE
     )
         port map (
       C => CLOCK,
-      CE => \DEMAPPING_SUBCARRIER_CNTR[5]_i_1_n_0\,
+      CE => \DEMAPPING_SUBCARRIER_CNTR[4]_i_1_n_0\,
       CLR => RESET,
       D => p_0_in(2),
       Q => DEMAPPING_SUBCARRIER_CNTR_reg(2)
@@ -11383,42 +9069,42 @@ DEMAPPING_SUBCARRIER_BPSK_reg: unisim.vcomponents.FDCE
     )
         port map (
       C => CLOCK,
-      CE => \DEMAPPING_SUBCARRIER_CNTR[5]_i_1_n_0\,
+      CE => \DEMAPPING_SUBCARRIER_CNTR[4]_i_1_n_0\,
       CLR => RESET,
       D => p_0_in(3),
       Q => DEMAPPING_SUBCARRIER_CNTR_reg(3)
     );
-\DEMAPPING_SUBCARRIER_CNTR_reg[4]\: unisim.vcomponents.FDPE
+\DEMAPPING_SUBCARRIER_CNTR_reg[4]\: unisim.vcomponents.FDCE
     generic map(
       INIT => '0'
     )
         port map (
       C => CLOCK,
-      CE => \DEMAPPING_SUBCARRIER_CNTR[5]_i_1_n_0\,
+      CE => \DEMAPPING_SUBCARRIER_CNTR[4]_i_1_n_0\,
+      CLR => RESET,
       D => p_0_in(4),
-      PRE => RESET,
       Q => DEMAPPING_SUBCARRIER_CNTR_reg(4)
     );
-\DEMAPPING_SUBCARRIER_CNTR_reg[5]\: unisim.vcomponents.FDPE
+\DEMAPPING_SUBCARRIER_CNTR_reg[5]\: unisim.vcomponents.FDCE
     generic map(
       INIT => '0'
     )
         port map (
       C => CLOCK,
-      CE => \DEMAPPING_SUBCARRIER_CNTR[5]_i_1_n_0\,
-      D => p_0_in(5),
-      PRE => RESET,
+      CE => '1',
+      CLR => RESET,
+      D => \DEMAPPING_SUBCARRIER_CNTR[5]_i_1_n_0\,
       Q => DEMAPPING_SUBCARRIER_CNTR_reg(5)
     );
-\DEMAPPING_SUBCARRIER_QPSK[0]_i_1\: unisim.vcomponents.LUT1
+\DEMAPPING_SUBCARRIER_QPSK[1]_i_1\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
       I0 => CONSTELLATION_QDATA_IN(23),
-      O => \DEMAPPING_SUBCARRIER_QPSK[0]_i_1_n_0\
+      O => \DEMAPPING_SUBCARRIER_QPSK[1]_i_1_n_0\
     );
-\DEMAPPING_SUBCARRIER_QPSK_reg[0]\: unisim.vcomponents.FDCE
+\DEMAPPING_SUBCARRIER_QPSK_reg[1]\: unisim.vcomponents.FDCE
     generic map(
       INIT => '0'
     )
@@ -11426,8 +9112,8 @@ DEMAPPING_SUBCARRIER_BPSK_reg: unisim.vcomponents.FDCE
       C => CLOCK,
       CE => CONSTELLATION_DATA_IN_VALID,
       CLR => RESET,
-      D => \DEMAPPING_SUBCARRIER_QPSK[0]_i_1_n_0\,
-      Q => DEMAPPING_SUBCARRIER_QPSK(0)
+      D => \DEMAPPING_SUBCARRIER_QPSK[1]_i_1_n_0\,
+      Q => DEMAPPING_SUBCARRIER_QPSK(1)
     );
 DEMAPPING_SUBCARRIER_STROBE_reg: unisim.vcomponents.FDCE
     generic map(
@@ -12248,9 +9934,9 @@ entity block_design_0_demapper_0_0 is
     CONSTELLATION_DATA_IN_FIRST_SYMBOL_MARKER : in STD_LOGIC;
     DEMAPPING_START_MARKER : out STD_LOGIC;
     DEMAPPING_STROBE : out STD_LOGIC;
-    DEMAPPING_BPSK : out STD_LOGIC_VECTOR ( 51 downto 0 );
-    DEMAPPING_QPSK : out STD_LOGIC_VECTOR ( 103 downto 0 );
-    DEMAPPING_16QAM : out STD_LOGIC_VECTOR ( 207 downto 0 )
+    DEMAPPING_BPSK : out STD_LOGIC_VECTOR ( 0 to 51 );
+    DEMAPPING_QPSK : out STD_LOGIC_VECTOR ( 0 to 103 );
+    DEMAPPING_16QAM : out STD_LOGIC_VECTOR ( 0 to 207 )
   );
   attribute NotValidForBitStream : boolean;
   attribute NotValidForBitStream of block_design_0_demapper_0_0 : entity is true;
@@ -12265,6 +9951,7 @@ entity block_design_0_demapper_0_0 is
 end block_design_0_demapper_0_0;
 
 architecture STRUCTURE of block_design_0_demapper_0_0 is
+  signal \^demapping_qpsk\ : STD_LOGIC_VECTOR ( 0 to 103 );
   attribute x_interface_info : string;
   attribute x_interface_info of CLOCK : signal is "xilinx.com:signal:clock:1.0 CLOCK CLK";
   attribute x_interface_parameter : string;
@@ -12277,6 +9964,59 @@ architecture STRUCTURE of block_design_0_demapper_0_0 is
   attribute x_interface_ignore of CONSTELLATION_IDATA_IN : signal is "TRUE";
   attribute x_interface_ignore of CONSTELLATION_QDATA_IN : signal is "TRUE";
 begin
+  DEMAPPING_BPSK(0) <= \^demapping_qpsk\(0);
+  DEMAPPING_BPSK(1) <= \^demapping_qpsk\(2);
+  DEMAPPING_BPSK(2) <= \^demapping_qpsk\(4);
+  DEMAPPING_BPSK(3) <= \^demapping_qpsk\(6);
+  DEMAPPING_BPSK(4) <= \^demapping_qpsk\(8);
+  DEMAPPING_BPSK(5) <= \^demapping_qpsk\(10);
+  DEMAPPING_BPSK(6) <= \^demapping_qpsk\(12);
+  DEMAPPING_BPSK(7) <= \^demapping_qpsk\(14);
+  DEMAPPING_BPSK(8) <= \^demapping_qpsk\(16);
+  DEMAPPING_BPSK(9) <= \^demapping_qpsk\(18);
+  DEMAPPING_BPSK(10) <= \^demapping_qpsk\(20);
+  DEMAPPING_BPSK(11) <= \^demapping_qpsk\(22);
+  DEMAPPING_BPSK(12) <= \^demapping_qpsk\(24);
+  DEMAPPING_BPSK(13) <= \^demapping_qpsk\(26);
+  DEMAPPING_BPSK(14) <= \^demapping_qpsk\(28);
+  DEMAPPING_BPSK(15) <= \^demapping_qpsk\(30);
+  DEMAPPING_BPSK(16) <= \^demapping_qpsk\(32);
+  DEMAPPING_BPSK(17) <= \^demapping_qpsk\(34);
+  DEMAPPING_BPSK(18) <= \^demapping_qpsk\(36);
+  DEMAPPING_BPSK(19) <= \^demapping_qpsk\(38);
+  DEMAPPING_BPSK(20) <= \^demapping_qpsk\(40);
+  DEMAPPING_BPSK(21) <= \^demapping_qpsk\(42);
+  DEMAPPING_BPSK(22) <= \^demapping_qpsk\(44);
+  DEMAPPING_BPSK(23) <= \^demapping_qpsk\(46);
+  DEMAPPING_BPSK(24) <= \^demapping_qpsk\(48);
+  DEMAPPING_BPSK(25) <= \^demapping_qpsk\(50);
+  DEMAPPING_BPSK(26) <= \^demapping_qpsk\(52);
+  DEMAPPING_BPSK(27) <= \^demapping_qpsk\(54);
+  DEMAPPING_BPSK(28) <= \^demapping_qpsk\(56);
+  DEMAPPING_BPSK(29) <= \^demapping_qpsk\(58);
+  DEMAPPING_BPSK(30) <= \^demapping_qpsk\(60);
+  DEMAPPING_BPSK(31) <= \^demapping_qpsk\(62);
+  DEMAPPING_BPSK(32) <= \^demapping_qpsk\(64);
+  DEMAPPING_BPSK(33) <= \^demapping_qpsk\(66);
+  DEMAPPING_BPSK(34) <= \^demapping_qpsk\(68);
+  DEMAPPING_BPSK(35) <= \^demapping_qpsk\(70);
+  DEMAPPING_BPSK(36) <= \^demapping_qpsk\(72);
+  DEMAPPING_BPSK(37) <= \^demapping_qpsk\(74);
+  DEMAPPING_BPSK(38) <= \^demapping_qpsk\(76);
+  DEMAPPING_BPSK(39) <= \^demapping_qpsk\(78);
+  DEMAPPING_BPSK(40) <= \^demapping_qpsk\(80);
+  DEMAPPING_BPSK(41) <= \^demapping_qpsk\(82);
+  DEMAPPING_BPSK(42) <= \^demapping_qpsk\(84);
+  DEMAPPING_BPSK(43) <= \^demapping_qpsk\(86);
+  DEMAPPING_BPSK(44) <= \^demapping_qpsk\(88);
+  DEMAPPING_BPSK(45) <= \^demapping_qpsk\(90);
+  DEMAPPING_BPSK(46) <= \^demapping_qpsk\(92);
+  DEMAPPING_BPSK(47) <= \^demapping_qpsk\(94);
+  DEMAPPING_BPSK(48) <= \^demapping_qpsk\(96);
+  DEMAPPING_BPSK(49) <= \^demapping_qpsk\(98);
+  DEMAPPING_BPSK(50) <= \^demapping_qpsk\(100);
+  DEMAPPING_BPSK(51) <= \^demapping_qpsk\(102);
+  DEMAPPING_QPSK(0 to 103) <= \^demapping_qpsk\(0 to 103);
 U0: entity work.block_design_0_demapper_0_0_demapper
      port map (
       CLOCK => CLOCK,
@@ -12284,9 +10024,8 @@ U0: entity work.block_design_0_demapper_0_0_demapper
       CONSTELLATION_DATA_IN_VALID => CONSTELLATION_DATA_IN_VALID,
       CONSTELLATION_IDATA_IN(23 downto 0) => CONSTELLATION_IDATA_IN(23 downto 0),
       CONSTELLATION_QDATA_IN(23 downto 0) => CONSTELLATION_QDATA_IN(23 downto 0),
-      DEMAPPING_16QAM(207 downto 0) => DEMAPPING_16QAM(207 downto 0),
-      DEMAPPING_BPSK(51 downto 0) => DEMAPPING_BPSK(51 downto 0),
-      DEMAPPING_QPSK(103 downto 0) => DEMAPPING_QPSK(103 downto 0),
+      DEMAPPING_16QAM(0 to 207) => DEMAPPING_16QAM(0 to 207),
+      DEMAPPING_QPSK(0 to 103) => \^demapping_qpsk\(0 to 103),
       DEMAPPING_START_MARKER => DEMAPPING_START_MARKER,
       DEMAPPING_STROBE => DEMAPPING_STROBE,
       RESET => RESET,

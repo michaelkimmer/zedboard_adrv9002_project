@@ -19,6 +19,7 @@ vhdl xil_defaultlib  \
 "../../../bd/block_design_0/ip/block_design_0_rotation_constellati_0_0/sim/block_design_0_rotation_constellati_0_0.vhd" \
 "../../../bd/block_design_0/ip/block_design_0_constellation_tracker_0_0/sim/block_design_0_constellation_tracker_0_0.vhd" \
 "../../../bd/block_design_0/ip/block_design_0_demapper_0_0/sim/block_design_0_demapper_0_0.vhd" \
+"../../../bd/block_design_0/ip/block_design_0_deinterleaver_0_0/sim/block_design_0_deinterleaver_0_0.vhd" \
 "../../../bd/block_design_0/sim/block_design_0.vhd" \
 
 # Do not sort compile order

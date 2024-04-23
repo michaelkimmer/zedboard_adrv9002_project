@@ -4,7 +4,7 @@
     "xci_name": "block_design_0_rotation_constellati_0_0",
     "cell_name": "hier_rotation_constellation/rotation_constellati_0",
     "component_reference": "xilinx.com:module_ref:rotation_constellation_block:1.0",
-    "ip_revision": "1713734477",
+    "ip_revision": "1713872619",
     "gen_directory": "../../../../../../edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_rotation_constellati_0_0",
     "parameters": {
       "component_parameters": {
@@ -25,7 +25,7 @@
       },
       "runtime_parameters": {
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],
-        "IPREVISION": [ { "value": "1713734477" } ],
+        "IPREVISION": [ { "value": "1713872619" } ],
         "MANAGED": [ { "value": "TRUE" } ],
         "OUTPUTDIR": [ { "value": "../../../../../../edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_rotation_constellati_0_0" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
