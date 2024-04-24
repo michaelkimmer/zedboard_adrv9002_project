@@ -780,8 +780,11 @@ class Reception_Tab(ttk.Frame):
         self.act_row = 0 #used for actual grid position
         
         ## Build Reception Tab
-        # connection_indicator
+        # build_addresses_entries
         self.addresses_entries = self.build_addresses_entries(root)
+
+        # build_iio_entries
+        self.iio_entries = self.build_iio_entries(root)
         
         # time graph 
         title = "Time graph"
@@ -797,6 +800,7 @@ class Reception_Tab(ttk.Frame):
         
 
     ################## Build Reception Tab methods ##################
+    # read data from AXI regs
     def build_addresses_entries(self, root):
     
         # Build addresses input fields
@@ -818,12 +822,34 @@ class Reception_Tab(ttk.Frame):
 
         
         # Read button
-        connect_button = tk.Button(self, text="Read", command=lambda: self.read_button_clicked(root))
+        connect_button = tk.Button(self, text="Read AXI", command=lambda: self.read_axi_button_clicked(root))
         connect_button.grid(row=self.act_row, column=2, padx=5, pady=5, sticky="WE") 
 
         # Clear axes button 
         connect_button = tk.Button(self, text="Clear", command=lambda: self.axes_clear_button_clicked())
         connect_button.grid(row=self.act_row, column=3, padx=5, pady=5, sticky="WE") 
+
+        self.act_row += 1
+
+        return input_fields
+    
+    # Read data from IIO RX
+    def build_iio_entries(self, root):
+    
+        # Build addresses input fields
+        input_fields = []
+
+        # Start address
+        placeholder = "Samples Num"
+        val_range = [0, 1, round(2**22)] #[start, step, numOfVals]
+        input_field = PlaceholderEntry_withValues(self, placeholder=placeholder, val_range=val_range)
+        input_field.grid(row=self.act_row, column=0, padx=5, pady=5)
+        input_fields.append(input_field)
+    
+        # Read button
+        connect_button = tk.Button(self, text="Read IIO", command=lambda: self.read_iio_button_clicked(root))
+        connect_button.grid(row=self.act_row, column=2, padx=5, pady=5, sticky="WE") 
+
 
         self.act_row += 1
 
@@ -888,7 +914,7 @@ class Reception_Tab(ttk.Frame):
 
     ################# Reception Tab Callback methods ################
     # Read new data from FPGA AXI regs
-    def read_button_clicked(self, root):
+    def read_axi_button_clicked(self, root):
         #confirm the entries (the last changed can be not refreshed)
         self.addresses_entries[0]._add_placeholder(None)
         self.addresses_entries[1]._add_placeholder(None)
@@ -948,6 +974,30 @@ class Reception_Tab(ttk.Frame):
         
         self.log_write_line(f"Addresses read: {addresses[0]}-{addresses[1]}")
 
+
+    # Read new data from IIO Rx
+    def read_iio_button_clicked(self, root):
+        #confirm the entries (the last changed can be not refreshed)
+        self.iio_entries[0]._add_placeholder(None)
+
+        # Read N_samples
+        N_samples = self.iio_entries[0].get()
+
+        # Check addresses 
+        try:
+            N_samples = int(N_samples)
+        except:
+            self.log_write_line("Fill entry with integer !")
+            return
+        if N_samples < 1:
+            self.log_write_line(f"Fill entry with positive integer !")
+            return
+
+
+        ########################### READ IIO rx!!!!!!!!!!!!!!!!!!
+
+
+
     # Clear axes -- both graphs
     def axes_clear_button_clicked(self):
         title = self.time_graph[1].get_title()
@@ -960,8 +1010,6 @@ class Reception_Tab(ttk.Frame):
         self.freq_graph[1].set_title(title)
         self.freq_graph[0].draw()
                
-
-
 
     # Clear log
     def log_clear_button_clicked(self):

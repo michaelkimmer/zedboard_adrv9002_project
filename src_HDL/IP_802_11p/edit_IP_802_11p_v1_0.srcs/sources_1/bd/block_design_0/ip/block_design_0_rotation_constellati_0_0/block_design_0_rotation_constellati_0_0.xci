@@ -2,7 +2,7 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "block_design_0_rotation_constellati_0_0",
-    "cell_name": "rotation_constellati_0",
+    "cell_name": "hier_rotation_constellation/rotation_constellati_0",
     "component_reference": "xilinx.com:module_ref:rotation_constellation_block:1.0",
     "ip_revision": "1713899928",
     "gen_directory": "../../../../../../edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_rotation_constellati_0_0",
