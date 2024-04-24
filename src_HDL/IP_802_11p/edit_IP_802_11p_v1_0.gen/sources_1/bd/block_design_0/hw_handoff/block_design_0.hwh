@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Apr 23 22:37:08 2024" VIVADOVERSION="2023.2.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Apr 24 23:04:47 2024" VIVADOVERSION="2023.2.2">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z020" NAME="block_design_0" PACKAGE="clg484" SPEEDGRADE="-1"/>
 
@@ -29,7 +29,7 @@
         <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="DETECTION_THRESHOLD"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" LEFT="8" NAME="FPGA_REG_WRITE_ADDRESS" RIGHT="0" SIGIS="undef" SIGNAME="axi_regs_mux_0_FPGA_REG_WRITE_ADDRESS">
+    <PORT DIR="O" LEFT="11" NAME="FPGA_REG_WRITE_ADDRESS" RIGHT="0" SIGIS="undef" SIGNAME="axi_regs_mux_0_FPGA_REG_WRITE_ADDRESS">
       <CONNECTIONS>
         <CONNECTION INSTANCE="axi_regs_mux_0" PORT="FPGA_REG_WRITE_ADDRESS"/>
       </CONNECTIONS>
@@ -149,7 +149,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1713902194" FULLNAME="/axi_regs_mux_0" HWVERSION="1.0" INSTANCE="axi_regs_mux_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="axi_regs_mux" VLNV="xilinx.com:module_ref:axi_regs_mux:1.0">
+    <MODULE COREREVISION="1713992606" FULLNAME="/axi_regs_mux_0" HWVERSION="1.0" INSTANCE="axi_regs_mux_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="axi_regs_mux" VLNV="xilinx.com:module_ref:axi_regs_mux:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_axi_regs_mux_0_0"/>
@@ -241,7 +241,7 @@
             <CONNECTION INSTANCE="hier_fft_ofdm_fft_ofdm_0" PORT="FFT_QDATA_OUT"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="8" NAME="FPGA_REG_WRITE_ADDRESS" RIGHT="0" SIGIS="undef" SIGNAME="axi_regs_mux_0_FPGA_REG_WRITE_ADDRESS">
+        <PORT DIR="O" LEFT="11" NAME="FPGA_REG_WRITE_ADDRESS" RIGHT="0" SIGIS="undef" SIGNAME="axi_regs_mux_0_FPGA_REG_WRITE_ADDRESS">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="FPGA_REG_WRITE_ADDRESS"/>
           </CONNECTIONS>

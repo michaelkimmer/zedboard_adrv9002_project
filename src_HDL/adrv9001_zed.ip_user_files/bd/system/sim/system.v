@@ -2,8 +2,8 @@
 //Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-//Date        : Wed Apr 24 12:04:55 2024
-//Host        : lab817_01 running 64-bit major release  (build 9200)
+//Date        : Wed Apr 24 23:19:27 2024
+//Host        : ASUS_ROG running 64-bit major release  (build 9200)
 //Command     : generate_target system.bd
 //Design      : system
 //Purpose     : IP block netlist
@@ -3332,12 +3332,12 @@ module system
         .RX_VALID(axi_adrv9001_adc_1_valid_i0),
         .SW(SW_0_1),
         .s00_axi_aclk(sys_cpu_clk),
-        .s00_axi_araddr(axi_cpu_interconnect_M13_AXI_ARADDR[10:0]),
+        .s00_axi_araddr(axi_cpu_interconnect_M13_AXI_ARADDR[13:0]),
         .s00_axi_aresetn(sys_cpu_resetn),
         .s00_axi_arprot(axi_cpu_interconnect_M13_AXI_ARPROT),
         .s00_axi_arready(axi_cpu_interconnect_M13_AXI_ARREADY),
         .s00_axi_arvalid(axi_cpu_interconnect_M13_AXI_ARVALID),
-        .s00_axi_awaddr(axi_cpu_interconnect_M13_AXI_AWADDR[10:0]),
+        .s00_axi_awaddr(axi_cpu_interconnect_M13_AXI_AWADDR[13:0]),
         .s00_axi_awprot(axi_cpu_interconnect_M13_AXI_AWPROT),
         .s00_axi_awready(axi_cpu_interconnect_M13_AXI_AWREADY),
         .s00_axi_awvalid(axi_cpu_interconnect_M13_AXI_AWVALID),

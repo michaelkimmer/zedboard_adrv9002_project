@@ -378,7 +378,7 @@
 
 /* Definitions for peripheral IP_802_11P_0 */
 #define XPAR_IP_802_11P_0_BASEADDR 0x50000000
-#define XPAR_IP_802_11P_0_HIGHADDR 0x50000fff
+#define XPAR_IP_802_11P_0_HIGHADDR 0x50003fff
 
 /* Definitions for peripheral AXI_HDMI_CORE */
 #define XPAR_AXI_HDMI_CORE_BASEADDR 0x70e00000

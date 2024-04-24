@@ -1,13 +1,14 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xA559EB7ED3E1EEE0",
+      "boundary_crc": "0x282CE9863FEDEFC0",
       "device": "xc7z020clg484-1",
       "gen_directory": "../../../../edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0",
       "name": "block_design_0",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "Hierarchical",
-      "tool_version": "2023.2.2"
+      "tool_version": "2023.2.2",
+      "validated": "true"
     },
     "design_tree": {
       "rx_clock_domain_cros_0": "",
@@ -45,11 +46,47 @@
     "ports": {
       "RESET": {
         "type": "rst",
-        "direction": "I"
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "default"
+          }
+        }
       },
       "CLOCK": {
         "type": "clk",
-        "direction": "I"
+        "direction": "I",
+        "parameters": {
+          "ASSOCIATED_RESET": {
+            "value": "RESET",
+            "value_src": "default"
+          },
+          "CLK_DOMAIN": {
+            "value": "block_design_0_CLOCK",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
       },
       "RX_VALID": {
         "direction": "I"
@@ -61,14 +98,44 @@
         "type": "clk",
         "direction": "I",
         "parameters": {
+          "ASSOCIATED_RESET": {
+            "value": "RX_RESET",
+            "value_src": "default"
+          },
+          "CLK_DOMAIN": {
+            "value": "block_design_0_RX_CLOCK",
+            "value_src": "default"
+          },
           "FREQ_HZ": {
             "value": "10000000"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
           }
         }
       },
       "RX_RESET": {
         "type": "rst",
-        "direction": "I"
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "default"
+          }
+        }
       },
       "RX_IDATA": {
         "direction": "I",
@@ -92,7 +159,7 @@
       },
       "FPGA_REG_WRITE_ADDRESS": {
         "direction": "O",
-        "left": "8",
+        "left": "11",
         "right": "0"
       },
       "FPGA_REG_WRITE_STROBE": {
@@ -2294,7 +2361,7 @@
       },
       "axi_regs_mux_0": {
         "vlnv": "xilinx.com:module_ref:axi_regs_mux:1.0",
-        "ip_revision": "1713902194",
+        "ip_revision": "1713992606",
         "xci_name": "block_design_0_axi_regs_mux_0_0",
         "xci_path": "ip\\block_design_0_axi_regs_mux_0_0\\block_design_0_axi_regs_mux_0_0.xci",
         "inst_hier_path": "axi_regs_mux_0",
@@ -2403,7 +2470,7 @@
           },
           "FPGA_REG_WRITE_ADDRESS": {
             "direction": "O",
-            "left": "8",
+            "left": "11",
             "right": "0"
           },
           "FPGA_REG_WRITE_DATA": {

@@ -2,10 +2,10 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
--- Date        : Sat Apr  6 02:55:19 2024
+-- Date        : Wed Apr 24 23:22:14 2024
 -- Host        : ASUS_ROG running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub -rename_top system_xbar_0 -prefix
---               system_xbar_0_ system_xbar_0_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub
+--               c:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.gen/sources_1/bd/system/ip/system_xbar_0/system_xbar_0_stub.vhdl
 -- Design      : system_xbar_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7z020clg484-1

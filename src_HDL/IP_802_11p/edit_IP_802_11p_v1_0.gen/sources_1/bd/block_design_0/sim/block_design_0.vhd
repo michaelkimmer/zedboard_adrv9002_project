@@ -2,7 +2,7 @@
 --Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
---Date        : Tue Apr 23 22:37:07 2024
+--Date        : Wed Apr 24 23:04:47 2024
 --Host        : ASUS_ROG running 64-bit major release  (build 9200)
 --Command     : generate_target block_design_0.bd
 --Design      : block_design_0
@@ -658,7 +658,7 @@ entity block_design_0 is
   port (
     CLOCK : in STD_LOGIC;
     DETECTION_THRESHOLD : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    FPGA_REG_WRITE_ADDRESS : out STD_LOGIC_VECTOR ( 8 downto 0 );
+    FPGA_REG_WRITE_ADDRESS : out STD_LOGIC_VECTOR ( 11 downto 0 );
     FPGA_REG_WRITE_DATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
     FPGA_REG_WRITE_STROBE : out STD_LOGIC;
     POWER : out STD_LOGIC_VECTOR ( 7 downto 0 );
@@ -836,7 +836,7 @@ architecture STRUCTURE of block_design_0 is
     DEINTERLEAVER_BPSK : in STD_LOGIC_VECTOR ( 0 to 47 );
     DEINTERLEAVER_QPSK : in STD_LOGIC_VECTOR ( 0 to 95 );
     DEINTERLEAVER_16QAM : in STD_LOGIC_VECTOR ( 0 to 191 );
-    FPGA_REG_WRITE_ADDRESS : out STD_LOGIC_VECTOR ( 8 downto 0 );
+    FPGA_REG_WRITE_ADDRESS : out STD_LOGIC_VECTOR ( 11 downto 0 );
     FPGA_REG_WRITE_DATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
     FPGA_REG_WRITE_STROBE : out STD_LOGIC
   );
@@ -985,7 +985,7 @@ architecture STRUCTURE of block_design_0 is
   signal receiver_802_11p_0_FFT_DATA_IN_STROBE : STD_LOGIC;
   signal receiver_802_11p_0_FFT_IDATA_IN : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal receiver_802_11p_0_FFT_QDATA_IN : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal receiver_802_11p_0_FPGA_REG_WRITE_ADDRESS : STD_LOGIC_VECTOR ( 8 downto 0 );
+  signal receiver_802_11p_0_FPGA_REG_WRITE_ADDRESS : STD_LOGIC_VECTOR ( 11 downto 0 );
   signal rotation_block_0_ROTATION_DATA_OUT_MARKER : STD_LOGIC;
   signal rotation_block_0_ROTATION_DATA_OUT_STROBE : STD_LOGIC;
   signal rotation_block_0_ROTATION_IDATA_OUT : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -1017,7 +1017,7 @@ architecture STRUCTURE of block_design_0 is
 begin
   CLOCK_0_1 <= CLOCK;
   DETECTION_THRESHOLD_0_1(31 downto 0) <= DETECTION_THRESHOLD(31 downto 0);
-  FPGA_REG_WRITE_ADDRESS(8 downto 0) <= receiver_802_11p_0_FPGA_REG_WRITE_ADDRESS(8 downto 0);
+  FPGA_REG_WRITE_ADDRESS(11 downto 0) <= receiver_802_11p_0_FPGA_REG_WRITE_ADDRESS(11 downto 0);
   FPGA_REG_WRITE_DATA(31 downto 0) <= axi_regs_mux_0_FPGA_REG_WRITE_DATA(31 downto 0);
   FPGA_REG_WRITE_STROBE <= axi_regs_mux_0_FPGA_REG_WRITE_STROBE;
   POWER(7 downto 0) <= act_power_0_POWER(7 downto 0);
@@ -1058,7 +1058,7 @@ axi_regs_mux_0: component block_design_0_axi_regs_mux_0_0
       FFT_DATA_VALID => fft_ofdm_0_FFT_DATA_OUT_VALID,
       FFT_IDATA(23 downto 0) => fft_ofdm_0_FFT_IDATA_OUT(23 downto 0),
       FFT_QDATA(23 downto 0) => fft_ofdm_0_FFT_QDATA_OUT(23 downto 0),
-      FPGA_REG_WRITE_ADDRESS(8 downto 0) => receiver_802_11p_0_FPGA_REG_WRITE_ADDRESS(8 downto 0),
+      FPGA_REG_WRITE_ADDRESS(11 downto 0) => receiver_802_11p_0_FPGA_REG_WRITE_ADDRESS(11 downto 0),
       FPGA_REG_WRITE_DATA(31 downto 0) => axi_regs_mux_0_FPGA_REG_WRITE_DATA(31 downto 0),
       FPGA_REG_WRITE_STROBE => axi_regs_mux_0_FPGA_REG_WRITE_STROBE,
       IDATA(15 downto 0) => data_delay_0_IDATA_OUT(15 downto 0),

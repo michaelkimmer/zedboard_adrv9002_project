@@ -443,7 +443,7 @@
             "V17": {
                 "VT": "AC",
                 "BA": "0x50000000",
-                "HA": "0x50000FFF",
+                "HA": "0x50003FFF",
                 "BP": "C_S00_AXI_BASEADDR",
                 "HP": "C_S00_AXI_HIGHADDR",
                 "MA": "Data",

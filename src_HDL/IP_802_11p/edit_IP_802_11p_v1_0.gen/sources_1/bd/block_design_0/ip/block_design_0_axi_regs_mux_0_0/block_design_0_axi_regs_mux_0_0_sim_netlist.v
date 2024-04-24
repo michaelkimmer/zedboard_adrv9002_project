@@ -2,7 +2,7 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-// Date        : Tue Apr 23 22:38:55 2024
+// Date        : Wed Apr 24 23:05:46 2024
 // Host        : ASUS_ROG running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_axi_regs_mux_0_0/block_design_0_axi_regs_mux_0_0_sim_netlist.v
@@ -62,7 +62,7 @@ module block_design_0_axi_regs_mux_0_0
   input [0:47]DEINTERLEAVER_BPSK;
   input [0:95]DEINTERLEAVER_QPSK;
   input [0:191]DEINTERLEAVER_16QAM;
-  output [8:0]FPGA_REG_WRITE_ADDRESS;
+  output [11:0]FPGA_REG_WRITE_ADDRESS;
   output [31:0]FPGA_REG_WRITE_DATA;
   output FPGA_REG_WRITE_STROBE;
 
@@ -81,7 +81,7 @@ module block_design_0_axi_regs_mux_0_0
   wire FFT_DATA_VALID;
   wire [23:0]FFT_IDATA;
   wire [23:0]FFT_QDATA;
-  wire [8:0]FPGA_REG_WRITE_ADDRESS;
+  wire [11:0]FPGA_REG_WRITE_ADDRESS;
   wire [31:0]FPGA_REG_WRITE_DATA;
   wire FPGA_REG_WRITE_STROBE;
   wire [15:0]IDATA;
@@ -121,55 +121,84 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
     FPGA_REG_WRITE_STROBE,
     EQUALIZER_REG_WRITE_STROBE_PHASE_2,
     EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+    DEINTERLEAVER_BPSK,
     DEINTERLEAVER_STROBE,
-    DEINTERLEAVER_16QAM,
     CLOCK,
     RESET,
     EQUALIZER_REG_WRITE_DATA,
-    IDATA,
-    CONSTELLATION_IDATA,
-    FFT_IDATA,
-    CONSTELLATION_QDATA,
-    FFT_QDATA,
-    QDATA,
+    DEINTERLEAVER_QPSK,
+    DEINTERLEAVER_16QAM,
     SELECT_AXI_REGS_MODE,
+    FFT_IDATA,
+    CONSTELLATION_IDATA,
+    IDATA,
+    QDATA,
+    FFT_QDATA,
+    CONSTELLATION_QDATA,
     DATA_STROBE,
     FFT_DATA_VALID,
-    CONSTELLATION_DATA_VALID,
-    DEINTERLEAVER_QPSK,
-    DEINTERLEAVER_BPSK);
-  output [8:0]FPGA_REG_WRITE_ADDRESS;
+    CONSTELLATION_DATA_VALID);
+  output [11:0]FPGA_REG_WRITE_ADDRESS;
   output [31:0]FPGA_REG_WRITE_DATA;
   output FPGA_REG_WRITE_STROBE;
   input EQUALIZER_REG_WRITE_STROBE_PHASE_2;
   input EQUALIZER_REG_WRITE_STROBE_PHASE_1;
+  input [0:47]DEINTERLEAVER_BPSK;
   input DEINTERLEAVER_STROBE;
-  input [0:191]DEINTERLEAVER_16QAM;
   input CLOCK;
   input RESET;
   input [31:0]EQUALIZER_REG_WRITE_DATA;
-  input [15:0]IDATA;
-  input [15:0]CONSTELLATION_IDATA;
-  input [15:0]FFT_IDATA;
-  input [15:0]CONSTELLATION_QDATA;
-  input [15:0]FFT_QDATA;
-  input [15:0]QDATA;
+  input [63:0]DEINTERLEAVER_QPSK;
+  input [0:191]DEINTERLEAVER_16QAM;
   input [7:0]SELECT_AXI_REGS_MODE;
+  input [15:0]FFT_IDATA;
+  input [15:0]CONSTELLATION_IDATA;
+  input [15:0]IDATA;
+  input [15:0]QDATA;
+  input [15:0]FFT_QDATA;
+  input [15:0]CONSTELLATION_QDATA;
   input DATA_STROBE;
   input FFT_DATA_VALID;
   input CONSTELLATION_DATA_VALID;
-  input [63:0]DEINTERLEAVER_QPSK;
-  input [0:47]DEINTERLEAVER_BPSK;
 
-  wire \ADDRESS_COUNTER[2]_i_1_n_0 ;
-  wire \ADDRESS_COUNTER[3]_i_1_n_0 ;
-  wire \ADDRESS_COUNTER[5]_i_1_n_0 ;
-  wire \ADDRESS_COUNTER[6]_i_1_n_0 ;
-  wire \ADDRESS_COUNTER[7]_i_1_n_0 ;
-  wire \ADDRESS_COUNTER[8]_i_1_n_0 ;
+  wire \ADDRESS_COUNTER[0]_i_1_n_0 ;
+  wire \ADDRESS_COUNTER[0]_i_3_n_0 ;
+  wire \ADDRESS_COUNTER[0]_i_4_n_0 ;
+  wire \ADDRESS_COUNTER[0]_i_5_n_0 ;
+  wire \ADDRESS_COUNTER[0]_i_6_n_0 ;
+  wire \ADDRESS_COUNTER[0]_i_7_n_0 ;
+  wire \ADDRESS_COUNTER[4]_i_2_n_0 ;
+  wire \ADDRESS_COUNTER[4]_i_3_n_0 ;
+  wire \ADDRESS_COUNTER[4]_i_4_n_0 ;
+  wire \ADDRESS_COUNTER[4]_i_5_n_0 ;
   wire \ADDRESS_COUNTER[8]_i_2_n_0 ;
   wire \ADDRESS_COUNTER[8]_i_3_n_0 ;
-  wire [8:0]ADDRESS_COUNTER_reg;
+  wire \ADDRESS_COUNTER[8]_i_4_n_0 ;
+  wire \ADDRESS_COUNTER[8]_i_5_n_0 ;
+  wire [11:0]ADDRESS_COUNTER_reg;
+  wire \ADDRESS_COUNTER_reg[0]_i_2_n_0 ;
+  wire \ADDRESS_COUNTER_reg[0]_i_2_n_1 ;
+  wire \ADDRESS_COUNTER_reg[0]_i_2_n_2 ;
+  wire \ADDRESS_COUNTER_reg[0]_i_2_n_3 ;
+  wire \ADDRESS_COUNTER_reg[0]_i_2_n_4 ;
+  wire \ADDRESS_COUNTER_reg[0]_i_2_n_5 ;
+  wire \ADDRESS_COUNTER_reg[0]_i_2_n_6 ;
+  wire \ADDRESS_COUNTER_reg[0]_i_2_n_7 ;
+  wire \ADDRESS_COUNTER_reg[4]_i_1_n_0 ;
+  wire \ADDRESS_COUNTER_reg[4]_i_1_n_1 ;
+  wire \ADDRESS_COUNTER_reg[4]_i_1_n_2 ;
+  wire \ADDRESS_COUNTER_reg[4]_i_1_n_3 ;
+  wire \ADDRESS_COUNTER_reg[4]_i_1_n_4 ;
+  wire \ADDRESS_COUNTER_reg[4]_i_1_n_5 ;
+  wire \ADDRESS_COUNTER_reg[4]_i_1_n_6 ;
+  wire \ADDRESS_COUNTER_reg[4]_i_1_n_7 ;
+  wire \ADDRESS_COUNTER_reg[8]_i_1_n_1 ;
+  wire \ADDRESS_COUNTER_reg[8]_i_1_n_2 ;
+  wire \ADDRESS_COUNTER_reg[8]_i_1_n_3 ;
+  wire \ADDRESS_COUNTER_reg[8]_i_1_n_4 ;
+  wire \ADDRESS_COUNTER_reg[8]_i_1_n_5 ;
+  wire \ADDRESS_COUNTER_reg[8]_i_1_n_6 ;
+  wire \ADDRESS_COUNTER_reg[8]_i_1_n_7 ;
   wire CLOCK;
   wire CONSTELLATION_DATA_VALID;
   wire [15:0]CONSTELLATION_IDATA;
@@ -185,23 +214,27 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
   wire FFT_DATA_VALID;
   wire [15:0]FFT_IDATA;
   wire [15:0]FFT_QDATA;
-  wire [8:0]FPGA_REG_WRITE_ADDRESS;
+  wire [11:0]FPGA_REG_WRITE_ADDRESS;
   wire \FPGA_REG_WRITE_ADDRESS[0]_i_1_n_0 ;
+  wire \FPGA_REG_WRITE_ADDRESS[10]_i_1_n_0 ;
+  wire \FPGA_REG_WRITE_ADDRESS[11]_i_1_n_0 ;
+  wire \FPGA_REG_WRITE_ADDRESS[11]_i_2_n_0 ;
+  wire \FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ;
+  wire \FPGA_REG_WRITE_ADDRESS[11]_i_4_n_0 ;
+  wire \FPGA_REG_WRITE_ADDRESS[11]_i_5_n_0 ;
+  wire \FPGA_REG_WRITE_ADDRESS[11]_i_6_n_0 ;
+  wire \FPGA_REG_WRITE_ADDRESS[11]_i_7_n_0 ;
+  wire \FPGA_REG_WRITE_ADDRESS[11]_i_8_n_0 ;
   wire \FPGA_REG_WRITE_ADDRESS[1]_i_1_n_0 ;
   wire \FPGA_REG_WRITE_ADDRESS[2]_i_1_n_0 ;
   wire \FPGA_REG_WRITE_ADDRESS[3]_i_1_n_0 ;
+  wire \FPGA_REG_WRITE_ADDRESS[3]_i_2_n_0 ;
   wire \FPGA_REG_WRITE_ADDRESS[4]_i_1_n_0 ;
   wire \FPGA_REG_WRITE_ADDRESS[5]_i_1_n_0 ;
   wire \FPGA_REG_WRITE_ADDRESS[6]_i_1_n_0 ;
   wire \FPGA_REG_WRITE_ADDRESS[7]_i_1_n_0 ;
   wire \FPGA_REG_WRITE_ADDRESS[8]_i_1_n_0 ;
-  wire \FPGA_REG_WRITE_ADDRESS[8]_i_2_n_0 ;
-  wire \FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ;
-  wire \FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ;
-  wire \FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ;
-  wire \FPGA_REG_WRITE_ADDRESS[8]_i_6_n_0 ;
-  wire \FPGA_REG_WRITE_ADDRESS[8]_i_7_n_0 ;
-  wire \FPGA_REG_WRITE_ADDRESS[8]_i_8_n_0 ;
+  wire \FPGA_REG_WRITE_ADDRESS[9]_i_1_n_0 ;
   wire [31:0]FPGA_REG_WRITE_DATA;
   wire FPGA_REG_WRITE_DATA0;
   wire \FPGA_REG_WRITE_DATA[0]_i_1_n_0 ;
@@ -216,6 +249,7 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
   wire \FPGA_REG_WRITE_DATA[10]_i_4_n_0 ;
   wire \FPGA_REG_WRITE_DATA[10]_i_5_n_0 ;
   wire \FPGA_REG_WRITE_DATA[10]_i_6_n_0 ;
+  wire \FPGA_REG_WRITE_DATA[10]_i_7_n_0 ;
   wire \FPGA_REG_WRITE_DATA[11]_i_1_n_0 ;
   wire \FPGA_REG_WRITE_DATA[11]_i_2_n_0 ;
   wire \FPGA_REG_WRITE_DATA[11]_i_3_n_0 ;
@@ -234,14 +268,14 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
   wire \FPGA_REG_WRITE_DATA[13]_i_4_n_0 ;
   wire \FPGA_REG_WRITE_DATA[13]_i_5_n_0 ;
   wire \FPGA_REG_WRITE_DATA[13]_i_6_n_0 ;
+  wire \FPGA_REG_WRITE_DATA[13]_i_7_n_0 ;
   wire \FPGA_REG_WRITE_DATA[14]_i_1_n_0 ;
   wire \FPGA_REG_WRITE_DATA[14]_i_2_n_0 ;
   wire \FPGA_REG_WRITE_DATA[14]_i_3_n_0 ;
   wire \FPGA_REG_WRITE_DATA[14]_i_4_n_0 ;
   wire \FPGA_REG_WRITE_DATA[14]_i_5_n_0 ;
   wire \FPGA_REG_WRITE_DATA[14]_i_6_n_0 ;
-  wire \FPGA_REG_WRITE_DATA[15]_i_10_n_0 ;
-  wire \FPGA_REG_WRITE_DATA[15]_i_11_n_0 ;
+  wire \FPGA_REG_WRITE_DATA[14]_i_7_n_0 ;
   wire \FPGA_REG_WRITE_DATA[15]_i_1_n_0 ;
   wire \FPGA_REG_WRITE_DATA[15]_i_2_n_0 ;
   wire \FPGA_REG_WRITE_DATA[15]_i_3_n_0 ;
@@ -249,8 +283,6 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
   wire \FPGA_REG_WRITE_DATA[15]_i_5_n_0 ;
   wire \FPGA_REG_WRITE_DATA[15]_i_6_n_0 ;
   wire \FPGA_REG_WRITE_DATA[15]_i_7_n_0 ;
-  wire \FPGA_REG_WRITE_DATA[15]_i_8_n_0 ;
-  wire \FPGA_REG_WRITE_DATA[15]_i_9_n_0 ;
   wire \FPGA_REG_WRITE_DATA[16]_i_1_n_0 ;
   wire \FPGA_REG_WRITE_DATA[16]_i_2_n_0 ;
   wire \FPGA_REG_WRITE_DATA[16]_i_3_n_0 ;
@@ -283,8 +315,8 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
   wire \FPGA_REG_WRITE_DATA[1]_i_2_n_0 ;
   wire \FPGA_REG_WRITE_DATA[1]_i_3_n_0 ;
   wire \FPGA_REG_WRITE_DATA[1]_i_4_n_0 ;
-  wire \FPGA_REG_WRITE_DATA[1]_i_5_n_0 ;
   wire \FPGA_REG_WRITE_DATA[1]_i_6_n_0 ;
+  wire \FPGA_REG_WRITE_DATA[1]_i_7_n_0 ;
   wire \FPGA_REG_WRITE_DATA[20]_i_1_n_0 ;
   wire \FPGA_REG_WRITE_DATA[20]_i_2_n_0 ;
   wire \FPGA_REG_WRITE_DATA[20]_i_3_n_0 ;
@@ -299,6 +331,7 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
   wire \FPGA_REG_WRITE_DATA[21]_i_5_n_0 ;
   wire \FPGA_REG_WRITE_DATA[21]_i_6_n_0 ;
   wire \FPGA_REG_WRITE_DATA[21]_i_7_n_0 ;
+  wire \FPGA_REG_WRITE_DATA[21]_i_8_n_0 ;
   wire \FPGA_REG_WRITE_DATA[22]_i_1_n_0 ;
   wire \FPGA_REG_WRITE_DATA[22]_i_2_n_0 ;
   wire \FPGA_REG_WRITE_DATA[22]_i_3_n_0 ;
@@ -320,7 +353,6 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
   wire \FPGA_REG_WRITE_DATA[24]_i_5_n_0 ;
   wire \FPGA_REG_WRITE_DATA[24]_i_6_n_0 ;
   wire \FPGA_REG_WRITE_DATA[24]_i_7_n_0 ;
-  wire \FPGA_REG_WRITE_DATA[24]_i_8_n_0 ;
   wire \FPGA_REG_WRITE_DATA[25]_i_1_n_0 ;
   wire \FPGA_REG_WRITE_DATA[25]_i_2_n_0 ;
   wire \FPGA_REG_WRITE_DATA[25]_i_3_n_0 ;
@@ -349,6 +381,8 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
   wire \FPGA_REG_WRITE_DATA[28]_i_5_n_0 ;
   wire \FPGA_REG_WRITE_DATA[28]_i_6_n_0 ;
   wire \FPGA_REG_WRITE_DATA[28]_i_7_n_0 ;
+  wire \FPGA_REG_WRITE_DATA[28]_i_8_n_0 ;
+  wire \FPGA_REG_WRITE_DATA[28]_i_9_n_0 ;
   wire \FPGA_REG_WRITE_DATA[29]_i_1_n_0 ;
   wire \FPGA_REG_WRITE_DATA[29]_i_2_n_0 ;
   wire \FPGA_REG_WRITE_DATA[29]_i_3_n_0 ;
@@ -369,13 +403,17 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
   wire \FPGA_REG_WRITE_DATA[30]_i_5_n_0 ;
   wire \FPGA_REG_WRITE_DATA[30]_i_6_n_0 ;
   wire \FPGA_REG_WRITE_DATA[30]_i_7_n_0 ;
-  wire \FPGA_REG_WRITE_DATA[30]_i_8_n_0 ;
   wire \FPGA_REG_WRITE_DATA[31]_i_10_n_0 ;
   wire \FPGA_REG_WRITE_DATA[31]_i_11_n_0 ;
   wire \FPGA_REG_WRITE_DATA[31]_i_12_n_0 ;
   wire \FPGA_REG_WRITE_DATA[31]_i_13_n_0 ;
   wire \FPGA_REG_WRITE_DATA[31]_i_14_n_0 ;
   wire \FPGA_REG_WRITE_DATA[31]_i_15_n_0 ;
+  wire \FPGA_REG_WRITE_DATA[31]_i_16_n_0 ;
+  wire \FPGA_REG_WRITE_DATA[31]_i_17_n_0 ;
+  wire \FPGA_REG_WRITE_DATA[31]_i_18_n_0 ;
+  wire \FPGA_REG_WRITE_DATA[31]_i_19_n_0 ;
+  wire \FPGA_REG_WRITE_DATA[31]_i_20_n_0 ;
   wire \FPGA_REG_WRITE_DATA[31]_i_2_n_0 ;
   wire \FPGA_REG_WRITE_DATA[31]_i_3_n_0 ;
   wire \FPGA_REG_WRITE_DATA[31]_i_4_n_0 ;
@@ -390,12 +428,14 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
   wire \FPGA_REG_WRITE_DATA[3]_i_4_n_0 ;
   wire \FPGA_REG_WRITE_DATA[3]_i_5_n_0 ;
   wire \FPGA_REG_WRITE_DATA[3]_i_6_n_0 ;
+  wire \FPGA_REG_WRITE_DATA[3]_i_7_n_0 ;
   wire \FPGA_REG_WRITE_DATA[4]_i_1_n_0 ;
   wire \FPGA_REG_WRITE_DATA[4]_i_2_n_0 ;
   wire \FPGA_REG_WRITE_DATA[4]_i_3_n_0 ;
   wire \FPGA_REG_WRITE_DATA[4]_i_4_n_0 ;
   wire \FPGA_REG_WRITE_DATA[4]_i_5_n_0 ;
   wire \FPGA_REG_WRITE_DATA[4]_i_6_n_0 ;
+  wire \FPGA_REG_WRITE_DATA[4]_i_7_n_0 ;
   wire \FPGA_REG_WRITE_DATA[5]_i_1_n_0 ;
   wire \FPGA_REG_WRITE_DATA[5]_i_2_n_0 ;
   wire \FPGA_REG_WRITE_DATA[5]_i_3_n_0 ;
@@ -408,6 +448,7 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
   wire \FPGA_REG_WRITE_DATA[6]_i_4_n_0 ;
   wire \FPGA_REG_WRITE_DATA[6]_i_5_n_0 ;
   wire \FPGA_REG_WRITE_DATA[6]_i_6_n_0 ;
+  wire \FPGA_REG_WRITE_DATA[6]_i_7_n_0 ;
   wire \FPGA_REG_WRITE_DATA[7]_i_1_n_0 ;
   wire \FPGA_REG_WRITE_DATA[7]_i_2_n_0 ;
   wire \FPGA_REG_WRITE_DATA[7]_i_3_n_0 ;
@@ -426,14 +467,23 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
   wire \FPGA_REG_WRITE_DATA[9]_i_4_n_0 ;
   wire \FPGA_REG_WRITE_DATA[9]_i_5_n_0 ;
   wire \FPGA_REG_WRITE_DATA[9]_i_6_n_0 ;
+  wire \FPGA_REG_WRITE_DATA_reg[1]_i_5_n_0 ;
   wire FPGA_REG_WRITE_STROBE;
   wire FPGA_REG_WRITE_STROBE0;
   wire FPGA_REG_WRITE_STROBE_i_2_n_0;
+  wire FPGA_REG_WRITE_STROBE_i_3_n_0;
+  wire FPGA_REG_WRITE_STROBE_i_4_n_0;
+  wire FPGA_REG_WRITE_STROBE_i_5_n_0;
+  wire FPGA_REG_WRITE_STROBE_i_6_n_0;
+  wire FPGA_REG_WRITE_STROBE_i_7_n_0;
+  wire FPGA_REG_WRITE_STROBE_i_8_n_0;
+  wire FPGA_REG_WRITE_STROBE_i_9_n_0;
   wire [15:0]IDATA;
   wire [15:0]QDATA;
   wire \REG_CNTR[0]_i_1_n_0 ;
   wire \REG_CNTR[0]_i_2_n_0 ;
   wire \REG_CNTR[0]_i_3_n_0 ;
+  wire \REG_CNTR[0]_i_4_n_0 ;
   wire \REG_CNTR[1]_i_1_n_0 ;
   wire \REG_CNTR[1]_i_2_n_0 ;
   wire \REG_CNTR[2]_i_1_n_0 ;
@@ -443,324 +493,382 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
   wire \REG_CNTR_reg_n_0_[2] ;
   wire RESET;
   wire [7:0]SELECT_AXI_REGS_MODE;
-  wire [4:0]p_0_in;
+  wire [3:3]\NLW_ADDRESS_COUNTER_reg[8]_i_1_CO_UNCONNECTED ;
 
   LUT2 #(
-    .INIT(4'h1)) 
+    .INIT(4'hE)) 
     \ADDRESS_COUNTER[0]_i_1 
        (.I0(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
-        .I1(ADDRESS_COUNTER_reg[0]),
-        .O(p_0_in[0]));
-  (* SOFT_HLUTNM = "soft_lutpair13" *) 
-  LUT3 #(
-    .INIT(8'h06)) 
-    \ADDRESS_COUNTER[1]_i_1 
+        .I1(\FPGA_REG_WRITE_ADDRESS[11]_i_2_n_0 ),
+        .O(\ADDRESS_COUNTER[0]_i_1_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \ADDRESS_COUNTER[0]_i_3 
+       (.I0(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .O(\ADDRESS_COUNTER[0]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'hE)) 
+    \ADDRESS_COUNTER[0]_i_4 
+       (.I0(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .I1(ADDRESS_COUNTER_reg[3]),
+        .O(\ADDRESS_COUNTER[0]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \ADDRESS_COUNTER[0]_i_5 
+       (.I0(ADDRESS_COUNTER_reg[2]),
+        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .O(\ADDRESS_COUNTER[0]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \ADDRESS_COUNTER[0]_i_6 
        (.I0(ADDRESS_COUNTER_reg[1]),
-        .I1(ADDRESS_COUNTER_reg[0]),
-        .I2(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
-        .O(p_0_in[1]));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
-  LUT4 #(
-    .INIT(16'h1540)) 
-    \ADDRESS_COUNTER[2]_i_1 
-       (.I0(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
-        .I1(ADDRESS_COUNTER_reg[0]),
-        .I2(ADDRESS_COUNTER_reg[1]),
-        .I3(ADDRESS_COUNTER_reg[2]),
-        .O(\ADDRESS_COUNTER[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
-  LUT5 #(
-    .INIT(32'hBFFFEAAA)) 
-    \ADDRESS_COUNTER[3]_i_1 
-       (.I0(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
-        .I1(ADDRESS_COUNTER_reg[1]),
-        .I2(ADDRESS_COUNTER_reg[0]),
-        .I3(ADDRESS_COUNTER_reg[2]),
-        .I4(ADDRESS_COUNTER_reg[3]),
-        .O(\ADDRESS_COUNTER[3]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h000000007FFF8000)) 
-    \ADDRESS_COUNTER[4]_i_1 
-       (.I0(ADDRESS_COUNTER_reg[3]),
-        .I1(ADDRESS_COUNTER_reg[2]),
-        .I2(ADDRESS_COUNTER_reg[0]),
-        .I3(ADDRESS_COUNTER_reg[1]),
-        .I4(ADDRESS_COUNTER_reg[4]),
-        .I5(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
-        .O(p_0_in[4]));
-  (* SOFT_HLUTNM = "soft_lutpair13" *) 
-  LUT3 #(
-    .INIT(8'h41)) 
-    \ADDRESS_COUNTER[5]_i_1 
-       (.I0(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
-        .I1(\ADDRESS_COUNTER[8]_i_3_n_0 ),
-        .I2(ADDRESS_COUNTER_reg[5]),
-        .O(\ADDRESS_COUNTER[5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
-  LUT4 #(
-    .INIT(16'h4510)) 
-    \ADDRESS_COUNTER[6]_i_1 
-       (.I0(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
-        .I1(\ADDRESS_COUNTER[8]_i_3_n_0 ),
-        .I2(ADDRESS_COUNTER_reg[5]),
-        .I3(ADDRESS_COUNTER_reg[6]),
-        .O(\ADDRESS_COUNTER[6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
-  LUT5 #(
-    .INIT(32'h55150040)) 
-    \ADDRESS_COUNTER[7]_i_1 
-       (.I0(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
-        .I1(ADDRESS_COUNTER_reg[6]),
-        .I2(ADDRESS_COUNTER_reg[5]),
-        .I3(\ADDRESS_COUNTER[8]_i_3_n_0 ),
-        .I4(ADDRESS_COUNTER_reg[7]),
-        .O(\ADDRESS_COUNTER[7]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hAE)) 
-    \ADDRESS_COUNTER[8]_i_1 
-       (.I0(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_2_n_0 ),
-        .I2(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
-        .O(\ADDRESS_COUNTER[8]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h5155555504000000)) 
-    \ADDRESS_COUNTER[8]_i_2 
-       (.I0(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
-        .I1(ADDRESS_COUNTER_reg[7]),
-        .I2(\ADDRESS_COUNTER[8]_i_3_n_0 ),
-        .I3(ADDRESS_COUNTER_reg[5]),
-        .I4(ADDRESS_COUNTER_reg[6]),
-        .I5(ADDRESS_COUNTER_reg[8]),
-        .O(\ADDRESS_COUNTER[8]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
-  LUT5 #(
-    .INIT(32'h7FFFFFFF)) 
-    \ADDRESS_COUNTER[8]_i_3 
+        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .O(\ADDRESS_COUNTER[0]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'h1)) 
+    \ADDRESS_COUNTER[0]_i_7 
+       (.I0(ADDRESS_COUNTER_reg[0]),
+        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .O(\ADDRESS_COUNTER[0]_i_7_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \ADDRESS_COUNTER[4]_i_2 
+       (.I0(ADDRESS_COUNTER_reg[7]),
+        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .O(\ADDRESS_COUNTER[4]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \ADDRESS_COUNTER[4]_i_3 
+       (.I0(ADDRESS_COUNTER_reg[6]),
+        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .O(\ADDRESS_COUNTER[4]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \ADDRESS_COUNTER[4]_i_4 
+       (.I0(ADDRESS_COUNTER_reg[5]),
+        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .O(\ADDRESS_COUNTER[4]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \ADDRESS_COUNTER[4]_i_5 
        (.I0(ADDRESS_COUNTER_reg[4]),
-        .I1(ADDRESS_COUNTER_reg[1]),
-        .I2(ADDRESS_COUNTER_reg[0]),
-        .I3(ADDRESS_COUNTER_reg[2]),
-        .I4(ADDRESS_COUNTER_reg[3]),
+        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .O(\ADDRESS_COUNTER[4]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \ADDRESS_COUNTER[8]_i_2 
+       (.I0(ADDRESS_COUNTER_reg[11]),
+        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .O(\ADDRESS_COUNTER[8]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \ADDRESS_COUNTER[8]_i_3 
+       (.I0(ADDRESS_COUNTER_reg[10]),
+        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
         .O(\ADDRESS_COUNTER[8]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \ADDRESS_COUNTER[8]_i_4 
+       (.I0(ADDRESS_COUNTER_reg[9]),
+        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .O(\ADDRESS_COUNTER[8]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \ADDRESS_COUNTER[8]_i_5 
+       (.I0(ADDRESS_COUNTER_reg[8]),
+        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .O(\ADDRESS_COUNTER[8]_i_5_n_0 ));
   FDCE #(
     .INIT(1'b0)) 
     \ADDRESS_COUNTER_reg[0] 
        (.C(CLOCK),
-        .CE(\ADDRESS_COUNTER[8]_i_1_n_0 ),
+        .CE(\ADDRESS_COUNTER[0]_i_1_n_0 ),
         .CLR(RESET),
-        .D(p_0_in[0]),
+        .D(\ADDRESS_COUNTER_reg[0]_i_2_n_7 ),
         .Q(ADDRESS_COUNTER_reg[0]));
+  (* ADDER_THRESHOLD = "11" *) 
+  CARRY4 \ADDRESS_COUNTER_reg[0]_i_2 
+       (.CI(1'b0),
+        .CO({\ADDRESS_COUNTER_reg[0]_i_2_n_0 ,\ADDRESS_COUNTER_reg[0]_i_2_n_1 ,\ADDRESS_COUNTER_reg[0]_i_2_n_2 ,\ADDRESS_COUNTER_reg[0]_i_2_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,\ADDRESS_COUNTER[0]_i_3_n_0 }),
+        .O({\ADDRESS_COUNTER_reg[0]_i_2_n_4 ,\ADDRESS_COUNTER_reg[0]_i_2_n_5 ,\ADDRESS_COUNTER_reg[0]_i_2_n_6 ,\ADDRESS_COUNTER_reg[0]_i_2_n_7 }),
+        .S({\ADDRESS_COUNTER[0]_i_4_n_0 ,\ADDRESS_COUNTER[0]_i_5_n_0 ,\ADDRESS_COUNTER[0]_i_6_n_0 ,\ADDRESS_COUNTER[0]_i_7_n_0 }));
+  FDCE #(
+    .INIT(1'b0)) 
+    \ADDRESS_COUNTER_reg[10] 
+       (.C(CLOCK),
+        .CE(\ADDRESS_COUNTER[0]_i_1_n_0 ),
+        .CLR(RESET),
+        .D(\ADDRESS_COUNTER_reg[8]_i_1_n_5 ),
+        .Q(ADDRESS_COUNTER_reg[10]));
+  FDCE #(
+    .INIT(1'b0)) 
+    \ADDRESS_COUNTER_reg[11] 
+       (.C(CLOCK),
+        .CE(\ADDRESS_COUNTER[0]_i_1_n_0 ),
+        .CLR(RESET),
+        .D(\ADDRESS_COUNTER_reg[8]_i_1_n_4 ),
+        .Q(ADDRESS_COUNTER_reg[11]));
   FDCE #(
     .INIT(1'b0)) 
     \ADDRESS_COUNTER_reg[1] 
        (.C(CLOCK),
-        .CE(\ADDRESS_COUNTER[8]_i_1_n_0 ),
+        .CE(\ADDRESS_COUNTER[0]_i_1_n_0 ),
         .CLR(RESET),
-        .D(p_0_in[1]),
+        .D(\ADDRESS_COUNTER_reg[0]_i_2_n_6 ),
         .Q(ADDRESS_COUNTER_reg[1]));
   FDCE #(
     .INIT(1'b0)) 
     \ADDRESS_COUNTER_reg[2] 
        (.C(CLOCK),
-        .CE(\ADDRESS_COUNTER[8]_i_1_n_0 ),
+        .CE(\ADDRESS_COUNTER[0]_i_1_n_0 ),
         .CLR(RESET),
-        .D(\ADDRESS_COUNTER[2]_i_1_n_0 ),
+        .D(\ADDRESS_COUNTER_reg[0]_i_2_n_5 ),
         .Q(ADDRESS_COUNTER_reg[2]));
   FDCE #(
     .INIT(1'b0)) 
     \ADDRESS_COUNTER_reg[3] 
        (.C(CLOCK),
-        .CE(\ADDRESS_COUNTER[8]_i_1_n_0 ),
+        .CE(\ADDRESS_COUNTER[0]_i_1_n_0 ),
         .CLR(RESET),
-        .D(\ADDRESS_COUNTER[3]_i_1_n_0 ),
+        .D(\ADDRESS_COUNTER_reg[0]_i_2_n_4 ),
         .Q(ADDRESS_COUNTER_reg[3]));
   FDCE #(
     .INIT(1'b0)) 
     \ADDRESS_COUNTER_reg[4] 
        (.C(CLOCK),
-        .CE(\ADDRESS_COUNTER[8]_i_1_n_0 ),
+        .CE(\ADDRESS_COUNTER[0]_i_1_n_0 ),
         .CLR(RESET),
-        .D(p_0_in[4]),
+        .D(\ADDRESS_COUNTER_reg[4]_i_1_n_7 ),
         .Q(ADDRESS_COUNTER_reg[4]));
+  (* ADDER_THRESHOLD = "11" *) 
+  CARRY4 \ADDRESS_COUNTER_reg[4]_i_1 
+       (.CI(\ADDRESS_COUNTER_reg[0]_i_2_n_0 ),
+        .CO({\ADDRESS_COUNTER_reg[4]_i_1_n_0 ,\ADDRESS_COUNTER_reg[4]_i_1_n_1 ,\ADDRESS_COUNTER_reg[4]_i_1_n_2 ,\ADDRESS_COUNTER_reg[4]_i_1_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O({\ADDRESS_COUNTER_reg[4]_i_1_n_4 ,\ADDRESS_COUNTER_reg[4]_i_1_n_5 ,\ADDRESS_COUNTER_reg[4]_i_1_n_6 ,\ADDRESS_COUNTER_reg[4]_i_1_n_7 }),
+        .S({\ADDRESS_COUNTER[4]_i_2_n_0 ,\ADDRESS_COUNTER[4]_i_3_n_0 ,\ADDRESS_COUNTER[4]_i_4_n_0 ,\ADDRESS_COUNTER[4]_i_5_n_0 }));
   FDCE #(
     .INIT(1'b0)) 
     \ADDRESS_COUNTER_reg[5] 
        (.C(CLOCK),
-        .CE(\ADDRESS_COUNTER[8]_i_1_n_0 ),
+        .CE(\ADDRESS_COUNTER[0]_i_1_n_0 ),
         .CLR(RESET),
-        .D(\ADDRESS_COUNTER[5]_i_1_n_0 ),
+        .D(\ADDRESS_COUNTER_reg[4]_i_1_n_6 ),
         .Q(ADDRESS_COUNTER_reg[5]));
   FDCE #(
     .INIT(1'b0)) 
     \ADDRESS_COUNTER_reg[6] 
        (.C(CLOCK),
-        .CE(\ADDRESS_COUNTER[8]_i_1_n_0 ),
+        .CE(\ADDRESS_COUNTER[0]_i_1_n_0 ),
         .CLR(RESET),
-        .D(\ADDRESS_COUNTER[6]_i_1_n_0 ),
+        .D(\ADDRESS_COUNTER_reg[4]_i_1_n_5 ),
         .Q(ADDRESS_COUNTER_reg[6]));
   FDCE #(
     .INIT(1'b0)) 
     \ADDRESS_COUNTER_reg[7] 
        (.C(CLOCK),
-        .CE(\ADDRESS_COUNTER[8]_i_1_n_0 ),
+        .CE(\ADDRESS_COUNTER[0]_i_1_n_0 ),
         .CLR(RESET),
-        .D(\ADDRESS_COUNTER[7]_i_1_n_0 ),
+        .D(\ADDRESS_COUNTER_reg[4]_i_1_n_4 ),
         .Q(ADDRESS_COUNTER_reg[7]));
   FDCE #(
     .INIT(1'b0)) 
     \ADDRESS_COUNTER_reg[8] 
        (.C(CLOCK),
-        .CE(\ADDRESS_COUNTER[8]_i_1_n_0 ),
+        .CE(\ADDRESS_COUNTER[0]_i_1_n_0 ),
         .CLR(RESET),
-        .D(\ADDRESS_COUNTER[8]_i_2_n_0 ),
+        .D(\ADDRESS_COUNTER_reg[8]_i_1_n_7 ),
         .Q(ADDRESS_COUNTER_reg[8]));
-  (* SOFT_HLUTNM = "soft_lutpair9" *) 
-  LUT4 #(
-    .INIT(16'hFF40)) 
+  (* ADDER_THRESHOLD = "11" *) 
+  CARRY4 \ADDRESS_COUNTER_reg[8]_i_1 
+       (.CI(\ADDRESS_COUNTER_reg[4]_i_1_n_0 ),
+        .CO({\NLW_ADDRESS_COUNTER_reg[8]_i_1_CO_UNCONNECTED [3],\ADDRESS_COUNTER_reg[8]_i_1_n_1 ,\ADDRESS_COUNTER_reg[8]_i_1_n_2 ,\ADDRESS_COUNTER_reg[8]_i_1_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O({\ADDRESS_COUNTER_reg[8]_i_1_n_4 ,\ADDRESS_COUNTER_reg[8]_i_1_n_5 ,\ADDRESS_COUNTER_reg[8]_i_1_n_6 ,\ADDRESS_COUNTER_reg[8]_i_1_n_7 }),
+        .S({\ADDRESS_COUNTER[8]_i_2_n_0 ,\ADDRESS_COUNTER[8]_i_3_n_0 ,\ADDRESS_COUNTER[8]_i_4_n_0 ,\ADDRESS_COUNTER[8]_i_5_n_0 }));
+  FDCE #(
+    .INIT(1'b0)) 
+    \ADDRESS_COUNTER_reg[9] 
+       (.C(CLOCK),
+        .CE(\ADDRESS_COUNTER[0]_i_1_n_0 ),
+        .CLR(RESET),
+        .D(\ADDRESS_COUNTER_reg[8]_i_1_n_6 ),
+        .Q(ADDRESS_COUNTER_reg[9]));
+  (* SOFT_HLUTNM = "soft_lutpair12" *) 
+  LUT3 #(
+    .INIT(8'hF8)) 
     \FPGA_REG_WRITE_ADDRESS[0]_i_1 
-       (.I0(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_2_n_0 ),
-        .I2(ADDRESS_COUNTER_reg[0]),
-        .I3(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+       (.I0(\FPGA_REG_WRITE_ADDRESS[11]_i_2_n_0 ),
+        .I1(ADDRESS_COUNTER_reg[0]),
+        .I2(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
         .O(\FPGA_REG_WRITE_ADDRESS[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
-  LUT4 #(
-    .INIT(16'hBAAA)) 
-    \FPGA_REG_WRITE_ADDRESS[1]_i_1 
-       (.I0(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
-        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
-        .I2(\FPGA_REG_WRITE_ADDRESS[8]_i_2_n_0 ),
-        .I3(ADDRESS_COUNTER_reg[1]),
-        .O(\FPGA_REG_WRITE_ADDRESS[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
-  LUT4 #(
-    .INIT(16'h5444)) 
-    \FPGA_REG_WRITE_ADDRESS[2]_i_1 
-       (.I0(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
-        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
-        .I2(ADDRESS_COUNTER_reg[2]),
-        .I3(\FPGA_REG_WRITE_ADDRESS[8]_i_2_n_0 ),
-        .O(\FPGA_REG_WRITE_ADDRESS[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair9" *) 
-  LUT4 #(
-    .INIT(16'h0200)) 
-    \FPGA_REG_WRITE_ADDRESS[3]_i_1 
-       (.I0(\FPGA_REG_WRITE_ADDRESS[8]_i_2_n_0 ),
+  (* SOFT_HLUTNM = "soft_lutpair13" *) 
+  LUT3 #(
+    .INIT(8'h20)) 
+    \FPGA_REG_WRITE_ADDRESS[10]_i_1 
+       (.I0(\FPGA_REG_WRITE_ADDRESS[11]_i_2_n_0 ),
         .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
-        .I2(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
-        .I3(ADDRESS_COUNTER_reg[3]),
-        .O(\FPGA_REG_WRITE_ADDRESS[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair10" *) 
-  LUT4 #(
-    .INIT(16'h0200)) 
-    \FPGA_REG_WRITE_ADDRESS[4]_i_1 
-       (.I0(\FPGA_REG_WRITE_ADDRESS[8]_i_2_n_0 ),
+        .I2(ADDRESS_COUNTER_reg[10]),
+        .O(\FPGA_REG_WRITE_ADDRESS[10]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair13" *) 
+  LUT3 #(
+    .INIT(8'h20)) 
+    \FPGA_REG_WRITE_ADDRESS[11]_i_1 
+       (.I0(\FPGA_REG_WRITE_ADDRESS[11]_i_2_n_0 ),
         .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
-        .I2(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
-        .I3(ADDRESS_COUNTER_reg[4]),
-        .O(\FPGA_REG_WRITE_ADDRESS[4]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair10" *) 
-  LUT4 #(
-    .INIT(16'h0200)) 
-    \FPGA_REG_WRITE_ADDRESS[5]_i_1 
-       (.I0(\FPGA_REG_WRITE_ADDRESS[8]_i_2_n_0 ),
-        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
-        .I2(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
-        .I3(ADDRESS_COUNTER_reg[5]),
-        .O(\FPGA_REG_WRITE_ADDRESS[5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair11" *) 
-  LUT4 #(
-    .INIT(16'h0200)) 
-    \FPGA_REG_WRITE_ADDRESS[6]_i_1 
-       (.I0(\FPGA_REG_WRITE_ADDRESS[8]_i_2_n_0 ),
-        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
-        .I2(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
-        .I3(ADDRESS_COUNTER_reg[6]),
-        .O(\FPGA_REG_WRITE_ADDRESS[6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair11" *) 
-  LUT4 #(
-    .INIT(16'h0200)) 
-    \FPGA_REG_WRITE_ADDRESS[7]_i_1 
-       (.I0(\FPGA_REG_WRITE_ADDRESS[8]_i_2_n_0 ),
-        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
-        .I2(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
-        .I3(ADDRESS_COUNTER_reg[7]),
-        .O(\FPGA_REG_WRITE_ADDRESS[7]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'h0200)) 
-    \FPGA_REG_WRITE_ADDRESS[8]_i_1 
-       (.I0(\FPGA_REG_WRITE_ADDRESS[8]_i_2_n_0 ),
-        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
-        .I2(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
-        .I3(ADDRESS_COUNTER_reg[8]),
-        .O(\FPGA_REG_WRITE_ADDRESS[8]_i_1_n_0 ));
+        .I2(ADDRESS_COUNTER_reg[11]),
+        .O(\FPGA_REG_WRITE_ADDRESS[11]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h7F7F7FFF7F7FFFFF)) 
-    \FPGA_REG_WRITE_ADDRESS[8]_i_2 
-       (.I0(\FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ),
-        .I2(\FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ),
-        .I3(SELECT_AXI_REGS_MODE[1]),
-        .I4(\FPGA_REG_WRITE_ADDRESS[8]_i_6_n_0 ),
-        .I5(SELECT_AXI_REGS_MODE[0]),
-        .O(\FPGA_REG_WRITE_ADDRESS[8]_i_2_n_0 ));
+    .INIT(64'h5555155555555555)) 
+    \FPGA_REG_WRITE_ADDRESS[11]_i_2 
+       (.I0(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
+        .I1(FPGA_REG_WRITE_STROBE_i_2_n_0),
+        .I2(FPGA_REG_WRITE_STROBE_i_3_n_0),
+        .I3(\FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ),
+        .I4(\FPGA_REG_WRITE_ADDRESS[11]_i_4_n_0 ),
+        .I5(\FPGA_REG_WRITE_ADDRESS[11]_i_5_n_0 ),
+        .O(\FPGA_REG_WRITE_ADDRESS[11]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFDFFFDFFFFFFFDFF)) 
-    \FPGA_REG_WRITE_ADDRESS[8]_i_3 
+    .INIT(64'hFDFDFDFDFDFDFFFD)) 
+    \FPGA_REG_WRITE_ADDRESS[11]_i_3 
        (.I0(SELECT_AXI_REGS_MODE[1]),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_7_n_0 ),
-        .I2(SELECT_AXI_REGS_MODE[0]),
-        .I3(FFT_DATA_VALID),
-        .I4(\FPGA_REG_WRITE_DATA[15]_i_8_n_0 ),
-        .I5(\FPGA_REG_WRITE_DATA[15]_i_7_n_0 ),
-        .O(\FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ));
+        .I1(\FPGA_REG_WRITE_ADDRESS[11]_i_6_n_0 ),
+        .I2(\FPGA_REG_WRITE_ADDRESS[11]_i_7_n_0 ),
+        .I3(FPGA_REG_WRITE_STROBE_i_7_n_0),
+        .I4(FPGA_REG_WRITE_STROBE_i_6_n_0),
+        .I5(FPGA_REG_WRITE_STROBE_i_5_n_0),
+        .O(\FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFF5DFFFFFFFFFF)) 
-    \FPGA_REG_WRITE_ADDRESS[8]_i_4 
-       (.I0(CONSTELLATION_DATA_VALID),
-        .I1(\FPGA_REG_WRITE_DATA[15]_i_8_n_0 ),
-        .I2(\FPGA_REG_WRITE_DATA[15]_i_7_n_0 ),
-        .I3(SELECT_AXI_REGS_MODE[0]),
-        .I4(\FPGA_REG_WRITE_ADDRESS[8]_i_7_n_0 ),
-        .I5(SELECT_AXI_REGS_MODE[1]),
-        .O(\FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ));
+    .INIT(64'h0000000000EF0000)) 
+    \FPGA_REG_WRITE_ADDRESS[11]_i_4 
+       (.I0(FPGA_REG_WRITE_STROBE_i_5_n_0),
+        .I1(FPGA_REG_WRITE_STROBE_i_6_n_0),
+        .I2(FPGA_REG_WRITE_STROBE_i_7_n_0),
+        .I3(\REG_CNTR[0]_i_4_n_0 ),
+        .I4(DATA_STROBE),
+        .I5(\FPGA_REG_WRITE_ADDRESS[11]_i_6_n_0 ),
+        .O(\FPGA_REG_WRITE_ADDRESS[11]_i_4_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFFFFFFF5DFFFF)) 
-    \FPGA_REG_WRITE_ADDRESS[8]_i_5 
-       (.I0(DATA_STROBE),
-        .I1(\FPGA_REG_WRITE_DATA[15]_i_8_n_0 ),
-        .I2(\FPGA_REG_WRITE_DATA[15]_i_7_n_0 ),
-        .I3(SELECT_AXI_REGS_MODE[1]),
-        .I4(SELECT_AXI_REGS_MODE[0]),
-        .I5(\FPGA_REG_WRITE_ADDRESS[8]_i_7_n_0 ),
-        .O(\FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFFFFFF0202FF02)) 
-    \FPGA_REG_WRITE_ADDRESS[8]_i_6 
-       (.I0(\FPGA_REG_WRITE_ADDRESS[8]_i_8_n_0 ),
-        .I1(DEINTERLEAVER_STROBE),
-        .I2(\REG_CNTR_reg_n_0_[0] ),
-        .I3(\FPGA_REG_WRITE_DATA[15]_i_8_n_0 ),
-        .I4(\FPGA_REG_WRITE_DATA[15]_i_7_n_0 ),
-        .I5(\FPGA_REG_WRITE_DATA[15]_i_6_n_0 ),
-        .O(\FPGA_REG_WRITE_ADDRESS[8]_i_6_n_0 ));
+    .INIT(64'hFDFDFDFDFDFDFFFD)) 
+    \FPGA_REG_WRITE_ADDRESS[11]_i_5 
+       (.I0(SELECT_AXI_REGS_MODE[1]),
+        .I1(\FPGA_REG_WRITE_ADDRESS[11]_i_6_n_0 ),
+        .I2(\FPGA_REG_WRITE_ADDRESS[11]_i_8_n_0 ),
+        .I3(FPGA_REG_WRITE_STROBE_i_7_n_0),
+        .I4(FPGA_REG_WRITE_STROBE_i_6_n_0),
+        .I5(FPGA_REG_WRITE_STROBE_i_5_n_0),
+        .O(\FPGA_REG_WRITE_ADDRESS[11]_i_5_n_0 ));
   LUT6 #(
     .INIT(64'hFFFFFFFFFFFFFFFE)) 
-    \FPGA_REG_WRITE_ADDRESS[8]_i_7 
+    \FPGA_REG_WRITE_ADDRESS[11]_i_6 
        (.I0(SELECT_AXI_REGS_MODE[2]),
         .I1(SELECT_AXI_REGS_MODE[5]),
         .I2(SELECT_AXI_REGS_MODE[6]),
         .I3(SELECT_AXI_REGS_MODE[7]),
         .I4(SELECT_AXI_REGS_MODE[3]),
         .I5(SELECT_AXI_REGS_MODE[4]),
-        .O(\FPGA_REG_WRITE_ADDRESS[8]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+        .O(\FPGA_REG_WRITE_ADDRESS[11]_i_6_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair22" *) 
   LUT2 #(
-    .INIT(4'h1)) 
-    \FPGA_REG_WRITE_ADDRESS[8]_i_8 
-       (.I0(\REG_CNTR_reg_n_0_[2] ),
-        .I1(\REG_CNTR_reg_n_0_[1] ),
-        .O(\FPGA_REG_WRITE_ADDRESS[8]_i_8_n_0 ));
+    .INIT(4'h7)) 
+    \FPGA_REG_WRITE_ADDRESS[11]_i_7 
+       (.I0(SELECT_AXI_REGS_MODE[0]),
+        .I1(CONSTELLATION_DATA_VALID),
+        .O(\FPGA_REG_WRITE_ADDRESS[11]_i_7_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair22" *) 
+  LUT2 #(
+    .INIT(4'hB)) 
+    \FPGA_REG_WRITE_ADDRESS[11]_i_8 
+       (.I0(SELECT_AXI_REGS_MODE[0]),
+        .I1(FFT_DATA_VALID),
+        .O(\FPGA_REG_WRITE_ADDRESS[11]_i_8_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair12" *) 
+  LUT3 #(
+    .INIT(8'hF8)) 
+    \FPGA_REG_WRITE_ADDRESS[1]_i_1 
+       (.I0(\FPGA_REG_WRITE_ADDRESS[11]_i_2_n_0 ),
+        .I1(ADDRESS_COUNTER_reg[1]),
+        .I2(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .O(\FPGA_REG_WRITE_ADDRESS[1]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  LUT4 #(
+    .INIT(16'h5504)) 
+    \FPGA_REG_WRITE_ADDRESS[2]_i_1 
+       (.I0(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .I1(ADDRESS_COUNTER_reg[2]),
+        .I2(\FPGA_REG_WRITE_ADDRESS[3]_i_2_n_0 ),
+        .I3(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
+        .O(\FPGA_REG_WRITE_ADDRESS[2]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  LUT4 #(
+    .INIT(16'h0010)) 
+    \FPGA_REG_WRITE_ADDRESS[3]_i_1 
+       (.I0(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
+        .I2(ADDRESS_COUNTER_reg[3]),
+        .I3(\FPGA_REG_WRITE_ADDRESS[3]_i_2_n_0 ),
+        .O(\FPGA_REG_WRITE_ADDRESS[3]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'h20000000)) 
+    \FPGA_REG_WRITE_ADDRESS[3]_i_2 
+       (.I0(\FPGA_REG_WRITE_ADDRESS[11]_i_5_n_0 ),
+        .I1(\FPGA_REG_WRITE_ADDRESS[11]_i_4_n_0 ),
+        .I2(\FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ),
+        .I3(FPGA_REG_WRITE_STROBE_i_3_n_0),
+        .I4(FPGA_REG_WRITE_STROBE_i_2_n_0),
+        .O(\FPGA_REG_WRITE_ADDRESS[3]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair16" *) 
+  LUT3 #(
+    .INIT(8'h20)) 
+    \FPGA_REG_WRITE_ADDRESS[4]_i_1 
+       (.I0(\FPGA_REG_WRITE_ADDRESS[11]_i_2_n_0 ),
+        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .I2(ADDRESS_COUNTER_reg[4]),
+        .O(\FPGA_REG_WRITE_ADDRESS[4]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair16" *) 
+  LUT3 #(
+    .INIT(8'h20)) 
+    \FPGA_REG_WRITE_ADDRESS[5]_i_1 
+       (.I0(\FPGA_REG_WRITE_ADDRESS[11]_i_2_n_0 ),
+        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .I2(ADDRESS_COUNTER_reg[5]),
+        .O(\FPGA_REG_WRITE_ADDRESS[5]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair15" *) 
+  LUT3 #(
+    .INIT(8'h20)) 
+    \FPGA_REG_WRITE_ADDRESS[6]_i_1 
+       (.I0(\FPGA_REG_WRITE_ADDRESS[11]_i_2_n_0 ),
+        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .I2(ADDRESS_COUNTER_reg[6]),
+        .O(\FPGA_REG_WRITE_ADDRESS[6]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair15" *) 
+  LUT3 #(
+    .INIT(8'h20)) 
+    \FPGA_REG_WRITE_ADDRESS[7]_i_1 
+       (.I0(\FPGA_REG_WRITE_ADDRESS[11]_i_2_n_0 ),
+        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .I2(ADDRESS_COUNTER_reg[7]),
+        .O(\FPGA_REG_WRITE_ADDRESS[7]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair14" *) 
+  LUT3 #(
+    .INIT(8'h20)) 
+    \FPGA_REG_WRITE_ADDRESS[8]_i_1 
+       (.I0(\FPGA_REG_WRITE_ADDRESS[11]_i_2_n_0 ),
+        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .I2(ADDRESS_COUNTER_reg[8]),
+        .O(\FPGA_REG_WRITE_ADDRESS[8]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair14" *) 
+  LUT3 #(
+    .INIT(8'h20)) 
+    \FPGA_REG_WRITE_ADDRESS[9]_i_1 
+       (.I0(\FPGA_REG_WRITE_ADDRESS[11]_i_2_n_0 ),
+        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .I2(ADDRESS_COUNTER_reg[9]),
+        .O(\FPGA_REG_WRITE_ADDRESS[9]_i_1_n_0 ));
   (* x_interface_ignore = "TRUE" *) 
   FDCE #(
     .INIT(1'b0)) 
@@ -770,6 +878,24 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
         .CLR(RESET),
         .D(\FPGA_REG_WRITE_ADDRESS[0]_i_1_n_0 ),
         .Q(FPGA_REG_WRITE_ADDRESS[0]));
+  (* x_interface_ignore = "TRUE" *) 
+  FDCE #(
+    .INIT(1'b0)) 
+    \FPGA_REG_WRITE_ADDRESS_reg[10] 
+       (.C(CLOCK),
+        .CE(1'b1),
+        .CLR(RESET),
+        .D(\FPGA_REG_WRITE_ADDRESS[10]_i_1_n_0 ),
+        .Q(FPGA_REG_WRITE_ADDRESS[10]));
+  (* x_interface_ignore = "TRUE" *) 
+  FDCE #(
+    .INIT(1'b0)) 
+    \FPGA_REG_WRITE_ADDRESS_reg[11] 
+       (.C(CLOCK),
+        .CE(1'b1),
+        .CLR(RESET),
+        .D(\FPGA_REG_WRITE_ADDRESS[11]_i_1_n_0 ),
+        .Q(FPGA_REG_WRITE_ADDRESS[11]));
   (* x_interface_ignore = "TRUE" *) 
   FDCE #(
     .INIT(1'b0)) 
@@ -842,112 +968,118 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
         .CLR(RESET),
         .D(\FPGA_REG_WRITE_ADDRESS[8]_i_1_n_0 ),
         .Q(FPGA_REG_WRITE_ADDRESS[8]));
+  (* x_interface_ignore = "TRUE" *) 
+  FDCE #(
+    .INIT(1'b0)) 
+    \FPGA_REG_WRITE_ADDRESS_reg[9] 
+       (.C(CLOCK),
+        .CE(1'b1),
+        .CLR(RESET),
+        .D(\FPGA_REG_WRITE_ADDRESS[9]_i_1_n_0 ),
+        .Q(FPGA_REG_WRITE_ADDRESS[9]));
   LUT6 #(
-    .INIT(64'hABA8ABABABABABAB)) 
+    .INIT(64'hFFFFFF00F2F2FF00)) 
     \FPGA_REG_WRITE_DATA[0]_i_1 
-       (.I0(EQUALIZER_REG_WRITE_DATA[0]),
-        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
-        .I2(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
-        .I3(\FPGA_REG_WRITE_DATA[0]_i_2_n_0 ),
-        .I4(\FPGA_REG_WRITE_DATA[0]_i_3_n_0 ),
-        .I5(\FPGA_REG_WRITE_DATA[0]_i_4_n_0 ),
+       (.I0(DEINTERLEAVER_BPSK[31]),
+        .I1(\FPGA_REG_WRITE_DATA[13]_i_3_n_0 ),
+        .I2(\FPGA_REG_WRITE_DATA[0]_i_2_n_0 ),
+        .I3(EQUALIZER_REG_WRITE_DATA[0]),
+        .I4(\FPGA_REG_WRITE_DATA[28]_i_2_n_0 ),
+        .I5(\FPGA_REG_WRITE_DATA[0]_i_3_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[0]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h88FFA0A08888A0A0)) 
+    .INIT(64'h8A80FFFF8A808A80)) 
     \FPGA_REG_WRITE_DATA[0]_i_2 
        (.I0(\REG_CNTR[0]_i_2_n_0 ),
         .I1(DEINTERLEAVER_QPSK[32]),
-        .I2(DEINTERLEAVER_QPSK[0]),
-        .I3(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_BPSK[31]),
+        .I2(DEINTERLEAVER_STROBE),
+        .I3(DEINTERLEAVER_QPSK[0]),
+        .I4(\FPGA_REG_WRITE_DATA[31]_i_12_n_0 ),
+        .I5(\FPGA_REG_WRITE_DATA[0]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[0]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hAAAAABFBFFFFABFB)) 
+    .INIT(64'h22F222F2FFFF22F2)) 
     \FPGA_REG_WRITE_DATA[0]_i_3 
-       (.I0(\FPGA_REG_WRITE_DATA[15]_i_4_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[0]_i_5_n_0 ),
-        .I2(\REG_CNTR_reg_n_0_[2] ),
-        .I3(\FPGA_REG_WRITE_DATA[0]_i_6_n_0 ),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_16QAM[31]),
-        .O(\FPGA_REG_WRITE_DATA[0]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'hDD0DDD0D0000DD0D)) 
-    \FPGA_REG_WRITE_DATA[0]_i_4 
-       (.I0(IDATA[0]),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ),
+       (.I0(FFT_IDATA[0]),
+        .I1(\FPGA_REG_WRITE_DATA[31]_i_15_n_0 ),
         .I2(CONSTELLATION_IDATA[0]),
-        .I3(\FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ),
-        .I4(FFT_IDATA[0]),
-        .I5(\FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ),
-        .O(\FPGA_REG_WRITE_DATA[0]_i_4_n_0 ));
-  LUT5 #(
-    .INIT(32'hB8FFB800)) 
-    \FPGA_REG_WRITE_DATA[0]_i_5 
-       (.I0(DEINTERLEAVER_16QAM[127]),
-        .I1(\REG_CNTR_reg_n_0_[0] ),
-        .I2(DEINTERLEAVER_16QAM[159]),
-        .I3(\REG_CNTR_reg_n_0_[1] ),
-        .I4(DEINTERLEAVER_16QAM[191]),
-        .O(\FPGA_REG_WRITE_DATA[0]_i_5_n_0 ));
+        .I3(\FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ),
+        .I4(IDATA[0]),
+        .I5(\FPGA_REG_WRITE_DATA[31]_i_14_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[0]_i_3_n_0 ));
   LUT5 #(
     .INIT(32'hB8BBB888)) 
-    \FPGA_REG_WRITE_DATA[0]_i_6 
+    \FPGA_REG_WRITE_DATA[0]_i_4 
+       (.I0(DEINTERLEAVER_16QAM[31]),
+        .I1(DEINTERLEAVER_STROBE),
+        .I2(\FPGA_REG_WRITE_DATA[0]_i_5_n_0 ),
+        .I3(\REG_CNTR_reg_n_0_[2] ),
+        .I4(\FPGA_REG_WRITE_DATA[0]_i_6_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[0]_i_4_n_0 ));
+  LUT5 #(
+    .INIT(32'hB8BBB888)) 
+    \FPGA_REG_WRITE_DATA[0]_i_5 
        (.I0(DEINTERLEAVER_16QAM[191]),
         .I1(\REG_CNTR_reg_n_0_[1] ),
         .I2(DEINTERLEAVER_16QAM[63]),
         .I3(\REG_CNTR_reg_n_0_[0] ),
         .I4(DEINTERLEAVER_16QAM[95]),
+        .O(\FPGA_REG_WRITE_DATA[0]_i_5_n_0 ));
+  LUT5 #(
+    .INIT(32'hB8FFB800)) 
+    \FPGA_REG_WRITE_DATA[0]_i_6 
+       (.I0(DEINTERLEAVER_16QAM[127]),
+        .I1(\REG_CNTR_reg_n_0_[0] ),
+        .I2(DEINTERLEAVER_16QAM[159]),
+        .I3(\REG_CNTR_reg_n_0_[1] ),
+        .I4(DEINTERLEAVER_16QAM[191]),
         .O(\FPGA_REG_WRITE_DATA[0]_i_6_n_0 ));
   LUT6 #(
-    .INIT(64'hF0F0F0FFF0F0F0DD)) 
+    .INIT(64'hABABA8ABABABABAB)) 
     \FPGA_REG_WRITE_DATA[10]_i_1 
-       (.I0(\FPGA_REG_WRITE_DATA[10]_i_2_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[10]_i_3_n_0 ),
-        .I2(EQUALIZER_REG_WRITE_DATA[10]),
-        .I3(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
-        .I4(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+       (.I0(EQUALIZER_REG_WRITE_DATA[10]),
+        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
+        .I2(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .I3(\FPGA_REG_WRITE_DATA[10]_i_2_n_0 ),
+        .I4(\FPGA_REG_WRITE_DATA[10]_i_3_n_0 ),
         .I5(\FPGA_REG_WRITE_DATA[10]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[10]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hAAAAABFBFFFFABFB)) 
+    .INIT(64'hDD0DDD0D0000DD0D)) 
     \FPGA_REG_WRITE_DATA[10]_i_2 
-       (.I0(\FPGA_REG_WRITE_DATA[15]_i_4_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[10]_i_5_n_0 ),
-        .I2(\REG_CNTR_reg_n_0_[2] ),
-        .I3(\FPGA_REG_WRITE_DATA[10]_i_6_n_0 ),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_16QAM[21]),
+       (.I0(IDATA[10]),
+        .I1(\FPGA_REG_WRITE_DATA[31]_i_14_n_0 ),
+        .I2(FFT_IDATA[10]),
+        .I3(\FPGA_REG_WRITE_DATA[31]_i_15_n_0 ),
+        .I4(CONSTELLATION_IDATA[10]),
+        .I5(\FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[10]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'h88FFA0A08888A0A0)) 
+    .INIT(64'h8A80FFFF8A808A80)) 
     \FPGA_REG_WRITE_DATA[10]_i_3 
        (.I0(\REG_CNTR[0]_i_2_n_0 ),
         .I1(DEINTERLEAVER_QPSK[42]),
-        .I2(DEINTERLEAVER_QPSK[10]),
-        .I3(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_BPSK[21]),
+        .I2(DEINTERLEAVER_STROBE),
+        .I3(DEINTERLEAVER_QPSK[10]),
+        .I4(\FPGA_REG_WRITE_DATA[31]_i_12_n_0 ),
+        .I5(\FPGA_REG_WRITE_DATA[10]_i_5_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[10]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'h22F222F2FFFF22F2)) 
+  (* SOFT_HLUTNM = "soft_lutpair11" *) 
+  LUT3 #(
+    .INIT(8'h7F)) 
     \FPGA_REG_WRITE_DATA[10]_i_4 
-       (.I0(CONSTELLATION_IDATA[10]),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ),
-        .I2(FFT_IDATA[10]),
-        .I3(\FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ),
-        .I4(IDATA[10]),
-        .I5(\FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ),
+       (.I0(DEINTERLEAVER_BPSK[21]),
+        .I1(DEINTERLEAVER_STROBE),
+        .I2(\FPGA_REG_WRITE_DATA[31]_i_11_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[10]_i_4_n_0 ));
   LUT5 #(
-    .INIT(32'hB8FFB800)) 
+    .INIT(32'hB8BBB888)) 
     \FPGA_REG_WRITE_DATA[10]_i_5 
-       (.I0(DEINTERLEAVER_16QAM[117]),
-        .I1(\REG_CNTR_reg_n_0_[0] ),
-        .I2(DEINTERLEAVER_16QAM[149]),
-        .I3(\REG_CNTR_reg_n_0_[1] ),
-        .I4(DEINTERLEAVER_16QAM[181]),
+       (.I0(DEINTERLEAVER_16QAM[21]),
+        .I1(DEINTERLEAVER_STROBE),
+        .I2(\FPGA_REG_WRITE_DATA[10]_i_6_n_0 ),
+        .I3(\REG_CNTR_reg_n_0_[2] ),
+        .I4(\FPGA_REG_WRITE_DATA[10]_i_7_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[10]_i_5_n_0 ));
   LUT5 #(
     .INIT(32'hB8BBB888)) 
@@ -958,228 +1090,240 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
         .I3(\REG_CNTR_reg_n_0_[0] ),
         .I4(DEINTERLEAVER_16QAM[85]),
         .O(\FPGA_REG_WRITE_DATA[10]_i_6_n_0 ));
-  LUT6 #(
-    .INIT(64'hF0F0F0FFF0F0F0DD)) 
-    \FPGA_REG_WRITE_DATA[11]_i_1 
-       (.I0(\FPGA_REG_WRITE_DATA[11]_i_2_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[11]_i_3_n_0 ),
-        .I2(EQUALIZER_REG_WRITE_DATA[11]),
-        .I3(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
-        .I4(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
-        .I5(\FPGA_REG_WRITE_DATA[11]_i_4_n_0 ),
-        .O(\FPGA_REG_WRITE_DATA[11]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hAAAAABFBFFFFABFB)) 
-    \FPGA_REG_WRITE_DATA[11]_i_2 
-       (.I0(\FPGA_REG_WRITE_DATA[15]_i_4_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[11]_i_5_n_0 ),
-        .I2(\REG_CNTR_reg_n_0_[2] ),
-        .I3(\FPGA_REG_WRITE_DATA[11]_i_6_n_0 ),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_16QAM[20]),
-        .O(\FPGA_REG_WRITE_DATA[11]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h88FFA0A08888A0A0)) 
-    \FPGA_REG_WRITE_DATA[11]_i_3 
-       (.I0(\REG_CNTR[0]_i_2_n_0 ),
-        .I1(DEINTERLEAVER_QPSK[43]),
-        .I2(DEINTERLEAVER_QPSK[11]),
-        .I3(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_BPSK[20]),
-        .O(\FPGA_REG_WRITE_DATA[11]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'h22F222F2FFFF22F2)) 
-    \FPGA_REG_WRITE_DATA[11]_i_4 
-       (.I0(CONSTELLATION_IDATA[11]),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ),
-        .I2(FFT_IDATA[11]),
-        .I3(\FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ),
-        .I4(IDATA[11]),
-        .I5(\FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ),
-        .O(\FPGA_REG_WRITE_DATA[11]_i_4_n_0 ));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
-    \FPGA_REG_WRITE_DATA[11]_i_5 
-       (.I0(DEINTERLEAVER_16QAM[116]),
+    \FPGA_REG_WRITE_DATA[10]_i_7 
+       (.I0(DEINTERLEAVER_16QAM[117]),
         .I1(\REG_CNTR_reg_n_0_[0] ),
-        .I2(DEINTERLEAVER_16QAM[148]),
+        .I2(DEINTERLEAVER_16QAM[149]),
         .I3(\REG_CNTR_reg_n_0_[1] ),
-        .I4(DEINTERLEAVER_16QAM[180]),
-        .O(\FPGA_REG_WRITE_DATA[11]_i_5_n_0 ));
+        .I4(DEINTERLEAVER_16QAM[181]),
+        .O(\FPGA_REG_WRITE_DATA[10]_i_7_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFF00F2F2FF00)) 
+    \FPGA_REG_WRITE_DATA[11]_i_1 
+       (.I0(DEINTERLEAVER_BPSK[20]),
+        .I1(\FPGA_REG_WRITE_DATA[13]_i_3_n_0 ),
+        .I2(\FPGA_REG_WRITE_DATA[11]_i_2_n_0 ),
+        .I3(EQUALIZER_REG_WRITE_DATA[11]),
+        .I4(\FPGA_REG_WRITE_DATA[28]_i_2_n_0 ),
+        .I5(\FPGA_REG_WRITE_DATA[11]_i_3_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[11]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h8A80FFFF8A808A80)) 
+    \FPGA_REG_WRITE_DATA[11]_i_2 
+       (.I0(\REG_CNTR[0]_i_2_n_0 ),
+        .I1(DEINTERLEAVER_QPSK[43]),
+        .I2(DEINTERLEAVER_STROBE),
+        .I3(DEINTERLEAVER_QPSK[11]),
+        .I4(\FPGA_REG_WRITE_DATA[31]_i_12_n_0 ),
+        .I5(\FPGA_REG_WRITE_DATA[11]_i_4_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[11]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h22F222F2FFFF22F2)) 
+    \FPGA_REG_WRITE_DATA[11]_i_3 
+       (.I0(FFT_IDATA[11]),
+        .I1(\FPGA_REG_WRITE_DATA[31]_i_15_n_0 ),
+        .I2(CONSTELLATION_IDATA[11]),
+        .I3(\FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ),
+        .I4(IDATA[11]),
+        .I5(\FPGA_REG_WRITE_DATA[31]_i_14_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[11]_i_3_n_0 ));
   LUT5 #(
     .INIT(32'hB8BBB888)) 
-    \FPGA_REG_WRITE_DATA[11]_i_6 
+    \FPGA_REG_WRITE_DATA[11]_i_4 
+       (.I0(DEINTERLEAVER_16QAM[20]),
+        .I1(DEINTERLEAVER_STROBE),
+        .I2(\FPGA_REG_WRITE_DATA[11]_i_5_n_0 ),
+        .I3(\REG_CNTR_reg_n_0_[2] ),
+        .I4(\FPGA_REG_WRITE_DATA[11]_i_6_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[11]_i_4_n_0 ));
+  LUT5 #(
+    .INIT(32'hB8BBB888)) 
+    \FPGA_REG_WRITE_DATA[11]_i_5 
        (.I0(DEINTERLEAVER_16QAM[180]),
         .I1(\REG_CNTR_reg_n_0_[1] ),
         .I2(DEINTERLEAVER_16QAM[52]),
         .I3(\REG_CNTR_reg_n_0_[0] ),
         .I4(DEINTERLEAVER_16QAM[84]),
-        .O(\FPGA_REG_WRITE_DATA[11]_i_6_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFFFFD0D0D0FFD0)) 
-    \FPGA_REG_WRITE_DATA[12]_i_1 
-       (.I0(\FPGA_REG_WRITE_DATA[12]_i_2_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[12]_i_3_n_0 ),
-        .I2(\FPGA_REG_WRITE_DATA[31]_i_4_n_0 ),
-        .I3(EQUALIZER_REG_WRITE_DATA[12]),
-        .I4(\FPGA_REG_WRITE_DATA[31]_i_8_n_0 ),
-        .I5(\FPGA_REG_WRITE_DATA[12]_i_4_n_0 ),
-        .O(\FPGA_REG_WRITE_DATA[12]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hAAAAABFBFFFFABFB)) 
-    \FPGA_REG_WRITE_DATA[12]_i_2 
-       (.I0(\FPGA_REG_WRITE_DATA[15]_i_4_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[12]_i_5_n_0 ),
-        .I2(\REG_CNTR_reg_n_0_[2] ),
-        .I3(\FPGA_REG_WRITE_DATA[12]_i_6_n_0 ),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_16QAM[19]),
-        .O(\FPGA_REG_WRITE_DATA[12]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h88FFA0A08888A0A0)) 
-    \FPGA_REG_WRITE_DATA[12]_i_3 
-       (.I0(\REG_CNTR[0]_i_2_n_0 ),
-        .I1(DEINTERLEAVER_QPSK[44]),
-        .I2(DEINTERLEAVER_QPSK[12]),
-        .I3(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_BPSK[19]),
-        .O(\FPGA_REG_WRITE_DATA[12]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'h22F222F2FFFF22F2)) 
-    \FPGA_REG_WRITE_DATA[12]_i_4 
-       (.I0(CONSTELLATION_IDATA[12]),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ),
-        .I2(FFT_IDATA[12]),
-        .I3(\FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ),
-        .I4(IDATA[12]),
-        .I5(\FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ),
-        .O(\FPGA_REG_WRITE_DATA[12]_i_4_n_0 ));
+        .O(\FPGA_REG_WRITE_DATA[11]_i_5_n_0 ));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
-    \FPGA_REG_WRITE_DATA[12]_i_5 
-       (.I0(DEINTERLEAVER_16QAM[115]),
+    \FPGA_REG_WRITE_DATA[11]_i_6 
+       (.I0(DEINTERLEAVER_16QAM[116]),
         .I1(\REG_CNTR_reg_n_0_[0] ),
-        .I2(DEINTERLEAVER_16QAM[147]),
+        .I2(DEINTERLEAVER_16QAM[148]),
         .I3(\REG_CNTR_reg_n_0_[1] ),
-        .I4(DEINTERLEAVER_16QAM[179]),
-        .O(\FPGA_REG_WRITE_DATA[12]_i_5_n_0 ));
+        .I4(DEINTERLEAVER_16QAM[180]),
+        .O(\FPGA_REG_WRITE_DATA[11]_i_6_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFF00F2F2FF00)) 
+    \FPGA_REG_WRITE_DATA[12]_i_1 
+       (.I0(DEINTERLEAVER_BPSK[19]),
+        .I1(\FPGA_REG_WRITE_DATA[13]_i_3_n_0 ),
+        .I2(\FPGA_REG_WRITE_DATA[12]_i_2_n_0 ),
+        .I3(EQUALIZER_REG_WRITE_DATA[12]),
+        .I4(\FPGA_REG_WRITE_DATA[28]_i_2_n_0 ),
+        .I5(\FPGA_REG_WRITE_DATA[12]_i_3_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[12]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h8A80FFFF8A808A80)) 
+    \FPGA_REG_WRITE_DATA[12]_i_2 
+       (.I0(\REG_CNTR[0]_i_2_n_0 ),
+        .I1(DEINTERLEAVER_QPSK[44]),
+        .I2(DEINTERLEAVER_STROBE),
+        .I3(DEINTERLEAVER_QPSK[12]),
+        .I4(\FPGA_REG_WRITE_DATA[31]_i_12_n_0 ),
+        .I5(\FPGA_REG_WRITE_DATA[12]_i_4_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[12]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h22F222F2FFFF22F2)) 
+    \FPGA_REG_WRITE_DATA[12]_i_3 
+       (.I0(FFT_IDATA[12]),
+        .I1(\FPGA_REG_WRITE_DATA[31]_i_15_n_0 ),
+        .I2(CONSTELLATION_IDATA[12]),
+        .I3(\FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ),
+        .I4(IDATA[12]),
+        .I5(\FPGA_REG_WRITE_DATA[31]_i_14_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[12]_i_3_n_0 ));
   LUT5 #(
     .INIT(32'hB8BBB888)) 
-    \FPGA_REG_WRITE_DATA[12]_i_6 
+    \FPGA_REG_WRITE_DATA[12]_i_4 
+       (.I0(DEINTERLEAVER_16QAM[19]),
+        .I1(DEINTERLEAVER_STROBE),
+        .I2(\FPGA_REG_WRITE_DATA[12]_i_5_n_0 ),
+        .I3(\REG_CNTR_reg_n_0_[2] ),
+        .I4(\FPGA_REG_WRITE_DATA[12]_i_6_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[12]_i_4_n_0 ));
+  LUT5 #(
+    .INIT(32'hB8BBB888)) 
+    \FPGA_REG_WRITE_DATA[12]_i_5 
        (.I0(DEINTERLEAVER_16QAM[179]),
         .I1(\REG_CNTR_reg_n_0_[1] ),
         .I2(DEINTERLEAVER_16QAM[51]),
         .I3(\REG_CNTR_reg_n_0_[0] ),
         .I4(DEINTERLEAVER_16QAM[83]),
+        .O(\FPGA_REG_WRITE_DATA[12]_i_5_n_0 ));
+  LUT5 #(
+    .INIT(32'hB8FFB800)) 
+    \FPGA_REG_WRITE_DATA[12]_i_6 
+       (.I0(DEINTERLEAVER_16QAM[115]),
+        .I1(\REG_CNTR_reg_n_0_[0] ),
+        .I2(DEINTERLEAVER_16QAM[147]),
+        .I3(\REG_CNTR_reg_n_0_[1] ),
+        .I4(DEINTERLEAVER_16QAM[179]),
         .O(\FPGA_REG_WRITE_DATA[12]_i_6_n_0 ));
   LUT6 #(
-    .INIT(64'hF0F0F0FFF0F0F0DD)) 
+    .INIT(64'hFCFCFCFC5CFC5C5C)) 
     \FPGA_REG_WRITE_DATA[13]_i_1 
        (.I0(\FPGA_REG_WRITE_DATA[13]_i_2_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[13]_i_3_n_0 ),
-        .I2(EQUALIZER_REG_WRITE_DATA[13]),
-        .I3(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
-        .I4(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .I1(EQUALIZER_REG_WRITE_DATA[13]),
+        .I2(\FPGA_REG_WRITE_DATA[28]_i_2_n_0 ),
+        .I3(\FPGA_REG_WRITE_DATA[13]_i_3_n_0 ),
+        .I4(DEINTERLEAVER_BPSK[18]),
         .I5(\FPGA_REG_WRITE_DATA[13]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[13]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hAAAAABFBFFFFABFB)) 
+    .INIT(64'hDD0DDD0D0000DD0D)) 
     \FPGA_REG_WRITE_DATA[13]_i_2 
-       (.I0(\FPGA_REG_WRITE_DATA[15]_i_4_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[13]_i_5_n_0 ),
-        .I2(\REG_CNTR_reg_n_0_[2] ),
-        .I3(\FPGA_REG_WRITE_DATA[13]_i_6_n_0 ),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_16QAM[18]),
+       (.I0(IDATA[13]),
+        .I1(\FPGA_REG_WRITE_DATA[31]_i_14_n_0 ),
+        .I2(FFT_IDATA[13]),
+        .I3(\FPGA_REG_WRITE_DATA[31]_i_15_n_0 ),
+        .I4(CONSTELLATION_IDATA[13]),
+        .I5(\FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[13]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h88FFA0A08888A0A0)) 
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  LUT2 #(
+    .INIT(4'h7)) 
     \FPGA_REG_WRITE_DATA[13]_i_3 
-       (.I0(\REG_CNTR[0]_i_2_n_0 ),
-        .I1(DEINTERLEAVER_QPSK[45]),
-        .I2(DEINTERLEAVER_QPSK[13]),
-        .I3(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_BPSK[18]),
+       (.I0(DEINTERLEAVER_STROBE),
+        .I1(\FPGA_REG_WRITE_DATA[31]_i_11_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[13]_i_3_n_0 ));
   LUT6 #(
-    .INIT(64'h22F222F2FFFF22F2)) 
+    .INIT(64'h8A80FFFF8A808A80)) 
     \FPGA_REG_WRITE_DATA[13]_i_4 
-       (.I0(CONSTELLATION_IDATA[13]),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ),
-        .I2(FFT_IDATA[13]),
-        .I3(\FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ),
-        .I4(IDATA[13]),
-        .I5(\FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ),
+       (.I0(\REG_CNTR[0]_i_2_n_0 ),
+        .I1(DEINTERLEAVER_QPSK[45]),
+        .I2(DEINTERLEAVER_STROBE),
+        .I3(DEINTERLEAVER_QPSK[13]),
+        .I4(FPGA_REG_WRITE_STROBE_i_3_n_0),
+        .I5(\FPGA_REG_WRITE_DATA[13]_i_5_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[13]_i_4_n_0 ));
-  LUT5 #(
-    .INIT(32'hB8FFB800)) 
+  LUT4 #(
+    .INIT(16'hB8BB)) 
     \FPGA_REG_WRITE_DATA[13]_i_5 
-       (.I0(DEINTERLEAVER_16QAM[114]),
-        .I1(\REG_CNTR_reg_n_0_[0] ),
-        .I2(DEINTERLEAVER_16QAM[146]),
+       (.I0(DEINTERLEAVER_16QAM[18]),
+        .I1(DEINTERLEAVER_STROBE),
+        .I2(\FPGA_REG_WRITE_DATA[13]_i_6_n_0 ),
+        .I3(\FPGA_REG_WRITE_DATA[13]_i_7_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[13]_i_5_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  LUT5 #(
+    .INIT(32'hF80F0800)) 
+    \FPGA_REG_WRITE_DATA[13]_i_6 
+       (.I0(\REG_CNTR_reg_n_0_[0] ),
+        .I1(DEINTERLEAVER_16QAM[114]),
+        .I2(\REG_CNTR_reg_n_0_[2] ),
         .I3(\REG_CNTR_reg_n_0_[1] ),
         .I4(DEINTERLEAVER_16QAM[178]),
-        .O(\FPGA_REG_WRITE_DATA[13]_i_5_n_0 ));
-  LUT5 #(
-    .INIT(32'hB8BBB888)) 
-    \FPGA_REG_WRITE_DATA[13]_i_6 
-       (.I0(DEINTERLEAVER_16QAM[178]),
-        .I1(\REG_CNTR_reg_n_0_[1] ),
-        .I2(DEINTERLEAVER_16QAM[50]),
-        .I3(\REG_CNTR_reg_n_0_[0] ),
-        .I4(DEINTERLEAVER_16QAM[82]),
         .O(\FPGA_REG_WRITE_DATA[13]_i_6_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFFFD0D0D0FFD0)) 
+    .INIT(64'hFF53F0FFFF53FFFF)) 
+    \FPGA_REG_WRITE_DATA[13]_i_7 
+       (.I0(DEINTERLEAVER_16QAM[50]),
+        .I1(DEINTERLEAVER_16QAM[82]),
+        .I2(\REG_CNTR_reg_n_0_[0] ),
+        .I3(\REG_CNTR_reg_n_0_[1] ),
+        .I4(\REG_CNTR_reg_n_0_[2] ),
+        .I5(DEINTERLEAVER_16QAM[146]),
+        .O(\FPGA_REG_WRITE_DATA[13]_i_7_n_0 ));
+  LUT6 #(
+    .INIT(64'hABA8ABABABABABAB)) 
     \FPGA_REG_WRITE_DATA[14]_i_1 
-       (.I0(\FPGA_REG_WRITE_DATA[14]_i_2_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[14]_i_3_n_0 ),
-        .I2(\FPGA_REG_WRITE_DATA[31]_i_4_n_0 ),
-        .I3(EQUALIZER_REG_WRITE_DATA[14]),
-        .I4(\FPGA_REG_WRITE_DATA[31]_i_8_n_0 ),
+       (.I0(EQUALIZER_REG_WRITE_DATA[14]),
+        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
+        .I2(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .I3(\FPGA_REG_WRITE_DATA[14]_i_2_n_0 ),
+        .I4(\FPGA_REG_WRITE_DATA[14]_i_3_n_0 ),
         .I5(\FPGA_REG_WRITE_DATA[14]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[14]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hAAAAABFBFFFFABFB)) 
+    .INIT(64'h8A80FFFF8A808A80)) 
     \FPGA_REG_WRITE_DATA[14]_i_2 
-       (.I0(\FPGA_REG_WRITE_DATA[15]_i_4_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[14]_i_5_n_0 ),
-        .I2(\REG_CNTR_reg_n_0_[2] ),
-        .I3(\FPGA_REG_WRITE_DATA[14]_i_6_n_0 ),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_16QAM[17]),
-        .O(\FPGA_REG_WRITE_DATA[14]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h88FFA0A08888A0A0)) 
-    \FPGA_REG_WRITE_DATA[14]_i_3 
        (.I0(\REG_CNTR[0]_i_2_n_0 ),
         .I1(DEINTERLEAVER_QPSK[46]),
-        .I2(DEINTERLEAVER_QPSK[14]),
-        .I3(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_BPSK[17]),
+        .I2(DEINTERLEAVER_STROBE),
+        .I3(DEINTERLEAVER_QPSK[14]),
+        .I4(\FPGA_REG_WRITE_DATA[31]_i_12_n_0 ),
+        .I5(\FPGA_REG_WRITE_DATA[14]_i_5_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[14]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair11" *) 
+  LUT3 #(
+    .INIT(8'h7F)) 
+    \FPGA_REG_WRITE_DATA[14]_i_3 
+       (.I0(DEINTERLEAVER_BPSK[17]),
+        .I1(DEINTERLEAVER_STROBE),
+        .I2(\FPGA_REG_WRITE_DATA[31]_i_11_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[14]_i_3_n_0 ));
   LUT6 #(
-    .INIT(64'h22F222F2FFFF22F2)) 
+    .INIT(64'hDD0DDD0D0000DD0D)) 
     \FPGA_REG_WRITE_DATA[14]_i_4 
-       (.I0(CONSTELLATION_IDATA[14]),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ),
+       (.I0(IDATA[14]),
+        .I1(\FPGA_REG_WRITE_DATA[31]_i_14_n_0 ),
         .I2(FFT_IDATA[14]),
-        .I3(\FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ),
-        .I4(IDATA[14]),
-        .I5(\FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ),
+        .I3(\FPGA_REG_WRITE_DATA[31]_i_15_n_0 ),
+        .I4(CONSTELLATION_IDATA[14]),
+        .I5(\FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[14]_i_4_n_0 ));
   LUT5 #(
-    .INIT(32'hB8FFB800)) 
+    .INIT(32'hB8BBB888)) 
     \FPGA_REG_WRITE_DATA[14]_i_5 
-       (.I0(DEINTERLEAVER_16QAM[113]),
-        .I1(\REG_CNTR_reg_n_0_[0] ),
-        .I2(DEINTERLEAVER_16QAM[145]),
-        .I3(\REG_CNTR_reg_n_0_[1] ),
-        .I4(DEINTERLEAVER_16QAM[177]),
+       (.I0(DEINTERLEAVER_16QAM[17]),
+        .I1(DEINTERLEAVER_STROBE),
+        .I2(\FPGA_REG_WRITE_DATA[14]_i_6_n_0 ),
+        .I3(\REG_CNTR_reg_n_0_[2] ),
+        .I4(\FPGA_REG_WRITE_DATA[14]_i_7_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[14]_i_5_n_0 ));
   LUT5 #(
     .INIT(32'hB8BBB888)) 
@@ -1190,150 +1334,117 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
         .I3(\REG_CNTR_reg_n_0_[0] ),
         .I4(DEINTERLEAVER_16QAM[81]),
         .O(\FPGA_REG_WRITE_DATA[14]_i_6_n_0 ));
-  LUT6 #(
-    .INIT(64'hEE2EEE2EEE2EEEEE)) 
-    \FPGA_REG_WRITE_DATA[15]_i_1 
-       (.I0(EQUALIZER_REG_WRITE_DATA[15]),
-        .I1(\FPGA_REG_WRITE_DATA[31]_i_8_n_0 ),
-        .I2(\FPGA_REG_WRITE_DATA[15]_i_2_n_0 ),
-        .I3(\FPGA_REG_WRITE_DATA[15]_i_3_n_0 ),
-        .I4(\FPGA_REG_WRITE_DATA[15]_i_4_n_0 ),
-        .I5(\FPGA_REG_WRITE_DATA[15]_i_5_n_0 ),
-        .O(\FPGA_REG_WRITE_DATA[15]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFFFFFF0B000800)) 
-    \FPGA_REG_WRITE_DATA[15]_i_10 
-       (.I0(DEINTERLEAVER_16QAM[112]),
-        .I1(\REG_CNTR_reg_n_0_[0] ),
-        .I2(\REG_CNTR_reg_n_0_[2] ),
-        .I3(\REG_CNTR_reg_n_0_[1] ),
-        .I4(DEINTERLEAVER_16QAM[144]),
-        .I5(\FPGA_REG_WRITE_DATA[15]_i_11_n_0 ),
-        .O(\FPGA_REG_WRITE_DATA[15]_i_10_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT5 #(
-    .INIT(32'h0000E200)) 
-    \FPGA_REG_WRITE_DATA[15]_i_11 
-       (.I0(DEINTERLEAVER_16QAM[80]),
+    .INIT(32'hB8FFB800)) 
+    \FPGA_REG_WRITE_DATA[14]_i_7 
+       (.I0(DEINTERLEAVER_16QAM[113]),
         .I1(\REG_CNTR_reg_n_0_[0] ),
-        .I2(DEINTERLEAVER_16QAM[48]),
-        .I3(\REG_CNTR_reg_n_0_[2] ),
-        .I4(\REG_CNTR_reg_n_0_[1] ),
-        .O(\FPGA_REG_WRITE_DATA[15]_i_11_n_0 ));
+        .I2(DEINTERLEAVER_16QAM[145]),
+        .I3(\REG_CNTR_reg_n_0_[1] ),
+        .I4(DEINTERLEAVER_16QAM[177]),
+        .O(\FPGA_REG_WRITE_DATA[14]_i_7_n_0 ));
   LUT6 #(
-    .INIT(64'hDD0DDD0D0000DD0D)) 
+    .INIT(64'hFFFFFFD0D0D0FFD0)) 
+    \FPGA_REG_WRITE_DATA[15]_i_1 
+       (.I0(\FPGA_REG_WRITE_DATA[15]_i_2_n_0 ),
+        .I1(\FPGA_REG_WRITE_DATA[15]_i_3_n_0 ),
+        .I2(\FPGA_REG_WRITE_DATA[31]_i_4_n_0 ),
+        .I3(EQUALIZER_REG_WRITE_DATA[15]),
+        .I4(\FPGA_REG_WRITE_DATA[28]_i_2_n_0 ),
+        .I5(\FPGA_REG_WRITE_DATA[15]_i_4_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[15]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair17" *) 
+  LUT3 #(
+    .INIT(8'h7F)) 
     \FPGA_REG_WRITE_DATA[15]_i_2 
-       (.I0(IDATA[15]),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ),
-        .I2(CONSTELLATION_IDATA[15]),
-        .I3(\FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ),
-        .I4(FFT_IDATA[15]),
-        .I5(\FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ),
+       (.I0(\FPGA_REG_WRITE_DATA[31]_i_11_n_0 ),
+        .I1(DEINTERLEAVER_STROBE),
+        .I2(DEINTERLEAVER_BPSK[16]),
         .O(\FPGA_REG_WRITE_DATA[15]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'h88FFA0A08888A0A0)) 
+    .INIT(64'h8A80FFFF8A808A80)) 
     \FPGA_REG_WRITE_DATA[15]_i_3 
        (.I0(\REG_CNTR[0]_i_2_n_0 ),
         .I1(DEINTERLEAVER_QPSK[47]),
-        .I2(DEINTERLEAVER_QPSK[15]),
-        .I3(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_BPSK[16]),
+        .I2(DEINTERLEAVER_STROBE),
+        .I3(DEINTERLEAVER_QPSK[15]),
+        .I4(\FPGA_REG_WRITE_DATA[31]_i_12_n_0 ),
+        .I5(\FPGA_REG_WRITE_DATA[15]_i_5_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[15]_i_3_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFFFBAFFFFFFFF)) 
+    .INIT(64'h22F222F2FFFF22F2)) 
     \FPGA_REG_WRITE_DATA[15]_i_4 
-       (.I0(\FPGA_REG_WRITE_DATA[15]_i_6_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[15]_i_7_n_0 ),
-        .I2(\FPGA_REG_WRITE_DATA[15]_i_8_n_0 ),
-        .I3(\FPGA_REG_WRITE_DATA[15]_i_9_n_0 ),
-        .I4(SELECT_AXI_REGS_MODE[0]),
-        .I5(SELECT_AXI_REGS_MODE[1]),
+       (.I0(FFT_IDATA[15]),
+        .I1(\FPGA_REG_WRITE_DATA[31]_i_15_n_0 ),
+        .I2(CONSTELLATION_IDATA[15]),
+        .I3(\FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ),
+        .I4(IDATA[15]),
+        .I5(\FPGA_REG_WRITE_DATA[31]_i_14_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[15]_i_4_n_0 ));
-  LUT6 #(
-    .INIT(64'h5053535053535353)) 
+  LUT5 #(
+    .INIT(32'hB8BBB888)) 
     \FPGA_REG_WRITE_DATA[15]_i_5 
        (.I0(DEINTERLEAVER_16QAM[16]),
-        .I1(\FPGA_REG_WRITE_DATA[15]_i_10_n_0 ),
-        .I2(DEINTERLEAVER_STROBE),
+        .I1(DEINTERLEAVER_STROBE),
+        .I2(\FPGA_REG_WRITE_DATA[15]_i_6_n_0 ),
         .I3(\REG_CNTR_reg_n_0_[2] ),
-        .I4(\REG_CNTR_reg_n_0_[1] ),
-        .I5(DEINTERLEAVER_16QAM[176]),
+        .I4(\FPGA_REG_WRITE_DATA[15]_i_7_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[15]_i_5_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFFFFFEFFFFFFFF)) 
+  LUT5 #(
+    .INIT(32'hB8BBB888)) 
     \FPGA_REG_WRITE_DATA[15]_i_6 
-       (.I0(SELECT_AXI_REGS_MODE[5]),
-        .I1(SELECT_AXI_REGS_MODE[6]),
-        .I2(SELECT_AXI_REGS_MODE[7]),
-        .I3(SELECT_AXI_REGS_MODE[3]),
-        .I4(SELECT_AXI_REGS_MODE[4]),
-        .I5(SELECT_AXI_REGS_MODE[2]),
+       (.I0(DEINTERLEAVER_16QAM[176]),
+        .I1(\REG_CNTR_reg_n_0_[1] ),
+        .I2(DEINTERLEAVER_16QAM[48]),
+        .I3(\REG_CNTR_reg_n_0_[0] ),
+        .I4(DEINTERLEAVER_16QAM[80]),
         .O(\FPGA_REG_WRITE_DATA[15]_i_6_n_0 ));
   LUT5 #(
-    .INIT(32'h7FFFFFFF)) 
+    .INIT(32'hB8FFB800)) 
     \FPGA_REG_WRITE_DATA[15]_i_7 
-       (.I0(ADDRESS_COUNTER_reg[4]),
-        .I1(ADDRESS_COUNTER_reg[8]),
-        .I2(ADDRESS_COUNTER_reg[5]),
-        .I3(ADDRESS_COUNTER_reg[6]),
-        .I4(ADDRESS_COUNTER_reg[7]),
+       (.I0(DEINTERLEAVER_16QAM[112]),
+        .I1(\REG_CNTR_reg_n_0_[0] ),
+        .I2(DEINTERLEAVER_16QAM[144]),
+        .I3(\REG_CNTR_reg_n_0_[1] ),
+        .I4(DEINTERLEAVER_16QAM[176]),
         .O(\FPGA_REG_WRITE_DATA[15]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
-  LUT4 #(
-    .INIT(16'h8000)) 
-    \FPGA_REG_WRITE_DATA[15]_i_8 
-       (.I0(ADDRESS_COUNTER_reg[3]),
-        .I1(ADDRESS_COUNTER_reg[2]),
-        .I2(ADDRESS_COUNTER_reg[0]),
-        .I3(ADDRESS_COUNTER_reg[1]),
-        .O(\FPGA_REG_WRITE_DATA[15]_i_8_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair12" *) 
-  LUT4 #(
-    .INIT(16'h0001)) 
-    \FPGA_REG_WRITE_DATA[15]_i_9 
-       (.I0(\REG_CNTR_reg_n_0_[1] ),
-        .I1(\REG_CNTR_reg_n_0_[2] ),
-        .I2(DEINTERLEAVER_STROBE),
-        .I3(\REG_CNTR_reg_n_0_[0] ),
-        .O(\FPGA_REG_WRITE_DATA[15]_i_9_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFFFD0D0D0FFD0)) 
+    .INIT(64'hABA8ABABABABABAB)) 
     \FPGA_REG_WRITE_DATA[16]_i_1 
-       (.I0(\FPGA_REG_WRITE_DATA[16]_i_2_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[16]_i_3_n_0 ),
-        .I2(\FPGA_REG_WRITE_DATA[31]_i_4_n_0 ),
-        .I3(EQUALIZER_REG_WRITE_DATA[16]),
-        .I4(\FPGA_REG_WRITE_DATA[31]_i_8_n_0 ),
+       (.I0(EQUALIZER_REG_WRITE_DATA[16]),
+        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
+        .I2(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .I3(\FPGA_REG_WRITE_DATA[16]_i_2_n_0 ),
+        .I4(\FPGA_REG_WRITE_DATA[16]_i_3_n_0 ),
         .I5(\FPGA_REG_WRITE_DATA[16]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[16]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h8A80FFFF8A808A80)) 
+    \FPGA_REG_WRITE_DATA[16]_i_2 
+       (.I0(\FPGA_REG_WRITE_DATA[31]_i_11_n_0 ),
+        .I1(DEINTERLEAVER_BPSK[15]),
+        .I2(DEINTERLEAVER_STROBE),
+        .I3(DEINTERLEAVER_BPSK[47]),
+        .I4(FPGA_REG_WRITE_STROBE_i_3_n_0),
+        .I5(\FPGA_REG_WRITE_DATA[16]_i_5_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[16]_i_2_n_0 ));
   LUT4 #(
     .INIT(16'h57F7)) 
-    \FPGA_REG_WRITE_DATA[16]_i_2 
+    \FPGA_REG_WRITE_DATA[16]_i_3 
        (.I0(\REG_CNTR[0]_i_2_n_0 ),
         .I1(DEINTERLEAVER_QPSK[16]),
         .I2(DEINTERLEAVER_STROBE),
         .I3(DEINTERLEAVER_QPSK[48]),
-        .O(\FPGA_REG_WRITE_DATA[16]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h4F444F4F4F444444)) 
-    \FPGA_REG_WRITE_DATA[16]_i_3 
-       (.I0(\FPGA_REG_WRITE_DATA[15]_i_4_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[16]_i_5_n_0 ),
-        .I2(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ),
-        .I3(DEINTERLEAVER_BPSK[15]),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_BPSK[47]),
         .O(\FPGA_REG_WRITE_DATA[16]_i_3_n_0 ));
   LUT6 #(
-    .INIT(64'h22F222F2FFFF22F2)) 
+    .INIT(64'hDD0DDD0D0000DD0D)) 
     \FPGA_REG_WRITE_DATA[16]_i_4 
-       (.I0(CONSTELLATION_QDATA[0]),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ),
+       (.I0(QDATA[0]),
+        .I1(\FPGA_REG_WRITE_DATA[31]_i_14_n_0 ),
         .I2(FFT_QDATA[0]),
-        .I3(\FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ),
-        .I4(QDATA[0]),
-        .I5(\FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ),
+        .I3(\FPGA_REG_WRITE_DATA[31]_i_15_n_0 ),
+        .I4(CONSTELLATION_QDATA[0]),
+        .I5(\FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[16]_i_4_n_0 ));
   LUT5 #(
     .INIT(32'hB8BBB888)) 
@@ -1363,51 +1474,53 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
         .I4(DEINTERLEAVER_16QAM[175]),
         .O(\FPGA_REG_WRITE_DATA[16]_i_7_n_0 ));
   LUT6 #(
-    .INIT(64'hCCCFCCCFCCC5CCCF)) 
+    .INIT(64'hABA8ABABABABABAB)) 
     \FPGA_REG_WRITE_DATA[17]_i_1 
-       (.I0(\FPGA_REG_WRITE_DATA[17]_i_2_n_0 ),
-        .I1(EQUALIZER_REG_WRITE_DATA[17]),
-        .I2(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
-        .I3(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+       (.I0(EQUALIZER_REG_WRITE_DATA[17]),
+        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
+        .I2(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .I3(\FPGA_REG_WRITE_DATA[17]_i_2_n_0 ),
         .I4(\FPGA_REG_WRITE_DATA[17]_i_3_n_0 ),
         .I5(\FPGA_REG_WRITE_DATA[17]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[17]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hDD0DDD0D0000DD0D)) 
+    .INIT(64'h00000000FFE200E2)) 
     \FPGA_REG_WRITE_DATA[17]_i_2 
-       (.I0(QDATA[1]),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ),
-        .I2(CONSTELLATION_QDATA[1]),
-        .I3(\FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ),
-        .I4(FFT_QDATA[1]),
-        .I5(\FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ),
+       (.I0(\FPGA_REG_WRITE_DATA[17]_i_5_n_0 ),
+        .I1(\REG_CNTR_reg_n_0_[2] ),
+        .I2(\FPGA_REG_WRITE_DATA[17]_i_6_n_0 ),
+        .I3(DEINTERLEAVER_STROBE),
+        .I4(DEINTERLEAVER_16QAM[14]),
+        .I5(FPGA_REG_WRITE_STROBE_i_3_n_0),
         .O(\FPGA_REG_WRITE_DATA[17]_i_2_n_0 ));
-  LUT4 #(
-    .INIT(16'h57F7)) 
+  LUT6 #(
+    .INIT(64'h000047FF47FF47FF)) 
     \FPGA_REG_WRITE_DATA[17]_i_3 
-       (.I0(\REG_CNTR[0]_i_2_n_0 ),
-        .I1(DEINTERLEAVER_QPSK[17]),
-        .I2(DEINTERLEAVER_STROBE),
-        .I3(DEINTERLEAVER_QPSK[49]),
+       (.I0(DEINTERLEAVER_BPSK[14]),
+        .I1(DEINTERLEAVER_STROBE),
+        .I2(DEINTERLEAVER_BPSK[46]),
+        .I3(\FPGA_REG_WRITE_DATA[31]_i_11_n_0 ),
+        .I4(\REG_CNTR[0]_i_2_n_0 ),
+        .I5(\FPGA_REG_WRITE_DATA[17]_i_7_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[17]_i_3_n_0 ));
   LUT6 #(
-    .INIT(64'h4F444F4F4F444444)) 
+    .INIT(64'hDD0DDD0D0000DD0D)) 
     \FPGA_REG_WRITE_DATA[17]_i_4 
-       (.I0(\FPGA_REG_WRITE_DATA[15]_i_4_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[17]_i_5_n_0 ),
-        .I2(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ),
-        .I3(DEINTERLEAVER_BPSK[14]),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_BPSK[46]),
+       (.I0(QDATA[1]),
+        .I1(\FPGA_REG_WRITE_DATA[31]_i_14_n_0 ),
+        .I2(FFT_QDATA[1]),
+        .I3(\FPGA_REG_WRITE_DATA[31]_i_15_n_0 ),
+        .I4(CONSTELLATION_QDATA[1]),
+        .I5(\FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[17]_i_4_n_0 ));
   LUT5 #(
-    .INIT(32'hB8BBB888)) 
+    .INIT(32'hB8FFB800)) 
     \FPGA_REG_WRITE_DATA[17]_i_5 
-       (.I0(DEINTERLEAVER_16QAM[14]),
-        .I1(DEINTERLEAVER_STROBE),
-        .I2(\FPGA_REG_WRITE_DATA[17]_i_6_n_0 ),
-        .I3(\REG_CNTR_reg_n_0_[2] ),
-        .I4(\FPGA_REG_WRITE_DATA[17]_i_7_n_0 ),
+       (.I0(DEINTERLEAVER_16QAM[110]),
+        .I1(\REG_CNTR_reg_n_0_[0] ),
+        .I2(DEINTERLEAVER_16QAM[142]),
+        .I3(\REG_CNTR_reg_n_0_[1] ),
+        .I4(DEINTERLEAVER_16QAM[174]),
         .O(\FPGA_REG_WRITE_DATA[17]_i_5_n_0 ));
   LUT5 #(
     .INIT(32'hB8BBB888)) 
@@ -1418,63 +1531,60 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
         .I3(\REG_CNTR_reg_n_0_[0] ),
         .I4(DEINTERLEAVER_16QAM[78]),
         .O(\FPGA_REG_WRITE_DATA[17]_i_6_n_0 ));
-  LUT5 #(
-    .INIT(32'hB8FFB800)) 
+  (* SOFT_HLUTNM = "soft_lutpair20" *) 
+  LUT3 #(
+    .INIT(8'hB8)) 
     \FPGA_REG_WRITE_DATA[17]_i_7 
-       (.I0(DEINTERLEAVER_16QAM[110]),
-        .I1(\REG_CNTR_reg_n_0_[0] ),
-        .I2(DEINTERLEAVER_16QAM[142]),
-        .I3(\REG_CNTR_reg_n_0_[1] ),
-        .I4(DEINTERLEAVER_16QAM[174]),
+       (.I0(DEINTERLEAVER_QPSK[49]),
+        .I1(DEINTERLEAVER_STROBE),
+        .I2(DEINTERLEAVER_QPSK[17]),
         .O(\FPGA_REG_WRITE_DATA[17]_i_7_n_0 ));
   LUT6 #(
-    .INIT(64'hF0F0F0FFF0F0F0DD)) 
+    .INIT(64'hABABA8ABABABABAB)) 
     \FPGA_REG_WRITE_DATA[18]_i_1 
-       (.I0(\FPGA_REG_WRITE_DATA[18]_i_2_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[18]_i_3_n_0 ),
-        .I2(EQUALIZER_REG_WRITE_DATA[18]),
-        .I3(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
-        .I4(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+       (.I0(EQUALIZER_REG_WRITE_DATA[18]),
+        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
+        .I2(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .I3(\FPGA_REG_WRITE_DATA[18]_i_2_n_0 ),
+        .I4(\FPGA_REG_WRITE_DATA[18]_i_3_n_0 ),
         .I5(\FPGA_REG_WRITE_DATA[18]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[18]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hAAAAABFBFFFFABFB)) 
+    .INIT(64'hDD0DDD0D0000DD0D)) 
     \FPGA_REG_WRITE_DATA[18]_i_2 
-       (.I0(\FPGA_REG_WRITE_DATA[15]_i_4_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[18]_i_5_n_0 ),
-        .I2(\REG_CNTR_reg_n_0_[2] ),
-        .I3(\FPGA_REG_WRITE_DATA[18]_i_6_n_0 ),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_16QAM[13]),
+       (.I0(QDATA[2]),
+        .I1(\FPGA_REG_WRITE_DATA[31]_i_14_n_0 ),
+        .I2(FFT_QDATA[2]),
+        .I3(\FPGA_REG_WRITE_DATA[31]_i_15_n_0 ),
+        .I4(CONSTELLATION_QDATA[2]),
+        .I5(\FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[18]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFF454045404540)) 
+    .INIT(64'h8A80FFFF8A808A80)) 
     \FPGA_REG_WRITE_DATA[18]_i_3 
-       (.I0(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ),
+       (.I0(\FPGA_REG_WRITE_DATA[31]_i_11_n_0 ),
         .I1(DEINTERLEAVER_BPSK[13]),
         .I2(DEINTERLEAVER_STROBE),
         .I3(DEINTERLEAVER_BPSK[45]),
-        .I4(\REG_CNTR[0]_i_2_n_0 ),
-        .I5(\FPGA_REG_WRITE_DATA[18]_i_7_n_0 ),
+        .I4(FPGA_REG_WRITE_STROBE_i_3_n_0),
+        .I5(\FPGA_REG_WRITE_DATA[18]_i_5_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[18]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'h22F222F2FFFF22F2)) 
+  LUT4 #(
+    .INIT(16'h57F7)) 
     \FPGA_REG_WRITE_DATA[18]_i_4 
-       (.I0(CONSTELLATION_QDATA[2]),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ),
-        .I2(FFT_QDATA[2]),
-        .I3(\FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ),
-        .I4(QDATA[2]),
-        .I5(\FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ),
+       (.I0(\REG_CNTR[0]_i_2_n_0 ),
+        .I1(DEINTERLEAVER_QPSK[18]),
+        .I2(DEINTERLEAVER_STROBE),
+        .I3(DEINTERLEAVER_QPSK[50]),
         .O(\FPGA_REG_WRITE_DATA[18]_i_4_n_0 ));
   LUT5 #(
-    .INIT(32'hB8FFB800)) 
+    .INIT(32'hB8BBB888)) 
     \FPGA_REG_WRITE_DATA[18]_i_5 
-       (.I0(DEINTERLEAVER_16QAM[109]),
-        .I1(\REG_CNTR_reg_n_0_[0] ),
-        .I2(DEINTERLEAVER_16QAM[141]),
-        .I3(\REG_CNTR_reg_n_0_[1] ),
-        .I4(DEINTERLEAVER_16QAM[173]),
+       (.I0(DEINTERLEAVER_16QAM[13]),
+        .I1(DEINTERLEAVER_STROBE),
+        .I2(\FPGA_REG_WRITE_DATA[18]_i_6_n_0 ),
+        .I3(\REG_CNTR_reg_n_0_[2] ),
+        .I4(\FPGA_REG_WRITE_DATA[18]_i_7_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[18]_i_5_n_0 ));
   LUT5 #(
     .INIT(32'hB8BBB888)) 
@@ -1485,51 +1595,52 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
         .I3(\REG_CNTR_reg_n_0_[0] ),
         .I4(DEINTERLEAVER_16QAM[77]),
         .O(\FPGA_REG_WRITE_DATA[18]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair15" *) 
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT5 #(
+    .INIT(32'hB8FFB800)) 
     \FPGA_REG_WRITE_DATA[18]_i_7 
-       (.I0(DEINTERLEAVER_QPSK[50]),
-        .I1(DEINTERLEAVER_STROBE),
-        .I2(DEINTERLEAVER_QPSK[18]),
+       (.I0(DEINTERLEAVER_16QAM[109]),
+        .I1(\REG_CNTR_reg_n_0_[0] ),
+        .I2(DEINTERLEAVER_16QAM[141]),
+        .I3(\REG_CNTR_reg_n_0_[1] ),
+        .I4(DEINTERLEAVER_16QAM[173]),
         .O(\FPGA_REG_WRITE_DATA[18]_i_7_n_0 ));
   LUT6 #(
-    .INIT(64'hD5DDD5DDFFFFC0CC)) 
+    .INIT(64'hCCCFCCCFCCC5CCCF)) 
     \FPGA_REG_WRITE_DATA[19]_i_1 
        (.I0(\FPGA_REG_WRITE_DATA[19]_i_2_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[31]_i_4_n_0 ),
-        .I2(\FPGA_REG_WRITE_DATA[19]_i_3_n_0 ),
-        .I3(\FPGA_REG_WRITE_DATA[19]_i_4_n_0 ),
-        .I4(EQUALIZER_REG_WRITE_DATA[19]),
-        .I5(\FPGA_REG_WRITE_DATA[31]_i_8_n_0 ),
+        .I1(EQUALIZER_REG_WRITE_DATA[19]),
+        .I2(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
+        .I3(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .I4(\FPGA_REG_WRITE_DATA[19]_i_3_n_0 ),
+        .I5(\FPGA_REG_WRITE_DATA[19]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[19]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hDD0DDD0D0000DD0D)) 
     \FPGA_REG_WRITE_DATA[19]_i_2 
        (.I0(QDATA[3]),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ),
-        .I2(CONSTELLATION_QDATA[3]),
-        .I3(\FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ),
-        .I4(FFT_QDATA[3]),
-        .I5(\FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ),
+        .I1(\FPGA_REG_WRITE_DATA[31]_i_14_n_0 ),
+        .I2(FFT_QDATA[3]),
+        .I3(\FPGA_REG_WRITE_DATA[31]_i_15_n_0 ),
+        .I4(CONSTELLATION_QDATA[3]),
+        .I5(\FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[19]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h4F444F4F4F444444)) 
-    \FPGA_REG_WRITE_DATA[19]_i_3 
-       (.I0(\FPGA_REG_WRITE_DATA[15]_i_4_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[19]_i_5_n_0 ),
-        .I2(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ),
-        .I3(DEINTERLEAVER_BPSK[12]),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_BPSK[44]),
-        .O(\FPGA_REG_WRITE_DATA[19]_i_3_n_0 ));
   LUT4 #(
     .INIT(16'h57F7)) 
-    \FPGA_REG_WRITE_DATA[19]_i_4 
+    \FPGA_REG_WRITE_DATA[19]_i_3 
        (.I0(\REG_CNTR[0]_i_2_n_0 ),
         .I1(DEINTERLEAVER_QPSK[19]),
         .I2(DEINTERLEAVER_STROBE),
         .I3(DEINTERLEAVER_QPSK[51]),
+        .O(\FPGA_REG_WRITE_DATA[19]_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'h8A80FFFF8A808A80)) 
+    \FPGA_REG_WRITE_DATA[19]_i_4 
+       (.I0(\FPGA_REG_WRITE_DATA[31]_i_11_n_0 ),
+        .I1(DEINTERLEAVER_BPSK[12]),
+        .I2(DEINTERLEAVER_STROBE),
+        .I3(DEINTERLEAVER_BPSK[44]),
+        .I4(FPGA_REG_WRITE_STROBE_i_3_n_0),
+        .I5(\FPGA_REG_WRITE_DATA[19]_i_5_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[19]_i_4_n_0 ));
   LUT5 #(
     .INIT(32'hB8BBB888)) 
@@ -1559,82 +1670,81 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
         .I4(DEINTERLEAVER_16QAM[172]),
         .O(\FPGA_REG_WRITE_DATA[19]_i_7_n_0 ));
   LUT6 #(
-    .INIT(64'hABA8ABABABABABAB)) 
+    .INIT(64'hFFFFE2FFE2E2E2E2)) 
     \FPGA_REG_WRITE_DATA[1]_i_1 
        (.I0(EQUALIZER_REG_WRITE_DATA[1]),
-        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
-        .I2(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
-        .I3(\FPGA_REG_WRITE_DATA[1]_i_2_n_0 ),
-        .I4(\FPGA_REG_WRITE_DATA[1]_i_3_n_0 ),
-        .I5(\FPGA_REG_WRITE_DATA[1]_i_4_n_0 ),
+        .I1(\FPGA_REG_WRITE_DATA[28]_i_2_n_0 ),
+        .I2(\FPGA_REG_WRITE_DATA[1]_i_2_n_0 ),
+        .I3(\FPGA_REG_WRITE_DATA[1]_i_3_n_0 ),
+        .I4(\FPGA_REG_WRITE_DATA[1]_i_4_n_0 ),
+        .I5(\FPGA_REG_WRITE_DATA[31]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[1]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h88FFA0A08888A0A0)) 
+    .INIT(64'h22F222F2FFFF22F2)) 
     \FPGA_REG_WRITE_DATA[1]_i_2 
-       (.I0(\REG_CNTR[0]_i_2_n_0 ),
-        .I1(DEINTERLEAVER_QPSK[33]),
-        .I2(DEINTERLEAVER_QPSK[1]),
-        .I3(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_BPSK[30]),
+       (.I0(FFT_IDATA[1]),
+        .I1(\FPGA_REG_WRITE_DATA[31]_i_15_n_0 ),
+        .I2(CONSTELLATION_IDATA[1]),
+        .I3(\FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ),
+        .I4(IDATA[1]),
+        .I5(\FPGA_REG_WRITE_DATA[31]_i_14_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[1]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hAAAAABFBFFFFABFB)) 
+    .INIT(64'h003F5F3F5F3F5F3F)) 
     \FPGA_REG_WRITE_DATA[1]_i_3 
-       (.I0(\FPGA_REG_WRITE_DATA[15]_i_4_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[1]_i_5_n_0 ),
-        .I2(\REG_CNTR_reg_n_0_[2] ),
-        .I3(\FPGA_REG_WRITE_DATA[1]_i_6_n_0 ),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_16QAM[30]),
+       (.I0(DEINTERLEAVER_QPSK[33]),
+        .I1(DEINTERLEAVER_QPSK[1]),
+        .I2(\REG_CNTR[0]_i_2_n_0 ),
+        .I3(DEINTERLEAVER_STROBE),
+        .I4(\FPGA_REG_WRITE_DATA[31]_i_11_n_0 ),
+        .I5(DEINTERLEAVER_BPSK[30]),
         .O(\FPGA_REG_WRITE_DATA[1]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'hDD0DDD0D0000DD0D)) 
+  LUT5 #(
+    .INIT(32'h0000B800)) 
     \FPGA_REG_WRITE_DATA[1]_i_4 
-       (.I0(IDATA[1]),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ),
-        .I2(CONSTELLATION_IDATA[1]),
-        .I3(\FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ),
-        .I4(FFT_IDATA[1]),
-        .I5(\FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ),
+       (.I0(DEINTERLEAVER_16QAM[30]),
+        .I1(DEINTERLEAVER_STROBE),
+        .I2(\FPGA_REG_WRITE_DATA_reg[1]_i_5_n_0 ),
+        .I3(FPGA_REG_WRITE_STROBE_i_2_n_0),
+        .I4(FPGA_REG_WRITE_STROBE_i_3_n_0),
         .O(\FPGA_REG_WRITE_DATA[1]_i_4_n_0 ));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
-    \FPGA_REG_WRITE_DATA[1]_i_5 
+    \FPGA_REG_WRITE_DATA[1]_i_6 
        (.I0(DEINTERLEAVER_16QAM[126]),
         .I1(\REG_CNTR_reg_n_0_[0] ),
         .I2(DEINTERLEAVER_16QAM[158]),
         .I3(\REG_CNTR_reg_n_0_[1] ),
         .I4(DEINTERLEAVER_16QAM[190]),
-        .O(\FPGA_REG_WRITE_DATA[1]_i_5_n_0 ));
+        .O(\FPGA_REG_WRITE_DATA[1]_i_6_n_0 ));
   LUT5 #(
     .INIT(32'hB8BBB888)) 
-    \FPGA_REG_WRITE_DATA[1]_i_6 
+    \FPGA_REG_WRITE_DATA[1]_i_7 
        (.I0(DEINTERLEAVER_16QAM[190]),
         .I1(\REG_CNTR_reg_n_0_[1] ),
         .I2(DEINTERLEAVER_16QAM[62]),
         .I3(\REG_CNTR_reg_n_0_[0] ),
         .I4(DEINTERLEAVER_16QAM[94]),
-        .O(\FPGA_REG_WRITE_DATA[1]_i_6_n_0 ));
+        .O(\FPGA_REG_WRITE_DATA[1]_i_7_n_0 ));
   LUT6 #(
-    .INIT(64'hABA8ABABABABABAB)) 
+    .INIT(64'hFFF4FFF444F4FFF4)) 
     \FPGA_REG_WRITE_DATA[20]_i_1 
-       (.I0(EQUALIZER_REG_WRITE_DATA[20]),
-        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
-        .I2(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
-        .I3(\FPGA_REG_WRITE_DATA[20]_i_2_n_0 ),
+       (.I0(\FPGA_REG_WRITE_DATA[20]_i_2_n_0 ),
+        .I1(\FPGA_REG_WRITE_DATA[28]_i_6_n_0 ),
+        .I2(EQUALIZER_REG_WRITE_DATA[20]),
+        .I3(\FPGA_REG_WRITE_DATA[28]_i_2_n_0 ),
         .I4(\FPGA_REG_WRITE_DATA[20]_i_3_n_0 ),
         .I5(\FPGA_REG_WRITE_DATA[20]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[20]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h4F444F4F4F444444)) 
+    .INIT(64'h7477444474777477)) 
     \FPGA_REG_WRITE_DATA[20]_i_2 
-       (.I0(\FPGA_REG_WRITE_DATA[15]_i_4_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[20]_i_5_n_0 ),
-        .I2(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ),
-        .I3(DEINTERLEAVER_BPSK[11]),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_BPSK[43]),
+       (.I0(QDATA[4]),
+        .I1(\FPGA_REG_WRITE_ADDRESS[11]_i_4_n_0 ),
+        .I2(\FPGA_REG_WRITE_ADDRESS[11]_i_5_n_0 ),
+        .I3(FFT_QDATA[4]),
+        .I4(\FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ),
+        .I5(CONSTELLATION_QDATA[4]),
         .O(\FPGA_REG_WRITE_DATA[20]_i_2_n_0 ));
   LUT4 #(
     .INIT(16'h57F7)) 
@@ -1645,14 +1755,14 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
         .I3(DEINTERLEAVER_QPSK[52]),
         .O(\FPGA_REG_WRITE_DATA[20]_i_3_n_0 ));
   LUT6 #(
-    .INIT(64'hDD0DDD0D0000DD0D)) 
+    .INIT(64'h8A80FFFF8A808A80)) 
     \FPGA_REG_WRITE_DATA[20]_i_4 
-       (.I0(QDATA[4]),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ),
-        .I2(CONSTELLATION_QDATA[4]),
-        .I3(\FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ),
-        .I4(FFT_QDATA[4]),
-        .I5(\FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ),
+       (.I0(\FPGA_REG_WRITE_DATA[31]_i_11_n_0 ),
+        .I1(DEINTERLEAVER_BPSK[11]),
+        .I2(DEINTERLEAVER_STROBE),
+        .I3(DEINTERLEAVER_BPSK[43]),
+        .I4(FPGA_REG_WRITE_STROBE_i_3_n_0),
+        .I5(\FPGA_REG_WRITE_DATA[20]_i_5_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[20]_i_4_n_0 ));
   LUT5 #(
     .INIT(32'hB8BBB888)) 
@@ -1682,172 +1792,184 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
         .I4(DEINTERLEAVER_16QAM[171]),
         .O(\FPGA_REG_WRITE_DATA[20]_i_7_n_0 ));
   LUT6 #(
-    .INIT(64'hD5DDD5DDFFFFC0CC)) 
+    .INIT(64'hABA8ABABABABABAB)) 
     \FPGA_REG_WRITE_DATA[21]_i_1 
-       (.I0(\FPGA_REG_WRITE_DATA[21]_i_2_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[31]_i_4_n_0 ),
-        .I2(\FPGA_REG_WRITE_DATA[21]_i_3_n_0 ),
-        .I3(\FPGA_REG_WRITE_DATA[21]_i_4_n_0 ),
-        .I4(EQUALIZER_REG_WRITE_DATA[21]),
-        .I5(\FPGA_REG_WRITE_DATA[31]_i_8_n_0 ),
+       (.I0(EQUALIZER_REG_WRITE_DATA[21]),
+        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
+        .I2(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .I3(\FPGA_REG_WRITE_DATA[21]_i_2_n_0 ),
+        .I4(\FPGA_REG_WRITE_DATA[21]_i_3_n_0 ),
+        .I5(\FPGA_REG_WRITE_DATA[21]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[21]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hDD0DDD0D0000DD0D)) 
+    .INIT(64'h8A808A808A80FFFF)) 
     \FPGA_REG_WRITE_DATA[21]_i_2 
-       (.I0(QDATA[5]),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ),
-        .I2(CONSTELLATION_QDATA[5]),
-        .I3(\FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ),
-        .I4(FFT_QDATA[5]),
-        .I5(\FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ),
+       (.I0(\REG_CNTR[0]_i_2_n_0 ),
+        .I1(DEINTERLEAVER_QPSK[53]),
+        .I2(DEINTERLEAVER_STROBE),
+        .I3(DEINTERLEAVER_QPSK[21]),
+        .I4(\FPGA_REG_WRITE_DATA[21]_i_5_n_0 ),
+        .I5(\FPGA_REG_WRITE_DATA[31]_i_12_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[21]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h4F444F4F4F444444)) 
-    \FPGA_REG_WRITE_DATA[21]_i_3 
-       (.I0(\FPGA_REG_WRITE_DATA[15]_i_4_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[21]_i_5_n_0 ),
-        .I2(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ),
-        .I3(DEINTERLEAVER_BPSK[10]),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_BPSK[42]),
-        .O(\FPGA_REG_WRITE_DATA[21]_i_3_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
   LUT4 #(
     .INIT(16'h57F7)) 
-    \FPGA_REG_WRITE_DATA[21]_i_4 
-       (.I0(\REG_CNTR[0]_i_2_n_0 ),
-        .I1(DEINTERLEAVER_QPSK[21]),
+    \FPGA_REG_WRITE_DATA[21]_i_3 
+       (.I0(\FPGA_REG_WRITE_DATA[31]_i_11_n_0 ),
+        .I1(DEINTERLEAVER_BPSK[42]),
         .I2(DEINTERLEAVER_STROBE),
-        .I3(DEINTERLEAVER_QPSK[53]),
+        .I3(DEINTERLEAVER_BPSK[10]),
+        .O(\FPGA_REG_WRITE_DATA[21]_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'hD0DD0000D0DDD0DD)) 
+    \FPGA_REG_WRITE_DATA[21]_i_4 
+       (.I0(QDATA[5]),
+        .I1(\FPGA_REG_WRITE_DATA[31]_i_14_n_0 ),
+        .I2(\FPGA_REG_WRITE_DATA[31]_i_15_n_0 ),
+        .I3(FFT_QDATA[5]),
+        .I4(\FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ),
+        .I5(CONSTELLATION_QDATA[5]),
         .O(\FPGA_REG_WRITE_DATA[21]_i_4_n_0 ));
-  LUT5 #(
-    .INIT(32'hB8BBB888)) 
+  LUT6 #(
+    .INIT(64'h0000FFFF01110111)) 
     \FPGA_REG_WRITE_DATA[21]_i_5 
-       (.I0(DEINTERLEAVER_16QAM[10]),
-        .I1(DEINTERLEAVER_STROBE),
-        .I2(\FPGA_REG_WRITE_DATA[21]_i_6_n_0 ),
-        .I3(\REG_CNTR_reg_n_0_[2] ),
-        .I4(\FPGA_REG_WRITE_DATA[21]_i_7_n_0 ),
+       (.I0(\FPGA_REG_WRITE_DATA[21]_i_6_n_0 ),
+        .I1(\FPGA_REG_WRITE_DATA[21]_i_7_n_0 ),
+        .I2(\FPGA_REG_WRITE_DATA[21]_i_8_n_0 ),
+        .I3(DEINTERLEAVER_16QAM[74]),
+        .I4(DEINTERLEAVER_16QAM[10]),
+        .I5(DEINTERLEAVER_STROBE),
         .O(\FPGA_REG_WRITE_DATA[21]_i_5_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT5 #(
-    .INIT(32'hB8BBB888)) 
+    .INIT(32'h8E828282)) 
     \FPGA_REG_WRITE_DATA[21]_i_6 
        (.I0(DEINTERLEAVER_16QAM[170]),
         .I1(\REG_CNTR_reg_n_0_[1] ),
-        .I2(DEINTERLEAVER_16QAM[42]),
+        .I2(\REG_CNTR_reg_n_0_[2] ),
         .I3(\REG_CNTR_reg_n_0_[0] ),
-        .I4(DEINTERLEAVER_16QAM[74]),
+        .I4(DEINTERLEAVER_16QAM[106]),
         .O(\FPGA_REG_WRITE_DATA[21]_i_6_n_0 ));
   LUT5 #(
-    .INIT(32'hB8FFB800)) 
+    .INIT(32'h30080008)) 
     \FPGA_REG_WRITE_DATA[21]_i_7 
-       (.I0(DEINTERLEAVER_16QAM[106]),
-        .I1(\REG_CNTR_reg_n_0_[0] ),
-        .I2(DEINTERLEAVER_16QAM[138]),
-        .I3(\REG_CNTR_reg_n_0_[1] ),
-        .I4(DEINTERLEAVER_16QAM[170]),
+       (.I0(DEINTERLEAVER_16QAM[138]),
+        .I1(\REG_CNTR_reg_n_0_[1] ),
+        .I2(\REG_CNTR_reg_n_0_[2] ),
+        .I3(\REG_CNTR_reg_n_0_[0] ),
+        .I4(DEINTERLEAVER_16QAM[42]),
         .O(\FPGA_REG_WRITE_DATA[21]_i_7_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  LUT3 #(
+    .INIT(8'h04)) 
+    \FPGA_REG_WRITE_DATA[21]_i_8 
+       (.I0(\REG_CNTR_reg_n_0_[1] ),
+        .I1(\REG_CNTR_reg_n_0_[2] ),
+        .I2(\REG_CNTR_reg_n_0_[0] ),
+        .O(\FPGA_REG_WRITE_DATA[21]_i_8_n_0 ));
   LUT6 #(
-    .INIT(64'hCCCFCCCFCCC5CCCF)) 
+    .INIT(64'hFFF4FFF444F4FFF4)) 
     \FPGA_REG_WRITE_DATA[22]_i_1 
        (.I0(\FPGA_REG_WRITE_DATA[22]_i_2_n_0 ),
-        .I1(EQUALIZER_REG_WRITE_DATA[22]),
-        .I2(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
-        .I3(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .I1(\FPGA_REG_WRITE_DATA[28]_i_6_n_0 ),
+        .I2(EQUALIZER_REG_WRITE_DATA[22]),
+        .I3(\FPGA_REG_WRITE_DATA[28]_i_2_n_0 ),
         .I4(\FPGA_REG_WRITE_DATA[22]_i_3_n_0 ),
         .I5(\FPGA_REG_WRITE_DATA[22]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[22]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hDD0DDD0D0000DD0D)) 
+    .INIT(64'h7477444474777477)) 
     \FPGA_REG_WRITE_DATA[22]_i_2 
        (.I0(QDATA[6]),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ),
-        .I2(CONSTELLATION_QDATA[6]),
-        .I3(\FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ),
-        .I4(FFT_QDATA[6]),
-        .I5(\FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ),
+        .I1(\FPGA_REG_WRITE_ADDRESS[11]_i_4_n_0 ),
+        .I2(\FPGA_REG_WRITE_ADDRESS[11]_i_5_n_0 ),
+        .I3(FFT_QDATA[6]),
+        .I4(\FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ),
+        .I5(CONSTELLATION_QDATA[6]),
         .O(\FPGA_REG_WRITE_DATA[22]_i_2_n_0 ));
-  LUT4 #(
-    .INIT(16'h57F7)) 
+  LUT6 #(
+    .INIT(64'h000047FF47FF47FF)) 
     \FPGA_REG_WRITE_DATA[22]_i_3 
-       (.I0(\REG_CNTR[0]_i_2_n_0 ),
-        .I1(DEINTERLEAVER_QPSK[22]),
-        .I2(DEINTERLEAVER_STROBE),
-        .I3(DEINTERLEAVER_QPSK[54]),
+       (.I0(DEINTERLEAVER_BPSK[9]),
+        .I1(DEINTERLEAVER_STROBE),
+        .I2(DEINTERLEAVER_BPSK[41]),
+        .I3(\FPGA_REG_WRITE_DATA[31]_i_11_n_0 ),
+        .I4(\REG_CNTR[0]_i_2_n_0 ),
+        .I5(\FPGA_REG_WRITE_DATA[22]_i_5_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[22]_i_3_n_0 ));
   LUT6 #(
-    .INIT(64'h4F444F4F4F444444)) 
+    .INIT(64'h00000000FFE200E2)) 
     \FPGA_REG_WRITE_DATA[22]_i_4 
-       (.I0(\FPGA_REG_WRITE_DATA[15]_i_4_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[22]_i_5_n_0 ),
-        .I2(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ),
-        .I3(DEINTERLEAVER_BPSK[9]),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_BPSK[41]),
+       (.I0(\FPGA_REG_WRITE_DATA[22]_i_6_n_0 ),
+        .I1(\REG_CNTR_reg_n_0_[2] ),
+        .I2(\FPGA_REG_WRITE_DATA[22]_i_7_n_0 ),
+        .I3(DEINTERLEAVER_STROBE),
+        .I4(DEINTERLEAVER_16QAM[9]),
+        .I5(FPGA_REG_WRITE_STROBE_i_3_n_0),
         .O(\FPGA_REG_WRITE_DATA[22]_i_4_n_0 ));
-  LUT5 #(
-    .INIT(32'hB8BBB888)) 
+  (* SOFT_HLUTNM = "soft_lutpair20" *) 
+  LUT3 #(
+    .INIT(8'hB8)) 
     \FPGA_REG_WRITE_DATA[22]_i_5 
-       (.I0(DEINTERLEAVER_16QAM[9]),
+       (.I0(DEINTERLEAVER_QPSK[54]),
         .I1(DEINTERLEAVER_STROBE),
-        .I2(\FPGA_REG_WRITE_DATA[22]_i_6_n_0 ),
-        .I3(\REG_CNTR_reg_n_0_[2] ),
-        .I4(\FPGA_REG_WRITE_DATA[22]_i_7_n_0 ),
+        .I2(DEINTERLEAVER_QPSK[22]),
         .O(\FPGA_REG_WRITE_DATA[22]_i_5_n_0 ));
   LUT5 #(
-    .INIT(32'hB8BBB888)) 
-    \FPGA_REG_WRITE_DATA[22]_i_6 
-       (.I0(DEINTERLEAVER_16QAM[169]),
-        .I1(\REG_CNTR_reg_n_0_[1] ),
-        .I2(DEINTERLEAVER_16QAM[41]),
-        .I3(\REG_CNTR_reg_n_0_[0] ),
-        .I4(DEINTERLEAVER_16QAM[73]),
-        .O(\FPGA_REG_WRITE_DATA[22]_i_6_n_0 ));
-  LUT5 #(
     .INIT(32'hB8FFB800)) 
-    \FPGA_REG_WRITE_DATA[22]_i_7 
+    \FPGA_REG_WRITE_DATA[22]_i_6 
        (.I0(DEINTERLEAVER_16QAM[105]),
         .I1(\REG_CNTR_reg_n_0_[0] ),
         .I2(DEINTERLEAVER_16QAM[137]),
         .I3(\REG_CNTR_reg_n_0_[1] ),
         .I4(DEINTERLEAVER_16QAM[169]),
+        .O(\FPGA_REG_WRITE_DATA[22]_i_6_n_0 ));
+  LUT5 #(
+    .INIT(32'hB8BBB888)) 
+    \FPGA_REG_WRITE_DATA[22]_i_7 
+       (.I0(DEINTERLEAVER_16QAM[169]),
+        .I1(\REG_CNTR_reg_n_0_[1] ),
+        .I2(DEINTERLEAVER_16QAM[41]),
+        .I3(\REG_CNTR_reg_n_0_[0] ),
+        .I4(DEINTERLEAVER_16QAM[73]),
         .O(\FPGA_REG_WRITE_DATA[22]_i_7_n_0 ));
   LUT6 #(
-    .INIT(64'hFFF4FFF444F4FFF4)) 
+    .INIT(64'hD5DDD5DDFFFFC0CC)) 
     \FPGA_REG_WRITE_DATA[23]_i_1 
        (.I0(\FPGA_REG_WRITE_DATA[23]_i_2_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[30]_i_3_n_0 ),
-        .I2(EQUALIZER_REG_WRITE_DATA[23]),
-        .I3(\FPGA_REG_WRITE_DATA[31]_i_8_n_0 ),
-        .I4(\FPGA_REG_WRITE_DATA[23]_i_3_n_0 ),
-        .I5(\FPGA_REG_WRITE_DATA[23]_i_4_n_0 ),
+        .I1(\FPGA_REG_WRITE_DATA[31]_i_4_n_0 ),
+        .I2(\FPGA_REG_WRITE_DATA[23]_i_3_n_0 ),
+        .I3(\FPGA_REG_WRITE_DATA[23]_i_4_n_0 ),
+        .I4(EQUALIZER_REG_WRITE_DATA[23]),
+        .I5(\FPGA_REG_WRITE_DATA[28]_i_2_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[23]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hDD0DDD0D0000DD0D)) 
     \FPGA_REG_WRITE_DATA[23]_i_2 
        (.I0(QDATA[7]),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ),
-        .I2(CONSTELLATION_QDATA[7]),
-        .I3(\FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ),
-        .I4(FFT_QDATA[7]),
-        .I5(\FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ),
+        .I1(\FPGA_REG_WRITE_DATA[31]_i_14_n_0 ),
+        .I2(FFT_QDATA[7]),
+        .I3(\FPGA_REG_WRITE_DATA[31]_i_15_n_0 ),
+        .I4(CONSTELLATION_QDATA[7]),
+        .I5(\FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[23]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h8A80FFFF8A808A80)) 
+    \FPGA_REG_WRITE_DATA[23]_i_3 
+       (.I0(\FPGA_REG_WRITE_DATA[31]_i_11_n_0 ),
+        .I1(DEINTERLEAVER_BPSK[8]),
+        .I2(DEINTERLEAVER_STROBE),
+        .I3(DEINTERLEAVER_BPSK[40]),
+        .I4(FPGA_REG_WRITE_STROBE_i_3_n_0),
+        .I5(\FPGA_REG_WRITE_DATA[23]_i_5_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[23]_i_3_n_0 ));
   LUT4 #(
     .INIT(16'h57F7)) 
-    \FPGA_REG_WRITE_DATA[23]_i_3 
+    \FPGA_REG_WRITE_DATA[23]_i_4 
        (.I0(\REG_CNTR[0]_i_2_n_0 ),
         .I1(DEINTERLEAVER_QPSK[23]),
         .I2(DEINTERLEAVER_STROBE),
         .I3(DEINTERLEAVER_QPSK[55]),
-        .O(\FPGA_REG_WRITE_DATA[23]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'h4F444F4F4F444444)) 
-    \FPGA_REG_WRITE_DATA[23]_i_4 
-       (.I0(\FPGA_REG_WRITE_DATA[15]_i_4_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[23]_i_5_n_0 ),
-        .I2(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ),
-        .I3(DEINTERLEAVER_BPSK[8]),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_BPSK[40]),
         .O(\FPGA_REG_WRITE_DATA[23]_i_4_n_0 ));
   LUT5 #(
     .INIT(32'hB8BBB888)) 
@@ -1877,200 +1999,196 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
         .I4(DEINTERLEAVER_16QAM[168]),
         .O(\FPGA_REG_WRITE_DATA[23]_i_7_n_0 ));
   LUT6 #(
-    .INIT(64'h7F4F7F7F70407070)) 
+    .INIT(64'hABA8ABABABABABAB)) 
     \FPGA_REG_WRITE_DATA[24]_i_1 
-       (.I0(\FPGA_REG_WRITE_DATA[24]_i_2_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[24]_i_3_n_0 ),
-        .I2(\FPGA_REG_WRITE_DATA[31]_i_8_n_0 ),
-        .I3(\FPGA_REG_WRITE_DATA[24]_i_4_n_0 ),
-        .I4(\FPGA_REG_WRITE_DATA[24]_i_5_n_0 ),
-        .I5(EQUALIZER_REG_WRITE_DATA[24]),
+       (.I0(EQUALIZER_REG_WRITE_DATA[24]),
+        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
+        .I2(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .I3(\FPGA_REG_WRITE_DATA[24]_i_2_n_0 ),
+        .I4(\FPGA_REG_WRITE_DATA[24]_i_3_n_0 ),
+        .I5(\FPGA_REG_WRITE_DATA[24]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[24]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hDD0DDD0D0000DD0D)) 
+    .INIT(64'h8A80FFFF8A808A80)) 
     \FPGA_REG_WRITE_DATA[24]_i_2 
-       (.I0(QDATA[8]),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ),
-        .I2(CONSTELLATION_QDATA[8]),
-        .I3(\FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ),
-        .I4(FFT_QDATA[8]),
-        .I5(\FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ),
+       (.I0(\REG_CNTR[0]_i_2_n_0 ),
+        .I1(DEINTERLEAVER_QPSK[56]),
+        .I2(DEINTERLEAVER_STROBE),
+        .I3(DEINTERLEAVER_QPSK[24]),
+        .I4(\FPGA_REG_WRITE_DATA[31]_i_12_n_0 ),
+        .I5(\FPGA_REG_WRITE_DATA[24]_i_5_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[24]_i_2_n_0 ));
-  LUT3 #(
-    .INIT(8'h7F)) 
-    \FPGA_REG_WRITE_DATA[24]_i_3 
-       (.I0(\FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ),
-        .I2(\FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ),
-        .O(\FPGA_REG_WRITE_DATA[24]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'h4F444F4F4F444444)) 
-    \FPGA_REG_WRITE_DATA[24]_i_4 
-       (.I0(\FPGA_REG_WRITE_DATA[15]_i_4_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[24]_i_6_n_0 ),
-        .I2(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ),
-        .I3(DEINTERLEAVER_BPSK[7]),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_BPSK[39]),
-        .O(\FPGA_REG_WRITE_DATA[24]_i_4_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
   LUT4 #(
     .INIT(16'h57F7)) 
-    \FPGA_REG_WRITE_DATA[24]_i_5 
-       (.I0(\REG_CNTR[0]_i_2_n_0 ),
-        .I1(DEINTERLEAVER_QPSK[24]),
+    \FPGA_REG_WRITE_DATA[24]_i_3 
+       (.I0(\FPGA_REG_WRITE_DATA[31]_i_11_n_0 ),
+        .I1(DEINTERLEAVER_BPSK[39]),
         .I2(DEINTERLEAVER_STROBE),
-        .I3(DEINTERLEAVER_QPSK[56]),
+        .I3(DEINTERLEAVER_BPSK[7]),
+        .O(\FPGA_REG_WRITE_DATA[24]_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'hDD0DDD0D0000DD0D)) 
+    \FPGA_REG_WRITE_DATA[24]_i_4 
+       (.I0(QDATA[8]),
+        .I1(\FPGA_REG_WRITE_DATA[31]_i_14_n_0 ),
+        .I2(FFT_QDATA[8]),
+        .I3(\FPGA_REG_WRITE_DATA[31]_i_15_n_0 ),
+        .I4(CONSTELLATION_QDATA[8]),
+        .I5(\FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[24]_i_4_n_0 ));
+  LUT5 #(
+    .INIT(32'hB8BBB888)) 
+    \FPGA_REG_WRITE_DATA[24]_i_5 
+       (.I0(DEINTERLEAVER_16QAM[7]),
+        .I1(DEINTERLEAVER_STROBE),
+        .I2(\FPGA_REG_WRITE_DATA[24]_i_6_n_0 ),
+        .I3(\REG_CNTR_reg_n_0_[2] ),
+        .I4(\FPGA_REG_WRITE_DATA[24]_i_7_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[24]_i_5_n_0 ));
   LUT5 #(
     .INIT(32'hB8BBB888)) 
     \FPGA_REG_WRITE_DATA[24]_i_6 
-       (.I0(DEINTERLEAVER_16QAM[7]),
-        .I1(DEINTERLEAVER_STROBE),
-        .I2(\FPGA_REG_WRITE_DATA[24]_i_7_n_0 ),
-        .I3(\REG_CNTR_reg_n_0_[2] ),
-        .I4(\FPGA_REG_WRITE_DATA[24]_i_8_n_0 ),
-        .O(\FPGA_REG_WRITE_DATA[24]_i_6_n_0 ));
-  LUT5 #(
-    .INIT(32'hB8BBB888)) 
-    \FPGA_REG_WRITE_DATA[24]_i_7 
        (.I0(DEINTERLEAVER_16QAM[167]),
         .I1(\REG_CNTR_reg_n_0_[1] ),
         .I2(DEINTERLEAVER_16QAM[39]),
         .I3(\REG_CNTR_reg_n_0_[0] ),
         .I4(DEINTERLEAVER_16QAM[71]),
-        .O(\FPGA_REG_WRITE_DATA[24]_i_7_n_0 ));
+        .O(\FPGA_REG_WRITE_DATA[24]_i_6_n_0 ));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
-    \FPGA_REG_WRITE_DATA[24]_i_8 
+    \FPGA_REG_WRITE_DATA[24]_i_7 
        (.I0(DEINTERLEAVER_16QAM[103]),
         .I1(\REG_CNTR_reg_n_0_[0] ),
         .I2(DEINTERLEAVER_16QAM[135]),
         .I3(\REG_CNTR_reg_n_0_[1] ),
         .I4(DEINTERLEAVER_16QAM[167]),
-        .O(\FPGA_REG_WRITE_DATA[24]_i_8_n_0 ));
+        .O(\FPGA_REG_WRITE_DATA[24]_i_7_n_0 ));
   LUT6 #(
-    .INIT(64'hCCCFCCCFCCC5CCCF)) 
+    .INIT(64'hFFF4FFF444F4FFF4)) 
     \FPGA_REG_WRITE_DATA[25]_i_1 
        (.I0(\FPGA_REG_WRITE_DATA[25]_i_2_n_0 ),
-        .I1(EQUALIZER_REG_WRITE_DATA[25]),
-        .I2(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
-        .I3(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .I1(\FPGA_REG_WRITE_DATA[28]_i_6_n_0 ),
+        .I2(EQUALIZER_REG_WRITE_DATA[25]),
+        .I3(\FPGA_REG_WRITE_DATA[28]_i_2_n_0 ),
         .I4(\FPGA_REG_WRITE_DATA[25]_i_3_n_0 ),
         .I5(\FPGA_REG_WRITE_DATA[25]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[25]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hDD0DDD0D0000DD0D)) 
+    .INIT(64'h7477444474777477)) 
     \FPGA_REG_WRITE_DATA[25]_i_2 
        (.I0(QDATA[9]),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ),
-        .I2(CONSTELLATION_QDATA[9]),
-        .I3(\FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ),
-        .I4(FFT_QDATA[9]),
-        .I5(\FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ),
+        .I1(\FPGA_REG_WRITE_ADDRESS[11]_i_4_n_0 ),
+        .I2(\FPGA_REG_WRITE_ADDRESS[11]_i_5_n_0 ),
+        .I3(FFT_QDATA[9]),
+        .I4(\FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ),
+        .I5(CONSTELLATION_QDATA[9]),
         .O(\FPGA_REG_WRITE_DATA[25]_i_2_n_0 ));
-  LUT4 #(
-    .INIT(16'h57F7)) 
+  LUT6 #(
+    .INIT(64'h000047FF47FF47FF)) 
     \FPGA_REG_WRITE_DATA[25]_i_3 
-       (.I0(\REG_CNTR[0]_i_2_n_0 ),
-        .I1(DEINTERLEAVER_QPSK[25]),
-        .I2(DEINTERLEAVER_STROBE),
-        .I3(DEINTERLEAVER_QPSK[57]),
+       (.I0(DEINTERLEAVER_BPSK[6]),
+        .I1(DEINTERLEAVER_STROBE),
+        .I2(DEINTERLEAVER_BPSK[38]),
+        .I3(\FPGA_REG_WRITE_DATA[31]_i_11_n_0 ),
+        .I4(\REG_CNTR[0]_i_2_n_0 ),
+        .I5(\FPGA_REG_WRITE_DATA[25]_i_5_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[25]_i_3_n_0 ));
   LUT6 #(
-    .INIT(64'h4F444F4F4F444444)) 
+    .INIT(64'h00000000FFE200E2)) 
     \FPGA_REG_WRITE_DATA[25]_i_4 
-       (.I0(\FPGA_REG_WRITE_DATA[15]_i_4_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[25]_i_5_n_0 ),
-        .I2(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ),
-        .I3(DEINTERLEAVER_BPSK[6]),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_BPSK[38]),
+       (.I0(\FPGA_REG_WRITE_DATA[25]_i_6_n_0 ),
+        .I1(\REG_CNTR_reg_n_0_[2] ),
+        .I2(\FPGA_REG_WRITE_DATA[25]_i_7_n_0 ),
+        .I3(DEINTERLEAVER_STROBE),
+        .I4(DEINTERLEAVER_16QAM[6]),
+        .I5(FPGA_REG_WRITE_STROBE_i_3_n_0),
         .O(\FPGA_REG_WRITE_DATA[25]_i_4_n_0 ));
-  LUT5 #(
-    .INIT(32'hB8BBB888)) 
+  (* SOFT_HLUTNM = "soft_lutpair19" *) 
+  LUT3 #(
+    .INIT(8'hB8)) 
     \FPGA_REG_WRITE_DATA[25]_i_5 
-       (.I0(DEINTERLEAVER_16QAM[6]),
+       (.I0(DEINTERLEAVER_QPSK[57]),
         .I1(DEINTERLEAVER_STROBE),
-        .I2(\FPGA_REG_WRITE_DATA[25]_i_6_n_0 ),
-        .I3(\REG_CNTR_reg_n_0_[2] ),
-        .I4(\FPGA_REG_WRITE_DATA[25]_i_7_n_0 ),
+        .I2(DEINTERLEAVER_QPSK[25]),
         .O(\FPGA_REG_WRITE_DATA[25]_i_5_n_0 ));
   LUT5 #(
-    .INIT(32'hB8BBB888)) 
-    \FPGA_REG_WRITE_DATA[25]_i_6 
-       (.I0(DEINTERLEAVER_16QAM[166]),
-        .I1(\REG_CNTR_reg_n_0_[1] ),
-        .I2(DEINTERLEAVER_16QAM[38]),
-        .I3(\REG_CNTR_reg_n_0_[0] ),
-        .I4(DEINTERLEAVER_16QAM[70]),
-        .O(\FPGA_REG_WRITE_DATA[25]_i_6_n_0 ));
-  LUT5 #(
     .INIT(32'hB8FFB800)) 
-    \FPGA_REG_WRITE_DATA[25]_i_7 
+    \FPGA_REG_WRITE_DATA[25]_i_6 
        (.I0(DEINTERLEAVER_16QAM[102]),
         .I1(\REG_CNTR_reg_n_0_[0] ),
         .I2(DEINTERLEAVER_16QAM[134]),
         .I3(\REG_CNTR_reg_n_0_[1] ),
         .I4(DEINTERLEAVER_16QAM[166]),
+        .O(\FPGA_REG_WRITE_DATA[25]_i_6_n_0 ));
+  LUT5 #(
+    .INIT(32'hB8BBB888)) 
+    \FPGA_REG_WRITE_DATA[25]_i_7 
+       (.I0(DEINTERLEAVER_16QAM[166]),
+        .I1(\REG_CNTR_reg_n_0_[1] ),
+        .I2(DEINTERLEAVER_16QAM[38]),
+        .I3(\REG_CNTR_reg_n_0_[0] ),
+        .I4(DEINTERLEAVER_16QAM[70]),
         .O(\FPGA_REG_WRITE_DATA[25]_i_7_n_0 ));
   LUT6 #(
-    .INIT(64'hCCCFCCCFCCC5CCCF)) 
+    .INIT(64'hD5DDD5DDFFFFC0CC)) 
     \FPGA_REG_WRITE_DATA[26]_i_1 
        (.I0(\FPGA_REG_WRITE_DATA[26]_i_2_n_0 ),
-        .I1(EQUALIZER_REG_WRITE_DATA[26]),
-        .I2(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
-        .I3(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
-        .I4(\FPGA_REG_WRITE_DATA[26]_i_3_n_0 ),
-        .I5(\FPGA_REG_WRITE_DATA[26]_i_4_n_0 ),
+        .I1(\FPGA_REG_WRITE_DATA[31]_i_4_n_0 ),
+        .I2(\FPGA_REG_WRITE_DATA[26]_i_3_n_0 ),
+        .I3(\FPGA_REG_WRITE_DATA[26]_i_4_n_0 ),
+        .I4(EQUALIZER_REG_WRITE_DATA[26]),
+        .I5(\FPGA_REG_WRITE_DATA[28]_i_2_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[26]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hDD0DDD0D0000DD0D)) 
     \FPGA_REG_WRITE_DATA[26]_i_2 
        (.I0(QDATA[10]),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ),
-        .I2(CONSTELLATION_QDATA[10]),
-        .I3(\FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ),
-        .I4(FFT_QDATA[10]),
-        .I5(\FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ),
+        .I1(\FPGA_REG_WRITE_DATA[31]_i_14_n_0 ),
+        .I2(FFT_QDATA[10]),
+        .I3(\FPGA_REG_WRITE_DATA[31]_i_15_n_0 ),
+        .I4(CONSTELLATION_QDATA[10]),
+        .I5(\FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[26]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT4 #(
-    .INIT(16'h57F7)) 
+    .INIT(16'h00E2)) 
     \FPGA_REG_WRITE_DATA[26]_i_3 
-       (.I0(\REG_CNTR[0]_i_2_n_0 ),
-        .I1(DEINTERLEAVER_QPSK[26]),
-        .I2(DEINTERLEAVER_STROBE),
-        .I3(DEINTERLEAVER_QPSK[58]),
+       (.I0(\FPGA_REG_WRITE_DATA[26]_i_5_n_0 ),
+        .I1(DEINTERLEAVER_STROBE),
+        .I2(DEINTERLEAVER_16QAM[5]),
+        .I3(FPGA_REG_WRITE_STROBE_i_3_n_0),
         .O(\FPGA_REG_WRITE_DATA[26]_i_3_n_0 ));
   LUT6 #(
-    .INIT(64'h4540FFFF45404540)) 
+    .INIT(64'h000047FF47FF47FF)) 
     \FPGA_REG_WRITE_DATA[26]_i_4 
-       (.I0(\FPGA_REG_WRITE_DATA[15]_i_4_n_0 ),
-        .I1(DEINTERLEAVER_16QAM[5]),
-        .I2(DEINTERLEAVER_STROBE),
-        .I3(\FPGA_REG_WRITE_DATA[26]_i_5_n_0 ),
-        .I4(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ),
-        .I5(\FPGA_REG_WRITE_DATA[26]_i_6_n_0 ),
-        .O(\FPGA_REG_WRITE_DATA[26]_i_4_n_0 ));
-  LUT6 #(
-    .INIT(64'hEAFEEAAEEAAEEAAE)) 
-    \FPGA_REG_WRITE_DATA[26]_i_5 
-       (.I0(\FPGA_REG_WRITE_DATA[26]_i_7_n_0 ),
-        .I1(DEINTERLEAVER_16QAM[165]),
-        .I2(\REG_CNTR_reg_n_0_[1] ),
-        .I3(\REG_CNTR_reg_n_0_[2] ),
-        .I4(DEINTERLEAVER_16QAM[101]),
-        .I5(\REG_CNTR_reg_n_0_[0] ),
-        .O(\FPGA_REG_WRITE_DATA[26]_i_5_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair15" *) 
-  LUT3 #(
-    .INIT(8'hB8)) 
-    \FPGA_REG_WRITE_DATA[26]_i_6 
        (.I0(DEINTERLEAVER_BPSK[5]),
         .I1(DEINTERLEAVER_STROBE),
         .I2(DEINTERLEAVER_BPSK[37]),
+        .I3(\FPGA_REG_WRITE_DATA[31]_i_11_n_0 ),
+        .I4(\REG_CNTR[0]_i_2_n_0 ),
+        .I5(\FPGA_REG_WRITE_DATA[26]_i_6_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[26]_i_4_n_0 ));
+  LUT6 #(
+    .INIT(64'h8E828282FFFFFFFF)) 
+    \FPGA_REG_WRITE_DATA[26]_i_5 
+       (.I0(DEINTERLEAVER_16QAM[165]),
+        .I1(\REG_CNTR_reg_n_0_[1] ),
+        .I2(\REG_CNTR_reg_n_0_[2] ),
+        .I3(DEINTERLEAVER_16QAM[101]),
+        .I4(\REG_CNTR_reg_n_0_[0] ),
+        .I5(\FPGA_REG_WRITE_DATA[26]_i_7_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[26]_i_5_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair19" *) 
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \FPGA_REG_WRITE_DATA[26]_i_6 
+       (.I0(DEINTERLEAVER_QPSK[58]),
+        .I1(DEINTERLEAVER_STROBE),
+        .I2(DEINTERLEAVER_QPSK[26]),
         .O(\FPGA_REG_WRITE_DATA[26]_i_6_n_0 ));
   LUT6 #(
-    .INIT(64'h00AC0F0000AC0000)) 
+    .INIT(64'hFF53F0FFFF53FFFF)) 
     \FPGA_REG_WRITE_DATA[26]_i_7 
        (.I0(DEINTERLEAVER_16QAM[37]),
         .I1(DEINTERLEAVER_16QAM[69]),
@@ -2090,41 +2208,43 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
         .I5(\FPGA_REG_WRITE_DATA[27]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[27]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h4F444F4F4F444444)) 
+    .INIT(64'h00000000FFE200E2)) 
     \FPGA_REG_WRITE_DATA[27]_i_2 
-       (.I0(\FPGA_REG_WRITE_DATA[15]_i_4_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[27]_i_5_n_0 ),
-        .I2(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ),
-        .I3(DEINTERLEAVER_BPSK[4]),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_BPSK[36]),
+       (.I0(\FPGA_REG_WRITE_DATA[27]_i_5_n_0 ),
+        .I1(\REG_CNTR_reg_n_0_[2] ),
+        .I2(\FPGA_REG_WRITE_DATA[27]_i_6_n_0 ),
+        .I3(DEINTERLEAVER_STROBE),
+        .I4(DEINTERLEAVER_16QAM[4]),
+        .I5(FPGA_REG_WRITE_STROBE_i_3_n_0),
         .O(\FPGA_REG_WRITE_DATA[27]_i_2_n_0 ));
-  LUT4 #(
-    .INIT(16'h57F7)) 
+  LUT6 #(
+    .INIT(64'h000047FF47FF47FF)) 
     \FPGA_REG_WRITE_DATA[27]_i_3 
-       (.I0(\REG_CNTR[0]_i_2_n_0 ),
-        .I1(DEINTERLEAVER_QPSK[27]),
-        .I2(DEINTERLEAVER_STROBE),
-        .I3(DEINTERLEAVER_QPSK[59]),
+       (.I0(DEINTERLEAVER_BPSK[4]),
+        .I1(DEINTERLEAVER_STROBE),
+        .I2(DEINTERLEAVER_BPSK[36]),
+        .I3(\FPGA_REG_WRITE_DATA[31]_i_11_n_0 ),
+        .I4(\REG_CNTR[0]_i_2_n_0 ),
+        .I5(\FPGA_REG_WRITE_DATA[27]_i_7_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[27]_i_3_n_0 ));
   LUT6 #(
     .INIT(64'hDD0DDD0D0000DD0D)) 
     \FPGA_REG_WRITE_DATA[27]_i_4 
        (.I0(QDATA[11]),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ),
-        .I2(CONSTELLATION_QDATA[11]),
-        .I3(\FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ),
-        .I4(FFT_QDATA[11]),
-        .I5(\FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ),
+        .I1(\FPGA_REG_WRITE_DATA[31]_i_14_n_0 ),
+        .I2(FFT_QDATA[11]),
+        .I3(\FPGA_REG_WRITE_DATA[31]_i_15_n_0 ),
+        .I4(CONSTELLATION_QDATA[11]),
+        .I5(\FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[27]_i_4_n_0 ));
   LUT5 #(
-    .INIT(32'hB8BBB888)) 
+    .INIT(32'hB8FFB800)) 
     \FPGA_REG_WRITE_DATA[27]_i_5 
-       (.I0(DEINTERLEAVER_16QAM[4]),
-        .I1(DEINTERLEAVER_STROBE),
-        .I2(\FPGA_REG_WRITE_DATA[27]_i_6_n_0 ),
-        .I3(\REG_CNTR_reg_n_0_[2] ),
-        .I4(\FPGA_REG_WRITE_DATA[27]_i_7_n_0 ),
+       (.I0(DEINTERLEAVER_16QAM[100]),
+        .I1(\REG_CNTR_reg_n_0_[0] ),
+        .I2(DEINTERLEAVER_16QAM[132]),
+        .I3(\REG_CNTR_reg_n_0_[1] ),
+        .I4(DEINTERLEAVER_16QAM[164]),
         .O(\FPGA_REG_WRITE_DATA[27]_i_5_n_0 ));
   LUT5 #(
     .INIT(32'hB8BBB888)) 
@@ -2135,74 +2255,72 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
         .I3(\REG_CNTR_reg_n_0_[0] ),
         .I4(DEINTERLEAVER_16QAM[68]),
         .O(\FPGA_REG_WRITE_DATA[27]_i_6_n_0 ));
-  LUT5 #(
-    .INIT(32'hB8FFB800)) 
+  (* SOFT_HLUTNM = "soft_lutpair18" *) 
+  LUT3 #(
+    .INIT(8'hB8)) 
     \FPGA_REG_WRITE_DATA[27]_i_7 
-       (.I0(DEINTERLEAVER_16QAM[100]),
-        .I1(\REG_CNTR_reg_n_0_[0] ),
-        .I2(DEINTERLEAVER_16QAM[132]),
-        .I3(\REG_CNTR_reg_n_0_[1] ),
-        .I4(DEINTERLEAVER_16QAM[164]),
+       (.I0(DEINTERLEAVER_QPSK[59]),
+        .I1(DEINTERLEAVER_STROBE),
+        .I2(DEINTERLEAVER_QPSK[27]),
         .O(\FPGA_REG_WRITE_DATA[27]_i_7_n_0 ));
   LUT6 #(
-    .INIT(64'hF0F0F0FFF0F0F0DD)) 
+    .INIT(64'hEE2EFFFFEE2EEE2E)) 
     \FPGA_REG_WRITE_DATA[28]_i_1 
-       (.I0(\FPGA_REG_WRITE_DATA[28]_i_2_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[28]_i_3_n_0 ),
-        .I2(EQUALIZER_REG_WRITE_DATA[28]),
-        .I3(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
-        .I4(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
-        .I5(\FPGA_REG_WRITE_DATA[28]_i_4_n_0 ),
+       (.I0(EQUALIZER_REG_WRITE_DATA[28]),
+        .I1(\FPGA_REG_WRITE_DATA[28]_i_2_n_0 ),
+        .I2(\FPGA_REG_WRITE_DATA[28]_i_3_n_0 ),
+        .I3(\FPGA_REG_WRITE_DATA[28]_i_4_n_0 ),
+        .I4(\FPGA_REG_WRITE_DATA[28]_i_5_n_0 ),
+        .I5(\FPGA_REG_WRITE_DATA[28]_i_6_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[28]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hAAAAABFBFFFFABFB)) 
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  LUT2 #(
+    .INIT(4'h1)) 
     \FPGA_REG_WRITE_DATA[28]_i_2 
-       (.I0(\FPGA_REG_WRITE_DATA[15]_i_4_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[28]_i_5_n_0 ),
-        .I2(\REG_CNTR_reg_n_0_[2] ),
-        .I3(\FPGA_REG_WRITE_DATA[28]_i_6_n_0 ),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_16QAM[3]),
+       (.I0(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
         .O(\FPGA_REG_WRITE_DATA[28]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFF454045404540)) 
+    .INIT(64'h000047FF47FF47FF)) 
     \FPGA_REG_WRITE_DATA[28]_i_3 
-       (.I0(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ),
-        .I1(DEINTERLEAVER_BPSK[3]),
-        .I2(DEINTERLEAVER_STROBE),
-        .I3(DEINTERLEAVER_BPSK[35]),
+       (.I0(DEINTERLEAVER_BPSK[3]),
+        .I1(DEINTERLEAVER_STROBE),
+        .I2(DEINTERLEAVER_BPSK[35]),
+        .I3(\FPGA_REG_WRITE_DATA[31]_i_11_n_0 ),
         .I4(\REG_CNTR[0]_i_2_n_0 ),
         .I5(\FPGA_REG_WRITE_DATA[28]_i_7_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[28]_i_3_n_0 ));
   LUT6 #(
-    .INIT(64'h22F222F2FFFF22F2)) 
+    .INIT(64'h00000000FFE200E2)) 
     \FPGA_REG_WRITE_DATA[28]_i_4 
-       (.I0(CONSTELLATION_QDATA[12]),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ),
-        .I2(FFT_QDATA[12]),
-        .I3(\FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ),
-        .I4(QDATA[12]),
-        .I5(\FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ),
+       (.I0(\FPGA_REG_WRITE_DATA[28]_i_8_n_0 ),
+        .I1(\REG_CNTR_reg_n_0_[2] ),
+        .I2(\FPGA_REG_WRITE_DATA[28]_i_9_n_0 ),
+        .I3(DEINTERLEAVER_STROBE),
+        .I4(DEINTERLEAVER_16QAM[3]),
+        .I5(FPGA_REG_WRITE_STROBE_i_3_n_0),
         .O(\FPGA_REG_WRITE_DATA[28]_i_4_n_0 ));
-  LUT5 #(
-    .INIT(32'hB8FFB800)) 
+  LUT6 #(
+    .INIT(64'h7477444474777477)) 
     \FPGA_REG_WRITE_DATA[28]_i_5 
-       (.I0(DEINTERLEAVER_16QAM[99]),
-        .I1(\REG_CNTR_reg_n_0_[0] ),
-        .I2(DEINTERLEAVER_16QAM[131]),
-        .I3(\REG_CNTR_reg_n_0_[1] ),
-        .I4(DEINTERLEAVER_16QAM[163]),
+       (.I0(QDATA[12]),
+        .I1(\FPGA_REG_WRITE_ADDRESS[11]_i_4_n_0 ),
+        .I2(\FPGA_REG_WRITE_ADDRESS[11]_i_5_n_0 ),
+        .I3(FFT_QDATA[12]),
+        .I4(\FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ),
+        .I5(CONSTELLATION_QDATA[12]),
         .O(\FPGA_REG_WRITE_DATA[28]_i_5_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT5 #(
-    .INIT(32'hB8BBB888)) 
+    .INIT(32'h000000DF)) 
     \FPGA_REG_WRITE_DATA[28]_i_6 
-       (.I0(DEINTERLEAVER_16QAM[163]),
-        .I1(\REG_CNTR_reg_n_0_[1] ),
-        .I2(DEINTERLEAVER_16QAM[35]),
-        .I3(\REG_CNTR_reg_n_0_[0] ),
-        .I4(DEINTERLEAVER_16QAM[67]),
+       (.I0(\FPGA_REG_WRITE_ADDRESS[11]_i_5_n_0 ),
+        .I1(\FPGA_REG_WRITE_ADDRESS[11]_i_4_n_0 ),
+        .I2(\FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ),
+        .I3(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
+        .I4(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
         .O(\FPGA_REG_WRITE_DATA[28]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair14" *) 
+  (* SOFT_HLUTNM = "soft_lutpair18" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \FPGA_REG_WRITE_DATA[28]_i_7 
@@ -2210,387 +2328,441 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
         .I1(DEINTERLEAVER_STROBE),
         .I2(DEINTERLEAVER_QPSK[28]),
         .O(\FPGA_REG_WRITE_DATA[28]_i_7_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFFFFD0D0D0FFD0)) 
-    \FPGA_REG_WRITE_DATA[29]_i_1 
-       (.I0(\FPGA_REG_WRITE_DATA[29]_i_2_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[29]_i_3_n_0 ),
-        .I2(\FPGA_REG_WRITE_DATA[31]_i_4_n_0 ),
-        .I3(EQUALIZER_REG_WRITE_DATA[29]),
-        .I4(\FPGA_REG_WRITE_DATA[31]_i_8_n_0 ),
-        .I5(\FPGA_REG_WRITE_DATA[29]_i_4_n_0 ),
-        .O(\FPGA_REG_WRITE_DATA[29]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'h57F7)) 
-    \FPGA_REG_WRITE_DATA[29]_i_2 
-       (.I0(\REG_CNTR[0]_i_2_n_0 ),
-        .I1(DEINTERLEAVER_QPSK[29]),
-        .I2(DEINTERLEAVER_STROBE),
-        .I3(DEINTERLEAVER_QPSK[61]),
-        .O(\FPGA_REG_WRITE_DATA[29]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h4F444F4F4F444444)) 
-    \FPGA_REG_WRITE_DATA[29]_i_3 
-       (.I0(\FPGA_REG_WRITE_DATA[15]_i_4_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[29]_i_5_n_0 ),
-        .I2(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ),
-        .I3(DEINTERLEAVER_BPSK[2]),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_BPSK[34]),
-        .O(\FPGA_REG_WRITE_DATA[29]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'h22F222F2FFFF22F2)) 
-    \FPGA_REG_WRITE_DATA[29]_i_4 
-       (.I0(CONSTELLATION_QDATA[13]),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ),
-        .I2(FFT_QDATA[13]),
-        .I3(\FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ),
-        .I4(QDATA[13]),
-        .I5(\FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ),
-        .O(\FPGA_REG_WRITE_DATA[29]_i_4_n_0 ));
-  LUT5 #(
-    .INIT(32'hB8BBB888)) 
-    \FPGA_REG_WRITE_DATA[29]_i_5 
-       (.I0(DEINTERLEAVER_16QAM[2]),
-        .I1(DEINTERLEAVER_STROBE),
-        .I2(\FPGA_REG_WRITE_DATA[29]_i_6_n_0 ),
-        .I3(\REG_CNTR_reg_n_0_[2] ),
-        .I4(\FPGA_REG_WRITE_DATA[29]_i_7_n_0 ),
-        .O(\FPGA_REG_WRITE_DATA[29]_i_5_n_0 ));
-  LUT5 #(
-    .INIT(32'hB8BBB888)) 
-    \FPGA_REG_WRITE_DATA[29]_i_6 
-       (.I0(DEINTERLEAVER_16QAM[162]),
-        .I1(\REG_CNTR_reg_n_0_[1] ),
-        .I2(DEINTERLEAVER_16QAM[34]),
-        .I3(\REG_CNTR_reg_n_0_[0] ),
-        .I4(DEINTERLEAVER_16QAM[66]),
-        .O(\FPGA_REG_WRITE_DATA[29]_i_6_n_0 ));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
-    \FPGA_REG_WRITE_DATA[29]_i_7 
+    \FPGA_REG_WRITE_DATA[28]_i_8 
+       (.I0(DEINTERLEAVER_16QAM[99]),
+        .I1(\REG_CNTR_reg_n_0_[0] ),
+        .I2(DEINTERLEAVER_16QAM[131]),
+        .I3(\REG_CNTR_reg_n_0_[1] ),
+        .I4(DEINTERLEAVER_16QAM[163]),
+        .O(\FPGA_REG_WRITE_DATA[28]_i_8_n_0 ));
+  LUT5 #(
+    .INIT(32'hB8BBB888)) 
+    \FPGA_REG_WRITE_DATA[28]_i_9 
+       (.I0(DEINTERLEAVER_16QAM[163]),
+        .I1(\REG_CNTR_reg_n_0_[1] ),
+        .I2(DEINTERLEAVER_16QAM[35]),
+        .I3(\REG_CNTR_reg_n_0_[0] ),
+        .I4(DEINTERLEAVER_16QAM[67]),
+        .O(\FPGA_REG_WRITE_DATA[28]_i_9_n_0 ));
+  LUT6 #(
+    .INIT(64'hCCCFCCCFCCC5CCCF)) 
+    \FPGA_REG_WRITE_DATA[29]_i_1 
+       (.I0(\FPGA_REG_WRITE_DATA[29]_i_2_n_0 ),
+        .I1(EQUALIZER_REG_WRITE_DATA[29]),
+        .I2(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
+        .I3(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .I4(\FPGA_REG_WRITE_DATA[29]_i_3_n_0 ),
+        .I5(\FPGA_REG_WRITE_DATA[29]_i_4_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[29]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hDD0DDD0D0000DD0D)) 
+    \FPGA_REG_WRITE_DATA[29]_i_2 
+       (.I0(QDATA[13]),
+        .I1(\FPGA_REG_WRITE_DATA[31]_i_14_n_0 ),
+        .I2(FFT_QDATA[13]),
+        .I3(\FPGA_REG_WRITE_DATA[31]_i_15_n_0 ),
+        .I4(CONSTELLATION_QDATA[13]),
+        .I5(\FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[29]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h000047FF47FF47FF)) 
+    \FPGA_REG_WRITE_DATA[29]_i_3 
+       (.I0(DEINTERLEAVER_BPSK[2]),
+        .I1(DEINTERLEAVER_STROBE),
+        .I2(DEINTERLEAVER_BPSK[34]),
+        .I3(\FPGA_REG_WRITE_DATA[31]_i_11_n_0 ),
+        .I4(\REG_CNTR[0]_i_2_n_0 ),
+        .I5(\FPGA_REG_WRITE_DATA[29]_i_5_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[29]_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'h00000000FFE200E2)) 
+    \FPGA_REG_WRITE_DATA[29]_i_4 
+       (.I0(\FPGA_REG_WRITE_DATA[29]_i_6_n_0 ),
+        .I1(\REG_CNTR_reg_n_0_[2] ),
+        .I2(\FPGA_REG_WRITE_DATA[29]_i_7_n_0 ),
+        .I3(DEINTERLEAVER_STROBE),
+        .I4(DEINTERLEAVER_16QAM[2]),
+        .I5(FPGA_REG_WRITE_STROBE_i_3_n_0),
+        .O(\FPGA_REG_WRITE_DATA[29]_i_4_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair17" *) 
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \FPGA_REG_WRITE_DATA[29]_i_5 
+       (.I0(DEINTERLEAVER_QPSK[61]),
+        .I1(DEINTERLEAVER_STROBE),
+        .I2(DEINTERLEAVER_QPSK[29]),
+        .O(\FPGA_REG_WRITE_DATA[29]_i_5_n_0 ));
+  LUT5 #(
+    .INIT(32'hB8FFB800)) 
+    \FPGA_REG_WRITE_DATA[29]_i_6 
        (.I0(DEINTERLEAVER_16QAM[98]),
         .I1(\REG_CNTR_reg_n_0_[0] ),
         .I2(DEINTERLEAVER_16QAM[130]),
         .I3(\REG_CNTR_reg_n_0_[1] ),
         .I4(DEINTERLEAVER_16QAM[162]),
+        .O(\FPGA_REG_WRITE_DATA[29]_i_6_n_0 ));
+  LUT5 #(
+    .INIT(32'hB8BBB888)) 
+    \FPGA_REG_WRITE_DATA[29]_i_7 
+       (.I0(DEINTERLEAVER_16QAM[162]),
+        .I1(\REG_CNTR_reg_n_0_[1] ),
+        .I2(DEINTERLEAVER_16QAM[34]),
+        .I3(\REG_CNTR_reg_n_0_[0] ),
+        .I4(DEINTERLEAVER_16QAM[66]),
         .O(\FPGA_REG_WRITE_DATA[29]_i_7_n_0 ));
   LUT6 #(
-    .INIT(64'hABABA8ABABABABAB)) 
+    .INIT(64'hEE2EEEEEEE2EEE2E)) 
     \FPGA_REG_WRITE_DATA[2]_i_1 
        (.I0(EQUALIZER_REG_WRITE_DATA[2]),
-        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
-        .I2(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
-        .I3(\FPGA_REG_WRITE_DATA[2]_i_2_n_0 ),
-        .I4(\FPGA_REG_WRITE_DATA[2]_i_3_n_0 ),
-        .I5(\FPGA_REG_WRITE_DATA[2]_i_4_n_0 ),
+        .I1(\FPGA_REG_WRITE_DATA[28]_i_2_n_0 ),
+        .I2(\FPGA_REG_WRITE_DATA[2]_i_2_n_0 ),
+        .I3(\FPGA_REG_WRITE_DATA[2]_i_3_n_0 ),
+        .I4(\FPGA_REG_WRITE_DATA[13]_i_3_n_0 ),
+        .I5(DEINTERLEAVER_BPSK[29]),
         .O(\FPGA_REG_WRITE_DATA[2]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hDD0DDD0D0000DD0D)) 
     \FPGA_REG_WRITE_DATA[2]_i_2 
        (.I0(IDATA[2]),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ),
-        .I2(CONSTELLATION_IDATA[2]),
-        .I3(\FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ),
-        .I4(FFT_IDATA[2]),
-        .I5(\FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ),
+        .I1(\FPGA_REG_WRITE_DATA[31]_i_14_n_0 ),
+        .I2(FFT_IDATA[2]),
+        .I3(\FPGA_REG_WRITE_DATA[31]_i_15_n_0 ),
+        .I4(CONSTELLATION_IDATA[2]),
+        .I5(\FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[2]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'h88FFA0A08888A0A0)) 
+    .INIT(64'h8A80FFFF8A808A80)) 
     \FPGA_REG_WRITE_DATA[2]_i_3 
        (.I0(\REG_CNTR[0]_i_2_n_0 ),
         .I1(DEINTERLEAVER_QPSK[34]),
-        .I2(DEINTERLEAVER_QPSK[2]),
-        .I3(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_BPSK[29]),
+        .I2(DEINTERLEAVER_STROBE),
+        .I3(DEINTERLEAVER_QPSK[2]),
+        .I4(\FPGA_REG_WRITE_DATA[31]_i_12_n_0 ),
+        .I5(\FPGA_REG_WRITE_DATA[2]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[2]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'hAAAAABFBFFFFABFB)) 
-    \FPGA_REG_WRITE_DATA[2]_i_4 
-       (.I0(\FPGA_REG_WRITE_DATA[15]_i_4_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[2]_i_5_n_0 ),
-        .I2(\REG_CNTR_reg_n_0_[2] ),
-        .I3(\FPGA_REG_WRITE_DATA[2]_i_6_n_0 ),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_16QAM[29]),
-        .O(\FPGA_REG_WRITE_DATA[2]_i_4_n_0 ));
-  LUT5 #(
-    .INIT(32'hB8FFB800)) 
-    \FPGA_REG_WRITE_DATA[2]_i_5 
-       (.I0(DEINTERLEAVER_16QAM[125]),
-        .I1(\REG_CNTR_reg_n_0_[0] ),
-        .I2(DEINTERLEAVER_16QAM[157]),
-        .I3(\REG_CNTR_reg_n_0_[1] ),
-        .I4(DEINTERLEAVER_16QAM[189]),
-        .O(\FPGA_REG_WRITE_DATA[2]_i_5_n_0 ));
   LUT5 #(
     .INIT(32'hB8BBB888)) 
-    \FPGA_REG_WRITE_DATA[2]_i_6 
+    \FPGA_REG_WRITE_DATA[2]_i_4 
+       (.I0(DEINTERLEAVER_16QAM[29]),
+        .I1(DEINTERLEAVER_STROBE),
+        .I2(\FPGA_REG_WRITE_DATA[2]_i_5_n_0 ),
+        .I3(\REG_CNTR_reg_n_0_[2] ),
+        .I4(\FPGA_REG_WRITE_DATA[2]_i_6_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[2]_i_4_n_0 ));
+  LUT5 #(
+    .INIT(32'hB8BBB888)) 
+    \FPGA_REG_WRITE_DATA[2]_i_5 
        (.I0(DEINTERLEAVER_16QAM[189]),
         .I1(\REG_CNTR_reg_n_0_[1] ),
         .I2(DEINTERLEAVER_16QAM[61]),
         .I3(\REG_CNTR_reg_n_0_[0] ),
         .I4(DEINTERLEAVER_16QAM[93]),
+        .O(\FPGA_REG_WRITE_DATA[2]_i_5_n_0 ));
+  LUT5 #(
+    .INIT(32'hB8FFB800)) 
+    \FPGA_REG_WRITE_DATA[2]_i_6 
+       (.I0(DEINTERLEAVER_16QAM[125]),
+        .I1(\REG_CNTR_reg_n_0_[0] ),
+        .I2(DEINTERLEAVER_16QAM[157]),
+        .I3(\REG_CNTR_reg_n_0_[1] ),
+        .I4(DEINTERLEAVER_16QAM[189]),
         .O(\FPGA_REG_WRITE_DATA[2]_i_6_n_0 ));
   LUT6 #(
-    .INIT(64'hFFF4FFF444F4FFF4)) 
+    .INIT(64'hCCCFCCCFCCC5CCCF)) 
     \FPGA_REG_WRITE_DATA[30]_i_1 
        (.I0(\FPGA_REG_WRITE_DATA[30]_i_2_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[30]_i_3_n_0 ),
-        .I2(EQUALIZER_REG_WRITE_DATA[30]),
-        .I3(\FPGA_REG_WRITE_DATA[31]_i_8_n_0 ),
-        .I4(\FPGA_REG_WRITE_DATA[30]_i_4_n_0 ),
-        .I5(\FPGA_REG_WRITE_DATA[30]_i_5_n_0 ),
+        .I1(EQUALIZER_REG_WRITE_DATA[30]),
+        .I2(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
+        .I3(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .I4(\FPGA_REG_WRITE_DATA[30]_i_3_n_0 ),
+        .I5(\FPGA_REG_WRITE_DATA[30]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[30]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hDD0DDD0D0000DD0D)) 
     \FPGA_REG_WRITE_DATA[30]_i_2 
        (.I0(QDATA[14]),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ),
-        .I2(CONSTELLATION_QDATA[14]),
-        .I3(\FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ),
-        .I4(FFT_QDATA[14]),
-        .I5(\FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ),
+        .I1(\FPGA_REG_WRITE_DATA[31]_i_14_n_0 ),
+        .I2(FFT_QDATA[14]),
+        .I3(\FPGA_REG_WRITE_DATA[31]_i_15_n_0 ),
+        .I4(CONSTELLATION_QDATA[14]),
+        .I5(\FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[30]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
-  LUT5 #(
-    .INIT(32'h0000007F)) 
-    \FPGA_REG_WRITE_DATA[30]_i_3 
-       (.I0(\FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ),
-        .I2(\FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ),
-        .I3(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
-        .I4(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
-        .O(\FPGA_REG_WRITE_DATA[30]_i_3_n_0 ));
   LUT4 #(
     .INIT(16'h57F7)) 
-    \FPGA_REG_WRITE_DATA[30]_i_4 
+    \FPGA_REG_WRITE_DATA[30]_i_3 
        (.I0(\REG_CNTR[0]_i_2_n_0 ),
         .I1(DEINTERLEAVER_QPSK[30]),
         .I2(DEINTERLEAVER_STROBE),
         .I3(DEINTERLEAVER_QPSK[62]),
-        .O(\FPGA_REG_WRITE_DATA[30]_i_4_n_0 ));
+        .O(\FPGA_REG_WRITE_DATA[30]_i_3_n_0 ));
   LUT6 #(
-    .INIT(64'h4F444F4F4F444444)) 
+    .INIT(64'h8A80FFFF8A808A80)) 
+    \FPGA_REG_WRITE_DATA[30]_i_4 
+       (.I0(\FPGA_REG_WRITE_DATA[31]_i_11_n_0 ),
+        .I1(DEINTERLEAVER_BPSK[1]),
+        .I2(DEINTERLEAVER_STROBE),
+        .I3(DEINTERLEAVER_BPSK[33]),
+        .I4(FPGA_REG_WRITE_STROBE_i_3_n_0),
+        .I5(\FPGA_REG_WRITE_DATA[30]_i_5_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[30]_i_4_n_0 ));
+  LUT5 #(
+    .INIT(32'hB8BBB888)) 
     \FPGA_REG_WRITE_DATA[30]_i_5 
-       (.I0(\FPGA_REG_WRITE_DATA[15]_i_4_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[30]_i_6_n_0 ),
-        .I2(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ),
-        .I3(DEINTERLEAVER_BPSK[1]),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_BPSK[33]),
+       (.I0(DEINTERLEAVER_16QAM[1]),
+        .I1(DEINTERLEAVER_STROBE),
+        .I2(\FPGA_REG_WRITE_DATA[30]_i_6_n_0 ),
+        .I3(\REG_CNTR_reg_n_0_[2] ),
+        .I4(\FPGA_REG_WRITE_DATA[30]_i_7_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[30]_i_5_n_0 ));
   LUT5 #(
     .INIT(32'hB8BBB888)) 
     \FPGA_REG_WRITE_DATA[30]_i_6 
-       (.I0(DEINTERLEAVER_16QAM[1]),
-        .I1(DEINTERLEAVER_STROBE),
-        .I2(\FPGA_REG_WRITE_DATA[30]_i_7_n_0 ),
-        .I3(\REG_CNTR_reg_n_0_[2] ),
-        .I4(\FPGA_REG_WRITE_DATA[30]_i_8_n_0 ),
-        .O(\FPGA_REG_WRITE_DATA[30]_i_6_n_0 ));
-  LUT5 #(
-    .INIT(32'hB8BBB888)) 
-    \FPGA_REG_WRITE_DATA[30]_i_7 
        (.I0(DEINTERLEAVER_16QAM[161]),
         .I1(\REG_CNTR_reg_n_0_[1] ),
         .I2(DEINTERLEAVER_16QAM[33]),
         .I3(\REG_CNTR_reg_n_0_[0] ),
         .I4(DEINTERLEAVER_16QAM[65]),
-        .O(\FPGA_REG_WRITE_DATA[30]_i_7_n_0 ));
+        .O(\FPGA_REG_WRITE_DATA[30]_i_6_n_0 ));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
-    \FPGA_REG_WRITE_DATA[30]_i_8 
+    \FPGA_REG_WRITE_DATA[30]_i_7 
        (.I0(DEINTERLEAVER_16QAM[97]),
         .I1(\REG_CNTR_reg_n_0_[0] ),
         .I2(DEINTERLEAVER_16QAM[129]),
         .I3(\REG_CNTR_reg_n_0_[1] ),
         .I4(DEINTERLEAVER_16QAM[161]),
-        .O(\FPGA_REG_WRITE_DATA[30]_i_8_n_0 ));
+        .O(\FPGA_REG_WRITE_DATA[30]_i_7_n_0 ));
   LUT3 #(
-    .INIT(8'hBF)) 
+    .INIT(8'hFB)) 
     \FPGA_REG_WRITE_DATA[31]_i_1 
        (.I0(\FPGA_REG_WRITE_DATA[31]_i_3_n_0 ),
         .I1(\FPGA_REG_WRITE_DATA[31]_i_4_n_0 ),
-        .I2(\FPGA_REG_WRITE_ADDRESS[8]_i_2_n_0 ),
+        .I2(\FPGA_REG_WRITE_ADDRESS[3]_i_2_n_0 ),
         .O(FPGA_REG_WRITE_DATA0));
-  LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFFFAE)) 
-    \FPGA_REG_WRITE_DATA[31]_i_10 
-       (.I0(\FPGA_REG_WRITE_DATA[15]_i_9_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[15]_i_8_n_0 ),
-        .I2(\FPGA_REG_WRITE_DATA[15]_i_7_n_0 ),
-        .I3(SELECT_AXI_REGS_MODE[0]),
-        .I4(SELECT_AXI_REGS_MODE[1]),
-        .I5(\FPGA_REG_WRITE_DATA[15]_i_6_n_0 ),
-        .O(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT4 #(
     .INIT(16'h5551)) 
-    \FPGA_REG_WRITE_DATA[31]_i_11 
+    \FPGA_REG_WRITE_DATA[31]_i_10 
        (.I0(DEINTERLEAVER_STROBE),
         .I1(\REG_CNTR_reg_n_0_[0] ),
         .I2(\REG_CNTR_reg_n_0_[2] ),
         .I3(\REG_CNTR_reg_n_0_[1] ),
+        .O(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ));
+  LUT6 #(
+    .INIT(64'h0000000000005551)) 
+    \FPGA_REG_WRITE_DATA[31]_i_11 
+       (.I0(FPGA_REG_WRITE_STROBE_i_8_n_0),
+        .I1(FPGA_REG_WRITE_STROBE_i_7_n_0),
+        .I2(FPGA_REG_WRITE_STROBE_i_6_n_0),
+        .I3(FPGA_REG_WRITE_STROBE_i_5_n_0),
+        .I4(\FPGA_REG_WRITE_DATA[31]_i_16_n_0 ),
+        .I5(FPGA_REG_WRITE_STROBE_i_4_n_0),
         .O(\FPGA_REG_WRITE_DATA[31]_i_11_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
-  LUT2 #(
-    .INIT(4'h6)) 
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFFAAAE)) 
     \FPGA_REG_WRITE_DATA[31]_i_12 
-       (.I0(\REG_CNTR_reg_n_0_[2] ),
-        .I1(\REG_CNTR_reg_n_0_[1] ),
+       (.I0(FPGA_REG_WRITE_STROBE_i_8_n_0),
+        .I1(FPGA_REG_WRITE_STROBE_i_7_n_0),
+        .I2(FPGA_REG_WRITE_STROBE_i_6_n_0),
+        .I3(FPGA_REG_WRITE_STROBE_i_5_n_0),
+        .I4(FPGA_REG_WRITE_STROBE_i_9_n_0),
+        .I5(FPGA_REG_WRITE_STROBE_i_4_n_0),
         .O(\FPGA_REG_WRITE_DATA[31]_i_12_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair14" *) 
-  LUT3 #(
-    .INIT(8'hB8)) 
-    \FPGA_REG_WRITE_DATA[31]_i_13 
-       (.I0(DEINTERLEAVER_QPSK[63]),
-        .I1(DEINTERLEAVER_STROBE),
-        .I2(DEINTERLEAVER_QPSK[31]),
-        .O(\FPGA_REG_WRITE_DATA[31]_i_13_n_0 ));
-  LUT5 #(
-    .INIT(32'hB8FFB800)) 
-    \FPGA_REG_WRITE_DATA[31]_i_14 
-       (.I0(DEINTERLEAVER_16QAM[96]),
-        .I1(\REG_CNTR_reg_n_0_[0] ),
-        .I2(DEINTERLEAVER_16QAM[128]),
-        .I3(\REG_CNTR_reg_n_0_[1] ),
-        .I4(DEINTERLEAVER_16QAM[160]),
-        .O(\FPGA_REG_WRITE_DATA[31]_i_14_n_0 ));
   LUT5 #(
     .INIT(32'hB8BBB888)) 
+    \FPGA_REG_WRITE_DATA[31]_i_13 
+       (.I0(DEINTERLEAVER_16QAM[0]),
+        .I1(DEINTERLEAVER_STROBE),
+        .I2(\FPGA_REG_WRITE_DATA[31]_i_17_n_0 ),
+        .I3(\REG_CNTR_reg_n_0_[2] ),
+        .I4(\FPGA_REG_WRITE_DATA[31]_i_18_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[31]_i_13_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFF5DFFFF)) 
+    \FPGA_REG_WRITE_DATA[31]_i_14 
+       (.I0(DATA_STROBE),
+        .I1(\FPGA_REG_WRITE_DATA[31]_i_19_n_0 ),
+        .I2(\FPGA_REG_WRITE_DATA[31]_i_20_n_0 ),
+        .I3(SELECT_AXI_REGS_MODE[1]),
+        .I4(SELECT_AXI_REGS_MODE[0]),
+        .I5(\FPGA_REG_WRITE_ADDRESS[11]_i_6_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[31]_i_14_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFF5DFFFF)) 
     \FPGA_REG_WRITE_DATA[31]_i_15 
+       (.I0(FFT_DATA_VALID),
+        .I1(\FPGA_REG_WRITE_DATA[31]_i_19_n_0 ),
+        .I2(\FPGA_REG_WRITE_DATA[31]_i_20_n_0 ),
+        .I3(\FPGA_REG_WRITE_ADDRESS[11]_i_6_n_0 ),
+        .I4(SELECT_AXI_REGS_MODE[1]),
+        .I5(SELECT_AXI_REGS_MODE[0]),
+        .O(\FPGA_REG_WRITE_DATA[31]_i_15_n_0 ));
+  LUT2 #(
+    .INIT(4'hE)) 
+    \FPGA_REG_WRITE_DATA[31]_i_16 
+       (.I0(SELECT_AXI_REGS_MODE[0]),
+        .I1(SELECT_AXI_REGS_MODE[1]),
+        .O(\FPGA_REG_WRITE_DATA[31]_i_16_n_0 ));
+  LUT5 #(
+    .INIT(32'hB8BBB888)) 
+    \FPGA_REG_WRITE_DATA[31]_i_17 
        (.I0(DEINTERLEAVER_16QAM[160]),
         .I1(\REG_CNTR_reg_n_0_[1] ),
         .I2(DEINTERLEAVER_16QAM[32]),
         .I3(\REG_CNTR_reg_n_0_[0] ),
         .I4(DEINTERLEAVER_16QAM[64]),
-        .O(\FPGA_REG_WRITE_DATA[31]_i_15_n_0 ));
+        .O(\FPGA_REG_WRITE_DATA[31]_i_17_n_0 ));
+  LUT5 #(
+    .INIT(32'hB8FFB800)) 
+    \FPGA_REG_WRITE_DATA[31]_i_18 
+       (.I0(DEINTERLEAVER_16QAM[96]),
+        .I1(\REG_CNTR_reg_n_0_[0] ),
+        .I2(DEINTERLEAVER_16QAM[128]),
+        .I3(\REG_CNTR_reg_n_0_[1] ),
+        .I4(DEINTERLEAVER_16QAM[160]),
+        .O(\FPGA_REG_WRITE_DATA[31]_i_18_n_0 ));
   LUT6 #(
-    .INIT(64'hD5DDD5DDFFFFC0CC)) 
+    .INIT(64'h8000000000000000)) 
+    \FPGA_REG_WRITE_DATA[31]_i_19 
+       (.I0(ADDRESS_COUNTER_reg[6]),
+        .I1(ADDRESS_COUNTER_reg[7]),
+        .I2(ADDRESS_COUNTER_reg[8]),
+        .I3(ADDRESS_COUNTER_reg[9]),
+        .I4(ADDRESS_COUNTER_reg[11]),
+        .I5(ADDRESS_COUNTER_reg[10]),
+        .O(\FPGA_REG_WRITE_DATA[31]_i_19_n_0 ));
+  LUT6 #(
+    .INIT(64'hABA8ABABABABABAB)) 
     \FPGA_REG_WRITE_DATA[31]_i_2 
-       (.I0(\FPGA_REG_WRITE_DATA[31]_i_5_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[31]_i_4_n_0 ),
-        .I2(\FPGA_REG_WRITE_DATA[31]_i_6_n_0 ),
-        .I3(\FPGA_REG_WRITE_DATA[31]_i_7_n_0 ),
-        .I4(EQUALIZER_REG_WRITE_DATA[31]),
-        .I5(\FPGA_REG_WRITE_DATA[31]_i_8_n_0 ),
+       (.I0(EQUALIZER_REG_WRITE_DATA[31]),
+        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
+        .I2(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .I3(\FPGA_REG_WRITE_DATA[31]_i_5_n_0 ),
+        .I4(\FPGA_REG_WRITE_DATA[31]_i_6_n_0 ),
+        .I5(\FPGA_REG_WRITE_DATA[31]_i_7_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[31]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'h444FFFFF444F44FF)) 
+    .INIT(64'h7FFFFFFFFFFFFFFF)) 
+    \FPGA_REG_WRITE_DATA[31]_i_20 
+       (.I0(ADDRESS_COUNTER_reg[0]),
+        .I1(ADDRESS_COUNTER_reg[1]),
+        .I2(ADDRESS_COUNTER_reg[2]),
+        .I3(ADDRESS_COUNTER_reg[3]),
+        .I4(ADDRESS_COUNTER_reg[4]),
+        .I5(ADDRESS_COUNTER_reg[5]),
+        .O(\FPGA_REG_WRITE_DATA[31]_i_20_n_0 ));
+  LUT6 #(
+    .INIT(64'h4F44FFFF4F444F4F)) 
     \FPGA_REG_WRITE_DATA[31]_i_3 
-       (.I0(\FPGA_REG_WRITE_DATA[31]_i_9_n_0 ),
+       (.I0(\FPGA_REG_WRITE_DATA[31]_i_8_n_0 ),
         .I1(\REG_CNTR[0]_i_2_n_0 ),
-        .I2(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ),
-        .I3(\FPGA_REG_WRITE_DATA[31]_i_11_n_0 ),
-        .I4(\FPGA_REG_WRITE_DATA[15]_i_4_n_0 ),
-        .I5(\FPGA_REG_WRITE_DATA[31]_i_12_n_0 ),
+        .I2(FPGA_REG_WRITE_STROBE_i_3_n_0),
+        .I3(\FPGA_REG_WRITE_DATA[31]_i_9_n_0 ),
+        .I4(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ),
+        .I5(\FPGA_REG_WRITE_DATA[31]_i_11_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[31]_i_3_n_0 ));
   (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT5 #(
-    .INIT(32'h10000000)) 
+    .INIT(32'h00100000)) 
     \FPGA_REG_WRITE_DATA[31]_i_4 
        (.I0(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
         .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
-        .I2(\FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ),
-        .I3(\FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ),
-        .I4(\FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ),
+        .I2(\FPGA_REG_WRITE_ADDRESS[11]_i_5_n_0 ),
+        .I3(\FPGA_REG_WRITE_ADDRESS[11]_i_4_n_0 ),
+        .I4(\FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[31]_i_4_n_0 ));
   LUT6 #(
-    .INIT(64'hDD0DDD0D0000DD0D)) 
+    .INIT(64'h8A80FFFF8A808A80)) 
     \FPGA_REG_WRITE_DATA[31]_i_5 
-       (.I0(QDATA[15]),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ),
-        .I2(CONSTELLATION_QDATA[15]),
-        .I3(\FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ),
-        .I4(FFT_QDATA[15]),
-        .I5(\FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ),
-        .O(\FPGA_REG_WRITE_DATA[31]_i_5_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFF454045404540)) 
-    \FPGA_REG_WRITE_DATA[31]_i_6 
-       (.I0(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ),
-        .I1(DEINTERLEAVER_BPSK[0]),
+       (.I0(\REG_CNTR[0]_i_2_n_0 ),
+        .I1(DEINTERLEAVER_QPSK[63]),
         .I2(DEINTERLEAVER_STROBE),
-        .I3(DEINTERLEAVER_BPSK[32]),
-        .I4(\REG_CNTR[0]_i_2_n_0 ),
+        .I3(DEINTERLEAVER_QPSK[31]),
+        .I4(\FPGA_REG_WRITE_DATA[31]_i_12_n_0 ),
         .I5(\FPGA_REG_WRITE_DATA[31]_i_13_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[31]_i_5_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  LUT4 #(
+    .INIT(16'h57F7)) 
+    \FPGA_REG_WRITE_DATA[31]_i_6 
+       (.I0(\FPGA_REG_WRITE_DATA[31]_i_11_n_0 ),
+        .I1(DEINTERLEAVER_BPSK[32]),
+        .I2(DEINTERLEAVER_STROBE),
+        .I3(DEINTERLEAVER_BPSK[0]),
         .O(\FPGA_REG_WRITE_DATA[31]_i_6_n_0 ));
   LUT6 #(
-    .INIT(64'hAAAAABFBFFFFABFB)) 
+    .INIT(64'hDD0DDD0D0000DD0D)) 
     \FPGA_REG_WRITE_DATA[31]_i_7 
-       (.I0(\FPGA_REG_WRITE_DATA[15]_i_4_n_0 ),
+       (.I0(QDATA[15]),
         .I1(\FPGA_REG_WRITE_DATA[31]_i_14_n_0 ),
-        .I2(\REG_CNTR_reg_n_0_[2] ),
+        .I2(FFT_QDATA[15]),
         .I3(\FPGA_REG_WRITE_DATA[31]_i_15_n_0 ),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_16QAM[0]),
+        .I4(CONSTELLATION_QDATA[15]),
+        .I5(\FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[31]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
-  LUT2 #(
-    .INIT(4'h1)) 
-    \FPGA_REG_WRITE_DATA[31]_i_8 
-       (.I0(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
-        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
-        .O(\FPGA_REG_WRITE_DATA[31]_i_8_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair12" *) 
   LUT4 #(
     .INIT(16'h00FB)) 
-    \FPGA_REG_WRITE_DATA[31]_i_9 
+    \FPGA_REG_WRITE_DATA[31]_i_8 
        (.I0(\REG_CNTR_reg_n_0_[2] ),
         .I1(\REG_CNTR_reg_n_0_[1] ),
         .I2(\REG_CNTR_reg_n_0_[0] ),
         .I3(DEINTERLEAVER_STROBE),
+        .O(\FPGA_REG_WRITE_DATA[31]_i_8_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  LUT2 #(
+    .INIT(4'h6)) 
+    \FPGA_REG_WRITE_DATA[31]_i_9 
+       (.I0(\REG_CNTR_reg_n_0_[2] ),
+        .I1(\REG_CNTR_reg_n_0_[1] ),
         .O(\FPGA_REG_WRITE_DATA[31]_i_9_n_0 ));
   LUT6 #(
-    .INIT(64'hABABA8ABABABABAB)) 
+    .INIT(64'hF0F0F0FFF0F0F0DD)) 
     \FPGA_REG_WRITE_DATA[3]_i_1 
-       (.I0(EQUALIZER_REG_WRITE_DATA[3]),
-        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
-        .I2(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
-        .I3(\FPGA_REG_WRITE_DATA[3]_i_2_n_0 ),
-        .I4(\FPGA_REG_WRITE_DATA[3]_i_3_n_0 ),
+       (.I0(\FPGA_REG_WRITE_DATA[3]_i_2_n_0 ),
+        .I1(\FPGA_REG_WRITE_DATA[3]_i_3_n_0 ),
+        .I2(EQUALIZER_REG_WRITE_DATA[3]),
+        .I3(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
+        .I4(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
         .I5(\FPGA_REG_WRITE_DATA[3]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[3]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hDD0DDD0D0000DD0D)) 
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  LUT3 #(
+    .INIT(8'h7F)) 
     \FPGA_REG_WRITE_DATA[3]_i_2 
-       (.I0(IDATA[3]),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ),
-        .I2(CONSTELLATION_IDATA[3]),
-        .I3(\FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ),
-        .I4(FFT_IDATA[3]),
-        .I5(\FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ),
+       (.I0(DEINTERLEAVER_BPSK[28]),
+        .I1(DEINTERLEAVER_STROBE),
+        .I2(\FPGA_REG_WRITE_DATA[31]_i_11_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[3]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'h88FFA0A08888A0A0)) 
+    .INIT(64'h8A80FFFF8A808A80)) 
     \FPGA_REG_WRITE_DATA[3]_i_3 
        (.I0(\REG_CNTR[0]_i_2_n_0 ),
         .I1(DEINTERLEAVER_QPSK[35]),
-        .I2(DEINTERLEAVER_QPSK[3]),
-        .I3(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_BPSK[28]),
+        .I2(DEINTERLEAVER_STROBE),
+        .I3(DEINTERLEAVER_QPSK[3]),
+        .I4(\FPGA_REG_WRITE_DATA[31]_i_12_n_0 ),
+        .I5(\FPGA_REG_WRITE_DATA[3]_i_5_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[3]_i_3_n_0 ));
   LUT6 #(
-    .INIT(64'hAAAAABFBFFFFABFB)) 
+    .INIT(64'h22F222F2FFFF22F2)) 
     \FPGA_REG_WRITE_DATA[3]_i_4 
-       (.I0(\FPGA_REG_WRITE_DATA[15]_i_4_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[3]_i_5_n_0 ),
-        .I2(\REG_CNTR_reg_n_0_[2] ),
-        .I3(\FPGA_REG_WRITE_DATA[3]_i_6_n_0 ),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_16QAM[28]),
+       (.I0(FFT_IDATA[3]),
+        .I1(\FPGA_REG_WRITE_DATA[31]_i_15_n_0 ),
+        .I2(CONSTELLATION_IDATA[3]),
+        .I3(\FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ),
+        .I4(IDATA[3]),
+        .I5(\FPGA_REG_WRITE_DATA[31]_i_14_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[3]_i_4_n_0 ));
   LUT5 #(
-    .INIT(32'hB8FFB800)) 
+    .INIT(32'hB8BBB888)) 
     \FPGA_REG_WRITE_DATA[3]_i_5 
-       (.I0(DEINTERLEAVER_16QAM[124]),
-        .I1(\REG_CNTR_reg_n_0_[0] ),
-        .I2(DEINTERLEAVER_16QAM[156]),
-        .I3(\REG_CNTR_reg_n_0_[1] ),
-        .I4(DEINTERLEAVER_16QAM[188]),
+       (.I0(DEINTERLEAVER_16QAM[28]),
+        .I1(DEINTERLEAVER_STROBE),
+        .I2(\FPGA_REG_WRITE_DATA[3]_i_6_n_0 ),
+        .I3(\REG_CNTR_reg_n_0_[2] ),
+        .I4(\FPGA_REG_WRITE_DATA[3]_i_7_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[3]_i_5_n_0 ));
   LUT5 #(
     .INIT(32'hB8BBB888)) 
@@ -2601,6 +2773,15 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
         .I3(\REG_CNTR_reg_n_0_[0] ),
         .I4(DEINTERLEAVER_16QAM[92]),
         .O(\FPGA_REG_WRITE_DATA[3]_i_6_n_0 ));
+  LUT5 #(
+    .INIT(32'hB8FFB800)) 
+    \FPGA_REG_WRITE_DATA[3]_i_7 
+       (.I0(DEINTERLEAVER_16QAM[124]),
+        .I1(\REG_CNTR_reg_n_0_[0] ),
+        .I2(DEINTERLEAVER_16QAM[156]),
+        .I3(\REG_CNTR_reg_n_0_[1] ),
+        .I4(DEINTERLEAVER_16QAM[188]),
+        .O(\FPGA_REG_WRITE_DATA[3]_i_7_n_0 ));
   LUT6 #(
     .INIT(64'hF0F0F0FFF0F0F0DD)) 
     \FPGA_REG_WRITE_DATA[4]_i_1 
@@ -2611,44 +2792,42 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
         .I4(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
         .I5(\FPGA_REG_WRITE_DATA[4]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[4]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hAAAAABFBFFFFABFB)) 
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  LUT3 #(
+    .INIT(8'h7F)) 
     \FPGA_REG_WRITE_DATA[4]_i_2 
-       (.I0(\FPGA_REG_WRITE_DATA[15]_i_4_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[4]_i_5_n_0 ),
-        .I2(\REG_CNTR_reg_n_0_[2] ),
-        .I3(\FPGA_REG_WRITE_DATA[4]_i_6_n_0 ),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_16QAM[27]),
+       (.I0(DEINTERLEAVER_BPSK[27]),
+        .I1(DEINTERLEAVER_STROBE),
+        .I2(\FPGA_REG_WRITE_DATA[31]_i_11_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[4]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'h88FFA0A08888A0A0)) 
+    .INIT(64'h8A80FFFF8A808A80)) 
     \FPGA_REG_WRITE_DATA[4]_i_3 
        (.I0(\REG_CNTR[0]_i_2_n_0 ),
         .I1(DEINTERLEAVER_QPSK[36]),
-        .I2(DEINTERLEAVER_QPSK[4]),
-        .I3(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_BPSK[27]),
+        .I2(DEINTERLEAVER_STROBE),
+        .I3(DEINTERLEAVER_QPSK[4]),
+        .I4(\FPGA_REG_WRITE_DATA[31]_i_12_n_0 ),
+        .I5(\FPGA_REG_WRITE_DATA[4]_i_5_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[4]_i_3_n_0 ));
   LUT6 #(
     .INIT(64'h22F222F2FFFF22F2)) 
     \FPGA_REG_WRITE_DATA[4]_i_4 
-       (.I0(CONSTELLATION_IDATA[4]),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ),
-        .I2(FFT_IDATA[4]),
-        .I3(\FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ),
+       (.I0(FFT_IDATA[4]),
+        .I1(\FPGA_REG_WRITE_DATA[31]_i_15_n_0 ),
+        .I2(CONSTELLATION_IDATA[4]),
+        .I3(\FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ),
         .I4(IDATA[4]),
-        .I5(\FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ),
+        .I5(\FPGA_REG_WRITE_DATA[31]_i_14_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[4]_i_4_n_0 ));
   LUT5 #(
-    .INIT(32'hB8FFB800)) 
+    .INIT(32'hB8BBB888)) 
     \FPGA_REG_WRITE_DATA[4]_i_5 
-       (.I0(DEINTERLEAVER_16QAM[123]),
-        .I1(\REG_CNTR_reg_n_0_[0] ),
-        .I2(DEINTERLEAVER_16QAM[155]),
-        .I3(\REG_CNTR_reg_n_0_[1] ),
-        .I4(DEINTERLEAVER_16QAM[187]),
+       (.I0(DEINTERLEAVER_16QAM[27]),
+        .I1(DEINTERLEAVER_STROBE),
+        .I2(\FPGA_REG_WRITE_DATA[4]_i_6_n_0 ),
+        .I3(\REG_CNTR_reg_n_0_[2] ),
+        .I4(\FPGA_REG_WRITE_DATA[4]_i_7_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[4]_i_5_n_0 ));
   LUT5 #(
     .INIT(32'hB8BBB888)) 
@@ -2659,112 +2838,118 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
         .I3(\REG_CNTR_reg_n_0_[0] ),
         .I4(DEINTERLEAVER_16QAM[91]),
         .O(\FPGA_REG_WRITE_DATA[4]_i_6_n_0 ));
+  LUT5 #(
+    .INIT(32'hB8FFB800)) 
+    \FPGA_REG_WRITE_DATA[4]_i_7 
+       (.I0(DEINTERLEAVER_16QAM[123]),
+        .I1(\REG_CNTR_reg_n_0_[0] ),
+        .I2(DEINTERLEAVER_16QAM[155]),
+        .I3(\REG_CNTR_reg_n_0_[1] ),
+        .I4(DEINTERLEAVER_16QAM[187]),
+        .O(\FPGA_REG_WRITE_DATA[4]_i_7_n_0 ));
   LUT6 #(
-    .INIT(64'hABA8ABABABABABAB)) 
+    .INIT(64'hFFFFFF00F2F2FF00)) 
     \FPGA_REG_WRITE_DATA[5]_i_1 
-       (.I0(EQUALIZER_REG_WRITE_DATA[5]),
-        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
-        .I2(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
-        .I3(\FPGA_REG_WRITE_DATA[5]_i_2_n_0 ),
-        .I4(\FPGA_REG_WRITE_DATA[5]_i_3_n_0 ),
-        .I5(\FPGA_REG_WRITE_DATA[5]_i_4_n_0 ),
+       (.I0(DEINTERLEAVER_BPSK[26]),
+        .I1(\FPGA_REG_WRITE_DATA[13]_i_3_n_0 ),
+        .I2(\FPGA_REG_WRITE_DATA[5]_i_2_n_0 ),
+        .I3(EQUALIZER_REG_WRITE_DATA[5]),
+        .I4(\FPGA_REG_WRITE_DATA[28]_i_2_n_0 ),
+        .I5(\FPGA_REG_WRITE_DATA[5]_i_3_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[5]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h88FFA0A08888A0A0)) 
+    .INIT(64'h8A80FFFF8A808A80)) 
     \FPGA_REG_WRITE_DATA[5]_i_2 
        (.I0(\REG_CNTR[0]_i_2_n_0 ),
         .I1(DEINTERLEAVER_QPSK[37]),
-        .I2(DEINTERLEAVER_QPSK[5]),
-        .I3(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_BPSK[26]),
+        .I2(DEINTERLEAVER_STROBE),
+        .I3(DEINTERLEAVER_QPSK[5]),
+        .I4(FPGA_REG_WRITE_STROBE_i_3_n_0),
+        .I5(\FPGA_REG_WRITE_DATA[5]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[5]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hAAAAABFBFFFFABFB)) 
+    .INIT(64'h22F222F2FFFF22F2)) 
     \FPGA_REG_WRITE_DATA[5]_i_3 
-       (.I0(\FPGA_REG_WRITE_DATA[15]_i_4_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[5]_i_5_n_0 ),
-        .I2(\REG_CNTR_reg_n_0_[2] ),
-        .I3(\FPGA_REG_WRITE_DATA[5]_i_6_n_0 ),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_16QAM[26]),
-        .O(\FPGA_REG_WRITE_DATA[5]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'hDD0DDD0D0000DD0D)) 
-    \FPGA_REG_WRITE_DATA[5]_i_4 
-       (.I0(IDATA[5]),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ),
+       (.I0(FFT_IDATA[5]),
+        .I1(\FPGA_REG_WRITE_DATA[31]_i_15_n_0 ),
         .I2(CONSTELLATION_IDATA[5]),
-        .I3(\FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ),
-        .I4(FFT_IDATA[5]),
-        .I5(\FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ),
-        .O(\FPGA_REG_WRITE_DATA[5]_i_4_n_0 ));
-  LUT5 #(
-    .INIT(32'hB8FFB800)) 
-    \FPGA_REG_WRITE_DATA[5]_i_5 
-       (.I0(DEINTERLEAVER_16QAM[122]),
-        .I1(\REG_CNTR_reg_n_0_[0] ),
-        .I2(DEINTERLEAVER_16QAM[154]),
-        .I3(\REG_CNTR_reg_n_0_[1] ),
-        .I4(DEINTERLEAVER_16QAM[186]),
-        .O(\FPGA_REG_WRITE_DATA[5]_i_5_n_0 ));
+        .I3(\FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ),
+        .I4(IDATA[5]),
+        .I5(\FPGA_REG_WRITE_DATA[31]_i_14_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[5]_i_3_n_0 ));
   LUT5 #(
     .INIT(32'hB8BBB888)) 
-    \FPGA_REG_WRITE_DATA[5]_i_6 
+    \FPGA_REG_WRITE_DATA[5]_i_4 
+       (.I0(DEINTERLEAVER_16QAM[26]),
+        .I1(DEINTERLEAVER_STROBE),
+        .I2(\FPGA_REG_WRITE_DATA[5]_i_5_n_0 ),
+        .I3(\REG_CNTR_reg_n_0_[2] ),
+        .I4(\FPGA_REG_WRITE_DATA[5]_i_6_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[5]_i_4_n_0 ));
+  LUT5 #(
+    .INIT(32'hB8BBB888)) 
+    \FPGA_REG_WRITE_DATA[5]_i_5 
        (.I0(DEINTERLEAVER_16QAM[186]),
         .I1(\REG_CNTR_reg_n_0_[1] ),
         .I2(DEINTERLEAVER_16QAM[58]),
         .I3(\REG_CNTR_reg_n_0_[0] ),
         .I4(DEINTERLEAVER_16QAM[90]),
+        .O(\FPGA_REG_WRITE_DATA[5]_i_5_n_0 ));
+  LUT5 #(
+    .INIT(32'hB8FFB800)) 
+    \FPGA_REG_WRITE_DATA[5]_i_6 
+       (.I0(DEINTERLEAVER_16QAM[122]),
+        .I1(\REG_CNTR_reg_n_0_[0] ),
+        .I2(DEINTERLEAVER_16QAM[154]),
+        .I3(\REG_CNTR_reg_n_0_[1] ),
+        .I4(DEINTERLEAVER_16QAM[186]),
         .O(\FPGA_REG_WRITE_DATA[5]_i_6_n_0 ));
   LUT6 #(
-    .INIT(64'hF0F0F0FFF0F0F0DD)) 
+    .INIT(64'hABABA8ABABABABAB)) 
     \FPGA_REG_WRITE_DATA[6]_i_1 
-       (.I0(\FPGA_REG_WRITE_DATA[6]_i_2_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[6]_i_3_n_0 ),
-        .I2(EQUALIZER_REG_WRITE_DATA[6]),
-        .I3(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
-        .I4(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+       (.I0(EQUALIZER_REG_WRITE_DATA[6]),
+        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
+        .I2(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .I3(\FPGA_REG_WRITE_DATA[6]_i_2_n_0 ),
+        .I4(\FPGA_REG_WRITE_DATA[6]_i_3_n_0 ),
         .I5(\FPGA_REG_WRITE_DATA[6]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[6]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hAAAAABFBFFFFABFB)) 
+    .INIT(64'hDD0DDD0D0000DD0D)) 
     \FPGA_REG_WRITE_DATA[6]_i_2 
-       (.I0(\FPGA_REG_WRITE_DATA[15]_i_4_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[6]_i_5_n_0 ),
-        .I2(\REG_CNTR_reg_n_0_[2] ),
-        .I3(\FPGA_REG_WRITE_DATA[6]_i_6_n_0 ),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_16QAM[25]),
+       (.I0(IDATA[6]),
+        .I1(\FPGA_REG_WRITE_DATA[31]_i_14_n_0 ),
+        .I2(FFT_IDATA[6]),
+        .I3(\FPGA_REG_WRITE_DATA[31]_i_15_n_0 ),
+        .I4(CONSTELLATION_IDATA[6]),
+        .I5(\FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[6]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'h88FFA0A08888A0A0)) 
+    .INIT(64'h8A80FFFF8A808A80)) 
     \FPGA_REG_WRITE_DATA[6]_i_3 
        (.I0(\REG_CNTR[0]_i_2_n_0 ),
         .I1(DEINTERLEAVER_QPSK[38]),
-        .I2(DEINTERLEAVER_QPSK[6]),
-        .I3(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_BPSK[25]),
+        .I2(DEINTERLEAVER_STROBE),
+        .I3(DEINTERLEAVER_QPSK[6]),
+        .I4(\FPGA_REG_WRITE_DATA[31]_i_12_n_0 ),
+        .I5(\FPGA_REG_WRITE_DATA[6]_i_5_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[6]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'h22F222F2FFFF22F2)) 
+  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  LUT3 #(
+    .INIT(8'h7F)) 
     \FPGA_REG_WRITE_DATA[6]_i_4 
-       (.I0(CONSTELLATION_IDATA[6]),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ),
-        .I2(FFT_IDATA[6]),
-        .I3(\FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ),
-        .I4(IDATA[6]),
-        .I5(\FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ),
+       (.I0(DEINTERLEAVER_BPSK[25]),
+        .I1(DEINTERLEAVER_STROBE),
+        .I2(\FPGA_REG_WRITE_DATA[31]_i_11_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[6]_i_4_n_0 ));
   LUT5 #(
-    .INIT(32'hB8FFB800)) 
+    .INIT(32'hB8BBB888)) 
     \FPGA_REG_WRITE_DATA[6]_i_5 
-       (.I0(DEINTERLEAVER_16QAM[121]),
-        .I1(\REG_CNTR_reg_n_0_[0] ),
-        .I2(DEINTERLEAVER_16QAM[153]),
-        .I3(\REG_CNTR_reg_n_0_[1] ),
-        .I4(DEINTERLEAVER_16QAM[185]),
+       (.I0(DEINTERLEAVER_16QAM[25]),
+        .I1(DEINTERLEAVER_STROBE),
+        .I2(\FPGA_REG_WRITE_DATA[6]_i_6_n_0 ),
+        .I3(\REG_CNTR_reg_n_0_[2] ),
+        .I4(\FPGA_REG_WRITE_DATA[6]_i_7_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[6]_i_5_n_0 ));
   LUT5 #(
     .INIT(32'hB8BBB888)) 
@@ -2775,181 +2960,185 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
         .I3(\REG_CNTR_reg_n_0_[0] ),
         .I4(DEINTERLEAVER_16QAM[89]),
         .O(\FPGA_REG_WRITE_DATA[6]_i_6_n_0 ));
+  LUT5 #(
+    .INIT(32'hB8FFB800)) 
+    \FPGA_REG_WRITE_DATA[6]_i_7 
+       (.I0(DEINTERLEAVER_16QAM[121]),
+        .I1(\REG_CNTR_reg_n_0_[0] ),
+        .I2(DEINTERLEAVER_16QAM[153]),
+        .I3(\REG_CNTR_reg_n_0_[1] ),
+        .I4(DEINTERLEAVER_16QAM[185]),
+        .O(\FPGA_REG_WRITE_DATA[6]_i_7_n_0 ));
   LUT6 #(
-    .INIT(64'hE2E2E2EEEEEEEEEE)) 
+    .INIT(64'hE2EEE2E2EEEEEEEE)) 
     \FPGA_REG_WRITE_DATA[7]_i_1 
        (.I0(EQUALIZER_REG_WRITE_DATA[7]),
-        .I1(\FPGA_REG_WRITE_DATA[31]_i_8_n_0 ),
+        .I1(\FPGA_REG_WRITE_DATA[28]_i_2_n_0 ),
         .I2(\FPGA_REG_WRITE_DATA[7]_i_2_n_0 ),
-        .I3(\FPGA_REG_WRITE_DATA[15]_i_4_n_0 ),
-        .I4(\FPGA_REG_WRITE_DATA[7]_i_3_n_0 ),
-        .I5(\FPGA_REG_WRITE_DATA[7]_i_4_n_0 ),
+        .I3(\FPGA_REG_WRITE_DATA[13]_i_3_n_0 ),
+        .I4(DEINTERLEAVER_BPSK[24]),
+        .I5(\FPGA_REG_WRITE_DATA[7]_i_3_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[7]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h88FFA0A08888A0A0)) 
+    .INIT(64'h8A80FFFF8A808A80)) 
     \FPGA_REG_WRITE_DATA[7]_i_2 
        (.I0(\REG_CNTR[0]_i_2_n_0 ),
         .I1(DEINTERLEAVER_QPSK[39]),
-        .I2(DEINTERLEAVER_QPSK[7]),
-        .I3(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_BPSK[24]),
+        .I2(DEINTERLEAVER_STROBE),
+        .I3(DEINTERLEAVER_QPSK[7]),
+        .I4(\FPGA_REG_WRITE_DATA[31]_i_12_n_0 ),
+        .I5(\FPGA_REG_WRITE_DATA[7]_i_4_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[7]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'h5053535053535353)) 
+    .INIT(64'hDD0DDD0D0000DD0D)) 
     \FPGA_REG_WRITE_DATA[7]_i_3 
-       (.I0(DEINTERLEAVER_16QAM[24]),
-        .I1(\FPGA_REG_WRITE_DATA[7]_i_5_n_0 ),
-        .I2(DEINTERLEAVER_STROBE),
-        .I3(\REG_CNTR_reg_n_0_[2] ),
-        .I4(\REG_CNTR_reg_n_0_[1] ),
-        .I5(DEINTERLEAVER_16QAM[184]),
-        .O(\FPGA_REG_WRITE_DATA[7]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'hDD0DDD0D0000DD0D)) 
-    \FPGA_REG_WRITE_DATA[7]_i_4 
        (.I0(IDATA[7]),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ),
-        .I2(CONSTELLATION_IDATA[7]),
-        .I3(\FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ),
-        .I4(FFT_IDATA[7]),
-        .I5(\FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ),
-        .O(\FPGA_REG_WRITE_DATA[7]_i_4_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFFFFFF0B000800)) 
-    \FPGA_REG_WRITE_DATA[7]_i_5 
-       (.I0(DEINTERLEAVER_16QAM[120]),
-        .I1(\REG_CNTR_reg_n_0_[0] ),
-        .I2(\REG_CNTR_reg_n_0_[2] ),
-        .I3(\REG_CNTR_reg_n_0_[1] ),
-        .I4(DEINTERLEAVER_16QAM[152]),
-        .I5(\FPGA_REG_WRITE_DATA[7]_i_6_n_0 ),
-        .O(\FPGA_REG_WRITE_DATA[7]_i_5_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
-  LUT5 #(
-    .INIT(32'h0000E200)) 
-    \FPGA_REG_WRITE_DATA[7]_i_6 
-       (.I0(DEINTERLEAVER_16QAM[88]),
-        .I1(\REG_CNTR_reg_n_0_[0] ),
-        .I2(DEINTERLEAVER_16QAM[56]),
-        .I3(\REG_CNTR_reg_n_0_[2] ),
-        .I4(\REG_CNTR_reg_n_0_[1] ),
-        .O(\FPGA_REG_WRITE_DATA[7]_i_6_n_0 ));
-  LUT6 #(
-    .INIT(64'hABABA8ABABABABAB)) 
-    \FPGA_REG_WRITE_DATA[8]_i_1 
-       (.I0(EQUALIZER_REG_WRITE_DATA[8]),
-        .I1(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
-        .I2(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
-        .I3(\FPGA_REG_WRITE_DATA[8]_i_2_n_0 ),
-        .I4(\FPGA_REG_WRITE_DATA[8]_i_3_n_0 ),
-        .I5(\FPGA_REG_WRITE_DATA[8]_i_4_n_0 ),
-        .O(\FPGA_REG_WRITE_DATA[8]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hDD0DDD0D0000DD0D)) 
-    \FPGA_REG_WRITE_DATA[8]_i_2 
-       (.I0(IDATA[8]),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ),
-        .I2(CONSTELLATION_IDATA[8]),
-        .I3(\FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ),
-        .I4(FFT_IDATA[8]),
-        .I5(\FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ),
-        .O(\FPGA_REG_WRITE_DATA[8]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h88FFA0A08888A0A0)) 
-    \FPGA_REG_WRITE_DATA[8]_i_3 
-       (.I0(\REG_CNTR[0]_i_2_n_0 ),
-        .I1(DEINTERLEAVER_QPSK[40]),
-        .I2(DEINTERLEAVER_QPSK[8]),
-        .I3(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_BPSK[23]),
-        .O(\FPGA_REG_WRITE_DATA[8]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'hAAAAABFBFFFFABFB)) 
-    \FPGA_REG_WRITE_DATA[8]_i_4 
-       (.I0(\FPGA_REG_WRITE_DATA[15]_i_4_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[8]_i_5_n_0 ),
-        .I2(\REG_CNTR_reg_n_0_[2] ),
-        .I3(\FPGA_REG_WRITE_DATA[8]_i_6_n_0 ),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_16QAM[23]),
-        .O(\FPGA_REG_WRITE_DATA[8]_i_4_n_0 ));
-  LUT5 #(
-    .INIT(32'hB8FFB800)) 
-    \FPGA_REG_WRITE_DATA[8]_i_5 
-       (.I0(DEINTERLEAVER_16QAM[119]),
-        .I1(\REG_CNTR_reg_n_0_[0] ),
-        .I2(DEINTERLEAVER_16QAM[151]),
-        .I3(\REG_CNTR_reg_n_0_[1] ),
-        .I4(DEINTERLEAVER_16QAM[183]),
-        .O(\FPGA_REG_WRITE_DATA[8]_i_5_n_0 ));
+        .I1(\FPGA_REG_WRITE_DATA[31]_i_14_n_0 ),
+        .I2(FFT_IDATA[7]),
+        .I3(\FPGA_REG_WRITE_DATA[31]_i_15_n_0 ),
+        .I4(CONSTELLATION_IDATA[7]),
+        .I5(\FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[7]_i_3_n_0 ));
   LUT5 #(
     .INIT(32'hB8BBB888)) 
-    \FPGA_REG_WRITE_DATA[8]_i_6 
+    \FPGA_REG_WRITE_DATA[7]_i_4 
+       (.I0(DEINTERLEAVER_16QAM[24]),
+        .I1(DEINTERLEAVER_STROBE),
+        .I2(\FPGA_REG_WRITE_DATA[7]_i_5_n_0 ),
+        .I3(\REG_CNTR_reg_n_0_[2] ),
+        .I4(\FPGA_REG_WRITE_DATA[7]_i_6_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[7]_i_4_n_0 ));
+  LUT5 #(
+    .INIT(32'hB8BBB888)) 
+    \FPGA_REG_WRITE_DATA[7]_i_5 
+       (.I0(DEINTERLEAVER_16QAM[184]),
+        .I1(\REG_CNTR_reg_n_0_[1] ),
+        .I2(DEINTERLEAVER_16QAM[56]),
+        .I3(\REG_CNTR_reg_n_0_[0] ),
+        .I4(DEINTERLEAVER_16QAM[88]),
+        .O(\FPGA_REG_WRITE_DATA[7]_i_5_n_0 ));
+  LUT5 #(
+    .INIT(32'hB8FFB800)) 
+    \FPGA_REG_WRITE_DATA[7]_i_6 
+       (.I0(DEINTERLEAVER_16QAM[120]),
+        .I1(\REG_CNTR_reg_n_0_[0] ),
+        .I2(DEINTERLEAVER_16QAM[152]),
+        .I3(\REG_CNTR_reg_n_0_[1] ),
+        .I4(DEINTERLEAVER_16QAM[184]),
+        .O(\FPGA_REG_WRITE_DATA[7]_i_6_n_0 ));
+  LUT6 #(
+    .INIT(64'hE2EEE2E2EEEEEEEE)) 
+    \FPGA_REG_WRITE_DATA[8]_i_1 
+       (.I0(EQUALIZER_REG_WRITE_DATA[8]),
+        .I1(\FPGA_REG_WRITE_DATA[28]_i_2_n_0 ),
+        .I2(\FPGA_REG_WRITE_DATA[8]_i_2_n_0 ),
+        .I3(\FPGA_REG_WRITE_DATA[13]_i_3_n_0 ),
+        .I4(DEINTERLEAVER_BPSK[23]),
+        .I5(\FPGA_REG_WRITE_DATA[8]_i_3_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[8]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h8A80FFFF8A808A80)) 
+    \FPGA_REG_WRITE_DATA[8]_i_2 
+       (.I0(\REG_CNTR[0]_i_2_n_0 ),
+        .I1(DEINTERLEAVER_QPSK[40]),
+        .I2(DEINTERLEAVER_STROBE),
+        .I3(DEINTERLEAVER_QPSK[8]),
+        .I4(\FPGA_REG_WRITE_DATA[31]_i_12_n_0 ),
+        .I5(\FPGA_REG_WRITE_DATA[8]_i_4_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[8]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hDD0DDD0D0000DD0D)) 
+    \FPGA_REG_WRITE_DATA[8]_i_3 
+       (.I0(IDATA[8]),
+        .I1(\FPGA_REG_WRITE_DATA[31]_i_14_n_0 ),
+        .I2(FFT_IDATA[8]),
+        .I3(\FPGA_REG_WRITE_DATA[31]_i_15_n_0 ),
+        .I4(CONSTELLATION_IDATA[8]),
+        .I5(\FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[8]_i_3_n_0 ));
+  LUT5 #(
+    .INIT(32'hB8BBB888)) 
+    \FPGA_REG_WRITE_DATA[8]_i_4 
+       (.I0(DEINTERLEAVER_16QAM[23]),
+        .I1(DEINTERLEAVER_STROBE),
+        .I2(\FPGA_REG_WRITE_DATA[8]_i_5_n_0 ),
+        .I3(\REG_CNTR_reg_n_0_[2] ),
+        .I4(\FPGA_REG_WRITE_DATA[8]_i_6_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[8]_i_4_n_0 ));
+  LUT5 #(
+    .INIT(32'hB8BBB888)) 
+    \FPGA_REG_WRITE_DATA[8]_i_5 
        (.I0(DEINTERLEAVER_16QAM[183]),
         .I1(\REG_CNTR_reg_n_0_[1] ),
         .I2(DEINTERLEAVER_16QAM[55]),
         .I3(\REG_CNTR_reg_n_0_[0] ),
         .I4(DEINTERLEAVER_16QAM[87]),
-        .O(\FPGA_REG_WRITE_DATA[8]_i_6_n_0 ));
-  LUT6 #(
-    .INIT(64'hF0F0F0FFF0F0F0DD)) 
-    \FPGA_REG_WRITE_DATA[9]_i_1 
-       (.I0(\FPGA_REG_WRITE_DATA[9]_i_2_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[9]_i_3_n_0 ),
-        .I2(EQUALIZER_REG_WRITE_DATA[9]),
-        .I3(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
-        .I4(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
-        .I5(\FPGA_REG_WRITE_DATA[9]_i_4_n_0 ),
-        .O(\FPGA_REG_WRITE_DATA[9]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hAAAAABFBFFFFABFB)) 
-    \FPGA_REG_WRITE_DATA[9]_i_2 
-       (.I0(\FPGA_REG_WRITE_DATA[15]_i_4_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA[9]_i_5_n_0 ),
-        .I2(\REG_CNTR_reg_n_0_[2] ),
-        .I3(\FPGA_REG_WRITE_DATA[9]_i_6_n_0 ),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_16QAM[22]),
-        .O(\FPGA_REG_WRITE_DATA[9]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h88FFA0A08888A0A0)) 
-    \FPGA_REG_WRITE_DATA[9]_i_3 
-       (.I0(\REG_CNTR[0]_i_2_n_0 ),
-        .I1(DEINTERLEAVER_QPSK[41]),
-        .I2(DEINTERLEAVER_QPSK[9]),
-        .I3(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ),
-        .I4(DEINTERLEAVER_STROBE),
-        .I5(DEINTERLEAVER_BPSK[22]),
-        .O(\FPGA_REG_WRITE_DATA[9]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'h22F222F2FFFF22F2)) 
-    \FPGA_REG_WRITE_DATA[9]_i_4 
-       (.I0(CONSTELLATION_IDATA[9]),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_4_n_0 ),
-        .I2(FFT_IDATA[9]),
-        .I3(\FPGA_REG_WRITE_ADDRESS[8]_i_3_n_0 ),
-        .I4(IDATA[9]),
-        .I5(\FPGA_REG_WRITE_ADDRESS[8]_i_5_n_0 ),
-        .O(\FPGA_REG_WRITE_DATA[9]_i_4_n_0 ));
+        .O(\FPGA_REG_WRITE_DATA[8]_i_5_n_0 ));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
-    \FPGA_REG_WRITE_DATA[9]_i_5 
-       (.I0(DEINTERLEAVER_16QAM[118]),
+    \FPGA_REG_WRITE_DATA[8]_i_6 
+       (.I0(DEINTERLEAVER_16QAM[119]),
         .I1(\REG_CNTR_reg_n_0_[0] ),
-        .I2(DEINTERLEAVER_16QAM[150]),
+        .I2(DEINTERLEAVER_16QAM[151]),
         .I3(\REG_CNTR_reg_n_0_[1] ),
-        .I4(DEINTERLEAVER_16QAM[182]),
-        .O(\FPGA_REG_WRITE_DATA[9]_i_5_n_0 ));
+        .I4(DEINTERLEAVER_16QAM[183]),
+        .O(\FPGA_REG_WRITE_DATA[8]_i_6_n_0 ));
+  LUT6 #(
+    .INIT(64'hE2EEE2E2EEEEEEEE)) 
+    \FPGA_REG_WRITE_DATA[9]_i_1 
+       (.I0(EQUALIZER_REG_WRITE_DATA[9]),
+        .I1(\FPGA_REG_WRITE_DATA[28]_i_2_n_0 ),
+        .I2(\FPGA_REG_WRITE_DATA[9]_i_2_n_0 ),
+        .I3(\FPGA_REG_WRITE_DATA[13]_i_3_n_0 ),
+        .I4(DEINTERLEAVER_BPSK[22]),
+        .I5(\FPGA_REG_WRITE_DATA[9]_i_3_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[9]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h8A80FFFF8A808A80)) 
+    \FPGA_REG_WRITE_DATA[9]_i_2 
+       (.I0(\REG_CNTR[0]_i_2_n_0 ),
+        .I1(DEINTERLEAVER_QPSK[41]),
+        .I2(DEINTERLEAVER_STROBE),
+        .I3(DEINTERLEAVER_QPSK[9]),
+        .I4(\FPGA_REG_WRITE_DATA[31]_i_12_n_0 ),
+        .I5(\FPGA_REG_WRITE_DATA[9]_i_4_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[9]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hDD0DDD0D0000DD0D)) 
+    \FPGA_REG_WRITE_DATA[9]_i_3 
+       (.I0(IDATA[9]),
+        .I1(\FPGA_REG_WRITE_DATA[31]_i_14_n_0 ),
+        .I2(FFT_IDATA[9]),
+        .I3(\FPGA_REG_WRITE_DATA[31]_i_15_n_0 ),
+        .I4(CONSTELLATION_IDATA[9]),
+        .I5(\FPGA_REG_WRITE_ADDRESS[11]_i_3_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[9]_i_3_n_0 ));
   LUT5 #(
     .INIT(32'hB8BBB888)) 
-    \FPGA_REG_WRITE_DATA[9]_i_6 
+    \FPGA_REG_WRITE_DATA[9]_i_4 
+       (.I0(DEINTERLEAVER_16QAM[22]),
+        .I1(DEINTERLEAVER_STROBE),
+        .I2(\FPGA_REG_WRITE_DATA[9]_i_5_n_0 ),
+        .I3(\REG_CNTR_reg_n_0_[2] ),
+        .I4(\FPGA_REG_WRITE_DATA[9]_i_6_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA[9]_i_4_n_0 ));
+  LUT5 #(
+    .INIT(32'hB8BBB888)) 
+    \FPGA_REG_WRITE_DATA[9]_i_5 
        (.I0(DEINTERLEAVER_16QAM[182]),
         .I1(\REG_CNTR_reg_n_0_[1] ),
         .I2(DEINTERLEAVER_16QAM[54]),
         .I3(\REG_CNTR_reg_n_0_[0] ),
         .I4(DEINTERLEAVER_16QAM[86]),
+        .O(\FPGA_REG_WRITE_DATA[9]_i_5_n_0 ));
+  LUT5 #(
+    .INIT(32'hB8FFB800)) 
+    \FPGA_REG_WRITE_DATA[9]_i_6 
+       (.I0(DEINTERLEAVER_16QAM[118]),
+        .I1(\REG_CNTR_reg_n_0_[0] ),
+        .I2(DEINTERLEAVER_16QAM[150]),
+        .I3(\REG_CNTR_reg_n_0_[1] ),
+        .I4(DEINTERLEAVER_16QAM[182]),
         .O(\FPGA_REG_WRITE_DATA[9]_i_6_n_0 ));
   (* x_interface_ignore = "TRUE" *) 
   FDCE #(
@@ -3059,6 +3248,11 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
         .CLR(RESET),
         .D(\FPGA_REG_WRITE_DATA[1]_i_1_n_0 ),
         .Q(FPGA_REG_WRITE_DATA[1]));
+  MUXF7 \FPGA_REG_WRITE_DATA_reg[1]_i_5 
+       (.I0(\FPGA_REG_WRITE_DATA[1]_i_6_n_0 ),
+        .I1(\FPGA_REG_WRITE_DATA[1]_i_7_n_0 ),
+        .O(\FPGA_REG_WRITE_DATA_reg[1]_i_5_n_0 ),
+        .S(\REG_CNTR_reg_n_0_[2] ));
   (* x_interface_ignore = "TRUE" *) 
   FDCE #(
     .INIT(1'b0)) 
@@ -3243,15 +3437,79 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
     .INIT(8'h7F)) 
     FPGA_REG_WRITE_STROBE_i_1
        (.I0(FPGA_REG_WRITE_STROBE_i_2_n_0),
-        .I1(\FPGA_REG_WRITE_DATA[15]_i_4_n_0 ),
+        .I1(FPGA_REG_WRITE_STROBE_i_3_n_0),
         .I2(\FPGA_REG_WRITE_DATA[31]_i_4_n_0 ),
         .O(FPGA_REG_WRITE_STROBE0));
-  LUT2 #(
-    .INIT(4'hE)) 
+  LUT6 #(
+    .INIT(64'hFFFFFFFFEEEFEEEE)) 
     FPGA_REG_WRITE_STROBE_i_2
        (.I0(SELECT_AXI_REGS_MODE[1]),
-        .I1(\FPGA_REG_WRITE_ADDRESS[8]_i_6_n_0 ),
+        .I1(FPGA_REG_WRITE_STROBE_i_4_n_0),
+        .I2(FPGA_REG_WRITE_STROBE_i_5_n_0),
+        .I3(FPGA_REG_WRITE_STROBE_i_6_n_0),
+        .I4(FPGA_REG_WRITE_STROBE_i_7_n_0),
+        .I5(FPGA_REG_WRITE_STROBE_i_8_n_0),
         .O(FPGA_REG_WRITE_STROBE_i_2_n_0));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFFABAA)) 
+    FPGA_REG_WRITE_STROBE_i_3
+       (.I0(FPGA_REG_WRITE_STROBE_i_4_n_0),
+        .I1(FPGA_REG_WRITE_STROBE_i_5_n_0),
+        .I2(FPGA_REG_WRITE_STROBE_i_6_n_0),
+        .I3(FPGA_REG_WRITE_STROBE_i_7_n_0),
+        .I4(FPGA_REG_WRITE_STROBE_i_8_n_0),
+        .I5(FPGA_REG_WRITE_STROBE_i_9_n_0),
+        .O(FPGA_REG_WRITE_STROBE_i_3_n_0));
+  LUT6 #(
+    .INIT(64'hFFFFFFFEFFFFFFFF)) 
+    FPGA_REG_WRITE_STROBE_i_4
+       (.I0(SELECT_AXI_REGS_MODE[5]),
+        .I1(SELECT_AXI_REGS_MODE[6]),
+        .I2(SELECT_AXI_REGS_MODE[7]),
+        .I3(SELECT_AXI_REGS_MODE[3]),
+        .I4(SELECT_AXI_REGS_MODE[4]),
+        .I5(SELECT_AXI_REGS_MODE[2]),
+        .O(FPGA_REG_WRITE_STROBE_i_4_n_0));
+  LUT4 #(
+    .INIT(16'h7FFF)) 
+    FPGA_REG_WRITE_STROBE_i_5
+       (.I0(ADDRESS_COUNTER_reg[11]),
+        .I1(ADDRESS_COUNTER_reg[1]),
+        .I2(ADDRESS_COUNTER_reg[8]),
+        .I3(ADDRESS_COUNTER_reg[2]),
+        .O(FPGA_REG_WRITE_STROBE_i_5_n_0));
+  LUT4 #(
+    .INIT(16'h7FFF)) 
+    FPGA_REG_WRITE_STROBE_i_6
+       (.I0(ADDRESS_COUNTER_reg[5]),
+        .I1(ADDRESS_COUNTER_reg[4]),
+        .I2(ADDRESS_COUNTER_reg[9]),
+        .I3(ADDRESS_COUNTER_reg[3]),
+        .O(FPGA_REG_WRITE_STROBE_i_6_n_0));
+  LUT4 #(
+    .INIT(16'h8000)) 
+    FPGA_REG_WRITE_STROBE_i_7
+       (.I0(ADDRESS_COUNTER_reg[7]),
+        .I1(ADDRESS_COUNTER_reg[6]),
+        .I2(ADDRESS_COUNTER_reg[10]),
+        .I3(ADDRESS_COUNTER_reg[0]),
+        .O(FPGA_REG_WRITE_STROBE_i_7_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  LUT4 #(
+    .INIT(16'h0001)) 
+    FPGA_REG_WRITE_STROBE_i_8
+       (.I0(\REG_CNTR_reg_n_0_[1] ),
+        .I1(\REG_CNTR_reg_n_0_[2] ),
+        .I2(DEINTERLEAVER_STROBE),
+        .I3(\REG_CNTR_reg_n_0_[0] ),
+        .O(FPGA_REG_WRITE_STROBE_i_8_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair21" *) 
+  LUT2 #(
+    .INIT(4'hB)) 
+    FPGA_REG_WRITE_STROBE_i_9
+       (.I0(SELECT_AXI_REGS_MODE[0]),
+        .I1(SELECT_AXI_REGS_MODE[1]),
+        .O(FPGA_REG_WRITE_STROBE_i_9_n_0));
   (* x_interface_ignore = "TRUE" *) 
   FDCE #(
     .INIT(1'b0)) 
@@ -3268,30 +3526,37 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
         .I1(DEINTERLEAVER_STROBE),
         .I2(\REG_CNTR[0]_i_3_n_0 ),
         .I3(\FPGA_REG_WRITE_DATA[31]_i_3_n_0 ),
-        .I4(\FPGA_REG_WRITE_DATA[31]_i_8_n_0 ),
+        .I4(\FPGA_REG_WRITE_DATA[28]_i_2_n_0 ),
         .I5(\REG_CNTR_reg_n_0_[0] ),
         .O(\REG_CNTR[0]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h0000000002000202)) 
+    .INIT(64'h0000000011101111)) 
     \REG_CNTR[0]_i_2 
-       (.I0(SELECT_AXI_REGS_MODE[0]),
-        .I1(SELECT_AXI_REGS_MODE[1]),
-        .I2(\FPGA_REG_WRITE_DATA[15]_i_6_n_0 ),
-        .I3(\FPGA_REG_WRITE_DATA[15]_i_7_n_0 ),
-        .I4(\FPGA_REG_WRITE_DATA[15]_i_8_n_0 ),
-        .I5(\FPGA_REG_WRITE_DATA[15]_i_9_n_0 ),
+       (.I0(\REG_CNTR[0]_i_4_n_0 ),
+        .I1(FPGA_REG_WRITE_STROBE_i_4_n_0),
+        .I2(FPGA_REG_WRITE_STROBE_i_5_n_0),
+        .I3(FPGA_REG_WRITE_STROBE_i_6_n_0),
+        .I4(FPGA_REG_WRITE_STROBE_i_7_n_0),
+        .I5(FPGA_REG_WRITE_STROBE_i_8_n_0),
         .O(\REG_CNTR[0]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h002800280028AAAA)) 
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  LUT5 #(
+    .INIT(32'h00145555)) 
     \REG_CNTR[0]_i_3 
-       (.I0(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ),
+       (.I0(\FPGA_REG_WRITE_DATA[31]_i_11_n_0 ),
         .I1(\REG_CNTR_reg_n_0_[1] ),
         .I2(\REG_CNTR_reg_n_0_[2] ),
         .I3(\REG_CNTR_reg_n_0_[0] ),
-        .I4(SELECT_AXI_REGS_MODE[1]),
-        .I5(\FPGA_REG_WRITE_ADDRESS[8]_i_6_n_0 ),
+        .I4(FPGA_REG_WRITE_STROBE_i_2_n_0),
         .O(\REG_CNTR[0]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  (* SOFT_HLUTNM = "soft_lutpair21" *) 
+  LUT2 #(
+    .INIT(4'hB)) 
+    \REG_CNTR[0]_i_4 
+       (.I0(SELECT_AXI_REGS_MODE[1]),
+        .I1(SELECT_AXI_REGS_MODE[0]),
+        .O(\REG_CNTR[0]_i_4_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT5 #(
     .INIT(32'hFFFB0008)) 
     \REG_CNTR[1]_i_1 
@@ -3302,33 +3567,32 @@ module block_design_0_axi_regs_mux_0_0_axi_regs_mux
         .I4(\REG_CNTR_reg_n_0_[1] ),
         .O(\REG_CNTR[1]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hAAAA000000000280)) 
+    .INIT(64'h5555000000000410)) 
     \REG_CNTR[1]_i_2 
-       (.I0(\FPGA_REG_WRITE_DATA[31]_i_10_n_0 ),
+       (.I0(\FPGA_REG_WRITE_DATA[31]_i_11_n_0 ),
         .I1(\REG_CNTR_reg_n_0_[0] ),
-        .I2(\REG_CNTR_reg_n_0_[1] ),
-        .I3(\REG_CNTR_reg_n_0_[2] ),
+        .I2(\REG_CNTR_reg_n_0_[2] ),
+        .I3(\REG_CNTR_reg_n_0_[1] ),
         .I4(DEINTERLEAVER_STROBE),
         .I5(\REG_CNTR[0]_i_2_n_0 ),
         .O(\REG_CNTR[1]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFFF2F00000020)) 
+    .INIT(64'hA8FFFFFFA8000000)) 
     \REG_CNTR[2]_i_1 
        (.I0(FPGA_REG_WRITE_STROBE_i_2_n_0),
         .I1(\REG_CNTR[2]_i_2_n_0 ),
-        .I2(\FPGA_REG_WRITE_DATA[31]_i_3_n_0 ),
-        .I3(EQUALIZER_REG_WRITE_STROBE_PHASE_2),
-        .I4(EQUALIZER_REG_WRITE_STROBE_PHASE_1),
+        .I2(DEINTERLEAVER_STROBE),
+        .I3(\FPGA_REG_WRITE_DATA[31]_i_3_n_0 ),
+        .I4(\FPGA_REG_WRITE_DATA[28]_i_2_n_0 ),
         .I5(\REG_CNTR_reg_n_0_[2] ),
         .O(\REG_CNTR[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair8" *) 
-  LUT4 #(
-    .INIT(16'h4555)) 
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  LUT3 #(
+    .INIT(8'h40)) 
     \REG_CNTR[2]_i_2 
-       (.I0(DEINTERLEAVER_STROBE),
-        .I1(\REG_CNTR_reg_n_0_[1] ),
-        .I2(\REG_CNTR_reg_n_0_[2] ),
-        .I3(\REG_CNTR_reg_n_0_[0] ),
+       (.I0(\REG_CNTR_reg_n_0_[1] ),
+        .I1(\REG_CNTR_reg_n_0_[2] ),
+        .I2(\REG_CNTR_reg_n_0_[0] ),
         .O(\REG_CNTR[2]_i_2_n_0 ));
   FDCE #(
     .INIT(1'b0)) 
