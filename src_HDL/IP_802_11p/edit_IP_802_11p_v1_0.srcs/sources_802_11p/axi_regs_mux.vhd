@@ -69,6 +69,13 @@ entity axi_regs_mux is
         CONSTELLATION_DATA_VALID : in STD_LOGIC;
         CONSTELLATION_DATA_FIRST_SYMBOL_MARKER  : in STD_LOGIC;
 
+        -- demapped + deinterleaved data
+        DEINTERLEAVER_STROBE            : in std_logic := '0'; 
+    
+        DEINTERLEAVER_BPSK              : in std_logic_vector(0 to 47); -- 1.5 x 32b
+        DEINTERLEAVER_QPSK              : in std_logic_vector(0 to 95); -- 1.5 x 32b
+        DEINTERLEAVER_16QAM             : in std_logic_vector(0 to 191); -- 6 x 32b
+
 
         -- output to axi wrapper 
         FPGA_REG_WRITE_ADDRESS : out STD_LOGIC_VECTOR ( 8 downto 0 ) := (others => '0');
@@ -106,6 +113,8 @@ architecture Behavioral of axi_regs_mux is
     signal   ADDRESS_COUNTER : unsigned(8 downto 0) := (others => '0');
     constant MIN_REG_ADDRESS : unsigned(8 downto 0) := "000001000"; -- start at 8
 
+    signal REG_CNTR : integer range 0 to 31 := 0;
+
 begin
 
     process(RESET, CLOCK)
@@ -117,6 +126,8 @@ begin
             FPGA_REG_WRITE_STROBE  <= '0';
 
             ADDRESS_COUNTER <= (others => '0');
+
+            REG_CNTR <= 0;
 
         elsif rising_edge(CLOCK) then
             
@@ -165,6 +176,70 @@ begin
                 FPGA_REG_WRITE_STROBE  <= '1';     
             
                 ADDRESS_COUNTER <= ADDRESS_COUNTER + 1;
+
+            -- 5a) Write deinterleaved data -- BPSK (reg8--reg510)
+            elsif SELECT_AXI_REGS_MODE = x"04" and (DEINTERLEAVER_STROBE = '1' or REG_CNTR > 0) and ADDRESS_COUNTER /= "111111111" then -- just dont use the last register and stop on that address
+
+                FPGA_REG_WRITE_STROBE  <= '1';
+                FPGA_REG_WRITE_ADDRESS <= std_logic_vector(ADDRESS_COUNTER);
+
+                if DEINTERLEAVER_STROBE = '1' then
+                    FPGA_REG_WRITE_DATA    <= DEINTERLEAVER_BPSK(0 to 31); 
+                    REG_CNTR <= 1;
+                elsif REG_CNTR = 1 then
+                    FPGA_REG_WRITE_DATA    <= (DEINTERLEAVER_BPSK(32 to 47) & x"0000");
+                    REG_CNTR <= 0;  
+                end if;
+                     
+                ADDRESS_COUNTER <= ADDRESS_COUNTER + 1;
+
+            -- 5b) Write deinterleaved data -- QPSK (reg8--reg510)
+            elsif SELECT_AXI_REGS_MODE = x"05" and (DEINTERLEAVER_STROBE = '1' or REG_CNTR > 0) and ADDRESS_COUNTER /= "111111111" then -- just dont use the last register and stop on that address
+
+                FPGA_REG_WRITE_STROBE  <= '1';
+                FPGA_REG_WRITE_ADDRESS <= std_logic_vector(ADDRESS_COUNTER);
+
+                if DEINTERLEAVER_STROBE = '1' then
+                    FPGA_REG_WRITE_DATA    <= DEINTERLEAVER_QPSK(0 to 31); 
+                    REG_CNTR <= 2;
+                elsif REG_CNTR = 2 then
+                    FPGA_REG_WRITE_DATA    <= DEINTERLEAVER_QPSK(32 to 63);
+                    REG_CNTR <= 1;  
+                elsif REG_CNTR = 2 then
+                    FPGA_REG_WRITE_DATA    <= DEINTERLEAVER_QPSK(64 to 95);
+                    REG_CNTR <= 1;  
+                end if;
+                     
+                ADDRESS_COUNTER <= ADDRESS_COUNTER + 1;
+
+            -- 5c) Write deinterleaved data -- 16QAM (reg8--reg510)
+            elsif SELECT_AXI_REGS_MODE = x"06" and (DEINTERLEAVER_STROBE = '1' or REG_CNTR > 0) and ADDRESS_COUNTER /= "111111111" then -- just dont use the last register and stop on that address
+
+                FPGA_REG_WRITE_STROBE  <= '1';
+                FPGA_REG_WRITE_ADDRESS <= std_logic_vector(ADDRESS_COUNTER);
+
+                if DEINTERLEAVER_STROBE = '1' then
+                    FPGA_REG_WRITE_DATA    <= DEINTERLEAVER_16QAM(0 to 31); 
+                    REG_CNTR <= 5;
+                elsif REG_CNTR = 5 then
+                    FPGA_REG_WRITE_DATA    <= DEINTERLEAVER_16QAM(32 to 63);
+                    REG_CNTR <= 4;  
+                elsif REG_CNTR = 4 then
+                    FPGA_REG_WRITE_DATA    <= DEINTERLEAVER_16QAM(64 to 95);
+                    REG_CNTR <= 3;  
+                elsif REG_CNTR = 3 then
+                    FPGA_REG_WRITE_DATA    <= DEINTERLEAVER_16QAM(96 to 127);
+                    REG_CNTR <= 2;  
+                elsif REG_CNTR = 2 then
+                    FPGA_REG_WRITE_DATA    <= DEINTERLEAVER_16QAM(128 to 159);
+                    REG_CNTR <= 1; 
+                elsif REG_CNTR = 1 then
+                    FPGA_REG_WRITE_DATA    <= DEINTERLEAVER_16QAM(160 to 191);
+                    REG_CNTR <= 0;  
+                end if;
+                     
+                ADDRESS_COUNTER <= ADDRESS_COUNTER + 1;
+
 
             -- No new data
             else 

@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:module_ref:constellation_tracker:1.0
--- IP Revision: 1713872620
+-- IP Revision: 1713899929
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -124,7 +124,7 @@ ARCHITECTURE block_design_0_constellation_tracker_0_0_arch OF block_design_0_con
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF block_design_0_constellation_tracker_0_0_arch : ARCHITECTURE IS "block_design_0_constellation_tracker_0_0,constellation_tracker,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF block_design_0_constellation_tracker_0_0_arch: ARCHITECTURE IS "block_design_0_constellation_tracker_0_0,constellation_tracker,{x_ipProduct=Vivado 2023.2.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=constellation_tracker,x_ipVersion=1.0,x_ipCoreRevision=1713872620,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
+  ATTRIBUTE CORE_GENERATION_INFO OF block_design_0_constellation_tracker_0_0_arch: ARCHITECTURE IS "block_design_0_constellation_tracker_0_0,constellation_tracker,{x_ipProduct=Vivado 2023.2.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=constellation_tracker,x_ipVersion=1.0,x_ipCoreRevision=1713899929,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
   ATTRIBUTE IP_DEFINITION_SOURCE OF block_design_0_constellation_tracker_0_0_arch: ARCHITECTURE IS "module_ref";
   ATTRIBUTE X_INTERFACE_INFO : STRING;

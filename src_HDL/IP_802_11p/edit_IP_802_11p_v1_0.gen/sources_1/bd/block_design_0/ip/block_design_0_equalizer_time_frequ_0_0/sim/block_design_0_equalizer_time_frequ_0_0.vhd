@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:module_ref:equalizer_time_frequency:1.0
--- IP Revision: 1713872616
+-- IP Revision: 1713899926
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;

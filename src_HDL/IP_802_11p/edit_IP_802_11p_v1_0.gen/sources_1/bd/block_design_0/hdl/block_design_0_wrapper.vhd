@@ -2,8 +2,8 @@
 --Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
---Date        : Tue Apr 23 20:45:39 2024
---Host        : lab817_01 running 64-bit major release  (build 9200)
+--Date        : Tue Apr 23 22:37:07 2024
+--Host        : ASUS_ROG running 64-bit major release  (build 9200)
 --Command     : generate_target block_design_0_wrapper.bd
 --Design      : block_design_0_wrapper
 --Purpose     : IP block netlist

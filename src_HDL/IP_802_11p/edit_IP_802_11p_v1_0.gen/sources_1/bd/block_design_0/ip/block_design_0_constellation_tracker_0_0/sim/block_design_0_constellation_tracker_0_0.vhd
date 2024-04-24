@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:module_ref:constellation_tracker:1.0
--- IP Revision: 1713872620
+-- IP Revision: 1713899929
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;

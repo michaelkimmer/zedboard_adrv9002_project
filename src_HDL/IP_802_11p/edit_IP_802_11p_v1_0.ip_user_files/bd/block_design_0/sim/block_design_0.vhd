@@ -2,8 +2,8 @@
 --Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
---Date        : Tue Apr 23 20:45:39 2024
---Host        : lab817_01 running 64-bit major release  (build 9200)
+--Date        : Tue Apr 23 22:37:07 2024
+--Host        : ASUS_ROG running 64-bit major release  (build 9200)
 --Command     : generate_target block_design_0.bd
 --Design      : block_design_0
 --Purpose     : IP block netlist
@@ -832,6 +832,10 @@ architecture STRUCTURE of block_design_0 is
     CONSTELLATION_QDATA : in STD_LOGIC_VECTOR ( 23 downto 0 );
     CONSTELLATION_DATA_VALID : in STD_LOGIC;
     CONSTELLATION_DATA_FIRST_SYMBOL_MARKER : in STD_LOGIC;
+    DEINTERLEAVER_STROBE : in STD_LOGIC;
+    DEINTERLEAVER_BPSK : in STD_LOGIC_VECTOR ( 0 to 47 );
+    DEINTERLEAVER_QPSK : in STD_LOGIC_VECTOR ( 0 to 95 );
+    DEINTERLEAVER_16QAM : in STD_LOGIC_VECTOR ( 0 to 191 );
     FPGA_REG_WRITE_ADDRESS : out STD_LOGIC_VECTOR ( 8 downto 0 );
     FPGA_REG_WRITE_DATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
     FPGA_REG_WRITE_STROBE : out STD_LOGIC
@@ -940,7 +944,9 @@ architecture STRUCTURE of block_design_0 is
   signal data_interleaver_0_DATA_OUT_STROBE : STD_LOGIC;
   signal data_interleaver_0_IDATA_OUT : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal data_interleaver_0_QDATA_OUT : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal deinterleaver_0_DEINTERLEAVER_16QAM : STD_LOGIC_VECTOR ( 0 to 191 );
   signal deinterleaver_0_DEINTERLEAVER_BPSK : STD_LOGIC_VECTOR ( 0 to 47 );
+  signal deinterleaver_0_DEINTERLEAVER_QPSK : STD_LOGIC_VECTOR ( 0 to 95 );
   signal deinterleaver_0_DEINTERLEAVER_START_MARKER : STD_LOGIC;
   signal deinterleaver_0_DEINTERLEAVER_STROBE : STD_LOGIC;
   signal demapper_0_DEMAPPING_16QAM : STD_LOGIC_VECTOR ( 0 to 207 );
@@ -994,8 +1000,6 @@ architecture STRUCTURE of block_design_0 is
   signal timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal timing_acquisition_8_0_DETECTION_XCORR : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_act_power_0_POWER_STROBE_UNCONNECTED : STD_LOGIC;
-  signal NLW_deinterleaver_0_DEINTERLEAVER_16QAM_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 191 );
-  signal NLW_deinterleaver_0_DEINTERLEAVER_QPSK_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 95 );
   signal NLW_hier_fft_ofdm_event_data_in_channel_halt_UNCONNECTED : STD_LOGIC;
   signal NLW_hier_fft_ofdm_event_frame_started_UNCONNECTED : STD_LOGIC;
   signal NLW_hier_fft_ofdm_event_tlast_missing_UNCONNECTED : STD_LOGIC;
@@ -1043,6 +1047,10 @@ axi_regs_mux_0: component block_design_0_axi_regs_mux_0_0
       CONSTELLATION_IDATA(23 downto 0) => constellation_tracker_0_CONSTELLATION_IDATA_OUT(23 downto 0),
       CONSTELLATION_QDATA(23 downto 0) => constellation_tracker_0_CONSTELLATION_QDATA_OUT(23 downto 0),
       DATA_STROBE => data_delay_0_DATA_OUT_STROBE,
+      DEINTERLEAVER_16QAM(0 to 191) => deinterleaver_0_DEINTERLEAVER_16QAM(0 to 191),
+      DEINTERLEAVER_BPSK(0 to 47) => deinterleaver_0_DEINTERLEAVER_BPSK(0 to 47),
+      DEINTERLEAVER_QPSK(0 to 95) => deinterleaver_0_DEINTERLEAVER_QPSK(0 to 95),
+      DEINTERLEAVER_STROBE => deinterleaver_0_DEINTERLEAVER_STROBE,
       EQUALIZER_REG_WRITE_DATA(31 downto 0) => equalizer_time_frequ_0_FPGA_REG_WRITE_DATA(31 downto 0),
       EQUALIZER_REG_WRITE_STROBE_PHASE_1 => equalizer_time_frequ_0_FPGA_REG_WRITE_STROBE_PHASE_1,
       EQUALIZER_REG_WRITE_STROBE_PHASE_2 => equalizer_time_frequ_0_FPGA_REG_WRITE_STROBE_PHASE_2,
@@ -1121,9 +1129,9 @@ data_interleaver_0: component block_design_0_data_interleaver_0_0
 deinterleaver_0: component block_design_0_deinterleaver_0_0
      port map (
       CLOCK => CLOCK_0_1,
-      DEINTERLEAVER_16QAM(0 to 191) => NLW_deinterleaver_0_DEINTERLEAVER_16QAM_UNCONNECTED(0 to 191),
+      DEINTERLEAVER_16QAM(0 to 191) => deinterleaver_0_DEINTERLEAVER_16QAM(0 to 191),
       DEINTERLEAVER_BPSK(0 to 47) => deinterleaver_0_DEINTERLEAVER_BPSK(0 to 47),
-      DEINTERLEAVER_QPSK(0 to 95) => NLW_deinterleaver_0_DEINTERLEAVER_QPSK_UNCONNECTED(0 to 95),
+      DEINTERLEAVER_QPSK(0 to 95) => deinterleaver_0_DEINTERLEAVER_QPSK(0 to 95),
       DEINTERLEAVER_START_MARKER => deinterleaver_0_DEINTERLEAVER_START_MARKER,
       DEINTERLEAVER_STROBE => deinterleaver_0_DEINTERLEAVER_STROBE,
       DEMAPPING_16QAM(0 to 207) => demapper_0_DEMAPPING_16QAM(0 to 207),

@@ -572,7 +572,7 @@ atatype {name {attribs {resolve_type immediate dependency {} format string minim
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:ab8be48e</spirit:value>
+            <spirit:value>9:1560917b</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -584,7 +584,7 @@ atatype {name {attribs {resolve_type immediate dependency {} format string minim
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:0d2d0ce9</spirit:value>
+            <spirit:value>9:b3c6791c</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -598,11 +598,11 @@ atatype {name {attribs {resolve_type immediate dependency {} format string minim
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Apr 23 11:46:59 UTC 2024</spirit:value>
+            <spirit:value>Tue Apr 23 19:59:36 UTC 2024</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:0d2d0ce9</spirit:value>
+            <spirit:value>9:b3c6791c</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -613,7 +613,7 @@ atatype {name {attribs {resolve_type immediate dependency {} format string minim
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:0d2d0ce9</spirit:value>
+            <spirit:value>9:b3c6791c</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -629,11 +629,11 @@ atatype {name {attribs {resolve_type immediate dependency {} format string minim
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Apr 23 11:45:15 UTC 2024</spirit:value>
+            <spirit:value>Tue Apr 23 19:19:57 UTC 2024</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:ab8be48e</spirit:value>
+            <spirit:value>9:1560917b</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -649,11 +649,11 @@ atatype {name {attribs {resolve_type immediate dependency {} format string minim
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Apr 23 11:45:15 UTC 2024</spirit:value>
+            <spirit:value>Tue Apr 23 19:54:40 UTC 2024</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:0d2d0ce9</spirit:value>
+            <spirit:value>9:b3c6791c</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1117,7 +1117,7 @@ atatype {name {attribs {resolve_type immediate dependency {} format string minim
     <xilinx:coreExtensions>
       <xilinx:displayName>fft_ofdm_v1_0</xilinx:displayName>
       <xilinx:definitionSource>module_ref</xilinx:definitionSource>
-      <xilinx:coreRevision>1713872614</xilinx:coreRevision>
+      <xilinx:coreRevision>1713899918</xilinx:coreRevision>
       <xilinx:configElementInfos>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.ACLK_INTF.ASSOCIATED_BUSIF" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.ACLK_INTF.ASSOCIATED_CLKEN" xilinx:valuePermission="bd_and_user"/>

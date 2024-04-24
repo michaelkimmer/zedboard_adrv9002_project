@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:module_ref:atan_constellation_block:1.0
--- IP Revision: 1713872618
+-- IP Revision: 1713899927
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -106,7 +106,7 @@ ARCHITECTURE block_design_0_atan_constellation_b_0_0_arch OF block_design_0_atan
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF block_design_0_atan_constellation_b_0_0_arch : ARCHITECTURE IS "block_design_0_atan_constellation_b_0_0,atan_constellation_block,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF block_design_0_atan_constellation_b_0_0_arch: ARCHITECTURE IS "block_design_0_atan_constellation_b_0_0,atan_constellation_block,{x_ipProduct=Vivado 2023.2.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=atan_constellation_block,x_ipVersion=1.0,x_ipCoreRevision=1713872618,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
+  ATTRIBUTE CORE_GENERATION_INFO OF block_design_0_atan_constellation_b_0_0_arch: ARCHITECTURE IS "block_design_0_atan_constellation_b_0_0,atan_constellation_block,{x_ipProduct=Vivado 2023.2.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=atan_constellation_block,x_ipVersion=1.0,x_ipCoreRevision=1713899927,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
   ATTRIBUTE IP_DEFINITION_SOURCE OF block_design_0_atan_constellation_b_0_0_arch: ARCHITECTURE IS "module_ref";
   ATTRIBUTE X_INTERFACE_INFO : STRING;

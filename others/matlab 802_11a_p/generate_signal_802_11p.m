@@ -32,7 +32,7 @@ preamble(length(short_seq_time)) = preamble(length(short_seq_time)) + short_seq_
 %% Set parameters
 % Set DATARATE
 %   6, 9, 12, 18, 24, 36, 48, and 54 (Support of 6, 12, and 24 data rates is mandatory.)
-DATARATE = 36; % --- 6: Coding rate 1/2, BPSK --- 36: Coding rate 3/4, 16-QAM ---
+DATARATE = 6; % --- 6: Coding rate 1/2, BPSK --- 36: Coding rate 3/4, 16-QAM ---
 
 %% Create SIGNAL symbol
 %   SIGNAL symbol is not scrambled

@@ -179,7 +179,7 @@
     "components": {
       "rx_clock_domain_cros_0": {
         "vlnv": "xilinx.com:module_ref:rx_clock_domain_crossing:1.0",
-        "ip_revision": "1713872621",
+        "ip_revision": "1713899908",
         "xci_name": "block_design_0_rx_clock_domain_cros_0_0",
         "xci_path": "ip\\block_design_0_rx_clock_domain_cros_0_0\\block_design_0_rx_clock_domain_cros_0_0.xci",
         "inst_hier_path": "rx_clock_domain_cros_0",
@@ -262,7 +262,7 @@
       },
       "data_interleaver_0": {
         "vlnv": "xilinx.com:module_ref:data_interleaver:1.0",
-        "ip_revision": "1713872614",
+        "ip_revision": "1713899919",
         "xci_name": "block_design_0_data_interleaver_0_0",
         "xci_path": "ip\\block_design_0_data_interleaver_0_0\\block_design_0_data_interleaver_0_0.xci",
         "inst_hier_path": "data_interleaver_0",
@@ -320,7 +320,7 @@
       },
       "data_delay_0": {
         "vlnv": "xilinx.com:module_ref:data_delay:1.0",
-        "ip_revision": "1713872616",
+        "ip_revision": "1713899923",
         "xci_name": "block_design_0_data_delay_0_0",
         "xci_path": "ip\\block_design_0_data_delay_0_0\\block_design_0_data_delay_0_0.xci",
         "inst_hier_path": "data_delay_0",
@@ -418,7 +418,7 @@
       },
       "act_power_0": {
         "vlnv": "xilinx.com:module_ref:act_power:1.0",
-        "ip_revision": "1713872617",
+        "ip_revision": "1713899924",
         "xci_name": "block_design_0_act_power_0_0",
         "xci_path": "ip\\block_design_0_act_power_0_0\\block_design_0_act_power_0_0.xci",
         "inst_hier_path": "act_power_0",
@@ -471,7 +471,7 @@
       },
       "timing_acquisition_8_0": {
         "vlnv": "xilinx.com:module_ref:timing_acquisition_802_11p:1.0",
-        "ip_revision": "1713872615",
+        "ip_revision": "1713899925",
         "xci_name": "block_design_0_timing_acquisition_8_0_0",
         "xci_path": "ip\\block_design_0_timing_acquisition_8_0_0\\block_design_0_timing_acquisition_8_0_0.xci",
         "inst_hier_path": "timing_acquisition_8_0",
@@ -653,7 +653,7 @@
         "components": {
           "fft_ofdm_0": {
             "vlnv": "xilinx.com:module_ref:fft_ofdm:1.0",
-            "ip_revision": "1713872614",
+            "ip_revision": "1713899918",
             "xci_name": "block_design_0_fft_ofdm_0_1",
             "xci_path": "ip\\block_design_0_fft_ofdm_0_1\\block_design_0_fft_ofdm_0_1.xci",
             "inst_hier_path": "hier_fft_ofdm/fft_ofdm_0",
@@ -1265,7 +1265,7 @@
           },
           "atan_block_0": {
             "vlnv": "xilinx.com:module_ref:atan_block:1.0",
-            "ip_revision": "1713872613",
+            "ip_revision": "1713899921",
             "xci_name": "block_design_0_atan_block_0_0",
             "xci_path": "ip\\block_design_0_atan_block_0_0\\block_design_0_atan_block_0_0.xci",
             "inst_hier_path": "hier_atan/atan_block_0",
@@ -1648,7 +1648,7 @@
         "components": {
           "rotation_block_0": {
             "vlnv": "xilinx.com:module_ref:rotation_block:1.0",
-            "ip_revision": "1713872618",
+            "ip_revision": "1713899920",
             "xci_name": "block_design_0_rotation_block_0_0",
             "xci_path": "ip\\block_design_0_rotation_block_0_0\\block_design_0_rotation_block_0_0.xci",
             "inst_hier_path": "hier_rotation/rotation_block_0",
@@ -2206,7 +2206,7 @@
       },
       "equalizer_time_frequ_0": {
         "vlnv": "xilinx.com:module_ref:equalizer_time_frequency:1.0",
-        "ip_revision": "1713872616",
+        "ip_revision": "1713899926",
         "xci_name": "block_design_0_equalizer_time_frequ_0_0",
         "xci_path": "ip\\block_design_0_equalizer_time_frequ_0_0\\block_design_0_equalizer_time_frequ_0_0.xci",
         "inst_hier_path": "equalizer_time_frequ_0",
@@ -2361,7 +2361,7 @@
       },
       "axi_regs_mux_0": {
         "vlnv": "xilinx.com:module_ref:axi_regs_mux:1.0",
-        "ip_revision": "1713872612",
+        "ip_revision": "1713902194",
         "xci_name": "block_design_0_axi_regs_mux_0_0",
         "xci_path": "ip\\block_design_0_axi_regs_mux_0_0\\block_design_0_axi_regs_mux_0_0.xci",
         "inst_hier_path": "axi_regs_mux_0",
@@ -2450,6 +2450,24 @@
           "CONSTELLATION_DATA_FIRST_SYMBOL_MARKER": {
             "direction": "I"
           },
+          "DEINTERLEAVER_STROBE": {
+            "direction": "I"
+          },
+          "DEINTERLEAVER_BPSK": {
+            "direction": "I",
+            "left": "0",
+            "right": "47"
+          },
+          "DEINTERLEAVER_QPSK": {
+            "direction": "I",
+            "left": "0",
+            "right": "95"
+          },
+          "DEINTERLEAVER_16QAM": {
+            "direction": "I",
+            "left": "0",
+            "right": "191"
+          },
           "FPGA_REG_WRITE_ADDRESS": {
             "direction": "O",
             "left": "8",
@@ -2510,7 +2528,7 @@
         "components": {
           "atan_constellation_b_0": {
             "vlnv": "xilinx.com:module_ref:atan_constellation_block:1.0",
-            "ip_revision": "1713872618",
+            "ip_revision": "1713899927",
             "xci_name": "block_design_0_atan_constellation_b_0_0",
             "xci_path": "ip\\block_design_0_atan_constellation_b_0_0\\block_design_0_atan_constellation_b_0_0.xci",
             "inst_hier_path": "hier_atan_constellation/atan_constellation_b_0",
@@ -3003,7 +3021,7 @@
           },
           "rotation_constellati_0": {
             "vlnv": "xilinx.com:module_ref:rotation_constellation_block:1.0",
-            "ip_revision": "1713872619",
+            "ip_revision": "1713899928",
             "xci_name": "block_design_0_rotation_constellati_0_0",
             "xci_path": "ip\\block_design_0_rotation_constellati_0_0\\block_design_0_rotation_constellati_0_0.xci",
             "inst_hier_path": "hier_rotation_constellation/rotation_constellati_0",
@@ -3458,7 +3476,7 @@
       },
       "constellation_tracker_0": {
         "vlnv": "xilinx.com:module_ref:constellation_tracker:1.0",
-        "ip_revision": "1713872620",
+        "ip_revision": "1713899929",
         "xci_name": "block_design_0_constellation_tracker_0_0",
         "xci_path": "ip\\block_design_0_constellation_tracker_0_0\\block_design_0_constellation_tracker_0_0.xci",
         "inst_hier_path": "constellation_tracker_0",
@@ -3597,7 +3615,7 @@
       },
       "demapper_0": {
         "vlnv": "xilinx.com:module_ref:demapper:1.0",
-        "ip_revision": "1713897932",
+        "ip_revision": "1713899930",
         "xci_name": "block_design_0_demapper_0_0",
         "xci_path": "ip\\block_design_0_demapper_0_0\\block_design_0_demapper_0_0.xci",
         "inst_hier_path": "demapper_0",
@@ -3671,7 +3689,7 @@
       },
       "deinterleaver_0": {
         "vlnv": "xilinx.com:module_ref:deinterleaver:1.0",
-        "ip_revision": "1713897498",
+        "ip_revision": "1713899931",
         "xci_name": "block_design_0_deinterleaver_0_0",
         "xci_path": "ip\\block_design_0_deinterleaver_0_0\\block_design_0_deinterleaver_0_0.xci",
         "inst_hier_path": "deinterleaver_0",
@@ -3754,16 +3772,16 @@
           "ila_0/clk",
           "hier_atan_constellation/CLOCK",
           "hier_rotation_constellation/CLOCK",
-          "axi_regs_mux_0/CLOCK",
-          "data_interleaver_0/CLOCK",
-          "timing_acquisition_8_0/CLOCK",
-          "data_delay_0/CLOCK",
-          "equalizer_time_frequ_0/CLOCK",
-          "act_power_0/CLOCK",
-          "constellation_tracker_0/CLOCK",
           "rx_clock_domain_cros_0/CLOCK",
+          "data_interleaver_0/CLOCK",
+          "data_delay_0/CLOCK",
+          "act_power_0/CLOCK",
+          "timing_acquisition_8_0/CLOCK",
+          "equalizer_time_frequ_0/CLOCK",
+          "constellation_tracker_0/CLOCK",
+          "demapper_0/CLOCK",
           "deinterleaver_0/CLOCK",
-          "demapper_0/CLOCK"
+          "axi_regs_mux_0/CLOCK"
         ]
       },
       "DETECTION_THRESHOLD_0_1": {
@@ -3780,16 +3798,16 @@
           "hier_rotation/RESET",
           "hier_atan_constellation/RESET",
           "hier_rotation_constellation/RESET",
-          "axi_regs_mux_0/RESET",
-          "data_interleaver_0/RESET",
-          "timing_acquisition_8_0/RESET",
-          "data_delay_0/RESET",
-          "equalizer_time_frequ_0/RESET",
-          "act_power_0/RESET",
-          "constellation_tracker_0/RESET",
           "rx_clock_domain_cros_0/RESET",
+          "data_interleaver_0/RESET",
+          "data_delay_0/RESET",
+          "act_power_0/RESET",
+          "timing_acquisition_8_0/RESET",
+          "equalizer_time_frequ_0/RESET",
+          "constellation_tracker_0/RESET",
+          "demapper_0/RESET",
           "deinterleaver_0/RESET",
-          "demapper_0/RESET"
+          "axi_regs_mux_0/RESET"
         ]
       },
       "RX_CLOCK_0_1": {
@@ -3879,30 +3897,30 @@
       "constellation_tracker_0_CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER": {
         "ports": [
           "constellation_tracker_0/CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER",
-          "axi_regs_mux_0/CONSTELLATION_DATA_FIRST_SYMBOL_MARKER",
-          "demapper_0/CONSTELLATION_DATA_IN_FIRST_SYMBOL_MARKER"
+          "demapper_0/CONSTELLATION_DATA_IN_FIRST_SYMBOL_MARKER",
+          "axi_regs_mux_0/CONSTELLATION_DATA_FIRST_SYMBOL_MARKER"
         ]
       },
       "constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID": {
         "ports": [
           "constellation_tracker_0/CONSTELLATION_DATA_OUT_VALID",
           "ila_0/probe4",
-          "axi_regs_mux_0/CONSTELLATION_DATA_VALID",
-          "demapper_0/CONSTELLATION_DATA_IN_VALID"
+          "demapper_0/CONSTELLATION_DATA_IN_VALID",
+          "axi_regs_mux_0/CONSTELLATION_DATA_VALID"
         ]
       },
       "constellation_tracker_0_CONSTELLATION_IDATA_OUT": {
         "ports": [
           "constellation_tracker_0/CONSTELLATION_IDATA_OUT",
-          "axi_regs_mux_0/CONSTELLATION_IDATA",
-          "demapper_0/CONSTELLATION_IDATA_IN"
+          "demapper_0/CONSTELLATION_IDATA_IN",
+          "axi_regs_mux_0/CONSTELLATION_IDATA"
         ]
       },
       "constellation_tracker_0_CONSTELLATION_QDATA_OUT": {
         "ports": [
           "constellation_tracker_0/CONSTELLATION_QDATA_OUT",
-          "axi_regs_mux_0/CONSTELLATION_QDATA",
-          "demapper_0/CONSTELLATION_QDATA_IN"
+          "demapper_0/CONSTELLATION_QDATA_IN",
+          "axi_regs_mux_0/CONSTELLATION_QDATA"
         ]
       },
       "constellation_tracker_0_ROTATION_CONSTELLATION_CNTR_IN": {
@@ -3939,19 +3957,19 @@
         "ports": [
           "data_delay_0/DATA_OUT_STROBE",
           "ila_0/probe0",
-          "axi_regs_mux_0/DATA_STROBE",
+          "act_power_0/DATA_STROBE",
           "timing_acquisition_8_0/DATA_STROBE",
           "equalizer_time_frequ_0/DATA_IN_STROBE",
-          "act_power_0/DATA_STROBE"
+          "axi_regs_mux_0/DATA_STROBE"
         ]
       },
       "data_delay_0_IDATA_OUT": {
         "ports": [
           "data_delay_0/IDATA_OUT",
-          "axi_regs_mux_0/IDATA",
+          "act_power_0/IDATA",
           "timing_acquisition_8_0/IDATA",
           "equalizer_time_frequ_0/IDATA_IN",
-          "act_power_0/IDATA"
+          "axi_regs_mux_0/IDATA"
         ]
       },
       "data_delay_0_IDATA_OUT_DELAY_16": {
@@ -3981,10 +3999,10 @@
       "data_delay_0_QDATA_OUT": {
         "ports": [
           "data_delay_0/QDATA_OUT",
-          "axi_regs_mux_0/QDATA",
+          "act_power_0/QDATA",
           "timing_acquisition_8_0/QDATA",
           "equalizer_time_frequ_0/QDATA_IN",
-          "act_power_0/QDATA"
+          "axi_regs_mux_0/QDATA"
         ]
       },
       "data_delay_0_QDATA_OUT_DELAY_16": {
@@ -4029,10 +4047,23 @@
           "data_delay_0/QDATA_IN"
         ]
       },
+      "deinterleaver_0_DEINTERLEAVER_16QAM": {
+        "ports": [
+          "deinterleaver_0/DEINTERLEAVER_16QAM",
+          "axi_regs_mux_0/DEINTERLEAVER_16QAM"
+        ]
+      },
       "deinterleaver_0_DEINTERLEAVER_BPSK": {
         "ports": [
           "deinterleaver_0/DEINTERLEAVER_BPSK",
-          "ila_0/probe8"
+          "ila_0/probe8",
+          "axi_regs_mux_0/DEINTERLEAVER_BPSK"
+        ]
+      },
+      "deinterleaver_0_DEINTERLEAVER_QPSK": {
+        "ports": [
+          "deinterleaver_0/DEINTERLEAVER_QPSK",
+          "axi_regs_mux_0/DEINTERLEAVER_QPSK"
         ]
       },
       "deinterleaver_0_DEINTERLEAVER_START_MARKER": {
@@ -4044,7 +4075,8 @@
       "deinterleaver_0_DEINTERLEAVER_STROBE": {
         "ports": [
           "deinterleaver_0/DEINTERLEAVER_STROBE",
-          "ila_0/probe6"
+          "ila_0/probe6",
+          "axi_regs_mux_0/DEINTERLEAVER_STROBE"
         ]
       },
       "demapper_0_DEMAPPING_16QAM": {
@@ -4148,22 +4180,22 @@
         "ports": [
           "hier_fft_ofdm/FFT_DATA_OUT_VALID",
           "ila_0/probe2",
-          "axi_regs_mux_0/FFT_DATA_VALID",
-          "constellation_tracker_0/FFT_DATA_IN_VALID"
+          "constellation_tracker_0/FFT_DATA_IN_VALID",
+          "axi_regs_mux_0/FFT_DATA_VALID"
         ]
       },
       "fft_ofdm_0_FFT_IDATA_OUT": {
         "ports": [
           "hier_fft_ofdm/FFT_IDATA_OUT",
-          "axi_regs_mux_0/FFT_IDATA",
-          "constellation_tracker_0/FFT_IDATA_IN"
+          "constellation_tracker_0/FFT_IDATA_IN",
+          "axi_regs_mux_0/FFT_IDATA"
         ]
       },
       "fft_ofdm_0_FFT_QDATA_OUT": {
         "ports": [
           "hier_fft_ofdm/FFT_QDATA_OUT",
-          "axi_regs_mux_0/FFT_QDATA",
-          "constellation_tracker_0/FFT_QDATA_IN"
+          "constellation_tracker_0/FFT_QDATA_IN",
+          "axi_regs_mux_0/FFT_QDATA"
         ]
       },
       "hier_atan_ATAN_PHASE_OUT": {
@@ -4200,8 +4232,8 @@
         "ports": [
           "hier_fft_ofdm/FFT_DATA_OUT_FIRST_SYMBOL_MARKER",
           "ila_0/probe3",
-          "axi_regs_mux_0/FFT_DATA_FIRST_SYMBOL_MARKER",
-          "constellation_tracker_0/FFT_DATA_IN_FIRST_SYMBOL_MARKER"
+          "constellation_tracker_0/FFT_DATA_IN_FIRST_SYMBOL_MARKER",
+          "axi_regs_mux_0/FFT_DATA_FIRST_SYMBOL_MARKER"
         ]
       },
       "hier_rotation_constellation_ROTATION_CONSTELLATION_DATA_OUT_CNTR": {
