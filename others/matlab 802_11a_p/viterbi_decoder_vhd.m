@@ -14,8 +14,8 @@ text = text + "constant VITERBI_FORWARD_MEM : viterbi_mem_t := (" + newline;
 output_text_b0 = "";
 output_text_b1 = "";
 
-for state = 0:127
-    state_array = fliplr(int2bit(state, 7).'); % LSB at one
+for state = 0:63
+    state_array = fliplr(int2bit(state, 6).'); % LSB at one
 
     % Leave the state with this b !!
     for b = 0:1
@@ -52,8 +52,8 @@ text = text + "constant VITERBI_BACKWARD_MEM : viterbi_mem_t := (" + newline;
 output_text_b0 = "";
 output_text_b1 = "";
 
-for new_state = 0:127
-    new_state_array = fliplr(int2bit(new_state, 7).'); % b=LSB at one
+for new_state = 0:63
+    new_state_array = fliplr(int2bit(new_state, 6).'); % b=LSB at one
     b = new_state_array(1);
 
     % previous state

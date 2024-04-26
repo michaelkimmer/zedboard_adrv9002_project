@@ -2,7 +2,7 @@
 --Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
---Date        : Wed Apr 24 23:04:47 2024
+--Date        : Fri Apr 26 00:02:11 2024
 --Host        : ASUS_ROG running 64-bit major release  (build 9200)
 --Command     : generate_target block_design_0.bd
 --Design      : block_design_0
@@ -672,7 +672,7 @@ entity block_design_0 is
     SELECT_AXI_REGS_MODE : in STD_LOGIC_VECTOR ( 7 downto 0 )
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of block_design_0 : entity is "block_design_0,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=block_design_0,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=26,numReposBlks=21,numNonXlnxBlks=0,numHierBlks=5,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=15,numPkgbdBlks=0,bdsource=USER,synth_mode=Hierarchical}";
+  attribute CORE_GENERATION_INFO of block_design_0 : entity is "block_design_0,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=block_design_0,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=27,numReposBlks=22,numNonXlnxBlks=0,numHierBlks=5,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=16,numPkgbdBlks=0,bdsource=USER,synth_mode=Hierarchical}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of block_design_0 : entity is "block_design_0.hwdef";
 end block_design_0;
@@ -773,7 +773,9 @@ architecture STRUCTURE of block_design_0 is
     probe7 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe8 : in STD_LOGIC_VECTOR ( 47 downto 0 );
     probe9 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    probe10 : in STD_LOGIC_VECTOR ( 31 downto 0 )
+    probe10 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    probe11 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe12 : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component block_design_0_ila_0_0;
   component block_design_0_equalizer_time_frequ_0_0 is
@@ -904,6 +906,19 @@ architecture STRUCTURE of block_design_0 is
     DEINTERLEAVER_16QAM : out STD_LOGIC_VECTOR ( 0 to 191 )
   );
   end component block_design_0_deinterleaver_0_0;
+  component block_design_0_viterbi_hard_0_0 is
+  port (
+    RESET : in STD_LOGIC;
+    CLOCK : in STD_LOGIC;
+    DEINTERLEAVER_START_MARKER : in STD_LOGIC;
+    DEINTERLEAVER_STROBE : in STD_LOGIC;
+    DEINTERLEAVER_BPSK : in STD_LOGIC_VECTOR ( 0 to 47 );
+    DEINTERLEAVER_QPSK : in STD_LOGIC_VECTOR ( 0 to 95 );
+    DEINTERLEAVER_16QAM : in STD_LOGIC_VECTOR ( 0 to 191 );
+    VITERBI_OUTPUT_VALID : out STD_LOGIC;
+    VITERBI_OUTPUT : out STD_LOGIC
+  );
+  end component block_design_0_viterbi_hard_0_0;
   signal CLOCK_0_1 : STD_LOGIC;
   signal DETECTION_THRESHOLD_0_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal RESET_0_1 : STD_LOGIC;
@@ -999,6 +1014,8 @@ architecture STRUCTURE of block_design_0 is
   signal timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal timing_acquisition_8_0_DETECTION_XCORR : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal viterbi_hard_0_VITERBI_OUTPUT : STD_LOGIC;
+  signal viterbi_hard_0_VITERBI_OUTPUT_VALID : STD_LOGIC;
   signal NLW_act_power_0_POWER_STROBE_UNCONNECTED : STD_LOGIC;
   signal NLW_hier_fft_ofdm_event_data_in_channel_halt_UNCONNECTED : STD_LOGIC;
   signal NLW_hier_fft_ofdm_event_frame_started_UNCONNECTED : STD_LOGIC;
@@ -1283,6 +1300,8 @@ ila_0: component block_design_0_ila_0_0
       probe1(1) => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
       probe1(0) => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
       probe10(31 downto 0) => timing_acquisition_8_0_CONTINUOUS_XCORR(31 downto 0),
+      probe11(0) => viterbi_hard_0_VITERBI_OUTPUT_VALID,
+      probe12(0) => viterbi_hard_0_VITERBI_OUTPUT,
       probe2(15) => fft_ofdm_0_FFT_DATA_OUT_VALID,
       probe2(14) => fft_ofdm_0_FFT_DATA_OUT_VALID,
       probe2(13) => fft_ofdm_0_FFT_DATA_OUT_VALID,
@@ -1427,5 +1446,17 @@ timing_acquisition_8_0: component block_design_0_timing_acquisition_8_0_0
       QDATA_DELAY_48(15 downto 0) => data_delay_0_QDATA_OUT_DELAY_48(15 downto 0),
       QDATA_DELAY_64(15 downto 0) => data_delay_0_QDATA_OUT_DELAY_64(15 downto 0),
       RESET => RESET_0_1
+    );
+viterbi_hard_0: component block_design_0_viterbi_hard_0_0
+     port map (
+      CLOCK => CLOCK_0_1,
+      DEINTERLEAVER_16QAM(0 to 191) => deinterleaver_0_DEINTERLEAVER_16QAM(0 to 191),
+      DEINTERLEAVER_BPSK(0 to 47) => deinterleaver_0_DEINTERLEAVER_BPSK(0 to 47),
+      DEINTERLEAVER_QPSK(0 to 95) => deinterleaver_0_DEINTERLEAVER_QPSK(0 to 95),
+      DEINTERLEAVER_START_MARKER => deinterleaver_0_DEINTERLEAVER_START_MARKER,
+      DEINTERLEAVER_STROBE => deinterleaver_0_DEINTERLEAVER_STROBE,
+      RESET => RESET_0_1,
+      VITERBI_OUTPUT => viterbi_hard_0_VITERBI_OUTPUT,
+      VITERBI_OUTPUT_VALID => viterbi_hard_0_VITERBI_OUTPUT_VALID
     );
 end STRUCTURE;
