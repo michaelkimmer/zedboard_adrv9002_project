@@ -2,8 +2,8 @@
 --Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
---Date        : Fri Apr 26 00:02:11 2024
---Host        : ASUS_ROG running 64-bit major release  (build 9200)
+--Date        : Fri Apr 26 14:56:09 2024
+--Host        : lab817_01 running 64-bit major release  (build 9200)
 --Command     : generate_target block_design_0.bd
 --Design      : block_design_0
 --Purpose     : IP block netlist
@@ -672,7 +672,7 @@ entity block_design_0 is
     SELECT_AXI_REGS_MODE : in STD_LOGIC_VECTOR ( 7 downto 0 )
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of block_design_0 : entity is "block_design_0,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=block_design_0,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=27,numReposBlks=22,numNonXlnxBlks=0,numHierBlks=5,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=16,numPkgbdBlks=0,bdsource=USER,synth_mode=Hierarchical}";
+  attribute CORE_GENERATION_INFO of block_design_0 : entity is "block_design_0,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=block_design_0,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=26,numReposBlks=21,numNonXlnxBlks=0,numHierBlks=5,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=16,numPkgbdBlks=0,bdsource=USER,synth_mode=Hierarchical}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of block_design_0 : entity is "block_design_0.hwdef";
 end block_design_0;
@@ -760,24 +760,6 @@ architecture STRUCTURE of block_design_0 is
     DETECTION_STS_AUTOCORR_Q : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   end component block_design_0_timing_acquisition_8_0_0;
-  component block_design_0_ila_0_0 is
-  port (
-    clk : in STD_LOGIC;
-    probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe2 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe3 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe4 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe5 : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    probe6 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe7 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe8 : in STD_LOGIC_VECTOR ( 47 downto 0 );
-    probe9 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    probe10 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    probe11 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe12 : in STD_LOGIC_VECTOR ( 0 to 0 )
-  );
-  end component block_design_0_ila_0_0;
   component block_design_0_equalizer_time_frequ_0_0 is
   port (
     RESET : in STD_LOGIC;
@@ -838,6 +820,8 @@ architecture STRUCTURE of block_design_0 is
     DEINTERLEAVER_BPSK : in STD_LOGIC_VECTOR ( 0 to 47 );
     DEINTERLEAVER_QPSK : in STD_LOGIC_VECTOR ( 0 to 95 );
     DEINTERLEAVER_16QAM : in STD_LOGIC_VECTOR ( 0 to 191 );
+    VITERBI_SIGNAL_VALID : in STD_LOGIC;
+    VITERBI_SIGNAL : in STD_LOGIC_VECTOR ( 31 downto 0 );
     FPGA_REG_WRITE_ADDRESS : out STD_LOGIC_VECTOR ( 11 downto 0 );
     FPGA_REG_WRITE_DATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
     FPGA_REG_WRITE_STROBE : out STD_LOGIC
@@ -915,8 +899,8 @@ architecture STRUCTURE of block_design_0 is
     DEINTERLEAVER_BPSK : in STD_LOGIC_VECTOR ( 0 to 47 );
     DEINTERLEAVER_QPSK : in STD_LOGIC_VECTOR ( 0 to 95 );
     DEINTERLEAVER_16QAM : in STD_LOGIC_VECTOR ( 0 to 191 );
-    VITERBI_OUTPUT_VALID : out STD_LOGIC;
-    VITERBI_OUTPUT : out STD_LOGIC
+    VITERBI_SIGNAL_VALID : out STD_LOGIC;
+    VITERBI_SIGNAL : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   end component block_design_0_viterbi_hard_0_0;
   signal CLOCK_0_1 : STD_LOGIC;
@@ -1008,19 +992,19 @@ architecture STRUCTURE of block_design_0 is
   signal rx_clock_domain_cros_0_DATA_STROBE : STD_LOGIC;
   signal rx_clock_domain_cros_0_IDATA : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal rx_clock_domain_cros_0_QDATA : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal timing_acquisition_8_0_CONTINUOUS_XCORR : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED : STD_LOGIC;
   signal timing_acquisition_8_0_DETECTION_STROBE : STD_LOGIC;
   signal timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal timing_acquisition_8_0_DETECTION_XCORR : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal viterbi_hard_0_VITERBI_OUTPUT : STD_LOGIC;
-  signal viterbi_hard_0_VITERBI_OUTPUT_VALID : STD_LOGIC;
+  signal viterbi_hard_0_VITERBI_SIGNAL : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal viterbi_hard_0_VITERBI_SIGNAL_VALID : STD_LOGIC;
   signal NLW_act_power_0_POWER_STROBE_UNCONNECTED : STD_LOGIC;
   signal NLW_hier_fft_ofdm_event_data_in_channel_halt_UNCONNECTED : STD_LOGIC;
   signal NLW_hier_fft_ofdm_event_frame_started_UNCONNECTED : STD_LOGIC;
   signal NLW_hier_fft_ofdm_event_tlast_missing_UNCONNECTED : STD_LOGIC;
   signal NLW_hier_fft_ofdm_event_tlast_unexpected_UNCONNECTED : STD_LOGIC;
+  signal NLW_timing_acquisition_8_0_CONTINUOUS_XCORR_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal NLW_timing_acquisition_8_0_DETECTION_XCORR_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of CLOCK : signal is "xilinx.com:signal:clock:1.0 CLK.CLOCK CLK";
   attribute X_INTERFACE_PARAMETER : string;
@@ -1081,7 +1065,9 @@ axi_regs_mux_0: component block_design_0_axi_regs_mux_0_0
       IDATA(15 downto 0) => data_delay_0_IDATA_OUT(15 downto 0),
       QDATA(15 downto 0) => data_delay_0_QDATA_OUT(15 downto 0),
       RESET => RESET_0_1,
-      SELECT_AXI_REGS_MODE(7 downto 0) => SELECT_AXI_REGS_MODE_0_1(7 downto 0)
+      SELECT_AXI_REGS_MODE(7 downto 0) => SELECT_AXI_REGS_MODE_0_1(7 downto 0),
+      VITERBI_SIGNAL(31 downto 0) => viterbi_hard_0_VITERBI_SIGNAL(31 downto 0),
+      VITERBI_SIGNAL_VALID => viterbi_hard_0_VITERBI_SIGNAL_VALID
     );
 constellation_tracker_0: component block_design_0_constellation_tracker_0_0
      port map (
@@ -1279,137 +1265,6 @@ hier_rotation_constellation: entity work.hier_rotation_constellation_imp_EG5J2R
       ROTATION_CONSTELLATION_QDATA_IN(23 downto 0) => constellation_tracker_0_ROTATION_CONSTELLATION_QDATA_IN(23 downto 0),
       ROTATION_CONSTELLATION_QDATA_OUT(23 downto 0) => hier_rotation_constellation_ROTATION_CONSTELLATION_QDATA_OUT(23 downto 0)
     );
-ila_0: component block_design_0_ila_0_0
-     port map (
-      clk => CLOCK_0_1,
-      probe0(0) => data_delay_0_DATA_OUT_STROBE,
-      probe1(15) => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
-      probe1(14) => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
-      probe1(13) => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
-      probe1(12) => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
-      probe1(11) => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
-      probe1(10) => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
-      probe1(9) => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
-      probe1(8) => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
-      probe1(7) => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
-      probe1(6) => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
-      probe1(5) => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
-      probe1(4) => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
-      probe1(3) => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
-      probe1(2) => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
-      probe1(1) => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
-      probe1(0) => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
-      probe10(31 downto 0) => timing_acquisition_8_0_CONTINUOUS_XCORR(31 downto 0),
-      probe11(0) => viterbi_hard_0_VITERBI_OUTPUT_VALID,
-      probe12(0) => viterbi_hard_0_VITERBI_OUTPUT,
-      probe2(15) => fft_ofdm_0_FFT_DATA_OUT_VALID,
-      probe2(14) => fft_ofdm_0_FFT_DATA_OUT_VALID,
-      probe2(13) => fft_ofdm_0_FFT_DATA_OUT_VALID,
-      probe2(12) => fft_ofdm_0_FFT_DATA_OUT_VALID,
-      probe2(11) => fft_ofdm_0_FFT_DATA_OUT_VALID,
-      probe2(10) => fft_ofdm_0_FFT_DATA_OUT_VALID,
-      probe2(9) => fft_ofdm_0_FFT_DATA_OUT_VALID,
-      probe2(8) => fft_ofdm_0_FFT_DATA_OUT_VALID,
-      probe2(7) => fft_ofdm_0_FFT_DATA_OUT_VALID,
-      probe2(6) => fft_ofdm_0_FFT_DATA_OUT_VALID,
-      probe2(5) => fft_ofdm_0_FFT_DATA_OUT_VALID,
-      probe2(4) => fft_ofdm_0_FFT_DATA_OUT_VALID,
-      probe2(3) => fft_ofdm_0_FFT_DATA_OUT_VALID,
-      probe2(2) => fft_ofdm_0_FFT_DATA_OUT_VALID,
-      probe2(1) => fft_ofdm_0_FFT_DATA_OUT_VALID,
-      probe2(0) => fft_ofdm_0_FFT_DATA_OUT_VALID,
-      probe3(15) => hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER,
-      probe3(14) => hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER,
-      probe3(13) => hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER,
-      probe3(12) => hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER,
-      probe3(11) => hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER,
-      probe3(10) => hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER,
-      probe3(9) => hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER,
-      probe3(8) => hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER,
-      probe3(7) => hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER,
-      probe3(6) => hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER,
-      probe3(5) => hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER,
-      probe3(4) => hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER,
-      probe3(3) => hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER,
-      probe3(2) => hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER,
-      probe3(1) => hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER,
-      probe3(0) => hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER,
-      probe4(15) => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
-      probe4(14) => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
-      probe4(13) => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
-      probe4(12) => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
-      probe4(11) => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
-      probe4(10) => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
-      probe4(9) => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
-      probe4(8) => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
-      probe4(7) => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
-      probe4(6) => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
-      probe4(5) => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
-      probe4(4) => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
-      probe4(3) => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
-      probe4(2) => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
-      probe4(1) => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
-      probe4(0) => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
-      probe5(7) => deinterleaver_0_DEINTERLEAVER_START_MARKER,
-      probe5(6) => deinterleaver_0_DEINTERLEAVER_START_MARKER,
-      probe5(5) => deinterleaver_0_DEINTERLEAVER_START_MARKER,
-      probe5(4) => deinterleaver_0_DEINTERLEAVER_START_MARKER,
-      probe5(3) => deinterleaver_0_DEINTERLEAVER_START_MARKER,
-      probe5(2) => deinterleaver_0_DEINTERLEAVER_START_MARKER,
-      probe5(1) => deinterleaver_0_DEINTERLEAVER_START_MARKER,
-      probe5(0) => deinterleaver_0_DEINTERLEAVER_START_MARKER,
-      probe6(0) => deinterleaver_0_DEINTERLEAVER_STROBE,
-      probe7(0) => demapper_0_DEMAPPING_STROBE,
-      probe8(47) => deinterleaver_0_DEINTERLEAVER_BPSK(0),
-      probe8(46) => deinterleaver_0_DEINTERLEAVER_BPSK(1),
-      probe8(45) => deinterleaver_0_DEINTERLEAVER_BPSK(2),
-      probe8(44) => deinterleaver_0_DEINTERLEAVER_BPSK(3),
-      probe8(43) => deinterleaver_0_DEINTERLEAVER_BPSK(4),
-      probe8(42) => deinterleaver_0_DEINTERLEAVER_BPSK(5),
-      probe8(41) => deinterleaver_0_DEINTERLEAVER_BPSK(6),
-      probe8(40) => deinterleaver_0_DEINTERLEAVER_BPSK(7),
-      probe8(39) => deinterleaver_0_DEINTERLEAVER_BPSK(8),
-      probe8(38) => deinterleaver_0_DEINTERLEAVER_BPSK(9),
-      probe8(37) => deinterleaver_0_DEINTERLEAVER_BPSK(10),
-      probe8(36) => deinterleaver_0_DEINTERLEAVER_BPSK(11),
-      probe8(35) => deinterleaver_0_DEINTERLEAVER_BPSK(12),
-      probe8(34) => deinterleaver_0_DEINTERLEAVER_BPSK(13),
-      probe8(33) => deinterleaver_0_DEINTERLEAVER_BPSK(14),
-      probe8(32) => deinterleaver_0_DEINTERLEAVER_BPSK(15),
-      probe8(31) => deinterleaver_0_DEINTERLEAVER_BPSK(16),
-      probe8(30) => deinterleaver_0_DEINTERLEAVER_BPSK(17),
-      probe8(29) => deinterleaver_0_DEINTERLEAVER_BPSK(18),
-      probe8(28) => deinterleaver_0_DEINTERLEAVER_BPSK(19),
-      probe8(27) => deinterleaver_0_DEINTERLEAVER_BPSK(20),
-      probe8(26) => deinterleaver_0_DEINTERLEAVER_BPSK(21),
-      probe8(25) => deinterleaver_0_DEINTERLEAVER_BPSK(22),
-      probe8(24) => deinterleaver_0_DEINTERLEAVER_BPSK(23),
-      probe8(23) => deinterleaver_0_DEINTERLEAVER_BPSK(24),
-      probe8(22) => deinterleaver_0_DEINTERLEAVER_BPSK(25),
-      probe8(21) => deinterleaver_0_DEINTERLEAVER_BPSK(26),
-      probe8(20) => deinterleaver_0_DEINTERLEAVER_BPSK(27),
-      probe8(19) => deinterleaver_0_DEINTERLEAVER_BPSK(28),
-      probe8(18) => deinterleaver_0_DEINTERLEAVER_BPSK(29),
-      probe8(17) => deinterleaver_0_DEINTERLEAVER_BPSK(30),
-      probe8(16) => deinterleaver_0_DEINTERLEAVER_BPSK(31),
-      probe8(15) => deinterleaver_0_DEINTERLEAVER_BPSK(32),
-      probe8(14) => deinterleaver_0_DEINTERLEAVER_BPSK(33),
-      probe8(13) => deinterleaver_0_DEINTERLEAVER_BPSK(34),
-      probe8(12) => deinterleaver_0_DEINTERLEAVER_BPSK(35),
-      probe8(11) => deinterleaver_0_DEINTERLEAVER_BPSK(36),
-      probe8(10) => deinterleaver_0_DEINTERLEAVER_BPSK(37),
-      probe8(9) => deinterleaver_0_DEINTERLEAVER_BPSK(38),
-      probe8(8) => deinterleaver_0_DEINTERLEAVER_BPSK(39),
-      probe8(7) => deinterleaver_0_DEINTERLEAVER_BPSK(40),
-      probe8(6) => deinterleaver_0_DEINTERLEAVER_BPSK(41),
-      probe8(5) => deinterleaver_0_DEINTERLEAVER_BPSK(42),
-      probe8(4) => deinterleaver_0_DEINTERLEAVER_BPSK(43),
-      probe8(3) => deinterleaver_0_DEINTERLEAVER_BPSK(44),
-      probe8(2) => deinterleaver_0_DEINTERLEAVER_BPSK(45),
-      probe8(1) => deinterleaver_0_DEINTERLEAVER_BPSK(46),
-      probe8(0) => deinterleaver_0_DEINTERLEAVER_BPSK(47),
-      probe9(31 downto 0) => timing_acquisition_8_0_DETECTION_XCORR(31 downto 0)
-    );
 rx_clock_domain_cros_0: component block_design_0_rx_clock_domain_cros_0_0
      port map (
       CLOCK => CLOCK_0_1,
@@ -1427,14 +1282,14 @@ rx_clock_domain_cros_0: component block_design_0_rx_clock_domain_cros_0_0
 timing_acquisition_8_0: component block_design_0_timing_acquisition_8_0_0
      port map (
       CLOCK => CLOCK_0_1,
-      CONTINUOUS_XCORR(31 downto 0) => timing_acquisition_8_0_CONTINUOUS_XCORR(31 downto 0),
+      CONTINUOUS_XCORR(31 downto 0) => NLW_timing_acquisition_8_0_CONTINUOUS_XCORR_UNCONNECTED(31 downto 0),
       DATA_STROBE => data_delay_0_DATA_OUT_STROBE,
       DETECTION_SIGNAL_DETECTED => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
       DETECTION_STROBE => timing_acquisition_8_0_DETECTION_STROBE,
       DETECTION_STS_AUTOCORR_I(31 downto 0) => timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I(31 downto 0),
       DETECTION_STS_AUTOCORR_Q(31 downto 0) => timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q(31 downto 0),
       DETECTION_THRESHOLD(31 downto 0) => DETECTION_THRESHOLD_0_1(31 downto 0),
-      DETECTION_XCORR(31 downto 0) => timing_acquisition_8_0_DETECTION_XCORR(31 downto 0),
+      DETECTION_XCORR(31 downto 0) => NLW_timing_acquisition_8_0_DETECTION_XCORR_UNCONNECTED(31 downto 0),
       IDATA(15 downto 0) => data_delay_0_IDATA_OUT(15 downto 0),
       IDATA_DELAY_16(15 downto 0) => data_delay_0_IDATA_OUT_DELAY_16(15 downto 0),
       IDATA_DELAY_32(15 downto 0) => data_delay_0_IDATA_OUT_DELAY_32(15 downto 0),
@@ -1456,7 +1311,7 @@ viterbi_hard_0: component block_design_0_viterbi_hard_0_0
       DEINTERLEAVER_START_MARKER => deinterleaver_0_DEINTERLEAVER_START_MARKER,
       DEINTERLEAVER_STROBE => deinterleaver_0_DEINTERLEAVER_STROBE,
       RESET => RESET_0_1,
-      VITERBI_OUTPUT => viterbi_hard_0_VITERBI_OUTPUT,
-      VITERBI_OUTPUT_VALID => viterbi_hard_0_VITERBI_OUTPUT_VALID
+      VITERBI_SIGNAL(31 downto 0) => viterbi_hard_0_VITERBI_SIGNAL(31 downto 0),
+      VITERBI_SIGNAL_VALID => viterbi_hard_0_VITERBI_SIGNAL_VALID
     );
 end STRUCTURE;

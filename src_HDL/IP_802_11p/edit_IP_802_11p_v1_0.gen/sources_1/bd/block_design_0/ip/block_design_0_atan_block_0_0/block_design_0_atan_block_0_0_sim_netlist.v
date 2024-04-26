@@ -2,8 +2,8 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-// Date        : Wed Apr 24 22:25:03 2024
-// Host        : ASUS_ROG running 64-bit major release  (build 9200)
+// Date        : Fri Apr 26 14:56:53 2024
+// Host        : lab817_01 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_atan_block_0_0/block_design_0_atan_block_0_0_sim_netlist.v
 // Design      : block_design_0_atan_block_0_0
@@ -73,46 +73,45 @@ module block_design_0_atan_block_0_0
         .RESET(RESET),
         .S_AXIS_CARTESIAN_tdata(S_AXIS_CARTESIAN_tdata),
         .S_AXIS_CARTESIAN_tready(S_AXIS_CARTESIAN_tready),
-        .S_AXIS_CARTESIAN_tvalid(S_AXIS_CARTESIAN_tvalid));
-  LUT1 #(
-    .INIT(2'h1)) 
-    aresetn_INST_0
-       (.I0(RESET),
-        .O(aresetn));
+        .S_AXIS_CARTESIAN_tvalid(S_AXIS_CARTESIAN_tvalid),
+        .aresetn(aresetn));
 endmodule
 
 (* ORIG_REF_NAME = "atan_block" *) 
 module block_design_0_atan_block_0_0_atan_block
-   (ATAN_PHASE_OUT_STROBE,
-    S_AXIS_CARTESIAN_tvalid,
-    ATAN_PHASE_OUT,
+   (ATAN_PHASE_OUT,
+    aresetn,
     S_AXIS_CARTESIAN_tdata,
-    M_AXIS_DOUT_tvalid,
-    CLOCK,
+    S_AXIS_CARTESIAN_tvalid,
+    ATAN_PHASE_OUT_STROBE,
     RESET,
-    ATAN_AUTOCORR_STROBE,
-    S_AXIS_CARTESIAN_tready,
+    M_AXIS_DOUT_tvalid,
     M_AXIS_DOUT_tdata,
+    CLOCK,
+    ATAN_AUTOCORR_STROBE,
     ATAN_AUTOCORR_I,
-    ATAN_AUTOCORR_Q);
-  output ATAN_PHASE_OUT_STROBE;
-  output S_AXIS_CARTESIAN_tvalid;
+    ATAN_AUTOCORR_Q,
+    S_AXIS_CARTESIAN_tready);
   output [19:0]ATAN_PHASE_OUT;
+  output aresetn;
   output [63:0]S_AXIS_CARTESIAN_tdata;
-  input M_AXIS_DOUT_tvalid;
-  input CLOCK;
+  output S_AXIS_CARTESIAN_tvalid;
+  output ATAN_PHASE_OUT_STROBE;
   input RESET;
-  input ATAN_AUTOCORR_STROBE;
-  input S_AXIS_CARTESIAN_tready;
+  input M_AXIS_DOUT_tvalid;
   input [19:0]M_AXIS_DOUT_tdata;
+  input CLOCK;
+  input ATAN_AUTOCORR_STROBE;
   input [31:0]ATAN_AUTOCORR_I;
   input [31:0]ATAN_AUTOCORR_Q;
+  input S_AXIS_CARTESIAN_tready;
 
   wire [31:0]ATAN_AUTOCORR_I;
   wire [31:0]ATAN_AUTOCORR_Q;
   wire ATAN_AUTOCORR_STROBE;
   wire [19:0]ATAN_PHASE_OUT;
   wire ATAN_PHASE_OUT_STROBE;
+  wire ATAN_PHASE_OUT_STROBE_i_1_n_0;
   wire CLOCK;
   wire [19:0]M_AXIS_DOUT_tdata;
   wire M_AXIS_DOUT_tvalid;
@@ -121,768 +120,794 @@ module block_design_0_atan_block_0_0_atan_block
   wire S_AXIS_CARTESIAN_tready;
   wire S_AXIS_CARTESIAN_tvalid;
   wire S_AXIS_CARTESIAN_tvalid_i_1_n_0;
+  wire aresetn;
+  wire p_0_in;
 
-  FDCE #(
+  LUT2 #(
+    .INIT(4'h2)) 
+    ATAN_PHASE_OUT_STROBE_i_1
+       (.I0(M_AXIS_DOUT_tvalid),
+        .I1(RESET),
+        .O(ATAN_PHASE_OUT_STROBE_i_1_n_0));
+  FDRE #(
     .INIT(1'b0)) 
     ATAN_PHASE_OUT_STROBE_reg
        (.C(CLOCK),
         .CE(1'b1),
-        .CLR(RESET),
-        .D(M_AXIS_DOUT_tvalid),
-        .Q(ATAN_PHASE_OUT_STROBE));
-  FDCE #(
+        .D(ATAN_PHASE_OUT_STROBE_i_1_n_0),
+        .Q(ATAN_PHASE_OUT_STROBE),
+        .R(1'b0));
+  FDRE #(
     .INIT(1'b0)) 
     \ATAN_PHASE_OUT_reg[0] 
        (.C(CLOCK),
         .CE(M_AXIS_DOUT_tvalid),
-        .CLR(RESET),
         .D(M_AXIS_DOUT_tdata[0]),
-        .Q(ATAN_PHASE_OUT[0]));
-  FDCE #(
+        .Q(ATAN_PHASE_OUT[0]),
+        .R(RESET));
+  FDRE #(
     .INIT(1'b0)) 
     \ATAN_PHASE_OUT_reg[10] 
        (.C(CLOCK),
         .CE(M_AXIS_DOUT_tvalid),
-        .CLR(RESET),
         .D(M_AXIS_DOUT_tdata[10]),
-        .Q(ATAN_PHASE_OUT[10]));
-  FDCE #(
+        .Q(ATAN_PHASE_OUT[10]),
+        .R(RESET));
+  FDRE #(
     .INIT(1'b0)) 
     \ATAN_PHASE_OUT_reg[11] 
        (.C(CLOCK),
         .CE(M_AXIS_DOUT_tvalid),
-        .CLR(RESET),
         .D(M_AXIS_DOUT_tdata[11]),
-        .Q(ATAN_PHASE_OUT[11]));
-  FDCE #(
+        .Q(ATAN_PHASE_OUT[11]),
+        .R(RESET));
+  FDRE #(
     .INIT(1'b0)) 
     \ATAN_PHASE_OUT_reg[12] 
        (.C(CLOCK),
         .CE(M_AXIS_DOUT_tvalid),
-        .CLR(RESET),
         .D(M_AXIS_DOUT_tdata[12]),
-        .Q(ATAN_PHASE_OUT[12]));
-  FDCE #(
+        .Q(ATAN_PHASE_OUT[12]),
+        .R(RESET));
+  FDRE #(
     .INIT(1'b0)) 
     \ATAN_PHASE_OUT_reg[13] 
        (.C(CLOCK),
         .CE(M_AXIS_DOUT_tvalid),
-        .CLR(RESET),
         .D(M_AXIS_DOUT_tdata[13]),
-        .Q(ATAN_PHASE_OUT[13]));
-  FDCE #(
+        .Q(ATAN_PHASE_OUT[13]),
+        .R(RESET));
+  FDRE #(
     .INIT(1'b0)) 
     \ATAN_PHASE_OUT_reg[14] 
        (.C(CLOCK),
         .CE(M_AXIS_DOUT_tvalid),
-        .CLR(RESET),
         .D(M_AXIS_DOUT_tdata[14]),
-        .Q(ATAN_PHASE_OUT[14]));
-  FDCE #(
+        .Q(ATAN_PHASE_OUT[14]),
+        .R(RESET));
+  FDRE #(
     .INIT(1'b0)) 
     \ATAN_PHASE_OUT_reg[15] 
        (.C(CLOCK),
         .CE(M_AXIS_DOUT_tvalid),
-        .CLR(RESET),
         .D(M_AXIS_DOUT_tdata[15]),
-        .Q(ATAN_PHASE_OUT[15]));
-  FDCE #(
+        .Q(ATAN_PHASE_OUT[15]),
+        .R(RESET));
+  FDRE #(
     .INIT(1'b0)) 
     \ATAN_PHASE_OUT_reg[16] 
        (.C(CLOCK),
         .CE(M_AXIS_DOUT_tvalid),
-        .CLR(RESET),
         .D(M_AXIS_DOUT_tdata[16]),
-        .Q(ATAN_PHASE_OUT[16]));
-  FDCE #(
+        .Q(ATAN_PHASE_OUT[16]),
+        .R(RESET));
+  FDRE #(
     .INIT(1'b0)) 
     \ATAN_PHASE_OUT_reg[17] 
        (.C(CLOCK),
         .CE(M_AXIS_DOUT_tvalid),
-        .CLR(RESET),
         .D(M_AXIS_DOUT_tdata[17]),
-        .Q(ATAN_PHASE_OUT[17]));
-  FDCE #(
+        .Q(ATAN_PHASE_OUT[17]),
+        .R(RESET));
+  FDRE #(
     .INIT(1'b0)) 
     \ATAN_PHASE_OUT_reg[18] 
        (.C(CLOCK),
         .CE(M_AXIS_DOUT_tvalid),
-        .CLR(RESET),
         .D(M_AXIS_DOUT_tdata[18]),
-        .Q(ATAN_PHASE_OUT[18]));
-  FDCE #(
+        .Q(ATAN_PHASE_OUT[18]),
+        .R(RESET));
+  FDRE #(
     .INIT(1'b0)) 
     \ATAN_PHASE_OUT_reg[19] 
        (.C(CLOCK),
         .CE(M_AXIS_DOUT_tvalid),
-        .CLR(RESET),
         .D(M_AXIS_DOUT_tdata[19]),
-        .Q(ATAN_PHASE_OUT[19]));
-  FDCE #(
+        .Q(ATAN_PHASE_OUT[19]),
+        .R(RESET));
+  FDRE #(
     .INIT(1'b0)) 
     \ATAN_PHASE_OUT_reg[1] 
        (.C(CLOCK),
         .CE(M_AXIS_DOUT_tvalid),
-        .CLR(RESET),
         .D(M_AXIS_DOUT_tdata[1]),
-        .Q(ATAN_PHASE_OUT[1]));
-  FDCE #(
+        .Q(ATAN_PHASE_OUT[1]),
+        .R(RESET));
+  FDRE #(
     .INIT(1'b0)) 
     \ATAN_PHASE_OUT_reg[2] 
        (.C(CLOCK),
         .CE(M_AXIS_DOUT_tvalid),
-        .CLR(RESET),
         .D(M_AXIS_DOUT_tdata[2]),
-        .Q(ATAN_PHASE_OUT[2]));
-  FDCE #(
+        .Q(ATAN_PHASE_OUT[2]),
+        .R(RESET));
+  FDRE #(
     .INIT(1'b0)) 
     \ATAN_PHASE_OUT_reg[3] 
        (.C(CLOCK),
         .CE(M_AXIS_DOUT_tvalid),
-        .CLR(RESET),
         .D(M_AXIS_DOUT_tdata[3]),
-        .Q(ATAN_PHASE_OUT[3]));
-  FDCE #(
+        .Q(ATAN_PHASE_OUT[3]),
+        .R(RESET));
+  FDRE #(
     .INIT(1'b0)) 
     \ATAN_PHASE_OUT_reg[4] 
        (.C(CLOCK),
         .CE(M_AXIS_DOUT_tvalid),
-        .CLR(RESET),
         .D(M_AXIS_DOUT_tdata[4]),
-        .Q(ATAN_PHASE_OUT[4]));
-  FDCE #(
+        .Q(ATAN_PHASE_OUT[4]),
+        .R(RESET));
+  FDRE #(
     .INIT(1'b0)) 
     \ATAN_PHASE_OUT_reg[5] 
        (.C(CLOCK),
         .CE(M_AXIS_DOUT_tvalid),
-        .CLR(RESET),
         .D(M_AXIS_DOUT_tdata[5]),
-        .Q(ATAN_PHASE_OUT[5]));
-  FDCE #(
+        .Q(ATAN_PHASE_OUT[5]),
+        .R(RESET));
+  FDRE #(
     .INIT(1'b0)) 
     \ATAN_PHASE_OUT_reg[6] 
        (.C(CLOCK),
         .CE(M_AXIS_DOUT_tvalid),
-        .CLR(RESET),
         .D(M_AXIS_DOUT_tdata[6]),
-        .Q(ATAN_PHASE_OUT[6]));
-  FDCE #(
+        .Q(ATAN_PHASE_OUT[6]),
+        .R(RESET));
+  FDRE #(
     .INIT(1'b0)) 
     \ATAN_PHASE_OUT_reg[7] 
        (.C(CLOCK),
         .CE(M_AXIS_DOUT_tvalid),
-        .CLR(RESET),
         .D(M_AXIS_DOUT_tdata[7]),
-        .Q(ATAN_PHASE_OUT[7]));
-  FDCE #(
+        .Q(ATAN_PHASE_OUT[7]),
+        .R(RESET));
+  FDRE #(
     .INIT(1'b0)) 
     \ATAN_PHASE_OUT_reg[8] 
        (.C(CLOCK),
         .CE(M_AXIS_DOUT_tvalid),
-        .CLR(RESET),
         .D(M_AXIS_DOUT_tdata[8]),
-        .Q(ATAN_PHASE_OUT[8]));
-  FDCE #(
+        .Q(ATAN_PHASE_OUT[8]),
+        .R(RESET));
+  FDRE #(
     .INIT(1'b0)) 
     \ATAN_PHASE_OUT_reg[9] 
        (.C(CLOCK),
         .CE(M_AXIS_DOUT_tvalid),
-        .CLR(RESET),
         .D(M_AXIS_DOUT_tdata[9]),
-        .Q(ATAN_PHASE_OUT[9]));
+        .Q(ATAN_PHASE_OUT[9]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_I_BUFF_reg[0] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_I[0]),
-        .Q(S_AXIS_CARTESIAN_tdata[0]));
+        .Q(S_AXIS_CARTESIAN_tdata[0]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_I_BUFF_reg[10] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_I[10]),
-        .Q(S_AXIS_CARTESIAN_tdata[10]));
+        .Q(S_AXIS_CARTESIAN_tdata[10]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_I_BUFF_reg[11] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_I[11]),
-        .Q(S_AXIS_CARTESIAN_tdata[11]));
+        .Q(S_AXIS_CARTESIAN_tdata[11]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_I_BUFF_reg[12] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_I[12]),
-        .Q(S_AXIS_CARTESIAN_tdata[12]));
+        .Q(S_AXIS_CARTESIAN_tdata[12]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_I_BUFF_reg[13] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_I[13]),
-        .Q(S_AXIS_CARTESIAN_tdata[13]));
+        .Q(S_AXIS_CARTESIAN_tdata[13]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_I_BUFF_reg[14] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_I[14]),
-        .Q(S_AXIS_CARTESIAN_tdata[14]));
+        .Q(S_AXIS_CARTESIAN_tdata[14]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_I_BUFF_reg[15] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_I[15]),
-        .Q(S_AXIS_CARTESIAN_tdata[15]));
+        .Q(S_AXIS_CARTESIAN_tdata[15]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_I_BUFF_reg[16] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_I[16]),
-        .Q(S_AXIS_CARTESIAN_tdata[16]));
+        .Q(S_AXIS_CARTESIAN_tdata[16]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_I_BUFF_reg[17] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_I[17]),
-        .Q(S_AXIS_CARTESIAN_tdata[17]));
+        .Q(S_AXIS_CARTESIAN_tdata[17]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_I_BUFF_reg[18] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_I[18]),
-        .Q(S_AXIS_CARTESIAN_tdata[18]));
+        .Q(S_AXIS_CARTESIAN_tdata[18]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_I_BUFF_reg[19] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_I[19]),
-        .Q(S_AXIS_CARTESIAN_tdata[19]));
+        .Q(S_AXIS_CARTESIAN_tdata[19]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_I_BUFF_reg[1] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_I[1]),
-        .Q(S_AXIS_CARTESIAN_tdata[1]));
+        .Q(S_AXIS_CARTESIAN_tdata[1]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_I_BUFF_reg[20] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_I[20]),
-        .Q(S_AXIS_CARTESIAN_tdata[20]));
+        .Q(S_AXIS_CARTESIAN_tdata[20]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_I_BUFF_reg[21] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_I[21]),
-        .Q(S_AXIS_CARTESIAN_tdata[21]));
+        .Q(S_AXIS_CARTESIAN_tdata[21]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_I_BUFF_reg[22] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_I[22]),
-        .Q(S_AXIS_CARTESIAN_tdata[22]));
+        .Q(S_AXIS_CARTESIAN_tdata[22]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_I_BUFF_reg[23] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_I[23]),
-        .Q(S_AXIS_CARTESIAN_tdata[23]));
+        .Q(S_AXIS_CARTESIAN_tdata[23]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_I_BUFF_reg[24] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_I[24]),
-        .Q(S_AXIS_CARTESIAN_tdata[24]));
+        .Q(S_AXIS_CARTESIAN_tdata[24]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_I_BUFF_reg[25] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_I[25]),
-        .Q(S_AXIS_CARTESIAN_tdata[25]));
+        .Q(S_AXIS_CARTESIAN_tdata[25]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_I_BUFF_reg[26] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_I[26]),
-        .Q(S_AXIS_CARTESIAN_tdata[26]));
+        .Q(S_AXIS_CARTESIAN_tdata[26]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_I_BUFF_reg[27] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_I[27]),
-        .Q(S_AXIS_CARTESIAN_tdata[27]));
+        .Q(S_AXIS_CARTESIAN_tdata[27]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_I_BUFF_reg[28] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_I[28]),
-        .Q(S_AXIS_CARTESIAN_tdata[28]));
+        .Q(S_AXIS_CARTESIAN_tdata[28]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_I_BUFF_reg[29] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_I[29]),
-        .Q(S_AXIS_CARTESIAN_tdata[29]));
+        .Q(S_AXIS_CARTESIAN_tdata[29]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_I_BUFF_reg[2] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_I[2]),
-        .Q(S_AXIS_CARTESIAN_tdata[2]));
+        .Q(S_AXIS_CARTESIAN_tdata[2]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_I_BUFF_reg[30] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_I[30]),
-        .Q(S_AXIS_CARTESIAN_tdata[30]));
+        .Q(S_AXIS_CARTESIAN_tdata[30]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_I_BUFF_reg[31] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_I[31]),
-        .Q(S_AXIS_CARTESIAN_tdata[31]));
+        .Q(S_AXIS_CARTESIAN_tdata[31]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_I_BUFF_reg[3] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_I[3]),
-        .Q(S_AXIS_CARTESIAN_tdata[3]));
+        .Q(S_AXIS_CARTESIAN_tdata[3]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_I_BUFF_reg[4] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_I[4]),
-        .Q(S_AXIS_CARTESIAN_tdata[4]));
+        .Q(S_AXIS_CARTESIAN_tdata[4]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_I_BUFF_reg[5] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_I[5]),
-        .Q(S_AXIS_CARTESIAN_tdata[5]));
+        .Q(S_AXIS_CARTESIAN_tdata[5]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_I_BUFF_reg[6] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_I[6]),
-        .Q(S_AXIS_CARTESIAN_tdata[6]));
+        .Q(S_AXIS_CARTESIAN_tdata[6]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_I_BUFF_reg[7] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_I[7]),
-        .Q(S_AXIS_CARTESIAN_tdata[7]));
+        .Q(S_AXIS_CARTESIAN_tdata[7]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_I_BUFF_reg[8] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_I[8]),
-        .Q(S_AXIS_CARTESIAN_tdata[8]));
+        .Q(S_AXIS_CARTESIAN_tdata[8]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_I_BUFF_reg[9] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_I[9]),
-        .Q(S_AXIS_CARTESIAN_tdata[9]));
+        .Q(S_AXIS_CARTESIAN_tdata[9]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_Q_BUFF_reg[0] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_Q[0]),
-        .Q(S_AXIS_CARTESIAN_tdata[32]));
+        .Q(S_AXIS_CARTESIAN_tdata[32]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_Q_BUFF_reg[10] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_Q[10]),
-        .Q(S_AXIS_CARTESIAN_tdata[42]));
+        .Q(S_AXIS_CARTESIAN_tdata[42]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_Q_BUFF_reg[11] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_Q[11]),
-        .Q(S_AXIS_CARTESIAN_tdata[43]));
+        .Q(S_AXIS_CARTESIAN_tdata[43]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_Q_BUFF_reg[12] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_Q[12]),
-        .Q(S_AXIS_CARTESIAN_tdata[44]));
+        .Q(S_AXIS_CARTESIAN_tdata[44]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_Q_BUFF_reg[13] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_Q[13]),
-        .Q(S_AXIS_CARTESIAN_tdata[45]));
+        .Q(S_AXIS_CARTESIAN_tdata[45]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_Q_BUFF_reg[14] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_Q[14]),
-        .Q(S_AXIS_CARTESIAN_tdata[46]));
+        .Q(S_AXIS_CARTESIAN_tdata[46]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_Q_BUFF_reg[15] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_Q[15]),
-        .Q(S_AXIS_CARTESIAN_tdata[47]));
+        .Q(S_AXIS_CARTESIAN_tdata[47]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_Q_BUFF_reg[16] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_Q[16]),
-        .Q(S_AXIS_CARTESIAN_tdata[48]));
+        .Q(S_AXIS_CARTESIAN_tdata[48]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_Q_BUFF_reg[17] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_Q[17]),
-        .Q(S_AXIS_CARTESIAN_tdata[49]));
+        .Q(S_AXIS_CARTESIAN_tdata[49]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_Q_BUFF_reg[18] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_Q[18]),
-        .Q(S_AXIS_CARTESIAN_tdata[50]));
+        .Q(S_AXIS_CARTESIAN_tdata[50]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_Q_BUFF_reg[19] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_Q[19]),
-        .Q(S_AXIS_CARTESIAN_tdata[51]));
+        .Q(S_AXIS_CARTESIAN_tdata[51]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_Q_BUFF_reg[1] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_Q[1]),
-        .Q(S_AXIS_CARTESIAN_tdata[33]));
+        .Q(S_AXIS_CARTESIAN_tdata[33]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_Q_BUFF_reg[20] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_Q[20]),
-        .Q(S_AXIS_CARTESIAN_tdata[52]));
+        .Q(S_AXIS_CARTESIAN_tdata[52]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_Q_BUFF_reg[21] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_Q[21]),
-        .Q(S_AXIS_CARTESIAN_tdata[53]));
+        .Q(S_AXIS_CARTESIAN_tdata[53]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_Q_BUFF_reg[22] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_Q[22]),
-        .Q(S_AXIS_CARTESIAN_tdata[54]));
+        .Q(S_AXIS_CARTESIAN_tdata[54]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_Q_BUFF_reg[23] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_Q[23]),
-        .Q(S_AXIS_CARTESIAN_tdata[55]));
+        .Q(S_AXIS_CARTESIAN_tdata[55]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_Q_BUFF_reg[24] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_Q[24]),
-        .Q(S_AXIS_CARTESIAN_tdata[56]));
+        .Q(S_AXIS_CARTESIAN_tdata[56]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_Q_BUFF_reg[25] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_Q[25]),
-        .Q(S_AXIS_CARTESIAN_tdata[57]));
+        .Q(S_AXIS_CARTESIAN_tdata[57]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_Q_BUFF_reg[26] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_Q[26]),
-        .Q(S_AXIS_CARTESIAN_tdata[58]));
+        .Q(S_AXIS_CARTESIAN_tdata[58]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_Q_BUFF_reg[27] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_Q[27]),
-        .Q(S_AXIS_CARTESIAN_tdata[59]));
+        .Q(S_AXIS_CARTESIAN_tdata[59]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_Q_BUFF_reg[28] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_Q[28]),
-        .Q(S_AXIS_CARTESIAN_tdata[60]));
+        .Q(S_AXIS_CARTESIAN_tdata[60]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_Q_BUFF_reg[29] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_Q[29]),
-        .Q(S_AXIS_CARTESIAN_tdata[61]));
+        .Q(S_AXIS_CARTESIAN_tdata[61]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_Q_BUFF_reg[2] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_Q[2]),
-        .Q(S_AXIS_CARTESIAN_tdata[34]));
+        .Q(S_AXIS_CARTESIAN_tdata[34]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_Q_BUFF_reg[30] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_Q[30]),
-        .Q(S_AXIS_CARTESIAN_tdata[62]));
+        .Q(S_AXIS_CARTESIAN_tdata[62]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_Q_BUFF_reg[31] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_Q[31]),
-        .Q(S_AXIS_CARTESIAN_tdata[63]));
+        .Q(S_AXIS_CARTESIAN_tdata[63]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_Q_BUFF_reg[3] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_Q[3]),
-        .Q(S_AXIS_CARTESIAN_tdata[35]));
+        .Q(S_AXIS_CARTESIAN_tdata[35]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_Q_BUFF_reg[4] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_Q[4]),
-        .Q(S_AXIS_CARTESIAN_tdata[36]));
+        .Q(S_AXIS_CARTESIAN_tdata[36]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_Q_BUFF_reg[5] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_Q[5]),
-        .Q(S_AXIS_CARTESIAN_tdata[37]));
+        .Q(S_AXIS_CARTESIAN_tdata[37]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_Q_BUFF_reg[6] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_Q[6]),
-        .Q(S_AXIS_CARTESIAN_tdata[38]));
+        .Q(S_AXIS_CARTESIAN_tdata[38]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_Q_BUFF_reg[7] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_Q[7]),
-        .Q(S_AXIS_CARTESIAN_tdata[39]));
+        .Q(S_AXIS_CARTESIAN_tdata[39]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_Q_BUFF_reg[8] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_Q[8]),
-        .Q(S_AXIS_CARTESIAN_tdata[40]));
+        .Q(S_AXIS_CARTESIAN_tdata[40]),
+        .R(RESET));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     \AUTOCORR_Q_BUFF_reg[9] 
        (.C(CLOCK),
         .CE(ATAN_AUTOCORR_STROBE),
-        .CLR(RESET),
         .D(ATAN_AUTOCORR_Q[9]),
-        .Q(S_AXIS_CARTESIAN_tdata[41]));
-  LUT3 #(
-    .INIT(8'hBA)) 
+        .Q(S_AXIS_CARTESIAN_tdata[41]),
+        .R(RESET));
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  LUT4 #(
+    .INIT(16'h00F2)) 
     S_AXIS_CARTESIAN_tvalid_i_1
-       (.I0(ATAN_AUTOCORR_STROBE),
+       (.I0(S_AXIS_CARTESIAN_tvalid),
         .I1(S_AXIS_CARTESIAN_tready),
-        .I2(S_AXIS_CARTESIAN_tvalid),
+        .I2(ATAN_AUTOCORR_STROBE),
+        .I3(RESET),
         .O(S_AXIS_CARTESIAN_tvalid_i_1_n_0));
   (* x_interface_info = "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TVALID" *) 
   (* x_interface_parameter = "XIL_INTERFACENAME S_AXIS_CARTESIAN, TDATA_NUM_BYTES 8, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN block_design_atan_aclk_0, LAYERED_METADATA undef, INSERT_VIP 0" *) 
-  FDCE #(
+  FDRE #(
     .INIT(1'b0)) 
     S_AXIS_CARTESIAN_tvalid_reg
        (.C(CLOCK),
         .CE(1'b1),
-        .CLR(RESET),
         .D(S_AXIS_CARTESIAN_tvalid_i_1_n_0),
-        .Q(S_AXIS_CARTESIAN_tvalid));
+        .Q(S_AXIS_CARTESIAN_tvalid),
+        .R(1'b0));
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  LUT1 #(
+    .INIT(2'h1)) 
+    aresetn_i_1
+       (.I0(RESET),
+        .O(p_0_in));
+  (* x_interface_info = "xilinx.com:signal:reset:1.0 aresetn_intf RST" *) 
+  (* x_interface_parameter = "XIL_INTERFACENAME aresetn_intf, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) 
+  FDRE #(
+    .INIT(1'b0)) 
+    aresetn_reg
+       (.C(CLOCK),
+        .CE(1'b1),
+        .D(p_0_in),
+        .Q(aresetn),
+        .R(1'b0));
 endmodule
 `ifndef GLBL
 `define GLBL

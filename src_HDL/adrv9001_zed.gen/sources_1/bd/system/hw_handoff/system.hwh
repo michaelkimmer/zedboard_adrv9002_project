@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Apr 26 00:06:01 2024" VIVADOVERSION="2023.2.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Apr 26 15:02:26 2024" VIVADOVERSION="2023.2.2">
 
   <SYSTEMINFO ARCH="zynq" BOARD="avnet.com:zedboard:part0:1.4" DEVICE="7z020" NAME="system" PACKAGE="clg484" SPEEDGRADE="-1"/>
 
@@ -702,13 +702,13 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="20" FULLNAME="/IP_802_11p_0" HWVERSION="1.0" INSTANCE="IP_802_11p_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="IP_802_11p" VLNV="xilinx.com:user:IP_802_11p:1.0">
+    <MODULE COREREVISION="23" FULLNAME="/IP_802_11p_0" HWVERSION="1.0" INSTANCE="IP_802_11p_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="IP_802_11p" VLNV="xilinx.com:user:IP_802_11p:1.0">
       <DOCUMENTS/>
       <ADDRESSBLOCKS>
         <ADDRESSBLOCK ACCESS="" INTERFACE="S00_AXI" NAME="S00_AXI_reg" RANGE="16384" USAGE="register"/>
       </ADDRESSBLOCKS>
       <PARAMETERS>
-        <PARAMETER NAME="C_S00_AXI_ADDR_WIDTH" VALUE="14"/>
+        <PARAMETER NAME="C_S00_AXI_ADDR_WIDTH" VALUE="11"/>
         <PARAMETER NAME="C_S00_AXI_DATA_WIDTH" VALUE="32"/>
         <PARAMETER NAME="Component_Name" VALUE="system_IP_802_11p_0_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
@@ -766,7 +766,7 @@
             <CONNECTION INSTANCE="sys_ps7" PORT="FCLK_CLK0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="13" NAME="s00_axi_araddr" RIGHT="0" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_araddr">
+        <PORT DIR="I" LEFT="10" NAME="s00_axi_araddr" RIGHT="0" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_araddr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_cpu_interconnect" PORT="M13_AXI_araddr"/>
           </CONNECTIONS>
@@ -791,7 +791,7 @@
             <CONNECTION INSTANCE="axi_cpu_interconnect" PORT="M13_AXI_arvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="13" NAME="s00_axi_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_awaddr">
+        <PORT DIR="I" LEFT="10" NAME="s00_axi_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="IP_802_11p_0_s00_axi_awaddr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_cpu_interconnect" PORT="M13_AXI_awaddr"/>
           </CONNECTIONS>
@@ -869,7 +869,7 @@
       </PORTS>
       <BUSINTERFACES>
         <BUSINTERFACE BUSNAME="axi_cpu_interconnect_M13_AXI" DATAWIDTH="32" NAME="S00_AXI" TYPE="SLAVE" VLNV="xilinx.com:interface:aximm:1.0">
-          <PARAMETER NAME="ADDR_WIDTH" VALUE="14"/>
+          <PARAMETER NAME="ADDR_WIDTH" VALUE="11"/>
           <PARAMETER NAME="ARUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="AWUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="BUSER_WIDTH" VALUE="0"/>

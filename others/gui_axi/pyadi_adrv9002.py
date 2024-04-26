@@ -8,7 +8,7 @@ import numpy as np
 
 
 
-sdr_adrv9002 = adi.adrv9002(uri="ip:analog.local")
+sdr_adrv9002 = adi.adrv9002(uri="ip:192.168.1.11")
 # sdr_adrv9002.digital_gain_control_mode_chan0 = "Gain_Compensation_manual_control"
 # sdr_adrv9002.digital_gain_control_mode_chan1 = "Gain_Compensation_manual_control"
 # sdr_adrv9002.interface_gain_chan0 = "-12dB"
@@ -56,6 +56,10 @@ sdr_adrv9002.tx_destroy_buffer()
 
 
 
+sdr_adrv9002.rx_destroy_buffer()
+sdr_adrv9002.rx_buffer_size = 2048
+aa = sdr_adrv9002.rx()
+sdr_adrv9002.rx_destroy_buffer()
 
 
 

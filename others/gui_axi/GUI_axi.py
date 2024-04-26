@@ -25,6 +25,9 @@ import iio
 from access_axi_regs import *
 # AXI_ADDRESS_NUM = 512
 
+# IIO parameters
+IIO_uri="ip:192.168.1.11" # uri="ip:192.168.1.12", uri="ip:analog.local"
+
 
 
 # Entry with placeholder
@@ -434,7 +437,7 @@ class Settings_Tab(ttk.Frame):
     def connect_iio_button_clicked(self, root):
 
             try:
-                root.iio_context = adi.adrv9002(uri="ip:192.168.1.12") # uri="ip:192.168.1.12", uri="ip:analog.local"
+                root.iio_context = adi.adrv9002(uri=IIO_uri)
             except:
                 self.log_write_line("IIO connection to ADRV9002 Failed (Context couldn't be created) !")
                 self.connection_indicator.description_labels[0].config(text = "Connection IIO: Failed")
@@ -980,22 +983,67 @@ class Reception_Tab(ttk.Frame):
         #confirm the entries (the last changed can be not refreshed)
         self.iio_entries[0]._add_placeholder(None)
 
-        # Read N_samples
-        N_samples = self.iio_entries[0].get()
+        # Read N_data
+        N_data = self.iio_entries[0].get()
 
         # Check addresses 
         try:
-            N_samples = int(N_samples)
+            N_data = int(N_data)
         except:
             self.log_write_line("Fill entry with integer !")
             return
-        if N_samples < 1:
+        if N_data < 1:
             self.log_write_line(f"Fill entry with positive integer !")
             return
 
 
-        ########################### READ IIO rx!!!!!!!!!!!!!!!!!!
+        # READ IIO rx
+        try:
+            fs = int(root.iio_context.rx0_sample_rate)
+            if fs == 20000000:
+                N_samples = 2*N_data # rx fs==20e6 --> leave every second sample
+            else:
+                N_samples = N_data
+            root.iio_context.rx_destroy_buffer()
+            root.iio_context.rx_buffer_size = N_samples
+            x = root.iio_context.rx()
+        except:
+            self.log_write_line(f"Reading IIO RX samples Error !")
+            return
+        
+        
+        # rx fs==20e6 --> leave every second sample
+        if fs == 20000000:
+            x = x[::2]
 
+        # Compute plot data
+        x_real = np.real(x)
+        x_imag = np.imag(x)
+        x_ampl = np.abs(x)
+
+
+        # Plot the data
+        t = np.arange(0, x.shape[0])
+
+        title = self.time_graph[1].get_title()
+        self.time_graph[1].clear()
+        self.time_graph[1].plot(t, x_real, color="blue", label="real")
+        self.time_graph[1].plot(t, x_imag, color="red", label="imag")
+        self.time_graph[1].plot(t, x_ampl, color="green", label="amplitude")
+        self.time_graph[1].set_title(title)
+        # self.time_graph[1].legend()
+        self.time_graph[0].draw()
+
+        title = self.freq_graph[1].get_title()
+        self.freq_graph[1].clear()
+        if N_data > 1:
+            # PSD has problem with 1 sample
+            self.freq_graph[1].psd(x, Fs=10e6, sides='twosided')
+        self.freq_graph[1].set_title(title)
+        self.freq_graph[0].draw()
+
+        
+        self.log_write_line(f"Read {N_data} samples")
 
 
     # Clear axes -- both graphs

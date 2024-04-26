@@ -1,0 +1,266 @@
+{
+	"version": "1.0",
+	"modules": {
+		"block_design_0": {
+			"proto_instances": {
+				"/hier_atan/atan_block_0/M_AXIS_DOUT": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "M_AXIS_DOUT_tdata[23:0]"},
+						"TVALID": { "actual": "M_AXIS_DOUT_tvalid"}
+					}
+				},
+				"/hier_atan/atan_block_0/S_AXIS_CARTESIAN": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "S_AXIS_CARTESIAN_tdata[63:0]"},
+						"TREADY": { "actual": "S_AXIS_CARTESIAN_tready"},
+						"TVALID": { "actual": "S_AXIS_CARTESIAN_tvalid"}
+					}
+				},
+				"/hier_atan/cordic_0/M_AXIS_DOUT": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "m_axis_dout_tdata[23:0]"},
+						"TVALID": { "actual": "m_axis_dout_tvalid"}
+					}
+				},
+				"/hier_atan/cordic_0/S_AXIS_CARTESIAN": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "s_axis_cartesian_tdata[63:0]"},
+						"TREADY": { "actual": "s_axis_cartesian_tready"},
+						"TVALID": { "actual": "s_axis_cartesian_tvalid"}
+					}
+				},
+				"/hier_atan_constellation/atan_constellation_b_0/M_AXIS_DOUT": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "M_AXIS_DOUT_tdata[23:0]"},
+						"TUSER": { "actual": "M_AXIS_DOUT_tuser[5:0]"},
+						"TVALID": { "actual": "M_AXIS_DOUT_tvalid"}
+					}
+				},
+				"/hier_atan_constellation/atan_constellation_b_0/S_AXIS_CARTESIAN": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "S_AXIS_CARTESIAN_tdata[47:0]"},
+						"TREADY": { "actual": "S_AXIS_CARTESIAN_tready"},
+						"TUSER": { "actual": "S_AXIS_CARTESIAN_tuser[5:0]"},
+						"TVALID": { "actual": "S_AXIS_CARTESIAN_tvalid"}
+					}
+				},
+				"/hier_atan_constellation/cordic_0/M_AXIS_DOUT": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "m_axis_dout_tdata[23:0]"},
+						"TUSER": { "actual": "m_axis_dout_tuser[5:0]"},
+						"TVALID": { "actual": "m_axis_dout_tvalid"}
+					}
+				},
+				"/hier_atan_constellation/cordic_0/S_AXIS_CARTESIAN": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "s_axis_cartesian_tdata[47:0]"},
+						"TUSER": { "actual": "s_axis_cartesian_tuser[5:0]"},
+						"TVALID": { "actual": "s_axis_cartesian_tvalid"}
+					}
+				},
+				"/hier_fft_ofdm/fft_ofdm_0/M_AXIS_DATA": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "M_AXIS_DATA_tdata[47:0]"},
+						"TLAST": { "actual": "M_AXIS_DATA_tlast"},
+						"TVALID": { "actual": "M_AXIS_DATA_tvalid"}
+					}
+				},
+				"/hier_fft_ofdm/fft_ofdm_0/S_AXIS_CONFIG": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "S_AXIS_CONFIG_tdata[7:0]"},
+						"TREADY": { "actual": "S_AXIS_CONFIG_tready"},
+						"TVALID": { "actual": "S_AXIS_CONFIG_tvalid"}
+					}
+				},
+				"/hier_fft_ofdm/fft_ofdm_0/S_AXIS_DATA": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "S_AXIS_DATA_tdata[31:0]"},
+						"TLAST": { "actual": "S_AXIS_DATA_tlast"},
+						"TREADY": { "actual": "S_AXIS_DATA_tready"},
+						"TVALID": { "actual": "S_AXIS_DATA_tvalid"}
+					}
+				},
+				"/hier_fft_ofdm/xfft_0/M_AXIS_DATA": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "m_axis_data_tdata[47:0]"},
+						"TLAST": { "actual": "m_axis_data_tlast"},
+						"TVALID": { "actual": "m_axis_data_tvalid"}
+					}
+				},
+				"/hier_fft_ofdm/xfft_0/S_AXIS_CONFIG": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "s_axis_config_tdata[7:0]"},
+						"TREADY": { "actual": "s_axis_config_tready"},
+						"TVALID": { "actual": "s_axis_config_tvalid"}
+					}
+				},
+				"/hier_fft_ofdm/xfft_0/S_AXIS_DATA": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "s_axis_data_tdata[31:0]"},
+						"TLAST": { "actual": "s_axis_data_tlast"},
+						"TREADY": { "actual": "s_axis_data_tready"},
+						"TVALID": { "actual": "s_axis_data_tvalid"}
+					}
+				},
+				"/hier_rotation/cordic_0/M_AXIS_DOUT": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "m_axis_dout_tdata[31:0]"},
+						"TLAST": { "actual": "m_axis_dout_tlast"},
+						"TVALID": { "actual": "m_axis_dout_tvalid"}
+					}
+				},
+				"/hier_rotation/cordic_0/S_AXIS_CARTESIAN": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "s_axis_cartesian_tdata[31:0]"},
+						"TLAST": { "actual": "s_axis_cartesian_tlast"},
+						"TVALID": { "actual": "s_axis_cartesian_tvalid"}
+					}
+				},
+				"/hier_rotation/cordic_0/S_AXIS_PHASE": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "s_axis_phase_tdata[15:0]"},
+						"TVALID": { "actual": "s_axis_phase_tvalid"}
+					}
+				},
+				"/hier_rotation/rotation_block_0/M_AXIS_DOUT": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "M_AXIS_DOUT_tdata[31:0]"},
+						"TLAST": { "actual": "M_AXIS_DOUT_tlast"},
+						"TVALID": { "actual": "M_AXIS_DOUT_tvalid"}
+					}
+				},
+				"/hier_rotation/rotation_block_0/S_AXIS_CARTESIAN": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "S_AXIS_CARTESIAN_tdata[31:0]"},
+						"TLAST": { "actual": "S_AXIS_CARTESIAN_tlast"},
+						"TVALID": { "actual": "S_AXIS_CARTESIAN_tvalid"}
+					}
+				},
+				"/hier_rotation/rotation_block_0/S_AXIS_PHASE": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "S_AXIS_PHASE_tdata[15:0]"},
+						"TVALID": { "actual": "S_AXIS_PHASE_tvalid"}
+					}
+				},
+				"/hier_rotation_constellation/cordic_0/M_AXIS_DOUT": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "m_axis_dout_tdata[47:0]"},
+						"TUSER": { "actual": "m_axis_dout_tuser[5:0]"},
+						"TVALID": { "actual": "m_axis_dout_tvalid"}
+					}
+				},
+				"/hier_rotation_constellation/cordic_0/S_AXIS_CARTESIAN": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "s_axis_cartesian_tdata[47:0]"},
+						"TUSER": { "actual": "s_axis_cartesian_tuser[5:0]"},
+						"TVALID": { "actual": "s_axis_cartesian_tvalid"}
+					}
+				},
+				"/hier_rotation_constellation/cordic_0/S_AXIS_PHASE": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "s_axis_phase_tdata[23:0]"},
+						"TVALID": { "actual": "s_axis_phase_tvalid"}
+					}
+				},
+				"/hier_rotation_constellation/rotation_constellati_0/M_AXIS_DOUT": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "M_AXIS_DOUT_tdata[47:0]"},
+						"TUSER": { "actual": "M_AXIS_DOUT_tuser[5:0]"},
+						"TVALID": { "actual": "M_AXIS_DOUT_tvalid"}
+					}
+				},
+				"/hier_rotation_constellation/rotation_constellati_0/S_AXIS_CARTESIAN": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "S_AXIS_CARTESIAN_tdata[47:0]"},
+						"TUSER": { "actual": "S_AXIS_CARTESIAN_tuser[5:0]"},
+						"TVALID": { "actual": "S_AXIS_CARTESIAN_tvalid"}
+					}
+				},
+				"/hier_rotation_constellation/rotation_constellati_0/S_AXIS_PHASE": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "aclk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "S_AXIS_PHASE_tdata[23:0]"},
+						"TVALID": { "actual": "S_AXIS_PHASE_tvalid"}
+					}
+				}
+			}
+		}
+	}
+}
