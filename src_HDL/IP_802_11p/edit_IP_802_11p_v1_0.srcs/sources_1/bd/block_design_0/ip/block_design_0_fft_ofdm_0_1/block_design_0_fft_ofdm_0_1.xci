@@ -2,9 +2,9 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "block_design_0_fft_ofdm_0_1",
-    "cell_name": "fft_ofdm_0",
+    "cell_name": "hier_fft_ofdm/fft_ofdm_0",
     "component_reference": "xilinx.com:module_ref:fft_ofdm:1.0",
-    "ip_revision": "1714136139",
+    "ip_revision": "1714236845",
     "gen_directory": "../../../../../../edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_fft_ofdm_0_1",
     "parameters": {
       "component_parameters": {
@@ -25,7 +25,7 @@
       },
       "runtime_parameters": {
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],
-        "IPREVISION": [ { "value": "1714136139" } ],
+        "IPREVISION": [ { "value": "1714236845" } ],
         "MANAGED": [ { "value": "TRUE" } ],
         "OUTPUTDIR": [ { "value": "../../../../../../edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_fft_ofdm_0_1" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],

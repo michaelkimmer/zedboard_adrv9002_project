@@ -10,7 +10,7 @@
 			compatible = "xlnx,IP-802-11p-1.0";
 			status = "okay";
 			clock-names = "CLOCK" , "RX_CLOCK" , "s00_axi_aclk";
-			xlnx,s00-axi-addr-width = <14>;
+			xlnx,s00-axi-addr-width = <11>;
 			xlnx,ip-name = "IP_802_11p";
 			xlnx,edk-iptype = "PERIPHERAL";
 			reg = <0x50000000 0x4000>;

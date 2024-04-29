@@ -479,7 +479,7 @@ et format long minimum {} maximum {}} value 6} integer {signed {attribs {resolve
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:f3c0d062</spirit:value>
+            <spirit:value>9:5756cd3e</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -491,7 +491,7 @@ et format long minimum {} maximum {}} value 6} integer {signed {attribs {resolve
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:f7819087</spirit:value>
+            <spirit:value>9:53178ddb</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -505,11 +505,11 @@ et format long minimum {} maximum {}} value 6} integer {signed {attribs {resolve
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri Apr 26 12:56:53 UTC 2024</spirit:value>
+            <spirit:value>Sat Apr 27 16:56:27 UTC 2024</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:f7819087</spirit:value>
+            <spirit:value>9:53178ddb</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -520,7 +520,7 @@ et format long minimum {} maximum {}} value 6} integer {signed {attribs {resolve
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:f7819087</spirit:value>
+            <spirit:value>9:53178ddb</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -536,11 +536,11 @@ et format long minimum {} maximum {}} value 6} integer {signed {attribs {resolve
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri Apr 26 12:56:09 UTC 2024</spirit:value>
+            <spirit:value>Sat Apr 27 16:54:42 UTC 2024</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:f3c0d062</spirit:value>
+            <spirit:value>9:5756cd3e</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -556,11 +556,11 @@ et format long minimum {} maximum {}} value 6} integer {signed {attribs {resolve
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri Apr 26 12:56:09 UTC 2024</spirit:value>
+            <spirit:value>Sat Apr 27 16:54:42 UTC 2024</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:f7819087</spirit:value>
+            <spirit:value>9:53178ddb</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -936,7 +936,7 @@ et format long minimum {} maximum {}} value 6} integer {signed {attribs {resolve
     <xilinx:coreExtensions>
       <xilinx:displayName>atan_constellation_block_v1_0</xilinx:displayName>
       <xilinx:definitionSource>module_ref</xilinx:definitionSource>
-      <xilinx:coreRevision>1714136132</xilinx:coreRevision>
+      <xilinx:coreRevision>1714236846</xilinx:coreRevision>
       <xilinx:configElementInfos>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.ACLK_INTF.ASSOCIATED_BUSIF" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.ACLK_INTF.ASSOCIATED_CLKEN" xilinx:valuePermission="bd_and_user"/>

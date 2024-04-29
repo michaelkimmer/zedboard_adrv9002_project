@@ -1,6 +1,177 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
+| Date         : Sun Apr 28 21:47:32 2024
+| Host         : ASUS_ROG running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'system_IP_802_11p_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of system_IP_802_11p_0_0 (xilinx.com:user:IP_802_11p:1.0) from (Rev. 25) to (Rev. 26)
+
+
+
+
+
+
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
+| Date         : Sat Apr 27 23:08:48 2024
+| Host         : ASUS_ROG running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'system_IP_802_11p_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of system_IP_802_11p_0_0 (xilinx.com:user:IP_802_11p:1.0) from (Rev. 24) to (Rev. 25)
+
+
+
+
+
+
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
+| Date         : Sat Apr 27 19:06:07 2024
+| Host         : ASUS_ROG running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'system_IP_802_11p_0_0'
+
+1. Summary
+----------
+
+CAUTION (success, with warnings) in the upgrade of system_IP_802_11p_0_0 (xilinx.com:user:IP_802_11p:1.0) from (Rev. 23) to (Rev. 24)
+
+After upgrade, an IP may have parameter differences compared to the original customization. Please review the parameters within the IP customization GUI to ensure proper functionality.
+
+2. Customization warnings
+-------------------------
+
+An attempt to modify the value of disabled parameter 'C_S00_AXI_ADDR_WIDTH' from '11' to '14' has been ignored for IP 'system_IP_802_11p_0_0'
+
+
+3. Debug Commands
+-----------------
+
+  The following debug information can be passed to Vivado as Tcl commands,
+in order to validate or debug the output of the upgrade flow.
+  You may consult any warnings from within this upgrade, and alter or remove
+the configuration parameter(s) which caused the warning; then execute the Tcl
+commands, and use the IP Customization GUI to verify the IP configuration.
+
+create_ip -vlnv xilinx.com:user:IP_802_11p:1.0 -user_name system_IP_802_11p_0_0
+set_property -dict "\
+  CONFIG.CLOCK.ASSOCIATED_BUSIF {} \
+  CONFIG.CLOCK.ASSOCIATED_PORT {} \
+  CONFIG.CLOCK.ASSOCIATED_RESET {} \
+  CONFIG.CLOCK.CLK_DOMAIN {system_sys_ps7_0_FCLK_CLK0} \
+  CONFIG.CLOCK.FREQ_HZ {100000000} \
+  CONFIG.CLOCK.FREQ_TOLERANCE_HZ {0} \
+  CONFIG.CLOCK.INSERT_VIP {0} \
+  CONFIG.CLOCK.PHASE {0.0} \
+  CONFIG.C_S00_AXI_ADDR_WIDTH {14} \
+  CONFIG.C_S00_AXI_BASEADDR {0xFFFFFFFF} \
+  CONFIG.C_S00_AXI_DATA_WIDTH {32} \
+  CONFIG.C_S00_AXI_HIGHADDR {0x00000000} \
+  CONFIG.Component_Name {system_IP_802_11p_0_0} \
+  CONFIG.RX_CLOCK.ASSOCIATED_BUSIF {} \
+  CONFIG.RX_CLOCK.ASSOCIATED_PORT {} \
+  CONFIG.RX_CLOCK.ASSOCIATED_RESET {RX_RESET} \
+  CONFIG.RX_CLOCK.CLK_DOMAIN {system_axi_adrv9001_0_adc_1_clk} \
+  CONFIG.RX_CLOCK.FREQ_HZ {100000000} \
+  CONFIG.RX_CLOCK.FREQ_TOLERANCE_HZ {0} \
+  CONFIG.RX_CLOCK.INSERT_VIP {0} \
+  CONFIG.RX_CLOCK.PHASE {0.0} \
+  CONFIG.RX_RESET.INSERT_VIP {0} \
+  CONFIG.RX_RESET.POLARITY {ACTIVE_LOW} \
+  CONFIG.S00_AXI.ADDR_WIDTH {11} \
+  CONFIG.S00_AXI.ARUSER_WIDTH {0} \
+  CONFIG.S00_AXI.AWUSER_WIDTH {0} \
+  CONFIG.S00_AXI.BUSER_WIDTH {0} \
+  CONFIG.S00_AXI.CLK_DOMAIN {system_sys_ps7_0_FCLK_CLK0} \
+  CONFIG.S00_AXI.DATA_WIDTH {32} \
+  CONFIG.S00_AXI.FREQ_HZ {100000000} \
+  CONFIG.S00_AXI.HAS_BRESP {1} \
+  CONFIG.S00_AXI.HAS_BURST {0} \
+  CONFIG.S00_AXI.HAS_CACHE {0} \
+  CONFIG.S00_AXI.HAS_LOCK {0} \
+  CONFIG.S00_AXI.HAS_PROT {1} \
+  CONFIG.S00_AXI.HAS_QOS {0} \
+  CONFIG.S00_AXI.HAS_REGION {0} \
+  CONFIG.S00_AXI.HAS_RRESP {1} \
+  CONFIG.S00_AXI.HAS_WSTRB {1} \
+  CONFIG.S00_AXI.ID_WIDTH {0} \
+  CONFIG.S00_AXI.INSERT_VIP {0} \
+  CONFIG.S00_AXI.MAX_BURST_LENGTH {1} \
+  CONFIG.S00_AXI.NUM_READ_OUTSTANDING {1} \
+  CONFIG.S00_AXI.NUM_READ_THREADS {1} \
+  CONFIG.S00_AXI.NUM_WRITE_OUTSTANDING {1} \
+  CONFIG.S00_AXI.NUM_WRITE_THREADS {1} \
+  CONFIG.S00_AXI.PHASE {0.0} \
+  CONFIG.S00_AXI.PROTOCOL {AXI4LITE} \
+  CONFIG.S00_AXI.READ_WRITE_MODE {READ_WRITE} \
+  CONFIG.S00_AXI.RUSER_BITS_PER_BYTE {0} \
+  CONFIG.S00_AXI.RUSER_WIDTH {0} \
+  CONFIG.S00_AXI.SUPPORTS_NARROW_BURST {0} \
+  CONFIG.S00_AXI.WIZ_DATA_WIDTH {32} \
+  CONFIG.S00_AXI.WIZ_NUM_REG {512} \
+  CONFIG.S00_AXI.WUSER_BITS_PER_BYTE {0} \
+  CONFIG.S00_AXI.WUSER_WIDTH {0} \
+  CONFIG.S00_AXI_CLK.ASSOCIATED_BUSIF {S00_AXI} \
+  CONFIG.S00_AXI_CLK.ASSOCIATED_PORT {} \
+  CONFIG.S00_AXI_CLK.ASSOCIATED_RESET {s00_axi_aresetn} \
+  CONFIG.S00_AXI_CLK.CLK_DOMAIN {system_sys_ps7_0_FCLK_CLK0} \
+  CONFIG.S00_AXI_CLK.FREQ_HZ {100000000} \
+  CONFIG.S00_AXI_CLK.FREQ_TOLERANCE_HZ {0} \
+  CONFIG.S00_AXI_CLK.INSERT_VIP {0} \
+  CONFIG.S00_AXI_CLK.PHASE {0.0} \
+  CONFIG.S00_AXI_RST.INSERT_VIP {0} \
+  CONFIG.S00_AXI_RST.POLARITY {ACTIVE_LOW} " [get_ips system_IP_802_11p_0_0]
+
+
+
+
+
+
+
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
+| Date         : Fri Apr 26 23:51:12 2024
+| Host         : ASUS_ROG running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'system_IP_802_11p_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the update of system_IP_802_11p_0_0 (xilinx.com:user:IP_802_11p:1.0 (Rev. 23)) to current project options.
+
+
+
+
+
+
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
 | Date         : Fri Apr 26 15:01:13 2024
 | Host         : lab817_01 running 64-bit major release  (build 9200)
 | Command      : upgrade_ip
