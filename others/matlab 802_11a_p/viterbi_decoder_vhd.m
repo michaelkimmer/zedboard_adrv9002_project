@@ -40,7 +40,7 @@ text = text + output_text_b0 + newline;
 text = text + output_text_b1 + newline;
 
 % end the text
-text = text + "); -- Input: to_integer(unsigned(state & b))" + newline + newline; 
+text = text + "); -- Input: to_integer(unsigned(b & state))" + newline + newline; 
 
 
 %% Generate Coder BACKWARD transitions 

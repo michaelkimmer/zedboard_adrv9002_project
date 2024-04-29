@@ -76,10 +76,10 @@ architecture Behavioral of viterbi_hard is
 --   ); -- Input: to_integer(unsigned(state & b))
 
   -- VHDL Coder BACKWARD transitions memory for Viterbi
-  type viterbi_mem_t is array (0 to 63) of std_logic_vector(0 to 1);
+  type viterbi_mem_t is array (0 to 127) of std_logic_vector(0 to 1);
   constant VITERBI_BACKWARD_MEM : viterbi_mem_t := (
-  "00", "11", "01", "10", "11", "00", "10", "01", "11", "00", "10", "01", "00", "11", "01", "10", "00", "11", "01", "10", "11", "00", "10", "01", "11", "00", "10", "01", "00", "11", "01", "10", "10", "01", "11", "00", "01", "10", "00", "11", "01", "10", "00", "11", "10", "01", "11", "00", "10", "01", "11", "00", "01", "10", "00", "11", "01", "10", "00", "11", "10", "01", "11", "00"
-  --"11", "00", "10", "01", "00", "11", "01", "10", "00", "11", "01", "10", "11", "00", "10", "01", "11", "00", "10", "01", "00", "11", "01", "10", "00", "11", "01", "10", "11", "00", "10", "01", "01", "10", "00", "11", "10", "01", "11", "00", "10", "01", "11", "00", "01", "10", "00", "11", "01", "10", "00", "11", "10", "01", "11", "00", "10", "01", "11", "00", "01", "10", "00", "11"
+  "00", "11", "01", "10", "11", "00", "10", "01", "11", "00", "10", "01", "00", "11", "01", "10", "00", "11", "01", "10", "11", "00", "10", "01", "11", "00", "10", "01", "00", "11", "01", "10", "10", "01", "11", "00", "01", "10", "00", "11", "01", "10", "00", "11", "10", "01", "11", "00", "10", "01", "11", "00", "01", "10", "00", "11", "01", "10", "00", "11", "10", "01", "11", "00",
+  "11", "00", "10", "01", "00", "11", "01", "10", "00", "11", "01", "10", "11", "00", "10", "01", "11", "00", "10", "01", "00", "11", "01", "10", "00", "11", "01", "10", "11", "00", "10", "01", "01", "10", "00", "11", "10", "01", "11", "00", "10", "01", "11", "00", "01", "10", "00", "11", "01", "10", "00", "11", "10", "01", "11", "00", "10", "01", "11", "00", "01", "10", "00", "11"
   ); -- Input: to_integer(unsigned(s7 & state))
 
   -- input buffer (decoded OFDM symbol)
@@ -99,6 +99,9 @@ architecture Behavioral of viterbi_hard is
   type code_rate_t is (RATE_1_2, RATE_2_3, RATE_3_4);
   signal CODE_RATE : code_rate_t := RATE_1_2;
   signal SIGNAL_PARITY : std_logic := '0';
+  signal N_CBPS : integer range 48 to 288 := 48;
+  signal N_DBPS : integer range 24 to 216 := 24;
+
 
   signal COUNTER_OFDM_SYMBOL : integer := 0;
   signal COUNTER_BYTES : integer := 0;
@@ -266,30 +269,44 @@ begin
 
           -- process RATE in SIGNAL
           when PROCESS_RATE =>
+            VITERBI_SIGNAL_VALID <= '0';
+
               case VITERBI_SIGNAL_OUTPUT_BUFFER(31 downto 28) is 
                 when "1101" => -- rate 6
                   MODULATION <= BPSK;
                   CODE_RATE <= RATE_1_2;
+                  N_CBPS <= 48;
+                  N_DBPS <= 24;
                   STATE <= WAIT_FOR_DATA;
                 when "1111" => --rate 9
                   MODULATION <= BPSK;
                   CODE_RATE <= RATE_3_4;
+                  N_CBPS <= 48;
+                  N_DBPS <= 36;
                   STATE <= WAIT_FOR_DATA;
                 when "0101" => -- rate 12
                   MODULATION <= QPSK;
                   CODE_RATE <= RATE_1_2;
+                  N_CBPS <= 96;
+                  N_DBPS <= 48;
                   STATE <= WAIT_FOR_DATA;
-                when "1101" => -- rate 18
+                when "0111" => -- rate 18
                   MODULATION <= QPSK;
                   CODE_RATE <= RATE_3_4;
+                  N_CBPS <= 96;
+                  N_DBPS <= 72;
                   STATE <= WAIT_FOR_DATA;
-                when "1111" => --rate 24
+                when "1001" => --rate 24
                   MODULATION <= QAM16;
                   CODE_RATE <= RATE_1_2;
+                  N_CBPS <= 192;
+                  N_DBPS <= 96;
                   STATE <= WAIT_FOR_DATA;
-                when "0101" => -- rate 36
+                when "1011" => -- rate 36
                   MODULATION <= QAM16;
                   CODE_RATE <= RATE_3_4;
+                  N_CBPS <= 192;
+                  N_DBPS <= 144;
                   STATE <= WAIT_FOR_DATA;
                 when others =>
                   -- QAM64 and RATE_2_3 unsupported !
@@ -308,14 +325,63 @@ begin
  
           -- wait for DATA
           when WAIT_FOR_DATA =>
-            STATE <= IDLE;
+            VITERBI_INPUT_VALID <= '0';
+            INPUT_DATA_CNTR <= 0;
+
+            if DEINTERLEAVER_STROBE = '1' then
+              STATE <= RX_DATA;
+            end if;
 
           -- process DATA
           when RX_DATA =>
-            VITERBI_RESET <= '0';
-            VITERBI_SIGNAL_VALID <= '0';
 
             -- Forward data in
+            VITERBI_RESET <= '0';
+            VITERBI_INPUT_VALID <= '1';
+
+            case MODULATION is 
+              when BPSK =>
+                VITERBI_INPUT <= INPUT_BPSK_BUFFER(INPUT_DATA_CNTR to INPUT_DATA_CNTR+1);
+                if INPUT_DATA_CNTR < N_CBPS then
+                  
+                  INPUT_DATA_CNTR <= INPUT_DATA_CNTR + 2;         
+                end if;
+              when QPSK =>
+
+              when QAM16 =>
+
+              when others =>
+
+            end case;
+
+            case VITERBI_SIGNAL_OUTPUT_BUFFER(31 downto 28) is 
+              when "1101" => -- rate 6
+                VITERBI_INPUT <= INPUT_BPSK_BUFFER(INPUT_DATA_CNTR to INPUT_DATA_CNTR+1);
+                INPUT_DATA_CNTR <= INPUT_DATA_CNTR + 2; 
+                if INPUT_DATA_CNTR < N_CBPS then
+              when "1111" => --rate 9
+                MODULATION <= BPSK;
+                CODE_RATE <= RATE_3_4;
+                STATE <= WAIT_FOR_DATA;
+              when "0101" => -- rate 12
+                MODULATION <= QPSK;
+                CODE_RATE <= RATE_1_2;
+                STATE <= WAIT_FOR_DATA;
+              when "0111" => -- rate 18
+                MODULATION <= QPSK;
+                CODE_RATE <= RATE_3_4;
+                STATE <= WAIT_FOR_DATA;
+              when "1001" => --rate 24
+                MODULATION <= QAM16;
+                CODE_RATE <= RATE_1_2;
+                STATE <= WAIT_FOR_DATA;
+              when "1011" => -- rate 36
+                MODULATION <= QAM16;
+                CODE_RATE <= RATE_3_4;
+                STATE <= WAIT_FOR_DATA;
+              when others =>
+
+            end case;
 
             -- Forward data out
             if VITERBI_OUTPUT_VALID = '1' then
@@ -382,20 +448,20 @@ begin
         if VITERBI_INPUT_VALID = '1' then
           for state in 0 to 63 loop
             VAR_PATH_0_DIFFERENCE := VITERBI_BACKWARD_MEM(state) xor VITERBI_INPUT;
-            -- VAR_PATH_1_DIFFERENCE := VITERBI_BACKWARD_MEM(64+state) xor VITERBI_INPUT; -- same !!!
+            VAR_PATH_1_DIFFERENCE := VITERBI_BACKWARD_MEM(64+state) xor VITERBI_INPUT;
 
             VAR_PATH_0_HAMMING_DISTANCE := to_integer(unsigned(VAR_PATH_0_DIFFERENCE(0 to 0))) + to_integer(unsigned(VAR_PATH_0_DIFFERENCE(1 to 1)));
-            -- VAR_PATH_1_HAMMING_DISTANCE := to_integer(unsigned(VAR_PATH_1_DIFFERENCE(0 to 0))) + to_integer(unsigned(VAR_PATH_1_DIFFERENCE(1 to 1)));
+            VAR_PATH_1_HAMMING_DISTANCE := to_integer(unsigned(VAR_PATH_1_DIFFERENCE(0 to 0))) + to_integer(unsigned(VAR_PATH_1_DIFFERENCE(1 to 1)));
 
             -- for all states: 1) compute least hamming distance, 2) remember originating state !!!!!!
-            if STATE_DISTANCE(state/2)  < STATE_DISTANCE(32+state/2)  then -- originating state_1 + path_1 < originating state_2 + path_2 (+ path_1 == path_2)
+            if STATE_DISTANCE(state/2) + VAR_PATH_0_HAMMING_DISTANCE < STATE_DISTANCE(32+state/2) + VAR_PATH_1_HAMMING_DISTANCE then -- originating state_1 + path_1 < originating state_2 + path_2 
               if STATE_DISTANCE(state/2)  < 4090 then -- !!!
                 STATE_DISTANCE(state) <= STATE_DISTANCE(state/2) + VAR_PATH_0_HAMMING_DISTANCE;
               end if;
               STATE_TRACEBACK_REGISTERS(state) <= ('0' & STATE_TRACEBACK_REGISTERS(state/2)(0 to VITERBI_TRACEBACK_DEPTH-2));
             else
               if STATE_DISTANCE(32+state/2) < 4090 then -- !!!
-                STATE_DISTANCE(state) <= STATE_DISTANCE(32+state/2) + VAR_PATH_0_HAMMING_DISTANCE; 
+                STATE_DISTANCE(state) <= STATE_DISTANCE(32+state/2) + VAR_PATH_1_HAMMING_DISTANCE; 
               end if;
               STATE_TRACEBACK_REGISTERS(state) <= ('1' & STATE_TRACEBACK_REGISTERS(32+state/2)(0 to VITERBI_TRACEBACK_DEPTH-2));
             end if;

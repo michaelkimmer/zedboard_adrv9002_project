@@ -1,7 +1,7 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"0.152623",
-   "Default View_TopLeft":"-229,-1081",
+   "Default View_ScaleFactor":"0.16082",
+   "Default View_TopLeft":"-267,-1188",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0
 #  -string -flagsOSRD
@@ -11,63 +11,63 @@ preplace port port-id_RX_VALID -pg 1 -lvl 0 -x 0 -y 660 -defaultsOSRD
 preplace port port-id_RX_ENABLE -pg 1 -lvl 0 -x 0 -y 630 -defaultsOSRD
 preplace port port-id_RX_CLOCK -pg 1 -lvl 0 -x 0 -y 570 -defaultsOSRD
 preplace port port-id_RX_RESET -pg 1 -lvl 0 -x 0 -y 600 -defaultsOSRD
-preplace port port-id_FPGA_REG_WRITE_STROBE -pg 1 -lvl 12 -x 6600 -y 480 -defaultsOSRD
+preplace port port-id_FPGA_REG_WRITE_STROBE -pg 1 -lvl 12 -x 7050 -y 480 -defaultsOSRD
 preplace portBus RX_IDATA -pg 1 -lvl 0 -x 0 -y 690 -defaultsOSRD
 preplace portBus RX_QDATA -pg 1 -lvl 0 -x 0 -y 720 -defaultsOSRD
-preplace portBus POWER -pg 1 -lvl 12 -x 6600 -y 820 -defaultsOSRD
+preplace portBus POWER -pg 1 -lvl 12 -x 7050 -y 820 -defaultsOSRD
 preplace portBus DETECTION_THRESHOLD -pg 1 -lvl 0 -x 0 -y 770 -defaultsOSRD
-preplace portBus FPGA_REG_WRITE_ADDRESS -pg 1 -lvl 12 -x 6600 -y 420 -defaultsOSRD
-preplace portBus FPGA_REG_WRITE_DATA -pg 1 -lvl 12 -x 6600 -y 450 -defaultsOSRD
+preplace portBus FPGA_REG_WRITE_ADDRESS -pg 1 -lvl 12 -x 7050 -y 420 -defaultsOSRD
+preplace portBus FPGA_REG_WRITE_DATA -pg 1 -lvl 12 -x 7050 -y 450 -defaultsOSRD
 preplace portBus SELECT_AXI_REGS_MODE -pg 1 -lvl 0 -x 0 -y 1250 -defaultsOSRD
 preplace inst rx_clock_domain_cros_0 -pg 1 -lvl 1 -x 210 -y 620 -defaultsOSRD
 preplace inst data_interleaver_0 -pg 1 -lvl 2 -x 570 -y 610 -defaultsOSRD
-preplace inst data_delay_0 -pg 1 -lvl 3 -x 940 -y 590 -defaultsOSRD
-preplace inst act_power_0 -pg 1 -lvl 11 -x 6290 -y 810 -defaultsOSRD
-preplace inst timing_acquisition_8_0 -pg 1 -lvl 4 -x 1470 -y 580 -defaultsOSRD
-preplace inst hier_fft_ofdm -pg 1 -lvl 6 -x 2840 -y 890 -defaultsOSRD
-preplace inst hier_atan -pg 1 -lvl 4 -x 1470 -y 1150 -defaultsOSRD
-preplace inst hier_rotation -pg 1 -lvl 4 -x 1470 -y 900 -defaultsOSRD
-preplace inst equalizer_time_frequ_0 -pg 1 -lvl 5 -x 2090 -y 790 -defaultsOSRD
-preplace inst axi_regs_mux_0 -pg 1 -lvl 11 -x 6290 -y 450 -defaultsOSRD
-preplace inst hier_atan_constellation -pg 1 -lvl 6 -x 2840 -y 230 -defaultsOSRD
-preplace inst hier_rotation_constellation -pg 1 -lvl 6 -x 2840 -y 470 -defaultsOSRD
-preplace inst constellation_tracker_0 -pg 1 -lvl 7 -x 3690 -y 200 -defaultsOSRD
-preplace inst demapper_0 -pg 1 -lvl 8 -x 4490 -y 320 -defaultsOSRD
-preplace inst deinterleaver_0 -pg 1 -lvl 9 -x 5010 -y 300 -defaultsOSRD
-preplace inst viterbi_hard_0 -pg 1 -lvl 10 -x 5550 -y 290 -defaultsOSRD
-preplace netloc CLOCK_0_1 1 0 11 60 490 390 490 750 430 1140 770 1760 1010 2450 60 3330 10 4210 170 4770 170 5290 170 5850
-preplace netloc DETECTION_THRESHOLD_0_1 1 0 4 NJ 770 NJ 770 NJ 770 1130J
-preplace netloc RESET_0_1 1 0 11 50 480 400 480 740 420 1170 360 1820 360 2480 80 3340 390 4170 200 4780 180 5300 160 5860
+preplace inst data_delay_0 -pg 1 -lvl 3 -x 970 -y 590 -defaultsOSRD
+preplace inst act_power_0 -pg 1 -lvl 11 -x 6710 -y 810 -defaultsOSRD
+preplace inst timing_acquisition_8_0 -pg 1 -lvl 4 -x 1540 -y 580 -defaultsOSRD
+preplace inst hier_fft_ofdm -pg 1 -lvl 6 -x 2990 -y 890 -defaultsOSRD
+preplace inst hier_atan -pg 1 -lvl 4 -x 1540 -y 1150 -defaultsOSRD
+preplace inst hier_rotation -pg 1 -lvl 4 -x 1540 -y 900 -defaultsOSRD
+preplace inst equalizer_time_frequ_0 -pg 1 -lvl 5 -x 2190 -y 790 -defaultsOSRD
+preplace inst axi_regs_mux_0 -pg 1 -lvl 11 -x 6710 -y 450 -defaultsOSRD
+preplace inst hier_atan_constellation -pg 1 -lvl 6 -x 2990 -y 230 -defaultsOSRD
+preplace inst hier_rotation_constellation -pg 1 -lvl 6 -x 2990 -y 470 -defaultsOSRD
+preplace inst constellation_tracker_0 -pg 1 -lvl 7 -x 3890 -y 200 -defaultsOSRD
+preplace inst demapper_0 -pg 1 -lvl 8 -x 4750 -y 320 -defaultsOSRD
+preplace inst deinterleaver_0 -pg 1 -lvl 9 -x 5330 -y 300 -defaultsOSRD
+preplace inst viterbi_hard_0 -pg 1 -lvl 10 -x 5920 -y 290 -defaultsOSRD
+preplace netloc CLOCK_0_1 1 0 11 50 490 380 490 760 430 1190 770 1830 1010 2580 60 3500 10 4440 170 5060 170 5640 170 6240
+preplace netloc DETECTION_THRESHOLD_0_1 1 0 4 NJ 770 NJ 770 NJ 770 1180J
+preplace netloc RESET_0_1 1 0 11 40 480 390 480 750 420 1220 360 1890 360 2610 80 3510 390 4400 200 5070 180 5650 160 6250
 preplace netloc RX_CLOCK_0_1 1 0 1 40J 570n
 preplace netloc RX_ENABLE_0_1 1 0 1 NJ 630
 preplace netloc RX_IDATA_0_1 1 0 1 40J 670n
 preplace netloc RX_QDATA_0_1 1 0 1 50J 690n
 preplace netloc RX_RESET_0_1 1 0 1 20J 600n
 preplace netloc RX_VALID_0_1 1 0 1 50J 650n
-preplace netloc SELECT_AXI_REGS_MODE_0_1 1 0 11 30J 70 NJ 70 NJ 70 NJ 70 NJ 70 NJ 70 3320J 400 4140J 110 NJ 110 NJ 110 6000J
+preplace netloc SELECT_AXI_REGS_MODE_0_1 1 0 11 30J 70 NJ 70 NJ 70 NJ 70 NJ 70 NJ 70 3490J 400 4370J 110 NJ 110 NJ 110 6390J
 preplace netloc act_power_0_POWER 1 11 1 NJ 820
 preplace netloc axi_regs_mux_0_FPGA_REG_WRITE_DATA 1 11 1 NJ 450
-preplace netloc axi_regs_mux_0_FPGA_REG_WRITE_STROBE 1 11 1 6580J 470n
-preplace netloc constellation_tracker_0_ATAN_CONSTELLATION_IN_CNTR 1 5 3 2490 90 3300J 410 4050
-preplace netloc constellation_tracker_0_ATAN_CONSTELLATION_IN_I 1 5 3 2500 100 3280J 420 4110
-preplace netloc constellation_tracker_0_ATAN_CONSTELLATION_IN_Q 1 5 3 2510 110 3200J 430 4080
-preplace netloc constellation_tracker_0_ATAN_CONSTELLATION_IN_STROBE 1 5 3 2520 120 3250J 440 4120
-preplace netloc constellation_tracker_0_CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER 1 7 4 4130 460 NJ 460 NJ 460 5870J
-preplace netloc constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID 1 7 4 4180 130 NJ 130 NJ 130 5970J
-preplace netloc constellation_tracker_0_CONSTELLATION_IDATA_OUT 1 7 4 4200 450 NJ 450 NJ 450 5930J
-preplace netloc constellation_tracker_0_CONSTELLATION_QDATA_OUT 1 7 4 4160 470 NJ 470 NJ 470 5900J
-preplace netloc constellation_tracker_0_ROTATION_CONSTELLATION_CNTR_IN 1 5 3 2500 330 3210J 460 4040
-preplace netloc constellation_tracker_0_ROTATION_CONSTELLATION_DATA_IN_STROBE 1 5 3 2510 340 3190J 450 4060
-preplace netloc constellation_tracker_0_ROTATION_CONSTELLATION_IDATA_IN 1 5 3 2520 350 3160J 470 4100
-preplace netloc constellation_tracker_0_ROTATION_CONSTELLATION_PHASE_IN 1 5 3 2520 590 3340J 570 4070
-preplace netloc constellation_tracker_0_ROTATION_CONSTELLATION_QDATA_IN 1 5 3 2510 600 NJ 600 4090
-preplace netloc data_delay_0_DATA_OUT_STROBE 1 3 8 1160 390 1790 570 2410J 610 NJ 610 4170J 630 NJ 630 NJ 630 5810
-preplace netloc data_delay_0_IDATA_OUT 1 3 8 1150 370 1810 560 2470J 580 NJ 580 NJ 580 NJ 580 NJ 580 5950
+preplace netloc axi_regs_mux_0_FPGA_REG_WRITE_STROBE 1 11 1 7030J 470n
+preplace netloc constellation_tracker_0_ATAN_CONSTELLATION_IN_CNTR 1 5 3 2620 90 3470J 410 4280
+preplace netloc constellation_tracker_0_ATAN_CONSTELLATION_IN_I 1 5 3 2630 100 3450J 420 4340
+preplace netloc constellation_tracker_0_ATAN_CONSTELLATION_IN_Q 1 5 3 2640 110 3370J 430 4310
+preplace netloc constellation_tracker_0_ATAN_CONSTELLATION_IN_STROBE 1 5 3 2650 120 3420J 440 4350
+preplace netloc constellation_tracker_0_CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER 1 7 4 4360 460 NJ 460 NJ 460 6260J
+preplace netloc constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID 1 7 4 4410 130 NJ 130 NJ 130 6360J
+preplace netloc constellation_tracker_0_CONSTELLATION_IDATA_OUT 1 7 4 4430 450 NJ 450 NJ 450 6320J
+preplace netloc constellation_tracker_0_CONSTELLATION_QDATA_OUT 1 7 4 4390 470 NJ 470 NJ 470 6290J
+preplace netloc constellation_tracker_0_ROTATION_CONSTELLATION_CNTR_IN 1 5 3 2630 330 3380J 460 4270
+preplace netloc constellation_tracker_0_ROTATION_CONSTELLATION_DATA_IN_STROBE 1 5 3 2640 340 3360J 450 4290
+preplace netloc constellation_tracker_0_ROTATION_CONSTELLATION_IDATA_IN 1 5 3 2650 350 3330J 470 4330
+preplace netloc constellation_tracker_0_ROTATION_CONSTELLATION_PHASE_IN 1 5 3 2650 590 3510J 570 4300
+preplace netloc constellation_tracker_0_ROTATION_CONSTELLATION_QDATA_IN 1 5 3 2640 600 NJ 600 4320
+preplace netloc data_delay_0_DATA_OUT_STROBE 1 3 8 1210 390 1860 570 2540J 610 NJ 610 4400J 630 NJ 630 NJ 630 6200
+preplace netloc data_delay_0_IDATA_OUT 1 3 8 1200 370 1880 560 2600J 580 NJ 580 NJ 580 NJ 580 NJ 580 6340
 preplace netloc data_delay_0_IDATA_OUT_DELAY_16 1 3 1 N 550
 preplace netloc data_delay_0_IDATA_OUT_DELAY_32 1 3 1 N 590
 preplace netloc data_delay_0_IDATA_OUT_DELAY_48 1 3 1 N 630
 preplace netloc data_delay_0_IDATA_OUT_DELAY_64 1 3 1 N 670
-preplace netloc data_delay_0_QDATA_OUT 1 3 8 1220 380 1800 550 2460J 620 NJ 620 NJ 620 NJ 620 5240J 610 5820
+preplace netloc data_delay_0_QDATA_OUT 1 3 8 1270 380 1870 550 2590J 620 NJ 620 NJ 620 NJ 620 5590J 610 6210
 preplace netloc data_delay_0_QDATA_OUT_DELAY_16 1 3 1 N 570
 preplace netloc data_delay_0_QDATA_OUT_DELAY_32 1 3 1 N 610
 preplace netloc data_delay_0_QDATA_OUT_DELAY_48 1 3 1 N 650
@@ -75,63 +75,63 @@ preplace netloc data_delay_0_QDATA_OUT_DELAY_64 1 3 1 N 690
 preplace netloc data_interleaver_0_DATA_OUT_STROBE 1 2 1 N 630
 preplace netloc data_interleaver_0_IDATA_OUT 1 2 1 N 590
 preplace netloc data_interleaver_0_QDATA_OUT 1 2 1 N 610
-preplace netloc deinterleaver_0_DEINTERLEAVER_16QAM 1 9 2 5250 620 5830J
-preplace netloc deinterleaver_0_DEINTERLEAVER_BPSK 1 9 2 5280 150 5940
-preplace netloc deinterleaver_0_DEINTERLEAVER_QPSK 1 9 2 5260 600 5830
-preplace netloc deinterleaver_0_DEINTERLEAVER_START_MARKER 1 9 1 5270 260n
-preplace netloc deinterleaver_0_DEINTERLEAVER_STROBE 1 9 2 5270 570 N
+preplace netloc deinterleaver_0_DEINTERLEAVER_16QAM 1 9 2 5600 620 6220J
+preplace netloc deinterleaver_0_DEINTERLEAVER_BPSK 1 9 2 5630 150 6330
+preplace netloc deinterleaver_0_DEINTERLEAVER_QPSK 1 9 2 5610 600 6220
+preplace netloc deinterleaver_0_DEINTERLEAVER_START_MARKER 1 9 1 5620 260n
+preplace netloc deinterleaver_0_DEINTERLEAVER_STROBE 1 9 2 5620 570 N
 preplace netloc demapper_0_DEMAPPING_16QAM 1 8 1 N 360
 preplace netloc demapper_0_DEMAPPING_BPSK 1 8 1 N 320
 preplace netloc demapper_0_DEMAPPING_QPSK 1 8 1 N 340
 preplace netloc demapper_0_DEMAPPING_START_MARKER 1 8 1 N 280
 preplace netloc demapper_0_DEMAPPING_STROBE 1 8 1 N 300
 preplace netloc equalizer_time_frequ_0_FFT_DATA_IN_FIRST_SYMBOL_MARKER 1 5 1 N 950
-preplace netloc equalizer_time_frequ_0_FPGA_REG_WRITE_DATA 1 5 6 2470J 640 NJ 640 NJ 640 NJ 640 NJ 640 5880
-preplace netloc equalizer_time_frequ_0_FPGA_REG_WRITE_STROBE_PHASE_1 1 5 6 NJ 630 NJ 630 4150J 140 NJ 140 NJ 140 5980
-preplace netloc equalizer_time_frequ_0_FPGA_REG_WRITE_STROBE_PHASE_2 1 5 6 NJ 650 NJ 650 4190J 120 NJ 120 NJ 120 5990
-preplace netloc equalizer_time_frequ_0_ROTATION_DATA_IN_MARKER 1 3 3 1220 1020 NJ 1020 2410
-preplace netloc equalizer_time_frequ_0_ROTATION_DATA_IN_STROBE 1 3 3 1210 1030 NJ 1030 2420
-preplace netloc equalizer_time_frequ_0_ROTATION_IDATA_IN 1 3 3 1180 1260 NJ 1260 2390
-preplace netloc equalizer_time_frequ_0_ROTATION_PHASE_NEW_DIFF 1 3 3 1200 1040 NJ 1040 2360
-preplace netloc equalizer_time_frequ_0_ROTATION_PHASE_NEW_DIFF_STROBE 1 3 3 1160 1270 NJ 1270 2370
-preplace netloc equalizer_time_frequ_0_ROTATION_QDATA_IN 1 3 3 1190 1050 NJ 1050 2380
-preplace netloc fft_ofdm_0_FFT_DATA_OUT_LAST 1 6 1 3290 170n
-preplace netloc fft_ofdm_0_FFT_DATA_OUT_VALID 1 6 5 3270 510 NJ 510 NJ 510 NJ 510 5960J
-preplace netloc fft_ofdm_0_FFT_IDATA_OUT 1 6 5 3220 480 NJ 480 NJ 480 NJ 480 5890J
-preplace netloc fft_ofdm_0_FFT_QDATA_OUT 1 6 5 3260 500 NJ 500 NJ 500 NJ 500 5910J
-preplace netloc hier_atan_ATAN_PHASE_OUT 1 4 1 1820 860n
-preplace netloc hier_atan_ATAN_PHASE_OUT_STROBE 1 4 1 1730 840n
+preplace netloc equalizer_time_frequ_0_FPGA_REG_WRITE_DATA 1 5 6 2600J 640 NJ 640 NJ 640 NJ 640 NJ 640 6270
+preplace netloc equalizer_time_frequ_0_FPGA_REG_WRITE_STROBE_PHASE_1 1 5 6 NJ 630 NJ 630 4380J 140 NJ 140 NJ 140 6370
+preplace netloc equalizer_time_frequ_0_FPGA_REG_WRITE_STROBE_PHASE_2 1 5 6 NJ 650 NJ 650 4420J 120 NJ 120 NJ 120 6380
+preplace netloc equalizer_time_frequ_0_ROTATION_DATA_IN_MARKER 1 3 3 1270 1020 NJ 1020 2540
+preplace netloc equalizer_time_frequ_0_ROTATION_DATA_IN_STROBE 1 3 3 1260 1030 NJ 1030 2550
+preplace netloc equalizer_time_frequ_0_ROTATION_IDATA_IN 1 3 3 1230 1260 NJ 1260 2520
+preplace netloc equalizer_time_frequ_0_ROTATION_PHASE_NEW_DIFF 1 3 3 1250 1040 NJ 1040 2490
+preplace netloc equalizer_time_frequ_0_ROTATION_PHASE_NEW_DIFF_STROBE 1 3 3 1210 1270 NJ 1270 2500
+preplace netloc equalizer_time_frequ_0_ROTATION_QDATA_IN 1 3 3 1240 1050 NJ 1050 2510
+preplace netloc fft_ofdm_0_FFT_DATA_OUT_LAST 1 6 1 3460 170n
+preplace netloc fft_ofdm_0_FFT_DATA_OUT_VALID 1 6 5 3440 510 NJ 510 NJ 510 NJ 510 6350J
+preplace netloc fft_ofdm_0_FFT_IDATA_OUT 1 6 5 3390 480 NJ 480 NJ 480 NJ 480 6280J
+preplace netloc fft_ofdm_0_FFT_QDATA_OUT 1 6 5 3430 500 NJ 500 NJ 500 NJ 500 6300J
+preplace netloc hier_atan_ATAN_PHASE_OUT 1 4 1 1890 860n
+preplace netloc hier_atan_ATAN_PHASE_OUT_STROBE 1 4 1 1820 840n
 preplace netloc hier_atan_constellation_ATAN_CONSTELLATION_PHASE_OUT 1 6 1 N 230
 preplace netloc hier_atan_constellation_ATAN_CONSTELLATION_PHASE_OUT_CNTR 1 6 1 N 250
 preplace netloc hier_atan_constellation_ATAN_CONSTELLATION_PHASE_OUT_STROBE 1 6 1 N 210
-preplace netloc hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER 1 6 5 3310 490 NJ 490 NJ 490 NJ 490 5920J
-preplace netloc hier_rotation_constellation_ROTATION_CONSTELLATION_DATA_OUT_CNTR 1 6 1 3230 330n
-preplace netloc hier_rotation_constellation_ROTATION_CONSTELLATION_DATA_OUT_STROBE 1 6 1 3240 270n
-preplace netloc hier_rotation_constellation_ROTATION_CONSTELLATION_IDATA_OUT 1 6 1 3170 290n
-preplace netloc hier_rotation_constellation_ROTATION_CONSTELLATION_QDATA_OUT 1 6 1 3180 310n
-preplace netloc receiver_802_11p_0_ATAN_AUTOCORR_I 1 3 3 1220 1240 NJ 1240 2430
-preplace netloc receiver_802_11p_0_ATAN_AUTOCORR_Q 1 3 3 1130 1280 NJ 1280 2400
-preplace netloc receiver_802_11p_0_ATAN_AUTOCORR_STROBE 1 3 3 1210 1250 NJ 1250 2440
+preplace netloc hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER 1 6 5 3480 490 NJ 490 NJ 490 NJ 490 6310J
+preplace netloc hier_rotation_constellation_ROTATION_CONSTELLATION_DATA_OUT_CNTR 1 6 1 3400 330n
+preplace netloc hier_rotation_constellation_ROTATION_CONSTELLATION_DATA_OUT_STROBE 1 6 1 3410 270n
+preplace netloc hier_rotation_constellation_ROTATION_CONSTELLATION_IDATA_OUT 1 6 1 3340 290n
+preplace netloc hier_rotation_constellation_ROTATION_CONSTELLATION_QDATA_OUT 1 6 1 3350 310n
+preplace netloc receiver_802_11p_0_ATAN_AUTOCORR_I 1 3 3 1270 1240 NJ 1240 2560
+preplace netloc receiver_802_11p_0_ATAN_AUTOCORR_Q 1 3 3 1180 1280 NJ 1280 2530
+preplace netloc receiver_802_11p_0_ATAN_AUTOCORR_STROBE 1 3 3 1260 1250 NJ 1250 2570
 preplace netloc receiver_802_11p_0_FFT_DATA_IN_START 1 5 1 N 930
 preplace netloc receiver_802_11p_0_FFT_DATA_IN_STROBE 1 5 1 N 910
 preplace netloc receiver_802_11p_0_FFT_IDATA_IN 1 5 1 N 870
 preplace netloc receiver_802_11p_0_FFT_QDATA_IN 1 5 1 N 890
-preplace netloc receiver_802_11p_0_FPGA_REG_WRITE_ADDRESS 1 11 1 6580J 420n
-preplace netloc rotation_block_0_ROTATION_DATA_OUT_MARKER 1 4 1 1720 890n
-preplace netloc rotation_block_0_ROTATION_DATA_OUT_STROBE 1 4 1 1720 870n
-preplace netloc rotation_block_0_ROTATION_IDATA_OUT 1 4 1 1720 910n
-preplace netloc rotation_block_0_ROTATION_QDATA_OUT 1 4 1 1720 930n
-preplace netloc rx_clock_domain_cros_0_DATA_STROBE 1 1 1 370 640n
-preplace netloc rx_clock_domain_cros_0_IDATA 1 1 1 370 600n
-preplace netloc rx_clock_domain_cros_0_QDATA 1 1 1 360 620n
-preplace netloc timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED 1 4 1 1770 550n
-preplace netloc timing_acquisition_8_0_DETECTION_STROBE 1 4 1 1780 530n
-preplace netloc timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I 1 4 1 1730 610n
-preplace netloc timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q 1 4 1 1720 630n
-preplace netloc viterbi_hard_0_VITERBI_SIGNAL 1 10 1 5840 270n
-preplace netloc viterbi_hard_0_VITERBI_SIGNAL_VALID 1 10 1 5800 250n
-levelinfo -pg 1 0 210 570 940 1470 2090 2840 3690 4490 5010 5550 6290 6600
-pagesize -pg 1 -db -bbox -sgen -250 0 6870 1310
+preplace netloc receiver_802_11p_0_FPGA_REG_WRITE_ADDRESS 1 11 1 7030J 420n
+preplace netloc rotation_block_0_ROTATION_DATA_OUT_MARKER 1 4 1 1810 890n
+preplace netloc rotation_block_0_ROTATION_DATA_OUT_STROBE 1 4 1 1810 870n
+preplace netloc rotation_block_0_ROTATION_IDATA_OUT 1 4 1 1810 910n
+preplace netloc rotation_block_0_ROTATION_QDATA_OUT 1 4 1 1810 930n
+preplace netloc rx_clock_domain_cros_0_DATA_STROBE 1 1 1 380 640n
+preplace netloc rx_clock_domain_cros_0_IDATA 1 1 1 380 600n
+preplace netloc rx_clock_domain_cros_0_QDATA 1 1 1 370 620n
+preplace netloc timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED 1 4 1 1840 550n
+preplace netloc timing_acquisition_8_0_DETECTION_STROBE 1 4 1 1850 530n
+preplace netloc timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I 1 4 1 1820 610n
+preplace netloc timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q 1 4 1 1810 630n
+preplace netloc viterbi_hard_0_VITERBI_SIGNAL 1 10 1 6230 270n
+preplace netloc viterbi_hard_0_VITERBI_SIGNAL_VALID 1 10 1 6190 250n
+levelinfo -pg 1 0 210 570 970 1540 2190 2990 3890 4750 5330 5920 6710 7050
+pagesize -pg 1 -db -bbox -sgen -270 0 7350 1310
 "
 }
 0

@@ -26,7 +26,7 @@ from access_axi_regs import *
 # AXI_ADDRESS_NUM = 512
 
 # IIO parameters
-IIO_uri="ip:192.168.1.11" # uri="ip:192.168.1.12", uri="ip:analog.local"
+IIO_uri="ip:192.168.1.12" # uri="ip:192.168.1.12", uri="ip:analog.local"
 
 
 
