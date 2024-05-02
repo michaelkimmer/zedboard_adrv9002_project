@@ -2,8 +2,8 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
--- Date        : Mon Apr 29 13:47:06 2024
--- Host        : lab817_01 running 64-bit major release  (build 9200)
+-- Date        : Wed May  1 21:25:35 2024
+-- Host        : ASUS_ROG running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_atan_constellation_b_0_0/block_design_0_atan_constellation_b_0_0_sim_netlist.vhdl
 -- Design      : block_design_0_atan_constellation_b_0_0
@@ -24,15 +24,15 @@ entity block_design_0_atan_constellation_b_0_0_atan_constellation_block is
     S_AXIS_CARTESIAN_tuser : out STD_LOGIC_VECTOR ( 5 downto 0 );
     S_AXIS_CARTESIAN_tvalid : out STD_LOGIC;
     ATAN_CONSTELLATION_PHASE_OUT_STROBE : out STD_LOGIC;
-    RESET : in STD_LOGIC;
-    M_AXIS_DOUT_tvalid : in STD_LOGIC;
     M_AXIS_DOUT_tdata : in STD_LOGIC_VECTOR ( 23 downto 0 );
     CLOCK : in STD_LOGIC;
     M_AXIS_DOUT_tuser : in STD_LOGIC_VECTOR ( 5 downto 0 );
-    ATAN_CONSTELLATION_IN_STROBE : in STD_LOGIC;
     D : in STD_LOGIC_VECTOR ( 47 downto 0 );
     ATAN_CONSTELLATION_IN_CNTR : in STD_LOGIC_VECTOR ( 5 downto 0 );
-    S_AXIS_CARTESIAN_tready : in STD_LOGIC
+    S_AXIS_CARTESIAN_tready : in STD_LOGIC;
+    ATAN_CONSTELLATION_IN_STROBE : in STD_LOGIC;
+    RESET : in STD_LOGIC;
+    M_AXIS_DOUT_tvalid : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of block_design_0_atan_constellation_b_0_0_atan_constellation_block : entity is "atan_constellation_block";
@@ -114,10 +114,10 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => M_AXIS_DOUT_tvalid,
+      CE => '1',
       D => M_AXIS_DOUT_tuser(0),
       Q => ATAN_CONSTELLATION_PHASE_OUT_CNTR(0),
-      R => RESET
+      R => '0'
     );
 \ATAN_CONSTELLATION_PHASE_OUT_CNTR_reg[1]\: unisim.vcomponents.FDRE
     generic map(
@@ -125,10 +125,10 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => M_AXIS_DOUT_tvalid,
+      CE => '1',
       D => M_AXIS_DOUT_tuser(1),
       Q => ATAN_CONSTELLATION_PHASE_OUT_CNTR(1),
-      R => RESET
+      R => '0'
     );
 \ATAN_CONSTELLATION_PHASE_OUT_CNTR_reg[2]\: unisim.vcomponents.FDRE
     generic map(
@@ -136,10 +136,10 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => M_AXIS_DOUT_tvalid,
+      CE => '1',
       D => M_AXIS_DOUT_tuser(2),
       Q => ATAN_CONSTELLATION_PHASE_OUT_CNTR(2),
-      R => RESET
+      R => '0'
     );
 \ATAN_CONSTELLATION_PHASE_OUT_CNTR_reg[3]\: unisim.vcomponents.FDRE
     generic map(
@@ -147,10 +147,10 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => M_AXIS_DOUT_tvalid,
+      CE => '1',
       D => M_AXIS_DOUT_tuser(3),
       Q => ATAN_CONSTELLATION_PHASE_OUT_CNTR(3),
-      R => RESET
+      R => '0'
     );
 \ATAN_CONSTELLATION_PHASE_OUT_CNTR_reg[4]\: unisim.vcomponents.FDRE
     generic map(
@@ -158,10 +158,10 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => M_AXIS_DOUT_tvalid,
+      CE => '1',
       D => M_AXIS_DOUT_tuser(4),
       Q => ATAN_CONSTELLATION_PHASE_OUT_CNTR(4),
-      R => RESET
+      R => '0'
     );
 \ATAN_CONSTELLATION_PHASE_OUT_CNTR_reg[5]\: unisim.vcomponents.FDRE
     generic map(
@@ -169,10 +169,10 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => M_AXIS_DOUT_tvalid,
+      CE => '1',
       D => M_AXIS_DOUT_tuser(5),
       Q => ATAN_CONSTELLATION_PHASE_OUT_CNTR(5),
-      R => RESET
+      R => '0'
     );
 ATAN_CONSTELLATION_PHASE_OUT_STROBE_i_1: unisim.vcomponents.LUT2
     generic map(
@@ -200,10 +200,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => M_AXIS_DOUT_tvalid,
+      CE => '1',
       D => M_AXIS_DOUT_tdata(0),
       Q => ATAN_CONSTELLATION_PHASE_OUT(0),
-      R => RESET
+      R => '0'
     );
 \ATAN_CONSTELLATION_PHASE_OUT_reg[10]\: unisim.vcomponents.FDRE
     generic map(
@@ -211,10 +211,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => M_AXIS_DOUT_tvalid,
+      CE => '1',
       D => M_AXIS_DOUT_tdata(10),
       Q => ATAN_CONSTELLATION_PHASE_OUT(10),
-      R => RESET
+      R => '0'
     );
 \ATAN_CONSTELLATION_PHASE_OUT_reg[11]\: unisim.vcomponents.FDRE
     generic map(
@@ -222,10 +222,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => M_AXIS_DOUT_tvalid,
+      CE => '1',
       D => M_AXIS_DOUT_tdata(11),
       Q => ATAN_CONSTELLATION_PHASE_OUT(11),
-      R => RESET
+      R => '0'
     );
 \ATAN_CONSTELLATION_PHASE_OUT_reg[12]\: unisim.vcomponents.FDRE
     generic map(
@@ -233,10 +233,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => M_AXIS_DOUT_tvalid,
+      CE => '1',
       D => M_AXIS_DOUT_tdata(12),
       Q => ATAN_CONSTELLATION_PHASE_OUT(12),
-      R => RESET
+      R => '0'
     );
 \ATAN_CONSTELLATION_PHASE_OUT_reg[13]\: unisim.vcomponents.FDRE
     generic map(
@@ -244,10 +244,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => M_AXIS_DOUT_tvalid,
+      CE => '1',
       D => M_AXIS_DOUT_tdata(13),
       Q => ATAN_CONSTELLATION_PHASE_OUT(13),
-      R => RESET
+      R => '0'
     );
 \ATAN_CONSTELLATION_PHASE_OUT_reg[14]\: unisim.vcomponents.FDRE
     generic map(
@@ -255,10 +255,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => M_AXIS_DOUT_tvalid,
+      CE => '1',
       D => M_AXIS_DOUT_tdata(14),
       Q => ATAN_CONSTELLATION_PHASE_OUT(14),
-      R => RESET
+      R => '0'
     );
 \ATAN_CONSTELLATION_PHASE_OUT_reg[15]\: unisim.vcomponents.FDRE
     generic map(
@@ -266,10 +266,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => M_AXIS_DOUT_tvalid,
+      CE => '1',
       D => M_AXIS_DOUT_tdata(15),
       Q => ATAN_CONSTELLATION_PHASE_OUT(15),
-      R => RESET
+      R => '0'
     );
 \ATAN_CONSTELLATION_PHASE_OUT_reg[16]\: unisim.vcomponents.FDRE
     generic map(
@@ -277,10 +277,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => M_AXIS_DOUT_tvalid,
+      CE => '1',
       D => M_AXIS_DOUT_tdata(16),
       Q => ATAN_CONSTELLATION_PHASE_OUT(16),
-      R => RESET
+      R => '0'
     );
 \ATAN_CONSTELLATION_PHASE_OUT_reg[17]\: unisim.vcomponents.FDRE
     generic map(
@@ -288,10 +288,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => M_AXIS_DOUT_tvalid,
+      CE => '1',
       D => M_AXIS_DOUT_tdata(17),
       Q => ATAN_CONSTELLATION_PHASE_OUT(17),
-      R => RESET
+      R => '0'
     );
 \ATAN_CONSTELLATION_PHASE_OUT_reg[18]\: unisim.vcomponents.FDRE
     generic map(
@@ -299,10 +299,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => M_AXIS_DOUT_tvalid,
+      CE => '1',
       D => M_AXIS_DOUT_tdata(18),
       Q => ATAN_CONSTELLATION_PHASE_OUT(18),
-      R => RESET
+      R => '0'
     );
 \ATAN_CONSTELLATION_PHASE_OUT_reg[19]\: unisim.vcomponents.FDRE
     generic map(
@@ -310,10 +310,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => M_AXIS_DOUT_tvalid,
+      CE => '1',
       D => M_AXIS_DOUT_tdata(19),
       Q => ATAN_CONSTELLATION_PHASE_OUT(19),
-      R => RESET
+      R => '0'
     );
 \ATAN_CONSTELLATION_PHASE_OUT_reg[1]\: unisim.vcomponents.FDRE
     generic map(
@@ -321,10 +321,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => M_AXIS_DOUT_tvalid,
+      CE => '1',
       D => M_AXIS_DOUT_tdata(1),
       Q => ATAN_CONSTELLATION_PHASE_OUT(1),
-      R => RESET
+      R => '0'
     );
 \ATAN_CONSTELLATION_PHASE_OUT_reg[20]\: unisim.vcomponents.FDRE
     generic map(
@@ -332,10 +332,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => M_AXIS_DOUT_tvalid,
+      CE => '1',
       D => M_AXIS_DOUT_tdata(20),
       Q => ATAN_CONSTELLATION_PHASE_OUT(20),
-      R => RESET
+      R => '0'
     );
 \ATAN_CONSTELLATION_PHASE_OUT_reg[21]\: unisim.vcomponents.FDRE
     generic map(
@@ -343,10 +343,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => M_AXIS_DOUT_tvalid,
+      CE => '1',
       D => M_AXIS_DOUT_tdata(21),
       Q => ATAN_CONSTELLATION_PHASE_OUT(21),
-      R => RESET
+      R => '0'
     );
 \ATAN_CONSTELLATION_PHASE_OUT_reg[22]\: unisim.vcomponents.FDRE
     generic map(
@@ -354,10 +354,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => M_AXIS_DOUT_tvalid,
+      CE => '1',
       D => M_AXIS_DOUT_tdata(22),
       Q => ATAN_CONSTELLATION_PHASE_OUT(22),
-      R => RESET
+      R => '0'
     );
 \ATAN_CONSTELLATION_PHASE_OUT_reg[23]\: unisim.vcomponents.FDRE
     generic map(
@@ -365,10 +365,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => M_AXIS_DOUT_tvalid,
+      CE => '1',
       D => M_AXIS_DOUT_tdata(23),
       Q => ATAN_CONSTELLATION_PHASE_OUT(23),
-      R => RESET
+      R => '0'
     );
 \ATAN_CONSTELLATION_PHASE_OUT_reg[2]\: unisim.vcomponents.FDRE
     generic map(
@@ -376,10 +376,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => M_AXIS_DOUT_tvalid,
+      CE => '1',
       D => M_AXIS_DOUT_tdata(2),
       Q => ATAN_CONSTELLATION_PHASE_OUT(2),
-      R => RESET
+      R => '0'
     );
 \ATAN_CONSTELLATION_PHASE_OUT_reg[3]\: unisim.vcomponents.FDRE
     generic map(
@@ -387,10 +387,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => M_AXIS_DOUT_tvalid,
+      CE => '1',
       D => M_AXIS_DOUT_tdata(3),
       Q => ATAN_CONSTELLATION_PHASE_OUT(3),
-      R => RESET
+      R => '0'
     );
 \ATAN_CONSTELLATION_PHASE_OUT_reg[4]\: unisim.vcomponents.FDRE
     generic map(
@@ -398,10 +398,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => M_AXIS_DOUT_tvalid,
+      CE => '1',
       D => M_AXIS_DOUT_tdata(4),
       Q => ATAN_CONSTELLATION_PHASE_OUT(4),
-      R => RESET
+      R => '0'
     );
 \ATAN_CONSTELLATION_PHASE_OUT_reg[5]\: unisim.vcomponents.FDRE
     generic map(
@@ -409,10 +409,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => M_AXIS_DOUT_tvalid,
+      CE => '1',
       D => M_AXIS_DOUT_tdata(5),
       Q => ATAN_CONSTELLATION_PHASE_OUT(5),
-      R => RESET
+      R => '0'
     );
 \ATAN_CONSTELLATION_PHASE_OUT_reg[6]\: unisim.vcomponents.FDRE
     generic map(
@@ -420,10 +420,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => M_AXIS_DOUT_tvalid,
+      CE => '1',
       D => M_AXIS_DOUT_tdata(6),
       Q => ATAN_CONSTELLATION_PHASE_OUT(6),
-      R => RESET
+      R => '0'
     );
 \ATAN_CONSTELLATION_PHASE_OUT_reg[7]\: unisim.vcomponents.FDRE
     generic map(
@@ -431,10 +431,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => M_AXIS_DOUT_tvalid,
+      CE => '1',
       D => M_AXIS_DOUT_tdata(7),
       Q => ATAN_CONSTELLATION_PHASE_OUT(7),
-      R => RESET
+      R => '0'
     );
 \ATAN_CONSTELLATION_PHASE_OUT_reg[8]\: unisim.vcomponents.FDRE
     generic map(
@@ -442,10 +442,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => M_AXIS_DOUT_tvalid,
+      CE => '1',
       D => M_AXIS_DOUT_tdata(8),
       Q => ATAN_CONSTELLATION_PHASE_OUT(8),
-      R => RESET
+      R => '0'
     );
 \ATAN_CONSTELLATION_PHASE_OUT_reg[9]\: unisim.vcomponents.FDRE
     generic map(
@@ -453,10 +453,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => M_AXIS_DOUT_tvalid,
+      CE => '1',
       D => M_AXIS_DOUT_tdata(9),
       Q => ATAN_CONSTELLATION_PHASE_OUT(9),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[0]\: unisim.vcomponents.FDRE
     generic map(
@@ -464,10 +464,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(0),
       Q => S_AXIS_CARTESIAN_tdata(0),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[10]\: unisim.vcomponents.FDRE
     generic map(
@@ -475,10 +475,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(10),
       Q => S_AXIS_CARTESIAN_tdata(10),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[11]\: unisim.vcomponents.FDRE
     generic map(
@@ -486,10 +486,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(11),
       Q => S_AXIS_CARTESIAN_tdata(11),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[12]\: unisim.vcomponents.FDRE
     generic map(
@@ -497,10 +497,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(12),
       Q => S_AXIS_CARTESIAN_tdata(12),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[13]\: unisim.vcomponents.FDRE
     generic map(
@@ -508,10 +508,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(13),
       Q => S_AXIS_CARTESIAN_tdata(13),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[14]\: unisim.vcomponents.FDRE
     generic map(
@@ -519,10 +519,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(14),
       Q => S_AXIS_CARTESIAN_tdata(14),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[15]\: unisim.vcomponents.FDRE
     generic map(
@@ -530,10 +530,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(15),
       Q => S_AXIS_CARTESIAN_tdata(15),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[16]\: unisim.vcomponents.FDRE
     generic map(
@@ -541,10 +541,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(16),
       Q => S_AXIS_CARTESIAN_tdata(16),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[17]\: unisim.vcomponents.FDRE
     generic map(
@@ -552,10 +552,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(17),
       Q => S_AXIS_CARTESIAN_tdata(17),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[18]\: unisim.vcomponents.FDRE
     generic map(
@@ -563,10 +563,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(18),
       Q => S_AXIS_CARTESIAN_tdata(18),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[19]\: unisim.vcomponents.FDRE
     generic map(
@@ -574,10 +574,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(19),
       Q => S_AXIS_CARTESIAN_tdata(19),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[1]\: unisim.vcomponents.FDRE
     generic map(
@@ -585,10 +585,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(1),
       Q => S_AXIS_CARTESIAN_tdata(1),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[20]\: unisim.vcomponents.FDRE
     generic map(
@@ -596,10 +596,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(20),
       Q => S_AXIS_CARTESIAN_tdata(20),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[21]\: unisim.vcomponents.FDRE
     generic map(
@@ -607,10 +607,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(21),
       Q => S_AXIS_CARTESIAN_tdata(21),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[22]\: unisim.vcomponents.FDRE
     generic map(
@@ -618,10 +618,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(22),
       Q => S_AXIS_CARTESIAN_tdata(22),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[23]\: unisim.vcomponents.FDRE
     generic map(
@@ -629,10 +629,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(23),
       Q => S_AXIS_CARTESIAN_tdata(23),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[24]\: unisim.vcomponents.FDRE
     generic map(
@@ -640,10 +640,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(24),
       Q => S_AXIS_CARTESIAN_tdata(24),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[25]\: unisim.vcomponents.FDRE
     generic map(
@@ -651,10 +651,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(25),
       Q => S_AXIS_CARTESIAN_tdata(25),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[26]\: unisim.vcomponents.FDRE
     generic map(
@@ -662,10 +662,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(26),
       Q => S_AXIS_CARTESIAN_tdata(26),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[27]\: unisim.vcomponents.FDRE
     generic map(
@@ -673,10 +673,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(27),
       Q => S_AXIS_CARTESIAN_tdata(27),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[28]\: unisim.vcomponents.FDRE
     generic map(
@@ -684,10 +684,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(28),
       Q => S_AXIS_CARTESIAN_tdata(28),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[29]\: unisim.vcomponents.FDRE
     generic map(
@@ -695,10 +695,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(29),
       Q => S_AXIS_CARTESIAN_tdata(29),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[2]\: unisim.vcomponents.FDRE
     generic map(
@@ -706,10 +706,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(2),
       Q => S_AXIS_CARTESIAN_tdata(2),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[30]\: unisim.vcomponents.FDRE
     generic map(
@@ -717,10 +717,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(30),
       Q => S_AXIS_CARTESIAN_tdata(30),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[31]\: unisim.vcomponents.FDRE
     generic map(
@@ -728,10 +728,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(31),
       Q => S_AXIS_CARTESIAN_tdata(31),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[32]\: unisim.vcomponents.FDRE
     generic map(
@@ -739,10 +739,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(32),
       Q => S_AXIS_CARTESIAN_tdata(32),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[33]\: unisim.vcomponents.FDRE
     generic map(
@@ -750,10 +750,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(33),
       Q => S_AXIS_CARTESIAN_tdata(33),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[34]\: unisim.vcomponents.FDRE
     generic map(
@@ -761,10 +761,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(34),
       Q => S_AXIS_CARTESIAN_tdata(34),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[35]\: unisim.vcomponents.FDRE
     generic map(
@@ -772,10 +772,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(35),
       Q => S_AXIS_CARTESIAN_tdata(35),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[36]\: unisim.vcomponents.FDRE
     generic map(
@@ -783,10 +783,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(36),
       Q => S_AXIS_CARTESIAN_tdata(36),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[37]\: unisim.vcomponents.FDRE
     generic map(
@@ -794,10 +794,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(37),
       Q => S_AXIS_CARTESIAN_tdata(37),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[38]\: unisim.vcomponents.FDRE
     generic map(
@@ -805,10 +805,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(38),
       Q => S_AXIS_CARTESIAN_tdata(38),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[39]\: unisim.vcomponents.FDRE
     generic map(
@@ -816,10 +816,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(39),
       Q => S_AXIS_CARTESIAN_tdata(39),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[3]\: unisim.vcomponents.FDRE
     generic map(
@@ -827,10 +827,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(3),
       Q => S_AXIS_CARTESIAN_tdata(3),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[40]\: unisim.vcomponents.FDRE
     generic map(
@@ -838,10 +838,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(40),
       Q => S_AXIS_CARTESIAN_tdata(40),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[41]\: unisim.vcomponents.FDRE
     generic map(
@@ -849,10 +849,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(41),
       Q => S_AXIS_CARTESIAN_tdata(41),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[42]\: unisim.vcomponents.FDRE
     generic map(
@@ -860,10 +860,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(42),
       Q => S_AXIS_CARTESIAN_tdata(42),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[43]\: unisim.vcomponents.FDRE
     generic map(
@@ -871,10 +871,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(43),
       Q => S_AXIS_CARTESIAN_tdata(43),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[44]\: unisim.vcomponents.FDRE
     generic map(
@@ -882,10 +882,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(44),
       Q => S_AXIS_CARTESIAN_tdata(44),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[45]\: unisim.vcomponents.FDRE
     generic map(
@@ -893,10 +893,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(45),
       Q => S_AXIS_CARTESIAN_tdata(45),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[46]\: unisim.vcomponents.FDRE
     generic map(
@@ -904,10 +904,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(46),
       Q => S_AXIS_CARTESIAN_tdata(46),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[47]\: unisim.vcomponents.FDRE
     generic map(
@@ -915,10 +915,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(47),
       Q => S_AXIS_CARTESIAN_tdata(47),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[4]\: unisim.vcomponents.FDRE
     generic map(
@@ -926,10 +926,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(4),
       Q => S_AXIS_CARTESIAN_tdata(4),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[5]\: unisim.vcomponents.FDRE
     generic map(
@@ -937,10 +937,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(5),
       Q => S_AXIS_CARTESIAN_tdata(5),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[6]\: unisim.vcomponents.FDRE
     generic map(
@@ -948,10 +948,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(6),
       Q => S_AXIS_CARTESIAN_tdata(6),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[7]\: unisim.vcomponents.FDRE
     generic map(
@@ -959,10 +959,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(7),
       Q => S_AXIS_CARTESIAN_tdata(7),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[8]\: unisim.vcomponents.FDRE
     generic map(
@@ -970,10 +970,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(8),
       Q => S_AXIS_CARTESIAN_tdata(8),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tdata_reg[9]\: unisim.vcomponents.FDRE
     generic map(
@@ -981,10 +981,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => D(9),
       Q => S_AXIS_CARTESIAN_tdata(9),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tuser_reg[0]\: unisim.vcomponents.FDRE
     generic map(
@@ -992,10 +992,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => ATAN_CONSTELLATION_IN_CNTR(0),
       Q => S_AXIS_CARTESIAN_tuser(0),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tuser_reg[1]\: unisim.vcomponents.FDRE
     generic map(
@@ -1003,10 +1003,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => ATAN_CONSTELLATION_IN_CNTR(1),
       Q => S_AXIS_CARTESIAN_tuser(1),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tuser_reg[2]\: unisim.vcomponents.FDRE
     generic map(
@@ -1014,10 +1014,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => ATAN_CONSTELLATION_IN_CNTR(2),
       Q => S_AXIS_CARTESIAN_tuser(2),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tuser_reg[3]\: unisim.vcomponents.FDRE
     generic map(
@@ -1025,10 +1025,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => ATAN_CONSTELLATION_IN_CNTR(3),
       Q => S_AXIS_CARTESIAN_tuser(3),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tuser_reg[4]\: unisim.vcomponents.FDRE
     generic map(
@@ -1036,10 +1036,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => ATAN_CONSTELLATION_IN_CNTR(4),
       Q => S_AXIS_CARTESIAN_tuser(4),
-      R => RESET
+      R => '0'
     );
 \S_AXIS_CARTESIAN_tuser_reg[5]\: unisim.vcomponents.FDRE
     generic map(
@@ -1047,10 +1047,10 @@ ATAN_CONSTELLATION_PHASE_OUT_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => ATAN_CONSTELLATION_IN_STROBE,
+      CE => '1',
       D => ATAN_CONSTELLATION_IN_CNTR(5),
       Q => S_AXIS_CARTESIAN_tuser(5),
-      R => RESET
+      R => '0'
     );
 S_AXIS_CARTESIAN_tvalid_i_1: unisim.vcomponents.LUT4
     generic map(

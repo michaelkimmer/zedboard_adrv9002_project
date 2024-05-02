@@ -2,8 +2,8 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-// Date        : Mon Apr 29 13:47:07 2024
-// Host        : lab817_01 running 64-bit major release  (build 9200)
+// Date        : Wed May  1 21:27:19 2024
+// Host        : ASUS_ROG running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_constellation_tracker_0_0/block_design_0_constellation_tracker_0_0_sim_netlist.v
 // Design      : block_design_0_constellation_tracker_0_0
@@ -144,6 +144,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     ATAN_CONSTELLATION_IN_STROBE,
     ROTATION_CONSTELLATION_DATA_IN_STROBE,
     RESET,
+    ROTATION_CONSTELLATION_DATA_OUT_STROBE,
     ROTATION_CONSTELLATION_DATA_OUT_CNTR,
     CLOCK,
     FFT_DATA_IN_VALID,
@@ -154,8 +155,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     FFT_QDATA_IN,
     ATAN_CONSTELLATION_PHASE_OUT,
     ATAN_CONSTELLATION_PHASE_OUT_CNTR,
-    ATAN_CONSTELLATION_PHASE_OUT_STROBE,
-    ROTATION_CONSTELLATION_DATA_OUT_STROBE);
+    ATAN_CONSTELLATION_PHASE_OUT_STROBE);
   output [23:0]CONSTELLATION_IDATA_OUT;
   output [23:0]CONSTELLATION_QDATA_OUT;
   output [23:0]ATAN_CONSTELLATION_IN_I;
@@ -170,6 +170,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   output ATAN_CONSTELLATION_IN_STROBE;
   output ROTATION_CONSTELLATION_DATA_IN_STROBE;
   input RESET;
+  input ROTATION_CONSTELLATION_DATA_OUT_STROBE;
   input [5:0]ROTATION_CONSTELLATION_DATA_OUT_CNTR;
   input CLOCK;
   input FFT_DATA_IN_VALID;
@@ -181,15 +182,11 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   input [23:0]ATAN_CONSTELLATION_PHASE_OUT;
   input [5:0]ATAN_CONSTELLATION_PHASE_OUT_CNTR;
   input ATAN_CONSTELLATION_PHASE_OUT_STROBE;
-  input ROTATION_CONSTELLATION_DATA_OUT_STROBE;
 
   wire [5:0]ATAN_CONSTELLATION_IN_CNTR;
   wire [23:0]ATAN_CONSTELLATION_IN_I;
-  wire [23:1]ATAN_CONSTELLATION_IN_I4;
   wire \ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ;
   wire [23:0]ATAN_CONSTELLATION_IN_Q;
-  wire [22:1]ATAN_CONSTELLATION_IN_Q2;
-  wire [23:1]ATAN_CONSTELLATION_IN_Q4;
   wire ATAN_CONSTELLATION_IN_STROBE;
   wire ATAN_CONSTELLATION_IN_STROBE_i_1_n_0;
   wire [23:0]ATAN_CONSTELLATION_PHASE_OUT;
@@ -387,6 +384,30 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire CHANNEL_RESPONSE_I_reg_0_31_0_0_i_3_n_0;
   wire CHANNEL_RESPONSE_I_reg_0_31_0_0_n_0;
   wire CHANNEL_RESPONSE_PHASE;
+  wire CHANNEL_RESPONSE_PHASE_reg_0_63_0_2_n_0;
+  wire CHANNEL_RESPONSE_PHASE_reg_0_63_0_2_n_1;
+  wire CHANNEL_RESPONSE_PHASE_reg_0_63_0_2_n_2;
+  wire CHANNEL_RESPONSE_PHASE_reg_0_63_12_14_n_0;
+  wire CHANNEL_RESPONSE_PHASE_reg_0_63_12_14_n_1;
+  wire CHANNEL_RESPONSE_PHASE_reg_0_63_12_14_n_2;
+  wire CHANNEL_RESPONSE_PHASE_reg_0_63_15_17_n_0;
+  wire CHANNEL_RESPONSE_PHASE_reg_0_63_15_17_n_1;
+  wire CHANNEL_RESPONSE_PHASE_reg_0_63_15_17_n_2;
+  wire CHANNEL_RESPONSE_PHASE_reg_0_63_18_20_n_0;
+  wire CHANNEL_RESPONSE_PHASE_reg_0_63_18_20_n_1;
+  wire CHANNEL_RESPONSE_PHASE_reg_0_63_18_20_n_2;
+  wire CHANNEL_RESPONSE_PHASE_reg_0_63_21_23_n_0;
+  wire CHANNEL_RESPONSE_PHASE_reg_0_63_21_23_n_1;
+  wire CHANNEL_RESPONSE_PHASE_reg_0_63_21_23_n_2;
+  wire CHANNEL_RESPONSE_PHASE_reg_0_63_3_5_n_0;
+  wire CHANNEL_RESPONSE_PHASE_reg_0_63_3_5_n_1;
+  wire CHANNEL_RESPONSE_PHASE_reg_0_63_3_5_n_2;
+  wire CHANNEL_RESPONSE_PHASE_reg_0_63_6_8_n_0;
+  wire CHANNEL_RESPONSE_PHASE_reg_0_63_6_8_n_1;
+  wire CHANNEL_RESPONSE_PHASE_reg_0_63_6_8_n_2;
+  wire CHANNEL_RESPONSE_PHASE_reg_0_63_9_11_n_0;
+  wire CHANNEL_RESPONSE_PHASE_reg_0_63_9_11_n_1;
+  wire CHANNEL_RESPONSE_PHASE_reg_0_63_9_11_n_2;
   wire CHANNEL_RESPONSE_Q_reg_0_15_0_0__0_n_0;
   wire CHANNEL_RESPONSE_Q_reg_0_15_0_0__10_n_0;
   wire CHANNEL_RESPONSE_Q_reg_0_15_0_0__11_n_0;
@@ -567,9 +588,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_3_n_0;
   wire CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_4_n_0;
   wire CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_5_n_0;
-  wire CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_6_n_0;
   wire [23:0]CONSTELLATION_IDATA_OUT;
-  wire [23:0]CONSTELLATION_IDATA_OUT0;
   wire \CONSTELLATION_IDATA_OUT[0]_i_1_n_0 ;
   wire \CONSTELLATION_IDATA_OUT[10]_i_1_n_0 ;
   wire \CONSTELLATION_IDATA_OUT[11]_i_1_n_0 ;
@@ -588,6 +607,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire \CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ;
   wire \CONSTELLATION_IDATA_OUT[23]_i_2_n_0 ;
   wire \CONSTELLATION_IDATA_OUT[23]_i_3_n_0 ;
+  wire \CONSTELLATION_IDATA_OUT[23]_i_4_n_0 ;
   wire \CONSTELLATION_IDATA_OUT[2]_i_1_n_0 ;
   wire \CONSTELLATION_IDATA_OUT[3]_i_1_n_0 ;
   wire \CONSTELLATION_IDATA_OUT[4]_i_1_n_0 ;
@@ -596,16 +616,17 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire \CONSTELLATION_IDATA_OUT[7]_i_1_n_0 ;
   wire \CONSTELLATION_IDATA_OUT[8]_i_1_n_0 ;
   wire \CONSTELLATION_IDATA_OUT[9]_i_1_n_0 ;
+  wire [4:0]CONSTELLATION_OUT_LAST_HALF_CNTR;
+  wire \CONSTELLATION_OUT_LAST_HALF_CNTR[0]_i_1_n_0 ;
   wire \CONSTELLATION_OUT_LAST_HALF_CNTR[0]_i_2_n_0 ;
   wire \CONSTELLATION_OUT_LAST_HALF_CNTR[0]_i_3_n_0 ;
   wire \CONSTELLATION_OUT_LAST_HALF_CNTR[1]_i_1_n_0 ;
   wire \CONSTELLATION_OUT_LAST_HALF_CNTR[2]_i_1_n_0 ;
   wire \CONSTELLATION_OUT_LAST_HALF_CNTR[3]_i_1_n_0 ;
+  wire \CONSTELLATION_OUT_LAST_HALF_CNTR[3]_i_2_n_0 ;
   wire \CONSTELLATION_OUT_LAST_HALF_CNTR[4]_i_1_n_0 ;
-  wire CONSTELLATION_OUT_LAST_HALF_CNTR__0;
-  wire [4:0]CONSTELLATION_OUT_LAST_HALF_CNTR_reg;
+  wire \CONSTELLATION_OUT_LAST_HALF_CNTR[4]_i_2_n_0 ;
   wire [23:0]CONSTELLATION_QDATA_OUT;
-  wire [23:0]CONSTELLATION_QDATA_OUT0;
   wire \CONSTELLATION_QDATA_OUT[0]_i_1_n_0 ;
   wire \CONSTELLATION_QDATA_OUT[10]_i_1_n_0 ;
   wire \CONSTELLATION_QDATA_OUT[11]_i_1_n_0 ;
@@ -642,6 +663,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire \FSM_onehot_STATE_reg_n_0_[0] ;
   wire \FSM_onehot_STATE_reg_n_0_[1] ;
   wire [23:0]IDATA_BUFFER;
+  wire \IDATA_BUFFER[23]_i_1_n_0 ;
   wire [5:0]INPUT_DATA_CNTR;
   wire INPUT_DATA_CNTR1;
   wire \INPUT_DATA_CNTR[0]_i_1_n_0 ;
@@ -651,12 +673,12 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire \INPUT_DATA_CNTR[4]_i_1_n_0 ;
   wire \INPUT_DATA_CNTR[5]_i_1_n_0 ;
   wire \INPUT_DATA_CNTR[5]_i_2_n_0 ;
-  wire \INPUT_DATA_CNTR[5]_i_3_n_0 ;
   wire \INPUT_DATA_CNTR[5]_i_4_n_0 ;
+  wire \INPUT_DATA_CNTR[5]_i_5_n_0 ;
   wire \INPUT_DATA_CNTR[5]_i_6_n_0 ;
   wire \INPUT_DATA_CNTR[5]_i_7_n_0 ;
-  wire \INPUT_DATA_CNTR[5]_i_8_n_0 ;
   wire INPUT_DATA_VALID;
+  wire INPUT_DATA_VALID_i_1_n_0;
   wire \INPUT_FFT_CNTR[0]_i_1_n_0 ;
   wire \INPUT_FFT_CNTR[1]_i_1_n_0 ;
   wire \INPUT_FFT_CNTR[2]_i_1_n_0 ;
@@ -665,7 +687,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire \INPUT_FFT_CNTR[5]_i_1_n_0 ;
   wire \INPUT_FFT_CNTR[5]_i_2_n_0 ;
   wire \INPUT_FFT_CNTR[6]_inv_i_1_n_0 ;
-  wire \INPUT_FFT_CNTR_reg[6]_inv_n_0 ;
   wire \INPUT_FFT_CNTR_reg_n_0_[0] ;
   wire \INPUT_FFT_CNTR_reg_n_0_[1] ;
   wire \INPUT_FFT_CNTR_reg_n_0_[2] ;
@@ -712,7 +733,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire \ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ;
   wire [23:0]ROTATION_CONSTELLATION_IDATA_OUT;
   wire [23:0]ROTATION_CONSTELLATION_PHASE_IN;
-  wire [23:0]ROTATION_CONSTELLATION_PHASE_IN1;
   wire \ROTATION_CONSTELLATION_PHASE_IN[11]_i_2_n_0 ;
   wire \ROTATION_CONSTELLATION_PHASE_IN[11]_i_3_n_0 ;
   wire \ROTATION_CONSTELLATION_PHASE_IN[11]_i_4_n_0 ;
@@ -793,6 +813,10 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire __113_carry__0_i_14_n_1;
   wire __113_carry__0_i_14_n_2;
   wire __113_carry__0_i_14_n_3;
+  wire __113_carry__0_i_14_n_4;
+  wire __113_carry__0_i_14_n_5;
+  wire __113_carry__0_i_14_n_6;
+  wire __113_carry__0_i_14_n_7;
   wire __113_carry__0_i_15_n_0;
   wire __113_carry__0_i_16_n_0;
   wire __113_carry__0_i_17_n_0;
@@ -809,6 +833,10 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire __113_carry__0_i_9_n_1;
   wire __113_carry__0_i_9_n_2;
   wire __113_carry__0_i_9_n_3;
+  wire __113_carry__0_i_9_n_4;
+  wire __113_carry__0_i_9_n_5;
+  wire __113_carry__0_i_9_n_6;
+  wire __113_carry__0_i_9_n_7;
   wire __113_carry__0_n_0;
   wire __113_carry__0_n_1;
   wire __113_carry__0_n_2;
@@ -825,6 +853,10 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire __113_carry__1_i_14_n_1;
   wire __113_carry__1_i_14_n_2;
   wire __113_carry__1_i_14_n_3;
+  wire __113_carry__1_i_14_n_4;
+  wire __113_carry__1_i_14_n_5;
+  wire __113_carry__1_i_14_n_6;
+  wire __113_carry__1_i_14_n_7;
   wire __113_carry__1_i_15_n_0;
   wire __113_carry__1_i_16_n_0;
   wire __113_carry__1_i_17_n_0;
@@ -841,6 +873,10 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire __113_carry__1_i_9_n_1;
   wire __113_carry__1_i_9_n_2;
   wire __113_carry__1_i_9_n_3;
+  wire __113_carry__1_i_9_n_4;
+  wire __113_carry__1_i_9_n_5;
+  wire __113_carry__1_i_9_n_6;
+  wire __113_carry__1_i_9_n_7;
   wire __113_carry__1_n_0;
   wire __113_carry__1_n_1;
   wire __113_carry__1_n_2;
@@ -857,6 +893,10 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire __113_carry__2_i_14_n_1;
   wire __113_carry__2_i_14_n_2;
   wire __113_carry__2_i_14_n_3;
+  wire __113_carry__2_i_14_n_4;
+  wire __113_carry__2_i_14_n_5;
+  wire __113_carry__2_i_14_n_6;
+  wire __113_carry__2_i_14_n_7;
   wire __113_carry__2_i_15_n_0;
   wire __113_carry__2_i_16_n_0;
   wire __113_carry__2_i_17_n_0;
@@ -873,6 +913,10 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire __113_carry__2_i_9_n_1;
   wire __113_carry__2_i_9_n_2;
   wire __113_carry__2_i_9_n_3;
+  wire __113_carry__2_i_9_n_4;
+  wire __113_carry__2_i_9_n_5;
+  wire __113_carry__2_i_9_n_6;
+  wire __113_carry__2_i_9_n_7;
   wire __113_carry__2_n_0;
   wire __113_carry__2_n_1;
   wire __113_carry__2_n_2;
@@ -887,6 +931,9 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire __113_carry__3_i_13_n_0;
   wire __113_carry__3_i_14_n_2;
   wire __113_carry__3_i_14_n_3;
+  wire __113_carry__3_i_14_n_5;
+  wire __113_carry__3_i_14_n_6;
+  wire __113_carry__3_i_14_n_7;
   wire __113_carry__3_i_15_n_0;
   wire __113_carry__3_i_16_n_0;
   wire __113_carry__3_i_17_n_0;
@@ -902,6 +949,10 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire __113_carry__3_i_9_n_1;
   wire __113_carry__3_i_9_n_2;
   wire __113_carry__3_i_9_n_3;
+  wire __113_carry__3_i_9_n_4;
+  wire __113_carry__3_i_9_n_5;
+  wire __113_carry__3_i_9_n_6;
+  wire __113_carry__3_i_9_n_7;
   wire __113_carry__3_n_0;
   wire __113_carry__3_n_1;
   wire __113_carry__3_n_2;
@@ -922,6 +973,8 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire __113_carry__4_i_8_n_0;
   wire __113_carry__4_i_9_n_1;
   wire __113_carry__4_i_9_n_3;
+  wire __113_carry__4_i_9_n_6;
+  wire __113_carry__4_i_9_n_7;
   wire __113_carry__4_n_1;
   wire __113_carry__4_n_2;
   wire __113_carry__4_n_3;
@@ -933,6 +986,10 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire __113_carry_i_10_n_1;
   wire __113_carry_i_10_n_2;
   wire __113_carry_i_10_n_3;
+  wire __113_carry_i_10_n_4;
+  wire __113_carry_i_10_n_5;
+  wire __113_carry_i_10_n_6;
+  wire __113_carry_i_10_n_7;
   wire __113_carry_i_11_n_0;
   wire __113_carry_i_12_n_0;
   wire __113_carry_i_13_n_0;
@@ -948,6 +1005,10 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire __113_carry_i_21_n_1;
   wire __113_carry_i_21_n_2;
   wire __113_carry_i_21_n_3;
+  wire __113_carry_i_21_n_4;
+  wire __113_carry_i_21_n_5;
+  wire __113_carry_i_21_n_6;
+  wire __113_carry_i_21_n_7;
   wire __113_carry_i_22_n_0;
   wire __113_carry_i_23_n_0;
   wire __113_carry_i_24_n_0;
@@ -963,6 +1024,10 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire __113_carry_i_9_n_1;
   wire __113_carry_i_9_n_2;
   wire __113_carry_i_9_n_3;
+  wire __113_carry_i_9_n_4;
+  wire __113_carry_i_9_n_5;
+  wire __113_carry_i_9_n_6;
+  wire __113_carry_i_9_n_7;
   wire __113_carry_n_0;
   wire __113_carry_n_1;
   wire __113_carry_n_2;
@@ -979,6 +1044,10 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire __21_carry__0_i_14_n_1;
   wire __21_carry__0_i_14_n_2;
   wire __21_carry__0_i_14_n_3;
+  wire __21_carry__0_i_14_n_4;
+  wire __21_carry__0_i_14_n_5;
+  wire __21_carry__0_i_14_n_6;
+  wire __21_carry__0_i_14_n_7;
   wire __21_carry__0_i_15_n_0;
   wire __21_carry__0_i_16_n_0;
   wire __21_carry__0_i_17_n_0;
@@ -1015,6 +1084,10 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire __21_carry__1_i_14_n_1;
   wire __21_carry__1_i_14_n_2;
   wire __21_carry__1_i_14_n_3;
+  wire __21_carry__1_i_14_n_4;
+  wire __21_carry__1_i_14_n_5;
+  wire __21_carry__1_i_14_n_6;
+  wire __21_carry__1_i_14_n_7;
   wire __21_carry__1_i_15_n_0;
   wire __21_carry__1_i_16_n_0;
   wire __21_carry__1_i_17_n_0;
@@ -1051,6 +1124,10 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire __21_carry__2_i_14_n_1;
   wire __21_carry__2_i_14_n_2;
   wire __21_carry__2_i_14_n_3;
+  wire __21_carry__2_i_14_n_4;
+  wire __21_carry__2_i_14_n_5;
+  wire __21_carry__2_i_14_n_6;
+  wire __21_carry__2_i_14_n_7;
   wire __21_carry__2_i_15_n_0;
   wire __21_carry__2_i_16_n_0;
   wire __21_carry__2_i_17_n_0;
@@ -1085,6 +1162,9 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire __21_carry__3_i_13_n_0;
   wire __21_carry__3_i_14_n_2;
   wire __21_carry__3_i_14_n_3;
+  wire __21_carry__3_i_14_n_5;
+  wire __21_carry__3_i_14_n_6;
+  wire __21_carry__3_i_14_n_7;
   wire __21_carry__3_i_15_n_0;
   wire __21_carry__3_i_16_n_0;
   wire __21_carry__3_i_17_n_0;
@@ -1145,6 +1225,10 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire __21_carry_i_12_n_1;
   wire __21_carry_i_12_n_2;
   wire __21_carry_i_12_n_3;
+  wire __21_carry_i_12_n_4;
+  wire __21_carry_i_12_n_5;
+  wire __21_carry_i_12_n_6;
+  wire __21_carry_i_12_n_7;
   wire __21_carry_i_13_n_0;
   wire __21_carry_i_14_n_0;
   wire __21_carry_i_15_n_0;
@@ -1160,6 +1244,10 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire __21_carry_i_23_n_1;
   wire __21_carry_i_23_n_2;
   wire __21_carry_i_23_n_3;
+  wire __21_carry_i_23_n_4;
+  wire __21_carry_i_23_n_5;
+  wire __21_carry_i_23_n_6;
+  wire __21_carry_i_23_n_7;
   wire __21_carry_i_24_n_0;
   wire __21_carry_i_25_n_0;
   wire __21_carry_i_26_n_0;
@@ -1182,8 +1270,11 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire in;
   wire p_0_in;
   wire p_0_in__0;
-  wire [23:0]p_1_in;
+  wire p_1_in;
   wire p_1_in__0;
+  wire [23:0]p_2_in;
+  wire [23:0]p_2_out;
+  wire [23:0]p_2_out__0;
   wire [3:2]NLW_CHANNEL_RESPONSE_I_reg_0_31_0_0__20_i_3_CO_UNCONNECTED;
   wire [3:3]NLW_CHANNEL_RESPONSE_I_reg_0_31_0_0__20_i_3_O_UNCONNECTED;
   wire NLW_CHANNEL_RESPONSE_PHASE_reg_0_63_0_2_DOD_UNCONNECTED;
@@ -1225,7 +1316,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(INPUT_DATA_CNTR[0]),
         .Q(ATAN_CONSTELLATION_IN_CNTR[0]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_CNTR_reg[1] 
@@ -1233,7 +1324,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(INPUT_DATA_CNTR[1]),
         .Q(ATAN_CONSTELLATION_IN_CNTR[1]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_CNTR_reg[2] 
@@ -1241,7 +1332,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(INPUT_DATA_CNTR[2]),
         .Q(ATAN_CONSTELLATION_IN_CNTR[2]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_CNTR_reg[3] 
@@ -1249,7 +1340,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(INPUT_DATA_CNTR[3]),
         .Q(ATAN_CONSTELLATION_IN_CNTR[3]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_CNTR_reg[4] 
@@ -1257,7 +1348,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(INPUT_DATA_CNTR[4]),
         .Q(ATAN_CONSTELLATION_IN_CNTR[4]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_CNTR_reg[5] 
@@ -1265,12 +1356,13 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(INPUT_DATA_CNTR[5]),
         .Q(ATAN_CONSTELLATION_IN_CNTR[5]),
-        .R(RESET));
-  LUT2 #(
-    .INIT(4'h8)) 
+        .R(1'b0));
+  LUT3 #(
+    .INIT(8'h20)) 
     \ATAN_CONSTELLATION_IN_I[23]_i_1 
-       (.I0(CHANNEL_RESPONSE_PHASE),
-        .I1(INPUT_DATA_VALID),
+       (.I0(INPUT_DATA_VALID),
+        .I1(RESET),
+        .I2(CHANNEL_RESPONSE_PHASE),
         .O(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
@@ -1279,7 +1371,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__21_carry_n_7),
         .Q(ATAN_CONSTELLATION_IN_I[0]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_I_reg[10] 
@@ -1287,7 +1379,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__21_carry__1_n_5),
         .Q(ATAN_CONSTELLATION_IN_I[10]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_I_reg[11] 
@@ -1295,7 +1387,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__21_carry__1_n_4),
         .Q(ATAN_CONSTELLATION_IN_I[11]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_I_reg[12] 
@@ -1303,7 +1395,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__21_carry__2_n_7),
         .Q(ATAN_CONSTELLATION_IN_I[12]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_I_reg[13] 
@@ -1311,7 +1403,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__21_carry__2_n_6),
         .Q(ATAN_CONSTELLATION_IN_I[13]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_I_reg[14] 
@@ -1319,7 +1411,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__21_carry__2_n_5),
         .Q(ATAN_CONSTELLATION_IN_I[14]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_I_reg[15] 
@@ -1327,7 +1419,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__21_carry__2_n_4),
         .Q(ATAN_CONSTELLATION_IN_I[15]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_I_reg[16] 
@@ -1335,7 +1427,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__21_carry__3_n_7),
         .Q(ATAN_CONSTELLATION_IN_I[16]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_I_reg[17] 
@@ -1343,7 +1435,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__21_carry__3_n_6),
         .Q(ATAN_CONSTELLATION_IN_I[17]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_I_reg[18] 
@@ -1351,7 +1443,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__21_carry__3_n_5),
         .Q(ATAN_CONSTELLATION_IN_I[18]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_I_reg[19] 
@@ -1359,7 +1451,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__21_carry__3_n_4),
         .Q(ATAN_CONSTELLATION_IN_I[19]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_I_reg[1] 
@@ -1367,7 +1459,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__21_carry_n_6),
         .Q(ATAN_CONSTELLATION_IN_I[1]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_I_reg[20] 
@@ -1375,7 +1467,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__21_carry__4_n_7),
         .Q(ATAN_CONSTELLATION_IN_I[20]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_I_reg[21] 
@@ -1383,7 +1475,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__21_carry__4_n_6),
         .Q(ATAN_CONSTELLATION_IN_I[21]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_I_reg[22] 
@@ -1391,7 +1483,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__21_carry__4_n_5),
         .Q(ATAN_CONSTELLATION_IN_I[22]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_I_reg[23] 
@@ -1399,7 +1491,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__21_carry__4_n_4),
         .Q(ATAN_CONSTELLATION_IN_I[23]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_I_reg[2] 
@@ -1407,7 +1499,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__21_carry_n_5),
         .Q(ATAN_CONSTELLATION_IN_I[2]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_I_reg[3] 
@@ -1415,7 +1507,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__21_carry_n_4),
         .Q(ATAN_CONSTELLATION_IN_I[3]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_I_reg[4] 
@@ -1423,7 +1515,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__21_carry__0_n_7),
         .Q(ATAN_CONSTELLATION_IN_I[4]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_I_reg[5] 
@@ -1431,7 +1523,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__21_carry__0_n_6),
         .Q(ATAN_CONSTELLATION_IN_I[5]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_I_reg[6] 
@@ -1439,7 +1531,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__21_carry__0_n_5),
         .Q(ATAN_CONSTELLATION_IN_I[6]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_I_reg[7] 
@@ -1447,7 +1539,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__21_carry__0_n_4),
         .Q(ATAN_CONSTELLATION_IN_I[7]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_I_reg[8] 
@@ -1455,7 +1547,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__21_carry__1_n_7),
         .Q(ATAN_CONSTELLATION_IN_I[8]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_I_reg[9] 
@@ -1463,7 +1555,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__21_carry__1_n_6),
         .Q(ATAN_CONSTELLATION_IN_I[9]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_Q_reg[0] 
@@ -1471,7 +1563,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__113_carry_n_7),
         .Q(ATAN_CONSTELLATION_IN_Q[0]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_Q_reg[10] 
@@ -1479,7 +1571,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__113_carry__1_n_5),
         .Q(ATAN_CONSTELLATION_IN_Q[10]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_Q_reg[11] 
@@ -1487,7 +1579,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__113_carry__1_n_4),
         .Q(ATAN_CONSTELLATION_IN_Q[11]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_Q_reg[12] 
@@ -1495,7 +1587,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__113_carry__2_n_7),
         .Q(ATAN_CONSTELLATION_IN_Q[12]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_Q_reg[13] 
@@ -1503,7 +1595,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__113_carry__2_n_6),
         .Q(ATAN_CONSTELLATION_IN_Q[13]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_Q_reg[14] 
@@ -1511,7 +1603,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__113_carry__2_n_5),
         .Q(ATAN_CONSTELLATION_IN_Q[14]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_Q_reg[15] 
@@ -1519,7 +1611,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__113_carry__2_n_4),
         .Q(ATAN_CONSTELLATION_IN_Q[15]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_Q_reg[16] 
@@ -1527,7 +1619,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__113_carry__3_n_7),
         .Q(ATAN_CONSTELLATION_IN_Q[16]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_Q_reg[17] 
@@ -1535,7 +1627,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__113_carry__3_n_6),
         .Q(ATAN_CONSTELLATION_IN_Q[17]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_Q_reg[18] 
@@ -1543,7 +1635,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__113_carry__3_n_5),
         .Q(ATAN_CONSTELLATION_IN_Q[18]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_Q_reg[19] 
@@ -1551,7 +1643,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__113_carry__3_n_4),
         .Q(ATAN_CONSTELLATION_IN_Q[19]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_Q_reg[1] 
@@ -1559,7 +1651,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__113_carry_n_6),
         .Q(ATAN_CONSTELLATION_IN_Q[1]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_Q_reg[20] 
@@ -1567,7 +1659,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__113_carry__4_n_7),
         .Q(ATAN_CONSTELLATION_IN_Q[20]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_Q_reg[21] 
@@ -1575,7 +1667,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__113_carry__4_n_6),
         .Q(ATAN_CONSTELLATION_IN_Q[21]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_Q_reg[22] 
@@ -1583,7 +1675,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__113_carry__4_n_5),
         .Q(ATAN_CONSTELLATION_IN_Q[22]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_Q_reg[23] 
@@ -1591,7 +1683,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__113_carry__4_n_4),
         .Q(ATAN_CONSTELLATION_IN_Q[23]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_Q_reg[2] 
@@ -1599,7 +1691,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__113_carry_n_5),
         .Q(ATAN_CONSTELLATION_IN_Q[2]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_Q_reg[3] 
@@ -1607,7 +1699,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__113_carry_n_4),
         .Q(ATAN_CONSTELLATION_IN_Q[3]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_Q_reg[4] 
@@ -1615,7 +1707,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__113_carry__0_n_7),
         .Q(ATAN_CONSTELLATION_IN_Q[4]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_Q_reg[5] 
@@ -1623,7 +1715,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__113_carry__0_n_6),
         .Q(ATAN_CONSTELLATION_IN_Q[5]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_Q_reg[6] 
@@ -1631,7 +1723,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__113_carry__0_n_5),
         .Q(ATAN_CONSTELLATION_IN_Q[6]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_Q_reg[7] 
@@ -1639,7 +1731,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__113_carry__0_n_4),
         .Q(ATAN_CONSTELLATION_IN_Q[7]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_Q_reg[8] 
@@ -1647,7 +1739,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__113_carry__1_n_7),
         .Q(ATAN_CONSTELLATION_IN_Q[8]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \ATAN_CONSTELLATION_IN_Q_reg[9] 
@@ -1655,8 +1747,8 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ATAN_CONSTELLATION_IN_I[23]_i_1_n_0 ),
         .D(__113_carry__1_n_6),
         .Q(ATAN_CONSTELLATION_IN_Q[9]),
-        .R(RESET));
-  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+        .R(1'b0));
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     ATAN_CONSTELLATION_IN_STROBE_i_1
@@ -3868,7 +3960,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_I_reg_0_31_0_0_i_3
-       (.I0(ATAN_CONSTELLATION_IN_I4[1]),
+       (.I0(__21_carry_i_12_n_7),
         .I1(IDATA_BUFFER[23]),
         .I2(IDATA_BUFFER[1]),
         .O(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_3_n_0));
@@ -3895,9 +3987,9 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .DIB(ATAN_CONSTELLATION_PHASE_OUT[1]),
         .DIC(ATAN_CONSTELLATION_PHASE_OUT[2]),
         .DID(1'b0),
-        .DOA(ROTATION_CONSTELLATION_PHASE_IN1[0]),
-        .DOB(ROTATION_CONSTELLATION_PHASE_IN1[1]),
-        .DOC(ROTATION_CONSTELLATION_PHASE_IN1[2]),
+        .DOA(CHANNEL_RESPONSE_PHASE_reg_0_63_0_2_n_0),
+        .DOB(CHANNEL_RESPONSE_PHASE_reg_0_63_0_2_n_1),
+        .DOC(CHANNEL_RESPONSE_PHASE_reg_0_63_0_2_n_2),
         .DOD(NLW_CHANNEL_RESPONSE_PHASE_reg_0_63_0_2_DOD_UNCONNECTED),
         .WCLK(CLOCK),
         .WE(p_0_in));
@@ -3931,9 +4023,9 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .DIB(ATAN_CONSTELLATION_PHASE_OUT[13]),
         .DIC(ATAN_CONSTELLATION_PHASE_OUT[14]),
         .DID(1'b0),
-        .DOA(ROTATION_CONSTELLATION_PHASE_IN1[12]),
-        .DOB(ROTATION_CONSTELLATION_PHASE_IN1[13]),
-        .DOC(ROTATION_CONSTELLATION_PHASE_IN1[14]),
+        .DOA(CHANNEL_RESPONSE_PHASE_reg_0_63_12_14_n_0),
+        .DOB(CHANNEL_RESPONSE_PHASE_reg_0_63_12_14_n_1),
+        .DOC(CHANNEL_RESPONSE_PHASE_reg_0_63_12_14_n_2),
         .DOD(NLW_CHANNEL_RESPONSE_PHASE_reg_0_63_12_14_DOD_UNCONNECTED),
         .WCLK(CLOCK),
         .WE(p_0_in));
@@ -3960,9 +4052,9 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .DIB(ATAN_CONSTELLATION_PHASE_OUT[16]),
         .DIC(ATAN_CONSTELLATION_PHASE_OUT[17]),
         .DID(1'b0),
-        .DOA(ROTATION_CONSTELLATION_PHASE_IN1[15]),
-        .DOB(ROTATION_CONSTELLATION_PHASE_IN1[16]),
-        .DOC(ROTATION_CONSTELLATION_PHASE_IN1[17]),
+        .DOA(CHANNEL_RESPONSE_PHASE_reg_0_63_15_17_n_0),
+        .DOB(CHANNEL_RESPONSE_PHASE_reg_0_63_15_17_n_1),
+        .DOC(CHANNEL_RESPONSE_PHASE_reg_0_63_15_17_n_2),
         .DOD(NLW_CHANNEL_RESPONSE_PHASE_reg_0_63_15_17_DOD_UNCONNECTED),
         .WCLK(CLOCK),
         .WE(p_0_in));
@@ -3989,9 +4081,9 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .DIB(ATAN_CONSTELLATION_PHASE_OUT[19]),
         .DIC(ATAN_CONSTELLATION_PHASE_OUT[20]),
         .DID(1'b0),
-        .DOA(ROTATION_CONSTELLATION_PHASE_IN1[18]),
-        .DOB(ROTATION_CONSTELLATION_PHASE_IN1[19]),
-        .DOC(ROTATION_CONSTELLATION_PHASE_IN1[20]),
+        .DOA(CHANNEL_RESPONSE_PHASE_reg_0_63_18_20_n_0),
+        .DOB(CHANNEL_RESPONSE_PHASE_reg_0_63_18_20_n_1),
+        .DOC(CHANNEL_RESPONSE_PHASE_reg_0_63_18_20_n_2),
         .DOD(NLW_CHANNEL_RESPONSE_PHASE_reg_0_63_18_20_DOD_UNCONNECTED),
         .WCLK(CLOCK),
         .WE(p_0_in));
@@ -4018,9 +4110,9 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .DIB(ATAN_CONSTELLATION_PHASE_OUT[22]),
         .DIC(ATAN_CONSTELLATION_PHASE_OUT[23]),
         .DID(1'b0),
-        .DOA(ROTATION_CONSTELLATION_PHASE_IN1[21]),
-        .DOB(ROTATION_CONSTELLATION_PHASE_IN1[22]),
-        .DOC(ROTATION_CONSTELLATION_PHASE_IN1[23]),
+        .DOA(CHANNEL_RESPONSE_PHASE_reg_0_63_21_23_n_0),
+        .DOB(CHANNEL_RESPONSE_PHASE_reg_0_63_21_23_n_1),
+        .DOC(CHANNEL_RESPONSE_PHASE_reg_0_63_21_23_n_2),
         .DOD(NLW_CHANNEL_RESPONSE_PHASE_reg_0_63_21_23_DOD_UNCONNECTED),
         .WCLK(CLOCK),
         .WE(p_0_in));
@@ -4047,9 +4139,9 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .DIB(ATAN_CONSTELLATION_PHASE_OUT[4]),
         .DIC(ATAN_CONSTELLATION_PHASE_OUT[5]),
         .DID(1'b0),
-        .DOA(ROTATION_CONSTELLATION_PHASE_IN1[3]),
-        .DOB(ROTATION_CONSTELLATION_PHASE_IN1[4]),
-        .DOC(ROTATION_CONSTELLATION_PHASE_IN1[5]),
+        .DOA(CHANNEL_RESPONSE_PHASE_reg_0_63_3_5_n_0),
+        .DOB(CHANNEL_RESPONSE_PHASE_reg_0_63_3_5_n_1),
+        .DOC(CHANNEL_RESPONSE_PHASE_reg_0_63_3_5_n_2),
         .DOD(NLW_CHANNEL_RESPONSE_PHASE_reg_0_63_3_5_DOD_UNCONNECTED),
         .WCLK(CLOCK),
         .WE(p_0_in));
@@ -4076,9 +4168,9 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .DIB(ATAN_CONSTELLATION_PHASE_OUT[7]),
         .DIC(ATAN_CONSTELLATION_PHASE_OUT[8]),
         .DID(1'b0),
-        .DOA(ROTATION_CONSTELLATION_PHASE_IN1[6]),
-        .DOB(ROTATION_CONSTELLATION_PHASE_IN1[7]),
-        .DOC(ROTATION_CONSTELLATION_PHASE_IN1[8]),
+        .DOA(CHANNEL_RESPONSE_PHASE_reg_0_63_6_8_n_0),
+        .DOB(CHANNEL_RESPONSE_PHASE_reg_0_63_6_8_n_1),
+        .DOC(CHANNEL_RESPONSE_PHASE_reg_0_63_6_8_n_2),
         .DOD(NLW_CHANNEL_RESPONSE_PHASE_reg_0_63_6_8_DOD_UNCONNECTED),
         .WCLK(CLOCK),
         .WE(p_0_in));
@@ -4105,9 +4197,9 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .DIB(ATAN_CONSTELLATION_PHASE_OUT[10]),
         .DIC(ATAN_CONSTELLATION_PHASE_OUT[11]),
         .DID(1'b0),
-        .DOA(ROTATION_CONSTELLATION_PHASE_IN1[9]),
-        .DOB(ROTATION_CONSTELLATION_PHASE_IN1[10]),
-        .DOC(ROTATION_CONSTELLATION_PHASE_IN1[11]),
+        .DOA(CHANNEL_RESPONSE_PHASE_reg_0_63_9_11_n_0),
+        .DOB(CHANNEL_RESPONSE_PHASE_reg_0_63_9_11_n_1),
+        .DOC(CHANNEL_RESPONSE_PHASE_reg_0_63_9_11_n_2),
         .DOD(NLW_CHANNEL_RESPONSE_PHASE_reg_0_63_9_11_DOD_UNCONNECTED),
         .WCLK(CLOCK),
         .WE(p_0_in));
@@ -4129,7 +4221,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[0]),
+        .D(p_2_in[0]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0_i_1_n_0));
@@ -4151,7 +4243,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[0]),
+        .D(p_2_in[0]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__0_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0__0_i_1_n_0));
@@ -4173,7 +4265,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[1]),
+        .D(p_2_in[1]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__1_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0_i_1_n_0));
@@ -4195,7 +4287,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[5]),
+        .D(p_2_in[5]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__10_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0__0_i_1_n_0));
@@ -4217,7 +4309,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[6]),
+        .D(p_2_in[6]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__11_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0_i_1_n_0));
@@ -4239,7 +4331,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[6]),
+        .D(p_2_in[6]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__12_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0__0_i_1_n_0));
@@ -4261,7 +4353,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[7]),
+        .D(p_2_in[7]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__13_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0_i_1_n_0));
@@ -4283,7 +4375,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[7]),
+        .D(p_2_in[7]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__14_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0__0_i_1_n_0));
@@ -4305,7 +4397,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[8]),
+        .D(p_2_in[8]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__15_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0_i_1_n_0));
@@ -4327,7 +4419,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[8]),
+        .D(p_2_in[8]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__16_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0__0_i_1_n_0));
@@ -4349,7 +4441,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[9]),
+        .D(p_2_in[9]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__17_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0_i_1_n_0));
@@ -4371,7 +4463,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[9]),
+        .D(p_2_in[9]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__18_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0__0_i_1_n_0));
@@ -4393,7 +4485,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[10]),
+        .D(p_2_in[10]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__19_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0_i_1_n_0));
@@ -4415,7 +4507,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[1]),
+        .D(p_2_in[1]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__2_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0__0_i_1_n_0));
@@ -4437,7 +4529,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[10]),
+        .D(p_2_in[10]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__20_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0__0_i_1_n_0));
@@ -4459,7 +4551,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[11]),
+        .D(p_2_in[11]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__21_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0_i_1_n_0));
@@ -4481,7 +4573,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[11]),
+        .D(p_2_in[11]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__22_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0__0_i_1_n_0));
@@ -4503,7 +4595,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[12]),
+        .D(p_2_in[12]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__23_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0_i_1_n_0));
@@ -4525,7 +4617,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[12]),
+        .D(p_2_in[12]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__24_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0__0_i_1_n_0));
@@ -4547,7 +4639,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[13]),
+        .D(p_2_in[13]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__25_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0_i_1_n_0));
@@ -4569,7 +4661,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[13]),
+        .D(p_2_in[13]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__26_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0__0_i_1_n_0));
@@ -4591,7 +4683,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[14]),
+        .D(p_2_in[14]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__27_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0_i_1_n_0));
@@ -4613,7 +4705,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[14]),
+        .D(p_2_in[14]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__28_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0__0_i_1_n_0));
@@ -4635,7 +4727,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[15]),
+        .D(p_2_in[15]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__29_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0_i_1_n_0));
@@ -4657,7 +4749,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[2]),
+        .D(p_2_in[2]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__3_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0_i_1_n_0));
@@ -4679,7 +4771,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[15]),
+        .D(p_2_in[15]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__30_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0__0_i_1_n_0));
@@ -4701,7 +4793,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[16]),
+        .D(p_2_in[16]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__31_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0_i_1_n_0));
@@ -4723,7 +4815,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[16]),
+        .D(p_2_in[16]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__32_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0__0_i_1_n_0));
@@ -4745,7 +4837,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[17]),
+        .D(p_2_in[17]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__33_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0_i_1_n_0));
@@ -4767,7 +4859,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[17]),
+        .D(p_2_in[17]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__34_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0__0_i_1_n_0));
@@ -4789,7 +4881,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[18]),
+        .D(p_2_in[18]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__35_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0_i_1_n_0));
@@ -4811,7 +4903,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[18]),
+        .D(p_2_in[18]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__36_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0__0_i_1_n_0));
@@ -4833,7 +4925,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[19]),
+        .D(p_2_in[19]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__37_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0_i_1_n_0));
@@ -4855,7 +4947,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[19]),
+        .D(p_2_in[19]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__38_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0__0_i_1_n_0));
@@ -4877,7 +4969,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[20]),
+        .D(p_2_in[20]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__39_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0_i_1_n_0));
@@ -4899,7 +4991,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[2]),
+        .D(p_2_in[2]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__4_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0__0_i_1_n_0));
@@ -4921,7 +5013,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[20]),
+        .D(p_2_in[20]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__40_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0__0_i_1_n_0));
@@ -4943,7 +5035,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[21]),
+        .D(p_2_in[21]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__41_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0_i_1_n_0));
@@ -4965,7 +5057,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[21]),
+        .D(p_2_in[21]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__42_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0__0_i_1_n_0));
@@ -4987,7 +5079,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[22]),
+        .D(p_2_in[22]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__43_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0_i_1_n_0));
@@ -5009,7 +5101,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[22]),
+        .D(p_2_in[22]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__44_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0__0_i_1_n_0));
@@ -5031,7 +5123,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[23]),
+        .D(p_2_in[23]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__45_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0_i_1_n_0));
@@ -5053,7 +5145,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[23]),
+        .D(p_2_in[23]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__46_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0__0_i_1_n_0));
@@ -5075,7 +5167,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[3]),
+        .D(p_2_in[3]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__5_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0_i_1_n_0));
@@ -5097,7 +5189,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[3]),
+        .D(p_2_in[3]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__6_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0__0_i_1_n_0));
@@ -5119,7 +5211,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[4]),
+        .D(p_2_in[4]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__7_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0_i_1_n_0));
@@ -5141,7 +5233,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[4]),
+        .D(p_2_in[4]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__8_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0__0_i_1_n_0));
@@ -5163,7 +5255,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(1'b0),
-        .D(p_1_in[5]),
+        .D(p_2_in[5]),
         .O(CHANNEL_RESPONSE_Q_reg_0_15_0_0__9_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_15_0_0_i_1_n_0));
@@ -5183,7 +5275,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(INPUT_DATA_CNTR[4]),
-        .D(p_1_in[0]),
+        .D(p_2_in[0]),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
@@ -5203,7 +5295,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(INPUT_DATA_CNTR[4]),
-        .D(p_1_in[1]),
+        .D(p_2_in[1]),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__0_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
@@ -5215,11 +5307,11 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(CHANNEL_RESPONSE_PHASE),
         .I3(__113_carry_n_6),
         .I4(\FSM_onehot_STATE_reg_n_0_[0] ),
-        .O(p_1_in[1]));
+        .O(p_2_in[1]));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__0_i_2
-       (.I0(ATAN_CONSTELLATION_IN_Q2[1]),
+       (.I0(__113_carry_i_9_n_7),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[2]),
         .I3(in),
@@ -5239,28 +5331,28 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__0_i_4
        (.I0(QDATA_BUFFER[5]),
         .I1(QDATA_BUFFER[23]),
-        .I2(ATAN_CONSTELLATION_IN_Q2[4]),
+        .I2(__113_carry_i_9_n_4),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__0_i_4_n_0));
   LUT3 #(
     .INIT(8'h1D)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__0_i_5
        (.I0(QDATA_BUFFER[4]),
         .I1(QDATA_BUFFER[23]),
-        .I2(ATAN_CONSTELLATION_IN_Q2[3]),
+        .I2(__113_carry_i_9_n_5),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__0_i_5_n_0));
   LUT3 #(
     .INIT(8'h1D)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__0_i_6
        (.I0(QDATA_BUFFER[3]),
         .I1(QDATA_BUFFER[23]),
-        .I2(ATAN_CONSTELLATION_IN_Q2[2]),
+        .I2(__113_carry_i_9_n_6),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__0_i_6_n_0));
   LUT3 #(
     .INIT(8'h1D)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__0_i_7
        (.I0(QDATA_BUFFER[2]),
         .I1(QDATA_BUFFER[23]),
-        .I2(ATAN_CONSTELLATION_IN_Q2[1]),
+        .I2(__113_carry_i_9_n_7),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__0_i_7_n_0));
   (* RTL_RAM_BITS = "1248" *) 
   (* RTL_RAM_NAME = "U0/CHANNEL_RESPONSE_Q_reg" *) 
@@ -5278,7 +5370,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(INPUT_DATA_CNTR[4]),
-        .D(p_1_in[2]),
+        .D(p_2_in[2]),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__1_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
@@ -5298,7 +5390,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(INPUT_DATA_CNTR[4]),
-        .D(p_1_in[11]),
+        .D(p_2_in[11]),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__10_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
@@ -5310,11 +5402,11 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(CHANNEL_RESPONSE_PHASE),
         .I3(__113_carry__1_n_4),
         .I4(\FSM_onehot_STATE_reg_n_0_[0] ),
-        .O(p_1_in[11]));
+        .O(p_2_in[11]));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__10_i_2
-       (.I0(ATAN_CONSTELLATION_IN_Q2[11]),
+       (.I0(__113_carry__1_i_9_n_5),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[12]),
         .I3(in),
@@ -5336,7 +5428,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(INPUT_DATA_CNTR[4]),
-        .D(p_1_in[12]),
+        .D(p_2_in[12]),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__11_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
@@ -5348,11 +5440,11 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(CHANNEL_RESPONSE_PHASE),
         .I3(__113_carry__2_n_7),
         .I4(\FSM_onehot_STATE_reg_n_0_[0] ),
-        .O(p_1_in[12]));
+        .O(p_2_in[12]));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__11_i_2
-       (.I0(ATAN_CONSTELLATION_IN_Q2[12]),
+       (.I0(__113_carry__1_i_9_n_4),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[13]),
         .I3(in),
@@ -5374,7 +5466,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(INPUT_DATA_CNTR[4]),
-        .D(p_1_in[13]),
+        .D(p_2_in[13]),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__12_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
@@ -5386,11 +5478,11 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(CHANNEL_RESPONSE_PHASE),
         .I3(__113_carry__2_n_6),
         .I4(\FSM_onehot_STATE_reg_n_0_[0] ),
-        .O(p_1_in[13]));
+        .O(p_2_in[13]));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__12_i_2
-       (.I0(ATAN_CONSTELLATION_IN_Q2[13]),
+       (.I0(__113_carry__2_i_9_n_7),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[14]),
         .I3(in),
@@ -5410,28 +5502,28 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__12_i_4
        (.I0(QDATA_BUFFER[17]),
         .I1(QDATA_BUFFER[23]),
-        .I2(ATAN_CONSTELLATION_IN_Q2[16]),
+        .I2(__113_carry__2_i_9_n_4),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__12_i_4_n_0));
   LUT3 #(
     .INIT(8'h1D)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__12_i_5
        (.I0(QDATA_BUFFER[16]),
         .I1(QDATA_BUFFER[23]),
-        .I2(ATAN_CONSTELLATION_IN_Q2[15]),
+        .I2(__113_carry__2_i_9_n_5),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__12_i_5_n_0));
   LUT3 #(
     .INIT(8'h1D)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__12_i_6
        (.I0(QDATA_BUFFER[15]),
         .I1(QDATA_BUFFER[23]),
-        .I2(ATAN_CONSTELLATION_IN_Q2[14]),
+        .I2(__113_carry__2_i_9_n_6),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__12_i_6_n_0));
   LUT3 #(
     .INIT(8'h1D)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__12_i_7
        (.I0(QDATA_BUFFER[14]),
         .I1(QDATA_BUFFER[23]),
-        .I2(ATAN_CONSTELLATION_IN_Q2[13]),
+        .I2(__113_carry__2_i_9_n_7),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__12_i_7_n_0));
   (* RTL_RAM_BITS = "1248" *) 
   (* RTL_RAM_NAME = "U0/CHANNEL_RESPONSE_Q_reg" *) 
@@ -5449,7 +5541,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(INPUT_DATA_CNTR[4]),
-        .D(p_1_in[14]),
+        .D(p_2_in[14]),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__13_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
@@ -5461,11 +5553,11 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(CHANNEL_RESPONSE_PHASE),
         .I3(__113_carry__2_n_5),
         .I4(\FSM_onehot_STATE_reg_n_0_[0] ),
-        .O(p_1_in[14]));
+        .O(p_2_in[14]));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__13_i_2
-       (.I0(ATAN_CONSTELLATION_IN_Q2[14]),
+       (.I0(__113_carry__2_i_9_n_6),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[15]),
         .I3(in),
@@ -5487,7 +5579,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(INPUT_DATA_CNTR[4]),
-        .D(p_1_in[15]),
+        .D(p_2_in[15]),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__14_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
@@ -5499,11 +5591,11 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(CHANNEL_RESPONSE_PHASE),
         .I3(__113_carry__2_n_4),
         .I4(\FSM_onehot_STATE_reg_n_0_[0] ),
-        .O(p_1_in[15]));
+        .O(p_2_in[15]));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__14_i_2
-       (.I0(ATAN_CONSTELLATION_IN_Q2[15]),
+       (.I0(__113_carry__2_i_9_n_5),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[16]),
         .I3(in),
@@ -5525,7 +5617,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(INPUT_DATA_CNTR[4]),
-        .D(p_1_in[16]),
+        .D(p_2_in[16]),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__15_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
@@ -5537,11 +5629,11 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(CHANNEL_RESPONSE_PHASE),
         .I3(__113_carry__3_n_7),
         .I4(\FSM_onehot_STATE_reg_n_0_[0] ),
-        .O(p_1_in[16]));
+        .O(p_2_in[16]));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__15_i_2
-       (.I0(ATAN_CONSTELLATION_IN_Q2[16]),
+       (.I0(__113_carry__2_i_9_n_4),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[17]),
         .I3(in),
@@ -5563,7 +5655,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(INPUT_DATA_CNTR[4]),
-        .D(p_1_in[17]),
+        .D(p_2_in[17]),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__16_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
@@ -5575,11 +5667,11 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(CHANNEL_RESPONSE_PHASE),
         .I3(__113_carry__3_n_6),
         .I4(\FSM_onehot_STATE_reg_n_0_[0] ),
-        .O(p_1_in[17]));
+        .O(p_2_in[17]));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__16_i_2
-       (.I0(ATAN_CONSTELLATION_IN_Q2[17]),
+       (.I0(__113_carry__3_i_9_n_7),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[18]),
         .I3(in),
@@ -5599,28 +5691,28 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__16_i_4
        (.I0(QDATA_BUFFER[21]),
         .I1(QDATA_BUFFER[23]),
-        .I2(ATAN_CONSTELLATION_IN_Q2[20]),
+        .I2(__113_carry__3_i_9_n_4),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__16_i_4_n_0));
   LUT3 #(
     .INIT(8'h1D)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__16_i_5
        (.I0(QDATA_BUFFER[20]),
         .I1(QDATA_BUFFER[23]),
-        .I2(ATAN_CONSTELLATION_IN_Q2[19]),
+        .I2(__113_carry__3_i_9_n_5),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__16_i_5_n_0));
   LUT3 #(
     .INIT(8'h1D)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__16_i_6
        (.I0(QDATA_BUFFER[19]),
         .I1(QDATA_BUFFER[23]),
-        .I2(ATAN_CONSTELLATION_IN_Q2[18]),
+        .I2(__113_carry__3_i_9_n_6),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__16_i_6_n_0));
   LUT3 #(
     .INIT(8'h1D)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__16_i_7
        (.I0(QDATA_BUFFER[18]),
         .I1(QDATA_BUFFER[23]),
-        .I2(ATAN_CONSTELLATION_IN_Q2[17]),
+        .I2(__113_carry__3_i_9_n_7),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__16_i_7_n_0));
   (* RTL_RAM_BITS = "1248" *) 
   (* RTL_RAM_NAME = "U0/CHANNEL_RESPONSE_Q_reg" *) 
@@ -5638,7 +5730,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(INPUT_DATA_CNTR[4]),
-        .D(p_1_in[18]),
+        .D(p_2_in[18]),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__17_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
@@ -5650,11 +5742,11 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(CHANNEL_RESPONSE_PHASE),
         .I3(__113_carry__3_n_5),
         .I4(\FSM_onehot_STATE_reg_n_0_[0] ),
-        .O(p_1_in[18]));
+        .O(p_2_in[18]));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__17_i_2
-       (.I0(ATAN_CONSTELLATION_IN_Q2[18]),
+       (.I0(__113_carry__3_i_9_n_6),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[19]),
         .I3(in),
@@ -5676,7 +5768,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(INPUT_DATA_CNTR[4]),
-        .D(p_1_in[19]),
+        .D(p_2_in[19]),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__18_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
@@ -5688,11 +5780,11 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(CHANNEL_RESPONSE_PHASE),
         .I3(__113_carry__3_n_4),
         .I4(\FSM_onehot_STATE_reg_n_0_[0] ),
-        .O(p_1_in[19]));
+        .O(p_2_in[19]));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__18_i_2
-       (.I0(ATAN_CONSTELLATION_IN_Q2[19]),
+       (.I0(__113_carry__3_i_9_n_5),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[20]),
         .I3(in),
@@ -5714,7 +5806,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(INPUT_DATA_CNTR[4]),
-        .D(p_1_in[20]),
+        .D(p_2_in[20]),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__19_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
@@ -5726,11 +5818,11 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(CHANNEL_RESPONSE_PHASE),
         .I3(__113_carry__4_n_7),
         .I4(\FSM_onehot_STATE_reg_n_0_[0] ),
-        .O(p_1_in[20]));
+        .O(p_2_in[20]));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__19_i_2
-       (.I0(ATAN_CONSTELLATION_IN_Q2[20]),
+       (.I0(__113_carry__3_i_9_n_4),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[21]),
         .I3(in),
@@ -5744,11 +5836,11 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(CHANNEL_RESPONSE_PHASE),
         .I3(__113_carry_n_5),
         .I4(\FSM_onehot_STATE_reg_n_0_[0] ),
-        .O(p_1_in[2]));
+        .O(p_2_in[2]));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__1_i_2
-       (.I0(ATAN_CONSTELLATION_IN_Q2[2]),
+       (.I0(__113_carry_i_9_n_6),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[3]),
         .I3(in),
@@ -5770,7 +5862,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(INPUT_DATA_CNTR[4]),
-        .D(p_1_in[3]),
+        .D(p_2_in[3]),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__2_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
@@ -5790,7 +5882,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(INPUT_DATA_CNTR[4]),
-        .D(p_1_in[21]),
+        .D(p_2_in[21]),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__20_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
@@ -5801,7 +5893,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I1(CHANNEL_RESPONSE_PHASE),
         .I2(__113_carry__4_n_6),
         .I3(\FSM_onehot_STATE_reg_n_0_[0] ),
-        .O(p_1_in[21]));
+        .O(p_2_in[21]));
   LUT6 #(
     .INIT(64'hEEE222E200000000)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__20_i_2
@@ -5809,7 +5901,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I1(in),
         .I2(QDATA_BUFFER[22]),
         .I3(QDATA_BUFFER[23]),
-        .I4(ATAN_CONSTELLATION_IN_Q2[21]),
+        .I4(__113_carry__4_i_9_n_7),
         .I5(\FSM_onehot_STATE_reg_n_0_[1] ),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__20_i_2_n_0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -5831,14 +5923,14 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     .INIT(4'h7)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__20_i_5
        (.I0(QDATA_BUFFER[23]),
-        .I1(ATAN_CONSTELLATION_IN_Q2[22]),
+        .I1(__113_carry__4_i_9_n_6),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__20_i_5_n_0));
   LUT3 #(
     .INIT(8'h1D)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__20_i_6
        (.I0(QDATA_BUFFER[22]),
         .I1(QDATA_BUFFER[23]),
-        .I2(ATAN_CONSTELLATION_IN_Q2[21]),
+        .I2(__113_carry__4_i_9_n_7),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__20_i_6_n_0));
   (* RTL_RAM_BITS = "1248" *) 
   (* RTL_RAM_NAME = "U0/CHANNEL_RESPONSE_Q_reg" *) 
@@ -5856,7 +5948,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(INPUT_DATA_CNTR[4]),
-        .D(p_1_in[22]),
+        .D(p_2_in[22]),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
@@ -5867,14 +5959,14 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I1(CHANNEL_RESPONSE_PHASE),
         .I2(__113_carry__4_n_5),
         .I3(\FSM_onehot_STATE_reg_n_0_[0] ),
-        .O(p_1_in[22]));
+        .O(p_2_in[22]));
   LUT5 #(
     .INIT(32'hE2220000)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_2
        (.I0(CHANNEL_RESPONSE_Q_reg_0_31_0_0__20_i_3_n_6),
         .I1(in),
         .I2(QDATA_BUFFER[23]),
-        .I3(ATAN_CONSTELLATION_IN_Q2[22]),
+        .I3(__113_carry__4_i_9_n_6),
         .I4(\FSM_onehot_STATE_reg_n_0_[1] ),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_2_n_0));
   (* RTL_RAM_BITS = "1248" *) 
@@ -5893,7 +5985,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(INPUT_DATA_CNTR[4]),
-        .D(p_1_in[23]),
+        .D(p_2_in[23]),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__22_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
@@ -5904,7 +5996,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I1(CHANNEL_RESPONSE_PHASE),
         .I2(__113_carry__4_n_4),
         .I3(\FSM_onehot_STATE_reg_n_0_[0] ),
-        .O(p_1_in[23]));
+        .O(p_2_in[23]));
   LUT5 #(
     .INIT(32'h2E220000)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__22_i_2
@@ -5922,11 +6014,11 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(CHANNEL_RESPONSE_PHASE),
         .I3(__113_carry_n_4),
         .I4(\FSM_onehot_STATE_reg_n_0_[0] ),
-        .O(p_1_in[3]));
+        .O(p_2_in[3]));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__2_i_2
-       (.I0(ATAN_CONSTELLATION_IN_Q2[3]),
+       (.I0(__113_carry_i_9_n_5),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[4]),
         .I3(in),
@@ -5948,7 +6040,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(INPUT_DATA_CNTR[4]),
-        .D(p_1_in[4]),
+        .D(p_2_in[4]),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__3_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
@@ -5960,11 +6052,11 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(CHANNEL_RESPONSE_PHASE),
         .I3(__113_carry__0_n_7),
         .I4(\FSM_onehot_STATE_reg_n_0_[0] ),
-        .O(p_1_in[4]));
+        .O(p_2_in[4]));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__3_i_2
-       (.I0(ATAN_CONSTELLATION_IN_Q2[4]),
+       (.I0(__113_carry_i_9_n_4),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[5]),
         .I3(in),
@@ -5986,7 +6078,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(INPUT_DATA_CNTR[4]),
-        .D(p_1_in[5]),
+        .D(p_2_in[5]),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__4_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
@@ -5998,11 +6090,11 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(CHANNEL_RESPONSE_PHASE),
         .I3(__113_carry__0_n_6),
         .I4(\FSM_onehot_STATE_reg_n_0_[0] ),
-        .O(p_1_in[5]));
+        .O(p_2_in[5]));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__4_i_2
-       (.I0(ATAN_CONSTELLATION_IN_Q2[5]),
+       (.I0(__113_carry__0_i_9_n_7),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[6]),
         .I3(in),
@@ -6022,28 +6114,28 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__4_i_4
        (.I0(QDATA_BUFFER[9]),
         .I1(QDATA_BUFFER[23]),
-        .I2(ATAN_CONSTELLATION_IN_Q2[8]),
+        .I2(__113_carry__0_i_9_n_4),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__4_i_4_n_0));
   LUT3 #(
     .INIT(8'h1D)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__4_i_5
        (.I0(QDATA_BUFFER[8]),
         .I1(QDATA_BUFFER[23]),
-        .I2(ATAN_CONSTELLATION_IN_Q2[7]),
+        .I2(__113_carry__0_i_9_n_5),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__4_i_5_n_0));
   LUT3 #(
     .INIT(8'h1D)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__4_i_6
        (.I0(QDATA_BUFFER[7]),
         .I1(QDATA_BUFFER[23]),
-        .I2(ATAN_CONSTELLATION_IN_Q2[6]),
+        .I2(__113_carry__0_i_9_n_6),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__4_i_6_n_0));
   LUT3 #(
     .INIT(8'h1D)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__4_i_7
        (.I0(QDATA_BUFFER[6]),
         .I1(QDATA_BUFFER[23]),
-        .I2(ATAN_CONSTELLATION_IN_Q2[5]),
+        .I2(__113_carry__0_i_9_n_7),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__4_i_7_n_0));
   (* RTL_RAM_BITS = "1248" *) 
   (* RTL_RAM_NAME = "U0/CHANNEL_RESPONSE_Q_reg" *) 
@@ -6061,7 +6153,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(INPUT_DATA_CNTR[4]),
-        .D(p_1_in[6]),
+        .D(p_2_in[6]),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__5_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
@@ -6073,11 +6165,11 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(CHANNEL_RESPONSE_PHASE),
         .I3(__113_carry__0_n_5),
         .I4(\FSM_onehot_STATE_reg_n_0_[0] ),
-        .O(p_1_in[6]));
+        .O(p_2_in[6]));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__5_i_2
-       (.I0(ATAN_CONSTELLATION_IN_Q2[6]),
+       (.I0(__113_carry__0_i_9_n_6),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[7]),
         .I3(in),
@@ -6099,7 +6191,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(INPUT_DATA_CNTR[4]),
-        .D(p_1_in[7]),
+        .D(p_2_in[7]),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__6_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
@@ -6111,11 +6203,11 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(CHANNEL_RESPONSE_PHASE),
         .I3(__113_carry__0_n_4),
         .I4(\FSM_onehot_STATE_reg_n_0_[0] ),
-        .O(p_1_in[7]));
+        .O(p_2_in[7]));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__6_i_2
-       (.I0(ATAN_CONSTELLATION_IN_Q2[7]),
+       (.I0(__113_carry__0_i_9_n_5),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[8]),
         .I3(in),
@@ -6137,7 +6229,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(INPUT_DATA_CNTR[4]),
-        .D(p_1_in[8]),
+        .D(p_2_in[8]),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__7_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
@@ -6149,11 +6241,11 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(CHANNEL_RESPONSE_PHASE),
         .I3(__113_carry__1_n_7),
         .I4(\FSM_onehot_STATE_reg_n_0_[0] ),
-        .O(p_1_in[8]));
+        .O(p_2_in[8]));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__7_i_2
-       (.I0(ATAN_CONSTELLATION_IN_Q2[8]),
+       (.I0(__113_carry__0_i_9_n_4),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[9]),
         .I3(in),
@@ -6175,7 +6267,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(INPUT_DATA_CNTR[4]),
-        .D(p_1_in[9]),
+        .D(p_2_in[9]),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__8_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
@@ -6187,11 +6279,11 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(CHANNEL_RESPONSE_PHASE),
         .I3(__113_carry__1_n_6),
         .I4(\FSM_onehot_STATE_reg_n_0_[0] ),
-        .O(p_1_in[9]));
+        .O(p_2_in[9]));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__8_i_2
-       (.I0(ATAN_CONSTELLATION_IN_Q2[9]),
+       (.I0(__113_carry__1_i_9_n_7),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[10]),
         .I3(in),
@@ -6211,28 +6303,28 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__8_i_4
        (.I0(QDATA_BUFFER[13]),
         .I1(QDATA_BUFFER[23]),
-        .I2(ATAN_CONSTELLATION_IN_Q2[12]),
+        .I2(__113_carry__1_i_9_n_4),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__8_i_4_n_0));
   LUT3 #(
     .INIT(8'h1D)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__8_i_5
        (.I0(QDATA_BUFFER[12]),
         .I1(QDATA_BUFFER[23]),
-        .I2(ATAN_CONSTELLATION_IN_Q2[11]),
+        .I2(__113_carry__1_i_9_n_5),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__8_i_5_n_0));
   LUT3 #(
     .INIT(8'h1D)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__8_i_6
        (.I0(QDATA_BUFFER[11]),
         .I1(QDATA_BUFFER[23]),
-        .I2(ATAN_CONSTELLATION_IN_Q2[10]),
+        .I2(__113_carry__1_i_9_n_6),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__8_i_6_n_0));
   LUT3 #(
     .INIT(8'h1D)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__8_i_7
        (.I0(QDATA_BUFFER[10]),
         .I1(QDATA_BUFFER[23]),
-        .I2(ATAN_CONSTELLATION_IN_Q2[9]),
+        .I2(__113_carry__1_i_9_n_7),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__8_i_7_n_0));
   (* RTL_RAM_BITS = "1248" *) 
   (* RTL_RAM_NAME = "U0/CHANNEL_RESPONSE_Q_reg" *) 
@@ -6250,7 +6342,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .A2(INPUT_DATA_CNTR[2]),
         .A3(INPUT_DATA_CNTR[3]),
         .A4(INPUT_DATA_CNTR[4]),
-        .D(p_1_in[10]),
+        .D(p_2_in[10]),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__9_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
@@ -6262,11 +6354,11 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(CHANNEL_RESPONSE_PHASE),
         .I3(__113_carry__1_n_5),
         .I4(\FSM_onehot_STATE_reg_n_0_[0] ),
-        .O(p_1_in[10]));
+        .O(p_2_in[10]));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__9_i_2
-       (.I0(ATAN_CONSTELLATION_IN_Q2[10]),
+       (.I0(__113_carry__1_i_9_n_6),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[11]),
         .I3(in),
@@ -6280,43 +6372,43 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(CHANNEL_RESPONSE_PHASE),
         .I3(__113_carry_n_7),
         .I4(\FSM_onehot_STATE_reg_n_0_[0] ),
-        .O(p_1_in[0]));
+        .O(p_2_in[0]));
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0_i_2
-       (.I0(ATAN_CONSTELLATION_IN_Q4[1]),
+       (.I0(__113_carry_i_10_n_7),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[1]),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0_i_2_n_0));
   LUT6 #(
-    .INIT(64'h0200FFFF02000000)) 
+    .INIT(64'h888888B888888888)) 
     CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER_i_1
-       (.I0(CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER_i_2_n_0),
-        .I1(CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER_i_3_n_0),
-        .I2(ROTATION_CONSTELLATION_DATA_OUT_CNTR[3]),
-        .I3(CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER_i_4_n_0),
-        .I4(\CONSTELLATION_IDATA_OUT[23]_i_3_n_0 ),
-        .I5(CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER),
+       (.I0(CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER),
+        .I1(\CONSTELLATION_IDATA_OUT[23]_i_4_n_0 ),
+        .I2(CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER_i_2_n_0),
+        .I3(CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER_i_3_n_0),
+        .I4(ROTATION_CONSTELLATION_DATA_OUT_CNTR[3]),
+        .I5(CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER_i_4_n_0),
         .O(CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER_i_1_n_0));
   LUT5 #(
-    .INIT(32'h00000004)) 
+    .INIT(32'h00000001)) 
     CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER_i_2
-       (.I0(OFDM_SYMBOL_CNTR_reg[12]),
-        .I1(OFDM_SYMBOL_CNTR_reg[1]),
-        .I2(OFDM_SYMBOL_CNTR_reg[0]),
-        .I3(ROTATION_CONSTELLATION_DATA_OUT_CNTR[0]),
+       (.I0(OFDM_SYMBOL_CNTR_reg[10]),
+        .I1(OFDM_SYMBOL_CNTR_reg[11]),
+        .I2(OFDM_SYMBOL_CNTR_reg[5]),
+        .I3(OFDM_SYMBOL_CNTR_reg[9]),
         .I4(CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER_i_5_n_0),
         .O(CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER_i_2_n_0));
   LUT5 #(
     .INIT(32'hFFFFFFFE)) 
     CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER_i_3
-       (.I0(OFDM_SYMBOL_CNTR_reg[10]),
-        .I1(OFDM_SYMBOL_CNTR_reg[11]),
-        .I2(OFDM_SYMBOL_CNTR_reg[5]),
-        .I3(OFDM_SYMBOL_CNTR_reg[9]),
+       (.I0(OFDM_SYMBOL_CNTR_reg[0]),
+        .I1(OFDM_SYMBOL_CNTR_reg[2]),
+        .I2(OFDM_SYMBOL_CNTR_reg[6]),
+        .I3(OFDM_SYMBOL_CNTR_reg[8]),
         .I4(CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER_i_6_n_0),
         .O(CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER_i_3_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT2 #(
     .INIT(4'h1)) 
     CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER_i_4
@@ -6326,18 +6418,18 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   LUT4 #(
     .INIT(16'hFFFE)) 
     CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER_i_5
-       (.I0(OFDM_SYMBOL_CNTR_reg[3]),
-        .I1(ROTATION_CONSTELLATION_DATA_OUT_CNTR[5]),
-        .I2(OFDM_SYMBOL_CNTR_reg[8]),
-        .I3(OFDM_SYMBOL_CNTR_reg[2]),
+       (.I0(OFDM_SYMBOL_CNTR_reg[4]),
+        .I1(ROTATION_CONSTELLATION_DATA_OUT_CNTR[4]),
+        .I2(OFDM_SYMBOL_CNTR_reg[3]),
+        .I3(ROTATION_CONSTELLATION_DATA_OUT_CNTR[5]),
         .O(CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER_i_5_n_0));
   LUT4 #(
-    .INIT(16'hFFFE)) 
+    .INIT(16'hFFFD)) 
     CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER_i_6
-       (.I0(OFDM_SYMBOL_CNTR_reg[7]),
-        .I1(OFDM_SYMBOL_CNTR_reg[4]),
-        .I2(OFDM_SYMBOL_CNTR_reg[6]),
-        .I3(ROTATION_CONSTELLATION_DATA_OUT_CNTR[4]),
+       (.I0(OFDM_SYMBOL_CNTR_reg[1]),
+        .I1(OFDM_SYMBOL_CNTR_reg[12]),
+        .I2(OFDM_SYMBOL_CNTR_reg[7]),
+        .I3(ROTATION_CONSTELLATION_DATA_OUT_CNTR[0]),
         .O(CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER_i_6_n_0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
@@ -6349,22 +6441,23 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .Q(CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER),
         .R(RESET));
   LUT5 #(
-    .INIT(32'hCDDD8888)) 
+    .INIT(32'hFFBF00A0)) 
     CONSTELLATION_DATA_OUT_VALID_i_1
-       (.I0(\CONSTELLATION_IDATA_OUT[23]_i_3_n_0 ),
-        .I1(ROTATION_CONSTELLATION_DATA_OUT_STROBE),
+       (.I0(ROTATION_CONSTELLATION_DATA_OUT_STROBE),
+        .I1(\CONSTELLATION_IDATA_OUT[23]_i_3_n_0 ),
         .I2(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
         .I3(CONSTELLATION_DATA_OUT_VALID_i_2_n_0),
         .I4(CONSTELLATION_DATA_OUT_VALID),
         .O(CONSTELLATION_DATA_OUT_VALID_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
-  LUT4 #(
-    .INIT(16'hE000)) 
+  LUT6 #(
+    .INIT(64'hFFFF888000000000)) 
     CONSTELLATION_DATA_OUT_VALID_i_2
-       (.I0(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
+       (.I0(ROTATION_CONSTELLATION_DATA_OUT_CNTR[4]),
+        .I1(ROTATION_CONSTELLATION_DATA_OUT_CNTR[3]),
+        .I2(ROTATION_CONSTELLATION_DATA_OUT_CNTR[1]),
+        .I3(ROTATION_CONSTELLATION_DATA_OUT_CNTR[2]),
+        .I4(ROTATION_CONSTELLATION_DATA_OUT_CNTR[5]),
+        .I5(ROTATION_CONSTELLATION_DATA_OUT_STROBE),
         .O(CONSTELLATION_DATA_OUT_VALID_i_2_n_0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
@@ -6390,27 +6483,26 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     .INIT_C(64'h0000000000000000),
     .INIT_D(64'h0000000000000000)) 
     CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5
-       (.ADDRA(CONSTELLATION_OUT_LAST_HALF_CNTR_reg),
-        .ADDRB(CONSTELLATION_OUT_LAST_HALF_CNTR_reg),
-        .ADDRC(CONSTELLATION_OUT_LAST_HALF_CNTR_reg),
+       (.ADDRA(CONSTELLATION_OUT_LAST_HALF_CNTR),
+        .ADDRB(CONSTELLATION_OUT_LAST_HALF_CNTR),
+        .ADDRC(CONSTELLATION_OUT_LAST_HALF_CNTR),
         .ADDRD({CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_2_n_0,CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_3_n_0,CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_4_n_0,CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_5_n_0,ROTATION_CONSTELLATION_DATA_OUT_CNTR[0]}),
         .DIA(ROTATION_CONSTELLATION_IDATA_OUT[1:0]),
         .DIB(ROTATION_CONSTELLATION_IDATA_OUT[3:2]),
         .DIC(ROTATION_CONSTELLATION_IDATA_OUT[5:4]),
         .DID({1'b0,1'b0}),
-        .DOA(CONSTELLATION_IDATA_OUT0[1:0]),
-        .DOB(CONSTELLATION_IDATA_OUT0[3:2]),
-        .DOC(CONSTELLATION_IDATA_OUT0[5:4]),
+        .DOA(p_2_out[1:0]),
+        .DOB(p_2_out[3:2]),
+        .DOC(p_2_out[5:4]),
         .DOD(NLW_CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_DOD_UNCONNECTED[1:0]),
         .WCLK(CLOCK),
         .WE(p_0_in__0));
-  LUT4 #(
-    .INIT(16'h0080)) 
+  LUT3 #(
+    .INIT(8'h08)) 
     CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_1
-       (.I0(CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_6_n_0),
-        .I1(ROTATION_CONSTELLATION_DATA_OUT_STROBE),
-        .I2(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
-        .I3(RESET),
+       (.I0(CONSTELLATION_DATA_OUT_VALID_i_2_n_0),
+        .I1(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
+        .I2(RESET),
         .O(p_0_in__0));
   LUT4 #(
     .INIT(16'h1FE0)) 
@@ -6438,16 +6530,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_5
        (.I0(ROTATION_CONSTELLATION_DATA_OUT_CNTR[1]),
         .O(CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_5_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
-  LUT5 #(
-    .INIT(32'hFEAAAAAA)) 
-    CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_6
-       (.I0(ROTATION_CONSTELLATION_DATA_OUT_CNTR[5]),
-        .I1(ROTATION_CONSTELLATION_DATA_OUT_CNTR[2]),
-        .I2(ROTATION_CONSTELLATION_DATA_OUT_CNTR[1]),
-        .I3(ROTATION_CONSTELLATION_DATA_OUT_CNTR[3]),
-        .I4(ROTATION_CONSTELLATION_DATA_OUT_CNTR[4]),
-        .O(CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_6_n_0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
   (* RTL_RAM_BITS = "624" *) 
   (* RTL_RAM_NAME = "U0/CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_12_17" *) 
@@ -6463,17 +6545,17 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     .INIT_C(64'h0000000000000000),
     .INIT_D(64'h0000000000000000)) 
     CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_12_17
-       (.ADDRA(CONSTELLATION_OUT_LAST_HALF_CNTR_reg),
-        .ADDRB(CONSTELLATION_OUT_LAST_HALF_CNTR_reg),
-        .ADDRC(CONSTELLATION_OUT_LAST_HALF_CNTR_reg),
+       (.ADDRA(CONSTELLATION_OUT_LAST_HALF_CNTR),
+        .ADDRB(CONSTELLATION_OUT_LAST_HALF_CNTR),
+        .ADDRC(CONSTELLATION_OUT_LAST_HALF_CNTR),
         .ADDRD({CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_2_n_0,CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_3_n_0,CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_4_n_0,CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_5_n_0,ROTATION_CONSTELLATION_DATA_OUT_CNTR[0]}),
         .DIA(ROTATION_CONSTELLATION_IDATA_OUT[13:12]),
         .DIB(ROTATION_CONSTELLATION_IDATA_OUT[15:14]),
         .DIC(ROTATION_CONSTELLATION_IDATA_OUT[17:16]),
         .DID({1'b0,1'b0}),
-        .DOA(CONSTELLATION_IDATA_OUT0[13:12]),
-        .DOB(CONSTELLATION_IDATA_OUT0[15:14]),
-        .DOC(CONSTELLATION_IDATA_OUT0[17:16]),
+        .DOA(p_2_out[13:12]),
+        .DOB(p_2_out[15:14]),
+        .DOC(p_2_out[17:16]),
         .DOD(NLW_CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_12_17_DOD_UNCONNECTED[1:0]),
         .WCLK(CLOCK),
         .WE(p_0_in__0));
@@ -6492,17 +6574,17 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     .INIT_C(64'h0000000000000000),
     .INIT_D(64'h0000000000000000)) 
     CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_18_23
-       (.ADDRA(CONSTELLATION_OUT_LAST_HALF_CNTR_reg),
-        .ADDRB(CONSTELLATION_OUT_LAST_HALF_CNTR_reg),
-        .ADDRC(CONSTELLATION_OUT_LAST_HALF_CNTR_reg),
+       (.ADDRA(CONSTELLATION_OUT_LAST_HALF_CNTR),
+        .ADDRB(CONSTELLATION_OUT_LAST_HALF_CNTR),
+        .ADDRC(CONSTELLATION_OUT_LAST_HALF_CNTR),
         .ADDRD({CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_2_n_0,CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_3_n_0,CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_4_n_0,CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_5_n_0,ROTATION_CONSTELLATION_DATA_OUT_CNTR[0]}),
         .DIA(ROTATION_CONSTELLATION_IDATA_OUT[19:18]),
         .DIB(ROTATION_CONSTELLATION_IDATA_OUT[21:20]),
         .DIC(ROTATION_CONSTELLATION_IDATA_OUT[23:22]),
         .DID({1'b0,1'b0}),
-        .DOA(CONSTELLATION_IDATA_OUT0[19:18]),
-        .DOB(CONSTELLATION_IDATA_OUT0[21:20]),
-        .DOC(CONSTELLATION_IDATA_OUT0[23:22]),
+        .DOA(p_2_out[19:18]),
+        .DOB(p_2_out[21:20]),
+        .DOC(p_2_out[23:22]),
         .DOD(NLW_CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_18_23_DOD_UNCONNECTED[1:0]),
         .WCLK(CLOCK),
         .WE(p_0_in__0));
@@ -6521,17 +6603,17 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     .INIT_C(64'h0000000000000000),
     .INIT_D(64'h0000000000000000)) 
     CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_6_11
-       (.ADDRA(CONSTELLATION_OUT_LAST_HALF_CNTR_reg),
-        .ADDRB(CONSTELLATION_OUT_LAST_HALF_CNTR_reg),
-        .ADDRC(CONSTELLATION_OUT_LAST_HALF_CNTR_reg),
+       (.ADDRA(CONSTELLATION_OUT_LAST_HALF_CNTR),
+        .ADDRB(CONSTELLATION_OUT_LAST_HALF_CNTR),
+        .ADDRC(CONSTELLATION_OUT_LAST_HALF_CNTR),
         .ADDRD({CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_2_n_0,CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_3_n_0,CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_4_n_0,CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_5_n_0,ROTATION_CONSTELLATION_DATA_OUT_CNTR[0]}),
         .DIA(ROTATION_CONSTELLATION_IDATA_OUT[7:6]),
         .DIB(ROTATION_CONSTELLATION_IDATA_OUT[9:8]),
         .DIC(ROTATION_CONSTELLATION_IDATA_OUT[11:10]),
         .DID({1'b0,1'b0}),
-        .DOA(CONSTELLATION_IDATA_OUT0[7:6]),
-        .DOB(CONSTELLATION_IDATA_OUT0[9:8]),
-        .DOC(CONSTELLATION_IDATA_OUT0[11:10]),
+        .DOA(p_2_out[7:6]),
+        .DOB(p_2_out[9:8]),
+        .DOC(p_2_out[11:10]),
         .DOD(NLW_CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_6_11_DOD_UNCONNECTED[1:0]),
         .WCLK(CLOCK),
         .WE(p_0_in__0));
@@ -6539,261 +6621,268 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_IDATA_OUT[0]_i_1 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[0]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_IDATA_OUT0[0]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out[0]),
         .O(\CONSTELLATION_IDATA_OUT[0]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_IDATA_OUT[10]_i_1 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[10]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_IDATA_OUT0[10]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out[10]),
         .O(\CONSTELLATION_IDATA_OUT[10]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_IDATA_OUT[11]_i_1 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[11]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_IDATA_OUT0[11]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out[11]),
         .O(\CONSTELLATION_IDATA_OUT[11]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_IDATA_OUT[12]_i_1 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[12]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_IDATA_OUT0[12]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out[12]),
         .O(\CONSTELLATION_IDATA_OUT[12]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_IDATA_OUT[13]_i_1 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[13]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_IDATA_OUT0[13]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out[13]),
         .O(\CONSTELLATION_IDATA_OUT[13]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_IDATA_OUT[14]_i_1 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[14]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_IDATA_OUT0[14]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out[14]),
         .O(\CONSTELLATION_IDATA_OUT[14]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_IDATA_OUT[15]_i_1 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[15]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_IDATA_OUT0[15]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out[15]),
         .O(\CONSTELLATION_IDATA_OUT[15]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_IDATA_OUT[16]_i_1 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[16]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_IDATA_OUT0[16]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out[16]),
         .O(\CONSTELLATION_IDATA_OUT[16]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_IDATA_OUT[17]_i_1 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[17]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_IDATA_OUT0[17]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out[17]),
         .O(\CONSTELLATION_IDATA_OUT[17]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_IDATA_OUT[18]_i_1 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[18]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_IDATA_OUT0[18]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out[18]),
         .O(\CONSTELLATION_IDATA_OUT[18]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_IDATA_OUT[19]_i_1 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[19]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_IDATA_OUT0[19]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out[19]),
         .O(\CONSTELLATION_IDATA_OUT[19]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_IDATA_OUT[1]_i_1 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[1]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_IDATA_OUT0[1]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out[1]),
         .O(\CONSTELLATION_IDATA_OUT[1]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_IDATA_OUT[20]_i_1 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[20]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_IDATA_OUT0[20]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out[20]),
         .O(\CONSTELLATION_IDATA_OUT[20]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_IDATA_OUT[21]_i_1 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[21]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_IDATA_OUT0[21]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out[21]),
         .O(\CONSTELLATION_IDATA_OUT[21]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_IDATA_OUT[22]_i_1 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[22]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_IDATA_OUT0[22]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out[22]),
         .O(\CONSTELLATION_IDATA_OUT[22]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hABFFFFFFAAAAAAAA)) 
+  LUT4 #(
+    .INIT(16'h0455)) 
     \CONSTELLATION_IDATA_OUT[23]_i_1 
-       (.I0(\CONSTELLATION_IDATA_OUT[23]_i_3_n_0 ),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
+       (.I0(RESET),
+        .I1(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
+        .I2(\CONSTELLATION_IDATA_OUT[23]_i_3_n_0 ),
+        .I3(\CONSTELLATION_IDATA_OUT[23]_i_4_n_0 ),
         .O(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_IDATA_OUT[23]_i_2 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[23]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_IDATA_OUT0[23]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out[23]),
         .O(\CONSTELLATION_IDATA_OUT[23]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h00F7000000000000)) 
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  LUT4 #(
+    .INIT(16'hE000)) 
     \CONSTELLATION_IDATA_OUT[23]_i_3 
-       (.I0(ROTATION_CONSTELLATION_DATA_OUT_CNTR[4]),
-        .I1(ROTATION_CONSTELLATION_DATA_OUT_CNTR[3]),
-        .I2(CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER_i_4_n_0),
-        .I3(ROTATION_CONSTELLATION_DATA_OUT_CNTR[5]),
-        .I4(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
-        .I5(ROTATION_CONSTELLATION_DATA_OUT_STROBE),
+       (.I0(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
         .O(\CONSTELLATION_IDATA_OUT[23]_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'hDFDDDDDDFFFFFFFF)) 
+    \CONSTELLATION_IDATA_OUT[23]_i_4 
+       (.I0(ROTATION_CONSTELLATION_DATA_OUT_STROBE),
+        .I1(ROTATION_CONSTELLATION_DATA_OUT_CNTR[5]),
+        .I2(CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER_i_4_n_0),
+        .I3(ROTATION_CONSTELLATION_DATA_OUT_CNTR[3]),
+        .I4(ROTATION_CONSTELLATION_DATA_OUT_CNTR[4]),
+        .I5(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
+        .O(\CONSTELLATION_IDATA_OUT[23]_i_4_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_IDATA_OUT[2]_i_1 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[2]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_IDATA_OUT0[2]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out[2]),
         .O(\CONSTELLATION_IDATA_OUT[2]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_IDATA_OUT[3]_i_1 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[3]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_IDATA_OUT0[3]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out[3]),
         .O(\CONSTELLATION_IDATA_OUT[3]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_IDATA_OUT[4]_i_1 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[4]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_IDATA_OUT0[4]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out[4]),
         .O(\CONSTELLATION_IDATA_OUT[4]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_IDATA_OUT[5]_i_1 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[5]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_IDATA_OUT0[5]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out[5]),
         .O(\CONSTELLATION_IDATA_OUT[5]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_IDATA_OUT[6]_i_1 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[6]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_IDATA_OUT0[6]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out[6]),
         .O(\CONSTELLATION_IDATA_OUT[6]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_IDATA_OUT[7]_i_1 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[7]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_IDATA_OUT0[7]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out[7]),
         .O(\CONSTELLATION_IDATA_OUT[7]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_IDATA_OUT[8]_i_1 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[8]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_IDATA_OUT0[8]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out[8]),
         .O(\CONSTELLATION_IDATA_OUT[8]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_IDATA_OUT[9]_i_1 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[9]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_IDATA_OUT0[9]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out[9]),
         .O(\CONSTELLATION_IDATA_OUT[9]_i_1_n_0 ));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
@@ -6803,7 +6892,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_IDATA_OUT[0]_i_1_n_0 ),
         .Q(CONSTELLATION_IDATA_OUT[0]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -6812,7 +6901,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_IDATA_OUT[10]_i_1_n_0 ),
         .Q(CONSTELLATION_IDATA_OUT[10]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -6821,7 +6910,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_IDATA_OUT[11]_i_1_n_0 ),
         .Q(CONSTELLATION_IDATA_OUT[11]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -6830,7 +6919,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_IDATA_OUT[12]_i_1_n_0 ),
         .Q(CONSTELLATION_IDATA_OUT[12]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -6839,7 +6928,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_IDATA_OUT[13]_i_1_n_0 ),
         .Q(CONSTELLATION_IDATA_OUT[13]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -6848,7 +6937,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_IDATA_OUT[14]_i_1_n_0 ),
         .Q(CONSTELLATION_IDATA_OUT[14]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -6857,7 +6946,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_IDATA_OUT[15]_i_1_n_0 ),
         .Q(CONSTELLATION_IDATA_OUT[15]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -6866,7 +6955,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_IDATA_OUT[16]_i_1_n_0 ),
         .Q(CONSTELLATION_IDATA_OUT[16]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -6875,7 +6964,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_IDATA_OUT[17]_i_1_n_0 ),
         .Q(CONSTELLATION_IDATA_OUT[17]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -6884,7 +6973,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_IDATA_OUT[18]_i_1_n_0 ),
         .Q(CONSTELLATION_IDATA_OUT[18]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -6893,7 +6982,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_IDATA_OUT[19]_i_1_n_0 ),
         .Q(CONSTELLATION_IDATA_OUT[19]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -6902,7 +6991,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_IDATA_OUT[1]_i_1_n_0 ),
         .Q(CONSTELLATION_IDATA_OUT[1]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -6911,7 +7000,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_IDATA_OUT[20]_i_1_n_0 ),
         .Q(CONSTELLATION_IDATA_OUT[20]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -6920,7 +7009,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_IDATA_OUT[21]_i_1_n_0 ),
         .Q(CONSTELLATION_IDATA_OUT[21]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -6929,7 +7018,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_IDATA_OUT[22]_i_1_n_0 ),
         .Q(CONSTELLATION_IDATA_OUT[22]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -6938,7 +7027,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_IDATA_OUT[23]_i_2_n_0 ),
         .Q(CONSTELLATION_IDATA_OUT[23]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -6947,7 +7036,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_IDATA_OUT[2]_i_1_n_0 ),
         .Q(CONSTELLATION_IDATA_OUT[2]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -6956,7 +7045,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_IDATA_OUT[3]_i_1_n_0 ),
         .Q(CONSTELLATION_IDATA_OUT[3]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -6965,7 +7054,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_IDATA_OUT[4]_i_1_n_0 ),
         .Q(CONSTELLATION_IDATA_OUT[4]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -6974,7 +7063,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_IDATA_OUT[5]_i_1_n_0 ),
         .Q(CONSTELLATION_IDATA_OUT[5]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -6983,7 +7072,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_IDATA_OUT[6]_i_1_n_0 ),
         .Q(CONSTELLATION_IDATA_OUT[6]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -6992,7 +7081,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_IDATA_OUT[7]_i_1_n_0 ),
         .Q(CONSTELLATION_IDATA_OUT[7]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -7001,7 +7090,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_IDATA_OUT[8]_i_1_n_0 ),
         .Q(CONSTELLATION_IDATA_OUT[8]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -7010,116 +7099,133 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_IDATA_OUT[9]_i_1_n_0 ),
         .Q(CONSTELLATION_IDATA_OUT[9]),
-        .R(RESET));
+        .R(1'b0));
   LUT6 #(
-    .INIT(64'hA888888888888888)) 
+    .INIT(64'h4544454445445555)) 
     \CONSTELLATION_OUT_LAST_HALF_CNTR[0]_i_1 
-       (.I0(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
-        .I1(\CONSTELLATION_OUT_LAST_HALF_CNTR[0]_i_3_n_0 ),
-        .I2(CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER_i_4_n_0),
-        .I3(ROTATION_CONSTELLATION_DATA_OUT_CNTR[0]),
-        .I4(ROTATION_CONSTELLATION_DATA_OUT_CNTR[3]),
-        .I5(ROTATION_CONSTELLATION_DATA_OUT_CNTR[4]),
-        .O(CONSTELLATION_OUT_LAST_HALF_CNTR__0));
+       (.I0(RESET),
+        .I1(\FSM_onehot_STATE_reg_n_0_[0] ),
+        .I2(\CONSTELLATION_IDATA_OUT[23]_i_3_n_0 ),
+        .I3(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
+        .I4(\CONSTELLATION_IDATA_OUT[23]_i_4_n_0 ),
+        .I5(\CONSTELLATION_OUT_LAST_HALF_CNTR[0]_i_3_n_0 ),
+        .O(\CONSTELLATION_OUT_LAST_HALF_CNTR[0]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h000000001FFF0000)) 
+    \CONSTELLATION_OUT_LAST_HALF_CNTR[0]_i_2 
+       (.I0(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I4(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
+        .I5(CONSTELLATION_OUT_LAST_HALF_CNTR[0]),
+        .O(\CONSTELLATION_OUT_LAST_HALF_CNTR[0]_i_2_n_0 ));
   (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT5 #(
-    .INIT(32'h15151555)) 
-    \CONSTELLATION_OUT_LAST_HALF_CNTR[0]_i_2 
-       (.I0(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[0]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .O(\CONSTELLATION_OUT_LAST_HALF_CNTR[0]_i_2_n_0 ));
+    .INIT(32'hEFFFFFFF)) 
+    \CONSTELLATION_OUT_LAST_HALF_CNTR[0]_i_3 
+       (.I0(ROTATION_CONSTELLATION_DATA_OUT_CNTR[2]),
+        .I1(ROTATION_CONSTELLATION_DATA_OUT_CNTR[1]),
+        .I2(ROTATION_CONSTELLATION_DATA_OUT_CNTR[3]),
+        .I3(ROTATION_CONSTELLATION_DATA_OUT_CNTR[4]),
+        .I4(ROTATION_CONSTELLATION_DATA_OUT_CNTR[0]),
+        .O(\CONSTELLATION_OUT_LAST_HALF_CNTR[0]_i_3_n_0 ));
+  LUT5 #(
+    .INIT(32'hAAAABEAA)) 
+    \CONSTELLATION_OUT_LAST_HALF_CNTR[1]_i_1 
+       (.I0(\FSM_onehot_STATE_reg_n_0_[0] ),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[0]),
+        .I3(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
+        .I4(\CONSTELLATION_IDATA_OUT[23]_i_3_n_0 ),
+        .O(\CONSTELLATION_OUT_LAST_HALF_CNTR[1]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h0070707070000000)) 
+    \CONSTELLATION_OUT_LAST_HALF_CNTR[2]_i_1 
+       (.I0(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I2(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[0]),
+        .I5(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .O(\CONSTELLATION_OUT_LAST_HALF_CNTR[2]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hBFFFEAAAAAAAAAAA)) 
+    \CONSTELLATION_OUT_LAST_HALF_CNTR[3]_i_1 
+       (.I0(\FSM_onehot_STATE_reg_n_0_[0] ),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[0]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I5(\CONSTELLATION_OUT_LAST_HALF_CNTR[3]_i_2_n_0 ),
+        .O(\CONSTELLATION_OUT_LAST_HALF_CNTR[3]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
   LUT5 #(
     .INIT(32'h2A2A2AAA)) 
-    \CONSTELLATION_OUT_LAST_HALF_CNTR[0]_i_3 
+    \CONSTELLATION_OUT_LAST_HALF_CNTR[3]_i_2 
        (.I0(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .O(\CONSTELLATION_OUT_LAST_HALF_CNTR[0]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .O(\CONSTELLATION_OUT_LAST_HALF_CNTR[3]_i_2_n_0 ));
   LUT5 #(
-    .INIT(32'h152A15AA)) 
-    \CONSTELLATION_OUT_LAST_HALF_CNTR[1]_i_1 
-       (.I0(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[0]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .O(\CONSTELLATION_OUT_LAST_HALF_CNTR[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
-  LUT5 #(
-    .INIT(32'h153F2A00)) 
-    \CONSTELLATION_OUT_LAST_HALF_CNTR[2]_i_1 
-       (.I0(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[0]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .O(\CONSTELLATION_OUT_LAST_HALF_CNTR[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
-  LUT5 #(
-    .INIT(32'h260C0CCC)) 
-    \CONSTELLATION_OUT_LAST_HALF_CNTR[3]_i_1 
-       (.I0(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[0]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .O(\CONSTELLATION_OUT_LAST_HALF_CNTR[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
-  LUT5 #(
-    .INIT(32'h622222AA)) 
+    .INIT(32'hAAAABEAA)) 
     \CONSTELLATION_OUT_LAST_HALF_CNTR[4]_i_1 
-       (.I0(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[0]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
+       (.I0(\FSM_onehot_STATE_reg_n_0_[0] ),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I2(\CONSTELLATION_OUT_LAST_HALF_CNTR[4]_i_2_n_0 ),
+        .I3(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
+        .I4(\CONSTELLATION_IDATA_OUT[23]_i_3_n_0 ),
         .O(\CONSTELLATION_OUT_LAST_HALF_CNTR[4]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'h8000)) 
+    \CONSTELLATION_OUT_LAST_HALF_CNTR[4]_i_2 
+       (.I0(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[0]),
+        .O(\CONSTELLATION_OUT_LAST_HALF_CNTR[4]_i_2_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
     \CONSTELLATION_OUT_LAST_HALF_CNTR_reg[0] 
        (.C(CLOCK),
-        .CE(CONSTELLATION_OUT_LAST_HALF_CNTR__0),
+        .CE(\CONSTELLATION_OUT_LAST_HALF_CNTR[0]_i_1_n_0 ),
         .D(\CONSTELLATION_OUT_LAST_HALF_CNTR[0]_i_2_n_0 ),
-        .Q(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[0]),
-        .R(RESET));
-  FDSE #(
+        .Q(CONSTELLATION_OUT_LAST_HALF_CNTR[0]),
+        .R(1'b0));
+  FDRE #(
     .INIT(1'b1)) 
     \CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1] 
        (.C(CLOCK),
-        .CE(CONSTELLATION_OUT_LAST_HALF_CNTR__0),
+        .CE(\CONSTELLATION_OUT_LAST_HALF_CNTR[0]_i_1_n_0 ),
         .D(\CONSTELLATION_OUT_LAST_HALF_CNTR[1]_i_1_n_0 ),
-        .Q(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .S(RESET));
+        .Q(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2] 
        (.C(CLOCK),
-        .CE(CONSTELLATION_OUT_LAST_HALF_CNTR__0),
+        .CE(\CONSTELLATION_OUT_LAST_HALF_CNTR[0]_i_1_n_0 ),
         .D(\CONSTELLATION_OUT_LAST_HALF_CNTR[2]_i_1_n_0 ),
-        .Q(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .R(RESET));
-  FDSE #(
+        .Q(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .R(1'b0));
+  FDRE #(
     .INIT(1'b1)) 
     \CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3] 
        (.C(CLOCK),
-        .CE(CONSTELLATION_OUT_LAST_HALF_CNTR__0),
+        .CE(\CONSTELLATION_OUT_LAST_HALF_CNTR[0]_i_1_n_0 ),
         .D(\CONSTELLATION_OUT_LAST_HALF_CNTR[3]_i_1_n_0 ),
-        .Q(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .S(RESET));
-  FDSE #(
+        .Q(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .R(1'b0));
+  FDRE #(
     .INIT(1'b1)) 
     \CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4] 
        (.C(CLOCK),
-        .CE(CONSTELLATION_OUT_LAST_HALF_CNTR__0),
+        .CE(\CONSTELLATION_OUT_LAST_HALF_CNTR[0]_i_1_n_0 ),
         .D(\CONSTELLATION_OUT_LAST_HALF_CNTR[4]_i_1_n_0 ),
-        .Q(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .S(RESET));
+        .Q(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .R(1'b0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
   (* RTL_RAM_BITS = "624" *) 
   (* RTL_RAM_NAME = "U0/CONSTELLATION_QDATA_LAST_HALF_BUFFER_reg_0_31_0_5" *) 
@@ -7135,17 +7241,17 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     .INIT_C(64'h0000000000000000),
     .INIT_D(64'h0000000000000000)) 
     CONSTELLATION_QDATA_LAST_HALF_BUFFER_reg_0_31_0_5
-       (.ADDRA(CONSTELLATION_OUT_LAST_HALF_CNTR_reg),
-        .ADDRB(CONSTELLATION_OUT_LAST_HALF_CNTR_reg),
-        .ADDRC(CONSTELLATION_OUT_LAST_HALF_CNTR_reg),
+       (.ADDRA(CONSTELLATION_OUT_LAST_HALF_CNTR),
+        .ADDRB(CONSTELLATION_OUT_LAST_HALF_CNTR),
+        .ADDRC(CONSTELLATION_OUT_LAST_HALF_CNTR),
         .ADDRD({CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_2_n_0,CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_3_n_0,CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_4_n_0,CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_5_n_0,ROTATION_CONSTELLATION_DATA_OUT_CNTR[0]}),
         .DIA(ROTATION_CONSTELLATION_QDATA_OUT[1:0]),
         .DIB(ROTATION_CONSTELLATION_QDATA_OUT[3:2]),
         .DIC(ROTATION_CONSTELLATION_QDATA_OUT[5:4]),
         .DID({1'b0,1'b0}),
-        .DOA(CONSTELLATION_QDATA_OUT0[1:0]),
-        .DOB(CONSTELLATION_QDATA_OUT0[3:2]),
-        .DOC(CONSTELLATION_QDATA_OUT0[5:4]),
+        .DOA(p_2_out__0[1:0]),
+        .DOB(p_2_out__0[3:2]),
+        .DOC(p_2_out__0[5:4]),
         .DOD(NLW_CONSTELLATION_QDATA_LAST_HALF_BUFFER_reg_0_31_0_5_DOD_UNCONNECTED[1:0]),
         .WCLK(CLOCK),
         .WE(p_0_in__0));
@@ -7164,17 +7270,17 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     .INIT_C(64'h0000000000000000),
     .INIT_D(64'h0000000000000000)) 
     CONSTELLATION_QDATA_LAST_HALF_BUFFER_reg_0_31_12_17
-       (.ADDRA(CONSTELLATION_OUT_LAST_HALF_CNTR_reg),
-        .ADDRB(CONSTELLATION_OUT_LAST_HALF_CNTR_reg),
-        .ADDRC(CONSTELLATION_OUT_LAST_HALF_CNTR_reg),
+       (.ADDRA(CONSTELLATION_OUT_LAST_HALF_CNTR),
+        .ADDRB(CONSTELLATION_OUT_LAST_HALF_CNTR),
+        .ADDRC(CONSTELLATION_OUT_LAST_HALF_CNTR),
         .ADDRD({CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_2_n_0,CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_3_n_0,CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_4_n_0,CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_5_n_0,ROTATION_CONSTELLATION_DATA_OUT_CNTR[0]}),
         .DIA(ROTATION_CONSTELLATION_QDATA_OUT[13:12]),
         .DIB(ROTATION_CONSTELLATION_QDATA_OUT[15:14]),
         .DIC(ROTATION_CONSTELLATION_QDATA_OUT[17:16]),
         .DID({1'b0,1'b0}),
-        .DOA(CONSTELLATION_QDATA_OUT0[13:12]),
-        .DOB(CONSTELLATION_QDATA_OUT0[15:14]),
-        .DOC(CONSTELLATION_QDATA_OUT0[17:16]),
+        .DOA(p_2_out__0[13:12]),
+        .DOB(p_2_out__0[15:14]),
+        .DOC(p_2_out__0[17:16]),
         .DOD(NLW_CONSTELLATION_QDATA_LAST_HALF_BUFFER_reg_0_31_12_17_DOD_UNCONNECTED[1:0]),
         .WCLK(CLOCK),
         .WE(p_0_in__0));
@@ -7193,17 +7299,17 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     .INIT_C(64'h0000000000000000),
     .INIT_D(64'h0000000000000000)) 
     CONSTELLATION_QDATA_LAST_HALF_BUFFER_reg_0_31_18_23
-       (.ADDRA(CONSTELLATION_OUT_LAST_HALF_CNTR_reg),
-        .ADDRB(CONSTELLATION_OUT_LAST_HALF_CNTR_reg),
-        .ADDRC(CONSTELLATION_OUT_LAST_HALF_CNTR_reg),
+       (.ADDRA(CONSTELLATION_OUT_LAST_HALF_CNTR),
+        .ADDRB(CONSTELLATION_OUT_LAST_HALF_CNTR),
+        .ADDRC(CONSTELLATION_OUT_LAST_HALF_CNTR),
         .ADDRD({CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_2_n_0,CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_3_n_0,CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_4_n_0,CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_5_n_0,ROTATION_CONSTELLATION_DATA_OUT_CNTR[0]}),
         .DIA(ROTATION_CONSTELLATION_QDATA_OUT[19:18]),
         .DIB(ROTATION_CONSTELLATION_QDATA_OUT[21:20]),
         .DIC(ROTATION_CONSTELLATION_QDATA_OUT[23:22]),
         .DID({1'b0,1'b0}),
-        .DOA(CONSTELLATION_QDATA_OUT0[19:18]),
-        .DOB(CONSTELLATION_QDATA_OUT0[21:20]),
-        .DOC(CONSTELLATION_QDATA_OUT0[23:22]),
+        .DOA(p_2_out__0[19:18]),
+        .DOB(p_2_out__0[21:20]),
+        .DOC(p_2_out__0[23:22]),
         .DOD(NLW_CONSTELLATION_QDATA_LAST_HALF_BUFFER_reg_0_31_18_23_DOD_UNCONNECTED[1:0]),
         .WCLK(CLOCK),
         .WE(p_0_in__0));
@@ -7222,17 +7328,17 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     .INIT_C(64'h0000000000000000),
     .INIT_D(64'h0000000000000000)) 
     CONSTELLATION_QDATA_LAST_HALF_BUFFER_reg_0_31_6_11
-       (.ADDRA(CONSTELLATION_OUT_LAST_HALF_CNTR_reg),
-        .ADDRB(CONSTELLATION_OUT_LAST_HALF_CNTR_reg),
-        .ADDRC(CONSTELLATION_OUT_LAST_HALF_CNTR_reg),
+       (.ADDRA(CONSTELLATION_OUT_LAST_HALF_CNTR),
+        .ADDRB(CONSTELLATION_OUT_LAST_HALF_CNTR),
+        .ADDRC(CONSTELLATION_OUT_LAST_HALF_CNTR),
         .ADDRD({CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_2_n_0,CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_3_n_0,CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_4_n_0,CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_5_n_0,ROTATION_CONSTELLATION_DATA_OUT_CNTR[0]}),
         .DIA(ROTATION_CONSTELLATION_QDATA_OUT[7:6]),
         .DIB(ROTATION_CONSTELLATION_QDATA_OUT[9:8]),
         .DIC(ROTATION_CONSTELLATION_QDATA_OUT[11:10]),
         .DID({1'b0,1'b0}),
-        .DOA(CONSTELLATION_QDATA_OUT0[7:6]),
-        .DOB(CONSTELLATION_QDATA_OUT0[9:8]),
-        .DOC(CONSTELLATION_QDATA_OUT0[11:10]),
+        .DOA(p_2_out__0[7:6]),
+        .DOB(p_2_out__0[9:8]),
+        .DOC(p_2_out__0[11:10]),
         .DOD(NLW_CONSTELLATION_QDATA_LAST_HALF_BUFFER_reg_0_31_6_11_DOD_UNCONNECTED[1:0]),
         .WCLK(CLOCK),
         .WE(p_0_in__0));
@@ -7240,241 +7346,241 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_QDATA_OUT[0]_i_1 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[0]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_QDATA_OUT0[0]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out__0[0]),
         .O(\CONSTELLATION_QDATA_OUT[0]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_QDATA_OUT[10]_i_1 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[10]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_QDATA_OUT0[10]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out__0[10]),
         .O(\CONSTELLATION_QDATA_OUT[10]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_QDATA_OUT[11]_i_1 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[11]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_QDATA_OUT0[11]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out__0[11]),
         .O(\CONSTELLATION_QDATA_OUT[11]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_QDATA_OUT[12]_i_1 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[12]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_QDATA_OUT0[12]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out__0[12]),
         .O(\CONSTELLATION_QDATA_OUT[12]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_QDATA_OUT[13]_i_1 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[13]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_QDATA_OUT0[13]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out__0[13]),
         .O(\CONSTELLATION_QDATA_OUT[13]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_QDATA_OUT[14]_i_1 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[14]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_QDATA_OUT0[14]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out__0[14]),
         .O(\CONSTELLATION_QDATA_OUT[14]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_QDATA_OUT[15]_i_1 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[15]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_QDATA_OUT0[15]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out__0[15]),
         .O(\CONSTELLATION_QDATA_OUT[15]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_QDATA_OUT[16]_i_1 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[16]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_QDATA_OUT0[16]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out__0[16]),
         .O(\CONSTELLATION_QDATA_OUT[16]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_QDATA_OUT[17]_i_1 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[17]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_QDATA_OUT0[17]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out__0[17]),
         .O(\CONSTELLATION_QDATA_OUT[17]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_QDATA_OUT[18]_i_1 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[18]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_QDATA_OUT0[18]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out__0[18]),
         .O(\CONSTELLATION_QDATA_OUT[18]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_QDATA_OUT[19]_i_1 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[19]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_QDATA_OUT0[19]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out__0[19]),
         .O(\CONSTELLATION_QDATA_OUT[19]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_QDATA_OUT[1]_i_1 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[1]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_QDATA_OUT0[1]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out__0[1]),
         .O(\CONSTELLATION_QDATA_OUT[1]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_QDATA_OUT[20]_i_1 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[20]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_QDATA_OUT0[20]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out__0[20]),
         .O(\CONSTELLATION_QDATA_OUT[20]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_QDATA_OUT[21]_i_1 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[21]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_QDATA_OUT0[21]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out__0[21]),
         .O(\CONSTELLATION_QDATA_OUT[21]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_QDATA_OUT[22]_i_1 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[22]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_QDATA_OUT0[22]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out__0[22]),
         .O(\CONSTELLATION_QDATA_OUT[22]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_QDATA_OUT[23]_i_1 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[23]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_QDATA_OUT0[23]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out__0[23]),
         .O(\CONSTELLATION_QDATA_OUT[23]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_QDATA_OUT[2]_i_1 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[2]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_QDATA_OUT0[2]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out__0[2]),
         .O(\CONSTELLATION_QDATA_OUT[2]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_QDATA_OUT[3]_i_1 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[3]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_QDATA_OUT0[3]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out__0[3]),
         .O(\CONSTELLATION_QDATA_OUT[3]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_QDATA_OUT[4]_i_1 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[4]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_QDATA_OUT0[4]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out__0[4]),
         .O(\CONSTELLATION_QDATA_OUT[4]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_QDATA_OUT[5]_i_1 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[5]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_QDATA_OUT0[5]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out__0[5]),
         .O(\CONSTELLATION_QDATA_OUT[5]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_QDATA_OUT[6]_i_1 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[6]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_QDATA_OUT0[6]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out__0[6]),
         .O(\CONSTELLATION_QDATA_OUT[6]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_QDATA_OUT[7]_i_1 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[7]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_QDATA_OUT0[7]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out__0[7]),
         .O(\CONSTELLATION_QDATA_OUT[7]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_QDATA_OUT[8]_i_1 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[8]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_QDATA_OUT0[8]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out__0[8]),
         .O(\CONSTELLATION_QDATA_OUT[8]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hABFFFFFFA8000000)) 
     \CONSTELLATION_QDATA_OUT[9]_i_1 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[9]),
-        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[2]),
-        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[1]),
-        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[4]),
-        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR_reg[3]),
-        .I5(CONSTELLATION_QDATA_OUT0[9]),
+        .I1(CONSTELLATION_OUT_LAST_HALF_CNTR[2]),
+        .I2(CONSTELLATION_OUT_LAST_HALF_CNTR[1]),
+        .I3(CONSTELLATION_OUT_LAST_HALF_CNTR[3]),
+        .I4(CONSTELLATION_OUT_LAST_HALF_CNTR[4]),
+        .I5(p_2_out__0[9]),
         .O(\CONSTELLATION_QDATA_OUT[9]_i_1_n_0 ));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
@@ -7484,7 +7590,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_QDATA_OUT[0]_i_1_n_0 ),
         .Q(CONSTELLATION_QDATA_OUT[0]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -7493,7 +7599,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_QDATA_OUT[10]_i_1_n_0 ),
         .Q(CONSTELLATION_QDATA_OUT[10]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -7502,7 +7608,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_QDATA_OUT[11]_i_1_n_0 ),
         .Q(CONSTELLATION_QDATA_OUT[11]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -7511,7 +7617,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_QDATA_OUT[12]_i_1_n_0 ),
         .Q(CONSTELLATION_QDATA_OUT[12]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -7520,7 +7626,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_QDATA_OUT[13]_i_1_n_0 ),
         .Q(CONSTELLATION_QDATA_OUT[13]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -7529,7 +7635,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_QDATA_OUT[14]_i_1_n_0 ),
         .Q(CONSTELLATION_QDATA_OUT[14]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -7538,7 +7644,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_QDATA_OUT[15]_i_1_n_0 ),
         .Q(CONSTELLATION_QDATA_OUT[15]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -7547,7 +7653,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_QDATA_OUT[16]_i_1_n_0 ),
         .Q(CONSTELLATION_QDATA_OUT[16]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -7556,7 +7662,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_QDATA_OUT[17]_i_1_n_0 ),
         .Q(CONSTELLATION_QDATA_OUT[17]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -7565,7 +7671,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_QDATA_OUT[18]_i_1_n_0 ),
         .Q(CONSTELLATION_QDATA_OUT[18]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -7574,7 +7680,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_QDATA_OUT[19]_i_1_n_0 ),
         .Q(CONSTELLATION_QDATA_OUT[19]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -7583,7 +7689,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_QDATA_OUT[1]_i_1_n_0 ),
         .Q(CONSTELLATION_QDATA_OUT[1]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -7592,7 +7698,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_QDATA_OUT[20]_i_1_n_0 ),
         .Q(CONSTELLATION_QDATA_OUT[20]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -7601,7 +7707,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_QDATA_OUT[21]_i_1_n_0 ),
         .Q(CONSTELLATION_QDATA_OUT[21]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -7610,7 +7716,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_QDATA_OUT[22]_i_1_n_0 ),
         .Q(CONSTELLATION_QDATA_OUT[22]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -7619,7 +7725,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_QDATA_OUT[23]_i_1_n_0 ),
         .Q(CONSTELLATION_QDATA_OUT[23]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -7628,7 +7734,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_QDATA_OUT[2]_i_1_n_0 ),
         .Q(CONSTELLATION_QDATA_OUT[2]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -7637,7 +7743,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_QDATA_OUT[3]_i_1_n_0 ),
         .Q(CONSTELLATION_QDATA_OUT[3]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -7646,7 +7752,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_QDATA_OUT[4]_i_1_n_0 ),
         .Q(CONSTELLATION_QDATA_OUT[4]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -7655,7 +7761,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_QDATA_OUT[5]_i_1_n_0 ),
         .Q(CONSTELLATION_QDATA_OUT[5]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -7664,7 +7770,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_QDATA_OUT[6]_i_1_n_0 ),
         .Q(CONSTELLATION_QDATA_OUT[6]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -7673,7 +7779,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_QDATA_OUT[7]_i_1_n_0 ),
         .Q(CONSTELLATION_QDATA_OUT[7]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -7682,7 +7788,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_QDATA_OUT[8]_i_1_n_0 ),
         .Q(CONSTELLATION_QDATA_OUT[8]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -7691,7 +7797,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\CONSTELLATION_IDATA_OUT[23]_i_1_n_0 ),
         .D(\CONSTELLATION_QDATA_OUT[9]_i_1_n_0 ),
         .Q(CONSTELLATION_QDATA_OUT[9]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     FFT_DATA_IN_VALID_BUFFER_reg
@@ -7766,214 +7872,219 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .D(\FSM_onehot_STATE[3]_i_2_n_0 ),
         .Q(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
         .R(RESET));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \IDATA_BUFFER[23]_i_1 
+       (.I0(RESET),
+        .O(\IDATA_BUFFER[23]_i_1_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
     \IDATA_BUFFER_reg[0] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_IDATA_IN[0]),
         .Q(IDATA_BUFFER[0]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \IDATA_BUFFER_reg[10] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_IDATA_IN[10]),
         .Q(IDATA_BUFFER[10]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \IDATA_BUFFER_reg[11] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_IDATA_IN[11]),
         .Q(IDATA_BUFFER[11]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \IDATA_BUFFER_reg[12] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_IDATA_IN[12]),
         .Q(IDATA_BUFFER[12]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \IDATA_BUFFER_reg[13] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_IDATA_IN[13]),
         .Q(IDATA_BUFFER[13]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \IDATA_BUFFER_reg[14] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_IDATA_IN[14]),
         .Q(IDATA_BUFFER[14]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \IDATA_BUFFER_reg[15] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_IDATA_IN[15]),
         .Q(IDATA_BUFFER[15]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \IDATA_BUFFER_reg[16] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_IDATA_IN[16]),
         .Q(IDATA_BUFFER[16]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \IDATA_BUFFER_reg[17] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_IDATA_IN[17]),
         .Q(IDATA_BUFFER[17]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \IDATA_BUFFER_reg[18] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_IDATA_IN[18]),
         .Q(IDATA_BUFFER[18]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \IDATA_BUFFER_reg[19] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_IDATA_IN[19]),
         .Q(IDATA_BUFFER[19]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \IDATA_BUFFER_reg[1] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_IDATA_IN[1]),
         .Q(IDATA_BUFFER[1]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \IDATA_BUFFER_reg[20] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_IDATA_IN[20]),
         .Q(IDATA_BUFFER[20]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \IDATA_BUFFER_reg[21] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_IDATA_IN[21]),
         .Q(IDATA_BUFFER[21]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \IDATA_BUFFER_reg[22] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_IDATA_IN[22]),
         .Q(IDATA_BUFFER[22]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \IDATA_BUFFER_reg[23] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_IDATA_IN[23]),
         .Q(IDATA_BUFFER[23]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \IDATA_BUFFER_reg[2] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_IDATA_IN[2]),
         .Q(IDATA_BUFFER[2]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \IDATA_BUFFER_reg[3] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_IDATA_IN[3]),
         .Q(IDATA_BUFFER[3]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \IDATA_BUFFER_reg[4] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_IDATA_IN[4]),
         .Q(IDATA_BUFFER[4]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \IDATA_BUFFER_reg[5] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_IDATA_IN[5]),
         .Q(IDATA_BUFFER[5]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \IDATA_BUFFER_reg[6] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_IDATA_IN[6]),
         .Q(IDATA_BUFFER[6]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \IDATA_BUFFER_reg[7] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_IDATA_IN[7]),
         .Q(IDATA_BUFFER[7]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \IDATA_BUFFER_reg[8] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_IDATA_IN[8]),
         .Q(IDATA_BUFFER[8]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \IDATA_BUFFER_reg[9] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_IDATA_IN[9]),
         .Q(IDATA_BUFFER[9]),
-        .R(RESET));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+        .R(1'b0));
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT2 #(
     .INIT(4'h9)) 
     \INPUT_DATA_CNTR[0]_i_1 
        (.I0(\INPUT_FFT_CNTR_reg_n_0_[0] ),
         .I1(INPUT_DATA_CNTR1),
         .O(\INPUT_DATA_CNTR[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT3 #(
-    .INIT(8'h65)) 
+    .INIT(8'h59)) 
     \INPUT_DATA_CNTR[1]_i_1 
        (.I0(\INPUT_FFT_CNTR_reg_n_0_[1] ),
-        .I1(INPUT_DATA_CNTR1),
-        .I2(\INPUT_FFT_CNTR_reg_n_0_[0] ),
+        .I1(\INPUT_FFT_CNTR_reg_n_0_[0] ),
+        .I2(INPUT_DATA_CNTR1),
         .O(\INPUT_DATA_CNTR[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT4 #(
     .INIT(16'h339C)) 
     \INPUT_DATA_CNTR[2]_i_1 
@@ -7982,7 +8093,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(\INPUT_FFT_CNTR_reg_n_0_[0] ),
         .I3(\INPUT_FFT_CNTR_reg_n_0_[1] ),
         .O(\INPUT_DATA_CNTR[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT5 #(
     .INIT(32'hC6C33333)) 
     \INPUT_DATA_CNTR[3]_i_1 
@@ -8003,36 +8114,35 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I5(\INPUT_FFT_CNTR_reg_n_0_[3] ),
         .O(\INPUT_DATA_CNTR[4]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFFFFF04444000)) 
+    .INIT(64'hAABAAAAAAAAAAAAA)) 
     \INPUT_DATA_CNTR[5]_i_1 
-       (.I0(\INPUT_DATA_CNTR[5]_i_3_n_0 ),
-        .I1(FFT_DATA_IN_VALID),
-        .I2(\INPUT_DATA_CNTR[5]_i_4_n_0 ),
-        .I3(\INPUT_FFT_CNTR_reg_n_0_[5] ),
-        .I4(\INPUT_FFT_CNTR_reg[6]_inv_n_0 ),
-        .I5(INPUT_DATA_CNTR1),
+       (.I0(INPUT_DATA_CNTR1),
+        .I1(\INPUT_DATA_CNTR[5]_i_4_n_0 ),
+        .I2(\INPUT_FFT_CNTR_reg_n_0_[5] ),
+        .I3(\INPUT_DATA_CNTR[5]_i_5_n_0 ),
+        .I4(FFT_DATA_IN_VALID),
+        .I5(p_1_in),
         .O(\INPUT_DATA_CNTR[5]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h0F0F0F0F0F870FB4)) 
+    .INIT(64'h04FFFB000400FBFF)) 
     \INPUT_DATA_CNTR[5]_i_2 
-       (.I0(\INPUT_DATA_CNTR[5]_i_6_n_0 ),
-        .I1(INPUT_DATA_CNTR1),
-        .I2(\INPUT_FFT_CNTR_reg_n_0_[5] ),
-        .I3(\INPUT_FFT_CNTR_reg_n_0_[3] ),
-        .I4(\INPUT_DATA_CNTR[5]_i_7_n_0 ),
-        .I5(\INPUT_FFT_CNTR_reg_n_0_[4] ),
+       (.I0(\INPUT_FFT_CNTR_reg_n_0_[4] ),
+        .I1(\INPUT_DATA_CNTR[5]_i_6_n_0 ),
+        .I2(\INPUT_FFT_CNTR_reg_n_0_[3] ),
+        .I3(INPUT_DATA_CNTR1),
+        .I4(\INPUT_FFT_CNTR_reg_n_0_[5] ),
+        .I5(\INPUT_DATA_CNTR[5]_i_5_n_0 ),
         .O(\INPUT_DATA_CNTR[5]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'hD555555555577777)) 
+  LUT5 #(
+    .INIT(32'h00006A00)) 
     \INPUT_DATA_CNTR[5]_i_3 
-       (.I0(\INPUT_FFT_CNTR_reg_n_0_[5] ),
-        .I1(\INPUT_FFT_CNTR_reg_n_0_[3] ),
-        .I2(\INPUT_FFT_CNTR_reg_n_0_[1] ),
-        .I3(\INPUT_FFT_CNTR_reg_n_0_[0] ),
-        .I4(\INPUT_FFT_CNTR_reg_n_0_[2] ),
-        .I5(\INPUT_FFT_CNTR_reg_n_0_[4] ),
-        .O(\INPUT_DATA_CNTR[5]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+       (.I0(p_1_in),
+        .I1(\INPUT_FFT_CNTR_reg_n_0_[5] ),
+        .I2(\INPUT_DATA_CNTR[5]_i_4_n_0 ),
+        .I3(FFT_DATA_IN_VALID),
+        .I4(\INPUT_DATA_CNTR[5]_i_7_n_0 ),
+        .O(INPUT_DATA_CNTR1));
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT5 #(
     .INIT(32'h80000000)) 
     \INPUT_DATA_CNTR[5]_i_4 
@@ -8042,40 +8152,33 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I3(\INPUT_FFT_CNTR_reg_n_0_[1] ),
         .I4(\INPUT_FFT_CNTR_reg_n_0_[0] ),
         .O(\INPUT_DATA_CNTR[5]_i_4_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT5 #(
-    .INIT(32'h00006A00)) 
+    .INIT(32'h00001115)) 
     \INPUT_DATA_CNTR[5]_i_5 
-       (.I0(\INPUT_FFT_CNTR_reg[6]_inv_n_0 ),
-        .I1(\INPUT_FFT_CNTR_reg_n_0_[5] ),
-        .I2(\INPUT_DATA_CNTR[5]_i_4_n_0 ),
-        .I3(FFT_DATA_IN_VALID),
-        .I4(\INPUT_DATA_CNTR[5]_i_8_n_0 ),
-        .O(INPUT_DATA_CNTR1));
-  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+       (.I0(\INPUT_FFT_CNTR_reg_n_0_[4] ),
+        .I1(\INPUT_FFT_CNTR_reg_n_0_[2] ),
+        .I2(\INPUT_FFT_CNTR_reg_n_0_[0] ),
+        .I3(\INPUT_FFT_CNTR_reg_n_0_[1] ),
+        .I4(\INPUT_FFT_CNTR_reg_n_0_[3] ),
+        .O(\INPUT_DATA_CNTR[5]_i_5_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT2 #(
     .INIT(4'h7)) 
     \INPUT_DATA_CNTR[5]_i_6 
        (.I0(\INPUT_FFT_CNTR_reg_n_0_[1] ),
         .I1(\INPUT_FFT_CNTR_reg_n_0_[2] ),
         .O(\INPUT_DATA_CNTR[5]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair8" *) 
-  LUT3 #(
-    .INIT(8'hA8)) 
-    \INPUT_DATA_CNTR[5]_i_7 
-       (.I0(\INPUT_FFT_CNTR_reg_n_0_[2] ),
-        .I1(\INPUT_FFT_CNTR_reg_n_0_[0] ),
-        .I2(\INPUT_FFT_CNTR_reg_n_0_[1] ),
-        .O(\INPUT_DATA_CNTR[5]_i_7_n_0 ));
   LUT6 #(
-    .INIT(64'h7EFEAAAAAAAAAAAA)) 
-    \INPUT_DATA_CNTR[5]_i_8 
+    .INIT(64'h6AEAEAEAEAEAAAAA)) 
+    \INPUT_DATA_CNTR[5]_i_7 
        (.I0(\INPUT_FFT_CNTR_reg_n_0_[5] ),
-        .I1(\INPUT_FFT_CNTR_reg_n_0_[1] ),
-        .I2(\INPUT_FFT_CNTR_reg_n_0_[2] ),
+        .I1(\INPUT_FFT_CNTR_reg_n_0_[3] ),
+        .I2(\INPUT_FFT_CNTR_reg_n_0_[4] ),
         .I3(\INPUT_FFT_CNTR_reg_n_0_[0] ),
-        .I4(\INPUT_FFT_CNTR_reg_n_0_[3] ),
-        .I5(\INPUT_FFT_CNTR_reg_n_0_[4] ),
-        .O(\INPUT_DATA_CNTR[5]_i_8_n_0 ));
+        .I4(\INPUT_FFT_CNTR_reg_n_0_[2] ),
+        .I5(\INPUT_FFT_CNTR_reg_n_0_[1] ),
+        .O(\INPUT_DATA_CNTR[5]_i_7_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
     \INPUT_DATA_CNTR_reg[0] 
@@ -8124,21 +8227,31 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .D(\INPUT_DATA_CNTR[5]_i_2_n_0 ),
         .Q(INPUT_DATA_CNTR[5]),
         .R(RESET));
+  LUT6 #(
+    .INIT(64'hFFFFFFFF04000000)) 
+    INPUT_DATA_VALID_i_1
+       (.I0(\INPUT_DATA_CNTR[5]_i_4_n_0 ),
+        .I1(\INPUT_FFT_CNTR_reg_n_0_[5] ),
+        .I2(\INPUT_DATA_CNTR[5]_i_5_n_0 ),
+        .I3(FFT_DATA_IN_VALID),
+        .I4(p_1_in),
+        .I5(INPUT_DATA_CNTR1),
+        .O(INPUT_DATA_VALID_i_1_n_0));
   FDRE #(
     .INIT(1'b0)) 
     INPUT_DATA_VALID_reg
        (.C(CLOCK),
         .CE(1'b1),
-        .D(\INPUT_DATA_CNTR[5]_i_1_n_0 ),
+        .D(INPUT_DATA_VALID_i_1_n_0),
         .Q(INPUT_DATA_VALID),
         .R(RESET));
-  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \INPUT_FFT_CNTR[0]_i_1 
        (.I0(\INPUT_FFT_CNTR_reg_n_0_[0] ),
         .O(\INPUT_FFT_CNTR[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \INPUT_FFT_CNTR[1]_i_1 
@@ -8153,7 +8266,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I1(\INPUT_FFT_CNTR_reg_n_0_[0] ),
         .I2(\INPUT_FFT_CNTR_reg_n_0_[1] ),
         .O(\INPUT_FFT_CNTR[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT4 #(
     .INIT(16'h6AAA)) 
     \INPUT_FFT_CNTR[3]_i_1 
@@ -8162,7 +8275,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(\INPUT_FFT_CNTR_reg_n_0_[1] ),
         .I3(\INPUT_FFT_CNTR_reg_n_0_[2] ),
         .O(\INPUT_FFT_CNTR[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT5 #(
     .INIT(32'h6AAAAAAA)) 
     \INPUT_FFT_CNTR[4]_i_1 
@@ -8198,13 +8311,13 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(FFT_DATA_IN_VALID),
         .I3(FFT_DATA_IN_VALID_BUFFER),
         .I4(FFT_DATA_IN_FIRST_SYMBOL_MARKER),
-        .I5(\INPUT_FFT_CNTR_reg[6]_inv_n_0 ),
+        .I5(p_1_in),
         .O(\INPUT_FFT_CNTR[6]_inv_i_1_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
     \INPUT_FFT_CNTR_reg[0] 
        (.C(CLOCK),
-        .CE(\INPUT_FFT_CNTR_reg[6]_inv_n_0 ),
+        .CE(p_1_in),
         .D(\INPUT_FFT_CNTR[0]_i_1_n_0 ),
         .Q(\INPUT_FFT_CNTR_reg_n_0_[0] ),
         .R(\INPUT_FFT_CNTR[5]_i_1_n_0 ));
@@ -8212,7 +8325,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     .INIT(1'b0)) 
     \INPUT_FFT_CNTR_reg[1] 
        (.C(CLOCK),
-        .CE(\INPUT_FFT_CNTR_reg[6]_inv_n_0 ),
+        .CE(p_1_in),
         .D(\INPUT_FFT_CNTR[1]_i_1_n_0 ),
         .Q(\INPUT_FFT_CNTR_reg_n_0_[1] ),
         .R(\INPUT_FFT_CNTR[5]_i_1_n_0 ));
@@ -8220,7 +8333,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     .INIT(1'b0)) 
     \INPUT_FFT_CNTR_reg[2] 
        (.C(CLOCK),
-        .CE(\INPUT_FFT_CNTR_reg[6]_inv_n_0 ),
+        .CE(p_1_in),
         .D(\INPUT_FFT_CNTR[2]_i_1_n_0 ),
         .Q(\INPUT_FFT_CNTR_reg_n_0_[2] ),
         .R(\INPUT_FFT_CNTR[5]_i_1_n_0 ));
@@ -8228,7 +8341,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     .INIT(1'b0)) 
     \INPUT_FFT_CNTR_reg[3] 
        (.C(CLOCK),
-        .CE(\INPUT_FFT_CNTR_reg[6]_inv_n_0 ),
+        .CE(p_1_in),
         .D(\INPUT_FFT_CNTR[3]_i_1_n_0 ),
         .Q(\INPUT_FFT_CNTR_reg_n_0_[3] ),
         .R(\INPUT_FFT_CNTR[5]_i_1_n_0 ));
@@ -8236,7 +8349,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     .INIT(1'b0)) 
     \INPUT_FFT_CNTR_reg[4] 
        (.C(CLOCK),
-        .CE(\INPUT_FFT_CNTR_reg[6]_inv_n_0 ),
+        .CE(p_1_in),
         .D(\INPUT_FFT_CNTR[4]_i_1_n_0 ),
         .Q(\INPUT_FFT_CNTR_reg_n_0_[4] ),
         .R(\INPUT_FFT_CNTR[5]_i_1_n_0 ));
@@ -8244,7 +8357,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     .INIT(1'b0)) 
     \INPUT_FFT_CNTR_reg[5] 
        (.C(CLOCK),
-        .CE(\INPUT_FFT_CNTR_reg[6]_inv_n_0 ),
+        .CE(p_1_in),
         .D(\INPUT_FFT_CNTR[5]_i_2_n_0 ),
         .Q(\INPUT_FFT_CNTR_reg_n_0_[5] ),
         .R(\INPUT_FFT_CNTR[5]_i_1_n_0 ));
@@ -8255,7 +8368,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
        (.C(CLOCK),
         .CE(1'b1),
         .D(\INPUT_FFT_CNTR[6]_inv_i_1_n_0 ),
-        .Q(\INPUT_FFT_CNTR_reg[6]_inv_n_0 ),
+        .Q(p_1_in),
         .R(RESET));
   LUT2 #(
     .INIT(4'hE)) 
@@ -8414,194 +8527,194 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     .INIT(1'b0)) 
     \QDATA_BUFFER_reg[0] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_QDATA_IN[0]),
         .Q(QDATA_BUFFER[0]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \QDATA_BUFFER_reg[10] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_QDATA_IN[10]),
         .Q(QDATA_BUFFER[10]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \QDATA_BUFFER_reg[11] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_QDATA_IN[11]),
         .Q(QDATA_BUFFER[11]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \QDATA_BUFFER_reg[12] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_QDATA_IN[12]),
         .Q(QDATA_BUFFER[12]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \QDATA_BUFFER_reg[13] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_QDATA_IN[13]),
         .Q(QDATA_BUFFER[13]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \QDATA_BUFFER_reg[14] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_QDATA_IN[14]),
         .Q(QDATA_BUFFER[14]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \QDATA_BUFFER_reg[15] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_QDATA_IN[15]),
         .Q(QDATA_BUFFER[15]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \QDATA_BUFFER_reg[16] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_QDATA_IN[16]),
         .Q(QDATA_BUFFER[16]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \QDATA_BUFFER_reg[17] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_QDATA_IN[17]),
         .Q(QDATA_BUFFER[17]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \QDATA_BUFFER_reg[18] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_QDATA_IN[18]),
         .Q(QDATA_BUFFER[18]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \QDATA_BUFFER_reg[19] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_QDATA_IN[19]),
         .Q(QDATA_BUFFER[19]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \QDATA_BUFFER_reg[1] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_QDATA_IN[1]),
         .Q(QDATA_BUFFER[1]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \QDATA_BUFFER_reg[20] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_QDATA_IN[20]),
         .Q(QDATA_BUFFER[20]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \QDATA_BUFFER_reg[21] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_QDATA_IN[21]),
         .Q(QDATA_BUFFER[21]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \QDATA_BUFFER_reg[22] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_QDATA_IN[22]),
         .Q(QDATA_BUFFER[22]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \QDATA_BUFFER_reg[23] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_QDATA_IN[23]),
         .Q(QDATA_BUFFER[23]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \QDATA_BUFFER_reg[2] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_QDATA_IN[2]),
         .Q(QDATA_BUFFER[2]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \QDATA_BUFFER_reg[3] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_QDATA_IN[3]),
         .Q(QDATA_BUFFER[3]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \QDATA_BUFFER_reg[4] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_QDATA_IN[4]),
         .Q(QDATA_BUFFER[4]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \QDATA_BUFFER_reg[5] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_QDATA_IN[5]),
         .Q(QDATA_BUFFER[5]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \QDATA_BUFFER_reg[6] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_QDATA_IN[6]),
         .Q(QDATA_BUFFER[6]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \QDATA_BUFFER_reg[7] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_QDATA_IN[7]),
         .Q(QDATA_BUFFER[7]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \QDATA_BUFFER_reg[8] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_QDATA_IN[8]),
         .Q(QDATA_BUFFER[8]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \QDATA_BUFFER_reg[9] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\IDATA_BUFFER[23]_i_1_n_0 ),
         .D(FFT_QDATA_IN[9]),
         .Q(QDATA_BUFFER[9]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -8610,7 +8723,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(INPUT_DATA_CNTR[0]),
         .Q(ROTATION_CONSTELLATION_CNTR_IN[0]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -8619,7 +8732,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(INPUT_DATA_CNTR[1]),
         .Q(ROTATION_CONSTELLATION_CNTR_IN[1]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -8628,7 +8741,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(INPUT_DATA_CNTR[2]),
         .Q(ROTATION_CONSTELLATION_CNTR_IN[2]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -8637,7 +8750,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(INPUT_DATA_CNTR[3]),
         .Q(ROTATION_CONSTELLATION_CNTR_IN[3]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -8646,7 +8759,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(INPUT_DATA_CNTR[4]),
         .Q(ROTATION_CONSTELLATION_CNTR_IN[4]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -8655,8 +8768,8 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(INPUT_DATA_CNTR[5]),
         .Q(ROTATION_CONSTELLATION_CNTR_IN[5]),
-        .R(RESET));
-  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+        .R(1'b0));
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     ROTATION_CONSTELLATION_DATA_IN_STROBE_i_1
@@ -8673,11 +8786,12 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .D(ROTATION_CONSTELLATION_DATA_IN_STROBE_i_1_n_0),
         .Q(ROTATION_CONSTELLATION_DATA_IN_STROBE),
         .R(RESET));
-  LUT2 #(
-    .INIT(4'h8)) 
+  LUT3 #(
+    .INIT(8'h08)) 
     \ROTATION_CONSTELLATION_IDATA_IN[23]_i_1 
-       (.I0(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
-        .I1(INPUT_DATA_VALID),
+       (.I0(INPUT_DATA_VALID),
+        .I1(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
+        .I2(RESET),
         .O(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
@@ -8687,7 +8801,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(IDATA_BUFFER[0]),
         .Q(ROTATION_CONSTELLATION_IDATA_IN[0]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -8696,7 +8810,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(IDATA_BUFFER[10]),
         .Q(ROTATION_CONSTELLATION_IDATA_IN[10]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -8705,7 +8819,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(IDATA_BUFFER[11]),
         .Q(ROTATION_CONSTELLATION_IDATA_IN[11]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -8714,7 +8828,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(IDATA_BUFFER[12]),
         .Q(ROTATION_CONSTELLATION_IDATA_IN[12]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -8723,7 +8837,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(IDATA_BUFFER[13]),
         .Q(ROTATION_CONSTELLATION_IDATA_IN[13]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -8732,7 +8846,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(IDATA_BUFFER[14]),
         .Q(ROTATION_CONSTELLATION_IDATA_IN[14]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -8741,7 +8855,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(IDATA_BUFFER[15]),
         .Q(ROTATION_CONSTELLATION_IDATA_IN[15]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -8750,7 +8864,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(IDATA_BUFFER[16]),
         .Q(ROTATION_CONSTELLATION_IDATA_IN[16]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -8759,7 +8873,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(IDATA_BUFFER[17]),
         .Q(ROTATION_CONSTELLATION_IDATA_IN[17]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -8768,7 +8882,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(IDATA_BUFFER[18]),
         .Q(ROTATION_CONSTELLATION_IDATA_IN[18]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -8777,7 +8891,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(IDATA_BUFFER[19]),
         .Q(ROTATION_CONSTELLATION_IDATA_IN[19]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -8786,7 +8900,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(IDATA_BUFFER[1]),
         .Q(ROTATION_CONSTELLATION_IDATA_IN[1]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -8795,7 +8909,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(IDATA_BUFFER[20]),
         .Q(ROTATION_CONSTELLATION_IDATA_IN[20]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -8804,7 +8918,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(IDATA_BUFFER[21]),
         .Q(ROTATION_CONSTELLATION_IDATA_IN[21]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -8813,7 +8927,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(IDATA_BUFFER[22]),
         .Q(ROTATION_CONSTELLATION_IDATA_IN[22]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -8822,7 +8936,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(IDATA_BUFFER[23]),
         .Q(ROTATION_CONSTELLATION_IDATA_IN[23]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -8831,7 +8945,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(IDATA_BUFFER[2]),
         .Q(ROTATION_CONSTELLATION_IDATA_IN[2]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -8840,7 +8954,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(IDATA_BUFFER[3]),
         .Q(ROTATION_CONSTELLATION_IDATA_IN[3]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -8849,7 +8963,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(IDATA_BUFFER[4]),
         .Q(ROTATION_CONSTELLATION_IDATA_IN[4]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -8858,7 +8972,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(IDATA_BUFFER[5]),
         .Q(ROTATION_CONSTELLATION_IDATA_IN[5]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -8867,7 +8981,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(IDATA_BUFFER[6]),
         .Q(ROTATION_CONSTELLATION_IDATA_IN[6]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -8876,7 +8990,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(IDATA_BUFFER[7]),
         .Q(ROTATION_CONSTELLATION_IDATA_IN[7]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -8885,7 +8999,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(IDATA_BUFFER[8]),
         .Q(ROTATION_CONSTELLATION_IDATA_IN[8]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -8894,121 +9008,121 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(IDATA_BUFFER[9]),
         .Q(ROTATION_CONSTELLATION_IDATA_IN[9]),
-        .R(RESET));
+        .R(1'b0));
   LUT1 #(
     .INIT(2'h1)) 
     \ROTATION_CONSTELLATION_PHASE_IN[11]_i_2 
-       (.I0(ROTATION_CONSTELLATION_PHASE_IN1[11]),
+       (.I0(CHANNEL_RESPONSE_PHASE_reg_0_63_9_11_n_2),
         .O(\ROTATION_CONSTELLATION_PHASE_IN[11]_i_2_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ROTATION_CONSTELLATION_PHASE_IN[11]_i_3 
-       (.I0(ROTATION_CONSTELLATION_PHASE_IN1[10]),
+       (.I0(CHANNEL_RESPONSE_PHASE_reg_0_63_9_11_n_1),
         .O(\ROTATION_CONSTELLATION_PHASE_IN[11]_i_3_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ROTATION_CONSTELLATION_PHASE_IN[11]_i_4 
-       (.I0(ROTATION_CONSTELLATION_PHASE_IN1[9]),
+       (.I0(CHANNEL_RESPONSE_PHASE_reg_0_63_9_11_n_0),
         .O(\ROTATION_CONSTELLATION_PHASE_IN[11]_i_4_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ROTATION_CONSTELLATION_PHASE_IN[11]_i_5 
-       (.I0(ROTATION_CONSTELLATION_PHASE_IN1[8]),
+       (.I0(CHANNEL_RESPONSE_PHASE_reg_0_63_6_8_n_2),
         .O(\ROTATION_CONSTELLATION_PHASE_IN[11]_i_5_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ROTATION_CONSTELLATION_PHASE_IN[15]_i_2 
-       (.I0(ROTATION_CONSTELLATION_PHASE_IN1[15]),
+       (.I0(CHANNEL_RESPONSE_PHASE_reg_0_63_15_17_n_0),
         .O(\ROTATION_CONSTELLATION_PHASE_IN[15]_i_2_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ROTATION_CONSTELLATION_PHASE_IN[15]_i_3 
-       (.I0(ROTATION_CONSTELLATION_PHASE_IN1[14]),
+       (.I0(CHANNEL_RESPONSE_PHASE_reg_0_63_12_14_n_2),
         .O(\ROTATION_CONSTELLATION_PHASE_IN[15]_i_3_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ROTATION_CONSTELLATION_PHASE_IN[15]_i_4 
-       (.I0(ROTATION_CONSTELLATION_PHASE_IN1[13]),
+       (.I0(CHANNEL_RESPONSE_PHASE_reg_0_63_12_14_n_1),
         .O(\ROTATION_CONSTELLATION_PHASE_IN[15]_i_4_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ROTATION_CONSTELLATION_PHASE_IN[15]_i_5 
-       (.I0(ROTATION_CONSTELLATION_PHASE_IN1[12]),
+       (.I0(CHANNEL_RESPONSE_PHASE_reg_0_63_12_14_n_0),
         .O(\ROTATION_CONSTELLATION_PHASE_IN[15]_i_5_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ROTATION_CONSTELLATION_PHASE_IN[19]_i_2 
-       (.I0(ROTATION_CONSTELLATION_PHASE_IN1[19]),
+       (.I0(CHANNEL_RESPONSE_PHASE_reg_0_63_18_20_n_1),
         .O(\ROTATION_CONSTELLATION_PHASE_IN[19]_i_2_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ROTATION_CONSTELLATION_PHASE_IN[19]_i_3 
-       (.I0(ROTATION_CONSTELLATION_PHASE_IN1[18]),
+       (.I0(CHANNEL_RESPONSE_PHASE_reg_0_63_18_20_n_0),
         .O(\ROTATION_CONSTELLATION_PHASE_IN[19]_i_3_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ROTATION_CONSTELLATION_PHASE_IN[19]_i_4 
-       (.I0(ROTATION_CONSTELLATION_PHASE_IN1[17]),
+       (.I0(CHANNEL_RESPONSE_PHASE_reg_0_63_15_17_n_2),
         .O(\ROTATION_CONSTELLATION_PHASE_IN[19]_i_4_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ROTATION_CONSTELLATION_PHASE_IN[19]_i_5 
-       (.I0(ROTATION_CONSTELLATION_PHASE_IN1[16]),
+       (.I0(CHANNEL_RESPONSE_PHASE_reg_0_63_15_17_n_1),
         .O(\ROTATION_CONSTELLATION_PHASE_IN[19]_i_5_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ROTATION_CONSTELLATION_PHASE_IN[23]_i_2 
-       (.I0(ROTATION_CONSTELLATION_PHASE_IN1[23]),
+       (.I0(CHANNEL_RESPONSE_PHASE_reg_0_63_21_23_n_2),
         .O(\ROTATION_CONSTELLATION_PHASE_IN[23]_i_2_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ROTATION_CONSTELLATION_PHASE_IN[23]_i_3 
-       (.I0(ROTATION_CONSTELLATION_PHASE_IN1[22]),
+       (.I0(CHANNEL_RESPONSE_PHASE_reg_0_63_21_23_n_1),
         .O(\ROTATION_CONSTELLATION_PHASE_IN[23]_i_3_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ROTATION_CONSTELLATION_PHASE_IN[23]_i_4 
-       (.I0(ROTATION_CONSTELLATION_PHASE_IN1[21]),
+       (.I0(CHANNEL_RESPONSE_PHASE_reg_0_63_21_23_n_0),
         .O(\ROTATION_CONSTELLATION_PHASE_IN[23]_i_4_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ROTATION_CONSTELLATION_PHASE_IN[23]_i_5 
-       (.I0(ROTATION_CONSTELLATION_PHASE_IN1[20]),
+       (.I0(CHANNEL_RESPONSE_PHASE_reg_0_63_18_20_n_2),
         .O(\ROTATION_CONSTELLATION_PHASE_IN[23]_i_5_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ROTATION_CONSTELLATION_PHASE_IN[3]_i_2 
-       (.I0(ROTATION_CONSTELLATION_PHASE_IN1[3]),
+       (.I0(CHANNEL_RESPONSE_PHASE_reg_0_63_3_5_n_0),
         .O(\ROTATION_CONSTELLATION_PHASE_IN[3]_i_2_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ROTATION_CONSTELLATION_PHASE_IN[3]_i_3 
-       (.I0(ROTATION_CONSTELLATION_PHASE_IN1[2]),
+       (.I0(CHANNEL_RESPONSE_PHASE_reg_0_63_0_2_n_2),
         .O(\ROTATION_CONSTELLATION_PHASE_IN[3]_i_3_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ROTATION_CONSTELLATION_PHASE_IN[3]_i_4 
-       (.I0(ROTATION_CONSTELLATION_PHASE_IN1[1]),
+       (.I0(CHANNEL_RESPONSE_PHASE_reg_0_63_0_2_n_1),
         .O(\ROTATION_CONSTELLATION_PHASE_IN[3]_i_4_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ROTATION_CONSTELLATION_PHASE_IN[7]_i_2 
-       (.I0(ROTATION_CONSTELLATION_PHASE_IN1[7]),
+       (.I0(CHANNEL_RESPONSE_PHASE_reg_0_63_6_8_n_1),
         .O(\ROTATION_CONSTELLATION_PHASE_IN[7]_i_2_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ROTATION_CONSTELLATION_PHASE_IN[7]_i_3 
-       (.I0(ROTATION_CONSTELLATION_PHASE_IN1[6]),
+       (.I0(CHANNEL_RESPONSE_PHASE_reg_0_63_6_8_n_0),
         .O(\ROTATION_CONSTELLATION_PHASE_IN[7]_i_3_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ROTATION_CONSTELLATION_PHASE_IN[7]_i_4 
-       (.I0(ROTATION_CONSTELLATION_PHASE_IN1[5]),
+       (.I0(CHANNEL_RESPONSE_PHASE_reg_0_63_3_5_n_2),
         .O(\ROTATION_CONSTELLATION_PHASE_IN[7]_i_4_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ROTATION_CONSTELLATION_PHASE_IN[7]_i_5 
-       (.I0(ROTATION_CONSTELLATION_PHASE_IN1[4]),
+       (.I0(CHANNEL_RESPONSE_PHASE_reg_0_63_3_5_n_1),
         .O(\ROTATION_CONSTELLATION_PHASE_IN[7]_i_5_n_0 ));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
@@ -9018,7 +9132,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(\ROTATION_CONSTELLATION_PHASE_IN_reg[3]_i_1_n_7 ),
         .Q(ROTATION_CONSTELLATION_PHASE_IN[0]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9027,7 +9141,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(\ROTATION_CONSTELLATION_PHASE_IN_reg[11]_i_1_n_5 ),
         .Q(ROTATION_CONSTELLATION_PHASE_IN[10]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9036,7 +9150,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(\ROTATION_CONSTELLATION_PHASE_IN_reg[11]_i_1_n_4 ),
         .Q(ROTATION_CONSTELLATION_PHASE_IN[11]),
-        .R(RESET));
+        .R(1'b0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 \ROTATION_CONSTELLATION_PHASE_IN_reg[11]_i_1 
        (.CI(\ROTATION_CONSTELLATION_PHASE_IN_reg[7]_i_1_n_0 ),
@@ -9053,7 +9167,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(\ROTATION_CONSTELLATION_PHASE_IN_reg[15]_i_1_n_7 ),
         .Q(ROTATION_CONSTELLATION_PHASE_IN[12]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9062,7 +9176,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(\ROTATION_CONSTELLATION_PHASE_IN_reg[15]_i_1_n_6 ),
         .Q(ROTATION_CONSTELLATION_PHASE_IN[13]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9071,7 +9185,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(\ROTATION_CONSTELLATION_PHASE_IN_reg[15]_i_1_n_5 ),
         .Q(ROTATION_CONSTELLATION_PHASE_IN[14]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9080,7 +9194,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(\ROTATION_CONSTELLATION_PHASE_IN_reg[15]_i_1_n_4 ),
         .Q(ROTATION_CONSTELLATION_PHASE_IN[15]),
-        .R(RESET));
+        .R(1'b0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 \ROTATION_CONSTELLATION_PHASE_IN_reg[15]_i_1 
        (.CI(\ROTATION_CONSTELLATION_PHASE_IN_reg[11]_i_1_n_0 ),
@@ -9097,7 +9211,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(\ROTATION_CONSTELLATION_PHASE_IN_reg[19]_i_1_n_7 ),
         .Q(ROTATION_CONSTELLATION_PHASE_IN[16]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9106,7 +9220,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(\ROTATION_CONSTELLATION_PHASE_IN_reg[19]_i_1_n_6 ),
         .Q(ROTATION_CONSTELLATION_PHASE_IN[17]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9115,7 +9229,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(\ROTATION_CONSTELLATION_PHASE_IN_reg[19]_i_1_n_5 ),
         .Q(ROTATION_CONSTELLATION_PHASE_IN[18]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9124,7 +9238,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(\ROTATION_CONSTELLATION_PHASE_IN_reg[19]_i_1_n_4 ),
         .Q(ROTATION_CONSTELLATION_PHASE_IN[19]),
-        .R(RESET));
+        .R(1'b0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 \ROTATION_CONSTELLATION_PHASE_IN_reg[19]_i_1 
        (.CI(\ROTATION_CONSTELLATION_PHASE_IN_reg[15]_i_1_n_0 ),
@@ -9141,7 +9255,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(\ROTATION_CONSTELLATION_PHASE_IN_reg[3]_i_1_n_6 ),
         .Q(ROTATION_CONSTELLATION_PHASE_IN[1]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9150,7 +9264,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(\ROTATION_CONSTELLATION_PHASE_IN_reg[23]_i_1_n_7 ),
         .Q(ROTATION_CONSTELLATION_PHASE_IN[20]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9159,7 +9273,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(\ROTATION_CONSTELLATION_PHASE_IN_reg[23]_i_1_n_6 ),
         .Q(ROTATION_CONSTELLATION_PHASE_IN[21]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9168,7 +9282,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(\ROTATION_CONSTELLATION_PHASE_IN_reg[23]_i_1_n_5 ),
         .Q(ROTATION_CONSTELLATION_PHASE_IN[22]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9177,7 +9291,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(\ROTATION_CONSTELLATION_PHASE_IN_reg[23]_i_1_n_4 ),
         .Q(ROTATION_CONSTELLATION_PHASE_IN[23]),
-        .R(RESET));
+        .R(1'b0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 \ROTATION_CONSTELLATION_PHASE_IN_reg[23]_i_1 
        (.CI(\ROTATION_CONSTELLATION_PHASE_IN_reg[19]_i_1_n_0 ),
@@ -9194,7 +9308,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(\ROTATION_CONSTELLATION_PHASE_IN_reg[3]_i_1_n_5 ),
         .Q(ROTATION_CONSTELLATION_PHASE_IN[2]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9203,7 +9317,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(\ROTATION_CONSTELLATION_PHASE_IN_reg[3]_i_1_n_4 ),
         .Q(ROTATION_CONSTELLATION_PHASE_IN[3]),
-        .R(RESET));
+        .R(1'b0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 \ROTATION_CONSTELLATION_PHASE_IN_reg[3]_i_1 
        (.CI(1'b0),
@@ -9211,7 +9325,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b1}),
         .O({\ROTATION_CONSTELLATION_PHASE_IN_reg[3]_i_1_n_4 ,\ROTATION_CONSTELLATION_PHASE_IN_reg[3]_i_1_n_5 ,\ROTATION_CONSTELLATION_PHASE_IN_reg[3]_i_1_n_6 ,\ROTATION_CONSTELLATION_PHASE_IN_reg[3]_i_1_n_7 }),
-        .S({\ROTATION_CONSTELLATION_PHASE_IN[3]_i_2_n_0 ,\ROTATION_CONSTELLATION_PHASE_IN[3]_i_3_n_0 ,\ROTATION_CONSTELLATION_PHASE_IN[3]_i_4_n_0 ,ROTATION_CONSTELLATION_PHASE_IN1[0]}));
+        .S({\ROTATION_CONSTELLATION_PHASE_IN[3]_i_2_n_0 ,\ROTATION_CONSTELLATION_PHASE_IN[3]_i_3_n_0 ,\ROTATION_CONSTELLATION_PHASE_IN[3]_i_4_n_0 ,CHANNEL_RESPONSE_PHASE_reg_0_63_0_2_n_0}));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9220,7 +9334,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(\ROTATION_CONSTELLATION_PHASE_IN_reg[7]_i_1_n_7 ),
         .Q(ROTATION_CONSTELLATION_PHASE_IN[4]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9229,7 +9343,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(\ROTATION_CONSTELLATION_PHASE_IN_reg[7]_i_1_n_6 ),
         .Q(ROTATION_CONSTELLATION_PHASE_IN[5]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9238,7 +9352,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(\ROTATION_CONSTELLATION_PHASE_IN_reg[7]_i_1_n_5 ),
         .Q(ROTATION_CONSTELLATION_PHASE_IN[6]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9247,7 +9361,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(\ROTATION_CONSTELLATION_PHASE_IN_reg[7]_i_1_n_4 ),
         .Q(ROTATION_CONSTELLATION_PHASE_IN[7]),
-        .R(RESET));
+        .R(1'b0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 \ROTATION_CONSTELLATION_PHASE_IN_reg[7]_i_1 
        (.CI(\ROTATION_CONSTELLATION_PHASE_IN_reg[3]_i_1_n_0 ),
@@ -9264,7 +9378,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(\ROTATION_CONSTELLATION_PHASE_IN_reg[11]_i_1_n_7 ),
         .Q(ROTATION_CONSTELLATION_PHASE_IN[8]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9273,7 +9387,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(\ROTATION_CONSTELLATION_PHASE_IN_reg[11]_i_1_n_6 ),
         .Q(ROTATION_CONSTELLATION_PHASE_IN[9]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9282,7 +9396,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(QDATA_BUFFER[0]),
         .Q(ROTATION_CONSTELLATION_QDATA_IN[0]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9291,7 +9405,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(QDATA_BUFFER[10]),
         .Q(ROTATION_CONSTELLATION_QDATA_IN[10]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9300,7 +9414,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(QDATA_BUFFER[11]),
         .Q(ROTATION_CONSTELLATION_QDATA_IN[11]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9309,7 +9423,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(QDATA_BUFFER[12]),
         .Q(ROTATION_CONSTELLATION_QDATA_IN[12]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9318,7 +9432,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(QDATA_BUFFER[13]),
         .Q(ROTATION_CONSTELLATION_QDATA_IN[13]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9327,7 +9441,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(QDATA_BUFFER[14]),
         .Q(ROTATION_CONSTELLATION_QDATA_IN[14]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9336,7 +9450,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(QDATA_BUFFER[15]),
         .Q(ROTATION_CONSTELLATION_QDATA_IN[15]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9345,7 +9459,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(QDATA_BUFFER[16]),
         .Q(ROTATION_CONSTELLATION_QDATA_IN[16]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9354,7 +9468,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(QDATA_BUFFER[17]),
         .Q(ROTATION_CONSTELLATION_QDATA_IN[17]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9363,7 +9477,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(QDATA_BUFFER[18]),
         .Q(ROTATION_CONSTELLATION_QDATA_IN[18]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9372,7 +9486,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(QDATA_BUFFER[19]),
         .Q(ROTATION_CONSTELLATION_QDATA_IN[19]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9381,7 +9495,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(QDATA_BUFFER[1]),
         .Q(ROTATION_CONSTELLATION_QDATA_IN[1]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9390,7 +9504,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(QDATA_BUFFER[20]),
         .Q(ROTATION_CONSTELLATION_QDATA_IN[20]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9399,7 +9513,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(QDATA_BUFFER[21]),
         .Q(ROTATION_CONSTELLATION_QDATA_IN[21]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9408,7 +9522,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(QDATA_BUFFER[22]),
         .Q(ROTATION_CONSTELLATION_QDATA_IN[22]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9417,7 +9531,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(QDATA_BUFFER[23]),
         .Q(ROTATION_CONSTELLATION_QDATA_IN[23]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9426,7 +9540,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(QDATA_BUFFER[2]),
         .Q(ROTATION_CONSTELLATION_QDATA_IN[2]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9435,7 +9549,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(QDATA_BUFFER[3]),
         .Q(ROTATION_CONSTELLATION_QDATA_IN[3]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9444,7 +9558,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(QDATA_BUFFER[4]),
         .Q(ROTATION_CONSTELLATION_QDATA_IN[4]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9453,7 +9567,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(QDATA_BUFFER[5]),
         .Q(ROTATION_CONSTELLATION_QDATA_IN[5]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9462,7 +9576,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(QDATA_BUFFER[6]),
         .Q(ROTATION_CONSTELLATION_QDATA_IN[6]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9471,7 +9585,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(QDATA_BUFFER[7]),
         .Q(ROTATION_CONSTELLATION_QDATA_IN[7]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9480,7 +9594,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(QDATA_BUFFER[8]),
         .Q(ROTATION_CONSTELLATION_QDATA_IN[8]),
-        .R(RESET));
+        .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -9489,7 +9603,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CE(\ROTATION_CONSTELLATION_IDATA_IN[23]_i_1_n_0 ),
         .D(QDATA_BUFFER[9]),
         .Q(ROTATION_CONSTELLATION_QDATA_IN[9]),
-        .R(RESET));
+        .R(1'b0));
   (* ADDER_THRESHOLD = "35" *) 
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
   CARRY4 __113_carry
@@ -9521,28 +9635,28 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     .INIT(8'h35)) 
     __113_carry__0_i_10
        (.I0(QDATA_BUFFER[9]),
-        .I1(ATAN_CONSTELLATION_IN_Q4[9]),
+        .I1(__113_carry__0_i_14_n_7),
         .I2(QDATA_BUFFER[23]),
         .O(__113_carry__0_i_10_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     __113_carry__0_i_11
        (.I0(QDATA_BUFFER[8]),
-        .I1(ATAN_CONSTELLATION_IN_Q4[8]),
+        .I1(__113_carry_i_21_n_4),
         .I2(QDATA_BUFFER[23]),
         .O(__113_carry__0_i_11_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     __113_carry__0_i_12
        (.I0(QDATA_BUFFER[7]),
-        .I1(ATAN_CONSTELLATION_IN_Q4[7]),
+        .I1(__113_carry_i_21_n_5),
         .I2(QDATA_BUFFER[23]),
         .O(__113_carry__0_i_12_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     __113_carry__0_i_13
        (.I0(QDATA_BUFFER[6]),
-        .I1(ATAN_CONSTELLATION_IN_Q4[6]),
+        .I1(__113_carry_i_21_n_6),
         .I2(QDATA_BUFFER[23]),
         .O(__113_carry__0_i_13_n_0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -9552,7 +9666,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CO({__113_carry__0_i_14_n_0,__113_carry__0_i_14_n_1,__113_carry__0_i_14_n_2,__113_carry__0_i_14_n_3}),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(ATAN_CONSTELLATION_IN_Q4[12:9]),
+        .O({__113_carry__0_i_14_n_4,__113_carry__0_i_14_n_5,__113_carry__0_i_14_n_6,__113_carry__0_i_14_n_7}),
         .S({__113_carry__0_i_15_n_0,__113_carry__0_i_16_n_0,__113_carry__0_i_17_n_0,__113_carry__0_i_18_n_0}));
   LUT1 #(
     .INIT(2'h1)) 
@@ -9604,7 +9718,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   LUT5 #(
     .INIT(32'h47B8B847)) 
     __113_carry__0_i_5
-       (.I0(ATAN_CONSTELLATION_IN_Q2[7]),
+       (.I0(__113_carry__0_i_9_n_5),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[8]),
         .I3(in),
@@ -9613,7 +9727,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   LUT5 #(
     .INIT(32'h47B8B847)) 
     __113_carry__0_i_6
-       (.I0(ATAN_CONSTELLATION_IN_Q2[6]),
+       (.I0(__113_carry__0_i_9_n_6),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[7]),
         .I3(in),
@@ -9622,7 +9736,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   LUT5 #(
     .INIT(32'h47B8B847)) 
     __113_carry__0_i_7
-       (.I0(ATAN_CONSTELLATION_IN_Q2[5]),
+       (.I0(__113_carry__0_i_9_n_7),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[6]),
         .I3(in),
@@ -9631,7 +9745,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   LUT5 #(
     .INIT(32'h47B8B847)) 
     __113_carry__0_i_8
-       (.I0(ATAN_CONSTELLATION_IN_Q2[4]),
+       (.I0(__113_carry_i_9_n_4),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[5]),
         .I3(in),
@@ -9643,7 +9757,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CO({__113_carry__0_i_9_n_0,__113_carry__0_i_9_n_1,__113_carry__0_i_9_n_2,__113_carry__0_i_9_n_3}),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(ATAN_CONSTELLATION_IN_Q2[8:5]),
+        .O({__113_carry__0_i_9_n_4,__113_carry__0_i_9_n_5,__113_carry__0_i_9_n_6,__113_carry__0_i_9_n_7}),
         .S({__113_carry__0_i_10_n_0,__113_carry__0_i_11_n_0,__113_carry__0_i_12_n_0,__113_carry__0_i_13_n_0}));
   (* ADDER_THRESHOLD = "35" *) 
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
@@ -9667,28 +9781,28 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     .INIT(8'h35)) 
     __113_carry__1_i_10
        (.I0(QDATA_BUFFER[13]),
-        .I1(ATAN_CONSTELLATION_IN_Q4[13]),
+        .I1(__113_carry__1_i_14_n_7),
         .I2(QDATA_BUFFER[23]),
         .O(__113_carry__1_i_10_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     __113_carry__1_i_11
        (.I0(QDATA_BUFFER[12]),
-        .I1(ATAN_CONSTELLATION_IN_Q4[12]),
+        .I1(__113_carry__0_i_14_n_4),
         .I2(QDATA_BUFFER[23]),
         .O(__113_carry__1_i_11_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     __113_carry__1_i_12
        (.I0(QDATA_BUFFER[11]),
-        .I1(ATAN_CONSTELLATION_IN_Q4[11]),
+        .I1(__113_carry__0_i_14_n_5),
         .I2(QDATA_BUFFER[23]),
         .O(__113_carry__1_i_12_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     __113_carry__1_i_13
        (.I0(QDATA_BUFFER[10]),
-        .I1(ATAN_CONSTELLATION_IN_Q4[10]),
+        .I1(__113_carry__0_i_14_n_6),
         .I2(QDATA_BUFFER[23]),
         .O(__113_carry__1_i_13_n_0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -9698,7 +9812,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CO({__113_carry__1_i_14_n_0,__113_carry__1_i_14_n_1,__113_carry__1_i_14_n_2,__113_carry__1_i_14_n_3}),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(ATAN_CONSTELLATION_IN_Q4[16:13]),
+        .O({__113_carry__1_i_14_n_4,__113_carry__1_i_14_n_5,__113_carry__1_i_14_n_6,__113_carry__1_i_14_n_7}),
         .S({__113_carry__1_i_15_n_0,__113_carry__1_i_16_n_0,__113_carry__1_i_17_n_0,__113_carry__1_i_18_n_0}));
   LUT1 #(
     .INIT(2'h1)) 
@@ -9750,7 +9864,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   LUT5 #(
     .INIT(32'h47B8B847)) 
     __113_carry__1_i_5
-       (.I0(ATAN_CONSTELLATION_IN_Q2[11]),
+       (.I0(__113_carry__1_i_9_n_5),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[12]),
         .I3(in),
@@ -9759,7 +9873,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   LUT5 #(
     .INIT(32'h47B8B847)) 
     __113_carry__1_i_6
-       (.I0(ATAN_CONSTELLATION_IN_Q2[10]),
+       (.I0(__113_carry__1_i_9_n_6),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[11]),
         .I3(in),
@@ -9768,7 +9882,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   LUT5 #(
     .INIT(32'h47B8B847)) 
     __113_carry__1_i_7
-       (.I0(ATAN_CONSTELLATION_IN_Q2[9]),
+       (.I0(__113_carry__1_i_9_n_7),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[10]),
         .I3(in),
@@ -9777,7 +9891,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   LUT5 #(
     .INIT(32'h47B8B847)) 
     __113_carry__1_i_8
-       (.I0(ATAN_CONSTELLATION_IN_Q2[8]),
+       (.I0(__113_carry__0_i_9_n_4),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[9]),
         .I3(in),
@@ -9789,7 +9903,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CO({__113_carry__1_i_9_n_0,__113_carry__1_i_9_n_1,__113_carry__1_i_9_n_2,__113_carry__1_i_9_n_3}),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(ATAN_CONSTELLATION_IN_Q2[12:9]),
+        .O({__113_carry__1_i_9_n_4,__113_carry__1_i_9_n_5,__113_carry__1_i_9_n_6,__113_carry__1_i_9_n_7}),
         .S({__113_carry__1_i_10_n_0,__113_carry__1_i_11_n_0,__113_carry__1_i_12_n_0,__113_carry__1_i_13_n_0}));
   (* ADDER_THRESHOLD = "35" *) 
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
@@ -9813,28 +9927,28 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     .INIT(8'h35)) 
     __113_carry__2_i_10
        (.I0(QDATA_BUFFER[17]),
-        .I1(ATAN_CONSTELLATION_IN_Q4[17]),
+        .I1(__113_carry__2_i_14_n_7),
         .I2(QDATA_BUFFER[23]),
         .O(__113_carry__2_i_10_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     __113_carry__2_i_11
        (.I0(QDATA_BUFFER[16]),
-        .I1(ATAN_CONSTELLATION_IN_Q4[16]),
+        .I1(__113_carry__1_i_14_n_4),
         .I2(QDATA_BUFFER[23]),
         .O(__113_carry__2_i_11_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     __113_carry__2_i_12
        (.I0(QDATA_BUFFER[15]),
-        .I1(ATAN_CONSTELLATION_IN_Q4[15]),
+        .I1(__113_carry__1_i_14_n_5),
         .I2(QDATA_BUFFER[23]),
         .O(__113_carry__2_i_12_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     __113_carry__2_i_13
        (.I0(QDATA_BUFFER[14]),
-        .I1(ATAN_CONSTELLATION_IN_Q4[14]),
+        .I1(__113_carry__1_i_14_n_6),
         .I2(QDATA_BUFFER[23]),
         .O(__113_carry__2_i_13_n_0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -9844,7 +9958,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CO({__113_carry__2_i_14_n_0,__113_carry__2_i_14_n_1,__113_carry__2_i_14_n_2,__113_carry__2_i_14_n_3}),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(ATAN_CONSTELLATION_IN_Q4[20:17]),
+        .O({__113_carry__2_i_14_n_4,__113_carry__2_i_14_n_5,__113_carry__2_i_14_n_6,__113_carry__2_i_14_n_7}),
         .S({__113_carry__2_i_15_n_0,__113_carry__2_i_16_n_0,__113_carry__2_i_17_n_0,__113_carry__2_i_18_n_0}));
   LUT1 #(
     .INIT(2'h1)) 
@@ -9896,7 +10010,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   LUT5 #(
     .INIT(32'h47B8B847)) 
     __113_carry__2_i_5
-       (.I0(ATAN_CONSTELLATION_IN_Q2[15]),
+       (.I0(__113_carry__2_i_9_n_5),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[16]),
         .I3(in),
@@ -9905,7 +10019,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   LUT5 #(
     .INIT(32'h47B8B847)) 
     __113_carry__2_i_6
-       (.I0(ATAN_CONSTELLATION_IN_Q2[14]),
+       (.I0(__113_carry__2_i_9_n_6),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[15]),
         .I3(in),
@@ -9914,7 +10028,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   LUT5 #(
     .INIT(32'h47B8B847)) 
     __113_carry__2_i_7
-       (.I0(ATAN_CONSTELLATION_IN_Q2[13]),
+       (.I0(__113_carry__2_i_9_n_7),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[14]),
         .I3(in),
@@ -9923,7 +10037,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   LUT5 #(
     .INIT(32'h47B8B847)) 
     __113_carry__2_i_8
-       (.I0(ATAN_CONSTELLATION_IN_Q2[12]),
+       (.I0(__113_carry__1_i_9_n_4),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[13]),
         .I3(in),
@@ -9935,7 +10049,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CO({__113_carry__2_i_9_n_0,__113_carry__2_i_9_n_1,__113_carry__2_i_9_n_2,__113_carry__2_i_9_n_3}),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(ATAN_CONSTELLATION_IN_Q2[16:13]),
+        .O({__113_carry__2_i_9_n_4,__113_carry__2_i_9_n_5,__113_carry__2_i_9_n_6,__113_carry__2_i_9_n_7}),
         .S({__113_carry__2_i_10_n_0,__113_carry__2_i_11_n_0,__113_carry__2_i_12_n_0,__113_carry__2_i_13_n_0}));
   (* ADDER_THRESHOLD = "35" *) 
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
@@ -9959,28 +10073,28 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     .INIT(8'h35)) 
     __113_carry__3_i_10
        (.I0(QDATA_BUFFER[21]),
-        .I1(ATAN_CONSTELLATION_IN_Q4[21]),
+        .I1(__113_carry__3_i_14_n_7),
         .I2(QDATA_BUFFER[23]),
         .O(__113_carry__3_i_10_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     __113_carry__3_i_11
        (.I0(QDATA_BUFFER[20]),
-        .I1(ATAN_CONSTELLATION_IN_Q4[20]),
+        .I1(__113_carry__2_i_14_n_4),
         .I2(QDATA_BUFFER[23]),
         .O(__113_carry__3_i_11_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     __113_carry__3_i_12
        (.I0(QDATA_BUFFER[19]),
-        .I1(ATAN_CONSTELLATION_IN_Q4[19]),
+        .I1(__113_carry__2_i_14_n_5),
         .I2(QDATA_BUFFER[23]),
         .O(__113_carry__3_i_12_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     __113_carry__3_i_13
        (.I0(QDATA_BUFFER[18]),
-        .I1(ATAN_CONSTELLATION_IN_Q4[18]),
+        .I1(__113_carry__2_i_14_n_6),
         .I2(QDATA_BUFFER[23]),
         .O(__113_carry__3_i_13_n_0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -9990,7 +10104,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CO({NLW___113_carry__3_i_14_CO_UNCONNECTED[3:2],__113_carry__3_i_14_n_2,__113_carry__3_i_14_n_3}),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({NLW___113_carry__3_i_14_O_UNCONNECTED[3],ATAN_CONSTELLATION_IN_Q4[23:21]}),
+        .O({NLW___113_carry__3_i_14_O_UNCONNECTED[3],__113_carry__3_i_14_n_5,__113_carry__3_i_14_n_6,__113_carry__3_i_14_n_7}),
         .S({1'b0,__113_carry__3_i_15_n_0,__113_carry__3_i_16_n_0,__113_carry__3_i_17_n_0}));
   LUT1 #(
     .INIT(2'h1)) 
@@ -10037,7 +10151,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   LUT5 #(
     .INIT(32'h47B8B847)) 
     __113_carry__3_i_5
-       (.I0(ATAN_CONSTELLATION_IN_Q2[19]),
+       (.I0(__113_carry__3_i_9_n_5),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[20]),
         .I3(in),
@@ -10046,7 +10160,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   LUT5 #(
     .INIT(32'h47B8B847)) 
     __113_carry__3_i_6
-       (.I0(ATAN_CONSTELLATION_IN_Q2[18]),
+       (.I0(__113_carry__3_i_9_n_6),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[19]),
         .I3(in),
@@ -10055,7 +10169,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   LUT5 #(
     .INIT(32'h47B8B847)) 
     __113_carry__3_i_7
-       (.I0(ATAN_CONSTELLATION_IN_Q2[17]),
+       (.I0(__113_carry__3_i_9_n_7),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[18]),
         .I3(in),
@@ -10064,7 +10178,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   LUT5 #(
     .INIT(32'h47B8B847)) 
     __113_carry__3_i_8
-       (.I0(ATAN_CONSTELLATION_IN_Q2[16]),
+       (.I0(__113_carry__2_i_9_n_4),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[17]),
         .I3(in),
@@ -10076,7 +10190,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CO({__113_carry__3_i_9_n_0,__113_carry__3_i_9_n_1,__113_carry__3_i_9_n_2,__113_carry__3_i_9_n_3}),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(ATAN_CONSTELLATION_IN_Q2[20:17]),
+        .O({__113_carry__3_i_9_n_4,__113_carry__3_i_9_n_5,__113_carry__3_i_9_n_6,__113_carry__3_i_9_n_7}),
         .S({__113_carry__3_i_10_n_0,__113_carry__3_i_11_n_0,__113_carry__3_i_12_n_0,__113_carry__3_i_13_n_0}));
   (* ADDER_THRESHOLD = "35" *) 
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
@@ -10099,13 +10213,13 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   LUT2 #(
     .INIT(4'h7)) 
     __113_carry__4_i_10
-       (.I0(ATAN_CONSTELLATION_IN_Q4[23]),
+       (.I0(__113_carry__3_i_14_n_5),
         .I1(QDATA_BUFFER[23]),
         .O(__113_carry__4_i_10_n_0));
   LUT3 #(
     .INIT(8'h47)) 
     __113_carry__4_i_11
-       (.I0(ATAN_CONSTELLATION_IN_Q4[22]),
+       (.I0(__113_carry__3_i_14_n_6),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[22]),
         .O(__113_carry__4_i_11_n_0));
@@ -10138,7 +10252,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   LUT4 #(
     .INIT(16'h7887)) 
     __113_carry__4_i_5
-       (.I0(ATAN_CONSTELLATION_IN_Q2[22]),
+       (.I0(__113_carry__4_i_9_n_6),
         .I1(QDATA_BUFFER[23]),
         .I2(in),
         .I3(__113_carry__4_i_1_n_0),
@@ -10146,7 +10260,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   LUT5 #(
     .INIT(32'h47B8B847)) 
     __113_carry__4_i_6
-       (.I0(ATAN_CONSTELLATION_IN_Q2[21]),
+       (.I0(__113_carry__4_i_9_n_7),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[22]),
         .I3(in),
@@ -10155,7 +10269,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   LUT5 #(
     .INIT(32'h47B8B847)) 
     __113_carry__4_i_7
-       (.I0(ATAN_CONSTELLATION_IN_Q2[20]),
+       (.I0(__113_carry__3_i_9_n_4),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[21]),
         .I3(in),
@@ -10176,7 +10290,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CO({NLW___113_carry__4_i_9_CO_UNCONNECTED[3],__113_carry__4_i_9_n_1,NLW___113_carry__4_i_9_CO_UNCONNECTED[1],__113_carry__4_i_9_n_3}),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({NLW___113_carry__4_i_9_O_UNCONNECTED[3:2],ATAN_CONSTELLATION_IN_Q2[22:21]}),
+        .O({NLW___113_carry__4_i_9_O_UNCONNECTED[3:2],__113_carry__4_i_9_n_6,__113_carry__4_i_9_n_7}),
         .S({1'b0,1'b1,__113_carry__4_i_10_n_0,__113_carry__4_i_11_n_0}));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
@@ -10194,41 +10308,41 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CO({__113_carry_i_10_n_0,__113_carry_i_10_n_1,__113_carry_i_10_n_2,__113_carry_i_10_n_3}),
         .CYINIT(__113_carry_i_16_n_0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(ATAN_CONSTELLATION_IN_Q4[4:1]),
+        .O({__113_carry_i_10_n_4,__113_carry_i_10_n_5,__113_carry_i_10_n_6,__113_carry_i_10_n_7}),
         .S({__113_carry_i_17_n_0,__113_carry_i_18_n_0,__113_carry_i_19_n_0,__113_carry_i_20_n_0}));
   LUT3 #(
     .INIT(8'h1D)) 
     __113_carry_i_11
        (.I0(QDATA_BUFFER[1]),
         .I1(QDATA_BUFFER[23]),
-        .I2(ATAN_CONSTELLATION_IN_Q4[1]),
+        .I2(__113_carry_i_10_n_7),
         .O(__113_carry_i_11_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     __113_carry_i_12
        (.I0(QDATA_BUFFER[5]),
-        .I1(ATAN_CONSTELLATION_IN_Q4[5]),
+        .I1(__113_carry_i_21_n_7),
         .I2(QDATA_BUFFER[23]),
         .O(__113_carry_i_12_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     __113_carry_i_13
        (.I0(QDATA_BUFFER[4]),
-        .I1(ATAN_CONSTELLATION_IN_Q4[4]),
+        .I1(__113_carry_i_10_n_4),
         .I2(QDATA_BUFFER[23]),
         .O(__113_carry_i_13_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     __113_carry_i_14
        (.I0(QDATA_BUFFER[3]),
-        .I1(ATAN_CONSTELLATION_IN_Q4[3]),
+        .I1(__113_carry_i_10_n_5),
         .I2(QDATA_BUFFER[23]),
         .O(__113_carry_i_14_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     __113_carry_i_15
        (.I0(QDATA_BUFFER[2]),
-        .I1(ATAN_CONSTELLATION_IN_Q4[2]),
+        .I1(__113_carry_i_10_n_6),
         .I2(QDATA_BUFFER[23]),
         .O(__113_carry_i_15_n_0));
   LUT1 #(
@@ -10272,7 +10386,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CO({__113_carry_i_21_n_0,__113_carry_i_21_n_1,__113_carry_i_21_n_2,__113_carry_i_21_n_3}),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(ATAN_CONSTELLATION_IN_Q4[8:5]),
+        .O({__113_carry_i_21_n_4,__113_carry_i_21_n_5,__113_carry_i_21_n_6,__113_carry_i_21_n_7}),
         .S({__113_carry_i_22_n_0,__113_carry_i_23_n_0,__113_carry_i_24_n_0,__113_carry_i_25_n_0}));
   LUT1 #(
     .INIT(2'h1)) 
@@ -10315,7 +10429,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   LUT5 #(
     .INIT(32'h47B8B847)) 
     __113_carry_i_5
-       (.I0(ATAN_CONSTELLATION_IN_Q2[3]),
+       (.I0(__113_carry_i_9_n_5),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[4]),
         .I3(in),
@@ -10324,7 +10438,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   LUT5 #(
     .INIT(32'h47B8B847)) 
     __113_carry_i_6
-       (.I0(ATAN_CONSTELLATION_IN_Q2[2]),
+       (.I0(__113_carry_i_9_n_6),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[3]),
         .I3(in),
@@ -10333,7 +10447,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   LUT5 #(
     .INIT(32'h47B8B847)) 
     __113_carry_i_7
-       (.I0(ATAN_CONSTELLATION_IN_Q2[1]),
+       (.I0(__113_carry_i_9_n_7),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[2]),
         .I3(in),
@@ -10342,7 +10456,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   LUT3 #(
     .INIT(8'hB8)) 
     __113_carry_i_8
-       (.I0(ATAN_CONSTELLATION_IN_Q4[1]),
+       (.I0(__113_carry_i_10_n_7),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[1]),
         .O(__113_carry_i_8_n_0));
@@ -10352,7 +10466,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CO({__113_carry_i_9_n_0,__113_carry_i_9_n_1,__113_carry_i_9_n_2,__113_carry_i_9_n_3}),
         .CYINIT(__113_carry_i_11_n_0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(ATAN_CONSTELLATION_IN_Q2[4:1]),
+        .O({__113_carry_i_9_n_4,__113_carry_i_9_n_5,__113_carry_i_9_n_6,__113_carry_i_9_n_7}),
         .S({__113_carry_i_12_n_0,__113_carry_i_13_n_0,__113_carry_i_14_n_0,__113_carry_i_15_n_0}));
   (* ADDER_THRESHOLD = "35" *) 
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
@@ -10385,28 +10499,28 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     .INIT(8'h35)) 
     __21_carry__0_i_10
        (.I0(IDATA_BUFFER[9]),
-        .I1(ATAN_CONSTELLATION_IN_I4[9]),
+        .I1(__21_carry__0_i_14_n_7),
         .I2(IDATA_BUFFER[23]),
         .O(__21_carry__0_i_10_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     __21_carry__0_i_11
        (.I0(IDATA_BUFFER[8]),
-        .I1(ATAN_CONSTELLATION_IN_I4[8]),
+        .I1(__21_carry_i_23_n_4),
         .I2(IDATA_BUFFER[23]),
         .O(__21_carry__0_i_11_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     __21_carry__0_i_12
        (.I0(IDATA_BUFFER[7]),
-        .I1(ATAN_CONSTELLATION_IN_I4[7]),
+        .I1(__21_carry_i_23_n_5),
         .I2(IDATA_BUFFER[23]),
         .O(__21_carry__0_i_12_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     __21_carry__0_i_13
        (.I0(IDATA_BUFFER[6]),
-        .I1(ATAN_CONSTELLATION_IN_I4[6]),
+        .I1(__21_carry_i_23_n_6),
         .I2(IDATA_BUFFER[23]),
         .O(__21_carry__0_i_13_n_0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -10415,7 +10529,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CO({__21_carry__0_i_14_n_0,__21_carry__0_i_14_n_1,__21_carry__0_i_14_n_2,__21_carry__0_i_14_n_3}),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(ATAN_CONSTELLATION_IN_I4[12:9]),
+        .O({__21_carry__0_i_14_n_4,__21_carry__0_i_14_n_5,__21_carry__0_i_14_n_6,__21_carry__0_i_14_n_7}),
         .S({__21_carry__0_i_15_n_0,__21_carry__0_i_16_n_0,__21_carry__0_i_17_n_0,__21_carry__0_i_18_n_0}));
   LUT1 #(
     .INIT(2'h1)) 
@@ -10529,28 +10643,28 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     .INIT(8'h35)) 
     __21_carry__1_i_10
        (.I0(IDATA_BUFFER[13]),
-        .I1(ATAN_CONSTELLATION_IN_I4[13]),
+        .I1(__21_carry__1_i_14_n_7),
         .I2(IDATA_BUFFER[23]),
         .O(__21_carry__1_i_10_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     __21_carry__1_i_11
        (.I0(IDATA_BUFFER[12]),
-        .I1(ATAN_CONSTELLATION_IN_I4[12]),
+        .I1(__21_carry__0_i_14_n_4),
         .I2(IDATA_BUFFER[23]),
         .O(__21_carry__1_i_11_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     __21_carry__1_i_12
        (.I0(IDATA_BUFFER[11]),
-        .I1(ATAN_CONSTELLATION_IN_I4[11]),
+        .I1(__21_carry__0_i_14_n_5),
         .I2(IDATA_BUFFER[23]),
         .O(__21_carry__1_i_12_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     __21_carry__1_i_13
        (.I0(IDATA_BUFFER[10]),
-        .I1(ATAN_CONSTELLATION_IN_I4[10]),
+        .I1(__21_carry__0_i_14_n_6),
         .I2(IDATA_BUFFER[23]),
         .O(__21_carry__1_i_13_n_0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -10559,7 +10673,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CO({__21_carry__1_i_14_n_0,__21_carry__1_i_14_n_1,__21_carry__1_i_14_n_2,__21_carry__1_i_14_n_3}),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(ATAN_CONSTELLATION_IN_I4[16:13]),
+        .O({__21_carry__1_i_14_n_4,__21_carry__1_i_14_n_5,__21_carry__1_i_14_n_6,__21_carry__1_i_14_n_7}),
         .S({__21_carry__1_i_15_n_0,__21_carry__1_i_16_n_0,__21_carry__1_i_17_n_0,__21_carry__1_i_18_n_0}));
   LUT1 #(
     .INIT(2'h1)) 
@@ -10673,28 +10787,28 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     .INIT(8'h35)) 
     __21_carry__2_i_10
        (.I0(IDATA_BUFFER[17]),
-        .I1(ATAN_CONSTELLATION_IN_I4[17]),
+        .I1(__21_carry__2_i_14_n_7),
         .I2(IDATA_BUFFER[23]),
         .O(__21_carry__2_i_10_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     __21_carry__2_i_11
        (.I0(IDATA_BUFFER[16]),
-        .I1(ATAN_CONSTELLATION_IN_I4[16]),
+        .I1(__21_carry__1_i_14_n_4),
         .I2(IDATA_BUFFER[23]),
         .O(__21_carry__2_i_11_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     __21_carry__2_i_12
        (.I0(IDATA_BUFFER[15]),
-        .I1(ATAN_CONSTELLATION_IN_I4[15]),
+        .I1(__21_carry__1_i_14_n_5),
         .I2(IDATA_BUFFER[23]),
         .O(__21_carry__2_i_12_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     __21_carry__2_i_13
        (.I0(IDATA_BUFFER[14]),
-        .I1(ATAN_CONSTELLATION_IN_I4[14]),
+        .I1(__21_carry__1_i_14_n_6),
         .I2(IDATA_BUFFER[23]),
         .O(__21_carry__2_i_13_n_0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -10703,7 +10817,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CO({__21_carry__2_i_14_n_0,__21_carry__2_i_14_n_1,__21_carry__2_i_14_n_2,__21_carry__2_i_14_n_3}),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(ATAN_CONSTELLATION_IN_I4[20:17]),
+        .O({__21_carry__2_i_14_n_4,__21_carry__2_i_14_n_5,__21_carry__2_i_14_n_6,__21_carry__2_i_14_n_7}),
         .S({__21_carry__2_i_15_n_0,__21_carry__2_i_16_n_0,__21_carry__2_i_17_n_0,__21_carry__2_i_18_n_0}));
   LUT1 #(
     .INIT(2'h1)) 
@@ -10817,28 +10931,28 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     .INIT(8'h35)) 
     __21_carry__3_i_10
        (.I0(IDATA_BUFFER[21]),
-        .I1(ATAN_CONSTELLATION_IN_I4[21]),
+        .I1(__21_carry__3_i_14_n_7),
         .I2(IDATA_BUFFER[23]),
         .O(__21_carry__3_i_10_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     __21_carry__3_i_11
        (.I0(IDATA_BUFFER[20]),
-        .I1(ATAN_CONSTELLATION_IN_I4[20]),
+        .I1(__21_carry__2_i_14_n_4),
         .I2(IDATA_BUFFER[23]),
         .O(__21_carry__3_i_11_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     __21_carry__3_i_12
        (.I0(IDATA_BUFFER[19]),
-        .I1(ATAN_CONSTELLATION_IN_I4[19]),
+        .I1(__21_carry__2_i_14_n_5),
         .I2(IDATA_BUFFER[23]),
         .O(__21_carry__3_i_12_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     __21_carry__3_i_13
        (.I0(IDATA_BUFFER[18]),
-        .I1(ATAN_CONSTELLATION_IN_I4[18]),
+        .I1(__21_carry__2_i_14_n_6),
         .I2(IDATA_BUFFER[23]),
         .O(__21_carry__3_i_13_n_0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -10847,7 +10961,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CO({NLW___21_carry__3_i_14_CO_UNCONNECTED[3:2],__21_carry__3_i_14_n_2,__21_carry__3_i_14_n_3}),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({NLW___21_carry__3_i_14_O_UNCONNECTED[3],ATAN_CONSTELLATION_IN_I4[23:21]}),
+        .O({NLW___21_carry__3_i_14_O_UNCONNECTED[3],__21_carry__3_i_14_n_5,__21_carry__3_i_14_n_6,__21_carry__3_i_14_n_7}),
         .S({1'b0,__21_carry__3_i_15_n_0,__21_carry__3_i_16_n_0,__21_carry__3_i_17_n_0}));
   LUT1 #(
     .INIT(2'h1)) 
@@ -10955,13 +11069,13 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   LUT2 #(
     .INIT(4'h7)) 
     __21_carry__4_i_10
-       (.I0(ATAN_CONSTELLATION_IN_I4[23]),
+       (.I0(__21_carry__3_i_14_n_5),
         .I1(IDATA_BUFFER[23]),
         .O(__21_carry__4_i_10_n_0));
   LUT3 #(
     .INIT(8'h47)) 
     __21_carry__4_i_11
-       (.I0(ATAN_CONSTELLATION_IN_I4[22]),
+       (.I0(__21_carry__3_i_14_n_6),
         .I1(IDATA_BUFFER[23]),
         .I2(IDATA_BUFFER[22]),
         .O(__21_carry__4_i_11_n_0));
@@ -11065,41 +11179,41 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CO({__21_carry_i_12_n_0,__21_carry_i_12_n_1,__21_carry_i_12_n_2,__21_carry_i_12_n_3}),
         .CYINIT(__21_carry_i_18_n_0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(ATAN_CONSTELLATION_IN_I4[4:1]),
+        .O({__21_carry_i_12_n_4,__21_carry_i_12_n_5,__21_carry_i_12_n_6,__21_carry_i_12_n_7}),
         .S({__21_carry_i_19_n_0,__21_carry_i_20_n_0,__21_carry_i_21_n_0,__21_carry_i_22_n_0}));
   LUT3 #(
     .INIT(8'h1D)) 
     __21_carry_i_13
        (.I0(IDATA_BUFFER[1]),
         .I1(IDATA_BUFFER[23]),
-        .I2(ATAN_CONSTELLATION_IN_I4[1]),
+        .I2(__21_carry_i_12_n_7),
         .O(__21_carry_i_13_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     __21_carry_i_14
        (.I0(IDATA_BUFFER[5]),
-        .I1(ATAN_CONSTELLATION_IN_I4[5]),
+        .I1(__21_carry_i_23_n_7),
         .I2(IDATA_BUFFER[23]),
         .O(__21_carry_i_14_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     __21_carry_i_15
        (.I0(IDATA_BUFFER[4]),
-        .I1(ATAN_CONSTELLATION_IN_I4[4]),
+        .I1(__21_carry_i_12_n_4),
         .I2(IDATA_BUFFER[23]),
         .O(__21_carry_i_15_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     __21_carry_i_16
        (.I0(IDATA_BUFFER[3]),
-        .I1(ATAN_CONSTELLATION_IN_I4[3]),
+        .I1(__21_carry_i_12_n_5),
         .I2(IDATA_BUFFER[23]),
         .O(__21_carry_i_16_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     __21_carry_i_17
        (.I0(IDATA_BUFFER[2]),
-        .I1(ATAN_CONSTELLATION_IN_I4[2]),
+        .I1(__21_carry_i_12_n_6),
         .I2(IDATA_BUFFER[23]),
         .O(__21_carry_i_17_n_0));
   LUT1 #(
@@ -11142,7 +11256,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CO({__21_carry_i_23_n_0,__21_carry_i_23_n_1,__21_carry_i_23_n_2,__21_carry_i_23_n_3}),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(ATAN_CONSTELLATION_IN_I4[8:5]),
+        .O({__21_carry_i_23_n_4,__21_carry_i_23_n_5,__21_carry_i_23_n_6,__21_carry_i_23_n_7}),
         .S({__21_carry_i_24_n_0,__21_carry_i_25_n_0,__21_carry_i_26_n_0,__21_carry_i_27_n_0}));
   LUT1 #(
     .INIT(2'h1)) 
@@ -11222,7 +11336,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   LUT3 #(
     .INIT(8'hB8)) 
     __21_carry_i_9
-       (.I0(ATAN_CONSTELLATION_IN_I4[1]),
+       (.I0(__21_carry_i_12_n_7),
         .I1(IDATA_BUFFER[23]),
         .I2(IDATA_BUFFER[1]),
         .O(__21_carry_i_9_n_0));

@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:module_ref:timing_acquisition_802_11p:1.0
--- IP Revision: 1714391156
+-- IP Revision: 1714590658
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;

@@ -4,7 +4,7 @@
     "xci_name": "block_design_0_demapper_0_0",
     "cell_name": "demapper_0",
     "component_reference": "xilinx.com:module_ref:demapper:1.0",
-    "ip_revision": "1714391161",
+    "ip_revision": "1714590665",
     "gen_directory": "../../../../../../edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_demapper_0_0",
     "parameters": {
       "component_parameters": {
@@ -25,7 +25,7 @@
       },
       "runtime_parameters": {
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],
-        "IPREVISION": [ { "value": "1714391161" } ],
+        "IPREVISION": [ { "value": "1714590665" } ],
         "MANAGED": [ { "value": "TRUE" } ],
         "OUTPUTDIR": [ { "value": "../../../../../../edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_demapper_0_0" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],

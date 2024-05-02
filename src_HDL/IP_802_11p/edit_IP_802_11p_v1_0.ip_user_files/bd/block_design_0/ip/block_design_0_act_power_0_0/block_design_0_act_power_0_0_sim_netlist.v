@@ -2,8 +2,8 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-// Date        : Mon Apr 29 13:47:09 2024
-// Host        : lab817_01 running 64-bit major release  (build 9200)
+// Date        : Wed May  1 21:25:45 2024
+// Host        : ASUS_ROG running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_act_power_0_0/block_design_0_act_power_0_0_sim_netlist.v
 // Design      : block_design_0_act_power_0_0
@@ -54,18 +54,18 @@ endmodule
 module block_design_0_act_power_0_0_act_power
    (POWER,
     POWER_STROBE,
+    DATA_STROBE,
     CLOCK,
     IDATA,
     QDATA,
-    RESET,
-    DATA_STROBE);
+    RESET);
   output [7:0]POWER;
   output POWER_STROBE;
+  input DATA_STROBE;
   input CLOCK;
   input [15:0]IDATA;
   input [15:0]QDATA;
   input RESET;
-  input DATA_STROBE;
 
   wire CLOCK;
   wire DATA_STROBE;
@@ -190,7 +190,7 @@ module block_design_0_act_power_0_0_act_power
         .CE(DATA_STROBE),
         .D(p_0_in[0]),
         .Q(POWER[0]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \POWER_reg[1] 
@@ -198,7 +198,7 @@ module block_design_0_act_power_0_0_act_power
         .CE(DATA_STROBE),
         .D(p_0_in[1]),
         .Q(POWER[1]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \POWER_reg[2] 
@@ -206,7 +206,7 @@ module block_design_0_act_power_0_0_act_power
         .CE(DATA_STROBE),
         .D(p_0_in[2]),
         .Q(POWER[2]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \POWER_reg[3] 
@@ -214,7 +214,7 @@ module block_design_0_act_power_0_0_act_power
         .CE(DATA_STROBE),
         .D(p_0_in[3]),
         .Q(POWER[3]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \POWER_reg[4] 
@@ -222,7 +222,7 @@ module block_design_0_act_power_0_0_act_power
         .CE(DATA_STROBE),
         .D(p_0_in[4]),
         .Q(POWER[4]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \POWER_reg[5] 
@@ -230,7 +230,7 @@ module block_design_0_act_power_0_0_act_power
         .CE(DATA_STROBE),
         .D(p_0_in[5]),
         .Q(POWER[5]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \POWER_reg[6] 
@@ -238,7 +238,7 @@ module block_design_0_act_power_0_0_act_power
         .CE(DATA_STROBE),
         .D(p_0_in[6]),
         .Q(POWER[6]),
-        .R(RESET));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \POWER_reg[7] 
@@ -246,7 +246,7 @@ module block_design_0_act_power_0_0_act_power
         .CE(DATA_STROBE),
         .D(p_0_in[7]),
         .Q(POWER[7]),
-        .R(RESET));
+        .R(1'b0));
   DSP48E1 #(
     .ACASCREG(1),
     .ADREG(1),
@@ -288,18 +288,18 @@ module block_design_0_act_power_0_0_act_power
         .CARRYINSEL({1'b0,1'b0,1'b0}),
         .CARRYOUT(NLW_SQUARED_I_reg_CARRYOUT_UNCONNECTED[3:0]),
         .CEA1(1'b0),
-        .CEA2(POWER_STROBE_i_1_n_0),
+        .CEA2(DATA_STROBE),
         .CEAD(1'b0),
         .CEALUMODE(1'b0),
         .CEB1(1'b0),
-        .CEB2(POWER_STROBE_i_1_n_0),
+        .CEB2(DATA_STROBE),
         .CEC(1'b0),
         .CECARRYIN(1'b0),
         .CECTRL(1'b0),
         .CED(1'b0),
         .CEINMODE(1'b0),
         .CEM(1'b0),
-        .CEP(POWER_STROBE_i_1_n_0),
+        .CEP(DATA_STROBE),
         .CLK(CLOCK),
         .D({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
         .INMODE({1'b0,1'b0,1'b0,1'b0,1'b0}),
@@ -364,18 +364,18 @@ module block_design_0_act_power_0_0_act_power
         .CARRYINSEL({1'b0,1'b0,1'b0}),
         .CARRYOUT(NLW_SQUARED_reg_CARRYOUT_UNCONNECTED[3:0]),
         .CEA1(1'b0),
-        .CEA2(POWER_STROBE_i_1_n_0),
+        .CEA2(DATA_STROBE),
         .CEAD(1'b0),
         .CEALUMODE(1'b0),
         .CEB1(1'b0),
-        .CEB2(POWER_STROBE_i_1_n_0),
+        .CEB2(DATA_STROBE),
         .CEC(1'b0),
         .CECARRYIN(1'b0),
         .CECTRL(1'b0),
         .CED(1'b0),
         .CEINMODE(1'b0),
-        .CEM(POWER_STROBE_i_1_n_0),
-        .CEP(POWER_STROBE_i_1_n_0),
+        .CEM(DATA_STROBE),
+        .CEP(DATA_STROBE),
         .CLK(CLOCK),
         .D({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
         .INMODE({1'b0,1'b0,1'b0,1'b0,1'b0}),

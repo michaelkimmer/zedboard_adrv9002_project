@@ -2,8 +2,8 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
--- Date        : Mon Apr 29 13:47:09 2024
--- Host        : lab817_01 running 64-bit major release  (build 9200)
+-- Date        : Wed May  1 21:25:45 2024
+-- Host        : ASUS_ROG running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_act_power_0_0/block_design_0_act_power_0_0_sim_netlist.vhdl
 -- Design      : block_design_0_act_power_0_0
@@ -19,11 +19,11 @@ entity block_design_0_act_power_0_0_act_power is
   port (
     POWER : out STD_LOGIC_VECTOR ( 7 downto 0 );
     POWER_STROBE : out STD_LOGIC;
+    DATA_STROBE : in STD_LOGIC;
     CLOCK : in STD_LOGIC;
     IDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
     QDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    RESET : in STD_LOGIC;
-    DATA_STROBE : in STD_LOGIC
+    RESET : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of block_design_0_act_power_0_0_act_power : entity is "act_power";
@@ -154,7 +154,7 @@ POWER_STROBE_reg: unisim.vcomponents.FDRE
       CE => DATA_STROBE,
       D => p_0_in(0),
       Q => POWER(0),
-      R => RESET
+      R => '0'
     );
 \POWER_reg[1]\: unisim.vcomponents.FDRE
     generic map(
@@ -165,7 +165,7 @@ POWER_STROBE_reg: unisim.vcomponents.FDRE
       CE => DATA_STROBE,
       D => p_0_in(1),
       Q => POWER(1),
-      R => RESET
+      R => '0'
     );
 \POWER_reg[2]\: unisim.vcomponents.FDRE
     generic map(
@@ -176,7 +176,7 @@ POWER_STROBE_reg: unisim.vcomponents.FDRE
       CE => DATA_STROBE,
       D => p_0_in(2),
       Q => POWER(2),
-      R => RESET
+      R => '0'
     );
 \POWER_reg[3]\: unisim.vcomponents.FDRE
     generic map(
@@ -187,7 +187,7 @@ POWER_STROBE_reg: unisim.vcomponents.FDRE
       CE => DATA_STROBE,
       D => p_0_in(3),
       Q => POWER(3),
-      R => RESET
+      R => '0'
     );
 \POWER_reg[4]\: unisim.vcomponents.FDRE
     generic map(
@@ -198,7 +198,7 @@ POWER_STROBE_reg: unisim.vcomponents.FDRE
       CE => DATA_STROBE,
       D => p_0_in(4),
       Q => POWER(4),
-      R => RESET
+      R => '0'
     );
 \POWER_reg[5]\: unisim.vcomponents.FDRE
     generic map(
@@ -209,7 +209,7 @@ POWER_STROBE_reg: unisim.vcomponents.FDRE
       CE => DATA_STROBE,
       D => p_0_in(5),
       Q => POWER(5),
-      R => RESET
+      R => '0'
     );
 \POWER_reg[6]\: unisim.vcomponents.FDRE
     generic map(
@@ -220,7 +220,7 @@ POWER_STROBE_reg: unisim.vcomponents.FDRE
       CE => DATA_STROBE,
       D => p_0_in(6),
       Q => POWER(6),
-      R => RESET
+      R => '0'
     );
 \POWER_reg[7]\: unisim.vcomponents.FDRE
     generic map(
@@ -231,7 +231,7 @@ POWER_STROBE_reg: unisim.vcomponents.FDRE
       CE => DATA_STROBE,
       D => p_0_in(7),
       Q => POWER(7),
-      R => RESET
+      R => '0'
     );
 SQUARED_I_reg: unisim.vcomponents.DSP48E1
     generic map(
@@ -292,18 +292,18 @@ SQUARED_I_reg: unisim.vcomponents.DSP48E1
       CARRYINSEL(2 downto 0) => B"000",
       CARRYOUT(3 downto 0) => NLW_SQUARED_I_reg_CARRYOUT_UNCONNECTED(3 downto 0),
       CEA1 => '0',
-      CEA2 => POWER_STROBE_i_1_n_0,
+      CEA2 => DATA_STROBE,
       CEAD => '0',
       CEALUMODE => '0',
       CEB1 => '0',
-      CEB2 => POWER_STROBE_i_1_n_0,
+      CEB2 => DATA_STROBE,
       CEC => '0',
       CECARRYIN => '0',
       CECTRL => '0',
       CED => '0',
       CEINMODE => '0',
       CEM => '0',
-      CEP => POWER_STROBE_i_1_n_0,
+      CEP => DATA_STROBE,
       CLK => CLOCK,
       D(24 downto 0) => B"0000000000000000000000000",
       INMODE(4 downto 0) => B"00000",
@@ -434,18 +434,18 @@ SQUARED_reg: unisim.vcomponents.DSP48E1
       CARRYINSEL(2 downto 0) => B"000",
       CARRYOUT(3 downto 0) => NLW_SQUARED_reg_CARRYOUT_UNCONNECTED(3 downto 0),
       CEA1 => '0',
-      CEA2 => POWER_STROBE_i_1_n_0,
+      CEA2 => DATA_STROBE,
       CEAD => '0',
       CEALUMODE => '0',
       CEB1 => '0',
-      CEB2 => POWER_STROBE_i_1_n_0,
+      CEB2 => DATA_STROBE,
       CEC => '0',
       CECARRYIN => '0',
       CECTRL => '0',
       CED => '0',
       CEINMODE => '0',
-      CEM => POWER_STROBE_i_1_n_0,
-      CEP => POWER_STROBE_i_1_n_0,
+      CEM => DATA_STROBE,
+      CEP => DATA_STROBE,
       CLK => CLOCK,
       D(24 downto 0) => B"0000000000000000000000000",
       INMODE(4 downto 0) => B"00000",
