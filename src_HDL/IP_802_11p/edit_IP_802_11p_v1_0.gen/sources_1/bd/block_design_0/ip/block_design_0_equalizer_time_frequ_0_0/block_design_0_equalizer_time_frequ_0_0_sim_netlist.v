@@ -2,8 +2,8 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-// Date        : Wed May  1 21:29:14 2024
-// Host        : ASUS_ROG running 64-bit major release  (build 9200)
+// Date        : Fri May  3 15:58:31 2024
+// Host        : lab817_01 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_equalizer_time_frequ_0_0/block_design_0_equalizer_time_frequ_0_0_sim_netlist.v
 // Design      : block_design_0_equalizer_time_frequ_0_0
@@ -184,18 +184,18 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
     FPGA_REG_WRITE_STROBE_PHASE_1,
     FPGA_REG_WRITE_STROBE_PHASE_2,
     DETECTION_SIGNAL_DETECTED,
+    ROTATION_DATA_OUT_STROBE,
+    ROTATION_DATA_OUT_MARKER,
+    ATAN_PHASE_OUT,
     ATAN_PHASE_OUT_STROBE,
     RESET,
     CLOCK,
-    STOP_RX_DONE,
     ROTATION_IDATA_OUT,
     ROTATION_QDATA_OUT,
-    ROTATION_DATA_OUT_STROBE,
-    ATAN_PHASE_OUT,
     DETECTION_STS_AUTOCORR_I,
     DETECTION_STS_AUTOCORR_Q,
     DATA_IN_STROBE,
-    ROTATION_DATA_OUT_MARKER);
+    STOP_RX_DONE);
   output [16:0]FPGA_REG_WRITE_DATA;
   output [31:0]ATAN_AUTOCORR_I;
   output [31:0]ATAN_AUTOCORR_Q;
@@ -211,205 +211,20 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   output FPGA_REG_WRITE_STROBE_PHASE_1;
   output FPGA_REG_WRITE_STROBE_PHASE_2;
   input DETECTION_SIGNAL_DETECTED;
+  input ROTATION_DATA_OUT_STROBE;
+  input ROTATION_DATA_OUT_MARKER;
+  input [19:0]ATAN_PHASE_OUT;
   input ATAN_PHASE_OUT_STROBE;
   input RESET;
   input CLOCK;
-  input STOP_RX_DONE;
   input [15:0]ROTATION_IDATA_OUT;
   input [15:0]ROTATION_QDATA_OUT;
-  input ROTATION_DATA_OUT_STROBE;
-  input [19:0]ATAN_PHASE_OUT;
   input [31:0]DETECTION_STS_AUTOCORR_I;
   input [31:0]DETECTION_STS_AUTOCORR_Q;
   input DATA_IN_STROBE;
-  input ROTATION_DATA_OUT_MARKER;
+  input STOP_RX_DONE;
 
   wire [30:1]ARG0;
-  wire ARG0_carry__0_i_1_n_0;
-  wire ARG0_carry__0_i_2_n_0;
-  wire ARG0_carry__0_i_3_n_0;
-  wire ARG0_carry__0_i_4_n_0;
-  wire ARG0_carry__0_i_5_n_0;
-  wire ARG0_carry__0_i_5_n_1;
-  wire ARG0_carry__0_i_5_n_2;
-  wire ARG0_carry__0_i_5_n_3;
-  wire ARG0_carry__0_i_6_n_0;
-  wire ARG0_carry__0_i_7_n_0;
-  wire ARG0_carry__0_i_8_n_0;
-  wire ARG0_carry__0_i_9_n_0;
-  wire ARG0_carry__0_n_0;
-  wire ARG0_carry__0_n_1;
-  wire ARG0_carry__0_n_2;
-  wire ARG0_carry__0_n_3;
-  wire ARG0_carry__1_i_1_n_0;
-  wire ARG0_carry__1_i_2_n_0;
-  wire ARG0_carry__1_i_3_n_0;
-  wire ARG0_carry__1_i_4_n_0;
-  wire ARG0_carry__1_i_5_n_0;
-  wire ARG0_carry__1_i_5_n_1;
-  wire ARG0_carry__1_i_5_n_2;
-  wire ARG0_carry__1_i_5_n_3;
-  wire ARG0_carry__1_i_6_n_0;
-  wire ARG0_carry__1_i_7_n_0;
-  wire ARG0_carry__1_i_8_n_0;
-  wire ARG0_carry__1_i_9_n_0;
-  wire ARG0_carry__1_n_0;
-  wire ARG0_carry__1_n_1;
-  wire ARG0_carry__1_n_2;
-  wire ARG0_carry__1_n_3;
-  wire ARG0_carry__2_i_1_n_0;
-  wire ARG0_carry__2_i_2_n_0;
-  wire ARG0_carry__2_i_3_n_0;
-  wire ARG0_carry__2_i_4_n_0;
-  wire ARG0_carry__2_i_5_n_0;
-  wire ARG0_carry__2_i_5_n_1;
-  wire ARG0_carry__2_i_5_n_2;
-  wire ARG0_carry__2_i_5_n_3;
-  wire ARG0_carry__2_i_6_n_0;
-  wire ARG0_carry__2_i_7_n_0;
-  wire ARG0_carry__2_i_8_n_0;
-  wire ARG0_carry__2_i_9_n_0;
-  wire ARG0_carry__2_n_0;
-  wire ARG0_carry__2_n_1;
-  wire ARG0_carry__2_n_2;
-  wire ARG0_carry__2_n_3;
-  wire ARG0_carry__3_i_1_n_0;
-  wire ARG0_carry__3_i_2_n_0;
-  wire ARG0_carry__3_i_3_n_0;
-  wire ARG0_carry__3_i_4_n_0;
-  wire ARG0_carry__3_i_5_n_0;
-  wire ARG0_carry__3_i_5_n_1;
-  wire ARG0_carry__3_i_5_n_2;
-  wire ARG0_carry__3_i_5_n_3;
-  wire ARG0_carry__3_i_6_n_0;
-  wire ARG0_carry__3_i_7_n_0;
-  wire ARG0_carry__3_i_8_n_0;
-  wire ARG0_carry__3_i_9_n_0;
-  wire ARG0_carry__3_n_0;
-  wire ARG0_carry__3_n_1;
-  wire ARG0_carry__3_n_2;
-  wire ARG0_carry__3_n_3;
-  wire ARG0_carry__4_i_1_n_0;
-  wire ARG0_carry__4_i_2_n_0;
-  wire ARG0_carry__4_i_3_n_0;
-  wire ARG0_carry__4_i_4_n_0;
-  wire ARG0_carry__4_i_5_n_0;
-  wire ARG0_carry__4_i_5_n_1;
-  wire ARG0_carry__4_i_5_n_2;
-  wire ARG0_carry__4_i_5_n_3;
-  wire ARG0_carry__4_i_6_n_0;
-  wire ARG0_carry__4_i_7_n_0;
-  wire ARG0_carry__4_i_8_n_0;
-  wire ARG0_carry__4_i_9_n_0;
-  wire ARG0_carry__4_n_0;
-  wire ARG0_carry__4_n_1;
-  wire ARG0_carry__4_n_2;
-  wire ARG0_carry__4_n_3;
-  wire ARG0_carry__5_i_1_n_0;
-  wire ARG0_carry__5_i_2_n_0;
-  wire ARG0_carry__5_i_3_n_0;
-  wire ARG0_carry__5_i_4_n_0;
-  wire ARG0_carry__5_i_5_n_0;
-  wire ARG0_carry__5_i_5_n_1;
-  wire ARG0_carry__5_i_5_n_2;
-  wire ARG0_carry__5_i_5_n_3;
-  wire ARG0_carry__5_i_6_n_0;
-  wire ARG0_carry__5_i_7_n_0;
-  wire ARG0_carry__5_i_8_n_0;
-  wire ARG0_carry__5_i_9_n_0;
-  wire ARG0_carry__5_n_0;
-  wire ARG0_carry__5_n_1;
-  wire ARG0_carry__5_n_2;
-  wire ARG0_carry__5_n_3;
-  wire ARG0_carry__6_i_1_n_0;
-  wire ARG0_carry__6_i_2_n_0;
-  wire ARG0_carry__6_i_3_n_0;
-  wire ARG0_carry__6_i_4_n_2;
-  wire ARG0_carry__6_i_4_n_3;
-  wire ARG0_carry__6_i_5_n_0;
-  wire ARG0_carry__6_i_6_n_0;
-  wire ARG0_carry__6_i_7_n_0;
-  wire ARG0_carry__6_n_1;
-  wire ARG0_carry__6_n_2;
-  wire ARG0_carry__6_n_3;
-  wire ARG0_carry_i_10_n_0;
-  wire ARG0_carry_i_1_n_0;
-  wire ARG0_carry_i_2_n_0;
-  wire ARG0_carry_i_3_n_0;
-  wire ARG0_carry_i_4_n_0;
-  wire ARG0_carry_i_5_n_0;
-  wire ARG0_carry_i_6_n_0;
-  wire ARG0_carry_i_6_n_1;
-  wire ARG0_carry_i_6_n_2;
-  wire ARG0_carry_i_6_n_3;
-  wire ARG0_carry_i_7_n_0;
-  wire ARG0_carry_i_8_n_0;
-  wire ARG0_carry_i_9_n_0;
-  wire ARG0_carry_n_0;
-  wire ARG0_carry_n_1;
-  wire ARG0_carry_n_2;
-  wire ARG0_carry_n_3;
-  wire \ARG0_inferred__0/i__carry__0_n_0 ;
-  wire \ARG0_inferred__0/i__carry__0_n_1 ;
-  wire \ARG0_inferred__0/i__carry__0_n_2 ;
-  wire \ARG0_inferred__0/i__carry__0_n_3 ;
-  wire \ARG0_inferred__0/i__carry__0_n_4 ;
-  wire \ARG0_inferred__0/i__carry__0_n_5 ;
-  wire \ARG0_inferred__0/i__carry__0_n_6 ;
-  wire \ARG0_inferred__0/i__carry__0_n_7 ;
-  wire \ARG0_inferred__0/i__carry__1_n_0 ;
-  wire \ARG0_inferred__0/i__carry__1_n_1 ;
-  wire \ARG0_inferred__0/i__carry__1_n_2 ;
-  wire \ARG0_inferred__0/i__carry__1_n_3 ;
-  wire \ARG0_inferred__0/i__carry__1_n_4 ;
-  wire \ARG0_inferred__0/i__carry__1_n_5 ;
-  wire \ARG0_inferred__0/i__carry__1_n_6 ;
-  wire \ARG0_inferred__0/i__carry__1_n_7 ;
-  wire \ARG0_inferred__0/i__carry__2_n_0 ;
-  wire \ARG0_inferred__0/i__carry__2_n_1 ;
-  wire \ARG0_inferred__0/i__carry__2_n_2 ;
-  wire \ARG0_inferred__0/i__carry__2_n_3 ;
-  wire \ARG0_inferred__0/i__carry__2_n_4 ;
-  wire \ARG0_inferred__0/i__carry__2_n_5 ;
-  wire \ARG0_inferred__0/i__carry__2_n_6 ;
-  wire \ARG0_inferred__0/i__carry__2_n_7 ;
-  wire \ARG0_inferred__0/i__carry__3_n_0 ;
-  wire \ARG0_inferred__0/i__carry__3_n_1 ;
-  wire \ARG0_inferred__0/i__carry__3_n_2 ;
-  wire \ARG0_inferred__0/i__carry__3_n_3 ;
-  wire \ARG0_inferred__0/i__carry__3_n_4 ;
-  wire \ARG0_inferred__0/i__carry__3_n_5 ;
-  wire \ARG0_inferred__0/i__carry__3_n_6 ;
-  wire \ARG0_inferred__0/i__carry__3_n_7 ;
-  wire \ARG0_inferred__0/i__carry__4_n_0 ;
-  wire \ARG0_inferred__0/i__carry__4_n_1 ;
-  wire \ARG0_inferred__0/i__carry__4_n_2 ;
-  wire \ARG0_inferred__0/i__carry__4_n_3 ;
-  wire \ARG0_inferred__0/i__carry__4_n_4 ;
-  wire \ARG0_inferred__0/i__carry__4_n_5 ;
-  wire \ARG0_inferred__0/i__carry__4_n_6 ;
-  wire \ARG0_inferred__0/i__carry__4_n_7 ;
-  wire \ARG0_inferred__0/i__carry__5_n_0 ;
-  wire \ARG0_inferred__0/i__carry__5_n_1 ;
-  wire \ARG0_inferred__0/i__carry__5_n_2 ;
-  wire \ARG0_inferred__0/i__carry__5_n_3 ;
-  wire \ARG0_inferred__0/i__carry__5_n_4 ;
-  wire \ARG0_inferred__0/i__carry__5_n_5 ;
-  wire \ARG0_inferred__0/i__carry__5_n_6 ;
-  wire \ARG0_inferred__0/i__carry__5_n_7 ;
-  wire \ARG0_inferred__0/i__carry__6_n_1 ;
-  wire \ARG0_inferred__0/i__carry__6_n_2 ;
-  wire \ARG0_inferred__0/i__carry__6_n_3 ;
-  wire \ARG0_inferred__0/i__carry__6_n_6 ;
-  wire \ARG0_inferred__0/i__carry__6_n_7 ;
-  wire \ARG0_inferred__0/i__carry_n_0 ;
-  wire \ARG0_inferred__0/i__carry_n_1 ;
-  wire \ARG0_inferred__0/i__carry_n_2 ;
-  wire \ARG0_inferred__0/i__carry_n_3 ;
-  wire \ARG0_inferred__0/i__carry_n_4 ;
-  wire \ARG0_inferred__0/i__carry_n_5 ;
-  wire \ARG0_inferred__0/i__carry_n_6 ;
-  wire \ARG0_inferred__0/i__carry_n_7 ;
   wire [39:8]ARG2;
   wire [31:0]ATAN_AUTOCORR_I;
   wire [31:0]ATAN_AUTOCORR_I0_in;
@@ -486,16 +301,18 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   wire ATAN_AUTOCORR_STROBE_i_1_n_0;
   wire [19:0]ATAN_PHASE_OUT;
   wire ATAN_PHASE_OUT_STROBE;
+  wire [31:0]AUTOCORR_I_BUFF;
   wire \AUTOCORR_I_BUFF[31]_i_1_n_0 ;
-  wire [31:0]AUTOCORR_I_BUFF__0;
+  wire [19:0]AUTOCORR_PHASE_BUFF;
   wire \AUTOCORR_PHASE_BUFF[19]_i_1_n_0 ;
-  wire [19:0]AUTOCORR_PHASE_BUFF__0;
   wire [31:0]AUTOCORR_Q_BUFF;
   wire CEM;
   wire CEP;
   wire CLOCK;
   wire [31:0]COUNTER;
   wire \COUNTER[0]_i_1_n_0 ;
+  wire \COUNTER[31]_i_10_n_0 ;
+  wire \COUNTER[31]_i_11_n_0 ;
   wire \COUNTER[31]_i_1_n_0 ;
   wire \COUNTER[31]_i_2_n_0 ;
   wire \COUNTER[31]_i_4_n_0 ;
@@ -601,77 +418,31 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   wire \COUNTER_IQ[8]_i_1_n_0 ;
   wire \COUNTER_IQ[9]_i_1_n_0 ;
   wire \COUNTER_OFDM_SYMBOL[0]_i_1_n_0 ;
-  wire \COUNTER_OFDM_SYMBOL[31]_i_10_n_0 ;
-  wire \COUNTER_OFDM_SYMBOL[31]_i_11_n_0 ;
-  wire \COUNTER_OFDM_SYMBOL[31]_i_12_n_0 ;
-  wire \COUNTER_OFDM_SYMBOL[31]_i_13_n_0 ;
-  wire \COUNTER_OFDM_SYMBOL[31]_i_14_n_0 ;
-  wire \COUNTER_OFDM_SYMBOL[31]_i_15_n_0 ;
-  wire \COUNTER_OFDM_SYMBOL[31]_i_16_n_0 ;
-  wire \COUNTER_OFDM_SYMBOL[31]_i_17_n_0 ;
-  wire \COUNTER_OFDM_SYMBOL[31]_i_1_n_0 ;
-  wire \COUNTER_OFDM_SYMBOL[31]_i_2_n_0 ;
-  wire \COUNTER_OFDM_SYMBOL[31]_i_4_n_0 ;
-  wire \COUNTER_OFDM_SYMBOL[31]_i_5_n_0 ;
-  wire \COUNTER_OFDM_SYMBOL[31]_i_6_n_0 ;
-  wire \COUNTER_OFDM_SYMBOL[31]_i_7_n_0 ;
-  wire \COUNTER_OFDM_SYMBOL[31]_i_8_n_0 ;
-  wire \COUNTER_OFDM_SYMBOL[31]_i_9_n_0 ;
-  wire \COUNTER_OFDM_SYMBOL_reg[12]_i_1_n_0 ;
-  wire \COUNTER_OFDM_SYMBOL_reg[12]_i_1_n_1 ;
-  wire \COUNTER_OFDM_SYMBOL_reg[12]_i_1_n_2 ;
-  wire \COUNTER_OFDM_SYMBOL_reg[12]_i_1_n_3 ;
-  wire \COUNTER_OFDM_SYMBOL_reg[16]_i_1_n_0 ;
-  wire \COUNTER_OFDM_SYMBOL_reg[16]_i_1_n_1 ;
-  wire \COUNTER_OFDM_SYMBOL_reg[16]_i_1_n_2 ;
-  wire \COUNTER_OFDM_SYMBOL_reg[16]_i_1_n_3 ;
-  wire \COUNTER_OFDM_SYMBOL_reg[20]_i_1_n_0 ;
-  wire \COUNTER_OFDM_SYMBOL_reg[20]_i_1_n_1 ;
-  wire \COUNTER_OFDM_SYMBOL_reg[20]_i_1_n_2 ;
-  wire \COUNTER_OFDM_SYMBOL_reg[20]_i_1_n_3 ;
-  wire \COUNTER_OFDM_SYMBOL_reg[24]_i_1_n_0 ;
-  wire \COUNTER_OFDM_SYMBOL_reg[24]_i_1_n_1 ;
-  wire \COUNTER_OFDM_SYMBOL_reg[24]_i_1_n_2 ;
-  wire \COUNTER_OFDM_SYMBOL_reg[24]_i_1_n_3 ;
-  wire \COUNTER_OFDM_SYMBOL_reg[28]_i_1_n_0 ;
-  wire \COUNTER_OFDM_SYMBOL_reg[28]_i_1_n_1 ;
-  wire \COUNTER_OFDM_SYMBOL_reg[28]_i_1_n_2 ;
-  wire \COUNTER_OFDM_SYMBOL_reg[28]_i_1_n_3 ;
-  wire \COUNTER_OFDM_SYMBOL_reg[31]_i_3_n_2 ;
-  wire \COUNTER_OFDM_SYMBOL_reg[31]_i_3_n_3 ;
-  wire \COUNTER_OFDM_SYMBOL_reg[4]_i_1_n_0 ;
-  wire \COUNTER_OFDM_SYMBOL_reg[4]_i_1_n_1 ;
-  wire \COUNTER_OFDM_SYMBOL_reg[4]_i_1_n_2 ;
-  wire \COUNTER_OFDM_SYMBOL_reg[4]_i_1_n_3 ;
-  wire \COUNTER_OFDM_SYMBOL_reg[8]_i_1_n_0 ;
-  wire \COUNTER_OFDM_SYMBOL_reg[8]_i_1_n_1 ;
-  wire \COUNTER_OFDM_SYMBOL_reg[8]_i_1_n_2 ;
-  wire \COUNTER_OFDM_SYMBOL_reg[8]_i_1_n_3 ;
+  wire \COUNTER_OFDM_SYMBOL[10]_i_1_n_0 ;
+  wire \COUNTER_OFDM_SYMBOL[10]_i_2_n_0 ;
+  wire \COUNTER_OFDM_SYMBOL[1]_i_1_n_0 ;
+  wire \COUNTER_OFDM_SYMBOL[2]_i_1_n_0 ;
+  wire \COUNTER_OFDM_SYMBOL[3]_i_1_n_0 ;
+  wire \COUNTER_OFDM_SYMBOL[4]_i_1_n_0 ;
+  wire \COUNTER_OFDM_SYMBOL[5]_i_1_n_0 ;
+  wire \COUNTER_OFDM_SYMBOL[5]_i_2_n_0 ;
+  wire \COUNTER_OFDM_SYMBOL[6]_i_1_n_0 ;
+  wire \COUNTER_OFDM_SYMBOL[7]_i_1_n_0 ;
+  wire \COUNTER_OFDM_SYMBOL[8]_i_1_n_0 ;
+  wire \COUNTER_OFDM_SYMBOL[9]_i_10_n_0 ;
+  wire \COUNTER_OFDM_SYMBOL[9]_i_1_n_0 ;
+  wire \COUNTER_OFDM_SYMBOL[9]_i_2_n_0 ;
+  wire \COUNTER_OFDM_SYMBOL[9]_i_3_n_0 ;
+  wire \COUNTER_OFDM_SYMBOL[9]_i_4_n_0 ;
+  wire \COUNTER_OFDM_SYMBOL[9]_i_5_n_0 ;
+  wire \COUNTER_OFDM_SYMBOL[9]_i_6_n_0 ;
+  wire \COUNTER_OFDM_SYMBOL[9]_i_7_n_0 ;
+  wire \COUNTER_OFDM_SYMBOL[9]_i_8_n_0 ;
+  wire \COUNTER_OFDM_SYMBOL[9]_i_9_n_0 ;
   wire \COUNTER_OFDM_SYMBOL_reg_n_0_[0] ;
   wire \COUNTER_OFDM_SYMBOL_reg_n_0_[10] ;
-  wire \COUNTER_OFDM_SYMBOL_reg_n_0_[11] ;
-  wire \COUNTER_OFDM_SYMBOL_reg_n_0_[12] ;
-  wire \COUNTER_OFDM_SYMBOL_reg_n_0_[13] ;
-  wire \COUNTER_OFDM_SYMBOL_reg_n_0_[14] ;
-  wire \COUNTER_OFDM_SYMBOL_reg_n_0_[15] ;
-  wire \COUNTER_OFDM_SYMBOL_reg_n_0_[16] ;
-  wire \COUNTER_OFDM_SYMBOL_reg_n_0_[17] ;
-  wire \COUNTER_OFDM_SYMBOL_reg_n_0_[18] ;
-  wire \COUNTER_OFDM_SYMBOL_reg_n_0_[19] ;
   wire \COUNTER_OFDM_SYMBOL_reg_n_0_[1] ;
-  wire \COUNTER_OFDM_SYMBOL_reg_n_0_[20] ;
-  wire \COUNTER_OFDM_SYMBOL_reg_n_0_[21] ;
-  wire \COUNTER_OFDM_SYMBOL_reg_n_0_[22] ;
-  wire \COUNTER_OFDM_SYMBOL_reg_n_0_[23] ;
-  wire \COUNTER_OFDM_SYMBOL_reg_n_0_[24] ;
-  wire \COUNTER_OFDM_SYMBOL_reg_n_0_[25] ;
-  wire \COUNTER_OFDM_SYMBOL_reg_n_0_[26] ;
-  wire \COUNTER_OFDM_SYMBOL_reg_n_0_[27] ;
-  wire \COUNTER_OFDM_SYMBOL_reg_n_0_[28] ;
-  wire \COUNTER_OFDM_SYMBOL_reg_n_0_[29] ;
   wire \COUNTER_OFDM_SYMBOL_reg_n_0_[2] ;
-  wire \COUNTER_OFDM_SYMBOL_reg_n_0_[30] ;
-  wire \COUNTER_OFDM_SYMBOL_reg_n_0_[31] ;
   wire \COUNTER_OFDM_SYMBOL_reg_n_0_[3] ;
   wire \COUNTER_OFDM_SYMBOL_reg_n_0_[4] ;
   wire \COUNTER_OFDM_SYMBOL_reg_n_0_[5] ;
@@ -714,7 +485,6 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   wire [31:0]DETECTION_STS_AUTOCORR_I;
   wire [31:0]DETECTION_STS_AUTOCORR_Q;
   wire FFT_DATA_IN_FIRST_SYMBOL_MARKER;
-  wire FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_10_n_0;
   wire FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_1_n_0;
   wire FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_2_n_0;
   wire FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_3_n_0;
@@ -723,14 +493,18 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   wire FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_6_n_0;
   wire FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_7_n_0;
   wire FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_8_n_0;
-  wire FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_9_n_0;
   wire FFT_DATA_IN_START;
+  wire FFT_DATA_IN_START_i_10_n_0;
+  wire FFT_DATA_IN_START_i_11_n_0;
   wire FFT_DATA_IN_START_i_1_n_0;
   wire FFT_DATA_IN_START_i_2_n_0;
   wire FFT_DATA_IN_START_i_3_n_0;
   wire FFT_DATA_IN_START_i_4_n_0;
   wire FFT_DATA_IN_START_i_5_n_0;
   wire FFT_DATA_IN_START_i_6_n_0;
+  wire FFT_DATA_IN_START_i_7_n_0;
+  wire FFT_DATA_IN_START_i_8_n_0;
+  wire FFT_DATA_IN_START_i_9_n_0;
   wire FFT_DATA_IN_STROBE;
   wire FFT_DATA_IN_STROBE0;
   wire FFT_DATA_IN_STROBE_i_1_n_0;
@@ -739,7 +513,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   wire [15:0]FFT_QDATA_IN;
   wire [16:0]FPGA_REG_WRITE_DATA;
   wire \FPGA_REG_WRITE_DATA[0]_i_1_n_0 ;
-  wire \FPGA_REG_WRITE_DATA[0]_i_3_n_0 ;
+  wire \FPGA_REG_WRITE_DATA[0]_i_2_n_0 ;
   wire \FPGA_REG_WRITE_DATA[0]_i_4_n_0 ;
   wire \FPGA_REG_WRITE_DATA[0]_i_5_n_0 ;
   wire \FPGA_REG_WRITE_DATA[0]_i_6_n_0 ;
@@ -761,9 +535,9 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   wire \FPGA_REG_WRITE_DATA[12]_i_9_n_0 ;
   wire \FPGA_REG_WRITE_DATA[13]_i_1_n_0 ;
   wire \FPGA_REG_WRITE_DATA[13]_i_2_n_0 ;
-  wire \FPGA_REG_WRITE_DATA[13]_i_3_n_0 ;
   wire \FPGA_REG_WRITE_DATA[14]_i_1_n_0 ;
   wire \FPGA_REG_WRITE_DATA[15]_i_1_n_0 ;
+  wire \FPGA_REG_WRITE_DATA[15]_i_2_n_0 ;
   wire \FPGA_REG_WRITE_DATA[19]_i_11_n_0 ;
   wire \FPGA_REG_WRITE_DATA[19]_i_12_n_0 ;
   wire \FPGA_REG_WRITE_DATA[19]_i_13_n_0 ;
@@ -771,7 +545,6 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   wire \FPGA_REG_WRITE_DATA[19]_i_15_n_0 ;
   wire \FPGA_REG_WRITE_DATA[19]_i_16_n_0 ;
   wire \FPGA_REG_WRITE_DATA[19]_i_1_n_0 ;
-  wire \FPGA_REG_WRITE_DATA[19]_i_4_n_0 ;
   wire \FPGA_REG_WRITE_DATA[19]_i_5_n_0 ;
   wire \FPGA_REG_WRITE_DATA[19]_i_6_n_0 ;
   wire \FPGA_REG_WRITE_DATA[19]_i_7_n_0 ;
@@ -810,10 +583,10 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   wire \FPGA_REG_WRITE_DATA[8]_i_9_n_0 ;
   wire \FPGA_REG_WRITE_DATA[9]_i_1_n_0 ;
   wire \FPGA_REG_WRITE_DATA[9]_i_2_n_0 ;
-  wire \FPGA_REG_WRITE_DATA_reg[0]_i_2_n_0 ;
-  wire \FPGA_REG_WRITE_DATA_reg[0]_i_2_n_1 ;
-  wire \FPGA_REG_WRITE_DATA_reg[0]_i_2_n_2 ;
-  wire \FPGA_REG_WRITE_DATA_reg[0]_i_2_n_3 ;
+  wire \FPGA_REG_WRITE_DATA_reg[0]_i_3_n_0 ;
+  wire \FPGA_REG_WRITE_DATA_reg[0]_i_3_n_1 ;
+  wire \FPGA_REG_WRITE_DATA_reg[0]_i_3_n_2 ;
+  wire \FPGA_REG_WRITE_DATA_reg[0]_i_3_n_3 ;
   wire \FPGA_REG_WRITE_DATA_reg[12]_i_2_n_0 ;
   wire \FPGA_REG_WRITE_DATA_reg[12]_i_2_n_1 ;
   wire \FPGA_REG_WRITE_DATA_reg[12]_i_2_n_2 ;
@@ -824,10 +597,10 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   wire \FPGA_REG_WRITE_DATA_reg[12]_i_8_n_3 ;
   wire \FPGA_REG_WRITE_DATA_reg[19]_i_10_n_2 ;
   wire \FPGA_REG_WRITE_DATA_reg[19]_i_10_n_3 ;
-  wire \FPGA_REG_WRITE_DATA_reg[19]_i_2_n_0 ;
   wire \FPGA_REG_WRITE_DATA_reg[19]_i_2_n_2 ;
-  wire \FPGA_REG_WRITE_DATA_reg[19]_i_2_n_3 ;
-  wire \FPGA_REG_WRITE_DATA_reg[19]_i_3_n_2 ;
+  wire \FPGA_REG_WRITE_DATA_reg[19]_i_4_n_0 ;
+  wire \FPGA_REG_WRITE_DATA_reg[19]_i_4_n_2 ;
+  wire \FPGA_REG_WRITE_DATA_reg[19]_i_4_n_3 ;
   wire \FPGA_REG_WRITE_DATA_reg[19]_i_9_n_2 ;
   wire \FPGA_REG_WRITE_DATA_reg[19]_i_9_n_3 ;
   wire \FPGA_REG_WRITE_DATA_reg[4]_i_2_n_0 ;
@@ -849,11 +622,13 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   wire FPGA_REG_WRITE_STROBE_PHASE_1;
   wire FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0;
   wire FPGA_REG_WRITE_STROBE_PHASE_2;
+  wire FPGA_REG_WRITE_STROBE_PHASE_20;
   wire FPGA_REG_WRITE_STROBE_PHASE_2_i_1_n_0;
   wire \FSM_sequential_RX_STATE[0]_i_1_n_0 ;
+  wire \FSM_sequential_RX_STATE[0]_i_2_n_0 ;
+  wire \FSM_sequential_RX_STATE[0]_i_3_n_0 ;
+  wire \FSM_sequential_RX_STATE[0]_i_4_n_0 ;
   wire \FSM_sequential_RX_STATE[1]_i_1_n_0 ;
-  wire \FSM_sequential_RX_STATE[1]_i_2_n_0 ;
-  wire \FSM_sequential_RX_STATE[1]_i_3_n_0 ;
   wire \FSM_sequential_RX_STATE[2]_i_1_n_0 ;
   wire \FSM_sequential_RX_STATE[2]_i_2_n_0 ;
   wire \FSM_sequential_RX_STATE[2]_i_3_n_0 ;
@@ -861,6 +636,8 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   wire \FSM_sequential_RX_STATE[2]_i_6_n_0 ;
   wire \FSM_sequential_RX_STATE[2]_i_7_n_0 ;
   wire \FSM_sequential_RX_STATE[2]_i_8_n_0 ;
+  wire \FSM_sequential_RX_STATE[2]_i_9_n_0 ;
+  wire LTS_AUTOCORR_ADD_REG_I_reg_i_2_n_0;
   wire LTS_AUTOCORR_ADD_REG_I_reg_n_100;
   wire LTS_AUTOCORR_ADD_REG_I_reg_n_101;
   wire LTS_AUTOCORR_ADD_REG_I_reg_n_102;
@@ -925,6 +702,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   wire LTS_AUTOCORR_ADD_REG_Q_reg_n_97;
   wire LTS_AUTOCORR_ADD_REG_Q_reg_n_98;
   wire LTS_AUTOCORR_ADD_REG_Q_reg_n_99;
+  wire [39:0]LTS_AUTOCORR_I_ACCUMULATOR;
   wire LTS_AUTOCORR_I_ACCUMULATOR0_carry__0_i_1_n_0;
   wire LTS_AUTOCORR_I_ACCUMULATOR0_carry__0_i_2_n_0;
   wire LTS_AUTOCORR_I_ACCUMULATOR0_carry__0_i_3_n_0;
@@ -1073,46 +851,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   wire LTS_AUTOCORR_I_ACCUMULATOR1_carry_n_2;
   wire LTS_AUTOCORR_I_ACCUMULATOR1_carry_n_3;
   wire \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[0] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[10] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[11] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[12] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[13] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[14] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[15] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[16] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[17] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[18] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[19] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[1] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[20] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[21] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[22] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[23] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[24] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[25] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[26] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[27] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[28] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[29] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[2] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[30] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[31] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[32] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[33] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[34] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[35] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[36] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[37] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[38] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[3] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[4] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[5] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[6] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[7] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[8] ;
-  wire \LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[9] ;
+  wire \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_3_n_0 ;
   wire LTS_AUTOCORR_MULT_REG_II_reg_n_106;
   wire LTS_AUTOCORR_MULT_REG_II_reg_n_107;
   wire LTS_AUTOCORR_MULT_REG_II_reg_n_108;
@@ -1209,6 +948,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   wire LTS_AUTOCORR_MULT_REG_QI_reg_n_151;
   wire LTS_AUTOCORR_MULT_REG_QI_reg_n_152;
   wire LTS_AUTOCORR_MULT_REG_QI_reg_n_153;
+  wire [39:0]LTS_AUTOCORR_Q_ACCUMULATOR;
   wire LTS_AUTOCORR_Q_ACCUMULATOR0_carry__0_i_1_n_0;
   wire LTS_AUTOCORR_Q_ACCUMULATOR0_carry__0_i_2_n_0;
   wire LTS_AUTOCORR_Q_ACCUMULATOR0_carry__0_i_3_n_0;
@@ -1329,48 +1069,25 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   wire LTS_AUTOCORR_Q_ACCUMULATOR0_carry_n_5;
   wire LTS_AUTOCORR_Q_ACCUMULATOR0_carry_n_6;
   wire LTS_AUTOCORR_Q_ACCUMULATOR0_carry_n_7;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[0] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[10] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[11] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[12] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[13] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[14] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[15] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[16] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[17] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[18] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[19] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[1] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[20] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[21] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[22] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[23] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[24] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[25] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[26] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[27] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[28] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[29] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[2] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[30] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[31] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[32] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[33] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[34] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[35] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[36] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[37] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[38] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[3] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[4] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[5] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[6] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[7] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[8] ;
-  wire \LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[9] ;
   wire LTS_AUTOCORR_READY_i_1_n_0;
+  wire LTS_AUTOCORR_READY_i_2_n_0;
   wire LTS_AUTOCORR_READY_reg_n_0;
+  wire LTS_I_BUFFER_reg_0_63_0_0_n_0;
+  wire LTS_I_BUFFER_reg_0_63_10_10_n_0;
+  wire LTS_I_BUFFER_reg_0_63_11_11_n_0;
+  wire LTS_I_BUFFER_reg_0_63_12_12_n_0;
+  wire LTS_I_BUFFER_reg_0_63_13_13_n_0;
+  wire LTS_I_BUFFER_reg_0_63_14_14_n_0;
+  wire LTS_I_BUFFER_reg_0_63_15_15_n_0;
+  wire LTS_I_BUFFER_reg_0_63_1_1_n_0;
+  wire LTS_I_BUFFER_reg_0_63_2_2_n_0;
+  wire LTS_I_BUFFER_reg_0_63_3_3_n_0;
+  wire LTS_I_BUFFER_reg_0_63_4_4_n_0;
+  wire LTS_I_BUFFER_reg_0_63_5_5_n_0;
+  wire LTS_I_BUFFER_reg_0_63_6_6_n_0;
+  wire LTS_I_BUFFER_reg_0_63_7_7_n_0;
+  wire LTS_I_BUFFER_reg_0_63_8_8_n_0;
+  wire LTS_I_BUFFER_reg_0_63_9_9_n_0;
   wire LTS_Q_BUFFER_reg_0_63_0_0_n_0;
   wire LTS_Q_BUFFER_reg_0_63_10_10_n_0;
   wire LTS_Q_BUFFER_reg_0_63_11_11_n_0;
@@ -1404,41 +1121,49 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   wire [19:0]ROTATION_PHASE_NEW_DIFF;
   wire [19:0]ROTATION_PHASE_NEW_DIFF0;
   wire ROTATION_PHASE_NEW_DIFF0_carry__0_i_10_n_0;
-  wire ROTATION_PHASE_NEW_DIFF0_carry__0_i_10_n_1;
-  wire ROTATION_PHASE_NEW_DIFF0_carry__0_i_10_n_2;
-  wire ROTATION_PHASE_NEW_DIFF0_carry__0_i_10_n_3;
   wire ROTATION_PHASE_NEW_DIFF0_carry__0_i_11_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry__0_i_12_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry__0_i_13_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry__0_i_14_n_0;
+  wire ROTATION_PHASE_NEW_DIFF0_carry__0_i_14_n_1;
+  wire ROTATION_PHASE_NEW_DIFF0_carry__0_i_14_n_2;
+  wire ROTATION_PHASE_NEW_DIFF0_carry__0_i_14_n_3;
+  wire ROTATION_PHASE_NEW_DIFF0_carry__0_i_15_n_0;
+  wire ROTATION_PHASE_NEW_DIFF0_carry__0_i_16_n_0;
+  wire ROTATION_PHASE_NEW_DIFF0_carry__0_i_17_n_0;
+  wire ROTATION_PHASE_NEW_DIFF0_carry__0_i_18_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry__0_i_1_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry__0_i_2_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry__0_i_3_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry__0_i_4_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry__0_i_5_n_0;
-  wire ROTATION_PHASE_NEW_DIFF0_carry__0_i_5_n_1;
-  wire ROTATION_PHASE_NEW_DIFF0_carry__0_i_5_n_2;
-  wire ROTATION_PHASE_NEW_DIFF0_carry__0_i_5_n_3;
   wire ROTATION_PHASE_NEW_DIFF0_carry__0_i_6_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry__0_i_7_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry__0_i_8_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry__0_i_9_n_0;
+  wire ROTATION_PHASE_NEW_DIFF0_carry__0_i_9_n_1;
+  wire ROTATION_PHASE_NEW_DIFF0_carry__0_i_9_n_2;
+  wire ROTATION_PHASE_NEW_DIFF0_carry__0_i_9_n_3;
   wire ROTATION_PHASE_NEW_DIFF0_carry__0_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry__0_n_1;
   wire ROTATION_PHASE_NEW_DIFF0_carry__0_n_2;
   wire ROTATION_PHASE_NEW_DIFF0_carry__0_n_3;
+  wire ROTATION_PHASE_NEW_DIFF0_carry__1_i_10_n_0;
+  wire ROTATION_PHASE_NEW_DIFF0_carry__1_i_11_n_0;
+  wire ROTATION_PHASE_NEW_DIFF0_carry__1_i_12_n_0;
+  wire ROTATION_PHASE_NEW_DIFF0_carry__1_i_13_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry__1_i_1_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry__1_i_2_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry__1_i_3_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry__1_i_4_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry__1_i_5_n_0;
-  wire ROTATION_PHASE_NEW_DIFF0_carry__1_i_5_n_1;
-  wire ROTATION_PHASE_NEW_DIFF0_carry__1_i_5_n_2;
-  wire ROTATION_PHASE_NEW_DIFF0_carry__1_i_5_n_3;
   wire ROTATION_PHASE_NEW_DIFF0_carry__1_i_6_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry__1_i_7_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry__1_i_8_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry__1_i_9_n_0;
+  wire ROTATION_PHASE_NEW_DIFF0_carry__1_i_9_n_1;
+  wire ROTATION_PHASE_NEW_DIFF0_carry__1_i_9_n_2;
+  wire ROTATION_PHASE_NEW_DIFF0_carry__1_i_9_n_3;
   wire ROTATION_PHASE_NEW_DIFF0_carry__1_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry__1_n_1;
   wire ROTATION_PHASE_NEW_DIFF0_carry__1_n_2;
@@ -1449,6 +1174,8 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   wire ROTATION_PHASE_NEW_DIFF0_carry__2_i_4_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry__2_i_5_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry__2_i_6_n_0;
+  wire ROTATION_PHASE_NEW_DIFF0_carry__2_i_7_n_0;
+  wire ROTATION_PHASE_NEW_DIFF0_carry__2_i_8_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry__2_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry__2_n_1;
   wire ROTATION_PHASE_NEW_DIFF0_carry__2_n_2;
@@ -1464,44 +1191,46 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   wire ROTATION_PHASE_NEW_DIFF0_carry__3_n_2;
   wire ROTATION_PHASE_NEW_DIFF0_carry__3_n_3;
   wire ROTATION_PHASE_NEW_DIFF0_carry_i_10_n_0;
+  wire ROTATION_PHASE_NEW_DIFF0_carry_i_10_n_1;
+  wire ROTATION_PHASE_NEW_DIFF0_carry_i_10_n_2;
+  wire ROTATION_PHASE_NEW_DIFF0_carry_i_10_n_3;
   wire ROTATION_PHASE_NEW_DIFF0_carry_i_11_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry_i_12_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry_i_13_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry_i_14_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry_i_15_n_0;
+  wire ROTATION_PHASE_NEW_DIFF0_carry_i_15_n_1;
+  wire ROTATION_PHASE_NEW_DIFF0_carry_i_15_n_2;
+  wire ROTATION_PHASE_NEW_DIFF0_carry_i_15_n_3;
   wire ROTATION_PHASE_NEW_DIFF0_carry_i_16_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry_i_17_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry_i_18_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry_i_19_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry_i_1_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry_i_20_n_0;
+  wire ROTATION_PHASE_NEW_DIFF0_carry_i_20_n_1;
+  wire ROTATION_PHASE_NEW_DIFF0_carry_i_20_n_2;
+  wire ROTATION_PHASE_NEW_DIFF0_carry_i_20_n_3;
   wire ROTATION_PHASE_NEW_DIFF0_carry_i_21_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry_i_22_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry_i_23_n_0;
-  wire ROTATION_PHASE_NEW_DIFF0_carry_i_23_n_1;
-  wire ROTATION_PHASE_NEW_DIFF0_carry_i_23_n_2;
-  wire ROTATION_PHASE_NEW_DIFF0_carry_i_23_n_3;
   wire ROTATION_PHASE_NEW_DIFF0_carry_i_24_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry_i_25_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry_i_26_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry_i_27_n_0;
+  wire ROTATION_PHASE_NEW_DIFF0_carry_i_28_n_0;
+  wire ROTATION_PHASE_NEW_DIFF0_carry_i_29_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry_i_2_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry_i_3_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry_i_4_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry_i_5_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry_i_6_n_0;
-  wire ROTATION_PHASE_NEW_DIFF0_carry_i_6_n_1;
-  wire ROTATION_PHASE_NEW_DIFF0_carry_i_6_n_2;
-  wire ROTATION_PHASE_NEW_DIFF0_carry_i_6_n_3;
   wire ROTATION_PHASE_NEW_DIFF0_carry_i_7_n_0;
-  wire ROTATION_PHASE_NEW_DIFF0_carry_i_7_n_1;
-  wire ROTATION_PHASE_NEW_DIFF0_carry_i_7_n_2;
-  wire ROTATION_PHASE_NEW_DIFF0_carry_i_7_n_3;
   wire ROTATION_PHASE_NEW_DIFF0_carry_i_8_n_0;
-  wire ROTATION_PHASE_NEW_DIFF0_carry_i_8_n_1;
-  wire ROTATION_PHASE_NEW_DIFF0_carry_i_8_n_2;
-  wire ROTATION_PHASE_NEW_DIFF0_carry_i_8_n_3;
   wire ROTATION_PHASE_NEW_DIFF0_carry_i_9_n_0;
+  wire ROTATION_PHASE_NEW_DIFF0_carry_i_9_n_1;
+  wire ROTATION_PHASE_NEW_DIFF0_carry_i_9_n_2;
+  wire ROTATION_PHASE_NEW_DIFF0_carry_i_9_n_3;
   wire ROTATION_PHASE_NEW_DIFF0_carry_n_0;
   wire ROTATION_PHASE_NEW_DIFF0_carry_n_1;
   wire ROTATION_PHASE_NEW_DIFF0_carry_n_2;
@@ -1522,6 +1251,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   wire \RX_STATE0_inferred__0/i__carry__1_n_1 ;
   wire \RX_STATE0_inferred__0/i__carry__1_n_2 ;
   wire \RX_STATE0_inferred__0/i__carry__1_n_3 ;
+  wire \RX_STATE0_inferred__0/i__carry__2_n_0 ;
   wire \RX_STATE0_inferred__0/i__carry__2_n_1 ;
   wire \RX_STATE0_inferred__0/i__carry__2_n_2 ;
   wire \RX_STATE0_inferred__0/i__carry__2_n_3 ;
@@ -1529,22 +1259,6 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   wire \RX_STATE0_inferred__0/i__carry_n_1 ;
   wire \RX_STATE0_inferred__0/i__carry_n_2 ;
   wire \RX_STATE0_inferred__0/i__carry_n_3 ;
-  wire \RX_STATE0_inferred__1/i__carry__0_n_0 ;
-  wire \RX_STATE0_inferred__1/i__carry__0_n_1 ;
-  wire \RX_STATE0_inferred__1/i__carry__0_n_2 ;
-  wire \RX_STATE0_inferred__1/i__carry__0_n_3 ;
-  wire \RX_STATE0_inferred__1/i__carry__1_n_0 ;
-  wire \RX_STATE0_inferred__1/i__carry__1_n_1 ;
-  wire \RX_STATE0_inferred__1/i__carry__1_n_2 ;
-  wire \RX_STATE0_inferred__1/i__carry__1_n_3 ;
-  wire \RX_STATE0_inferred__1/i__carry__2_n_0 ;
-  wire \RX_STATE0_inferred__1/i__carry__2_n_1 ;
-  wire \RX_STATE0_inferred__1/i__carry__2_n_2 ;
-  wire \RX_STATE0_inferred__1/i__carry__2_n_3 ;
-  wire \RX_STATE0_inferred__1/i__carry_n_0 ;
-  wire \RX_STATE0_inferred__1/i__carry_n_1 ;
-  wire \RX_STATE0_inferred__1/i__carry_n_2 ;
-  wire \RX_STATE0_inferred__1/i__carry_n_3 ;
   wire [2:2]RX_STATE__0;
   wire [2:0]RX_STATE_reg;
   wire \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[12]_i_2_n_0 ;
@@ -1585,33 +1299,105 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   wire \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[8]_i_1_n_1 ;
   wire \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[8]_i_1_n_2 ;
   wire \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[8]_i_1_n_3 ;
-  wire \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[0] ;
-  wire \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[10] ;
-  wire \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[11] ;
-  wire \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[12] ;
-  wire \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[13] ;
-  wire \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[14] ;
-  wire \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[15] ;
-  wire \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[16] ;
-  wire \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[17] ;
-  wire \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[18] ;
-  wire \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[19] ;
-  wire \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[1] ;
-  wire \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[2] ;
-  wire \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[3] ;
-  wire \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[4] ;
-  wire \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[5] ;
-  wire \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[6] ;
-  wire \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[7] ;
-  wire \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[8] ;
-  wire \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[9] ;
   wire STOP_RX_DONE;
+  wire [19:0]VAR_AUTOCORR_PHASE_1SAMPLE;
   wire [15:1]VAR_AUTOCORR_PHASE_1SAMPLE2;
   wire [19:4]VAR_AUTOCORR_PHASE_1SAMPLE4;
+  wire [1:0]VAR_COMPLETE_COMPUTATION;
+  wire \_inferred__15/i__carry__0_n_0 ;
+  wire \_inferred__15/i__carry__0_n_1 ;
+  wire \_inferred__15/i__carry__0_n_2 ;
+  wire \_inferred__15/i__carry__0_n_3 ;
+  wire \_inferred__15/i__carry__1_n_0 ;
+  wire \_inferred__15/i__carry__1_n_1 ;
+  wire \_inferred__15/i__carry__1_n_2 ;
+  wire \_inferred__15/i__carry__1_n_3 ;
+  wire \_inferred__15/i__carry__2_n_0 ;
+  wire \_inferred__15/i__carry__2_n_1 ;
+  wire \_inferred__15/i__carry__2_n_2 ;
+  wire \_inferred__15/i__carry__2_n_3 ;
+  wire \_inferred__15/i__carry__3_n_0 ;
+  wire \_inferred__15/i__carry__3_n_1 ;
+  wire \_inferred__15/i__carry__3_n_2 ;
+  wire \_inferred__15/i__carry__3_n_3 ;
+  wire \_inferred__15/i__carry__4_n_0 ;
+  wire \_inferred__15/i__carry__4_n_1 ;
+  wire \_inferred__15/i__carry__4_n_2 ;
+  wire \_inferred__15/i__carry__4_n_3 ;
+  wire \_inferred__15/i__carry__5_n_0 ;
+  wire \_inferred__15/i__carry__5_n_1 ;
+  wire \_inferred__15/i__carry__5_n_2 ;
+  wire \_inferred__15/i__carry__5_n_3 ;
+  wire \_inferred__15/i__carry__6_n_1 ;
+  wire \_inferred__15/i__carry__6_n_2 ;
+  wire \_inferred__15/i__carry__6_n_3 ;
+  wire \_inferred__15/i__carry_n_0 ;
+  wire \_inferred__15/i__carry_n_1 ;
+  wire \_inferred__15/i__carry_n_2 ;
+  wire \_inferred__15/i__carry_n_3 ;
+  wire \_inferred__20/i__carry__0_n_0 ;
+  wire \_inferred__20/i__carry__0_n_1 ;
+  wire \_inferred__20/i__carry__0_n_2 ;
+  wire \_inferred__20/i__carry__0_n_3 ;
+  wire \_inferred__20/i__carry__0_n_4 ;
+  wire \_inferred__20/i__carry__0_n_5 ;
+  wire \_inferred__20/i__carry__0_n_6 ;
+  wire \_inferred__20/i__carry__0_n_7 ;
+  wire \_inferred__20/i__carry__1_n_0 ;
+  wire \_inferred__20/i__carry__1_n_1 ;
+  wire \_inferred__20/i__carry__1_n_2 ;
+  wire \_inferred__20/i__carry__1_n_3 ;
+  wire \_inferred__20/i__carry__1_n_4 ;
+  wire \_inferred__20/i__carry__1_n_5 ;
+  wire \_inferred__20/i__carry__1_n_6 ;
+  wire \_inferred__20/i__carry__1_n_7 ;
+  wire \_inferred__20/i__carry__2_n_0 ;
+  wire \_inferred__20/i__carry__2_n_1 ;
+  wire \_inferred__20/i__carry__2_n_2 ;
+  wire \_inferred__20/i__carry__2_n_3 ;
+  wire \_inferred__20/i__carry__2_n_4 ;
+  wire \_inferred__20/i__carry__2_n_5 ;
+  wire \_inferred__20/i__carry__2_n_6 ;
+  wire \_inferred__20/i__carry__2_n_7 ;
+  wire \_inferred__20/i__carry__3_n_0 ;
+  wire \_inferred__20/i__carry__3_n_1 ;
+  wire \_inferred__20/i__carry__3_n_2 ;
+  wire \_inferred__20/i__carry__3_n_3 ;
+  wire \_inferred__20/i__carry__3_n_4 ;
+  wire \_inferred__20/i__carry__3_n_5 ;
+  wire \_inferred__20/i__carry__3_n_6 ;
+  wire \_inferred__20/i__carry__3_n_7 ;
+  wire \_inferred__20/i__carry__4_n_0 ;
+  wire \_inferred__20/i__carry__4_n_1 ;
+  wire \_inferred__20/i__carry__4_n_2 ;
+  wire \_inferred__20/i__carry__4_n_3 ;
+  wire \_inferred__20/i__carry__4_n_4 ;
+  wire \_inferred__20/i__carry__4_n_5 ;
+  wire \_inferred__20/i__carry__4_n_6 ;
+  wire \_inferred__20/i__carry__4_n_7 ;
+  wire \_inferred__20/i__carry__5_n_0 ;
+  wire \_inferred__20/i__carry__5_n_1 ;
+  wire \_inferred__20/i__carry__5_n_2 ;
+  wire \_inferred__20/i__carry__5_n_3 ;
+  wire \_inferred__20/i__carry__5_n_4 ;
+  wire \_inferred__20/i__carry__5_n_5 ;
+  wire \_inferred__20/i__carry__5_n_6 ;
+  wire \_inferred__20/i__carry__5_n_7 ;
+  wire \_inferred__20/i__carry__6_n_1 ;
+  wire \_inferred__20/i__carry__6_n_2 ;
+  wire \_inferred__20/i__carry__6_n_3 ;
+  wire \_inferred__20/i__carry__6_n_6 ;
+  wire \_inferred__20/i__carry__6_n_7 ;
+  wire \_inferred__20/i__carry_n_0 ;
+  wire \_inferred__20/i__carry_n_1 ;
+  wire \_inferred__20/i__carry_n_2 ;
+  wire \_inferred__20/i__carry_n_3 ;
+  wire \_inferred__20/i__carry_n_4 ;
+  wire \_inferred__20/i__carry_n_5 ;
+  wire \_inferred__20/i__carry_n_6 ;
+  wire \_inferred__20/i__carry_n_7 ;
   wire \compute_lts_autocorr_process.VAR_COMPLETE_COMPUTATION[0]_i_1_n_0 ;
   wire \compute_lts_autocorr_process.VAR_COMPLETE_COMPUTATION[1]_i_1_n_0 ;
-  wire \compute_lts_autocorr_process.VAR_COMPLETE_COMPUTATION_reg_n_0_[0] ;
-  wire \compute_lts_autocorr_process.VAR_COMPLETE_COMPUTATION_reg_n_0_[1] ;
   wire [31:1]data0;
   wire i__carry__0_i_1__0_n_0;
   wire i__carry__0_i_1__1_n_0;
@@ -1629,11 +1415,14 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   wire i__carry__0_i_5__0_n_1;
   wire i__carry__0_i_5__0_n_2;
   wire i__carry__0_i_5__0_n_3;
-  wire i__carry__0_i_5__0_n_4;
-  wire i__carry__0_i_5__0_n_5;
-  wire i__carry__0_i_5__0_n_6;
-  wire i__carry__0_i_5__0_n_7;
   wire i__carry__0_i_5__1_n_0;
+  wire i__carry__0_i_5__1_n_1;
+  wire i__carry__0_i_5__1_n_2;
+  wire i__carry__0_i_5__1_n_3;
+  wire i__carry__0_i_5__1_n_4;
+  wire i__carry__0_i_5__1_n_5;
+  wire i__carry__0_i_5__1_n_6;
+  wire i__carry__0_i_5__1_n_7;
   wire i__carry__0_i_5_n_0;
   wire i__carry__0_i_6__0_n_0;
   wire i__carry__0_i_6__1_n_0;
@@ -1644,6 +1433,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   wire i__carry__0_i_8__0_n_0;
   wire i__carry__0_i_8__1_n_0;
   wire i__carry__0_i_8_n_0;
+  wire i__carry__0_i_9__0_n_0;
   wire i__carry__0_i_9_n_0;
   wire i__carry__1_i_1__0_n_0;
   wire i__carry__1_i_1__1_n_0;
@@ -1661,11 +1451,14 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   wire i__carry__1_i_5__0_n_1;
   wire i__carry__1_i_5__0_n_2;
   wire i__carry__1_i_5__0_n_3;
-  wire i__carry__1_i_5__0_n_4;
-  wire i__carry__1_i_5__0_n_5;
-  wire i__carry__1_i_5__0_n_6;
-  wire i__carry__1_i_5__0_n_7;
   wire i__carry__1_i_5__1_n_0;
+  wire i__carry__1_i_5__1_n_1;
+  wire i__carry__1_i_5__1_n_2;
+  wire i__carry__1_i_5__1_n_3;
+  wire i__carry__1_i_5__1_n_4;
+  wire i__carry__1_i_5__1_n_5;
+  wire i__carry__1_i_5__1_n_6;
+  wire i__carry__1_i_5__1_n_7;
   wire i__carry__1_i_5_n_0;
   wire i__carry__1_i_6__0_n_0;
   wire i__carry__1_i_6__1_n_0;
@@ -1676,6 +1469,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   wire i__carry__1_i_8__0_n_0;
   wire i__carry__1_i_8__1_n_0;
   wire i__carry__1_i_8_n_0;
+  wire i__carry__1_i_9__0_n_0;
   wire i__carry__1_i_9_n_0;
   wire i__carry__2_i_1__0_n_0;
   wire i__carry__2_i_1__1_n_0;
@@ -1693,11 +1487,14 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   wire i__carry__2_i_5__0_n_1;
   wire i__carry__2_i_5__0_n_2;
   wire i__carry__2_i_5__0_n_3;
-  wire i__carry__2_i_5__0_n_4;
-  wire i__carry__2_i_5__0_n_5;
-  wire i__carry__2_i_5__0_n_6;
-  wire i__carry__2_i_5__0_n_7;
   wire i__carry__2_i_5__1_n_0;
+  wire i__carry__2_i_5__1_n_1;
+  wire i__carry__2_i_5__1_n_2;
+  wire i__carry__2_i_5__1_n_3;
+  wire i__carry__2_i_5__1_n_4;
+  wire i__carry__2_i_5__1_n_5;
+  wire i__carry__2_i_5__1_n_6;
+  wire i__carry__2_i_5__1_n_7;
   wire i__carry__2_i_5_n_0;
   wire i__carry__2_i_6__0_n_0;
   wire i__carry__2_i_6__1_n_0;
@@ -1708,66 +1505,112 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   wire i__carry__2_i_8__0_n_0;
   wire i__carry__2_i_8__1_n_0;
   wire i__carry__2_i_8_n_0;
+  wire i__carry__2_i_9__0_n_0;
   wire i__carry__2_i_9_n_0;
+  wire i__carry__3_i_1__0_n_0;
   wire i__carry__3_i_1_n_0;
+  wire i__carry__3_i_2__0_n_0;
   wire i__carry__3_i_2_n_0;
+  wire i__carry__3_i_3__0_n_0;
   wire i__carry__3_i_3_n_0;
+  wire i__carry__3_i_4__0_n_0;
   wire i__carry__3_i_4_n_0;
+  wire i__carry__3_i_5__0_n_0;
+  wire i__carry__3_i_5__0_n_1;
+  wire i__carry__3_i_5__0_n_2;
+  wire i__carry__3_i_5__0_n_3;
+  wire i__carry__3_i_5__0_n_4;
+  wire i__carry__3_i_5__0_n_5;
+  wire i__carry__3_i_5__0_n_6;
+  wire i__carry__3_i_5__0_n_7;
   wire i__carry__3_i_5_n_0;
   wire i__carry__3_i_5_n_1;
   wire i__carry__3_i_5_n_2;
   wire i__carry__3_i_5_n_3;
-  wire i__carry__3_i_5_n_4;
-  wire i__carry__3_i_5_n_5;
-  wire i__carry__3_i_5_n_6;
-  wire i__carry__3_i_5_n_7;
+  wire i__carry__3_i_6__0_n_0;
   wire i__carry__3_i_6_n_0;
+  wire i__carry__3_i_7__0_n_0;
   wire i__carry__3_i_7_n_0;
+  wire i__carry__3_i_8__0_n_0;
   wire i__carry__3_i_8_n_0;
+  wire i__carry__3_i_9__0_n_0;
   wire i__carry__3_i_9_n_0;
+  wire i__carry__4_i_1__0_n_0;
   wire i__carry__4_i_1_n_0;
+  wire i__carry__4_i_2__0_n_0;
   wire i__carry__4_i_2_n_0;
+  wire i__carry__4_i_3__0_n_0;
   wire i__carry__4_i_3_n_0;
+  wire i__carry__4_i_4__0_n_0;
   wire i__carry__4_i_4_n_0;
+  wire i__carry__4_i_5__0_n_0;
+  wire i__carry__4_i_5__0_n_1;
+  wire i__carry__4_i_5__0_n_2;
+  wire i__carry__4_i_5__0_n_3;
+  wire i__carry__4_i_5__0_n_4;
+  wire i__carry__4_i_5__0_n_5;
+  wire i__carry__4_i_5__0_n_6;
+  wire i__carry__4_i_5__0_n_7;
   wire i__carry__4_i_5_n_0;
   wire i__carry__4_i_5_n_1;
   wire i__carry__4_i_5_n_2;
   wire i__carry__4_i_5_n_3;
-  wire i__carry__4_i_5_n_4;
-  wire i__carry__4_i_5_n_5;
-  wire i__carry__4_i_5_n_6;
-  wire i__carry__4_i_5_n_7;
+  wire i__carry__4_i_6__0_n_0;
   wire i__carry__4_i_6_n_0;
+  wire i__carry__4_i_7__0_n_0;
   wire i__carry__4_i_7_n_0;
+  wire i__carry__4_i_8__0_n_0;
   wire i__carry__4_i_8_n_0;
+  wire i__carry__4_i_9__0_n_0;
   wire i__carry__4_i_9_n_0;
+  wire i__carry__5_i_1__0_n_0;
   wire i__carry__5_i_1_n_0;
+  wire i__carry__5_i_2__0_n_0;
   wire i__carry__5_i_2_n_0;
+  wire i__carry__5_i_3__0_n_0;
   wire i__carry__5_i_3_n_0;
+  wire i__carry__5_i_4__0_n_0;
   wire i__carry__5_i_4_n_0;
+  wire i__carry__5_i_5__0_n_0;
+  wire i__carry__5_i_5__0_n_1;
+  wire i__carry__5_i_5__0_n_2;
+  wire i__carry__5_i_5__0_n_3;
+  wire i__carry__5_i_5__0_n_4;
+  wire i__carry__5_i_5__0_n_5;
+  wire i__carry__5_i_5__0_n_6;
+  wire i__carry__5_i_5__0_n_7;
   wire i__carry__5_i_5_n_0;
   wire i__carry__5_i_5_n_1;
   wire i__carry__5_i_5_n_2;
   wire i__carry__5_i_5_n_3;
-  wire i__carry__5_i_5_n_4;
-  wire i__carry__5_i_5_n_5;
-  wire i__carry__5_i_5_n_6;
-  wire i__carry__5_i_5_n_7;
+  wire i__carry__5_i_6__0_n_0;
   wire i__carry__5_i_6_n_0;
+  wire i__carry__5_i_7__0_n_0;
   wire i__carry__5_i_7_n_0;
+  wire i__carry__5_i_8__0_n_0;
   wire i__carry__5_i_8_n_0;
+  wire i__carry__5_i_9__0_n_0;
   wire i__carry__5_i_9_n_0;
+  wire i__carry__6_i_1__0_n_0;
   wire i__carry__6_i_1_n_0;
+  wire i__carry__6_i_2__0_n_0;
   wire i__carry__6_i_2_n_0;
+  wire i__carry__6_i_3__0_n_0;
   wire i__carry__6_i_3_n_0;
+  wire i__carry__6_i_4__0_n_2;
+  wire i__carry__6_i_4__0_n_3;
+  wire i__carry__6_i_4__0_n_5;
+  wire i__carry__6_i_4__0_n_6;
+  wire i__carry__6_i_4__0_n_7;
   wire i__carry__6_i_4_n_2;
   wire i__carry__6_i_4_n_3;
-  wire i__carry__6_i_4_n_5;
-  wire i__carry__6_i_4_n_6;
-  wire i__carry__6_i_4_n_7;
+  wire i__carry__6_i_5__0_n_0;
   wire i__carry__6_i_5_n_0;
+  wire i__carry__6_i_6__0_n_0;
   wire i__carry__6_i_6_n_0;
+  wire i__carry__6_i_7__0_n_0;
   wire i__carry__6_i_7_n_0;
+  wire i__carry_i_10__0_n_0;
   wire i__carry_i_10_n_0;
   wire i__carry_i_1__0_n_0;
   wire i__carry_i_1__1_n_0;
@@ -1788,47 +1631,41 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   wire i__carry_i_6__0_n_1;
   wire i__carry_i_6__0_n_2;
   wire i__carry_i_6__0_n_3;
-  wire i__carry_i_6__0_n_4;
-  wire i__carry_i_6__0_n_5;
-  wire i__carry_i_6__0_n_6;
-  wire i__carry_i_6__0_n_7;
   wire i__carry_i_6__1_n_0;
+  wire i__carry_i_6__1_n_1;
+  wire i__carry_i_6__1_n_2;
+  wire i__carry_i_6__1_n_3;
+  wire i__carry_i_6__1_n_4;
+  wire i__carry_i_6__1_n_5;
+  wire i__carry_i_6__1_n_6;
+  wire i__carry_i_6__1_n_7;
   wire i__carry_i_6_n_0;
   wire i__carry_i_7__0_n_0;
   wire i__carry_i_7__1_n_0;
   wire i__carry_i_7_n_0;
   wire i__carry_i_8__0_n_0;
+  wire i__carry_i_8__1_n_0;
   wire i__carry_i_8_n_0;
+  wire i__carry_i_9__0_n_0;
   wire i__carry_i_9_n_0;
-  wire [31:1]in17;
-  wire [19:1]in27;
+  wire [19:1]in25;
   wire p_0_in;
-  wire p_0_in_0;
   wire [0:0]p_2_in;
-  wire [15:0]p_2_out;
-  wire [3:3]NLW_ARG0_carry__6_CO_UNCONNECTED;
-  wire [3:2]NLW_ARG0_carry__6_O_UNCONNECTED;
-  wire [3:2]NLW_ARG0_carry__6_i_4_CO_UNCONNECTED;
-  wire [3:3]NLW_ARG0_carry__6_i_4_O_UNCONNECTED;
-  wire [3:3]\NLW_ARG0_inferred__0/i__carry__6_CO_UNCONNECTED ;
-  wire [3:2]\NLW_ARG0_inferred__0/i__carry__6_O_UNCONNECTED ;
   wire [2:0]\NLW_ATAN_AUTOCORR_I_reg[0]_i_2_O_UNCONNECTED ;
   wire [3:0]\NLW_ATAN_AUTOCORR_I_reg[0]_i_3_O_UNCONNECTED ;
   wire [2:0]\NLW_ATAN_AUTOCORR_Q_reg[0]_i_2_O_UNCONNECTED ;
   wire [3:0]\NLW_ATAN_AUTOCORR_Q_reg[0]_i_3_O_UNCONNECTED ;
   wire [3:2]\NLW_COUNTER_IQ0_inferred__1/i__carry__6_CO_UNCONNECTED ;
   wire [3:3]\NLW_COUNTER_IQ0_inferred__1/i__carry__6_O_UNCONNECTED ;
-  wire [3:2]\NLW_COUNTER_OFDM_SYMBOL_reg[31]_i_3_CO_UNCONNECTED ;
-  wire [3:3]\NLW_COUNTER_OFDM_SYMBOL_reg[31]_i_3_O_UNCONNECTED ;
   wire [3:2]\NLW_COUNTER_reg[31]_i_3_CO_UNCONNECTED ;
   wire [3:3]\NLW_COUNTER_reg[31]_i_3_O_UNCONNECTED ;
-  wire [2:0]\NLW_FPGA_REG_WRITE_DATA_reg[0]_i_2_O_UNCONNECTED ;
+  wire [2:0]\NLW_FPGA_REG_WRITE_DATA_reg[0]_i_3_O_UNCONNECTED ;
   wire [3:2]\NLW_FPGA_REG_WRITE_DATA_reg[19]_i_10_CO_UNCONNECTED ;
   wire [3:3]\NLW_FPGA_REG_WRITE_DATA_reg[19]_i_10_O_UNCONNECTED ;
-  wire [2:2]\NLW_FPGA_REG_WRITE_DATA_reg[19]_i_2_CO_UNCONNECTED ;
-  wire [3:3]\NLW_FPGA_REG_WRITE_DATA_reg[19]_i_2_O_UNCONNECTED ;
-  wire [3:0]\NLW_FPGA_REG_WRITE_DATA_reg[19]_i_3_CO_UNCONNECTED ;
-  wire [3:1]\NLW_FPGA_REG_WRITE_DATA_reg[19]_i_3_O_UNCONNECTED ;
+  wire [3:0]\NLW_FPGA_REG_WRITE_DATA_reg[19]_i_2_CO_UNCONNECTED ;
+  wire [3:1]\NLW_FPGA_REG_WRITE_DATA_reg[19]_i_2_O_UNCONNECTED ;
+  wire [2:2]\NLW_FPGA_REG_WRITE_DATA_reg[19]_i_4_CO_UNCONNECTED ;
+  wire [3:3]\NLW_FPGA_REG_WRITE_DATA_reg[19]_i_4_O_UNCONNECTED ;
   wire [3:2]\NLW_FPGA_REG_WRITE_DATA_reg[19]_i_9_CO_UNCONNECTED ;
   wire [3:3]\NLW_FPGA_REG_WRITE_DATA_reg[19]_i_9_O_UNCONNECTED ;
   wire NLW_LTS_AUTOCORR_ADD_REG_I_reg_CARRYCASCOUT_UNCONNECTED;
@@ -1881,914 +1718,362 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   wire [47:0]NLW_LTS_AUTOCORR_MULT_REG_QI_reg_P_UNCONNECTED;
   wire [3:3]NLW_LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_CO_UNCONNECTED;
   wire [3:3]NLW_ROTATION_PHASE_NEW_DIFF0_carry__3_CO_UNCONNECTED;
-  wire [0:0]NLW_ROTATION_PHASE_NEW_DIFF0_carry_i_6_O_UNCONNECTED;
-  wire [3:0]NLW_ROTATION_PHASE_NEW_DIFF0_carry_i_8_O_UNCONNECTED;
+  wire [0:0]NLW_ROTATION_PHASE_NEW_DIFF0_carry_i_10_O_UNCONNECTED;
+  wire [3:0]NLW_ROTATION_PHASE_NEW_DIFF0_carry_i_15_O_UNCONNECTED;
   wire [3:0]\NLW_RX_STATE0_inferred__0/i__carry_O_UNCONNECTED ;
   wire [3:0]\NLW_RX_STATE0_inferred__0/i__carry__0_O_UNCONNECTED ;
   wire [3:0]\NLW_RX_STATE0_inferred__0/i__carry__1_O_UNCONNECTED ;
   wire [3:0]\NLW_RX_STATE0_inferred__0/i__carry__2_O_UNCONNECTED ;
-  wire [3:0]\NLW_RX_STATE0_inferred__1/i__carry_O_UNCONNECTED ;
-  wire [3:0]\NLW_RX_STATE0_inferred__1/i__carry__0_O_UNCONNECTED ;
-  wire [3:0]\NLW_RX_STATE0_inferred__1/i__carry__1_O_UNCONNECTED ;
-  wire [3:0]\NLW_RX_STATE0_inferred__1/i__carry__2_O_UNCONNECTED ;
   wire [3:2]\NLW_RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[19]_i_1_CO_UNCONNECTED ;
   wire [3:3]\NLW_RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[19]_i_1_O_UNCONNECTED ;
+  wire [3:3]\NLW__inferred__15/i__carry__6_CO_UNCONNECTED ;
+  wire [3:2]\NLW__inferred__15/i__carry__6_O_UNCONNECTED ;
+  wire [3:3]\NLW__inferred__20/i__carry__6_CO_UNCONNECTED ;
+  wire [3:2]\NLW__inferred__20/i__carry__6_O_UNCONNECTED ;
   wire [3:2]NLW_i__carry__6_i_4_CO_UNCONNECTED;
   wire [3:3]NLW_i__carry__6_i_4_O_UNCONNECTED;
+  wire [3:2]NLW_i__carry__6_i_4__0_CO_UNCONNECTED;
+  wire [3:3]NLW_i__carry__6_i_4__0_O_UNCONNECTED;
 
-  CARRY4 ARG0_carry
-       (.CI(1'b0),
-        .CO({ARG0_carry_n_0,ARG0_carry_n_1,ARG0_carry_n_2,ARG0_carry_n_3}),
-        .CYINIT(ARG0_carry_i_1_n_0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(ARG0[4:1]),
-        .S({ARG0_carry_i_2_n_0,ARG0_carry_i_3_n_0,ARG0_carry_i_4_n_0,ARG0_carry_i_5_n_0}));
-  CARRY4 ARG0_carry__0
-       (.CI(ARG0_carry_n_0),
-        .CO({ARG0_carry__0_n_0,ARG0_carry__0_n_1,ARG0_carry__0_n_2,ARG0_carry__0_n_3}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(ARG0[8:5]),
-        .S({ARG0_carry__0_i_1_n_0,ARG0_carry__0_i_2_n_0,ARG0_carry__0_i_3_n_0,ARG0_carry__0_i_4_n_0}));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ARG0_carry__0_i_1
-       (.I0(ARG2[16]),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[16] ),
-        .O(ARG0_carry__0_i_1_n_0));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ARG0_carry__0_i_2
-       (.I0(ARG2[15]),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[15] ),
-        .O(ARG0_carry__0_i_2_n_0));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ARG0_carry__0_i_3
-       (.I0(ARG2[14]),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[14] ),
-        .O(ARG0_carry__0_i_3_n_0));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ARG0_carry__0_i_4
-       (.I0(ARG2[13]),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[13] ),
-        .O(ARG0_carry__0_i_4_n_0));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 ARG0_carry__0_i_5
-       (.CI(ARG0_carry_i_6_n_0),
-        .CO({ARG0_carry__0_i_5_n_0,ARG0_carry__0_i_5_n_1,ARG0_carry__0_i_5_n_2,ARG0_carry__0_i_5_n_3}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(ARG2[16:13]),
-        .S({ARG0_carry__0_i_6_n_0,ARG0_carry__0_i_7_n_0,ARG0_carry__0_i_8_n_0,ARG0_carry__0_i_9_n_0}));
-  LUT1 #(
-    .INIT(2'h1)) 
-    ARG0_carry__0_i_6
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[16] ),
-        .O(ARG0_carry__0_i_6_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    ARG0_carry__0_i_7
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[15] ),
-        .O(ARG0_carry__0_i_7_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    ARG0_carry__0_i_8
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[14] ),
-        .O(ARG0_carry__0_i_8_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    ARG0_carry__0_i_9
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[13] ),
-        .O(ARG0_carry__0_i_9_n_0));
-  CARRY4 ARG0_carry__1
-       (.CI(ARG0_carry__0_n_0),
-        .CO({ARG0_carry__1_n_0,ARG0_carry__1_n_1,ARG0_carry__1_n_2,ARG0_carry__1_n_3}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(ARG0[12:9]),
-        .S({ARG0_carry__1_i_1_n_0,ARG0_carry__1_i_2_n_0,ARG0_carry__1_i_3_n_0,ARG0_carry__1_i_4_n_0}));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ARG0_carry__1_i_1
-       (.I0(ARG2[20]),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[20] ),
-        .O(ARG0_carry__1_i_1_n_0));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ARG0_carry__1_i_2
-       (.I0(ARG2[19]),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[19] ),
-        .O(ARG0_carry__1_i_2_n_0));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ARG0_carry__1_i_3
-       (.I0(ARG2[18]),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[18] ),
-        .O(ARG0_carry__1_i_3_n_0));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ARG0_carry__1_i_4
-       (.I0(ARG2[17]),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[17] ),
-        .O(ARG0_carry__1_i_4_n_0));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 ARG0_carry__1_i_5
-       (.CI(ARG0_carry__0_i_5_n_0),
-        .CO({ARG0_carry__1_i_5_n_0,ARG0_carry__1_i_5_n_1,ARG0_carry__1_i_5_n_2,ARG0_carry__1_i_5_n_3}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(ARG2[20:17]),
-        .S({ARG0_carry__1_i_6_n_0,ARG0_carry__1_i_7_n_0,ARG0_carry__1_i_8_n_0,ARG0_carry__1_i_9_n_0}));
-  LUT1 #(
-    .INIT(2'h1)) 
-    ARG0_carry__1_i_6
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[20] ),
-        .O(ARG0_carry__1_i_6_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    ARG0_carry__1_i_7
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[19] ),
-        .O(ARG0_carry__1_i_7_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    ARG0_carry__1_i_8
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[18] ),
-        .O(ARG0_carry__1_i_8_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    ARG0_carry__1_i_9
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[17] ),
-        .O(ARG0_carry__1_i_9_n_0));
-  CARRY4 ARG0_carry__2
-       (.CI(ARG0_carry__1_n_0),
-        .CO({ARG0_carry__2_n_0,ARG0_carry__2_n_1,ARG0_carry__2_n_2,ARG0_carry__2_n_3}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(ARG0[16:13]),
-        .S({ARG0_carry__2_i_1_n_0,ARG0_carry__2_i_2_n_0,ARG0_carry__2_i_3_n_0,ARG0_carry__2_i_4_n_0}));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ARG0_carry__2_i_1
-       (.I0(ARG2[24]),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[24] ),
-        .O(ARG0_carry__2_i_1_n_0));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ARG0_carry__2_i_2
-       (.I0(ARG2[23]),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[23] ),
-        .O(ARG0_carry__2_i_2_n_0));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ARG0_carry__2_i_3
-       (.I0(ARG2[22]),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[22] ),
-        .O(ARG0_carry__2_i_3_n_0));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ARG0_carry__2_i_4
-       (.I0(ARG2[21]),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[21] ),
-        .O(ARG0_carry__2_i_4_n_0));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 ARG0_carry__2_i_5
-       (.CI(ARG0_carry__1_i_5_n_0),
-        .CO({ARG0_carry__2_i_5_n_0,ARG0_carry__2_i_5_n_1,ARG0_carry__2_i_5_n_2,ARG0_carry__2_i_5_n_3}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(ARG2[24:21]),
-        .S({ARG0_carry__2_i_6_n_0,ARG0_carry__2_i_7_n_0,ARG0_carry__2_i_8_n_0,ARG0_carry__2_i_9_n_0}));
-  LUT1 #(
-    .INIT(2'h1)) 
-    ARG0_carry__2_i_6
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[24] ),
-        .O(ARG0_carry__2_i_6_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    ARG0_carry__2_i_7
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[23] ),
-        .O(ARG0_carry__2_i_7_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    ARG0_carry__2_i_8
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[22] ),
-        .O(ARG0_carry__2_i_8_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    ARG0_carry__2_i_9
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[21] ),
-        .O(ARG0_carry__2_i_9_n_0));
-  CARRY4 ARG0_carry__3
-       (.CI(ARG0_carry__2_n_0),
-        .CO({ARG0_carry__3_n_0,ARG0_carry__3_n_1,ARG0_carry__3_n_2,ARG0_carry__3_n_3}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(ARG0[20:17]),
-        .S({ARG0_carry__3_i_1_n_0,ARG0_carry__3_i_2_n_0,ARG0_carry__3_i_3_n_0,ARG0_carry__3_i_4_n_0}));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ARG0_carry__3_i_1
-       (.I0(ARG2[28]),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[28] ),
-        .O(ARG0_carry__3_i_1_n_0));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ARG0_carry__3_i_2
-       (.I0(ARG2[27]),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[27] ),
-        .O(ARG0_carry__3_i_2_n_0));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ARG0_carry__3_i_3
-       (.I0(ARG2[26]),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[26] ),
-        .O(ARG0_carry__3_i_3_n_0));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ARG0_carry__3_i_4
-       (.I0(ARG2[25]),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[25] ),
-        .O(ARG0_carry__3_i_4_n_0));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 ARG0_carry__3_i_5
-       (.CI(ARG0_carry__2_i_5_n_0),
-        .CO({ARG0_carry__3_i_5_n_0,ARG0_carry__3_i_5_n_1,ARG0_carry__3_i_5_n_2,ARG0_carry__3_i_5_n_3}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(ARG2[28:25]),
-        .S({ARG0_carry__3_i_6_n_0,ARG0_carry__3_i_7_n_0,ARG0_carry__3_i_8_n_0,ARG0_carry__3_i_9_n_0}));
-  LUT1 #(
-    .INIT(2'h1)) 
-    ARG0_carry__3_i_6
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[28] ),
-        .O(ARG0_carry__3_i_6_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    ARG0_carry__3_i_7
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[27] ),
-        .O(ARG0_carry__3_i_7_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    ARG0_carry__3_i_8
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[26] ),
-        .O(ARG0_carry__3_i_8_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    ARG0_carry__3_i_9
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[25] ),
-        .O(ARG0_carry__3_i_9_n_0));
-  CARRY4 ARG0_carry__4
-       (.CI(ARG0_carry__3_n_0),
-        .CO({ARG0_carry__4_n_0,ARG0_carry__4_n_1,ARG0_carry__4_n_2,ARG0_carry__4_n_3}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(ARG0[24:21]),
-        .S({ARG0_carry__4_i_1_n_0,ARG0_carry__4_i_2_n_0,ARG0_carry__4_i_3_n_0,ARG0_carry__4_i_4_n_0}));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ARG0_carry__4_i_1
-       (.I0(ARG2[32]),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[32] ),
-        .O(ARG0_carry__4_i_1_n_0));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ARG0_carry__4_i_2
-       (.I0(ARG2[31]),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[31] ),
-        .O(ARG0_carry__4_i_2_n_0));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ARG0_carry__4_i_3
-       (.I0(ARG2[30]),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[30] ),
-        .O(ARG0_carry__4_i_3_n_0));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ARG0_carry__4_i_4
-       (.I0(ARG2[29]),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[29] ),
-        .O(ARG0_carry__4_i_4_n_0));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 ARG0_carry__4_i_5
-       (.CI(ARG0_carry__3_i_5_n_0),
-        .CO({ARG0_carry__4_i_5_n_0,ARG0_carry__4_i_5_n_1,ARG0_carry__4_i_5_n_2,ARG0_carry__4_i_5_n_3}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(ARG2[32:29]),
-        .S({ARG0_carry__4_i_6_n_0,ARG0_carry__4_i_7_n_0,ARG0_carry__4_i_8_n_0,ARG0_carry__4_i_9_n_0}));
-  LUT1 #(
-    .INIT(2'h1)) 
-    ARG0_carry__4_i_6
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[32] ),
-        .O(ARG0_carry__4_i_6_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    ARG0_carry__4_i_7
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[31] ),
-        .O(ARG0_carry__4_i_7_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    ARG0_carry__4_i_8
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[30] ),
-        .O(ARG0_carry__4_i_8_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    ARG0_carry__4_i_9
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[29] ),
-        .O(ARG0_carry__4_i_9_n_0));
-  CARRY4 ARG0_carry__5
-       (.CI(ARG0_carry__4_n_0),
-        .CO({ARG0_carry__5_n_0,ARG0_carry__5_n_1,ARG0_carry__5_n_2,ARG0_carry__5_n_3}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(ARG0[28:25]),
-        .S({ARG0_carry__5_i_1_n_0,ARG0_carry__5_i_2_n_0,ARG0_carry__5_i_3_n_0,ARG0_carry__5_i_4_n_0}));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ARG0_carry__5_i_1
-       (.I0(ARG2[36]),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[36] ),
-        .O(ARG0_carry__5_i_1_n_0));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ARG0_carry__5_i_2
-       (.I0(ARG2[35]),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[35] ),
-        .O(ARG0_carry__5_i_2_n_0));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ARG0_carry__5_i_3
-       (.I0(ARG2[34]),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[34] ),
-        .O(ARG0_carry__5_i_3_n_0));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ARG0_carry__5_i_4
-       (.I0(ARG2[33]),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[33] ),
-        .O(ARG0_carry__5_i_4_n_0));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 ARG0_carry__5_i_5
-       (.CI(ARG0_carry__4_i_5_n_0),
-        .CO({ARG0_carry__5_i_5_n_0,ARG0_carry__5_i_5_n_1,ARG0_carry__5_i_5_n_2,ARG0_carry__5_i_5_n_3}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(ARG2[36:33]),
-        .S({ARG0_carry__5_i_6_n_0,ARG0_carry__5_i_7_n_0,ARG0_carry__5_i_8_n_0,ARG0_carry__5_i_9_n_0}));
-  LUT1 #(
-    .INIT(2'h1)) 
-    ARG0_carry__5_i_6
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[36] ),
-        .O(ARG0_carry__5_i_6_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    ARG0_carry__5_i_7
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[35] ),
-        .O(ARG0_carry__5_i_7_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    ARG0_carry__5_i_8
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[34] ),
-        .O(ARG0_carry__5_i_8_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    ARG0_carry__5_i_9
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[33] ),
-        .O(ARG0_carry__5_i_9_n_0));
-  CARRY4 ARG0_carry__6
-       (.CI(ARG0_carry__5_n_0),
-        .CO({NLW_ARG0_carry__6_CO_UNCONNECTED[3],ARG0_carry__6_n_1,ARG0_carry__6_n_2,ARG0_carry__6_n_3}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({NLW_ARG0_carry__6_O_UNCONNECTED[3:2],ARG0[30:29]}),
-        .S({1'b0,ARG0_carry__6_i_1_n_0,ARG0_carry__6_i_2_n_0,ARG0_carry__6_i_3_n_0}));
-  LUT2 #(
-    .INIT(4'h7)) 
-    ARG0_carry__6_i_1
-       (.I0(ARG2[39]),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .O(ARG0_carry__6_i_1_n_0));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ARG0_carry__6_i_2
-       (.I0(ARG2[38]),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[38] ),
-        .O(ARG0_carry__6_i_2_n_0));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ARG0_carry__6_i_3
-       (.I0(ARG2[37]),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[37] ),
-        .O(ARG0_carry__6_i_3_n_0));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 ARG0_carry__6_i_4
-       (.CI(ARG0_carry__5_i_5_n_0),
-        .CO({NLW_ARG0_carry__6_i_4_CO_UNCONNECTED[3:2],ARG0_carry__6_i_4_n_2,ARG0_carry__6_i_4_n_3}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({NLW_ARG0_carry__6_i_4_O_UNCONNECTED[3],ARG2[39:37]}),
-        .S({1'b0,ARG0_carry__6_i_5_n_0,ARG0_carry__6_i_6_n_0,ARG0_carry__6_i_7_n_0}));
-  LUT1 #(
-    .INIT(2'h1)) 
-    ARG0_carry__6_i_5
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .O(ARG0_carry__6_i_5_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    ARG0_carry__6_i_6
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[38] ),
-        .O(ARG0_carry__6_i_6_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    ARG0_carry__6_i_7
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[37] ),
-        .O(ARG0_carry__6_i_7_n_0));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ARG0_carry_i_1
-       (.I0(ARG2[8]),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[8] ),
-        .O(ARG0_carry_i_1_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    ARG0_carry_i_10
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[9] ),
-        .O(ARG0_carry_i_10_n_0));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ARG0_carry_i_2
-       (.I0(ARG2[12]),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[12] ),
-        .O(ARG0_carry_i_2_n_0));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ARG0_carry_i_3
-       (.I0(ARG2[11]),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[11] ),
-        .O(ARG0_carry_i_3_n_0));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ARG0_carry_i_4
-       (.I0(ARG2[10]),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[10] ),
-        .O(ARG0_carry_i_4_n_0));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ARG0_carry_i_5
-       (.I0(ARG2[9]),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[9] ),
-        .O(ARG0_carry_i_5_n_0));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 ARG0_carry_i_6
-       (.CI(\ATAN_AUTOCORR_I_reg[0]_i_2_n_0 ),
-        .CO({ARG0_carry_i_6_n_0,ARG0_carry_i_6_n_1,ARG0_carry_i_6_n_2,ARG0_carry_i_6_n_3}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(ARG2[12:9]),
-        .S({ARG0_carry_i_7_n_0,ARG0_carry_i_8_n_0,ARG0_carry_i_9_n_0,ARG0_carry_i_10_n_0}));
-  LUT1 #(
-    .INIT(2'h1)) 
-    ARG0_carry_i_7
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[12] ),
-        .O(ARG0_carry_i_7_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    ARG0_carry_i_8
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[11] ),
-        .O(ARG0_carry_i_8_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    ARG0_carry_i_9
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[10] ),
-        .O(ARG0_carry_i_9_n_0));
-  CARRY4 \ARG0_inferred__0/i__carry 
-       (.CI(1'b0),
-        .CO({\ARG0_inferred__0/i__carry_n_0 ,\ARG0_inferred__0/i__carry_n_1 ,\ARG0_inferred__0/i__carry_n_2 ,\ARG0_inferred__0/i__carry_n_3 }),
-        .CYINIT(i__carry_i_1__1_n_0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({\ARG0_inferred__0/i__carry_n_4 ,\ARG0_inferred__0/i__carry_n_5 ,\ARG0_inferred__0/i__carry_n_6 ,\ARG0_inferred__0/i__carry_n_7 }),
-        .S({i__carry_i_2__0_n_0,i__carry_i_3__1_n_0,i__carry_i_4__0_n_0,i__carry_i_5_n_0}));
-  CARRY4 \ARG0_inferred__0/i__carry__0 
-       (.CI(\ARG0_inferred__0/i__carry_n_0 ),
-        .CO({\ARG0_inferred__0/i__carry__0_n_0 ,\ARG0_inferred__0/i__carry__0_n_1 ,\ARG0_inferred__0/i__carry__0_n_2 ,\ARG0_inferred__0/i__carry__0_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({\ARG0_inferred__0/i__carry__0_n_4 ,\ARG0_inferred__0/i__carry__0_n_5 ,\ARG0_inferred__0/i__carry__0_n_6 ,\ARG0_inferred__0/i__carry__0_n_7 }),
-        .S({i__carry__0_i_1__0_n_0,i__carry__0_i_2__0_n_0,i__carry__0_i_3__0_n_0,i__carry__0_i_4__0_n_0}));
-  CARRY4 \ARG0_inferred__0/i__carry__1 
-       (.CI(\ARG0_inferred__0/i__carry__0_n_0 ),
-        .CO({\ARG0_inferred__0/i__carry__1_n_0 ,\ARG0_inferred__0/i__carry__1_n_1 ,\ARG0_inferred__0/i__carry__1_n_2 ,\ARG0_inferred__0/i__carry__1_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({\ARG0_inferred__0/i__carry__1_n_4 ,\ARG0_inferred__0/i__carry__1_n_5 ,\ARG0_inferred__0/i__carry__1_n_6 ,\ARG0_inferred__0/i__carry__1_n_7 }),
-        .S({i__carry__1_i_1__0_n_0,i__carry__1_i_2__0_n_0,i__carry__1_i_3__0_n_0,i__carry__1_i_4__0_n_0}));
-  CARRY4 \ARG0_inferred__0/i__carry__2 
-       (.CI(\ARG0_inferred__0/i__carry__1_n_0 ),
-        .CO({\ARG0_inferred__0/i__carry__2_n_0 ,\ARG0_inferred__0/i__carry__2_n_1 ,\ARG0_inferred__0/i__carry__2_n_2 ,\ARG0_inferred__0/i__carry__2_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({\ARG0_inferred__0/i__carry__2_n_4 ,\ARG0_inferred__0/i__carry__2_n_5 ,\ARG0_inferred__0/i__carry__2_n_6 ,\ARG0_inferred__0/i__carry__2_n_7 }),
-        .S({i__carry__2_i_1__1_n_0,i__carry__2_i_2__1_n_0,i__carry__2_i_3__1_n_0,i__carry__2_i_4__1_n_0}));
-  CARRY4 \ARG0_inferred__0/i__carry__3 
-       (.CI(\ARG0_inferred__0/i__carry__2_n_0 ),
-        .CO({\ARG0_inferred__0/i__carry__3_n_0 ,\ARG0_inferred__0/i__carry__3_n_1 ,\ARG0_inferred__0/i__carry__3_n_2 ,\ARG0_inferred__0/i__carry__3_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({\ARG0_inferred__0/i__carry__3_n_4 ,\ARG0_inferred__0/i__carry__3_n_5 ,\ARG0_inferred__0/i__carry__3_n_6 ,\ARG0_inferred__0/i__carry__3_n_7 }),
-        .S({i__carry__3_i_1_n_0,i__carry__3_i_2_n_0,i__carry__3_i_3_n_0,i__carry__3_i_4_n_0}));
-  CARRY4 \ARG0_inferred__0/i__carry__4 
-       (.CI(\ARG0_inferred__0/i__carry__3_n_0 ),
-        .CO({\ARG0_inferred__0/i__carry__4_n_0 ,\ARG0_inferred__0/i__carry__4_n_1 ,\ARG0_inferred__0/i__carry__4_n_2 ,\ARG0_inferred__0/i__carry__4_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({\ARG0_inferred__0/i__carry__4_n_4 ,\ARG0_inferred__0/i__carry__4_n_5 ,\ARG0_inferred__0/i__carry__4_n_6 ,\ARG0_inferred__0/i__carry__4_n_7 }),
-        .S({i__carry__4_i_1_n_0,i__carry__4_i_2_n_0,i__carry__4_i_3_n_0,i__carry__4_i_4_n_0}));
-  CARRY4 \ARG0_inferred__0/i__carry__5 
-       (.CI(\ARG0_inferred__0/i__carry__4_n_0 ),
-        .CO({\ARG0_inferred__0/i__carry__5_n_0 ,\ARG0_inferred__0/i__carry__5_n_1 ,\ARG0_inferred__0/i__carry__5_n_2 ,\ARG0_inferred__0/i__carry__5_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({\ARG0_inferred__0/i__carry__5_n_4 ,\ARG0_inferred__0/i__carry__5_n_5 ,\ARG0_inferred__0/i__carry__5_n_6 ,\ARG0_inferred__0/i__carry__5_n_7 }),
-        .S({i__carry__5_i_1_n_0,i__carry__5_i_2_n_0,i__carry__5_i_3_n_0,i__carry__5_i_4_n_0}));
-  CARRY4 \ARG0_inferred__0/i__carry__6 
-       (.CI(\ARG0_inferred__0/i__carry__5_n_0 ),
-        .CO({\NLW_ARG0_inferred__0/i__carry__6_CO_UNCONNECTED [3],\ARG0_inferred__0/i__carry__6_n_1 ,\ARG0_inferred__0/i__carry__6_n_2 ,\ARG0_inferred__0/i__carry__6_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({\NLW_ARG0_inferred__0/i__carry__6_O_UNCONNECTED [3:2],\ARG0_inferred__0/i__carry__6_n_6 ,\ARG0_inferred__0/i__carry__6_n_7 }),
-        .S({1'b0,i__carry__6_i_1_n_0,i__carry__6_i_2_n_0,i__carry__6_i_3_n_0}));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_I[0]_i_1 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[8] ),
+       (.I0(AUTOCORR_I_BUFF[0]),
+        .I1(RX_STATE_reg[0]),
         .I2(ARG2[8]),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_I_BUFF__0[0]),
+        .I3(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_I_ACCUMULATOR[8]),
         .O(ATAN_AUTOCORR_I0_in[0]));
   LUT1 #(
     .INIT(2'h1)) 
     \ATAN_AUTOCORR_I[0]_i_10 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[3] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[3]),
         .O(\ATAN_AUTOCORR_I[0]_i_10_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ATAN_AUTOCORR_I[0]_i_11 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[2] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[2]),
         .O(\ATAN_AUTOCORR_I[0]_i_11_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ATAN_AUTOCORR_I[0]_i_12 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[1] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[1]),
         .O(\ATAN_AUTOCORR_I[0]_i_12_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ATAN_AUTOCORR_I[0]_i_4 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[8] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[8]),
         .O(\ATAN_AUTOCORR_I[0]_i_4_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ATAN_AUTOCORR_I[0]_i_5 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[7] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[7]),
         .O(\ATAN_AUTOCORR_I[0]_i_5_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ATAN_AUTOCORR_I[0]_i_6 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[6] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[6]),
         .O(\ATAN_AUTOCORR_I[0]_i_6_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ATAN_AUTOCORR_I[0]_i_7 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[5] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[5]),
         .O(\ATAN_AUTOCORR_I[0]_i_7_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ATAN_AUTOCORR_I[0]_i_8 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[0] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[0]),
         .O(\ATAN_AUTOCORR_I[0]_i_8_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ATAN_AUTOCORR_I[0]_i_9 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[4] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[4]),
         .O(\ATAN_AUTOCORR_I[0]_i_9_n_0 ));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_I[10]_i_1 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[18] ),
+       (.I0(AUTOCORR_I_BUFF[10]),
+        .I1(RX_STATE_reg[0]),
         .I2(ARG0[10]),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_I_BUFF__0[10]),
+        .I3(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_I_ACCUMULATOR[18]),
         .O(ATAN_AUTOCORR_I0_in[10]));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_I[11]_i_1 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[19] ),
+       (.I0(AUTOCORR_I_BUFF[11]),
+        .I1(RX_STATE_reg[0]),
         .I2(ARG0[11]),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_I_BUFF__0[11]),
+        .I3(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_I_ACCUMULATOR[19]),
         .O(ATAN_AUTOCORR_I0_in[11]));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_I[12]_i_1 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[20] ),
+       (.I0(AUTOCORR_I_BUFF[12]),
+        .I1(RX_STATE_reg[0]),
         .I2(ARG0[12]),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_I_BUFF__0[12]),
+        .I3(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_I_ACCUMULATOR[20]),
         .O(ATAN_AUTOCORR_I0_in[12]));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_I[13]_i_1 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[21] ),
+       (.I0(AUTOCORR_I_BUFF[13]),
+        .I1(RX_STATE_reg[0]),
         .I2(ARG0[13]),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_I_BUFF__0[13]),
+        .I3(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_I_ACCUMULATOR[21]),
         .O(ATAN_AUTOCORR_I0_in[13]));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_I[14]_i_1 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[22] ),
+       (.I0(AUTOCORR_I_BUFF[14]),
+        .I1(RX_STATE_reg[0]),
         .I2(ARG0[14]),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_I_BUFF__0[14]),
+        .I3(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_I_ACCUMULATOR[22]),
         .O(ATAN_AUTOCORR_I0_in[14]));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_I[15]_i_1 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[23] ),
+       (.I0(AUTOCORR_I_BUFF[15]),
+        .I1(RX_STATE_reg[0]),
         .I2(ARG0[15]),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_I_BUFF__0[15]),
+        .I3(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_I_ACCUMULATOR[23]),
         .O(ATAN_AUTOCORR_I0_in[15]));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_I[16]_i_1 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[24] ),
+       (.I0(AUTOCORR_I_BUFF[16]),
+        .I1(RX_STATE_reg[0]),
         .I2(ARG0[16]),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_I_BUFF__0[16]),
+        .I3(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_I_ACCUMULATOR[24]),
         .O(ATAN_AUTOCORR_I0_in[16]));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_I[17]_i_1 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[25] ),
+       (.I0(AUTOCORR_I_BUFF[17]),
+        .I1(RX_STATE_reg[0]),
         .I2(ARG0[17]),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_I_BUFF__0[17]),
+        .I3(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_I_ACCUMULATOR[25]),
         .O(ATAN_AUTOCORR_I0_in[17]));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_I[18]_i_1 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[26] ),
+       (.I0(AUTOCORR_I_BUFF[18]),
+        .I1(RX_STATE_reg[0]),
         .I2(ARG0[18]),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_I_BUFF__0[18]),
+        .I3(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_I_ACCUMULATOR[26]),
         .O(ATAN_AUTOCORR_I0_in[18]));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_I[19]_i_1 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[27] ),
+       (.I0(AUTOCORR_I_BUFF[19]),
+        .I1(RX_STATE_reg[0]),
         .I2(ARG0[19]),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_I_BUFF__0[19]),
+        .I3(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_I_ACCUMULATOR[27]),
         .O(ATAN_AUTOCORR_I0_in[19]));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_I[1]_i_1 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[9] ),
+       (.I0(AUTOCORR_I_BUFF[1]),
+        .I1(RX_STATE_reg[0]),
         .I2(ARG0[1]),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_I_BUFF__0[1]),
+        .I3(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_I_ACCUMULATOR[9]),
         .O(ATAN_AUTOCORR_I0_in[1]));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_I[20]_i_1 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[28] ),
+       (.I0(AUTOCORR_I_BUFF[20]),
+        .I1(RX_STATE_reg[0]),
         .I2(ARG0[20]),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_I_BUFF__0[20]),
+        .I3(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_I_ACCUMULATOR[28]),
         .O(ATAN_AUTOCORR_I0_in[20]));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_I[21]_i_1 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[29] ),
+       (.I0(AUTOCORR_I_BUFF[21]),
+        .I1(RX_STATE_reg[0]),
         .I2(ARG0[21]),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_I_BUFF__0[21]),
+        .I3(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_I_ACCUMULATOR[29]),
         .O(ATAN_AUTOCORR_I0_in[21]));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_I[22]_i_1 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[30] ),
+       (.I0(AUTOCORR_I_BUFF[22]),
+        .I1(RX_STATE_reg[0]),
         .I2(ARG0[22]),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_I_BUFF__0[22]),
+        .I3(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_I_ACCUMULATOR[30]),
         .O(ATAN_AUTOCORR_I0_in[22]));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_I[23]_i_1 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[31] ),
+       (.I0(AUTOCORR_I_BUFF[23]),
+        .I1(RX_STATE_reg[0]),
         .I2(ARG0[23]),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_I_BUFF__0[23]),
+        .I3(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_I_ACCUMULATOR[31]),
         .O(ATAN_AUTOCORR_I0_in[23]));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_I[24]_i_1 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[32] ),
+       (.I0(AUTOCORR_I_BUFF[24]),
+        .I1(RX_STATE_reg[0]),
         .I2(ARG0[24]),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_I_BUFF__0[24]),
+        .I3(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_I_ACCUMULATOR[32]),
         .O(ATAN_AUTOCORR_I0_in[24]));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_I[25]_i_1 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[33] ),
+       (.I0(AUTOCORR_I_BUFF[25]),
+        .I1(RX_STATE_reg[0]),
         .I2(ARG0[25]),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_I_BUFF__0[25]),
+        .I3(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_I_ACCUMULATOR[33]),
         .O(ATAN_AUTOCORR_I0_in[25]));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_I[26]_i_1 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[34] ),
+       (.I0(AUTOCORR_I_BUFF[26]),
+        .I1(RX_STATE_reg[0]),
         .I2(ARG0[26]),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_I_BUFF__0[26]),
+        .I3(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_I_ACCUMULATOR[34]),
         .O(ATAN_AUTOCORR_I0_in[26]));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_I[27]_i_1 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[35] ),
+       (.I0(AUTOCORR_I_BUFF[27]),
+        .I1(RX_STATE_reg[0]),
         .I2(ARG0[27]),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_I_BUFF__0[27]),
+        .I3(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_I_ACCUMULATOR[35]),
         .O(ATAN_AUTOCORR_I0_in[27]));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_I[28]_i_1 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[36] ),
+       (.I0(AUTOCORR_I_BUFF[28]),
+        .I1(RX_STATE_reg[0]),
         .I2(ARG0[28]),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_I_BUFF__0[28]),
+        .I3(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_I_ACCUMULATOR[36]),
         .O(ATAN_AUTOCORR_I0_in[28]));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_I[29]_i_1 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[37] ),
+       (.I0(AUTOCORR_I_BUFF[29]),
+        .I1(RX_STATE_reg[0]),
         .I2(ARG0[29]),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_I_BUFF__0[29]),
+        .I3(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_I_ACCUMULATOR[37]),
         .O(ATAN_AUTOCORR_I0_in[29]));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_I[2]_i_1 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[10] ),
+       (.I0(AUTOCORR_I_BUFF[2]),
+        .I1(RX_STATE_reg[0]),
         .I2(ARG0[2]),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_I_BUFF__0[2]),
+        .I3(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_I_ACCUMULATOR[10]),
         .O(ATAN_AUTOCORR_I0_in[2]));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_I[30]_i_1 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[38] ),
+       (.I0(AUTOCORR_I_BUFF[30]),
+        .I1(RX_STATE_reg[0]),
         .I2(ARG0[30]),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_I_BUFF__0[30]),
+        .I3(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_I_ACCUMULATOR[38]),
         .O(ATAN_AUTOCORR_I0_in[30]));
   LUT4 #(
     .INIT(16'h0830)) 
     \ATAN_AUTOCORR_I[31]_i_1 
        (.I0(LTS_AUTOCORR_READY_reg_n_0),
-        .I1(RX_STATE_reg[2]),
+        .I1(RX_STATE_reg[1]),
         .I2(RX_STATE_reg[0]),
-        .I3(RX_STATE_reg[1]),
+        .I3(RX_STATE_reg[2]),
         .O(\ATAN_AUTOCORR_I[31]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'hAA30)) 
+    .INIT(16'h88B8)) 
     \ATAN_AUTOCORR_I[31]_i_2 
-       (.I0(AUTOCORR_I_BUFF__0[31]),
-        .I1(ARG0_carry__6_n_1),
-        .I2(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I3(RX_STATE_reg[0]),
+       (.I0(AUTOCORR_I_BUFF[31]),
+        .I1(RX_STATE_reg[0]),
+        .I2(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I3(\_inferred__15/i__carry__6_n_1 ),
         .O(ATAN_AUTOCORR_I0_in[31]));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_I[3]_i_1 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[11] ),
+       (.I0(AUTOCORR_I_BUFF[3]),
+        .I1(RX_STATE_reg[0]),
         .I2(ARG0[3]),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_I_BUFF__0[3]),
+        .I3(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_I_ACCUMULATOR[11]),
         .O(ATAN_AUTOCORR_I0_in[3]));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_I[4]_i_1 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[12] ),
+       (.I0(AUTOCORR_I_BUFF[4]),
+        .I1(RX_STATE_reg[0]),
         .I2(ARG0[4]),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_I_BUFF__0[4]),
+        .I3(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_I_ACCUMULATOR[12]),
         .O(ATAN_AUTOCORR_I0_in[4]));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_I[5]_i_1 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[13] ),
+       (.I0(AUTOCORR_I_BUFF[5]),
+        .I1(RX_STATE_reg[0]),
         .I2(ARG0[5]),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_I_BUFF__0[5]),
+        .I3(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_I_ACCUMULATOR[13]),
         .O(ATAN_AUTOCORR_I0_in[5]));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_I[6]_i_1 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[14] ),
+       (.I0(AUTOCORR_I_BUFF[6]),
+        .I1(RX_STATE_reg[0]),
         .I2(ARG0[6]),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_I_BUFF__0[6]),
+        .I3(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_I_ACCUMULATOR[14]),
         .O(ATAN_AUTOCORR_I0_in[6]));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_I[7]_i_1 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[15] ),
+       (.I0(AUTOCORR_I_BUFF[7]),
+        .I1(RX_STATE_reg[0]),
         .I2(ARG0[7]),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_I_BUFF__0[7]),
+        .I3(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_I_ACCUMULATOR[15]),
         .O(ATAN_AUTOCORR_I0_in[7]));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_I[8]_i_1 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[16] ),
+       (.I0(AUTOCORR_I_BUFF[8]),
+        .I1(RX_STATE_reg[0]),
         .I2(ARG0[8]),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_I_BUFF__0[8]),
+        .I3(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_I_ACCUMULATOR[16]),
         .O(ATAN_AUTOCORR_I0_in[8]));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_I[9]_i_1 
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[17] ),
+       (.I0(AUTOCORR_I_BUFF[9]),
+        .I1(RX_STATE_reg[0]),
         .I2(ARG0[9]),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_I_BUFF__0[9]),
+        .I3(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_I_ACCUMULATOR[17]),
         .O(ATAN_AUTOCORR_I0_in[9]));
   FDRE #(
     .INIT(1'b0)) 
@@ -3063,336 +2348,336 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .Q(ATAN_AUTOCORR_I[9]),
         .R(1'b0));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_Q[0]_i_1 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[8] ),
+       (.I0(AUTOCORR_Q_BUFF[0]),
+        .I1(RX_STATE_reg[0]),
         .I2(\ATAN_AUTOCORR_Q_reg[0]_i_2_n_4 ),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_Q_BUFF[0]),
+        .I3(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_Q_ACCUMULATOR[8]),
         .O(\ATAN_AUTOCORR_Q[0]_i_1_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ATAN_AUTOCORR_Q[0]_i_10 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[3] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[3]),
         .O(\ATAN_AUTOCORR_Q[0]_i_10_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ATAN_AUTOCORR_Q[0]_i_11 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[2] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[2]),
         .O(\ATAN_AUTOCORR_Q[0]_i_11_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ATAN_AUTOCORR_Q[0]_i_12 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[1] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[1]),
         .O(\ATAN_AUTOCORR_Q[0]_i_12_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ATAN_AUTOCORR_Q[0]_i_4 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[8] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[8]),
         .O(\ATAN_AUTOCORR_Q[0]_i_4_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ATAN_AUTOCORR_Q[0]_i_5 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[7] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[7]),
         .O(\ATAN_AUTOCORR_Q[0]_i_5_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ATAN_AUTOCORR_Q[0]_i_6 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[6] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[6]),
         .O(\ATAN_AUTOCORR_Q[0]_i_6_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ATAN_AUTOCORR_Q[0]_i_7 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[5] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[5]),
         .O(\ATAN_AUTOCORR_Q[0]_i_7_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ATAN_AUTOCORR_Q[0]_i_8 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[0] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[0]),
         .O(\ATAN_AUTOCORR_Q[0]_i_8_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \ATAN_AUTOCORR_Q[0]_i_9 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[4] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[4]),
         .O(\ATAN_AUTOCORR_Q[0]_i_9_n_0 ));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_Q[10]_i_1 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[18] ),
-        .I2(\ARG0_inferred__0/i__carry__1_n_6 ),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_Q_BUFF[10]),
+       (.I0(AUTOCORR_Q_BUFF[10]),
+        .I1(RX_STATE_reg[0]),
+        .I2(\_inferred__20/i__carry__1_n_6 ),
+        .I3(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_Q_ACCUMULATOR[18]),
         .O(\ATAN_AUTOCORR_Q[10]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_Q[11]_i_1 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[19] ),
-        .I2(\ARG0_inferred__0/i__carry__1_n_5 ),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_Q_BUFF[11]),
+       (.I0(AUTOCORR_Q_BUFF[11]),
+        .I1(RX_STATE_reg[0]),
+        .I2(\_inferred__20/i__carry__1_n_5 ),
+        .I3(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_Q_ACCUMULATOR[19]),
         .O(\ATAN_AUTOCORR_Q[11]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_Q[12]_i_1 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[20] ),
-        .I2(\ARG0_inferred__0/i__carry__1_n_4 ),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_Q_BUFF[12]),
+       (.I0(AUTOCORR_Q_BUFF[12]),
+        .I1(RX_STATE_reg[0]),
+        .I2(\_inferred__20/i__carry__1_n_4 ),
+        .I3(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_Q_ACCUMULATOR[20]),
         .O(\ATAN_AUTOCORR_Q[12]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_Q[13]_i_1 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[21] ),
-        .I2(\ARG0_inferred__0/i__carry__2_n_7 ),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_Q_BUFF[13]),
+       (.I0(AUTOCORR_Q_BUFF[13]),
+        .I1(RX_STATE_reg[0]),
+        .I2(\_inferred__20/i__carry__2_n_7 ),
+        .I3(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_Q_ACCUMULATOR[21]),
         .O(\ATAN_AUTOCORR_Q[13]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_Q[14]_i_1 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[22] ),
-        .I2(\ARG0_inferred__0/i__carry__2_n_6 ),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_Q_BUFF[14]),
+       (.I0(AUTOCORR_Q_BUFF[14]),
+        .I1(RX_STATE_reg[0]),
+        .I2(\_inferred__20/i__carry__2_n_6 ),
+        .I3(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_Q_ACCUMULATOR[22]),
         .O(\ATAN_AUTOCORR_Q[14]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_Q[15]_i_1 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[23] ),
-        .I2(\ARG0_inferred__0/i__carry__2_n_5 ),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_Q_BUFF[15]),
+       (.I0(AUTOCORR_Q_BUFF[15]),
+        .I1(RX_STATE_reg[0]),
+        .I2(\_inferred__20/i__carry__2_n_5 ),
+        .I3(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_Q_ACCUMULATOR[23]),
         .O(\ATAN_AUTOCORR_Q[15]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_Q[16]_i_1 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[24] ),
-        .I2(\ARG0_inferred__0/i__carry__2_n_4 ),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_Q_BUFF[16]),
+       (.I0(AUTOCORR_Q_BUFF[16]),
+        .I1(RX_STATE_reg[0]),
+        .I2(\_inferred__20/i__carry__2_n_4 ),
+        .I3(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_Q_ACCUMULATOR[24]),
         .O(\ATAN_AUTOCORR_Q[16]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_Q[17]_i_1 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[25] ),
-        .I2(\ARG0_inferred__0/i__carry__3_n_7 ),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_Q_BUFF[17]),
+       (.I0(AUTOCORR_Q_BUFF[17]),
+        .I1(RX_STATE_reg[0]),
+        .I2(\_inferred__20/i__carry__3_n_7 ),
+        .I3(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_Q_ACCUMULATOR[25]),
         .O(\ATAN_AUTOCORR_Q[17]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_Q[18]_i_1 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[26] ),
-        .I2(\ARG0_inferred__0/i__carry__3_n_6 ),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_Q_BUFF[18]),
+       (.I0(AUTOCORR_Q_BUFF[18]),
+        .I1(RX_STATE_reg[0]),
+        .I2(\_inferred__20/i__carry__3_n_6 ),
+        .I3(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_Q_ACCUMULATOR[26]),
         .O(\ATAN_AUTOCORR_Q[18]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_Q[19]_i_1 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[27] ),
-        .I2(\ARG0_inferred__0/i__carry__3_n_5 ),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_Q_BUFF[19]),
+       (.I0(AUTOCORR_Q_BUFF[19]),
+        .I1(RX_STATE_reg[0]),
+        .I2(\_inferred__20/i__carry__3_n_5 ),
+        .I3(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_Q_ACCUMULATOR[27]),
         .O(\ATAN_AUTOCORR_Q[19]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_Q[1]_i_1 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[9] ),
-        .I2(\ARG0_inferred__0/i__carry_n_7 ),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_Q_BUFF[1]),
+       (.I0(AUTOCORR_Q_BUFF[1]),
+        .I1(RX_STATE_reg[0]),
+        .I2(\_inferred__20/i__carry_n_7 ),
+        .I3(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_Q_ACCUMULATOR[9]),
         .O(\ATAN_AUTOCORR_Q[1]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_Q[20]_i_1 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[28] ),
-        .I2(\ARG0_inferred__0/i__carry__3_n_4 ),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_Q_BUFF[20]),
+       (.I0(AUTOCORR_Q_BUFF[20]),
+        .I1(RX_STATE_reg[0]),
+        .I2(\_inferred__20/i__carry__3_n_4 ),
+        .I3(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_Q_ACCUMULATOR[28]),
         .O(\ATAN_AUTOCORR_Q[20]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_Q[21]_i_1 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[29] ),
-        .I2(\ARG0_inferred__0/i__carry__4_n_7 ),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_Q_BUFF[21]),
+       (.I0(AUTOCORR_Q_BUFF[21]),
+        .I1(RX_STATE_reg[0]),
+        .I2(\_inferred__20/i__carry__4_n_7 ),
+        .I3(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_Q_ACCUMULATOR[29]),
         .O(\ATAN_AUTOCORR_Q[21]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_Q[22]_i_1 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[30] ),
-        .I2(\ARG0_inferred__0/i__carry__4_n_6 ),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_Q_BUFF[22]),
+       (.I0(AUTOCORR_Q_BUFF[22]),
+        .I1(RX_STATE_reg[0]),
+        .I2(\_inferred__20/i__carry__4_n_6 ),
+        .I3(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_Q_ACCUMULATOR[30]),
         .O(\ATAN_AUTOCORR_Q[22]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_Q[23]_i_1 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[31] ),
-        .I2(\ARG0_inferred__0/i__carry__4_n_5 ),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_Q_BUFF[23]),
+       (.I0(AUTOCORR_Q_BUFF[23]),
+        .I1(RX_STATE_reg[0]),
+        .I2(\_inferred__20/i__carry__4_n_5 ),
+        .I3(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_Q_ACCUMULATOR[31]),
         .O(\ATAN_AUTOCORR_Q[23]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_Q[24]_i_1 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[32] ),
-        .I2(\ARG0_inferred__0/i__carry__4_n_4 ),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_Q_BUFF[24]),
+       (.I0(AUTOCORR_Q_BUFF[24]),
+        .I1(RX_STATE_reg[0]),
+        .I2(\_inferred__20/i__carry__4_n_4 ),
+        .I3(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_Q_ACCUMULATOR[32]),
         .O(\ATAN_AUTOCORR_Q[24]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_Q[25]_i_1 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[33] ),
-        .I2(\ARG0_inferred__0/i__carry__5_n_7 ),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_Q_BUFF[25]),
+       (.I0(AUTOCORR_Q_BUFF[25]),
+        .I1(RX_STATE_reg[0]),
+        .I2(\_inferred__20/i__carry__5_n_7 ),
+        .I3(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_Q_ACCUMULATOR[33]),
         .O(\ATAN_AUTOCORR_Q[25]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_Q[26]_i_1 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[34] ),
-        .I2(\ARG0_inferred__0/i__carry__5_n_6 ),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_Q_BUFF[26]),
+       (.I0(AUTOCORR_Q_BUFF[26]),
+        .I1(RX_STATE_reg[0]),
+        .I2(\_inferred__20/i__carry__5_n_6 ),
+        .I3(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_Q_ACCUMULATOR[34]),
         .O(\ATAN_AUTOCORR_Q[26]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_Q[27]_i_1 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[35] ),
-        .I2(\ARG0_inferred__0/i__carry__5_n_5 ),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_Q_BUFF[27]),
+       (.I0(AUTOCORR_Q_BUFF[27]),
+        .I1(RX_STATE_reg[0]),
+        .I2(\_inferred__20/i__carry__5_n_5 ),
+        .I3(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_Q_ACCUMULATOR[35]),
         .O(\ATAN_AUTOCORR_Q[27]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_Q[28]_i_1 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[36] ),
-        .I2(\ARG0_inferred__0/i__carry__5_n_4 ),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_Q_BUFF[28]),
+       (.I0(AUTOCORR_Q_BUFF[28]),
+        .I1(RX_STATE_reg[0]),
+        .I2(\_inferred__20/i__carry__5_n_4 ),
+        .I3(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_Q_ACCUMULATOR[36]),
         .O(\ATAN_AUTOCORR_Q[28]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_Q[29]_i_1 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[37] ),
-        .I2(\ARG0_inferred__0/i__carry__6_n_7 ),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_Q_BUFF[29]),
+       (.I0(AUTOCORR_Q_BUFF[29]),
+        .I1(RX_STATE_reg[0]),
+        .I2(\_inferred__20/i__carry__6_n_7 ),
+        .I3(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_Q_ACCUMULATOR[37]),
         .O(\ATAN_AUTOCORR_Q[29]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_Q[2]_i_1 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[10] ),
-        .I2(\ARG0_inferred__0/i__carry_n_6 ),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_Q_BUFF[2]),
+       (.I0(AUTOCORR_Q_BUFF[2]),
+        .I1(RX_STATE_reg[0]),
+        .I2(\_inferred__20/i__carry_n_6 ),
+        .I3(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_Q_ACCUMULATOR[10]),
         .O(\ATAN_AUTOCORR_Q[2]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_Q[30]_i_1 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[38] ),
-        .I2(\ARG0_inferred__0/i__carry__6_n_6 ),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_Q_BUFF[30]),
+       (.I0(AUTOCORR_Q_BUFF[30]),
+        .I1(RX_STATE_reg[0]),
+        .I2(\_inferred__20/i__carry__6_n_6 ),
+        .I3(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_Q_ACCUMULATOR[38]),
         .O(\ATAN_AUTOCORR_Q[30]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'hAA30)) 
+    .INIT(16'h88B8)) 
     \ATAN_AUTOCORR_Q[31]_i_1 
        (.I0(AUTOCORR_Q_BUFF[31]),
-        .I1(\ARG0_inferred__0/i__carry__6_n_1 ),
-        .I2(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I3(RX_STATE_reg[0]),
+        .I1(RX_STATE_reg[0]),
+        .I2(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I3(\_inferred__20/i__carry__6_n_1 ),
         .O(\ATAN_AUTOCORR_Q[31]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_Q[3]_i_1 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[11] ),
-        .I2(\ARG0_inferred__0/i__carry_n_5 ),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_Q_BUFF[3]),
+       (.I0(AUTOCORR_Q_BUFF[3]),
+        .I1(RX_STATE_reg[0]),
+        .I2(\_inferred__20/i__carry_n_5 ),
+        .I3(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_Q_ACCUMULATOR[11]),
         .O(\ATAN_AUTOCORR_Q[3]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_Q[4]_i_1 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[12] ),
-        .I2(\ARG0_inferred__0/i__carry_n_4 ),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_Q_BUFF[4]),
+       (.I0(AUTOCORR_Q_BUFF[4]),
+        .I1(RX_STATE_reg[0]),
+        .I2(\_inferred__20/i__carry_n_4 ),
+        .I3(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_Q_ACCUMULATOR[12]),
         .O(\ATAN_AUTOCORR_Q[4]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_Q[5]_i_1 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[13] ),
-        .I2(\ARG0_inferred__0/i__carry__0_n_7 ),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_Q_BUFF[5]),
+       (.I0(AUTOCORR_Q_BUFF[5]),
+        .I1(RX_STATE_reg[0]),
+        .I2(\_inferred__20/i__carry__0_n_7 ),
+        .I3(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_Q_ACCUMULATOR[13]),
         .O(\ATAN_AUTOCORR_Q[5]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_Q[6]_i_1 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[14] ),
-        .I2(\ARG0_inferred__0/i__carry__0_n_6 ),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_Q_BUFF[6]),
+       (.I0(AUTOCORR_Q_BUFF[6]),
+        .I1(RX_STATE_reg[0]),
+        .I2(\_inferred__20/i__carry__0_n_6 ),
+        .I3(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_Q_ACCUMULATOR[14]),
         .O(\ATAN_AUTOCORR_Q[6]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_Q[7]_i_1 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[15] ),
-        .I2(\ARG0_inferred__0/i__carry__0_n_5 ),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_Q_BUFF[7]),
+       (.I0(AUTOCORR_Q_BUFF[7]),
+        .I1(RX_STATE_reg[0]),
+        .I2(\_inferred__20/i__carry__0_n_5 ),
+        .I3(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_Q_ACCUMULATOR[15]),
         .O(\ATAN_AUTOCORR_Q[7]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_Q[8]_i_1 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[16] ),
-        .I2(\ARG0_inferred__0/i__carry__0_n_4 ),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_Q_BUFF[8]),
+       (.I0(AUTOCORR_Q_BUFF[8]),
+        .I1(RX_STATE_reg[0]),
+        .I2(\_inferred__20/i__carry__0_n_4 ),
+        .I3(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_Q_ACCUMULATOR[16]),
         .O(\ATAN_AUTOCORR_Q[8]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFE400E4)) 
+    .INIT(32'hB8BBB888)) 
     \ATAN_AUTOCORR_Q[9]_i_1 
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[17] ),
-        .I2(\ARG0_inferred__0/i__carry__1_n_7 ),
-        .I3(RX_STATE_reg[0]),
-        .I4(AUTOCORR_Q_BUFF[9]),
+       (.I0(AUTOCORR_Q_BUFF[9]),
+        .I1(RX_STATE_reg[0]),
+        .I2(\_inferred__20/i__carry__1_n_7 ),
+        .I3(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I4(LTS_AUTOCORR_Q_ACCUMULATOR[17]),
         .O(\ATAN_AUTOCORR_Q[9]_i_1_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
@@ -3667,12 +2952,12 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .Q(ATAN_AUTOCORR_Q[9]),
         .R(1'b0));
   LUT5 #(
-    .INIT(32'hFF8C0380)) 
+    .INIT(32'hECFC200C)) 
     ATAN_AUTOCORR_STROBE_i_1
        (.I0(LTS_AUTOCORR_READY_reg_n_0),
-        .I1(RX_STATE_reg[2]),
-        .I2(RX_STATE_reg[1]),
-        .I3(RX_STATE_reg[0]),
+        .I1(RX_STATE_reg[0]),
+        .I2(RX_STATE_reg[2]),
+        .I3(RX_STATE_reg[1]),
         .I4(ATAN_AUTOCORR_STROBE),
         .O(ATAN_AUTOCORR_STROBE_i_1_n_0));
   FDRE #(
@@ -3686,9 +2971,9 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   LUT4 #(
     .INIT(16'h0001)) 
     \AUTOCORR_I_BUFF[31]_i_1 
-       (.I0(RX_STATE_reg[2]),
-        .I1(RX_STATE_reg[0]),
-        .I2(RX_STATE_reg[1]),
+       (.I0(RX_STATE_reg[0]),
+        .I1(RX_STATE_reg[1]),
+        .I2(RX_STATE_reg[2]),
         .I3(RESET),
         .O(\AUTOCORR_I_BUFF[31]_i_1_n_0 ));
   FDRE #(
@@ -3697,7 +2982,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_I_BUFF[31]_i_1_n_0 ),
         .D(DETECTION_STS_AUTOCORR_I[0]),
-        .Q(AUTOCORR_I_BUFF__0[0]),
+        .Q(AUTOCORR_I_BUFF[0]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3705,7 +2990,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_I_BUFF[31]_i_1_n_0 ),
         .D(DETECTION_STS_AUTOCORR_I[10]),
-        .Q(AUTOCORR_I_BUFF__0[10]),
+        .Q(AUTOCORR_I_BUFF[10]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3713,7 +2998,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_I_BUFF[31]_i_1_n_0 ),
         .D(DETECTION_STS_AUTOCORR_I[11]),
-        .Q(AUTOCORR_I_BUFF__0[11]),
+        .Q(AUTOCORR_I_BUFF[11]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3721,7 +3006,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_I_BUFF[31]_i_1_n_0 ),
         .D(DETECTION_STS_AUTOCORR_I[12]),
-        .Q(AUTOCORR_I_BUFF__0[12]),
+        .Q(AUTOCORR_I_BUFF[12]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3729,7 +3014,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_I_BUFF[31]_i_1_n_0 ),
         .D(DETECTION_STS_AUTOCORR_I[13]),
-        .Q(AUTOCORR_I_BUFF__0[13]),
+        .Q(AUTOCORR_I_BUFF[13]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3737,7 +3022,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_I_BUFF[31]_i_1_n_0 ),
         .D(DETECTION_STS_AUTOCORR_I[14]),
-        .Q(AUTOCORR_I_BUFF__0[14]),
+        .Q(AUTOCORR_I_BUFF[14]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3745,7 +3030,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_I_BUFF[31]_i_1_n_0 ),
         .D(DETECTION_STS_AUTOCORR_I[15]),
-        .Q(AUTOCORR_I_BUFF__0[15]),
+        .Q(AUTOCORR_I_BUFF[15]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3753,7 +3038,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_I_BUFF[31]_i_1_n_0 ),
         .D(DETECTION_STS_AUTOCORR_I[16]),
-        .Q(AUTOCORR_I_BUFF__0[16]),
+        .Q(AUTOCORR_I_BUFF[16]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3761,7 +3046,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_I_BUFF[31]_i_1_n_0 ),
         .D(DETECTION_STS_AUTOCORR_I[17]),
-        .Q(AUTOCORR_I_BUFF__0[17]),
+        .Q(AUTOCORR_I_BUFF[17]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3769,7 +3054,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_I_BUFF[31]_i_1_n_0 ),
         .D(DETECTION_STS_AUTOCORR_I[18]),
-        .Q(AUTOCORR_I_BUFF__0[18]),
+        .Q(AUTOCORR_I_BUFF[18]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3777,7 +3062,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_I_BUFF[31]_i_1_n_0 ),
         .D(DETECTION_STS_AUTOCORR_I[19]),
-        .Q(AUTOCORR_I_BUFF__0[19]),
+        .Q(AUTOCORR_I_BUFF[19]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3785,7 +3070,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_I_BUFF[31]_i_1_n_0 ),
         .D(DETECTION_STS_AUTOCORR_I[1]),
-        .Q(AUTOCORR_I_BUFF__0[1]),
+        .Q(AUTOCORR_I_BUFF[1]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3793,7 +3078,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_I_BUFF[31]_i_1_n_0 ),
         .D(DETECTION_STS_AUTOCORR_I[20]),
-        .Q(AUTOCORR_I_BUFF__0[20]),
+        .Q(AUTOCORR_I_BUFF[20]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3801,7 +3086,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_I_BUFF[31]_i_1_n_0 ),
         .D(DETECTION_STS_AUTOCORR_I[21]),
-        .Q(AUTOCORR_I_BUFF__0[21]),
+        .Q(AUTOCORR_I_BUFF[21]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3809,7 +3094,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_I_BUFF[31]_i_1_n_0 ),
         .D(DETECTION_STS_AUTOCORR_I[22]),
-        .Q(AUTOCORR_I_BUFF__0[22]),
+        .Q(AUTOCORR_I_BUFF[22]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3817,7 +3102,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_I_BUFF[31]_i_1_n_0 ),
         .D(DETECTION_STS_AUTOCORR_I[23]),
-        .Q(AUTOCORR_I_BUFF__0[23]),
+        .Q(AUTOCORR_I_BUFF[23]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3825,7 +3110,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_I_BUFF[31]_i_1_n_0 ),
         .D(DETECTION_STS_AUTOCORR_I[24]),
-        .Q(AUTOCORR_I_BUFF__0[24]),
+        .Q(AUTOCORR_I_BUFF[24]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3833,7 +3118,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_I_BUFF[31]_i_1_n_0 ),
         .D(DETECTION_STS_AUTOCORR_I[25]),
-        .Q(AUTOCORR_I_BUFF__0[25]),
+        .Q(AUTOCORR_I_BUFF[25]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3841,7 +3126,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_I_BUFF[31]_i_1_n_0 ),
         .D(DETECTION_STS_AUTOCORR_I[26]),
-        .Q(AUTOCORR_I_BUFF__0[26]),
+        .Q(AUTOCORR_I_BUFF[26]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3849,7 +3134,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_I_BUFF[31]_i_1_n_0 ),
         .D(DETECTION_STS_AUTOCORR_I[27]),
-        .Q(AUTOCORR_I_BUFF__0[27]),
+        .Q(AUTOCORR_I_BUFF[27]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3857,7 +3142,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_I_BUFF[31]_i_1_n_0 ),
         .D(DETECTION_STS_AUTOCORR_I[28]),
-        .Q(AUTOCORR_I_BUFF__0[28]),
+        .Q(AUTOCORR_I_BUFF[28]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3865,7 +3150,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_I_BUFF[31]_i_1_n_0 ),
         .D(DETECTION_STS_AUTOCORR_I[29]),
-        .Q(AUTOCORR_I_BUFF__0[29]),
+        .Q(AUTOCORR_I_BUFF[29]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3873,7 +3158,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_I_BUFF[31]_i_1_n_0 ),
         .D(DETECTION_STS_AUTOCORR_I[2]),
-        .Q(AUTOCORR_I_BUFF__0[2]),
+        .Q(AUTOCORR_I_BUFF[2]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3881,7 +3166,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_I_BUFF[31]_i_1_n_0 ),
         .D(DETECTION_STS_AUTOCORR_I[30]),
-        .Q(AUTOCORR_I_BUFF__0[30]),
+        .Q(AUTOCORR_I_BUFF[30]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3889,7 +3174,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_I_BUFF[31]_i_1_n_0 ),
         .D(DETECTION_STS_AUTOCORR_I[31]),
-        .Q(AUTOCORR_I_BUFF__0[31]),
+        .Q(AUTOCORR_I_BUFF[31]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3897,7 +3182,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_I_BUFF[31]_i_1_n_0 ),
         .D(DETECTION_STS_AUTOCORR_I[3]),
-        .Q(AUTOCORR_I_BUFF__0[3]),
+        .Q(AUTOCORR_I_BUFF[3]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3905,7 +3190,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_I_BUFF[31]_i_1_n_0 ),
         .D(DETECTION_STS_AUTOCORR_I[4]),
-        .Q(AUTOCORR_I_BUFF__0[4]),
+        .Q(AUTOCORR_I_BUFF[4]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3913,7 +3198,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_I_BUFF[31]_i_1_n_0 ),
         .D(DETECTION_STS_AUTOCORR_I[5]),
-        .Q(AUTOCORR_I_BUFF__0[5]),
+        .Q(AUTOCORR_I_BUFF[5]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3921,7 +3206,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_I_BUFF[31]_i_1_n_0 ),
         .D(DETECTION_STS_AUTOCORR_I[6]),
-        .Q(AUTOCORR_I_BUFF__0[6]),
+        .Q(AUTOCORR_I_BUFF[6]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3929,7 +3214,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_I_BUFF[31]_i_1_n_0 ),
         .D(DETECTION_STS_AUTOCORR_I[7]),
-        .Q(AUTOCORR_I_BUFF__0[7]),
+        .Q(AUTOCORR_I_BUFF[7]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3937,7 +3222,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_I_BUFF[31]_i_1_n_0 ),
         .D(DETECTION_STS_AUTOCORR_I[8]),
-        .Q(AUTOCORR_I_BUFF__0[8]),
+        .Q(AUTOCORR_I_BUFF[8]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3945,16 +3230,16 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_I_BUFF[31]_i_1_n_0 ),
         .D(DETECTION_STS_AUTOCORR_I[9]),
-        .Q(AUTOCORR_I_BUFF__0[9]),
+        .Q(AUTOCORR_I_BUFF[9]),
         .R(1'b0));
   LUT5 #(
-    .INIT(32'h00000400)) 
+    .INIT(32'h00000008)) 
     \AUTOCORR_PHASE_BUFF[19]_i_1 
-       (.I0(RESET),
+       (.I0(RX_STATE_reg[1]),
         .I1(ATAN_PHASE_OUT_STROBE),
-        .I2(RX_STATE_reg[2]),
-        .I3(RX_STATE_reg[1]),
-        .I4(RX_STATE_reg[0]),
+        .I2(RX_STATE_reg[0]),
+        .I3(RX_STATE_reg[2]),
+        .I4(RESET),
         .O(\AUTOCORR_PHASE_BUFF[19]_i_1_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
@@ -3962,7 +3247,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_PHASE_BUFF[19]_i_1_n_0 ),
         .D(ATAN_PHASE_OUT[0]),
-        .Q(AUTOCORR_PHASE_BUFF__0[0]),
+        .Q(AUTOCORR_PHASE_BUFF[0]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3970,7 +3255,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_PHASE_BUFF[19]_i_1_n_0 ),
         .D(ATAN_PHASE_OUT[10]),
-        .Q(AUTOCORR_PHASE_BUFF__0[10]),
+        .Q(AUTOCORR_PHASE_BUFF[10]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3978,7 +3263,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_PHASE_BUFF[19]_i_1_n_0 ),
         .D(ATAN_PHASE_OUT[11]),
-        .Q(AUTOCORR_PHASE_BUFF__0[11]),
+        .Q(AUTOCORR_PHASE_BUFF[11]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3986,7 +3271,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_PHASE_BUFF[19]_i_1_n_0 ),
         .D(ATAN_PHASE_OUT[12]),
-        .Q(AUTOCORR_PHASE_BUFF__0[12]),
+        .Q(AUTOCORR_PHASE_BUFF[12]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3994,7 +3279,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_PHASE_BUFF[19]_i_1_n_0 ),
         .D(ATAN_PHASE_OUT[13]),
-        .Q(AUTOCORR_PHASE_BUFF__0[13]),
+        .Q(AUTOCORR_PHASE_BUFF[13]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -4002,7 +3287,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_PHASE_BUFF[19]_i_1_n_0 ),
         .D(ATAN_PHASE_OUT[14]),
-        .Q(AUTOCORR_PHASE_BUFF__0[14]),
+        .Q(AUTOCORR_PHASE_BUFF[14]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -4010,7 +3295,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_PHASE_BUFF[19]_i_1_n_0 ),
         .D(ATAN_PHASE_OUT[15]),
-        .Q(AUTOCORR_PHASE_BUFF__0[15]),
+        .Q(AUTOCORR_PHASE_BUFF[15]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -4018,7 +3303,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_PHASE_BUFF[19]_i_1_n_0 ),
         .D(ATAN_PHASE_OUT[16]),
-        .Q(AUTOCORR_PHASE_BUFF__0[16]),
+        .Q(AUTOCORR_PHASE_BUFF[16]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -4026,7 +3311,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_PHASE_BUFF[19]_i_1_n_0 ),
         .D(ATAN_PHASE_OUT[17]),
-        .Q(AUTOCORR_PHASE_BUFF__0[17]),
+        .Q(AUTOCORR_PHASE_BUFF[17]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -4034,7 +3319,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_PHASE_BUFF[19]_i_1_n_0 ),
         .D(ATAN_PHASE_OUT[18]),
-        .Q(AUTOCORR_PHASE_BUFF__0[18]),
+        .Q(AUTOCORR_PHASE_BUFF[18]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -4042,7 +3327,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_PHASE_BUFF[19]_i_1_n_0 ),
         .D(ATAN_PHASE_OUT[19]),
-        .Q(AUTOCORR_PHASE_BUFF__0[19]),
+        .Q(AUTOCORR_PHASE_BUFF[19]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -4050,7 +3335,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_PHASE_BUFF[19]_i_1_n_0 ),
         .D(ATAN_PHASE_OUT[1]),
-        .Q(AUTOCORR_PHASE_BUFF__0[1]),
+        .Q(AUTOCORR_PHASE_BUFF[1]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -4058,7 +3343,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_PHASE_BUFF[19]_i_1_n_0 ),
         .D(ATAN_PHASE_OUT[2]),
-        .Q(AUTOCORR_PHASE_BUFF__0[2]),
+        .Q(AUTOCORR_PHASE_BUFF[2]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -4066,7 +3351,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_PHASE_BUFF[19]_i_1_n_0 ),
         .D(ATAN_PHASE_OUT[3]),
-        .Q(AUTOCORR_PHASE_BUFF__0[3]),
+        .Q(AUTOCORR_PHASE_BUFF[3]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -4074,7 +3359,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_PHASE_BUFF[19]_i_1_n_0 ),
         .D(ATAN_PHASE_OUT[4]),
-        .Q(AUTOCORR_PHASE_BUFF__0[4]),
+        .Q(AUTOCORR_PHASE_BUFF[4]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -4082,7 +3367,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_PHASE_BUFF[19]_i_1_n_0 ),
         .D(ATAN_PHASE_OUT[5]),
-        .Q(AUTOCORR_PHASE_BUFF__0[5]),
+        .Q(AUTOCORR_PHASE_BUFF[5]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -4090,7 +3375,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_PHASE_BUFF[19]_i_1_n_0 ),
         .D(ATAN_PHASE_OUT[6]),
-        .Q(AUTOCORR_PHASE_BUFF__0[6]),
+        .Q(AUTOCORR_PHASE_BUFF[6]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -4098,7 +3383,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_PHASE_BUFF[19]_i_1_n_0 ),
         .D(ATAN_PHASE_OUT[7]),
-        .Q(AUTOCORR_PHASE_BUFF__0[7]),
+        .Q(AUTOCORR_PHASE_BUFF[7]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -4106,7 +3391,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_PHASE_BUFF[19]_i_1_n_0 ),
         .D(ATAN_PHASE_OUT[8]),
-        .Q(AUTOCORR_PHASE_BUFF__0[8]),
+        .Q(AUTOCORR_PHASE_BUFF[8]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -4114,7 +3399,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\AUTOCORR_PHASE_BUFF[19]_i_1_n_0 ),
         .D(ATAN_PHASE_OUT[9]),
-        .Q(AUTOCORR_PHASE_BUFF__0[9]),
+        .Q(AUTOCORR_PHASE_BUFF[9]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -4373,87 +3658,105 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .Q(AUTOCORR_Q_BUFF[9]),
         .R(1'b0));
   LUT6 #(
-    .INIT(64'h0000FFFFAAAE0000)) 
+    .INIT(64'h00000000FF5D0D0D)) 
     \COUNTER[0]_i_1 
-       (.I0(RX_STATE_reg[0]),
-        .I1(RX_STATE_reg[1]),
-        .I2(p_0_in_0),
-        .I3(STOP_RX_DONE),
-        .I4(\COUNTER[31]_i_2_n_0 ),
+       (.I0(\COUNTER[31]_i_4_n_0 ),
+        .I1(\COUNTER[31]_i_5_n_0 ),
+        .I2(\COUNTER[31]_i_6_n_0 ),
+        .I3(\COUNTER[31]_i_7_n_0 ),
+        .I4(RX_STATE_reg[0]),
         .I5(COUNTER[0]),
         .O(\COUNTER[0]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'h0002)) 
+  LUT6 #(
+    .INIT(64'h00A2F2F200000000)) 
     \COUNTER[31]_i_1 
-       (.I0(\COUNTER[31]_i_2_n_0 ),
-        .I1(\COUNTER[31]_i_4_n_0 ),
-        .I2(\COUNTER[31]_i_5_n_0 ),
-        .I3(\COUNTER[31]_i_6_n_0 ),
+       (.I0(\COUNTER[31]_i_4_n_0 ),
+        .I1(\COUNTER[31]_i_5_n_0 ),
+        .I2(\COUNTER[31]_i_6_n_0 ),
+        .I3(\COUNTER[31]_i_7_n_0 ),
+        .I4(RX_STATE_reg[0]),
+        .I5(\COUNTER[31]_i_2_n_0 ),
         .O(\COUNTER[31]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hEFEFEFEEEEEEEEEE)) 
+    .INIT(64'hFFFFFFFFFBFFFFFF)) 
+    \COUNTER[31]_i_10 
+       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[5] ),
+        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[4] ),
+        .I2(\COUNTER_OFDM_SYMBOL_reg_n_0_[3] ),
+        .I3(\COUNTER_OFDM_SYMBOL_reg_n_0_[1] ),
+        .I4(\COUNTER_OFDM_SYMBOL_reg_n_0_[2] ),
+        .I5(\COUNTER_OFDM_SYMBOL_reg_n_0_[0] ),
+        .O(\COUNTER[31]_i_10_n_0 ));
+  LUT5 #(
+    .INIT(32'h00400000)) 
+    \COUNTER[31]_i_11 
+       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[9] ),
+        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[10] ),
+        .I2(\COUNTER_OFDM_SYMBOL_reg_n_0_[6] ),
+        .I3(\COUNTER_OFDM_SYMBOL_reg_n_0_[7] ),
+        .I4(\COUNTER_OFDM_SYMBOL_reg_n_0_[8] ),
+        .O(\COUNTER[31]_i_11_n_0 ));
+  LUT6 #(
+    .INIT(64'h000000007F557F5F)) 
     \COUNTER[31]_i_2 
-       (.I0(\ROTATION_IDATA_OUT_BUFF[15]_i_1_n_0 ),
-        .I1(\COUNTER[31]_i_7_n_0 ),
-        .I2(RESET),
-        .I3(STOP_RX_DONE),
-        .I4(p_0_in_0),
-        .I5(\COUNTER[31]_i_8_n_0 ),
+       (.I0(RX_STATE_reg[1]),
+        .I1(\RX_STATE0_inferred__0/i__carry__2_n_0 ),
+        .I2(RX_STATE_reg[0]),
+        .I3(ROTATION_DATA_OUT_STROBE),
+        .I4(\COUNTER[31]_i_8_n_0 ),
+        .I5(\COUNTER[31]_i_9_n_0 ),
         .O(\COUNTER[31]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'hCCCCFFCC8C8CAE8C)) 
-    \COUNTER[31]_i_4 
-       (.I0(\COUNTER_OFDM_SYMBOL[31]_i_5_n_0 ),
-        .I1(RX_STATE_reg[0]),
-        .I2(COUNTER[5]),
-        .I3(RX_STATE_reg[1]),
-        .I4(\COUNTER[31]_i_9_n_0 ),
-        .I5(COUNTER[31]),
-        .O(\COUNTER[31]_i_4_n_0 ));
-  LUT6 #(
-    .INIT(64'hEEEEEEEE0C0C0C08)) 
-    \COUNTER[31]_i_5 
-       (.I0(COUNTER[29]),
-        .I1(RX_STATE_reg[1]),
-        .I2(\COUNTER[31]_i_9_n_0 ),
-        .I3(COUNTER[4]),
-        .I4(COUNTER[5]),
-        .I5(RX_STATE_reg[0]),
-        .O(\COUNTER[31]_i_5_n_0 ));
-  LUT6 #(
-    .INIT(64'hAAAAFFFF02000200)) 
-    \COUNTER[31]_i_6 
-       (.I0(COUNTER[30]),
-        .I1(STOP_RX_DONE),
-        .I2(p_0_in_0),
-        .I3(RX_STATE_reg[1]),
-        .I4(COUNTER[4]),
-        .I5(RX_STATE_reg[0]),
-        .O(\COUNTER[31]_i_6_n_0 ));
   (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT5 #(
-    .INIT(32'h04000000)) 
-    \COUNTER[31]_i_7 
-       (.I0(RESET),
-        .I1(RX_STATE_reg[1]),
-        .I2(\RX_STATE0_inferred__1/i__carry__2_n_0 ),
-        .I3(ROTATION_DATA_OUT_STROBE),
-        .I4(RX_STATE_reg[2]),
-        .O(\COUNTER[31]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
-  LUT3 #(
-    .INIT(8'h08)) 
-    \COUNTER[31]_i_8 
-       (.I0(RX_STATE_reg[2]),
-        .I1(RX_STATE_reg[1]),
-        .I2(RX_STATE_reg[0]),
-        .O(\COUNTER[31]_i_8_n_0 ));
+    .INIT(32'h00008000)) 
+    \COUNTER[31]_i_4 
+       (.I0(\COUNTER_OFDM_SYMBOL[9]_i_5_n_0 ),
+        .I1(COUNTER[2]),
+        .I2(COUNTER[1]),
+        .I3(COUNTER[0]),
+        .I4(FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_2_n_0),
+        .O(\COUNTER[31]_i_4_n_0 ));
   (* SOFT_HLUTNM = "soft_lutpair11" *) 
-  LUT2 #(
-    .INIT(4'hE)) 
-    \COUNTER[31]_i_9 
+  LUT3 #(
+    .INIT(8'hEF)) 
+    \COUNTER[31]_i_5 
+       (.I0(COUNTER[4]),
+        .I1(COUNTER[5]),
+        .I2(COUNTER[3]),
+        .O(\COUNTER[31]_i_5_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  LUT3 #(
+    .INIT(8'hDF)) 
+    \COUNTER[31]_i_6 
+       (.I0(\COUNTER[31]_i_8_n_0 ),
+        .I1(RX_STATE_reg[0]),
+        .I2(RX_STATE_reg[1]),
+        .O(\COUNTER[31]_i_6_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair11" *) 
+  LUT4 #(
+    .INIT(16'hFF7F)) 
+    \COUNTER[31]_i_7 
+       (.I0(COUNTER[4]),
+        .I1(COUNTER[3]),
+        .I2(COUNTER[5]),
+        .I3(RX_STATE_reg[1]),
+        .O(\COUNTER[31]_i_7_n_0 ));
+  LUT3 #(
+    .INIT(8'h45)) 
+    \COUNTER[31]_i_8 
        (.I0(STOP_RX_DONE),
-        .I1(p_0_in_0),
+        .I1(\COUNTER[31]_i_10_n_0 ),
+        .I2(\COUNTER[31]_i_11_n_0 ),
+        .O(\COUNTER[31]_i_8_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFF0515FFFFFFFF)) 
+    \COUNTER[31]_i_9 
+       (.I0(RX_STATE_reg[1]),
+        .I1(RX_STATE_reg[0]),
+        .I2(ROTATION_DATA_OUT_STROBE),
+        .I3(ROTATION_DATA_OUT_MARKER),
+        .I4(RESET),
+        .I5(RX_STATE_reg[2]),
         .O(\COUNTER[31]_i_9_n_0 ));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 \COUNTER_IQ0_inferred__1/i__carry 
@@ -4738,12 +4041,12 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .I4(RX_STATE_reg[2]),
         .O(\COUNTER_IQ[30]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'hFF80)) 
+    .INIT(16'hEAAA)) 
     \COUNTER_IQ[31]_i_1 
-       (.I0(RX_STATE_reg[0]),
-        .I1(RX_STATE_reg[1]),
+       (.I0(RESET),
+        .I1(RX_STATE_reg[0]),
         .I2(RX_STATE_reg[2]),
-        .I3(RESET),
+        .I3(RX_STATE_reg[1]),
         .O(\COUNTER_IQ[31]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h44444444444444F4)) 
@@ -4764,6 +4067,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .I3(RX_STATE_reg[0]),
         .I4(RX_STATE_reg[2]),
         .O(\COUNTER_IQ[31]_i_3_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT5 #(
     .INIT(32'hAAAAAAA2)) 
     \COUNTER_IQ[3]_i_1 
@@ -5083,469 +4387,294 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .D(\COUNTER_IQ[9]_i_1_n_0 ),
         .Q(COUNTER_IQ[9]),
         .S(\COUNTER_IQ[31]_i_1_n_0 ));
-  LUT1 #(
-    .INIT(2'h1)) 
+  (* SOFT_HLUTNM = "soft_lutpair12" *) 
+  LUT2 #(
+    .INIT(4'h2)) 
     \COUNTER_OFDM_SYMBOL[0]_i_1 
-       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[0] ),
+       (.I0(RX_STATE_reg[1]),
+        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[0] ),
         .O(\COUNTER_OFDM_SYMBOL[0]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000000032222222)) 
-    \COUNTER_OFDM_SYMBOL[31]_i_1 
-       (.I0(\COUNTER_OFDM_SYMBOL[31]_i_4_n_0 ),
-        .I1(\COUNTER_OFDM_SYMBOL[31]_i_5_n_0 ),
-        .I2(\COUNTER_OFDM_SYMBOL[31]_i_6_n_0 ),
-        .I3(RX_STATE_reg[0]),
-        .I4(\COUNTER_OFDM_SYMBOL[31]_i_7_n_0 ),
-        .I5(RX_STATE_reg[1]),
-        .O(\COUNTER_OFDM_SYMBOL[31]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  LUT5 #(
+    .INIT(32'h70FF8000)) 
+    \COUNTER_OFDM_SYMBOL[10]_i_1 
+       (.I0(\COUNTER_OFDM_SYMBOL[10]_i_2_n_0 ),
+        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[9] ),
+        .I2(RX_STATE_reg[1]),
+        .I3(\COUNTER_OFDM_SYMBOL[9]_i_1_n_0 ),
+        .I4(\COUNTER_OFDM_SYMBOL_reg_n_0_[10] ),
+        .O(\COUNTER_OFDM_SYMBOL[10]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair13" *) 
   LUT4 #(
     .INIT(16'h0800)) 
-    \COUNTER_OFDM_SYMBOL[31]_i_10 
-       (.I0(ROTATION_DATA_OUT_STROBE),
-        .I1(RX_STATE_reg[2]),
-        .I2(RX_STATE_reg[1]),
-        .I3(RX_STATE_reg[0]),
-        .O(\COUNTER_OFDM_SYMBOL[31]_i_10_n_0 ));
+    \COUNTER_OFDM_SYMBOL[10]_i_2 
+       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[8] ),
+        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[7] ),
+        .I2(\COUNTER_OFDM_SYMBOL[9]_i_8_n_0 ),
+        .I3(\COUNTER_OFDM_SYMBOL_reg_n_0_[6] ),
+        .O(\COUNTER_OFDM_SYMBOL[10]_i_2_n_0 ));
+  LUT4 #(
+    .INIT(16'h4F80)) 
+    \COUNTER_OFDM_SYMBOL[1]_i_1 
+       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[0] ),
+        .I1(RX_STATE_reg[1]),
+        .I2(\COUNTER_OFDM_SYMBOL[9]_i_1_n_0 ),
+        .I3(\COUNTER_OFDM_SYMBOL_reg_n_0_[1] ),
+        .O(\COUNTER_OFDM_SYMBOL[1]_i_1_n_0 ));
   (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT4 #(
-    .INIT(16'h4000)) 
-    \COUNTER_OFDM_SYMBOL[31]_i_11 
-       (.I0(RX_STATE_reg[0]),
-        .I1(RX_STATE_reg[1]),
-        .I2(RX_STATE_reg[2]),
-        .I3(ROTATION_DATA_OUT_STROBE),
-        .O(\COUNTER_OFDM_SYMBOL[31]_i_11_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+    .INIT(16'h2888)) 
+    \COUNTER_OFDM_SYMBOL[2]_i_1 
+       (.I0(RX_STATE_reg[1]),
+        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[2] ),
+        .I2(\COUNTER_OFDM_SYMBOL_reg_n_0_[1] ),
+        .I3(\COUNTER_OFDM_SYMBOL_reg_n_0_[0] ),
+        .O(\COUNTER_OFDM_SYMBOL[2]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT5 #(
-    .INIT(32'h7FFFFFFF)) 
-    \COUNTER_OFDM_SYMBOL[31]_i_12 
-       (.I0(COUNTER[0]),
-        .I1(COUNTER[3]),
-        .I2(COUNTER[6]),
-        .I3(COUNTER[2]),
-        .I4(COUNTER[1]),
-        .O(\COUNTER_OFDM_SYMBOL[31]_i_12_n_0 ));
-  LUT2 #(
-    .INIT(4'hE)) 
-    \COUNTER_OFDM_SYMBOL[31]_i_13 
-       (.I0(COUNTER[10]),
-        .I1(COUNTER[11]),
-        .O(\COUNTER_OFDM_SYMBOL[31]_i_13_n_0 ));
-  LUT2 #(
-    .INIT(4'hE)) 
-    \COUNTER_OFDM_SYMBOL[31]_i_14 
-       (.I0(COUNTER[8]),
-        .I1(COUNTER[9]),
-        .O(\COUNTER_OFDM_SYMBOL[31]_i_14_n_0 ));
-  LUT2 #(
-    .INIT(4'hE)) 
-    \COUNTER_OFDM_SYMBOL[31]_i_15 
-       (.I0(COUNTER[14]),
-        .I1(COUNTER[15]),
-        .O(\COUNTER_OFDM_SYMBOL[31]_i_15_n_0 ));
-  LUT2 #(
-    .INIT(4'hE)) 
-    \COUNTER_OFDM_SYMBOL[31]_i_16 
-       (.I0(COUNTER[12]),
-        .I1(COUNTER[13]),
-        .O(\COUNTER_OFDM_SYMBOL[31]_i_16_n_0 ));
+    .INIT(32'h28888888)) 
+    \COUNTER_OFDM_SYMBOL[3]_i_1 
+       (.I0(RX_STATE_reg[1]),
+        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[3] ),
+        .I2(\COUNTER_OFDM_SYMBOL_reg_n_0_[2] ),
+        .I3(\COUNTER_OFDM_SYMBOL_reg_n_0_[0] ),
+        .I4(\COUNTER_OFDM_SYMBOL_reg_n_0_[1] ),
+        .O(\COUNTER_OFDM_SYMBOL[3]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFFFFE)) 
-    \COUNTER_OFDM_SYMBOL[31]_i_17 
-       (.I0(FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_8_n_0),
-        .I1(FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_7_n_0),
-        .I2(COUNTER[17]),
-        .I3(COUNTER[16]),
-        .I4(FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_5_n_0),
-        .I5(FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_4_n_0),
-        .O(\COUNTER_OFDM_SYMBOL[31]_i_17_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000FFFF00000800)) 
-    \COUNTER_OFDM_SYMBOL[31]_i_2 
-       (.I0(\COUNTER_OFDM_SYMBOL[31]_i_8_n_0 ),
-        .I1(\COUNTER_OFDM_SYMBOL[31]_i_9_n_0 ),
-        .I2(RESET),
-        .I3(\COUNTER_OFDM_SYMBOL[31]_i_10_n_0 ),
-        .I4(\COUNTER_OFDM_SYMBOL[31]_i_5_n_0 ),
-        .I5(\COUNTER_OFDM_SYMBOL[31]_i_4_n_0 ),
-        .O(\COUNTER_OFDM_SYMBOL[31]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000000200000000)) 
-    \COUNTER_OFDM_SYMBOL[31]_i_4 
-       (.I0(\COUNTER_OFDM_SYMBOL[31]_i_8_n_0 ),
-        .I1(RESET),
-        .I2(COUNTER[4]),
-        .I3(COUNTER[5]),
-        .I4(\COUNTER[31]_i_9_n_0 ),
-        .I5(\COUNTER_OFDM_SYMBOL[31]_i_11_n_0 ),
-        .O(\COUNTER_OFDM_SYMBOL[31]_i_4_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFFFFE)) 
-    \COUNTER_OFDM_SYMBOL[31]_i_5 
-       (.I0(\COUNTER_OFDM_SYMBOL[31]_i_12_n_0 ),
-        .I1(\COUNTER_OFDM_SYMBOL[31]_i_13_n_0 ),
-        .I2(\COUNTER_OFDM_SYMBOL[31]_i_14_n_0 ),
-        .I3(\COUNTER_OFDM_SYMBOL[31]_i_15_n_0 ),
-        .I4(\COUNTER_OFDM_SYMBOL[31]_i_16_n_0 ),
-        .I5(\COUNTER_OFDM_SYMBOL[31]_i_17_n_0 ),
-        .O(\COUNTER_OFDM_SYMBOL[31]_i_5_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+    .INIT(64'h2888888888888888)) 
+    \COUNTER_OFDM_SYMBOL[4]_i_1 
+       (.I0(RX_STATE_reg[1]),
+        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[4] ),
+        .I2(\COUNTER_OFDM_SYMBOL_reg_n_0_[3] ),
+        .I3(\COUNTER_OFDM_SYMBOL_reg_n_0_[1] ),
+        .I4(\COUNTER_OFDM_SYMBOL_reg_n_0_[0] ),
+        .I5(\COUNTER_OFDM_SYMBOL_reg_n_0_[2] ),
+        .O(\COUNTER_OFDM_SYMBOL[4]_i_1_n_0 ));
   LUT2 #(
-    .INIT(4'h8)) 
-    \COUNTER_OFDM_SYMBOL[31]_i_6 
-       (.I0(RX_STATE_reg[2]),
-        .I1(ROTATION_DATA_OUT_STROBE),
-        .O(\COUNTER_OFDM_SYMBOL[31]_i_6_n_0 ));
+    .INIT(4'h2)) 
+    \COUNTER_OFDM_SYMBOL[5]_i_1 
+       (.I0(\COUNTER_OFDM_SYMBOL[9]_i_1_n_0 ),
+        .I1(RX_STATE_reg[1]),
+        .O(\COUNTER_OFDM_SYMBOL[5]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h0000000000000040)) 
-    \COUNTER_OFDM_SYMBOL[31]_i_7 
-       (.I0(RESET),
-        .I1(COUNTER[4]),
-        .I2(COUNTER[5]),
-        .I3(COUNTER[29]),
-        .I4(COUNTER[30]),
-        .I5(COUNTER[31]),
-        .O(\COUNTER_OFDM_SYMBOL[31]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+    .INIT(64'h6AAAAAAAAAAAAAAA)) 
+    \COUNTER_OFDM_SYMBOL[5]_i_2 
+       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[5] ),
+        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[4] ),
+        .I2(\COUNTER_OFDM_SYMBOL_reg_n_0_[2] ),
+        .I3(\COUNTER_OFDM_SYMBOL_reg_n_0_[0] ),
+        .I4(\COUNTER_OFDM_SYMBOL_reg_n_0_[1] ),
+        .I5(\COUNTER_OFDM_SYMBOL_reg_n_0_[3] ),
+        .O(\COUNTER_OFDM_SYMBOL[5]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair13" *) 
   LUT3 #(
-    .INIT(8'h01)) 
-    \COUNTER_OFDM_SYMBOL[31]_i_8 
-       (.I0(COUNTER[31]),
-        .I1(COUNTER[30]),
-        .I2(COUNTER[29]),
-        .O(\COUNTER_OFDM_SYMBOL[31]_i_8_n_0 ));
+    .INIT(8'h82)) 
+    \COUNTER_OFDM_SYMBOL[6]_i_1 
+       (.I0(RX_STATE_reg[1]),
+        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[6] ),
+        .I2(\COUNTER_OFDM_SYMBOL[9]_i_8_n_0 ),
+        .O(\COUNTER_OFDM_SYMBOL[6]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  LUT4 #(
+    .INIT(16'h8828)) 
+    \COUNTER_OFDM_SYMBOL[7]_i_1 
+       (.I0(RX_STATE_reg[1]),
+        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[7] ),
+        .I2(\COUNTER_OFDM_SYMBOL_reg_n_0_[6] ),
+        .I3(\COUNTER_OFDM_SYMBOL[9]_i_8_n_0 ),
+        .O(\COUNTER_OFDM_SYMBOL[7]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  LUT5 #(
+    .INIT(32'h88288888)) 
+    \COUNTER_OFDM_SYMBOL[8]_i_1 
+       (.I0(RX_STATE_reg[1]),
+        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[8] ),
+        .I2(\COUNTER_OFDM_SYMBOL_reg_n_0_[7] ),
+        .I3(\COUNTER_OFDM_SYMBOL[9]_i_8_n_0 ),
+        .I4(\COUNTER_OFDM_SYMBOL_reg_n_0_[6] ),
+        .O(\COUNTER_OFDM_SYMBOL[8]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h1000FF0010001000)) 
+    \COUNTER_OFDM_SYMBOL[9]_i_1 
+       (.I0(\COUNTER[31]_i_5_n_0 ),
+        .I1(\COUNTER_OFDM_SYMBOL[9]_i_3_n_0 ),
+        .I2(\COUNTER_OFDM_SYMBOL[9]_i_4_n_0 ),
+        .I3(\COUNTER_OFDM_SYMBOL[9]_i_5_n_0 ),
+        .I4(\COUNTER_OFDM_SYMBOL[9]_i_6_n_0 ),
+        .I5(\COUNTER_OFDM_SYMBOL[9]_i_7_n_0 ),
+        .O(\COUNTER_OFDM_SYMBOL[9]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  LUT4 #(
+    .INIT(16'hFFDF)) 
+    \COUNTER_OFDM_SYMBOL[9]_i_10 
+       (.I0(ROTATION_DATA_OUT_STROBE),
+        .I1(COUNTER[25]),
+        .I2(COUNTER[5]),
+        .I3(COUNTER[26]),
+        .O(\COUNTER_OFDM_SYMBOL[9]_i_10_n_0 ));
+  LUT6 #(
+    .INIT(64'h8828888888888888)) 
+    \COUNTER_OFDM_SYMBOL[9]_i_2 
+       (.I0(RX_STATE_reg[1]),
+        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[9] ),
+        .I2(\COUNTER_OFDM_SYMBOL_reg_n_0_[6] ),
+        .I3(\COUNTER_OFDM_SYMBOL[9]_i_8_n_0 ),
+        .I4(\COUNTER_OFDM_SYMBOL_reg_n_0_[7] ),
+        .I5(\COUNTER_OFDM_SYMBOL_reg_n_0_[8] ),
+        .O(\COUNTER_OFDM_SYMBOL[9]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFFFFFE)) 
+    \COUNTER_OFDM_SYMBOL[9]_i_3 
+       (.I0(FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_4_n_0),
+        .I1(COUNTER[25]),
+        .I2(COUNTER[24]),
+        .I3(FFT_DATA_IN_START_i_8_n_0),
+        .I4(COUNTER[26]),
+        .I5(\COUNTER_OFDM_SYMBOL[9]_i_9_n_0 ),
+        .O(\COUNTER_OFDM_SYMBOL[9]_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'h0000000020000000)) 
+    \COUNTER_OFDM_SYMBOL[9]_i_4 
+       (.I0(\COUNTER[31]_i_8_n_0 ),
+        .I1(RX_STATE_reg[0]),
+        .I2(RX_STATE_reg[1]),
+        .I3(RX_STATE_reg[2]),
+        .I4(ROTATION_DATA_OUT_STROBE),
+        .I5(RESET),
+        .O(\COUNTER_OFDM_SYMBOL[9]_i_4_n_0 ));
+  LUT3 #(
+    .INIT(8'h04)) 
+    \COUNTER_OFDM_SYMBOL[9]_i_5 
+       (.I0(COUNTER[7]),
+        .I1(COUNTER[6]),
+        .I2(FFT_DATA_IN_START_i_4_n_0),
+        .O(\COUNTER_OFDM_SYMBOL[9]_i_5_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFFBFFF)) 
+    \COUNTER_OFDM_SYMBOL[9]_i_6 
+       (.I0(\FSM_sequential_RX_STATE[2]_i_6_n_0 ),
+        .I1(COUNTER[0]),
+        .I2(COUNTER[1]),
+        .I3(COUNTER[2]),
+        .I4(\COUNTER_OFDM_SYMBOL[9]_i_10_n_0 ),
+        .I5(FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_4_n_0),
+        .O(\COUNTER_OFDM_SYMBOL[9]_i_6_n_0 ));
   LUT2 #(
-    .INIT(4'h8)) 
-    \COUNTER_OFDM_SYMBOL[31]_i_9 
-       (.I0(COUNTER[4]),
-        .I1(COUNTER[5]),
-        .O(\COUNTER_OFDM_SYMBOL[31]_i_9_n_0 ));
+    .INIT(4'h2)) 
+    \COUNTER_OFDM_SYMBOL[9]_i_7 
+       (.I0(RX_STATE_reg[2]),
+        .I1(RESET),
+        .O(\COUNTER_OFDM_SYMBOL[9]_i_7_n_0 ));
+  LUT6 #(
+    .INIT(64'h7FFFFFFFFFFFFFFF)) 
+    \COUNTER_OFDM_SYMBOL[9]_i_8 
+       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[4] ),
+        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[2] ),
+        .I2(\COUNTER_OFDM_SYMBOL_reg_n_0_[0] ),
+        .I3(\COUNTER_OFDM_SYMBOL_reg_n_0_[1] ),
+        .I4(\COUNTER_OFDM_SYMBOL_reg_n_0_[3] ),
+        .I5(\COUNTER_OFDM_SYMBOL_reg_n_0_[5] ),
+        .O(\COUNTER_OFDM_SYMBOL[9]_i_8_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  LUT3 #(
+    .INIT(8'h7F)) 
+    \COUNTER_OFDM_SYMBOL[9]_i_9 
+       (.I0(COUNTER[2]),
+        .I1(COUNTER[1]),
+        .I2(COUNTER[0]),
+        .O(\COUNTER_OFDM_SYMBOL[9]_i_9_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
     \COUNTER_OFDM_SYMBOL_reg[0] 
        (.C(CLOCK),
-        .CE(\COUNTER_OFDM_SYMBOL[31]_i_2_n_0 ),
+        .CE(\COUNTER_OFDM_SYMBOL[9]_i_1_n_0 ),
         .D(\COUNTER_OFDM_SYMBOL[0]_i_1_n_0 ),
         .Q(\COUNTER_OFDM_SYMBOL_reg_n_0_[0] ),
-        .R(\COUNTER_OFDM_SYMBOL[31]_i_1_n_0 ));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \COUNTER_OFDM_SYMBOL_reg[10] 
        (.C(CLOCK),
-        .CE(\COUNTER_OFDM_SYMBOL[31]_i_2_n_0 ),
-        .D(in17[10]),
+        .CE(1'b1),
+        .D(\COUNTER_OFDM_SYMBOL[10]_i_1_n_0 ),
         .Q(\COUNTER_OFDM_SYMBOL_reg_n_0_[10] ),
-        .R(\COUNTER_OFDM_SYMBOL[31]_i_1_n_0 ));
-  FDRE #(
-    .INIT(1'b0)) 
-    \COUNTER_OFDM_SYMBOL_reg[11] 
-       (.C(CLOCK),
-        .CE(\COUNTER_OFDM_SYMBOL[31]_i_2_n_0 ),
-        .D(in17[11]),
-        .Q(\COUNTER_OFDM_SYMBOL_reg_n_0_[11] ),
-        .R(\COUNTER_OFDM_SYMBOL[31]_i_1_n_0 ));
-  FDRE #(
-    .INIT(1'b0)) 
-    \COUNTER_OFDM_SYMBOL_reg[12] 
-       (.C(CLOCK),
-        .CE(\COUNTER_OFDM_SYMBOL[31]_i_2_n_0 ),
-        .D(in17[12]),
-        .Q(\COUNTER_OFDM_SYMBOL_reg_n_0_[12] ),
-        .R(\COUNTER_OFDM_SYMBOL[31]_i_1_n_0 ));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 \COUNTER_OFDM_SYMBOL_reg[12]_i_1 
-       (.CI(\COUNTER_OFDM_SYMBOL_reg[8]_i_1_n_0 ),
-        .CO({\COUNTER_OFDM_SYMBOL_reg[12]_i_1_n_0 ,\COUNTER_OFDM_SYMBOL_reg[12]_i_1_n_1 ,\COUNTER_OFDM_SYMBOL_reg[12]_i_1_n_2 ,\COUNTER_OFDM_SYMBOL_reg[12]_i_1_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(in17[12:9]),
-        .S({\COUNTER_OFDM_SYMBOL_reg_n_0_[12] ,\COUNTER_OFDM_SYMBOL_reg_n_0_[11] ,\COUNTER_OFDM_SYMBOL_reg_n_0_[10] ,\COUNTER_OFDM_SYMBOL_reg_n_0_[9] }));
-  FDRE #(
-    .INIT(1'b0)) 
-    \COUNTER_OFDM_SYMBOL_reg[13] 
-       (.C(CLOCK),
-        .CE(\COUNTER_OFDM_SYMBOL[31]_i_2_n_0 ),
-        .D(in17[13]),
-        .Q(\COUNTER_OFDM_SYMBOL_reg_n_0_[13] ),
-        .R(\COUNTER_OFDM_SYMBOL[31]_i_1_n_0 ));
-  FDRE #(
-    .INIT(1'b0)) 
-    \COUNTER_OFDM_SYMBOL_reg[14] 
-       (.C(CLOCK),
-        .CE(\COUNTER_OFDM_SYMBOL[31]_i_2_n_0 ),
-        .D(in17[14]),
-        .Q(\COUNTER_OFDM_SYMBOL_reg_n_0_[14] ),
-        .R(\COUNTER_OFDM_SYMBOL[31]_i_1_n_0 ));
-  FDRE #(
-    .INIT(1'b0)) 
-    \COUNTER_OFDM_SYMBOL_reg[15] 
-       (.C(CLOCK),
-        .CE(\COUNTER_OFDM_SYMBOL[31]_i_2_n_0 ),
-        .D(in17[15]),
-        .Q(\COUNTER_OFDM_SYMBOL_reg_n_0_[15] ),
-        .R(\COUNTER_OFDM_SYMBOL[31]_i_1_n_0 ));
-  FDRE #(
-    .INIT(1'b0)) 
-    \COUNTER_OFDM_SYMBOL_reg[16] 
-       (.C(CLOCK),
-        .CE(\COUNTER_OFDM_SYMBOL[31]_i_2_n_0 ),
-        .D(in17[16]),
-        .Q(\COUNTER_OFDM_SYMBOL_reg_n_0_[16] ),
-        .R(\COUNTER_OFDM_SYMBOL[31]_i_1_n_0 ));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 \COUNTER_OFDM_SYMBOL_reg[16]_i_1 
-       (.CI(\COUNTER_OFDM_SYMBOL_reg[12]_i_1_n_0 ),
-        .CO({\COUNTER_OFDM_SYMBOL_reg[16]_i_1_n_0 ,\COUNTER_OFDM_SYMBOL_reg[16]_i_1_n_1 ,\COUNTER_OFDM_SYMBOL_reg[16]_i_1_n_2 ,\COUNTER_OFDM_SYMBOL_reg[16]_i_1_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(in17[16:13]),
-        .S({\COUNTER_OFDM_SYMBOL_reg_n_0_[16] ,\COUNTER_OFDM_SYMBOL_reg_n_0_[15] ,\COUNTER_OFDM_SYMBOL_reg_n_0_[14] ,\COUNTER_OFDM_SYMBOL_reg_n_0_[13] }));
-  FDRE #(
-    .INIT(1'b0)) 
-    \COUNTER_OFDM_SYMBOL_reg[17] 
-       (.C(CLOCK),
-        .CE(\COUNTER_OFDM_SYMBOL[31]_i_2_n_0 ),
-        .D(in17[17]),
-        .Q(\COUNTER_OFDM_SYMBOL_reg_n_0_[17] ),
-        .R(\COUNTER_OFDM_SYMBOL[31]_i_1_n_0 ));
-  FDRE #(
-    .INIT(1'b0)) 
-    \COUNTER_OFDM_SYMBOL_reg[18] 
-       (.C(CLOCK),
-        .CE(\COUNTER_OFDM_SYMBOL[31]_i_2_n_0 ),
-        .D(in17[18]),
-        .Q(\COUNTER_OFDM_SYMBOL_reg_n_0_[18] ),
-        .R(\COUNTER_OFDM_SYMBOL[31]_i_1_n_0 ));
-  FDRE #(
-    .INIT(1'b0)) 
-    \COUNTER_OFDM_SYMBOL_reg[19] 
-       (.C(CLOCK),
-        .CE(\COUNTER_OFDM_SYMBOL[31]_i_2_n_0 ),
-        .D(in17[19]),
-        .Q(\COUNTER_OFDM_SYMBOL_reg_n_0_[19] ),
-        .R(\COUNTER_OFDM_SYMBOL[31]_i_1_n_0 ));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \COUNTER_OFDM_SYMBOL_reg[1] 
        (.C(CLOCK),
-        .CE(\COUNTER_OFDM_SYMBOL[31]_i_2_n_0 ),
-        .D(in17[1]),
+        .CE(1'b1),
+        .D(\COUNTER_OFDM_SYMBOL[1]_i_1_n_0 ),
         .Q(\COUNTER_OFDM_SYMBOL_reg_n_0_[1] ),
-        .R(\COUNTER_OFDM_SYMBOL[31]_i_1_n_0 ));
-  FDRE #(
-    .INIT(1'b0)) 
-    \COUNTER_OFDM_SYMBOL_reg[20] 
-       (.C(CLOCK),
-        .CE(\COUNTER_OFDM_SYMBOL[31]_i_2_n_0 ),
-        .D(in17[20]),
-        .Q(\COUNTER_OFDM_SYMBOL_reg_n_0_[20] ),
-        .R(\COUNTER_OFDM_SYMBOL[31]_i_1_n_0 ));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 \COUNTER_OFDM_SYMBOL_reg[20]_i_1 
-       (.CI(\COUNTER_OFDM_SYMBOL_reg[16]_i_1_n_0 ),
-        .CO({\COUNTER_OFDM_SYMBOL_reg[20]_i_1_n_0 ,\COUNTER_OFDM_SYMBOL_reg[20]_i_1_n_1 ,\COUNTER_OFDM_SYMBOL_reg[20]_i_1_n_2 ,\COUNTER_OFDM_SYMBOL_reg[20]_i_1_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(in17[20:17]),
-        .S({\COUNTER_OFDM_SYMBOL_reg_n_0_[20] ,\COUNTER_OFDM_SYMBOL_reg_n_0_[19] ,\COUNTER_OFDM_SYMBOL_reg_n_0_[18] ,\COUNTER_OFDM_SYMBOL_reg_n_0_[17] }));
-  FDRE #(
-    .INIT(1'b0)) 
-    \COUNTER_OFDM_SYMBOL_reg[21] 
-       (.C(CLOCK),
-        .CE(\COUNTER_OFDM_SYMBOL[31]_i_2_n_0 ),
-        .D(in17[21]),
-        .Q(\COUNTER_OFDM_SYMBOL_reg_n_0_[21] ),
-        .R(\COUNTER_OFDM_SYMBOL[31]_i_1_n_0 ));
-  FDRE #(
-    .INIT(1'b0)) 
-    \COUNTER_OFDM_SYMBOL_reg[22] 
-       (.C(CLOCK),
-        .CE(\COUNTER_OFDM_SYMBOL[31]_i_2_n_0 ),
-        .D(in17[22]),
-        .Q(\COUNTER_OFDM_SYMBOL_reg_n_0_[22] ),
-        .R(\COUNTER_OFDM_SYMBOL[31]_i_1_n_0 ));
-  FDRE #(
-    .INIT(1'b0)) 
-    \COUNTER_OFDM_SYMBOL_reg[23] 
-       (.C(CLOCK),
-        .CE(\COUNTER_OFDM_SYMBOL[31]_i_2_n_0 ),
-        .D(in17[23]),
-        .Q(\COUNTER_OFDM_SYMBOL_reg_n_0_[23] ),
-        .R(\COUNTER_OFDM_SYMBOL[31]_i_1_n_0 ));
-  FDRE #(
-    .INIT(1'b0)) 
-    \COUNTER_OFDM_SYMBOL_reg[24] 
-       (.C(CLOCK),
-        .CE(\COUNTER_OFDM_SYMBOL[31]_i_2_n_0 ),
-        .D(in17[24]),
-        .Q(\COUNTER_OFDM_SYMBOL_reg_n_0_[24] ),
-        .R(\COUNTER_OFDM_SYMBOL[31]_i_1_n_0 ));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 \COUNTER_OFDM_SYMBOL_reg[24]_i_1 
-       (.CI(\COUNTER_OFDM_SYMBOL_reg[20]_i_1_n_0 ),
-        .CO({\COUNTER_OFDM_SYMBOL_reg[24]_i_1_n_0 ,\COUNTER_OFDM_SYMBOL_reg[24]_i_1_n_1 ,\COUNTER_OFDM_SYMBOL_reg[24]_i_1_n_2 ,\COUNTER_OFDM_SYMBOL_reg[24]_i_1_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(in17[24:21]),
-        .S({\COUNTER_OFDM_SYMBOL_reg_n_0_[24] ,\COUNTER_OFDM_SYMBOL_reg_n_0_[23] ,\COUNTER_OFDM_SYMBOL_reg_n_0_[22] ,\COUNTER_OFDM_SYMBOL_reg_n_0_[21] }));
-  FDRE #(
-    .INIT(1'b0)) 
-    \COUNTER_OFDM_SYMBOL_reg[25] 
-       (.C(CLOCK),
-        .CE(\COUNTER_OFDM_SYMBOL[31]_i_2_n_0 ),
-        .D(in17[25]),
-        .Q(\COUNTER_OFDM_SYMBOL_reg_n_0_[25] ),
-        .R(\COUNTER_OFDM_SYMBOL[31]_i_1_n_0 ));
-  FDRE #(
-    .INIT(1'b0)) 
-    \COUNTER_OFDM_SYMBOL_reg[26] 
-       (.C(CLOCK),
-        .CE(\COUNTER_OFDM_SYMBOL[31]_i_2_n_0 ),
-        .D(in17[26]),
-        .Q(\COUNTER_OFDM_SYMBOL_reg_n_0_[26] ),
-        .R(\COUNTER_OFDM_SYMBOL[31]_i_1_n_0 ));
-  FDRE #(
-    .INIT(1'b0)) 
-    \COUNTER_OFDM_SYMBOL_reg[27] 
-       (.C(CLOCK),
-        .CE(\COUNTER_OFDM_SYMBOL[31]_i_2_n_0 ),
-        .D(in17[27]),
-        .Q(\COUNTER_OFDM_SYMBOL_reg_n_0_[27] ),
-        .R(\COUNTER_OFDM_SYMBOL[31]_i_1_n_0 ));
-  FDRE #(
-    .INIT(1'b0)) 
-    \COUNTER_OFDM_SYMBOL_reg[28] 
-       (.C(CLOCK),
-        .CE(\COUNTER_OFDM_SYMBOL[31]_i_2_n_0 ),
-        .D(in17[28]),
-        .Q(\COUNTER_OFDM_SYMBOL_reg_n_0_[28] ),
-        .R(\COUNTER_OFDM_SYMBOL[31]_i_1_n_0 ));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 \COUNTER_OFDM_SYMBOL_reg[28]_i_1 
-       (.CI(\COUNTER_OFDM_SYMBOL_reg[24]_i_1_n_0 ),
-        .CO({\COUNTER_OFDM_SYMBOL_reg[28]_i_1_n_0 ,\COUNTER_OFDM_SYMBOL_reg[28]_i_1_n_1 ,\COUNTER_OFDM_SYMBOL_reg[28]_i_1_n_2 ,\COUNTER_OFDM_SYMBOL_reg[28]_i_1_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(in17[28:25]),
-        .S({\COUNTER_OFDM_SYMBOL_reg_n_0_[28] ,\COUNTER_OFDM_SYMBOL_reg_n_0_[27] ,\COUNTER_OFDM_SYMBOL_reg_n_0_[26] ,\COUNTER_OFDM_SYMBOL_reg_n_0_[25] }));
-  FDRE #(
-    .INIT(1'b0)) 
-    \COUNTER_OFDM_SYMBOL_reg[29] 
-       (.C(CLOCK),
-        .CE(\COUNTER_OFDM_SYMBOL[31]_i_2_n_0 ),
-        .D(in17[29]),
-        .Q(\COUNTER_OFDM_SYMBOL_reg_n_0_[29] ),
-        .R(\COUNTER_OFDM_SYMBOL[31]_i_1_n_0 ));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \COUNTER_OFDM_SYMBOL_reg[2] 
        (.C(CLOCK),
-        .CE(\COUNTER_OFDM_SYMBOL[31]_i_2_n_0 ),
-        .D(in17[2]),
+        .CE(\COUNTER_OFDM_SYMBOL[9]_i_1_n_0 ),
+        .D(\COUNTER_OFDM_SYMBOL[2]_i_1_n_0 ),
         .Q(\COUNTER_OFDM_SYMBOL_reg_n_0_[2] ),
-        .R(\COUNTER_OFDM_SYMBOL[31]_i_1_n_0 ));
-  FDRE #(
-    .INIT(1'b0)) 
-    \COUNTER_OFDM_SYMBOL_reg[30] 
-       (.C(CLOCK),
-        .CE(\COUNTER_OFDM_SYMBOL[31]_i_2_n_0 ),
-        .D(in17[30]),
-        .Q(\COUNTER_OFDM_SYMBOL_reg_n_0_[30] ),
-        .R(\COUNTER_OFDM_SYMBOL[31]_i_1_n_0 ));
-  FDRE #(
-    .INIT(1'b0)) 
-    \COUNTER_OFDM_SYMBOL_reg[31] 
-       (.C(CLOCK),
-        .CE(\COUNTER_OFDM_SYMBOL[31]_i_2_n_0 ),
-        .D(in17[31]),
-        .Q(\COUNTER_OFDM_SYMBOL_reg_n_0_[31] ),
-        .R(\COUNTER_OFDM_SYMBOL[31]_i_1_n_0 ));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 \COUNTER_OFDM_SYMBOL_reg[31]_i_3 
-       (.CI(\COUNTER_OFDM_SYMBOL_reg[28]_i_1_n_0 ),
-        .CO({\NLW_COUNTER_OFDM_SYMBOL_reg[31]_i_3_CO_UNCONNECTED [3:2],\COUNTER_OFDM_SYMBOL_reg[31]_i_3_n_2 ,\COUNTER_OFDM_SYMBOL_reg[31]_i_3_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({\NLW_COUNTER_OFDM_SYMBOL_reg[31]_i_3_O_UNCONNECTED [3],in17[31:29]}),
-        .S({1'b0,\COUNTER_OFDM_SYMBOL_reg_n_0_[31] ,\COUNTER_OFDM_SYMBOL_reg_n_0_[30] ,\COUNTER_OFDM_SYMBOL_reg_n_0_[29] }));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \COUNTER_OFDM_SYMBOL_reg[3] 
        (.C(CLOCK),
-        .CE(\COUNTER_OFDM_SYMBOL[31]_i_2_n_0 ),
-        .D(in17[3]),
+        .CE(\COUNTER_OFDM_SYMBOL[9]_i_1_n_0 ),
+        .D(\COUNTER_OFDM_SYMBOL[3]_i_1_n_0 ),
         .Q(\COUNTER_OFDM_SYMBOL_reg_n_0_[3] ),
-        .R(\COUNTER_OFDM_SYMBOL[31]_i_1_n_0 ));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \COUNTER_OFDM_SYMBOL_reg[4] 
        (.C(CLOCK),
-        .CE(\COUNTER_OFDM_SYMBOL[31]_i_2_n_0 ),
-        .D(in17[4]),
+        .CE(\COUNTER_OFDM_SYMBOL[9]_i_1_n_0 ),
+        .D(\COUNTER_OFDM_SYMBOL[4]_i_1_n_0 ),
         .Q(\COUNTER_OFDM_SYMBOL_reg_n_0_[4] ),
-        .R(\COUNTER_OFDM_SYMBOL[31]_i_1_n_0 ));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 \COUNTER_OFDM_SYMBOL_reg[4]_i_1 
-       (.CI(1'b0),
-        .CO({\COUNTER_OFDM_SYMBOL_reg[4]_i_1_n_0 ,\COUNTER_OFDM_SYMBOL_reg[4]_i_1_n_1 ,\COUNTER_OFDM_SYMBOL_reg[4]_i_1_n_2 ,\COUNTER_OFDM_SYMBOL_reg[4]_i_1_n_3 }),
-        .CYINIT(\COUNTER_OFDM_SYMBOL_reg_n_0_[0] ),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(in17[4:1]),
-        .S({\COUNTER_OFDM_SYMBOL_reg_n_0_[4] ,\COUNTER_OFDM_SYMBOL_reg_n_0_[3] ,\COUNTER_OFDM_SYMBOL_reg_n_0_[2] ,\COUNTER_OFDM_SYMBOL_reg_n_0_[1] }));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \COUNTER_OFDM_SYMBOL_reg[5] 
        (.C(CLOCK),
-        .CE(\COUNTER_OFDM_SYMBOL[31]_i_2_n_0 ),
-        .D(in17[5]),
+        .CE(\COUNTER_OFDM_SYMBOL[9]_i_1_n_0 ),
+        .D(\COUNTER_OFDM_SYMBOL[5]_i_2_n_0 ),
         .Q(\COUNTER_OFDM_SYMBOL_reg_n_0_[5] ),
-        .R(\COUNTER_OFDM_SYMBOL[31]_i_1_n_0 ));
+        .R(\COUNTER_OFDM_SYMBOL[5]_i_1_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
     \COUNTER_OFDM_SYMBOL_reg[6] 
        (.C(CLOCK),
-        .CE(\COUNTER_OFDM_SYMBOL[31]_i_2_n_0 ),
-        .D(in17[6]),
+        .CE(\COUNTER_OFDM_SYMBOL[9]_i_1_n_0 ),
+        .D(\COUNTER_OFDM_SYMBOL[6]_i_1_n_0 ),
         .Q(\COUNTER_OFDM_SYMBOL_reg_n_0_[6] ),
-        .R(\COUNTER_OFDM_SYMBOL[31]_i_1_n_0 ));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \COUNTER_OFDM_SYMBOL_reg[7] 
        (.C(CLOCK),
-        .CE(\COUNTER_OFDM_SYMBOL[31]_i_2_n_0 ),
-        .D(in17[7]),
+        .CE(\COUNTER_OFDM_SYMBOL[9]_i_1_n_0 ),
+        .D(\COUNTER_OFDM_SYMBOL[7]_i_1_n_0 ),
         .Q(\COUNTER_OFDM_SYMBOL_reg_n_0_[7] ),
-        .R(\COUNTER_OFDM_SYMBOL[31]_i_1_n_0 ));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \COUNTER_OFDM_SYMBOL_reg[8] 
        (.C(CLOCK),
-        .CE(\COUNTER_OFDM_SYMBOL[31]_i_2_n_0 ),
-        .D(in17[8]),
+        .CE(\COUNTER_OFDM_SYMBOL[9]_i_1_n_0 ),
+        .D(\COUNTER_OFDM_SYMBOL[8]_i_1_n_0 ),
         .Q(\COUNTER_OFDM_SYMBOL_reg_n_0_[8] ),
-        .R(\COUNTER_OFDM_SYMBOL[31]_i_1_n_0 ));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 \COUNTER_OFDM_SYMBOL_reg[8]_i_1 
-       (.CI(\COUNTER_OFDM_SYMBOL_reg[4]_i_1_n_0 ),
-        .CO({\COUNTER_OFDM_SYMBOL_reg[8]_i_1_n_0 ,\COUNTER_OFDM_SYMBOL_reg[8]_i_1_n_1 ,\COUNTER_OFDM_SYMBOL_reg[8]_i_1_n_2 ,\COUNTER_OFDM_SYMBOL_reg[8]_i_1_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(in17[8:5]),
-        .S({\COUNTER_OFDM_SYMBOL_reg_n_0_[8] ,\COUNTER_OFDM_SYMBOL_reg_n_0_[7] ,\COUNTER_OFDM_SYMBOL_reg_n_0_[6] ,\COUNTER_OFDM_SYMBOL_reg_n_0_[5] }));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \COUNTER_OFDM_SYMBOL_reg[9] 
        (.C(CLOCK),
-        .CE(\COUNTER_OFDM_SYMBOL[31]_i_2_n_0 ),
-        .D(in17[9]),
+        .CE(\COUNTER_OFDM_SYMBOL[9]_i_1_n_0 ),
+        .D(\COUNTER_OFDM_SYMBOL[9]_i_2_n_0 ),
         .Q(\COUNTER_OFDM_SYMBOL_reg_n_0_[9] ),
-        .R(\COUNTER_OFDM_SYMBOL[31]_i_1_n_0 ));
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \COUNTER_reg[0] 
        (.C(CLOCK),
-        .CE(1'b1),
+        .CE(\COUNTER[31]_i_2_n_0 ),
         .D(\COUNTER[0]_i_1_n_0 ),
         .Q(COUNTER[0]),
         .R(1'b0));
@@ -5862,71 +4991,70 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .Q(COUNTER[9]),
         .R(\COUNTER[31]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hAAAAAAAA30AAAA00)) 
+    .INIT(64'hAAAA30AAAAAAAA00)) 
     FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_1
        (.I0(FFT_DATA_IN_FIRST_SYMBOL_MARKER),
         .I1(FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_2_n_0),
         .I2(FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_3_n_0),
-        .I3(RX_STATE_reg[2]),
-        .I4(RX_STATE_reg[0]),
-        .I5(RX_STATE_reg[1]),
+        .I3(RX_STATE_reg[0]),
+        .I4(RX_STATE_reg[1]),
+        .I5(RX_STATE_reg[2]),
         .O(FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
-  LUT4 #(
-    .INIT(16'h0001)) 
-    FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_10
-       (.I0(COUNTER[3]),
-        .I1(COUNTER[2]),
-        .I2(COUNTER[1]),
-        .I3(COUNTER[0]),
-        .O(FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_10_n_0));
   LUT6 #(
     .INIT(64'hFFFFFFFFFFFFFFFE)) 
     FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_2
-       (.I0(FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_4_n_0),
-        .I1(FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_5_n_0),
-        .I2(FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_6_n_0),
-        .I3(FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_7_n_0),
-        .I4(FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_8_n_0),
-        .I5(FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_9_n_0),
+       (.I0(COUNTER[26]),
+        .I1(COUNTER[31]),
+        .I2(COUNTER[30]),
+        .I3(COUNTER[24]),
+        .I4(COUNTER[25]),
+        .I5(FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_4_n_0),
         .O(FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_2_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
-  LUT5 #(
-    .INIT(32'h01000000)) 
+  LUT6 #(
+    .INIT(64'h0000000000000100)) 
     FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_3
-       (.I0(COUNTER[5]),
-        .I1(COUNTER[4]),
-        .I2(COUNTER[6]),
-        .I3(FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_10_n_0),
-        .I4(FFT_DATA_IN_START_i_5_n_0),
+       (.I0(COUNTER[18]),
+        .I1(COUNTER[19]),
+        .I2(COUNTER[7]),
+        .I3(ROTATION_DATA_OUT_STROBE),
+        .I4(COUNTER[6]),
+        .I5(FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_5_n_0),
         .O(FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_3_n_0));
   LUT6 #(
     .INIT(64'hFFFFFFFFFFFFFFFE)) 
     FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_4
-       (.I0(COUNTER[26]),
+       (.I0(FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_6_n_0),
         .I1(COUNTER[27]),
-        .I2(COUNTER[24]),
-        .I3(COUNTER[25]),
-        .I4(COUNTER[28]),
-        .I5(COUNTER[7]),
+        .I2(COUNTER[14]),
+        .I3(COUNTER[15]),
+        .I4(COUNTER[12]),
+        .I5(COUNTER[13]),
         .O(FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_4_n_0));
-  LUT2 #(
-    .INIT(4'hE)) 
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFFFFFE)) 
     FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_5
-       (.I0(COUNTER[18]),
-        .I1(COUNTER[19]),
+       (.I0(FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_7_n_0),
+        .I1(FFT_DATA_IN_START_i_11_n_0),
+        .I2(COUNTER[23]),
+        .I3(COUNTER[22]),
+        .I4(COUNTER[17]),
+        .I5(COUNTER[16]),
         .O(FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_5_n_0));
   LUT2 #(
     .INIT(4'hE)) 
     FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_6
-       (.I0(COUNTER[16]),
-        .I1(COUNTER[17]),
+       (.I0(COUNTER[28]),
+        .I1(COUNTER[29]),
         .O(FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_6_n_0));
-  LUT2 #(
-    .INIT(4'hE)) 
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFEFFFF)) 
     FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_7
-       (.I0(COUNTER[22]),
-        .I1(COUNTER[23]),
+       (.I0(COUNTER[2]),
+        .I1(COUNTER[3]),
+        .I2(COUNTER[5]),
+        .I3(COUNTER[4]),
+        .I4(FFT_DATA_IN_START_i_6_n_0),
+        .I5(FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_8_n_0),
         .O(FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_7_n_0));
   LUT2 #(
     .INIT(4'hE)) 
@@ -5934,16 +5062,6 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.I0(COUNTER[20]),
         .I1(COUNTER[21]),
         .O(FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_8_n_0));
-  LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFFFFE)) 
-    FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_9
-       (.I0(COUNTER[10]),
-        .I1(COUNTER[11]),
-        .I2(COUNTER[8]),
-        .I3(COUNTER[9]),
-        .I4(\COUNTER_OFDM_SYMBOL[31]_i_15_n_0 ),
-        .I5(\COUNTER_OFDM_SYMBOL[31]_i_16_n_0 ),
-        .O(FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_9_n_0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -5953,61 +5071,99 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .D(FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_1_n_0),
         .Q(FFT_DATA_IN_FIRST_SYMBOL_MARKER),
         .R(1'b0));
-  LUT5 #(
-    .INIT(32'hAACACAA0)) 
+  LUT6 #(
+    .INIT(64'hAA3030AAAAAAAA00)) 
     FFT_DATA_IN_START_i_1
        (.I0(FFT_DATA_IN_START),
         .I1(FFT_DATA_IN_START_i_2_n_0),
-        .I2(RX_STATE_reg[2]),
+        .I2(FFT_DATA_IN_START_i_3_n_0),
         .I3(RX_STATE_reg[0]),
         .I4(RX_STATE_reg[1]),
+        .I5(RX_STATE_reg[2]),
         .O(FFT_DATA_IN_START_i_1_n_0));
+  LUT4 #(
+    .INIT(16'hFFFE)) 
+    FFT_DATA_IN_START_i_10
+       (.I0(COUNTER[23]),
+        .I1(COUNTER[22]),
+        .I2(COUNTER[17]),
+        .I3(COUNTER[16]),
+        .O(FFT_DATA_IN_START_i_10_n_0));
+  LUT4 #(
+    .INIT(16'hFFFE)) 
+    FFT_DATA_IN_START_i_11
+       (.I0(COUNTER[11]),
+        .I1(COUNTER[10]),
+        .I2(COUNTER[9]),
+        .I3(COUNTER[8]),
+        .O(FFT_DATA_IN_START_i_11_n_0));
   LUT6 #(
-    .INIT(64'h00FF000200000000)) 
+    .INIT(64'hFFFFFFAFFFEFFFFF)) 
     FFT_DATA_IN_START_i_2
-       (.I0(FFT_DATA_IN_START_i_3_n_0),
-        .I1(COUNTER[1]),
-        .I2(COUNTER[0]),
-        .I3(FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_2_n_0),
-        .I4(FFT_DATA_IN_START_i_4_n_0),
-        .I5(FFT_DATA_IN_START_i_5_n_0),
+       (.I0(FFT_DATA_IN_START_i_4_n_0),
+        .I1(COUNTER[6]),
+        .I2(ROTATION_DATA_OUT_STROBE),
+        .I3(COUNTER[5]),
+        .I4(COUNTER[4]),
+        .I5(RX_STATE_reg[0]),
         .O(FFT_DATA_IN_START_i_2_n_0));
   LUT6 #(
-    .INIT(64'h0000000000000010)) 
+    .INIT(64'h0000000000000800)) 
     FFT_DATA_IN_START_i_3
-       (.I0(COUNTER[6]),
-        .I1(RX_STATE_reg[0]),
-        .I2(COUNTER[4]),
-        .I3(COUNTER[5]),
-        .I4(COUNTER[3]),
-        .I5(COUNTER[2]),
+       (.I0(FFT_DATA_IN_START_i_5_n_0),
+        .I1(FFT_DATA_IN_START_i_6_n_0),
+        .I2(COUNTER[7]),
+        .I3(FFT_DATA_IN_START_i_7_n_0),
+        .I4(FFT_DATA_IN_START_i_8_n_0),
+        .I5(FFT_DATA_IN_START_i_9_n_0),
         .O(FFT_DATA_IN_START_i_3_n_0));
   LUT6 #(
-    .INIT(64'h0000000100000000)) 
+    .INIT(64'hFFFFFFFFFFFFFFFE)) 
     FFT_DATA_IN_START_i_4
+       (.I0(FFT_DATA_IN_START_i_10_n_0),
+        .I1(FFT_DATA_IN_START_i_11_n_0),
+        .I2(COUNTER[21]),
+        .I3(COUNTER[20]),
+        .I4(COUNTER[19]),
+        .I5(COUNTER[18]),
+        .O(FFT_DATA_IN_START_i_4_n_0));
+  LUT6 #(
+    .INIT(64'h0000000000000001)) 
+    FFT_DATA_IN_START_i_5
+       (.I0(COUNTER[3]),
+        .I1(COUNTER[2]),
+        .I2(COUNTER[28]),
+        .I3(COUNTER[29]),
+        .I4(COUNTER[24]),
+        .I5(COUNTER[25]),
+        .O(FFT_DATA_IN_START_i_5_n_0));
+  LUT2 #(
+    .INIT(4'h1)) 
+    FFT_DATA_IN_START_i_6
        (.I0(COUNTER[0]),
         .I1(COUNTER[1]),
-        .I2(COUNTER[2]),
-        .I3(COUNTER[3]),
-        .I4(FFT_DATA_IN_START_i_6_n_0),
-        .I5(RX_STATE_reg[0]),
-        .O(FFT_DATA_IN_START_i_4_n_0));
+        .O(FFT_DATA_IN_START_i_6_n_0));
   (* SOFT_HLUTNM = "soft_lutpair10" *) 
-  LUT4 #(
-    .INIT(16'h0100)) 
-    FFT_DATA_IN_START_i_5
-       (.I0(COUNTER[29]),
-        .I1(COUNTER[30]),
-        .I2(COUNTER[31]),
-        .I3(ROTATION_DATA_OUT_STROBE),
-        .O(FFT_DATA_IN_START_i_5_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  LUT2 #(
+    .INIT(4'h1)) 
+    FFT_DATA_IN_START_i_7
+       (.I0(COUNTER[26]),
+        .I1(COUNTER[27]),
+        .O(FFT_DATA_IN_START_i_7_n_0));
   LUT2 #(
     .INIT(4'hE)) 
-    FFT_DATA_IN_START_i_6
-       (.I0(COUNTER[4]),
-        .I1(COUNTER[5]),
-        .O(FFT_DATA_IN_START_i_6_n_0));
+    FFT_DATA_IN_START_i_8
+       (.I0(COUNTER[30]),
+        .I1(COUNTER[31]),
+        .O(FFT_DATA_IN_START_i_8_n_0));
+  LUT4 #(
+    .INIT(16'hFFFE)) 
+    FFT_DATA_IN_START_i_9
+       (.I0(COUNTER[13]),
+        .I1(COUNTER[12]),
+        .I2(COUNTER[15]),
+        .I3(COUNTER[14]),
+        .O(FFT_DATA_IN_START_i_9_n_0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
@@ -6017,15 +5173,14 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .D(FFT_DATA_IN_START_i_1_n_0),
         .Q(FFT_DATA_IN_START),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair9" *) 
   LUT5 #(
-    .INIT(32'hAACACAA0)) 
+    .INIT(32'hACCAAAA0)) 
     FFT_DATA_IN_STROBE_i_1
        (.I0(FFT_DATA_IN_STROBE),
         .I1(ROTATION_DATA_OUT_STROBE),
-        .I2(RX_STATE_reg[2]),
-        .I3(RX_STATE_reg[0]),
-        .I4(RX_STATE_reg[1]),
+        .I2(RX_STATE_reg[0]),
+        .I3(RX_STATE_reg[1]),
+        .I4(RX_STATE_reg[2]),
         .O(FFT_DATA_IN_STROBE_i_1_n_0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
@@ -6037,12 +5192,12 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .Q(FFT_DATA_IN_STROBE),
         .R(1'b0));
   LUT4 #(
-    .INIT(16'h0880)) 
+    .INIT(16'h2800)) 
     \FFT_IDATA_IN[15]_i_1 
-       (.I0(ROTATION_DATA_OUT_STROBE),
-        .I1(RX_STATE_reg[2]),
+       (.I0(RX_STATE_reg[2]),
+        .I1(RX_STATE_reg[0]),
         .I2(RX_STATE_reg[1]),
-        .I3(RX_STATE_reg[0]),
+        .I3(ROTATION_DATA_OUT_STROBE),
         .O(\FFT_IDATA_IN[15]_i_1_n_0 ));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
@@ -6332,516 +5487,525 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .D(ROTATION_QDATA_OUT_BUFF[9]),
         .Q(FFT_QDATA_IN[9]),
         .R(1'b0));
-  LUT5 #(
-    .INIT(32'hFFFFB080)) 
+  LUT6 #(
+    .INIT(64'hFF75BA3030303030)) 
     \FPGA_REG_WRITE_DATA[0]_i_1 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE4[4]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
-        .I3(AUTOCORR_PHASE_BUFF__0[4]),
-        .I4(\FPGA_REG_WRITE_DATA[0]_i_3_n_0 ),
+       (.I0(AUTOCORR_PHASE_BUFF[19]),
+        .I1(\FPGA_REG_WRITE_DATA[0]_i_2_n_0 ),
+        .I2(FPGA_REG_WRITE_STROBE_PHASE_20),
+        .I3(VAR_AUTOCORR_PHASE_1SAMPLE4[4]),
+        .I4(AUTOCORR_PHASE_BUFF[4]),
+        .I5(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
         .O(\FPGA_REG_WRITE_DATA[0]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hF888)) 
-    \FPGA_REG_WRITE_DATA[0]_i_3 
+  LUT3 #(
+    .INIT(8'h47)) 
+    \FPGA_REG_WRITE_DATA[0]_i_2 
        (.I0(ROTATION_PHASE_NEW_DIFF5[6]),
-        .I1(\FPGA_REG_WRITE_DATA[19]_i_4_n_0 ),
+        .I1(ATAN_PHASE_OUT[19]),
         .I2(ATAN_PHASE_OUT[6]),
-        .I3(\FPGA_REG_WRITE_DATA[13]_i_3_n_0 ),
-        .O(\FPGA_REG_WRITE_DATA[0]_i_3_n_0 ));
+        .O(\FPGA_REG_WRITE_DATA[0]_i_2_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \FPGA_REG_WRITE_DATA[0]_i_4 
-       (.I0(AUTOCORR_PHASE_BUFF__0[0]),
+       (.I0(AUTOCORR_PHASE_BUFF[0]),
         .O(\FPGA_REG_WRITE_DATA[0]_i_4_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \FPGA_REG_WRITE_DATA[0]_i_5 
-       (.I0(AUTOCORR_PHASE_BUFF__0[4]),
+       (.I0(AUTOCORR_PHASE_BUFF[4]),
         .O(\FPGA_REG_WRITE_DATA[0]_i_5_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \FPGA_REG_WRITE_DATA[0]_i_6 
-       (.I0(AUTOCORR_PHASE_BUFF__0[3]),
+       (.I0(AUTOCORR_PHASE_BUFF[3]),
         .O(\FPGA_REG_WRITE_DATA[0]_i_6_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \FPGA_REG_WRITE_DATA[0]_i_7 
-       (.I0(AUTOCORR_PHASE_BUFF__0[2]),
+       (.I0(AUTOCORR_PHASE_BUFF[2]),
         .O(\FPGA_REG_WRITE_DATA[0]_i_7_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \FPGA_REG_WRITE_DATA[0]_i_8 
-       (.I0(AUTOCORR_PHASE_BUFF__0[1]),
+       (.I0(AUTOCORR_PHASE_BUFF[1]),
         .O(\FPGA_REG_WRITE_DATA[0]_i_8_n_0 ));
-  LUT5 #(
-    .INIT(32'hFFFFB080)) 
+  LUT6 #(
+    .INIT(64'hFFFFD800D800D800)) 
     \FPGA_REG_WRITE_DATA[10]_i_1 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE2[10]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
-        .I3(AUTOCORR_PHASE_BUFF__0[14]),
+       (.I0(AUTOCORR_PHASE_BUFF[19]),
+        .I1(VAR_AUTOCORR_PHASE_1SAMPLE2[10]),
+        .I2(AUTOCORR_PHASE_BUFF[14]),
+        .I3(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
         .I4(\FPGA_REG_WRITE_DATA[10]_i_2_n_0 ),
+        .I5(FPGA_REG_WRITE_STROBE_PHASE_20),
         .O(\FPGA_REG_WRITE_DATA[10]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hF888)) 
+  (* SOFT_HLUTNM = "soft_lutpair16" *) 
+  LUT3 #(
+    .INIT(8'hB8)) 
     \FPGA_REG_WRITE_DATA[10]_i_2 
        (.I0(ROTATION_PHASE_NEW_DIFF3[10]),
-        .I1(\FPGA_REG_WRITE_DATA[19]_i_4_n_0 ),
+        .I1(ATAN_PHASE_OUT[19]),
         .I2(ATAN_PHASE_OUT[16]),
-        .I3(\FPGA_REG_WRITE_DATA[13]_i_3_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[10]_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'hFFFFB080)) 
+  LUT6 #(
+    .INIT(64'hFFFFD800D800D800)) 
     \FPGA_REG_WRITE_DATA[11]_i_1 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE2[11]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
-        .I3(AUTOCORR_PHASE_BUFF__0[15]),
+       (.I0(AUTOCORR_PHASE_BUFF[19]),
+        .I1(VAR_AUTOCORR_PHASE_1SAMPLE2[11]),
+        .I2(AUTOCORR_PHASE_BUFF[15]),
+        .I3(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
         .I4(\FPGA_REG_WRITE_DATA[11]_i_2_n_0 ),
+        .I5(FPGA_REG_WRITE_STROBE_PHASE_20),
         .O(\FPGA_REG_WRITE_DATA[11]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hF888)) 
+  (* SOFT_HLUTNM = "soft_lutpair15" *) 
+  LUT3 #(
+    .INIT(8'hB8)) 
     \FPGA_REG_WRITE_DATA[11]_i_2 
        (.I0(ROTATION_PHASE_NEW_DIFF3[11]),
-        .I1(\FPGA_REG_WRITE_DATA[19]_i_4_n_0 ),
+        .I1(ATAN_PHASE_OUT[19]),
         .I2(ATAN_PHASE_OUT[17]),
-        .I3(\FPGA_REG_WRITE_DATA[13]_i_3_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[11]_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'hFFFFB080)) 
+  LUT6 #(
+    .INIT(64'hFFFFD800D800D800)) 
     \FPGA_REG_WRITE_DATA[12]_i_1 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE2[12]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
-        .I3(AUTOCORR_PHASE_BUFF__0[16]),
+       (.I0(AUTOCORR_PHASE_BUFF[19]),
+        .I1(VAR_AUTOCORR_PHASE_1SAMPLE2[12]),
+        .I2(AUTOCORR_PHASE_BUFF[16]),
+        .I3(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
         .I4(\FPGA_REG_WRITE_DATA[12]_i_3_n_0 ),
+        .I5(FPGA_REG_WRITE_STROBE_PHASE_20),
         .O(\FPGA_REG_WRITE_DATA[12]_i_1_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \FPGA_REG_WRITE_DATA[12]_i_10 
-       (.I0(AUTOCORR_PHASE_BUFF__0[15]),
+       (.I0(AUTOCORR_PHASE_BUFF[15]),
         .O(\FPGA_REG_WRITE_DATA[12]_i_10_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \FPGA_REG_WRITE_DATA[12]_i_11 
-       (.I0(AUTOCORR_PHASE_BUFF__0[14]),
+       (.I0(AUTOCORR_PHASE_BUFF[14]),
         .O(\FPGA_REG_WRITE_DATA[12]_i_11_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \FPGA_REG_WRITE_DATA[12]_i_12 
-       (.I0(AUTOCORR_PHASE_BUFF__0[13]),
+       (.I0(AUTOCORR_PHASE_BUFF[13]),
         .O(\FPGA_REG_WRITE_DATA[12]_i_12_n_0 ));
-  LUT4 #(
-    .INIT(16'hF888)) 
+  (* SOFT_HLUTNM = "soft_lutpair14" *) 
+  LUT3 #(
+    .INIT(8'hAC)) 
     \FPGA_REG_WRITE_DATA[12]_i_3 
        (.I0(ROTATION_PHASE_NEW_DIFF3[12]),
-        .I1(\FPGA_REG_WRITE_DATA[19]_i_4_n_0 ),
-        .I2(ATAN_PHASE_OUT[18]),
-        .I3(\FPGA_REG_WRITE_DATA[13]_i_3_n_0 ),
+        .I1(ATAN_PHASE_OUT[18]),
+        .I2(ATAN_PHASE_OUT[19]),
         .O(\FPGA_REG_WRITE_DATA[12]_i_3_n_0 ));
   LUT3 #(
-    .INIT(8'h47)) 
+    .INIT(8'h35)) 
     \FPGA_REG_WRITE_DATA[12]_i_4 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE4[16]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(AUTOCORR_PHASE_BUFF__0[16]),
+       (.I0(AUTOCORR_PHASE_BUFF[16]),
+        .I1(VAR_AUTOCORR_PHASE_1SAMPLE4[16]),
+        .I2(AUTOCORR_PHASE_BUFF[19]),
         .O(\FPGA_REG_WRITE_DATA[12]_i_4_n_0 ));
   LUT3 #(
-    .INIT(8'h47)) 
+    .INIT(8'h35)) 
     \FPGA_REG_WRITE_DATA[12]_i_5 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE4[15]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(AUTOCORR_PHASE_BUFF__0[15]),
+       (.I0(AUTOCORR_PHASE_BUFF[15]),
+        .I1(VAR_AUTOCORR_PHASE_1SAMPLE4[15]),
+        .I2(AUTOCORR_PHASE_BUFF[19]),
         .O(\FPGA_REG_WRITE_DATA[12]_i_5_n_0 ));
   LUT3 #(
-    .INIT(8'h47)) 
+    .INIT(8'h35)) 
     \FPGA_REG_WRITE_DATA[12]_i_6 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE4[14]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(AUTOCORR_PHASE_BUFF__0[14]),
+       (.I0(AUTOCORR_PHASE_BUFF[14]),
+        .I1(VAR_AUTOCORR_PHASE_1SAMPLE4[14]),
+        .I2(AUTOCORR_PHASE_BUFF[19]),
         .O(\FPGA_REG_WRITE_DATA[12]_i_6_n_0 ));
   LUT3 #(
-    .INIT(8'h47)) 
+    .INIT(8'h35)) 
     \FPGA_REG_WRITE_DATA[12]_i_7 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE4[13]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(AUTOCORR_PHASE_BUFF__0[13]),
+       (.I0(AUTOCORR_PHASE_BUFF[13]),
+        .I1(VAR_AUTOCORR_PHASE_1SAMPLE4[13]),
+        .I2(AUTOCORR_PHASE_BUFF[19]),
         .O(\FPGA_REG_WRITE_DATA[12]_i_7_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \FPGA_REG_WRITE_DATA[12]_i_9 
-       (.I0(AUTOCORR_PHASE_BUFF__0[16]),
+       (.I0(AUTOCORR_PHASE_BUFF[16]),
         .O(\FPGA_REG_WRITE_DATA[12]_i_9_n_0 ));
-  LUT5 #(
-    .INIT(32'hFFFFB080)) 
+  LUT6 #(
+    .INIT(64'hFFFFD800D800D800)) 
     \FPGA_REG_WRITE_DATA[13]_i_1 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE2[13]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
-        .I3(AUTOCORR_PHASE_BUFF__0[17]),
+       (.I0(AUTOCORR_PHASE_BUFF[19]),
+        .I1(VAR_AUTOCORR_PHASE_1SAMPLE2[13]),
+        .I2(AUTOCORR_PHASE_BUFF[17]),
+        .I3(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
         .I4(\FPGA_REG_WRITE_DATA[13]_i_2_n_0 ),
+        .I5(FPGA_REG_WRITE_STROBE_PHASE_20),
         .O(\FPGA_REG_WRITE_DATA[13]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hF888)) 
+  (* SOFT_HLUTNM = "soft_lutpair15" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
     \FPGA_REG_WRITE_DATA[13]_i_2 
        (.I0(ROTATION_PHASE_NEW_DIFF3[13]),
-        .I1(\FPGA_REG_WRITE_DATA[19]_i_4_n_0 ),
-        .I2(ATAN_PHASE_OUT[19]),
-        .I3(\FPGA_REG_WRITE_DATA[13]_i_3_n_0 ),
+        .I1(ATAN_PHASE_OUT[19]),
         .O(\FPGA_REG_WRITE_DATA[13]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
-  LUT5 #(
-    .INIT(32'h00000080)) 
-    \FPGA_REG_WRITE_DATA[13]_i_3 
-       (.I0(ATAN_PHASE_OUT_STROBE),
-        .I1(RX_STATE_reg[2]),
-        .I2(RX_STATE_reg[1]),
-        .I3(RX_STATE_reg[0]),
-        .I4(ATAN_PHASE_OUT[19]),
-        .O(\FPGA_REG_WRITE_DATA[13]_i_3_n_0 ));
   LUT6 #(
-    .INIT(64'hF222F222FF222222)) 
+    .INIT(64'hF8F8FF8888888888)) 
     \FPGA_REG_WRITE_DATA[14]_i_1 
-       (.I0(\FPGA_REG_WRITE_DATA[19]_i_4_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA_reg[19]_i_3_n_2 ),
+       (.I0(\FPGA_REG_WRITE_DATA[15]_i_2_n_0 ),
+        .I1(FPGA_REG_WRITE_STROBE_PHASE_20),
         .I2(VAR_AUTOCORR_PHASE_1SAMPLE2[14]),
-        .I3(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
-        .I4(AUTOCORR_PHASE_BUFF__0[18]),
-        .I5(AUTOCORR_PHASE_BUFF__0[19]),
+        .I3(AUTOCORR_PHASE_BUFF[18]),
+        .I4(AUTOCORR_PHASE_BUFF[19]),
+        .I5(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
         .O(\FPGA_REG_WRITE_DATA[14]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hF2222222)) 
+    .INIT(32'hF8888888)) 
     \FPGA_REG_WRITE_DATA[15]_i_1 
-       (.I0(\FPGA_REG_WRITE_DATA[19]_i_4_n_0 ),
-        .I1(\FPGA_REG_WRITE_DATA_reg[19]_i_3_n_2 ),
+       (.I0(\FPGA_REG_WRITE_DATA[15]_i_2_n_0 ),
+        .I1(FPGA_REG_WRITE_STROBE_PHASE_20),
         .I2(VAR_AUTOCORR_PHASE_1SAMPLE2[15]),
-        .I3(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
-        .I4(AUTOCORR_PHASE_BUFF__0[19]),
+        .I3(AUTOCORR_PHASE_BUFF[19]),
+        .I4(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
         .O(\FPGA_REG_WRITE_DATA[15]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'h40FF4040)) 
+  (* SOFT_HLUTNM = "soft_lutpair14" *) 
+  LUT2 #(
+    .INIT(4'h2)) 
+    \FPGA_REG_WRITE_DATA[15]_i_2 
+       (.I0(ATAN_PHASE_OUT[19]),
+        .I1(\FPGA_REG_WRITE_DATA_reg[19]_i_2_n_2 ),
+        .O(\FPGA_REG_WRITE_DATA[15]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h0C00AEAA0C000C00)) 
     \FPGA_REG_WRITE_DATA[19]_i_1 
-       (.I0(\FPGA_REG_WRITE_DATA_reg[19]_i_2_n_0 ),
-        .I1(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
-        .I2(AUTOCORR_PHASE_BUFF__0[19]),
-        .I3(\FPGA_REG_WRITE_DATA_reg[19]_i_3_n_2 ),
-        .I4(\FPGA_REG_WRITE_DATA[19]_i_4_n_0 ),
+       (.I0(AUTOCORR_PHASE_BUFF[19]),
+        .I1(ATAN_PHASE_OUT[19]),
+        .I2(\FPGA_REG_WRITE_DATA_reg[19]_i_2_n_2 ),
+        .I3(FPGA_REG_WRITE_STROBE_PHASE_20),
+        .I4(\FPGA_REG_WRITE_DATA_reg[19]_i_4_n_0 ),
+        .I5(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
         .O(\FPGA_REG_WRITE_DATA[19]_i_1_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \FPGA_REG_WRITE_DATA[19]_i_11 
-       (.I0(AUTOCORR_PHASE_BUFF__0[19]),
+       (.I0(ATAN_PHASE_OUT[19]),
         .O(\FPGA_REG_WRITE_DATA[19]_i_11_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \FPGA_REG_WRITE_DATA[19]_i_12 
-       (.I0(AUTOCORR_PHASE_BUFF__0[18]),
+       (.I0(ATAN_PHASE_OUT[18]),
         .O(\FPGA_REG_WRITE_DATA[19]_i_12_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \FPGA_REG_WRITE_DATA[19]_i_13 
-       (.I0(AUTOCORR_PHASE_BUFF__0[17]),
+       (.I0(ATAN_PHASE_OUT[17]),
         .O(\FPGA_REG_WRITE_DATA[19]_i_13_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \FPGA_REG_WRITE_DATA[19]_i_14 
-       (.I0(ATAN_PHASE_OUT[19]),
+       (.I0(AUTOCORR_PHASE_BUFF[19]),
         .O(\FPGA_REG_WRITE_DATA[19]_i_14_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \FPGA_REG_WRITE_DATA[19]_i_15 
-       (.I0(ATAN_PHASE_OUT[18]),
+       (.I0(AUTOCORR_PHASE_BUFF[18]),
         .O(\FPGA_REG_WRITE_DATA[19]_i_15_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \FPGA_REG_WRITE_DATA[19]_i_16 
-       (.I0(ATAN_PHASE_OUT[17]),
+       (.I0(AUTOCORR_PHASE_BUFF[17]),
         .O(\FPGA_REG_WRITE_DATA[19]_i_16_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
-  LUT5 #(
-    .INIT(32'h00800000)) 
-    \FPGA_REG_WRITE_DATA[19]_i_4 
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  LUT4 #(
+    .INIT(16'h2000)) 
+    \FPGA_REG_WRITE_DATA[19]_i_3 
        (.I0(ATAN_PHASE_OUT_STROBE),
-        .I1(RX_STATE_reg[2]),
-        .I2(RX_STATE_reg[1]),
-        .I3(RX_STATE_reg[0]),
-        .I4(ATAN_PHASE_OUT[19]),
-        .O(\FPGA_REG_WRITE_DATA[19]_i_4_n_0 ));
+        .I1(RX_STATE_reg[0]),
+        .I2(RX_STATE_reg[2]),
+        .I3(RX_STATE_reg[1]),
+        .O(FPGA_REG_WRITE_STROBE_PHASE_20));
   LUT2 #(
     .INIT(4'h7)) 
     \FPGA_REG_WRITE_DATA[19]_i_5 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE4[19]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .O(\FPGA_REG_WRITE_DATA[19]_i_5_n_0 ));
-  LUT3 #(
-    .INIT(8'h47)) 
-    \FPGA_REG_WRITE_DATA[19]_i_6 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE4[18]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(AUTOCORR_PHASE_BUFF__0[18]),
-        .O(\FPGA_REG_WRITE_DATA[19]_i_6_n_0 ));
-  LUT3 #(
-    .INIT(8'h47)) 
-    \FPGA_REG_WRITE_DATA[19]_i_7 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE4[17]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(AUTOCORR_PHASE_BUFF__0[17]),
-        .O(\FPGA_REG_WRITE_DATA[19]_i_7_n_0 ));
-  LUT2 #(
-    .INIT(4'h7)) 
-    \FPGA_REG_WRITE_DATA[19]_i_8 
        (.I0(ROTATION_PHASE_NEW_DIFF5[19]),
         .I1(ATAN_PHASE_OUT[19]),
+        .O(\FPGA_REG_WRITE_DATA[19]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h7)) 
+    \FPGA_REG_WRITE_DATA[19]_i_6 
+       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE4[19]),
+        .I1(AUTOCORR_PHASE_BUFF[19]),
+        .O(\FPGA_REG_WRITE_DATA[19]_i_6_n_0 ));
+  LUT3 #(
+    .INIT(8'h53)) 
+    \FPGA_REG_WRITE_DATA[19]_i_7 
+       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE4[18]),
+        .I1(AUTOCORR_PHASE_BUFF[18]),
+        .I2(AUTOCORR_PHASE_BUFF[19]),
+        .O(\FPGA_REG_WRITE_DATA[19]_i_7_n_0 ));
+  LUT3 #(
+    .INIT(8'h35)) 
+    \FPGA_REG_WRITE_DATA[19]_i_8 
+       (.I0(AUTOCORR_PHASE_BUFF[17]),
+        .I1(VAR_AUTOCORR_PHASE_1SAMPLE4[17]),
+        .I2(AUTOCORR_PHASE_BUFF[19]),
         .O(\FPGA_REG_WRITE_DATA[19]_i_8_n_0 ));
-  LUT5 #(
-    .INIT(32'hFFFFB080)) 
+  LUT6 #(
+    .INIT(64'hFFFFD800D800D800)) 
     \FPGA_REG_WRITE_DATA[1]_i_1 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE2[1]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
-        .I3(AUTOCORR_PHASE_BUFF__0[5]),
+       (.I0(AUTOCORR_PHASE_BUFF[19]),
+        .I1(VAR_AUTOCORR_PHASE_1SAMPLE2[1]),
+        .I2(AUTOCORR_PHASE_BUFF[5]),
+        .I3(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
         .I4(\FPGA_REG_WRITE_DATA[1]_i_2_n_0 ),
+        .I5(FPGA_REG_WRITE_STROBE_PHASE_20),
         .O(\FPGA_REG_WRITE_DATA[1]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hF888)) 
+  (* SOFT_HLUTNM = "soft_lutpair20" *) 
+  LUT3 #(
+    .INIT(8'hB8)) 
     \FPGA_REG_WRITE_DATA[1]_i_2 
        (.I0(ROTATION_PHASE_NEW_DIFF3[1]),
-        .I1(\FPGA_REG_WRITE_DATA[19]_i_4_n_0 ),
+        .I1(ATAN_PHASE_OUT[19]),
         .I2(ATAN_PHASE_OUT[7]),
-        .I3(\FPGA_REG_WRITE_DATA[13]_i_3_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[1]_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'hFFFFB080)) 
+  LUT6 #(
+    .INIT(64'hFFFFD800D800D800)) 
     \FPGA_REG_WRITE_DATA[2]_i_1 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE2[2]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
-        .I3(AUTOCORR_PHASE_BUFF__0[6]),
+       (.I0(AUTOCORR_PHASE_BUFF[19]),
+        .I1(VAR_AUTOCORR_PHASE_1SAMPLE2[2]),
+        .I2(AUTOCORR_PHASE_BUFF[6]),
+        .I3(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
         .I4(\FPGA_REG_WRITE_DATA[2]_i_2_n_0 ),
+        .I5(FPGA_REG_WRITE_STROBE_PHASE_20),
         .O(\FPGA_REG_WRITE_DATA[2]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hF888)) 
+  (* SOFT_HLUTNM = "soft_lutpair20" *) 
+  LUT3 #(
+    .INIT(8'hB8)) 
     \FPGA_REG_WRITE_DATA[2]_i_2 
        (.I0(ROTATION_PHASE_NEW_DIFF3[2]),
-        .I1(\FPGA_REG_WRITE_DATA[19]_i_4_n_0 ),
+        .I1(ATAN_PHASE_OUT[19]),
         .I2(ATAN_PHASE_OUT[8]),
-        .I3(\FPGA_REG_WRITE_DATA[13]_i_3_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[2]_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'hFFFFB080)) 
+  LUT6 #(
+    .INIT(64'hFFFFD800D800D800)) 
     \FPGA_REG_WRITE_DATA[3]_i_1 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE2[3]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
-        .I3(AUTOCORR_PHASE_BUFF__0[7]),
+       (.I0(AUTOCORR_PHASE_BUFF[19]),
+        .I1(VAR_AUTOCORR_PHASE_1SAMPLE2[3]),
+        .I2(AUTOCORR_PHASE_BUFF[7]),
+        .I3(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
         .I4(\FPGA_REG_WRITE_DATA[3]_i_2_n_0 ),
+        .I5(FPGA_REG_WRITE_STROBE_PHASE_20),
         .O(\FPGA_REG_WRITE_DATA[3]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hF888)) 
+  (* SOFT_HLUTNM = "soft_lutpair19" *) 
+  LUT3 #(
+    .INIT(8'hB8)) 
     \FPGA_REG_WRITE_DATA[3]_i_2 
        (.I0(ROTATION_PHASE_NEW_DIFF3[3]),
-        .I1(\FPGA_REG_WRITE_DATA[19]_i_4_n_0 ),
+        .I1(ATAN_PHASE_OUT[19]),
         .I2(ATAN_PHASE_OUT[9]),
-        .I3(\FPGA_REG_WRITE_DATA[13]_i_3_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[3]_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'hFFFFB080)) 
+  LUT6 #(
+    .INIT(64'hFFFFD800D800D800)) 
     \FPGA_REG_WRITE_DATA[4]_i_1 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE2[4]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
-        .I3(AUTOCORR_PHASE_BUFF__0[8]),
+       (.I0(AUTOCORR_PHASE_BUFF[19]),
+        .I1(VAR_AUTOCORR_PHASE_1SAMPLE2[4]),
+        .I2(AUTOCORR_PHASE_BUFF[8]),
+        .I3(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
         .I4(\FPGA_REG_WRITE_DATA[4]_i_3_n_0 ),
+        .I5(FPGA_REG_WRITE_STROBE_PHASE_20),
         .O(\FPGA_REG_WRITE_DATA[4]_i_1_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \FPGA_REG_WRITE_DATA[4]_i_10 
-       (.I0(AUTOCORR_PHASE_BUFF__0[7]),
+       (.I0(AUTOCORR_PHASE_BUFF[7]),
         .O(\FPGA_REG_WRITE_DATA[4]_i_10_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \FPGA_REG_WRITE_DATA[4]_i_11 
-       (.I0(AUTOCORR_PHASE_BUFF__0[6]),
+       (.I0(AUTOCORR_PHASE_BUFF[6]),
         .O(\FPGA_REG_WRITE_DATA[4]_i_11_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \FPGA_REG_WRITE_DATA[4]_i_12 
-       (.I0(AUTOCORR_PHASE_BUFF__0[5]),
+       (.I0(AUTOCORR_PHASE_BUFF[5]),
         .O(\FPGA_REG_WRITE_DATA[4]_i_12_n_0 ));
-  LUT4 #(
-    .INIT(16'hF888)) 
+  (* SOFT_HLUTNM = "soft_lutpair19" *) 
+  LUT3 #(
+    .INIT(8'hB8)) 
     \FPGA_REG_WRITE_DATA[4]_i_3 
        (.I0(ROTATION_PHASE_NEW_DIFF3[4]),
-        .I1(\FPGA_REG_WRITE_DATA[19]_i_4_n_0 ),
+        .I1(ATAN_PHASE_OUT[19]),
         .I2(ATAN_PHASE_OUT[10]),
-        .I3(\FPGA_REG_WRITE_DATA[13]_i_3_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[4]_i_3_n_0 ));
   LUT3 #(
-    .INIT(8'h47)) 
+    .INIT(8'h35)) 
     \FPGA_REG_WRITE_DATA[4]_i_4 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE4[8]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(AUTOCORR_PHASE_BUFF__0[8]),
+       (.I0(AUTOCORR_PHASE_BUFF[8]),
+        .I1(VAR_AUTOCORR_PHASE_1SAMPLE4[8]),
+        .I2(AUTOCORR_PHASE_BUFF[19]),
         .O(\FPGA_REG_WRITE_DATA[4]_i_4_n_0 ));
   LUT3 #(
-    .INIT(8'h47)) 
+    .INIT(8'h35)) 
     \FPGA_REG_WRITE_DATA[4]_i_5 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE4[7]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(AUTOCORR_PHASE_BUFF__0[7]),
+       (.I0(AUTOCORR_PHASE_BUFF[7]),
+        .I1(VAR_AUTOCORR_PHASE_1SAMPLE4[7]),
+        .I2(AUTOCORR_PHASE_BUFF[19]),
         .O(\FPGA_REG_WRITE_DATA[4]_i_5_n_0 ));
   LUT3 #(
-    .INIT(8'h47)) 
+    .INIT(8'h35)) 
     \FPGA_REG_WRITE_DATA[4]_i_6 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE4[6]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(AUTOCORR_PHASE_BUFF__0[6]),
+       (.I0(AUTOCORR_PHASE_BUFF[6]),
+        .I1(VAR_AUTOCORR_PHASE_1SAMPLE4[6]),
+        .I2(AUTOCORR_PHASE_BUFF[19]),
         .O(\FPGA_REG_WRITE_DATA[4]_i_6_n_0 ));
   LUT3 #(
-    .INIT(8'h47)) 
+    .INIT(8'h35)) 
     \FPGA_REG_WRITE_DATA[4]_i_7 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE4[5]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(AUTOCORR_PHASE_BUFF__0[5]),
+       (.I0(AUTOCORR_PHASE_BUFF[5]),
+        .I1(VAR_AUTOCORR_PHASE_1SAMPLE4[5]),
+        .I2(AUTOCORR_PHASE_BUFF[19]),
         .O(\FPGA_REG_WRITE_DATA[4]_i_7_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \FPGA_REG_WRITE_DATA[4]_i_9 
-       (.I0(AUTOCORR_PHASE_BUFF__0[8]),
+       (.I0(AUTOCORR_PHASE_BUFF[8]),
         .O(\FPGA_REG_WRITE_DATA[4]_i_9_n_0 ));
-  LUT5 #(
-    .INIT(32'hFFFFB080)) 
+  LUT6 #(
+    .INIT(64'hFFFFD800D800D800)) 
     \FPGA_REG_WRITE_DATA[5]_i_1 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE2[5]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
-        .I3(AUTOCORR_PHASE_BUFF__0[9]),
+       (.I0(AUTOCORR_PHASE_BUFF[19]),
+        .I1(VAR_AUTOCORR_PHASE_1SAMPLE2[5]),
+        .I2(AUTOCORR_PHASE_BUFF[9]),
+        .I3(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
         .I4(\FPGA_REG_WRITE_DATA[5]_i_2_n_0 ),
+        .I5(FPGA_REG_WRITE_STROBE_PHASE_20),
         .O(\FPGA_REG_WRITE_DATA[5]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hF888)) 
+  (* SOFT_HLUTNM = "soft_lutpair18" *) 
+  LUT3 #(
+    .INIT(8'hB8)) 
     \FPGA_REG_WRITE_DATA[5]_i_2 
        (.I0(ROTATION_PHASE_NEW_DIFF3[5]),
-        .I1(\FPGA_REG_WRITE_DATA[19]_i_4_n_0 ),
+        .I1(ATAN_PHASE_OUT[19]),
         .I2(ATAN_PHASE_OUT[11]),
-        .I3(\FPGA_REG_WRITE_DATA[13]_i_3_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[5]_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'hFFFFB080)) 
+  LUT6 #(
+    .INIT(64'hFFFFD800D800D800)) 
     \FPGA_REG_WRITE_DATA[6]_i_1 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE2[6]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
-        .I3(AUTOCORR_PHASE_BUFF__0[10]),
+       (.I0(AUTOCORR_PHASE_BUFF[19]),
+        .I1(VAR_AUTOCORR_PHASE_1SAMPLE2[6]),
+        .I2(AUTOCORR_PHASE_BUFF[10]),
+        .I3(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
         .I4(\FPGA_REG_WRITE_DATA[6]_i_2_n_0 ),
+        .I5(FPGA_REG_WRITE_STROBE_PHASE_20),
         .O(\FPGA_REG_WRITE_DATA[6]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hF888)) 
+  (* SOFT_HLUTNM = "soft_lutpair18" *) 
+  LUT3 #(
+    .INIT(8'hB8)) 
     \FPGA_REG_WRITE_DATA[6]_i_2 
        (.I0(ROTATION_PHASE_NEW_DIFF3[6]),
-        .I1(\FPGA_REG_WRITE_DATA[19]_i_4_n_0 ),
+        .I1(ATAN_PHASE_OUT[19]),
         .I2(ATAN_PHASE_OUT[12]),
-        .I3(\FPGA_REG_WRITE_DATA[13]_i_3_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[6]_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'hFFFFB080)) 
+  LUT6 #(
+    .INIT(64'hFFFFD800D800D800)) 
     \FPGA_REG_WRITE_DATA[7]_i_1 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE2[7]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
-        .I3(AUTOCORR_PHASE_BUFF__0[11]),
+       (.I0(AUTOCORR_PHASE_BUFF[19]),
+        .I1(VAR_AUTOCORR_PHASE_1SAMPLE2[7]),
+        .I2(AUTOCORR_PHASE_BUFF[11]),
+        .I3(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
         .I4(\FPGA_REG_WRITE_DATA[7]_i_2_n_0 ),
+        .I5(FPGA_REG_WRITE_STROBE_PHASE_20),
         .O(\FPGA_REG_WRITE_DATA[7]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hF888)) 
+  (* SOFT_HLUTNM = "soft_lutpair17" *) 
+  LUT3 #(
+    .INIT(8'hB8)) 
     \FPGA_REG_WRITE_DATA[7]_i_2 
        (.I0(ROTATION_PHASE_NEW_DIFF3[7]),
-        .I1(\FPGA_REG_WRITE_DATA[19]_i_4_n_0 ),
+        .I1(ATAN_PHASE_OUT[19]),
         .I2(ATAN_PHASE_OUT[13]),
-        .I3(\FPGA_REG_WRITE_DATA[13]_i_3_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[7]_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'hFFFFB080)) 
+  LUT6 #(
+    .INIT(64'hFFFFD800D800D800)) 
     \FPGA_REG_WRITE_DATA[8]_i_1 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE2[8]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
-        .I3(AUTOCORR_PHASE_BUFF__0[12]),
+       (.I0(AUTOCORR_PHASE_BUFF[19]),
+        .I1(VAR_AUTOCORR_PHASE_1SAMPLE2[8]),
+        .I2(AUTOCORR_PHASE_BUFF[12]),
+        .I3(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
         .I4(\FPGA_REG_WRITE_DATA[8]_i_3_n_0 ),
+        .I5(FPGA_REG_WRITE_STROBE_PHASE_20),
         .O(\FPGA_REG_WRITE_DATA[8]_i_1_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \FPGA_REG_WRITE_DATA[8]_i_10 
-       (.I0(AUTOCORR_PHASE_BUFF__0[11]),
+       (.I0(AUTOCORR_PHASE_BUFF[11]),
         .O(\FPGA_REG_WRITE_DATA[8]_i_10_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \FPGA_REG_WRITE_DATA[8]_i_11 
-       (.I0(AUTOCORR_PHASE_BUFF__0[10]),
+       (.I0(AUTOCORR_PHASE_BUFF[10]),
         .O(\FPGA_REG_WRITE_DATA[8]_i_11_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \FPGA_REG_WRITE_DATA[8]_i_12 
-       (.I0(AUTOCORR_PHASE_BUFF__0[9]),
+       (.I0(AUTOCORR_PHASE_BUFF[9]),
         .O(\FPGA_REG_WRITE_DATA[8]_i_12_n_0 ));
-  LUT4 #(
-    .INIT(16'hF888)) 
+  (* SOFT_HLUTNM = "soft_lutpair17" *) 
+  LUT3 #(
+    .INIT(8'hB8)) 
     \FPGA_REG_WRITE_DATA[8]_i_3 
        (.I0(ROTATION_PHASE_NEW_DIFF3[8]),
-        .I1(\FPGA_REG_WRITE_DATA[19]_i_4_n_0 ),
+        .I1(ATAN_PHASE_OUT[19]),
         .I2(ATAN_PHASE_OUT[14]),
-        .I3(\FPGA_REG_WRITE_DATA[13]_i_3_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[8]_i_3_n_0 ));
   LUT3 #(
-    .INIT(8'h47)) 
+    .INIT(8'h35)) 
     \FPGA_REG_WRITE_DATA[8]_i_4 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE4[12]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(AUTOCORR_PHASE_BUFF__0[12]),
+       (.I0(AUTOCORR_PHASE_BUFF[12]),
+        .I1(VAR_AUTOCORR_PHASE_1SAMPLE4[12]),
+        .I2(AUTOCORR_PHASE_BUFF[19]),
         .O(\FPGA_REG_WRITE_DATA[8]_i_4_n_0 ));
   LUT3 #(
-    .INIT(8'h47)) 
+    .INIT(8'h35)) 
     \FPGA_REG_WRITE_DATA[8]_i_5 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE4[11]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(AUTOCORR_PHASE_BUFF__0[11]),
+       (.I0(AUTOCORR_PHASE_BUFF[11]),
+        .I1(VAR_AUTOCORR_PHASE_1SAMPLE4[11]),
+        .I2(AUTOCORR_PHASE_BUFF[19]),
         .O(\FPGA_REG_WRITE_DATA[8]_i_5_n_0 ));
   LUT3 #(
-    .INIT(8'h47)) 
+    .INIT(8'h35)) 
     \FPGA_REG_WRITE_DATA[8]_i_6 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE4[10]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(AUTOCORR_PHASE_BUFF__0[10]),
+       (.I0(AUTOCORR_PHASE_BUFF[10]),
+        .I1(VAR_AUTOCORR_PHASE_1SAMPLE4[10]),
+        .I2(AUTOCORR_PHASE_BUFF[19]),
         .O(\FPGA_REG_WRITE_DATA[8]_i_6_n_0 ));
   LUT3 #(
-    .INIT(8'h47)) 
+    .INIT(8'h35)) 
     \FPGA_REG_WRITE_DATA[8]_i_7 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE4[9]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(AUTOCORR_PHASE_BUFF__0[9]),
+       (.I0(AUTOCORR_PHASE_BUFF[9]),
+        .I1(VAR_AUTOCORR_PHASE_1SAMPLE4[9]),
+        .I2(AUTOCORR_PHASE_BUFF[19]),
         .O(\FPGA_REG_WRITE_DATA[8]_i_7_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \FPGA_REG_WRITE_DATA[8]_i_9 
-       (.I0(AUTOCORR_PHASE_BUFF__0[12]),
+       (.I0(AUTOCORR_PHASE_BUFF[12]),
         .O(\FPGA_REG_WRITE_DATA[8]_i_9_n_0 ));
-  LUT5 #(
-    .INIT(32'hFFFFB080)) 
+  LUT6 #(
+    .INIT(64'hFFFFD800D800D800)) 
     \FPGA_REG_WRITE_DATA[9]_i_1 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE2[9]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
-        .I3(AUTOCORR_PHASE_BUFF__0[13]),
+       (.I0(AUTOCORR_PHASE_BUFF[19]),
+        .I1(VAR_AUTOCORR_PHASE_1SAMPLE2[9]),
+        .I2(AUTOCORR_PHASE_BUFF[13]),
+        .I3(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
         .I4(\FPGA_REG_WRITE_DATA[9]_i_2_n_0 ),
+        .I5(FPGA_REG_WRITE_STROBE_PHASE_20),
         .O(\FPGA_REG_WRITE_DATA[9]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hF888)) 
+  (* SOFT_HLUTNM = "soft_lutpair16" *) 
+  LUT3 #(
+    .INIT(8'hB8)) 
     \FPGA_REG_WRITE_DATA[9]_i_2 
        (.I0(ROTATION_PHASE_NEW_DIFF3[9]),
-        .I1(\FPGA_REG_WRITE_DATA[19]_i_4_n_0 ),
+        .I1(ATAN_PHASE_OUT[19]),
         .I2(ATAN_PHASE_OUT[15]),
-        .I3(\FPGA_REG_WRITE_DATA[13]_i_3_n_0 ),
         .O(\FPGA_REG_WRITE_DATA[9]_i_2_n_0 ));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
@@ -6853,12 +6017,12 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .Q(FPGA_REG_WRITE_DATA[0]),
         .R(1'b0));
   (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 \FPGA_REG_WRITE_DATA_reg[0]_i_2 
+  CARRY4 \FPGA_REG_WRITE_DATA_reg[0]_i_3 
        (.CI(1'b0),
-        .CO({\FPGA_REG_WRITE_DATA_reg[0]_i_2_n_0 ,\FPGA_REG_WRITE_DATA_reg[0]_i_2_n_1 ,\FPGA_REG_WRITE_DATA_reg[0]_i_2_n_2 ,\FPGA_REG_WRITE_DATA_reg[0]_i_2_n_3 }),
+        .CO({\FPGA_REG_WRITE_DATA_reg[0]_i_3_n_0 ,\FPGA_REG_WRITE_DATA_reg[0]_i_3_n_1 ,\FPGA_REG_WRITE_DATA_reg[0]_i_3_n_2 ,\FPGA_REG_WRITE_DATA_reg[0]_i_3_n_3 }),
         .CYINIT(\FPGA_REG_WRITE_DATA[0]_i_4_n_0 ),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({VAR_AUTOCORR_PHASE_1SAMPLE4[4],\NLW_FPGA_REG_WRITE_DATA_reg[0]_i_2_O_UNCONNECTED [2:0]}),
+        .O({VAR_AUTOCORR_PHASE_1SAMPLE4[4],\NLW_FPGA_REG_WRITE_DATA_reg[0]_i_3_O_UNCONNECTED [2:0]}),
         .S({\FPGA_REG_WRITE_DATA[0]_i_5_n_0 ,\FPGA_REG_WRITE_DATA[0]_i_6_n_0 ,\FPGA_REG_WRITE_DATA[0]_i_7_n_0 ,\FPGA_REG_WRITE_DATA[0]_i_8_n_0 }));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
@@ -6940,33 +6104,33 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .R(1'b0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 \FPGA_REG_WRITE_DATA_reg[19]_i_10 
-       (.CI(ROTATION_PHASE_NEW_DIFF0_carry__0_i_10_n_0),
+       (.CI(\FPGA_REG_WRITE_DATA_reg[12]_i_8_n_0 ),
         .CO({\NLW_FPGA_REG_WRITE_DATA_reg[19]_i_10_CO_UNCONNECTED [3:2],\FPGA_REG_WRITE_DATA_reg[19]_i_10_n_2 ,\FPGA_REG_WRITE_DATA_reg[19]_i_10_n_3 }),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({\NLW_FPGA_REG_WRITE_DATA_reg[19]_i_10_O_UNCONNECTED [3],ROTATION_PHASE_NEW_DIFF5[19:17]}),
+        .O({\NLW_FPGA_REG_WRITE_DATA_reg[19]_i_10_O_UNCONNECTED [3],VAR_AUTOCORR_PHASE_1SAMPLE4[19:17]}),
         .S({1'b0,\FPGA_REG_WRITE_DATA[19]_i_14_n_0 ,\FPGA_REG_WRITE_DATA[19]_i_15_n_0 ,\FPGA_REG_WRITE_DATA[19]_i_16_n_0 }));
   CARRY4 \FPGA_REG_WRITE_DATA_reg[19]_i_2 
+       (.CI(ROTATION_PHASE_NEW_DIFF0_carry__1_i_9_n_0),
+        .CO({\NLW_FPGA_REG_WRITE_DATA_reg[19]_i_2_CO_UNCONNECTED [3:2],\FPGA_REG_WRITE_DATA_reg[19]_i_2_n_2 ,\NLW_FPGA_REG_WRITE_DATA_reg[19]_i_2_CO_UNCONNECTED [0]}),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O({\NLW_FPGA_REG_WRITE_DATA_reg[19]_i_2_O_UNCONNECTED [3:1],ROTATION_PHASE_NEW_DIFF3[13]}),
+        .S({1'b0,1'b0,1'b1,\FPGA_REG_WRITE_DATA[19]_i_5_n_0 }));
+  CARRY4 \FPGA_REG_WRITE_DATA_reg[19]_i_4 
        (.CI(\FPGA_REG_WRITE_DATA_reg[12]_i_2_n_0 ),
-        .CO({\FPGA_REG_WRITE_DATA_reg[19]_i_2_n_0 ,\NLW_FPGA_REG_WRITE_DATA_reg[19]_i_2_CO_UNCONNECTED [2],\FPGA_REG_WRITE_DATA_reg[19]_i_2_n_2 ,\FPGA_REG_WRITE_DATA_reg[19]_i_2_n_3 }),
+        .CO({\FPGA_REG_WRITE_DATA_reg[19]_i_4_n_0 ,\NLW_FPGA_REG_WRITE_DATA_reg[19]_i_4_CO_UNCONNECTED [2],\FPGA_REG_WRITE_DATA_reg[19]_i_4_n_2 ,\FPGA_REG_WRITE_DATA_reg[19]_i_4_n_3 }),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({\NLW_FPGA_REG_WRITE_DATA_reg[19]_i_2_O_UNCONNECTED [3],VAR_AUTOCORR_PHASE_1SAMPLE2[15:13]}),
-        .S({1'b1,\FPGA_REG_WRITE_DATA[19]_i_5_n_0 ,\FPGA_REG_WRITE_DATA[19]_i_6_n_0 ,\FPGA_REG_WRITE_DATA[19]_i_7_n_0 }));
-  CARRY4 \FPGA_REG_WRITE_DATA_reg[19]_i_3 
-       (.CI(ROTATION_PHASE_NEW_DIFF0_carry__1_i_5_n_0),
-        .CO({\NLW_FPGA_REG_WRITE_DATA_reg[19]_i_3_CO_UNCONNECTED [3:2],\FPGA_REG_WRITE_DATA_reg[19]_i_3_n_2 ,\NLW_FPGA_REG_WRITE_DATA_reg[19]_i_3_CO_UNCONNECTED [0]}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({\NLW_FPGA_REG_WRITE_DATA_reg[19]_i_3_O_UNCONNECTED [3:1],ROTATION_PHASE_NEW_DIFF3[13]}),
-        .S({1'b0,1'b0,1'b1,\FPGA_REG_WRITE_DATA[19]_i_8_n_0 }));
+        .O({\NLW_FPGA_REG_WRITE_DATA_reg[19]_i_4_O_UNCONNECTED [3],VAR_AUTOCORR_PHASE_1SAMPLE2[15:13]}),
+        .S({1'b1,\FPGA_REG_WRITE_DATA[19]_i_6_n_0 ,\FPGA_REG_WRITE_DATA[19]_i_7_n_0 ,\FPGA_REG_WRITE_DATA[19]_i_8_n_0 }));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 \FPGA_REG_WRITE_DATA_reg[19]_i_9 
-       (.CI(\FPGA_REG_WRITE_DATA_reg[12]_i_8_n_0 ),
+       (.CI(ROTATION_PHASE_NEW_DIFF0_carry__0_i_14_n_0),
         .CO({\NLW_FPGA_REG_WRITE_DATA_reg[19]_i_9_CO_UNCONNECTED [3:2],\FPGA_REG_WRITE_DATA_reg[19]_i_9_n_2 ,\FPGA_REG_WRITE_DATA_reg[19]_i_9_n_3 }),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({\NLW_FPGA_REG_WRITE_DATA_reg[19]_i_9_O_UNCONNECTED [3],VAR_AUTOCORR_PHASE_1SAMPLE4[19:17]}),
+        .O({\NLW_FPGA_REG_WRITE_DATA_reg[19]_i_9_O_UNCONNECTED [3],ROTATION_PHASE_NEW_DIFF5[19:17]}),
         .S({1'b0,\FPGA_REG_WRITE_DATA[19]_i_11_n_0 ,\FPGA_REG_WRITE_DATA[19]_i_12_n_0 ,\FPGA_REG_WRITE_DATA[19]_i_13_n_0 }));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
@@ -7013,7 +6177,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .S({\FPGA_REG_WRITE_DATA[4]_i_4_n_0 ,\FPGA_REG_WRITE_DATA[4]_i_5_n_0 ,\FPGA_REG_WRITE_DATA[4]_i_6_n_0 ,\FPGA_REG_WRITE_DATA[4]_i_7_n_0 }));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 \FPGA_REG_WRITE_DATA_reg[4]_i_8 
-       (.CI(\FPGA_REG_WRITE_DATA_reg[0]_i_2_n_0 ),
+       (.CI(\FPGA_REG_WRITE_DATA_reg[0]_i_3_n_0 ),
         .CO({\FPGA_REG_WRITE_DATA_reg[4]_i_8_n_0 ,\FPGA_REG_WRITE_DATA_reg[4]_i_8_n_1 ,\FPGA_REG_WRITE_DATA_reg[4]_i_8_n_2 ,\FPGA_REG_WRITE_DATA_reg[4]_i_8_n_3 }),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
@@ -7080,11 +6244,11 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .Q(FPGA_REG_WRITE_DATA[9]),
         .R(1'b0));
   LUT3 #(
-    .INIT(8'h08)) 
+    .INIT(8'h40)) 
     FPGA_REG_WRITE_STROBE_PHASE_1_i_1
-       (.I0(RX_STATE_reg[0]),
+       (.I0(RX_STATE_reg[2]),
         .I1(RX_STATE_reg[1]),
-        .I2(RX_STATE_reg[2]),
+        .I2(RX_STATE_reg[0]),
         .O(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0));
   FDRE #(
     .INIT(1'b0)) 
@@ -7094,14 +6258,14 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .D(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
         .Q(FPGA_REG_WRITE_STROBE_PHASE_1),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
   LUT4 #(
-    .INIT(16'h0080)) 
+    .INIT(16'h2000)) 
     FPGA_REG_WRITE_STROBE_PHASE_2_i_1
        (.I0(ATAN_PHASE_OUT_STROBE),
-        .I1(RX_STATE_reg[2]),
+        .I1(RX_STATE_reg[0]),
         .I2(RX_STATE_reg[1]),
-        .I3(RX_STATE_reg[0]),
+        .I3(RX_STATE_reg[2]),
         .O(FPGA_REG_WRITE_STROBE_PHASE_2_i_1_n_0));
   FDRE #(
     .INIT(1'b0)) 
@@ -7112,45 +6276,56 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .Q(FPGA_REG_WRITE_STROBE_PHASE_2),
         .R(1'b0));
   LUT6 #(
-    .INIT(64'h0000000056560256)) 
+    .INIT(64'h00000000AAAA5556)) 
     \FSM_sequential_RX_STATE[0]_i_1 
        (.I0(RX_STATE_reg[0]),
-        .I1(\FSM_sequential_RX_STATE[1]_i_2_n_0 ),
-        .I2(\FSM_sequential_RX_STATE[2]_i_4_n_0 ),
-        .I3(RX_STATE_reg[1]),
-        .I4(\FSM_sequential_RX_STATE[1]_i_3_n_0 ),
+        .I1(\FSM_sequential_RX_STATE[0]_i_2_n_0 ),
+        .I2(\FSM_sequential_RX_STATE[0]_i_3_n_0 ),
+        .I3(\FSM_sequential_RX_STATE[2]_i_3_n_0 ),
+        .I4(\FSM_sequential_RX_STATE[2]_i_2_n_0 ),
         .I5(RESET),
         .O(\FSM_sequential_RX_STATE[0]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h0000000056AA5602)) 
+    .INIT(64'h0000000002020002)) 
+    \FSM_sequential_RX_STATE[0]_i_2 
+       (.I0(\COUNTER_OFDM_SYMBOL[9]_i_5_n_0 ),
+        .I1(\FSM_sequential_RX_STATE[2]_i_7_n_0 ),
+        .I2(FFT_DATA_IN_START_i_8_n_0),
+        .I3(COUNTER[24]),
+        .I4(COUNTER[25]),
+        .I5(\FSM_sequential_RX_STATE[0]_i_4_n_0 ),
+        .O(\FSM_sequential_RX_STATE[0]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  LUT5 #(
+    .INIT(32'h0040FFFF)) 
+    \FSM_sequential_RX_STATE[0]_i_3 
+       (.I0(RX_STATE_reg[0]),
+        .I1(ROTATION_DATA_OUT_MARKER),
+        .I2(ROTATION_DATA_OUT_STROBE),
+        .I3(RX_STATE_reg[1]),
+        .I4(RX_STATE_reg[2]),
+        .O(\FSM_sequential_RX_STATE[0]_i_3_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair12" *) 
+  LUT4 #(
+    .INIT(16'hDFFF)) 
+    \FSM_sequential_RX_STATE[0]_i_4 
+       (.I0(RX_STATE_reg[0]),
+        .I1(RX_STATE_reg[1]),
+        .I2(COUNTER[4]),
+        .I3(COUNTER[3]),
+        .O(\FSM_sequential_RX_STATE[0]_i_4_n_0 ));
+  LUT6 #(
+    .INIT(64'h00000000999AAAAA)) 
     \FSM_sequential_RX_STATE[1]_i_1 
        (.I0(RX_STATE_reg[1]),
-        .I1(\FSM_sequential_RX_STATE[1]_i_2_n_0 ),
-        .I2(\FSM_sequential_RX_STATE[2]_i_4_n_0 ),
-        .I3(RX_STATE_reg[0]),
-        .I4(\FSM_sequential_RX_STATE[1]_i_3_n_0 ),
+        .I1(\FSM_sequential_RX_STATE[2]_i_2_n_0 ),
+        .I2(\FSM_sequential_RX_STATE[2]_i_3_n_0 ),
+        .I3(\FSM_sequential_RX_STATE[2]_i_4_n_0 ),
+        .I4(RX_STATE_reg[0]),
         .I5(RESET),
         .O(\FSM_sequential_RX_STATE[1]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFFFFFFFFF0080)) 
-    \FSM_sequential_RX_STATE[1]_i_2 
-       (.I0(FFT_DATA_IN_START_i_5_n_0),
-        .I1(\COUNTER_OFDM_SYMBOL[31]_i_9_n_0 ),
-        .I2(\FSM_sequential_RX_STATE[2]_i_7_n_0 ),
-        .I3(\COUNTER_OFDM_SYMBOL[31]_i_5_n_0 ),
-        .I4(\FSM_sequential_RX_STATE[2]_i_6_n_0 ),
-        .I5(\FSM_sequential_RX_STATE[2]_i_3_n_0 ),
-        .O(\FSM_sequential_RX_STATE[1]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair11" *) 
-  LUT3 #(
-    .INIT(8'hEF)) 
-    \FSM_sequential_RX_STATE[1]_i_3 
-       (.I0(p_0_in_0),
-        .I1(STOP_RX_DONE),
-        .I2(RX_STATE_reg[2]),
-        .O(\FSM_sequential_RX_STATE[1]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'h00000000FFFE0002)) 
+    .INIT(64'h00000000BBBA888A)) 
     \FSM_sequential_RX_STATE[2]_i_1 
        (.I0(RX_STATE_reg[2]),
         .I1(\FSM_sequential_RX_STATE[2]_i_2_n_0 ),
@@ -7159,72 +6334,80 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .I4(RX_STATE__0),
         .I5(RESET),
         .O(\FSM_sequential_RX_STATE[2]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hBAAAAAAAAAAAAAAA)) 
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  LUT5 #(
+    .INIT(32'h00010301)) 
     \FSM_sequential_RX_STATE[2]_i_2 
-       (.I0(\FSM_sequential_RX_STATE[2]_i_6_n_0 ),
-        .I1(\COUNTER_OFDM_SYMBOL[31]_i_5_n_0 ),
-        .I2(\FSM_sequential_RX_STATE[2]_i_7_n_0 ),
-        .I3(COUNTER[4]),
-        .I4(COUNTER[5]),
-        .I5(FFT_DATA_IN_START_i_5_n_0),
+       (.I0(DETECTION_SIGNAL_DETECTED),
+        .I1(RX_STATE_reg[0]),
+        .I2(RX_STATE_reg[2]),
+        .I3(RX_STATE_reg[1]),
+        .I4(ATAN_PHASE_OUT_STROBE),
         .O(\FSM_sequential_RX_STATE[2]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT5 #(
-    .INIT(32'h0E000000)) 
+    .INIT(32'h80008A0A)) 
     \FSM_sequential_RX_STATE[2]_i_3 
-       (.I0(p_0_in_0),
-        .I1(STOP_RX_DONE),
+       (.I0(RX_STATE_reg[1]),
+        .I1(\RX_STATE0_inferred__0/i__carry__2_n_0 ),
         .I2(RX_STATE_reg[0]),
-        .I3(RX_STATE_reg[1]),
-        .I4(RX_STATE_reg[2]),
+        .I3(ROTATION_DATA_OUT_STROBE),
+        .I4(\COUNTER[31]_i_8_n_0 ),
         .O(\FSM_sequential_RX_STATE[2]_i_3_n_0 ));
-  LUT4 #(
-    .INIT(16'hFF40)) 
+  LUT6 #(
+    .INIT(64'h10FF10FF10FFFFFF)) 
     \FSM_sequential_RX_STATE[2]_i_4 
-       (.I0(RX_STATE_reg[2]),
-        .I1(RX_STATE_reg[1]),
-        .I2(ATAN_PHASE_OUT_STROBE),
-        .I3(\FSM_sequential_RX_STATE[2]_i_8_n_0 ),
+       (.I0(\FSM_sequential_RX_STATE[2]_i_6_n_0 ),
+        .I1(\FSM_sequential_RX_STATE[2]_i_7_n_0 ),
+        .I2(\COUNTER_OFDM_SYMBOL[9]_i_5_n_0 ),
+        .I3(RX_STATE_reg[2]),
+        .I4(RX_STATE_reg[1]),
+        .I5(\FSM_sequential_RX_STATE[2]_i_8_n_0 ),
         .O(\FSM_sequential_RX_STATE[2]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
-  LUT5 #(
-    .INIT(32'h6A6A6A62)) 
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  LUT3 #(
+    .INIT(8'h78)) 
     \FSM_sequential_RX_STATE[2]_i_5 
-       (.I0(RX_STATE_reg[2]),
-        .I1(RX_STATE_reg[1]),
-        .I2(RX_STATE_reg[0]),
-        .I3(STOP_RX_DONE),
-        .I4(p_0_in_0),
-        .O(RX_STATE__0));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
-  LUT5 #(
-    .INIT(32'h00000080)) 
-    \FSM_sequential_RX_STATE[2]_i_6 
-       (.I0(ROTATION_DATA_OUT_MARKER),
-        .I1(RX_STATE_reg[2]),
-        .I2(ROTATION_DATA_OUT_STROBE),
-        .I3(RX_STATE_reg[1]),
-        .I4(RX_STATE_reg[0]),
-        .O(\FSM_sequential_RX_STATE[2]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \FSM_sequential_RX_STATE[2]_i_7 
        (.I0(RX_STATE_reg[0]),
         .I1(RX_STATE_reg[1]),
-        .O(\FSM_sequential_RX_STATE[2]_i_7_n_0 ));
+        .I2(RX_STATE_reg[2]),
+        .O(RX_STATE__0));
   LUT6 #(
-    .INIT(64'h8080FFFF00005500)) 
-    \FSM_sequential_RX_STATE[2]_i_8 
-       (.I0(RX_STATE_reg[1]),
+    .INIT(64'hFFFFFFFFAEFFFFFF)) 
+    \FSM_sequential_RX_STATE[2]_i_6 
+       (.I0(FFT_DATA_IN_START_i_8_n_0),
+        .I1(COUNTER[24]),
+        .I2(COUNTER[25]),
+        .I3(COUNTER[3]),
+        .I4(COUNTER[4]),
+        .I5(\FSM_sequential_RX_STATE[2]_i_9_n_0 ),
+        .O(\FSM_sequential_RX_STATE[2]_i_6_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFFFBFF)) 
+    \FSM_sequential_RX_STATE[2]_i_7 
+       (.I0(FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_4_n_0),
         .I1(ROTATION_DATA_OUT_STROBE),
-        .I2(\RX_STATE0_inferred__1/i__carry__2_n_0 ),
-        .I3(DETECTION_SIGNAL_DETECTED),
-        .I4(RX_STATE_reg[2]),
-        .I5(RX_STATE_reg[0]),
+        .I2(COUNTER[25]),
+        .I3(COUNTER[5]),
+        .I4(COUNTER[26]),
+        .I5(\COUNTER_OFDM_SYMBOL[9]_i_9_n_0 ),
+        .O(\FSM_sequential_RX_STATE[2]_i_7_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  LUT3 #(
+    .INIT(8'hBF)) 
+    \FSM_sequential_RX_STATE[2]_i_8 
+       (.I0(RX_STATE_reg[0]),
+        .I1(ROTATION_DATA_OUT_MARKER),
+        .I2(ROTATION_DATA_OUT_STROBE),
         .O(\FSM_sequential_RX_STATE[2]_i_8_n_0 ));
-  (* FSM_ENCODED_STATES = "sts_atan_init:001,sts_atan_wait:010,set_rotation_block:011,wait_for_lts_marker:100,receive_lts:101,receive_data:110,idle:000,ignore_ending_false_detection:111" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  LUT2 #(
+    .INIT(4'hB)) 
+    \FSM_sequential_RX_STATE[2]_i_9 
+       (.I0(RX_STATE_reg[1]),
+        .I1(RX_STATE_reg[0]),
+        .O(\FSM_sequential_RX_STATE[2]_i_9_n_0 ));
+  (* FSM_ENCODED_STATES = "idle:000,sts_atan_init:001,sts_atan_wait:010,set_rotation_block:011,wait_for_lts_marker:100,receive_lts:101,receive_data:110,ignore_ending_false_detection:111" *) 
   FDRE #(
     .INIT(1'b0)) 
     \FSM_sequential_RX_STATE_reg[0] 
@@ -7233,7 +6416,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .D(\FSM_sequential_RX_STATE[0]_i_1_n_0 ),
         .Q(RX_STATE_reg[0]),
         .R(1'b0));
-  (* FSM_ENCODED_STATES = "sts_atan_init:001,sts_atan_wait:010,set_rotation_block:011,wait_for_lts_marker:100,receive_lts:101,receive_data:110,idle:000,ignore_ending_false_detection:111" *) 
+  (* FSM_ENCODED_STATES = "idle:000,sts_atan_init:001,sts_atan_wait:010,set_rotation_block:011,wait_for_lts_marker:100,receive_lts:101,receive_data:110,ignore_ending_false_detection:111" *) 
   FDRE #(
     .INIT(1'b0)) 
     \FSM_sequential_RX_STATE_reg[1] 
@@ -7242,7 +6425,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .D(\FSM_sequential_RX_STATE[1]_i_1_n_0 ),
         .Q(RX_STATE_reg[1]),
         .R(1'b0));
-  (* FSM_ENCODED_STATES = "sts_atan_init:001,sts_atan_wait:010,set_rotation_block:011,wait_for_lts_marker:100,receive_lts:101,receive_data:110,idle:000,ignore_ending_false_detection:111" *) 
+  (* FSM_ENCODED_STATES = "idle:000,sts_atan_init:001,sts_atan_wait:010,set_rotation_block:011,wait_for_lts_marker:100,receive_lts:101,receive_data:110,ignore_ending_false_detection:111" *) 
   FDRE #(
     .INIT(1'b0)) 
     \FSM_sequential_RX_STATE_reg[2] 
@@ -7327,15 +6510,23 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .RSTM(1'b0),
         .RSTP(1'b0),
         .UNDERFLOW(NLW_LTS_AUTOCORR_ADD_REG_I_reg_UNDERFLOW_UNCONNECTED));
-  LUT5 #(
-    .INIT(32'hFFFF0080)) 
+  LUT6 #(
+    .INIT(64'h0350000000000000)) 
     LTS_AUTOCORR_ADD_REG_I_reg_i_1
-       (.I0(\COUNTER[31]_i_8_n_0 ),
-        .I1(ROTATION_DATA_OUT_STROBE),
-        .I2(\compute_lts_autocorr_process.VAR_COMPLETE_COMPUTATION_reg_n_0_[1] ),
-        .I3(\compute_lts_autocorr_process.VAR_COMPLETE_COMPUTATION_reg_n_0_[0] ),
-        .I4(CEM),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR1_carry__2_n_3),
+        .I1(LTS_AUTOCORR_ADD_REG_I_reg_i_2_n_0),
+        .I2(RX_STATE_reg[0]),
+        .I3(RX_STATE_reg[1]),
+        .I4(RX_STATE_reg[2]),
+        .I5(ROTATION_DATA_OUT_STROBE),
         .O(CEP));
+  (* SOFT_HLUTNM = "soft_lutpair21" *) 
+  LUT2 #(
+    .INIT(4'hB)) 
+    LTS_AUTOCORR_ADD_REG_I_reg_i_2
+       (.I0(VAR_COMPLETE_COMPUTATION[0]),
+        .I1(VAR_COMPLETE_COMPUTATION[1]),
+        .O(LTS_AUTOCORR_ADD_REG_I_reg_i_2_n_0));
   DSP48E1 #(
     .ACASCREG(1),
     .ADREG(1),
@@ -7417,7 +6608,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.CI(1'b0),
         .CO({LTS_AUTOCORR_I_ACCUMULATOR0_carry_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry_n_1,LTS_AUTOCORR_I_ACCUMULATOR0_carry_n_2,LTS_AUTOCORR_I_ACCUMULATOR0_carry_n_3}),
         .CYINIT(1'b0),
-        .DI({\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[3] ,\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[2] ,\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[1] ,\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[0] }),
+        .DI(LTS_AUTOCORR_I_ACCUMULATOR[3:0]),
         .O({LTS_AUTOCORR_I_ACCUMULATOR0_carry_n_4,LTS_AUTOCORR_I_ACCUMULATOR0_carry_n_5,LTS_AUTOCORR_I_ACCUMULATOR0_carry_n_6,LTS_AUTOCORR_I_ACCUMULATOR0_carry_n_7}),
         .S({LTS_AUTOCORR_I_ACCUMULATOR0_carry_i_1_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry_i_2_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry_i_3_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry_i_4_n_0}));
   (* ADDER_THRESHOLD = "35" *) 
@@ -7425,31 +6616,31 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.CI(LTS_AUTOCORR_I_ACCUMULATOR0_carry_n_0),
         .CO({LTS_AUTOCORR_I_ACCUMULATOR0_carry__0_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry__0_n_1,LTS_AUTOCORR_I_ACCUMULATOR0_carry__0_n_2,LTS_AUTOCORR_I_ACCUMULATOR0_carry__0_n_3}),
         .CYINIT(1'b0),
-        .DI({\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[7] ,\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[6] ,\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[5] ,\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[4] }),
+        .DI(LTS_AUTOCORR_I_ACCUMULATOR[7:4]),
         .O({LTS_AUTOCORR_I_ACCUMULATOR0_carry__0_n_4,LTS_AUTOCORR_I_ACCUMULATOR0_carry__0_n_5,LTS_AUTOCORR_I_ACCUMULATOR0_carry__0_n_6,LTS_AUTOCORR_I_ACCUMULATOR0_carry__0_n_7}),
         .S({LTS_AUTOCORR_I_ACCUMULATOR0_carry__0_i_1_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry__0_i_2_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry__0_i_3_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry__0_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry__0_i_1
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[7] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[7]),
         .I1(LTS_AUTOCORR_ADD_REG_I_reg_n_98),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry__0_i_1_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry__0_i_2
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[6] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[6]),
         .I1(LTS_AUTOCORR_ADD_REG_I_reg_n_99),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry__0_i_2_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry__0_i_3
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[5] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[5]),
         .I1(LTS_AUTOCORR_ADD_REG_I_reg_n_100),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry__0_i_3_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry__0_i_4
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[4] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[4]),
         .I1(LTS_AUTOCORR_ADD_REG_I_reg_n_101),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry__0_i_4_n_0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -7457,31 +6648,31 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.CI(LTS_AUTOCORR_I_ACCUMULATOR0_carry__0_n_0),
         .CO({LTS_AUTOCORR_I_ACCUMULATOR0_carry__1_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry__1_n_1,LTS_AUTOCORR_I_ACCUMULATOR0_carry__1_n_2,LTS_AUTOCORR_I_ACCUMULATOR0_carry__1_n_3}),
         .CYINIT(1'b0),
-        .DI({\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[11] ,\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[10] ,\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[9] ,\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[8] }),
+        .DI(LTS_AUTOCORR_I_ACCUMULATOR[11:8]),
         .O({LTS_AUTOCORR_I_ACCUMULATOR0_carry__1_n_4,LTS_AUTOCORR_I_ACCUMULATOR0_carry__1_n_5,LTS_AUTOCORR_I_ACCUMULATOR0_carry__1_n_6,LTS_AUTOCORR_I_ACCUMULATOR0_carry__1_n_7}),
         .S({LTS_AUTOCORR_I_ACCUMULATOR0_carry__1_i_1_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry__1_i_2_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry__1_i_3_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry__1_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry__1_i_1
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[11] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[11]),
         .I1(LTS_AUTOCORR_ADD_REG_I_reg_n_94),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry__1_i_1_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry__1_i_2
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[10] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[10]),
         .I1(LTS_AUTOCORR_ADD_REG_I_reg_n_95),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry__1_i_2_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry__1_i_3
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[9] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[9]),
         .I1(LTS_AUTOCORR_ADD_REG_I_reg_n_96),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry__1_i_3_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry__1_i_4
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[8] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[8]),
         .I1(LTS_AUTOCORR_ADD_REG_I_reg_n_97),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry__1_i_4_n_0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -7489,31 +6680,31 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.CI(LTS_AUTOCORR_I_ACCUMULATOR0_carry__1_n_0),
         .CO({LTS_AUTOCORR_I_ACCUMULATOR0_carry__2_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry__2_n_1,LTS_AUTOCORR_I_ACCUMULATOR0_carry__2_n_2,LTS_AUTOCORR_I_ACCUMULATOR0_carry__2_n_3}),
         .CYINIT(1'b0),
-        .DI({\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[15] ,\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[14] ,\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[13] ,\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[12] }),
+        .DI(LTS_AUTOCORR_I_ACCUMULATOR[15:12]),
         .O({LTS_AUTOCORR_I_ACCUMULATOR0_carry__2_n_4,LTS_AUTOCORR_I_ACCUMULATOR0_carry__2_n_5,LTS_AUTOCORR_I_ACCUMULATOR0_carry__2_n_6,LTS_AUTOCORR_I_ACCUMULATOR0_carry__2_n_7}),
         .S({LTS_AUTOCORR_I_ACCUMULATOR0_carry__2_i_1_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry__2_i_2_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry__2_i_3_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry__2_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry__2_i_1
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[15] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[15]),
         .I1(LTS_AUTOCORR_ADD_REG_I_reg_n_90),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry__2_i_1_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry__2_i_2
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[14] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[14]),
         .I1(LTS_AUTOCORR_ADD_REG_I_reg_n_91),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry__2_i_2_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry__2_i_3
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[13] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[13]),
         .I1(LTS_AUTOCORR_ADD_REG_I_reg_n_92),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry__2_i_3_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry__2_i_4
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[12] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[12]),
         .I1(LTS_AUTOCORR_ADD_REG_I_reg_n_93),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry__2_i_4_n_0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -7521,31 +6712,31 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.CI(LTS_AUTOCORR_I_ACCUMULATOR0_carry__2_n_0),
         .CO({LTS_AUTOCORR_I_ACCUMULATOR0_carry__3_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry__3_n_1,LTS_AUTOCORR_I_ACCUMULATOR0_carry__3_n_2,LTS_AUTOCORR_I_ACCUMULATOR0_carry__3_n_3}),
         .CYINIT(1'b0),
-        .DI({\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[19] ,\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[18] ,\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[17] ,\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[16] }),
+        .DI(LTS_AUTOCORR_I_ACCUMULATOR[19:16]),
         .O({LTS_AUTOCORR_I_ACCUMULATOR0_carry__3_n_4,LTS_AUTOCORR_I_ACCUMULATOR0_carry__3_n_5,LTS_AUTOCORR_I_ACCUMULATOR0_carry__3_n_6,LTS_AUTOCORR_I_ACCUMULATOR0_carry__3_n_7}),
         .S({LTS_AUTOCORR_I_ACCUMULATOR0_carry__3_i_1_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry__3_i_2_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry__3_i_3_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry__3_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry__3_i_1
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[19] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[19]),
         .I1(LTS_AUTOCORR_ADD_REG_I_reg_n_86),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry__3_i_1_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry__3_i_2
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[18] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[18]),
         .I1(LTS_AUTOCORR_ADD_REG_I_reg_n_87),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry__3_i_2_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry__3_i_3
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[17] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[17]),
         .I1(LTS_AUTOCORR_ADD_REG_I_reg_n_88),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry__3_i_3_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry__3_i_4
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[16] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[16]),
         .I1(LTS_AUTOCORR_ADD_REG_I_reg_n_89),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry__3_i_4_n_0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -7553,31 +6744,31 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.CI(LTS_AUTOCORR_I_ACCUMULATOR0_carry__3_n_0),
         .CO({LTS_AUTOCORR_I_ACCUMULATOR0_carry__4_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry__4_n_1,LTS_AUTOCORR_I_ACCUMULATOR0_carry__4_n_2,LTS_AUTOCORR_I_ACCUMULATOR0_carry__4_n_3}),
         .CYINIT(1'b0),
-        .DI({\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[23] ,\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[22] ,\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[21] ,\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[20] }),
+        .DI(LTS_AUTOCORR_I_ACCUMULATOR[23:20]),
         .O({LTS_AUTOCORR_I_ACCUMULATOR0_carry__4_n_4,LTS_AUTOCORR_I_ACCUMULATOR0_carry__4_n_5,LTS_AUTOCORR_I_ACCUMULATOR0_carry__4_n_6,LTS_AUTOCORR_I_ACCUMULATOR0_carry__4_n_7}),
         .S({LTS_AUTOCORR_I_ACCUMULATOR0_carry__4_i_1_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry__4_i_2_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry__4_i_3_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry__4_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry__4_i_1
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[23] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[23]),
         .I1(LTS_AUTOCORR_ADD_REG_I_reg_n_82),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry__4_i_1_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry__4_i_2
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[22] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[22]),
         .I1(LTS_AUTOCORR_ADD_REG_I_reg_n_83),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry__4_i_2_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry__4_i_3
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[21] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[21]),
         .I1(LTS_AUTOCORR_ADD_REG_I_reg_n_84),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry__4_i_3_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry__4_i_4
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[20] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[20]),
         .I1(LTS_AUTOCORR_ADD_REG_I_reg_n_85),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry__4_i_4_n_0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -7585,31 +6776,31 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.CI(LTS_AUTOCORR_I_ACCUMULATOR0_carry__4_n_0),
         .CO({LTS_AUTOCORR_I_ACCUMULATOR0_carry__5_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry__5_n_1,LTS_AUTOCORR_I_ACCUMULATOR0_carry__5_n_2,LTS_AUTOCORR_I_ACCUMULATOR0_carry__5_n_3}),
         .CYINIT(1'b0),
-        .DI({\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[27] ,\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[26] ,\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[25] ,\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[24] }),
+        .DI(LTS_AUTOCORR_I_ACCUMULATOR[27:24]),
         .O({LTS_AUTOCORR_I_ACCUMULATOR0_carry__5_n_4,LTS_AUTOCORR_I_ACCUMULATOR0_carry__5_n_5,LTS_AUTOCORR_I_ACCUMULATOR0_carry__5_n_6,LTS_AUTOCORR_I_ACCUMULATOR0_carry__5_n_7}),
         .S({LTS_AUTOCORR_I_ACCUMULATOR0_carry__5_i_1_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry__5_i_2_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry__5_i_3_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry__5_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry__5_i_1
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[27] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[27]),
         .I1(LTS_AUTOCORR_ADD_REG_I_reg_n_78),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry__5_i_1_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry__5_i_2
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[26] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[26]),
         .I1(LTS_AUTOCORR_ADD_REG_I_reg_n_79),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry__5_i_2_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry__5_i_3
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[25] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[25]),
         .I1(LTS_AUTOCORR_ADD_REG_I_reg_n_80),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry__5_i_3_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry__5_i_4
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[24] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[24]),
         .I1(LTS_AUTOCORR_ADD_REG_I_reg_n_81),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry__5_i_4_n_0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -7617,31 +6808,31 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.CI(LTS_AUTOCORR_I_ACCUMULATOR0_carry__5_n_0),
         .CO({LTS_AUTOCORR_I_ACCUMULATOR0_carry__6_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry__6_n_1,LTS_AUTOCORR_I_ACCUMULATOR0_carry__6_n_2,LTS_AUTOCORR_I_ACCUMULATOR0_carry__6_n_3}),
         .CYINIT(1'b0),
-        .DI({LTS_AUTOCORR_ADD_REG_I_reg_n_74,\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[30] ,\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[29] ,\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[28] }),
+        .DI({LTS_AUTOCORR_ADD_REG_I_reg_n_74,LTS_AUTOCORR_I_ACCUMULATOR[30:28]}),
         .O({LTS_AUTOCORR_I_ACCUMULATOR0_carry__6_n_4,LTS_AUTOCORR_I_ACCUMULATOR0_carry__6_n_5,LTS_AUTOCORR_I_ACCUMULATOR0_carry__6_n_6,LTS_AUTOCORR_I_ACCUMULATOR0_carry__6_n_7}),
         .S({LTS_AUTOCORR_I_ACCUMULATOR0_carry__6_i_1_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry__6_i_2_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry__6_i_3_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry__6_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry__6_i_1
        (.I0(LTS_AUTOCORR_ADD_REG_I_reg_n_74),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[31] ),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[31]),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry__6_i_1_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry__6_i_2
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[30] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[30]),
         .I1(LTS_AUTOCORR_ADD_REG_I_reg_n_75),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry__6_i_2_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry__6_i_3
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[29] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[29]),
         .I1(LTS_AUTOCORR_ADD_REG_I_reg_n_76),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry__6_i_3_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry__6_i_4
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[28] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[28]),
         .I1(LTS_AUTOCORR_ADD_REG_I_reg_n_77),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry__6_i_4_n_0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -7649,92 +6840,92 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.CI(LTS_AUTOCORR_I_ACCUMULATOR0_carry__6_n_0),
         .CO({LTS_AUTOCORR_I_ACCUMULATOR0_carry__7_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry__7_n_1,LTS_AUTOCORR_I_ACCUMULATOR0_carry__7_n_2,LTS_AUTOCORR_I_ACCUMULATOR0_carry__7_n_3}),
         .CYINIT(1'b0),
-        .DI({\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[34] ,\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[33] ,\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[32] ,LTS_AUTOCORR_I_ACCUMULATOR0_carry__7_i_1_n_0}),
+        .DI({LTS_AUTOCORR_I_ACCUMULATOR[34:32],LTS_AUTOCORR_I_ACCUMULATOR0_carry__7_i_1_n_0}),
         .O({LTS_AUTOCORR_I_ACCUMULATOR0_carry__7_n_4,LTS_AUTOCORR_I_ACCUMULATOR0_carry__7_n_5,LTS_AUTOCORR_I_ACCUMULATOR0_carry__7_n_6,LTS_AUTOCORR_I_ACCUMULATOR0_carry__7_n_7}),
         .S({LTS_AUTOCORR_I_ACCUMULATOR0_carry__7_i_2_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry__7_i_3_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry__7_i_4_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry__7_i_5_n_0}));
   LUT1 #(
     .INIT(2'h1)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry__7_i_1
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[32] ),
+       (.I0(LTS_AUTOCORR_ADD_REG_I_reg_n_74),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry__7_i_1_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry__7_i_2
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[34] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[35] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[34]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[35]),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry__7_i_2_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry__7_i_3
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[33] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[34] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[33]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[34]),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry__7_i_3_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry__7_i_4
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[32] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[33] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[32]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[33]),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry__7_i_4_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry__7_i_5
        (.I0(LTS_AUTOCORR_ADD_REG_I_reg_n_74),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[32] ),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[32]),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry__7_i_5_n_0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 LTS_AUTOCORR_I_ACCUMULATOR0_carry__8
        (.CI(LTS_AUTOCORR_I_ACCUMULATOR0_carry__7_n_0),
         .CO({NLW_LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_CO_UNCONNECTED[3],LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_n_1,LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_n_2,LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_n_3}),
         .CYINIT(1'b0),
-        .DI({1'b0,\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[37] ,\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[36] ,\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[35] }),
+        .DI({1'b0,LTS_AUTOCORR_I_ACCUMULATOR[37:35]}),
         .O({LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_n_4,LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_n_5,LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_n_6,LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_n_7}),
         .S({LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_i_1_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_i_2_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_i_3_n_0,LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_i_4_n_0}));
   LUT2 #(
     .INIT(4'h9)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_i_1
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[38] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[38]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[39]),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_i_1_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_i_2
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[37] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[38] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[37]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[38]),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_i_2_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_i_3
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[36] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[37] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[36]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[37]),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_i_3_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_i_4
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[35] ),
-        .I1(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[36] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[35]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[36]),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_i_4_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry_i_1
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[3] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[3]),
         .I1(LTS_AUTOCORR_ADD_REG_I_reg_n_102),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry_i_1_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry_i_2
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[2] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[2]),
         .I1(LTS_AUTOCORR_ADD_REG_I_reg_n_103),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry_i_2_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry_i_3
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[1] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[1]),
         .I1(LTS_AUTOCORR_ADD_REG_I_reg_n_104),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry_i_3_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_I_ACCUMULATOR0_carry_i_4
-       (.I0(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[0] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[0]),
         .I1(LTS_AUTOCORR_ADD_REG_I_reg_n_105),
         .O(LTS_AUTOCORR_I_ACCUMULATOR0_carry_i_4_n_0));
   (* COMPARATOR_THRESHOLD = "11" *) 
@@ -7794,8 +6985,8 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   LUT2 #(
     .INIT(4'h1)) 
     LTS_AUTOCORR_I_ACCUMULATOR1_carry__1_i_2
-       (.I0(COUNTER[27]),
-        .I1(COUNTER[26]),
+       (.I0(COUNTER[26]),
+        .I1(COUNTER[27]),
         .O(LTS_AUTOCORR_I_ACCUMULATOR1_carry__1_i_2_n_0));
   LUT2 #(
     .INIT(4'h1)) 
@@ -7820,8 +7011,8 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   LUT2 #(
     .INIT(4'h1)) 
     LTS_AUTOCORR_I_ACCUMULATOR1_carry__2_i_1
-       (.I0(COUNTER[30]),
-        .I1(COUNTER[31]),
+       (.I0(COUNTER[31]),
+        .I1(COUNTER[30]),
         .O(LTS_AUTOCORR_I_ACCUMULATOR1_carry__2_i_1_n_0));
   LUT2 #(
     .INIT(4'h1)) 
@@ -7844,8 +7035,8 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   LUT2 #(
     .INIT(4'h1)) 
     LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_4
-       (.I0(COUNTER[9]),
-        .I1(COUNTER[8]),
+       (.I0(COUNTER[8]),
+        .I1(COUNTER[9]),
         .O(LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_4_n_0));
   LUT2 #(
     .INIT(4'h2)) 
@@ -7856,26 +7047,34 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   LUT3 #(
     .INIT(8'h01)) 
     \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_1 
-       (.I0(RX_STATE_reg[1]),
-        .I1(RX_STATE_reg[0]),
-        .I2(RX_STATE_reg[2]),
+       (.I0(RX_STATE_reg[2]),
+        .I1(RX_STATE_reg[1]),
+        .I2(RX_STATE_reg[0]),
         .O(FFT_DATA_IN_STROBE0));
-  LUT5 #(
-    .INIT(32'hAAEAEAAA)) 
+  LUT6 #(
+    .INIT(64'hBEAAAAAAAAAAAAAA)) 
     \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2 
        (.I0(CEM),
-        .I1(\COUNTER[31]_i_8_n_0 ),
-        .I2(ROTATION_DATA_OUT_STROBE),
-        .I3(\compute_lts_autocorr_process.VAR_COMPLETE_COMPUTATION_reg_n_0_[1] ),
-        .I4(\compute_lts_autocorr_process.VAR_COMPLETE_COMPUTATION_reg_n_0_[0] ),
+        .I1(VAR_COMPLETE_COMPUTATION[1]),
+        .I2(VAR_COMPLETE_COMPUTATION[0]),
+        .I3(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_3_n_0 ),
+        .I4(RX_STATE_reg[2]),
+        .I5(ROTATION_DATA_OUT_STROBE),
         .O(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  LUT2 #(
+    .INIT(4'h2)) 
+    \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_3 
+       (.I0(RX_STATE_reg[1]),
+        .I1(RX_STATE_reg[0]),
+        .O(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_3_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
     \LTS_AUTOCORR_I_ACCUMULATOR_reg[0] 
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry_n_7),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[0] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[0]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -7883,7 +7082,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry__1_n_5),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[10] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[10]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -7891,7 +7090,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry__1_n_4),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[11] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[11]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -7899,7 +7098,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry__2_n_7),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[12] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[12]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -7907,7 +7106,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry__2_n_6),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[13] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[13]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -7915,7 +7114,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry__2_n_5),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[14] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[14]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -7923,7 +7122,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry__2_n_4),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[15] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[15]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -7931,7 +7130,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry__3_n_7),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[16] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[16]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -7939,7 +7138,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry__3_n_6),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[17] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[17]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -7947,7 +7146,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry__3_n_5),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[18] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[18]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -7955,7 +7154,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry__3_n_4),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[19] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[19]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -7963,7 +7162,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry_n_6),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[1] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[1]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -7971,7 +7170,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry__4_n_7),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[20] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[20]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -7979,7 +7178,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry__4_n_6),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[21] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[21]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -7987,7 +7186,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry__4_n_5),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[22] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[22]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -7995,7 +7194,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry__4_n_4),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[23] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[23]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8003,7 +7202,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry__5_n_7),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[24] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[24]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8011,7 +7210,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry__5_n_6),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[25] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[25]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8019,7 +7218,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry__5_n_5),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[26] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[26]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8027,7 +7226,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry__5_n_4),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[27] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[27]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8035,7 +7234,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry__6_n_7),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[28] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[28]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8043,7 +7242,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry__6_n_6),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[29] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[29]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8051,7 +7250,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry_n_5),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[2] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[2]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8059,7 +7258,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry__6_n_5),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[30] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[30]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8067,7 +7266,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry__6_n_4),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[31] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[31]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8075,7 +7274,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry__7_n_7),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[32] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[32]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8083,7 +7282,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry__7_n_6),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[33] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[33]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8091,7 +7290,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry__7_n_5),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[34] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[34]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8099,7 +7298,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry__7_n_4),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[35] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[35]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8107,7 +7306,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_n_7),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[36] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[36]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8115,7 +7314,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_n_6),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[37] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[37]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8123,7 +7322,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_n_5),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[38] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[38]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8131,7 +7330,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_n_4),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[39] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[39]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8139,7 +7338,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry_n_4),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[3] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[3]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8147,7 +7346,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry__0_n_7),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[4] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[4]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8155,7 +7354,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry__0_n_6),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[5] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[5]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8163,7 +7362,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry__0_n_5),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[6] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[6]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8171,7 +7370,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry__0_n_4),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[7] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[7]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8179,7 +7378,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry__1_n_7),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[8] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[8]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8187,7 +7386,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_I_ACCUMULATOR0_carry__1_n_6),
-        .Q(\LTS_AUTOCORR_I_ACCUMULATOR_reg_n_0_[9] ),
+        .Q(LTS_AUTOCORR_I_ACCUMULATOR[9]),
         .R(FFT_DATA_IN_STROBE0));
   DSP48E1 #(
     .ACASCREG(1),
@@ -8220,7 +7419,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .ACIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
         .ACOUT(NLW_LTS_AUTOCORR_MULT_REG_II_reg_ACOUT_UNCONNECTED[29:0]),
         .ALUMODE({1'b0,1'b0,1'b0,1'b0}),
-        .B({p_2_out[15],p_2_out[15],p_2_out}),
+        .B({LTS_I_BUFFER_reg_0_63_15_15_n_0,LTS_I_BUFFER_reg_0_63_15_15_n_0,LTS_I_BUFFER_reg_0_63_15_15_n_0,LTS_I_BUFFER_reg_0_63_14_14_n_0,LTS_I_BUFFER_reg_0_63_13_13_n_0,LTS_I_BUFFER_reg_0_63_12_12_n_0,LTS_I_BUFFER_reg_0_63_11_11_n_0,LTS_I_BUFFER_reg_0_63_10_10_n_0,LTS_I_BUFFER_reg_0_63_9_9_n_0,LTS_I_BUFFER_reg_0_63_8_8_n_0,LTS_I_BUFFER_reg_0_63_7_7_n_0,LTS_I_BUFFER_reg_0_63_6_6_n_0,LTS_I_BUFFER_reg_0_63_5_5_n_0,LTS_I_BUFFER_reg_0_63_4_4_n_0,LTS_I_BUFFER_reg_0_63_3_3_n_0,LTS_I_BUFFER_reg_0_63_2_2_n_0,LTS_I_BUFFER_reg_0_63_1_1_n_0,LTS_I_BUFFER_reg_0_63_0_0_n_0}),
         .BCIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
         .BCOUT(NLW_LTS_AUTOCORR_MULT_REG_II_reg_BCOUT_UNCONNECTED[17:0]),
         .C({1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1}),
@@ -8266,13 +7465,13 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .RSTP(1'b0),
         .UNDERFLOW(NLW_LTS_AUTOCORR_MULT_REG_II_reg_UNDERFLOW_UNCONNECTED));
   LUT5 #(
-    .INIT(32'h00002000)) 
+    .INIT(32'h00000800)) 
     LTS_AUTOCORR_MULT_REG_II_reg_i_1
-       (.I0(RX_STATE_reg[0]),
-        .I1(RX_STATE_reg[1]),
-        .I2(RX_STATE_reg[2]),
-        .I3(ROTATION_DATA_OUT_STROBE),
-        .I4(LTS_AUTOCORR_I_ACCUMULATOR1_carry__2_n_3),
+       (.I0(ROTATION_DATA_OUT_STROBE),
+        .I1(RX_STATE_reg[2]),
+        .I2(LTS_AUTOCORR_I_ACCUMULATOR1_carry__2_n_3),
+        .I3(RX_STATE_reg[0]),
+        .I4(RX_STATE_reg[1]),
         .O(CEM));
   DSP48E1 #(
     .ACASCREG(1),
@@ -8305,7 +7504,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .ACIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
         .ACOUT(NLW_LTS_AUTOCORR_MULT_REG_QI_reg_ACOUT_UNCONNECTED[29:0]),
         .ALUMODE({1'b0,1'b0,1'b0,1'b0}),
-        .B({p_2_out[15],p_2_out[15],p_2_out}),
+        .B({LTS_I_BUFFER_reg_0_63_15_15_n_0,LTS_I_BUFFER_reg_0_63_15_15_n_0,LTS_I_BUFFER_reg_0_63_15_15_n_0,LTS_I_BUFFER_reg_0_63_14_14_n_0,LTS_I_BUFFER_reg_0_63_13_13_n_0,LTS_I_BUFFER_reg_0_63_12_12_n_0,LTS_I_BUFFER_reg_0_63_11_11_n_0,LTS_I_BUFFER_reg_0_63_10_10_n_0,LTS_I_BUFFER_reg_0_63_9_9_n_0,LTS_I_BUFFER_reg_0_63_8_8_n_0,LTS_I_BUFFER_reg_0_63_7_7_n_0,LTS_I_BUFFER_reg_0_63_6_6_n_0,LTS_I_BUFFER_reg_0_63_5_5_n_0,LTS_I_BUFFER_reg_0_63_4_4_n_0,LTS_I_BUFFER_reg_0_63_3_3_n_0,LTS_I_BUFFER_reg_0_63_2_2_n_0,LTS_I_BUFFER_reg_0_63_1_1_n_0,LTS_I_BUFFER_reg_0_63_0_0_n_0}),
         .BCIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
         .BCOUT(NLW_LTS_AUTOCORR_MULT_REG_QI_reg_BCOUT_UNCONNECTED[17:0]),
         .C({1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1}),
@@ -8355,7 +7554,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.CI(1'b0),
         .CO({LTS_AUTOCORR_Q_ACCUMULATOR0_carry_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry_n_1,LTS_AUTOCORR_Q_ACCUMULATOR0_carry_n_2,LTS_AUTOCORR_Q_ACCUMULATOR0_carry_n_3}),
         .CYINIT(1'b0),
-        .DI({\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[3] ,\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[2] ,\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[1] ,\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[0] }),
+        .DI(LTS_AUTOCORR_Q_ACCUMULATOR[3:0]),
         .O({LTS_AUTOCORR_Q_ACCUMULATOR0_carry_n_4,LTS_AUTOCORR_Q_ACCUMULATOR0_carry_n_5,LTS_AUTOCORR_Q_ACCUMULATOR0_carry_n_6,LTS_AUTOCORR_Q_ACCUMULATOR0_carry_n_7}),
         .S({LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_1_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_2_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_3_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4_n_0}));
   (* ADDER_THRESHOLD = "35" *) 
@@ -8363,31 +7562,31 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.CI(LTS_AUTOCORR_Q_ACCUMULATOR0_carry_n_0),
         .CO({LTS_AUTOCORR_Q_ACCUMULATOR0_carry__0_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__0_n_1,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__0_n_2,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__0_n_3}),
         .CYINIT(1'b0),
-        .DI({\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[7] ,\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[6] ,\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[5] ,\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[4] }),
+        .DI(LTS_AUTOCORR_Q_ACCUMULATOR[7:4]),
         .O({LTS_AUTOCORR_Q_ACCUMULATOR0_carry__0_n_4,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__0_n_5,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__0_n_6,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__0_n_7}),
         .S({LTS_AUTOCORR_Q_ACCUMULATOR0_carry__0_i_1_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__0_i_2_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__0_i_3_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__0_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry__0_i_1
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[7] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[7]),
         .I1(LTS_AUTOCORR_ADD_REG_Q_reg_n_98),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__0_i_1_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry__0_i_2
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[6] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[6]),
         .I1(LTS_AUTOCORR_ADD_REG_Q_reg_n_99),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__0_i_2_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry__0_i_3
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[5] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[5]),
         .I1(LTS_AUTOCORR_ADD_REG_Q_reg_n_100),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__0_i_3_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry__0_i_4
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[4] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[4]),
         .I1(LTS_AUTOCORR_ADD_REG_Q_reg_n_101),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__0_i_4_n_0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -8395,31 +7594,31 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.CI(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__0_n_0),
         .CO({LTS_AUTOCORR_Q_ACCUMULATOR0_carry__1_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__1_n_1,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__1_n_2,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__1_n_3}),
         .CYINIT(1'b0),
-        .DI({\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[11] ,\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[10] ,\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[9] ,\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[8] }),
+        .DI(LTS_AUTOCORR_Q_ACCUMULATOR[11:8]),
         .O({LTS_AUTOCORR_Q_ACCUMULATOR0_carry__1_n_4,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__1_n_5,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__1_n_6,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__1_n_7}),
         .S({LTS_AUTOCORR_Q_ACCUMULATOR0_carry__1_i_1_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__1_i_2_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__1_i_3_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__1_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry__1_i_1
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[11] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[11]),
         .I1(LTS_AUTOCORR_ADD_REG_Q_reg_n_94),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__1_i_1_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry__1_i_2
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[10] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[10]),
         .I1(LTS_AUTOCORR_ADD_REG_Q_reg_n_95),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__1_i_2_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry__1_i_3
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[9] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[9]),
         .I1(LTS_AUTOCORR_ADD_REG_Q_reg_n_96),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__1_i_3_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry__1_i_4
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[8] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[8]),
         .I1(LTS_AUTOCORR_ADD_REG_Q_reg_n_97),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__1_i_4_n_0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -8427,31 +7626,31 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.CI(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__1_n_0),
         .CO({LTS_AUTOCORR_Q_ACCUMULATOR0_carry__2_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__2_n_1,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__2_n_2,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__2_n_3}),
         .CYINIT(1'b0),
-        .DI({\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[15] ,\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[14] ,\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[13] ,\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[12] }),
+        .DI(LTS_AUTOCORR_Q_ACCUMULATOR[15:12]),
         .O({LTS_AUTOCORR_Q_ACCUMULATOR0_carry__2_n_4,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__2_n_5,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__2_n_6,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__2_n_7}),
         .S({LTS_AUTOCORR_Q_ACCUMULATOR0_carry__2_i_1_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__2_i_2_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__2_i_3_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__2_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry__2_i_1
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[15] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[15]),
         .I1(LTS_AUTOCORR_ADD_REG_Q_reg_n_90),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__2_i_1_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry__2_i_2
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[14] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[14]),
         .I1(LTS_AUTOCORR_ADD_REG_Q_reg_n_91),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__2_i_2_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry__2_i_3
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[13] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[13]),
         .I1(LTS_AUTOCORR_ADD_REG_Q_reg_n_92),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__2_i_3_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry__2_i_4
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[12] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[12]),
         .I1(LTS_AUTOCORR_ADD_REG_Q_reg_n_93),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__2_i_4_n_0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -8459,31 +7658,31 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.CI(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__2_n_0),
         .CO({LTS_AUTOCORR_Q_ACCUMULATOR0_carry__3_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__3_n_1,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__3_n_2,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__3_n_3}),
         .CYINIT(1'b0),
-        .DI({\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[19] ,\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[18] ,\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[17] ,\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[16] }),
+        .DI(LTS_AUTOCORR_Q_ACCUMULATOR[19:16]),
         .O({LTS_AUTOCORR_Q_ACCUMULATOR0_carry__3_n_4,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__3_n_5,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__3_n_6,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__3_n_7}),
         .S({LTS_AUTOCORR_Q_ACCUMULATOR0_carry__3_i_1_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__3_i_2_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__3_i_3_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__3_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry__3_i_1
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[19] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[19]),
         .I1(LTS_AUTOCORR_ADD_REG_Q_reg_n_86),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__3_i_1_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry__3_i_2
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[18] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[18]),
         .I1(LTS_AUTOCORR_ADD_REG_Q_reg_n_87),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__3_i_2_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry__3_i_3
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[17] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[17]),
         .I1(LTS_AUTOCORR_ADD_REG_Q_reg_n_88),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__3_i_3_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry__3_i_4
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[16] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[16]),
         .I1(LTS_AUTOCORR_ADD_REG_Q_reg_n_89),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__3_i_4_n_0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -8491,31 +7690,31 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.CI(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__3_n_0),
         .CO({LTS_AUTOCORR_Q_ACCUMULATOR0_carry__4_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__4_n_1,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__4_n_2,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__4_n_3}),
         .CYINIT(1'b0),
-        .DI({\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[23] ,\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[22] ,\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[21] ,\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[20] }),
+        .DI(LTS_AUTOCORR_Q_ACCUMULATOR[23:20]),
         .O({LTS_AUTOCORR_Q_ACCUMULATOR0_carry__4_n_4,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__4_n_5,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__4_n_6,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__4_n_7}),
         .S({LTS_AUTOCORR_Q_ACCUMULATOR0_carry__4_i_1_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__4_i_2_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__4_i_3_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__4_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry__4_i_1
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[23] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[23]),
         .I1(LTS_AUTOCORR_ADD_REG_Q_reg_n_82),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__4_i_1_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry__4_i_2
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[22] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[22]),
         .I1(LTS_AUTOCORR_ADD_REG_Q_reg_n_83),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__4_i_2_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry__4_i_3
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[21] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[21]),
         .I1(LTS_AUTOCORR_ADD_REG_Q_reg_n_84),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__4_i_3_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry__4_i_4
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[20] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[20]),
         .I1(LTS_AUTOCORR_ADD_REG_Q_reg_n_85),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__4_i_4_n_0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -8523,31 +7722,31 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.CI(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__4_n_0),
         .CO({LTS_AUTOCORR_Q_ACCUMULATOR0_carry__5_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__5_n_1,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__5_n_2,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__5_n_3}),
         .CYINIT(1'b0),
-        .DI({\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[27] ,\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[26] ,\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[25] ,\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[24] }),
+        .DI(LTS_AUTOCORR_Q_ACCUMULATOR[27:24]),
         .O({LTS_AUTOCORR_Q_ACCUMULATOR0_carry__5_n_4,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__5_n_5,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__5_n_6,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__5_n_7}),
         .S({LTS_AUTOCORR_Q_ACCUMULATOR0_carry__5_i_1_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__5_i_2_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__5_i_3_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__5_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry__5_i_1
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[27] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[27]),
         .I1(LTS_AUTOCORR_ADD_REG_Q_reg_n_78),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__5_i_1_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry__5_i_2
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[26] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[26]),
         .I1(LTS_AUTOCORR_ADD_REG_Q_reg_n_79),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__5_i_2_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry__5_i_3
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[25] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[25]),
         .I1(LTS_AUTOCORR_ADD_REG_Q_reg_n_80),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__5_i_3_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry__5_i_4
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[24] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[24]),
         .I1(LTS_AUTOCORR_ADD_REG_Q_reg_n_81),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__5_i_4_n_0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -8555,31 +7754,31 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.CI(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__5_n_0),
         .CO({LTS_AUTOCORR_Q_ACCUMULATOR0_carry__6_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__6_n_1,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__6_n_2,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__6_n_3}),
         .CYINIT(1'b0),
-        .DI({LTS_AUTOCORR_ADD_REG_Q_reg_n_74,\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[30] ,\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[29] ,\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[28] }),
+        .DI({LTS_AUTOCORR_ADD_REG_Q_reg_n_74,LTS_AUTOCORR_Q_ACCUMULATOR[30:28]}),
         .O({LTS_AUTOCORR_Q_ACCUMULATOR0_carry__6_n_4,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__6_n_5,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__6_n_6,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__6_n_7}),
         .S({LTS_AUTOCORR_Q_ACCUMULATOR0_carry__6_i_1_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__6_i_2_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__6_i_3_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__6_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry__6_i_1
        (.I0(LTS_AUTOCORR_ADD_REG_Q_reg_n_74),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[31] ),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[31]),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__6_i_1_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry__6_i_2
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[30] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[30]),
         .I1(LTS_AUTOCORR_ADD_REG_Q_reg_n_75),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__6_i_2_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry__6_i_3
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[29] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[29]),
         .I1(LTS_AUTOCORR_ADD_REG_Q_reg_n_76),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__6_i_3_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry__6_i_4
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[28] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[28]),
         .I1(LTS_AUTOCORR_ADD_REG_Q_reg_n_77),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__6_i_4_n_0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -8587,92 +7786,92 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.CI(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__6_n_0),
         .CO({LTS_AUTOCORR_Q_ACCUMULATOR0_carry__7_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__7_n_1,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__7_n_2,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__7_n_3}),
         .CYINIT(1'b0),
-        .DI({\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[34] ,\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[33] ,\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[32] ,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__7_i_1_n_0}),
+        .DI({LTS_AUTOCORR_Q_ACCUMULATOR[34:32],LTS_AUTOCORR_Q_ACCUMULATOR0_carry__7_i_1_n_0}),
         .O({LTS_AUTOCORR_Q_ACCUMULATOR0_carry__7_n_4,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__7_n_5,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__7_n_6,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__7_n_7}),
         .S({LTS_AUTOCORR_Q_ACCUMULATOR0_carry__7_i_2_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__7_i_3_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__7_i_4_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__7_i_5_n_0}));
   LUT1 #(
     .INIT(2'h1)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry__7_i_1
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[32] ),
+       (.I0(LTS_AUTOCORR_ADD_REG_Q_reg_n_74),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__7_i_1_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry__7_i_2
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[34] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[35] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[34]),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[35]),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__7_i_2_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry__7_i_3
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[33] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[34] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[33]),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[34]),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__7_i_3_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry__7_i_4
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[32] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[33] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[32]),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[33]),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__7_i_4_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry__7_i_5
        (.I0(LTS_AUTOCORR_ADD_REG_Q_reg_n_74),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[32] ),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[32]),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__7_i_5_n_0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8
        (.CI(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__7_n_0),
         .CO({NLW_LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_CO_UNCONNECTED[3],LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_n_1,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_n_2,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_n_3}),
         .CYINIT(1'b0),
-        .DI({1'b0,\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[37] ,\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[36] ,\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[35] }),
+        .DI({1'b0,LTS_AUTOCORR_Q_ACCUMULATOR[37:35]}),
         .O({LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_n_4,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_n_5,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_n_6,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_n_7}),
         .S({LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_i_1_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_i_2_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_i_3_n_0,LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_i_4_n_0}));
   LUT2 #(
     .INIT(4'h9)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_i_1
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[38] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[38]),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_i_1_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_i_2
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[37] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[38] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[37]),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[38]),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_i_2_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_i_3
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[36] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[37] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[36]),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[37]),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_i_3_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_i_4
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[35] ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[36] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[35]),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[36]),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_i_4_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_1
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[3] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[3]),
         .I1(LTS_AUTOCORR_ADD_REG_Q_reg_n_102),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_1_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_2
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[2] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[2]),
         .I1(LTS_AUTOCORR_ADD_REG_Q_reg_n_103),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_2_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_3
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[1] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[1]),
         .I1(LTS_AUTOCORR_ADD_REG_Q_reg_n_104),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_3_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[0] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[0]),
         .I1(LTS_AUTOCORR_ADD_REG_Q_reg_n_105),
         .O(LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4_n_0));
   FDRE #(
@@ -8681,7 +7880,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry_n_7),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[0] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[0]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8689,7 +7888,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__1_n_5),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[10] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[10]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8697,7 +7896,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__1_n_4),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[11] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[11]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8705,7 +7904,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__2_n_7),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[12] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[12]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8713,7 +7912,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__2_n_6),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[13] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[13]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8721,7 +7920,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__2_n_5),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[14] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[14]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8729,7 +7928,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__2_n_4),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[15] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[15]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8737,7 +7936,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__3_n_7),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[16] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[16]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8745,7 +7944,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__3_n_6),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[17] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[17]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8753,7 +7952,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__3_n_5),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[18] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[18]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8761,7 +7960,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__3_n_4),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[19] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[19]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8769,7 +7968,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry_n_6),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[1] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[1]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8777,7 +7976,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__4_n_7),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[20] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[20]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8785,7 +7984,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__4_n_6),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[21] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[21]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8793,7 +7992,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__4_n_5),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[22] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[22]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8801,7 +8000,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__4_n_4),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[23] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[23]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8809,7 +8008,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__5_n_7),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[24] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[24]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8817,7 +8016,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__5_n_6),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[25] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[25]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8825,7 +8024,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__5_n_5),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[26] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[26]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8833,7 +8032,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__5_n_4),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[27] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[27]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8841,7 +8040,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__6_n_7),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[28] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[28]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8849,7 +8048,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__6_n_6),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[29] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[29]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8857,7 +8056,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry_n_5),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[2] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[2]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8865,7 +8064,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__6_n_5),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[30] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[30]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8873,7 +8072,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__6_n_4),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[31] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[31]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8881,7 +8080,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__7_n_7),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[32] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[32]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8889,7 +8088,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__7_n_6),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[33] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[33]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8897,7 +8096,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__7_n_5),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[34] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[34]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8905,7 +8104,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__7_n_4),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[35] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[35]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8913,7 +8112,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_n_7),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[36] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[36]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8921,7 +8120,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_n_6),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[37] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[37]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8929,7 +8128,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_n_5),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[38] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[38]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8937,7 +8136,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_n_4),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8945,7 +8144,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry_n_4),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[3] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[3]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8953,7 +8152,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__0_n_7),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[4] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[4]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8961,7 +8160,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__0_n_6),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[5] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[5]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8969,7 +8168,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__0_n_5),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[6] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[6]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8977,7 +8176,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__0_n_4),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[7] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[7]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8985,7 +8184,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__1_n_7),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[8] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[8]),
         .R(FFT_DATA_IN_STROBE0));
   FDRE #(
     .INIT(1'b0)) 
@@ -8993,18 +8192,25 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0 ),
         .D(LTS_AUTOCORR_Q_ACCUMULATOR0_carry__1_n_6),
-        .Q(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[9] ),
+        .Q(LTS_AUTOCORR_Q_ACCUMULATOR[9]),
         .R(FFT_DATA_IN_STROBE0));
   LUT6 #(
-    .INIT(64'h00000000A2E2A2A2)) 
+    .INIT(64'hAAC8AAAAAAAAAA00)) 
     LTS_AUTOCORR_READY_i_1
        (.I0(LTS_AUTOCORR_READY_reg_n_0),
-        .I1(\COUNTER[31]_i_8_n_0 ),
-        .I2(ROTATION_DATA_OUT_STROBE),
-        .I3(\compute_lts_autocorr_process.VAR_COMPLETE_COMPUTATION_reg_n_0_[1] ),
-        .I4(\compute_lts_autocorr_process.VAR_COMPLETE_COMPUTATION_reg_n_0_[0] ),
-        .I5(FFT_DATA_IN_STROBE0),
+        .I1(ROTATION_DATA_OUT_STROBE),
+        .I2(LTS_AUTOCORR_READY_i_2_n_0),
+        .I3(RX_STATE_reg[0]),
+        .I4(RX_STATE_reg[1]),
+        .I5(RX_STATE_reg[2]),
         .O(LTS_AUTOCORR_READY_i_1_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair21" *) 
+  LUT2 #(
+    .INIT(4'h2)) 
+    LTS_AUTOCORR_READY_i_2
+       (.I0(VAR_COMPLETE_COMPUTATION[0]),
+        .I1(VAR_COMPLETE_COMPUTATION[1]),
+        .O(LTS_AUTOCORR_READY_i_2_n_0));
   FDRE #(
     .INIT(1'b0)) 
     LTS_AUTOCORR_READY_reg
@@ -9031,7 +8237,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .A4(COUNTER[4]),
         .A5(COUNTER[5]),
         .D(ROTATION_IDATA_OUT_BUFF[0]),
-        .O(p_2_out[0]),
+        .O(LTS_I_BUFFER_reg_0_63_0_0_n_0),
         .WCLK(CLOCK),
         .WE(p_0_in));
   (* RTL_RAM_BITS = "1024" *) 
@@ -9052,7 +8258,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .A4(COUNTER[4]),
         .A5(COUNTER[5]),
         .D(ROTATION_IDATA_OUT_BUFF[10]),
-        .O(p_2_out[10]),
+        .O(LTS_I_BUFFER_reg_0_63_10_10_n_0),
         .WCLK(CLOCK),
         .WE(p_0_in));
   (* RTL_RAM_BITS = "1024" *) 
@@ -9073,7 +8279,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .A4(COUNTER[4]),
         .A5(COUNTER[5]),
         .D(ROTATION_IDATA_OUT_BUFF[11]),
-        .O(p_2_out[11]),
+        .O(LTS_I_BUFFER_reg_0_63_11_11_n_0),
         .WCLK(CLOCK),
         .WE(p_0_in));
   (* RTL_RAM_BITS = "1024" *) 
@@ -9094,7 +8300,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .A4(COUNTER[4]),
         .A5(COUNTER[5]),
         .D(ROTATION_IDATA_OUT_BUFF[12]),
-        .O(p_2_out[12]),
+        .O(LTS_I_BUFFER_reg_0_63_12_12_n_0),
         .WCLK(CLOCK),
         .WE(p_0_in));
   (* RTL_RAM_BITS = "1024" *) 
@@ -9115,7 +8321,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .A4(COUNTER[4]),
         .A5(COUNTER[5]),
         .D(ROTATION_IDATA_OUT_BUFF[13]),
-        .O(p_2_out[13]),
+        .O(LTS_I_BUFFER_reg_0_63_13_13_n_0),
         .WCLK(CLOCK),
         .WE(p_0_in));
   (* RTL_RAM_BITS = "1024" *) 
@@ -9136,7 +8342,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .A4(COUNTER[4]),
         .A5(COUNTER[5]),
         .D(ROTATION_IDATA_OUT_BUFF[14]),
-        .O(p_2_out[14]),
+        .O(LTS_I_BUFFER_reg_0_63_14_14_n_0),
         .WCLK(CLOCK),
         .WE(p_0_in));
   (* RTL_RAM_BITS = "1024" *) 
@@ -9157,7 +8363,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .A4(COUNTER[4]),
         .A5(COUNTER[5]),
         .D(ROTATION_IDATA_OUT_BUFF[15]),
-        .O(p_2_out[15]),
+        .O(LTS_I_BUFFER_reg_0_63_15_15_n_0),
         .WCLK(CLOCK),
         .WE(p_0_in));
   (* RTL_RAM_BITS = "1024" *) 
@@ -9178,7 +8384,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .A4(COUNTER[4]),
         .A5(COUNTER[5]),
         .D(ROTATION_IDATA_OUT_BUFF[1]),
-        .O(p_2_out[1]),
+        .O(LTS_I_BUFFER_reg_0_63_1_1_n_0),
         .WCLK(CLOCK),
         .WE(p_0_in));
   (* RTL_RAM_BITS = "1024" *) 
@@ -9199,7 +8405,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .A4(COUNTER[4]),
         .A5(COUNTER[5]),
         .D(ROTATION_IDATA_OUT_BUFF[2]),
-        .O(p_2_out[2]),
+        .O(LTS_I_BUFFER_reg_0_63_2_2_n_0),
         .WCLK(CLOCK),
         .WE(p_0_in));
   (* RTL_RAM_BITS = "1024" *) 
@@ -9220,7 +8426,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .A4(COUNTER[4]),
         .A5(COUNTER[5]),
         .D(ROTATION_IDATA_OUT_BUFF[3]),
-        .O(p_2_out[3]),
+        .O(LTS_I_BUFFER_reg_0_63_3_3_n_0),
         .WCLK(CLOCK),
         .WE(p_0_in));
   (* RTL_RAM_BITS = "1024" *) 
@@ -9241,7 +8447,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .A4(COUNTER[4]),
         .A5(COUNTER[5]),
         .D(ROTATION_IDATA_OUT_BUFF[4]),
-        .O(p_2_out[4]),
+        .O(LTS_I_BUFFER_reg_0_63_4_4_n_0),
         .WCLK(CLOCK),
         .WE(p_0_in));
   (* RTL_RAM_BITS = "1024" *) 
@@ -9262,7 +8468,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .A4(COUNTER[4]),
         .A5(COUNTER[5]),
         .D(ROTATION_IDATA_OUT_BUFF[5]),
-        .O(p_2_out[5]),
+        .O(LTS_I_BUFFER_reg_0_63_5_5_n_0),
         .WCLK(CLOCK),
         .WE(p_0_in));
   (* RTL_RAM_BITS = "1024" *) 
@@ -9283,7 +8489,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .A4(COUNTER[4]),
         .A5(COUNTER[5]),
         .D(ROTATION_IDATA_OUT_BUFF[6]),
-        .O(p_2_out[6]),
+        .O(LTS_I_BUFFER_reg_0_63_6_6_n_0),
         .WCLK(CLOCK),
         .WE(p_0_in));
   (* RTL_RAM_BITS = "1024" *) 
@@ -9304,7 +8510,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .A4(COUNTER[4]),
         .A5(COUNTER[5]),
         .D(ROTATION_IDATA_OUT_BUFF[7]),
-        .O(p_2_out[7]),
+        .O(LTS_I_BUFFER_reg_0_63_7_7_n_0),
         .WCLK(CLOCK),
         .WE(p_0_in));
   (* RTL_RAM_BITS = "1024" *) 
@@ -9325,7 +8531,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .A4(COUNTER[4]),
         .A5(COUNTER[5]),
         .D(ROTATION_IDATA_OUT_BUFF[8]),
-        .O(p_2_out[8]),
+        .O(LTS_I_BUFFER_reg_0_63_8_8_n_0),
         .WCLK(CLOCK),
         .WE(p_0_in));
   (* RTL_RAM_BITS = "1024" *) 
@@ -9346,7 +8552,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .A4(COUNTER[4]),
         .A5(COUNTER[5]),
         .D(ROTATION_IDATA_OUT_BUFF[9]),
-        .O(p_2_out[9]),
+        .O(LTS_I_BUFFER_reg_0_63_9_9_n_0),
         .WCLK(CLOCK),
         .WE(p_0_in));
   (* RTL_RAM_BITS = "1024" *) 
@@ -9375,8 +8581,8 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
     LTS_Q_BUFFER_reg_0_63_0_0_i_1
        (.I0(ROTATION_DATA_OUT_STROBE),
         .I1(LTS_AUTOCORR_I_ACCUMULATOR1_carry__2_n_3),
-        .I2(RX_STATE_reg[2]),
-        .I3(RX_STATE_reg[0]),
+        .I2(RX_STATE_reg[0]),
+        .I3(RX_STATE_reg[2]),
         .I4(RX_STATE_reg[1]),
         .O(p_0_in));
   (* RTL_RAM_BITS = "1024" *) 
@@ -9773,14 +8979,14 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .Q(ROTATION_DATA_IN_MARKER),
         .R(1'b0));
   LUT6 #(
-    .INIT(64'h0000000070006000)) 
+    .INIT(64'h0444000004400000)) 
     \ROTATION_IDATA_OUT_BUFF[15]_i_1 
-       (.I0(RX_STATE_reg[0]),
-        .I1(RX_STATE_reg[1]),
-        .I2(RX_STATE_reg[2]),
-        .I3(ROTATION_DATA_OUT_STROBE),
-        .I4(ROTATION_DATA_OUT_MARKER),
-        .I5(RESET),
+       (.I0(RESET),
+        .I1(RX_STATE_reg[2]),
+        .I2(RX_STATE_reg[1]),
+        .I3(RX_STATE_reg[0]),
+        .I4(ROTATION_DATA_OUT_STROBE),
+        .I5(ROTATION_DATA_OUT_MARKER),
         .O(\ROTATION_IDATA_OUT_BUFF[15]_i_1_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
@@ -9915,236 +9121,305 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.CI(1'b0),
         .CO({ROTATION_PHASE_NEW_DIFF0_carry_n_0,ROTATION_PHASE_NEW_DIFF0_carry_n_1,ROTATION_PHASE_NEW_DIFF0_carry_n_2,ROTATION_PHASE_NEW_DIFF0_carry_n_3}),
         .CYINIT(1'b1),
-        .DI({\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[3] ,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[2] ,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[1] ,ROTATION_PHASE_NEW_DIFF0_carry_i_1_n_0}),
+        .DI({ROTATION_PHASE_NEW_DIFF0_carry_i_1_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_2_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_3_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_4_n_0}),
         .O(ROTATION_PHASE_NEW_DIFF0[3:0]),
-        .S({ROTATION_PHASE_NEW_DIFF0_carry_i_2_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_3_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_4_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_5_n_0}));
+        .S({ROTATION_PHASE_NEW_DIFF0_carry_i_5_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_6_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_7_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_8_n_0}));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 ROTATION_PHASE_NEW_DIFF0_carry__0
        (.CI(ROTATION_PHASE_NEW_DIFF0_carry_n_0),
         .CO({ROTATION_PHASE_NEW_DIFF0_carry__0_n_0,ROTATION_PHASE_NEW_DIFF0_carry__0_n_1,ROTATION_PHASE_NEW_DIFF0_carry__0_n_2,ROTATION_PHASE_NEW_DIFF0_carry__0_n_3}),
         .CYINIT(1'b0),
-        .DI({\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[7] ,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[6] ,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[5] ,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[4] }),
+        .DI({ROTATION_PHASE_NEW_DIFF0_carry__0_i_1_n_0,ROTATION_PHASE_NEW_DIFF0_carry__0_i_2_n_0,ROTATION_PHASE_NEW_DIFF0_carry__0_i_3_n_0,ROTATION_PHASE_NEW_DIFF0_carry__0_i_4_n_0}),
         .O(ROTATION_PHASE_NEW_DIFF0[7:4]),
-        .S({ROTATION_PHASE_NEW_DIFF0_carry__0_i_1_n_0,ROTATION_PHASE_NEW_DIFF0_carry__0_i_2_n_0,ROTATION_PHASE_NEW_DIFF0_carry__0_i_3_n_0,ROTATION_PHASE_NEW_DIFF0_carry__0_i_4_n_0}));
-  LUT4 #(
-    .INIT(16'hE21D)) 
+        .S({ROTATION_PHASE_NEW_DIFF0_carry__0_i_5_n_0,ROTATION_PHASE_NEW_DIFF0_carry__0_i_6_n_0,ROTATION_PHASE_NEW_DIFF0_carry__0_i_7_n_0,ROTATION_PHASE_NEW_DIFF0_carry__0_i_8_n_0}));
+  LUT3 #(
+    .INIT(8'h1D)) 
     ROTATION_PHASE_NEW_DIFF0_carry__0_i_1
        (.I0(ATAN_PHASE_OUT[13]),
         .I1(ATAN_PHASE_OUT[19]),
         .I2(ROTATION_PHASE_NEW_DIFF3[7]),
-        .I3(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[7] ),
         .O(ROTATION_PHASE_NEW_DIFF0_carry__0_i_1_n_0));
+  LUT3 #(
+    .INIT(8'h35)) 
+    ROTATION_PHASE_NEW_DIFF0_carry__0_i_10
+       (.I0(ATAN_PHASE_OUT[14]),
+        .I1(ROTATION_PHASE_NEW_DIFF5[14]),
+        .I2(ATAN_PHASE_OUT[19]),
+        .O(ROTATION_PHASE_NEW_DIFF0_carry__0_i_10_n_0));
+  LUT3 #(
+    .INIT(8'h35)) 
+    ROTATION_PHASE_NEW_DIFF0_carry__0_i_11
+       (.I0(ATAN_PHASE_OUT[13]),
+        .I1(ROTATION_PHASE_NEW_DIFF5[13]),
+        .I2(ATAN_PHASE_OUT[19]),
+        .O(ROTATION_PHASE_NEW_DIFF0_carry__0_i_11_n_0));
+  LUT3 #(
+    .INIT(8'h35)) 
+    ROTATION_PHASE_NEW_DIFF0_carry__0_i_12
+       (.I0(ATAN_PHASE_OUT[12]),
+        .I1(ROTATION_PHASE_NEW_DIFF5[12]),
+        .I2(ATAN_PHASE_OUT[19]),
+        .O(ROTATION_PHASE_NEW_DIFF0_carry__0_i_12_n_0));
+  LUT3 #(
+    .INIT(8'h35)) 
+    ROTATION_PHASE_NEW_DIFF0_carry__0_i_13
+       (.I0(ATAN_PHASE_OUT[11]),
+        .I1(ROTATION_PHASE_NEW_DIFF5[11]),
+        .I2(ATAN_PHASE_OUT[19]),
+        .O(ROTATION_PHASE_NEW_DIFF0_carry__0_i_13_n_0));
   (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 ROTATION_PHASE_NEW_DIFF0_carry__0_i_10
-       (.CI(ROTATION_PHASE_NEW_DIFF0_carry_i_23_n_0),
-        .CO({ROTATION_PHASE_NEW_DIFF0_carry__0_i_10_n_0,ROTATION_PHASE_NEW_DIFF0_carry__0_i_10_n_1,ROTATION_PHASE_NEW_DIFF0_carry__0_i_10_n_2,ROTATION_PHASE_NEW_DIFF0_carry__0_i_10_n_3}),
+  CARRY4 ROTATION_PHASE_NEW_DIFF0_carry__0_i_14
+       (.CI(ROTATION_PHASE_NEW_DIFF0_carry_i_20_n_0),
+        .CO({ROTATION_PHASE_NEW_DIFF0_carry__0_i_14_n_0,ROTATION_PHASE_NEW_DIFF0_carry__0_i_14_n_1,ROTATION_PHASE_NEW_DIFF0_carry__0_i_14_n_2,ROTATION_PHASE_NEW_DIFF0_carry__0_i_14_n_3}),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O(ROTATION_PHASE_NEW_DIFF5[16:13]),
-        .S({ROTATION_PHASE_NEW_DIFF0_carry__0_i_11_n_0,ROTATION_PHASE_NEW_DIFF0_carry__0_i_12_n_0,ROTATION_PHASE_NEW_DIFF0_carry__0_i_13_n_0,ROTATION_PHASE_NEW_DIFF0_carry__0_i_14_n_0}));
+        .S({ROTATION_PHASE_NEW_DIFF0_carry__0_i_15_n_0,ROTATION_PHASE_NEW_DIFF0_carry__0_i_16_n_0,ROTATION_PHASE_NEW_DIFF0_carry__0_i_17_n_0,ROTATION_PHASE_NEW_DIFF0_carry__0_i_18_n_0}));
   LUT1 #(
     .INIT(2'h1)) 
-    ROTATION_PHASE_NEW_DIFF0_carry__0_i_11
+    ROTATION_PHASE_NEW_DIFF0_carry__0_i_15
        (.I0(ATAN_PHASE_OUT[16]),
-        .O(ROTATION_PHASE_NEW_DIFF0_carry__0_i_11_n_0));
+        .O(ROTATION_PHASE_NEW_DIFF0_carry__0_i_15_n_0));
   LUT1 #(
     .INIT(2'h1)) 
-    ROTATION_PHASE_NEW_DIFF0_carry__0_i_12
+    ROTATION_PHASE_NEW_DIFF0_carry__0_i_16
        (.I0(ATAN_PHASE_OUT[15]),
-        .O(ROTATION_PHASE_NEW_DIFF0_carry__0_i_12_n_0));
+        .O(ROTATION_PHASE_NEW_DIFF0_carry__0_i_16_n_0));
   LUT1 #(
     .INIT(2'h1)) 
-    ROTATION_PHASE_NEW_DIFF0_carry__0_i_13
+    ROTATION_PHASE_NEW_DIFF0_carry__0_i_17
        (.I0(ATAN_PHASE_OUT[14]),
-        .O(ROTATION_PHASE_NEW_DIFF0_carry__0_i_13_n_0));
+        .O(ROTATION_PHASE_NEW_DIFF0_carry__0_i_17_n_0));
   LUT1 #(
     .INIT(2'h1)) 
-    ROTATION_PHASE_NEW_DIFF0_carry__0_i_14
+    ROTATION_PHASE_NEW_DIFF0_carry__0_i_18
        (.I0(ATAN_PHASE_OUT[13]),
-        .O(ROTATION_PHASE_NEW_DIFF0_carry__0_i_14_n_0));
-  LUT4 #(
-    .INIT(16'hE21D)) 
+        .O(ROTATION_PHASE_NEW_DIFF0_carry__0_i_18_n_0));
+  LUT3 #(
+    .INIT(8'h1D)) 
     ROTATION_PHASE_NEW_DIFF0_carry__0_i_2
        (.I0(ATAN_PHASE_OUT[12]),
         .I1(ATAN_PHASE_OUT[19]),
         .I2(ROTATION_PHASE_NEW_DIFF3[6]),
-        .I3(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[6] ),
         .O(ROTATION_PHASE_NEW_DIFF0_carry__0_i_2_n_0));
-  LUT4 #(
-    .INIT(16'hE21D)) 
+  LUT3 #(
+    .INIT(8'h1D)) 
     ROTATION_PHASE_NEW_DIFF0_carry__0_i_3
        (.I0(ATAN_PHASE_OUT[11]),
         .I1(ATAN_PHASE_OUT[19]),
         .I2(ROTATION_PHASE_NEW_DIFF3[5]),
-        .I3(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[5] ),
         .O(ROTATION_PHASE_NEW_DIFF0_carry__0_i_3_n_0));
-  LUT4 #(
-    .INIT(16'hE21D)) 
+  LUT3 #(
+    .INIT(8'h1D)) 
     ROTATION_PHASE_NEW_DIFF0_carry__0_i_4
        (.I0(ATAN_PHASE_OUT[10]),
         .I1(ATAN_PHASE_OUT[19]),
         .I2(ROTATION_PHASE_NEW_DIFF3[4]),
-        .I3(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[4] ),
         .O(ROTATION_PHASE_NEW_DIFF0_carry__0_i_4_n_0));
-  CARRY4 ROTATION_PHASE_NEW_DIFF0_carry__0_i_5
-       (.CI(ROTATION_PHASE_NEW_DIFF0_carry_i_7_n_0),
-        .CO({ROTATION_PHASE_NEW_DIFF0_carry__0_i_5_n_0,ROTATION_PHASE_NEW_DIFF0_carry__0_i_5_n_1,ROTATION_PHASE_NEW_DIFF0_carry__0_i_5_n_2,ROTATION_PHASE_NEW_DIFF0_carry__0_i_5_n_3}),
+  LUT4 #(
+    .INIT(16'hE21D)) 
+    ROTATION_PHASE_NEW_DIFF0_carry__0_i_5
+       (.I0(ATAN_PHASE_OUT[13]),
+        .I1(ATAN_PHASE_OUT[19]),
+        .I2(ROTATION_PHASE_NEW_DIFF3[7]),
+        .I3(VAR_AUTOCORR_PHASE_1SAMPLE[7]),
+        .O(ROTATION_PHASE_NEW_DIFF0_carry__0_i_5_n_0));
+  LUT4 #(
+    .INIT(16'hE21D)) 
+    ROTATION_PHASE_NEW_DIFF0_carry__0_i_6
+       (.I0(ATAN_PHASE_OUT[12]),
+        .I1(ATAN_PHASE_OUT[19]),
+        .I2(ROTATION_PHASE_NEW_DIFF3[6]),
+        .I3(VAR_AUTOCORR_PHASE_1SAMPLE[6]),
+        .O(ROTATION_PHASE_NEW_DIFF0_carry__0_i_6_n_0));
+  LUT4 #(
+    .INIT(16'hE21D)) 
+    ROTATION_PHASE_NEW_DIFF0_carry__0_i_7
+       (.I0(ATAN_PHASE_OUT[11]),
+        .I1(ATAN_PHASE_OUT[19]),
+        .I2(ROTATION_PHASE_NEW_DIFF3[5]),
+        .I3(VAR_AUTOCORR_PHASE_1SAMPLE[5]),
+        .O(ROTATION_PHASE_NEW_DIFF0_carry__0_i_7_n_0));
+  LUT4 #(
+    .INIT(16'hE21D)) 
+    ROTATION_PHASE_NEW_DIFF0_carry__0_i_8
+       (.I0(ATAN_PHASE_OUT[10]),
+        .I1(ATAN_PHASE_OUT[19]),
+        .I2(ROTATION_PHASE_NEW_DIFF3[4]),
+        .I3(VAR_AUTOCORR_PHASE_1SAMPLE[4]),
+        .O(ROTATION_PHASE_NEW_DIFF0_carry__0_i_8_n_0));
+  CARRY4 ROTATION_PHASE_NEW_DIFF0_carry__0_i_9
+       (.CI(ROTATION_PHASE_NEW_DIFF0_carry_i_9_n_0),
+        .CO({ROTATION_PHASE_NEW_DIFF0_carry__0_i_9_n_0,ROTATION_PHASE_NEW_DIFF0_carry__0_i_9_n_1,ROTATION_PHASE_NEW_DIFF0_carry__0_i_9_n_2,ROTATION_PHASE_NEW_DIFF0_carry__0_i_9_n_3}),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O(ROTATION_PHASE_NEW_DIFF3[8:5]),
-        .S({ROTATION_PHASE_NEW_DIFF0_carry__0_i_6_n_0,ROTATION_PHASE_NEW_DIFF0_carry__0_i_7_n_0,ROTATION_PHASE_NEW_DIFF0_carry__0_i_8_n_0,ROTATION_PHASE_NEW_DIFF0_carry__0_i_9_n_0}));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ROTATION_PHASE_NEW_DIFF0_carry__0_i_6
-       (.I0(ROTATION_PHASE_NEW_DIFF5[14]),
-        .I1(ATAN_PHASE_OUT[19]),
-        .I2(ATAN_PHASE_OUT[14]),
-        .O(ROTATION_PHASE_NEW_DIFF0_carry__0_i_6_n_0));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ROTATION_PHASE_NEW_DIFF0_carry__0_i_7
-       (.I0(ROTATION_PHASE_NEW_DIFF5[13]),
-        .I1(ATAN_PHASE_OUT[19]),
-        .I2(ATAN_PHASE_OUT[13]),
-        .O(ROTATION_PHASE_NEW_DIFF0_carry__0_i_7_n_0));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ROTATION_PHASE_NEW_DIFF0_carry__0_i_8
-       (.I0(ROTATION_PHASE_NEW_DIFF5[12]),
-        .I1(ATAN_PHASE_OUT[19]),
-        .I2(ATAN_PHASE_OUT[12]),
-        .O(ROTATION_PHASE_NEW_DIFF0_carry__0_i_8_n_0));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ROTATION_PHASE_NEW_DIFF0_carry__0_i_9
-       (.I0(ROTATION_PHASE_NEW_DIFF5[11]),
-        .I1(ATAN_PHASE_OUT[19]),
-        .I2(ATAN_PHASE_OUT[11]),
-        .O(ROTATION_PHASE_NEW_DIFF0_carry__0_i_9_n_0));
+        .S({ROTATION_PHASE_NEW_DIFF0_carry__0_i_10_n_0,ROTATION_PHASE_NEW_DIFF0_carry__0_i_11_n_0,ROTATION_PHASE_NEW_DIFF0_carry__0_i_12_n_0,ROTATION_PHASE_NEW_DIFF0_carry__0_i_13_n_0}));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 ROTATION_PHASE_NEW_DIFF0_carry__1
        (.CI(ROTATION_PHASE_NEW_DIFF0_carry__0_n_0),
         .CO({ROTATION_PHASE_NEW_DIFF0_carry__1_n_0,ROTATION_PHASE_NEW_DIFF0_carry__1_n_1,ROTATION_PHASE_NEW_DIFF0_carry__1_n_2,ROTATION_PHASE_NEW_DIFF0_carry__1_n_3}),
         .CYINIT(1'b0),
-        .DI({\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[11] ,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[10] ,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[9] ,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[8] }),
+        .DI({ROTATION_PHASE_NEW_DIFF0_carry__1_i_1_n_0,ROTATION_PHASE_NEW_DIFF0_carry__1_i_2_n_0,ROTATION_PHASE_NEW_DIFF0_carry__1_i_3_n_0,ROTATION_PHASE_NEW_DIFF0_carry__1_i_4_n_0}),
         .O(ROTATION_PHASE_NEW_DIFF0[11:8]),
-        .S({ROTATION_PHASE_NEW_DIFF0_carry__1_i_1_n_0,ROTATION_PHASE_NEW_DIFF0_carry__1_i_2_n_0,ROTATION_PHASE_NEW_DIFF0_carry__1_i_3_n_0,ROTATION_PHASE_NEW_DIFF0_carry__1_i_4_n_0}));
-  LUT4 #(
-    .INIT(16'hE21D)) 
+        .S({ROTATION_PHASE_NEW_DIFF0_carry__1_i_5_n_0,ROTATION_PHASE_NEW_DIFF0_carry__1_i_6_n_0,ROTATION_PHASE_NEW_DIFF0_carry__1_i_7_n_0,ROTATION_PHASE_NEW_DIFF0_carry__1_i_8_n_0}));
+  LUT3 #(
+    .INIT(8'h1D)) 
     ROTATION_PHASE_NEW_DIFF0_carry__1_i_1
        (.I0(ATAN_PHASE_OUT[17]),
         .I1(ATAN_PHASE_OUT[19]),
         .I2(ROTATION_PHASE_NEW_DIFF3[11]),
-        .I3(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[11] ),
         .O(ROTATION_PHASE_NEW_DIFF0_carry__1_i_1_n_0));
-  LUT4 #(
-    .INIT(16'hE21D)) 
+  LUT3 #(
+    .INIT(8'h53)) 
+    ROTATION_PHASE_NEW_DIFF0_carry__1_i_10
+       (.I0(ROTATION_PHASE_NEW_DIFF5[18]),
+        .I1(ATAN_PHASE_OUT[18]),
+        .I2(ATAN_PHASE_OUT[19]),
+        .O(ROTATION_PHASE_NEW_DIFF0_carry__1_i_10_n_0));
+  LUT3 #(
+    .INIT(8'h35)) 
+    ROTATION_PHASE_NEW_DIFF0_carry__1_i_11
+       (.I0(ATAN_PHASE_OUT[17]),
+        .I1(ROTATION_PHASE_NEW_DIFF5[17]),
+        .I2(ATAN_PHASE_OUT[19]),
+        .O(ROTATION_PHASE_NEW_DIFF0_carry__1_i_11_n_0));
+  LUT3 #(
+    .INIT(8'h35)) 
+    ROTATION_PHASE_NEW_DIFF0_carry__1_i_12
+       (.I0(ATAN_PHASE_OUT[16]),
+        .I1(ROTATION_PHASE_NEW_DIFF5[16]),
+        .I2(ATAN_PHASE_OUT[19]),
+        .O(ROTATION_PHASE_NEW_DIFF0_carry__1_i_12_n_0));
+  LUT3 #(
+    .INIT(8'h35)) 
+    ROTATION_PHASE_NEW_DIFF0_carry__1_i_13
+       (.I0(ATAN_PHASE_OUT[15]),
+        .I1(ROTATION_PHASE_NEW_DIFF5[15]),
+        .I2(ATAN_PHASE_OUT[19]),
+        .O(ROTATION_PHASE_NEW_DIFF0_carry__1_i_13_n_0));
+  LUT3 #(
+    .INIT(8'h1D)) 
     ROTATION_PHASE_NEW_DIFF0_carry__1_i_2
        (.I0(ATAN_PHASE_OUT[16]),
         .I1(ATAN_PHASE_OUT[19]),
         .I2(ROTATION_PHASE_NEW_DIFF3[10]),
-        .I3(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[10] ),
         .O(ROTATION_PHASE_NEW_DIFF0_carry__1_i_2_n_0));
-  LUT4 #(
-    .INIT(16'hE21D)) 
+  LUT3 #(
+    .INIT(8'h1D)) 
     ROTATION_PHASE_NEW_DIFF0_carry__1_i_3
        (.I0(ATAN_PHASE_OUT[15]),
         .I1(ATAN_PHASE_OUT[19]),
         .I2(ROTATION_PHASE_NEW_DIFF3[9]),
-        .I3(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[9] ),
         .O(ROTATION_PHASE_NEW_DIFF0_carry__1_i_3_n_0));
-  LUT4 #(
-    .INIT(16'hE21D)) 
+  LUT3 #(
+    .INIT(8'h1D)) 
     ROTATION_PHASE_NEW_DIFF0_carry__1_i_4
        (.I0(ATAN_PHASE_OUT[14]),
         .I1(ATAN_PHASE_OUT[19]),
         .I2(ROTATION_PHASE_NEW_DIFF3[8]),
-        .I3(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[8] ),
         .O(ROTATION_PHASE_NEW_DIFF0_carry__1_i_4_n_0));
-  CARRY4 ROTATION_PHASE_NEW_DIFF0_carry__1_i_5
-       (.CI(ROTATION_PHASE_NEW_DIFF0_carry__0_i_5_n_0),
-        .CO({ROTATION_PHASE_NEW_DIFF0_carry__1_i_5_n_0,ROTATION_PHASE_NEW_DIFF0_carry__1_i_5_n_1,ROTATION_PHASE_NEW_DIFF0_carry__1_i_5_n_2,ROTATION_PHASE_NEW_DIFF0_carry__1_i_5_n_3}),
+  LUT4 #(
+    .INIT(16'hE21D)) 
+    ROTATION_PHASE_NEW_DIFF0_carry__1_i_5
+       (.I0(ATAN_PHASE_OUT[17]),
+        .I1(ATAN_PHASE_OUT[19]),
+        .I2(ROTATION_PHASE_NEW_DIFF3[11]),
+        .I3(VAR_AUTOCORR_PHASE_1SAMPLE[11]),
+        .O(ROTATION_PHASE_NEW_DIFF0_carry__1_i_5_n_0));
+  LUT4 #(
+    .INIT(16'hE21D)) 
+    ROTATION_PHASE_NEW_DIFF0_carry__1_i_6
+       (.I0(ATAN_PHASE_OUT[16]),
+        .I1(ATAN_PHASE_OUT[19]),
+        .I2(ROTATION_PHASE_NEW_DIFF3[10]),
+        .I3(VAR_AUTOCORR_PHASE_1SAMPLE[10]),
+        .O(ROTATION_PHASE_NEW_DIFF0_carry__1_i_6_n_0));
+  LUT4 #(
+    .INIT(16'hE21D)) 
+    ROTATION_PHASE_NEW_DIFF0_carry__1_i_7
+       (.I0(ATAN_PHASE_OUT[15]),
+        .I1(ATAN_PHASE_OUT[19]),
+        .I2(ROTATION_PHASE_NEW_DIFF3[9]),
+        .I3(VAR_AUTOCORR_PHASE_1SAMPLE[9]),
+        .O(ROTATION_PHASE_NEW_DIFF0_carry__1_i_7_n_0));
+  LUT4 #(
+    .INIT(16'hE21D)) 
+    ROTATION_PHASE_NEW_DIFF0_carry__1_i_8
+       (.I0(ATAN_PHASE_OUT[14]),
+        .I1(ATAN_PHASE_OUT[19]),
+        .I2(ROTATION_PHASE_NEW_DIFF3[8]),
+        .I3(VAR_AUTOCORR_PHASE_1SAMPLE[8]),
+        .O(ROTATION_PHASE_NEW_DIFF0_carry__1_i_8_n_0));
+  CARRY4 ROTATION_PHASE_NEW_DIFF0_carry__1_i_9
+       (.CI(ROTATION_PHASE_NEW_DIFF0_carry__0_i_9_n_0),
+        .CO({ROTATION_PHASE_NEW_DIFF0_carry__1_i_9_n_0,ROTATION_PHASE_NEW_DIFF0_carry__1_i_9_n_1,ROTATION_PHASE_NEW_DIFF0_carry__1_i_9_n_2,ROTATION_PHASE_NEW_DIFF0_carry__1_i_9_n_3}),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O(ROTATION_PHASE_NEW_DIFF3[12:9]),
-        .S({ROTATION_PHASE_NEW_DIFF0_carry__1_i_6_n_0,ROTATION_PHASE_NEW_DIFF0_carry__1_i_7_n_0,ROTATION_PHASE_NEW_DIFF0_carry__1_i_8_n_0,ROTATION_PHASE_NEW_DIFF0_carry__1_i_9_n_0}));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ROTATION_PHASE_NEW_DIFF0_carry__1_i_6
-       (.I0(ROTATION_PHASE_NEW_DIFF5[18]),
-        .I1(ATAN_PHASE_OUT[19]),
-        .I2(ATAN_PHASE_OUT[18]),
-        .O(ROTATION_PHASE_NEW_DIFF0_carry__1_i_6_n_0));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ROTATION_PHASE_NEW_DIFF0_carry__1_i_7
-       (.I0(ROTATION_PHASE_NEW_DIFF5[17]),
-        .I1(ATAN_PHASE_OUT[19]),
-        .I2(ATAN_PHASE_OUT[17]),
-        .O(ROTATION_PHASE_NEW_DIFF0_carry__1_i_7_n_0));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ROTATION_PHASE_NEW_DIFF0_carry__1_i_8
-       (.I0(ROTATION_PHASE_NEW_DIFF5[16]),
-        .I1(ATAN_PHASE_OUT[19]),
-        .I2(ATAN_PHASE_OUT[16]),
-        .O(ROTATION_PHASE_NEW_DIFF0_carry__1_i_8_n_0));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ROTATION_PHASE_NEW_DIFF0_carry__1_i_9
-       (.I0(ROTATION_PHASE_NEW_DIFF5[15]),
-        .I1(ATAN_PHASE_OUT[19]),
-        .I2(ATAN_PHASE_OUT[15]),
-        .O(ROTATION_PHASE_NEW_DIFF0_carry__1_i_9_n_0));
+        .S({ROTATION_PHASE_NEW_DIFF0_carry__1_i_10_n_0,ROTATION_PHASE_NEW_DIFF0_carry__1_i_11_n_0,ROTATION_PHASE_NEW_DIFF0_carry__1_i_12_n_0,ROTATION_PHASE_NEW_DIFF0_carry__1_i_13_n_0}));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 ROTATION_PHASE_NEW_DIFF0_carry__2
        (.CI(ROTATION_PHASE_NEW_DIFF0_carry__1_n_0),
         .CO({ROTATION_PHASE_NEW_DIFF0_carry__2_n_0,ROTATION_PHASE_NEW_DIFF0_carry__2_n_1,ROTATION_PHASE_NEW_DIFF0_carry__2_n_2,ROTATION_PHASE_NEW_DIFF0_carry__2_n_3}),
         .CYINIT(1'b0),
-        .DI({ROTATION_PHASE_NEW_DIFF0_carry__2_i_1_n_0,ROTATION_PHASE_NEW_DIFF0_carry__2_i_2_n_0,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[13] ,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[12] }),
+        .DI({ROTATION_PHASE_NEW_DIFF0_carry__2_i_1_n_0,ROTATION_PHASE_NEW_DIFF0_carry__2_i_2_n_0,ROTATION_PHASE_NEW_DIFF0_carry__2_i_3_n_0,ROTATION_PHASE_NEW_DIFF0_carry__2_i_4_n_0}),
         .O(ROTATION_PHASE_NEW_DIFF0[15:12]),
-        .S({ROTATION_PHASE_NEW_DIFF0_carry__2_i_3_n_0,ROTATION_PHASE_NEW_DIFF0_carry__2_i_4_n_0,ROTATION_PHASE_NEW_DIFF0_carry__2_i_5_n_0,ROTATION_PHASE_NEW_DIFF0_carry__2_i_6_n_0}));
+        .S({ROTATION_PHASE_NEW_DIFF0_carry__2_i_5_n_0,ROTATION_PHASE_NEW_DIFF0_carry__2_i_6_n_0,ROTATION_PHASE_NEW_DIFF0_carry__2_i_7_n_0,ROTATION_PHASE_NEW_DIFF0_carry__2_i_8_n_0}));
   LUT2 #(
     .INIT(4'hB)) 
     ROTATION_PHASE_NEW_DIFF0_carry__2_i_1
-       (.I0(\FPGA_REG_WRITE_DATA_reg[19]_i_3_n_2 ),
+       (.I0(\FPGA_REG_WRITE_DATA_reg[19]_i_2_n_2 ),
         .I1(ATAN_PHASE_OUT[19]),
         .O(ROTATION_PHASE_NEW_DIFF0_carry__2_i_1_n_0));
   LUT2 #(
     .INIT(4'hB)) 
     ROTATION_PHASE_NEW_DIFF0_carry__2_i_2
-       (.I0(\FPGA_REG_WRITE_DATA_reg[19]_i_3_n_2 ),
+       (.I0(\FPGA_REG_WRITE_DATA_reg[19]_i_2_n_2 ),
         .I1(ATAN_PHASE_OUT[19]),
         .O(ROTATION_PHASE_NEW_DIFF0_carry__2_i_2_n_0));
-  LUT3 #(
-    .INIT(8'h2D)) 
+  LUT2 #(
+    .INIT(4'h7)) 
     ROTATION_PHASE_NEW_DIFF0_carry__2_i_3
        (.I0(ATAN_PHASE_OUT[19]),
-        .I1(\FPGA_REG_WRITE_DATA_reg[19]_i_3_n_2 ),
-        .I2(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[15] ),
+        .I1(ROTATION_PHASE_NEW_DIFF3[13]),
         .O(ROTATION_PHASE_NEW_DIFF0_carry__2_i_3_n_0));
   LUT3 #(
-    .INIT(8'h2D)) 
+    .INIT(8'h1B)) 
     ROTATION_PHASE_NEW_DIFF0_carry__2_i_4
        (.I0(ATAN_PHASE_OUT[19]),
-        .I1(\FPGA_REG_WRITE_DATA_reg[19]_i_3_n_2 ),
-        .I2(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[14] ),
+        .I1(ATAN_PHASE_OUT[18]),
+        .I2(ROTATION_PHASE_NEW_DIFF3[12]),
         .O(ROTATION_PHASE_NEW_DIFF0_carry__2_i_4_n_0));
   LUT3 #(
-    .INIT(8'h87)) 
+    .INIT(8'h4B)) 
     ROTATION_PHASE_NEW_DIFF0_carry__2_i_5
+       (.I0(\FPGA_REG_WRITE_DATA_reg[19]_i_2_n_2 ),
+        .I1(ATAN_PHASE_OUT[19]),
+        .I2(VAR_AUTOCORR_PHASE_1SAMPLE[15]),
+        .O(ROTATION_PHASE_NEW_DIFF0_carry__2_i_5_n_0));
+  LUT3 #(
+    .INIT(8'h4B)) 
+    ROTATION_PHASE_NEW_DIFF0_carry__2_i_6
+       (.I0(\FPGA_REG_WRITE_DATA_reg[19]_i_2_n_2 ),
+        .I1(ATAN_PHASE_OUT[19]),
+        .I2(VAR_AUTOCORR_PHASE_1SAMPLE[14]),
+        .O(ROTATION_PHASE_NEW_DIFF0_carry__2_i_6_n_0));
+  LUT3 #(
+    .INIT(8'h87)) 
+    ROTATION_PHASE_NEW_DIFF0_carry__2_i_7
        (.I0(ATAN_PHASE_OUT[19]),
         .I1(ROTATION_PHASE_NEW_DIFF3[13]),
-        .I2(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[13] ),
-        .O(ROTATION_PHASE_NEW_DIFF0_carry__2_i_5_n_0));
+        .I2(VAR_AUTOCORR_PHASE_1SAMPLE[13]),
+        .O(ROTATION_PHASE_NEW_DIFF0_carry__2_i_7_n_0));
   LUT4 #(
-    .INIT(16'hE21D)) 
-    ROTATION_PHASE_NEW_DIFF0_carry__2_i_6
-       (.I0(ATAN_PHASE_OUT[18]),
-        .I1(ATAN_PHASE_OUT[19]),
+    .INIT(16'hE41B)) 
+    ROTATION_PHASE_NEW_DIFF0_carry__2_i_8
+       (.I0(ATAN_PHASE_OUT[19]),
+        .I1(ATAN_PHASE_OUT[18]),
         .I2(ROTATION_PHASE_NEW_DIFF3[12]),
-        .I3(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[12] ),
-        .O(ROTATION_PHASE_NEW_DIFF0_carry__2_i_6_n_0));
+        .I3(VAR_AUTOCORR_PHASE_1SAMPLE[12]),
+        .O(ROTATION_PHASE_NEW_DIFF0_carry__2_i_8_n_0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 ROTATION_PHASE_NEW_DIFF0_carry__3
        (.CI(ROTATION_PHASE_NEW_DIFF0_carry__2_n_0),
@@ -10156,300 +9431,314 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   LUT2 #(
     .INIT(4'hB)) 
     ROTATION_PHASE_NEW_DIFF0_carry__3_i_1
-       (.I0(\FPGA_REG_WRITE_DATA_reg[19]_i_3_n_2 ),
+       (.I0(\FPGA_REG_WRITE_DATA_reg[19]_i_2_n_2 ),
         .I1(ATAN_PHASE_OUT[19]),
         .O(ROTATION_PHASE_NEW_DIFF0_carry__3_i_1_n_0));
   LUT2 #(
     .INIT(4'hB)) 
     ROTATION_PHASE_NEW_DIFF0_carry__3_i_2
-       (.I0(\FPGA_REG_WRITE_DATA_reg[19]_i_3_n_2 ),
+       (.I0(\FPGA_REG_WRITE_DATA_reg[19]_i_2_n_2 ),
         .I1(ATAN_PHASE_OUT[19]),
         .O(ROTATION_PHASE_NEW_DIFF0_carry__3_i_2_n_0));
   LUT2 #(
     .INIT(4'hB)) 
     ROTATION_PHASE_NEW_DIFF0_carry__3_i_3
-       (.I0(\FPGA_REG_WRITE_DATA_reg[19]_i_3_n_2 ),
+       (.I0(\FPGA_REG_WRITE_DATA_reg[19]_i_2_n_2 ),
         .I1(ATAN_PHASE_OUT[19]),
         .O(ROTATION_PHASE_NEW_DIFF0_carry__3_i_3_n_0));
   LUT3 #(
-    .INIT(8'h2D)) 
+    .INIT(8'h65)) 
     ROTATION_PHASE_NEW_DIFF0_carry__3_i_4
-       (.I0(ATAN_PHASE_OUT[19]),
-        .I1(\FPGA_REG_WRITE_DATA_reg[19]_i_3_n_2 ),
-        .I2(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[19] ),
+       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE[19]),
+        .I1(\FPGA_REG_WRITE_DATA_reg[19]_i_2_n_2 ),
+        .I2(ATAN_PHASE_OUT[19]),
         .O(ROTATION_PHASE_NEW_DIFF0_carry__3_i_4_n_0));
   LUT3 #(
-    .INIT(8'h2D)) 
+    .INIT(8'h4B)) 
     ROTATION_PHASE_NEW_DIFF0_carry__3_i_5
-       (.I0(ATAN_PHASE_OUT[19]),
-        .I1(\FPGA_REG_WRITE_DATA_reg[19]_i_3_n_2 ),
-        .I2(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[18] ),
+       (.I0(\FPGA_REG_WRITE_DATA_reg[19]_i_2_n_2 ),
+        .I1(ATAN_PHASE_OUT[19]),
+        .I2(VAR_AUTOCORR_PHASE_1SAMPLE[18]),
         .O(ROTATION_PHASE_NEW_DIFF0_carry__3_i_5_n_0));
   LUT3 #(
-    .INIT(8'h2D)) 
+    .INIT(8'h4B)) 
     ROTATION_PHASE_NEW_DIFF0_carry__3_i_6
-       (.I0(ATAN_PHASE_OUT[19]),
-        .I1(\FPGA_REG_WRITE_DATA_reg[19]_i_3_n_2 ),
-        .I2(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[17] ),
+       (.I0(\FPGA_REG_WRITE_DATA_reg[19]_i_2_n_2 ),
+        .I1(ATAN_PHASE_OUT[19]),
+        .I2(VAR_AUTOCORR_PHASE_1SAMPLE[17]),
         .O(ROTATION_PHASE_NEW_DIFF0_carry__3_i_6_n_0));
   LUT3 #(
-    .INIT(8'h2D)) 
+    .INIT(8'h4B)) 
     ROTATION_PHASE_NEW_DIFF0_carry__3_i_7
-       (.I0(ATAN_PHASE_OUT[19]),
-        .I1(\FPGA_REG_WRITE_DATA_reg[19]_i_3_n_2 ),
-        .I2(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[16] ),
+       (.I0(\FPGA_REG_WRITE_DATA_reg[19]_i_2_n_2 ),
+        .I1(ATAN_PHASE_OUT[19]),
+        .I2(VAR_AUTOCORR_PHASE_1SAMPLE[16]),
         .O(ROTATION_PHASE_NEW_DIFF0_carry__3_i_7_n_0));
   LUT3 #(
-    .INIT(8'h47)) 
+    .INIT(8'h1D)) 
     ROTATION_PHASE_NEW_DIFF0_carry_i_1
-       (.I0(ROTATION_PHASE_NEW_DIFF5[6]),
+       (.I0(ATAN_PHASE_OUT[9]),
         .I1(ATAN_PHASE_OUT[19]),
-        .I2(ATAN_PHASE_OUT[6]),
+        .I2(ROTATION_PHASE_NEW_DIFF3[3]),
         .O(ROTATION_PHASE_NEW_DIFF0_carry_i_1_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    ROTATION_PHASE_NEW_DIFF0_carry_i_10
-       (.I0(ATAN_PHASE_OUT[7]),
-        .O(ROTATION_PHASE_NEW_DIFF0_carry_i_10_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY4 ROTATION_PHASE_NEW_DIFF0_carry_i_10
+       (.CI(ROTATION_PHASE_NEW_DIFF0_carry_i_15_n_0),
+        .CO({ROTATION_PHASE_NEW_DIFF0_carry_i_10_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_10_n_1,ROTATION_PHASE_NEW_DIFF0_carry_i_10_n_2,ROTATION_PHASE_NEW_DIFF0_carry_i_10_n_3}),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O({ROTATION_PHASE_NEW_DIFF5[8:6],NLW_ROTATION_PHASE_NEW_DIFF0_carry_i_10_O_UNCONNECTED[0]}),
+        .S({ROTATION_PHASE_NEW_DIFF0_carry_i_16_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_17_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_18_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_19_n_0}));
+  LUT3 #(
+    .INIT(8'h35)) 
     ROTATION_PHASE_NEW_DIFF0_carry_i_11
-       (.I0(ATAN_PHASE_OUT[6]),
+       (.I0(ATAN_PHASE_OUT[10]),
+        .I1(ROTATION_PHASE_NEW_DIFF5[10]),
+        .I2(ATAN_PHASE_OUT[19]),
         .O(ROTATION_PHASE_NEW_DIFF0_carry_i_11_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
+  LUT3 #(
+    .INIT(8'h35)) 
     ROTATION_PHASE_NEW_DIFF0_carry_i_12
-       (.I0(ATAN_PHASE_OUT[5]),
+       (.I0(ATAN_PHASE_OUT[9]),
+        .I1(ROTATION_PHASE_NEW_DIFF5[9]),
+        .I2(ATAN_PHASE_OUT[19]),
         .O(ROTATION_PHASE_NEW_DIFF0_carry_i_12_n_0));
   LUT3 #(
-    .INIT(8'h47)) 
+    .INIT(8'h35)) 
     ROTATION_PHASE_NEW_DIFF0_carry_i_13
-       (.I0(ROTATION_PHASE_NEW_DIFF5[6]),
-        .I1(ATAN_PHASE_OUT[19]),
-        .I2(ATAN_PHASE_OUT[6]),
+       (.I0(ATAN_PHASE_OUT[8]),
+        .I1(ROTATION_PHASE_NEW_DIFF5[8]),
+        .I2(ATAN_PHASE_OUT[19]),
         .O(ROTATION_PHASE_NEW_DIFF0_carry_i_13_n_0));
   LUT3 #(
-    .INIT(8'h47)) 
+    .INIT(8'h35)) 
     ROTATION_PHASE_NEW_DIFF0_carry_i_14
-       (.I0(ROTATION_PHASE_NEW_DIFF5[10]),
-        .I1(ATAN_PHASE_OUT[19]),
-        .I2(ATAN_PHASE_OUT[10]),
+       (.I0(ATAN_PHASE_OUT[7]),
+        .I1(ROTATION_PHASE_NEW_DIFF5[7]),
+        .I2(ATAN_PHASE_OUT[19]),
         .O(ROTATION_PHASE_NEW_DIFF0_carry_i_14_n_0));
-  LUT3 #(
-    .INIT(8'h47)) 
-    ROTATION_PHASE_NEW_DIFF0_carry_i_15
-       (.I0(ROTATION_PHASE_NEW_DIFF5[9]),
-        .I1(ATAN_PHASE_OUT[19]),
-        .I2(ATAN_PHASE_OUT[9]),
-        .O(ROTATION_PHASE_NEW_DIFF0_carry_i_15_n_0));
-  LUT3 #(
-    .INIT(8'h47)) 
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY4 ROTATION_PHASE_NEW_DIFF0_carry_i_15
+       (.CI(1'b0),
+        .CO({ROTATION_PHASE_NEW_DIFF0_carry_i_15_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_15_n_1,ROTATION_PHASE_NEW_DIFF0_carry_i_15_n_2,ROTATION_PHASE_NEW_DIFF0_carry_i_15_n_3}),
+        .CYINIT(ROTATION_PHASE_NEW_DIFF0_carry_i_21_n_0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O(NLW_ROTATION_PHASE_NEW_DIFF0_carry_i_15_O_UNCONNECTED[3:0]),
+        .S({ROTATION_PHASE_NEW_DIFF0_carry_i_22_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_23_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_24_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_25_n_0}));
+  LUT1 #(
+    .INIT(2'h1)) 
     ROTATION_PHASE_NEW_DIFF0_carry_i_16
-       (.I0(ROTATION_PHASE_NEW_DIFF5[8]),
-        .I1(ATAN_PHASE_OUT[19]),
-        .I2(ATAN_PHASE_OUT[8]),
+       (.I0(ATAN_PHASE_OUT[8]),
         .O(ROTATION_PHASE_NEW_DIFF0_carry_i_16_n_0));
-  LUT3 #(
-    .INIT(8'h47)) 
+  LUT1 #(
+    .INIT(2'h1)) 
     ROTATION_PHASE_NEW_DIFF0_carry_i_17
-       (.I0(ROTATION_PHASE_NEW_DIFF5[7]),
-        .I1(ATAN_PHASE_OUT[19]),
-        .I2(ATAN_PHASE_OUT[7]),
+       (.I0(ATAN_PHASE_OUT[7]),
         .O(ROTATION_PHASE_NEW_DIFF0_carry_i_17_n_0));
   LUT1 #(
     .INIT(2'h1)) 
     ROTATION_PHASE_NEW_DIFF0_carry_i_18
-       (.I0(ATAN_PHASE_OUT[0]),
+       (.I0(ATAN_PHASE_OUT[6]),
         .O(ROTATION_PHASE_NEW_DIFF0_carry_i_18_n_0));
   LUT1 #(
     .INIT(2'h1)) 
     ROTATION_PHASE_NEW_DIFF0_carry_i_19
-       (.I0(ATAN_PHASE_OUT[4]),
+       (.I0(ATAN_PHASE_OUT[5]),
         .O(ROTATION_PHASE_NEW_DIFF0_carry_i_19_n_0));
-  LUT4 #(
-    .INIT(16'hE21D)) 
+  LUT3 #(
+    .INIT(8'h1D)) 
     ROTATION_PHASE_NEW_DIFF0_carry_i_2
-       (.I0(ATAN_PHASE_OUT[9]),
+       (.I0(ATAN_PHASE_OUT[8]),
         .I1(ATAN_PHASE_OUT[19]),
-        .I2(ROTATION_PHASE_NEW_DIFF3[3]),
-        .I3(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[3] ),
+        .I2(ROTATION_PHASE_NEW_DIFF3[2]),
         .O(ROTATION_PHASE_NEW_DIFF0_carry_i_2_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    ROTATION_PHASE_NEW_DIFF0_carry_i_20
-       (.I0(ATAN_PHASE_OUT[3]),
-        .O(ROTATION_PHASE_NEW_DIFF0_carry_i_20_n_0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY4 ROTATION_PHASE_NEW_DIFF0_carry_i_20
+       (.CI(ROTATION_PHASE_NEW_DIFF0_carry_i_10_n_0),
+        .CO({ROTATION_PHASE_NEW_DIFF0_carry_i_20_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_20_n_1,ROTATION_PHASE_NEW_DIFF0_carry_i_20_n_2,ROTATION_PHASE_NEW_DIFF0_carry_i_20_n_3}),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O(ROTATION_PHASE_NEW_DIFF5[12:9]),
+        .S({ROTATION_PHASE_NEW_DIFF0_carry_i_26_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_27_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_28_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_29_n_0}));
   LUT1 #(
     .INIT(2'h1)) 
     ROTATION_PHASE_NEW_DIFF0_carry_i_21
-       (.I0(ATAN_PHASE_OUT[2]),
+       (.I0(ATAN_PHASE_OUT[0]),
         .O(ROTATION_PHASE_NEW_DIFF0_carry_i_21_n_0));
   LUT1 #(
     .INIT(2'h1)) 
     ROTATION_PHASE_NEW_DIFF0_carry_i_22
-       (.I0(ATAN_PHASE_OUT[1]),
+       (.I0(ATAN_PHASE_OUT[4]),
         .O(ROTATION_PHASE_NEW_DIFF0_carry_i_22_n_0));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 ROTATION_PHASE_NEW_DIFF0_carry_i_23
-       (.CI(ROTATION_PHASE_NEW_DIFF0_carry_i_6_n_0),
-        .CO({ROTATION_PHASE_NEW_DIFF0_carry_i_23_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_23_n_1,ROTATION_PHASE_NEW_DIFF0_carry_i_23_n_2,ROTATION_PHASE_NEW_DIFF0_carry_i_23_n_3}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(ROTATION_PHASE_NEW_DIFF5[12:9]),
-        .S({ROTATION_PHASE_NEW_DIFF0_carry_i_24_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_25_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_26_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_27_n_0}));
+  LUT1 #(
+    .INIT(2'h1)) 
+    ROTATION_PHASE_NEW_DIFF0_carry_i_23
+       (.I0(ATAN_PHASE_OUT[3]),
+        .O(ROTATION_PHASE_NEW_DIFF0_carry_i_23_n_0));
   LUT1 #(
     .INIT(2'h1)) 
     ROTATION_PHASE_NEW_DIFF0_carry_i_24
-       (.I0(ATAN_PHASE_OUT[12]),
+       (.I0(ATAN_PHASE_OUT[2]),
         .O(ROTATION_PHASE_NEW_DIFF0_carry_i_24_n_0));
   LUT1 #(
     .INIT(2'h1)) 
     ROTATION_PHASE_NEW_DIFF0_carry_i_25
-       (.I0(ATAN_PHASE_OUT[11]),
+       (.I0(ATAN_PHASE_OUT[1]),
         .O(ROTATION_PHASE_NEW_DIFF0_carry_i_25_n_0));
   LUT1 #(
     .INIT(2'h1)) 
     ROTATION_PHASE_NEW_DIFF0_carry_i_26
-       (.I0(ATAN_PHASE_OUT[10]),
+       (.I0(ATAN_PHASE_OUT[12]),
         .O(ROTATION_PHASE_NEW_DIFF0_carry_i_26_n_0));
   LUT1 #(
     .INIT(2'h1)) 
     ROTATION_PHASE_NEW_DIFF0_carry_i_27
-       (.I0(ATAN_PHASE_OUT[9]),
+       (.I0(ATAN_PHASE_OUT[11]),
         .O(ROTATION_PHASE_NEW_DIFF0_carry_i_27_n_0));
-  LUT4 #(
-    .INIT(16'hE21D)) 
+  LUT1 #(
+    .INIT(2'h1)) 
+    ROTATION_PHASE_NEW_DIFF0_carry_i_28
+       (.I0(ATAN_PHASE_OUT[10]),
+        .O(ROTATION_PHASE_NEW_DIFF0_carry_i_28_n_0));
+  LUT1 #(
+    .INIT(2'h1)) 
+    ROTATION_PHASE_NEW_DIFF0_carry_i_29
+       (.I0(ATAN_PHASE_OUT[9]),
+        .O(ROTATION_PHASE_NEW_DIFF0_carry_i_29_n_0));
+  LUT3 #(
+    .INIT(8'h1D)) 
     ROTATION_PHASE_NEW_DIFF0_carry_i_3
-       (.I0(ATAN_PHASE_OUT[8]),
-        .I1(ATAN_PHASE_OUT[19]),
-        .I2(ROTATION_PHASE_NEW_DIFF3[2]),
-        .I3(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[2] ),
-        .O(ROTATION_PHASE_NEW_DIFF0_carry_i_3_n_0));
-  LUT4 #(
-    .INIT(16'hE21D)) 
-    ROTATION_PHASE_NEW_DIFF0_carry_i_4
        (.I0(ATAN_PHASE_OUT[7]),
         .I1(ATAN_PHASE_OUT[19]),
         .I2(ROTATION_PHASE_NEW_DIFF3[1]),
-        .I3(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[1] ),
+        .O(ROTATION_PHASE_NEW_DIFF0_carry_i_3_n_0));
+  LUT3 #(
+    .INIT(8'h47)) 
+    ROTATION_PHASE_NEW_DIFF0_carry_i_4
+       (.I0(ROTATION_PHASE_NEW_DIFF5[6]),
+        .I1(ATAN_PHASE_OUT[19]),
+        .I2(ATAN_PHASE_OUT[6]),
         .O(ROTATION_PHASE_NEW_DIFF0_carry_i_4_n_0));
   LUT4 #(
     .INIT(16'hE21D)) 
     ROTATION_PHASE_NEW_DIFF0_carry_i_5
+       (.I0(ATAN_PHASE_OUT[9]),
+        .I1(ATAN_PHASE_OUT[19]),
+        .I2(ROTATION_PHASE_NEW_DIFF3[3]),
+        .I3(VAR_AUTOCORR_PHASE_1SAMPLE[3]),
+        .O(ROTATION_PHASE_NEW_DIFF0_carry_i_5_n_0));
+  LUT4 #(
+    .INIT(16'hE21D)) 
+    ROTATION_PHASE_NEW_DIFF0_carry_i_6
+       (.I0(ATAN_PHASE_OUT[8]),
+        .I1(ATAN_PHASE_OUT[19]),
+        .I2(ROTATION_PHASE_NEW_DIFF3[2]),
+        .I3(VAR_AUTOCORR_PHASE_1SAMPLE[2]),
+        .O(ROTATION_PHASE_NEW_DIFF0_carry_i_6_n_0));
+  LUT4 #(
+    .INIT(16'hE21D)) 
+    ROTATION_PHASE_NEW_DIFF0_carry_i_7
+       (.I0(ATAN_PHASE_OUT[7]),
+        .I1(ATAN_PHASE_OUT[19]),
+        .I2(ROTATION_PHASE_NEW_DIFF3[1]),
+        .I3(VAR_AUTOCORR_PHASE_1SAMPLE[1]),
+        .O(ROTATION_PHASE_NEW_DIFF0_carry_i_7_n_0));
+  LUT4 #(
+    .INIT(16'hE21D)) 
+    ROTATION_PHASE_NEW_DIFF0_carry_i_8
        (.I0(ATAN_PHASE_OUT[6]),
         .I1(ATAN_PHASE_OUT[19]),
         .I2(ROTATION_PHASE_NEW_DIFF5[6]),
-        .I3(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[0] ),
-        .O(ROTATION_PHASE_NEW_DIFF0_carry_i_5_n_0));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 ROTATION_PHASE_NEW_DIFF0_carry_i_6
-       (.CI(ROTATION_PHASE_NEW_DIFF0_carry_i_8_n_0),
-        .CO({ROTATION_PHASE_NEW_DIFF0_carry_i_6_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_6_n_1,ROTATION_PHASE_NEW_DIFF0_carry_i_6_n_2,ROTATION_PHASE_NEW_DIFF0_carry_i_6_n_3}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({ROTATION_PHASE_NEW_DIFF5[8:6],NLW_ROTATION_PHASE_NEW_DIFF0_carry_i_6_O_UNCONNECTED[0]}),
-        .S({ROTATION_PHASE_NEW_DIFF0_carry_i_9_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_10_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_11_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_12_n_0}));
-  CARRY4 ROTATION_PHASE_NEW_DIFF0_carry_i_7
+        .I3(VAR_AUTOCORR_PHASE_1SAMPLE[0]),
+        .O(ROTATION_PHASE_NEW_DIFF0_carry_i_8_n_0));
+  CARRY4 ROTATION_PHASE_NEW_DIFF0_carry_i_9
        (.CI(1'b0),
-        .CO({ROTATION_PHASE_NEW_DIFF0_carry_i_7_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_7_n_1,ROTATION_PHASE_NEW_DIFF0_carry_i_7_n_2,ROTATION_PHASE_NEW_DIFF0_carry_i_7_n_3}),
-        .CYINIT(ROTATION_PHASE_NEW_DIFF0_carry_i_13_n_0),
+        .CO({ROTATION_PHASE_NEW_DIFF0_carry_i_9_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_9_n_1,ROTATION_PHASE_NEW_DIFF0_carry_i_9_n_2,ROTATION_PHASE_NEW_DIFF0_carry_i_9_n_3}),
+        .CYINIT(\FPGA_REG_WRITE_DATA[0]_i_2_n_0 ),
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O(ROTATION_PHASE_NEW_DIFF3[4:1]),
-        .S({ROTATION_PHASE_NEW_DIFF0_carry_i_14_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_15_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_16_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_17_n_0}));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 ROTATION_PHASE_NEW_DIFF0_carry_i_8
-       (.CI(1'b0),
-        .CO({ROTATION_PHASE_NEW_DIFF0_carry_i_8_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_8_n_1,ROTATION_PHASE_NEW_DIFF0_carry_i_8_n_2,ROTATION_PHASE_NEW_DIFF0_carry_i_8_n_3}),
-        .CYINIT(ROTATION_PHASE_NEW_DIFF0_carry_i_18_n_0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(NLW_ROTATION_PHASE_NEW_DIFF0_carry_i_8_O_UNCONNECTED[3:0]),
-        .S({ROTATION_PHASE_NEW_DIFF0_carry_i_19_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_20_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_21_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_22_n_0}));
-  LUT1 #(
-    .INIT(2'h1)) 
-    ROTATION_PHASE_NEW_DIFF0_carry_i_9
-       (.I0(ATAN_PHASE_OUT[8]),
-        .O(ROTATION_PHASE_NEW_DIFF0_carry_i_9_n_0));
+        .S({ROTATION_PHASE_NEW_DIFF0_carry_i_11_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_12_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_13_n_0,ROTATION_PHASE_NEW_DIFF0_carry_i_14_n_0}));
   LUT6 #(
-    .INIT(64'hD8D8D8D8FF000000)) 
+    .INIT(64'hD8FFD800D800D800)) 
     \ROTATION_PHASE_NEW_DIFF[0]_i_1 
-       (.I0(AUTOCORR_PHASE_BUFF__0[19]),
+       (.I0(AUTOCORR_PHASE_BUFF[19]),
         .I1(VAR_AUTOCORR_PHASE_1SAMPLE4[4]),
-        .I2(AUTOCORR_PHASE_BUFF__0[4]),
-        .I3(ROTATION_PHASE_NEW_DIFF0[0]),
+        .I2(AUTOCORR_PHASE_BUFF[4]),
+        .I3(RX_STATE_reg[0]),
         .I4(ATAN_PHASE_OUT_STROBE),
-        .I5(RX_STATE_reg[0]),
+        .I5(ROTATION_PHASE_NEW_DIFF0[0]),
         .O(ROTATION_PHASE_NEW_DIFF0_in[0]));
   LUT4 #(
-    .INIT(16'hAAC0)) 
+    .INIT(16'hB888)) 
     \ROTATION_PHASE_NEW_DIFF[10]_i_1 
-       (.I0(in27[10]),
-        .I1(ROTATION_PHASE_NEW_DIFF0[10]),
+       (.I0(in25[10]),
+        .I1(RX_STATE_reg[0]),
         .I2(ATAN_PHASE_OUT_STROBE),
-        .I3(RX_STATE_reg[0]),
+        .I3(ROTATION_PHASE_NEW_DIFF0[10]),
         .O(ROTATION_PHASE_NEW_DIFF0_in[10]));
   LUT4 #(
-    .INIT(16'hAAC0)) 
+    .INIT(16'hB888)) 
     \ROTATION_PHASE_NEW_DIFF[11]_i_1 
-       (.I0(in27[11]),
-        .I1(ROTATION_PHASE_NEW_DIFF0[11]),
+       (.I0(in25[11]),
+        .I1(RX_STATE_reg[0]),
         .I2(ATAN_PHASE_OUT_STROBE),
-        .I3(RX_STATE_reg[0]),
+        .I3(ROTATION_PHASE_NEW_DIFF0[11]),
         .O(ROTATION_PHASE_NEW_DIFF0_in[11]));
   LUT4 #(
-    .INIT(16'hAAC0)) 
+    .INIT(16'hB888)) 
     \ROTATION_PHASE_NEW_DIFF[12]_i_1 
-       (.I0(in27[12]),
-        .I1(ROTATION_PHASE_NEW_DIFF0[12]),
+       (.I0(in25[12]),
+        .I1(RX_STATE_reg[0]),
         .I2(ATAN_PHASE_OUT_STROBE),
-        .I3(RX_STATE_reg[0]),
+        .I3(ROTATION_PHASE_NEW_DIFF0[12]),
         .O(ROTATION_PHASE_NEW_DIFF0_in[12]));
   LUT4 #(
-    .INIT(16'hAAC0)) 
+    .INIT(16'hB888)) 
     \ROTATION_PHASE_NEW_DIFF[13]_i_1 
-       (.I0(in27[13]),
-        .I1(ROTATION_PHASE_NEW_DIFF0[13]),
+       (.I0(in25[13]),
+        .I1(RX_STATE_reg[0]),
         .I2(ATAN_PHASE_OUT_STROBE),
-        .I3(RX_STATE_reg[0]),
+        .I3(ROTATION_PHASE_NEW_DIFF0[13]),
         .O(ROTATION_PHASE_NEW_DIFF0_in[13]));
   LUT4 #(
-    .INIT(16'hAAC0)) 
+    .INIT(16'hB888)) 
     \ROTATION_PHASE_NEW_DIFF[14]_i_1 
-       (.I0(in27[14]),
-        .I1(ROTATION_PHASE_NEW_DIFF0[14]),
+       (.I0(in25[14]),
+        .I1(RX_STATE_reg[0]),
         .I2(ATAN_PHASE_OUT_STROBE),
-        .I3(RX_STATE_reg[0]),
+        .I3(ROTATION_PHASE_NEW_DIFF0[14]),
         .O(ROTATION_PHASE_NEW_DIFF0_in[14]));
   LUT4 #(
-    .INIT(16'hAAC0)) 
+    .INIT(16'hB888)) 
     \ROTATION_PHASE_NEW_DIFF[15]_i_1 
-       (.I0(in27[15]),
-        .I1(ROTATION_PHASE_NEW_DIFF0[15]),
+       (.I0(in25[15]),
+        .I1(RX_STATE_reg[0]),
         .I2(ATAN_PHASE_OUT_STROBE),
-        .I3(RX_STATE_reg[0]),
+        .I3(ROTATION_PHASE_NEW_DIFF0[15]),
         .O(ROTATION_PHASE_NEW_DIFF0_in[15]));
   LUT4 #(
-    .INIT(16'hAAC0)) 
+    .INIT(16'hB888)) 
     \ROTATION_PHASE_NEW_DIFF[16]_i_1 
-       (.I0(in27[16]),
-        .I1(ROTATION_PHASE_NEW_DIFF0[16]),
+       (.I0(in25[16]),
+        .I1(RX_STATE_reg[0]),
         .I2(ATAN_PHASE_OUT_STROBE),
-        .I3(RX_STATE_reg[0]),
+        .I3(ROTATION_PHASE_NEW_DIFF0[16]),
         .O(ROTATION_PHASE_NEW_DIFF0_in[16]));
   LUT4 #(
-    .INIT(16'hAAC0)) 
+    .INIT(16'hB888)) 
     \ROTATION_PHASE_NEW_DIFF[17]_i_1 
-       (.I0(in27[17]),
-        .I1(ROTATION_PHASE_NEW_DIFF0[17]),
+       (.I0(in25[17]),
+        .I1(RX_STATE_reg[0]),
         .I2(ATAN_PHASE_OUT_STROBE),
-        .I3(RX_STATE_reg[0]),
+        .I3(ROTATION_PHASE_NEW_DIFF0[17]),
         .O(ROTATION_PHASE_NEW_DIFF0_in[17]));
   LUT4 #(
-    .INIT(16'hAAC0)) 
+    .INIT(16'hB888)) 
     \ROTATION_PHASE_NEW_DIFF[18]_i_1 
-       (.I0(in27[18]),
-        .I1(ROTATION_PHASE_NEW_DIFF0[18]),
+       (.I0(in25[18]),
+        .I1(RX_STATE_reg[0]),
         .I2(ATAN_PHASE_OUT_STROBE),
-        .I3(RX_STATE_reg[0]),
+        .I3(ROTATION_PHASE_NEW_DIFF0[18]),
         .O(ROTATION_PHASE_NEW_DIFF0_in[18]));
   LUT3 #(
     .INIT(8'h60)) 
@@ -10459,93 +9748,93 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .I2(RX_STATE_reg[1]),
         .O(\ROTATION_PHASE_NEW_DIFF[19]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'hAAC0)) 
+    .INIT(16'hB888)) 
     \ROTATION_PHASE_NEW_DIFF[19]_i_2 
-       (.I0(in27[19]),
-        .I1(ROTATION_PHASE_NEW_DIFF0[19]),
+       (.I0(in25[19]),
+        .I1(RX_STATE_reg[0]),
         .I2(ATAN_PHASE_OUT_STROBE),
-        .I3(RX_STATE_reg[0]),
+        .I3(ROTATION_PHASE_NEW_DIFF0[19]),
         .O(ROTATION_PHASE_NEW_DIFF0_in[19]));
   LUT4 #(
-    .INIT(16'hAAC0)) 
+    .INIT(16'hB888)) 
     \ROTATION_PHASE_NEW_DIFF[1]_i_1 
-       (.I0(in27[1]),
-        .I1(ROTATION_PHASE_NEW_DIFF0[1]),
+       (.I0(in25[1]),
+        .I1(RX_STATE_reg[0]),
         .I2(ATAN_PHASE_OUT_STROBE),
-        .I3(RX_STATE_reg[0]),
+        .I3(ROTATION_PHASE_NEW_DIFF0[1]),
         .O(ROTATION_PHASE_NEW_DIFF0_in[1]));
   LUT4 #(
-    .INIT(16'hAAC0)) 
+    .INIT(16'hB888)) 
     \ROTATION_PHASE_NEW_DIFF[2]_i_1 
-       (.I0(in27[2]),
-        .I1(ROTATION_PHASE_NEW_DIFF0[2]),
+       (.I0(in25[2]),
+        .I1(RX_STATE_reg[0]),
         .I2(ATAN_PHASE_OUT_STROBE),
-        .I3(RX_STATE_reg[0]),
+        .I3(ROTATION_PHASE_NEW_DIFF0[2]),
         .O(ROTATION_PHASE_NEW_DIFF0_in[2]));
   LUT4 #(
-    .INIT(16'hAAC0)) 
+    .INIT(16'hB888)) 
     \ROTATION_PHASE_NEW_DIFF[3]_i_1 
-       (.I0(in27[3]),
-        .I1(ROTATION_PHASE_NEW_DIFF0[3]),
+       (.I0(in25[3]),
+        .I1(RX_STATE_reg[0]),
         .I2(ATAN_PHASE_OUT_STROBE),
-        .I3(RX_STATE_reg[0]),
+        .I3(ROTATION_PHASE_NEW_DIFF0[3]),
         .O(ROTATION_PHASE_NEW_DIFF0_in[3]));
   LUT4 #(
-    .INIT(16'hAAC0)) 
+    .INIT(16'hB888)) 
     \ROTATION_PHASE_NEW_DIFF[4]_i_1 
-       (.I0(in27[4]),
-        .I1(ROTATION_PHASE_NEW_DIFF0[4]),
+       (.I0(in25[4]),
+        .I1(RX_STATE_reg[0]),
         .I2(ATAN_PHASE_OUT_STROBE),
-        .I3(RX_STATE_reg[0]),
+        .I3(ROTATION_PHASE_NEW_DIFF0[4]),
         .O(ROTATION_PHASE_NEW_DIFF0_in[4]));
   LUT4 #(
-    .INIT(16'hAAC0)) 
+    .INIT(16'hB888)) 
     \ROTATION_PHASE_NEW_DIFF[5]_i_1 
-       (.I0(in27[5]),
-        .I1(ROTATION_PHASE_NEW_DIFF0[5]),
+       (.I0(in25[5]),
+        .I1(RX_STATE_reg[0]),
         .I2(ATAN_PHASE_OUT_STROBE),
-        .I3(RX_STATE_reg[0]),
+        .I3(ROTATION_PHASE_NEW_DIFF0[5]),
         .O(ROTATION_PHASE_NEW_DIFF0_in[5]));
   LUT4 #(
-    .INIT(16'hAAC0)) 
+    .INIT(16'hB888)) 
     \ROTATION_PHASE_NEW_DIFF[6]_i_1 
-       (.I0(in27[6]),
-        .I1(ROTATION_PHASE_NEW_DIFF0[6]),
+       (.I0(in25[6]),
+        .I1(RX_STATE_reg[0]),
         .I2(ATAN_PHASE_OUT_STROBE),
-        .I3(RX_STATE_reg[0]),
+        .I3(ROTATION_PHASE_NEW_DIFF0[6]),
         .O(ROTATION_PHASE_NEW_DIFF0_in[6]));
   LUT4 #(
-    .INIT(16'hAAC0)) 
+    .INIT(16'hB888)) 
     \ROTATION_PHASE_NEW_DIFF[7]_i_1 
-       (.I0(in27[7]),
-        .I1(ROTATION_PHASE_NEW_DIFF0[7]),
+       (.I0(in25[7]),
+        .I1(RX_STATE_reg[0]),
         .I2(ATAN_PHASE_OUT_STROBE),
-        .I3(RX_STATE_reg[0]),
+        .I3(ROTATION_PHASE_NEW_DIFF0[7]),
         .O(ROTATION_PHASE_NEW_DIFF0_in[7]));
   LUT4 #(
-    .INIT(16'hAAC0)) 
+    .INIT(16'hB888)) 
     \ROTATION_PHASE_NEW_DIFF[8]_i_1 
-       (.I0(in27[8]),
-        .I1(ROTATION_PHASE_NEW_DIFF0[8]),
+       (.I0(in25[8]),
+        .I1(RX_STATE_reg[0]),
         .I2(ATAN_PHASE_OUT_STROBE),
-        .I3(RX_STATE_reg[0]),
+        .I3(ROTATION_PHASE_NEW_DIFF0[8]),
         .O(ROTATION_PHASE_NEW_DIFF0_in[8]));
   LUT4 #(
-    .INIT(16'hAAC0)) 
+    .INIT(16'hB888)) 
     \ROTATION_PHASE_NEW_DIFF[9]_i_1 
-       (.I0(in27[9]),
-        .I1(ROTATION_PHASE_NEW_DIFF0[9]),
+       (.I0(in25[9]),
+        .I1(RX_STATE_reg[0]),
         .I2(ATAN_PHASE_OUT_STROBE),
-        .I3(RX_STATE_reg[0]),
+        .I3(ROTATION_PHASE_NEW_DIFF0[9]),
         .O(ROTATION_PHASE_NEW_DIFF0_in[9]));
-  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
   LUT5 #(
-    .INIT(32'hECFC20C0)) 
+    .INIT(32'hEFCC2C00)) 
     ROTATION_PHASE_NEW_DIFF_STROBE_i_1
        (.I0(ATAN_PHASE_OUT_STROBE),
         .I1(RX_STATE_reg[0]),
-        .I2(RX_STATE_reg[1]),
-        .I3(RX_STATE_reg[2]),
+        .I2(RX_STATE_reg[2]),
+        .I3(RX_STATE_reg[1]),
         .I4(ROTATION_PHASE_NEW_DIFF_STROBE),
         .O(ROTATION_PHASE_NEW_DIFF_STROBE_i_1_n_0));
   (* x_interface_ignore = "TRUE" *) 
@@ -10870,9 +10159,9 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.CI(1'b0),
         .CO({\RX_STATE0_inferred__0/i__carry_n_0 ,\RX_STATE0_inferred__0/i__carry_n_1 ,\RX_STATE0_inferred__0/i__carry_n_2 ,\RX_STATE0_inferred__0/i__carry_n_3 }),
         .CYINIT(1'b1),
-        .DI({i__carry_i_1_n_0,i__carry_i_2_n_0,\COUNTER_OFDM_SYMBOL_reg_n_0_[3] ,i__carry_i_3__0_n_0}),
+        .DI({i__carry_i_1_n_0,i__carry_i_2_n_0,i__carry_i_3_n_0,i__carry_i_4_n_0}),
         .O(\NLW_RX_STATE0_inferred__0/i__carry_O_UNCONNECTED [3:0]),
-        .S({i__carry_i_4__1_n_0,i__carry_i_5__0_n_0,i__carry_i_6_n_0,i__carry_i_7__1_n_0}));
+        .S({i__carry_i_5_n_0,i__carry_i_6_n_0,i__carry_i_7_n_0,i__carry_i_8__1_n_0}));
   (* COMPARATOR_THRESHOLD = "11" *) 
   CARRY4 \RX_STATE0_inferred__0/i__carry__0 
        (.CI(\RX_STATE0_inferred__0/i__carry_n_0 ),
@@ -10880,196 +10169,164 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .CYINIT(1'b0),
         .DI({i__carry__0_i_1_n_0,i__carry__0_i_2_n_0,i__carry__0_i_3_n_0,i__carry__0_i_4_n_0}),
         .O(\NLW_RX_STATE0_inferred__0/i__carry__0_O_UNCONNECTED [3:0]),
-        .S({i__carry__0_i_5__1_n_0,i__carry__0_i_6__1_n_0,i__carry__0_i_7__1_n_0,i__carry__0_i_8__1_n_0}));
+        .S({i__carry__0_i_5_n_0,i__carry__0_i_6_n_0,i__carry__0_i_7_n_0,i__carry__0_i_8_n_0}));
   (* COMPARATOR_THRESHOLD = "11" *) 
   CARRY4 \RX_STATE0_inferred__0/i__carry__1 
        (.CI(\RX_STATE0_inferred__0/i__carry__0_n_0 ),
         .CO({\RX_STATE0_inferred__0/i__carry__1_n_0 ,\RX_STATE0_inferred__0/i__carry__1_n_1 ,\RX_STATE0_inferred__0/i__carry__1_n_2 ,\RX_STATE0_inferred__0/i__carry__1_n_3 }),
         .CYINIT(1'b0),
-        .DI({i__carry__1_i_1_n_0,i__carry__1_i_2_n_0,i__carry__1_i_3_n_0,i__carry__1_i_4_n_0}),
+        .DI({i__carry__1_i_1_n_0,i__carry__1_i_2__1_n_0,i__carry__1_i_3_n_0,i__carry__1_i_4_n_0}),
         .O(\NLW_RX_STATE0_inferred__0/i__carry__1_O_UNCONNECTED [3:0]),
-        .S({i__carry__1_i_5__1_n_0,i__carry__1_i_6__1_n_0,i__carry__1_i_7__1_n_0,i__carry__1_i_8__1_n_0}));
+        .S({i__carry__1_i_5_n_0,i__carry__1_i_6_n_0,i__carry__1_i_7_n_0,i__carry__1_i_8_n_0}));
   (* COMPARATOR_THRESHOLD = "11" *) 
   CARRY4 \RX_STATE0_inferred__0/i__carry__2 
        (.CI(\RX_STATE0_inferred__0/i__carry__1_n_0 ),
-        .CO({p_0_in_0,\RX_STATE0_inferred__0/i__carry__2_n_1 ,\RX_STATE0_inferred__0/i__carry__2_n_2 ,\RX_STATE0_inferred__0/i__carry__2_n_3 }),
+        .CO({\RX_STATE0_inferred__0/i__carry__2_n_0 ,\RX_STATE0_inferred__0/i__carry__2_n_1 ,\RX_STATE0_inferred__0/i__carry__2_n_2 ,\RX_STATE0_inferred__0/i__carry__2_n_3 }),
         .CYINIT(1'b0),
-        .DI({i__carry__2_i_1_n_0,i__carry__2_i_2_n_0,i__carry__2_i_3__0_n_0,i__carry__2_i_4__0_n_0}),
+        .DI({i__carry__2_i_1_n_0,i__carry__2_i_2__1_n_0,i__carry__2_i_3_n_0,i__carry__2_i_4_n_0}),
         .O(\NLW_RX_STATE0_inferred__0/i__carry__2_O_UNCONNECTED [3:0]),
-        .S({i__carry__2_i_5__1_n_0,i__carry__2_i_6__0_n_0,i__carry__2_i_7__1_n_0,i__carry__2_i_8__1_n_0}));
-  (* COMPARATOR_THRESHOLD = "11" *) 
-  CARRY4 \RX_STATE0_inferred__1/i__carry 
-       (.CI(1'b0),
-        .CO({\RX_STATE0_inferred__1/i__carry_n_0 ,\RX_STATE0_inferred__1/i__carry_n_1 ,\RX_STATE0_inferred__1/i__carry_n_2 ,\RX_STATE0_inferred__1/i__carry_n_3 }),
-        .CYINIT(1'b1),
-        .DI({i__carry_i_1__0_n_0,i__carry_i_2__1_n_0,i__carry_i_3_n_0,i__carry_i_4_n_0}),
-        .O(\NLW_RX_STATE0_inferred__1/i__carry_O_UNCONNECTED [3:0]),
-        .S({i__carry_i_5__1_n_0,i__carry_i_6__1_n_0,i__carry_i_7_n_0,i__carry_i_8_n_0}));
-  (* COMPARATOR_THRESHOLD = "11" *) 
-  CARRY4 \RX_STATE0_inferred__1/i__carry__0 
-       (.CI(\RX_STATE0_inferred__1/i__carry_n_0 ),
-        .CO({\RX_STATE0_inferred__1/i__carry__0_n_0 ,\RX_STATE0_inferred__1/i__carry__0_n_1 ,\RX_STATE0_inferred__1/i__carry__0_n_2 ,\RX_STATE0_inferred__1/i__carry__0_n_3 }),
-        .CYINIT(1'b0),
-        .DI({i__carry__0_i_1__1_n_0,i__carry__0_i_2__1_n_0,i__carry__0_i_3__1_n_0,i__carry__0_i_4__1_n_0}),
-        .O(\NLW_RX_STATE0_inferred__1/i__carry__0_O_UNCONNECTED [3:0]),
-        .S({i__carry__0_i_5_n_0,i__carry__0_i_6_n_0,i__carry__0_i_7_n_0,i__carry__0_i_8_n_0}));
-  (* COMPARATOR_THRESHOLD = "11" *) 
-  CARRY4 \RX_STATE0_inferred__1/i__carry__1 
-       (.CI(\RX_STATE0_inferred__1/i__carry__0_n_0 ),
-        .CO({\RX_STATE0_inferred__1/i__carry__1_n_0 ,\RX_STATE0_inferred__1/i__carry__1_n_1 ,\RX_STATE0_inferred__1/i__carry__1_n_2 ,\RX_STATE0_inferred__1/i__carry__1_n_3 }),
-        .CYINIT(1'b0),
-        .DI({i__carry__1_i_1__1_n_0,i__carry__1_i_2__1_n_0,i__carry__1_i_3__1_n_0,i__carry__1_i_4__1_n_0}),
-        .O(\NLW_RX_STATE0_inferred__1/i__carry__1_O_UNCONNECTED [3:0]),
-        .S({i__carry__1_i_5_n_0,i__carry__1_i_6_n_0,i__carry__1_i_7_n_0,i__carry__1_i_8_n_0}));
-  (* COMPARATOR_THRESHOLD = "11" *) 
-  CARRY4 \RX_STATE0_inferred__1/i__carry__2 
-       (.CI(\RX_STATE0_inferred__1/i__carry__1_n_0 ),
-        .CO({\RX_STATE0_inferred__1/i__carry__2_n_0 ,\RX_STATE0_inferred__1/i__carry__2_n_1 ,\RX_STATE0_inferred__1/i__carry__2_n_2 ,\RX_STATE0_inferred__1/i__carry__2_n_3 }),
-        .CYINIT(1'b0),
-        .DI({i__carry__2_i_1__0_n_0,i__carry__2_i_2__0_n_0,i__carry__2_i_3_n_0,i__carry__2_i_4_n_0}),
-        .O(\NLW_RX_STATE0_inferred__1/i__carry__2_O_UNCONNECTED [3:0]),
-        .S({i__carry__2_i_5_n_0,i__carry__2_i_6__1_n_0,i__carry__2_i_7_n_0,i__carry__2_i_8_n_0}));
+        .S({i__carry__2_i_5_n_0,i__carry__2_i_6_n_0,i__carry__2_i_7__1_n_0,i__carry__2_i_8_n_0}));
   LUT3 #(
-    .INIT(8'hE2)) 
+    .INIT(8'hB8)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[0]_i_1 
-       (.I0(AUTOCORR_PHASE_BUFF__0[4]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(VAR_AUTOCORR_PHASE_1SAMPLE4[4]),
+       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE4[4]),
+        .I1(AUTOCORR_PHASE_BUFF[19]),
+        .I2(AUTOCORR_PHASE_BUFF[4]),
         .O(p_2_in));
   LUT3 #(
-    .INIT(8'h47)) 
+    .INIT(8'h1D)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[12]_i_2 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE2[12]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(AUTOCORR_PHASE_BUFF__0[16]),
+       (.I0(AUTOCORR_PHASE_BUFF[16]),
+        .I1(AUTOCORR_PHASE_BUFF[19]),
+        .I2(VAR_AUTOCORR_PHASE_1SAMPLE2[12]),
         .O(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[12]_i_2_n_0 ));
   LUT3 #(
-    .INIT(8'h47)) 
+    .INIT(8'h1D)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[12]_i_3 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE2[11]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(AUTOCORR_PHASE_BUFF__0[15]),
+       (.I0(AUTOCORR_PHASE_BUFF[15]),
+        .I1(AUTOCORR_PHASE_BUFF[19]),
+        .I2(VAR_AUTOCORR_PHASE_1SAMPLE2[11]),
         .O(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[12]_i_3_n_0 ));
   LUT3 #(
-    .INIT(8'h47)) 
+    .INIT(8'h1D)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[12]_i_4 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE2[10]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(AUTOCORR_PHASE_BUFF__0[14]),
+       (.I0(AUTOCORR_PHASE_BUFF[14]),
+        .I1(AUTOCORR_PHASE_BUFF[19]),
+        .I2(VAR_AUTOCORR_PHASE_1SAMPLE2[10]),
         .O(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[12]_i_4_n_0 ));
   LUT3 #(
-    .INIT(8'h47)) 
+    .INIT(8'h1D)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[12]_i_5 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE2[9]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(AUTOCORR_PHASE_BUFF__0[13]),
+       (.I0(AUTOCORR_PHASE_BUFF[13]),
+        .I1(AUTOCORR_PHASE_BUFF[19]),
+        .I2(VAR_AUTOCORR_PHASE_1SAMPLE2[9]),
         .O(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[12]_i_5_n_0 ));
   LUT2 #(
     .INIT(4'hB)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[16]_i_2 
-       (.I0(\FPGA_REG_WRITE_DATA_reg[19]_i_2_n_0 ),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
+       (.I0(\FPGA_REG_WRITE_DATA_reg[19]_i_4_n_0 ),
+        .I1(AUTOCORR_PHASE_BUFF[19]),
         .O(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[16]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h7)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[16]_i_3 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE2[15]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
+       (.I0(AUTOCORR_PHASE_BUFF[19]),
+        .I1(VAR_AUTOCORR_PHASE_1SAMPLE2[15]),
         .O(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[16]_i_3_n_0 ));
   LUT3 #(
-    .INIT(8'h47)) 
+    .INIT(8'h1B)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[16]_i_4 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE2[14]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(AUTOCORR_PHASE_BUFF__0[18]),
+       (.I0(AUTOCORR_PHASE_BUFF[19]),
+        .I1(AUTOCORR_PHASE_BUFF[18]),
+        .I2(VAR_AUTOCORR_PHASE_1SAMPLE2[14]),
         .O(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[16]_i_4_n_0 ));
   LUT3 #(
-    .INIT(8'h47)) 
+    .INIT(8'h1D)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[16]_i_5 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE2[13]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(AUTOCORR_PHASE_BUFF__0[17]),
+       (.I0(AUTOCORR_PHASE_BUFF[17]),
+        .I1(AUTOCORR_PHASE_BUFF[19]),
+        .I2(VAR_AUTOCORR_PHASE_1SAMPLE2[13]),
         .O(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[16]_i_5_n_0 ));
   LUT2 #(
     .INIT(4'hB)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[19]_i_2 
-       (.I0(\FPGA_REG_WRITE_DATA_reg[19]_i_2_n_0 ),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
+       (.I0(\FPGA_REG_WRITE_DATA_reg[19]_i_4_n_0 ),
+        .I1(AUTOCORR_PHASE_BUFF[19]),
         .O(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[19]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'hB)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[19]_i_3 
-       (.I0(\FPGA_REG_WRITE_DATA_reg[19]_i_2_n_0 ),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
+       (.I0(\FPGA_REG_WRITE_DATA_reg[19]_i_4_n_0 ),
+        .I1(AUTOCORR_PHASE_BUFF[19]),
         .O(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[19]_i_3_n_0 ));
   LUT2 #(
     .INIT(4'hB)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[19]_i_4 
-       (.I0(\FPGA_REG_WRITE_DATA_reg[19]_i_2_n_0 ),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
+       (.I0(\FPGA_REG_WRITE_DATA_reg[19]_i_4_n_0 ),
+        .I1(AUTOCORR_PHASE_BUFF[19]),
         .O(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[19]_i_4_n_0 ));
   LUT3 #(
-    .INIT(8'h47)) 
+    .INIT(8'h1D)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[4]_i_2 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE4[4]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(AUTOCORR_PHASE_BUFF__0[4]),
+       (.I0(AUTOCORR_PHASE_BUFF[4]),
+        .I1(AUTOCORR_PHASE_BUFF[19]),
+        .I2(VAR_AUTOCORR_PHASE_1SAMPLE4[4]),
         .O(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[4]_i_2_n_0 ));
   LUT3 #(
-    .INIT(8'h47)) 
+    .INIT(8'h1D)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[4]_i_3 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE2[4]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(AUTOCORR_PHASE_BUFF__0[8]),
+       (.I0(AUTOCORR_PHASE_BUFF[8]),
+        .I1(AUTOCORR_PHASE_BUFF[19]),
+        .I2(VAR_AUTOCORR_PHASE_1SAMPLE2[4]),
         .O(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[4]_i_3_n_0 ));
   LUT3 #(
-    .INIT(8'h47)) 
+    .INIT(8'h1D)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[4]_i_4 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE2[3]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(AUTOCORR_PHASE_BUFF__0[7]),
+       (.I0(AUTOCORR_PHASE_BUFF[7]),
+        .I1(AUTOCORR_PHASE_BUFF[19]),
+        .I2(VAR_AUTOCORR_PHASE_1SAMPLE2[3]),
         .O(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[4]_i_4_n_0 ));
   LUT3 #(
-    .INIT(8'h47)) 
+    .INIT(8'h1D)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[4]_i_5 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE2[2]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(AUTOCORR_PHASE_BUFF__0[6]),
+       (.I0(AUTOCORR_PHASE_BUFF[6]),
+        .I1(AUTOCORR_PHASE_BUFF[19]),
+        .I2(VAR_AUTOCORR_PHASE_1SAMPLE2[2]),
         .O(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[4]_i_5_n_0 ));
   LUT3 #(
-    .INIT(8'h47)) 
+    .INIT(8'h1D)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[4]_i_6 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE2[1]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(AUTOCORR_PHASE_BUFF__0[5]),
+       (.I0(AUTOCORR_PHASE_BUFF[5]),
+        .I1(AUTOCORR_PHASE_BUFF[19]),
+        .I2(VAR_AUTOCORR_PHASE_1SAMPLE2[1]),
         .O(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[4]_i_6_n_0 ));
   LUT3 #(
-    .INIT(8'h47)) 
+    .INIT(8'h1D)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[8]_i_2 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE2[8]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(AUTOCORR_PHASE_BUFF__0[12]),
+       (.I0(AUTOCORR_PHASE_BUFF[12]),
+        .I1(AUTOCORR_PHASE_BUFF[19]),
+        .I2(VAR_AUTOCORR_PHASE_1SAMPLE2[8]),
         .O(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[8]_i_2_n_0 ));
   LUT3 #(
-    .INIT(8'h47)) 
+    .INIT(8'h1D)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[8]_i_3 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE2[7]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(AUTOCORR_PHASE_BUFF__0[11]),
+       (.I0(AUTOCORR_PHASE_BUFF[11]),
+        .I1(AUTOCORR_PHASE_BUFF[19]),
+        .I2(VAR_AUTOCORR_PHASE_1SAMPLE2[7]),
         .O(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[8]_i_3_n_0 ));
   LUT3 #(
-    .INIT(8'h47)) 
+    .INIT(8'h1D)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[8]_i_4 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE2[6]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(AUTOCORR_PHASE_BUFF__0[10]),
+       (.I0(AUTOCORR_PHASE_BUFF[10]),
+        .I1(AUTOCORR_PHASE_BUFF[19]),
+        .I2(VAR_AUTOCORR_PHASE_1SAMPLE2[6]),
         .O(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[8]_i_4_n_0 ));
   LUT3 #(
-    .INIT(8'h47)) 
+    .INIT(8'h1D)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[8]_i_5 
-       (.I0(VAR_AUTOCORR_PHASE_1SAMPLE2[5]),
-        .I1(AUTOCORR_PHASE_BUFF__0[19]),
-        .I2(AUTOCORR_PHASE_BUFF__0[9]),
+       (.I0(AUTOCORR_PHASE_BUFF[9]),
+        .I1(AUTOCORR_PHASE_BUFF[19]),
+        .I2(VAR_AUTOCORR_PHASE_1SAMPLE2[5]),
         .O(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[8]_i_5_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
@@ -11077,31 +10334,31 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
         .D(p_2_in),
-        .Q(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[0] ),
+        .Q(VAR_AUTOCORR_PHASE_1SAMPLE[0]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[10] 
        (.C(CLOCK),
         .CE(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
-        .D(in27[10]),
-        .Q(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[10] ),
+        .D(in25[10]),
+        .Q(VAR_AUTOCORR_PHASE_1SAMPLE[10]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[11] 
        (.C(CLOCK),
         .CE(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
-        .D(in27[11]),
-        .Q(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[11] ),
+        .D(in25[11]),
+        .Q(VAR_AUTOCORR_PHASE_1SAMPLE[11]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[12] 
        (.C(CLOCK),
         .CE(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
-        .D(in27[12]),
-        .Q(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[12] ),
+        .D(in25[12]),
+        .Q(VAR_AUTOCORR_PHASE_1SAMPLE[12]),
         .R(1'b0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[12]_i_1 
@@ -11109,39 +10366,39 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .CO({\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[12]_i_1_n_0 ,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[12]_i_1_n_1 ,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[12]_i_1_n_2 ,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[12]_i_1_n_3 }),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(in27[12:9]),
+        .O(in25[12:9]),
         .S({\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[12]_i_2_n_0 ,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[12]_i_3_n_0 ,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[12]_i_4_n_0 ,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[12]_i_5_n_0 }));
   FDRE #(
     .INIT(1'b0)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[13] 
        (.C(CLOCK),
         .CE(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
-        .D(in27[13]),
-        .Q(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[13] ),
+        .D(in25[13]),
+        .Q(VAR_AUTOCORR_PHASE_1SAMPLE[13]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[14] 
        (.C(CLOCK),
         .CE(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
-        .D(in27[14]),
-        .Q(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[14] ),
+        .D(in25[14]),
+        .Q(VAR_AUTOCORR_PHASE_1SAMPLE[14]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[15] 
        (.C(CLOCK),
         .CE(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
-        .D(in27[15]),
-        .Q(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[15] ),
+        .D(in25[15]),
+        .Q(VAR_AUTOCORR_PHASE_1SAMPLE[15]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[16] 
        (.C(CLOCK),
         .CE(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
-        .D(in27[16]),
-        .Q(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[16] ),
+        .D(in25[16]),
+        .Q(VAR_AUTOCORR_PHASE_1SAMPLE[16]),
         .R(1'b0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[16]_i_1 
@@ -11149,31 +10406,31 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .CO({\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[16]_i_1_n_0 ,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[16]_i_1_n_1 ,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[16]_i_1_n_2 ,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[16]_i_1_n_3 }),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(in27[16:13]),
+        .O(in25[16:13]),
         .S({\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[16]_i_2_n_0 ,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[16]_i_3_n_0 ,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[16]_i_4_n_0 ,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[16]_i_5_n_0 }));
   FDRE #(
     .INIT(1'b0)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[17] 
        (.C(CLOCK),
         .CE(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
-        .D(in27[17]),
-        .Q(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[17] ),
+        .D(in25[17]),
+        .Q(VAR_AUTOCORR_PHASE_1SAMPLE[17]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[18] 
        (.C(CLOCK),
         .CE(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
-        .D(in27[18]),
-        .Q(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[18] ),
+        .D(in25[18]),
+        .Q(VAR_AUTOCORR_PHASE_1SAMPLE[18]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[19] 
        (.C(CLOCK),
         .CE(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
-        .D(in27[19]),
-        .Q(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[19] ),
+        .D(in25[19]),
+        .Q(VAR_AUTOCORR_PHASE_1SAMPLE[19]),
         .R(1'b0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[19]_i_1 
@@ -11181,39 +10438,39 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .CO({\NLW_RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[19]_i_1_CO_UNCONNECTED [3:2],\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[19]_i_1_n_2 ,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[19]_i_1_n_3 }),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({\NLW_RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[19]_i_1_O_UNCONNECTED [3],in27[19:17]}),
+        .O({\NLW_RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[19]_i_1_O_UNCONNECTED [3],in25[19:17]}),
         .S({1'b0,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[19]_i_2_n_0 ,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[19]_i_3_n_0 ,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[19]_i_4_n_0 }));
   FDRE #(
     .INIT(1'b0)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[1] 
        (.C(CLOCK),
         .CE(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
-        .D(in27[1]),
-        .Q(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[1] ),
+        .D(in25[1]),
+        .Q(VAR_AUTOCORR_PHASE_1SAMPLE[1]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[2] 
        (.C(CLOCK),
         .CE(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
-        .D(in27[2]),
-        .Q(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[2] ),
+        .D(in25[2]),
+        .Q(VAR_AUTOCORR_PHASE_1SAMPLE[2]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[3] 
        (.C(CLOCK),
         .CE(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
-        .D(in27[3]),
-        .Q(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[3] ),
+        .D(in25[3]),
+        .Q(VAR_AUTOCORR_PHASE_1SAMPLE[3]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[4] 
        (.C(CLOCK),
         .CE(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
-        .D(in27[4]),
-        .Q(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[4] ),
+        .D(in25[4]),
+        .Q(VAR_AUTOCORR_PHASE_1SAMPLE[4]),
         .R(1'b0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[4]_i_1 
@@ -11221,39 +10478,39 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .CO({\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[4]_i_1_n_0 ,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[4]_i_1_n_1 ,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[4]_i_1_n_2 ,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[4]_i_1_n_3 }),
         .CYINIT(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[4]_i_2_n_0 ),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(in27[4:1]),
+        .O(in25[4:1]),
         .S({\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[4]_i_3_n_0 ,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[4]_i_4_n_0 ,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[4]_i_5_n_0 ,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[4]_i_6_n_0 }));
   FDRE #(
     .INIT(1'b0)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[5] 
        (.C(CLOCK),
         .CE(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
-        .D(in27[5]),
-        .Q(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[5] ),
+        .D(in25[5]),
+        .Q(VAR_AUTOCORR_PHASE_1SAMPLE[5]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[6] 
        (.C(CLOCK),
         .CE(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
-        .D(in27[6]),
-        .Q(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[6] ),
+        .D(in25[6]),
+        .Q(VAR_AUTOCORR_PHASE_1SAMPLE[6]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[7] 
        (.C(CLOCK),
         .CE(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
-        .D(in27[7]),
-        .Q(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[7] ),
+        .D(in25[7]),
+        .Q(VAR_AUTOCORR_PHASE_1SAMPLE[7]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[8] 
        (.C(CLOCK),
         .CE(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
-        .D(in27[8]),
-        .Q(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[8] ),
+        .D(in25[8]),
+        .Q(VAR_AUTOCORR_PHASE_1SAMPLE[8]),
         .R(1'b0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[8]_i_1 
@@ -11261,35 +10518,147 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .CO({\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[8]_i_1_n_0 ,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[8]_i_1_n_1 ,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[8]_i_1_n_2 ,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[8]_i_1_n_3 }),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(in27[8:5]),
+        .O(in25[8:5]),
         .S({\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[8]_i_2_n_0 ,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[8]_i_3_n_0 ,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[8]_i_4_n_0 ,\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[8]_i_5_n_0 }));
   FDRE #(
     .INIT(1'b0)) 
     \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[9] 
        (.C(CLOCK),
         .CE(FPGA_REG_WRITE_STROBE_PHASE_1_i_1_n_0),
-        .D(in27[9]),
-        .Q(\RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg_n_0_[9] ),
+        .D(in25[9]),
+        .Q(VAR_AUTOCORR_PHASE_1SAMPLE[9]),
         .R(1'b0));
+  CARRY4 \_inferred__15/i__carry 
+       (.CI(1'b0),
+        .CO({\_inferred__15/i__carry_n_0 ,\_inferred__15/i__carry_n_1 ,\_inferred__15/i__carry_n_2 ,\_inferred__15/i__carry_n_3 }),
+        .CYINIT(i__carry_i_1__0_n_0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O(ARG0[4:1]),
+        .S({i__carry_i_2__0_n_0,i__carry_i_3__0_n_0,i__carry_i_4__0_n_0,i__carry_i_5__0_n_0}));
+  CARRY4 \_inferred__15/i__carry__0 
+       (.CI(\_inferred__15/i__carry_n_0 ),
+        .CO({\_inferred__15/i__carry__0_n_0 ,\_inferred__15/i__carry__0_n_1 ,\_inferred__15/i__carry__0_n_2 ,\_inferred__15/i__carry__0_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O(ARG0[8:5]),
+        .S({i__carry__0_i_1__0_n_0,i__carry__0_i_2__0_n_0,i__carry__0_i_3__0_n_0,i__carry__0_i_4__0_n_0}));
+  CARRY4 \_inferred__15/i__carry__1 
+       (.CI(\_inferred__15/i__carry__0_n_0 ),
+        .CO({\_inferred__15/i__carry__1_n_0 ,\_inferred__15/i__carry__1_n_1 ,\_inferred__15/i__carry__1_n_2 ,\_inferred__15/i__carry__1_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O(ARG0[12:9]),
+        .S({i__carry__1_i_1__0_n_0,i__carry__1_i_2_n_0,i__carry__1_i_3__0_n_0,i__carry__1_i_4__0_n_0}));
+  CARRY4 \_inferred__15/i__carry__2 
+       (.CI(\_inferred__15/i__carry__1_n_0 ),
+        .CO({\_inferred__15/i__carry__2_n_0 ,\_inferred__15/i__carry__2_n_1 ,\_inferred__15/i__carry__2_n_2 ,\_inferred__15/i__carry__2_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O(ARG0[16:13]),
+        .S({i__carry__2_i_1__0_n_0,i__carry__2_i_2_n_0,i__carry__2_i_3__0_n_0,i__carry__2_i_4__0_n_0}));
+  CARRY4 \_inferred__15/i__carry__3 
+       (.CI(\_inferred__15/i__carry__2_n_0 ),
+        .CO({\_inferred__15/i__carry__3_n_0 ,\_inferred__15/i__carry__3_n_1 ,\_inferred__15/i__carry__3_n_2 ,\_inferred__15/i__carry__3_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O(ARG0[20:17]),
+        .S({i__carry__3_i_1_n_0,i__carry__3_i_2_n_0,i__carry__3_i_3_n_0,i__carry__3_i_4_n_0}));
+  CARRY4 \_inferred__15/i__carry__4 
+       (.CI(\_inferred__15/i__carry__3_n_0 ),
+        .CO({\_inferred__15/i__carry__4_n_0 ,\_inferred__15/i__carry__4_n_1 ,\_inferred__15/i__carry__4_n_2 ,\_inferred__15/i__carry__4_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O(ARG0[24:21]),
+        .S({i__carry__4_i_1_n_0,i__carry__4_i_2_n_0,i__carry__4_i_3_n_0,i__carry__4_i_4_n_0}));
+  CARRY4 \_inferred__15/i__carry__5 
+       (.CI(\_inferred__15/i__carry__4_n_0 ),
+        .CO({\_inferred__15/i__carry__5_n_0 ,\_inferred__15/i__carry__5_n_1 ,\_inferred__15/i__carry__5_n_2 ,\_inferred__15/i__carry__5_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O(ARG0[28:25]),
+        .S({i__carry__5_i_1_n_0,i__carry__5_i_2_n_0,i__carry__5_i_3_n_0,i__carry__5_i_4_n_0}));
+  CARRY4 \_inferred__15/i__carry__6 
+       (.CI(\_inferred__15/i__carry__5_n_0 ),
+        .CO({\NLW__inferred__15/i__carry__6_CO_UNCONNECTED [3],\_inferred__15/i__carry__6_n_1 ,\_inferred__15/i__carry__6_n_2 ,\_inferred__15/i__carry__6_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O({\NLW__inferred__15/i__carry__6_O_UNCONNECTED [3:2],ARG0[30:29]}),
+        .S({1'b0,i__carry__6_i_1_n_0,i__carry__6_i_2_n_0,i__carry__6_i_3_n_0}));
+  CARRY4 \_inferred__20/i__carry 
+       (.CI(1'b0),
+        .CO({\_inferred__20/i__carry_n_0 ,\_inferred__20/i__carry_n_1 ,\_inferred__20/i__carry_n_2 ,\_inferred__20/i__carry_n_3 }),
+        .CYINIT(i__carry_i_1__1_n_0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O({\_inferred__20/i__carry_n_4 ,\_inferred__20/i__carry_n_5 ,\_inferred__20/i__carry_n_6 ,\_inferred__20/i__carry_n_7 }),
+        .S({i__carry_i_2__1_n_0,i__carry_i_3__1_n_0,i__carry_i_4__1_n_0,i__carry_i_5__1_n_0}));
+  CARRY4 \_inferred__20/i__carry__0 
+       (.CI(\_inferred__20/i__carry_n_0 ),
+        .CO({\_inferred__20/i__carry__0_n_0 ,\_inferred__20/i__carry__0_n_1 ,\_inferred__20/i__carry__0_n_2 ,\_inferred__20/i__carry__0_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O({\_inferred__20/i__carry__0_n_4 ,\_inferred__20/i__carry__0_n_5 ,\_inferred__20/i__carry__0_n_6 ,\_inferred__20/i__carry__0_n_7 }),
+        .S({i__carry__0_i_1__1_n_0,i__carry__0_i_2__1_n_0,i__carry__0_i_3__1_n_0,i__carry__0_i_4__1_n_0}));
+  CARRY4 \_inferred__20/i__carry__1 
+       (.CI(\_inferred__20/i__carry__0_n_0 ),
+        .CO({\_inferred__20/i__carry__1_n_0 ,\_inferred__20/i__carry__1_n_1 ,\_inferred__20/i__carry__1_n_2 ,\_inferred__20/i__carry__1_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O({\_inferred__20/i__carry__1_n_4 ,\_inferred__20/i__carry__1_n_5 ,\_inferred__20/i__carry__1_n_6 ,\_inferred__20/i__carry__1_n_7 }),
+        .S({i__carry__1_i_1__1_n_0,i__carry__1_i_2__0_n_0,i__carry__1_i_3__1_n_0,i__carry__1_i_4__1_n_0}));
+  CARRY4 \_inferred__20/i__carry__2 
+       (.CI(\_inferred__20/i__carry__1_n_0 ),
+        .CO({\_inferred__20/i__carry__2_n_0 ,\_inferred__20/i__carry__2_n_1 ,\_inferred__20/i__carry__2_n_2 ,\_inferred__20/i__carry__2_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O({\_inferred__20/i__carry__2_n_4 ,\_inferred__20/i__carry__2_n_5 ,\_inferred__20/i__carry__2_n_6 ,\_inferred__20/i__carry__2_n_7 }),
+        .S({i__carry__2_i_1__1_n_0,i__carry__2_i_2__0_n_0,i__carry__2_i_3__1_n_0,i__carry__2_i_4__1_n_0}));
+  CARRY4 \_inferred__20/i__carry__3 
+       (.CI(\_inferred__20/i__carry__2_n_0 ),
+        .CO({\_inferred__20/i__carry__3_n_0 ,\_inferred__20/i__carry__3_n_1 ,\_inferred__20/i__carry__3_n_2 ,\_inferred__20/i__carry__3_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O({\_inferred__20/i__carry__3_n_4 ,\_inferred__20/i__carry__3_n_5 ,\_inferred__20/i__carry__3_n_6 ,\_inferred__20/i__carry__3_n_7 }),
+        .S({i__carry__3_i_1__0_n_0,i__carry__3_i_2__0_n_0,i__carry__3_i_3__0_n_0,i__carry__3_i_4__0_n_0}));
+  CARRY4 \_inferred__20/i__carry__4 
+       (.CI(\_inferred__20/i__carry__3_n_0 ),
+        .CO({\_inferred__20/i__carry__4_n_0 ,\_inferred__20/i__carry__4_n_1 ,\_inferred__20/i__carry__4_n_2 ,\_inferred__20/i__carry__4_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O({\_inferred__20/i__carry__4_n_4 ,\_inferred__20/i__carry__4_n_5 ,\_inferred__20/i__carry__4_n_6 ,\_inferred__20/i__carry__4_n_7 }),
+        .S({i__carry__4_i_1__0_n_0,i__carry__4_i_2__0_n_0,i__carry__4_i_3__0_n_0,i__carry__4_i_4__0_n_0}));
+  CARRY4 \_inferred__20/i__carry__5 
+       (.CI(\_inferred__20/i__carry__4_n_0 ),
+        .CO({\_inferred__20/i__carry__5_n_0 ,\_inferred__20/i__carry__5_n_1 ,\_inferred__20/i__carry__5_n_2 ,\_inferred__20/i__carry__5_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O({\_inferred__20/i__carry__5_n_4 ,\_inferred__20/i__carry__5_n_5 ,\_inferred__20/i__carry__5_n_6 ,\_inferred__20/i__carry__5_n_7 }),
+        .S({i__carry__5_i_1__0_n_0,i__carry__5_i_2__0_n_0,i__carry__5_i_3__0_n_0,i__carry__5_i_4__0_n_0}));
+  CARRY4 \_inferred__20/i__carry__6 
+       (.CI(\_inferred__20/i__carry__5_n_0 ),
+        .CO({\NLW__inferred__20/i__carry__6_CO_UNCONNECTED [3],\_inferred__20/i__carry__6_n_1 ,\_inferred__20/i__carry__6_n_2 ,\_inferred__20/i__carry__6_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O({\NLW__inferred__20/i__carry__6_O_UNCONNECTED [3:2],\_inferred__20/i__carry__6_n_6 ,\_inferred__20/i__carry__6_n_7 }),
+        .S({1'b0,i__carry__6_i_1__0_n_0,i__carry__6_i_2__0_n_0,i__carry__6_i_3__0_n_0}));
   LUT6 #(
-    .INIT(64'hAC0AAAA0AA0AAAA0)) 
+    .INIT(64'hCCACCCCC00CCCC00)) 
     \compute_lts_autocorr_process.VAR_COMPLETE_COMPUTATION[0]_i_1 
-       (.I0(\compute_lts_autocorr_process.VAR_COMPLETE_COMPUTATION_reg_n_0_[0] ),
-        .I1(\compute_lts_autocorr_process.VAR_COMPLETE_COMPUTATION_reg_n_0_[1] ),
-        .I2(RX_STATE_reg[0]),
-        .I3(RX_STATE_reg[1]),
+       (.I0(VAR_COMPLETE_COMPUTATION[1]),
+        .I1(VAR_COMPLETE_COMPUTATION[0]),
+        .I2(ROTATION_DATA_OUT_STROBE),
+        .I3(RX_STATE_reg[0]),
         .I4(RX_STATE_reg[2]),
-        .I5(ROTATION_DATA_OUT_STROBE),
+        .I5(RX_STATE_reg[1]),
         .O(\compute_lts_autocorr_process.VAR_COMPLETE_COMPUTATION[0]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hC8FCCCC0CCFCCCC0)) 
+    .INIT(64'hAA8AAAAAFFAAAA00)) 
     \compute_lts_autocorr_process.VAR_COMPLETE_COMPUTATION[1]_i_1 
-       (.I0(\compute_lts_autocorr_process.VAR_COMPLETE_COMPUTATION_reg_n_0_[0] ),
-        .I1(\compute_lts_autocorr_process.VAR_COMPLETE_COMPUTATION_reg_n_0_[1] ),
-        .I2(RX_STATE_reg[0]),
-        .I3(RX_STATE_reg[1]),
+       (.I0(VAR_COMPLETE_COMPUTATION[1]),
+        .I1(VAR_COMPLETE_COMPUTATION[0]),
+        .I2(ROTATION_DATA_OUT_STROBE),
+        .I3(RX_STATE_reg[0]),
         .I4(RX_STATE_reg[2]),
-        .I5(ROTATION_DATA_OUT_STROBE),
+        .I5(RX_STATE_reg[1]),
         .O(\compute_lts_autocorr_process.VAR_COMPLETE_COMPUTATION[1]_i_1_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
@@ -11297,7 +10666,7 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(1'b1),
         .D(\compute_lts_autocorr_process.VAR_COMPLETE_COMPUTATION[0]_i_1_n_0 ),
-        .Q(\compute_lts_autocorr_process.VAR_COMPLETE_COMPUTATION_reg_n_0_[0] ),
+        .Q(VAR_COMPLETE_COMPUTATION[0]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -11305,83 +10674,87 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.C(CLOCK),
         .CE(1'b1),
         .D(\compute_lts_autocorr_process.VAR_COMPLETE_COMPUTATION[1]_i_1_n_0 ),
-        .Q(\compute_lts_autocorr_process.VAR_COMPLETE_COMPUTATION_reg_n_0_[1] ),
+        .Q(VAR_COMPLETE_COMPUTATION[1]),
         .R(1'b0));
   LUT2 #(
     .INIT(4'hE)) 
     i__carry__0_i_1
-       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[14] ),
-        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[15] ),
+       (.I0(COUNTER[14]),
+        .I1(COUNTER[15]),
         .O(i__carry__0_i_1_n_0));
   LUT3 #(
     .INIT(8'h47)) 
     i__carry__0_i_1__0
-       (.I0(i__carry__0_i_5__0_n_4),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[16] ),
+       (.I0(ARG2[16]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_I_ACCUMULATOR[16]),
         .O(i__carry__0_i_1__0_n_0));
-  LUT2 #(
-    .INIT(4'hE)) 
+  LUT3 #(
+    .INIT(8'h47)) 
     i__carry__0_i_1__1
-       (.I0(COUNTER[14]),
-        .I1(COUNTER[15]),
+       (.I0(i__carry__0_i_5__1_n_4),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_Q_ACCUMULATOR[16]),
         .O(i__carry__0_i_1__1_n_0));
   LUT2 #(
     .INIT(4'hE)) 
     i__carry__0_i_2
-       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[12] ),
-        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[13] ),
+       (.I0(COUNTER[12]),
+        .I1(COUNTER[13]),
         .O(i__carry__0_i_2_n_0));
   LUT3 #(
     .INIT(8'h47)) 
     i__carry__0_i_2__0
-       (.I0(i__carry__0_i_5__0_n_5),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[15] ),
+       (.I0(ARG2[15]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_I_ACCUMULATOR[15]),
         .O(i__carry__0_i_2__0_n_0));
-  LUT2 #(
-    .INIT(4'hE)) 
+  LUT3 #(
+    .INIT(8'h47)) 
     i__carry__0_i_2__1
-       (.I0(COUNTER[12]),
-        .I1(COUNTER[13]),
+       (.I0(i__carry__0_i_5__1_n_5),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_Q_ACCUMULATOR[15]),
         .O(i__carry__0_i_2__1_n_0));
   LUT2 #(
     .INIT(4'hE)) 
     i__carry__0_i_3
-       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[10] ),
-        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[11] ),
+       (.I0(COUNTER[10]),
+        .I1(COUNTER[11]),
         .O(i__carry__0_i_3_n_0));
   LUT3 #(
     .INIT(8'h47)) 
     i__carry__0_i_3__0
-       (.I0(i__carry__0_i_5__0_n_6),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[14] ),
+       (.I0(ARG2[14]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_I_ACCUMULATOR[14]),
         .O(i__carry__0_i_3__0_n_0));
-  LUT2 #(
-    .INIT(4'hE)) 
+  LUT3 #(
+    .INIT(8'h47)) 
     i__carry__0_i_3__1
-       (.I0(COUNTER[10]),
-        .I1(COUNTER[11]),
+       (.I0(i__carry__0_i_5__1_n_6),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_Q_ACCUMULATOR[14]),
         .O(i__carry__0_i_3__1_n_0));
   LUT2 #(
     .INIT(4'hE)) 
     i__carry__0_i_4
-       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[8] ),
-        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[9] ),
+       (.I0(COUNTER[9]),
+        .I1(COUNTER[8]),
         .O(i__carry__0_i_4_n_0));
   LUT3 #(
     .INIT(8'h47)) 
     i__carry__0_i_4__0
-       (.I0(i__carry__0_i_5__0_n_7),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[13] ),
+       (.I0(ARG2[13]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_I_ACCUMULATOR[13]),
         .O(i__carry__0_i_4__0_n_0));
-  LUT2 #(
-    .INIT(4'hE)) 
+  LUT3 #(
+    .INIT(8'h47)) 
     i__carry__0_i_4__1
-       (.I0(COUNTER[8]),
-        .I1(COUNTER[9]),
+       (.I0(i__carry__0_i_5__1_n_7),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_Q_ACCUMULATOR[13]),
         .O(i__carry__0_i_4__1_n_0));
   LUT2 #(
     .INIT(4'h1)) 
@@ -11395,14 +10768,16 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .CO({i__carry__0_i_5__0_n_0,i__carry__0_i_5__0_n_1,i__carry__0_i_5__0_n_2,i__carry__0_i_5__0_n_3}),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({i__carry__0_i_5__0_n_4,i__carry__0_i_5__0_n_5,i__carry__0_i_5__0_n_6,i__carry__0_i_5__0_n_7}),
+        .O(ARG2[16:13]),
         .S({i__carry__0_i_6__0_n_0,i__carry__0_i_7__0_n_0,i__carry__0_i_8__0_n_0,i__carry__0_i_9_n_0}));
-  LUT2 #(
-    .INIT(4'h1)) 
-    i__carry__0_i_5__1
-       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[15] ),
-        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[14] ),
-        .O(i__carry__0_i_5__1_n_0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY4 i__carry__0_i_5__1
+       (.CI(i__carry_i_6__1_n_0),
+        .CO({i__carry__0_i_5__1_n_0,i__carry__0_i_5__1_n_1,i__carry__0_i_5__1_n_2,i__carry__0_i_5__1_n_3}),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O({i__carry__0_i_5__1_n_4,i__carry__0_i_5__1_n_5,i__carry__0_i_5__1_n_6,i__carry__0_i_5__1_n_7}),
+        .S({i__carry__0_i_6__1_n_0,i__carry__0_i_7__1_n_0,i__carry__0_i_8__1_n_0,i__carry__0_i_9__0_n_0}));
   LUT2 #(
     .INIT(4'h1)) 
     i__carry__0_i_6
@@ -11412,13 +10787,12 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   LUT1 #(
     .INIT(2'h1)) 
     i__carry__0_i_6__0
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[16] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[16]),
         .O(i__carry__0_i_6__0_n_0));
-  LUT2 #(
-    .INIT(4'h1)) 
+  LUT1 #(
+    .INIT(2'h1)) 
     i__carry__0_i_6__1
-       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[13] ),
-        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[12] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[16]),
         .O(i__carry__0_i_6__1_n_0));
   LUT2 #(
     .INIT(4'h1)) 
@@ -11429,67 +10803,72 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   LUT1 #(
     .INIT(2'h1)) 
     i__carry__0_i_7__0
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[15] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[15]),
         .O(i__carry__0_i_7__0_n_0));
-  LUT2 #(
-    .INIT(4'h1)) 
+  LUT1 #(
+    .INIT(2'h1)) 
     i__carry__0_i_7__1
-       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[11] ),
-        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[10] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[15]),
         .O(i__carry__0_i_7__1_n_0));
   LUT2 #(
     .INIT(4'h1)) 
     i__carry__0_i_8
-       (.I0(COUNTER[9]),
-        .I1(COUNTER[8]),
+       (.I0(COUNTER[8]),
+        .I1(COUNTER[9]),
         .O(i__carry__0_i_8_n_0));
   LUT1 #(
     .INIT(2'h1)) 
     i__carry__0_i_8__0
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[14] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[14]),
         .O(i__carry__0_i_8__0_n_0));
-  LUT2 #(
-    .INIT(4'h1)) 
+  LUT1 #(
+    .INIT(2'h1)) 
     i__carry__0_i_8__1
-       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[9] ),
-        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[8] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[14]),
         .O(i__carry__0_i_8__1_n_0));
   LUT1 #(
     .INIT(2'h1)) 
     i__carry__0_i_9
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[13] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[13]),
         .O(i__carry__0_i_9_n_0));
+  LUT1 #(
+    .INIT(2'h1)) 
+    i__carry__0_i_9__0
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[13]),
+        .O(i__carry__0_i_9__0_n_0));
   LUT2 #(
     .INIT(4'hE)) 
     i__carry__1_i_1
-       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[22] ),
-        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[23] ),
+       (.I0(COUNTER[22]),
+        .I1(COUNTER[23]),
         .O(i__carry__1_i_1_n_0));
   LUT3 #(
     .INIT(8'h47)) 
     i__carry__1_i_1__0
-       (.I0(i__carry__1_i_5__0_n_4),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[20] ),
+       (.I0(ARG2[20]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_I_ACCUMULATOR[20]),
         .O(i__carry__1_i_1__0_n_0));
-  LUT2 #(
-    .INIT(4'hE)) 
+  LUT3 #(
+    .INIT(8'h47)) 
     i__carry__1_i_1__1
-       (.I0(COUNTER[22]),
-        .I1(COUNTER[23]),
+       (.I0(i__carry__1_i_5__1_n_4),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_Q_ACCUMULATOR[20]),
         .O(i__carry__1_i_1__1_n_0));
-  LUT2 #(
-    .INIT(4'hE)) 
+  LUT3 #(
+    .INIT(8'h47)) 
     i__carry__1_i_2
-       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[20] ),
-        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[21] ),
+       (.I0(ARG2[19]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_I_ACCUMULATOR[19]),
         .O(i__carry__1_i_2_n_0));
   LUT3 #(
     .INIT(8'h47)) 
     i__carry__1_i_2__0
-       (.I0(i__carry__1_i_5__0_n_5),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[19] ),
+       (.I0(i__carry__1_i_5__1_n_5),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_Q_ACCUMULATOR[19]),
         .O(i__carry__1_i_2__0_n_0));
   LUT2 #(
     .INIT(4'hE)) 
@@ -11500,40 +10879,42 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   LUT2 #(
     .INIT(4'hE)) 
     i__carry__1_i_3
-       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[18] ),
-        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[19] ),
+       (.I0(COUNTER[18]),
+        .I1(COUNTER[19]),
         .O(i__carry__1_i_3_n_0));
   LUT3 #(
     .INIT(8'h47)) 
     i__carry__1_i_3__0
-       (.I0(i__carry__1_i_5__0_n_6),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[18] ),
+       (.I0(ARG2[18]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_I_ACCUMULATOR[18]),
         .O(i__carry__1_i_3__0_n_0));
-  LUT2 #(
-    .INIT(4'hE)) 
+  LUT3 #(
+    .INIT(8'h47)) 
     i__carry__1_i_3__1
-       (.I0(COUNTER[18]),
-        .I1(COUNTER[19]),
+       (.I0(i__carry__1_i_5__1_n_6),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_Q_ACCUMULATOR[18]),
         .O(i__carry__1_i_3__1_n_0));
   LUT2 #(
     .INIT(4'hE)) 
     i__carry__1_i_4
-       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[16] ),
-        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[17] ),
+       (.I0(COUNTER[16]),
+        .I1(COUNTER[17]),
         .O(i__carry__1_i_4_n_0));
   LUT3 #(
     .INIT(8'h47)) 
     i__carry__1_i_4__0
-       (.I0(i__carry__1_i_5__0_n_7),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[17] ),
+       (.I0(ARG2[17]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_I_ACCUMULATOR[17]),
         .O(i__carry__1_i_4__0_n_0));
-  LUT2 #(
-    .INIT(4'hE)) 
+  LUT3 #(
+    .INIT(8'h47)) 
     i__carry__1_i_4__1
-       (.I0(COUNTER[16]),
-        .I1(COUNTER[17]),
+       (.I0(i__carry__1_i_5__1_n_7),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_Q_ACCUMULATOR[17]),
         .O(i__carry__1_i_4__1_n_0));
   LUT2 #(
     .INIT(4'h1)) 
@@ -11547,14 +10928,16 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .CO({i__carry__1_i_5__0_n_0,i__carry__1_i_5__0_n_1,i__carry__1_i_5__0_n_2,i__carry__1_i_5__0_n_3}),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({i__carry__1_i_5__0_n_4,i__carry__1_i_5__0_n_5,i__carry__1_i_5__0_n_6,i__carry__1_i_5__0_n_7}),
+        .O(ARG2[20:17]),
         .S({i__carry__1_i_6__0_n_0,i__carry__1_i_7__0_n_0,i__carry__1_i_8__0_n_0,i__carry__1_i_9_n_0}));
-  LUT2 #(
-    .INIT(4'h1)) 
-    i__carry__1_i_5__1
-       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[23] ),
-        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[22] ),
-        .O(i__carry__1_i_5__1_n_0));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY4 i__carry__1_i_5__1
+       (.CI(i__carry__0_i_5__1_n_0),
+        .CO({i__carry__1_i_5__1_n_0,i__carry__1_i_5__1_n_1,i__carry__1_i_5__1_n_2,i__carry__1_i_5__1_n_3}),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O({i__carry__1_i_5__1_n_4,i__carry__1_i_5__1_n_5,i__carry__1_i_5__1_n_6,i__carry__1_i_5__1_n_7}),
+        .S({i__carry__1_i_6__1_n_0,i__carry__1_i_7__1_n_0,i__carry__1_i_8__1_n_0,i__carry__1_i_9__0_n_0}));
   LUT2 #(
     .INIT(4'h1)) 
     i__carry__1_i_6
@@ -11564,13 +10947,12 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   LUT1 #(
     .INIT(2'h1)) 
     i__carry__1_i_6__0
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[20] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[20]),
         .O(i__carry__1_i_6__0_n_0));
-  LUT2 #(
-    .INIT(4'h1)) 
+  LUT1 #(
+    .INIT(2'h1)) 
     i__carry__1_i_6__1
-       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[21] ),
-        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[20] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[20]),
         .O(i__carry__1_i_6__1_n_0));
   LUT2 #(
     .INIT(4'h1)) 
@@ -11581,13 +10963,12 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   LUT1 #(
     .INIT(2'h1)) 
     i__carry__1_i_7__0
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[19] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[19]),
         .O(i__carry__1_i_7__0_n_0));
-  LUT2 #(
-    .INIT(4'h1)) 
+  LUT1 #(
+    .INIT(2'h1)) 
     i__carry__1_i_7__1
-       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[19] ),
-        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[18] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[19]),
         .O(i__carry__1_i_7__1_n_0));
   LUT2 #(
     .INIT(4'h1)) 
@@ -11598,75 +10979,82 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   LUT1 #(
     .INIT(2'h1)) 
     i__carry__1_i_8__0
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[18] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[18]),
         .O(i__carry__1_i_8__0_n_0));
-  LUT2 #(
-    .INIT(4'h1)) 
+  LUT1 #(
+    .INIT(2'h1)) 
     i__carry__1_i_8__1
-       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[17] ),
-        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[16] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[18]),
         .O(i__carry__1_i_8__1_n_0));
   LUT1 #(
     .INIT(2'h1)) 
     i__carry__1_i_9
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[17] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[17]),
         .O(i__carry__1_i_9_n_0));
+  LUT1 #(
+    .INIT(2'h1)) 
+    i__carry__1_i_9__0
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[17]),
+        .O(i__carry__1_i_9__0_n_0));
   LUT2 #(
     .INIT(4'h2)) 
     i__carry__2_i_1
-       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[30] ),
-        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[31] ),
-        .O(i__carry__2_i_1_n_0));
-  LUT2 #(
-    .INIT(4'h2)) 
-    i__carry__2_i_1__0
        (.I0(COUNTER[30]),
         .I1(COUNTER[31]),
+        .O(i__carry__2_i_1_n_0));
+  LUT3 #(
+    .INIT(8'h47)) 
+    i__carry__2_i_1__0
+       (.I0(ARG2[24]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_I_ACCUMULATOR[24]),
         .O(i__carry__2_i_1__0_n_0));
   LUT3 #(
     .INIT(8'h47)) 
     i__carry__2_i_1__1
-       (.I0(i__carry__2_i_5__0_n_4),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[24] ),
+       (.I0(i__carry__2_i_5__1_n_4),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_Q_ACCUMULATOR[24]),
         .O(i__carry__2_i_1__1_n_0));
-  LUT2 #(
-    .INIT(4'hE)) 
-    i__carry__2_i_2
-       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[28] ),
-        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[29] ),
-        .O(i__carry__2_i_2_n_0));
-  LUT2 #(
-    .INIT(4'hE)) 
-    i__carry__2_i_2__0
-       (.I0(COUNTER[28]),
-        .I1(COUNTER[29]),
-        .O(i__carry__2_i_2__0_n_0));
   LUT3 #(
     .INIT(8'h47)) 
+    i__carry__2_i_2
+       (.I0(ARG2[23]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_I_ACCUMULATOR[23]),
+        .O(i__carry__2_i_2_n_0));
+  LUT3 #(
+    .INIT(8'h47)) 
+    i__carry__2_i_2__0
+       (.I0(i__carry__2_i_5__1_n_5),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_Q_ACCUMULATOR[23]),
+        .O(i__carry__2_i_2__0_n_0));
+  LUT2 #(
+    .INIT(4'hE)) 
     i__carry__2_i_2__1
-       (.I0(i__carry__2_i_5__0_n_5),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[23] ),
+       (.I0(COUNTER[28]),
+        .I1(COUNTER[29]),
         .O(i__carry__2_i_2__1_n_0));
   LUT2 #(
     .INIT(4'hE)) 
     i__carry__2_i_3
-       (.I0(COUNTER[26]),
-        .I1(COUNTER[27]),
+       (.I0(COUNTER[27]),
+        .I1(COUNTER[26]),
         .O(i__carry__2_i_3_n_0));
-  LUT2 #(
-    .INIT(4'hE)) 
+  LUT3 #(
+    .INIT(8'h47)) 
     i__carry__2_i_3__0
-       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[26] ),
-        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[27] ),
+       (.I0(ARG2[22]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_I_ACCUMULATOR[22]),
         .O(i__carry__2_i_3__0_n_0));
   LUT3 #(
     .INIT(8'h47)) 
     i__carry__2_i_3__1
-       (.I0(i__carry__2_i_5__0_n_6),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[22] ),
+       (.I0(i__carry__2_i_5__1_n_6),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_Q_ACCUMULATOR[22]),
         .O(i__carry__2_i_3__1_n_0));
   LUT2 #(
     .INIT(4'hE)) 
@@ -11674,24 +11062,25 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
        (.I0(COUNTER[24]),
         .I1(COUNTER[25]),
         .O(i__carry__2_i_4_n_0));
-  LUT2 #(
-    .INIT(4'hE)) 
+  LUT3 #(
+    .INIT(8'h47)) 
     i__carry__2_i_4__0
-       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[24] ),
-        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[25] ),
+       (.I0(ARG2[21]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_I_ACCUMULATOR[21]),
         .O(i__carry__2_i_4__0_n_0));
   LUT3 #(
     .INIT(8'h47)) 
     i__carry__2_i_4__1
-       (.I0(i__carry__2_i_5__0_n_7),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[21] ),
+       (.I0(i__carry__2_i_5__1_n_7),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_Q_ACCUMULATOR[21]),
         .O(i__carry__2_i_4__1_n_0));
   LUT2 #(
     .INIT(4'h1)) 
     i__carry__2_i_5
-       (.I0(COUNTER[30]),
-        .I1(COUNTER[31]),
+       (.I0(COUNTER[31]),
+        .I1(COUNTER[30]),
         .O(i__carry__2_i_5_n_0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 i__carry__2_i_5__0
@@ -11699,47 +11088,47 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
         .CO({i__carry__2_i_5__0_n_0,i__carry__2_i_5__0_n_1,i__carry__2_i_5__0_n_2,i__carry__2_i_5__0_n_3}),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({i__carry__2_i_5__0_n_4,i__carry__2_i_5__0_n_5,i__carry__2_i_5__0_n_6,i__carry__2_i_5__0_n_7}),
-        .S({i__carry__2_i_6_n_0,i__carry__2_i_7__0_n_0,i__carry__2_i_8__0_n_0,i__carry__2_i_9_n_0}));
+        .O(ARG2[24:21]),
+        .S({i__carry__2_i_6__0_n_0,i__carry__2_i_7_n_0,i__carry__2_i_8__0_n_0,i__carry__2_i_9_n_0}));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY4 i__carry__2_i_5__1
+       (.CI(i__carry__1_i_5__1_n_0),
+        .CO({i__carry__2_i_5__1_n_0,i__carry__2_i_5__1_n_1,i__carry__2_i_5__1_n_2,i__carry__2_i_5__1_n_3}),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O({i__carry__2_i_5__1_n_4,i__carry__2_i_5__1_n_5,i__carry__2_i_5__1_n_6,i__carry__2_i_5__1_n_7}),
+        .S({i__carry__2_i_6__1_n_0,i__carry__2_i_7__0_n_0,i__carry__2_i_8__1_n_0,i__carry__2_i_9__0_n_0}));
   LUT2 #(
     .INIT(4'h1)) 
-    i__carry__2_i_5__1
-       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[30] ),
-        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[31] ),
-        .O(i__carry__2_i_5__1_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
     i__carry__2_i_6
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[24] ),
-        .O(i__carry__2_i_6_n_0));
-  LUT2 #(
-    .INIT(4'h1)) 
-    i__carry__2_i_6__0
-       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[29] ),
-        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[28] ),
-        .O(i__carry__2_i_6__0_n_0));
-  LUT2 #(
-    .INIT(4'h1)) 
-    i__carry__2_i_6__1
        (.I0(COUNTER[29]),
         .I1(COUNTER[28]),
+        .O(i__carry__2_i_6_n_0));
+  LUT1 #(
+    .INIT(2'h1)) 
+    i__carry__2_i_6__0
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[24]),
+        .O(i__carry__2_i_6__0_n_0));
+  LUT1 #(
+    .INIT(2'h1)) 
+    i__carry__2_i_6__1
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[24]),
         .O(i__carry__2_i_6__1_n_0));
-  LUT2 #(
-    .INIT(4'h1)) 
+  LUT1 #(
+    .INIT(2'h1)) 
     i__carry__2_i_7
-       (.I0(COUNTER[27]),
-        .I1(COUNTER[26]),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[23]),
         .O(i__carry__2_i_7_n_0));
   LUT1 #(
     .INIT(2'h1)) 
     i__carry__2_i_7__0
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[23] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[23]),
         .O(i__carry__2_i_7__0_n_0));
   LUT2 #(
     .INIT(4'h1)) 
     i__carry__2_i_7__1
-       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[27] ),
-        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[26] ),
+       (.I0(COUNTER[26]),
+        .I1(COUNTER[27]),
         .O(i__carry__2_i_7__1_n_0));
   LUT2 #(
     .INIT(4'h1)) 
@@ -11750,383 +11139,619 @@ module block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
   LUT1 #(
     .INIT(2'h1)) 
     i__carry__2_i_8__0
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[22] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[22]),
         .O(i__carry__2_i_8__0_n_0));
-  LUT2 #(
-    .INIT(4'h1)) 
+  LUT1 #(
+    .INIT(2'h1)) 
     i__carry__2_i_8__1
-       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[25] ),
-        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[24] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[22]),
         .O(i__carry__2_i_8__1_n_0));
   LUT1 #(
     .INIT(2'h1)) 
     i__carry__2_i_9
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[21] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[21]),
         .O(i__carry__2_i_9_n_0));
+  LUT1 #(
+    .INIT(2'h1)) 
+    i__carry__2_i_9__0
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[21]),
+        .O(i__carry__2_i_9__0_n_0));
   LUT3 #(
     .INIT(8'h47)) 
     i__carry__3_i_1
-       (.I0(i__carry__3_i_5_n_4),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[28] ),
+       (.I0(ARG2[28]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_I_ACCUMULATOR[28]),
         .O(i__carry__3_i_1_n_0));
   LUT3 #(
     .INIT(8'h47)) 
+    i__carry__3_i_1__0
+       (.I0(i__carry__3_i_5__0_n_4),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_Q_ACCUMULATOR[28]),
+        .O(i__carry__3_i_1__0_n_0));
+  LUT3 #(
+    .INIT(8'h47)) 
     i__carry__3_i_2
-       (.I0(i__carry__3_i_5_n_5),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[27] ),
+       (.I0(ARG2[27]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_I_ACCUMULATOR[27]),
         .O(i__carry__3_i_2_n_0));
   LUT3 #(
     .INIT(8'h47)) 
+    i__carry__3_i_2__0
+       (.I0(i__carry__3_i_5__0_n_5),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_Q_ACCUMULATOR[27]),
+        .O(i__carry__3_i_2__0_n_0));
+  LUT3 #(
+    .INIT(8'h47)) 
     i__carry__3_i_3
-       (.I0(i__carry__3_i_5_n_6),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[26] ),
+       (.I0(ARG2[26]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_I_ACCUMULATOR[26]),
         .O(i__carry__3_i_3_n_0));
   LUT3 #(
     .INIT(8'h47)) 
+    i__carry__3_i_3__0
+       (.I0(i__carry__3_i_5__0_n_6),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_Q_ACCUMULATOR[26]),
+        .O(i__carry__3_i_3__0_n_0));
+  LUT3 #(
+    .INIT(8'h47)) 
     i__carry__3_i_4
-       (.I0(i__carry__3_i_5_n_7),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[25] ),
+       (.I0(ARG2[25]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_I_ACCUMULATOR[25]),
         .O(i__carry__3_i_4_n_0));
+  LUT3 #(
+    .INIT(8'h47)) 
+    i__carry__3_i_4__0
+       (.I0(i__carry__3_i_5__0_n_7),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_Q_ACCUMULATOR[25]),
+        .O(i__carry__3_i_4__0_n_0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 i__carry__3_i_5
        (.CI(i__carry__2_i_5__0_n_0),
         .CO({i__carry__3_i_5_n_0,i__carry__3_i_5_n_1,i__carry__3_i_5_n_2,i__carry__3_i_5_n_3}),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({i__carry__3_i_5_n_4,i__carry__3_i_5_n_5,i__carry__3_i_5_n_6,i__carry__3_i_5_n_7}),
+        .O(ARG2[28:25]),
         .S({i__carry__3_i_6_n_0,i__carry__3_i_7_n_0,i__carry__3_i_8_n_0,i__carry__3_i_9_n_0}));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY4 i__carry__3_i_5__0
+       (.CI(i__carry__2_i_5__1_n_0),
+        .CO({i__carry__3_i_5__0_n_0,i__carry__3_i_5__0_n_1,i__carry__3_i_5__0_n_2,i__carry__3_i_5__0_n_3}),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O({i__carry__3_i_5__0_n_4,i__carry__3_i_5__0_n_5,i__carry__3_i_5__0_n_6,i__carry__3_i_5__0_n_7}),
+        .S({i__carry__3_i_6__0_n_0,i__carry__3_i_7__0_n_0,i__carry__3_i_8__0_n_0,i__carry__3_i_9__0_n_0}));
   LUT1 #(
     .INIT(2'h1)) 
     i__carry__3_i_6
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[28] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[28]),
         .O(i__carry__3_i_6_n_0));
   LUT1 #(
     .INIT(2'h1)) 
+    i__carry__3_i_6__0
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[28]),
+        .O(i__carry__3_i_6__0_n_0));
+  LUT1 #(
+    .INIT(2'h1)) 
     i__carry__3_i_7
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[27] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[27]),
         .O(i__carry__3_i_7_n_0));
   LUT1 #(
     .INIT(2'h1)) 
+    i__carry__3_i_7__0
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[27]),
+        .O(i__carry__3_i_7__0_n_0));
+  LUT1 #(
+    .INIT(2'h1)) 
     i__carry__3_i_8
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[26] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[26]),
         .O(i__carry__3_i_8_n_0));
   LUT1 #(
     .INIT(2'h1)) 
+    i__carry__3_i_8__0
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[26]),
+        .O(i__carry__3_i_8__0_n_0));
+  LUT1 #(
+    .INIT(2'h1)) 
     i__carry__3_i_9
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[25] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[25]),
         .O(i__carry__3_i_9_n_0));
+  LUT1 #(
+    .INIT(2'h1)) 
+    i__carry__3_i_9__0
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[25]),
+        .O(i__carry__3_i_9__0_n_0));
   LUT3 #(
     .INIT(8'h47)) 
     i__carry__4_i_1
-       (.I0(i__carry__4_i_5_n_4),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[32] ),
+       (.I0(ARG2[32]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_I_ACCUMULATOR[32]),
         .O(i__carry__4_i_1_n_0));
   LUT3 #(
     .INIT(8'h47)) 
+    i__carry__4_i_1__0
+       (.I0(i__carry__4_i_5__0_n_4),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_Q_ACCUMULATOR[32]),
+        .O(i__carry__4_i_1__0_n_0));
+  LUT3 #(
+    .INIT(8'h47)) 
     i__carry__4_i_2
-       (.I0(i__carry__4_i_5_n_5),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[31] ),
+       (.I0(ARG2[31]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_I_ACCUMULATOR[31]),
         .O(i__carry__4_i_2_n_0));
   LUT3 #(
     .INIT(8'h47)) 
+    i__carry__4_i_2__0
+       (.I0(i__carry__4_i_5__0_n_5),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_Q_ACCUMULATOR[31]),
+        .O(i__carry__4_i_2__0_n_0));
+  LUT3 #(
+    .INIT(8'h47)) 
     i__carry__4_i_3
-       (.I0(i__carry__4_i_5_n_6),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[30] ),
+       (.I0(ARG2[30]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_I_ACCUMULATOR[30]),
         .O(i__carry__4_i_3_n_0));
   LUT3 #(
     .INIT(8'h47)) 
+    i__carry__4_i_3__0
+       (.I0(i__carry__4_i_5__0_n_6),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_Q_ACCUMULATOR[30]),
+        .O(i__carry__4_i_3__0_n_0));
+  LUT3 #(
+    .INIT(8'h47)) 
     i__carry__4_i_4
-       (.I0(i__carry__4_i_5_n_7),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[29] ),
+       (.I0(ARG2[29]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_I_ACCUMULATOR[29]),
         .O(i__carry__4_i_4_n_0));
+  LUT3 #(
+    .INIT(8'h47)) 
+    i__carry__4_i_4__0
+       (.I0(i__carry__4_i_5__0_n_7),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_Q_ACCUMULATOR[29]),
+        .O(i__carry__4_i_4__0_n_0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 i__carry__4_i_5
        (.CI(i__carry__3_i_5_n_0),
         .CO({i__carry__4_i_5_n_0,i__carry__4_i_5_n_1,i__carry__4_i_5_n_2,i__carry__4_i_5_n_3}),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({i__carry__4_i_5_n_4,i__carry__4_i_5_n_5,i__carry__4_i_5_n_6,i__carry__4_i_5_n_7}),
+        .O(ARG2[32:29]),
         .S({i__carry__4_i_6_n_0,i__carry__4_i_7_n_0,i__carry__4_i_8_n_0,i__carry__4_i_9_n_0}));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY4 i__carry__4_i_5__0
+       (.CI(i__carry__3_i_5__0_n_0),
+        .CO({i__carry__4_i_5__0_n_0,i__carry__4_i_5__0_n_1,i__carry__4_i_5__0_n_2,i__carry__4_i_5__0_n_3}),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O({i__carry__4_i_5__0_n_4,i__carry__4_i_5__0_n_5,i__carry__4_i_5__0_n_6,i__carry__4_i_5__0_n_7}),
+        .S({i__carry__4_i_6__0_n_0,i__carry__4_i_7__0_n_0,i__carry__4_i_8__0_n_0,i__carry__4_i_9__0_n_0}));
   LUT1 #(
     .INIT(2'h1)) 
     i__carry__4_i_6
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[32] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[32]),
         .O(i__carry__4_i_6_n_0));
   LUT1 #(
     .INIT(2'h1)) 
+    i__carry__4_i_6__0
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[32]),
+        .O(i__carry__4_i_6__0_n_0));
+  LUT1 #(
+    .INIT(2'h1)) 
     i__carry__4_i_7
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[31] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[31]),
         .O(i__carry__4_i_7_n_0));
   LUT1 #(
     .INIT(2'h1)) 
+    i__carry__4_i_7__0
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[31]),
+        .O(i__carry__4_i_7__0_n_0));
+  LUT1 #(
+    .INIT(2'h1)) 
     i__carry__4_i_8
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[30] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[30]),
         .O(i__carry__4_i_8_n_0));
   LUT1 #(
     .INIT(2'h1)) 
+    i__carry__4_i_8__0
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[30]),
+        .O(i__carry__4_i_8__0_n_0));
+  LUT1 #(
+    .INIT(2'h1)) 
     i__carry__4_i_9
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[29] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[29]),
         .O(i__carry__4_i_9_n_0));
+  LUT1 #(
+    .INIT(2'h1)) 
+    i__carry__4_i_9__0
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[29]),
+        .O(i__carry__4_i_9__0_n_0));
   LUT3 #(
     .INIT(8'h47)) 
     i__carry__5_i_1
-       (.I0(i__carry__5_i_5_n_4),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[36] ),
+       (.I0(ARG2[36]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_I_ACCUMULATOR[36]),
         .O(i__carry__5_i_1_n_0));
   LUT3 #(
     .INIT(8'h47)) 
+    i__carry__5_i_1__0
+       (.I0(i__carry__5_i_5__0_n_4),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_Q_ACCUMULATOR[36]),
+        .O(i__carry__5_i_1__0_n_0));
+  LUT3 #(
+    .INIT(8'h47)) 
     i__carry__5_i_2
-       (.I0(i__carry__5_i_5_n_5),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[35] ),
+       (.I0(ARG2[35]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_I_ACCUMULATOR[35]),
         .O(i__carry__5_i_2_n_0));
   LUT3 #(
     .INIT(8'h47)) 
+    i__carry__5_i_2__0
+       (.I0(i__carry__5_i_5__0_n_5),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_Q_ACCUMULATOR[35]),
+        .O(i__carry__5_i_2__0_n_0));
+  LUT3 #(
+    .INIT(8'h47)) 
     i__carry__5_i_3
-       (.I0(i__carry__5_i_5_n_6),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[34] ),
+       (.I0(ARG2[34]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_I_ACCUMULATOR[34]),
         .O(i__carry__5_i_3_n_0));
   LUT3 #(
     .INIT(8'h47)) 
+    i__carry__5_i_3__0
+       (.I0(i__carry__5_i_5__0_n_6),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_Q_ACCUMULATOR[34]),
+        .O(i__carry__5_i_3__0_n_0));
+  LUT3 #(
+    .INIT(8'h47)) 
     i__carry__5_i_4
-       (.I0(i__carry__5_i_5_n_7),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[33] ),
+       (.I0(ARG2[33]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_I_ACCUMULATOR[33]),
         .O(i__carry__5_i_4_n_0));
+  LUT3 #(
+    .INIT(8'h47)) 
+    i__carry__5_i_4__0
+       (.I0(i__carry__5_i_5__0_n_7),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_Q_ACCUMULATOR[33]),
+        .O(i__carry__5_i_4__0_n_0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 i__carry__5_i_5
        (.CI(i__carry__4_i_5_n_0),
         .CO({i__carry__5_i_5_n_0,i__carry__5_i_5_n_1,i__carry__5_i_5_n_2,i__carry__5_i_5_n_3}),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({i__carry__5_i_5_n_4,i__carry__5_i_5_n_5,i__carry__5_i_5_n_6,i__carry__5_i_5_n_7}),
+        .O(ARG2[36:33]),
         .S({i__carry__5_i_6_n_0,i__carry__5_i_7_n_0,i__carry__5_i_8_n_0,i__carry__5_i_9_n_0}));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY4 i__carry__5_i_5__0
+       (.CI(i__carry__4_i_5__0_n_0),
+        .CO({i__carry__5_i_5__0_n_0,i__carry__5_i_5__0_n_1,i__carry__5_i_5__0_n_2,i__carry__5_i_5__0_n_3}),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O({i__carry__5_i_5__0_n_4,i__carry__5_i_5__0_n_5,i__carry__5_i_5__0_n_6,i__carry__5_i_5__0_n_7}),
+        .S({i__carry__5_i_6__0_n_0,i__carry__5_i_7__0_n_0,i__carry__5_i_8__0_n_0,i__carry__5_i_9__0_n_0}));
   LUT1 #(
     .INIT(2'h1)) 
     i__carry__5_i_6
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[36] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[36]),
         .O(i__carry__5_i_6_n_0));
   LUT1 #(
     .INIT(2'h1)) 
+    i__carry__5_i_6__0
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[36]),
+        .O(i__carry__5_i_6__0_n_0));
+  LUT1 #(
+    .INIT(2'h1)) 
     i__carry__5_i_7
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[35] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[35]),
         .O(i__carry__5_i_7_n_0));
   LUT1 #(
     .INIT(2'h1)) 
+    i__carry__5_i_7__0
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[35]),
+        .O(i__carry__5_i_7__0_n_0));
+  LUT1 #(
+    .INIT(2'h1)) 
     i__carry__5_i_8
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[34] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[34]),
         .O(i__carry__5_i_8_n_0));
   LUT1 #(
     .INIT(2'h1)) 
+    i__carry__5_i_8__0
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[34]),
+        .O(i__carry__5_i_8__0_n_0));
+  LUT1 #(
+    .INIT(2'h1)) 
     i__carry__5_i_9
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[33] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[33]),
         .O(i__carry__5_i_9_n_0));
+  LUT1 #(
+    .INIT(2'h1)) 
+    i__carry__5_i_9__0
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[33]),
+        .O(i__carry__5_i_9__0_n_0));
   LUT2 #(
     .INIT(4'h7)) 
     i__carry__6_i_1
-       (.I0(i__carry__6_i_4_n_5),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
+       (.I0(ARG2[39]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[39]),
         .O(i__carry__6_i_1_n_0));
+  LUT2 #(
+    .INIT(4'h7)) 
+    i__carry__6_i_1__0
+       (.I0(i__carry__6_i_4__0_n_5),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .O(i__carry__6_i_1__0_n_0));
   LUT3 #(
     .INIT(8'h47)) 
     i__carry__6_i_2
-       (.I0(i__carry__6_i_4_n_6),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[38] ),
+       (.I0(ARG2[38]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_I_ACCUMULATOR[38]),
         .O(i__carry__6_i_2_n_0));
   LUT3 #(
     .INIT(8'h47)) 
+    i__carry__6_i_2__0
+       (.I0(i__carry__6_i_4__0_n_6),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_Q_ACCUMULATOR[38]),
+        .O(i__carry__6_i_2__0_n_0));
+  LUT3 #(
+    .INIT(8'h47)) 
     i__carry__6_i_3
-       (.I0(i__carry__6_i_4_n_7),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[37] ),
+       (.I0(ARG2[37]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_I_ACCUMULATOR[37]),
         .O(i__carry__6_i_3_n_0));
+  LUT3 #(
+    .INIT(8'h47)) 
+    i__carry__6_i_3__0
+       (.I0(i__carry__6_i_4__0_n_7),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_Q_ACCUMULATOR[37]),
+        .O(i__carry__6_i_3__0_n_0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 i__carry__6_i_4
        (.CI(i__carry__5_i_5_n_0),
         .CO({NLW_i__carry__6_i_4_CO_UNCONNECTED[3:2],i__carry__6_i_4_n_2,i__carry__6_i_4_n_3}),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({NLW_i__carry__6_i_4_O_UNCONNECTED[3],i__carry__6_i_4_n_5,i__carry__6_i_4_n_6,i__carry__6_i_4_n_7}),
+        .O({NLW_i__carry__6_i_4_O_UNCONNECTED[3],ARG2[39:37]}),
         .S({1'b0,i__carry__6_i_5_n_0,i__carry__6_i_6_n_0,i__carry__6_i_7_n_0}));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY4 i__carry__6_i_4__0
+       (.CI(i__carry__5_i_5__0_n_0),
+        .CO({NLW_i__carry__6_i_4__0_CO_UNCONNECTED[3:2],i__carry__6_i_4__0_n_2,i__carry__6_i_4__0_n_3}),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O({NLW_i__carry__6_i_4__0_O_UNCONNECTED[3],i__carry__6_i_4__0_n_5,i__carry__6_i_4__0_n_6,i__carry__6_i_4__0_n_7}),
+        .S({1'b0,i__carry__6_i_5__0_n_0,i__carry__6_i_6__0_n_0,i__carry__6_i_7__0_n_0}));
   LUT1 #(
     .INIT(2'h1)) 
     i__carry__6_i_5
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[39]),
         .O(i__carry__6_i_5_n_0));
   LUT1 #(
     .INIT(2'h1)) 
+    i__carry__6_i_5__0
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .O(i__carry__6_i_5__0_n_0));
+  LUT1 #(
+    .INIT(2'h1)) 
     i__carry__6_i_6
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[38] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[38]),
         .O(i__carry__6_i_6_n_0));
   LUT1 #(
     .INIT(2'h1)) 
+    i__carry__6_i_6__0
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[38]),
+        .O(i__carry__6_i_6__0_n_0));
+  LUT1 #(
+    .INIT(2'h1)) 
     i__carry__6_i_7
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[37] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[37]),
         .O(i__carry__6_i_7_n_0));
+  LUT1 #(
+    .INIT(2'h1)) 
+    i__carry__6_i_7__0
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[37]),
+        .O(i__carry__6_i_7__0_n_0));
   LUT2 #(
-    .INIT(4'hE)) 
+    .INIT(4'h8)) 
     i__carry_i_1
-       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[6] ),
-        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[7] ),
+       (.I0(COUNTER[6]),
+        .I1(COUNTER[7]),
         .O(i__carry_i_1_n_0));
   LUT1 #(
     .INIT(2'h1)) 
     i__carry_i_10
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[9] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[9]),
         .O(i__carry_i_10_n_0));
-  LUT2 #(
-    .INIT(4'h8)) 
+  LUT1 #(
+    .INIT(2'h1)) 
+    i__carry_i_10__0
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[9]),
+        .O(i__carry_i_10__0_n_0));
+  LUT3 #(
+    .INIT(8'h1D)) 
     i__carry_i_1__0
-       (.I0(COUNTER[6]),
-        .I1(COUNTER[7]),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[8]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I2(ARG2[8]),
         .O(i__carry_i_1__0_n_0));
   LUT3 #(
-    .INIT(8'h47)) 
+    .INIT(8'h1D)) 
     i__carry_i_1__1
-       (.I0(\ATAN_AUTOCORR_Q_reg[0]_i_2_n_4 ),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[8] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[8]),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I2(\ATAN_AUTOCORR_Q_reg[0]_i_2_n_4 ),
         .O(i__carry_i_1__1_n_0));
   LUT2 #(
-    .INIT(4'hE)) 
+    .INIT(4'h8)) 
     i__carry_i_2
-       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[4] ),
-        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[5] ),
+       (.I0(COUNTER[5]),
+        .I1(COUNTER[4]),
         .O(i__carry_i_2_n_0));
   LUT3 #(
     .INIT(8'h47)) 
     i__carry_i_2__0
-       (.I0(i__carry_i_6__0_n_4),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[12] ),
+       (.I0(ARG2[12]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_I_ACCUMULATOR[12]),
         .O(i__carry_i_2__0_n_0));
-  LUT2 #(
-    .INIT(4'h8)) 
+  LUT3 #(
+    .INIT(8'h47)) 
     i__carry_i_2__1
-       (.I0(COUNTER[4]),
-        .I1(COUNTER[5]),
+       (.I0(i__carry_i_6__1_n_4),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_Q_ACCUMULATOR[12]),
         .O(i__carry_i_2__1_n_0));
   LUT2 #(
     .INIT(4'hE)) 
     i__carry_i_3
-       (.I0(COUNTER[2]),
-        .I1(COUNTER[3]),
+       (.I0(COUNTER[3]),
+        .I1(COUNTER[2]),
         .O(i__carry_i_3_n_0));
-  LUT2 #(
-    .INIT(4'hE)) 
+  LUT3 #(
+    .INIT(8'h47)) 
     i__carry_i_3__0
-       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[0] ),
-        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[1] ),
+       (.I0(ARG2[11]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_I_ACCUMULATOR[11]),
         .O(i__carry_i_3__0_n_0));
   LUT3 #(
     .INIT(8'h47)) 
     i__carry_i_3__1
-       (.I0(i__carry_i_6__0_n_5),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[11] ),
+       (.I0(i__carry_i_6__1_n_5),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_Q_ACCUMULATOR[11]),
         .O(i__carry_i_3__1_n_0));
   LUT2 #(
     .INIT(4'hE)) 
     i__carry_i_4
-       (.I0(COUNTER[0]),
-        .I1(COUNTER[1]),
+       (.I0(COUNTER[1]),
+        .I1(COUNTER[0]),
         .O(i__carry_i_4_n_0));
   LUT3 #(
     .INIT(8'h47)) 
     i__carry_i_4__0
-       (.I0(i__carry_i_6__0_n_6),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[10] ),
+       (.I0(ARG2[10]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_I_ACCUMULATOR[10]),
         .O(i__carry_i_4__0_n_0));
-  LUT2 #(
-    .INIT(4'h1)) 
-    i__carry_i_4__1
-       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[7] ),
-        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[6] ),
-        .O(i__carry_i_4__1_n_0));
   LUT3 #(
     .INIT(8'h47)) 
-    i__carry_i_5
-       (.I0(i__carry_i_6__0_n_7),
-        .I1(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[39] ),
-        .I2(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[9] ),
-        .O(i__carry_i_5_n_0));
-  LUT2 #(
-    .INIT(4'h1)) 
-    i__carry_i_5__0
-       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[5] ),
-        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[4] ),
-        .O(i__carry_i_5__0_n_0));
+    i__carry_i_4__1
+       (.I0(i__carry_i_6__1_n_6),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_Q_ACCUMULATOR[10]),
+        .O(i__carry_i_4__1_n_0));
   LUT2 #(
     .INIT(4'h2)) 
-    i__carry_i_5__1
+    i__carry_i_5
        (.I0(COUNTER[7]),
         .I1(COUNTER[6]),
+        .O(i__carry_i_5_n_0));
+  LUT3 #(
+    .INIT(8'h47)) 
+    i__carry_i_5__0
+       (.I0(ARG2[9]),
+        .I1(LTS_AUTOCORR_I_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_I_ACCUMULATOR[9]),
+        .O(i__carry_i_5__0_n_0));
+  LUT3 #(
+    .INIT(8'h47)) 
+    i__carry_i_5__1
+       (.I0(i__carry_i_6__1_n_7),
+        .I1(LTS_AUTOCORR_Q_ACCUMULATOR[39]),
+        .I2(LTS_AUTOCORR_Q_ACCUMULATOR[9]),
         .O(i__carry_i_5__1_n_0));
   LUT2 #(
     .INIT(4'h2)) 
     i__carry_i_6
-       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[2] ),
-        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[3] ),
+       (.I0(COUNTER[5]),
+        .I1(COUNTER[4]),
         .O(i__carry_i_6_n_0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 i__carry_i_6__0
-       (.CI(\ATAN_AUTOCORR_Q_reg[0]_i_2_n_0 ),
+       (.CI(\ATAN_AUTOCORR_I_reg[0]_i_2_n_0 ),
         .CO({i__carry_i_6__0_n_0,i__carry_i_6__0_n_1,i__carry_i_6__0_n_2,i__carry_i_6__0_n_3}),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({i__carry_i_6__0_n_4,i__carry_i_6__0_n_5,i__carry_i_6__0_n_6,i__carry_i_6__0_n_7}),
-        .S({i__carry_i_7__0_n_0,i__carry_i_8__0_n_0,i__carry_i_9_n_0,i__carry_i_10_n_0}));
-  LUT2 #(
-    .INIT(4'h2)) 
-    i__carry_i_6__1
-       (.I0(COUNTER[5]),
-        .I1(COUNTER[4]),
-        .O(i__carry_i_6__1_n_0));
+        .O(ARG2[12:9]),
+        .S({i__carry_i_7__0_n_0,i__carry_i_8_n_0,i__carry_i_9_n_0,i__carry_i_10_n_0}));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY4 i__carry_i_6__1
+       (.CI(\ATAN_AUTOCORR_Q_reg[0]_i_2_n_0 ),
+        .CO({i__carry_i_6__1_n_0,i__carry_i_6__1_n_1,i__carry_i_6__1_n_2,i__carry_i_6__1_n_3}),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O({i__carry_i_6__1_n_4,i__carry_i_6__1_n_5,i__carry_i_6__1_n_6,i__carry_i_6__1_n_7}),
+        .S({i__carry_i_7__1_n_0,i__carry_i_8__0_n_0,i__carry_i_9__0_n_0,i__carry_i_10__0_n_0}));
   LUT2 #(
     .INIT(4'h1)) 
     i__carry_i_7
-       (.I0(COUNTER[3]),
-        .I1(COUNTER[2]),
+       (.I0(COUNTER[2]),
+        .I1(COUNTER[3]),
         .O(i__carry_i_7_n_0));
   LUT1 #(
     .INIT(2'h1)) 
     i__carry_i_7__0
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[12] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[12]),
         .O(i__carry_i_7__0_n_0));
-  LUT2 #(
-    .INIT(4'h1)) 
+  LUT1 #(
+    .INIT(2'h1)) 
     i__carry_i_7__1
-       (.I0(\COUNTER_OFDM_SYMBOL_reg_n_0_[1] ),
-        .I1(\COUNTER_OFDM_SYMBOL_reg_n_0_[0] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[12]),
         .O(i__carry_i_7__1_n_0));
-  LUT2 #(
-    .INIT(4'h1)) 
+  LUT1 #(
+    .INIT(2'h1)) 
     i__carry_i_8
-       (.I0(COUNTER[1]),
-        .I1(COUNTER[0]),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[11]),
         .O(i__carry_i_8_n_0));
   LUT1 #(
     .INIT(2'h1)) 
     i__carry_i_8__0
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[11] ),
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[11]),
         .O(i__carry_i_8__0_n_0));
+  LUT2 #(
+    .INIT(4'h1)) 
+    i__carry_i_8__1
+       (.I0(COUNTER[0]),
+        .I1(COUNTER[1]),
+        .O(i__carry_i_8__1_n_0));
   LUT1 #(
     .INIT(2'h1)) 
     i__carry_i_9
-       (.I0(\LTS_AUTOCORR_Q_ACCUMULATOR_reg_n_0_[10] ),
+       (.I0(LTS_AUTOCORR_I_ACCUMULATOR[10]),
         .O(i__carry_i_9_n_0));
+  LUT1 #(
+    .INIT(2'h1)) 
+    i__carry_i_9__0
+       (.I0(LTS_AUTOCORR_Q_ACCUMULATOR[10]),
+        .O(i__carry_i_9__0_n_0));
 endmodule
 `ifndef GLBL
 `define GLBL

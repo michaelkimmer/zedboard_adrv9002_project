@@ -2,8 +2,8 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
--- Date        : Wed May  1 21:25:44 2024
--- Host        : ASUS_ROG running 64-bit major release  (build 9200)
+-- Date        : Fri May  3 15:57:37 2024
+-- Host        : lab817_01 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_axi_regs_mux_0_0/block_design_0_axi_regs_mux_0_0_sim_netlist.vhdl
 -- Design      : block_design_0_axi_regs_mux_0_0
@@ -20,49 +20,64 @@ entity block_design_0_axi_regs_mux_0_0_axi_regs_mux is
     FPGA_REG_WRITE_ADDRESS : out STD_LOGIC_VECTOR ( 10 downto 0 );
     FPGA_REG_WRITE_DATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
     FPGA_REG_WRITE_STROBE : out STD_LOGIC;
-    EQUALIZER_REG_WRITE_STROBE_PHASE_2 : in STD_LOGIC;
-    EQUALIZER_REG_WRITE_STROBE_PHASE_1 : in STD_LOGIC;
     VITERBI_SIGNAL_VALID : in STD_LOGIC;
+    EQUALIZER_REG_WRITE_STROBE_PHASE_2 : in STD_LOGIC;
     SELECT_AXI_REGS_MODE : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    EQUALIZER_REG_WRITE_STROBE_PHASE_1 : in STD_LOGIC;
     DEINTERLEAVER_STROBE : in STD_LOGIC;
     CLOCK : in STD_LOGIC;
-    EQUALIZER_REG_WRITE_DATA : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    DEINTERLEAVER_QPSK : in STD_LOGIC_VECTOR ( 63 downto 0 );
-    DEINTERLEAVER_16QAM : in STD_LOGIC_VECTOR ( 0 to 191 );
-    VITERBI_SIGNAL : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    PARALLEL_OUTPUT_VALID : in STD_LOGIC;
+    FFT_DATA_VALID : in STD_LOGIC;
     IDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    DATA_STROBE : in STD_LOGIC;
+    CONSTELLATION_IDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
     FFT_IDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
     QDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    FFT_QDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    DEINTERLEAVER_BPSK : in STD_LOGIC_VECTOR ( 0 to 47 );
-    CONSTELLATION_IDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
     CONSTELLATION_QDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    FFT_DATA_VALID : in STD_LOGIC;
-    CONSTELLATION_DATA_VALID : in STD_LOGIC
+    FFT_QDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    CONSTELLATION_DATA_VALID : in STD_LOGIC;
+    DATA_STROBE : in STD_LOGIC;
+    PARALLEL_OUTPUT : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    DEINTERLEAVER_BPSK : in STD_LOGIC_VECTOR ( 0 to 47 );
+    DEINTERLEAVER_QPSK : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    DEINTERLEAVER_16QAM : in STD_LOGIC_VECTOR ( 0 to 191 );
+    EQUALIZER_REG_WRITE_DATA : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    VITERBI_SIGNAL : in STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of block_design_0_axi_regs_mux_0_0_axi_regs_mux : entity is "axi_regs_mux";
 end block_design_0_axi_regs_mux_0_0_axi_regs_mux;
 
 architecture STRUCTURE of block_design_0_axi_regs_mux_0_0_axi_regs_mux is
-  signal ADDRESS_COUNTER : STD_LOGIC;
+  signal \ADDRESS_COUNTER[10]_i_1_n_0\ : STD_LOGIC;
   signal \ADDRESS_COUNTER[10]_i_3_n_0\ : STD_LOGIC;
-  signal \ADDRESS_COUNTER[2]_i_1_n_0\ : STD_LOGIC;
+  signal \ADDRESS_COUNTER[10]_i_4_n_0\ : STD_LOGIC;
   signal ADDRESS_COUNTER_reg : STD_LOGIC_VECTOR ( 10 downto 0 );
   signal \^fpga_reg_write_address\ : STD_LOGIC_VECTOR ( 10 downto 0 );
+  signal \FPGA_REG_WRITE_ADDRESS0__0\ : STD_LOGIC;
+  signal \FPGA_REG_WRITE_ADDRESS11_out__0\ : STD_LOGIC;
+  signal \FPGA_REG_WRITE_ADDRESS13_out__0\ : STD_LOGIC;
+  signal \FPGA_REG_WRITE_ADDRESS15_out__0\ : STD_LOGIC;
+  signal \FPGA_REG_WRITE_ADDRESS17_out__0\ : STD_LOGIC;
+  signal \FPGA_REG_WRITE_ADDRESS18_out__0\ : STD_LOGIC;
+  signal \FPGA_REG_WRITE_ADDRESS1__0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_ADDRESS[0]_i_1_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_ADDRESS[10]_i_1_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_ADDRESS[10]_i_2_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_ADDRESS[10]_i_3_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_ADDRESS[10]_i_4_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_ADDRESS[10]_i_5_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_ADDRESS[10]_i_6_n_0\ : STD_LOGIC;
+  signal \FPGA_REG_WRITE_ADDRESS[10]_i_7_n_0\ : STD_LOGIC;
+  signal \FPGA_REG_WRITE_ADDRESS[10]_i_8_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_ADDRESS[1]_i_1_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_ADDRESS[2]_i_1_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_ADDRESS[2]_i_2_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_ADDRESS[3]_i_1_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_ADDRESS[3]_i_2_n_0\ : STD_LOGIC;
+  signal \FPGA_REG_WRITE_ADDRESS[4]_i_1_n_0\ : STD_LOGIC;
+  signal \FPGA_REG_WRITE_ADDRESS[5]_i_1_n_0\ : STD_LOGIC;
+  signal \FPGA_REG_WRITE_ADDRESS[6]_i_1_n_0\ : STD_LOGIC;
+  signal \FPGA_REG_WRITE_ADDRESS[7]_i_1_n_0\ : STD_LOGIC;
+  signal \FPGA_REG_WRITE_ADDRESS[8]_i_1_n_0\ : STD_LOGIC;
+  signal \FPGA_REG_WRITE_ADDRESS[9]_i_1_n_0\ : STD_LOGIC;
+  signal FPGA_REG_WRITE_DATA0 : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[0]_i_1_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[0]_i_2_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[0]_i_3_n_0\ : STD_LOGIC;
@@ -77,8 +92,8 @@ architecture STRUCTURE of block_design_0_axi_regs_mux_0_0_axi_regs_mux is
   signal \FPGA_REG_WRITE_DATA[10]_i_4_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[10]_i_5_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[10]_i_6_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA[10]_i_7_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[10]_i_8_n_0\ : STD_LOGIC;
+  signal \FPGA_REG_WRITE_DATA[10]_i_9_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[11]_i_1_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[11]_i_2_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[11]_i_3_n_0\ : STD_LOGIC;
@@ -109,8 +124,8 @@ architecture STRUCTURE of block_design_0_axi_regs_mux_0_0_axi_regs_mux is
   signal \FPGA_REG_WRITE_DATA[14]_i_4_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[14]_i_5_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[14]_i_6_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA[14]_i_7_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[14]_i_8_n_0\ : STD_LOGIC;
+  signal \FPGA_REG_WRITE_DATA[14]_i_9_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[15]_i_1_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[15]_i_2_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[15]_i_3_n_0\ : STD_LOGIC;
@@ -125,10 +140,8 @@ architecture STRUCTURE of block_design_0_axi_regs_mux_0_0_axi_regs_mux is
   signal \FPGA_REG_WRITE_DATA[16]_i_4_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[16]_i_5_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[16]_i_6_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA[16]_i_7_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[16]_i_8_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[16]_i_9_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA[17]_i_10_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[17]_i_1_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[17]_i_2_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[17]_i_3_n_0\ : STD_LOGIC;
@@ -143,10 +156,8 @@ architecture STRUCTURE of block_design_0_axi_regs_mux_0_0_axi_regs_mux is
   signal \FPGA_REG_WRITE_DATA[18]_i_4_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[18]_i_5_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[18]_i_6_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA[18]_i_7_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[18]_i_8_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[18]_i_9_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA[19]_i_10_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[19]_i_1_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[19]_i_2_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[19]_i_3_n_0\ : STD_LOGIC;
@@ -163,9 +174,6 @@ architecture STRUCTURE of block_design_0_axi_regs_mux_0_0_axi_regs_mux is
   signal \FPGA_REG_WRITE_DATA[1]_i_6_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[1]_i_8_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[1]_i_9_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA[20]_i_10_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA[20]_i_11_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA[20]_i_12_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[20]_i_1_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[20]_i_2_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[20]_i_3_n_0\ : STD_LOGIC;
@@ -174,7 +182,6 @@ architecture STRUCTURE of block_design_0_axi_regs_mux_0_0_axi_regs_mux is
   signal \FPGA_REG_WRITE_DATA[20]_i_6_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[20]_i_8_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[20]_i_9_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA[21]_i_10_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[21]_i_1_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[21]_i_2_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[21]_i_3_n_0\ : STD_LOGIC;
@@ -189,7 +196,6 @@ architecture STRUCTURE of block_design_0_axi_regs_mux_0_0_axi_regs_mux is
   signal \FPGA_REG_WRITE_DATA[22]_i_4_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[22]_i_5_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[22]_i_6_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA[22]_i_7_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[22]_i_8_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[22]_i_9_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[23]_i_1_n_0\ : STD_LOGIC;
@@ -198,7 +204,6 @@ architecture STRUCTURE of block_design_0_axi_regs_mux_0_0_axi_regs_mux is
   signal \FPGA_REG_WRITE_DATA[23]_i_4_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[23]_i_5_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[23]_i_6_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA[23]_i_7_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[23]_i_8_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[23]_i_9_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[24]_i_1_n_0\ : STD_LOGIC;
@@ -207,7 +212,6 @@ architecture STRUCTURE of block_design_0_axi_regs_mux_0_0_axi_regs_mux is
   signal \FPGA_REG_WRITE_DATA[24]_i_4_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[24]_i_5_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[24]_i_6_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA[24]_i_7_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[24]_i_8_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[24]_i_9_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[25]_i_1_n_0\ : STD_LOGIC;
@@ -216,7 +220,6 @@ architecture STRUCTURE of block_design_0_axi_regs_mux_0_0_axi_regs_mux is
   signal \FPGA_REG_WRITE_DATA[25]_i_4_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[25]_i_5_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[25]_i_6_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA[25]_i_7_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[25]_i_8_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[25]_i_9_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[26]_i_1_n_0\ : STD_LOGIC;
@@ -225,7 +228,6 @@ architecture STRUCTURE of block_design_0_axi_regs_mux_0_0_axi_regs_mux is
   signal \FPGA_REG_WRITE_DATA[26]_i_4_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[26]_i_5_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[26]_i_6_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA[26]_i_7_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[26]_i_8_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[26]_i_9_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[27]_i_1_n_0\ : STD_LOGIC;
@@ -234,7 +236,6 @@ architecture STRUCTURE of block_design_0_axi_regs_mux_0_0_axi_regs_mux is
   signal \FPGA_REG_WRITE_DATA[27]_i_4_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[27]_i_5_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[27]_i_6_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA[27]_i_7_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[27]_i_8_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[27]_i_9_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[28]_i_1_n_0\ : STD_LOGIC;
@@ -243,7 +244,6 @@ architecture STRUCTURE of block_design_0_axi_regs_mux_0_0_axi_regs_mux is
   signal \FPGA_REG_WRITE_DATA[28]_i_4_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[28]_i_5_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[28]_i_6_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA[28]_i_7_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[28]_i_8_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[28]_i_9_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[29]_i_1_n_0\ : STD_LOGIC;
@@ -252,7 +252,6 @@ architecture STRUCTURE of block_design_0_axi_regs_mux_0_0_axi_regs_mux is
   signal \FPGA_REG_WRITE_DATA[29]_i_4_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[29]_i_5_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[29]_i_6_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA[29]_i_7_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[29]_i_8_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[29]_i_9_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[2]_i_1_n_0\ : STD_LOGIC;
@@ -269,20 +268,13 @@ architecture STRUCTURE of block_design_0_axi_regs_mux_0_0_axi_regs_mux is
   signal \FPGA_REG_WRITE_DATA[30]_i_4_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[30]_i_5_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[30]_i_6_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA[30]_i_7_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[30]_i_8_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[30]_i_9_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[31]_i_10_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA[31]_i_11_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA[31]_i_12_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA[31]_i_13_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[31]_i_14_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[31]_i_15_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA[31]_i_16_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[31]_i_17_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA[31]_i_18_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[31]_i_19_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA[31]_i_1_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[31]_i_20_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[31]_i_21_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[31]_i_2_n_0\ : STD_LOGIC;
@@ -323,8 +315,8 @@ architecture STRUCTURE of block_design_0_axi_regs_mux_0_0_axi_regs_mux is
   signal \FPGA_REG_WRITE_DATA[6]_i_4_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[6]_i_5_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[6]_i_6_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA[6]_i_7_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[6]_i_8_n_0\ : STD_LOGIC;
+  signal \FPGA_REG_WRITE_DATA[6]_i_9_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[7]_i_1_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[7]_i_2_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[7]_i_3_n_0\ : STD_LOGIC;
@@ -349,49 +341,44 @@ architecture STRUCTURE of block_design_0_axi_regs_mux_0_0_axi_regs_mux is
   signal \FPGA_REG_WRITE_DATA[9]_i_6_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[9]_i_8_n_0\ : STD_LOGIC;
   signal \FPGA_REG_WRITE_DATA[9]_i_9_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA_reg[0]_i_7_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA_reg[11]_i_7_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA_reg[12]_i_7_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA_reg[13]_i_7_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA_reg[15]_i_7_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA_reg[17]_i_7_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA_reg[19]_i_7_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA_reg[1]_i_7_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA_reg[20]_i_7_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA_reg[21]_i_7_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA_reg[2]_i_7_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA_reg[3]_i_7_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA_reg[4]_i_7_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA_reg[5]_i_7_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA_reg[7]_i_7_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA_reg[8]_i_7_n_0\ : STD_LOGIC;
-  signal \FPGA_REG_WRITE_DATA_reg[9]_i_7_n_0\ : STD_LOGIC;
+  signal FPGA_REG_WRITE_STROBE_i_1_n_0 : STD_LOGIC;
+  signal FPGA_REG_WRITE_STROBE_i_3_n_0 : STD_LOGIC;
+  signal FPGA_REG_WRITE_STROBE_i_4_n_0 : STD_LOGIC;
+  signal FPGA_REG_WRITE_STROBE_i_5_n_0 : STD_LOGIC;
   signal \REG_CNTR[0]_i_1_n_0\ : STD_LOGIC;
-  signal \REG_CNTR[0]_i_2_n_0\ : STD_LOGIC;
+  signal \REG_CNTR[0]_i_4_n_0\ : STD_LOGIC;
   signal \REG_CNTR[1]_i_1_n_0\ : STD_LOGIC;
   signal \REG_CNTR[1]_i_2_n_0\ : STD_LOGIC;
-  signal \REG_CNTR[1]_i_3_n_0\ : STD_LOGIC;
-  signal \REG_CNTR[1]_i_4_n_0\ : STD_LOGIC;
   signal \REG_CNTR[2]_i_1_n_0\ : STD_LOGIC;
   signal \REG_CNTR[2]_i_2_n_0\ : STD_LOGIC;
+  signal \REG_CNTR[2]_i_3_n_0\ : STD_LOGIC;
+  signal \REG_CNTR[2]_i_4_n_0\ : STD_LOGIC;
+  signal \REG_CNTR[2]_i_5_n_0\ : STD_LOGIC;
+  signal \REG_CNTR[2]_i_6_n_0\ : STD_LOGIC;
+  signal \REG_CNTR__1\ : STD_LOGIC;
   signal \REG_CNTR_reg_n_0_[0]\ : STD_LOGIC;
   signal \REG_CNTR_reg_n_0_[1]\ : STD_LOGIC;
   signal \REG_CNTR_reg_n_0_[2]\ : STD_LOGIC;
-  signal p_1_in : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal data6 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal plusOp : STD_LOGIC_VECTOR ( 10 downto 0 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \ADDRESS_COUNTER[0]_i_1\ : label is "soft_lutpair17";
-  attribute SOFT_HLUTNM of \ADDRESS_COUNTER[1]_i_1\ : label is "soft_lutpair17";
-  attribute SOFT_HLUTNM of \ADDRESS_COUNTER[2]_i_1\ : label is "soft_lutpair6";
-  attribute SOFT_HLUTNM of \ADDRESS_COUNTER[3]_i_1\ : label is "soft_lutpair6";
-  attribute SOFT_HLUTNM of \ADDRESS_COUNTER[6]_i_1\ : label is "soft_lutpair8";
-  attribute SOFT_HLUTNM of \ADDRESS_COUNTER[7]_i_1\ : label is "soft_lutpair8";
-  attribute SOFT_HLUTNM of \ADDRESS_COUNTER[8]_i_1\ : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of \ADDRESS_COUNTER[9]_i_1\ : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_ADDRESS[0]_i_2\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_ADDRESS[10]_i_3\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_ADDRESS[10]_i_4\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_ADDRESS[1]_i_2\ : label is "soft_lutpair7";
+  attribute SOFT_HLUTNM of \ADDRESS_COUNTER[0]_i_1\ : label is "soft_lutpair44";
+  attribute SOFT_HLUTNM of \ADDRESS_COUNTER[1]_i_1\ : label is "soft_lutpair44";
+  attribute SOFT_HLUTNM of \ADDRESS_COUNTER[2]_i_1\ : label is "soft_lutpair23";
+  attribute SOFT_HLUTNM of \ADDRESS_COUNTER[3]_i_1\ : label is "soft_lutpair23";
+  attribute SOFT_HLUTNM of \ADDRESS_COUNTER[6]_i_1\ : label is "soft_lutpair27";
+  attribute SOFT_HLUTNM of \ADDRESS_COUNTER[7]_i_1\ : label is "soft_lutpair27";
+  attribute SOFT_HLUTNM of \ADDRESS_COUNTER[8]_i_1\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \ADDRESS_COUNTER[9]_i_1\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_ADDRESS[10]_i_2\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_ADDRESS[10]_i_6\ : label is "soft_lutpair25";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_ADDRESS[3]_i_1\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_ADDRESS[4]_i_1\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_ADDRESS[5]_i_1\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_ADDRESS[6]_i_1\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_ADDRESS[7]_i_1\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_ADDRESS[8]_i_1\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_ADDRESS[9]_i_1\ : label is "soft_lutpair2";
   attribute x_interface_ignore : string;
   attribute x_interface_ignore of \FPGA_REG_WRITE_ADDRESS_reg[0]\ : label is "TRUE";
   attribute x_interface_ignore of \FPGA_REG_WRITE_ADDRESS_reg[10]\ : label is "TRUE";
@@ -404,26 +391,75 @@ architecture STRUCTURE of block_design_0_axi_regs_mux_0_0_axi_regs_mux is
   attribute x_interface_ignore of \FPGA_REG_WRITE_ADDRESS_reg[7]\ : label is "TRUE";
   attribute x_interface_ignore of \FPGA_REG_WRITE_ADDRESS_reg[8]\ : label is "TRUE";
   attribute x_interface_ignore of \FPGA_REG_WRITE_ADDRESS_reg[9]\ : label is "TRUE";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[16]_i_7\ : label is "soft_lutpair16";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[17]_i_8\ : label is "soft_lutpair16";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[18]_i_7\ : label is "soft_lutpair15";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[19]_i_8\ : label is "soft_lutpair15";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[20]_i_12\ : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[20]_i_9\ : label is "soft_lutpair14";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[21]_i_8\ : label is "soft_lutpair14";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[22]_i_7\ : label is "soft_lutpair13";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[23]_i_7\ : label is "soft_lutpair13";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[24]_i_7\ : label is "soft_lutpair12";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[25]_i_7\ : label is "soft_lutpair12";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[26]_i_7\ : label is "soft_lutpair11";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[27]_i_7\ : label is "soft_lutpair11";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[28]_i_7\ : label is "soft_lutpair10";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[29]_i_7\ : label is "soft_lutpair10";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[30]_i_7\ : label is "soft_lutpair9";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[31]_i_10\ : label is "soft_lutpair5";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[31]_i_11\ : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[31]_i_18\ : label is "soft_lutpair9";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[31]_i_9\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[0]_i_4\ : label is "soft_lutpair7";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[0]_i_5\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[0]_i_7\ : label is "soft_lutpair28";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[10]_i_4\ : label is "soft_lutpair17";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[10]_i_7\ : label is "soft_lutpair33";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[11]_i_4\ : label is "soft_lutpair18";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[11]_i_7\ : label is "soft_lutpair33";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[12]_i_4\ : label is "soft_lutpair19";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[12]_i_7\ : label is "soft_lutpair34";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[13]_i_4\ : label is "soft_lutpair20";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[13]_i_7\ : label is "soft_lutpair34";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[14]_i_4\ : label is "soft_lutpair21";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[14]_i_7\ : label is "soft_lutpair35";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[15]_i_4\ : label is "soft_lutpair22";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[15]_i_7\ : label is "soft_lutpair35";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[16]_i_4\ : label is "soft_lutpair7";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[16]_i_7\ : label is "soft_lutpair36";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[17]_i_4\ : label is "soft_lutpair8";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[17]_i_7\ : label is "soft_lutpair36";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[18]_i_4\ : label is "soft_lutpair9";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[18]_i_7\ : label is "soft_lutpair37";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[19]_i_4\ : label is "soft_lutpair10";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[19]_i_7\ : label is "soft_lutpair37";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[1]_i_4\ : label is "soft_lutpair8";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[1]_i_7\ : label is "soft_lutpair28";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[20]_i_4\ : label is "soft_lutpair11";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[20]_i_7\ : label is "soft_lutpair38";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[21]_i_4\ : label is "soft_lutpair12";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[21]_i_7\ : label is "soft_lutpair38";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[22]_i_4\ : label is "soft_lutpair13";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[22]_i_7\ : label is "soft_lutpair39";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[23]_i_4\ : label is "soft_lutpair14";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[23]_i_7\ : label is "soft_lutpair39";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[24]_i_4\ : label is "soft_lutpair15";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[24]_i_7\ : label is "soft_lutpair40";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[25]_i_4\ : label is "soft_lutpair16";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[25]_i_7\ : label is "soft_lutpair40";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[26]_i_4\ : label is "soft_lutpair17";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[26]_i_7\ : label is "soft_lutpair41";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[27]_i_4\ : label is "soft_lutpair18";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[27]_i_7\ : label is "soft_lutpair41";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[28]_i_4\ : label is "soft_lutpair19";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[28]_i_7\ : label is "soft_lutpair42";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[29]_i_4\ : label is "soft_lutpair20";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[29]_i_7\ : label is "soft_lutpair42";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[2]_i_4\ : label is "soft_lutpair9";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[2]_i_7\ : label is "soft_lutpair29";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[30]_i_4\ : label is "soft_lutpair21";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[30]_i_7\ : label is "soft_lutpair43";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[31]_i_11\ : label is "soft_lutpair24";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[31]_i_14\ : label is "soft_lutpair25";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[31]_i_18\ : label is "soft_lutpair43";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[31]_i_19\ : label is "soft_lutpair24";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[31]_i_3\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[31]_i_9\ : label is "soft_lutpair22";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[3]_i_4\ : label is "soft_lutpair10";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[3]_i_7\ : label is "soft_lutpair29";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[4]_i_4\ : label is "soft_lutpair11";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[4]_i_7\ : label is "soft_lutpair30";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[5]_i_4\ : label is "soft_lutpair12";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[5]_i_7\ : label is "soft_lutpair30";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[6]_i_4\ : label is "soft_lutpair13";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[6]_i_7\ : label is "soft_lutpair31";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[7]_i_4\ : label is "soft_lutpair14";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[7]_i_7\ : label is "soft_lutpair31";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[8]_i_4\ : label is "soft_lutpair15";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[8]_i_7\ : label is "soft_lutpair32";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[9]_i_4\ : label is "soft_lutpair16";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[9]_i_7\ : label is "soft_lutpair32";
   attribute x_interface_ignore of \FPGA_REG_WRITE_DATA_reg[0]\ : label is "TRUE";
   attribute x_interface_ignore of \FPGA_REG_WRITE_DATA_reg[10]\ : label is "TRUE";
   attribute x_interface_ignore of \FPGA_REG_WRITE_DATA_reg[11]\ : label is "TRUE";
@@ -456,11 +492,11 @@ architecture STRUCTURE of block_design_0_axi_regs_mux_0_0_axi_regs_mux is
   attribute x_interface_ignore of \FPGA_REG_WRITE_DATA_reg[7]\ : label is "TRUE";
   attribute x_interface_ignore of \FPGA_REG_WRITE_DATA_reg[8]\ : label is "TRUE";
   attribute x_interface_ignore of \FPGA_REG_WRITE_DATA_reg[9]\ : label is "TRUE";
+  attribute SOFT_HLUTNM of FPGA_REG_WRITE_STROBE_i_4 : label is "soft_lutpair6";
   attribute x_interface_ignore of FPGA_REG_WRITE_STROBE_reg : label is "TRUE";
-  attribute SOFT_HLUTNM of \REG_CNTR[1]_i_3\ : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \REG_CNTR[1]_i_4\ : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of \REG_CNTR[2]_i_1\ : label is "soft_lutpair5";
-  attribute SOFT_HLUTNM of \REG_CNTR[2]_i_2\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \REG_CNTR[1]_i_1\ : label is "soft_lutpair26";
+  attribute SOFT_HLUTNM of \REG_CNTR[2]_i_1\ : label is "soft_lutpair26";
+  attribute SOFT_HLUTNM of \REG_CNTR[2]_i_4\ : label is "soft_lutpair1";
 begin
   FPGA_REG_WRITE_ADDRESS(10 downto 0) <= \^fpga_reg_write_address\(10 downto 0);
 \ADDRESS_COUNTER[0]_i_1\: unisim.vcomponents.LUT1
@@ -471,43 +507,54 @@ begin
       I0 => ADDRESS_COUNTER_reg(0),
       O => plusOp(0)
     );
-\ADDRESS_COUNTER[10]_i_1\: unisim.vcomponents.LUT5
+\ADDRESS_COUNTER[10]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"11111011"
+      INIT => X"04"
     )
         port map (
-      I0 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
-      I1 => VITERBI_SIGNAL_VALID,
-      I2 => \FPGA_REG_WRITE_ADDRESS[3]_i_2_n_0\,
-      I3 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
-      O => ADDRESS_COUNTER
+      I0 => VITERBI_SIGNAL_VALID,
+      I1 => \ADDRESS_COUNTER[10]_i_3_n_0\,
+      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
+      O => \ADDRESS_COUNTER[10]_i_1_n_0\
     );
 \ADDRESS_COUNTER[10]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"AA6AAAAAAAAAAAAA"
+      INIT => X"7FFFFFFF80000000"
     )
         port map (
-      I0 => ADDRESS_COUNTER_reg(10),
-      I1 => ADDRESS_COUNTER_reg(8),
-      I2 => ADDRESS_COUNTER_reg(7),
-      I3 => \ADDRESS_COUNTER[10]_i_3_n_0\,
-      I4 => ADDRESS_COUNTER_reg(6),
-      I5 => ADDRESS_COUNTER_reg(9),
+      I0 => ADDRESS_COUNTER_reg(8),
+      I1 => ADDRESS_COUNTER_reg(6),
+      I2 => \ADDRESS_COUNTER[10]_i_4_n_0\,
+      I3 => ADDRESS_COUNTER_reg(7),
+      I4 => ADDRESS_COUNTER_reg(9),
+      I5 => ADDRESS_COUNTER_reg(10),
       O => plusOp(10)
     );
 \ADDRESS_COUNTER[10]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"7FFFFFFFFFFFFFFF"
+      INIT => X"FFFFFFFFFFFFFFFE"
     )
         port map (
-      I0 => ADDRESS_COUNTER_reg(4),
-      I1 => ADDRESS_COUNTER_reg(2),
-      I2 => ADDRESS_COUNTER_reg(0),
-      I3 => ADDRESS_COUNTER_reg(1),
-      I4 => ADDRESS_COUNTER_reg(3),
-      I5 => ADDRESS_COUNTER_reg(5),
+      I0 => \FPGA_REG_WRITE_ADDRESS[10]_i_5_n_0\,
+      I1 => \FPGA_REG_WRITE_ADDRESS18_out__0\,
+      I2 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
+      I3 => \FPGA_REG_WRITE_ADDRESS1__0\,
+      I4 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
+      I5 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
       O => \ADDRESS_COUNTER[10]_i_3_n_0\
+    );
+\ADDRESS_COUNTER[10]_i_4\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"8000000000000000"
+    )
+        port map (
+      I0 => ADDRESS_COUNTER_reg(5),
+      I1 => ADDRESS_COUNTER_reg(3),
+      I2 => ADDRESS_COUNTER_reg(1),
+      I3 => ADDRESS_COUNTER_reg(0),
+      I4 => ADDRESS_COUNTER_reg(2),
+      I5 => ADDRESS_COUNTER_reg(4),
+      O => \ADDRESS_COUNTER[10]_i_4_n_0\
     );
 \ADDRESS_COUNTER[1]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -520,90 +567,90 @@ begin
     );
 \ADDRESS_COUNTER[2]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"6A"
+      INIT => X"78"
     )
         port map (
-      I0 => ADDRESS_COUNTER_reg(2),
+      I0 => ADDRESS_COUNTER_reg(0),
       I1 => ADDRESS_COUNTER_reg(1),
-      I2 => ADDRESS_COUNTER_reg(0),
-      O => \ADDRESS_COUNTER[2]_i_1_n_0\
+      I2 => ADDRESS_COUNTER_reg(2),
+      O => plusOp(2)
     );
 \ADDRESS_COUNTER[3]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"6AAA"
+      INIT => X"7F80"
+    )
+        port map (
+      I0 => ADDRESS_COUNTER_reg(1),
+      I1 => ADDRESS_COUNTER_reg(0),
+      I2 => ADDRESS_COUNTER_reg(2),
+      I3 => ADDRESS_COUNTER_reg(3),
+      O => plusOp(3)
+    );
+\ADDRESS_COUNTER[4]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"7FFF8000"
+    )
+        port map (
+      I0 => ADDRESS_COUNTER_reg(2),
+      I1 => ADDRESS_COUNTER_reg(0),
+      I2 => ADDRESS_COUNTER_reg(1),
+      I3 => ADDRESS_COUNTER_reg(3),
+      I4 => ADDRESS_COUNTER_reg(4),
+      O => plusOp(4)
+    );
+\ADDRESS_COUNTER[5]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"7FFFFFFF80000000"
     )
         port map (
       I0 => ADDRESS_COUNTER_reg(3),
       I1 => ADDRESS_COUNTER_reg(1),
       I2 => ADDRESS_COUNTER_reg(0),
       I3 => ADDRESS_COUNTER_reg(2),
-      O => plusOp(3)
-    );
-\ADDRESS_COUNTER[4]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"6AAAAAAA"
-    )
-        port map (
-      I0 => ADDRESS_COUNTER_reg(4),
-      I1 => ADDRESS_COUNTER_reg(2),
-      I2 => ADDRESS_COUNTER_reg(0),
-      I3 => ADDRESS_COUNTER_reg(1),
-      I4 => ADDRESS_COUNTER_reg(3),
-      O => plusOp(4)
-    );
-\ADDRESS_COUNTER[5]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"6AAAAAAAAAAAAAAA"
-    )
-        port map (
-      I0 => ADDRESS_COUNTER_reg(5),
-      I1 => ADDRESS_COUNTER_reg(3),
-      I2 => ADDRESS_COUNTER_reg(1),
-      I3 => ADDRESS_COUNTER_reg(0),
-      I4 => ADDRESS_COUNTER_reg(2),
-      I5 => ADDRESS_COUNTER_reg(4),
+      I4 => ADDRESS_COUNTER_reg(4),
+      I5 => ADDRESS_COUNTER_reg(5),
       O => plusOp(5)
     );
 \ADDRESS_COUNTER[6]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"9"
+      INIT => X"6"
     )
         port map (
-      I0 => ADDRESS_COUNTER_reg(6),
-      I1 => \ADDRESS_COUNTER[10]_i_3_n_0\,
+      I0 => \ADDRESS_COUNTER[10]_i_4_n_0\,
+      I1 => ADDRESS_COUNTER_reg(6),
       O => plusOp(6)
     );
 \ADDRESS_COUNTER[7]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"9A"
+      INIT => X"78"
     )
         port map (
-      I0 => ADDRESS_COUNTER_reg(7),
-      I1 => \ADDRESS_COUNTER[10]_i_3_n_0\,
-      I2 => ADDRESS_COUNTER_reg(6),
+      I0 => \ADDRESS_COUNTER[10]_i_4_n_0\,
+      I1 => ADDRESS_COUNTER_reg(6),
+      I2 => ADDRESS_COUNTER_reg(7),
       O => plusOp(7)
     );
 \ADDRESS_COUNTER[8]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"DF20"
+      INIT => X"7F80"
     )
         port map (
       I0 => ADDRESS_COUNTER_reg(6),
-      I1 => \ADDRESS_COUNTER[10]_i_3_n_0\,
+      I1 => \ADDRESS_COUNTER[10]_i_4_n_0\,
       I2 => ADDRESS_COUNTER_reg(7),
       I3 => ADDRESS_COUNTER_reg(8),
       O => plusOp(8)
     );
 \ADDRESS_COUNTER[9]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"A6AAAAAA"
+      INIT => X"7FFF8000"
     )
         port map (
-      I0 => ADDRESS_COUNTER_reg(9),
-      I1 => ADDRESS_COUNTER_reg(6),
-      I2 => \ADDRESS_COUNTER[10]_i_3_n_0\,
-      I3 => ADDRESS_COUNTER_reg(7),
-      I4 => ADDRESS_COUNTER_reg(8),
+      I0 => ADDRESS_COUNTER_reg(7),
+      I1 => \ADDRESS_COUNTER[10]_i_4_n_0\,
+      I2 => ADDRESS_COUNTER_reg(6),
+      I3 => ADDRESS_COUNTER_reg(8),
+      I4 => ADDRESS_COUNTER_reg(9),
       O => plusOp(9)
     );
 \ADDRESS_COUNTER_reg[0]\: unisim.vcomponents.FDRE
@@ -612,7 +659,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => ADDRESS_COUNTER,
+      CE => \ADDRESS_COUNTER[10]_i_1_n_0\,
       D => plusOp(0),
       Q => ADDRESS_COUNTER_reg(0),
       R => EQUALIZER_REG_WRITE_STROBE_PHASE_1
@@ -623,7 +670,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => ADDRESS_COUNTER,
+      CE => \ADDRESS_COUNTER[10]_i_1_n_0\,
       D => plusOp(10),
       Q => ADDRESS_COUNTER_reg(10),
       R => EQUALIZER_REG_WRITE_STROBE_PHASE_1
@@ -634,7 +681,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => ADDRESS_COUNTER,
+      CE => \ADDRESS_COUNTER[10]_i_1_n_0\,
       D => plusOp(1),
       Q => ADDRESS_COUNTER_reg(1),
       R => EQUALIZER_REG_WRITE_STROBE_PHASE_1
@@ -645,8 +692,8 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => ADDRESS_COUNTER,
-      D => \ADDRESS_COUNTER[2]_i_1_n_0\,
+      CE => \ADDRESS_COUNTER[10]_i_1_n_0\,
+      D => plusOp(2),
       Q => ADDRESS_COUNTER_reg(2),
       R => EQUALIZER_REG_WRITE_STROBE_PHASE_1
     );
@@ -656,7 +703,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => ADDRESS_COUNTER,
+      CE => \ADDRESS_COUNTER[10]_i_1_n_0\,
       D => plusOp(3),
       Q => ADDRESS_COUNTER_reg(3),
       R => EQUALIZER_REG_WRITE_STROBE_PHASE_1
@@ -667,7 +714,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => ADDRESS_COUNTER,
+      CE => \ADDRESS_COUNTER[10]_i_1_n_0\,
       D => plusOp(4),
       Q => ADDRESS_COUNTER_reg(4),
       S => EQUALIZER_REG_WRITE_STROBE_PHASE_1
@@ -678,7 +725,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => ADDRESS_COUNTER,
+      CE => \ADDRESS_COUNTER[10]_i_1_n_0\,
       D => plusOp(5),
       Q => ADDRESS_COUNTER_reg(5),
       R => EQUALIZER_REG_WRITE_STROBE_PHASE_1
@@ -689,7 +736,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => ADDRESS_COUNTER,
+      CE => \ADDRESS_COUNTER[10]_i_1_n_0\,
       D => plusOp(6),
       Q => ADDRESS_COUNTER_reg(6),
       R => EQUALIZER_REG_WRITE_STROBE_PHASE_1
@@ -700,7 +747,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => ADDRESS_COUNTER,
+      CE => \ADDRESS_COUNTER[10]_i_1_n_0\,
       D => plusOp(7),
       Q => ADDRESS_COUNTER_reg(7),
       R => EQUALIZER_REG_WRITE_STROBE_PHASE_1
@@ -711,7 +758,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => ADDRESS_COUNTER,
+      CE => \ADDRESS_COUNTER[10]_i_1_n_0\,
       D => plusOp(8),
       Q => ADDRESS_COUNTER_reg(8),
       R => EQUALIZER_REG_WRITE_STROBE_PHASE_1
@@ -722,173 +769,221 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => ADDRESS_COUNTER,
+      CE => \ADDRESS_COUNTER[10]_i_1_n_0\,
       D => plusOp(9),
       Q => ADDRESS_COUNTER_reg(9),
       R => EQUALIZER_REG_WRITE_STROBE_PHASE_1
     );
 \FPGA_REG_WRITE_ADDRESS[0]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FEEEAAAA0222AAAA"
+      INIT => X"BBBAFFFFBBBA0000"
     )
         port map (
-      I0 => p_1_in(0),
-      I1 => \FPGA_REG_WRITE_ADDRESS[10]_i_5_n_0\,
-      I2 => SELECT_AXI_REGS_MODE(0),
-      I3 => SELECT_AXI_REGS_MODE(1),
-      I4 => \FPGA_REG_WRITE_ADDRESS[10]_i_4_n_0\,
+      I0 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I1 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
+      I2 => VITERBI_SIGNAL_VALID,
+      I3 => ADDRESS_COUNTER_reg(0),
+      I4 => \FPGA_REG_WRITE_ADDRESS[10]_i_1_n_0\,
       I5 => \^fpga_reg_write_address\(0),
       O => \FPGA_REG_WRITE_ADDRESS[0]_i_1_n_0\
     );
-\FPGA_REG_WRITE_ADDRESS[0]_i_2\: unisim.vcomponents.LUT4
+\FPGA_REG_WRITE_ADDRESS[10]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"AAFE"
+      INIT => X"FFFFFFFFFFFFFFFE"
     )
         port map (
       I0 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
       I1 => VITERBI_SIGNAL_VALID,
-      I2 => ADDRESS_COUNTER_reg(0),
-      I3 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
-      O => p_1_in(0)
-    );
-\FPGA_REG_WRITE_ADDRESS[10]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0D0D0D0D0DDDDDDD"
-    )
-        port map (
-      I0 => \FPGA_REG_WRITE_ADDRESS[10]_i_3_n_0\,
-      I1 => VITERBI_SIGNAL_VALID,
-      I2 => \FPGA_REG_WRITE_ADDRESS[10]_i_4_n_0\,
-      I3 => SELECT_AXI_REGS_MODE(1),
-      I4 => SELECT_AXI_REGS_MODE(0),
-      I5 => \FPGA_REG_WRITE_ADDRESS[10]_i_5_n_0\,
+      I2 => \FPGA_REG_WRITE_ADDRESS[10]_i_3_n_0\,
+      I3 => \FPGA_REG_WRITE_ADDRESS18_out__0\,
+      I4 => \FPGA_REG_WRITE_ADDRESS[10]_i_5_n_0\,
+      I5 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
       O => \FPGA_REG_WRITE_ADDRESS[10]_i_1_n_0\
     );
 \FPGA_REG_WRITE_ADDRESS[10]_i_2\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"15FF"
-    )
-        port map (
-      I0 => \FPGA_REG_WRITE_ADDRESS[10]_i_5_n_0\,
-      I1 => SELECT_AXI_REGS_MODE(0),
-      I2 => SELECT_AXI_REGS_MODE(1),
-      I3 => \FPGA_REG_WRITE_ADDRESS[10]_i_4_n_0\,
-      O => \FPGA_REG_WRITE_ADDRESS[10]_i_2_n_0\
-    );
-\FPGA_REG_WRITE_ADDRESS[10]_i_3\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
-      I1 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
-      O => \FPGA_REG_WRITE_ADDRESS[10]_i_3_n_0\
-    );
-\FPGA_REG_WRITE_ADDRESS[10]_i_4\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00000002"
-    )
-        port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
-      I2 => VITERBI_SIGNAL_VALID,
-      I3 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
-      I4 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
-      O => \FPGA_REG_WRITE_ADDRESS[10]_i_4_n_0\
-    );
-\FPGA_REG_WRITE_ADDRESS[10]_i_5\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"BBBBBBBBBBBBBBBF"
-    )
-        port map (
-      I0 => \FPGA_REG_WRITE_ADDRESS[10]_i_6_n_0\,
-      I1 => SELECT_AXI_REGS_MODE(2),
-      I2 => \REG_CNTR_reg_n_0_[1]\,
-      I3 => \REG_CNTR_reg_n_0_[2]\,
-      I4 => \REG_CNTR_reg_n_0_[0]\,
-      I5 => DEINTERLEAVER_STROBE,
-      O => \FPGA_REG_WRITE_ADDRESS[10]_i_5_n_0\
-    );
-\FPGA_REG_WRITE_ADDRESS[10]_i_6\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FFFFFFFE"
-    )
-        port map (
-      I0 => SELECT_AXI_REGS_MODE(4),
-      I1 => SELECT_AXI_REGS_MODE(3),
-      I2 => SELECT_AXI_REGS_MODE(7),
-      I3 => SELECT_AXI_REGS_MODE(6),
-      I4 => SELECT_AXI_REGS_MODE(5),
-      O => \FPGA_REG_WRITE_ADDRESS[10]_i_6_n_0\
-    );
-\FPGA_REG_WRITE_ADDRESS[1]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FEEEAAAA0222AAAA"
-    )
-        port map (
-      I0 => p_1_in(1),
-      I1 => \FPGA_REG_WRITE_ADDRESS[10]_i_5_n_0\,
-      I2 => SELECT_AXI_REGS_MODE(0),
-      I3 => SELECT_AXI_REGS_MODE(1),
-      I4 => \FPGA_REG_WRITE_ADDRESS[10]_i_4_n_0\,
-      I5 => \^fpga_reg_write_address\(1),
-      O => \FPGA_REG_WRITE_ADDRESS[1]_i_1_n_0\
-    );
-\FPGA_REG_WRITE_ADDRESS[1]_i_2\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"AAFE"
+      INIT => X"0010"
     )
         port map (
       I0 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
       I1 => VITERBI_SIGNAL_VALID,
-      I2 => ADDRESS_COUNTER_reg(1),
+      I2 => ADDRESS_COUNTER_reg(10),
       I3 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
-      O => p_1_in(1)
+      O => \FPGA_REG_WRITE_ADDRESS[10]_i_2_n_0\
     );
-\FPGA_REG_WRITE_ADDRESS[2]_i_1\: unisim.vcomponents.LUT6
+\FPGA_REG_WRITE_ADDRESS[10]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"00AA0000F3AAF3F3"
+      INIT => X"0CCC0000A0000000"
     )
         port map (
-      I0 => \^fpga_reg_write_address\(2),
-      I1 => \FPGA_REG_WRITE_ADDRESS[2]_i_2_n_0\,
+      I0 => CONSTELLATION_DATA_VALID,
+      I1 => \FPGA_REG_WRITE_ADDRESS[10]_i_6_n_0\,
+      I2 => SELECT_AXI_REGS_MODE(0),
+      I3 => SELECT_AXI_REGS_MODE(1),
+      I4 => \FPGA_REG_WRITE_ADDRESS[10]_i_7_n_0\,
+      I5 => SELECT_AXI_REGS_MODE(2),
+      O => \FPGA_REG_WRITE_ADDRESS[10]_i_3_n_0\
+    );
+\FPGA_REG_WRITE_ADDRESS[10]_i_4\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0080"
+    )
+        port map (
+      I0 => DATA_STROBE,
+      I1 => \FPGA_REG_WRITE_ADDRESS[10]_i_8_n_0\,
+      I2 => SELECT_AXI_REGS_MODE(0),
+      I3 => SELECT_AXI_REGS_MODE(1),
+      O => \FPGA_REG_WRITE_ADDRESS18_out__0\
+    );
+\FPGA_REG_WRITE_ADDRESS[10]_i_5\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A000000000C00000"
+    )
+        port map (
+      I0 => PARALLEL_OUTPUT_VALID,
+      I1 => FFT_DATA_VALID,
+      I2 => \FPGA_REG_WRITE_ADDRESS[10]_i_7_n_0\,
+      I3 => SELECT_AXI_REGS_MODE(2),
+      I4 => SELECT_AXI_REGS_MODE(1),
+      I5 => SELECT_AXI_REGS_MODE(0),
+      O => \FPGA_REG_WRITE_ADDRESS[10]_i_5_n_0\
+    );
+\FPGA_REG_WRITE_ADDRESS[10]_i_6\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FFFE"
+    )
+        port map (
+      I0 => DEINTERLEAVER_STROBE,
+      I1 => \REG_CNTR_reg_n_0_[2]\,
+      I2 => \REG_CNTR_reg_n_0_[0]\,
+      I3 => \REG_CNTR_reg_n_0_[1]\,
+      O => \FPGA_REG_WRITE_ADDRESS[10]_i_6_n_0\
+    );
+\FPGA_REG_WRITE_ADDRESS[10]_i_7\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"00000001"
+    )
+        port map (
+      I0 => SELECT_AXI_REGS_MODE(6),
+      I1 => SELECT_AXI_REGS_MODE(4),
+      I2 => SELECT_AXI_REGS_MODE(3),
+      I3 => SELECT_AXI_REGS_MODE(7),
+      I4 => SELECT_AXI_REGS_MODE(5),
+      O => \FPGA_REG_WRITE_ADDRESS[10]_i_7_n_0\
+    );
+\FPGA_REG_WRITE_ADDRESS[10]_i_8\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0000000000000001"
+    )
+        port map (
+      I0 => SELECT_AXI_REGS_MODE(5),
+      I1 => SELECT_AXI_REGS_MODE(7),
+      I2 => SELECT_AXI_REGS_MODE(3),
+      I3 => SELECT_AXI_REGS_MODE(4),
+      I4 => SELECT_AXI_REGS_MODE(6),
+      I5 => SELECT_AXI_REGS_MODE(2),
+      O => \FPGA_REG_WRITE_ADDRESS[10]_i_8_n_0\
+    );
+\FPGA_REG_WRITE_ADDRESS[1]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"BBBAFFFFBBBA0000"
+    )
+        port map (
+      I0 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I1 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
+      I2 => VITERBI_SIGNAL_VALID,
+      I3 => ADDRESS_COUNTER_reg(1),
+      I4 => \FPGA_REG_WRITE_ADDRESS[10]_i_1_n_0\,
+      I5 => \^fpga_reg_write_address\(1),
+      O => \FPGA_REG_WRITE_ADDRESS[1]_i_1_n_0\
+    );
+\FPGA_REG_WRITE_ADDRESS[2]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"5554"
+    )
+        port map (
+      I0 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I1 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
       I2 => ADDRESS_COUNTER_reg(2),
-      I3 => \FPGA_REG_WRITE_ADDRESS[3]_i_2_n_0\,
-      I4 => \FPGA_REG_WRITE_ADDRESS[10]_i_4_n_0\,
-      I5 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I3 => VITERBI_SIGNAL_VALID,
       O => \FPGA_REG_WRITE_ADDRESS[2]_i_1_n_0\
     );
-\FPGA_REG_WRITE_ADDRESS[2]_i_2\: unisim.vcomponents.LUT2
+\FPGA_REG_WRITE_ADDRESS[3]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"1"
+      INIT => X"0054"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
-      O => \FPGA_REG_WRITE_ADDRESS[2]_i_2_n_0\
-    );
-\FPGA_REG_WRITE_ADDRESS[3]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"A8FFA8A8A800A8A8"
-    )
-        port map (
-      I0 => \FPGA_REG_WRITE_ADDRESS[10]_i_3_n_0\,
+      I0 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
       I1 => ADDRESS_COUNTER_reg(3),
       I2 => VITERBI_SIGNAL_VALID,
-      I3 => \FPGA_REG_WRITE_ADDRESS[3]_i_2_n_0\,
-      I4 => \FPGA_REG_WRITE_ADDRESS[10]_i_4_n_0\,
-      I5 => \^fpga_reg_write_address\(3),
+      I3 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
       O => \FPGA_REG_WRITE_ADDRESS[3]_i_1_n_0\
     );
-\FPGA_REG_WRITE_ADDRESS[3]_i_2\: unisim.vcomponents.LUT3
+\FPGA_REG_WRITE_ADDRESS[4]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"07"
+      INIT => X"0010"
     )
         port map (
-      I0 => SELECT_AXI_REGS_MODE(1),
-      I1 => SELECT_AXI_REGS_MODE(0),
-      I2 => \FPGA_REG_WRITE_ADDRESS[10]_i_5_n_0\,
-      O => \FPGA_REG_WRITE_ADDRESS[3]_i_2_n_0\
+      I0 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I1 => VITERBI_SIGNAL_VALID,
+      I2 => ADDRESS_COUNTER_reg(4),
+      I3 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
+      O => \FPGA_REG_WRITE_ADDRESS[4]_i_1_n_0\
+    );
+\FPGA_REG_WRITE_ADDRESS[5]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0010"
+    )
+        port map (
+      I0 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I1 => VITERBI_SIGNAL_VALID,
+      I2 => ADDRESS_COUNTER_reg(5),
+      I3 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
+      O => \FPGA_REG_WRITE_ADDRESS[5]_i_1_n_0\
+    );
+\FPGA_REG_WRITE_ADDRESS[6]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0010"
+    )
+        port map (
+      I0 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I1 => VITERBI_SIGNAL_VALID,
+      I2 => ADDRESS_COUNTER_reg(6),
+      I3 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
+      O => \FPGA_REG_WRITE_ADDRESS[6]_i_1_n_0\
+    );
+\FPGA_REG_WRITE_ADDRESS[7]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0010"
+    )
+        port map (
+      I0 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I1 => VITERBI_SIGNAL_VALID,
+      I2 => ADDRESS_COUNTER_reg(7),
+      I3 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
+      O => \FPGA_REG_WRITE_ADDRESS[7]_i_1_n_0\
+    );
+\FPGA_REG_WRITE_ADDRESS[8]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0010"
+    )
+        port map (
+      I0 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I1 => VITERBI_SIGNAL_VALID,
+      I2 => ADDRESS_COUNTER_reg(8),
+      I3 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
+      O => \FPGA_REG_WRITE_ADDRESS[8]_i_1_n_0\
+    );
+\FPGA_REG_WRITE_ADDRESS[9]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0010"
+    )
+        port map (
+      I0 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I1 => VITERBI_SIGNAL_VALID,
+      I2 => ADDRESS_COUNTER_reg(9),
+      I3 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
+      O => \FPGA_REG_WRITE_ADDRESS[9]_i_1_n_0\
     );
 \FPGA_REG_WRITE_ADDRESS_reg[0]\: unisim.vcomponents.FDRE
     generic map(
@@ -907,10 +1002,10 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_ADDRESS[10]_i_2_n_0\,
-      D => ADDRESS_COUNTER_reg(10),
+      CE => \FPGA_REG_WRITE_ADDRESS[10]_i_1_n_0\,
+      D => \FPGA_REG_WRITE_ADDRESS[10]_i_2_n_0\,
       Q => \^fpga_reg_write_address\(10),
-      R => \FPGA_REG_WRITE_ADDRESS[10]_i_1_n_0\
+      R => '0'
     );
 \FPGA_REG_WRITE_ADDRESS_reg[1]\: unisim.vcomponents.FDRE
     generic map(
@@ -929,7 +1024,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \FPGA_REG_WRITE_ADDRESS[10]_i_1_n_0\,
       D => \FPGA_REG_WRITE_ADDRESS[2]_i_1_n_0\,
       Q => \^fpga_reg_write_address\(2),
       R => '0'
@@ -940,7 +1035,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => '1',
+      CE => \FPGA_REG_WRITE_ADDRESS[10]_i_1_n_0\,
       D => \FPGA_REG_WRITE_ADDRESS[3]_i_1_n_0\,
       Q => \^fpga_reg_write_address\(3),
       R => '0'
@@ -951,10 +1046,10 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_ADDRESS[10]_i_2_n_0\,
-      D => ADDRESS_COUNTER_reg(4),
+      CE => \FPGA_REG_WRITE_ADDRESS[10]_i_1_n_0\,
+      D => \FPGA_REG_WRITE_ADDRESS[4]_i_1_n_0\,
       Q => \^fpga_reg_write_address\(4),
-      R => \FPGA_REG_WRITE_ADDRESS[10]_i_1_n_0\
+      R => '0'
     );
 \FPGA_REG_WRITE_ADDRESS_reg[5]\: unisim.vcomponents.FDRE
     generic map(
@@ -962,10 +1057,10 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_ADDRESS[10]_i_2_n_0\,
-      D => ADDRESS_COUNTER_reg(5),
+      CE => \FPGA_REG_WRITE_ADDRESS[10]_i_1_n_0\,
+      D => \FPGA_REG_WRITE_ADDRESS[5]_i_1_n_0\,
       Q => \^fpga_reg_write_address\(5),
-      R => \FPGA_REG_WRITE_ADDRESS[10]_i_1_n_0\
+      R => '0'
     );
 \FPGA_REG_WRITE_ADDRESS_reg[6]\: unisim.vcomponents.FDRE
     generic map(
@@ -973,10 +1068,10 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_ADDRESS[10]_i_2_n_0\,
-      D => ADDRESS_COUNTER_reg(6),
+      CE => \FPGA_REG_WRITE_ADDRESS[10]_i_1_n_0\,
+      D => \FPGA_REG_WRITE_ADDRESS[6]_i_1_n_0\,
       Q => \^fpga_reg_write_address\(6),
-      R => \FPGA_REG_WRITE_ADDRESS[10]_i_1_n_0\
+      R => '0'
     );
 \FPGA_REG_WRITE_ADDRESS_reg[7]\: unisim.vcomponents.FDRE
     generic map(
@@ -984,10 +1079,10 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_ADDRESS[10]_i_2_n_0\,
-      D => ADDRESS_COUNTER_reg(7),
+      CE => \FPGA_REG_WRITE_ADDRESS[10]_i_1_n_0\,
+      D => \FPGA_REG_WRITE_ADDRESS[7]_i_1_n_0\,
       Q => \^fpga_reg_write_address\(7),
-      R => \FPGA_REG_WRITE_ADDRESS[10]_i_1_n_0\
+      R => '0'
     );
 \FPGA_REG_WRITE_ADDRESS_reg[8]\: unisim.vcomponents.FDRE
     generic map(
@@ -995,10 +1090,10 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_ADDRESS[10]_i_2_n_0\,
-      D => ADDRESS_COUNTER_reg(8),
+      CE => \FPGA_REG_WRITE_ADDRESS[10]_i_1_n_0\,
+      D => \FPGA_REG_WRITE_ADDRESS[8]_i_1_n_0\,
       Q => \^fpga_reg_write_address\(8),
-      R => \FPGA_REG_WRITE_ADDRESS[10]_i_1_n_0\
+      R => '0'
     );
 \FPGA_REG_WRITE_ADDRESS_reg[9]\: unisim.vcomponents.FDRE
     generic map(
@@ -1006,19 +1101,19 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_ADDRESS[10]_i_2_n_0\,
-      D => ADDRESS_COUNTER_reg(9),
+      CE => \FPGA_REG_WRITE_ADDRESS[10]_i_1_n_0\,
+      D => \FPGA_REG_WRITE_ADDRESS[9]_i_1_n_0\,
       Q => \^fpga_reg_write_address\(9),
-      R => \FPGA_REG_WRITE_ADDRESS[10]_i_1_n_0\
+      R => '0'
     );
 \FPGA_REG_WRITE_DATA[0]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"3A3A3A3A0A3A0A0A"
+      INIT => X"FFFFFFFF23232322"
     )
         port map (
-      I0 => EQUALIZER_REG_WRITE_DATA(0),
-      I1 => \FPGA_REG_WRITE_DATA[0]_i_2_n_0\,
-      I2 => \FPGA_REG_WRITE_ADDRESS[10]_i_3_n_0\,
+      I0 => \FPGA_REG_WRITE_DATA[0]_i_2_n_0\,
+      I1 => \FPGA_REG_WRITE_DATA[31]_i_6_n_0\,
+      I2 => \FPGA_REG_WRITE_DATA[31]_i_7_n_0\,
       I3 => \FPGA_REG_WRITE_DATA[0]_i_3_n_0\,
       I4 => \FPGA_REG_WRITE_DATA[0]_i_4_n_0\,
       I5 => \FPGA_REG_WRITE_DATA[0]_i_5_n_0\,
@@ -1026,80 +1121,75 @@ begin
     );
 \FPGA_REG_WRITE_DATA[0]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0272027202727272"
+      INIT => X"AAF0AAF0AACCAA00"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => VITERBI_SIGNAL(0),
-      I2 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
-      I3 => \FPGA_REG_WRITE_DATA[0]_i_6_n_0\,
-      I4 => IDATA(0),
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_14_n_0\,
+      I0 => IDATA(0),
+      I1 => CONSTELLATION_IDATA(0),
+      I2 => FFT_IDATA(0),
+      I3 => \FPGA_REG_WRITE_ADDRESS18_out__0\,
+      I4 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
+      I5 => \FPGA_REG_WRITE_ADDRESS17_out__0\,
       O => \FPGA_REG_WRITE_DATA[0]_i_2_n_0\
     );
-\FPGA_REG_WRITE_DATA[0]_i_3\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[0]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"77777F77"
+      INIT => X"00FF000000E200E2"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I2 => DEINTERLEAVER_STROBE,
-      I3 => \REG_CNTR[1]_i_2_n_0\,
-      I4 => DEINTERLEAVER_QPSK(0),
+      I0 => PARALLEL_OUTPUT(0),
+      I1 => \FPGA_REG_WRITE_ADDRESS1__0\,
+      I2 => \FPGA_REG_WRITE_DATA[0]_i_6_n_0\,
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      I4 => data6(0),
+      I5 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
       O => \FPGA_REG_WRITE_DATA[0]_i_3_n_0\
     );
-\FPGA_REG_WRITE_DATA[0]_i_4\: unisim.vcomponents.LUT6
+\FPGA_REG_WRITE_DATA[0]_i_4\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"D0FFD000DDFFDDFF"
+      INIT => X"80"
     )
         port map (
-      I0 => \REG_CNTR[1]_i_2_n_0\,
-      I1 => DEINTERLEAVER_QPSK(32),
-      I2 => DEINTERLEAVER_16QAM(31),
-      I3 => DEINTERLEAVER_STROBE,
-      I4 => \FPGA_REG_WRITE_DATA_reg[0]_i_7_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[20]_i_8_n_0\,
+      I0 => DEINTERLEAVER_BPSK(31),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
       O => \FPGA_REG_WRITE_DATA[0]_i_4_n_0\
     );
-\FPGA_REG_WRITE_DATA[0]_i_5\: unisim.vcomponents.LUT6
+\FPGA_REG_WRITE_DATA[0]_i_5\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FFFFFFFF4040FF40"
+      INIT => X"AAAAACA0"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => DEINTERLEAVER_STROBE,
-      I2 => DEINTERLEAVER_BPSK(31),
-      I3 => CONSTELLATION_IDATA(0),
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_19_n_0\,
+      I0 => EQUALIZER_REG_WRITE_DATA(0),
+      I1 => VITERBI_SIGNAL(0),
+      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I3 => VITERBI_SIGNAL_VALID,
+      I4 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
       O => \FPGA_REG_WRITE_DATA[0]_i_5_n_0\
     );
 \FPGA_REG_WRITE_DATA[0]_i_6\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"55550040"
+      INIT => X"B8BBB888"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => DATA_STROBE,
-      I2 => SELECT_AXI_REGS_MODE(0),
-      I3 => SELECT_AXI_REGS_MODE(1),
-      I4 => FFT_IDATA(0),
+      I0 => DEINTERLEAVER_16QAM(31),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => \FPGA_REG_WRITE_DATA[0]_i_8_n_0\,
+      I3 => \REG_CNTR_reg_n_0_[2]\,
+      I4 => \FPGA_REG_WRITE_DATA[0]_i_9_n_0\,
       O => \FPGA_REG_WRITE_DATA[0]_i_6_n_0\
     );
-\FPGA_REG_WRITE_DATA[0]_i_8\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[0]_i_7\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"B8FFB800"
+      INIT => X"B8"
     )
         port map (
-      I0 => DEINTERLEAVER_16QAM(127),
-      I1 => \REG_CNTR_reg_n_0_[0]\,
-      I2 => DEINTERLEAVER_16QAM(159),
-      I3 => \REG_CNTR_reg_n_0_[1]\,
-      I4 => DEINTERLEAVER_16QAM(191),
-      O => \FPGA_REG_WRITE_DATA[0]_i_8_n_0\
+      I0 => DEINTERLEAVER_QPSK(32),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => DEINTERLEAVER_QPSK(0),
+      O => data6(0)
     );
-\FPGA_REG_WRITE_DATA[0]_i_9\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[0]_i_8\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"B8BBB888"
     )
@@ -1109,70 +1199,79 @@ begin
       I2 => DEINTERLEAVER_16QAM(63),
       I3 => \REG_CNTR_reg_n_0_[0]\,
       I4 => DEINTERLEAVER_16QAM(95),
+      O => \FPGA_REG_WRITE_DATA[0]_i_8_n_0\
+    );
+\FPGA_REG_WRITE_DATA[0]_i_9\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"B8FFB800"
+    )
+        port map (
+      I0 => DEINTERLEAVER_16QAM(127),
+      I1 => \REG_CNTR_reg_n_0_[0]\,
+      I2 => DEINTERLEAVER_16QAM(159),
+      I3 => \REG_CNTR_reg_n_0_[1]\,
+      I4 => DEINTERLEAVER_16QAM(191),
       O => \FPGA_REG_WRITE_DATA[0]_i_9_n_0\
     );
 \FPGA_REG_WRITE_DATA[10]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"3A3A3A3A0A3A0A0A"
+      INIT => X"FFFFFFFF23232322"
     )
         port map (
-      I0 => EQUALIZER_REG_WRITE_DATA(10),
-      I1 => \FPGA_REG_WRITE_DATA[10]_i_2_n_0\,
-      I2 => \FPGA_REG_WRITE_ADDRESS[10]_i_3_n_0\,
+      I0 => \FPGA_REG_WRITE_DATA[10]_i_2_n_0\,
+      I1 => \FPGA_REG_WRITE_DATA[31]_i_6_n_0\,
+      I2 => \FPGA_REG_WRITE_DATA[31]_i_7_n_0\,
       I3 => \FPGA_REG_WRITE_DATA[10]_i_3_n_0\,
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[10]_i_4_n_0\,
+      I4 => \FPGA_REG_WRITE_DATA[10]_i_4_n_0\,
+      I5 => \FPGA_REG_WRITE_DATA[10]_i_5_n_0\,
       O => \FPGA_REG_WRITE_DATA[10]_i_1_n_0\
     );
 \FPGA_REG_WRITE_DATA[10]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0272027202727272"
+      INIT => X"AAF0AAF0AACCAA00"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => VITERBI_SIGNAL(10),
-      I2 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
-      I3 => \FPGA_REG_WRITE_DATA[10]_i_5_n_0\,
-      I4 => IDATA(10),
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_14_n_0\,
+      I0 => IDATA(10),
+      I1 => CONSTELLATION_IDATA(10),
+      I2 => FFT_IDATA(10),
+      I3 => \FPGA_REG_WRITE_ADDRESS18_out__0\,
+      I4 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
+      I5 => \FPGA_REG_WRITE_ADDRESS17_out__0\,
       O => \FPGA_REG_WRITE_DATA[10]_i_2_n_0\
     );
 \FPGA_REG_WRITE_DATA[10]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"575757F7F7F757F7"
+      INIT => X"00FF000000E200E2"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[10]_i_6_n_0\,
-      I2 => \REG_CNTR[1]_i_2_n_0\,
-      I3 => DEINTERLEAVER_QPSK(10),
-      I4 => DEINTERLEAVER_STROBE,
-      I5 => DEINTERLEAVER_QPSK(42),
+      I0 => PARALLEL_OUTPUT(10),
+      I1 => \FPGA_REG_WRITE_ADDRESS1__0\,
+      I2 => \FPGA_REG_WRITE_DATA[10]_i_6_n_0\,
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      I4 => data6(10),
+      I5 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
       O => \FPGA_REG_WRITE_DATA[10]_i_3_n_0\
     );
-\FPGA_REG_WRITE_DATA[10]_i_4\: unisim.vcomponents.LUT6
+\FPGA_REG_WRITE_DATA[10]_i_4\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"FFFFFFFF4040FF40"
+      INIT => X"80"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
+      I0 => DEINTERLEAVER_BPSK(21),
       I1 => DEINTERLEAVER_STROBE,
-      I2 => DEINTERLEAVER_BPSK(21),
-      I3 => CONSTELLATION_IDATA(10),
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_19_n_0\,
+      I2 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
       O => \FPGA_REG_WRITE_DATA[10]_i_4_n_0\
     );
 \FPGA_REG_WRITE_DATA[10]_i_5\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"55550040"
+      INIT => X"AAAAACA0"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => DATA_STROBE,
-      I2 => SELECT_AXI_REGS_MODE(0),
-      I3 => SELECT_AXI_REGS_MODE(1),
-      I4 => FFT_IDATA(10),
+      I0 => EQUALIZER_REG_WRITE_DATA(10),
+      I1 => VITERBI_SIGNAL(10),
+      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I3 => VITERBI_SIGNAL_VALID,
+      I4 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
       O => \FPGA_REG_WRITE_DATA[10]_i_5_n_0\
     );
 \FPGA_REG_WRITE_DATA[10]_i_6\: unisim.vcomponents.LUT5
@@ -1182,12 +1281,22 @@ begin
         port map (
       I0 => DEINTERLEAVER_16QAM(21),
       I1 => DEINTERLEAVER_STROBE,
-      I2 => \FPGA_REG_WRITE_DATA[10]_i_7_n_0\,
+      I2 => \FPGA_REG_WRITE_DATA[10]_i_8_n_0\,
       I3 => \REG_CNTR_reg_n_0_[2]\,
-      I4 => \FPGA_REG_WRITE_DATA[10]_i_8_n_0\,
+      I4 => \FPGA_REG_WRITE_DATA[10]_i_9_n_0\,
       O => \FPGA_REG_WRITE_DATA[10]_i_6_n_0\
     );
-\FPGA_REG_WRITE_DATA[10]_i_7\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[10]_i_7\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => DEINTERLEAVER_QPSK(42),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => DEINTERLEAVER_QPSK(10),
+      O => data6(10)
+    );
+\FPGA_REG_WRITE_DATA[10]_i_8\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"B8BBB888"
     )
@@ -1197,9 +1306,9 @@ begin
       I2 => DEINTERLEAVER_16QAM(53),
       I3 => \REG_CNTR_reg_n_0_[0]\,
       I4 => DEINTERLEAVER_16QAM(85),
-      O => \FPGA_REG_WRITE_DATA[10]_i_7_n_0\
+      O => \FPGA_REG_WRITE_DATA[10]_i_8_n_0\
     );
-\FPGA_REG_WRITE_DATA[10]_i_8\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[10]_i_9\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"B8FFB800"
     )
@@ -1209,16 +1318,16 @@ begin
       I2 => DEINTERLEAVER_16QAM(149),
       I3 => \REG_CNTR_reg_n_0_[1]\,
       I4 => DEINTERLEAVER_16QAM(181),
-      O => \FPGA_REG_WRITE_DATA[10]_i_8_n_0\
+      O => \FPGA_REG_WRITE_DATA[10]_i_9_n_0\
     );
 \FPGA_REG_WRITE_DATA[11]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"3A3A3A3A0A3A0A0A"
+      INIT => X"FFFFFFFF23232322"
     )
         port map (
-      I0 => EQUALIZER_REG_WRITE_DATA(11),
-      I1 => \FPGA_REG_WRITE_DATA[11]_i_2_n_0\,
-      I2 => \FPGA_REG_WRITE_ADDRESS[10]_i_3_n_0\,
+      I0 => \FPGA_REG_WRITE_DATA[11]_i_2_n_0\,
+      I1 => \FPGA_REG_WRITE_DATA[31]_i_6_n_0\,
+      I2 => \FPGA_REG_WRITE_DATA[31]_i_7_n_0\,
       I3 => \FPGA_REG_WRITE_DATA[11]_i_3_n_0\,
       I4 => \FPGA_REG_WRITE_DATA[11]_i_4_n_0\,
       I5 => \FPGA_REG_WRITE_DATA[11]_i_5_n_0\,
@@ -1226,79 +1335,75 @@ begin
     );
 \FPGA_REG_WRITE_DATA[11]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0272027202727272"
+      INIT => X"AAF0AAF0AACCAA00"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => VITERBI_SIGNAL(11),
-      I2 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
-      I3 => \FPGA_REG_WRITE_DATA[11]_i_6_n_0\,
-      I4 => IDATA(11),
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_14_n_0\,
+      I0 => IDATA(11),
+      I1 => CONSTELLATION_IDATA(11),
+      I2 => FFT_IDATA(11),
+      I3 => \FPGA_REG_WRITE_ADDRESS18_out__0\,
+      I4 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
+      I5 => \FPGA_REG_WRITE_ADDRESS17_out__0\,
       O => \FPGA_REG_WRITE_DATA[11]_i_2_n_0\
     );
-\FPGA_REG_WRITE_DATA[11]_i_3\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[11]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"7777F777"
+      INIT => X"00FF000000E200E2"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I2 => DEINTERLEAVER_STROBE,
-      I3 => \REG_CNTR[1]_i_2_n_0\,
-      I4 => DEINTERLEAVER_QPSK(43),
+      I0 => PARALLEL_OUTPUT(11),
+      I1 => \FPGA_REG_WRITE_ADDRESS1__0\,
+      I2 => \FPGA_REG_WRITE_DATA[11]_i_6_n_0\,
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      I4 => data6(11),
+      I5 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
       O => \FPGA_REG_WRITE_DATA[11]_i_3_n_0\
     );
-\FPGA_REG_WRITE_DATA[11]_i_4\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[11]_i_4\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"FFACF0AC"
+      INIT => X"80"
     )
         port map (
-      I0 => DEINTERLEAVER_16QAM(20),
-      I1 => \FPGA_REG_WRITE_DATA_reg[11]_i_7_n_0\,
-      I2 => DEINTERLEAVER_STROBE,
-      I3 => \REG_CNTR[1]_i_2_n_0\,
-      I4 => DEINTERLEAVER_QPSK(11),
+      I0 => DEINTERLEAVER_BPSK(20),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
       O => \FPGA_REG_WRITE_DATA[11]_i_4_n_0\
     );
-\FPGA_REG_WRITE_DATA[11]_i_5\: unisim.vcomponents.LUT6
+\FPGA_REG_WRITE_DATA[11]_i_5\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FFFFFFFF4040FF40"
+      INIT => X"AAAAACA0"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => DEINTERLEAVER_STROBE,
-      I2 => DEINTERLEAVER_BPSK(20),
-      I3 => CONSTELLATION_IDATA(11),
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_19_n_0\,
+      I0 => EQUALIZER_REG_WRITE_DATA(11),
+      I1 => VITERBI_SIGNAL(11),
+      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I3 => VITERBI_SIGNAL_VALID,
+      I4 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
       O => \FPGA_REG_WRITE_DATA[11]_i_5_n_0\
     );
 \FPGA_REG_WRITE_DATA[11]_i_6\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"55550040"
+      INIT => X"B8BBB888"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => DATA_STROBE,
-      I2 => SELECT_AXI_REGS_MODE(0),
-      I3 => SELECT_AXI_REGS_MODE(1),
-      I4 => FFT_IDATA(11),
+      I0 => DEINTERLEAVER_16QAM(20),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => \FPGA_REG_WRITE_DATA[11]_i_8_n_0\,
+      I3 => \REG_CNTR_reg_n_0_[2]\,
+      I4 => \FPGA_REG_WRITE_DATA[11]_i_9_n_0\,
       O => \FPGA_REG_WRITE_DATA[11]_i_6_n_0\
     );
-\FPGA_REG_WRITE_DATA[11]_i_8\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[11]_i_7\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"B8FFB800"
+      INIT => X"B8"
     )
         port map (
-      I0 => DEINTERLEAVER_16QAM(116),
-      I1 => \REG_CNTR_reg_n_0_[0]\,
-      I2 => DEINTERLEAVER_16QAM(148),
-      I3 => \REG_CNTR_reg_n_0_[1]\,
-      I4 => DEINTERLEAVER_16QAM(180),
-      O => \FPGA_REG_WRITE_DATA[11]_i_8_n_0\
+      I0 => DEINTERLEAVER_QPSK(43),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => DEINTERLEAVER_QPSK(11),
+      O => data6(11)
     );
-\FPGA_REG_WRITE_DATA[11]_i_9\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[11]_i_8\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"B8BBB888"
     )
@@ -1308,16 +1413,28 @@ begin
       I2 => DEINTERLEAVER_16QAM(52),
       I3 => \REG_CNTR_reg_n_0_[0]\,
       I4 => DEINTERLEAVER_16QAM(84),
+      O => \FPGA_REG_WRITE_DATA[11]_i_8_n_0\
+    );
+\FPGA_REG_WRITE_DATA[11]_i_9\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"B8FFB800"
+    )
+        port map (
+      I0 => DEINTERLEAVER_16QAM(116),
+      I1 => \REG_CNTR_reg_n_0_[0]\,
+      I2 => DEINTERLEAVER_16QAM(148),
+      I3 => \REG_CNTR_reg_n_0_[1]\,
+      I4 => DEINTERLEAVER_16QAM(180),
       O => \FPGA_REG_WRITE_DATA[11]_i_9_n_0\
     );
 \FPGA_REG_WRITE_DATA[12]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"3A3A3A3A0A3A0A0A"
+      INIT => X"FFFFFFFF23232322"
     )
         port map (
-      I0 => EQUALIZER_REG_WRITE_DATA(12),
-      I1 => \FPGA_REG_WRITE_DATA[12]_i_2_n_0\,
-      I2 => \FPGA_REG_WRITE_ADDRESS[10]_i_3_n_0\,
+      I0 => \FPGA_REG_WRITE_DATA[12]_i_2_n_0\,
+      I1 => \FPGA_REG_WRITE_DATA[31]_i_6_n_0\,
+      I2 => \FPGA_REG_WRITE_DATA[31]_i_7_n_0\,
       I3 => \FPGA_REG_WRITE_DATA[12]_i_3_n_0\,
       I4 => \FPGA_REG_WRITE_DATA[12]_i_4_n_0\,
       I5 => \FPGA_REG_WRITE_DATA[12]_i_5_n_0\,
@@ -1325,80 +1442,75 @@ begin
     );
 \FPGA_REG_WRITE_DATA[12]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0272027202727272"
+      INIT => X"AAF0AAF0AACCAA00"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => VITERBI_SIGNAL(12),
-      I2 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
-      I3 => \FPGA_REG_WRITE_DATA[12]_i_6_n_0\,
-      I4 => IDATA(12),
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_14_n_0\,
+      I0 => IDATA(12),
+      I1 => CONSTELLATION_IDATA(12),
+      I2 => FFT_IDATA(12),
+      I3 => \FPGA_REG_WRITE_ADDRESS18_out__0\,
+      I4 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
+      I5 => \FPGA_REG_WRITE_ADDRESS17_out__0\,
       O => \FPGA_REG_WRITE_DATA[12]_i_2_n_0\
     );
-\FPGA_REG_WRITE_DATA[12]_i_3\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[12]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"77777F77"
+      INIT => X"00FF000000E200E2"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I2 => DEINTERLEAVER_STROBE,
-      I3 => \REG_CNTR[1]_i_2_n_0\,
-      I4 => DEINTERLEAVER_QPSK(12),
+      I0 => PARALLEL_OUTPUT(12),
+      I1 => \FPGA_REG_WRITE_ADDRESS1__0\,
+      I2 => \FPGA_REG_WRITE_DATA[12]_i_6_n_0\,
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      I4 => data6(12),
+      I5 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
       O => \FPGA_REG_WRITE_DATA[12]_i_3_n_0\
     );
-\FPGA_REG_WRITE_DATA[12]_i_4\: unisim.vcomponents.LUT6
+\FPGA_REG_WRITE_DATA[12]_i_4\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"D0FFD000DDFFDDFF"
+      INIT => X"80"
     )
         port map (
-      I0 => \REG_CNTR[1]_i_2_n_0\,
-      I1 => DEINTERLEAVER_QPSK(44),
-      I2 => DEINTERLEAVER_16QAM(19),
-      I3 => DEINTERLEAVER_STROBE,
-      I4 => \FPGA_REG_WRITE_DATA_reg[12]_i_7_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[20]_i_8_n_0\,
+      I0 => DEINTERLEAVER_BPSK(19),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
       O => \FPGA_REG_WRITE_DATA[12]_i_4_n_0\
     );
-\FPGA_REG_WRITE_DATA[12]_i_5\: unisim.vcomponents.LUT6
+\FPGA_REG_WRITE_DATA[12]_i_5\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FFFFFFFF4040FF40"
+      INIT => X"AAAAACA0"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => DEINTERLEAVER_STROBE,
-      I2 => DEINTERLEAVER_BPSK(19),
-      I3 => CONSTELLATION_IDATA(12),
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_19_n_0\,
+      I0 => EQUALIZER_REG_WRITE_DATA(12),
+      I1 => VITERBI_SIGNAL(12),
+      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I3 => VITERBI_SIGNAL_VALID,
+      I4 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
       O => \FPGA_REG_WRITE_DATA[12]_i_5_n_0\
     );
 \FPGA_REG_WRITE_DATA[12]_i_6\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"55550040"
+      INIT => X"B8BBB888"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => DATA_STROBE,
-      I2 => SELECT_AXI_REGS_MODE(0),
-      I3 => SELECT_AXI_REGS_MODE(1),
-      I4 => FFT_IDATA(12),
+      I0 => DEINTERLEAVER_16QAM(19),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => \FPGA_REG_WRITE_DATA[12]_i_8_n_0\,
+      I3 => \REG_CNTR_reg_n_0_[2]\,
+      I4 => \FPGA_REG_WRITE_DATA[12]_i_9_n_0\,
       O => \FPGA_REG_WRITE_DATA[12]_i_6_n_0\
     );
-\FPGA_REG_WRITE_DATA[12]_i_8\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[12]_i_7\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"B8FFB800"
+      INIT => X"B8"
     )
         port map (
-      I0 => DEINTERLEAVER_16QAM(115),
-      I1 => \REG_CNTR_reg_n_0_[0]\,
-      I2 => DEINTERLEAVER_16QAM(147),
-      I3 => \REG_CNTR_reg_n_0_[1]\,
-      I4 => DEINTERLEAVER_16QAM(179),
-      O => \FPGA_REG_WRITE_DATA[12]_i_8_n_0\
+      I0 => DEINTERLEAVER_QPSK(44),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => DEINTERLEAVER_QPSK(12),
+      O => data6(12)
     );
-\FPGA_REG_WRITE_DATA[12]_i_9\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[12]_i_8\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"B8BBB888"
     )
@@ -1408,16 +1520,28 @@ begin
       I2 => DEINTERLEAVER_16QAM(51),
       I3 => \REG_CNTR_reg_n_0_[0]\,
       I4 => DEINTERLEAVER_16QAM(83),
+      O => \FPGA_REG_WRITE_DATA[12]_i_8_n_0\
+    );
+\FPGA_REG_WRITE_DATA[12]_i_9\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"B8FFB800"
+    )
+        port map (
+      I0 => DEINTERLEAVER_16QAM(115),
+      I1 => \REG_CNTR_reg_n_0_[0]\,
+      I2 => DEINTERLEAVER_16QAM(147),
+      I3 => \REG_CNTR_reg_n_0_[1]\,
+      I4 => DEINTERLEAVER_16QAM(179),
       O => \FPGA_REG_WRITE_DATA[12]_i_9_n_0\
     );
 \FPGA_REG_WRITE_DATA[13]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"3A3A3A3A0A3A0A0A"
+      INIT => X"FFFFFFFF23232322"
     )
         port map (
-      I0 => EQUALIZER_REG_WRITE_DATA(13),
-      I1 => \FPGA_REG_WRITE_DATA[13]_i_2_n_0\,
-      I2 => \FPGA_REG_WRITE_ADDRESS[10]_i_3_n_0\,
+      I0 => \FPGA_REG_WRITE_DATA[13]_i_2_n_0\,
+      I1 => \FPGA_REG_WRITE_DATA[31]_i_6_n_0\,
+      I2 => \FPGA_REG_WRITE_DATA[31]_i_7_n_0\,
       I3 => \FPGA_REG_WRITE_DATA[13]_i_3_n_0\,
       I4 => \FPGA_REG_WRITE_DATA[13]_i_4_n_0\,
       I5 => \FPGA_REG_WRITE_DATA[13]_i_5_n_0\,
@@ -1425,80 +1549,75 @@ begin
     );
 \FPGA_REG_WRITE_DATA[13]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0272027202727272"
+      INIT => X"AAF0AAF0AACCAA00"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => VITERBI_SIGNAL(13),
-      I2 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
-      I3 => \FPGA_REG_WRITE_DATA[13]_i_6_n_0\,
-      I4 => IDATA(13),
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_14_n_0\,
+      I0 => IDATA(13),
+      I1 => CONSTELLATION_IDATA(13),
+      I2 => FFT_IDATA(13),
+      I3 => \FPGA_REG_WRITE_ADDRESS18_out__0\,
+      I4 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
+      I5 => \FPGA_REG_WRITE_ADDRESS17_out__0\,
       O => \FPGA_REG_WRITE_DATA[13]_i_2_n_0\
     );
-\FPGA_REG_WRITE_DATA[13]_i_3\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[13]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"77777F77"
+      INIT => X"00FF000000E200E2"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I2 => DEINTERLEAVER_STROBE,
-      I3 => \REG_CNTR[1]_i_2_n_0\,
-      I4 => DEINTERLEAVER_QPSK(13),
+      I0 => PARALLEL_OUTPUT(13),
+      I1 => \FPGA_REG_WRITE_ADDRESS1__0\,
+      I2 => \FPGA_REG_WRITE_DATA[13]_i_6_n_0\,
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      I4 => data6(13),
+      I5 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
       O => \FPGA_REG_WRITE_DATA[13]_i_3_n_0\
     );
-\FPGA_REG_WRITE_DATA[13]_i_4\: unisim.vcomponents.LUT6
+\FPGA_REG_WRITE_DATA[13]_i_4\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"D0FFD000DDFFDDFF"
+      INIT => X"80"
     )
         port map (
-      I0 => \REG_CNTR[1]_i_2_n_0\,
-      I1 => DEINTERLEAVER_QPSK(45),
-      I2 => DEINTERLEAVER_16QAM(18),
-      I3 => DEINTERLEAVER_STROBE,
-      I4 => \FPGA_REG_WRITE_DATA_reg[13]_i_7_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[20]_i_8_n_0\,
+      I0 => DEINTERLEAVER_BPSK(18),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
       O => \FPGA_REG_WRITE_DATA[13]_i_4_n_0\
     );
-\FPGA_REG_WRITE_DATA[13]_i_5\: unisim.vcomponents.LUT6
+\FPGA_REG_WRITE_DATA[13]_i_5\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FFFFFFFF4040FF40"
+      INIT => X"AAAAACA0"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => DEINTERLEAVER_STROBE,
-      I2 => DEINTERLEAVER_BPSK(18),
-      I3 => CONSTELLATION_IDATA(13),
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_19_n_0\,
+      I0 => EQUALIZER_REG_WRITE_DATA(13),
+      I1 => VITERBI_SIGNAL(13),
+      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I3 => VITERBI_SIGNAL_VALID,
+      I4 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
       O => \FPGA_REG_WRITE_DATA[13]_i_5_n_0\
     );
 \FPGA_REG_WRITE_DATA[13]_i_6\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"55550040"
+      INIT => X"B8BBB888"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => DATA_STROBE,
-      I2 => SELECT_AXI_REGS_MODE(0),
-      I3 => SELECT_AXI_REGS_MODE(1),
-      I4 => FFT_IDATA(13),
+      I0 => DEINTERLEAVER_16QAM(18),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => \FPGA_REG_WRITE_DATA[13]_i_8_n_0\,
+      I3 => \REG_CNTR_reg_n_0_[2]\,
+      I4 => \FPGA_REG_WRITE_DATA[13]_i_9_n_0\,
       O => \FPGA_REG_WRITE_DATA[13]_i_6_n_0\
     );
-\FPGA_REG_WRITE_DATA[13]_i_8\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[13]_i_7\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"B8FFB800"
+      INIT => X"B8"
     )
         port map (
-      I0 => DEINTERLEAVER_16QAM(114),
-      I1 => \REG_CNTR_reg_n_0_[0]\,
-      I2 => DEINTERLEAVER_16QAM(146),
-      I3 => \REG_CNTR_reg_n_0_[1]\,
-      I4 => DEINTERLEAVER_16QAM(178),
-      O => \FPGA_REG_WRITE_DATA[13]_i_8_n_0\
+      I0 => DEINTERLEAVER_QPSK(45),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => DEINTERLEAVER_QPSK(13),
+      O => data6(13)
     );
-\FPGA_REG_WRITE_DATA[13]_i_9\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[13]_i_8\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"B8BBB888"
     )
@@ -1508,70 +1627,79 @@ begin
       I2 => DEINTERLEAVER_16QAM(50),
       I3 => \REG_CNTR_reg_n_0_[0]\,
       I4 => DEINTERLEAVER_16QAM(82),
+      O => \FPGA_REG_WRITE_DATA[13]_i_8_n_0\
+    );
+\FPGA_REG_WRITE_DATA[13]_i_9\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"B8FFB800"
+    )
+        port map (
+      I0 => DEINTERLEAVER_16QAM(114),
+      I1 => \REG_CNTR_reg_n_0_[0]\,
+      I2 => DEINTERLEAVER_16QAM(146),
+      I3 => \REG_CNTR_reg_n_0_[1]\,
+      I4 => DEINTERLEAVER_16QAM(178),
       O => \FPGA_REG_WRITE_DATA[13]_i_9_n_0\
     );
 \FPGA_REG_WRITE_DATA[14]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"3A3A3A3A0A3A0A0A"
+      INIT => X"FFFFFFFF23232322"
     )
         port map (
-      I0 => EQUALIZER_REG_WRITE_DATA(14),
-      I1 => \FPGA_REG_WRITE_DATA[14]_i_2_n_0\,
-      I2 => \FPGA_REG_WRITE_ADDRESS[10]_i_3_n_0\,
+      I0 => \FPGA_REG_WRITE_DATA[14]_i_2_n_0\,
+      I1 => \FPGA_REG_WRITE_DATA[31]_i_6_n_0\,
+      I2 => \FPGA_REG_WRITE_DATA[31]_i_7_n_0\,
       I3 => \FPGA_REG_WRITE_DATA[14]_i_3_n_0\,
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[14]_i_4_n_0\,
+      I4 => \FPGA_REG_WRITE_DATA[14]_i_4_n_0\,
+      I5 => \FPGA_REG_WRITE_DATA[14]_i_5_n_0\,
       O => \FPGA_REG_WRITE_DATA[14]_i_1_n_0\
     );
 \FPGA_REG_WRITE_DATA[14]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0272027202727272"
+      INIT => X"AAF0AAF0AACCAA00"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => VITERBI_SIGNAL(14),
-      I2 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
-      I3 => \FPGA_REG_WRITE_DATA[14]_i_5_n_0\,
-      I4 => IDATA(14),
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_14_n_0\,
+      I0 => IDATA(14),
+      I1 => CONSTELLATION_IDATA(14),
+      I2 => FFT_IDATA(14),
+      I3 => \FPGA_REG_WRITE_ADDRESS18_out__0\,
+      I4 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
+      I5 => \FPGA_REG_WRITE_ADDRESS17_out__0\,
       O => \FPGA_REG_WRITE_DATA[14]_i_2_n_0\
     );
 \FPGA_REG_WRITE_DATA[14]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"575757F7F7F757F7"
+      INIT => X"00FF000000E200E2"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[14]_i_6_n_0\,
-      I2 => \REG_CNTR[1]_i_2_n_0\,
-      I3 => DEINTERLEAVER_QPSK(14),
-      I4 => DEINTERLEAVER_STROBE,
-      I5 => DEINTERLEAVER_QPSK(46),
+      I0 => PARALLEL_OUTPUT(14),
+      I1 => \FPGA_REG_WRITE_ADDRESS1__0\,
+      I2 => \FPGA_REG_WRITE_DATA[14]_i_6_n_0\,
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      I4 => data6(14),
+      I5 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
       O => \FPGA_REG_WRITE_DATA[14]_i_3_n_0\
     );
-\FPGA_REG_WRITE_DATA[14]_i_4\: unisim.vcomponents.LUT6
+\FPGA_REG_WRITE_DATA[14]_i_4\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"FFFFFFFF4040FF40"
+      INIT => X"80"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
+      I0 => DEINTERLEAVER_BPSK(17),
       I1 => DEINTERLEAVER_STROBE,
-      I2 => DEINTERLEAVER_BPSK(17),
-      I3 => CONSTELLATION_IDATA(14),
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_19_n_0\,
+      I2 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
       O => \FPGA_REG_WRITE_DATA[14]_i_4_n_0\
     );
 \FPGA_REG_WRITE_DATA[14]_i_5\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"55550040"
+      INIT => X"AAAAACA0"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => DATA_STROBE,
-      I2 => SELECT_AXI_REGS_MODE(0),
-      I3 => SELECT_AXI_REGS_MODE(1),
-      I4 => FFT_IDATA(14),
+      I0 => EQUALIZER_REG_WRITE_DATA(14),
+      I1 => VITERBI_SIGNAL(14),
+      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I3 => VITERBI_SIGNAL_VALID,
+      I4 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
       O => \FPGA_REG_WRITE_DATA[14]_i_5_n_0\
     );
 \FPGA_REG_WRITE_DATA[14]_i_6\: unisim.vcomponents.LUT5
@@ -1581,12 +1709,22 @@ begin
         port map (
       I0 => DEINTERLEAVER_16QAM(17),
       I1 => DEINTERLEAVER_STROBE,
-      I2 => \FPGA_REG_WRITE_DATA[14]_i_7_n_0\,
+      I2 => \FPGA_REG_WRITE_DATA[14]_i_8_n_0\,
       I3 => \REG_CNTR_reg_n_0_[2]\,
-      I4 => \FPGA_REG_WRITE_DATA[14]_i_8_n_0\,
+      I4 => \FPGA_REG_WRITE_DATA[14]_i_9_n_0\,
       O => \FPGA_REG_WRITE_DATA[14]_i_6_n_0\
     );
-\FPGA_REG_WRITE_DATA[14]_i_7\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[14]_i_7\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => DEINTERLEAVER_QPSK(46),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => DEINTERLEAVER_QPSK(14),
+      O => data6(14)
+    );
+\FPGA_REG_WRITE_DATA[14]_i_8\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"B8BBB888"
     )
@@ -1596,9 +1734,9 @@ begin
       I2 => DEINTERLEAVER_16QAM(49),
       I3 => \REG_CNTR_reg_n_0_[0]\,
       I4 => DEINTERLEAVER_16QAM(81),
-      O => \FPGA_REG_WRITE_DATA[14]_i_7_n_0\
+      O => \FPGA_REG_WRITE_DATA[14]_i_8_n_0\
     );
-\FPGA_REG_WRITE_DATA[14]_i_8\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[14]_i_9\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"B8FFB800"
     )
@@ -1608,16 +1746,16 @@ begin
       I2 => DEINTERLEAVER_16QAM(145),
       I3 => \REG_CNTR_reg_n_0_[1]\,
       I4 => DEINTERLEAVER_16QAM(177),
-      O => \FPGA_REG_WRITE_DATA[14]_i_8_n_0\
+      O => \FPGA_REG_WRITE_DATA[14]_i_9_n_0\
     );
 \FPGA_REG_WRITE_DATA[15]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"3A3A3A3A0A3A0A0A"
+      INIT => X"FFFFFFFF23232322"
     )
         port map (
-      I0 => EQUALIZER_REG_WRITE_DATA(15),
-      I1 => \FPGA_REG_WRITE_DATA[15]_i_2_n_0\,
-      I2 => \FPGA_REG_WRITE_ADDRESS[10]_i_3_n_0\,
+      I0 => \FPGA_REG_WRITE_DATA[15]_i_2_n_0\,
+      I1 => \FPGA_REG_WRITE_DATA[31]_i_6_n_0\,
+      I2 => \FPGA_REG_WRITE_DATA[31]_i_7_n_0\,
       I3 => \FPGA_REG_WRITE_DATA[15]_i_3_n_0\,
       I4 => \FPGA_REG_WRITE_DATA[15]_i_4_n_0\,
       I5 => \FPGA_REG_WRITE_DATA[15]_i_5_n_0\,
@@ -1625,80 +1763,75 @@ begin
     );
 \FPGA_REG_WRITE_DATA[15]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0272027202727272"
+      INIT => X"AAF0AAF0AACCAA00"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => VITERBI_SIGNAL(15),
-      I2 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
-      I3 => \FPGA_REG_WRITE_DATA[15]_i_6_n_0\,
-      I4 => IDATA(15),
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_14_n_0\,
+      I0 => IDATA(15),
+      I1 => CONSTELLATION_IDATA(15),
+      I2 => FFT_IDATA(15),
+      I3 => \FPGA_REG_WRITE_ADDRESS18_out__0\,
+      I4 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
+      I5 => \FPGA_REG_WRITE_ADDRESS17_out__0\,
       O => \FPGA_REG_WRITE_DATA[15]_i_2_n_0\
     );
-\FPGA_REG_WRITE_DATA[15]_i_3\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[15]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"77777F77"
+      INIT => X"00FF000000E200E2"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I2 => DEINTERLEAVER_STROBE,
-      I3 => \REG_CNTR[1]_i_2_n_0\,
-      I4 => DEINTERLEAVER_QPSK(15),
+      I0 => PARALLEL_OUTPUT(15),
+      I1 => \FPGA_REG_WRITE_ADDRESS1__0\,
+      I2 => \FPGA_REG_WRITE_DATA[15]_i_6_n_0\,
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      I4 => data6(15),
+      I5 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
       O => \FPGA_REG_WRITE_DATA[15]_i_3_n_0\
     );
-\FPGA_REG_WRITE_DATA[15]_i_4\: unisim.vcomponents.LUT6
+\FPGA_REG_WRITE_DATA[15]_i_4\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"D0FFD000DDFFDDFF"
+      INIT => X"80"
     )
         port map (
-      I0 => \REG_CNTR[1]_i_2_n_0\,
-      I1 => DEINTERLEAVER_QPSK(47),
-      I2 => DEINTERLEAVER_16QAM(16),
-      I3 => DEINTERLEAVER_STROBE,
-      I4 => \FPGA_REG_WRITE_DATA_reg[15]_i_7_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[20]_i_8_n_0\,
+      I0 => DEINTERLEAVER_BPSK(16),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
       O => \FPGA_REG_WRITE_DATA[15]_i_4_n_0\
     );
-\FPGA_REG_WRITE_DATA[15]_i_5\: unisim.vcomponents.LUT6
+\FPGA_REG_WRITE_DATA[15]_i_5\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FFFFFFFF4040FF40"
+      INIT => X"AAAAACA0"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => DEINTERLEAVER_STROBE,
-      I2 => DEINTERLEAVER_BPSK(16),
-      I3 => CONSTELLATION_IDATA(15),
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_19_n_0\,
+      I0 => EQUALIZER_REG_WRITE_DATA(15),
+      I1 => VITERBI_SIGNAL(15),
+      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I3 => VITERBI_SIGNAL_VALID,
+      I4 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
       O => \FPGA_REG_WRITE_DATA[15]_i_5_n_0\
     );
 \FPGA_REG_WRITE_DATA[15]_i_6\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"55550040"
+      INIT => X"B8BBB888"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => DATA_STROBE,
-      I2 => SELECT_AXI_REGS_MODE(0),
-      I3 => SELECT_AXI_REGS_MODE(1),
-      I4 => FFT_IDATA(15),
+      I0 => DEINTERLEAVER_16QAM(16),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => \FPGA_REG_WRITE_DATA[15]_i_8_n_0\,
+      I3 => \REG_CNTR_reg_n_0_[2]\,
+      I4 => \FPGA_REG_WRITE_DATA[15]_i_9_n_0\,
       O => \FPGA_REG_WRITE_DATA[15]_i_6_n_0\
     );
-\FPGA_REG_WRITE_DATA[15]_i_8\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[15]_i_7\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"B8FFB800"
+      INIT => X"B8"
     )
         port map (
-      I0 => DEINTERLEAVER_16QAM(112),
-      I1 => \REG_CNTR_reg_n_0_[0]\,
-      I2 => DEINTERLEAVER_16QAM(144),
-      I3 => \REG_CNTR_reg_n_0_[1]\,
-      I4 => DEINTERLEAVER_16QAM(176),
-      O => \FPGA_REG_WRITE_DATA[15]_i_8_n_0\
+      I0 => DEINTERLEAVER_QPSK(47),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => DEINTERLEAVER_QPSK(15),
+      O => data6(15)
     );
-\FPGA_REG_WRITE_DATA[15]_i_9\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[15]_i_8\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"B8BBB888"
     )
@@ -1708,69 +1841,80 @@ begin
       I2 => DEINTERLEAVER_16QAM(48),
       I3 => \REG_CNTR_reg_n_0_[0]\,
       I4 => DEINTERLEAVER_16QAM(80),
+      O => \FPGA_REG_WRITE_DATA[15]_i_8_n_0\
+    );
+\FPGA_REG_WRITE_DATA[15]_i_9\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"B8FFB800"
+    )
+        port map (
+      I0 => DEINTERLEAVER_16QAM(112),
+      I1 => \REG_CNTR_reg_n_0_[0]\,
+      I2 => DEINTERLEAVER_16QAM(144),
+      I3 => \REG_CNTR_reg_n_0_[1]\,
+      I4 => DEINTERLEAVER_16QAM(176),
       O => \FPGA_REG_WRITE_DATA[15]_i_9_n_0\
     );
 \FPGA_REG_WRITE_DATA[16]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"3A3A3A3A0A3A0A0A"
+      INIT => X"FFFFFFFF23232322"
     )
         port map (
-      I0 => EQUALIZER_REG_WRITE_DATA(16),
-      I1 => \FPGA_REG_WRITE_DATA[16]_i_2_n_0\,
-      I2 => \FPGA_REG_WRITE_ADDRESS[10]_i_3_n_0\,
+      I0 => \FPGA_REG_WRITE_DATA[16]_i_2_n_0\,
+      I1 => \FPGA_REG_WRITE_DATA[31]_i_6_n_0\,
+      I2 => \FPGA_REG_WRITE_DATA[31]_i_7_n_0\,
       I3 => \FPGA_REG_WRITE_DATA[16]_i_3_n_0\,
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[16]_i_4_n_0\,
+      I4 => \FPGA_REG_WRITE_DATA[16]_i_4_n_0\,
+      I5 => \FPGA_REG_WRITE_DATA[16]_i_5_n_0\,
       O => \FPGA_REG_WRITE_DATA[16]_i_1_n_0\
     );
 \FPGA_REG_WRITE_DATA[16]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0272027202727272"
+      INIT => X"AAF0AAF0AACCAA00"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => VITERBI_SIGNAL(16),
-      I2 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
-      I3 => \FPGA_REG_WRITE_DATA[16]_i_5_n_0\,
-      I4 => QDATA(0),
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_14_n_0\,
+      I0 => QDATA(0),
+      I1 => CONSTELLATION_QDATA(0),
+      I2 => FFT_QDATA(0),
+      I3 => \FPGA_REG_WRITE_ADDRESS18_out__0\,
+      I4 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
+      I5 => \FPGA_REG_WRITE_ADDRESS17_out__0\,
       O => \FPGA_REG_WRITE_DATA[16]_i_2_n_0\
     );
 \FPGA_REG_WRITE_DATA[16]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"575757F7F7F757F7"
+      INIT => X"00FF000000E200E2"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[16]_i_6_n_0\,
-      I2 => \REG_CNTR[1]_i_2_n_0\,
-      I3 => DEINTERLEAVER_QPSK(16),
-      I4 => DEINTERLEAVER_STROBE,
-      I5 => DEINTERLEAVER_QPSK(48),
+      I0 => PARALLEL_OUTPUT(16),
+      I1 => \FPGA_REG_WRITE_ADDRESS1__0\,
+      I2 => \FPGA_REG_WRITE_DATA[16]_i_6_n_0\,
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      I4 => data6(16),
+      I5 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
       O => \FPGA_REG_WRITE_DATA[16]_i_3_n_0\
     );
-\FPGA_REG_WRITE_DATA[16]_i_4\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[16]_i_4\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"FFFF44F4"
+      INIT => X"E200"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[16]_i_7_n_0\,
-      I2 => CONSTELLATION_QDATA(0),
-      I3 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_19_n_0\,
+      I0 => DEINTERLEAVER_BPSK(47),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => DEINTERLEAVER_BPSK(15),
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
       O => \FPGA_REG_WRITE_DATA[16]_i_4_n_0\
     );
 \FPGA_REG_WRITE_DATA[16]_i_5\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"55550040"
+      INIT => X"AAAAACA0"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => DATA_STROBE,
-      I2 => SELECT_AXI_REGS_MODE(0),
-      I3 => SELECT_AXI_REGS_MODE(1),
-      I4 => FFT_QDATA(0),
+      I0 => EQUALIZER_REG_WRITE_DATA(16),
+      I1 => VITERBI_SIGNAL(16),
+      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I3 => VITERBI_SIGNAL_VALID,
+      I4 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
       O => \FPGA_REG_WRITE_DATA[16]_i_5_n_0\
     );
 \FPGA_REG_WRITE_DATA[16]_i_6\: unisim.vcomponents.LUT5
@@ -1790,10 +1934,10 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => DEINTERLEAVER_BPSK(15),
+      I0 => DEINTERLEAVER_QPSK(48),
       I1 => DEINTERLEAVER_STROBE,
-      I2 => DEINTERLEAVER_BPSK(47),
-      O => \FPGA_REG_WRITE_DATA[16]_i_7_n_0\
+      I2 => DEINTERLEAVER_QPSK(16),
+      O => data6(16)
     );
 \FPGA_REG_WRITE_DATA[16]_i_8\: unisim.vcomponents.LUT5
     generic map(
@@ -1821,18 +1965,89 @@ begin
     );
 \FPGA_REG_WRITE_DATA[17]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"3A3A3A3A0A3A0A0A"
+      INIT => X"FFFFFFFF23232322"
     )
         port map (
-      I0 => EQUALIZER_REG_WRITE_DATA(17),
-      I1 => \FPGA_REG_WRITE_DATA[17]_i_2_n_0\,
-      I2 => \FPGA_REG_WRITE_ADDRESS[10]_i_3_n_0\,
+      I0 => \FPGA_REG_WRITE_DATA[17]_i_2_n_0\,
+      I1 => \FPGA_REG_WRITE_DATA[31]_i_6_n_0\,
+      I2 => \FPGA_REG_WRITE_DATA[31]_i_7_n_0\,
       I3 => \FPGA_REG_WRITE_DATA[17]_i_3_n_0\,
       I4 => \FPGA_REG_WRITE_DATA[17]_i_4_n_0\,
       I5 => \FPGA_REG_WRITE_DATA[17]_i_5_n_0\,
       O => \FPGA_REG_WRITE_DATA[17]_i_1_n_0\
     );
-\FPGA_REG_WRITE_DATA[17]_i_10\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[17]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AAF0AAF0AACCAA00"
+    )
+        port map (
+      I0 => QDATA(1),
+      I1 => CONSTELLATION_QDATA(1),
+      I2 => FFT_QDATA(1),
+      I3 => \FPGA_REG_WRITE_ADDRESS18_out__0\,
+      I4 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
+      I5 => \FPGA_REG_WRITE_ADDRESS17_out__0\,
+      O => \FPGA_REG_WRITE_DATA[17]_i_2_n_0\
+    );
+\FPGA_REG_WRITE_DATA[17]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"00FF000000E200E2"
+    )
+        port map (
+      I0 => PARALLEL_OUTPUT(17),
+      I1 => \FPGA_REG_WRITE_ADDRESS1__0\,
+      I2 => \FPGA_REG_WRITE_DATA[17]_i_6_n_0\,
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      I4 => data6(17),
+      I5 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
+      O => \FPGA_REG_WRITE_DATA[17]_i_3_n_0\
+    );
+\FPGA_REG_WRITE_DATA[17]_i_4\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"E200"
+    )
+        port map (
+      I0 => DEINTERLEAVER_BPSK(46),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => DEINTERLEAVER_BPSK(14),
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      O => \FPGA_REG_WRITE_DATA[17]_i_4_n_0\
+    );
+\FPGA_REG_WRITE_DATA[17]_i_5\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"AAAAACA0"
+    )
+        port map (
+      I0 => EQUALIZER_REG_WRITE_DATA(17),
+      I1 => VITERBI_SIGNAL(17),
+      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I3 => VITERBI_SIGNAL_VALID,
+      I4 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
+      O => \FPGA_REG_WRITE_DATA[17]_i_5_n_0\
+    );
+\FPGA_REG_WRITE_DATA[17]_i_6\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"B8BBB888"
+    )
+        port map (
+      I0 => DEINTERLEAVER_16QAM(14),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => \FPGA_REG_WRITE_DATA[17]_i_8_n_0\,
+      I3 => \REG_CNTR_reg_n_0_[2]\,
+      I4 => \FPGA_REG_WRITE_DATA[17]_i_9_n_0\,
+      O => \FPGA_REG_WRITE_DATA[17]_i_6_n_0\
+    );
+\FPGA_REG_WRITE_DATA[17]_i_7\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => DEINTERLEAVER_QPSK(49),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => DEINTERLEAVER_QPSK(17),
+      O => data6(17)
+    );
+\FPGA_REG_WRITE_DATA[17]_i_8\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"B8BBB888"
     )
@@ -1842,78 +2057,6 @@ begin
       I2 => DEINTERLEAVER_16QAM(46),
       I3 => \REG_CNTR_reg_n_0_[0]\,
       I4 => DEINTERLEAVER_16QAM(78),
-      O => \FPGA_REG_WRITE_DATA[17]_i_10_n_0\
-    );
-\FPGA_REG_WRITE_DATA[17]_i_2\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0272027202727272"
-    )
-        port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => VITERBI_SIGNAL(17),
-      I2 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
-      I3 => \FPGA_REG_WRITE_DATA[17]_i_6_n_0\,
-      I4 => QDATA(1),
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_14_n_0\,
-      O => \FPGA_REG_WRITE_DATA[17]_i_2_n_0\
-    );
-\FPGA_REG_WRITE_DATA[17]_i_3\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"77777F77"
-    )
-        port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I2 => DEINTERLEAVER_STROBE,
-      I3 => \REG_CNTR[1]_i_2_n_0\,
-      I4 => DEINTERLEAVER_QPSK(17),
-      O => \FPGA_REG_WRITE_DATA[17]_i_3_n_0\
-    );
-\FPGA_REG_WRITE_DATA[17]_i_4\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"D0FFD000DDFFDDFF"
-    )
-        port map (
-      I0 => \REG_CNTR[1]_i_2_n_0\,
-      I1 => DEINTERLEAVER_QPSK(49),
-      I2 => DEINTERLEAVER_16QAM(14),
-      I3 => DEINTERLEAVER_STROBE,
-      I4 => \FPGA_REG_WRITE_DATA_reg[17]_i_7_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[20]_i_8_n_0\,
-      O => \FPGA_REG_WRITE_DATA[17]_i_4_n_0\
-    );
-\FPGA_REG_WRITE_DATA[17]_i_5\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FFFF44F4"
-    )
-        port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[17]_i_8_n_0\,
-      I2 => CONSTELLATION_QDATA(1),
-      I3 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_19_n_0\,
-      O => \FPGA_REG_WRITE_DATA[17]_i_5_n_0\
-    );
-\FPGA_REG_WRITE_DATA[17]_i_6\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"55550040"
-    )
-        port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => DATA_STROBE,
-      I2 => SELECT_AXI_REGS_MODE(0),
-      I3 => SELECT_AXI_REGS_MODE(1),
-      I4 => FFT_QDATA(1),
-      O => \FPGA_REG_WRITE_DATA[17]_i_6_n_0\
-    );
-\FPGA_REG_WRITE_DATA[17]_i_8\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => DEINTERLEAVER_BPSK(14),
-      I1 => DEINTERLEAVER_STROBE,
-      I2 => DEINTERLEAVER_BPSK(46),
       O => \FPGA_REG_WRITE_DATA[17]_i_8_n_0\
     );
 \FPGA_REG_WRITE_DATA[17]_i_9\: unisim.vcomponents.LUT5
@@ -1930,65 +2073,64 @@ begin
     );
 \FPGA_REG_WRITE_DATA[18]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"3A3A3A3A0A3A0A0A"
+      INIT => X"FFFFFFFF23232322"
     )
         port map (
-      I0 => EQUALIZER_REG_WRITE_DATA(18),
-      I1 => \FPGA_REG_WRITE_DATA[18]_i_2_n_0\,
-      I2 => \FPGA_REG_WRITE_ADDRESS[10]_i_3_n_0\,
+      I0 => \FPGA_REG_WRITE_DATA[18]_i_2_n_0\,
+      I1 => \FPGA_REG_WRITE_DATA[31]_i_6_n_0\,
+      I2 => \FPGA_REG_WRITE_DATA[31]_i_7_n_0\,
       I3 => \FPGA_REG_WRITE_DATA[18]_i_3_n_0\,
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[18]_i_4_n_0\,
+      I4 => \FPGA_REG_WRITE_DATA[18]_i_4_n_0\,
+      I5 => \FPGA_REG_WRITE_DATA[18]_i_5_n_0\,
       O => \FPGA_REG_WRITE_DATA[18]_i_1_n_0\
     );
 \FPGA_REG_WRITE_DATA[18]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0272027202727272"
+      INIT => X"AAF0AAF0AACCAA00"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => VITERBI_SIGNAL(18),
-      I2 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
-      I3 => \FPGA_REG_WRITE_DATA[18]_i_5_n_0\,
-      I4 => QDATA(2),
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_14_n_0\,
+      I0 => QDATA(2),
+      I1 => CONSTELLATION_QDATA(2),
+      I2 => FFT_QDATA(2),
+      I3 => \FPGA_REG_WRITE_ADDRESS18_out__0\,
+      I4 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
+      I5 => \FPGA_REG_WRITE_ADDRESS17_out__0\,
       O => \FPGA_REG_WRITE_DATA[18]_i_2_n_0\
     );
 \FPGA_REG_WRITE_DATA[18]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"575757F7F7F757F7"
+      INIT => X"00FF000000E200E2"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[18]_i_6_n_0\,
-      I2 => \REG_CNTR[1]_i_2_n_0\,
-      I3 => DEINTERLEAVER_QPSK(18),
-      I4 => DEINTERLEAVER_STROBE,
-      I5 => DEINTERLEAVER_QPSK(50),
+      I0 => PARALLEL_OUTPUT(18),
+      I1 => \FPGA_REG_WRITE_ADDRESS1__0\,
+      I2 => \FPGA_REG_WRITE_DATA[18]_i_6_n_0\,
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      I4 => data6(18),
+      I5 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
       O => \FPGA_REG_WRITE_DATA[18]_i_3_n_0\
     );
-\FPGA_REG_WRITE_DATA[18]_i_4\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[18]_i_4\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"FFFF44F4"
+      INIT => X"E200"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[18]_i_7_n_0\,
-      I2 => CONSTELLATION_QDATA(2),
-      I3 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_19_n_0\,
+      I0 => DEINTERLEAVER_BPSK(45),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => DEINTERLEAVER_BPSK(13),
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
       O => \FPGA_REG_WRITE_DATA[18]_i_4_n_0\
     );
 \FPGA_REG_WRITE_DATA[18]_i_5\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"55550040"
+      INIT => X"AAAAACA0"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => DATA_STROBE,
-      I2 => SELECT_AXI_REGS_MODE(0),
-      I3 => SELECT_AXI_REGS_MODE(1),
-      I4 => FFT_QDATA(2),
+      I0 => EQUALIZER_REG_WRITE_DATA(18),
+      I1 => VITERBI_SIGNAL(18),
+      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I3 => VITERBI_SIGNAL_VALID,
+      I4 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
       O => \FPGA_REG_WRITE_DATA[18]_i_5_n_0\
     );
 \FPGA_REG_WRITE_DATA[18]_i_6\: unisim.vcomponents.LUT5
@@ -2008,10 +2150,10 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => DEINTERLEAVER_BPSK(13),
+      I0 => DEINTERLEAVER_QPSK(50),
       I1 => DEINTERLEAVER_STROBE,
-      I2 => DEINTERLEAVER_BPSK(45),
-      O => \FPGA_REG_WRITE_DATA[18]_i_7_n_0\
+      I2 => DEINTERLEAVER_QPSK(18),
+      O => data6(18)
     );
 \FPGA_REG_WRITE_DATA[18]_i_8\: unisim.vcomponents.LUT5
     generic map(
@@ -2039,18 +2181,89 @@ begin
     );
 \FPGA_REG_WRITE_DATA[19]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"3A3A3A3A0A3A0A0A"
+      INIT => X"FFFFFFFF23232322"
     )
         port map (
-      I0 => EQUALIZER_REG_WRITE_DATA(19),
-      I1 => \FPGA_REG_WRITE_DATA[19]_i_2_n_0\,
-      I2 => \FPGA_REG_WRITE_ADDRESS[10]_i_3_n_0\,
+      I0 => \FPGA_REG_WRITE_DATA[19]_i_2_n_0\,
+      I1 => \FPGA_REG_WRITE_DATA[31]_i_6_n_0\,
+      I2 => \FPGA_REG_WRITE_DATA[31]_i_7_n_0\,
       I3 => \FPGA_REG_WRITE_DATA[19]_i_3_n_0\,
       I4 => \FPGA_REG_WRITE_DATA[19]_i_4_n_0\,
       I5 => \FPGA_REG_WRITE_DATA[19]_i_5_n_0\,
       O => \FPGA_REG_WRITE_DATA[19]_i_1_n_0\
     );
-\FPGA_REG_WRITE_DATA[19]_i_10\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[19]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AAF0AAF0AACCAA00"
+    )
+        port map (
+      I0 => QDATA(3),
+      I1 => CONSTELLATION_QDATA(3),
+      I2 => FFT_QDATA(3),
+      I3 => \FPGA_REG_WRITE_ADDRESS18_out__0\,
+      I4 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
+      I5 => \FPGA_REG_WRITE_ADDRESS17_out__0\,
+      O => \FPGA_REG_WRITE_DATA[19]_i_2_n_0\
+    );
+\FPGA_REG_WRITE_DATA[19]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"00FF000000E200E2"
+    )
+        port map (
+      I0 => PARALLEL_OUTPUT(19),
+      I1 => \FPGA_REG_WRITE_ADDRESS1__0\,
+      I2 => \FPGA_REG_WRITE_DATA[19]_i_6_n_0\,
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      I4 => data6(19),
+      I5 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
+      O => \FPGA_REG_WRITE_DATA[19]_i_3_n_0\
+    );
+\FPGA_REG_WRITE_DATA[19]_i_4\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"E200"
+    )
+        port map (
+      I0 => DEINTERLEAVER_BPSK(44),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => DEINTERLEAVER_BPSK(12),
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      O => \FPGA_REG_WRITE_DATA[19]_i_4_n_0\
+    );
+\FPGA_REG_WRITE_DATA[19]_i_5\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"AAAAACA0"
+    )
+        port map (
+      I0 => EQUALIZER_REG_WRITE_DATA(19),
+      I1 => VITERBI_SIGNAL(19),
+      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I3 => VITERBI_SIGNAL_VALID,
+      I4 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
+      O => \FPGA_REG_WRITE_DATA[19]_i_5_n_0\
+    );
+\FPGA_REG_WRITE_DATA[19]_i_6\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"B8BBB888"
+    )
+        port map (
+      I0 => DEINTERLEAVER_16QAM(12),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => \FPGA_REG_WRITE_DATA[19]_i_8_n_0\,
+      I3 => \REG_CNTR_reg_n_0_[2]\,
+      I4 => \FPGA_REG_WRITE_DATA[19]_i_9_n_0\,
+      O => \FPGA_REG_WRITE_DATA[19]_i_6_n_0\
+    );
+\FPGA_REG_WRITE_DATA[19]_i_7\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => DEINTERLEAVER_QPSK(51),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => DEINTERLEAVER_QPSK(19),
+      O => data6(19)
+    );
+\FPGA_REG_WRITE_DATA[19]_i_8\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"B8BBB888"
     )
@@ -2060,77 +2273,6 @@ begin
       I2 => DEINTERLEAVER_16QAM(44),
       I3 => \REG_CNTR_reg_n_0_[0]\,
       I4 => DEINTERLEAVER_16QAM(76),
-      O => \FPGA_REG_WRITE_DATA[19]_i_10_n_0\
-    );
-\FPGA_REG_WRITE_DATA[19]_i_2\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0272027202727272"
-    )
-        port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => VITERBI_SIGNAL(19),
-      I2 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
-      I3 => \FPGA_REG_WRITE_DATA[19]_i_6_n_0\,
-      I4 => QDATA(3),
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_14_n_0\,
-      O => \FPGA_REG_WRITE_DATA[19]_i_2_n_0\
-    );
-\FPGA_REG_WRITE_DATA[19]_i_3\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"7777F777"
-    )
-        port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I2 => DEINTERLEAVER_STROBE,
-      I3 => \REG_CNTR[1]_i_2_n_0\,
-      I4 => DEINTERLEAVER_QPSK(51),
-      O => \FPGA_REG_WRITE_DATA[19]_i_3_n_0\
-    );
-\FPGA_REG_WRITE_DATA[19]_i_4\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FFACF0AC"
-    )
-        port map (
-      I0 => DEINTERLEAVER_16QAM(12),
-      I1 => \FPGA_REG_WRITE_DATA_reg[19]_i_7_n_0\,
-      I2 => DEINTERLEAVER_STROBE,
-      I3 => \REG_CNTR[1]_i_2_n_0\,
-      I4 => DEINTERLEAVER_QPSK(19),
-      O => \FPGA_REG_WRITE_DATA[19]_i_4_n_0\
-    );
-\FPGA_REG_WRITE_DATA[19]_i_5\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FFFF44F4"
-    )
-        port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[19]_i_8_n_0\,
-      I2 => CONSTELLATION_QDATA(3),
-      I3 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_19_n_0\,
-      O => \FPGA_REG_WRITE_DATA[19]_i_5_n_0\
-    );
-\FPGA_REG_WRITE_DATA[19]_i_6\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"55550040"
-    )
-        port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => DATA_STROBE,
-      I2 => SELECT_AXI_REGS_MODE(0),
-      I3 => SELECT_AXI_REGS_MODE(1),
-      I4 => FFT_QDATA(3),
-      O => \FPGA_REG_WRITE_DATA[19]_i_6_n_0\
-    );
-\FPGA_REG_WRITE_DATA[19]_i_8\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => DEINTERLEAVER_BPSK(12),
-      I1 => DEINTERLEAVER_STROBE,
-      I2 => DEINTERLEAVER_BPSK(44),
       O => \FPGA_REG_WRITE_DATA[19]_i_8_n_0\
     );
 \FPGA_REG_WRITE_DATA[19]_i_9\: unisim.vcomponents.LUT5
@@ -2147,12 +2289,12 @@ begin
     );
 \FPGA_REG_WRITE_DATA[1]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"3A3A3A3A0A3A0A0A"
+      INIT => X"FFFFFFFF23232322"
     )
         port map (
-      I0 => EQUALIZER_REG_WRITE_DATA(1),
-      I1 => \FPGA_REG_WRITE_DATA[1]_i_2_n_0\,
-      I2 => \FPGA_REG_WRITE_ADDRESS[10]_i_3_n_0\,
+      I0 => \FPGA_REG_WRITE_DATA[1]_i_2_n_0\,
+      I1 => \FPGA_REG_WRITE_DATA[31]_i_6_n_0\,
+      I2 => \FPGA_REG_WRITE_DATA[31]_i_7_n_0\,
       I3 => \FPGA_REG_WRITE_DATA[1]_i_3_n_0\,
       I4 => \FPGA_REG_WRITE_DATA[1]_i_4_n_0\,
       I5 => \FPGA_REG_WRITE_DATA[1]_i_5_n_0\,
@@ -2160,80 +2302,75 @@ begin
     );
 \FPGA_REG_WRITE_DATA[1]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0272027202727272"
+      INIT => X"AAF0AAF0AACCAA00"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => VITERBI_SIGNAL(1),
-      I2 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
-      I3 => \FPGA_REG_WRITE_DATA[1]_i_6_n_0\,
-      I4 => IDATA(1),
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_14_n_0\,
+      I0 => IDATA(1),
+      I1 => CONSTELLATION_IDATA(1),
+      I2 => FFT_IDATA(1),
+      I3 => \FPGA_REG_WRITE_ADDRESS18_out__0\,
+      I4 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
+      I5 => \FPGA_REG_WRITE_ADDRESS17_out__0\,
       O => \FPGA_REG_WRITE_DATA[1]_i_2_n_0\
     );
-\FPGA_REG_WRITE_DATA[1]_i_3\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[1]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"77777F77"
+      INIT => X"00FF000000E200E2"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I2 => DEINTERLEAVER_STROBE,
-      I3 => \REG_CNTR[1]_i_2_n_0\,
-      I4 => DEINTERLEAVER_QPSK(1),
+      I0 => PARALLEL_OUTPUT(1),
+      I1 => \FPGA_REG_WRITE_ADDRESS1__0\,
+      I2 => \FPGA_REG_WRITE_DATA[1]_i_6_n_0\,
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      I4 => data6(1),
+      I5 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
       O => \FPGA_REG_WRITE_DATA[1]_i_3_n_0\
     );
-\FPGA_REG_WRITE_DATA[1]_i_4\: unisim.vcomponents.LUT6
+\FPGA_REG_WRITE_DATA[1]_i_4\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"D0FFD000DDFFDDFF"
+      INIT => X"80"
     )
         port map (
-      I0 => \REG_CNTR[1]_i_2_n_0\,
-      I1 => DEINTERLEAVER_QPSK(33),
-      I2 => DEINTERLEAVER_16QAM(30),
-      I3 => DEINTERLEAVER_STROBE,
-      I4 => \FPGA_REG_WRITE_DATA_reg[1]_i_7_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[20]_i_8_n_0\,
+      I0 => DEINTERLEAVER_BPSK(30),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
       O => \FPGA_REG_WRITE_DATA[1]_i_4_n_0\
     );
-\FPGA_REG_WRITE_DATA[1]_i_5\: unisim.vcomponents.LUT6
+\FPGA_REG_WRITE_DATA[1]_i_5\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FFFFFFFF4040FF40"
+      INIT => X"AAAAACA0"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => DEINTERLEAVER_STROBE,
-      I2 => DEINTERLEAVER_BPSK(30),
-      I3 => CONSTELLATION_IDATA(1),
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_19_n_0\,
+      I0 => EQUALIZER_REG_WRITE_DATA(1),
+      I1 => VITERBI_SIGNAL(1),
+      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I3 => VITERBI_SIGNAL_VALID,
+      I4 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
       O => \FPGA_REG_WRITE_DATA[1]_i_5_n_0\
     );
 \FPGA_REG_WRITE_DATA[1]_i_6\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"55550040"
+      INIT => X"B8BBB888"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => DATA_STROBE,
-      I2 => SELECT_AXI_REGS_MODE(0),
-      I3 => SELECT_AXI_REGS_MODE(1),
-      I4 => FFT_IDATA(1),
+      I0 => DEINTERLEAVER_16QAM(30),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => \FPGA_REG_WRITE_DATA[1]_i_8_n_0\,
+      I3 => \REG_CNTR_reg_n_0_[2]\,
+      I4 => \FPGA_REG_WRITE_DATA[1]_i_9_n_0\,
       O => \FPGA_REG_WRITE_DATA[1]_i_6_n_0\
     );
-\FPGA_REG_WRITE_DATA[1]_i_8\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[1]_i_7\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"B8FFB800"
+      INIT => X"B8"
     )
         port map (
-      I0 => DEINTERLEAVER_16QAM(126),
-      I1 => \REG_CNTR_reg_n_0_[0]\,
-      I2 => DEINTERLEAVER_16QAM(158),
-      I3 => \REG_CNTR_reg_n_0_[1]\,
-      I4 => DEINTERLEAVER_16QAM(190),
-      O => \FPGA_REG_WRITE_DATA[1]_i_8_n_0\
+      I0 => DEINTERLEAVER_QPSK(33),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => DEINTERLEAVER_QPSK(1),
+      O => data6(1)
     );
-\FPGA_REG_WRITE_DATA[1]_i_9\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[1]_i_8\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"B8BBB888"
     )
@@ -2243,34 +2380,105 @@ begin
       I2 => DEINTERLEAVER_16QAM(62),
       I3 => \REG_CNTR_reg_n_0_[0]\,
       I4 => DEINTERLEAVER_16QAM(94),
+      O => \FPGA_REG_WRITE_DATA[1]_i_8_n_0\
+    );
+\FPGA_REG_WRITE_DATA[1]_i_9\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"B8FFB800"
+    )
+        port map (
+      I0 => DEINTERLEAVER_16QAM(126),
+      I1 => \REG_CNTR_reg_n_0_[0]\,
+      I2 => DEINTERLEAVER_16QAM(158),
+      I3 => \REG_CNTR_reg_n_0_[1]\,
+      I4 => DEINTERLEAVER_16QAM(190),
       O => \FPGA_REG_WRITE_DATA[1]_i_9_n_0\
     );
 \FPGA_REG_WRITE_DATA[20]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"3A3A3A3A0A3A0A0A"
+      INIT => X"FFFFFFFF23232322"
     )
         port map (
-      I0 => EQUALIZER_REG_WRITE_DATA(20),
-      I1 => \FPGA_REG_WRITE_DATA[20]_i_2_n_0\,
-      I2 => \FPGA_REG_WRITE_ADDRESS[10]_i_3_n_0\,
+      I0 => \FPGA_REG_WRITE_DATA[20]_i_2_n_0\,
+      I1 => \FPGA_REG_WRITE_DATA[31]_i_6_n_0\,
+      I2 => \FPGA_REG_WRITE_DATA[31]_i_7_n_0\,
       I3 => \FPGA_REG_WRITE_DATA[20]_i_3_n_0\,
       I4 => \FPGA_REG_WRITE_DATA[20]_i_4_n_0\,
       I5 => \FPGA_REG_WRITE_DATA[20]_i_5_n_0\,
       O => \FPGA_REG_WRITE_DATA[20]_i_1_n_0\
     );
-\FPGA_REG_WRITE_DATA[20]_i_10\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[20]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"B8FFB800"
+      INIT => X"AAF0AAF0AACCAA00"
     )
         port map (
-      I0 => DEINTERLEAVER_16QAM(107),
-      I1 => \REG_CNTR_reg_n_0_[0]\,
-      I2 => DEINTERLEAVER_16QAM(139),
-      I3 => \REG_CNTR_reg_n_0_[1]\,
-      I4 => DEINTERLEAVER_16QAM(171),
-      O => \FPGA_REG_WRITE_DATA[20]_i_10_n_0\
+      I0 => QDATA(4),
+      I1 => CONSTELLATION_QDATA(4),
+      I2 => FFT_QDATA(4),
+      I3 => \FPGA_REG_WRITE_ADDRESS18_out__0\,
+      I4 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
+      I5 => \FPGA_REG_WRITE_ADDRESS17_out__0\,
+      O => \FPGA_REG_WRITE_DATA[20]_i_2_n_0\
     );
-\FPGA_REG_WRITE_DATA[20]_i_11\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[20]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"00FF000000E200E2"
+    )
+        port map (
+      I0 => PARALLEL_OUTPUT(20),
+      I1 => \FPGA_REG_WRITE_ADDRESS1__0\,
+      I2 => \FPGA_REG_WRITE_DATA[20]_i_6_n_0\,
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      I4 => data6(20),
+      I5 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
+      O => \FPGA_REG_WRITE_DATA[20]_i_3_n_0\
+    );
+\FPGA_REG_WRITE_DATA[20]_i_4\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"E200"
+    )
+        port map (
+      I0 => DEINTERLEAVER_BPSK(43),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => DEINTERLEAVER_BPSK(11),
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      O => \FPGA_REG_WRITE_DATA[20]_i_4_n_0\
+    );
+\FPGA_REG_WRITE_DATA[20]_i_5\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"AAAAACA0"
+    )
+        port map (
+      I0 => EQUALIZER_REG_WRITE_DATA(20),
+      I1 => VITERBI_SIGNAL(20),
+      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I3 => VITERBI_SIGNAL_VALID,
+      I4 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
+      O => \FPGA_REG_WRITE_DATA[20]_i_5_n_0\
+    );
+\FPGA_REG_WRITE_DATA[20]_i_6\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"B8BBB888"
+    )
+        port map (
+      I0 => DEINTERLEAVER_16QAM(11),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => \FPGA_REG_WRITE_DATA[20]_i_8_n_0\,
+      I3 => \REG_CNTR_reg_n_0_[2]\,
+      I4 => \FPGA_REG_WRITE_DATA[20]_i_9_n_0\,
+      O => \FPGA_REG_WRITE_DATA[20]_i_6_n_0\
+    );
+\FPGA_REG_WRITE_DATA[20]_i_7\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => DEINTERLEAVER_QPSK(52),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => DEINTERLEAVER_QPSK(20),
+      O => data6(20)
+    );
+\FPGA_REG_WRITE_DATA[20]_i_8\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"B8BBB888"
     )
@@ -2280,116 +2488,105 @@ begin
       I2 => DEINTERLEAVER_16QAM(43),
       I3 => \REG_CNTR_reg_n_0_[0]\,
       I4 => DEINTERLEAVER_16QAM(75),
-      O => \FPGA_REG_WRITE_DATA[20]_i_11_n_0\
-    );
-\FPGA_REG_WRITE_DATA[20]_i_12\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => \REG_CNTR_reg_n_0_[2]\,
-      I1 => \REG_CNTR_reg_n_0_[1]\,
-      O => \FPGA_REG_WRITE_DATA[20]_i_12_n_0\
-    );
-\FPGA_REG_WRITE_DATA[20]_i_2\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0272027202727272"
-    )
-        port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => VITERBI_SIGNAL(20),
-      I2 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
-      I3 => \FPGA_REG_WRITE_DATA[20]_i_6_n_0\,
-      I4 => QDATA(4),
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_14_n_0\,
-      O => \FPGA_REG_WRITE_DATA[20]_i_2_n_0\
-    );
-\FPGA_REG_WRITE_DATA[20]_i_3\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"77777F77"
-    )
-        port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I2 => DEINTERLEAVER_STROBE,
-      I3 => \REG_CNTR[1]_i_2_n_0\,
-      I4 => DEINTERLEAVER_QPSK(20),
-      O => \FPGA_REG_WRITE_DATA[20]_i_3_n_0\
-    );
-\FPGA_REG_WRITE_DATA[20]_i_4\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"D0FFD000DDFFDDFF"
-    )
-        port map (
-      I0 => \REG_CNTR[1]_i_2_n_0\,
-      I1 => DEINTERLEAVER_QPSK(52),
-      I2 => DEINTERLEAVER_16QAM(11),
-      I3 => DEINTERLEAVER_STROBE,
-      I4 => \FPGA_REG_WRITE_DATA_reg[20]_i_7_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[20]_i_8_n_0\,
-      O => \FPGA_REG_WRITE_DATA[20]_i_4_n_0\
-    );
-\FPGA_REG_WRITE_DATA[20]_i_5\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FFFF44F4"
-    )
-        port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[20]_i_9_n_0\,
-      I2 => CONSTELLATION_QDATA(4),
-      I3 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_19_n_0\,
-      O => \FPGA_REG_WRITE_DATA[20]_i_5_n_0\
-    );
-\FPGA_REG_WRITE_DATA[20]_i_6\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"55550040"
-    )
-        port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => DATA_STROBE,
-      I2 => SELECT_AXI_REGS_MODE(0),
-      I3 => SELECT_AXI_REGS_MODE(1),
-      I4 => FFT_QDATA(4),
-      O => \FPGA_REG_WRITE_DATA[20]_i_6_n_0\
-    );
-\FPGA_REG_WRITE_DATA[20]_i_8\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFFFFABAAFFFF"
-    )
-        port map (
-      I0 => SELECT_AXI_REGS_MODE(1),
-      I1 => DEINTERLEAVER_STROBE,
-      I2 => \REG_CNTR_reg_n_0_[0]\,
-      I3 => \FPGA_REG_WRITE_DATA[20]_i_12_n_0\,
-      I4 => SELECT_AXI_REGS_MODE(2),
-      I5 => \FPGA_REG_WRITE_ADDRESS[10]_i_6_n_0\,
       O => \FPGA_REG_WRITE_DATA[20]_i_8_n_0\
     );
-\FPGA_REG_WRITE_DATA[20]_i_9\: unisim.vcomponents.LUT3
+\FPGA_REG_WRITE_DATA[20]_i_9\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"B8"
+      INIT => X"B8FFB800"
     )
         port map (
-      I0 => DEINTERLEAVER_BPSK(11),
-      I1 => DEINTERLEAVER_STROBE,
-      I2 => DEINTERLEAVER_BPSK(43),
+      I0 => DEINTERLEAVER_16QAM(107),
+      I1 => \REG_CNTR_reg_n_0_[0]\,
+      I2 => DEINTERLEAVER_16QAM(139),
+      I3 => \REG_CNTR_reg_n_0_[1]\,
+      I4 => DEINTERLEAVER_16QAM(171),
       O => \FPGA_REG_WRITE_DATA[20]_i_9_n_0\
     );
 \FPGA_REG_WRITE_DATA[21]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"3A3A3A3A0A3A0A0A"
+      INIT => X"FFFFFFFF23232322"
     )
         port map (
-      I0 => EQUALIZER_REG_WRITE_DATA(21),
-      I1 => \FPGA_REG_WRITE_DATA[21]_i_2_n_0\,
-      I2 => \FPGA_REG_WRITE_ADDRESS[10]_i_3_n_0\,
+      I0 => \FPGA_REG_WRITE_DATA[21]_i_2_n_0\,
+      I1 => \FPGA_REG_WRITE_DATA[31]_i_6_n_0\,
+      I2 => \FPGA_REG_WRITE_DATA[31]_i_7_n_0\,
       I3 => \FPGA_REG_WRITE_DATA[21]_i_3_n_0\,
       I4 => \FPGA_REG_WRITE_DATA[21]_i_4_n_0\,
       I5 => \FPGA_REG_WRITE_DATA[21]_i_5_n_0\,
       O => \FPGA_REG_WRITE_DATA[21]_i_1_n_0\
     );
-\FPGA_REG_WRITE_DATA[21]_i_10\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[21]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AAF0AAF0AACCAA00"
+    )
+        port map (
+      I0 => QDATA(5),
+      I1 => CONSTELLATION_QDATA(5),
+      I2 => FFT_QDATA(5),
+      I3 => \FPGA_REG_WRITE_ADDRESS18_out__0\,
+      I4 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
+      I5 => \FPGA_REG_WRITE_ADDRESS17_out__0\,
+      O => \FPGA_REG_WRITE_DATA[21]_i_2_n_0\
+    );
+\FPGA_REG_WRITE_DATA[21]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"00FF000000E200E2"
+    )
+        port map (
+      I0 => PARALLEL_OUTPUT(21),
+      I1 => \FPGA_REG_WRITE_ADDRESS1__0\,
+      I2 => \FPGA_REG_WRITE_DATA[21]_i_6_n_0\,
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      I4 => data6(21),
+      I5 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
+      O => \FPGA_REG_WRITE_DATA[21]_i_3_n_0\
+    );
+\FPGA_REG_WRITE_DATA[21]_i_4\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"E200"
+    )
+        port map (
+      I0 => DEINTERLEAVER_BPSK(42),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => DEINTERLEAVER_BPSK(10),
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      O => \FPGA_REG_WRITE_DATA[21]_i_4_n_0\
+    );
+\FPGA_REG_WRITE_DATA[21]_i_5\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"AAAAACA0"
+    )
+        port map (
+      I0 => EQUALIZER_REG_WRITE_DATA(21),
+      I1 => VITERBI_SIGNAL(21),
+      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I3 => VITERBI_SIGNAL_VALID,
+      I4 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
+      O => \FPGA_REG_WRITE_DATA[21]_i_5_n_0\
+    );
+\FPGA_REG_WRITE_DATA[21]_i_6\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"B8BBB888"
+    )
+        port map (
+      I0 => DEINTERLEAVER_16QAM(10),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => \FPGA_REG_WRITE_DATA[21]_i_8_n_0\,
+      I3 => \REG_CNTR_reg_n_0_[2]\,
+      I4 => \FPGA_REG_WRITE_DATA[21]_i_9_n_0\,
+      O => \FPGA_REG_WRITE_DATA[21]_i_6_n_0\
+    );
+\FPGA_REG_WRITE_DATA[21]_i_7\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => DEINTERLEAVER_QPSK(53),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => DEINTERLEAVER_QPSK(21),
+      O => data6(21)
+    );
+\FPGA_REG_WRITE_DATA[21]_i_8\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"B8BBB888"
     )
@@ -2399,77 +2596,6 @@ begin
       I2 => DEINTERLEAVER_16QAM(42),
       I3 => \REG_CNTR_reg_n_0_[0]\,
       I4 => DEINTERLEAVER_16QAM(74),
-      O => \FPGA_REG_WRITE_DATA[21]_i_10_n_0\
-    );
-\FPGA_REG_WRITE_DATA[21]_i_2\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0272027202727272"
-    )
-        port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => VITERBI_SIGNAL(21),
-      I2 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
-      I3 => \FPGA_REG_WRITE_DATA[21]_i_6_n_0\,
-      I4 => QDATA(5),
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_14_n_0\,
-      O => \FPGA_REG_WRITE_DATA[21]_i_2_n_0\
-    );
-\FPGA_REG_WRITE_DATA[21]_i_3\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"77777F77"
-    )
-        port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I2 => DEINTERLEAVER_STROBE,
-      I3 => \REG_CNTR[1]_i_2_n_0\,
-      I4 => DEINTERLEAVER_QPSK(21),
-      O => \FPGA_REG_WRITE_DATA[21]_i_3_n_0\
-    );
-\FPGA_REG_WRITE_DATA[21]_i_4\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FFAC0FAC"
-    )
-        port map (
-      I0 => DEINTERLEAVER_16QAM(10),
-      I1 => \FPGA_REG_WRITE_DATA_reg[21]_i_7_n_0\,
-      I2 => DEINTERLEAVER_STROBE,
-      I3 => \REG_CNTR[1]_i_2_n_0\,
-      I4 => DEINTERLEAVER_QPSK(53),
-      O => \FPGA_REG_WRITE_DATA[21]_i_4_n_0\
-    );
-\FPGA_REG_WRITE_DATA[21]_i_5\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FFFF44F4"
-    )
-        port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[21]_i_8_n_0\,
-      I2 => CONSTELLATION_QDATA(5),
-      I3 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_19_n_0\,
-      O => \FPGA_REG_WRITE_DATA[21]_i_5_n_0\
-    );
-\FPGA_REG_WRITE_DATA[21]_i_6\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"55550040"
-    )
-        port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => DATA_STROBE,
-      I2 => SELECT_AXI_REGS_MODE(0),
-      I3 => SELECT_AXI_REGS_MODE(1),
-      I4 => FFT_QDATA(5),
-      O => \FPGA_REG_WRITE_DATA[21]_i_6_n_0\
-    );
-\FPGA_REG_WRITE_DATA[21]_i_8\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => DEINTERLEAVER_BPSK(10),
-      I1 => DEINTERLEAVER_STROBE,
-      I2 => DEINTERLEAVER_BPSK(42),
       O => \FPGA_REG_WRITE_DATA[21]_i_8_n_0\
     );
 \FPGA_REG_WRITE_DATA[21]_i_9\: unisim.vcomponents.LUT5
@@ -2486,65 +2612,64 @@ begin
     );
 \FPGA_REG_WRITE_DATA[22]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"3A3A3A3A0A3A0A0A"
+      INIT => X"FFFFFFFF23232322"
     )
         port map (
-      I0 => EQUALIZER_REG_WRITE_DATA(22),
-      I1 => \FPGA_REG_WRITE_DATA[22]_i_2_n_0\,
-      I2 => \FPGA_REG_WRITE_ADDRESS[10]_i_3_n_0\,
+      I0 => \FPGA_REG_WRITE_DATA[22]_i_2_n_0\,
+      I1 => \FPGA_REG_WRITE_DATA[31]_i_6_n_0\,
+      I2 => \FPGA_REG_WRITE_DATA[31]_i_7_n_0\,
       I3 => \FPGA_REG_WRITE_DATA[22]_i_3_n_0\,
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[22]_i_4_n_0\,
+      I4 => \FPGA_REG_WRITE_DATA[22]_i_4_n_0\,
+      I5 => \FPGA_REG_WRITE_DATA[22]_i_5_n_0\,
       O => \FPGA_REG_WRITE_DATA[22]_i_1_n_0\
     );
 \FPGA_REG_WRITE_DATA[22]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0272027202727272"
+      INIT => X"AAF0AAF0AACCAA00"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => VITERBI_SIGNAL(22),
-      I2 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
-      I3 => \FPGA_REG_WRITE_DATA[22]_i_5_n_0\,
-      I4 => QDATA(6),
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_14_n_0\,
+      I0 => QDATA(6),
+      I1 => CONSTELLATION_QDATA(6),
+      I2 => FFT_QDATA(6),
+      I3 => \FPGA_REG_WRITE_ADDRESS18_out__0\,
+      I4 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
+      I5 => \FPGA_REG_WRITE_ADDRESS17_out__0\,
       O => \FPGA_REG_WRITE_DATA[22]_i_2_n_0\
     );
 \FPGA_REG_WRITE_DATA[22]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"575757F7F7F757F7"
+      INIT => X"00FF000000E200E2"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[22]_i_6_n_0\,
-      I2 => \REG_CNTR[1]_i_2_n_0\,
-      I3 => DEINTERLEAVER_QPSK(22),
-      I4 => DEINTERLEAVER_STROBE,
-      I5 => DEINTERLEAVER_QPSK(54),
+      I0 => PARALLEL_OUTPUT(22),
+      I1 => \FPGA_REG_WRITE_ADDRESS1__0\,
+      I2 => \FPGA_REG_WRITE_DATA[22]_i_6_n_0\,
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      I4 => data6(22),
+      I5 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
       O => \FPGA_REG_WRITE_DATA[22]_i_3_n_0\
     );
-\FPGA_REG_WRITE_DATA[22]_i_4\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[22]_i_4\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"FFFF44F4"
+      INIT => X"E200"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[22]_i_7_n_0\,
-      I2 => CONSTELLATION_QDATA(6),
-      I3 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_19_n_0\,
+      I0 => DEINTERLEAVER_BPSK(41),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => DEINTERLEAVER_BPSK(9),
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
       O => \FPGA_REG_WRITE_DATA[22]_i_4_n_0\
     );
 \FPGA_REG_WRITE_DATA[22]_i_5\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"55550040"
+      INIT => X"AAAAACA0"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => DATA_STROBE,
-      I2 => SELECT_AXI_REGS_MODE(0),
-      I3 => SELECT_AXI_REGS_MODE(1),
-      I4 => FFT_QDATA(6),
+      I0 => EQUALIZER_REG_WRITE_DATA(22),
+      I1 => VITERBI_SIGNAL(22),
+      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I3 => VITERBI_SIGNAL_VALID,
+      I4 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
       O => \FPGA_REG_WRITE_DATA[22]_i_5_n_0\
     );
 \FPGA_REG_WRITE_DATA[22]_i_6\: unisim.vcomponents.LUT5
@@ -2564,10 +2689,10 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => DEINTERLEAVER_BPSK(9),
+      I0 => DEINTERLEAVER_QPSK(54),
       I1 => DEINTERLEAVER_STROBE,
-      I2 => DEINTERLEAVER_BPSK(41),
-      O => \FPGA_REG_WRITE_DATA[22]_i_7_n_0\
+      I2 => DEINTERLEAVER_QPSK(22),
+      O => data6(22)
     );
 \FPGA_REG_WRITE_DATA[22]_i_8\: unisim.vcomponents.LUT5
     generic map(
@@ -2595,65 +2720,64 @@ begin
     );
 \FPGA_REG_WRITE_DATA[23]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"3A3A3A3A0A3A0A0A"
+      INIT => X"FFFFFFFF23232322"
     )
         port map (
-      I0 => EQUALIZER_REG_WRITE_DATA(23),
-      I1 => \FPGA_REG_WRITE_DATA[23]_i_2_n_0\,
-      I2 => \FPGA_REG_WRITE_ADDRESS[10]_i_3_n_0\,
+      I0 => \FPGA_REG_WRITE_DATA[23]_i_2_n_0\,
+      I1 => \FPGA_REG_WRITE_DATA[31]_i_6_n_0\,
+      I2 => \FPGA_REG_WRITE_DATA[31]_i_7_n_0\,
       I3 => \FPGA_REG_WRITE_DATA[23]_i_3_n_0\,
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[23]_i_4_n_0\,
+      I4 => \FPGA_REG_WRITE_DATA[23]_i_4_n_0\,
+      I5 => \FPGA_REG_WRITE_DATA[23]_i_5_n_0\,
       O => \FPGA_REG_WRITE_DATA[23]_i_1_n_0\
     );
 \FPGA_REG_WRITE_DATA[23]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0272027202727272"
+      INIT => X"AAF0AAF0AACCAA00"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => VITERBI_SIGNAL(23),
-      I2 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
-      I3 => \FPGA_REG_WRITE_DATA[23]_i_5_n_0\,
-      I4 => QDATA(7),
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_14_n_0\,
+      I0 => QDATA(7),
+      I1 => CONSTELLATION_QDATA(7),
+      I2 => FFT_QDATA(7),
+      I3 => \FPGA_REG_WRITE_ADDRESS18_out__0\,
+      I4 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
+      I5 => \FPGA_REG_WRITE_ADDRESS17_out__0\,
       O => \FPGA_REG_WRITE_DATA[23]_i_2_n_0\
     );
 \FPGA_REG_WRITE_DATA[23]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"575757F7F7F757F7"
+      INIT => X"00FF000000E200E2"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[23]_i_6_n_0\,
-      I2 => \REG_CNTR[1]_i_2_n_0\,
-      I3 => DEINTERLEAVER_QPSK(23),
-      I4 => DEINTERLEAVER_STROBE,
-      I5 => DEINTERLEAVER_QPSK(55),
+      I0 => PARALLEL_OUTPUT(23),
+      I1 => \FPGA_REG_WRITE_ADDRESS1__0\,
+      I2 => \FPGA_REG_WRITE_DATA[23]_i_6_n_0\,
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      I4 => data6(23),
+      I5 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
       O => \FPGA_REG_WRITE_DATA[23]_i_3_n_0\
     );
-\FPGA_REG_WRITE_DATA[23]_i_4\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[23]_i_4\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"FFFF44F4"
+      INIT => X"E200"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[23]_i_7_n_0\,
-      I2 => CONSTELLATION_QDATA(7),
-      I3 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_19_n_0\,
+      I0 => DEINTERLEAVER_BPSK(40),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => DEINTERLEAVER_BPSK(8),
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
       O => \FPGA_REG_WRITE_DATA[23]_i_4_n_0\
     );
 \FPGA_REG_WRITE_DATA[23]_i_5\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"55550040"
+      INIT => X"AAAAACA0"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => DATA_STROBE,
-      I2 => SELECT_AXI_REGS_MODE(0),
-      I3 => SELECT_AXI_REGS_MODE(1),
-      I4 => FFT_QDATA(7),
+      I0 => EQUALIZER_REG_WRITE_DATA(23),
+      I1 => VITERBI_SIGNAL(23),
+      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I3 => VITERBI_SIGNAL_VALID,
+      I4 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
       O => \FPGA_REG_WRITE_DATA[23]_i_5_n_0\
     );
 \FPGA_REG_WRITE_DATA[23]_i_6\: unisim.vcomponents.LUT5
@@ -2673,10 +2797,10 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => DEINTERLEAVER_BPSK(8),
+      I0 => DEINTERLEAVER_QPSK(55),
       I1 => DEINTERLEAVER_STROBE,
-      I2 => DEINTERLEAVER_BPSK(40),
-      O => \FPGA_REG_WRITE_DATA[23]_i_7_n_0\
+      I2 => DEINTERLEAVER_QPSK(23),
+      O => data6(23)
     );
 \FPGA_REG_WRITE_DATA[23]_i_8\: unisim.vcomponents.LUT5
     generic map(
@@ -2704,65 +2828,64 @@ begin
     );
 \FPGA_REG_WRITE_DATA[24]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"3A3A3A3A0A3A0A0A"
+      INIT => X"FFFFFFFF23232322"
     )
         port map (
-      I0 => EQUALIZER_REG_WRITE_DATA(24),
-      I1 => \FPGA_REG_WRITE_DATA[24]_i_2_n_0\,
-      I2 => \FPGA_REG_WRITE_ADDRESS[10]_i_3_n_0\,
+      I0 => \FPGA_REG_WRITE_DATA[24]_i_2_n_0\,
+      I1 => \FPGA_REG_WRITE_DATA[31]_i_6_n_0\,
+      I2 => \FPGA_REG_WRITE_DATA[31]_i_7_n_0\,
       I3 => \FPGA_REG_WRITE_DATA[24]_i_3_n_0\,
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[24]_i_4_n_0\,
+      I4 => \FPGA_REG_WRITE_DATA[24]_i_4_n_0\,
+      I5 => \FPGA_REG_WRITE_DATA[24]_i_5_n_0\,
       O => \FPGA_REG_WRITE_DATA[24]_i_1_n_0\
     );
 \FPGA_REG_WRITE_DATA[24]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0272027202727272"
+      INIT => X"AAF0AAF0AACCAA00"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => VITERBI_SIGNAL(24),
-      I2 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
-      I3 => \FPGA_REG_WRITE_DATA[24]_i_5_n_0\,
-      I4 => QDATA(8),
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_14_n_0\,
+      I0 => QDATA(8),
+      I1 => CONSTELLATION_QDATA(8),
+      I2 => FFT_QDATA(8),
+      I3 => \FPGA_REG_WRITE_ADDRESS18_out__0\,
+      I4 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
+      I5 => \FPGA_REG_WRITE_ADDRESS17_out__0\,
       O => \FPGA_REG_WRITE_DATA[24]_i_2_n_0\
     );
 \FPGA_REG_WRITE_DATA[24]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"575757F7F7F757F7"
+      INIT => X"00FF000000E200E2"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[24]_i_6_n_0\,
-      I2 => \REG_CNTR[1]_i_2_n_0\,
-      I3 => DEINTERLEAVER_QPSK(24),
-      I4 => DEINTERLEAVER_STROBE,
-      I5 => DEINTERLEAVER_QPSK(56),
+      I0 => PARALLEL_OUTPUT(24),
+      I1 => \FPGA_REG_WRITE_ADDRESS1__0\,
+      I2 => \FPGA_REG_WRITE_DATA[24]_i_6_n_0\,
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      I4 => data6(24),
+      I5 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
       O => \FPGA_REG_WRITE_DATA[24]_i_3_n_0\
     );
-\FPGA_REG_WRITE_DATA[24]_i_4\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[24]_i_4\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"FFFF44F4"
+      INIT => X"E200"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[24]_i_7_n_0\,
-      I2 => CONSTELLATION_QDATA(8),
-      I3 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_19_n_0\,
+      I0 => DEINTERLEAVER_BPSK(39),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => DEINTERLEAVER_BPSK(7),
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
       O => \FPGA_REG_WRITE_DATA[24]_i_4_n_0\
     );
 \FPGA_REG_WRITE_DATA[24]_i_5\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"55550040"
+      INIT => X"AAAAACA0"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => DATA_STROBE,
-      I2 => SELECT_AXI_REGS_MODE(0),
-      I3 => SELECT_AXI_REGS_MODE(1),
-      I4 => FFT_QDATA(8),
+      I0 => EQUALIZER_REG_WRITE_DATA(24),
+      I1 => VITERBI_SIGNAL(24),
+      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I3 => VITERBI_SIGNAL_VALID,
+      I4 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
       O => \FPGA_REG_WRITE_DATA[24]_i_5_n_0\
     );
 \FPGA_REG_WRITE_DATA[24]_i_6\: unisim.vcomponents.LUT5
@@ -2782,10 +2905,10 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => DEINTERLEAVER_BPSK(7),
+      I0 => DEINTERLEAVER_QPSK(56),
       I1 => DEINTERLEAVER_STROBE,
-      I2 => DEINTERLEAVER_BPSK(39),
-      O => \FPGA_REG_WRITE_DATA[24]_i_7_n_0\
+      I2 => DEINTERLEAVER_QPSK(24),
+      O => data6(24)
     );
 \FPGA_REG_WRITE_DATA[24]_i_8\: unisim.vcomponents.LUT5
     generic map(
@@ -2813,65 +2936,64 @@ begin
     );
 \FPGA_REG_WRITE_DATA[25]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"3A3A3A3A0A3A0A0A"
+      INIT => X"FFFFFFFF23232322"
     )
         port map (
-      I0 => EQUALIZER_REG_WRITE_DATA(25),
-      I1 => \FPGA_REG_WRITE_DATA[25]_i_2_n_0\,
-      I2 => \FPGA_REG_WRITE_ADDRESS[10]_i_3_n_0\,
+      I0 => \FPGA_REG_WRITE_DATA[25]_i_2_n_0\,
+      I1 => \FPGA_REG_WRITE_DATA[31]_i_6_n_0\,
+      I2 => \FPGA_REG_WRITE_DATA[31]_i_7_n_0\,
       I3 => \FPGA_REG_WRITE_DATA[25]_i_3_n_0\,
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[25]_i_4_n_0\,
+      I4 => \FPGA_REG_WRITE_DATA[25]_i_4_n_0\,
+      I5 => \FPGA_REG_WRITE_DATA[25]_i_5_n_0\,
       O => \FPGA_REG_WRITE_DATA[25]_i_1_n_0\
     );
 \FPGA_REG_WRITE_DATA[25]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0272027202727272"
+      INIT => X"AAF0AAF0AACCAA00"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => VITERBI_SIGNAL(25),
-      I2 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
-      I3 => \FPGA_REG_WRITE_DATA[25]_i_5_n_0\,
-      I4 => QDATA(9),
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_14_n_0\,
+      I0 => QDATA(9),
+      I1 => CONSTELLATION_QDATA(9),
+      I2 => FFT_QDATA(9),
+      I3 => \FPGA_REG_WRITE_ADDRESS18_out__0\,
+      I4 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
+      I5 => \FPGA_REG_WRITE_ADDRESS17_out__0\,
       O => \FPGA_REG_WRITE_DATA[25]_i_2_n_0\
     );
 \FPGA_REG_WRITE_DATA[25]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"575757F7F7F757F7"
+      INIT => X"00FF000000E200E2"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[25]_i_6_n_0\,
-      I2 => \REG_CNTR[1]_i_2_n_0\,
-      I3 => DEINTERLEAVER_QPSK(25),
-      I4 => DEINTERLEAVER_STROBE,
-      I5 => DEINTERLEAVER_QPSK(57),
+      I0 => PARALLEL_OUTPUT(25),
+      I1 => \FPGA_REG_WRITE_ADDRESS1__0\,
+      I2 => \FPGA_REG_WRITE_DATA[25]_i_6_n_0\,
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      I4 => data6(25),
+      I5 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
       O => \FPGA_REG_WRITE_DATA[25]_i_3_n_0\
     );
-\FPGA_REG_WRITE_DATA[25]_i_4\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[25]_i_4\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"FFFF44F4"
+      INIT => X"E200"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[25]_i_7_n_0\,
-      I2 => CONSTELLATION_QDATA(9),
-      I3 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_19_n_0\,
+      I0 => DEINTERLEAVER_BPSK(38),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => DEINTERLEAVER_BPSK(6),
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
       O => \FPGA_REG_WRITE_DATA[25]_i_4_n_0\
     );
 \FPGA_REG_WRITE_DATA[25]_i_5\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"55550040"
+      INIT => X"AAAAACA0"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => DATA_STROBE,
-      I2 => SELECT_AXI_REGS_MODE(0),
-      I3 => SELECT_AXI_REGS_MODE(1),
-      I4 => FFT_QDATA(9),
+      I0 => EQUALIZER_REG_WRITE_DATA(25),
+      I1 => VITERBI_SIGNAL(25),
+      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I3 => VITERBI_SIGNAL_VALID,
+      I4 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
       O => \FPGA_REG_WRITE_DATA[25]_i_5_n_0\
     );
 \FPGA_REG_WRITE_DATA[25]_i_6\: unisim.vcomponents.LUT5
@@ -2891,10 +3013,10 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => DEINTERLEAVER_BPSK(6),
+      I0 => DEINTERLEAVER_QPSK(57),
       I1 => DEINTERLEAVER_STROBE,
-      I2 => DEINTERLEAVER_BPSK(38),
-      O => \FPGA_REG_WRITE_DATA[25]_i_7_n_0\
+      I2 => DEINTERLEAVER_QPSK(25),
+      O => data6(25)
     );
 \FPGA_REG_WRITE_DATA[25]_i_8\: unisim.vcomponents.LUT5
     generic map(
@@ -2922,65 +3044,64 @@ begin
     );
 \FPGA_REG_WRITE_DATA[26]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"AAA3AAA3AAA3AAA0"
+      INIT => X"FFFFFFFF23232322"
     )
         port map (
-      I0 => EQUALIZER_REG_WRITE_DATA(26),
-      I1 => \FPGA_REG_WRITE_DATA[26]_i_2_n_0\,
-      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
-      I3 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
-      I4 => \FPGA_REG_WRITE_DATA[26]_i_3_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[26]_i_4_n_0\,
+      I0 => \FPGA_REG_WRITE_DATA[26]_i_2_n_0\,
+      I1 => \FPGA_REG_WRITE_DATA[31]_i_6_n_0\,
+      I2 => \FPGA_REG_WRITE_DATA[31]_i_7_n_0\,
+      I3 => \FPGA_REG_WRITE_DATA[26]_i_3_n_0\,
+      I4 => \FPGA_REG_WRITE_DATA[26]_i_4_n_0\,
+      I5 => \FPGA_REG_WRITE_DATA[26]_i_5_n_0\,
       O => \FPGA_REG_WRITE_DATA[26]_i_1_n_0\
     );
 \FPGA_REG_WRITE_DATA[26]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0272027202727272"
+      INIT => X"AAF0AAF0AACCAA00"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => VITERBI_SIGNAL(26),
-      I2 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
-      I3 => \FPGA_REG_WRITE_DATA[26]_i_5_n_0\,
-      I4 => QDATA(10),
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_14_n_0\,
+      I0 => QDATA(10),
+      I1 => CONSTELLATION_QDATA(10),
+      I2 => FFT_QDATA(10),
+      I3 => \FPGA_REG_WRITE_ADDRESS18_out__0\,
+      I4 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
+      I5 => \FPGA_REG_WRITE_ADDRESS17_out__0\,
       O => \FPGA_REG_WRITE_DATA[26]_i_2_n_0\
     );
 \FPGA_REG_WRITE_DATA[26]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"00000000AACCF0CC"
+      INIT => X"00FF000000E200E2"
     )
         port map (
-      I0 => DEINTERLEAVER_QPSK(58),
-      I1 => \FPGA_REG_WRITE_DATA[26]_i_6_n_0\,
-      I2 => DEINTERLEAVER_QPSK(26),
-      I3 => \REG_CNTR[1]_i_2_n_0\,
-      I4 => DEINTERLEAVER_STROBE,
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_15_n_0\,
+      I0 => PARALLEL_OUTPUT(26),
+      I1 => \FPGA_REG_WRITE_ADDRESS1__0\,
+      I2 => \FPGA_REG_WRITE_DATA[26]_i_6_n_0\,
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      I4 => data6(26),
+      I5 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
       O => \FPGA_REG_WRITE_DATA[26]_i_3_n_0\
     );
-\FPGA_REG_WRITE_DATA[26]_i_4\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[26]_i_4\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"FFFF44F4"
+      INIT => X"E200"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[26]_i_7_n_0\,
-      I2 => CONSTELLATION_QDATA(10),
-      I3 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_19_n_0\,
+      I0 => DEINTERLEAVER_BPSK(37),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => DEINTERLEAVER_BPSK(5),
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
       O => \FPGA_REG_WRITE_DATA[26]_i_4_n_0\
     );
 \FPGA_REG_WRITE_DATA[26]_i_5\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"55550040"
+      INIT => X"AAAAACA0"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => DATA_STROBE,
-      I2 => SELECT_AXI_REGS_MODE(0),
-      I3 => SELECT_AXI_REGS_MODE(1),
-      I4 => FFT_QDATA(10),
+      I0 => EQUALIZER_REG_WRITE_DATA(26),
+      I1 => VITERBI_SIGNAL(26),
+      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I3 => VITERBI_SIGNAL_VALID,
+      I4 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
       O => \FPGA_REG_WRITE_DATA[26]_i_5_n_0\
     );
 \FPGA_REG_WRITE_DATA[26]_i_6\: unisim.vcomponents.LUT5
@@ -3000,10 +3121,10 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => DEINTERLEAVER_BPSK(5),
+      I0 => DEINTERLEAVER_QPSK(58),
       I1 => DEINTERLEAVER_STROBE,
-      I2 => DEINTERLEAVER_BPSK(37),
-      O => \FPGA_REG_WRITE_DATA[26]_i_7_n_0\
+      I2 => DEINTERLEAVER_QPSK(26),
+      O => data6(26)
     );
 \FPGA_REG_WRITE_DATA[26]_i_8\: unisim.vcomponents.LUT5
     generic map(
@@ -3031,65 +3152,64 @@ begin
     );
 \FPGA_REG_WRITE_DATA[27]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"AAA3AAA3AAA3AAA0"
+      INIT => X"FFFFFFFF23232322"
     )
         port map (
-      I0 => EQUALIZER_REG_WRITE_DATA(27),
-      I1 => \FPGA_REG_WRITE_DATA[27]_i_2_n_0\,
-      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
-      I3 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
-      I4 => \FPGA_REG_WRITE_DATA[27]_i_3_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[27]_i_4_n_0\,
+      I0 => \FPGA_REG_WRITE_DATA[27]_i_2_n_0\,
+      I1 => \FPGA_REG_WRITE_DATA[31]_i_6_n_0\,
+      I2 => \FPGA_REG_WRITE_DATA[31]_i_7_n_0\,
+      I3 => \FPGA_REG_WRITE_DATA[27]_i_3_n_0\,
+      I4 => \FPGA_REG_WRITE_DATA[27]_i_4_n_0\,
+      I5 => \FPGA_REG_WRITE_DATA[27]_i_5_n_0\,
       O => \FPGA_REG_WRITE_DATA[27]_i_1_n_0\
     );
 \FPGA_REG_WRITE_DATA[27]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0272027202727272"
+      INIT => X"AAF0AAF0AACCAA00"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => VITERBI_SIGNAL(27),
-      I2 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
-      I3 => \FPGA_REG_WRITE_DATA[27]_i_5_n_0\,
-      I4 => QDATA(11),
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_14_n_0\,
+      I0 => QDATA(11),
+      I1 => CONSTELLATION_QDATA(11),
+      I2 => FFT_QDATA(11),
+      I3 => \FPGA_REG_WRITE_ADDRESS18_out__0\,
+      I4 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
+      I5 => \FPGA_REG_WRITE_ADDRESS17_out__0\,
       O => \FPGA_REG_WRITE_DATA[27]_i_2_n_0\
     );
 \FPGA_REG_WRITE_DATA[27]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"00000000AACCF0CC"
+      INIT => X"00FF000000E200E2"
     )
         port map (
-      I0 => DEINTERLEAVER_QPSK(59),
-      I1 => \FPGA_REG_WRITE_DATA[27]_i_6_n_0\,
-      I2 => DEINTERLEAVER_QPSK(27),
-      I3 => \REG_CNTR[1]_i_2_n_0\,
-      I4 => DEINTERLEAVER_STROBE,
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_15_n_0\,
+      I0 => PARALLEL_OUTPUT(27),
+      I1 => \FPGA_REG_WRITE_ADDRESS1__0\,
+      I2 => \FPGA_REG_WRITE_DATA[27]_i_6_n_0\,
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      I4 => data6(27),
+      I5 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
       O => \FPGA_REG_WRITE_DATA[27]_i_3_n_0\
     );
-\FPGA_REG_WRITE_DATA[27]_i_4\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[27]_i_4\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"FFFF44F4"
+      INIT => X"E200"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[27]_i_7_n_0\,
-      I2 => CONSTELLATION_QDATA(11),
-      I3 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_19_n_0\,
+      I0 => DEINTERLEAVER_BPSK(36),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => DEINTERLEAVER_BPSK(4),
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
       O => \FPGA_REG_WRITE_DATA[27]_i_4_n_0\
     );
 \FPGA_REG_WRITE_DATA[27]_i_5\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"55550040"
+      INIT => X"AAAAACA0"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => DATA_STROBE,
-      I2 => SELECT_AXI_REGS_MODE(0),
-      I3 => SELECT_AXI_REGS_MODE(1),
-      I4 => FFT_QDATA(11),
+      I0 => EQUALIZER_REG_WRITE_DATA(27),
+      I1 => VITERBI_SIGNAL(27),
+      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I3 => VITERBI_SIGNAL_VALID,
+      I4 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
       O => \FPGA_REG_WRITE_DATA[27]_i_5_n_0\
     );
 \FPGA_REG_WRITE_DATA[27]_i_6\: unisim.vcomponents.LUT5
@@ -3109,10 +3229,10 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => DEINTERLEAVER_BPSK(4),
+      I0 => DEINTERLEAVER_QPSK(59),
       I1 => DEINTERLEAVER_STROBE,
-      I2 => DEINTERLEAVER_BPSK(36),
-      O => \FPGA_REG_WRITE_DATA[27]_i_7_n_0\
+      I2 => DEINTERLEAVER_QPSK(27),
+      O => data6(27)
     );
 \FPGA_REG_WRITE_DATA[27]_i_8\: unisim.vcomponents.LUT5
     generic map(
@@ -3140,65 +3260,64 @@ begin
     );
 \FPGA_REG_WRITE_DATA[28]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"AAA3AAA3AAA3AAA0"
+      INIT => X"FFFFFFFF23232322"
     )
         port map (
-      I0 => EQUALIZER_REG_WRITE_DATA(28),
-      I1 => \FPGA_REG_WRITE_DATA[28]_i_2_n_0\,
-      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
-      I3 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
-      I4 => \FPGA_REG_WRITE_DATA[28]_i_3_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[28]_i_4_n_0\,
+      I0 => \FPGA_REG_WRITE_DATA[28]_i_2_n_0\,
+      I1 => \FPGA_REG_WRITE_DATA[31]_i_6_n_0\,
+      I2 => \FPGA_REG_WRITE_DATA[31]_i_7_n_0\,
+      I3 => \FPGA_REG_WRITE_DATA[28]_i_3_n_0\,
+      I4 => \FPGA_REG_WRITE_DATA[28]_i_4_n_0\,
+      I5 => \FPGA_REG_WRITE_DATA[28]_i_5_n_0\,
       O => \FPGA_REG_WRITE_DATA[28]_i_1_n_0\
     );
 \FPGA_REG_WRITE_DATA[28]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0272027202727272"
+      INIT => X"AAF0AAF0AACCAA00"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => VITERBI_SIGNAL(28),
-      I2 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
-      I3 => \FPGA_REG_WRITE_DATA[28]_i_5_n_0\,
-      I4 => QDATA(12),
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_14_n_0\,
+      I0 => QDATA(12),
+      I1 => CONSTELLATION_QDATA(12),
+      I2 => FFT_QDATA(12),
+      I3 => \FPGA_REG_WRITE_ADDRESS18_out__0\,
+      I4 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
+      I5 => \FPGA_REG_WRITE_ADDRESS17_out__0\,
       O => \FPGA_REG_WRITE_DATA[28]_i_2_n_0\
     );
 \FPGA_REG_WRITE_DATA[28]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"00000000AACCF0CC"
+      INIT => X"00FF000000E200E2"
     )
         port map (
-      I0 => DEINTERLEAVER_QPSK(60),
-      I1 => \FPGA_REG_WRITE_DATA[28]_i_6_n_0\,
-      I2 => DEINTERLEAVER_QPSK(28),
-      I3 => \REG_CNTR[1]_i_2_n_0\,
-      I4 => DEINTERLEAVER_STROBE,
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_15_n_0\,
+      I0 => PARALLEL_OUTPUT(28),
+      I1 => \FPGA_REG_WRITE_ADDRESS1__0\,
+      I2 => \FPGA_REG_WRITE_DATA[28]_i_6_n_0\,
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      I4 => data6(28),
+      I5 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
       O => \FPGA_REG_WRITE_DATA[28]_i_3_n_0\
     );
-\FPGA_REG_WRITE_DATA[28]_i_4\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[28]_i_4\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"FFFF44F4"
+      INIT => X"E200"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[28]_i_7_n_0\,
-      I2 => CONSTELLATION_QDATA(12),
-      I3 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_19_n_0\,
+      I0 => DEINTERLEAVER_BPSK(35),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => DEINTERLEAVER_BPSK(3),
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
       O => \FPGA_REG_WRITE_DATA[28]_i_4_n_0\
     );
 \FPGA_REG_WRITE_DATA[28]_i_5\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"55550040"
+      INIT => X"AAAAACA0"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => DATA_STROBE,
-      I2 => SELECT_AXI_REGS_MODE(0),
-      I3 => SELECT_AXI_REGS_MODE(1),
-      I4 => FFT_QDATA(12),
+      I0 => EQUALIZER_REG_WRITE_DATA(28),
+      I1 => VITERBI_SIGNAL(28),
+      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I3 => VITERBI_SIGNAL_VALID,
+      I4 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
       O => \FPGA_REG_WRITE_DATA[28]_i_5_n_0\
     );
 \FPGA_REG_WRITE_DATA[28]_i_6\: unisim.vcomponents.LUT5
@@ -3218,10 +3337,10 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => DEINTERLEAVER_BPSK(3),
+      I0 => DEINTERLEAVER_QPSK(60),
       I1 => DEINTERLEAVER_STROBE,
-      I2 => DEINTERLEAVER_BPSK(35),
-      O => \FPGA_REG_WRITE_DATA[28]_i_7_n_0\
+      I2 => DEINTERLEAVER_QPSK(28),
+      O => data6(28)
     );
 \FPGA_REG_WRITE_DATA[28]_i_8\: unisim.vcomponents.LUT5
     generic map(
@@ -3249,65 +3368,64 @@ begin
     );
 \FPGA_REG_WRITE_DATA[29]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"AAA3AAA3AAA3AAA0"
+      INIT => X"FFFFFFFF23232322"
     )
         port map (
-      I0 => EQUALIZER_REG_WRITE_DATA(29),
-      I1 => \FPGA_REG_WRITE_DATA[29]_i_2_n_0\,
-      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
-      I3 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
-      I4 => \FPGA_REG_WRITE_DATA[29]_i_3_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[29]_i_4_n_0\,
+      I0 => \FPGA_REG_WRITE_DATA[29]_i_2_n_0\,
+      I1 => \FPGA_REG_WRITE_DATA[31]_i_6_n_0\,
+      I2 => \FPGA_REG_WRITE_DATA[31]_i_7_n_0\,
+      I3 => \FPGA_REG_WRITE_DATA[29]_i_3_n_0\,
+      I4 => \FPGA_REG_WRITE_DATA[29]_i_4_n_0\,
+      I5 => \FPGA_REG_WRITE_DATA[29]_i_5_n_0\,
       O => \FPGA_REG_WRITE_DATA[29]_i_1_n_0\
     );
 \FPGA_REG_WRITE_DATA[29]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0272027202727272"
+      INIT => X"AAF0AAF0AACCAA00"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => VITERBI_SIGNAL(29),
-      I2 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
-      I3 => \FPGA_REG_WRITE_DATA[29]_i_5_n_0\,
-      I4 => QDATA(13),
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_14_n_0\,
+      I0 => QDATA(13),
+      I1 => CONSTELLATION_QDATA(13),
+      I2 => FFT_QDATA(13),
+      I3 => \FPGA_REG_WRITE_ADDRESS18_out__0\,
+      I4 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
+      I5 => \FPGA_REG_WRITE_ADDRESS17_out__0\,
       O => \FPGA_REG_WRITE_DATA[29]_i_2_n_0\
     );
 \FPGA_REG_WRITE_DATA[29]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"00000000AACCF0CC"
+      INIT => X"00FF000000E200E2"
     )
         port map (
-      I0 => DEINTERLEAVER_QPSK(61),
-      I1 => \FPGA_REG_WRITE_DATA[29]_i_6_n_0\,
-      I2 => DEINTERLEAVER_QPSK(29),
-      I3 => \REG_CNTR[1]_i_2_n_0\,
-      I4 => DEINTERLEAVER_STROBE,
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_15_n_0\,
+      I0 => PARALLEL_OUTPUT(29),
+      I1 => \FPGA_REG_WRITE_ADDRESS1__0\,
+      I2 => \FPGA_REG_WRITE_DATA[29]_i_6_n_0\,
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      I4 => data6(29),
+      I5 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
       O => \FPGA_REG_WRITE_DATA[29]_i_3_n_0\
     );
-\FPGA_REG_WRITE_DATA[29]_i_4\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[29]_i_4\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"FFFF44F4"
+      INIT => X"E200"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[29]_i_7_n_0\,
-      I2 => CONSTELLATION_QDATA(13),
-      I3 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_19_n_0\,
+      I0 => DEINTERLEAVER_BPSK(34),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => DEINTERLEAVER_BPSK(2),
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
       O => \FPGA_REG_WRITE_DATA[29]_i_4_n_0\
     );
 \FPGA_REG_WRITE_DATA[29]_i_5\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"55550040"
+      INIT => X"AAAAACA0"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => DATA_STROBE,
-      I2 => SELECT_AXI_REGS_MODE(0),
-      I3 => SELECT_AXI_REGS_MODE(1),
-      I4 => FFT_QDATA(13),
+      I0 => EQUALIZER_REG_WRITE_DATA(29),
+      I1 => VITERBI_SIGNAL(29),
+      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I3 => VITERBI_SIGNAL_VALID,
+      I4 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
       O => \FPGA_REG_WRITE_DATA[29]_i_5_n_0\
     );
 \FPGA_REG_WRITE_DATA[29]_i_6\: unisim.vcomponents.LUT5
@@ -3327,10 +3445,10 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => DEINTERLEAVER_BPSK(2),
+      I0 => DEINTERLEAVER_QPSK(61),
       I1 => DEINTERLEAVER_STROBE,
-      I2 => DEINTERLEAVER_BPSK(34),
-      O => \FPGA_REG_WRITE_DATA[29]_i_7_n_0\
+      I2 => DEINTERLEAVER_QPSK(29),
+      O => data6(29)
     );
 \FPGA_REG_WRITE_DATA[29]_i_8\: unisim.vcomponents.LUT5
     generic map(
@@ -3358,12 +3476,12 @@ begin
     );
 \FPGA_REG_WRITE_DATA[2]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"3A3A3A3A0A3A0A0A"
+      INIT => X"FFFFFFFF23232322"
     )
         port map (
-      I0 => EQUALIZER_REG_WRITE_DATA(2),
-      I1 => \FPGA_REG_WRITE_DATA[2]_i_2_n_0\,
-      I2 => \FPGA_REG_WRITE_ADDRESS[10]_i_3_n_0\,
+      I0 => \FPGA_REG_WRITE_DATA[2]_i_2_n_0\,
+      I1 => \FPGA_REG_WRITE_DATA[31]_i_6_n_0\,
+      I2 => \FPGA_REG_WRITE_DATA[31]_i_7_n_0\,
       I3 => \FPGA_REG_WRITE_DATA[2]_i_3_n_0\,
       I4 => \FPGA_REG_WRITE_DATA[2]_i_4_n_0\,
       I5 => \FPGA_REG_WRITE_DATA[2]_i_5_n_0\,
@@ -3371,79 +3489,75 @@ begin
     );
 \FPGA_REG_WRITE_DATA[2]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0272027202727272"
+      INIT => X"AAF0AAF0AACCAA00"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => VITERBI_SIGNAL(2),
-      I2 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
-      I3 => \FPGA_REG_WRITE_DATA[2]_i_6_n_0\,
-      I4 => IDATA(2),
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_14_n_0\,
+      I0 => IDATA(2),
+      I1 => CONSTELLATION_IDATA(2),
+      I2 => FFT_IDATA(2),
+      I3 => \FPGA_REG_WRITE_ADDRESS18_out__0\,
+      I4 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
+      I5 => \FPGA_REG_WRITE_ADDRESS17_out__0\,
       O => \FPGA_REG_WRITE_DATA[2]_i_2_n_0\
     );
-\FPGA_REG_WRITE_DATA[2]_i_3\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[2]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"77777F77"
+      INIT => X"00FF000000E200E2"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I2 => DEINTERLEAVER_STROBE,
-      I3 => \REG_CNTR[1]_i_2_n_0\,
-      I4 => DEINTERLEAVER_QPSK(2),
+      I0 => PARALLEL_OUTPUT(2),
+      I1 => \FPGA_REG_WRITE_ADDRESS1__0\,
+      I2 => \FPGA_REG_WRITE_DATA[2]_i_6_n_0\,
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      I4 => data6(2),
+      I5 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
       O => \FPGA_REG_WRITE_DATA[2]_i_3_n_0\
     );
-\FPGA_REG_WRITE_DATA[2]_i_4\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[2]_i_4\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"FFAC0FAC"
+      INIT => X"80"
     )
         port map (
-      I0 => DEINTERLEAVER_16QAM(29),
-      I1 => \FPGA_REG_WRITE_DATA_reg[2]_i_7_n_0\,
-      I2 => DEINTERLEAVER_STROBE,
-      I3 => \REG_CNTR[1]_i_2_n_0\,
-      I4 => DEINTERLEAVER_QPSK(34),
+      I0 => DEINTERLEAVER_BPSK(29),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
       O => \FPGA_REG_WRITE_DATA[2]_i_4_n_0\
     );
-\FPGA_REG_WRITE_DATA[2]_i_5\: unisim.vcomponents.LUT6
+\FPGA_REG_WRITE_DATA[2]_i_5\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FFFFFFFF4040FF40"
+      INIT => X"AAAAACA0"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => DEINTERLEAVER_STROBE,
-      I2 => DEINTERLEAVER_BPSK(29),
-      I3 => CONSTELLATION_IDATA(2),
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_19_n_0\,
+      I0 => EQUALIZER_REG_WRITE_DATA(2),
+      I1 => VITERBI_SIGNAL(2),
+      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I3 => VITERBI_SIGNAL_VALID,
+      I4 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
       O => \FPGA_REG_WRITE_DATA[2]_i_5_n_0\
     );
 \FPGA_REG_WRITE_DATA[2]_i_6\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"55550040"
+      INIT => X"B8BBB888"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => DATA_STROBE,
-      I2 => SELECT_AXI_REGS_MODE(0),
-      I3 => SELECT_AXI_REGS_MODE(1),
-      I4 => FFT_IDATA(2),
+      I0 => DEINTERLEAVER_16QAM(29),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => \FPGA_REG_WRITE_DATA[2]_i_8_n_0\,
+      I3 => \REG_CNTR_reg_n_0_[2]\,
+      I4 => \FPGA_REG_WRITE_DATA[2]_i_9_n_0\,
       O => \FPGA_REG_WRITE_DATA[2]_i_6_n_0\
     );
-\FPGA_REG_WRITE_DATA[2]_i_8\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[2]_i_7\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"B8FFB800"
+      INIT => X"B8"
     )
         port map (
-      I0 => DEINTERLEAVER_16QAM(125),
-      I1 => \REG_CNTR_reg_n_0_[0]\,
-      I2 => DEINTERLEAVER_16QAM(157),
-      I3 => \REG_CNTR_reg_n_0_[1]\,
-      I4 => DEINTERLEAVER_16QAM(189),
-      O => \FPGA_REG_WRITE_DATA[2]_i_8_n_0\
+      I0 => DEINTERLEAVER_QPSK(34),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => DEINTERLEAVER_QPSK(2),
+      O => data6(2)
     );
-\FPGA_REG_WRITE_DATA[2]_i_9\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[2]_i_8\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"B8BBB888"
     )
@@ -3453,69 +3567,80 @@ begin
       I2 => DEINTERLEAVER_16QAM(61),
       I3 => \REG_CNTR_reg_n_0_[0]\,
       I4 => DEINTERLEAVER_16QAM(93),
+      O => \FPGA_REG_WRITE_DATA[2]_i_8_n_0\
+    );
+\FPGA_REG_WRITE_DATA[2]_i_9\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"B8FFB800"
+    )
+        port map (
+      I0 => DEINTERLEAVER_16QAM(125),
+      I1 => \REG_CNTR_reg_n_0_[0]\,
+      I2 => DEINTERLEAVER_16QAM(157),
+      I3 => \REG_CNTR_reg_n_0_[1]\,
+      I4 => DEINTERLEAVER_16QAM(189),
       O => \FPGA_REG_WRITE_DATA[2]_i_9_n_0\
     );
 \FPGA_REG_WRITE_DATA[30]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"3A3A3A3A0A3A0A0A"
+      INIT => X"FFFFFFFF23232322"
     )
         port map (
-      I0 => EQUALIZER_REG_WRITE_DATA(30),
-      I1 => \FPGA_REG_WRITE_DATA[30]_i_2_n_0\,
-      I2 => \FPGA_REG_WRITE_ADDRESS[10]_i_3_n_0\,
+      I0 => \FPGA_REG_WRITE_DATA[30]_i_2_n_0\,
+      I1 => \FPGA_REG_WRITE_DATA[31]_i_6_n_0\,
+      I2 => \FPGA_REG_WRITE_DATA[31]_i_7_n_0\,
       I3 => \FPGA_REG_WRITE_DATA[30]_i_3_n_0\,
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[30]_i_4_n_0\,
+      I4 => \FPGA_REG_WRITE_DATA[30]_i_4_n_0\,
+      I5 => \FPGA_REG_WRITE_DATA[30]_i_5_n_0\,
       O => \FPGA_REG_WRITE_DATA[30]_i_1_n_0\
     );
 \FPGA_REG_WRITE_DATA[30]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0272027202727272"
+      INIT => X"AAF0AAF0AACCAA00"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => VITERBI_SIGNAL(30),
-      I2 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
-      I3 => \FPGA_REG_WRITE_DATA[30]_i_5_n_0\,
-      I4 => QDATA(14),
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_14_n_0\,
+      I0 => QDATA(14),
+      I1 => CONSTELLATION_QDATA(14),
+      I2 => FFT_QDATA(14),
+      I3 => \FPGA_REG_WRITE_ADDRESS18_out__0\,
+      I4 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
+      I5 => \FPGA_REG_WRITE_ADDRESS17_out__0\,
       O => \FPGA_REG_WRITE_DATA[30]_i_2_n_0\
     );
 \FPGA_REG_WRITE_DATA[30]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"575757F7F7F757F7"
+      INIT => X"00FF000000E200E2"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[30]_i_6_n_0\,
-      I2 => \REG_CNTR[1]_i_2_n_0\,
-      I3 => DEINTERLEAVER_QPSK(30),
-      I4 => DEINTERLEAVER_STROBE,
-      I5 => DEINTERLEAVER_QPSK(62),
+      I0 => PARALLEL_OUTPUT(30),
+      I1 => \FPGA_REG_WRITE_ADDRESS1__0\,
+      I2 => \FPGA_REG_WRITE_DATA[30]_i_6_n_0\,
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      I4 => data6(30),
+      I5 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
       O => \FPGA_REG_WRITE_DATA[30]_i_3_n_0\
     );
-\FPGA_REG_WRITE_DATA[30]_i_4\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[30]_i_4\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"FFFF44F4"
+      INIT => X"E200"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[30]_i_7_n_0\,
-      I2 => CONSTELLATION_QDATA(14),
-      I3 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_19_n_0\,
+      I0 => DEINTERLEAVER_BPSK(33),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => DEINTERLEAVER_BPSK(1),
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
       O => \FPGA_REG_WRITE_DATA[30]_i_4_n_0\
     );
 \FPGA_REG_WRITE_DATA[30]_i_5\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"55550040"
+      INIT => X"AAAAACA0"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => DATA_STROBE,
-      I2 => SELECT_AXI_REGS_MODE(0),
-      I3 => SELECT_AXI_REGS_MODE(1),
-      I4 => FFT_QDATA(14),
+      I0 => EQUALIZER_REG_WRITE_DATA(30),
+      I1 => VITERBI_SIGNAL(30),
+      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I3 => VITERBI_SIGNAL_VALID,
+      I4 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
       O => \FPGA_REG_WRITE_DATA[30]_i_5_n_0\
     );
 \FPGA_REG_WRITE_DATA[30]_i_6\: unisim.vcomponents.LUT5
@@ -3535,10 +3660,10 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => DEINTERLEAVER_BPSK(1),
+      I0 => DEINTERLEAVER_QPSK(62),
       I1 => DEINTERLEAVER_STROBE,
-      I2 => DEINTERLEAVER_BPSK(33),
-      O => \FPGA_REG_WRITE_DATA[30]_i_7_n_0\
+      I2 => DEINTERLEAVER_QPSK(30),
+      O => data6(30)
     );
 \FPGA_REG_WRITE_DATA[30]_i_8\: unisim.vcomponents.LUT5
     generic map(
@@ -3566,87 +3691,98 @@ begin
     );
 \FPGA_REG_WRITE_DATA[31]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFFFFEFFFFFFFF"
+      INIT => X"FFFFFFFFFFFFFFFE"
     )
         port map (
       I0 => \FPGA_REG_WRITE_DATA[31]_i_3_n_0\,
-      I1 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
-      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
-      I3 => VITERBI_SIGNAL_VALID,
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      O => \FPGA_REG_WRITE_DATA[31]_i_1_n_0\
+      I1 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
+      I2 => VITERBI_SIGNAL_VALID,
+      I3 => \FPGA_REG_WRITE_ADDRESS18_out__0\,
+      I4 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
+      I5 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      O => FPGA_REG_WRITE_DATA0
     );
-\FPGA_REG_WRITE_DATA[31]_i_10\: unisim.vcomponents.LUT2
+\FPGA_REG_WRITE_DATA[31]_i_10\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"6"
+      INIT => X"AAAAACA0"
     )
         port map (
-      I0 => \REG_CNTR_reg_n_0_[2]\,
-      I1 => \REG_CNTR_reg_n_0_[1]\,
+      I0 => EQUALIZER_REG_WRITE_DATA(31),
+      I1 => VITERBI_SIGNAL(31),
+      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I3 => VITERBI_SIGNAL_VALID,
+      I4 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
       O => \FPGA_REG_WRITE_DATA[31]_i_10_n_0\
     );
 \FPGA_REG_WRITE_DATA[31]_i_11\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"5551"
+      INIT => X"ABAA"
     )
         port map (
       I0 => DEINTERLEAVER_STROBE,
-      I1 => \REG_CNTR_reg_n_0_[0]\,
+      I1 => \REG_CNTR_reg_n_0_[1]\,
       I2 => \REG_CNTR_reg_n_0_[2]\,
-      I3 => \REG_CNTR_reg_n_0_[1]\,
-      O => \FPGA_REG_WRITE_DATA[31]_i_11_n_0\
+      I3 => \REG_CNTR_reg_n_0_[0]\,
+      O => \REG_CNTR__1\
     );
-\FPGA_REG_WRITE_DATA[31]_i_12\: unisim.vcomponents.LUT6
+\FPGA_REG_WRITE_DATA[31]_i_12\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"0000000000000001"
+      INIT => X"4000"
     )
         port map (
-      I0 => SELECT_AXI_REGS_MODE(2),
-      I1 => SELECT_AXI_REGS_MODE(5),
-      I2 => SELECT_AXI_REGS_MODE(6),
-      I3 => SELECT_AXI_REGS_MODE(7),
-      I4 => SELECT_AXI_REGS_MODE(3),
-      I5 => SELECT_AXI_REGS_MODE(4),
-      O => \FPGA_REG_WRITE_DATA[31]_i_12_n_0\
+      I0 => SELECT_AXI_REGS_MODE(0),
+      I1 => SELECT_AXI_REGS_MODE(1),
+      I2 => \FPGA_REG_WRITE_ADDRESS[10]_i_8_n_0\,
+      I3 => FFT_DATA_VALID,
+      O => \FPGA_REG_WRITE_ADDRESS17_out__0\
     );
-\FPGA_REG_WRITE_DATA[31]_i_13\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[31]_i_13\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"55554555"
+      INIT => X"8000"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => QDATA(15),
-      I2 => DATA_STROBE,
+      I0 => CONSTELLATION_DATA_VALID,
+      I1 => SELECT_AXI_REGS_MODE(1),
+      I2 => \FPGA_REG_WRITE_ADDRESS[10]_i_8_n_0\,
       I3 => SELECT_AXI_REGS_MODE(0),
-      I4 => SELECT_AXI_REGS_MODE(1),
-      O => \FPGA_REG_WRITE_DATA[31]_i_13_n_0\
+      O => \FPGA_REG_WRITE_ADDRESS15_out__0\
     );
 \FPGA_REG_WRITE_DATA[31]_i_14\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"DFFF"
+      INIT => X"ABAA"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_12_n_0\,
-      I1 => SELECT_AXI_REGS_MODE(1),
-      I2 => SELECT_AXI_REGS_MODE(0),
-      I3 => DATA_STROBE,
+      I0 => DEINTERLEAVER_STROBE,
+      I1 => \REG_CNTR_reg_n_0_[2]\,
+      I2 => \REG_CNTR_reg_n_0_[0]\,
+      I3 => \REG_CNTR_reg_n_0_[1]\,
       O => \FPGA_REG_WRITE_DATA[31]_i_14_n_0\
     );
 \FPGA_REG_WRITE_DATA[31]_i_15\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"000020200000000F"
+      INIT => X"A000C000A0000000"
     )
         port map (
-      I0 => CONSTELLATION_DATA_VALID,
-      I1 => SELECT_AXI_REGS_MODE(2),
-      I2 => SELECT_AXI_REGS_MODE(1),
-      I3 => \REG_CNTR[1]_i_4_n_0\,
-      I4 => \FPGA_REG_WRITE_ADDRESS[10]_i_6_n_0\,
-      I5 => SELECT_AXI_REGS_MODE(0),
+      I0 => PARALLEL_OUTPUT_VALID,
+      I1 => \FPGA_REG_WRITE_ADDRESS[10]_i_6_n_0\,
+      I2 => FPGA_REG_WRITE_STROBE_i_5_n_0,
+      I3 => SELECT_AXI_REGS_MODE(1),
+      I4 => SELECT_AXI_REGS_MODE(0),
+      I5 => \FPGA_REG_WRITE_DATA[31]_i_19_n_0\,
       O => \FPGA_REG_WRITE_DATA[31]_i_15_n_0\
     );
-\FPGA_REG_WRITE_DATA[31]_i_16\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[31]_i_16\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"2000"
+    )
+        port map (
+      I0 => \FPGA_REG_WRITE_ADDRESS[10]_i_6_n_0\,
+      I1 => SELECT_AXI_REGS_MODE(0),
+      I2 => SELECT_AXI_REGS_MODE(1),
+      I3 => FPGA_REG_WRITE_STROBE_i_5_n_0,
+      O => \FPGA_REG_WRITE_ADDRESS1__0\
+    );
+\FPGA_REG_WRITE_DATA[31]_i_17\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"B8BBB888"
     )
@@ -3656,17 +3792,6 @@ begin
       I2 => \FPGA_REG_WRITE_DATA[31]_i_20_n_0\,
       I3 => \REG_CNTR_reg_n_0_[2]\,
       I4 => \FPGA_REG_WRITE_DATA[31]_i_21_n_0\,
-      O => \FPGA_REG_WRITE_DATA[31]_i_16_n_0\
-    );
-\FPGA_REG_WRITE_DATA[31]_i_17\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"FFFE"
-    )
-        port map (
-      I0 => SELECT_AXI_REGS_MODE(0),
-      I1 => \FPGA_REG_WRITE_ADDRESS[10]_i_6_n_0\,
-      I2 => \REG_CNTR[1]_i_4_n_0\,
-      I3 => SELECT_AXI_REGS_MODE(1),
       O => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\
     );
 \FPGA_REG_WRITE_DATA[31]_i_18\: unisim.vcomponents.LUT3
@@ -3674,35 +3799,33 @@ begin
       INIT => X"B8"
     )
         port map (
-      I0 => DEINTERLEAVER_BPSK(0),
+      I0 => DEINTERLEAVER_QPSK(63),
       I1 => DEINTERLEAVER_STROBE,
-      I2 => DEINTERLEAVER_BPSK(32),
-      O => \FPGA_REG_WRITE_DATA[31]_i_18_n_0\
+      I2 => DEINTERLEAVER_QPSK(31),
+      O => data6(31)
     );
-\FPGA_REG_WRITE_DATA[31]_i_19\: unisim.vcomponents.LUT6
+\FPGA_REG_WRITE_DATA[31]_i_19\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"AFEAAAEAAAAAAAAA"
+      INIT => X"BFBE"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => FFT_DATA_VALID,
-      I2 => SELECT_AXI_REGS_MODE(1),
-      I3 => SELECT_AXI_REGS_MODE(0),
-      I4 => DATA_STROBE,
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_12_n_0\,
+      I0 => DEINTERLEAVER_STROBE,
+      I1 => \REG_CNTR_reg_n_0_[1]\,
+      I2 => \REG_CNTR_reg_n_0_[2]\,
+      I3 => \REG_CNTR_reg_n_0_[0]\,
       O => \FPGA_REG_WRITE_DATA[31]_i_19_n_0\
     );
 \FPGA_REG_WRITE_DATA[31]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"AAA3AAA3AAA3AAA0"
+      INIT => X"FFFFFFFF23232322"
     )
         port map (
-      I0 => EQUALIZER_REG_WRITE_DATA(31),
+      I0 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
       I1 => \FPGA_REG_WRITE_DATA[31]_i_6_n_0\,
-      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
-      I3 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_7_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_8_n_0\,
+      I2 => \FPGA_REG_WRITE_DATA[31]_i_7_n_0\,
+      I3 => \FPGA_REG_WRITE_DATA[31]_i_8_n_0\,
+      I4 => \FPGA_REG_WRITE_DATA[31]_i_9_n_0\,
+      I5 => \FPGA_REG_WRITE_DATA[31]_i_10_n_0\,
       O => \FPGA_REG_WRITE_DATA[31]_i_2_n_0\
     );
 \FPGA_REG_WRITE_DATA[31]_i_20\: unisim.vcomponents.LUT5
@@ -3729,99 +3852,95 @@ begin
       I4 => DEINTERLEAVER_16QAM(160),
       O => \FPGA_REG_WRITE_DATA[31]_i_21_n_0\
     );
-\FPGA_REG_WRITE_DATA[31]_i_3\: unisim.vcomponents.LUT6
+\FPGA_REG_WRITE_DATA[31]_i_3\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"000000CF0000550F"
+      INIT => X"FFEC"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_9_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[31]_i_10_n_0\,
-      I2 => \FPGA_REG_WRITE_DATA[31]_i_11_n_0\,
-      I3 => SELECT_AXI_REGS_MODE(0),
-      I4 => \FPGA_REG_WRITE_ADDRESS[10]_i_5_n_0\,
-      I5 => SELECT_AXI_REGS_MODE(1),
+      I0 => \REG_CNTR__1\,
+      I1 => \FPGA_REG_WRITE_ADDRESS17_out__0\,
+      I2 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      I3 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
       O => \FPGA_REG_WRITE_DATA[31]_i_3_n_0\
     );
-\FPGA_REG_WRITE_DATA[31]_i_4\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[31]_i_4\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0A800080"
+      INIT => X"00000000000000F8"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_12_n_0\,
-      I1 => DATA_STROBE,
-      I2 => SELECT_AXI_REGS_MODE(0),
-      I3 => SELECT_AXI_REGS_MODE(1),
-      I4 => FFT_DATA_VALID,
+      I0 => \FPGA_REG_WRITE_DATA[31]_i_14_n_0\,
+      I1 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
+      I2 => \FPGA_REG_WRITE_DATA[31]_i_15_n_0\,
+      I3 => \FPGA_REG_WRITE_ADDRESS17_out__0\,
+      I4 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      I5 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
       O => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\
     );
-\FPGA_REG_WRITE_DATA[31]_i_5\: unisim.vcomponents.LUT4
+\FPGA_REG_WRITE_DATA[31]_i_5\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"7FFF"
+      INIT => X"AAF0AAF0AACCAA00"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_12_n_0\,
-      I1 => SELECT_AXI_REGS_MODE(0),
-      I2 => SELECT_AXI_REGS_MODE(1),
-      I3 => CONSTELLATION_DATA_VALID,
+      I0 => QDATA(15),
+      I1 => CONSTELLATION_QDATA(15),
+      I2 => FFT_QDATA(15),
+      I3 => \FPGA_REG_WRITE_ADDRESS18_out__0\,
+      I4 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
+      I5 => \FPGA_REG_WRITE_ADDRESS17_out__0\,
       O => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\
     );
-\FPGA_REG_WRITE_DATA[31]_i_6\: unisim.vcomponents.LUT6
+\FPGA_REG_WRITE_DATA[31]_i_6\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"0272727202720272"
+      INIT => X"FE"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => VITERBI_SIGNAL(31),
-      I2 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
-      I3 => \FPGA_REG_WRITE_DATA[31]_i_13_n_0\,
-      I4 => FFT_QDATA(15),
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_14_n_0\,
+      I0 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
+      I1 => VITERBI_SIGNAL_VALID,
+      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
       O => \FPGA_REG_WRITE_DATA[31]_i_6_n_0\
     );
-\FPGA_REG_WRITE_DATA[31]_i_7\: unisim.vcomponents.LUT6
+\FPGA_REG_WRITE_DATA[31]_i_7\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"4455505544005000"
+      INIT => X"FE"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_15_n_0\,
-      I1 => DEINTERLEAVER_QPSK(63),
-      I2 => DEINTERLEAVER_QPSK(31),
-      I3 => \REG_CNTR[1]_i_2_n_0\,
-      I4 => DEINTERLEAVER_STROBE,
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_16_n_0\,
+      I0 => \FPGA_REG_WRITE_ADDRESS17_out__0\,
+      I1 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
+      I2 => \FPGA_REG_WRITE_ADDRESS18_out__0\,
       O => \FPGA_REG_WRITE_DATA[31]_i_7_n_0\
     );
-\FPGA_REG_WRITE_DATA[31]_i_8\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[31]_i_8\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFF44F4"
+      INIT => X"00FF000000E200E2"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[31]_i_18_n_0\,
-      I2 => CONSTELLATION_QDATA(15),
-      I3 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_19_n_0\,
+      I0 => PARALLEL_OUTPUT(31),
+      I1 => \FPGA_REG_WRITE_ADDRESS1__0\,
+      I2 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      I4 => data6(31),
+      I5 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
       O => \FPGA_REG_WRITE_DATA[31]_i_8_n_0\
     );
 \FPGA_REG_WRITE_DATA[31]_i_9\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"5545"
+      INIT => X"E200"
     )
         port map (
-      I0 => DEINTERLEAVER_STROBE,
-      I1 => \REG_CNTR_reg_n_0_[2]\,
-      I2 => \REG_CNTR_reg_n_0_[1]\,
-      I3 => \REG_CNTR_reg_n_0_[0]\,
+      I0 => DEINTERLEAVER_BPSK(32),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => DEINTERLEAVER_BPSK(0),
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
       O => \FPGA_REG_WRITE_DATA[31]_i_9_n_0\
     );
 \FPGA_REG_WRITE_DATA[3]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"3A3A3A3A0A3A0A0A"
+      INIT => X"FFFFFFFF23232322"
     )
         port map (
-      I0 => EQUALIZER_REG_WRITE_DATA(3),
-      I1 => \FPGA_REG_WRITE_DATA[3]_i_2_n_0\,
-      I2 => \FPGA_REG_WRITE_ADDRESS[10]_i_3_n_0\,
+      I0 => \FPGA_REG_WRITE_DATA[3]_i_2_n_0\,
+      I1 => \FPGA_REG_WRITE_DATA[31]_i_6_n_0\,
+      I2 => \FPGA_REG_WRITE_DATA[31]_i_7_n_0\,
       I3 => \FPGA_REG_WRITE_DATA[3]_i_3_n_0\,
       I4 => \FPGA_REG_WRITE_DATA[3]_i_4_n_0\,
       I5 => \FPGA_REG_WRITE_DATA[3]_i_5_n_0\,
@@ -3829,80 +3948,75 @@ begin
     );
 \FPGA_REG_WRITE_DATA[3]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0272027202727272"
+      INIT => X"AAF0AAF0AACCAA00"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => VITERBI_SIGNAL(3),
-      I2 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
-      I3 => \FPGA_REG_WRITE_DATA[3]_i_6_n_0\,
-      I4 => IDATA(3),
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_14_n_0\,
+      I0 => IDATA(3),
+      I1 => CONSTELLATION_IDATA(3),
+      I2 => FFT_IDATA(3),
+      I3 => \FPGA_REG_WRITE_ADDRESS18_out__0\,
+      I4 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
+      I5 => \FPGA_REG_WRITE_ADDRESS17_out__0\,
       O => \FPGA_REG_WRITE_DATA[3]_i_2_n_0\
     );
-\FPGA_REG_WRITE_DATA[3]_i_3\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[3]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"77777F77"
+      INIT => X"00FF000000E200E2"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I2 => DEINTERLEAVER_STROBE,
-      I3 => \REG_CNTR[1]_i_2_n_0\,
-      I4 => DEINTERLEAVER_QPSK(3),
+      I0 => PARALLEL_OUTPUT(3),
+      I1 => \FPGA_REG_WRITE_ADDRESS1__0\,
+      I2 => \FPGA_REG_WRITE_DATA[3]_i_6_n_0\,
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      I4 => data6(3),
+      I5 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
       O => \FPGA_REG_WRITE_DATA[3]_i_3_n_0\
     );
-\FPGA_REG_WRITE_DATA[3]_i_4\: unisim.vcomponents.LUT6
+\FPGA_REG_WRITE_DATA[3]_i_4\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"D0FFD000DDFFDDFF"
+      INIT => X"80"
     )
         port map (
-      I0 => \REG_CNTR[1]_i_2_n_0\,
-      I1 => DEINTERLEAVER_QPSK(35),
-      I2 => DEINTERLEAVER_16QAM(28),
-      I3 => DEINTERLEAVER_STROBE,
-      I4 => \FPGA_REG_WRITE_DATA_reg[3]_i_7_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[20]_i_8_n_0\,
+      I0 => DEINTERLEAVER_BPSK(28),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
       O => \FPGA_REG_WRITE_DATA[3]_i_4_n_0\
     );
-\FPGA_REG_WRITE_DATA[3]_i_5\: unisim.vcomponents.LUT6
+\FPGA_REG_WRITE_DATA[3]_i_5\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FFFFFFFF4040FF40"
+      INIT => X"AAAAACA0"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => DEINTERLEAVER_STROBE,
-      I2 => DEINTERLEAVER_BPSK(28),
-      I3 => CONSTELLATION_IDATA(3),
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_19_n_0\,
+      I0 => EQUALIZER_REG_WRITE_DATA(3),
+      I1 => VITERBI_SIGNAL(3),
+      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I3 => VITERBI_SIGNAL_VALID,
+      I4 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
       O => \FPGA_REG_WRITE_DATA[3]_i_5_n_0\
     );
 \FPGA_REG_WRITE_DATA[3]_i_6\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"55550040"
+      INIT => X"B8BBB888"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => DATA_STROBE,
-      I2 => SELECT_AXI_REGS_MODE(0),
-      I3 => SELECT_AXI_REGS_MODE(1),
-      I4 => FFT_IDATA(3),
+      I0 => DEINTERLEAVER_16QAM(28),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => \FPGA_REG_WRITE_DATA[3]_i_8_n_0\,
+      I3 => \REG_CNTR_reg_n_0_[2]\,
+      I4 => \FPGA_REG_WRITE_DATA[3]_i_9_n_0\,
       O => \FPGA_REG_WRITE_DATA[3]_i_6_n_0\
     );
-\FPGA_REG_WRITE_DATA[3]_i_8\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[3]_i_7\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"B8FFB800"
+      INIT => X"B8"
     )
         port map (
-      I0 => DEINTERLEAVER_16QAM(124),
-      I1 => \REG_CNTR_reg_n_0_[0]\,
-      I2 => DEINTERLEAVER_16QAM(156),
-      I3 => \REG_CNTR_reg_n_0_[1]\,
-      I4 => DEINTERLEAVER_16QAM(188),
-      O => \FPGA_REG_WRITE_DATA[3]_i_8_n_0\
+      I0 => DEINTERLEAVER_QPSK(35),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => DEINTERLEAVER_QPSK(3),
+      O => data6(3)
     );
-\FPGA_REG_WRITE_DATA[3]_i_9\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[3]_i_8\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"B8BBB888"
     )
@@ -3912,16 +4026,28 @@ begin
       I2 => DEINTERLEAVER_16QAM(60),
       I3 => \REG_CNTR_reg_n_0_[0]\,
       I4 => DEINTERLEAVER_16QAM(92),
+      O => \FPGA_REG_WRITE_DATA[3]_i_8_n_0\
+    );
+\FPGA_REG_WRITE_DATA[3]_i_9\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"B8FFB800"
+    )
+        port map (
+      I0 => DEINTERLEAVER_16QAM(124),
+      I1 => \REG_CNTR_reg_n_0_[0]\,
+      I2 => DEINTERLEAVER_16QAM(156),
+      I3 => \REG_CNTR_reg_n_0_[1]\,
+      I4 => DEINTERLEAVER_16QAM(188),
       O => \FPGA_REG_WRITE_DATA[3]_i_9_n_0\
     );
 \FPGA_REG_WRITE_DATA[4]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"3A3A3A3A0A3A0A0A"
+      INIT => X"FFFFFFFF23232322"
     )
         port map (
-      I0 => EQUALIZER_REG_WRITE_DATA(4),
-      I1 => \FPGA_REG_WRITE_DATA[4]_i_2_n_0\,
-      I2 => \FPGA_REG_WRITE_ADDRESS[10]_i_3_n_0\,
+      I0 => \FPGA_REG_WRITE_DATA[4]_i_2_n_0\,
+      I1 => \FPGA_REG_WRITE_DATA[31]_i_6_n_0\,
+      I2 => \FPGA_REG_WRITE_DATA[31]_i_7_n_0\,
       I3 => \FPGA_REG_WRITE_DATA[4]_i_3_n_0\,
       I4 => \FPGA_REG_WRITE_DATA[4]_i_4_n_0\,
       I5 => \FPGA_REG_WRITE_DATA[4]_i_5_n_0\,
@@ -3929,80 +4055,75 @@ begin
     );
 \FPGA_REG_WRITE_DATA[4]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0272027202727272"
+      INIT => X"AAF0AAF0AACCAA00"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => VITERBI_SIGNAL(4),
-      I2 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
-      I3 => \FPGA_REG_WRITE_DATA[4]_i_6_n_0\,
-      I4 => IDATA(4),
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_14_n_0\,
+      I0 => IDATA(4),
+      I1 => CONSTELLATION_IDATA(4),
+      I2 => FFT_IDATA(4),
+      I3 => \FPGA_REG_WRITE_ADDRESS18_out__0\,
+      I4 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
+      I5 => \FPGA_REG_WRITE_ADDRESS17_out__0\,
       O => \FPGA_REG_WRITE_DATA[4]_i_2_n_0\
     );
-\FPGA_REG_WRITE_DATA[4]_i_3\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[4]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"77777F77"
+      INIT => X"00FF000000E200E2"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I2 => DEINTERLEAVER_STROBE,
-      I3 => \REG_CNTR[1]_i_2_n_0\,
-      I4 => DEINTERLEAVER_QPSK(4),
+      I0 => PARALLEL_OUTPUT(4),
+      I1 => \FPGA_REG_WRITE_ADDRESS1__0\,
+      I2 => \FPGA_REG_WRITE_DATA[4]_i_6_n_0\,
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      I4 => data6(4),
+      I5 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
       O => \FPGA_REG_WRITE_DATA[4]_i_3_n_0\
     );
-\FPGA_REG_WRITE_DATA[4]_i_4\: unisim.vcomponents.LUT6
+\FPGA_REG_WRITE_DATA[4]_i_4\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"D0FFD000DDFFDDFF"
+      INIT => X"80"
     )
         port map (
-      I0 => \REG_CNTR[1]_i_2_n_0\,
-      I1 => DEINTERLEAVER_QPSK(36),
-      I2 => DEINTERLEAVER_16QAM(27),
-      I3 => DEINTERLEAVER_STROBE,
-      I4 => \FPGA_REG_WRITE_DATA_reg[4]_i_7_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[20]_i_8_n_0\,
+      I0 => DEINTERLEAVER_BPSK(27),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
       O => \FPGA_REG_WRITE_DATA[4]_i_4_n_0\
     );
-\FPGA_REG_WRITE_DATA[4]_i_5\: unisim.vcomponents.LUT6
+\FPGA_REG_WRITE_DATA[4]_i_5\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FFFFFFFF4040FF40"
+      INIT => X"AAAAACA0"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => DEINTERLEAVER_STROBE,
-      I2 => DEINTERLEAVER_BPSK(27),
-      I3 => CONSTELLATION_IDATA(4),
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_19_n_0\,
+      I0 => EQUALIZER_REG_WRITE_DATA(4),
+      I1 => VITERBI_SIGNAL(4),
+      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I3 => VITERBI_SIGNAL_VALID,
+      I4 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
       O => \FPGA_REG_WRITE_DATA[4]_i_5_n_0\
     );
 \FPGA_REG_WRITE_DATA[4]_i_6\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"55550040"
+      INIT => X"B8BBB888"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => DATA_STROBE,
-      I2 => SELECT_AXI_REGS_MODE(0),
-      I3 => SELECT_AXI_REGS_MODE(1),
-      I4 => FFT_IDATA(4),
+      I0 => DEINTERLEAVER_16QAM(27),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => \FPGA_REG_WRITE_DATA[4]_i_8_n_0\,
+      I3 => \REG_CNTR_reg_n_0_[2]\,
+      I4 => \FPGA_REG_WRITE_DATA[4]_i_9_n_0\,
       O => \FPGA_REG_WRITE_DATA[4]_i_6_n_0\
     );
-\FPGA_REG_WRITE_DATA[4]_i_8\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[4]_i_7\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"B8FFB800"
+      INIT => X"B8"
     )
         port map (
-      I0 => DEINTERLEAVER_16QAM(123),
-      I1 => \REG_CNTR_reg_n_0_[0]\,
-      I2 => DEINTERLEAVER_16QAM(155),
-      I3 => \REG_CNTR_reg_n_0_[1]\,
-      I4 => DEINTERLEAVER_16QAM(187),
-      O => \FPGA_REG_WRITE_DATA[4]_i_8_n_0\
+      I0 => DEINTERLEAVER_QPSK(36),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => DEINTERLEAVER_QPSK(4),
+      O => data6(4)
     );
-\FPGA_REG_WRITE_DATA[4]_i_9\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[4]_i_8\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"B8BBB888"
     )
@@ -4012,16 +4133,28 @@ begin
       I2 => DEINTERLEAVER_16QAM(59),
       I3 => \REG_CNTR_reg_n_0_[0]\,
       I4 => DEINTERLEAVER_16QAM(91),
+      O => \FPGA_REG_WRITE_DATA[4]_i_8_n_0\
+    );
+\FPGA_REG_WRITE_DATA[4]_i_9\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"B8FFB800"
+    )
+        port map (
+      I0 => DEINTERLEAVER_16QAM(123),
+      I1 => \REG_CNTR_reg_n_0_[0]\,
+      I2 => DEINTERLEAVER_16QAM(155),
+      I3 => \REG_CNTR_reg_n_0_[1]\,
+      I4 => DEINTERLEAVER_16QAM(187),
       O => \FPGA_REG_WRITE_DATA[4]_i_9_n_0\
     );
 \FPGA_REG_WRITE_DATA[5]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"3A3A3A3A0A3A0A0A"
+      INIT => X"FFFFFFFF23232322"
     )
         port map (
-      I0 => EQUALIZER_REG_WRITE_DATA(5),
-      I1 => \FPGA_REG_WRITE_DATA[5]_i_2_n_0\,
-      I2 => \FPGA_REG_WRITE_ADDRESS[10]_i_3_n_0\,
+      I0 => \FPGA_REG_WRITE_DATA[5]_i_2_n_0\,
+      I1 => \FPGA_REG_WRITE_DATA[31]_i_6_n_0\,
+      I2 => \FPGA_REG_WRITE_DATA[31]_i_7_n_0\,
       I3 => \FPGA_REG_WRITE_DATA[5]_i_3_n_0\,
       I4 => \FPGA_REG_WRITE_DATA[5]_i_4_n_0\,
       I5 => \FPGA_REG_WRITE_DATA[5]_i_5_n_0\,
@@ -4029,79 +4162,75 @@ begin
     );
 \FPGA_REG_WRITE_DATA[5]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0272027202727272"
+      INIT => X"AAF0AAF0AACCAA00"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => VITERBI_SIGNAL(5),
-      I2 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
-      I3 => \FPGA_REG_WRITE_DATA[5]_i_6_n_0\,
-      I4 => IDATA(5),
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_14_n_0\,
+      I0 => IDATA(5),
+      I1 => CONSTELLATION_IDATA(5),
+      I2 => FFT_IDATA(5),
+      I3 => \FPGA_REG_WRITE_ADDRESS18_out__0\,
+      I4 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
+      I5 => \FPGA_REG_WRITE_ADDRESS17_out__0\,
       O => \FPGA_REG_WRITE_DATA[5]_i_2_n_0\
     );
-\FPGA_REG_WRITE_DATA[5]_i_3\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[5]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"77777F77"
+      INIT => X"00FF000000E200E2"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I2 => DEINTERLEAVER_STROBE,
-      I3 => \REG_CNTR[1]_i_2_n_0\,
-      I4 => DEINTERLEAVER_QPSK(5),
+      I0 => PARALLEL_OUTPUT(5),
+      I1 => \FPGA_REG_WRITE_ADDRESS1__0\,
+      I2 => \FPGA_REG_WRITE_DATA[5]_i_6_n_0\,
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      I4 => data6(5),
+      I5 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
       O => \FPGA_REG_WRITE_DATA[5]_i_3_n_0\
     );
-\FPGA_REG_WRITE_DATA[5]_i_4\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[5]_i_4\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"FFAC0FAC"
+      INIT => X"80"
     )
         port map (
-      I0 => DEINTERLEAVER_16QAM(26),
-      I1 => \FPGA_REG_WRITE_DATA_reg[5]_i_7_n_0\,
-      I2 => DEINTERLEAVER_STROBE,
-      I3 => \REG_CNTR[1]_i_2_n_0\,
-      I4 => DEINTERLEAVER_QPSK(37),
+      I0 => DEINTERLEAVER_BPSK(26),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
       O => \FPGA_REG_WRITE_DATA[5]_i_4_n_0\
     );
-\FPGA_REG_WRITE_DATA[5]_i_5\: unisim.vcomponents.LUT6
+\FPGA_REG_WRITE_DATA[5]_i_5\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FFFFFFFF4040FF40"
+      INIT => X"AAAAACA0"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => DEINTERLEAVER_STROBE,
-      I2 => DEINTERLEAVER_BPSK(26),
-      I3 => CONSTELLATION_IDATA(5),
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_19_n_0\,
+      I0 => EQUALIZER_REG_WRITE_DATA(5),
+      I1 => VITERBI_SIGNAL(5),
+      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I3 => VITERBI_SIGNAL_VALID,
+      I4 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
       O => \FPGA_REG_WRITE_DATA[5]_i_5_n_0\
     );
 \FPGA_REG_WRITE_DATA[5]_i_6\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"55550040"
+      INIT => X"B8BBB888"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => DATA_STROBE,
-      I2 => SELECT_AXI_REGS_MODE(0),
-      I3 => SELECT_AXI_REGS_MODE(1),
-      I4 => FFT_IDATA(5),
+      I0 => DEINTERLEAVER_16QAM(26),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => \FPGA_REG_WRITE_DATA[5]_i_8_n_0\,
+      I3 => \REG_CNTR_reg_n_0_[2]\,
+      I4 => \FPGA_REG_WRITE_DATA[5]_i_9_n_0\,
       O => \FPGA_REG_WRITE_DATA[5]_i_6_n_0\
     );
-\FPGA_REG_WRITE_DATA[5]_i_8\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[5]_i_7\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"B8FFB800"
+      INIT => X"B8"
     )
         port map (
-      I0 => DEINTERLEAVER_16QAM(122),
-      I1 => \REG_CNTR_reg_n_0_[0]\,
-      I2 => DEINTERLEAVER_16QAM(154),
-      I3 => \REG_CNTR_reg_n_0_[1]\,
-      I4 => DEINTERLEAVER_16QAM(186),
-      O => \FPGA_REG_WRITE_DATA[5]_i_8_n_0\
+      I0 => DEINTERLEAVER_QPSK(37),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => DEINTERLEAVER_QPSK(5),
+      O => data6(5)
     );
-\FPGA_REG_WRITE_DATA[5]_i_9\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[5]_i_8\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"B8BBB888"
     )
@@ -4111,70 +4240,79 @@ begin
       I2 => DEINTERLEAVER_16QAM(58),
       I3 => \REG_CNTR_reg_n_0_[0]\,
       I4 => DEINTERLEAVER_16QAM(90),
+      O => \FPGA_REG_WRITE_DATA[5]_i_8_n_0\
+    );
+\FPGA_REG_WRITE_DATA[5]_i_9\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"B8FFB800"
+    )
+        port map (
+      I0 => DEINTERLEAVER_16QAM(122),
+      I1 => \REG_CNTR_reg_n_0_[0]\,
+      I2 => DEINTERLEAVER_16QAM(154),
+      I3 => \REG_CNTR_reg_n_0_[1]\,
+      I4 => DEINTERLEAVER_16QAM(186),
       O => \FPGA_REG_WRITE_DATA[5]_i_9_n_0\
     );
 \FPGA_REG_WRITE_DATA[6]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"3A3A3A3A0A3A0A0A"
+      INIT => X"FFFFFFFF23232322"
     )
         port map (
-      I0 => EQUALIZER_REG_WRITE_DATA(6),
-      I1 => \FPGA_REG_WRITE_DATA[6]_i_2_n_0\,
-      I2 => \FPGA_REG_WRITE_ADDRESS[10]_i_3_n_0\,
+      I0 => \FPGA_REG_WRITE_DATA[6]_i_2_n_0\,
+      I1 => \FPGA_REG_WRITE_DATA[31]_i_6_n_0\,
+      I2 => \FPGA_REG_WRITE_DATA[31]_i_7_n_0\,
       I3 => \FPGA_REG_WRITE_DATA[6]_i_3_n_0\,
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[6]_i_4_n_0\,
+      I4 => \FPGA_REG_WRITE_DATA[6]_i_4_n_0\,
+      I5 => \FPGA_REG_WRITE_DATA[6]_i_5_n_0\,
       O => \FPGA_REG_WRITE_DATA[6]_i_1_n_0\
     );
 \FPGA_REG_WRITE_DATA[6]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0272027202727272"
+      INIT => X"AAF0AAF0AACCAA00"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => VITERBI_SIGNAL(6),
-      I2 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
-      I3 => \FPGA_REG_WRITE_DATA[6]_i_5_n_0\,
-      I4 => IDATA(6),
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_14_n_0\,
+      I0 => IDATA(6),
+      I1 => CONSTELLATION_IDATA(6),
+      I2 => FFT_IDATA(6),
+      I3 => \FPGA_REG_WRITE_ADDRESS18_out__0\,
+      I4 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
+      I5 => \FPGA_REG_WRITE_ADDRESS17_out__0\,
       O => \FPGA_REG_WRITE_DATA[6]_i_2_n_0\
     );
 \FPGA_REG_WRITE_DATA[6]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"575757F7F7F757F7"
+      INIT => X"00FF000000E200E2"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[6]_i_6_n_0\,
-      I2 => \REG_CNTR[1]_i_2_n_0\,
-      I3 => DEINTERLEAVER_QPSK(6),
-      I4 => DEINTERLEAVER_STROBE,
-      I5 => DEINTERLEAVER_QPSK(38),
+      I0 => PARALLEL_OUTPUT(6),
+      I1 => \FPGA_REG_WRITE_ADDRESS1__0\,
+      I2 => \FPGA_REG_WRITE_DATA[6]_i_6_n_0\,
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      I4 => data6(6),
+      I5 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
       O => \FPGA_REG_WRITE_DATA[6]_i_3_n_0\
     );
-\FPGA_REG_WRITE_DATA[6]_i_4\: unisim.vcomponents.LUT6
+\FPGA_REG_WRITE_DATA[6]_i_4\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"FFFFFFFF4040FF40"
+      INIT => X"80"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
+      I0 => DEINTERLEAVER_BPSK(25),
       I1 => DEINTERLEAVER_STROBE,
-      I2 => DEINTERLEAVER_BPSK(25),
-      I3 => CONSTELLATION_IDATA(6),
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_19_n_0\,
+      I2 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
       O => \FPGA_REG_WRITE_DATA[6]_i_4_n_0\
     );
 \FPGA_REG_WRITE_DATA[6]_i_5\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"55550040"
+      INIT => X"AAAAACA0"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => DATA_STROBE,
-      I2 => SELECT_AXI_REGS_MODE(0),
-      I3 => SELECT_AXI_REGS_MODE(1),
-      I4 => FFT_IDATA(6),
+      I0 => EQUALIZER_REG_WRITE_DATA(6),
+      I1 => VITERBI_SIGNAL(6),
+      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I3 => VITERBI_SIGNAL_VALID,
+      I4 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
       O => \FPGA_REG_WRITE_DATA[6]_i_5_n_0\
     );
 \FPGA_REG_WRITE_DATA[6]_i_6\: unisim.vcomponents.LUT5
@@ -4184,12 +4322,22 @@ begin
         port map (
       I0 => DEINTERLEAVER_16QAM(25),
       I1 => DEINTERLEAVER_STROBE,
-      I2 => \FPGA_REG_WRITE_DATA[6]_i_7_n_0\,
+      I2 => \FPGA_REG_WRITE_DATA[6]_i_8_n_0\,
       I3 => \REG_CNTR_reg_n_0_[2]\,
-      I4 => \FPGA_REG_WRITE_DATA[6]_i_8_n_0\,
+      I4 => \FPGA_REG_WRITE_DATA[6]_i_9_n_0\,
       O => \FPGA_REG_WRITE_DATA[6]_i_6_n_0\
     );
-\FPGA_REG_WRITE_DATA[6]_i_7\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[6]_i_7\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => DEINTERLEAVER_QPSK(38),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => DEINTERLEAVER_QPSK(6),
+      O => data6(6)
+    );
+\FPGA_REG_WRITE_DATA[6]_i_8\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"B8BBB888"
     )
@@ -4199,9 +4347,9 @@ begin
       I2 => DEINTERLEAVER_16QAM(57),
       I3 => \REG_CNTR_reg_n_0_[0]\,
       I4 => DEINTERLEAVER_16QAM(89),
-      O => \FPGA_REG_WRITE_DATA[6]_i_7_n_0\
+      O => \FPGA_REG_WRITE_DATA[6]_i_8_n_0\
     );
-\FPGA_REG_WRITE_DATA[6]_i_8\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[6]_i_9\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"B8FFB800"
     )
@@ -4211,16 +4359,16 @@ begin
       I2 => DEINTERLEAVER_16QAM(153),
       I3 => \REG_CNTR_reg_n_0_[1]\,
       I4 => DEINTERLEAVER_16QAM(185),
-      O => \FPGA_REG_WRITE_DATA[6]_i_8_n_0\
+      O => \FPGA_REG_WRITE_DATA[6]_i_9_n_0\
     );
 \FPGA_REG_WRITE_DATA[7]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"3A3A3A3A0A3A0A0A"
+      INIT => X"FFFFFFFF23232322"
     )
         port map (
-      I0 => EQUALIZER_REG_WRITE_DATA(7),
-      I1 => \FPGA_REG_WRITE_DATA[7]_i_2_n_0\,
-      I2 => \FPGA_REG_WRITE_ADDRESS[10]_i_3_n_0\,
+      I0 => \FPGA_REG_WRITE_DATA[7]_i_2_n_0\,
+      I1 => \FPGA_REG_WRITE_DATA[31]_i_6_n_0\,
+      I2 => \FPGA_REG_WRITE_DATA[31]_i_7_n_0\,
       I3 => \FPGA_REG_WRITE_DATA[7]_i_3_n_0\,
       I4 => \FPGA_REG_WRITE_DATA[7]_i_4_n_0\,
       I5 => \FPGA_REG_WRITE_DATA[7]_i_5_n_0\,
@@ -4228,79 +4376,75 @@ begin
     );
 \FPGA_REG_WRITE_DATA[7]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0272027202727272"
+      INIT => X"AAF0AAF0AACCAA00"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => VITERBI_SIGNAL(7),
-      I2 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
-      I3 => \FPGA_REG_WRITE_DATA[7]_i_6_n_0\,
-      I4 => IDATA(7),
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_14_n_0\,
+      I0 => IDATA(7),
+      I1 => CONSTELLATION_IDATA(7),
+      I2 => FFT_IDATA(7),
+      I3 => \FPGA_REG_WRITE_ADDRESS18_out__0\,
+      I4 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
+      I5 => \FPGA_REG_WRITE_ADDRESS17_out__0\,
       O => \FPGA_REG_WRITE_DATA[7]_i_2_n_0\
     );
-\FPGA_REG_WRITE_DATA[7]_i_3\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[7]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"7777F777"
+      INIT => X"00FF000000E200E2"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I2 => DEINTERLEAVER_STROBE,
-      I3 => \REG_CNTR[1]_i_2_n_0\,
-      I4 => DEINTERLEAVER_QPSK(39),
+      I0 => PARALLEL_OUTPUT(7),
+      I1 => \FPGA_REG_WRITE_ADDRESS1__0\,
+      I2 => \FPGA_REG_WRITE_DATA[7]_i_6_n_0\,
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      I4 => data6(7),
+      I5 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
       O => \FPGA_REG_WRITE_DATA[7]_i_3_n_0\
     );
-\FPGA_REG_WRITE_DATA[7]_i_4\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[7]_i_4\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"FFACF0AC"
+      INIT => X"80"
     )
         port map (
-      I0 => DEINTERLEAVER_16QAM(24),
-      I1 => \FPGA_REG_WRITE_DATA_reg[7]_i_7_n_0\,
-      I2 => DEINTERLEAVER_STROBE,
-      I3 => \REG_CNTR[1]_i_2_n_0\,
-      I4 => DEINTERLEAVER_QPSK(7),
+      I0 => DEINTERLEAVER_BPSK(24),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
       O => \FPGA_REG_WRITE_DATA[7]_i_4_n_0\
     );
-\FPGA_REG_WRITE_DATA[7]_i_5\: unisim.vcomponents.LUT6
+\FPGA_REG_WRITE_DATA[7]_i_5\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FFFFFFFF4040FF40"
+      INIT => X"AAAAACA0"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => DEINTERLEAVER_STROBE,
-      I2 => DEINTERLEAVER_BPSK(24),
-      I3 => CONSTELLATION_IDATA(7),
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_19_n_0\,
+      I0 => EQUALIZER_REG_WRITE_DATA(7),
+      I1 => VITERBI_SIGNAL(7),
+      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I3 => VITERBI_SIGNAL_VALID,
+      I4 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
       O => \FPGA_REG_WRITE_DATA[7]_i_5_n_0\
     );
 \FPGA_REG_WRITE_DATA[7]_i_6\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"55550040"
+      INIT => X"B8BBB888"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => DATA_STROBE,
-      I2 => SELECT_AXI_REGS_MODE(0),
-      I3 => SELECT_AXI_REGS_MODE(1),
-      I4 => FFT_IDATA(7),
+      I0 => DEINTERLEAVER_16QAM(24),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => \FPGA_REG_WRITE_DATA[7]_i_8_n_0\,
+      I3 => \REG_CNTR_reg_n_0_[2]\,
+      I4 => \FPGA_REG_WRITE_DATA[7]_i_9_n_0\,
       O => \FPGA_REG_WRITE_DATA[7]_i_6_n_0\
     );
-\FPGA_REG_WRITE_DATA[7]_i_8\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[7]_i_7\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"B8FFB800"
+      INIT => X"B8"
     )
         port map (
-      I0 => DEINTERLEAVER_16QAM(120),
-      I1 => \REG_CNTR_reg_n_0_[0]\,
-      I2 => DEINTERLEAVER_16QAM(152),
-      I3 => \REG_CNTR_reg_n_0_[1]\,
-      I4 => DEINTERLEAVER_16QAM(184),
-      O => \FPGA_REG_WRITE_DATA[7]_i_8_n_0\
+      I0 => DEINTERLEAVER_QPSK(39),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => DEINTERLEAVER_QPSK(7),
+      O => data6(7)
     );
-\FPGA_REG_WRITE_DATA[7]_i_9\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[7]_i_8\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"B8BBB888"
     )
@@ -4310,16 +4454,28 @@ begin
       I2 => DEINTERLEAVER_16QAM(56),
       I3 => \REG_CNTR_reg_n_0_[0]\,
       I4 => DEINTERLEAVER_16QAM(88),
+      O => \FPGA_REG_WRITE_DATA[7]_i_8_n_0\
+    );
+\FPGA_REG_WRITE_DATA[7]_i_9\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"B8FFB800"
+    )
+        port map (
+      I0 => DEINTERLEAVER_16QAM(120),
+      I1 => \REG_CNTR_reg_n_0_[0]\,
+      I2 => DEINTERLEAVER_16QAM(152),
+      I3 => \REG_CNTR_reg_n_0_[1]\,
+      I4 => DEINTERLEAVER_16QAM(184),
       O => \FPGA_REG_WRITE_DATA[7]_i_9_n_0\
     );
 \FPGA_REG_WRITE_DATA[8]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"3A3A3A3A0A3A0A0A"
+      INIT => X"FFFFFFFF23232322"
     )
         port map (
-      I0 => EQUALIZER_REG_WRITE_DATA(8),
-      I1 => \FPGA_REG_WRITE_DATA[8]_i_2_n_0\,
-      I2 => \FPGA_REG_WRITE_ADDRESS[10]_i_3_n_0\,
+      I0 => \FPGA_REG_WRITE_DATA[8]_i_2_n_0\,
+      I1 => \FPGA_REG_WRITE_DATA[31]_i_6_n_0\,
+      I2 => \FPGA_REG_WRITE_DATA[31]_i_7_n_0\,
       I3 => \FPGA_REG_WRITE_DATA[8]_i_3_n_0\,
       I4 => \FPGA_REG_WRITE_DATA[8]_i_4_n_0\,
       I5 => \FPGA_REG_WRITE_DATA[8]_i_5_n_0\,
@@ -4327,80 +4483,75 @@ begin
     );
 \FPGA_REG_WRITE_DATA[8]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0272027202727272"
+      INIT => X"AAF0AAF0AACCAA00"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => VITERBI_SIGNAL(8),
-      I2 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
-      I3 => \FPGA_REG_WRITE_DATA[8]_i_6_n_0\,
-      I4 => IDATA(8),
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_14_n_0\,
+      I0 => IDATA(8),
+      I1 => CONSTELLATION_IDATA(8),
+      I2 => FFT_IDATA(8),
+      I3 => \FPGA_REG_WRITE_ADDRESS18_out__0\,
+      I4 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
+      I5 => \FPGA_REG_WRITE_ADDRESS17_out__0\,
       O => \FPGA_REG_WRITE_DATA[8]_i_2_n_0\
     );
-\FPGA_REG_WRITE_DATA[8]_i_3\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[8]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"77777F77"
+      INIT => X"00FF000000E200E2"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I2 => DEINTERLEAVER_STROBE,
-      I3 => \REG_CNTR[1]_i_2_n_0\,
-      I4 => DEINTERLEAVER_QPSK(8),
+      I0 => PARALLEL_OUTPUT(8),
+      I1 => \FPGA_REG_WRITE_ADDRESS1__0\,
+      I2 => \FPGA_REG_WRITE_DATA[8]_i_6_n_0\,
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      I4 => data6(8),
+      I5 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
       O => \FPGA_REG_WRITE_DATA[8]_i_3_n_0\
     );
-\FPGA_REG_WRITE_DATA[8]_i_4\: unisim.vcomponents.LUT6
+\FPGA_REG_WRITE_DATA[8]_i_4\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"D0FFD000DDFFDDFF"
+      INIT => X"80"
     )
         port map (
-      I0 => \REG_CNTR[1]_i_2_n_0\,
-      I1 => DEINTERLEAVER_QPSK(40),
-      I2 => DEINTERLEAVER_16QAM(23),
-      I3 => DEINTERLEAVER_STROBE,
-      I4 => \FPGA_REG_WRITE_DATA_reg[8]_i_7_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[20]_i_8_n_0\,
+      I0 => DEINTERLEAVER_BPSK(23),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
       O => \FPGA_REG_WRITE_DATA[8]_i_4_n_0\
     );
-\FPGA_REG_WRITE_DATA[8]_i_5\: unisim.vcomponents.LUT6
+\FPGA_REG_WRITE_DATA[8]_i_5\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FFFFFFFF4040FF40"
+      INIT => X"AAAAACA0"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => DEINTERLEAVER_STROBE,
-      I2 => DEINTERLEAVER_BPSK(23),
-      I3 => CONSTELLATION_IDATA(8),
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_19_n_0\,
+      I0 => EQUALIZER_REG_WRITE_DATA(8),
+      I1 => VITERBI_SIGNAL(8),
+      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I3 => VITERBI_SIGNAL_VALID,
+      I4 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
       O => \FPGA_REG_WRITE_DATA[8]_i_5_n_0\
     );
 \FPGA_REG_WRITE_DATA[8]_i_6\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"55550040"
+      INIT => X"B8BBB888"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => DATA_STROBE,
-      I2 => SELECT_AXI_REGS_MODE(0),
-      I3 => SELECT_AXI_REGS_MODE(1),
-      I4 => FFT_IDATA(8),
+      I0 => DEINTERLEAVER_16QAM(23),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => \FPGA_REG_WRITE_DATA[8]_i_8_n_0\,
+      I3 => \REG_CNTR_reg_n_0_[2]\,
+      I4 => \FPGA_REG_WRITE_DATA[8]_i_9_n_0\,
       O => \FPGA_REG_WRITE_DATA[8]_i_6_n_0\
     );
-\FPGA_REG_WRITE_DATA[8]_i_8\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[8]_i_7\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"B8FFB800"
+      INIT => X"B8"
     )
         port map (
-      I0 => DEINTERLEAVER_16QAM(119),
-      I1 => \REG_CNTR_reg_n_0_[0]\,
-      I2 => DEINTERLEAVER_16QAM(151),
-      I3 => \REG_CNTR_reg_n_0_[1]\,
-      I4 => DEINTERLEAVER_16QAM(183),
-      O => \FPGA_REG_WRITE_DATA[8]_i_8_n_0\
+      I0 => DEINTERLEAVER_QPSK(40),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => DEINTERLEAVER_QPSK(8),
+      O => data6(8)
     );
-\FPGA_REG_WRITE_DATA[8]_i_9\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[8]_i_8\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"B8BBB888"
     )
@@ -4410,16 +4561,28 @@ begin
       I2 => DEINTERLEAVER_16QAM(55),
       I3 => \REG_CNTR_reg_n_0_[0]\,
       I4 => DEINTERLEAVER_16QAM(87),
+      O => \FPGA_REG_WRITE_DATA[8]_i_8_n_0\
+    );
+\FPGA_REG_WRITE_DATA[8]_i_9\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"B8FFB800"
+    )
+        port map (
+      I0 => DEINTERLEAVER_16QAM(119),
+      I1 => \REG_CNTR_reg_n_0_[0]\,
+      I2 => DEINTERLEAVER_16QAM(151),
+      I3 => \REG_CNTR_reg_n_0_[1]\,
+      I4 => DEINTERLEAVER_16QAM(183),
       O => \FPGA_REG_WRITE_DATA[8]_i_9_n_0\
     );
 \FPGA_REG_WRITE_DATA[9]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"3A3A3A3A0A3A0A0A"
+      INIT => X"FFFFFFFF23232322"
     )
         port map (
-      I0 => EQUALIZER_REG_WRITE_DATA(9),
-      I1 => \FPGA_REG_WRITE_DATA[9]_i_2_n_0\,
-      I2 => \FPGA_REG_WRITE_ADDRESS[10]_i_3_n_0\,
+      I0 => \FPGA_REG_WRITE_DATA[9]_i_2_n_0\,
+      I1 => \FPGA_REG_WRITE_DATA[31]_i_6_n_0\,
+      I2 => \FPGA_REG_WRITE_DATA[31]_i_7_n_0\,
       I3 => \FPGA_REG_WRITE_DATA[9]_i_3_n_0\,
       I4 => \FPGA_REG_WRITE_DATA[9]_i_4_n_0\,
       I5 => \FPGA_REG_WRITE_DATA[9]_i_5_n_0\,
@@ -4427,80 +4590,75 @@ begin
     );
 \FPGA_REG_WRITE_DATA[9]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0272027202727272"
+      INIT => X"AAF0AAF0AACCAA00"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => VITERBI_SIGNAL(9),
-      I2 => \FPGA_REG_WRITE_DATA[31]_i_4_n_0\,
-      I3 => \FPGA_REG_WRITE_DATA[9]_i_6_n_0\,
-      I4 => IDATA(9),
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_14_n_0\,
+      I0 => IDATA(9),
+      I1 => CONSTELLATION_IDATA(9),
+      I2 => FFT_IDATA(9),
+      I3 => \FPGA_REG_WRITE_ADDRESS18_out__0\,
+      I4 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
+      I5 => \FPGA_REG_WRITE_ADDRESS17_out__0\,
       O => \FPGA_REG_WRITE_DATA[9]_i_2_n_0\
     );
-\FPGA_REG_WRITE_DATA[9]_i_3\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[9]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"77777F77"
+      INIT => X"00FF000000E200E2"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I2 => DEINTERLEAVER_STROBE,
-      I3 => \REG_CNTR[1]_i_2_n_0\,
-      I4 => DEINTERLEAVER_QPSK(9),
+      I0 => PARALLEL_OUTPUT(9),
+      I1 => \FPGA_REG_WRITE_ADDRESS1__0\,
+      I2 => \FPGA_REG_WRITE_DATA[9]_i_6_n_0\,
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      I4 => data6(9),
+      I5 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
       O => \FPGA_REG_WRITE_DATA[9]_i_3_n_0\
     );
-\FPGA_REG_WRITE_DATA[9]_i_4\: unisim.vcomponents.LUT6
+\FPGA_REG_WRITE_DATA[9]_i_4\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"D0FFD000DDFFDDFF"
+      INIT => X"80"
     )
         port map (
-      I0 => \REG_CNTR[1]_i_2_n_0\,
-      I1 => DEINTERLEAVER_QPSK(41),
-      I2 => DEINTERLEAVER_16QAM(22),
-      I3 => DEINTERLEAVER_STROBE,
-      I4 => \FPGA_REG_WRITE_DATA_reg[9]_i_7_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[20]_i_8_n_0\,
+      I0 => DEINTERLEAVER_BPSK(22),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
       O => \FPGA_REG_WRITE_DATA[9]_i_4_n_0\
     );
-\FPGA_REG_WRITE_DATA[9]_i_5\: unisim.vcomponents.LUT6
+\FPGA_REG_WRITE_DATA[9]_i_5\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FFFFFFFF4040FF40"
+      INIT => X"AAAAACA0"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[31]_i_17_n_0\,
-      I1 => DEINTERLEAVER_STROBE,
-      I2 => DEINTERLEAVER_BPSK(22),
-      I3 => CONSTELLATION_IDATA(9),
-      I4 => \FPGA_REG_WRITE_DATA[31]_i_5_n_0\,
-      I5 => \FPGA_REG_WRITE_DATA[31]_i_19_n_0\,
+      I0 => EQUALIZER_REG_WRITE_DATA(9),
+      I1 => VITERBI_SIGNAL(9),
+      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I3 => VITERBI_SIGNAL_VALID,
+      I4 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
       O => \FPGA_REG_WRITE_DATA[9]_i_5_n_0\
     );
 \FPGA_REG_WRITE_DATA[9]_i_6\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"55550040"
+      INIT => X"B8BBB888"
     )
         port map (
-      I0 => VITERBI_SIGNAL_VALID,
-      I1 => DATA_STROBE,
-      I2 => SELECT_AXI_REGS_MODE(0),
-      I3 => SELECT_AXI_REGS_MODE(1),
-      I4 => FFT_IDATA(9),
+      I0 => DEINTERLEAVER_16QAM(22),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => \FPGA_REG_WRITE_DATA[9]_i_8_n_0\,
+      I3 => \REG_CNTR_reg_n_0_[2]\,
+      I4 => \FPGA_REG_WRITE_DATA[9]_i_9_n_0\,
       O => \FPGA_REG_WRITE_DATA[9]_i_6_n_0\
     );
-\FPGA_REG_WRITE_DATA[9]_i_8\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[9]_i_7\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"B8FFB800"
+      INIT => X"B8"
     )
         port map (
-      I0 => DEINTERLEAVER_16QAM(118),
-      I1 => \REG_CNTR_reg_n_0_[0]\,
-      I2 => DEINTERLEAVER_16QAM(150),
-      I3 => \REG_CNTR_reg_n_0_[1]\,
-      I4 => DEINTERLEAVER_16QAM(182),
-      O => \FPGA_REG_WRITE_DATA[9]_i_8_n_0\
+      I0 => DEINTERLEAVER_QPSK(41),
+      I1 => DEINTERLEAVER_STROBE,
+      I2 => DEINTERLEAVER_QPSK(9),
+      O => data6(9)
     );
-\FPGA_REG_WRITE_DATA[9]_i_9\: unisim.vcomponents.LUT5
+\FPGA_REG_WRITE_DATA[9]_i_8\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"B8BBB888"
     )
@@ -4510,6 +4668,18 @@ begin
       I2 => DEINTERLEAVER_16QAM(54),
       I3 => \REG_CNTR_reg_n_0_[0]\,
       I4 => DEINTERLEAVER_16QAM(86),
+      O => \FPGA_REG_WRITE_DATA[9]_i_8_n_0\
+    );
+\FPGA_REG_WRITE_DATA[9]_i_9\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"B8FFB800"
+    )
+        port map (
+      I0 => DEINTERLEAVER_16QAM(118),
+      I1 => \REG_CNTR_reg_n_0_[0]\,
+      I2 => DEINTERLEAVER_16QAM(150),
+      I3 => \REG_CNTR_reg_n_0_[1]\,
+      I4 => DEINTERLEAVER_16QAM(182),
       O => \FPGA_REG_WRITE_DATA[9]_i_9_n_0\
     );
 \FPGA_REG_WRITE_DATA_reg[0]\: unisim.vcomponents.FDRE
@@ -4518,17 +4688,10 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_DATA[31]_i_1_n_0\,
+      CE => FPGA_REG_WRITE_DATA0,
       D => \FPGA_REG_WRITE_DATA[0]_i_1_n_0\,
       Q => FPGA_REG_WRITE_DATA(0),
       R => '0'
-    );
-\FPGA_REG_WRITE_DATA_reg[0]_i_7\: unisim.vcomponents.MUXF7
-     port map (
-      I0 => \FPGA_REG_WRITE_DATA[0]_i_8_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[0]_i_9_n_0\,
-      O => \FPGA_REG_WRITE_DATA_reg[0]_i_7_n_0\,
-      S => \REG_CNTR_reg_n_0_[2]\
     );
 \FPGA_REG_WRITE_DATA_reg[10]\: unisim.vcomponents.FDRE
     generic map(
@@ -4536,7 +4699,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_DATA[31]_i_1_n_0\,
+      CE => FPGA_REG_WRITE_DATA0,
       D => \FPGA_REG_WRITE_DATA[10]_i_1_n_0\,
       Q => FPGA_REG_WRITE_DATA(10),
       R => '0'
@@ -4547,17 +4710,10 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_DATA[31]_i_1_n_0\,
+      CE => FPGA_REG_WRITE_DATA0,
       D => \FPGA_REG_WRITE_DATA[11]_i_1_n_0\,
       Q => FPGA_REG_WRITE_DATA(11),
       R => '0'
-    );
-\FPGA_REG_WRITE_DATA_reg[11]_i_7\: unisim.vcomponents.MUXF7
-     port map (
-      I0 => \FPGA_REG_WRITE_DATA[11]_i_8_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[11]_i_9_n_0\,
-      O => \FPGA_REG_WRITE_DATA_reg[11]_i_7_n_0\,
-      S => \REG_CNTR_reg_n_0_[2]\
     );
 \FPGA_REG_WRITE_DATA_reg[12]\: unisim.vcomponents.FDRE
     generic map(
@@ -4565,17 +4721,10 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_DATA[31]_i_1_n_0\,
+      CE => FPGA_REG_WRITE_DATA0,
       D => \FPGA_REG_WRITE_DATA[12]_i_1_n_0\,
       Q => FPGA_REG_WRITE_DATA(12),
       R => '0'
-    );
-\FPGA_REG_WRITE_DATA_reg[12]_i_7\: unisim.vcomponents.MUXF7
-     port map (
-      I0 => \FPGA_REG_WRITE_DATA[12]_i_8_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[12]_i_9_n_0\,
-      O => \FPGA_REG_WRITE_DATA_reg[12]_i_7_n_0\,
-      S => \REG_CNTR_reg_n_0_[2]\
     );
 \FPGA_REG_WRITE_DATA_reg[13]\: unisim.vcomponents.FDRE
     generic map(
@@ -4583,17 +4732,10 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_DATA[31]_i_1_n_0\,
+      CE => FPGA_REG_WRITE_DATA0,
       D => \FPGA_REG_WRITE_DATA[13]_i_1_n_0\,
       Q => FPGA_REG_WRITE_DATA(13),
       R => '0'
-    );
-\FPGA_REG_WRITE_DATA_reg[13]_i_7\: unisim.vcomponents.MUXF7
-     port map (
-      I0 => \FPGA_REG_WRITE_DATA[13]_i_8_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[13]_i_9_n_0\,
-      O => \FPGA_REG_WRITE_DATA_reg[13]_i_7_n_0\,
-      S => \REG_CNTR_reg_n_0_[2]\
     );
 \FPGA_REG_WRITE_DATA_reg[14]\: unisim.vcomponents.FDRE
     generic map(
@@ -4601,7 +4743,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_DATA[31]_i_1_n_0\,
+      CE => FPGA_REG_WRITE_DATA0,
       D => \FPGA_REG_WRITE_DATA[14]_i_1_n_0\,
       Q => FPGA_REG_WRITE_DATA(14),
       R => '0'
@@ -4612,17 +4754,10 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_DATA[31]_i_1_n_0\,
+      CE => FPGA_REG_WRITE_DATA0,
       D => \FPGA_REG_WRITE_DATA[15]_i_1_n_0\,
       Q => FPGA_REG_WRITE_DATA(15),
       R => '0'
-    );
-\FPGA_REG_WRITE_DATA_reg[15]_i_7\: unisim.vcomponents.MUXF7
-     port map (
-      I0 => \FPGA_REG_WRITE_DATA[15]_i_8_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[15]_i_9_n_0\,
-      O => \FPGA_REG_WRITE_DATA_reg[15]_i_7_n_0\,
-      S => \REG_CNTR_reg_n_0_[2]\
     );
 \FPGA_REG_WRITE_DATA_reg[16]\: unisim.vcomponents.FDRE
     generic map(
@@ -4630,7 +4765,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_DATA[31]_i_1_n_0\,
+      CE => FPGA_REG_WRITE_DATA0,
       D => \FPGA_REG_WRITE_DATA[16]_i_1_n_0\,
       Q => FPGA_REG_WRITE_DATA(16),
       R => '0'
@@ -4641,17 +4776,10 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_DATA[31]_i_1_n_0\,
+      CE => FPGA_REG_WRITE_DATA0,
       D => \FPGA_REG_WRITE_DATA[17]_i_1_n_0\,
       Q => FPGA_REG_WRITE_DATA(17),
       R => '0'
-    );
-\FPGA_REG_WRITE_DATA_reg[17]_i_7\: unisim.vcomponents.MUXF7
-     port map (
-      I0 => \FPGA_REG_WRITE_DATA[17]_i_9_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[17]_i_10_n_0\,
-      O => \FPGA_REG_WRITE_DATA_reg[17]_i_7_n_0\,
-      S => \REG_CNTR_reg_n_0_[2]\
     );
 \FPGA_REG_WRITE_DATA_reg[18]\: unisim.vcomponents.FDRE
     generic map(
@@ -4659,7 +4787,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_DATA[31]_i_1_n_0\,
+      CE => FPGA_REG_WRITE_DATA0,
       D => \FPGA_REG_WRITE_DATA[18]_i_1_n_0\,
       Q => FPGA_REG_WRITE_DATA(18),
       R => '0'
@@ -4670,17 +4798,10 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_DATA[31]_i_1_n_0\,
+      CE => FPGA_REG_WRITE_DATA0,
       D => \FPGA_REG_WRITE_DATA[19]_i_1_n_0\,
       Q => FPGA_REG_WRITE_DATA(19),
       R => '0'
-    );
-\FPGA_REG_WRITE_DATA_reg[19]_i_7\: unisim.vcomponents.MUXF7
-     port map (
-      I0 => \FPGA_REG_WRITE_DATA[19]_i_9_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[19]_i_10_n_0\,
-      O => \FPGA_REG_WRITE_DATA_reg[19]_i_7_n_0\,
-      S => \REG_CNTR_reg_n_0_[2]\
     );
 \FPGA_REG_WRITE_DATA_reg[1]\: unisim.vcomponents.FDRE
     generic map(
@@ -4688,17 +4809,10 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_DATA[31]_i_1_n_0\,
+      CE => FPGA_REG_WRITE_DATA0,
       D => \FPGA_REG_WRITE_DATA[1]_i_1_n_0\,
       Q => FPGA_REG_WRITE_DATA(1),
       R => '0'
-    );
-\FPGA_REG_WRITE_DATA_reg[1]_i_7\: unisim.vcomponents.MUXF7
-     port map (
-      I0 => \FPGA_REG_WRITE_DATA[1]_i_8_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[1]_i_9_n_0\,
-      O => \FPGA_REG_WRITE_DATA_reg[1]_i_7_n_0\,
-      S => \REG_CNTR_reg_n_0_[2]\
     );
 \FPGA_REG_WRITE_DATA_reg[20]\: unisim.vcomponents.FDRE
     generic map(
@@ -4706,17 +4820,10 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_DATA[31]_i_1_n_0\,
+      CE => FPGA_REG_WRITE_DATA0,
       D => \FPGA_REG_WRITE_DATA[20]_i_1_n_0\,
       Q => FPGA_REG_WRITE_DATA(20),
       R => '0'
-    );
-\FPGA_REG_WRITE_DATA_reg[20]_i_7\: unisim.vcomponents.MUXF7
-     port map (
-      I0 => \FPGA_REG_WRITE_DATA[20]_i_10_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[20]_i_11_n_0\,
-      O => \FPGA_REG_WRITE_DATA_reg[20]_i_7_n_0\,
-      S => \REG_CNTR_reg_n_0_[2]\
     );
 \FPGA_REG_WRITE_DATA_reg[21]\: unisim.vcomponents.FDRE
     generic map(
@@ -4724,17 +4831,10 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_DATA[31]_i_1_n_0\,
+      CE => FPGA_REG_WRITE_DATA0,
       D => \FPGA_REG_WRITE_DATA[21]_i_1_n_0\,
       Q => FPGA_REG_WRITE_DATA(21),
       R => '0'
-    );
-\FPGA_REG_WRITE_DATA_reg[21]_i_7\: unisim.vcomponents.MUXF7
-     port map (
-      I0 => \FPGA_REG_WRITE_DATA[21]_i_9_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[21]_i_10_n_0\,
-      O => \FPGA_REG_WRITE_DATA_reg[21]_i_7_n_0\,
-      S => \REG_CNTR_reg_n_0_[2]\
     );
 \FPGA_REG_WRITE_DATA_reg[22]\: unisim.vcomponents.FDRE
     generic map(
@@ -4742,7 +4842,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_DATA[31]_i_1_n_0\,
+      CE => FPGA_REG_WRITE_DATA0,
       D => \FPGA_REG_WRITE_DATA[22]_i_1_n_0\,
       Q => FPGA_REG_WRITE_DATA(22),
       R => '0'
@@ -4753,7 +4853,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_DATA[31]_i_1_n_0\,
+      CE => FPGA_REG_WRITE_DATA0,
       D => \FPGA_REG_WRITE_DATA[23]_i_1_n_0\,
       Q => FPGA_REG_WRITE_DATA(23),
       R => '0'
@@ -4764,7 +4864,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_DATA[31]_i_1_n_0\,
+      CE => FPGA_REG_WRITE_DATA0,
       D => \FPGA_REG_WRITE_DATA[24]_i_1_n_0\,
       Q => FPGA_REG_WRITE_DATA(24),
       R => '0'
@@ -4775,7 +4875,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_DATA[31]_i_1_n_0\,
+      CE => FPGA_REG_WRITE_DATA0,
       D => \FPGA_REG_WRITE_DATA[25]_i_1_n_0\,
       Q => FPGA_REG_WRITE_DATA(25),
       R => '0'
@@ -4786,7 +4886,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_DATA[31]_i_1_n_0\,
+      CE => FPGA_REG_WRITE_DATA0,
       D => \FPGA_REG_WRITE_DATA[26]_i_1_n_0\,
       Q => FPGA_REG_WRITE_DATA(26),
       R => '0'
@@ -4797,7 +4897,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_DATA[31]_i_1_n_0\,
+      CE => FPGA_REG_WRITE_DATA0,
       D => \FPGA_REG_WRITE_DATA[27]_i_1_n_0\,
       Q => FPGA_REG_WRITE_DATA(27),
       R => '0'
@@ -4808,7 +4908,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_DATA[31]_i_1_n_0\,
+      CE => FPGA_REG_WRITE_DATA0,
       D => \FPGA_REG_WRITE_DATA[28]_i_1_n_0\,
       Q => FPGA_REG_WRITE_DATA(28),
       R => '0'
@@ -4819,7 +4919,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_DATA[31]_i_1_n_0\,
+      CE => FPGA_REG_WRITE_DATA0,
       D => \FPGA_REG_WRITE_DATA[29]_i_1_n_0\,
       Q => FPGA_REG_WRITE_DATA(29),
       R => '0'
@@ -4830,17 +4930,10 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_DATA[31]_i_1_n_0\,
+      CE => FPGA_REG_WRITE_DATA0,
       D => \FPGA_REG_WRITE_DATA[2]_i_1_n_0\,
       Q => FPGA_REG_WRITE_DATA(2),
       R => '0'
-    );
-\FPGA_REG_WRITE_DATA_reg[2]_i_7\: unisim.vcomponents.MUXF7
-     port map (
-      I0 => \FPGA_REG_WRITE_DATA[2]_i_8_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[2]_i_9_n_0\,
-      O => \FPGA_REG_WRITE_DATA_reg[2]_i_7_n_0\,
-      S => \REG_CNTR_reg_n_0_[2]\
     );
 \FPGA_REG_WRITE_DATA_reg[30]\: unisim.vcomponents.FDRE
     generic map(
@@ -4848,7 +4941,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_DATA[31]_i_1_n_0\,
+      CE => FPGA_REG_WRITE_DATA0,
       D => \FPGA_REG_WRITE_DATA[30]_i_1_n_0\,
       Q => FPGA_REG_WRITE_DATA(30),
       R => '0'
@@ -4859,7 +4952,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_DATA[31]_i_1_n_0\,
+      CE => FPGA_REG_WRITE_DATA0,
       D => \FPGA_REG_WRITE_DATA[31]_i_2_n_0\,
       Q => FPGA_REG_WRITE_DATA(31),
       R => '0'
@@ -4870,17 +4963,10 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_DATA[31]_i_1_n_0\,
+      CE => FPGA_REG_WRITE_DATA0,
       D => \FPGA_REG_WRITE_DATA[3]_i_1_n_0\,
       Q => FPGA_REG_WRITE_DATA(3),
       R => '0'
-    );
-\FPGA_REG_WRITE_DATA_reg[3]_i_7\: unisim.vcomponents.MUXF7
-     port map (
-      I0 => \FPGA_REG_WRITE_DATA[3]_i_8_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[3]_i_9_n_0\,
-      O => \FPGA_REG_WRITE_DATA_reg[3]_i_7_n_0\,
-      S => \REG_CNTR_reg_n_0_[2]\
     );
 \FPGA_REG_WRITE_DATA_reg[4]\: unisim.vcomponents.FDRE
     generic map(
@@ -4888,17 +4974,10 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_DATA[31]_i_1_n_0\,
+      CE => FPGA_REG_WRITE_DATA0,
       D => \FPGA_REG_WRITE_DATA[4]_i_1_n_0\,
       Q => FPGA_REG_WRITE_DATA(4),
       R => '0'
-    );
-\FPGA_REG_WRITE_DATA_reg[4]_i_7\: unisim.vcomponents.MUXF7
-     port map (
-      I0 => \FPGA_REG_WRITE_DATA[4]_i_8_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[4]_i_9_n_0\,
-      O => \FPGA_REG_WRITE_DATA_reg[4]_i_7_n_0\,
-      S => \REG_CNTR_reg_n_0_[2]\
     );
 \FPGA_REG_WRITE_DATA_reg[5]\: unisim.vcomponents.FDRE
     generic map(
@@ -4906,17 +4985,10 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_DATA[31]_i_1_n_0\,
+      CE => FPGA_REG_WRITE_DATA0,
       D => \FPGA_REG_WRITE_DATA[5]_i_1_n_0\,
       Q => FPGA_REG_WRITE_DATA(5),
       R => '0'
-    );
-\FPGA_REG_WRITE_DATA_reg[5]_i_7\: unisim.vcomponents.MUXF7
-     port map (
-      I0 => \FPGA_REG_WRITE_DATA[5]_i_8_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[5]_i_9_n_0\,
-      O => \FPGA_REG_WRITE_DATA_reg[5]_i_7_n_0\,
-      S => \REG_CNTR_reg_n_0_[2]\
     );
 \FPGA_REG_WRITE_DATA_reg[6]\: unisim.vcomponents.FDRE
     generic map(
@@ -4924,7 +4996,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_DATA[31]_i_1_n_0\,
+      CE => FPGA_REG_WRITE_DATA0,
       D => \FPGA_REG_WRITE_DATA[6]_i_1_n_0\,
       Q => FPGA_REG_WRITE_DATA(6),
       R => '0'
@@ -4935,17 +5007,10 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_DATA[31]_i_1_n_0\,
+      CE => FPGA_REG_WRITE_DATA0,
       D => \FPGA_REG_WRITE_DATA[7]_i_1_n_0\,
       Q => FPGA_REG_WRITE_DATA(7),
       R => '0'
-    );
-\FPGA_REG_WRITE_DATA_reg[7]_i_7\: unisim.vcomponents.MUXF7
-     port map (
-      I0 => \FPGA_REG_WRITE_DATA[7]_i_8_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[7]_i_9_n_0\,
-      O => \FPGA_REG_WRITE_DATA_reg[7]_i_7_n_0\,
-      S => \REG_CNTR_reg_n_0_[2]\
     );
 \FPGA_REG_WRITE_DATA_reg[8]\: unisim.vcomponents.FDRE
     generic map(
@@ -4953,17 +5018,10 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_DATA[31]_i_1_n_0\,
+      CE => FPGA_REG_WRITE_DATA0,
       D => \FPGA_REG_WRITE_DATA[8]_i_1_n_0\,
       Q => FPGA_REG_WRITE_DATA(8),
       R => '0'
-    );
-\FPGA_REG_WRITE_DATA_reg[8]_i_7\: unisim.vcomponents.MUXF7
-     port map (
-      I0 => \FPGA_REG_WRITE_DATA[8]_i_8_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[8]_i_9_n_0\,
-      O => \FPGA_REG_WRITE_DATA_reg[8]_i_7_n_0\,
-      S => \REG_CNTR_reg_n_0_[2]\
     );
 \FPGA_REG_WRITE_DATA_reg[9]\: unisim.vcomponents.FDRE
     generic map(
@@ -4971,17 +5029,67 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \FPGA_REG_WRITE_DATA[31]_i_1_n_0\,
+      CE => FPGA_REG_WRITE_DATA0,
       D => \FPGA_REG_WRITE_DATA[9]_i_1_n_0\,
       Q => FPGA_REG_WRITE_DATA(9),
       R => '0'
     );
-\FPGA_REG_WRITE_DATA_reg[9]_i_7\: unisim.vcomponents.MUXF7
-     port map (
-      I0 => \FPGA_REG_WRITE_DATA[9]_i_8_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[9]_i_9_n_0\,
-      O => \FPGA_REG_WRITE_DATA_reg[9]_i_7_n_0\,
-      S => \REG_CNTR_reg_n_0_[2]\
+FPGA_REG_WRITE_STROBE_i_1: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FFFE"
+    )
+        port map (
+      I0 => \FPGA_REG_WRITE_ADDRESS0__0\,
+      I1 => FPGA_REG_WRITE_STROBE_i_3_n_0,
+      I2 => FPGA_REG_WRITE_STROBE_i_4_n_0,
+      I3 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      O => FPGA_REG_WRITE_STROBE_i_1_n_0
+    );
+FPGA_REG_WRITE_STROBE_i_2: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"8000"
+    )
+        port map (
+      I0 => PARALLEL_OUTPUT_VALID,
+      I1 => SELECT_AXI_REGS_MODE(1),
+      I2 => FPGA_REG_WRITE_STROBE_i_5_n_0,
+      I3 => SELECT_AXI_REGS_MODE(0),
+      O => \FPGA_REG_WRITE_ADDRESS0__0\
+    );
+FPGA_REG_WRITE_STROBE_i_3: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FFFE"
+    )
+        port map (
+      I0 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
+      I1 => \FPGA_REG_WRITE_ADDRESS1__0\,
+      I2 => \FPGA_REG_WRITE_ADDRESS18_out__0\,
+      I3 => VITERBI_SIGNAL_VALID,
+      O => FPGA_REG_WRITE_STROBE_i_3_n_0
+    );
+FPGA_REG_WRITE_STROBE_i_4: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FFFE"
+    )
+        port map (
+      I0 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
+      I1 => \FPGA_REG_WRITE_ADDRESS17_out__0\,
+      I2 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
+      I3 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      O => FPGA_REG_WRITE_STROBE_i_4_n_0
+    );
+FPGA_REG_WRITE_STROBE_i_5: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0000000000000002"
+    )
+        port map (
+      I0 => SELECT_AXI_REGS_MODE(2),
+      I1 => SELECT_AXI_REGS_MODE(5),
+      I2 => SELECT_AXI_REGS_MODE(7),
+      I3 => SELECT_AXI_REGS_MODE(3),
+      I4 => SELECT_AXI_REGS_MODE(4),
+      I5 => SELECT_AXI_REGS_MODE(6),
+      O => FPGA_REG_WRITE_STROBE_i_5_n_0
     );
 FPGA_REG_WRITE_STROBE_reg: unisim.vcomponents.FDRE
     generic map(
@@ -4990,104 +5098,147 @@ FPGA_REG_WRITE_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => '1',
-      D => \FPGA_REG_WRITE_ADDRESS[10]_i_2_n_0\,
+      D => FPGA_REG_WRITE_STROBE_i_1_n_0,
       Q => FPGA_REG_WRITE_STROBE,
       R => '0'
     );
-\REG_CNTR[0]_i_1\: unisim.vcomponents.LUT4
+\REG_CNTR[0]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"BF80"
+      INIT => X"B4B4FFFFB5B40000"
     )
         port map (
-      I0 => \REG_CNTR[0]_i_2_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[31]_i_3_n_0\,
-      I2 => \FPGA_REG_WRITE_ADDRESS[10]_i_4_n_0\,
-      I3 => \REG_CNTR_reg_n_0_[0]\,
+      I0 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      I1 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
+      I2 => DEINTERLEAVER_STROBE,
+      I3 => \REG_CNTR[0]_i_4_n_0\,
+      I4 => \REG_CNTR[2]_i_3_n_0\,
+      I5 => \REG_CNTR_reg_n_0_[0]\,
       O => \REG_CNTR[0]_i_1_n_0\
     );
-\REG_CNTR[0]_i_2\: unisim.vcomponents.LUT6
+\REG_CNTR[0]_i_2\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"1400FFFFFFFF1400"
+      INIT => X"0020"
+    )
+        port map (
+      I0 => \FPGA_REG_WRITE_ADDRESS[10]_i_6_n_0\,
+      I1 => SELECT_AXI_REGS_MODE(0),
+      I2 => FPGA_REG_WRITE_STROBE_i_5_n_0,
+      I3 => SELECT_AXI_REGS_MODE(1),
+      O => \FPGA_REG_WRITE_ADDRESS13_out__0\
+    );
+\REG_CNTR[0]_i_3\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0800"
+    )
+        port map (
+      I0 => \FPGA_REG_WRITE_ADDRESS[10]_i_6_n_0\,
+      I1 => FPGA_REG_WRITE_STROBE_i_5_n_0,
+      I2 => SELECT_AXI_REGS_MODE(1),
+      I3 => SELECT_AXI_REGS_MODE(0),
+      O => \FPGA_REG_WRITE_ADDRESS11_out__0\
+    );
+\REG_CNTR[0]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => \REG_CNTR_reg_n_0_[1]\,
+      I1 => \REG_CNTR_reg_n_0_[2]\,
+      O => \REG_CNTR[0]_i_4_n_0\
+    );
+\REG_CNTR[1]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => \REG_CNTR[1]_i_2_n_0\,
+      I1 => \REG_CNTR[2]_i_3_n_0\,
+      I2 => \REG_CNTR_reg_n_0_[1]\,
+      O => \REG_CNTR[1]_i_1_n_0\
+    );
+\REG_CNTR[1]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"00000000FF000018"
     )
         port map (
       I0 => \REG_CNTR_reg_n_0_[0]\,
       I1 => \REG_CNTR_reg_n_0_[1]\,
       I2 => \REG_CNTR_reg_n_0_[2]\,
-      I3 => \FPGA_REG_WRITE_DATA[20]_i_8_n_0\,
-      I4 => \REG_CNTR[1]_i_2_n_0\,
-      I5 => DEINTERLEAVER_STROBE,
-      O => \REG_CNTR[0]_i_2_n_0\
-    );
-\REG_CNTR[1]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"F8FFFFFFF8000000"
-    )
-        port map (
-      I0 => DEINTERLEAVER_STROBE,
-      I1 => \REG_CNTR[1]_i_2_n_0\,
-      I2 => \REG_CNTR[1]_i_3_n_0\,
-      I3 => \FPGA_REG_WRITE_DATA[31]_i_3_n_0\,
-      I4 => \FPGA_REG_WRITE_ADDRESS[10]_i_4_n_0\,
-      I5 => \REG_CNTR_reg_n_0_[1]\,
-      O => \REG_CNTR[1]_i_1_n_0\
-    );
-\REG_CNTR[1]_i_2\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"0010"
-    )
-        port map (
-      I0 => \REG_CNTR[1]_i_4_n_0\,
-      I1 => \FPGA_REG_WRITE_ADDRESS[10]_i_6_n_0\,
-      I2 => SELECT_AXI_REGS_MODE(0),
-      I3 => SELECT_AXI_REGS_MODE(1),
+      I3 => DEINTERLEAVER_STROBE,
+      I4 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
+      I5 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
       O => \REG_CNTR[1]_i_2_n_0\
     );
-\REG_CNTR[1]_i_3\: unisim.vcomponents.LUT5
+\REG_CNTR[2]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"00000280"
-    )
-        port map (
-      I0 => \FPGA_REG_WRITE_DATA[20]_i_8_n_0\,
-      I1 => \REG_CNTR_reg_n_0_[0]\,
-      I2 => \REG_CNTR_reg_n_0_[1]\,
-      I3 => \REG_CNTR_reg_n_0_[2]\,
-      I4 => DEINTERLEAVER_STROBE,
-      O => \REG_CNTR[1]_i_3_n_0\
-    );
-\REG_CNTR[1]_i_4\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"0001FFFF"
-    )
-        port map (
-      I0 => DEINTERLEAVER_STROBE,
-      I1 => \REG_CNTR_reg_n_0_[0]\,
-      I2 => \REG_CNTR_reg_n_0_[2]\,
-      I3 => \REG_CNTR_reg_n_0_[1]\,
-      I4 => SELECT_AXI_REGS_MODE(2),
-      O => \REG_CNTR[1]_i_4_n_0\
-    );
-\REG_CNTR[2]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"BF80"
+      INIT => X"B8"
     )
         port map (
       I0 => \REG_CNTR[2]_i_2_n_0\,
-      I1 => \FPGA_REG_WRITE_DATA[31]_i_3_n_0\,
-      I2 => \FPGA_REG_WRITE_ADDRESS[10]_i_4_n_0\,
-      I3 => \REG_CNTR_reg_n_0_[2]\,
+      I1 => \REG_CNTR[2]_i_3_n_0\,
+      I2 => \REG_CNTR_reg_n_0_[2]\,
       O => \REG_CNTR[2]_i_1_n_0\
     );
-\REG_CNTR[2]_i_2\: unisim.vcomponents.LUT5
+\REG_CNTR[2]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"AAAA0080"
+      INIT => X"000000000000AAEA"
     )
         port map (
-      I0 => \FPGA_REG_WRITE_DATA[20]_i_8_n_0\,
-      I1 => \REG_CNTR_reg_n_0_[0]\,
-      I2 => \REG_CNTR_reg_n_0_[2]\,
+      I0 => DEINTERLEAVER_STROBE,
+      I1 => \REG_CNTR_reg_n_0_[2]\,
+      I2 => \REG_CNTR_reg_n_0_[0]\,
       I3 => \REG_CNTR_reg_n_0_[1]\,
-      I4 => DEINTERLEAVER_STROBE,
+      I4 => \FPGA_REG_WRITE_ADDRESS11_out__0\,
+      I5 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
       O => \REG_CNTR[2]_i_2_n_0\
+    );
+\REG_CNTR[2]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0000540400000000"
+    )
+        port map (
+      I0 => \REG_CNTR[2]_i_4_n_0\,
+      I1 => \REG_CNTR[2]_i_5_n_0\,
+      I2 => \FPGA_REG_WRITE_ADDRESS13_out__0\,
+      I3 => \REG_CNTR__1\,
+      I4 => \FPGA_REG_WRITE_ADDRESS15_out__0\,
+      I5 => \REG_CNTR[2]_i_6_n_0\,
+      O => \REG_CNTR[2]_i_3_n_0\
+    );
+\REG_CNTR[2]_i_4\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"FE"
+    )
+        port map (
+      I0 => EQUALIZER_REG_WRITE_STROBE_PHASE_1,
+      I1 => VITERBI_SIGNAL_VALID,
+      I2 => EQUALIZER_REG_WRITE_STROBE_PHASE_2,
+      O => \REG_CNTR[2]_i_4_n_0\
+    );
+\REG_CNTR[2]_i_5\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0080C00000800000"
+    )
+        port map (
+      I0 => \FPGA_REG_WRITE_DATA[31]_i_14_n_0\,
+      I1 => \FPGA_REG_WRITE_ADDRESS[10]_i_6_n_0\,
+      I2 => FPGA_REG_WRITE_STROBE_i_5_n_0,
+      I3 => SELECT_AXI_REGS_MODE(1),
+      I4 => SELECT_AXI_REGS_MODE(0),
+      I5 => \FPGA_REG_WRITE_DATA[31]_i_19_n_0\,
+      O => \REG_CNTR[2]_i_5_n_0\
+    );
+\REG_CNTR[2]_i_6\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"FF5F3FFF"
+    )
+        port map (
+      I0 => DATA_STROBE,
+      I1 => FFT_DATA_VALID,
+      I2 => \FPGA_REG_WRITE_ADDRESS[10]_i_8_n_0\,
+      I3 => SELECT_AXI_REGS_MODE(1),
+      I4 => SELECT_AXI_REGS_MODE(0),
+      O => \REG_CNTR[2]_i_6_n_0\
     );
 \REG_CNTR_reg[0]\: unisim.vcomponents.FDRE
     generic map(
@@ -5152,6 +5303,8 @@ entity block_design_0_axi_regs_mux_0_0 is
     DEINTERLEAVER_16QAM : in STD_LOGIC_VECTOR ( 0 to 191 );
     VITERBI_SIGNAL_VALID : in STD_LOGIC;
     VITERBI_SIGNAL : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    PARALLEL_OUTPUT_VALID : in STD_LOGIC;
+    PARALLEL_OUTPUT : in STD_LOGIC_VECTOR ( 31 downto 0 );
     FPGA_REG_WRITE_ADDRESS : out STD_LOGIC_VECTOR ( 10 downto 0 );
     FPGA_REG_WRITE_DATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
     FPGA_REG_WRITE_STROBE : out STD_LOGIC
@@ -5180,6 +5333,7 @@ architecture STRUCTURE of block_design_0_axi_regs_mux_0_0 is
   attribute x_interface_ignore of EQUALIZER_REG_WRITE_STROBE_PHASE_2 : signal is "TRUE";
   attribute x_interface_ignore of FFT_DATA_FIRST_SYMBOL_MARKER : signal is "TRUE";
   attribute x_interface_ignore of FFT_DATA_VALID : signal is "TRUE";
+  attribute x_interface_ignore of PARALLEL_OUTPUT_VALID : signal is "TRUE";
   attribute x_interface_info of RESET : signal is "xilinx.com:signal:reset:1.0 RESET RST";
   attribute x_interface_parameter of RESET : signal is "XIL_INTERFACENAME RESET, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   attribute x_interface_ignore of VITERBI_SIGNAL_VALID : signal is "TRUE";
@@ -5188,6 +5342,7 @@ architecture STRUCTURE of block_design_0_axi_regs_mux_0_0 is
   attribute x_interface_ignore of EQUALIZER_REG_WRITE_DATA : signal is "TRUE";
   attribute x_interface_ignore of FFT_IDATA : signal is "TRUE";
   attribute x_interface_ignore of FFT_QDATA : signal is "TRUE";
+  attribute x_interface_ignore of PARALLEL_OUTPUT : signal is "TRUE";
   attribute x_interface_ignore of VITERBI_SIGNAL : signal is "TRUE";
 begin
 U0: entity work.block_design_0_axi_regs_mux_0_0_axi_regs_mux
@@ -5274,6 +5429,8 @@ U0: entity work.block_design_0_axi_regs_mux_0_0_axi_regs_mux
       FPGA_REG_WRITE_DATA(31 downto 0) => FPGA_REG_WRITE_DATA(31 downto 0),
       FPGA_REG_WRITE_STROBE => FPGA_REG_WRITE_STROBE,
       IDATA(15 downto 0) => IDATA(15 downto 0),
+      PARALLEL_OUTPUT(31 downto 0) => PARALLEL_OUTPUT(31 downto 0),
+      PARALLEL_OUTPUT_VALID => PARALLEL_OUTPUT_VALID,
       QDATA(15 downto 0) => QDATA(15 downto 0),
       SELECT_AXI_REGS_MODE(7 downto 0) => SELECT_AXI_REGS_MODE(7 downto 0),
       VITERBI_SIGNAL(31 downto 0) => VITERBI_SIGNAL(31 downto 0),

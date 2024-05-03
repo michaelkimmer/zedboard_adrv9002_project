@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:module_ref:viterbi_hard:1.0
--- IP Revision: 1714673317
+-- IP Revision: 1714744542
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;

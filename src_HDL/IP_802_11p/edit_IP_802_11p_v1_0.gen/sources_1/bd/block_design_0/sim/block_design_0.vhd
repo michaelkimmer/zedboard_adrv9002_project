@@ -2,8 +2,8 @@
 --Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
---Date        : Thu May  2 20:08:47 2024
---Host        : ASUS_ROG running 64-bit major release  (build 9200)
+--Date        : Fri May  3 15:56:40 2024
+--Host        : lab817_01 running 64-bit major release  (build 9200)
 --Command     : generate_target block_design_0.bd
 --Design      : block_design_0
 --Purpose     : IP block netlist
@@ -672,7 +672,7 @@ entity block_design_0 is
     SELECT_AXI_REGS_MODE : in STD_LOGIC_VECTOR ( 7 downto 0 )
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of block_design_0 : entity is "block_design_0,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=block_design_0,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=26,numReposBlks=21,numNonXlnxBlks=0,numHierBlks=5,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=16,numPkgbdBlks=0,bdsource=USER,synth_mode=Hierarchical}";
+  attribute CORE_GENERATION_INFO of block_design_0 : entity is "block_design_0,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=block_design_0,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=28,numReposBlks=23,numNonXlnxBlks=0,numHierBlks=5,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=18,numPkgbdBlks=0,bdsource=USER,synth_mode=Hierarchical}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of block_design_0 : entity is "block_design_0.hwdef";
 end block_design_0;
@@ -822,6 +822,8 @@ architecture STRUCTURE of block_design_0 is
     DEINTERLEAVER_16QAM : in STD_LOGIC_VECTOR ( 0 to 191 );
     VITERBI_SIGNAL_VALID : in STD_LOGIC;
     VITERBI_SIGNAL : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    PARALLEL_OUTPUT_VALID : in STD_LOGIC;
+    PARALLEL_OUTPUT : in STD_LOGIC_VECTOR ( 31 downto 0 );
     FPGA_REG_WRITE_ADDRESS : out STD_LOGIC_VECTOR ( 10 downto 0 );
     FPGA_REG_WRITE_DATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
     FPGA_REG_WRITE_STROBE : out STD_LOGIC
@@ -906,6 +908,30 @@ architecture STRUCTURE of block_design_0 is
     VITERBI_RX_ENDED : out STD_LOGIC
   );
   end component block_design_0_viterbi_hard_0_0;
+  component block_design_0_descrambler_0_0 is
+  port (
+    RESET : in STD_LOGIC;
+    CLOCK : in STD_LOGIC;
+    VITERBI_SIGNAL_VALID : in STD_LOGIC;
+    VITERBI_DECODED_OUTPUT_VALID : in STD_LOGIC;
+    VITERBI_DECODED_OUTPUT : in STD_LOGIC;
+    VITERBI_RX_ENDED : in STD_LOGIC;
+    DESCRAMBLED_OUTPUT : out STD_LOGIC;
+    DESCRAMBLED_OUTPUT_VALID : out STD_LOGIC;
+    DESCRAMBLED_OUTPUT_LAST : out STD_LOGIC
+  );
+  end component block_design_0_descrambler_0_0;
+  component block_design_0_output_ser2par_0_0 is
+  port (
+    RESET : in STD_LOGIC;
+    CLOCK : in STD_LOGIC;
+    DESCRAMBLED_OUTPUT : in STD_LOGIC;
+    DESCRAMBLED_OUTPUT_VALID : in STD_LOGIC;
+    DESCRAMBLED_OUTPUT_LAST : in STD_LOGIC;
+    PARALLEL_OUTPUT : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    PARALLEL_OUTPUT_VALID : out STD_LOGIC
+  );
+  end component block_design_0_output_ser2par_0_0;
   signal CLOCK_0_1 : STD_LOGIC;
   signal DETECTION_THRESHOLD_0_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal RESET_0_1 : STD_LOGIC;
@@ -956,6 +982,9 @@ architecture STRUCTURE of block_design_0 is
   signal demapper_0_DEMAPPING_QPSK : STD_LOGIC_VECTOR ( 0 to 103 );
   signal demapper_0_DEMAPPING_START_MARKER : STD_LOGIC;
   signal demapper_0_DEMAPPING_STROBE : STD_LOGIC;
+  signal descrambler_0_DESCRAMBLED_OUTPUT : STD_LOGIC;
+  signal descrambler_0_DESCRAMBLED_OUTPUT_LAST : STD_LOGIC;
+  signal descrambler_0_DESCRAMBLED_OUTPUT_VALID : STD_LOGIC;
   signal equalizer_time_frequ_0_FFT_DATA_IN_FIRST_SYMBOL_MARKER : STD_LOGIC;
   signal equalizer_time_frequ_0_FPGA_REG_WRITE_DATA : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal equalizer_time_frequ_0_FPGA_REG_WRITE_STROBE_PHASE_1 : STD_LOGIC;
@@ -980,6 +1009,8 @@ architecture STRUCTURE of block_design_0 is
   signal hier_rotation_constellation_ROTATION_CONSTELLATION_DATA_OUT_STROBE : STD_LOGIC;
   signal hier_rotation_constellation_ROTATION_CONSTELLATION_IDATA_OUT : STD_LOGIC_VECTOR ( 23 downto 0 );
   signal hier_rotation_constellation_ROTATION_CONSTELLATION_QDATA_OUT : STD_LOGIC_VECTOR ( 23 downto 0 );
+  signal output_ser2par_0_PARALLEL_OUTPUT : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal output_ser2par_0_PARALLEL_OUTPUT_VALID : STD_LOGIC;
   signal receiver_802_11p_0_ATAN_AUTOCORR_I : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal receiver_802_11p_0_ATAN_AUTOCORR_Q : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal receiver_802_11p_0_ATAN_AUTOCORR_STROBE : STD_LOGIC;
@@ -999,6 +1030,9 @@ architecture STRUCTURE of block_design_0 is
   signal timing_acquisition_8_0_DETECTION_STROBE : STD_LOGIC;
   signal timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal viterbi_hard_0_VITERBI_DECODED_OUTPUT : STD_LOGIC;
+  signal viterbi_hard_0_VITERBI_DECODED_OUTPUT_VALID : STD_LOGIC;
+  signal viterbi_hard_0_VITERBI_RX_ENDED : STD_LOGIC;
   signal viterbi_hard_0_VITERBI_SIGNAL : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal viterbi_hard_0_VITERBI_SIGNAL_VALID : STD_LOGIC;
   signal NLW_act_power_0_POWER_STROBE_UNCONNECTED : STD_LOGIC;
@@ -1008,9 +1042,6 @@ architecture STRUCTURE of block_design_0 is
   signal NLW_hier_fft_ofdm_event_tlast_unexpected_UNCONNECTED : STD_LOGIC;
   signal NLW_timing_acquisition_8_0_CONTINUOUS_XCORR_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_timing_acquisition_8_0_DETECTION_XCORR_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal NLW_viterbi_hard_0_VITERBI_DECODED_OUTPUT_UNCONNECTED : STD_LOGIC;
-  signal NLW_viterbi_hard_0_VITERBI_DECODED_OUTPUT_VALID_UNCONNECTED : STD_LOGIC;
-  signal NLW_viterbi_hard_0_VITERBI_RX_ENDED_UNCONNECTED : STD_LOGIC;
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of CLOCK : signal is "xilinx.com:signal:clock:1.0 CLK.CLOCK CLK";
   attribute X_INTERFACE_PARAMETER : string;
@@ -1069,6 +1100,8 @@ axi_regs_mux_0: component block_design_0_axi_regs_mux_0_0
       FPGA_REG_WRITE_DATA(31 downto 0) => axi_regs_mux_0_FPGA_REG_WRITE_DATA(31 downto 0),
       FPGA_REG_WRITE_STROBE => axi_regs_mux_0_FPGA_REG_WRITE_STROBE,
       IDATA(15 downto 0) => data_delay_0_IDATA_OUT(15 downto 0),
+      PARALLEL_OUTPUT(31 downto 0) => output_ser2par_0_PARALLEL_OUTPUT(31 downto 0),
+      PARALLEL_OUTPUT_VALID => output_ser2par_0_PARALLEL_OUTPUT_VALID,
       QDATA(15 downto 0) => data_delay_0_QDATA_OUT(15 downto 0),
       RESET => RESET_0_1,
       SELECT_AXI_REGS_MODE(7 downto 0) => SELECT_AXI_REGS_MODE_0_1(7 downto 0),
@@ -1165,6 +1198,18 @@ demapper_0: component block_design_0_demapper_0_0
       RESET => RESET_0_1,
       THRESH_16QAM(23 downto 0) => B"000000000000000000000000"
     );
+descrambler_0: component block_design_0_descrambler_0_0
+     port map (
+      CLOCK => CLOCK_0_1,
+      DESCRAMBLED_OUTPUT => descrambler_0_DESCRAMBLED_OUTPUT,
+      DESCRAMBLED_OUTPUT_LAST => descrambler_0_DESCRAMBLED_OUTPUT_LAST,
+      DESCRAMBLED_OUTPUT_VALID => descrambler_0_DESCRAMBLED_OUTPUT_VALID,
+      RESET => RESET_0_1,
+      VITERBI_DECODED_OUTPUT => viterbi_hard_0_VITERBI_DECODED_OUTPUT,
+      VITERBI_DECODED_OUTPUT_VALID => viterbi_hard_0_VITERBI_DECODED_OUTPUT_VALID,
+      VITERBI_RX_ENDED => viterbi_hard_0_VITERBI_RX_ENDED,
+      VITERBI_SIGNAL_VALID => viterbi_hard_0_VITERBI_SIGNAL_VALID
+    );
 equalizer_time_frequ_0: component block_design_0_equalizer_time_frequ_0_0
      port map (
       ATAN_AUTOCORR_I(31 downto 0) => receiver_802_11p_0_ATAN_AUTOCORR_I(31 downto 0),
@@ -1199,7 +1244,7 @@ equalizer_time_frequ_0: component block_design_0_equalizer_time_frequ_0_0
       ROTATION_PHASE_NEW_DIFF_STROBE => equalizer_time_frequ_0_ROTATION_PHASE_NEW_DIFF_STROBE,
       ROTATION_QDATA_IN(15 downto 0) => equalizer_time_frequ_0_ROTATION_QDATA_IN(15 downto 0),
       ROTATION_QDATA_OUT(15 downto 0) => rotation_block_0_ROTATION_QDATA_OUT(15 downto 0),
-      STOP_RX_DONE => '0'
+      STOP_RX_DONE => viterbi_hard_0_VITERBI_RX_ENDED
     );
 hier_atan: entity work.hier_atan_imp_GD512
      port map (
@@ -1271,6 +1316,16 @@ hier_rotation_constellation: entity work.hier_rotation_constellation_imp_EG5J2R
       ROTATION_CONSTELLATION_QDATA_IN(23 downto 0) => constellation_tracker_0_ROTATION_CONSTELLATION_QDATA_IN(23 downto 0),
       ROTATION_CONSTELLATION_QDATA_OUT(23 downto 0) => hier_rotation_constellation_ROTATION_CONSTELLATION_QDATA_OUT(23 downto 0)
     );
+output_ser2par_0: component block_design_0_output_ser2par_0_0
+     port map (
+      CLOCK => CLOCK_0_1,
+      DESCRAMBLED_OUTPUT => descrambler_0_DESCRAMBLED_OUTPUT,
+      DESCRAMBLED_OUTPUT_LAST => descrambler_0_DESCRAMBLED_OUTPUT_LAST,
+      DESCRAMBLED_OUTPUT_VALID => descrambler_0_DESCRAMBLED_OUTPUT_VALID,
+      PARALLEL_OUTPUT(31 downto 0) => output_ser2par_0_PARALLEL_OUTPUT(31 downto 0),
+      PARALLEL_OUTPUT_VALID => output_ser2par_0_PARALLEL_OUTPUT_VALID,
+      RESET => RESET_0_1
+    );
 rx_clock_domain_cros_0: component block_design_0_rx_clock_domain_cros_0_0
      port map (
       CLOCK => CLOCK_0_1,
@@ -1317,9 +1372,9 @@ viterbi_hard_0: component block_design_0_viterbi_hard_0_0
       DEINTERLEAVER_START_MARKER => deinterleaver_0_DEINTERLEAVER_START_MARKER,
       DEINTERLEAVER_STROBE => deinterleaver_0_DEINTERLEAVER_STROBE,
       RESET => RESET_0_1,
-      VITERBI_DECODED_OUTPUT => NLW_viterbi_hard_0_VITERBI_DECODED_OUTPUT_UNCONNECTED,
-      VITERBI_DECODED_OUTPUT_VALID => NLW_viterbi_hard_0_VITERBI_DECODED_OUTPUT_VALID_UNCONNECTED,
-      VITERBI_RX_ENDED => NLW_viterbi_hard_0_VITERBI_RX_ENDED_UNCONNECTED,
+      VITERBI_DECODED_OUTPUT => viterbi_hard_0_VITERBI_DECODED_OUTPUT,
+      VITERBI_DECODED_OUTPUT_VALID => viterbi_hard_0_VITERBI_DECODED_OUTPUT_VALID,
+      VITERBI_RX_ENDED => viterbi_hard_0_VITERBI_RX_ENDED,
       VITERBI_SIGNAL(31 downto 0) => viterbi_hard_0_VITERBI_SIGNAL(31 downto 0),
       VITERBI_SIGNAL_VALID => viterbi_hard_0_VITERBI_SIGNAL_VALID
     );

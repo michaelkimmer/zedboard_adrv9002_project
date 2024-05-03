@@ -119,6 +119,8 @@ vcom -work xil_defaultlib  -93  \
 "../../../bd/block_design_0/ip/block_design_0_demapper_0_0/sim/block_design_0_demapper_0_0.vhd" \
 "../../../bd/block_design_0/ip/block_design_0_deinterleaver_0_0/sim/block_design_0_deinterleaver_0_0.vhd" \
 "../../../bd/block_design_0/ip/block_design_0_viterbi_hard_0_0/sim/block_design_0_viterbi_hard_0_0.vhd" \
+"../../../bd/block_design_0/ip/block_design_0_descrambler_0_0/sim/block_design_0_descrambler_0_0.vhd" \
+"../../../bd/block_design_0/ip/block_design_0_output_ser2par_0_0/sim/block_design_0_output_ser2par_0_0.vhd" \
 "../../../bd/block_design_0/sim/block_design_0.vhd" \
 
 vlog -work xil_defaultlib \
