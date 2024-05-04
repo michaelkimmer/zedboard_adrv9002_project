@@ -2,8 +2,8 @@
 //Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-//Date        : Fri May  3 16:06:21 2024
-//Host        : lab817_01 running 64-bit major release  (build 9200)
+//Date        : Sat May  4 02:56:54 2024
+//Host        : ASUS_ROG running 64-bit major release  (build 9200)
 //Command     : generate_target system.bd
 //Design      : system
 //Purpose     : IP block netlist
@@ -2331,7 +2331,7 @@ module s00_couplers_imp_WZLZH6
         .s_axi_wvalid(s00_couplers_to_auto_pc_WVALID));
 endmodule
 
-(* CORE_GENERATION_INFO = "system,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=system,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=47,numReposBlks=31,numNonXlnxBlks=17,numHierBlks=16,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=2,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "system.hwdef" *) 
+(* core_generation_info = "system,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=system,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=47,numReposBlks=31,numNonXlnxBlks=17,numHierBlks=16,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=2,synth_mode=Hierarchical}" *) (* hw_handoff = "system.hwdef" *) 
 module system
    (LEDS,
     SW,
@@ -2460,27 +2460,27 @@ module system
   output adc2_div_clk;
   output dac1_div_clk;
   output dac2_div_clk;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 ddr ADDR" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME ddr, AXI_ARBITRATION_SCHEME TDM, BURST_LENGTH 8, CAN_DEBUG false, CAS_LATENCY 11, CAS_WRITE_LATENCY 11, CS_ENABLED true, DATA_MASK_ENABLED true, DATA_WIDTH 8, MEMORY_TYPE COMPONENTS, MEM_ADDR_MAP ROW_COLUMN_BANK, SLOT Single, TIMEPERIOD_PS 1250" *) inout [14:0]ddr_addr;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 ddr BA" *) inout [2:0]ddr_ba;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 ddr CAS_N" *) inout ddr_cas_n;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 ddr CK_N" *) inout ddr_ck_n;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 ddr CK_P" *) inout ddr_ck_p;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 ddr CKE" *) inout ddr_cke;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 ddr CS_N" *) inout ddr_cs_n;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 ddr DM" *) inout [3:0]ddr_dm;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 ddr DQ" *) inout [31:0]ddr_dq;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 ddr DQS_N" *) inout [3:0]ddr_dqs_n;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 ddr DQS_P" *) inout [3:0]ddr_dqs_p;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 ddr ODT" *) inout ddr_odt;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 ddr RAS_N" *) inout ddr_ras_n;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 ddr RESET_N" *) inout ddr_reset_n;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 ddr WE_N" *) inout ddr_we_n;
-  (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 fixed_io DDR_VRN" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME fixed_io, CAN_DEBUG false" *) inout fixed_io_ddr_vrn;
-  (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 fixed_io DDR_VRP" *) inout fixed_io_ddr_vrp;
-  (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 fixed_io MIO" *) inout [53:0]fixed_io_mio;
-  (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 fixed_io PS_CLK" *) inout fixed_io_ps_clk;
-  (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 fixed_io PS_PORB" *) inout fixed_io_ps_porb;
-  (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 fixed_io PS_SRSTB" *) inout fixed_io_ps_srstb;
+  (* x_interface_info = "xilinx.com:interface:ddrx:1.0 ddr ADDR" *) (* x_interface_parameter = "XIL_INTERFACENAME ddr, AXI_ARBITRATION_SCHEME TDM, BURST_LENGTH 8, CAN_DEBUG false, CAS_LATENCY 11, CAS_WRITE_LATENCY 11, CS_ENABLED true, DATA_MASK_ENABLED true, DATA_WIDTH 8, MEMORY_TYPE COMPONENTS, MEM_ADDR_MAP ROW_COLUMN_BANK, SLOT Single, TIMEPERIOD_PS 1250" *) inout [14:0]ddr_addr;
+  (* x_interface_info = "xilinx.com:interface:ddrx:1.0 ddr BA" *) inout [2:0]ddr_ba;
+  (* x_interface_info = "xilinx.com:interface:ddrx:1.0 ddr CAS_N" *) inout ddr_cas_n;
+  (* x_interface_info = "xilinx.com:interface:ddrx:1.0 ddr CK_N" *) inout ddr_ck_n;
+  (* x_interface_info = "xilinx.com:interface:ddrx:1.0 ddr CK_P" *) inout ddr_ck_p;
+  (* x_interface_info = "xilinx.com:interface:ddrx:1.0 ddr CKE" *) inout ddr_cke;
+  (* x_interface_info = "xilinx.com:interface:ddrx:1.0 ddr CS_N" *) inout ddr_cs_n;
+  (* x_interface_info = "xilinx.com:interface:ddrx:1.0 ddr DM" *) inout [3:0]ddr_dm;
+  (* x_interface_info = "xilinx.com:interface:ddrx:1.0 ddr DQ" *) inout [31:0]ddr_dq;
+  (* x_interface_info = "xilinx.com:interface:ddrx:1.0 ddr DQS_N" *) inout [3:0]ddr_dqs_n;
+  (* x_interface_info = "xilinx.com:interface:ddrx:1.0 ddr DQS_P" *) inout [3:0]ddr_dqs_p;
+  (* x_interface_info = "xilinx.com:interface:ddrx:1.0 ddr ODT" *) inout ddr_odt;
+  (* x_interface_info = "xilinx.com:interface:ddrx:1.0 ddr RAS_N" *) inout ddr_ras_n;
+  (* x_interface_info = "xilinx.com:interface:ddrx:1.0 ddr RESET_N" *) inout ddr_reset_n;
+  (* x_interface_info = "xilinx.com:interface:ddrx:1.0 ddr WE_N" *) inout ddr_we_n;
+  (* x_interface_info = "xilinx.com:display_processing_system7:fixedio:1.0 fixed_io DDR_VRN" *) (* x_interface_parameter = "XIL_INTERFACENAME fixed_io, CAN_DEBUG false" *) inout fixed_io_ddr_vrn;
+  (* x_interface_info = "xilinx.com:display_processing_system7:fixedio:1.0 fixed_io DDR_VRP" *) inout fixed_io_ddr_vrp;
+  (* x_interface_info = "xilinx.com:display_processing_system7:fixedio:1.0 fixed_io MIO" *) inout [53:0]fixed_io_mio;
+  (* x_interface_info = "xilinx.com:display_processing_system7:fixedio:1.0 fixed_io PS_CLK" *) inout fixed_io_ps_clk;
+  (* x_interface_info = "xilinx.com:display_processing_system7:fixedio:1.0 fixed_io PS_PORB" *) inout fixed_io_ps_porb;
+  (* x_interface_info = "xilinx.com:display_processing_system7:fixedio:1.0 fixed_io PS_SRSTB" *) inout fixed_io_ps_srstb;
   input [63:0]gpio_i;
   output [63:0]gpio_o;
   input gpio_rx1_enable_in;
@@ -2493,17 +2493,17 @@ module system
   output hdmi_hsync;
   output hdmi_out_clk;
   output hdmi_vsync;
-  (* X_INTERFACE_INFO = "analog.com:interface:i2s:1.0 i2s BCLK" *) output [0:0]i2s_bclk;
-  (* X_INTERFACE_INFO = "analog.com:interface:i2s:1.0 i2s LRCLK" *) output [0:0]i2s_lrclk;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.I2S_MCLK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.I2S_MCLK, CLK_DOMAIN system_sys_audio_clkgen_0_clk_out1, FREQ_HZ 12287988, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0" *) output i2s_mclk;
-  (* X_INTERFACE_INFO = "analog.com:interface:i2s:1.0 i2s SDATA_IN" *) input [0:0]i2s_sdata_in;
-  (* X_INTERFACE_INFO = "analog.com:interface:i2s:1.0 i2s SDATA_OUT" *) output [0:0]i2s_sdata_out;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 iic_fmc SCL_I" *) input iic_fmc_scl_i;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 iic_fmc SCL_O" *) output iic_fmc_scl_o;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 iic_fmc SCL_T" *) output iic_fmc_scl_t;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 iic_fmc SDA_I" *) input iic_fmc_sda_i;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 iic_fmc SDA_O" *) output iic_fmc_sda_o;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 iic_fmc SDA_T" *) output iic_fmc_sda_t;
+  (* x_interface_info = "analog.com:interface:i2s:1.0 i2s BCLK" *) output [0:0]i2s_bclk;
+  (* x_interface_info = "analog.com:interface:i2s:1.0 i2s LRCLK" *) output [0:0]i2s_lrclk;
+  (* x_interface_info = "xilinx.com:signal:clock:1.0 CLK.I2S_MCLK CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME CLK.I2S_MCLK, CLK_DOMAIN system_sys_audio_clkgen_0_clk_out1, FREQ_HZ 12287988, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0" *) output i2s_mclk;
+  (* x_interface_info = "analog.com:interface:i2s:1.0 i2s SDATA_IN" *) input [0:0]i2s_sdata_in;
+  (* x_interface_info = "analog.com:interface:i2s:1.0 i2s SDATA_OUT" *) output [0:0]i2s_sdata_out;
+  (* x_interface_info = "xilinx.com:interface:iic:1.0 iic_fmc SCL_I" *) input iic_fmc_scl_i;
+  (* x_interface_info = "xilinx.com:interface:iic:1.0 iic_fmc SCL_O" *) output iic_fmc_scl_o;
+  (* x_interface_info = "xilinx.com:interface:iic:1.0 iic_fmc SCL_T" *) output iic_fmc_scl_t;
+  (* x_interface_info = "xilinx.com:interface:iic:1.0 iic_fmc SDA_I" *) input iic_fmc_sda_i;
+  (* x_interface_info = "xilinx.com:interface:iic:1.0 iic_fmc SDA_O" *) output iic_fmc_sda_o;
+  (* x_interface_info = "xilinx.com:interface:iic:1.0 iic_fmc SDA_T" *) output iic_fmc_sda_t;
   input [1:0]iic_mux_scl_i;
   output [1:0]iic_mux_scl_o;
   output iic_mux_scl_t;
@@ -3332,12 +3332,12 @@ module system
         .RX_VALID(axi_adrv9001_adc_1_valid_i0),
         .SW(SW_0_1),
         .s00_axi_aclk(sys_cpu_clk),
-        .s00_axi_araddr(axi_cpu_interconnect_M13_AXI_ARADDR[10:0]),
+        .s00_axi_araddr(axi_cpu_interconnect_M13_AXI_ARADDR[13:0]),
         .s00_axi_aresetn(sys_cpu_resetn),
         .s00_axi_arprot(axi_cpu_interconnect_M13_AXI_ARPROT),
         .s00_axi_arready(axi_cpu_interconnect_M13_AXI_ARREADY),
         .s00_axi_arvalid(axi_cpu_interconnect_M13_AXI_ARVALID),
-        .s00_axi_awaddr(axi_cpu_interconnect_M13_AXI_AWADDR[10:0]),
+        .s00_axi_awaddr(axi_cpu_interconnect_M13_AXI_AWADDR[13:0]),
         .s00_axi_awprot(axi_cpu_interconnect_M13_AXI_AWPROT),
         .s00_axi_awready(axi_cpu_interconnect_M13_AXI_AWREADY),
         .s00_axi_awvalid(axi_cpu_interconnect_M13_AXI_AWVALID),

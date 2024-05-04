@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x61C54499760442DF",
+      "boundary_crc": "0x358C01C2D7AA0B96",
       "device": "xc7z020clg484-1",
       "gen_directory": "../../../../edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0",
       "name": "block_design_0",
@@ -43,7 +43,114 @@
       "deinterleaver_0": "",
       "viterbi_hard_0": "",
       "descrambler_0": "",
-      "output_ser2par_0": ""
+      "output_ser2par_0": "",
+      "blk_mem_gen_0": ""
+    },
+    "interface_ports": {
+      "BRAM_PORTA": {
+        "mode": "Slave",
+        "vlnv_bus_definition": "xilinx.com:interface:bram:1.0",
+        "vlnv": "xilinx.com:interface:bram_rtl:1.0",
+        "parameters": {
+          "MASTER_TYPE": {
+            "value": "OTHER",
+            "value_src": "default"
+          },
+          "MEM_ECC": {
+            "value": "NONE",
+            "value_src": "default"
+          },
+          "MEM_SIZE": {
+            "value": "8192",
+            "value_src": "default"
+          },
+          "MEM_WIDTH": {
+            "value": "32",
+            "value_src": "default"
+          },
+          "READ_LATENCY": {
+            "value": "1",
+            "value_src": "default"
+          }
+        },
+        "port_maps": {
+          "ADDR": {
+            "physical_name": "BRAM_PORTA_addr",
+            "direction": "I",
+            "left": "11",
+            "right": "0"
+          },
+          "CLK": {
+            "physical_name": "BRAM_PORTA_clk",
+            "direction": "I"
+          },
+          "DIN": {
+            "physical_name": "BRAM_PORTA_din",
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "EN": {
+            "physical_name": "BRAM_PORTA_en",
+            "direction": "I"
+          },
+          "WE": {
+            "physical_name": "BRAM_PORTA_we",
+            "direction": "I",
+            "left": "0",
+            "right": "0"
+          }
+        }
+      },
+      "BRAM_PORTB": {
+        "mode": "Slave",
+        "vlnv_bus_definition": "xilinx.com:interface:bram:1.0",
+        "vlnv": "xilinx.com:interface:bram_rtl:1.0",
+        "parameters": {
+          "MASTER_TYPE": {
+            "value": "OTHER",
+            "value_src": "default"
+          },
+          "MEM_ECC": {
+            "value": "NONE",
+            "value_src": "default"
+          },
+          "MEM_SIZE": {
+            "value": "8192",
+            "value_src": "default"
+          },
+          "MEM_WIDTH": {
+            "value": "32",
+            "value_src": "default"
+          },
+          "READ_LATENCY": {
+            "value": "1",
+            "value_src": "default"
+          }
+        },
+        "port_maps": {
+          "ADDR": {
+            "physical_name": "BRAM_PORTB_addr",
+            "direction": "I",
+            "left": "11",
+            "right": "0"
+          },
+          "CLK": {
+            "physical_name": "BRAM_PORTB_clk",
+            "direction": "I"
+          },
+          "DOUT": {
+            "physical_name": "BRAM_PORTB_dout",
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "EN": {
+            "physical_name": "BRAM_PORTB_en",
+            "direction": "I"
+          }
+        }
+      }
     },
     "ports": {
       "RESET": {
@@ -181,7 +288,7 @@
     "components": {
       "rx_clock_domain_cros_0": {
         "vlnv": "xilinx.com:module_ref:rx_clock_domain_crossing:1.0",
-        "ip_revision": "1714744544",
+        "ip_revision": "1714748437",
         "xci_name": "block_design_0_rx_clock_domain_cros_0_0",
         "xci_path": "ip\\block_design_0_rx_clock_domain_cros_0_0\\block_design_0_rx_clock_domain_cros_0_0.xci",
         "inst_hier_path": "rx_clock_domain_cros_0",
@@ -264,7 +371,7 @@
       },
       "data_interleaver_0": {
         "vlnv": "xilinx.com:module_ref:data_interleaver:1.0",
-        "ip_revision": "1714744534",
+        "ip_revision": "1714748421",
         "xci_name": "block_design_0_data_interleaver_0_0",
         "xci_path": "ip\\block_design_0_data_interleaver_0_0\\block_design_0_data_interleaver_0_0.xci",
         "inst_hier_path": "data_interleaver_0",
@@ -322,7 +429,7 @@
       },
       "data_delay_0": {
         "vlnv": "xilinx.com:module_ref:data_delay:1.0",
-        "ip_revision": "1714744534",
+        "ip_revision": "1714748423",
         "xci_name": "block_design_0_data_delay_0_0",
         "xci_path": "ip\\block_design_0_data_delay_0_0\\block_design_0_data_delay_0_0.xci",
         "inst_hier_path": "data_delay_0",
@@ -420,7 +527,7 @@
       },
       "act_power_0": {
         "vlnv": "xilinx.com:module_ref:act_power:1.0",
-        "ip_revision": "1714744535",
+        "ip_revision": "1714748425",
         "xci_name": "block_design_0_act_power_0_0",
         "xci_path": "ip\\block_design_0_act_power_0_0\\block_design_0_act_power_0_0.xci",
         "inst_hier_path": "act_power_0",
@@ -473,7 +580,7 @@
       },
       "timing_acquisition_8_0": {
         "vlnv": "xilinx.com:module_ref:timing_acquisition_802_11p:1.0",
-        "ip_revision": "1714744536",
+        "ip_revision": "1714748422",
         "xci_name": "block_design_0_timing_acquisition_8_0_0",
         "xci_path": "ip\\block_design_0_timing_acquisition_8_0_0\\block_design_0_timing_acquisition_8_0_0.xci",
         "inst_hier_path": "timing_acquisition_8_0",
@@ -655,7 +762,7 @@
         "components": {
           "fft_ofdm_0": {
             "vlnv": "xilinx.com:module_ref:fft_ofdm:1.0",
-            "ip_revision": "1714744538",
+            "ip_revision": "1714748420",
             "xci_name": "block_design_0_fft_ofdm_0_1",
             "xci_path": "ip\\block_design_0_fft_ofdm_0_1\\block_design_0_fft_ofdm_0_1.xci",
             "inst_hier_path": "hier_fft_ofdm/fft_ofdm_0",
@@ -1267,7 +1374,7 @@
           },
           "atan_block_0": {
             "vlnv": "xilinx.com:module_ref:atan_block:1.0",
-            "ip_revision": "1714744533",
+            "ip_revision": "1714748427",
             "xci_name": "block_design_0_atan_block_0_0",
             "xci_path": "ip\\block_design_0_atan_block_0_0\\block_design_0_atan_block_0_0.xci",
             "inst_hier_path": "hier_atan/atan_block_0",
@@ -1650,7 +1757,7 @@
         "components": {
           "rotation_block_0": {
             "vlnv": "xilinx.com:module_ref:rotation_block:1.0",
-            "ip_revision": "1714744537",
+            "ip_revision": "1714748428",
             "xci_name": "block_design_0_rotation_block_0_0",
             "xci_path": "ip\\block_design_0_rotation_block_0_0\\block_design_0_rotation_block_0_0.xci",
             "inst_hier_path": "hier_rotation/rotation_block_0",
@@ -2133,7 +2240,7 @@
       },
       "equalizer_time_frequ_0": {
         "vlnv": "xilinx.com:module_ref:equalizer_time_frequency:1.0",
-        "ip_revision": "1714744536",
+        "ip_revision": "1714748424",
         "xci_name": "block_design_0_equalizer_time_frequ_0_0",
         "xci_path": "ip\\block_design_0_equalizer_time_frequ_0_0\\block_design_0_equalizer_time_frequ_0_0.xci",
         "inst_hier_path": "equalizer_time_frequ_0",
@@ -2288,7 +2395,7 @@
       },
       "axi_regs_mux_0": {
         "vlnv": "xilinx.com:module_ref:axi_regs_mux:1.0",
-        "ip_revision": "1714744532",
+        "ip_revision": "1714774844",
         "xci_name": "block_design_0_axi_regs_mux_0_0",
         "xci_path": "ip\\block_design_0_axi_regs_mux_0_0\\block_design_0_axi_regs_mux_0_0.xci",
         "inst_hier_path": "axi_regs_mux_0",
@@ -2471,7 +2578,7 @@
         "components": {
           "atan_constellation_b_0": {
             "vlnv": "xilinx.com:module_ref:atan_constellation_block:1.0",
-            "ip_revision": "1714744539",
+            "ip_revision": "1714748430",
             "xci_name": "block_design_0_atan_constellation_b_0_0",
             "xci_path": "ip\\block_design_0_atan_constellation_b_0_0\\block_design_0_atan_constellation_b_0_0.xci",
             "inst_hier_path": "hier_atan_constellation/atan_constellation_b_0",
@@ -2964,7 +3071,7 @@
           },
           "rotation_constellati_0": {
             "vlnv": "xilinx.com:module_ref:rotation_constellation_block:1.0",
-            "ip_revision": "1714744538",
+            "ip_revision": "1714748431",
             "xci_name": "block_design_0_rotation_constellati_0_0",
             "xci_path": "ip\\block_design_0_rotation_constellati_0_0\\block_design_0_rotation_constellati_0_0.xci",
             "inst_hier_path": "hier_rotation_constellation/rotation_constellati_0",
@@ -3419,7 +3526,7 @@
       },
       "constellation_tracker_0": {
         "vlnv": "xilinx.com:module_ref:constellation_tracker:1.0",
-        "ip_revision": "1714744540",
+        "ip_revision": "1714748432",
         "xci_name": "block_design_0_constellation_tracker_0_0",
         "xci_path": "ip\\block_design_0_constellation_tracker_0_0\\block_design_0_constellation_tracker_0_0.xci",
         "inst_hier_path": "constellation_tracker_0",
@@ -3558,7 +3665,7 @@
       },
       "demapper_0": {
         "vlnv": "xilinx.com:module_ref:demapper:1.0",
-        "ip_revision": "1714744541",
+        "ip_revision": "1714748433",
         "xci_name": "block_design_0_demapper_0_0",
         "xci_path": "ip\\block_design_0_demapper_0_0\\block_design_0_demapper_0_0.xci",
         "inst_hier_path": "demapper_0",
@@ -3632,7 +3739,7 @@
       },
       "deinterleaver_0": {
         "vlnv": "xilinx.com:module_ref:deinterleaver:1.0",
-        "ip_revision": "1714744541",
+        "ip_revision": "1714748434",
         "xci_name": "block_design_0_deinterleaver_0_0",
         "xci_path": "ip\\block_design_0_deinterleaver_0_0\\block_design_0_deinterleaver_0_0.xci",
         "inst_hier_path": "deinterleaver_0",
@@ -3706,7 +3813,7 @@
       },
       "viterbi_hard_0": {
         "vlnv": "xilinx.com:module_ref:viterbi_hard:1.0",
-        "ip_revision": "1714744542",
+        "ip_revision": "1714748435",
         "xci_name": "block_design_0_viterbi_hard_0_0",
         "xci_path": "ip\\block_design_0_viterbi_hard_0_0\\block_design_0_viterbi_hard_0_0.xci",
         "inst_hier_path": "viterbi_hard_0",
@@ -3776,7 +3883,7 @@
       },
       "descrambler_0": {
         "vlnv": "xilinx.com:module_ref:descrambler:1.0",
-        "ip_revision": "1714744543",
+        "ip_revision": "1714748414",
         "xci_name": "block_design_0_descrambler_0_0",
         "xci_path": "ip\\block_design_0_descrambler_0_0\\block_design_0_descrambler_0_0.xci",
         "inst_hier_path": "descrambler_0",
@@ -3829,7 +3936,7 @@
       },
       "output_ser2par_0": {
         "vlnv": "xilinx.com:module_ref:output_ser2par:1.0",
-        "ip_revision": "1714744543",
+        "ip_revision": "1714748436",
         "xci_name": "block_design_0_output_ser2par_0_0",
         "xci_path": "ip\\block_design_0_output_ser2par_0_0\\block_design_0_output_ser2par_0_0.xci",
         "inst_hier_path": "output_ser2par_0",
@@ -3875,6 +3982,62 @@
             "direction": "O"
           }
         }
+      },
+      "blk_mem_gen_0": {
+        "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
+        "ip_revision": "7",
+        "xci_name": "block_design_0_blk_mem_gen_0_0",
+        "xci_path": "ip\\block_design_0_blk_mem_gen_0_0\\block_design_0_blk_mem_gen_0_0.xci",
+        "inst_hier_path": "blk_mem_gen_0",
+        "parameters": {
+          "Assume_Synchronous_Clk": {
+            "value": "true"
+          },
+          "Collision_Warnings": {
+            "value": "ALL"
+          },
+          "Disable_Collision_Warnings": {
+            "value": "false"
+          },
+          "Fill_Remaining_Memory_Locations": {
+            "value": "true"
+          },
+          "Memory_Type": {
+            "value": "Simple_Dual_Port_RAM"
+          },
+          "Operating_Mode_A": {
+            "value": "READ_FIRST"
+          },
+          "Register_PortB_Output_of_Memory_Primitives": {
+            "value": "false"
+          },
+          "Use_RSTB_Pin": {
+            "value": "false"
+          },
+          "Write_Depth_A": {
+            "value": "4096"
+          },
+          "ecctype": {
+            "value": "No_ECC"
+          },
+          "use_bram_block": {
+            "value": "Stand_Alone"
+          }
+        }
+      }
+    },
+    "interface_nets": {
+      "BRAM_PORTA_0_1": {
+        "interface_ports": [
+          "BRAM_PORTA",
+          "blk_mem_gen_0/BRAM_PORTA"
+        ]
+      },
+      "BRAM_PORTB_0_1": {
+        "interface_ports": [
+          "BRAM_PORTB",
+          "blk_mem_gen_0/BRAM_PORTB"
+        ]
       }
     },
     "nets": {
@@ -3886,19 +4049,19 @@
           "hier_rotation/CLOCK",
           "hier_atan_constellation/CLOCK",
           "hier_rotation_constellation/CLOCK",
-          "axi_regs_mux_0/CLOCK",
+          "descrambler_0/CLOCK",
           "data_interleaver_0/CLOCK",
-          "data_delay_0/CLOCK",
-          "act_power_0/CLOCK",
-          "equalizer_time_frequ_0/CLOCK",
           "timing_acquisition_8_0/CLOCK",
+          "data_delay_0/CLOCK",
+          "equalizer_time_frequ_0/CLOCK",
+          "act_power_0/CLOCK",
           "constellation_tracker_0/CLOCK",
           "demapper_0/CLOCK",
           "deinterleaver_0/CLOCK",
           "viterbi_hard_0/CLOCK",
-          "descrambler_0/CLOCK",
           "output_ser2par_0/CLOCK",
-          "rx_clock_domain_cros_0/CLOCK"
+          "rx_clock_domain_cros_0/CLOCK",
+          "axi_regs_mux_0/CLOCK"
         ]
       },
       "DETECTION_THRESHOLD_0_1": {
@@ -3915,19 +4078,19 @@
           "hier_rotation/RESET",
           "hier_atan_constellation/RESET",
           "hier_rotation_constellation/RESET",
-          "axi_regs_mux_0/RESET",
+          "descrambler_0/RESET",
           "data_interleaver_0/RESET",
-          "data_delay_0/RESET",
-          "act_power_0/RESET",
-          "equalizer_time_frequ_0/RESET",
           "timing_acquisition_8_0/RESET",
+          "data_delay_0/RESET",
+          "equalizer_time_frequ_0/RESET",
+          "act_power_0/RESET",
           "constellation_tracker_0/RESET",
           "demapper_0/RESET",
           "deinterleaver_0/RESET",
           "viterbi_hard_0/RESET",
-          "descrambler_0/RESET",
           "output_ser2par_0/RESET",
-          "rx_clock_domain_cros_0/RESET"
+          "rx_clock_domain_cros_0/RESET",
+          "axi_regs_mux_0/RESET"
         ]
       },
       "RX_CLOCK_0_1": {
@@ -4017,29 +4180,29 @@
       "constellation_tracker_0_CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER": {
         "ports": [
           "constellation_tracker_0/CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER",
-          "axi_regs_mux_0/CONSTELLATION_DATA_FIRST_SYMBOL_MARKER",
-          "demapper_0/CONSTELLATION_DATA_IN_FIRST_SYMBOL_MARKER"
+          "demapper_0/CONSTELLATION_DATA_IN_FIRST_SYMBOL_MARKER",
+          "axi_regs_mux_0/CONSTELLATION_DATA_FIRST_SYMBOL_MARKER"
         ]
       },
       "constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID": {
         "ports": [
           "constellation_tracker_0/CONSTELLATION_DATA_OUT_VALID",
-          "axi_regs_mux_0/CONSTELLATION_DATA_VALID",
-          "demapper_0/CONSTELLATION_DATA_IN_VALID"
+          "demapper_0/CONSTELLATION_DATA_IN_VALID",
+          "axi_regs_mux_0/CONSTELLATION_DATA_VALID"
         ]
       },
       "constellation_tracker_0_CONSTELLATION_IDATA_OUT": {
         "ports": [
           "constellation_tracker_0/CONSTELLATION_IDATA_OUT",
-          "axi_regs_mux_0/CONSTELLATION_IDATA",
-          "demapper_0/CONSTELLATION_IDATA_IN"
+          "demapper_0/CONSTELLATION_IDATA_IN",
+          "axi_regs_mux_0/CONSTELLATION_IDATA"
         ]
       },
       "constellation_tracker_0_CONSTELLATION_QDATA_OUT": {
         "ports": [
           "constellation_tracker_0/CONSTELLATION_QDATA_OUT",
-          "axi_regs_mux_0/CONSTELLATION_QDATA",
-          "demapper_0/CONSTELLATION_QDATA_IN"
+          "demapper_0/CONSTELLATION_QDATA_IN",
+          "axi_regs_mux_0/CONSTELLATION_QDATA"
         ]
       },
       "constellation_tracker_0_ROTATION_CONSTELLATION_CNTR_IN": {
@@ -4075,19 +4238,19 @@
       "data_delay_0_DATA_OUT_STROBE": {
         "ports": [
           "data_delay_0/DATA_OUT_STROBE",
-          "axi_regs_mux_0/DATA_STROBE",
-          "act_power_0/DATA_STROBE",
+          "timing_acquisition_8_0/DATA_STROBE",
           "equalizer_time_frequ_0/DATA_IN_STROBE",
-          "timing_acquisition_8_0/DATA_STROBE"
+          "act_power_0/DATA_STROBE",
+          "axi_regs_mux_0/DATA_STROBE"
         ]
       },
       "data_delay_0_IDATA_OUT": {
         "ports": [
           "data_delay_0/IDATA_OUT",
-          "axi_regs_mux_0/IDATA",
-          "act_power_0/IDATA",
+          "timing_acquisition_8_0/IDATA",
           "equalizer_time_frequ_0/IDATA_IN",
-          "timing_acquisition_8_0/IDATA"
+          "act_power_0/IDATA",
+          "axi_regs_mux_0/IDATA"
         ]
       },
       "data_delay_0_IDATA_OUT_DELAY_16": {
@@ -4117,10 +4280,10 @@
       "data_delay_0_QDATA_OUT": {
         "ports": [
           "data_delay_0/QDATA_OUT",
-          "axi_regs_mux_0/QDATA",
-          "act_power_0/QDATA",
+          "timing_acquisition_8_0/QDATA",
           "equalizer_time_frequ_0/QDATA_IN",
-          "timing_acquisition_8_0/QDATA"
+          "act_power_0/QDATA",
+          "axi_regs_mux_0/QDATA"
         ]
       },
       "data_delay_0_QDATA_OUT_DELAY_16": {
@@ -4168,22 +4331,22 @@
       "deinterleaver_0_DEINTERLEAVER_16QAM": {
         "ports": [
           "deinterleaver_0/DEINTERLEAVER_16QAM",
-          "axi_regs_mux_0/DEINTERLEAVER_16QAM",
-          "viterbi_hard_0/DEINTERLEAVER_16QAM"
+          "viterbi_hard_0/DEINTERLEAVER_16QAM",
+          "axi_regs_mux_0/DEINTERLEAVER_16QAM"
         ]
       },
       "deinterleaver_0_DEINTERLEAVER_BPSK": {
         "ports": [
           "deinterleaver_0/DEINTERLEAVER_BPSK",
-          "axi_regs_mux_0/DEINTERLEAVER_BPSK",
-          "viterbi_hard_0/DEINTERLEAVER_BPSK"
+          "viterbi_hard_0/DEINTERLEAVER_BPSK",
+          "axi_regs_mux_0/DEINTERLEAVER_BPSK"
         ]
       },
       "deinterleaver_0_DEINTERLEAVER_QPSK": {
         "ports": [
           "deinterleaver_0/DEINTERLEAVER_QPSK",
-          "axi_regs_mux_0/DEINTERLEAVER_QPSK",
-          "viterbi_hard_0/DEINTERLEAVER_QPSK"
+          "viterbi_hard_0/DEINTERLEAVER_QPSK",
+          "axi_regs_mux_0/DEINTERLEAVER_QPSK"
         ]
       },
       "deinterleaver_0_DEINTERLEAVER_START_MARKER": {
@@ -4195,8 +4358,8 @@
       "deinterleaver_0_DEINTERLEAVER_STROBE": {
         "ports": [
           "deinterleaver_0/DEINTERLEAVER_STROBE",
-          "axi_regs_mux_0/DEINTERLEAVER_STROBE",
-          "viterbi_hard_0/DEINTERLEAVER_STROBE"
+          "viterbi_hard_0/DEINTERLEAVER_STROBE",
+          "axi_regs_mux_0/DEINTERLEAVER_STROBE"
         ]
       },
       "demapper_0_DEMAPPING_16QAM": {
@@ -4316,22 +4479,22 @@
       "fft_ofdm_0_FFT_DATA_OUT_VALID": {
         "ports": [
           "hier_fft_ofdm/FFT_DATA_OUT_VALID",
-          "axi_regs_mux_0/FFT_DATA_VALID",
-          "constellation_tracker_0/FFT_DATA_IN_VALID"
+          "constellation_tracker_0/FFT_DATA_IN_VALID",
+          "axi_regs_mux_0/FFT_DATA_VALID"
         ]
       },
       "fft_ofdm_0_FFT_IDATA_OUT": {
         "ports": [
           "hier_fft_ofdm/FFT_IDATA_OUT",
-          "axi_regs_mux_0/FFT_IDATA",
-          "constellation_tracker_0/FFT_IDATA_IN"
+          "constellation_tracker_0/FFT_IDATA_IN",
+          "axi_regs_mux_0/FFT_IDATA"
         ]
       },
       "fft_ofdm_0_FFT_QDATA_OUT": {
         "ports": [
           "hier_fft_ofdm/FFT_QDATA_OUT",
-          "axi_regs_mux_0/FFT_QDATA",
-          "constellation_tracker_0/FFT_QDATA_IN"
+          "constellation_tracker_0/FFT_QDATA_IN",
+          "axi_regs_mux_0/FFT_QDATA"
         ]
       },
       "hier_atan_ATAN_PHASE_OUT": {
@@ -4367,8 +4530,8 @@
       "hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER": {
         "ports": [
           "hier_fft_ofdm/FFT_DATA_OUT_FIRST_SYMBOL_MARKER",
-          "axi_regs_mux_0/FFT_DATA_FIRST_SYMBOL_MARKER",
-          "constellation_tracker_0/FFT_DATA_IN_FIRST_SYMBOL_MARKER"
+          "constellation_tracker_0/FFT_DATA_IN_FIRST_SYMBOL_MARKER",
+          "axi_regs_mux_0/FFT_DATA_FIRST_SYMBOL_MARKER"
         ]
       },
       "hier_rotation_constellation_ROTATION_CONSTELLATION_DATA_OUT_CNTR": {
@@ -4536,8 +4699,8 @@
       "viterbi_hard_0_VITERBI_RX_ENDED": {
         "ports": [
           "viterbi_hard_0/VITERBI_RX_ENDED",
-          "equalizer_time_frequ_0/STOP_RX_DONE",
-          "descrambler_0/VITERBI_RX_ENDED"
+          "descrambler_0/VITERBI_RX_ENDED",
+          "equalizer_time_frequ_0/STOP_RX_DONE"
         ]
       },
       "viterbi_hard_0_VITERBI_SIGNAL": {
@@ -4549,8 +4712,8 @@
       "viterbi_hard_0_VITERBI_SIGNAL_VALID": {
         "ports": [
           "viterbi_hard_0/VITERBI_SIGNAL_VALID",
-          "axi_regs_mux_0/VITERBI_SIGNAL_VALID",
-          "descrambler_0/VITERBI_SIGNAL_VALID"
+          "descrambler_0/VITERBI_SIGNAL_VALID",
+          "axi_regs_mux_0/VITERBI_SIGNAL_VALID"
         ]
       }
     }

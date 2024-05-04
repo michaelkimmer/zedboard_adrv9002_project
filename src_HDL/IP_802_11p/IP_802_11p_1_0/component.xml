@@ -324,12 +324,15 @@
           <spirit:localName>xilinx_vhdlsynthesis_xilinx_com_ip_ila_6_2__ref_view_fileset</spirit:localName>
         </spirit:fileSetRef>
         <spirit:fileSetRef>
+          <spirit:localName>xilinx_vhdlsynthesis_xilinx_com_ip_blk_mem_gen_8_4__ref_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:fileSetRef>
           <spirit:localName>xilinx_vhdlsynthesis_view_fileset</spirit:localName>
         </spirit:fileSetRef>
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>2168b8fa</spirit:value>
+            <spirit:value>f3c68e9a</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -349,12 +352,15 @@
           <spirit:localName>xilinx_vhdlbehavioralsimulation_xilinx_com_ip_ila_6_2__ref_view_fileset</spirit:localName>
         </spirit:fileSetRef>
         <spirit:fileSetRef>
+          <spirit:localName>xilinx_vhdlbehavioralsimulation_xilinx_com_ip_blk_mem_gen_8_4__ref_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:fileSetRef>
           <spirit:localName>xilinx_vhdlbehavioralsimulation_view_fileset</spirit:localName>
         </spirit:fileSetRef>
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>9ca2d4d7</spirit:value>
+            <spirit:value>8be06878</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -368,7 +374,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>c49889be</spirit:value>
+            <spirit:value>6b5a7d7e</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -382,7 +388,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>080b65eb</spirit:value>
+            <spirit:value>0e5443b4</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -396,7 +402,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>45a2f450</spirit:value>
+            <spirit:value>16328387</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -411,7 +417,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>3ab62111</spirit:value>
+            <spirit:value>d439338c</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -581,7 +587,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S00_AXI_ADDR_WIDTH&apos;)) - 1)">10</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S00_AXI_ADDR_WIDTH&apos;)) - 1)">13</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -744,7 +750,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S00_AXI_ADDR_WIDTH&apos;)) - 1)">10</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S00_AXI_ADDR_WIDTH&apos;)) - 1)">13</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -871,7 +877,7 @@
         <spirit:name>C_S00_AXI_ADDR_WIDTH</spirit:name>
         <spirit:displayName>C S00 AXI ADDR WIDTH</spirit:displayName>
         <spirit:description>Width of S_AXI address bus</spirit:description>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_S00_AXI_ADDR_WIDTH" spirit:order="4" spirit:rangeType="long">11</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_S00_AXI_ADDR_WIDTH" spirit:order="4" spirit:rangeType="long">14</spirit:value>
       </spirit:modelParameter>
     </spirit:modelParameters>
   </spirit:model>
@@ -1077,11 +1083,6 @@
         <spirit:userFileType>CHECKSUM_2c4bb589</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>hdl/IP_802_11p_v1_0.vhd</spirit:name>
-        <spirit:fileType>vhdlSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_143081af</spirit:userFileType>
-      </spirit:file>
-      <spirit:file>
         <spirit:name>../edit_IP_802_11p_v1_0.srcs/sources_802_11p/descrambler.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
@@ -1097,6 +1098,16 @@
         <spirit:name>../edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_output_ser2par_0_0/synth/block_design_0_output_ser2par_0_0.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>CHECKSUM_35f62f12</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>hdl/IP_802_11p_v1_0.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:userFileType>CHECKSUM_143081af</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>../edit_IP_802_11p_v1_0.srcs/sources_1/bd/block_design_0/ip/block_design_0_blk_mem_gen_0_0/block_design_0_blk_mem_gen_0_0.xci</spirit:name>
+        <spirit:userFileType>xci</spirit:userFileType>
+        <spirit:userFileType>CELL_NAME_blk_mem_gen_0</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
@@ -1124,6 +1135,16 @@
       <spirit:vendorExtensions>
         <xilinx:subCoreRef>
           <xilinx:componentRef xilinx:vendor="xilinx.com" xilinx:library="ip" xilinx:name="ila" xilinx:version="6.2">
+            <xilinx:mode xilinx:name="create_mode"/>
+          </xilinx:componentRef>
+        </xilinx:subCoreRef>
+      </spirit:vendorExtensions>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_vhdlsynthesis_xilinx_com_ip_blk_mem_gen_8_4__ref_view_fileset</spirit:name>
+      <spirit:vendorExtensions>
+        <xilinx:subCoreRef>
+          <xilinx:componentRef xilinx:vendor="xilinx.com" xilinx:library="ip" xilinx:name="blk_mem_gen" xilinx:version="8.4">
             <xilinx:mode xilinx:name="create_mode"/>
           </xilinx:componentRef>
         </xilinx:subCoreRef>
@@ -1301,10 +1322,6 @@
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>hdl/IP_802_11p_v1_0.vhd</spirit:name>
-        <spirit:fileType>vhdlSource</spirit:fileType>
-      </spirit:file>
-      <spirit:file>
         <spirit:name>../edit_IP_802_11p_v1_0.srcs/sources_802_11p/descrambler.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
@@ -1319,6 +1336,15 @@
       <spirit:file>
         <spirit:name>../edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_output_ser2par_0_0/sim/block_design_0_output_ser2par_0_0.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>hdl/IP_802_11p_v1_0.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>../edit_IP_802_11p_v1_0.srcs/sources_1/bd/block_design_0/ip/block_design_0_blk_mem_gen_0_0/block_design_0_blk_mem_gen_0_0.xci</spirit:name>
+        <spirit:userFileType>xci</spirit:userFileType>
+        <spirit:userFileType>CELL_NAME_blk_mem_gen_0</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
@@ -1346,6 +1372,16 @@
       <spirit:vendorExtensions>
         <xilinx:subCoreRef>
           <xilinx:componentRef xilinx:vendor="xilinx.com" xilinx:library="ip" xilinx:name="ila" xilinx:version="6.2">
+            <xilinx:mode xilinx:name="create_mode"/>
+          </xilinx:componentRef>
+        </xilinx:subCoreRef>
+      </spirit:vendorExtensions>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_vhdlbehavioralsimulation_xilinx_com_ip_blk_mem_gen_8_4__ref_view_fileset</spirit:name>
+      <spirit:vendorExtensions>
+        <xilinx:subCoreRef>
+          <xilinx:componentRef xilinx:vendor="xilinx.com" xilinx:library="ip" xilinx:name="blk_mem_gen" xilinx:version="8.4">
             <xilinx:mode xilinx:name="create_mode"/>
           </xilinx:componentRef>
         </xilinx:subCoreRef>
@@ -1428,7 +1464,7 @@
       <spirit:name>C_S00_AXI_ADDR_WIDTH</spirit:name>
       <spirit:displayName>C S00 AXI ADDR WIDTH</spirit:displayName>
       <spirit:description>Width of S_AXI address bus</spirit:description>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_S00_AXI_ADDR_WIDTH" spirit:order="4">11</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_S00_AXI_ADDR_WIDTH" spirit:order="4">14</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -1478,17 +1514,17 @@
       <xilinx:xpmLibraries>
         <xilinx:xpmLibrary>XPM_MEMORY</xilinx:xpmLibrary>
       </xilinx:xpmLibraries>
-      <xilinx:coreRevision>33</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2024-05-03T14:03:59Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>36</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2024-05-04T00:52:51Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2023.2.2</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="52e76a8a"/>
       <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="233ead04"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="52789f16"/>
-      <xilinx:checksum xilinx:scope="ports" xilinx:value="50d44012"/>
-      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="4bb1fc3b"/>
-      <xilinx:checksum xilinx:scope="parameters" xilinx:value="33610bed"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="f6b6ca52"/>
+      <xilinx:checksum xilinx:scope="ports" xilinx:value="b1c33d18"/>
+      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="cb9cd76d"/>
+      <xilinx:checksum xilinx:scope="parameters" xilinx:value="98a5b890"/>
     </xilinx:packagingInfo>
   </spirit:vendorExtensions>
 </spirit:component>

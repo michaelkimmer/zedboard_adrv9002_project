@@ -19,6 +19,7 @@ vlib questa_lib/msim/cmpy_v6_0_23
 vlib questa_lib/msim/floating_point_v7_0_22
 vlib questa_lib/msim/xfft_v9_1_11
 vlib questa_lib/msim/cordic_v6_0_21
+vlib questa_lib/msim/blk_mem_gen_v8_4_7
 
 vmap xpm questa_lib/msim/xpm
 vmap xil_defaultlib questa_lib/msim/xil_defaultlib
@@ -38,6 +39,7 @@ vmap cmpy_v6_0_23 questa_lib/msim/cmpy_v6_0_23
 vmap floating_point_v7_0_22 questa_lib/msim/floating_point_v7_0_22
 vmap xfft_v9_1_11 questa_lib/msim/xfft_v9_1_11
 vmap cordic_v6_0_21 questa_lib/msim/cordic_v6_0_21
+vmap blk_mem_gen_v8_4_7 questa_lib/msim/blk_mem_gen_v8_4_7
 
 vlog -work xpm  -incr -mfcu  -sv \
 "C:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv" \
@@ -122,6 +124,12 @@ vcom -work xil_defaultlib  -93  \
 "../../../bd/block_design_0/ip/block_design_0_descrambler_0_0/sim/block_design_0_descrambler_0_0.vhd" \
 "../../../bd/block_design_0/ip/block_design_0_output_ser2par_0_0/sim/block_design_0_output_ser2par_0_0.vhd" \
 "../../../bd/block_design_0/sim/block_design_0.vhd" \
+
+vlog -work blk_mem_gen_v8_4_7  -incr -mfcu  \
+"../../../../edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ipshared/3c0c/simulation/blk_mem_gen_v8_4.v" \
+
+vlog -work xil_defaultlib  -incr -mfcu  \
+"../../../bd/block_design_0/ip/block_design_0_blk_mem_gen_0_0/sim/block_design_0_blk_mem_gen_0_0.v" \
 
 vlog -work xil_defaultlib \
 "glbl.v"

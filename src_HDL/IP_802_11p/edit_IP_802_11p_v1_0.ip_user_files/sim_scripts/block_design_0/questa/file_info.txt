@@ -40,4 +40,6 @@ block_design_0_viterbi_hard_0_0.vhd,vhdl,xil_defaultlib,../../../bd/block_design
 block_design_0_descrambler_0_0.vhd,vhdl,xil_defaultlib,../../../bd/block_design_0/ip/block_design_0_descrambler_0_0/sim/block_design_0_descrambler_0_0.vhd,
 block_design_0_output_ser2par_0_0.vhd,vhdl,xil_defaultlib,../../../bd/block_design_0/ip/block_design_0_output_ser2par_0_0/sim/block_design_0_output_ser2par_0_0.vhd,
 block_design_0.vhd,vhdl,xil_defaultlib,../../../bd/block_design_0/sim/block_design_0.vhd,
+blk_mem_gen_v8_4.v,verilog,blk_mem_gen_v8_4_7,../../../../edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ipshared/3c0c/simulation/blk_mem_gen_v8_4.v,
+block_design_0_blk_mem_gen_0_0.v,verilog,xil_defaultlib,../../../bd/block_design_0/ip/block_design_0_blk_mem_gen_0_0/sim/block_design_0_blk_mem_gen_0_0.v,
 glbl.v,Verilog,xil_defaultlib,glbl.v

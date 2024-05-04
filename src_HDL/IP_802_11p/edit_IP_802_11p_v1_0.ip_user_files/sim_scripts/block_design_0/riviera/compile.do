@@ -22,6 +22,7 @@ vlib riviera/cmpy_v6_0_23
 vlib riviera/floating_point_v7_0_22
 vlib riviera/xfft_v9_1_11
 vlib riviera/cordic_v6_0_21
+vlib riviera/blk_mem_gen_v8_4_7
 
 vmap xpm riviera/xpm
 vmap xil_defaultlib riviera/xil_defaultlib
@@ -41,8 +42,9 @@ vmap cmpy_v6_0_23 riviera/cmpy_v6_0_23
 vmap floating_point_v7_0_22 riviera/floating_point_v7_0_22
 vmap xfft_v9_1_11 riviera/xfft_v9_1_11
 vmap cordic_v6_0_21 riviera/cordic_v6_0_21
+vmap blk_mem_gen_v8_4_7 riviera/blk_mem_gen_v8_4_7
 
-vlog -work xpm  -incr -l xpm -l xil_defaultlib -l xbip_utils_v3_0_12 -l axi_utils_v2_0_8 -l c_reg_fd_v12_0_8 -l xbip_dsp48_wrapper_v3_0_5 -l xbip_pipe_v3_0_8 -l xbip_dsp48_addsub_v3_0_8 -l xbip_addsub_v3_0_8 -l c_addsub_v12_0_17 -l c_mux_bit_v12_0_8 -l c_shift_ram_v12_0_16 -l xbip_bram18k_v3_0_8 -l mult_gen_v12_0_20 -l cmpy_v6_0_23 -l floating_point_v7_0_22 -l xfft_v9_1_11 -l cordic_v6_0_21 \
+vlog -work xpm  -incr -l xpm -l xil_defaultlib -l xbip_utils_v3_0_12 -l axi_utils_v2_0_8 -l c_reg_fd_v12_0_8 -l xbip_dsp48_wrapper_v3_0_5 -l xbip_pipe_v3_0_8 -l xbip_dsp48_addsub_v3_0_8 -l xbip_addsub_v3_0_8 -l c_addsub_v12_0_17 -l c_mux_bit_v12_0_8 -l c_shift_ram_v12_0_16 -l xbip_bram18k_v3_0_8 -l mult_gen_v12_0_20 -l cmpy_v6_0_23 -l floating_point_v7_0_22 -l xfft_v9_1_11 -l cordic_v6_0_21 -l blk_mem_gen_v8_4_7 \
 "C:/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv" \
 
 vcom -work xpm -93  -incr \
@@ -125,6 +127,12 @@ vcom -work xil_defaultlib -93  -incr \
 "../../../bd/block_design_0/ip/block_design_0_descrambler_0_0/sim/block_design_0_descrambler_0_0.vhd" \
 "../../../bd/block_design_0/ip/block_design_0_output_ser2par_0_0/sim/block_design_0_output_ser2par_0_0.vhd" \
 "../../../bd/block_design_0/sim/block_design_0.vhd" \
+
+vlog -work blk_mem_gen_v8_4_7  -incr -v2k5 -l xpm -l xil_defaultlib -l xbip_utils_v3_0_12 -l axi_utils_v2_0_8 -l c_reg_fd_v12_0_8 -l xbip_dsp48_wrapper_v3_0_5 -l xbip_pipe_v3_0_8 -l xbip_dsp48_addsub_v3_0_8 -l xbip_addsub_v3_0_8 -l c_addsub_v12_0_17 -l c_mux_bit_v12_0_8 -l c_shift_ram_v12_0_16 -l xbip_bram18k_v3_0_8 -l mult_gen_v12_0_20 -l cmpy_v6_0_23 -l floating_point_v7_0_22 -l xfft_v9_1_11 -l cordic_v6_0_21 -l blk_mem_gen_v8_4_7 \
+"../../../../edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ipshared/3c0c/simulation/blk_mem_gen_v8_4.v" \
+
+vlog -work xil_defaultlib  -incr -v2k5 -l xpm -l xil_defaultlib -l xbip_utils_v3_0_12 -l axi_utils_v2_0_8 -l c_reg_fd_v12_0_8 -l xbip_dsp48_wrapper_v3_0_5 -l xbip_pipe_v3_0_8 -l xbip_dsp48_addsub_v3_0_8 -l xbip_addsub_v3_0_8 -l c_addsub_v12_0_17 -l c_mux_bit_v12_0_8 -l c_shift_ram_v12_0_16 -l xbip_bram18k_v3_0_8 -l mult_gen_v12_0_20 -l cmpy_v6_0_23 -l floating_point_v7_0_22 -l xfft_v9_1_11 -l cordic_v6_0_21 -l blk_mem_gen_v8_4_7 \
+"../../../bd/block_design_0/ip/block_design_0_blk_mem_gen_0_0/sim/block_design_0_blk_mem_gen_0_0.v" \
 
 vlog -work xil_defaultlib \
 "glbl.v"

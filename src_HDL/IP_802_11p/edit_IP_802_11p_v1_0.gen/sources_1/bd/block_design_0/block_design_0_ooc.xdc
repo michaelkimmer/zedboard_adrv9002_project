@@ -8,5 +8,7 @@
 ################################################################################
 create_clock -name CLOCK -period 10 [get_ports CLOCK]
 create_clock -name RX_CLOCK -period 100 [get_ports RX_CLOCK]
+create_clock -name BRAM_PORTA_clk -period 10 [get_ports BRAM_PORTA_clk]
+create_clock -name BRAM_PORTB_clk -period 10 [get_ports BRAM_PORTB_clk]
 
 ################################################################################
