@@ -4,7 +4,7 @@
     "xci_name": "system_IP_802_11p_0_0",
     "cell_name": "IP_802_11p_0",
     "component_reference": "xilinx.com:user:IP_802_11p:1.0",
-    "ip_revision": "36",
+    "ip_revision": "37",
     "gen_directory": "../../../../../../adrv9001_zed.gen/sources_1/bd/system/ip/system_IP_802_11p_0_0",
     "parameters": {
       "component_parameters": {
@@ -33,7 +33,7 @@
       },
       "runtime_parameters": {
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],
-        "IPREVISION": [ { "value": "36" } ],
+        "IPREVISION": [ { "value": "37" } ],
         "MANAGED": [ { "value": "TRUE" } ],
         "OUTPUTDIR": [ { "value": "../../../../../../adrv9001_zed.gen/sources_1/bd/system/ip/system_IP_802_11p_0_0" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],

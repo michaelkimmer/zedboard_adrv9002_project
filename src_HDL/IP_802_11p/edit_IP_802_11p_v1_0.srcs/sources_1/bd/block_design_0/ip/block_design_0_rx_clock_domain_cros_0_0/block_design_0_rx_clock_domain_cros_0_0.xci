@@ -4,7 +4,7 @@
     "xci_name": "block_design_0_rx_clock_domain_cros_0_0",
     "cell_name": "rx_clock_domain_cros_0",
     "component_reference": "xilinx.com:module_ref:rx_clock_domain_crossing:1.0",
-    "ip_revision": "1714748437",
+    "ip_revision": "1714826168",
     "gen_directory": "../../../../../../edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_rx_clock_domain_cros_0_0",
     "parameters": {
       "component_parameters": {
@@ -29,7 +29,7 @@
       },
       "runtime_parameters": {
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],
-        "IPREVISION": [ { "value": "1714748437" } ],
+        "IPREVISION": [ { "value": "1714826168" } ],
         "MANAGED": [ { "value": "TRUE" } ],
         "OUTPUTDIR": [ { "value": "../../../../../../edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_rx_clock_domain_cros_0_0" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],

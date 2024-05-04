@@ -6,7 +6,7 @@ import numpy as np
 
 # Define axi base address
 AXI_BASE_ADDRESS = 0x50000000
-AXI_ADDRESS_NUM = 1024+16
+AXI_ADDRESS_NUM = 4096
 AXI_ADDRESS_NUM_BYTES = 4*AXI_ADDRESS_NUM
 
 

@@ -123,13 +123,15 @@ vcom -work xil_defaultlib  -93  \
 "../../../bd/block_design_0/ip/block_design_0_viterbi_hard_0_0/sim/block_design_0_viterbi_hard_0_0.vhd" \
 "../../../bd/block_design_0/ip/block_design_0_descrambler_0_0/sim/block_design_0_descrambler_0_0.vhd" \
 "../../../bd/block_design_0/ip/block_design_0_output_ser2par_0_0/sim/block_design_0_output_ser2par_0_0.vhd" \
-"../../../bd/block_design_0/sim/block_design_0.vhd" \
 
 vlog -work blk_mem_gen_v8_4_7  -incr -mfcu  \
 "../../../../edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ipshared/3c0c/simulation/blk_mem_gen_v8_4.v" \
 
 vlog -work xil_defaultlib  -incr -mfcu  \
 "../../../bd/block_design_0/ip/block_design_0_blk_mem_gen_0_0/sim/block_design_0_blk_mem_gen_0_0.v" \
+
+vcom -work xil_defaultlib  -93  \
+"../../../bd/block_design_0/sim/block_design_0.vhd" \
 
 vlog -work xil_defaultlib \
 "glbl.v"

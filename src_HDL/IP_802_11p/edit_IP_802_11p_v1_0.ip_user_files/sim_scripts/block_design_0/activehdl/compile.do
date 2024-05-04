@@ -126,13 +126,15 @@ vcom -work xil_defaultlib -93  \
 "../../../bd/block_design_0/ip/block_design_0_viterbi_hard_0_0/sim/block_design_0_viterbi_hard_0_0.vhd" \
 "../../../bd/block_design_0/ip/block_design_0_descrambler_0_0/sim/block_design_0_descrambler_0_0.vhd" \
 "../../../bd/block_design_0/ip/block_design_0_output_ser2par_0_0/sim/block_design_0_output_ser2par_0_0.vhd" \
-"../../../bd/block_design_0/sim/block_design_0.vhd" \
 
 vlog -work blk_mem_gen_v8_4_7  -v2k5 -l xpm -l xil_defaultlib -l xbip_utils_v3_0_12 -l axi_utils_v2_0_8 -l c_reg_fd_v12_0_8 -l xbip_dsp48_wrapper_v3_0_5 -l xbip_pipe_v3_0_8 -l xbip_dsp48_addsub_v3_0_8 -l xbip_addsub_v3_0_8 -l c_addsub_v12_0_17 -l c_mux_bit_v12_0_8 -l c_shift_ram_v12_0_16 -l xbip_bram18k_v3_0_8 -l mult_gen_v12_0_20 -l cmpy_v6_0_23 -l floating_point_v7_0_22 -l xfft_v9_1_11 -l cordic_v6_0_21 -l blk_mem_gen_v8_4_7 \
 "../../../../edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ipshared/3c0c/simulation/blk_mem_gen_v8_4.v" \
 
 vlog -work xil_defaultlib  -v2k5 -l xpm -l xil_defaultlib -l xbip_utils_v3_0_12 -l axi_utils_v2_0_8 -l c_reg_fd_v12_0_8 -l xbip_dsp48_wrapper_v3_0_5 -l xbip_pipe_v3_0_8 -l xbip_dsp48_addsub_v3_0_8 -l xbip_addsub_v3_0_8 -l c_addsub_v12_0_17 -l c_mux_bit_v12_0_8 -l c_shift_ram_v12_0_16 -l xbip_bram18k_v3_0_8 -l mult_gen_v12_0_20 -l cmpy_v6_0_23 -l floating_point_v7_0_22 -l xfft_v9_1_11 -l cordic_v6_0_21 -l blk_mem_gen_v8_4_7 \
 "../../../bd/block_design_0/ip/block_design_0_blk_mem_gen_0_0/sim/block_design_0_blk_mem_gen_0_0.v" \
+
+vcom -work xil_defaultlib -93  \
+"../../../bd/block_design_0/sim/block_design_0.vhd" \
 
 vlog -work xil_defaultlib \
 "glbl.v"

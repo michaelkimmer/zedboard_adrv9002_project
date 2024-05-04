@@ -21,6 +21,6 @@ block_design_0_deinterleaver_0_0.vhd,vhdl,xil_defaultlib,../../../bd/block_desig
 block_design_0_viterbi_hard_0_0.vhd,vhdl,xil_defaultlib,../../../bd/block_design_0/ip/block_design_0_viterbi_hard_0_0/sim/block_design_0_viterbi_hard_0_0.vhd,
 block_design_0_descrambler_0_0.vhd,vhdl,xil_defaultlib,../../../bd/block_design_0/ip/block_design_0_descrambler_0_0/sim/block_design_0_descrambler_0_0.vhd,
 block_design_0_output_ser2par_0_0.vhd,vhdl,xil_defaultlib,../../../bd/block_design_0/ip/block_design_0_output_ser2par_0_0/sim/block_design_0_output_ser2par_0_0.vhd,
-block_design_0.vhd,vhdl,xil_defaultlib,../../../bd/block_design_0/sim/block_design_0.vhd,
 block_design_0_blk_mem_gen_0_0.v,verilog,xil_defaultlib,../../../bd/block_design_0/ip/block_design_0_blk_mem_gen_0_0/sim/block_design_0_blk_mem_gen_0_0.v,
+block_design_0.vhd,vhdl,xil_defaultlib,../../../bd/block_design_0/sim/block_design_0.vhd,
 glbl.v,Verilog,xil_defaultlib,glbl.v

@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:module_ref:rotation_block:1.0
--- IP Revision: 1714748428
+-- IP Revision: 1714826164
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;

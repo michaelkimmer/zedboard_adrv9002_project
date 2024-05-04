@@ -2,8 +2,8 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
--- Date        : Sat May  4 00:22:55 2024
--- Host        : ASUS_ROG running 64-bit major release  (build 9200)
+-- Date        : Sat May  4 15:39:08 2024
+-- Host        : lab817_01 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_axi_regs_mux_0_0/block_design_0_axi_regs_mux_0_0_stub.vhdl
 -- Design      : block_design_0_axi_regs_mux_0_0
@@ -40,7 +40,7 @@ entity block_design_0_axi_regs_mux_0_0 is
     VITERBI_SIGNAL : in STD_LOGIC_VECTOR ( 31 downto 0 );
     PARALLEL_OUTPUT_VALID : in STD_LOGIC;
     PARALLEL_OUTPUT : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    FPGA_REG_WRITE_ADDRESS : out STD_LOGIC_VECTOR ( 10 downto 0 );
+    FPGA_REG_WRITE_ADDRESS : out STD_LOGIC_VECTOR ( 11 downto 0 );
     FPGA_REG_WRITE_DATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
     FPGA_REG_WRITE_STROBE : out STD_LOGIC
   );
@@ -51,7 +51,7 @@ architecture stub of block_design_0_axi_regs_mux_0_0 is
 attribute syn_black_box : boolean;
 attribute black_box_pad_pin : string;
 attribute syn_black_box of stub : architecture is true;
-attribute black_box_pad_pin of stub : architecture is "RESET,CLOCK,SELECT_AXI_REGS_MODE[7:0],EQUALIZER_REG_WRITE_STROBE_PHASE_1,EQUALIZER_REG_WRITE_STROBE_PHASE_2,EQUALIZER_REG_WRITE_DATA[31:0],DATA_STROBE,IDATA[15:0],QDATA[15:0],FFT_IDATA[23:0],FFT_QDATA[23:0],FFT_DATA_VALID,FFT_DATA_FIRST_SYMBOL_MARKER,CONSTELLATION_IDATA[23:0],CONSTELLATION_QDATA[23:0],CONSTELLATION_DATA_VALID,CONSTELLATION_DATA_FIRST_SYMBOL_MARKER,DEINTERLEAVER_STROBE,DEINTERLEAVER_BPSK[0:47],DEINTERLEAVER_QPSK[0:95],DEINTERLEAVER_16QAM[0:191],VITERBI_SIGNAL_VALID,VITERBI_SIGNAL[31:0],PARALLEL_OUTPUT_VALID,PARALLEL_OUTPUT[31:0],FPGA_REG_WRITE_ADDRESS[10:0],FPGA_REG_WRITE_DATA[31:0],FPGA_REG_WRITE_STROBE";
+attribute black_box_pad_pin of stub : architecture is "RESET,CLOCK,SELECT_AXI_REGS_MODE[7:0],EQUALIZER_REG_WRITE_STROBE_PHASE_1,EQUALIZER_REG_WRITE_STROBE_PHASE_2,EQUALIZER_REG_WRITE_DATA[31:0],DATA_STROBE,IDATA[15:0],QDATA[15:0],FFT_IDATA[23:0],FFT_QDATA[23:0],FFT_DATA_VALID,FFT_DATA_FIRST_SYMBOL_MARKER,CONSTELLATION_IDATA[23:0],CONSTELLATION_QDATA[23:0],CONSTELLATION_DATA_VALID,CONSTELLATION_DATA_FIRST_SYMBOL_MARKER,DEINTERLEAVER_STROBE,DEINTERLEAVER_BPSK[0:47],DEINTERLEAVER_QPSK[0:95],DEINTERLEAVER_16QAM[0:191],VITERBI_SIGNAL_VALID,VITERBI_SIGNAL[31:0],PARALLEL_OUTPUT_VALID,PARALLEL_OUTPUT[31:0],FPGA_REG_WRITE_ADDRESS[11:0],FPGA_REG_WRITE_DATA[31:0],FPGA_REG_WRITE_STROBE";
 attribute x_core_info : string;
 attribute x_core_info of stub : architecture is "axi_regs_mux,Vivado 2023.2.2";
 begin

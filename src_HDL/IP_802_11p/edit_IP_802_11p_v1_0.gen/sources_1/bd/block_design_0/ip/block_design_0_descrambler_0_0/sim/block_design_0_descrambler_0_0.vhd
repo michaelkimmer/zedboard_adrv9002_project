@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:module_ref:descrambler:1.0
--- IP Revision: 1714748414
+-- IP Revision: 1714826167
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;

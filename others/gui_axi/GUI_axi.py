@@ -246,9 +246,9 @@ class Settings_Tab(ttk.Frame):
     def build_input_fileds_matrix(self, root, act_row, buttons_num_rows, buttons_num_cols): 
         # Function to build input fields and buttons
         input_descriptions = ("RX Center Frequency:", "TX Center Frequency:", "Rx Gain:", "TX Attenuation:") #number of viewed fields can be edited in self.__init__()
-        input_default_vals = ("100 MHz", "100 MHz", "0 dB", "0 mdB")
-        input_placeholders = ("Hz", "Hz", "dB", "mdB")
-        input_val_ranges=([25000000, 1, 6000000000-25000000+1], [25000000, 1, 6000000000-25000000+1], [0, 0.5, 255-195+1], [0, 50, 42000//50]) #freq: 25000000..6000000000, RXG: 195..255, TAT: 0..41950
+        input_default_vals = ("100 MHz", "100 MHz", "? dB", "? dB")
+        input_placeholders = ("Hz", "Hz", "dB", "dB")
+        input_val_ranges=([25000000, 1, 6000000000-25000000+1], [25000000, 1, 6000000000-25000000+1], [0, 0.5, 255-195+1], [-42, 0.1, 42*10+1]) #freq: 25000000..6000000000, RXG: 195..255, TAT: 0..41950
         
         # Build descriptor
         description_label = tk.Label(self, text="Edit Frequencies & Gains:", font=("Helvetica", 12))
@@ -590,7 +590,7 @@ class Settings_Tab(ttk.Frame):
 
 
         elif idx == 3:
-            value_tx_gain = value / 1000 # mdB-->dB
+            value_tx_gain = value #dB
 
             # Change TX Attenuation 
             try:
@@ -599,8 +599,8 @@ class Settings_Tab(ttk.Frame):
                 self.log_write_line("Change TX Attenuation: Failed !")
             else:
                 self.log_write_line("Change TX Attenuation: OK")
-                self.input_fields_matrix.value_labels[idx].config(text = f"{value} mdB")
-                self.input_fields_matrix.value_labels[idx].config(text = f"{value} mdB")
+                self.input_fields_matrix.value_labels[idx].config(text = f"{value} dB")
+                self.input_fields_matrix.value_labels[idx].config(text = f"{value} dB")
                 
 
 
