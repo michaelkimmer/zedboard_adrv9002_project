@@ -32,7 +32,11 @@ preamble(length(short_seq_time)) = preamble(length(short_seq_time)) + short_seq_
 %% Set parameters
 % Set DATARATE
 %   6, 9, 12, 18, 24, 36, 48, and 54 (Support of 6, 12, and 24 data rates is mandatory.)
-DATARATE = 6; % --- 6: Coding rate 1/2, BPSK --- 36: Coding rate 3/4, 16-QAM ---
+% Implemented rates:
+% ---  6: Coding rate 1/2, BPSK   ---  9: Coding rate 3/4, BPSK
+% --- 12: Coding rate 1/2, QPSK   --- 18: Coding rate 3/4, QPSK 
+% --- 24: Coding rate 3/4, 16-QAM --- 36: Coding rate 3/4, 16-QAM
+DATARATE = 24; 
 
 %% Create SIGNAL symbol
 %   SIGNAL symbol is not scrambled
@@ -47,8 +51,22 @@ SIGNAL_data = zeros(1, 24); % 24b
 %   RATE (4b) -- R1–R4
 switch DATARATE
     case 6
+        % BPSK, R=1/2
         R1234 = [1, 1, 0, 1];
+    case 9
+         % BPSK, R=3/2
+        R1234 = [1, 1, 1, 1];
+    case 12
+        % QPSK, R=1/2
+        R1234 = [0, 1, 0, 1];
+    case 18
+        % QPSK, R=3/4
+        R1234 = [0, 1, 1, 1];
+    case 24
+        % 16-QAM, R=1/2
+        R1234 = [1, 0, 0, 1];
     case 36
+        % 16-QAM, R=3/4
         R1234 = [1, 0, 1, 1];
     otherwise
         error("This DATARATE is not supported so far");
@@ -91,7 +109,15 @@ TAIL_data = zeros(1, 6);
 % Compute and generate PAD data
 switch DATARATE
     case 6
-        N_DBPS = 48 / 1 * (1/2); % ofdm_data_len * log2(BPSK) * R = 24
+        N_DBPS = 48 * 1 * (1/2); % ofdm_data_len * log2(BPSK) * R = 24
+    case 9
+        N_DBPS = 48 * 1 * (3/4); % ofdm_data_len * log2(BPSK) * R = 36
+    case 12
+        N_DBPS = 48 * 2 * (1/2); % ofdm_data_len * log2(QPSK) * R = 48
+    case 18
+        N_DBPS = 48 * 2 * (3/4); % ofdm_data_len * log2(QPSK) * R = 72
+    case 24
+        N_DBPS = 48 * 4 * (1/2); % ofdm_data_len * log2(16-QAM) * R = 96
     case 36
         N_DBPS = 48 * 4 * (3/4); % ofdm_data_len * log2(16-QAM) * R = 144
     otherwise
@@ -157,7 +183,7 @@ tx_signal(length(preamble)-1+length(SIGNAL_ofdm_modulated_signal)) = tx_signal(l
 filename = "signal_802_11p.txt";
 writematrix(tx_signal.', filename);
 
-%% Write signal to file -- in int16 + zero padded
+%% Write signal to file -- in int16 + zero padded (for Vivado packet simulation)
 max_val = 2^14;
 padding = 100;
 filename_int = "signal_802_11p_int.txt";

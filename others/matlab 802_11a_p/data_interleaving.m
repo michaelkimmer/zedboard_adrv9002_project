@@ -3,18 +3,23 @@ function interleaved_data = data_interleaving(data, DATARATE)
     % All encoded data bits shall be interleaved by a block interleaver
     % with a block size corresponding to the number of bits in a single
     % OFDM symbol N_CBPS 
-    switch DATARATE
-    case 6
-        % BPSK, R=1/2
-        N_CBPS = 48; % Number of coded bits per OFDM symbol, N_CBPS
-        N_BPSC = 1; % Number of coded bits per subcarrier, N_BPSC
-    case 36
-        % 16-QAM, R=3/4
-        N_CBPS = 192; % Number of coded bits per OFDM symbol, N_CBPS
-        N_BPSC = 4; % Number of coded bits per subcarrier, N_BPSC
-    otherwise
-        error("This DATARATE is not supported so far");
+
+    if (DATARATE == 6) || (DATARATE == 9) 
+         % BPSK
+         N_CBPS = 48; % Number of coded bits per OFDM symbol, N_CBPS
+         N_BPSC = 1; % Number of coded bits per subcarrier, N_BPSC
+    elseif (DATARATE == 12) || (DATARATE == 18) 
+         % QPSK
+         N_CBPS = 96; % Number of coded bits per OFDM symbol, N_CBPS
+         N_BPSC = 2; % Number of coded bits per subcarrier, N_BPSC
+    elseif (DATARATE == 24) || (DATARATE == 36) 
+         % 16-QAM
+         N_CBPS = 192; % Number of coded bits per OFDM symbol, N_CBPS
+         N_BPSC = 4; % Number of coded bits per subcarrier, N_BPSC
+    else
+         error("This DATARATE is not supported so far");
     end
+
     assert(mod(length(data), N_CBPS) == 0, "Data have incompatible length")
     
     % Note:

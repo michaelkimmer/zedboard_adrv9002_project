@@ -10,6 +10,33 @@ function modulated_data = modulate_data(data, DATARATE)
         modulated_data(data == 0) = -1;
         modulated_data = KMOD*modulated_data;
 
+    elseif (DATARATE == 12) || (DATARATE == 18) 
+        % QPSK Modulation
+        KMOD = 1/sqrt(2); % Modulation-dependent normalization factor KMOD
+        
+        % for all LSB coded bit pairs (+ in Gray code)
+        assert(mod(length(data), 2) == 0, "QPSK needs data divisible by 2");
+        N_symbols = length(data) / 2;
+        modulated_data = NaN(1, N_symbols);
+        for i_symbol = 1:N_symbols
+            pair_pos = 2*(i_symbol-1); % without +1
+
+            % I-value
+            if data(pair_pos+1) == 0 
+                modulated_data(i_symbol) = -1;
+            else 
+                modulated_data(i_symbol) = +1;
+            end
+            % Q-value
+            if data(pair_pos+2) == 0 
+                modulated_data(i_symbol) = modulated_data(i_symbol) -1i;
+            else
+                modulated_data(i_symbol) = modulated_data(i_symbol) +1i;
+            end
+
+        end
+        modulated_data = KMOD*modulated_data;
+
     elseif (DATARATE == 24) || (DATARATE == 36) 
         % 16-QAM Modulation
         KMOD = 1/sqrt(10); % Modulation-dependent normalization factor KMOD

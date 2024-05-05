@@ -380,7 +380,7 @@ class Settings_Tab(ttk.Frame):
         combobox = ttk.Combobox(self, textvariable=selected_interference) #postcommand executes before opening
         combobox.grid(row=self.act_row, column=1, columnspan=1, padx=5, pady=5)
         combobox['state'] = 'readonly' # prevent typing a value
-        combobox['values'] = ["Tone", "BPSK buffer", "16-QAM buffer", "BPSK buffer (4 symbols)", "16-QAM buffer (4 symbols)"]
+        combobox['values'] = ["Tone", "Packet: BPSK 1/2", "Packet: BPSK 3/4", "Packet: QPSK 1/2", "Packet: QPSK 3/4", "Packet: 16-QAM 1/2", "Packet: 16-QAM 3/4", "Packet: BPSK 1/2 (4 symbols)", "Packet: 16-QAM 3/4 (4 symbols)"]
         combobox.current(0) # set default value
         # build input_fields
         input_field0 = PlaceholderEntry_withValues(self, placeholder="Freq from Center [Hz]", val_range=[-3e6, 1, 2*(3e6)+1])
@@ -604,7 +604,7 @@ class Settings_Tab(ttk.Frame):
                 
 
 
-    # transmitting_kbutton_clicked -- TX Once
+    # transmitting_button_clicked -- TX Once
     def transmitting_button_clicked(self, root, cyclic=False):
         #confirm the entries (the last changed can be not refreshed)
         for entry in (self.transmitting.input_fields[i] for i in [5,6]):
@@ -637,6 +637,7 @@ class Settings_Tab(ttk.Frame):
             root.iio_context.tx_destroy_buffer()
             root.iio_context.disable_dds() # DDS is turned on after destroying cyclic buffer !!
         except:
+            self.log_write_line("TX error -- cannot destroy buffer !")
             return -1
             
         try:
@@ -649,27 +650,59 @@ class Settings_Tab(ttk.Frame):
         except:
             self.log_write_line("Setting (non-)cyclic IIO buffer error !")
             return -1
+
             
         # Generate IQ samples
         if tx_type == "Tone":
             N_iq = 2**22
             iq = np.ones((N_iq))
 
-        elif tx_type == "BPSK buffer":
+        # Tx precomputed valid buffer data
+        elif tx_type == "Packet: BPSK 1/2":
             filename = "./data/signals/signal_802_11p_DATARATE6_j.txt"
             iq = np.loadtxt(filename, dtype=np.complex128)
             iq = np.concatenate((iq, np.zeros(iq.shape))) # pad with zeros
             if fs == 20000000:
                 iq = np.repeat(iq, 2) #Bad sampling freq (20e6 instead of 10e6)
 
-        elif tx_type == "16-QAM buffer":
+        elif tx_type == "Packet: BPSK 3/4":
+            filename = "./data/signals/signal_802_11p_DATARATE9_j.txt"
+            iq = np.loadtxt(filename, dtype=np.complex128)
+            iq = np.concatenate((iq, np.zeros(iq.shape))) # pad with zeros
+            if fs == 20000000:
+                iq = np.repeat(iq, 2) #Bad sampling freq (20e6 instead of 10e6)
+
+        elif tx_type == "Packet: QPSK 1/2":
+            filename = "./data/signals/signal_802_11p_DATARATE12_j.txt"
+            iq = np.loadtxt(filename, dtype=np.complex128)
+            iq = np.concatenate((iq, np.zeros(iq.shape))) # pad with zeros
+            if fs == 20000000:
+                iq = np.repeat(iq, 2) #Bad sampling freq (20e6 instead of 10e6)
+
+        elif tx_type == "Packet: QPSK 3/4":
+            filename = "./data/signals/signal_802_11p_DATARATE18_j.txt"
+            iq = np.loadtxt(filename, dtype=np.complex128)
+            iq = np.concatenate((iq, np.zeros(iq.shape))) # pad with zeros
+            if fs == 20000000:
+                iq = np.repeat(iq, 2) #Bad sampling freq (20e6 instead of 10e6)
+
+        elif tx_type == "Packet: 16-QAM 1/2":
+            filename = "./data/signals/signal_802_11p_DATARATE24_j.txt"
+            iq = np.loadtxt(filename, dtype=np.complex128)
+            iq = np.concatenate((iq, np.zeros(iq.shape))) # pad with zeros
+            if fs == 20000000:
+                iq = np.repeat(iq, 2) #Bad sampling freq (20e6 instead of 10e6)
+
+        elif tx_type == "Packet: 16-QAM 3/4":
             filename = "./data/signals/signal_802_11p_DATARATE36_j.txt"
             iq = np.loadtxt(filename, dtype=np.complex128)
             iq = np.concatenate((iq, np.zeros(iq.shape))) # pad with zeros
             if fs == 20000000:
                 iq = np.repeat(iq, 2) #Bad sampling freq (20e6 instead of 10e6)
 
-        elif tx_type == "BPSK buffer (4 symbols)":
+
+        # Tx just 4 ofdm symbols then cut it
+        elif tx_type == "Packet: BPSK 1/2 (4 symbols)":
             filename = "./data/signals/signal_802_11p_DATARATE6_j.txt"
             sampes_num = 320+4*80
             iq = np.loadtxt(filename, dtype=np.complex128)
@@ -677,7 +710,7 @@ class Settings_Tab(ttk.Frame):
             if fs == 20000000:
                 iq = np.repeat(iq, 2) #Bad sampling freq (20e6 instead of 10e6)
                 
-        elif tx_type == "16-QAM buffer (4 symbols)":
+        elif tx_type == "Packet: 16-QAM 3/4 (4 symbols)":
             filename = "./data/signals/signal_802_11p_DATARATE36_j.txt"
             sampes_num = 320+4*80
             iq = np.loadtxt(filename, dtype=np.complex128)
@@ -692,7 +725,7 @@ class Settings_Tab(ttk.Frame):
 
         # Freq shift
         ts = 1 / float(fs)
-        t = np.arange(0, iq.shape[0] * ts, ts)
+        t = np.linspace(start=0, stop=(iq.shape[0]-1) * ts, num=iq.shape[0])
         iq = iq * np.exp(1j * 2 * np.pi * t * freq_shift)
 
         # Change amplitude
@@ -708,6 +741,7 @@ class Settings_Tab(ttk.Frame):
             return -1
         
         # All OK
+        self.log_write_line("TX ok")
         return 0
         
 
@@ -741,6 +775,8 @@ class Settings_Tab(ttk.Frame):
             except:
                 self.log_write_line("Couldn't destroy IIO buffer !")
                 return
+            else:
+                self.log_write_line("Stop TX ok")
 
             # unlock parameters
             for i in [4,5,6]:
@@ -1492,7 +1528,7 @@ class AXI_Regs_Tab(ttk.Frame):
         description_label.grid(row=self.act_row, column=0, columnspan=1, padx=5, pady=5, sticky="WN") 
         
         # Log of sent items
-        value_label = tk.Text(self, state=tk.DISABLED, width=100, height=2*15, font=("Helvetica", 8)) #width & height not optimal
+        value_label = tk.Text(self, state=tk.DISABLED, width=130, height=3*15, font=("Helvetica", 8)) #width & height not optimal
         value_label.grid(row=self.act_row, column=1, columnspan=4, padx=5, pady=5, sticky="we") 
         
         # Create the Vertical Scrollbar
@@ -1543,8 +1579,8 @@ class AXI_Regs_Tab(ttk.Frame):
         N_data = regs.shape[0]
 
         # Extract the data (Q at MSB !)
-        x_real_int = (regs & 0x0000ffff).astype(np.int16, casting='unsafe') * 2**8 #axi cannot transfer least byte --> rounding
-        x_imag_int = np.right_shift(regs & 0xffff0000, 16).astype(np.int16, casting='unsafe') * 2**8 #axi cannot transfer least byte --> rounding
+        x_real_int = (regs & 0x0000ffff).astype(np.int16, casting='unsafe')                    #Note: axi can transfer only max 32 bits
+        x_imag_int = np.right_shift(regs & 0xffff0000, 16).astype(np.int16, casting='unsafe') 
         
 
         x_real = x_real_int.astype(np.float32, casting='safe')
@@ -1558,7 +1594,21 @@ class AXI_Regs_Tab(ttk.Frame):
         for i in range(N_data):
             hex_val = "00000000" + hex(int(regs[i]))[2:]
             hex_val = hex_val[-8:]
-            self.log_write_line(f"Reg {addresses[0] + i}:\t hex -- 0x{hex_val},\t\t\t uint32 -- {regs[i]},\t\t\t [int16, int16] -- [imag, real] -- [{x_imag_int[i]}, {x_real_int[i]}]")
+
+            string_val_bytes_big = np.frombuffer(regs[i].byteswap().tobytes(), dtype=np.uint8) # 4 bytes (np.uint8) in big-endian byte order
+            string_val_bytes_little = np.packbits(np.unpackbits(string_val_bytes_big, bitorder='big'), bitorder='little') # flip each byte from little to big order !!!!!! (is it already done ???)
+
+
+            # string_val = string_val_bytes_big.tobytes().decode('latin-1') # Extended ascii (breaks the log table)
+            string_val = ""
+            for ch in string_val_bytes_little:
+                if ch >= 32 and ch <= 126:
+                    string_val += chr(ch) # display only displayable chars
+                else:
+                    string_val += "?"
+            
+
+            self.log_write_line(f'Reg {addresses[0] + i}:\t hex -- 0x{hex_val},\t\t\t uint32 -- {regs[i]},\t\t\t [int16, int16] -- [imag, real] -- [{x_imag_int[i]}, {x_real_int[i]}], \t\t\t\t\t\t string(little order) -- "{string_val}"')
             # TODO better format
 
 
