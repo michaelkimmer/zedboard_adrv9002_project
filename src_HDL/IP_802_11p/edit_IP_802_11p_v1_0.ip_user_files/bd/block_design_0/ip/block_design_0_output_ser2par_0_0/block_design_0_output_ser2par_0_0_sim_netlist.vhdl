@@ -2,8 +2,8 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
--- Date        : Sat May  4 15:28:58 2024
--- Host        : lab817_01 running 64-bit major release  (build 9200)
+-- Date        : Sat May  4 23:56:50 2024
+-- Host        : ASUS_ROG running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_output_ser2par_0_0/block_design_0_output_ser2par_0_0_sim_netlist.vhdl
 -- Design      : block_design_0_output_ser2par_0_0
@@ -18,42 +18,87 @@ use UNISIM.VCOMPONENTS.ALL;
 entity block_design_0_output_ser2par_0_0_output_ser2par is
   port (
     PARALLEL_OUTPUT : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    PARALLEL_OUTPUT_LAST : out STD_LOGIC;
     PARALLEL_OUTPUT_VALID : out STD_LOGIC;
-    DESCRAMBLED_OUTPUT_VALID : in STD_LOGIC;
     RESET : in STD_LOGIC;
+    DESCRAMBLED_OUTPUT_LAST : in STD_LOGIC;
+    DESCRAMBLED_OUTPUT_VALID : in STD_LOGIC;
     CLOCK : in STD_LOGIC;
     DESCRAMBLED_OUTPUT : in STD_LOGIC;
-    DESCRAMBLED_OUTPUT_LAST : in STD_LOGIC
+    VITERBI_SIGNAL_VALID : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of block_design_0_output_ser2par_0_0_output_ser2par : entity is "output_ser2par";
 end block_design_0_output_ser2par_0_0_output_ser2par;
 
 architecture STRUCTURE of block_design_0_output_ser2par_0_0_output_ser2par is
-  signal COUNTER : STD_LOGIC_VECTOR ( 4 downto 0 );
   signal \COUNTER[0]_i_1_n_0\ : STD_LOGIC;
-  signal COUNTER_0 : STD_LOGIC;
-  signal PARALLEL_BUFFER : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal \COUNTER[1]_i_1_n_0\ : STD_LOGIC;
+  signal \COUNTER[2]_i_1_n_0\ : STD_LOGIC;
+  signal \COUNTER[3]_i_1_n_0\ : STD_LOGIC;
+  signal \COUNTER[4]_i_1_n_0\ : STD_LOGIC;
+  signal \COUNTER[4]_i_2_n_0\ : STD_LOGIC;
+  signal \COUNTER_reg_n_0_[0]\ : STD_LOGIC;
+  signal \COUNTER_reg_n_0_[1]\ : STD_LOGIC;
+  signal \COUNTER_reg_n_0_[2]\ : STD_LOGIC;
+  signal \COUNTER_reg_n_0_[3]\ : STD_LOGIC;
+  signal \COUNTER_reg_n_0_[4]\ : STD_LOGIC;
+  signal \FSM_sequential_STATE[0]_i_1_n_0\ : STD_LOGIC;
+  signal \FSM_sequential_STATE[1]_i_1_n_0\ : STD_LOGIC;
+  signal \FSM_sequential_STATE[1]_i_2_n_0\ : STD_LOGIC;
+  signal \FSM_sequential_STATE[1]_i_3_n_0\ : STD_LOGIC;
+  signal PARALLEL_BUFFER : STD_LOGIC_VECTOR ( 0 to 0 );
   signal \PARALLEL_BUFFER[31]_i_1_n_0\ : STD_LOGIC;
-  signal PARALLEL_BUFFER_FULL : STD_LOGIC;
   signal PARALLEL_BUFFER_FULL_i_1_n_0 : STD_LOGIC;
   signal PARALLEL_BUFFER_FULL_reg_n_0 : STD_LOGIC;
+  signal \PARALLEL_BUFFER_reg_n_0_[0]\ : STD_LOGIC;
+  signal \PARALLEL_BUFFER_reg_n_0_[10]\ : STD_LOGIC;
+  signal \PARALLEL_BUFFER_reg_n_0_[11]\ : STD_LOGIC;
+  signal \PARALLEL_BUFFER_reg_n_0_[12]\ : STD_LOGIC;
+  signal \PARALLEL_BUFFER_reg_n_0_[13]\ : STD_LOGIC;
+  signal \PARALLEL_BUFFER_reg_n_0_[14]\ : STD_LOGIC;
+  signal \PARALLEL_BUFFER_reg_n_0_[15]\ : STD_LOGIC;
+  signal \PARALLEL_BUFFER_reg_n_0_[16]\ : STD_LOGIC;
+  signal \PARALLEL_BUFFER_reg_n_0_[17]\ : STD_LOGIC;
+  signal \PARALLEL_BUFFER_reg_n_0_[18]\ : STD_LOGIC;
+  signal \PARALLEL_BUFFER_reg_n_0_[19]\ : STD_LOGIC;
+  signal \PARALLEL_BUFFER_reg_n_0_[1]\ : STD_LOGIC;
+  signal \PARALLEL_BUFFER_reg_n_0_[20]\ : STD_LOGIC;
+  signal \PARALLEL_BUFFER_reg_n_0_[21]\ : STD_LOGIC;
+  signal \PARALLEL_BUFFER_reg_n_0_[22]\ : STD_LOGIC;
+  signal \PARALLEL_BUFFER_reg_n_0_[23]\ : STD_LOGIC;
+  signal \PARALLEL_BUFFER_reg_n_0_[24]\ : STD_LOGIC;
+  signal \PARALLEL_BUFFER_reg_n_0_[25]\ : STD_LOGIC;
+  signal \PARALLEL_BUFFER_reg_n_0_[26]\ : STD_LOGIC;
+  signal \PARALLEL_BUFFER_reg_n_0_[27]\ : STD_LOGIC;
+  signal \PARALLEL_BUFFER_reg_n_0_[28]\ : STD_LOGIC;
+  signal \PARALLEL_BUFFER_reg_n_0_[29]\ : STD_LOGIC;
+  signal \PARALLEL_BUFFER_reg_n_0_[2]\ : STD_LOGIC;
+  signal \PARALLEL_BUFFER_reg_n_0_[30]\ : STD_LOGIC;
+  signal \PARALLEL_BUFFER_reg_n_0_[31]\ : STD_LOGIC;
+  signal \PARALLEL_BUFFER_reg_n_0_[3]\ : STD_LOGIC;
+  signal \PARALLEL_BUFFER_reg_n_0_[4]\ : STD_LOGIC;
+  signal \PARALLEL_BUFFER_reg_n_0_[5]\ : STD_LOGIC;
+  signal \PARALLEL_BUFFER_reg_n_0_[6]\ : STD_LOGIC;
+  signal \PARALLEL_BUFFER_reg_n_0_[7]\ : STD_LOGIC;
+  signal \PARALLEL_BUFFER_reg_n_0_[8]\ : STD_LOGIC;
+  signal \PARALLEL_BUFFER_reg_n_0_[9]\ : STD_LOGIC;
   signal \PARALLEL_OUTPUT[31]_i_1_n_0\ : STD_LOGIC;
+  signal PARALLEL_OUTPUT_LAST_BUFFER : STD_LOGIC;
+  signal PARALLEL_OUTPUT_LAST_BUFFER_i_1_n_0 : STD_LOGIC;
   signal \^parallel_output_valid\ : STD_LOGIC;
   signal PARALLEL_OUTPUT_VALID_i_1_n_0 : STD_LOGIC;
-  signal STATE_i_1_n_0 : STD_LOGIC;
-  signal STATE_reg_n_0 : STD_LOGIC;
-  signal p_0_in : STD_LOGIC_VECTOR ( 4 downto 1 );
+  signal \STATE__0\ : STD_LOGIC_VECTOR ( 1 downto 0 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \COUNTER[0]_i_1\ : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \COUNTER[1]_i_1\ : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \COUNTER[2]_i_1\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \COUNTER[3]_i_1\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \COUNTER[4]_i_2\ : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of \COUNTER[4]_i_3\ : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of PARALLEL_BUFFER_FULL_i_1 : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of PARALLEL_OUTPUT_VALID_i_1 : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \COUNTER[0]_i_1\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \COUNTER[1]_i_1\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \COUNTER[2]_i_1\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \COUNTER[3]_i_1\ : label is "soft_lutpair0";
+  attribute FSM_ENCODED_STATES : string;
+  attribute FSM_ENCODED_STATES of \FSM_sequential_STATE_reg[0]\ : label is "prepared:01,gather:10,end_with_zeros:11,idle:00";
+  attribute FSM_ENCODED_STATES of \FSM_sequential_STATE_reg[1]\ : label is "prepared:01,gather:10,end_with_zeros:11,idle:00";
   attribute x_interface_ignore : string;
+  attribute x_interface_ignore of PARALLEL_OUTPUT_LAST_reg : label is "TRUE";
   attribute x_interface_ignore of PARALLEL_OUTPUT_VALID_reg : label is "TRUE";
   attribute x_interface_ignore of \PARALLEL_OUTPUT_reg[0]\ : label is "TRUE";
   attribute x_interface_ignore of \PARALLEL_OUTPUT_reg[10]\ : label is "TRUE";
@@ -89,77 +134,73 @@ architecture STRUCTURE of block_design_0_output_ser2par_0_0_output_ser2par is
   attribute x_interface_ignore of \PARALLEL_OUTPUT_reg[9]\ : label is "TRUE";
 begin
   PARALLEL_OUTPUT_VALID <= \^parallel_output_valid\;
-\COUNTER[0]_i_1\: unisim.vcomponents.LUT1
+\COUNTER[0]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"1"
+      INIT => X"2E"
     )
         port map (
-      I0 => COUNTER(0),
+      I0 => \STATE__0\(0),
+      I1 => \STATE__0\(1),
+      I2 => \COUNTER_reg_n_0_[0]\,
       O => \COUNTER[0]_i_1_n_0\
     );
-\COUNTER[1]_i_1\: unisim.vcomponents.LUT2
+\COUNTER[1]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"6"
+      INIT => X"60"
     )
         port map (
-      I0 => COUNTER(1),
-      I1 => COUNTER(0),
-      O => p_0_in(1)
+      I0 => \COUNTER_reg_n_0_[1]\,
+      I1 => \COUNTER_reg_n_0_[0]\,
+      I2 => \STATE__0\(1),
+      O => \COUNTER[1]_i_1_n_0\
     );
-\COUNTER[2]_i_1\: unisim.vcomponents.LUT3
+\COUNTER[2]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"6A"
+      INIT => X"2A80"
     )
         port map (
-      I0 => COUNTER(2),
-      I1 => COUNTER(1),
-      I2 => COUNTER(0),
-      O => p_0_in(2)
+      I0 => \STATE__0\(1),
+      I1 => \COUNTER_reg_n_0_[0]\,
+      I2 => \COUNTER_reg_n_0_[1]\,
+      I3 => \COUNTER_reg_n_0_[2]\,
+      O => \COUNTER[2]_i_1_n_0\
     );
-\COUNTER[3]_i_1\: unisim.vcomponents.LUT4
+\COUNTER[3]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"6AAA"
+      INIT => X"2AAA8000"
     )
         port map (
-      I0 => COUNTER(3),
-      I1 => COUNTER(2),
-      I2 => COUNTER(1),
-      I3 => COUNTER(0),
-      O => p_0_in(3)
+      I0 => \STATE__0\(1),
+      I1 => \COUNTER_reg_n_0_[2]\,
+      I2 => \COUNTER_reg_n_0_[1]\,
+      I3 => \COUNTER_reg_n_0_[0]\,
+      I4 => \COUNTER_reg_n_0_[3]\,
+      O => \COUNTER[3]_i_1_n_0\
     );
-\COUNTER[4]_i_1\: unisim.vcomponents.LUT3
+\COUNTER[4]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"A2"
+      INIT => X"45445511"
     )
         port map (
-      I0 => DESCRAMBLED_OUTPUT_VALID,
-      I1 => STATE_reg_n_0,
-      I2 => PARALLEL_BUFFER_FULL,
-      O => COUNTER_0
+      I0 => RESET,
+      I1 => \STATE__0\(1),
+      I2 => DESCRAMBLED_OUTPUT_LAST,
+      I3 => DESCRAMBLED_OUTPUT_VALID,
+      I4 => \STATE__0\(0),
+      O => \COUNTER[4]_i_1_n_0\
     );
-\COUNTER[4]_i_2\: unisim.vcomponents.LUT5
+\COUNTER[4]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"6AAAAAAA"
+      INIT => X"7FFF800000000000"
     )
         port map (
-      I0 => COUNTER(4),
-      I1 => COUNTER(3),
-      I2 => COUNTER(2),
-      I3 => COUNTER(1),
-      I4 => COUNTER(0),
-      O => p_0_in(4)
-    );
-\COUNTER[4]_i_3\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"80000000"
-    )
-        port map (
-      I0 => COUNTER(0),
-      I1 => COUNTER(1),
-      I2 => COUNTER(2),
-      I3 => COUNTER(3),
-      I4 => COUNTER(4),
-      O => PARALLEL_BUFFER_FULL
+      I0 => \COUNTER_reg_n_0_[0]\,
+      I1 => \COUNTER_reg_n_0_[1]\,
+      I2 => \COUNTER_reg_n_0_[2]\,
+      I3 => \COUNTER_reg_n_0_[3]\,
+      I4 => \COUNTER_reg_n_0_[4]\,
+      I5 => \STATE__0\(1),
+      O => \COUNTER[4]_i_2_n_0\
     );
 \COUNTER_reg[0]\: unisim.vcomponents.FDRE
     generic map(
@@ -167,10 +208,10 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => COUNTER_0,
+      CE => \COUNTER[4]_i_1_n_0\,
       D => \COUNTER[0]_i_1_n_0\,
-      Q => COUNTER(0),
-      R => RESET
+      Q => \COUNTER_reg_n_0_[0]\,
+      R => '0'
     );
 \COUNTER_reg[1]\: unisim.vcomponents.FDRE
     generic map(
@@ -178,10 +219,10 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => COUNTER_0,
-      D => p_0_in(1),
-      Q => COUNTER(1),
-      R => RESET
+      CE => \COUNTER[4]_i_1_n_0\,
+      D => \COUNTER[1]_i_1_n_0\,
+      Q => \COUNTER_reg_n_0_[1]\,
+      R => '0'
     );
 \COUNTER_reg[2]\: unisim.vcomponents.FDRE
     generic map(
@@ -189,10 +230,10 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => COUNTER_0,
-      D => p_0_in(2),
-      Q => COUNTER(2),
-      R => RESET
+      CE => \COUNTER[4]_i_1_n_0\,
+      D => \COUNTER[2]_i_1_n_0\,
+      Q => \COUNTER_reg_n_0_[2]\,
+      R => '0'
     );
 \COUNTER_reg[3]\: unisim.vcomponents.FDRE
     generic map(
@@ -200,10 +241,10 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => COUNTER_0,
-      D => p_0_in(3),
-      Q => COUNTER(3),
-      R => RESET
+      CE => \COUNTER[4]_i_1_n_0\,
+      D => \COUNTER[3]_i_1_n_0\,
+      Q => \COUNTER_reg_n_0_[3]\,
+      R => '0'
     );
 \COUNTER_reg[4]\: unisim.vcomponents.FDRE
     generic map(
@@ -211,30 +252,115 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => COUNTER_0,
-      D => p_0_in(4),
-      Q => COUNTER(4),
-      R => RESET
+      CE => \COUNTER[4]_i_1_n_0\,
+      D => \COUNTER[4]_i_2_n_0\,
+      Q => \COUNTER_reg_n_0_[4]\,
+      R => '0'
     );
-\PARALLEL_BUFFER[31]_i_1\: unisim.vcomponents.LUT3
+\FSM_sequential_STATE[0]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"04"
+      INIT => X"00006606"
     )
         port map (
-      I0 => STATE_reg_n_0,
-      I1 => DESCRAMBLED_OUTPUT_VALID,
-      I2 => RESET,
+      I0 => \FSM_sequential_STATE[1]_i_2_n_0\,
+      I1 => \STATE__0\(0),
+      I2 => \STATE__0\(1),
+      I3 => \FSM_sequential_STATE[1]_i_3_n_0\,
+      I4 => RESET,
+      O => \FSM_sequential_STATE[0]_i_1_n_0\
+    );
+\FSM_sequential_STATE[1]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0000000070107818"
+    )
+        port map (
+      I0 => \FSM_sequential_STATE[1]_i_2_n_0\,
+      I1 => \STATE__0\(0),
+      I2 => \STATE__0\(1),
+      I3 => \FSM_sequential_STATE[1]_i_3_n_0\,
+      I4 => DESCRAMBLED_OUTPUT_LAST,
+      I5 => RESET,
+      O => \FSM_sequential_STATE[1]_i_1_n_0\
+    );
+\FSM_sequential_STATE[1]_i_2\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"0F0CCACA"
+    )
+        port map (
+      I0 => VITERBI_SIGNAL_VALID,
+      I1 => DESCRAMBLED_OUTPUT_LAST,
+      I2 => \STATE__0\(1),
+      I3 => DESCRAMBLED_OUTPUT_VALID,
+      I4 => \STATE__0\(0),
+      O => \FSM_sequential_STATE[1]_i_2_n_0\
+    );
+\FSM_sequential_STATE[1]_i_3\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"7FFFFFFF"
+    )
+        port map (
+      I0 => \COUNTER_reg_n_0_[2]\,
+      I1 => \COUNTER_reg_n_0_[4]\,
+      I2 => \COUNTER_reg_n_0_[0]\,
+      I3 => \COUNTER_reg_n_0_[1]\,
+      I4 => \COUNTER_reg_n_0_[3]\,
+      O => \FSM_sequential_STATE[1]_i_3_n_0\
+    );
+\FSM_sequential_STATE_reg[0]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => '1',
+      D => \FSM_sequential_STATE[0]_i_1_n_0\,
+      Q => \STATE__0\(0),
+      R => '0'
+    );
+\FSM_sequential_STATE_reg[1]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => '1',
+      D => \FSM_sequential_STATE[1]_i_1_n_0\,
+      Q => \STATE__0\(1),
+      R => '0'
+    );
+\PARALLEL_BUFFER[0]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"2A"
+    )
+        port map (
+      I0 => DESCRAMBLED_OUTPUT,
+      I1 => \STATE__0\(0),
+      I2 => \STATE__0\(1),
+      O => PARALLEL_BUFFER(0)
+    );
+\PARALLEL_BUFFER[31]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"55501000"
+    )
+        port map (
+      I0 => RESET,
+      I1 => DESCRAMBLED_OUTPUT_LAST,
+      I2 => DESCRAMBLED_OUTPUT_VALID,
+      I3 => \STATE__0\(0),
+      I4 => \STATE__0\(1),
       O => \PARALLEL_BUFFER[31]_i_1_n_0\
     );
-PARALLEL_BUFFER_FULL_i_1: unisim.vcomponents.LUT4
+PARALLEL_BUFFER_FULL_i_1: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"AACA"
+      INIT => X"FFFF32F000003200"
     )
         port map (
-      I0 => PARALLEL_BUFFER_FULL_reg_n_0,
-      I1 => PARALLEL_BUFFER_FULL,
-      I2 => DESCRAMBLED_OUTPUT_VALID,
-      I3 => RESET,
+      I0 => DESCRAMBLED_OUTPUT_VALID,
+      I1 => \FSM_sequential_STATE[1]_i_3_n_0\,
+      I2 => \STATE__0\(0),
+      I3 => \STATE__0\(1),
+      I4 => RESET,
+      I5 => PARALLEL_BUFFER_FULL_reg_n_0,
       O => PARALLEL_BUFFER_FULL_i_1_n_0
     );
 PARALLEL_BUFFER_FULL_reg: unisim.vcomponents.FDRE
@@ -255,8 +381,8 @@ PARALLEL_BUFFER_FULL_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_BUFFER[31]_i_1_n_0\,
-      D => DESCRAMBLED_OUTPUT,
-      Q => PARALLEL_BUFFER(0),
+      D => PARALLEL_BUFFER(0),
+      Q => \PARALLEL_BUFFER_reg_n_0_[0]\,
       R => '0'
     );
 \PARALLEL_BUFFER_reg[10]\: unisim.vcomponents.FDRE
@@ -266,8 +392,8 @@ PARALLEL_BUFFER_FULL_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_BUFFER[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(9),
-      Q => PARALLEL_BUFFER(10),
+      D => \PARALLEL_BUFFER_reg_n_0_[9]\,
+      Q => \PARALLEL_BUFFER_reg_n_0_[10]\,
       R => '0'
     );
 \PARALLEL_BUFFER_reg[11]\: unisim.vcomponents.FDRE
@@ -277,8 +403,8 @@ PARALLEL_BUFFER_FULL_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_BUFFER[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(10),
-      Q => PARALLEL_BUFFER(11),
+      D => \PARALLEL_BUFFER_reg_n_0_[10]\,
+      Q => \PARALLEL_BUFFER_reg_n_0_[11]\,
       R => '0'
     );
 \PARALLEL_BUFFER_reg[12]\: unisim.vcomponents.FDRE
@@ -288,8 +414,8 @@ PARALLEL_BUFFER_FULL_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_BUFFER[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(11),
-      Q => PARALLEL_BUFFER(12),
+      D => \PARALLEL_BUFFER_reg_n_0_[11]\,
+      Q => \PARALLEL_BUFFER_reg_n_0_[12]\,
       R => '0'
     );
 \PARALLEL_BUFFER_reg[13]\: unisim.vcomponents.FDRE
@@ -299,8 +425,8 @@ PARALLEL_BUFFER_FULL_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_BUFFER[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(12),
-      Q => PARALLEL_BUFFER(13),
+      D => \PARALLEL_BUFFER_reg_n_0_[12]\,
+      Q => \PARALLEL_BUFFER_reg_n_0_[13]\,
       R => '0'
     );
 \PARALLEL_BUFFER_reg[14]\: unisim.vcomponents.FDRE
@@ -310,8 +436,8 @@ PARALLEL_BUFFER_FULL_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_BUFFER[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(13),
-      Q => PARALLEL_BUFFER(14),
+      D => \PARALLEL_BUFFER_reg_n_0_[13]\,
+      Q => \PARALLEL_BUFFER_reg_n_0_[14]\,
       R => '0'
     );
 \PARALLEL_BUFFER_reg[15]\: unisim.vcomponents.FDRE
@@ -321,8 +447,8 @@ PARALLEL_BUFFER_FULL_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_BUFFER[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(14),
-      Q => PARALLEL_BUFFER(15),
+      D => \PARALLEL_BUFFER_reg_n_0_[14]\,
+      Q => \PARALLEL_BUFFER_reg_n_0_[15]\,
       R => '0'
     );
 \PARALLEL_BUFFER_reg[16]\: unisim.vcomponents.FDRE
@@ -332,8 +458,8 @@ PARALLEL_BUFFER_FULL_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_BUFFER[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(15),
-      Q => PARALLEL_BUFFER(16),
+      D => \PARALLEL_BUFFER_reg_n_0_[15]\,
+      Q => \PARALLEL_BUFFER_reg_n_0_[16]\,
       R => '0'
     );
 \PARALLEL_BUFFER_reg[17]\: unisim.vcomponents.FDRE
@@ -343,8 +469,8 @@ PARALLEL_BUFFER_FULL_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_BUFFER[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(16),
-      Q => PARALLEL_BUFFER(17),
+      D => \PARALLEL_BUFFER_reg_n_0_[16]\,
+      Q => \PARALLEL_BUFFER_reg_n_0_[17]\,
       R => '0'
     );
 \PARALLEL_BUFFER_reg[18]\: unisim.vcomponents.FDRE
@@ -354,8 +480,8 @@ PARALLEL_BUFFER_FULL_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_BUFFER[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(17),
-      Q => PARALLEL_BUFFER(18),
+      D => \PARALLEL_BUFFER_reg_n_0_[17]\,
+      Q => \PARALLEL_BUFFER_reg_n_0_[18]\,
       R => '0'
     );
 \PARALLEL_BUFFER_reg[19]\: unisim.vcomponents.FDRE
@@ -365,8 +491,8 @@ PARALLEL_BUFFER_FULL_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_BUFFER[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(18),
-      Q => PARALLEL_BUFFER(19),
+      D => \PARALLEL_BUFFER_reg_n_0_[18]\,
+      Q => \PARALLEL_BUFFER_reg_n_0_[19]\,
       R => '0'
     );
 \PARALLEL_BUFFER_reg[1]\: unisim.vcomponents.FDRE
@@ -376,8 +502,8 @@ PARALLEL_BUFFER_FULL_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_BUFFER[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(0),
-      Q => PARALLEL_BUFFER(1),
+      D => \PARALLEL_BUFFER_reg_n_0_[0]\,
+      Q => \PARALLEL_BUFFER_reg_n_0_[1]\,
       R => '0'
     );
 \PARALLEL_BUFFER_reg[20]\: unisim.vcomponents.FDRE
@@ -387,8 +513,8 @@ PARALLEL_BUFFER_FULL_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_BUFFER[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(19),
-      Q => PARALLEL_BUFFER(20),
+      D => \PARALLEL_BUFFER_reg_n_0_[19]\,
+      Q => \PARALLEL_BUFFER_reg_n_0_[20]\,
       R => '0'
     );
 \PARALLEL_BUFFER_reg[21]\: unisim.vcomponents.FDRE
@@ -398,8 +524,8 @@ PARALLEL_BUFFER_FULL_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_BUFFER[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(20),
-      Q => PARALLEL_BUFFER(21),
+      D => \PARALLEL_BUFFER_reg_n_0_[20]\,
+      Q => \PARALLEL_BUFFER_reg_n_0_[21]\,
       R => '0'
     );
 \PARALLEL_BUFFER_reg[22]\: unisim.vcomponents.FDRE
@@ -409,8 +535,8 @@ PARALLEL_BUFFER_FULL_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_BUFFER[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(21),
-      Q => PARALLEL_BUFFER(22),
+      D => \PARALLEL_BUFFER_reg_n_0_[21]\,
+      Q => \PARALLEL_BUFFER_reg_n_0_[22]\,
       R => '0'
     );
 \PARALLEL_BUFFER_reg[23]\: unisim.vcomponents.FDRE
@@ -420,8 +546,8 @@ PARALLEL_BUFFER_FULL_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_BUFFER[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(22),
-      Q => PARALLEL_BUFFER(23),
+      D => \PARALLEL_BUFFER_reg_n_0_[22]\,
+      Q => \PARALLEL_BUFFER_reg_n_0_[23]\,
       R => '0'
     );
 \PARALLEL_BUFFER_reg[24]\: unisim.vcomponents.FDRE
@@ -431,8 +557,8 @@ PARALLEL_BUFFER_FULL_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_BUFFER[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(23),
-      Q => PARALLEL_BUFFER(24),
+      D => \PARALLEL_BUFFER_reg_n_0_[23]\,
+      Q => \PARALLEL_BUFFER_reg_n_0_[24]\,
       R => '0'
     );
 \PARALLEL_BUFFER_reg[25]\: unisim.vcomponents.FDRE
@@ -442,8 +568,8 @@ PARALLEL_BUFFER_FULL_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_BUFFER[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(24),
-      Q => PARALLEL_BUFFER(25),
+      D => \PARALLEL_BUFFER_reg_n_0_[24]\,
+      Q => \PARALLEL_BUFFER_reg_n_0_[25]\,
       R => '0'
     );
 \PARALLEL_BUFFER_reg[26]\: unisim.vcomponents.FDRE
@@ -453,8 +579,8 @@ PARALLEL_BUFFER_FULL_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_BUFFER[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(25),
-      Q => PARALLEL_BUFFER(26),
+      D => \PARALLEL_BUFFER_reg_n_0_[25]\,
+      Q => \PARALLEL_BUFFER_reg_n_0_[26]\,
       R => '0'
     );
 \PARALLEL_BUFFER_reg[27]\: unisim.vcomponents.FDRE
@@ -464,8 +590,8 @@ PARALLEL_BUFFER_FULL_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_BUFFER[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(26),
-      Q => PARALLEL_BUFFER(27),
+      D => \PARALLEL_BUFFER_reg_n_0_[26]\,
+      Q => \PARALLEL_BUFFER_reg_n_0_[27]\,
       R => '0'
     );
 \PARALLEL_BUFFER_reg[28]\: unisim.vcomponents.FDRE
@@ -475,8 +601,8 @@ PARALLEL_BUFFER_FULL_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_BUFFER[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(27),
-      Q => PARALLEL_BUFFER(28),
+      D => \PARALLEL_BUFFER_reg_n_0_[27]\,
+      Q => \PARALLEL_BUFFER_reg_n_0_[28]\,
       R => '0'
     );
 \PARALLEL_BUFFER_reg[29]\: unisim.vcomponents.FDRE
@@ -486,8 +612,8 @@ PARALLEL_BUFFER_FULL_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_BUFFER[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(28),
-      Q => PARALLEL_BUFFER(29),
+      D => \PARALLEL_BUFFER_reg_n_0_[28]\,
+      Q => \PARALLEL_BUFFER_reg_n_0_[29]\,
       R => '0'
     );
 \PARALLEL_BUFFER_reg[2]\: unisim.vcomponents.FDRE
@@ -497,8 +623,8 @@ PARALLEL_BUFFER_FULL_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_BUFFER[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(1),
-      Q => PARALLEL_BUFFER(2),
+      D => \PARALLEL_BUFFER_reg_n_0_[1]\,
+      Q => \PARALLEL_BUFFER_reg_n_0_[2]\,
       R => '0'
     );
 \PARALLEL_BUFFER_reg[30]\: unisim.vcomponents.FDRE
@@ -508,8 +634,8 @@ PARALLEL_BUFFER_FULL_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_BUFFER[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(29),
-      Q => PARALLEL_BUFFER(30),
+      D => \PARALLEL_BUFFER_reg_n_0_[29]\,
+      Q => \PARALLEL_BUFFER_reg_n_0_[30]\,
       R => '0'
     );
 \PARALLEL_BUFFER_reg[31]\: unisim.vcomponents.FDRE
@@ -519,8 +645,8 @@ PARALLEL_BUFFER_FULL_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_BUFFER[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(30),
-      Q => PARALLEL_BUFFER(31),
+      D => \PARALLEL_BUFFER_reg_n_0_[30]\,
+      Q => \PARALLEL_BUFFER_reg_n_0_[31]\,
       R => '0'
     );
 \PARALLEL_BUFFER_reg[3]\: unisim.vcomponents.FDRE
@@ -530,8 +656,8 @@ PARALLEL_BUFFER_FULL_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_BUFFER[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(2),
-      Q => PARALLEL_BUFFER(3),
+      D => \PARALLEL_BUFFER_reg_n_0_[2]\,
+      Q => \PARALLEL_BUFFER_reg_n_0_[3]\,
       R => '0'
     );
 \PARALLEL_BUFFER_reg[4]\: unisim.vcomponents.FDRE
@@ -541,8 +667,8 @@ PARALLEL_BUFFER_FULL_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_BUFFER[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(3),
-      Q => PARALLEL_BUFFER(4),
+      D => \PARALLEL_BUFFER_reg_n_0_[3]\,
+      Q => \PARALLEL_BUFFER_reg_n_0_[4]\,
       R => '0'
     );
 \PARALLEL_BUFFER_reg[5]\: unisim.vcomponents.FDRE
@@ -552,8 +678,8 @@ PARALLEL_BUFFER_FULL_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_BUFFER[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(4),
-      Q => PARALLEL_BUFFER(5),
+      D => \PARALLEL_BUFFER_reg_n_0_[4]\,
+      Q => \PARALLEL_BUFFER_reg_n_0_[5]\,
       R => '0'
     );
 \PARALLEL_BUFFER_reg[6]\: unisim.vcomponents.FDRE
@@ -563,8 +689,8 @@ PARALLEL_BUFFER_FULL_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_BUFFER[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(5),
-      Q => PARALLEL_BUFFER(6),
+      D => \PARALLEL_BUFFER_reg_n_0_[5]\,
+      Q => \PARALLEL_BUFFER_reg_n_0_[6]\,
       R => '0'
     );
 \PARALLEL_BUFFER_reg[7]\: unisim.vcomponents.FDRE
@@ -574,8 +700,8 @@ PARALLEL_BUFFER_FULL_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_BUFFER[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(6),
-      Q => PARALLEL_BUFFER(7),
+      D => \PARALLEL_BUFFER_reg_n_0_[6]\,
+      Q => \PARALLEL_BUFFER_reg_n_0_[7]\,
       R => '0'
     );
 \PARALLEL_BUFFER_reg[8]\: unisim.vcomponents.FDRE
@@ -585,8 +711,8 @@ PARALLEL_BUFFER_FULL_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_BUFFER[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(7),
-      Q => PARALLEL_BUFFER(8),
+      D => \PARALLEL_BUFFER_reg_n_0_[7]\,
+      Q => \PARALLEL_BUFFER_reg_n_0_[8]\,
       R => '0'
     );
 \PARALLEL_BUFFER_reg[9]\: unisim.vcomponents.FDRE
@@ -596,29 +722,61 @@ PARALLEL_BUFFER_FULL_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_BUFFER[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(8),
-      Q => PARALLEL_BUFFER(9),
+      D => \PARALLEL_BUFFER_reg_n_0_[8]\,
+      Q => \PARALLEL_BUFFER_reg_n_0_[9]\,
       R => '0'
     );
-\PARALLEL_OUTPUT[31]_i_1\: unisim.vcomponents.LUT3
+\PARALLEL_OUTPUT[31]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"08"
+      INIT => X"2"
     )
         port map (
       I0 => PARALLEL_BUFFER_FULL_reg_n_0,
-      I1 => DESCRAMBLED_OUTPUT_VALID,
-      I2 => RESET,
+      I1 => RESET,
       O => \PARALLEL_OUTPUT[31]_i_1_n_0\
     );
-PARALLEL_OUTPUT_VALID_i_1: unisim.vcomponents.LUT4
+PARALLEL_OUTPUT_LAST_BUFFER_i_1: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FB08"
+      INIT => X"FFFA0008"
     )
         port map (
-      I0 => PARALLEL_BUFFER_FULL_reg_n_0,
-      I1 => DESCRAMBLED_OUTPUT_VALID,
-      I2 => RESET,
-      I3 => \^parallel_output_valid\,
+      I0 => \STATE__0\(1),
+      I1 => DESCRAMBLED_OUTPUT_LAST,
+      I2 => \STATE__0\(0),
+      I3 => RESET,
+      I4 => PARALLEL_OUTPUT_LAST_BUFFER,
+      O => PARALLEL_OUTPUT_LAST_BUFFER_i_1_n_0
+    );
+PARALLEL_OUTPUT_LAST_BUFFER_reg: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => '1',
+      D => PARALLEL_OUTPUT_LAST_BUFFER_i_1_n_0,
+      Q => PARALLEL_OUTPUT_LAST_BUFFER,
+      R => '0'
+    );
+PARALLEL_OUTPUT_LAST_reg: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => \PARALLEL_OUTPUT[31]_i_1_n_0\,
+      D => PARALLEL_OUTPUT_LAST_BUFFER,
+      Q => PARALLEL_OUTPUT_LAST,
+      R => '0'
+    );
+PARALLEL_OUTPUT_VALID_i_1: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => \^parallel_output_valid\,
+      I1 => RESET,
+      I2 => PARALLEL_BUFFER_FULL_reg_n_0,
       O => PARALLEL_OUTPUT_VALID_i_1_n_0
     );
 PARALLEL_OUTPUT_VALID_reg: unisim.vcomponents.FDRE
@@ -639,7 +797,7 @@ PARALLEL_OUTPUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_OUTPUT[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(0),
+      D => \PARALLEL_BUFFER_reg_n_0_[0]\,
       Q => PARALLEL_OUTPUT(0),
       R => '0'
     );
@@ -650,7 +808,7 @@ PARALLEL_OUTPUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_OUTPUT[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(10),
+      D => \PARALLEL_BUFFER_reg_n_0_[10]\,
       Q => PARALLEL_OUTPUT(10),
       R => '0'
     );
@@ -661,7 +819,7 @@ PARALLEL_OUTPUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_OUTPUT[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(11),
+      D => \PARALLEL_BUFFER_reg_n_0_[11]\,
       Q => PARALLEL_OUTPUT(11),
       R => '0'
     );
@@ -672,7 +830,7 @@ PARALLEL_OUTPUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_OUTPUT[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(12),
+      D => \PARALLEL_BUFFER_reg_n_0_[12]\,
       Q => PARALLEL_OUTPUT(12),
       R => '0'
     );
@@ -683,7 +841,7 @@ PARALLEL_OUTPUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_OUTPUT[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(13),
+      D => \PARALLEL_BUFFER_reg_n_0_[13]\,
       Q => PARALLEL_OUTPUT(13),
       R => '0'
     );
@@ -694,7 +852,7 @@ PARALLEL_OUTPUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_OUTPUT[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(14),
+      D => \PARALLEL_BUFFER_reg_n_0_[14]\,
       Q => PARALLEL_OUTPUT(14),
       R => '0'
     );
@@ -705,7 +863,7 @@ PARALLEL_OUTPUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_OUTPUT[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(15),
+      D => \PARALLEL_BUFFER_reg_n_0_[15]\,
       Q => PARALLEL_OUTPUT(15),
       R => '0'
     );
@@ -716,7 +874,7 @@ PARALLEL_OUTPUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_OUTPUT[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(16),
+      D => \PARALLEL_BUFFER_reg_n_0_[16]\,
       Q => PARALLEL_OUTPUT(16),
       R => '0'
     );
@@ -727,7 +885,7 @@ PARALLEL_OUTPUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_OUTPUT[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(17),
+      D => \PARALLEL_BUFFER_reg_n_0_[17]\,
       Q => PARALLEL_OUTPUT(17),
       R => '0'
     );
@@ -738,7 +896,7 @@ PARALLEL_OUTPUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_OUTPUT[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(18),
+      D => \PARALLEL_BUFFER_reg_n_0_[18]\,
       Q => PARALLEL_OUTPUT(18),
       R => '0'
     );
@@ -749,7 +907,7 @@ PARALLEL_OUTPUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_OUTPUT[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(19),
+      D => \PARALLEL_BUFFER_reg_n_0_[19]\,
       Q => PARALLEL_OUTPUT(19),
       R => '0'
     );
@@ -760,7 +918,7 @@ PARALLEL_OUTPUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_OUTPUT[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(1),
+      D => \PARALLEL_BUFFER_reg_n_0_[1]\,
       Q => PARALLEL_OUTPUT(1),
       R => '0'
     );
@@ -771,7 +929,7 @@ PARALLEL_OUTPUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_OUTPUT[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(20),
+      D => \PARALLEL_BUFFER_reg_n_0_[20]\,
       Q => PARALLEL_OUTPUT(20),
       R => '0'
     );
@@ -782,7 +940,7 @@ PARALLEL_OUTPUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_OUTPUT[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(21),
+      D => \PARALLEL_BUFFER_reg_n_0_[21]\,
       Q => PARALLEL_OUTPUT(21),
       R => '0'
     );
@@ -793,7 +951,7 @@ PARALLEL_OUTPUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_OUTPUT[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(22),
+      D => \PARALLEL_BUFFER_reg_n_0_[22]\,
       Q => PARALLEL_OUTPUT(22),
       R => '0'
     );
@@ -804,7 +962,7 @@ PARALLEL_OUTPUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_OUTPUT[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(23),
+      D => \PARALLEL_BUFFER_reg_n_0_[23]\,
       Q => PARALLEL_OUTPUT(23),
       R => '0'
     );
@@ -815,7 +973,7 @@ PARALLEL_OUTPUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_OUTPUT[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(24),
+      D => \PARALLEL_BUFFER_reg_n_0_[24]\,
       Q => PARALLEL_OUTPUT(24),
       R => '0'
     );
@@ -826,7 +984,7 @@ PARALLEL_OUTPUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_OUTPUT[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(25),
+      D => \PARALLEL_BUFFER_reg_n_0_[25]\,
       Q => PARALLEL_OUTPUT(25),
       R => '0'
     );
@@ -837,7 +995,7 @@ PARALLEL_OUTPUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_OUTPUT[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(26),
+      D => \PARALLEL_BUFFER_reg_n_0_[26]\,
       Q => PARALLEL_OUTPUT(26),
       R => '0'
     );
@@ -848,7 +1006,7 @@ PARALLEL_OUTPUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_OUTPUT[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(27),
+      D => \PARALLEL_BUFFER_reg_n_0_[27]\,
       Q => PARALLEL_OUTPUT(27),
       R => '0'
     );
@@ -859,7 +1017,7 @@ PARALLEL_OUTPUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_OUTPUT[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(28),
+      D => \PARALLEL_BUFFER_reg_n_0_[28]\,
       Q => PARALLEL_OUTPUT(28),
       R => '0'
     );
@@ -870,7 +1028,7 @@ PARALLEL_OUTPUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_OUTPUT[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(29),
+      D => \PARALLEL_BUFFER_reg_n_0_[29]\,
       Q => PARALLEL_OUTPUT(29),
       R => '0'
     );
@@ -881,7 +1039,7 @@ PARALLEL_OUTPUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_OUTPUT[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(2),
+      D => \PARALLEL_BUFFER_reg_n_0_[2]\,
       Q => PARALLEL_OUTPUT(2),
       R => '0'
     );
@@ -892,7 +1050,7 @@ PARALLEL_OUTPUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_OUTPUT[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(30),
+      D => \PARALLEL_BUFFER_reg_n_0_[30]\,
       Q => PARALLEL_OUTPUT(30),
       R => '0'
     );
@@ -903,7 +1061,7 @@ PARALLEL_OUTPUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_OUTPUT[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(31),
+      D => \PARALLEL_BUFFER_reg_n_0_[31]\,
       Q => PARALLEL_OUTPUT(31),
       R => '0'
     );
@@ -914,7 +1072,7 @@ PARALLEL_OUTPUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_OUTPUT[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(3),
+      D => \PARALLEL_BUFFER_reg_n_0_[3]\,
       Q => PARALLEL_OUTPUT(3),
       R => '0'
     );
@@ -925,7 +1083,7 @@ PARALLEL_OUTPUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_OUTPUT[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(4),
+      D => \PARALLEL_BUFFER_reg_n_0_[4]\,
       Q => PARALLEL_OUTPUT(4),
       R => '0'
     );
@@ -936,7 +1094,7 @@ PARALLEL_OUTPUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_OUTPUT[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(5),
+      D => \PARALLEL_BUFFER_reg_n_0_[5]\,
       Q => PARALLEL_OUTPUT(5),
       R => '0'
     );
@@ -947,7 +1105,7 @@ PARALLEL_OUTPUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_OUTPUT[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(6),
+      D => \PARALLEL_BUFFER_reg_n_0_[6]\,
       Q => PARALLEL_OUTPUT(6),
       R => '0'
     );
@@ -958,7 +1116,7 @@ PARALLEL_OUTPUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_OUTPUT[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(7),
+      D => \PARALLEL_BUFFER_reg_n_0_[7]\,
       Q => PARALLEL_OUTPUT(7),
       R => '0'
     );
@@ -969,7 +1127,7 @@ PARALLEL_OUTPUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_OUTPUT[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(8),
+      D => \PARALLEL_BUFFER_reg_n_0_[8]\,
       Q => PARALLEL_OUTPUT(8),
       R => '0'
     );
@@ -980,31 +1138,8 @@ PARALLEL_OUTPUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \PARALLEL_OUTPUT[31]_i_1_n_0\,
-      D => PARALLEL_BUFFER(9),
+      D => \PARALLEL_BUFFER_reg_n_0_[9]\,
       Q => PARALLEL_OUTPUT(9),
-      R => '0'
-    );
-STATE_i_1: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"0000CEAA"
-    )
-        port map (
-      I0 => STATE_reg_n_0,
-      I1 => DESCRAMBLED_OUTPUT_LAST,
-      I2 => PARALLEL_BUFFER_FULL,
-      I3 => DESCRAMBLED_OUTPUT_VALID,
-      I4 => RESET,
-      O => STATE_i_1_n_0
-    );
-STATE_reg: unisim.vcomponents.FDRE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => '1',
-      D => STATE_i_1_n_0,
-      Q => STATE_reg_n_0,
       R => '0'
     );
 end STRUCTURE;
@@ -1016,11 +1151,13 @@ entity block_design_0_output_ser2par_0_0 is
   port (
     RESET : in STD_LOGIC;
     CLOCK : in STD_LOGIC;
+    VITERBI_SIGNAL_VALID : in STD_LOGIC;
     DESCRAMBLED_OUTPUT : in STD_LOGIC;
     DESCRAMBLED_OUTPUT_VALID : in STD_LOGIC;
     DESCRAMBLED_OUTPUT_LAST : in STD_LOGIC;
     PARALLEL_OUTPUT : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    PARALLEL_OUTPUT_VALID : out STD_LOGIC
+    PARALLEL_OUTPUT_VALID : out STD_LOGIC;
+    PARALLEL_OUTPUT_LAST : out STD_LOGIC
   );
   attribute NotValidForBitStream : boolean;
   attribute NotValidForBitStream of block_design_0_output_ser2par_0_0 : entity is true;
@@ -1045,6 +1182,7 @@ architecture STRUCTURE of block_design_0_output_ser2par_0_0 is
   attribute x_interface_ignore of DESCRAMBLED_OUTPUT_VALID : signal is "TRUE";
   attribute x_interface_info of RESET : signal is "xilinx.com:signal:reset:1.0 RESET RST";
   attribute x_interface_parameter of RESET : signal is "XIL_INTERFACENAME RESET, POLARITY ACTIVE_LOW, INSERT_VIP 0";
+  attribute x_interface_ignore of VITERBI_SIGNAL_VALID : signal is "TRUE";
 begin
 U0: entity work.block_design_0_output_ser2par_0_0_output_ser2par
      port map (
@@ -1053,7 +1191,9 @@ U0: entity work.block_design_0_output_ser2par_0_0_output_ser2par
       DESCRAMBLED_OUTPUT_LAST => DESCRAMBLED_OUTPUT_LAST,
       DESCRAMBLED_OUTPUT_VALID => DESCRAMBLED_OUTPUT_VALID,
       PARALLEL_OUTPUT(31 downto 0) => PARALLEL_OUTPUT(31 downto 0),
+      PARALLEL_OUTPUT_LAST => PARALLEL_OUTPUT_LAST,
       PARALLEL_OUTPUT_VALID => PARALLEL_OUTPUT_VALID,
-      RESET => RESET
+      RESET => RESET,
+      VITERBI_SIGNAL_VALID => VITERBI_SIGNAL_VALID
     );
 end STRUCTURE;

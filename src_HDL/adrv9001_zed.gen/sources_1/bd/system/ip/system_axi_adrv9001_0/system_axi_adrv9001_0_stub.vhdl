@@ -2,8 +2,8 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
--- Date        : Sat May  4 15:49:04 2024
--- Host        : lab817_01 running 64-bit major release  (build 9200)
+-- Date        : Sun May  5 00:10:47 2024
+-- Host        : ASUS_ROG running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               c:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_adrv9001_0/system_axi_adrv9001_0_stub.vhdl
 -- Design      : system_axi_adrv9001_0

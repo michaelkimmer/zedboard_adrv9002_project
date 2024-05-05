@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:module_ref:deinterleaver:1.0
--- IP Revision: 1714826166
+-- IP Revision: 1714842029
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;

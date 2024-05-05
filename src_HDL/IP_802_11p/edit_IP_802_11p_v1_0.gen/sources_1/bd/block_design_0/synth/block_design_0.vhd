@@ -2,8 +2,8 @@
 --Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
---Date        : Sat May  4 15:38:30 2024
---Host        : lab817_01 running 64-bit major release  (build 9200)
+--Date        : Sat May  4 23:18:22 2024
+--Host        : ASUS_ROG running 64-bit major release  (build 9200)
 --Command     : generate_target block_design_0.bd
 --Design      : block_design_0
 --Purpose     : IP block netlist
@@ -681,7 +681,7 @@ entity block_design_0 is
     SELECT_AXI_REGS_MODE : in STD_LOGIC_VECTOR ( 7 downto 0 )
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of block_design_0 : entity is "block_design_0,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=block_design_0,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=29,numReposBlks=24,numNonXlnxBlks=0,numHierBlks=5,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=18,numPkgbdBlks=0,bdsource=USER,synth_mode=Hierarchical}";
+  attribute CORE_GENERATION_INFO of block_design_0 : entity is "block_design_0,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=block_design_0,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=29,numReposBlks=24,numNonXlnxBlks=0,numHierBlks=5,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=17,numPkgbdBlks=0,bdsource=USER,synth_mode=Hierarchical}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of block_design_0 : entity is "block_design_0.hwdef";
 end block_design_0;
@@ -934,11 +934,13 @@ architecture STRUCTURE of block_design_0 is
   port (
     RESET : in STD_LOGIC;
     CLOCK : in STD_LOGIC;
+    VITERBI_SIGNAL_VALID : in STD_LOGIC;
     DESCRAMBLED_OUTPUT : in STD_LOGIC;
     DESCRAMBLED_OUTPUT_VALID : in STD_LOGIC;
     DESCRAMBLED_OUTPUT_LAST : in STD_LOGIC;
     PARALLEL_OUTPUT : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    PARALLEL_OUTPUT_VALID : out STD_LOGIC
+    PARALLEL_OUTPUT_VALID : out STD_LOGIC;
+    PARALLEL_OUTPUT_LAST : out STD_LOGIC
   );
   end component block_design_0_output_ser2par_0_0;
   component block_design_0_blk_mem_gen_0_0 is
@@ -1071,6 +1073,7 @@ architecture STRUCTURE of block_design_0 is
   signal NLW_hier_fft_ofdm_event_frame_started_UNCONNECTED : STD_LOGIC;
   signal NLW_hier_fft_ofdm_event_tlast_missing_UNCONNECTED : STD_LOGIC;
   signal NLW_hier_fft_ofdm_event_tlast_unexpected_UNCONNECTED : STD_LOGIC;
+  signal NLW_output_ser2par_0_PARALLEL_OUTPUT_LAST_UNCONNECTED : STD_LOGIC;
   signal NLW_timing_acquisition_8_0_CONTINUOUS_XCORR_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_timing_acquisition_8_0_DETECTION_XCORR_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   attribute X_INTERFACE_INFO : string;
@@ -1386,8 +1389,10 @@ output_ser2par_0: component block_design_0_output_ser2par_0_0
       DESCRAMBLED_OUTPUT_LAST => descrambler_0_DESCRAMBLED_OUTPUT_LAST,
       DESCRAMBLED_OUTPUT_VALID => descrambler_0_DESCRAMBLED_OUTPUT_VALID,
       PARALLEL_OUTPUT(31 downto 0) => output_ser2par_0_PARALLEL_OUTPUT(31 downto 0),
+      PARALLEL_OUTPUT_LAST => NLW_output_ser2par_0_PARALLEL_OUTPUT_LAST_UNCONNECTED,
       PARALLEL_OUTPUT_VALID => output_ser2par_0_PARALLEL_OUTPUT_VALID,
-      RESET => RESET_0_1
+      RESET => RESET_0_1,
+      VITERBI_SIGNAL_VALID => viterbi_hard_0_VITERBI_SIGNAL_VALID
     );
 rx_clock_domain_cros_0: component block_design_0_rx_clock_domain_cros_0_0
      port map (

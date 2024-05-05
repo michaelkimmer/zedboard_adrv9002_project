@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:module_ref:fft_ofdm:1.0
--- IP Revision: 1714826162
+-- IP Revision: 1714842023
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;

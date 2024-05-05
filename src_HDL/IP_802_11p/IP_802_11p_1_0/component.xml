@@ -332,7 +332,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>8416d2f2</spirit:value>
+            <spirit:value>2041629e</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -360,7 +360,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>2ce5e872</spirit:value>
+            <spirit:value>6d7e5480</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -374,7 +374,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>c49889be</spirit:value>
+            <spirit:value>6b5a7d7e</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -388,7 +388,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>080b65eb</spirit:value>
+            <spirit:value>0e5443b4</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -402,7 +402,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>45a2f450</spirit:value>
+            <spirit:value>16328387</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -417,7 +417,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>3ab62111</spirit:value>
+            <spirit:value>fbea79ce</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1514,14 +1514,14 @@
       <xilinx:xpmLibraries>
         <xilinx:xpmLibrary>XPM_MEMORY</xilinx:xpmLibrary>
       </xilinx:xpmLibraries>
-      <xilinx:coreRevision>37</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2024-05-04T13:44:51Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>38</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2024-05-04T22:04:18Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2023.2.2</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="52e76a8a"/>
       <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="233ead04"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="da0d183b"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="ad453260"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="b1c33d18"/>
       <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="cb9cd76d"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="98a5b890"/>
