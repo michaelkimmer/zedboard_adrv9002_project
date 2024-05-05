@@ -38,6 +38,7 @@ vlib modelsim_lib/msim/cmpy_v6_0_23
 vlib modelsim_lib/msim/floating_point_v7_0_22
 vlib modelsim_lib/msim/xfft_v9_1_11
 vlib modelsim_lib/msim/cordic_v6_0_21
+vlib modelsim_lib/msim/blk_mem_gen_v8_4_7
 vlib modelsim_lib/msim/axi_protocol_converter_v2_1_30
 
 vmap xilinx_vip modelsim_lib/msim/xilinx_vip
@@ -77,6 +78,7 @@ vmap cmpy_v6_0_23 modelsim_lib/msim/cmpy_v6_0_23
 vmap floating_point_v7_0_22 modelsim_lib/msim/floating_point_v7_0_22
 vmap xfft_v9_1_11 modelsim_lib/msim/xfft_v9_1_11
 vmap cordic_v6_0_21 modelsim_lib/msim/cordic_v6_0_21
+vmap blk_mem_gen_v8_4_7 modelsim_lib/msim/blk_mem_gen_v8_4_7
 vmap axi_protocol_converter_v2_1_30 modelsim_lib/msim/axi_protocol_converter_v2_1_30
 
 vlog -work xilinx_vip  -incr -mfcu  -sv -L axi_vip_v1_1_16 -L smartconnect_v1_0 -L processing_system7_vip_v1_0_18 -L xilinx_vip "+incdir+C:/Xilinx/Vivado/2023.2/data/xilinx_vip/include" \
@@ -494,47 +496,55 @@ vcom -work xil_defaultlib  -93  \
 "../../../bd/system/ip/edit_IP_802_11p_v1_0.srcs/sources_1/bd/block_design_0/ip/block_design_0_cordic_0_1/sim/block_design_0_cordic_0_1.vhd" \
 "../../../bd/system/ip/edit_IP_802_11p_v1_0.srcs/sources_1/bd/block_design_0/ip/block_design_0_cordic_0_2/sim/block_design_0_cordic_0_2.vhd" \
 "../../../bd/system/ip/edit_IP_802_11p_v1_0.srcs/sources_1/bd/block_design_0/ip/block_design_0_cordic_0_3/sim/block_design_0_cordic_0_3.vhd" \
-"../../../bd/system/ipshared/be6d/hdl/IP_802_11p_v1_0_S00_AXI.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/data_delay.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_data_delay_0_0/sim/block_design_0_data_delay_0_0.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/data_interleaver.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_data_interleaver_0_0/sim/block_design_0_data_interleaver_0_0.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/rx_clock_domain_crossing.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_rx_clock_domain_cros_0_0/sim/block_design_0_rx_clock_domain_cros_0_0.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/Parallel_STS_FIR_Filter.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/timing_acquisition_802_11p.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_timing_acquisition_8_0_0/sim/block_design_0_timing_acquisition_8_0_0.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/act_power.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_act_power_0_0/sim/block_design_0_act_power_0_0.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/sim/block_design_0.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/hdl/block_design_0_wrapper.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/atan_block.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_atan_block_0_0/sim/block_design_0_atan_block_0_0.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/rotation_block.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_rotation_block_0_0/sim/block_design_0_rotation_block_0_0.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/fft_ofdm.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_fft_ofdm_0_1/sim/block_design_0_fft_ofdm_0_1.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/equalizer_time_frequency.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_equalizer_time_frequ_0_0/sim/block_design_0_equalizer_time_frequ_0_0.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/axi_regs_mux.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_axi_regs_mux_0_0/sim/block_design_0_axi_regs_mux_0_0.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/atan_constellation_block.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_atan_constellation_b_0_0/sim/block_design_0_atan_constellation_b_0_0.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/rotation_constellation_block.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_rotation_constellati_0_0/sim/block_design_0_rotation_constellati_0_0.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/constellation_tracker.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_constellation_tracker_0_0/sim/block_design_0_constellation_tracker_0_0.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/demapper.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_demapper_0_0/sim/block_design_0_demapper_0_0.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/deinterleaver.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_deinterleaver_0_0/sim/block_design_0_deinterleaver_0_0.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/viterbi_hard.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_viterbi_hard_0_0/sim/block_design_0_viterbi_hard_0_0.vhd" \
-"../../../bd/system/ipshared/be6d/hdl/IP_802_11p_v1_0.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/descrambler.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_descrambler_0_0/sim/block_design_0_descrambler_0_0.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/output_ser2par.vhd" \
-"../../../bd/system/ipshared/be6d/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_output_ser2par_0_0/sim/block_design_0_output_ser2par_0_0.vhd" \
+
+vlog -work blk_mem_gen_v8_4_7  -incr -mfcu  "+incdir+../../../../adrv9001_zed.gen/sources_1/bd/system/ipshared/ec67/hdl" "+incdir+../../../../adrv9001_zed.gen/sources_1/bd/system/ipshared/570d/hdl" "+incdir+../../../bd/system/ipshared/1ab5" "+incdir+../../../../adrv9001_zed.gen/sources_1/bd/system/ipshared/c2c6" "+incdir+../../../../adrv9001_zed.gen/sources_1/bd/system/ipshared/f0b6/hdl/verilog" "+incdir+../../../../adrv9001_zed.gen/sources_1/bd/system/ipshared/35de/hdl/verilog" "+incdir+../../../../adrv9001_zed.gen/sources_1/bd/system/ipshared/1ab5" "+incdir+C:/Xilinx/Vivado/2023.2/data/xilinx_vip/include" \
+"../../../../adrv9001_zed.gen/sources_1/bd/system/ip/edit_IP_802_11p_v1_0.srcs/sources_1/bd/block_design_0/ipshared/3c0c/simulation/blk_mem_gen_v8_4.v" \
+
+vlog -work xil_defaultlib  -incr -mfcu  "+incdir+../../../../adrv9001_zed.gen/sources_1/bd/system/ipshared/ec67/hdl" "+incdir+../../../../adrv9001_zed.gen/sources_1/bd/system/ipshared/570d/hdl" "+incdir+../../../bd/system/ipshared/1ab5" "+incdir+../../../../adrv9001_zed.gen/sources_1/bd/system/ipshared/c2c6" "+incdir+../../../../adrv9001_zed.gen/sources_1/bd/system/ipshared/f0b6/hdl/verilog" "+incdir+../../../../adrv9001_zed.gen/sources_1/bd/system/ipshared/35de/hdl/verilog" "+incdir+../../../../adrv9001_zed.gen/sources_1/bd/system/ipshared/1ab5" "+incdir+C:/Xilinx/Vivado/2023.2/data/xilinx_vip/include" \
+"../../../bd/system/ip/edit_IP_802_11p_v1_0.srcs/sources_1/bd/block_design_0/ip/block_design_0_blk_mem_gen_0_0/sim/block_design_0_blk_mem_gen_0_0.v" \
+
+vcom -work xil_defaultlib  -93  \
+"../../../bd/system/ipshared/ae75/hdl/IP_802_11p_v1_0_S00_AXI.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/data_delay.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_data_delay_0_0/sim/block_design_0_data_delay_0_0.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/data_interleaver.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_data_interleaver_0_0/sim/block_design_0_data_interleaver_0_0.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/rx_clock_domain_crossing.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_rx_clock_domain_cros_0_0/sim/block_design_0_rx_clock_domain_cros_0_0.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/Parallel_STS_FIR_Filter.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/timing_acquisition_802_11p.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_timing_acquisition_8_0_0/sim/block_design_0_timing_acquisition_8_0_0.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/act_power.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_act_power_0_0/sim/block_design_0_act_power_0_0.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/sim/block_design_0.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/hdl/block_design_0_wrapper.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/atan_block.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_atan_block_0_0/sim/block_design_0_atan_block_0_0.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/rotation_block.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_rotation_block_0_0/sim/block_design_0_rotation_block_0_0.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/fft_ofdm.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_fft_ofdm_0_1/sim/block_design_0_fft_ofdm_0_1.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/equalizer_time_frequency.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_equalizer_time_frequ_0_0/sim/block_design_0_equalizer_time_frequ_0_0.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/axi_regs_mux.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_axi_regs_mux_0_0/sim/block_design_0_axi_regs_mux_0_0.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/atan_constellation_block.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_atan_constellation_b_0_0/sim/block_design_0_atan_constellation_b_0_0.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/rotation_constellation_block.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_rotation_constellati_0_0/sim/block_design_0_rotation_constellati_0_0.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/constellation_tracker.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_constellation_tracker_0_0/sim/block_design_0_constellation_tracker_0_0.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/demapper.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_demapper_0_0/sim/block_design_0_demapper_0_0.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/deinterleaver.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_deinterleaver_0_0/sim/block_design_0_deinterleaver_0_0.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/viterbi_hard.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_viterbi_hard_0_0/sim/block_design_0_viterbi_hard_0_0.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/descrambler.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_descrambler_0_0/sim/block_design_0_descrambler_0_0.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.srcs/sources_802_11p/output_ser2par.vhd" \
+"../../../bd/system/ipshared/ae75/_1/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_output_ser2par_0_0/sim/block_design_0_output_ser2par_0_0.vhd" \
+"../../../bd/system/ipshared/ae75/hdl/IP_802_11p_v1_0.vhd" \
 "../../../bd/system/ip/system_IP_802_11p_0_0/sim/system_IP_802_11p_0_0.vhd" \
 
 vlog -work axi_protocol_converter_v2_1_30  -incr -mfcu  "+incdir+../../../../adrv9001_zed.gen/sources_1/bd/system/ipshared/ec67/hdl" "+incdir+../../../../adrv9001_zed.gen/sources_1/bd/system/ipshared/570d/hdl" "+incdir+../../../bd/system/ipshared/1ab5" "+incdir+../../../../adrv9001_zed.gen/sources_1/bd/system/ipshared/c2c6" "+incdir+../../../../adrv9001_zed.gen/sources_1/bd/system/ipshared/f0b6/hdl/verilog" "+incdir+../../../../adrv9001_zed.gen/sources_1/bd/system/ipshared/35de/hdl/verilog" "+incdir+../../../../adrv9001_zed.gen/sources_1/bd/system/ipshared/1ab5" "+incdir+C:/Xilinx/Vivado/2023.2/data/xilinx_vip/include" \

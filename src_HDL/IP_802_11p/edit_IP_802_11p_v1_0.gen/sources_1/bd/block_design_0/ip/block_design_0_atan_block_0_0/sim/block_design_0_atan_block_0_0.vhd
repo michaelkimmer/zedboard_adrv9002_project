@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:module_ref:atan_block:1.0
--- IP Revision: 1714842019
+-- IP Revision: 1714909620
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
