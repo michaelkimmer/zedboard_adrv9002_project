@@ -288,7 +288,7 @@
     "components": {
       "rx_clock_domain_cros_0": {
         "vlnv": "xilinx.com:module_ref:rx_clock_domain_crossing:1.0",
-        "ip_revision": "1714909632",
+        "ip_revision": "1715024947",
         "xci_name": "block_design_0_rx_clock_domain_cros_0_0",
         "xci_path": "ip\\block_design_0_rx_clock_domain_cros_0_0\\block_design_0_rx_clock_domain_cros_0_0.xci",
         "inst_hier_path": "rx_clock_domain_cros_0",
@@ -371,7 +371,7 @@
       },
       "data_interleaver_0": {
         "vlnv": "xilinx.com:module_ref:data_interleaver:1.0",
-        "ip_revision": "1714909621",
+        "ip_revision": "1715024948",
         "xci_name": "block_design_0_data_interleaver_0_0",
         "xci_path": "ip\\block_design_0_data_interleaver_0_0\\block_design_0_data_interleaver_0_0.xci",
         "inst_hier_path": "data_interleaver_0",
@@ -429,7 +429,7 @@
       },
       "data_delay_0": {
         "vlnv": "xilinx.com:module_ref:data_delay:1.0",
-        "ip_revision": "1714909624",
+        "ip_revision": "1715024951",
         "xci_name": "block_design_0_data_delay_0_0",
         "xci_path": "ip\\block_design_0_data_delay_0_0\\block_design_0_data_delay_0_0.xci",
         "inst_hier_path": "data_delay_0",
@@ -527,7 +527,7 @@
       },
       "act_power_0": {
         "vlnv": "xilinx.com:module_ref:act_power:1.0",
-        "ip_revision": "1714909624",
+        "ip_revision": "1715024954",
         "xci_name": "block_design_0_act_power_0_0",
         "xci_path": "ip\\block_design_0_act_power_0_0\\block_design_0_act_power_0_0.xci",
         "inst_hier_path": "act_power_0",
@@ -580,7 +580,7 @@
       },
       "timing_acquisition_8_0": {
         "vlnv": "xilinx.com:module_ref:timing_acquisition_802_11p:1.0",
-        "ip_revision": "1714909625",
+        "ip_revision": "1715024937",
         "xci_name": "block_design_0_timing_acquisition_8_0_0",
         "xci_path": "ip\\block_design_0_timing_acquisition_8_0_0\\block_design_0_timing_acquisition_8_0_0.xci",
         "inst_hier_path": "timing_acquisition_8_0",
@@ -762,7 +762,7 @@
         "components": {
           "fft_ofdm_0": {
             "vlnv": "xilinx.com:module_ref:fft_ofdm:1.0",
-            "ip_revision": "1714909622",
+            "ip_revision": "1715025722",
             "xci_name": "block_design_0_fft_ofdm_0_1",
             "xci_path": "ip\\block_design_0_fft_ofdm_0_1\\block_design_0_fft_ofdm_0_1.xci",
             "inst_hier_path": "hier_fft_ofdm/fft_ofdm_0",
@@ -1374,7 +1374,7 @@
           },
           "atan_block_0": {
             "vlnv": "xilinx.com:module_ref:atan_block:1.0",
-            "ip_revision": "1714909620",
+            "ip_revision": "1715024949",
             "xci_name": "block_design_0_atan_block_0_0",
             "xci_path": "ip\\block_design_0_atan_block_0_0\\block_design_0_atan_block_0_0.xci",
             "inst_hier_path": "hier_atan/atan_block_0",
@@ -1757,7 +1757,7 @@
         "components": {
           "rotation_block_0": {
             "vlnv": "xilinx.com:module_ref:rotation_block:1.0",
-            "ip_revision": "1714909626",
+            "ip_revision": "1715024954",
             "xci_name": "block_design_0_rotation_block_0_0",
             "xci_path": "ip\\block_design_0_rotation_block_0_0\\block_design_0_rotation_block_0_0.xci",
             "inst_hier_path": "hier_rotation/rotation_block_0",
@@ -2240,7 +2240,7 @@
       },
       "equalizer_time_frequ_0": {
         "vlnv": "xilinx.com:module_ref:equalizer_time_frequency:1.0",
-        "ip_revision": "1714909623",
+        "ip_revision": "1715024953",
         "xci_name": "block_design_0_equalizer_time_frequ_0_0",
         "xci_path": "ip\\block_design_0_equalizer_time_frequ_0_0\\block_design_0_equalizer_time_frequ_0_0.xci",
         "inst_hier_path": "equalizer_time_frequ_0",
@@ -2395,7 +2395,7 @@
       },
       "axi_regs_mux_0": {
         "vlnv": "xilinx.com:module_ref:axi_regs_mux:1.0",
-        "ip_revision": "1714909626",
+        "ip_revision": "1715024955",
         "xci_name": "block_design_0_axi_regs_mux_0_0",
         "xci_path": "ip\\block_design_0_axi_regs_mux_0_0\\block_design_0_axi_regs_mux_0_0.xci",
         "inst_hier_path": "axi_regs_mux_0",
@@ -2573,12 +2573,17 @@
             "direction": "O",
             "left": "5",
             "right": "0"
+          },
+          "ATAN_CONSTELLATION_AMPLITUDE_OUT": {
+            "direction": "O",
+            "left": "23",
+            "right": "0"
           }
         },
         "components": {
           "atan_constellation_b_0": {
             "vlnv": "xilinx.com:module_ref:atan_constellation_block:1.0",
-            "ip_revision": "1714909627",
+            "ip_revision": "1715024956",
             "xci_name": "block_design_0_atan_constellation_b_0_0",
             "xci_path": "ip\\block_design_0_atan_constellation_b_0_0\\block_design_0_atan_constellation_b_0_0.xci",
             "inst_hier_path": "hier_atan_constellation/atan_constellation_b_0",
@@ -2594,7 +2599,7 @@
                 "vlnv": "xilinx.com:interface:axis_rtl:1.0",
                 "parameters": {
                   "TDATA_NUM_BYTES": {
-                    "value": "3",
+                    "value": "6",
                     "value_src": "constant"
                   },
                   "TDEST_WIDTH": {
@@ -2633,15 +2638,15 @@
                     "value": [
                       "xilinx.com:interface:datatypes:1.0 {",
                       "TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {}",
-                      "maximum {}} value 24} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_real {name {attribs {resolve_type immediate dependency {}",
-                      "format string minimum {} maximum {}} value real} enabled {attribs {resolve_type generated dependency polar_mag_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs",
-                      "{resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_mag_width format long minimum {} maximum {}} value 0}",
+                      "maximum {}} value 48} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_real {name {attribs {resolve_type immediate dependency {}",
+                      "format string minimum {} maximum {}} value real} enabled {attribs {resolve_type generated dependency polar_mag_enabled format bool minimum {} maximum {}} value true} datatype {name {attribs",
+                      "{resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_mag_width format long minimum {} maximum {}} value 24}",
                       "bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_mag_fractwidth format",
-                      "long minimum {} maximum {}} value -2} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}} field_phase {name {attribs {resolve_type immediate",
+                      "long minimum {} maximum {}} value 22} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}} field_phase {name {attribs {resolve_type immediate",
                       "dependency {} format string minimum {} maximum {}} value phase} enabled {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true} datatype {name {attribs",
                       "{resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_phase_width format long minimum {} maximum {}} value 24}",
-                      "bitoffset {attribs {resolve_type generated dependency polar_phase_offset format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency",
-                      "polar_phase_fractwidth format long minimum {} maximum {}} value 21} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}}}}} TDATA_WIDTH 24 TUSER",
+                      "bitoffset {attribs {resolve_type generated dependency polar_phase_offset format long minimum {} maximum {}} value 24} real {fixed {fractwidth {attribs {resolve_type generated dependency",
+                      "polar_phase_fractwidth format long minimum {} maximum {}} value 21} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}}}}} TDATA_WIDTH 48 TUSER",
                       "{datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}}",
                       "value 6} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_cartesian_tuser {name {attribs {resolve_type immediate dependency {} format",
                       "string minimum {} maximum {}} value cartesian_tuser} enabled {attribs {resolve_type generated dependency cart_enabled format bool minimum {} maximum {}} value true} datatype {name {attribs",
@@ -2660,7 +2665,7 @@
                   "TDATA": {
                     "physical_name": "M_AXIS_DOUT_tdata",
                     "direction": "I",
-                    "left": "23",
+                    "left": "47",
                     "right": "0"
                   },
                   "TUSER": {
@@ -2697,7 +2702,7 @@
                     "value_src": "constant"
                   },
                   "HAS_TREADY": {
-                    "value": "1",
+                    "value": "0",
                     "value_src": "constant"
                   },
                   "HAS_TSTRB": {
@@ -2749,10 +2754,6 @@
                   "TVALID": {
                     "physical_name": "S_AXIS_CARTESIAN_tvalid",
                     "direction": "O"
-                  },
-                  "TREADY": {
-                    "physical_name": "S_AXIS_CARTESIAN_tready",
-                    "direction": "I"
                   }
                 }
               }
@@ -2794,6 +2795,11 @@
                 "direction": "O"
               },
               "ATAN_CONSTELLATION_PHASE_OUT": {
+                "direction": "O",
+                "left": "23",
+                "right": "0"
+              },
+              "ATAN_CONSTELLATION_AMPLITUDE_OUT": {
                 "direction": "O",
                 "left": "23",
                 "right": "0"
@@ -2877,7 +2883,7 @@
                 "value": "SignedFraction"
               },
               "Functional_Selection": {
-                "value": "Arc_Tan"
+                "value": "Translate"
               },
               "Input_Width": {
                 "value": "24"
@@ -2949,6 +2955,12 @@
             "ports": [
               "RESET",
               "atan_constellation_b_0/RESET"
+            ]
+          },
+          "atan_constellation_b_0_ATAN_CONSTELLATION_AMPLITUDE_OUT": {
+            "ports": [
+              "atan_constellation_b_0/ATAN_CONSTELLATION_AMPLITUDE_OUT",
+              "ATAN_CONSTELLATION_AMPLITUDE_OUT"
             ]
           },
           "atan_constellation_b_0_ATAN_CONSTELLATION_PHASE_OUT": {
@@ -3071,7 +3083,7 @@
           },
           "rotation_constellati_0": {
             "vlnv": "xilinx.com:module_ref:rotation_constellation_block:1.0",
-            "ip_revision": "1714909628",
+            "ip_revision": "1715024957",
             "xci_name": "block_design_0_rotation_constellati_0_0",
             "xci_path": "ip\\block_design_0_rotation_constellati_0_0\\block_design_0_rotation_constellati_0_0.xci",
             "inst_hier_path": "hier_rotation_constellation/rotation_constellati_0",
@@ -3526,7 +3538,7 @@
       },
       "constellation_tracker_0": {
         "vlnv": "xilinx.com:module_ref:constellation_tracker:1.0",
-        "ip_revision": "1714909629",
+        "ip_revision": "1715024958",
         "xci_name": "block_design_0_constellation_tracker_0_0",
         "xci_path": "ip\\block_design_0_constellation_tracker_0_0\\block_design_0_constellation_tracker_0_0.xci",
         "inst_hier_path": "constellation_tracker_0",
@@ -3589,6 +3601,11 @@
           "CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER": {
             "direction": "O"
           },
+          "CONSTELLATION_BPSK_AMPLITUDE_REFERENCE": {
+            "direction": "O",
+            "left": "23",
+            "right": "0"
+          },
           "ATAN_CONSTELLATION_IN_STROBE": {
             "direction": "O"
           },
@@ -3611,6 +3628,11 @@
             "direction": "I"
           },
           "ATAN_CONSTELLATION_PHASE_OUT": {
+            "direction": "I",
+            "left": "23",
+            "right": "0"
+          },
+          "ATAN_CONSTELLATION_AMPLITUDE_OUT": {
             "direction": "I",
             "left": "23",
             "right": "0"
@@ -3665,7 +3687,7 @@
       },
       "demapper_0": {
         "vlnv": "xilinx.com:module_ref:demapper:1.0",
-        "ip_revision": "1714909630",
+        "ip_revision": "1715024959",
         "xci_name": "block_design_0_demapper_0_0",
         "xci_path": "ip\\block_design_0_demapper_0_0\\block_design_0_demapper_0_0.xci",
         "inst_hier_path": "demapper_0",
@@ -3693,11 +3715,6 @@
               }
             }
           },
-          "THRESH_16QAM": {
-            "direction": "I",
-            "left": "23",
-            "right": "0"
-          },
           "CONSTELLATION_DATA_IN_VALID": {
             "direction": "I"
           },
@@ -3713,6 +3730,11 @@
           },
           "CONSTELLATION_DATA_IN_FIRST_SYMBOL_MARKER": {
             "direction": "I"
+          },
+          "CONSTELLATION_BPSK_AMPLITUDE_REFERENCE": {
+            "direction": "I",
+            "left": "23",
+            "right": "0"
           },
           "DEMAPPING_START_MARKER": {
             "direction": "O"
@@ -3739,7 +3761,7 @@
       },
       "deinterleaver_0": {
         "vlnv": "xilinx.com:module_ref:deinterleaver:1.0",
-        "ip_revision": "1714909630",
+        "ip_revision": "1715024960",
         "xci_name": "block_design_0_deinterleaver_0_0",
         "xci_path": "ip\\block_design_0_deinterleaver_0_0\\block_design_0_deinterleaver_0_0.xci",
         "inst_hier_path": "deinterleaver_0",
@@ -3813,7 +3835,7 @@
       },
       "viterbi_hard_0": {
         "vlnv": "xilinx.com:module_ref:viterbi_hard:1.0",
-        "ip_revision": "1714909631",
+        "ip_revision": "1715024961",
         "xci_name": "block_design_0_viterbi_hard_0_0",
         "xci_path": "ip\\block_design_0_viterbi_hard_0_0\\block_design_0_viterbi_hard_0_0.xci",
         "inst_hier_path": "viterbi_hard_0",
@@ -3883,7 +3905,7 @@
       },
       "descrambler_0": {
         "vlnv": "xilinx.com:module_ref:descrambler:1.0",
-        "ip_revision": "1714909631",
+        "ip_revision": "1715024962",
         "xci_name": "block_design_0_descrambler_0_0",
         "xci_path": "ip\\block_design_0_descrambler_0_0\\block_design_0_descrambler_0_0.xci",
         "inst_hier_path": "descrambler_0",
@@ -3936,7 +3958,7 @@
       },
       "output_ser2par_0": {
         "vlnv": "xilinx.com:module_ref:output_ser2par:1.0",
-        "ip_revision": "1714909632",
+        "ip_revision": "1715024963",
         "xci_name": "block_design_0_output_ser2par_0_0",
         "xci_path": "ip\\block_design_0_output_ser2par_0_0\\block_design_0_output_ser2par_0_0.xci",
         "inst_hier_path": "output_ser2par_0",
@@ -4055,19 +4077,19 @@
           "hier_rotation/CLOCK",
           "hier_atan_constellation/CLOCK",
           "hier_rotation_constellation/CLOCK",
-          "data_interleaver_0/CLOCK",
-          "equalizer_time_frequ_0/CLOCK",
-          "data_delay_0/CLOCK",
-          "act_power_0/CLOCK",
           "timing_acquisition_8_0/CLOCK",
+          "rx_clock_domain_cros_0/CLOCK",
+          "data_interleaver_0/CLOCK",
+          "data_delay_0/CLOCK",
+          "equalizer_time_frequ_0/CLOCK",
+          "act_power_0/CLOCK",
           "axi_regs_mux_0/CLOCK",
           "constellation_tracker_0/CLOCK",
           "demapper_0/CLOCK",
           "deinterleaver_0/CLOCK",
           "viterbi_hard_0/CLOCK",
           "descrambler_0/CLOCK",
-          "output_ser2par_0/CLOCK",
-          "rx_clock_domain_cros_0/CLOCK"
+          "output_ser2par_0/CLOCK"
         ]
       },
       "DETECTION_THRESHOLD_0_1": {
@@ -4084,19 +4106,19 @@
           "hier_rotation/RESET",
           "hier_atan_constellation/RESET",
           "hier_rotation_constellation/RESET",
-          "data_interleaver_0/RESET",
-          "equalizer_time_frequ_0/RESET",
-          "data_delay_0/RESET",
-          "act_power_0/RESET",
           "timing_acquisition_8_0/RESET",
+          "rx_clock_domain_cros_0/RESET",
+          "data_interleaver_0/RESET",
+          "data_delay_0/RESET",
+          "equalizer_time_frequ_0/RESET",
+          "act_power_0/RESET",
           "axi_regs_mux_0/RESET",
           "constellation_tracker_0/RESET",
           "demapper_0/RESET",
           "deinterleaver_0/RESET",
           "viterbi_hard_0/RESET",
           "descrambler_0/RESET",
-          "output_ser2par_0/RESET",
-          "rx_clock_domain_cros_0/RESET"
+          "output_ser2par_0/RESET"
         ]
       },
       "RX_CLOCK_0_1": {
@@ -4183,6 +4205,12 @@
           "hier_atan_constellation/ATAN_CONSTELLATION_IN_STROBE"
         ]
       },
+      "constellation_tracker_0_CONSTELLATION_BPSK_AMPLITUDE_REFERENCE": {
+        "ports": [
+          "constellation_tracker_0/CONSTELLATION_BPSK_AMPLITUDE_REFERENCE",
+          "demapper_0/CONSTELLATION_BPSK_AMPLITUDE_REFERENCE"
+        ]
+      },
       "constellation_tracker_0_CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER": {
         "ports": [
           "constellation_tracker_0/CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER",
@@ -4244,18 +4272,18 @@
       "data_delay_0_DATA_OUT_STROBE": {
         "ports": [
           "data_delay_0/DATA_OUT_STROBE",
+          "timing_acquisition_8_0/DATA_STROBE",
           "equalizer_time_frequ_0/DATA_IN_STROBE",
           "act_power_0/DATA_STROBE",
-          "timing_acquisition_8_0/DATA_STROBE",
           "axi_regs_mux_0/DATA_STROBE"
         ]
       },
       "data_delay_0_IDATA_OUT": {
         "ports": [
           "data_delay_0/IDATA_OUT",
+          "timing_acquisition_8_0/IDATA",
           "equalizer_time_frequ_0/IDATA_IN",
           "act_power_0/IDATA",
-          "timing_acquisition_8_0/IDATA",
           "axi_regs_mux_0/IDATA"
         ]
       },
@@ -4286,9 +4314,9 @@
       "data_delay_0_QDATA_OUT": {
         "ports": [
           "data_delay_0/QDATA_OUT",
+          "timing_acquisition_8_0/QDATA",
           "equalizer_time_frequ_0/QDATA_IN",
           "act_power_0/QDATA",
-          "timing_acquisition_8_0/QDATA",
           "axi_regs_mux_0/QDATA"
         ]
       },
@@ -4513,6 +4541,12 @@
         "ports": [
           "hier_atan/ATAN_PHASE_OUT_STROBE",
           "equalizer_time_frequ_0/ATAN_PHASE_OUT_STROBE"
+        ]
+      },
+      "hier_atan_constellation_ATAN_CONSTELLATION_AMPLITUDE_OUT": {
+        "ports": [
+          "hier_atan_constellation/ATAN_CONSTELLATION_AMPLITUDE_OUT",
+          "constellation_tracker_0/ATAN_CONSTELLATION_AMPLITUDE_OUT"
         ]
       },
       "hier_atan_constellation_ATAN_CONSTELLATION_PHASE_OUT": {

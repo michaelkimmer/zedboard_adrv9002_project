@@ -2,8 +2,8 @@
 --Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
---Date        : Sun May  5 13:48:39 2024
---Host        : lab817_01 running 64-bit major release  (build 9200)
+--Date        : Mon May  6 22:02:19 2024
+--Host        : ASUS_ROG running 64-bit major release  (build 9200)
 --Command     : generate_target block_design_0.bd
 --Design      : block_design_0
 --Purpose     : IP block netlist
@@ -14,6 +14,7 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity hier_atan_constellation_imp_1BWRZUQ is
   port (
+    ATAN_CONSTELLATION_AMPLITUDE_OUT : out STD_LOGIC_VECTOR ( 23 downto 0 );
     ATAN_CONSTELLATION_IN_CNTR : in STD_LOGIC_VECTOR ( 5 downto 0 );
     ATAN_CONSTELLATION_IN_I : in STD_LOGIC_VECTOR ( 23 downto 0 );
     ATAN_CONSTELLATION_IN_Q : in STD_LOGIC_VECTOR ( 23 downto 0 );
@@ -37,15 +38,15 @@ architecture STRUCTURE of hier_atan_constellation_imp_1BWRZUQ is
     ATAN_CONSTELLATION_IN_CNTR : in STD_LOGIC_VECTOR ( 5 downto 0 );
     ATAN_CONSTELLATION_PHASE_OUT_STROBE : out STD_LOGIC;
     ATAN_CONSTELLATION_PHASE_OUT : out STD_LOGIC_VECTOR ( 23 downto 0 );
+    ATAN_CONSTELLATION_AMPLITUDE_OUT : out STD_LOGIC_VECTOR ( 23 downto 0 );
     ATAN_CONSTELLATION_PHASE_OUT_CNTR : out STD_LOGIC_VECTOR ( 5 downto 0 );
     aclk : out STD_LOGIC;
     aresetn : out STD_LOGIC;
-    M_AXIS_DOUT_tdata : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    M_AXIS_DOUT_tdata : in STD_LOGIC_VECTOR ( 47 downto 0 );
     M_AXIS_DOUT_tuser : in STD_LOGIC_VECTOR ( 5 downto 0 );
     M_AXIS_DOUT_tvalid : in STD_LOGIC;
     S_AXIS_CARTESIAN_tdata : out STD_LOGIC_VECTOR ( 47 downto 0 );
     S_AXIS_CARTESIAN_tuser : out STD_LOGIC_VECTOR ( 5 downto 0 );
-    S_AXIS_CARTESIAN_tready : in STD_LOGIC;
     S_AXIS_CARTESIAN_tvalid : out STD_LOGIC
   );
   end component block_design_0_atan_constellation_b_0_0;
@@ -58,7 +59,7 @@ architecture STRUCTURE of hier_atan_constellation_imp_1BWRZUQ is
     s_axis_cartesian_tdata : in STD_LOGIC_VECTOR ( 47 downto 0 );
     m_axis_dout_tvalid : out STD_LOGIC;
     m_axis_dout_tuser : out STD_LOGIC_VECTOR ( 5 downto 0 );
-    m_axis_dout_tdata : out STD_LOGIC_VECTOR ( 23 downto 0 )
+    m_axis_dout_tdata : out STD_LOGIC_VECTOR ( 47 downto 0 )
   );
   end component block_design_0_cordic_0_2;
   signal ATAN_CONSTELLATION_IN_CNTR_1 : STD_LOGIC_VECTOR ( 5 downto 0 );
@@ -67,6 +68,7 @@ architecture STRUCTURE of hier_atan_constellation_imp_1BWRZUQ is
   signal ATAN_CONSTELLATION_IN_STROBE_1 : STD_LOGIC;
   signal CLOCK_0_1 : STD_LOGIC;
   signal RESET_0_1 : STD_LOGIC;
+  signal atan_constellation_b_0_ATAN_CONSTELLATION_AMPLITUDE_OUT : STD_LOGIC_VECTOR ( 23 downto 0 );
   signal atan_constellation_b_0_ATAN_CONSTELLATION_PHASE_OUT : STD_LOGIC_VECTOR ( 23 downto 0 );
   signal atan_constellation_b_0_ATAN_CONSTELLATION_PHASE_OUT_CNTR : STD_LOGIC_VECTOR ( 5 downto 0 );
   signal atan_constellation_b_0_ATAN_CONSTELLATION_PHASE_OUT_STROBE : STD_LOGIC;
@@ -75,10 +77,11 @@ architecture STRUCTURE of hier_atan_constellation_imp_1BWRZUQ is
   signal atan_constellation_b_0_S_AXIS_CARTESIAN_TVALID : STD_LOGIC;
   signal atan_constellation_b_0_aclk : STD_LOGIC;
   signal atan_constellation_b_0_aresetn : STD_LOGIC;
-  signal cordic_0_M_AXIS_DOUT_TDATA : STD_LOGIC_VECTOR ( 23 downto 0 );
+  signal cordic_0_M_AXIS_DOUT_TDATA : STD_LOGIC_VECTOR ( 47 downto 0 );
   signal cordic_0_M_AXIS_DOUT_TUSER : STD_LOGIC_VECTOR ( 5 downto 0 );
   signal cordic_0_M_AXIS_DOUT_TVALID : STD_LOGIC;
 begin
+  ATAN_CONSTELLATION_AMPLITUDE_OUT(23 downto 0) <= atan_constellation_b_0_ATAN_CONSTELLATION_AMPLITUDE_OUT(23 downto 0);
   ATAN_CONSTELLATION_IN_CNTR_1(5 downto 0) <= ATAN_CONSTELLATION_IN_CNTR(5 downto 0);
   ATAN_CONSTELLATION_IN_I_1(23 downto 0) <= ATAN_CONSTELLATION_IN_I(23 downto 0);
   ATAN_CONSTELLATION_IN_Q_1(23 downto 0) <= ATAN_CONSTELLATION_IN_Q(23 downto 0);
@@ -90,6 +93,7 @@ begin
   RESET_0_1 <= RESET;
 atan_constellation_b_0: component block_design_0_atan_constellation_b_0_0
      port map (
+      ATAN_CONSTELLATION_AMPLITUDE_OUT(23 downto 0) => atan_constellation_b_0_ATAN_CONSTELLATION_AMPLITUDE_OUT(23 downto 0),
       ATAN_CONSTELLATION_IN_CNTR(5 downto 0) => ATAN_CONSTELLATION_IN_CNTR_1(5 downto 0),
       ATAN_CONSTELLATION_IN_I(23 downto 0) => ATAN_CONSTELLATION_IN_I_1(23 downto 0),
       ATAN_CONSTELLATION_IN_Q(23 downto 0) => ATAN_CONSTELLATION_IN_Q_1(23 downto 0),
@@ -98,12 +102,11 @@ atan_constellation_b_0: component block_design_0_atan_constellation_b_0_0
       ATAN_CONSTELLATION_PHASE_OUT_CNTR(5 downto 0) => atan_constellation_b_0_ATAN_CONSTELLATION_PHASE_OUT_CNTR(5 downto 0),
       ATAN_CONSTELLATION_PHASE_OUT_STROBE => atan_constellation_b_0_ATAN_CONSTELLATION_PHASE_OUT_STROBE,
       CLOCK => CLOCK_0_1,
-      M_AXIS_DOUT_tdata(23 downto 0) => cordic_0_M_AXIS_DOUT_TDATA(23 downto 0),
+      M_AXIS_DOUT_tdata(47 downto 0) => cordic_0_M_AXIS_DOUT_TDATA(47 downto 0),
       M_AXIS_DOUT_tuser(5 downto 0) => cordic_0_M_AXIS_DOUT_TUSER(5 downto 0),
       M_AXIS_DOUT_tvalid => cordic_0_M_AXIS_DOUT_TVALID,
       RESET => RESET_0_1,
       S_AXIS_CARTESIAN_tdata(47 downto 0) => atan_constellation_b_0_S_AXIS_CARTESIAN_TDATA(47 downto 0),
-      S_AXIS_CARTESIAN_tready => '1',
       S_AXIS_CARTESIAN_tuser(5 downto 0) => atan_constellation_b_0_S_AXIS_CARTESIAN_TUSER(5 downto 0),
       S_AXIS_CARTESIAN_tvalid => atan_constellation_b_0_S_AXIS_CARTESIAN_TVALID,
       aclk => atan_constellation_b_0_aclk,
@@ -113,7 +116,7 @@ cordic_0: component block_design_0_cordic_0_2
      port map (
       aclk => atan_constellation_b_0_aclk,
       aresetn => atan_constellation_b_0_aresetn,
-      m_axis_dout_tdata(23 downto 0) => cordic_0_M_AXIS_DOUT_TDATA(23 downto 0),
+      m_axis_dout_tdata(47 downto 0) => cordic_0_M_AXIS_DOUT_TDATA(47 downto 0),
       m_axis_dout_tuser(5 downto 0) => cordic_0_M_AXIS_DOUT_TUSER(5 downto 0),
       m_axis_dout_tvalid => cordic_0_M_AXIS_DOUT_TVALID,
       s_axis_cartesian_tdata(47 downto 0) => atan_constellation_b_0_S_AXIS_CARTESIAN_TDATA(47 downto 0),
@@ -851,12 +854,14 @@ architecture STRUCTURE of block_design_0 is
     CONSTELLATION_QDATA_OUT : out STD_LOGIC_VECTOR ( 23 downto 0 );
     CONSTELLATION_DATA_OUT_VALID : out STD_LOGIC;
     CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER : out STD_LOGIC;
+    CONSTELLATION_BPSK_AMPLITUDE_REFERENCE : out STD_LOGIC_VECTOR ( 23 downto 0 );
     ATAN_CONSTELLATION_IN_STROBE : out STD_LOGIC;
     ATAN_CONSTELLATION_IN_I : out STD_LOGIC_VECTOR ( 23 downto 0 );
     ATAN_CONSTELLATION_IN_Q : out STD_LOGIC_VECTOR ( 23 downto 0 );
     ATAN_CONSTELLATION_IN_CNTR : out STD_LOGIC_VECTOR ( 5 downto 0 );
     ATAN_CONSTELLATION_PHASE_OUT_STROBE : in STD_LOGIC;
     ATAN_CONSTELLATION_PHASE_OUT : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    ATAN_CONSTELLATION_AMPLITUDE_OUT : in STD_LOGIC_VECTOR ( 23 downto 0 );
     ATAN_CONSTELLATION_PHASE_OUT_CNTR : in STD_LOGIC_VECTOR ( 5 downto 0 );
     ROTATION_CONSTELLATION_DATA_IN_STROBE : out STD_LOGIC;
     ROTATION_CONSTELLATION_IDATA_IN : out STD_LOGIC_VECTOR ( 23 downto 0 );
@@ -873,11 +878,11 @@ architecture STRUCTURE of block_design_0 is
   port (
     RESET : in STD_LOGIC;
     CLOCK : in STD_LOGIC;
-    THRESH_16QAM : in STD_LOGIC_VECTOR ( 23 downto 0 );
     CONSTELLATION_DATA_IN_VALID : in STD_LOGIC;
     CONSTELLATION_IDATA_IN : in STD_LOGIC_VECTOR ( 23 downto 0 );
     CONSTELLATION_QDATA_IN : in STD_LOGIC_VECTOR ( 23 downto 0 );
     CONSTELLATION_DATA_IN_FIRST_SYMBOL_MARKER : in STD_LOGIC;
+    CONSTELLATION_BPSK_AMPLITUDE_REFERENCE : in STD_LOGIC_VECTOR ( 23 downto 0 );
     DEMAPPING_START_MARKER : out STD_LOGIC;
     DEMAPPING_STROBE : out STD_LOGIC;
     DEMAPPING_BPSK : out STD_LOGIC_VECTOR ( 0 to 51 );
@@ -982,6 +987,7 @@ architecture STRUCTURE of block_design_0 is
   signal constellation_tracker_0_ATAN_CONSTELLATION_IN_I : STD_LOGIC_VECTOR ( 23 downto 0 );
   signal constellation_tracker_0_ATAN_CONSTELLATION_IN_Q : STD_LOGIC_VECTOR ( 23 downto 0 );
   signal constellation_tracker_0_ATAN_CONSTELLATION_IN_STROBE : STD_LOGIC;
+  signal constellation_tracker_0_CONSTELLATION_BPSK_AMPLITUDE_REFERENCE : STD_LOGIC_VECTOR ( 23 downto 0 );
   signal constellation_tracker_0_CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER : STD_LOGIC;
   signal constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID : STD_LOGIC;
   signal constellation_tracker_0_CONSTELLATION_IDATA_OUT : STD_LOGIC_VECTOR ( 23 downto 0 );
@@ -1034,6 +1040,7 @@ architecture STRUCTURE of block_design_0 is
   signal fft_ofdm_0_FFT_QDATA_OUT : STD_LOGIC_VECTOR ( 23 downto 0 );
   signal hier_atan_ATAN_PHASE_OUT : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal hier_atan_ATAN_PHASE_OUT_STROBE : STD_LOGIC;
+  signal hier_atan_constellation_ATAN_CONSTELLATION_AMPLITUDE_OUT : STD_LOGIC_VECTOR ( 23 downto 0 );
   signal hier_atan_constellation_ATAN_CONSTELLATION_PHASE_OUT : STD_LOGIC_VECTOR ( 23 downto 0 );
   signal hier_atan_constellation_ATAN_CONSTELLATION_PHASE_OUT_CNTR : STD_LOGIC_VECTOR ( 5 downto 0 );
   signal hier_atan_constellation_ATAN_CONSTELLATION_PHASE_OUT_STROBE : STD_LOGIC;
@@ -1176,6 +1183,7 @@ blk_mem_gen_0: component block_design_0_blk_mem_gen_0_0
     );
 constellation_tracker_0: component block_design_0_constellation_tracker_0_0
      port map (
+      ATAN_CONSTELLATION_AMPLITUDE_OUT(23 downto 0) => hier_atan_constellation_ATAN_CONSTELLATION_AMPLITUDE_OUT(23 downto 0),
       ATAN_CONSTELLATION_IN_CNTR(5 downto 0) => constellation_tracker_0_ATAN_CONSTELLATION_IN_CNTR(5 downto 0),
       ATAN_CONSTELLATION_IN_I(23 downto 0) => constellation_tracker_0_ATAN_CONSTELLATION_IN_I(23 downto 0),
       ATAN_CONSTELLATION_IN_Q(23 downto 0) => constellation_tracker_0_ATAN_CONSTELLATION_IN_Q(23 downto 0),
@@ -1184,6 +1192,7 @@ constellation_tracker_0: component block_design_0_constellation_tracker_0_0
       ATAN_CONSTELLATION_PHASE_OUT_CNTR(5 downto 0) => hier_atan_constellation_ATAN_CONSTELLATION_PHASE_OUT_CNTR(5 downto 0),
       ATAN_CONSTELLATION_PHASE_OUT_STROBE => hier_atan_constellation_ATAN_CONSTELLATION_PHASE_OUT_STROBE,
       CLOCK => CLOCK_0_1,
+      CONSTELLATION_BPSK_AMPLITUDE_REFERENCE(23 downto 0) => constellation_tracker_0_CONSTELLATION_BPSK_AMPLITUDE_REFERENCE(23 downto 0),
       CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER => constellation_tracker_0_CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER,
       CONSTELLATION_DATA_OUT_VALID => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
       CONSTELLATION_IDATA_OUT(23 downto 0) => constellation_tracker_0_CONSTELLATION_IDATA_OUT(23 downto 0),
@@ -1252,6 +1261,7 @@ deinterleaver_0: component block_design_0_deinterleaver_0_0
 demapper_0: component block_design_0_demapper_0_0
      port map (
       CLOCK => CLOCK_0_1,
+      CONSTELLATION_BPSK_AMPLITUDE_REFERENCE(23 downto 0) => constellation_tracker_0_CONSTELLATION_BPSK_AMPLITUDE_REFERENCE(23 downto 0),
       CONSTELLATION_DATA_IN_FIRST_SYMBOL_MARKER => constellation_tracker_0_CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER,
       CONSTELLATION_DATA_IN_VALID => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
       CONSTELLATION_IDATA_IN(23 downto 0) => constellation_tracker_0_CONSTELLATION_IDATA_OUT(23 downto 0),
@@ -1261,8 +1271,7 @@ demapper_0: component block_design_0_demapper_0_0
       DEMAPPING_QPSK(0 to 103) => demapper_0_DEMAPPING_QPSK(0 to 103),
       DEMAPPING_START_MARKER => demapper_0_DEMAPPING_START_MARKER,
       DEMAPPING_STROBE => demapper_0_DEMAPPING_STROBE,
-      RESET => RESET_0_1,
-      THRESH_16QAM(23 downto 0) => B"000000000000000000000000"
+      RESET => RESET_0_1
     );
 descrambler_0: component block_design_0_descrambler_0_0
      port map (
@@ -1324,6 +1333,7 @@ hier_atan: entity work.hier_atan_imp_GD512
     );
 hier_atan_constellation: entity work.hier_atan_constellation_imp_1BWRZUQ
      port map (
+      ATAN_CONSTELLATION_AMPLITUDE_OUT(23 downto 0) => hier_atan_constellation_ATAN_CONSTELLATION_AMPLITUDE_OUT(23 downto 0),
       ATAN_CONSTELLATION_IN_CNTR(5 downto 0) => constellation_tracker_0_ATAN_CONSTELLATION_IN_CNTR(5 downto 0),
       ATAN_CONSTELLATION_IN_I(23 downto 0) => constellation_tracker_0_ATAN_CONSTELLATION_IN_I(23 downto 0),
       ATAN_CONSTELLATION_IN_Q(23 downto 0) => constellation_tracker_0_ATAN_CONSTELLATION_IN_Q(23 downto 0),

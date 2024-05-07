@@ -1322,7 +1322,7 @@ class Realtime_Tab(ttk.Frame):
         # Build addresses input fields
         input_fields = []
 
-        
+
         # Start button
         connect_button = tk.Button(self, text="Start", command=lambda: self.start_button_clicked(root))
         connect_button.grid(row=self.act_row, column=0, padx=5, pady=5, sticky="WE") 
@@ -1334,6 +1334,10 @@ class Realtime_Tab(ttk.Frame):
         # State indicator label at the top
         description_label = tk.Label(self, text="Idle", font=("Helvetica", 14, "bold"))
         description_label.grid(row=self.act_row, column=2, columnspan=2, padx=5, pady=5, sticky="W")
+
+        # Read button
+        connect_button = tk.Button(self, text="Read Once", command=lambda: self.read_once_button_clicked(root))
+        connect_button.grid(row=self.act_row, column=3, padx=5, pady=5, sticky="WE") 
 
         self.act_row += 1
 
@@ -1416,6 +1420,13 @@ class Realtime_Tab(ttk.Frame):
 
         self.description_label.config(text="Idle")
         self.log_write_line(f"Realtime reading stopped")
+
+    # read once new data from FPGA AXI regs
+    def read_once_button_clicked(self, root):
+        # Set the FPGA to output decoded data TODO
+
+
+        self.log_write_line(f"Data read once")
 
 
     # Clear log

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun May  5 13:48:40 2024" VIVADOVERSION="2023.2.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon May  6 22:02:20 2024" VIVADOVERSION="2023.2.2">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z020" NAME="block_design_0" PACKAGE="clg484" SPEEDGRADE="-1"/>
 
@@ -56,11 +56,12 @@
         <CONNECTION INSTANCE="hier_rotation_rotation_block_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="hier_atan_constellation_atan_constellation_b_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="hier_rotation_constellation_rotation_constellati_0" PORT="CLOCK"/>
-        <CONNECTION INSTANCE="data_interleaver_0" PORT="CLOCK"/>
-        <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="CLOCK"/>
-        <CONNECTION INSTANCE="data_delay_0" PORT="CLOCK"/>
-        <CONNECTION INSTANCE="act_power_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="CLOCK"/>
+        <CONNECTION INSTANCE="rx_clock_domain_cros_0" PORT="CLOCK"/>
+        <CONNECTION INSTANCE="data_interleaver_0" PORT="CLOCK"/>
+        <CONNECTION INSTANCE="data_delay_0" PORT="CLOCK"/>
+        <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="CLOCK"/>
+        <CONNECTION INSTANCE="act_power_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="axi_regs_mux_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="constellation_tracker_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="demapper_0" PORT="CLOCK"/>
@@ -68,7 +69,6 @@
         <CONNECTION INSTANCE="viterbi_hard_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="descrambler_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="output_ser2par_0" PORT="CLOCK"/>
-        <CONNECTION INSTANCE="rx_clock_domain_cros_0" PORT="CLOCK"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" LEFT="31" NAME="DETECTION_THRESHOLD" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_DETECTION_THRESHOLD">
@@ -103,11 +103,12 @@
         <CONNECTION INSTANCE="hier_rotation_rotation_block_0" PORT="RESET"/>
         <CONNECTION INSTANCE="hier_atan_constellation_atan_constellation_b_0" PORT="RESET"/>
         <CONNECTION INSTANCE="hier_rotation_constellation_rotation_constellati_0" PORT="RESET"/>
-        <CONNECTION INSTANCE="data_interleaver_0" PORT="RESET"/>
-        <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="RESET"/>
-        <CONNECTION INSTANCE="data_delay_0" PORT="RESET"/>
-        <CONNECTION INSTANCE="act_power_0" PORT="RESET"/>
         <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="RESET"/>
+        <CONNECTION INSTANCE="rx_clock_domain_cros_0" PORT="RESET"/>
+        <CONNECTION INSTANCE="data_interleaver_0" PORT="RESET"/>
+        <CONNECTION INSTANCE="data_delay_0" PORT="RESET"/>
+        <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="RESET"/>
+        <CONNECTION INSTANCE="act_power_0" PORT="RESET"/>
         <CONNECTION INSTANCE="axi_regs_mux_0" PORT="RESET"/>
         <CONNECTION INSTANCE="constellation_tracker_0" PORT="RESET"/>
         <CONNECTION INSTANCE="demapper_0" PORT="RESET"/>
@@ -115,7 +116,6 @@
         <CONNECTION INSTANCE="viterbi_hard_0" PORT="RESET"/>
         <CONNECTION INSTANCE="descrambler_0" PORT="RESET"/>
         <CONNECTION INSTANCE="output_ser2par_0" PORT="RESET"/>
-        <CONNECTION INSTANCE="rx_clock_domain_cros_0" PORT="RESET"/>
       </CONNECTIONS>
     </PORT>
     <PORT CLKFREQUENCY="10000000" DIR="I" NAME="RX_CLOCK" SIGIS="clk" SIGNAME="External_Ports_RX_CLOCK">
@@ -188,7 +188,7 @@
   </EXTERNALINTERFACES>
 
   <MODULES>
-    <MODULE COREREVISION="1714909624" FULLNAME="/act_power_0" HWVERSION="1.0" INSTANCE="act_power_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="act_power" VLNV="xilinx.com:module_ref:act_power:1.0">
+    <MODULE COREREVISION="1715024954" FULLNAME="/act_power_0" HWVERSION="1.0" INSTANCE="act_power_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="act_power" VLNV="xilinx.com:module_ref:act_power:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_act_power_0_0"/>
@@ -229,7 +229,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1714909626" FULLNAME="/axi_regs_mux_0" HWVERSION="1.0" INSTANCE="axi_regs_mux_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="axi_regs_mux" VLNV="xilinx.com:module_ref:axi_regs_mux:1.0">
+    <MODULE COREREVISION="1715024955" FULLNAME="/axi_regs_mux_0" HWVERSION="1.0" INSTANCE="axi_regs_mux_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="axi_regs_mux" VLNV="xilinx.com:module_ref:axi_regs_mux:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_axi_regs_mux_0_0"/>
@@ -612,13 +612,18 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="1714909629" FULLNAME="/constellation_tracker_0" HWVERSION="1.0" INSTANCE="constellation_tracker_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="constellation_tracker" VLNV="xilinx.com:module_ref:constellation_tracker:1.0">
+    <MODULE COREREVISION="1715024958" FULLNAME="/constellation_tracker_0" HWVERSION="1.0" INSTANCE="constellation_tracker_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="constellation_tracker" VLNV="xilinx.com:module_ref:constellation_tracker:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_constellation_tracker_0_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
+        <PORT DIR="I" LEFT="23" NAME="ATAN_CONSTELLATION_AMPLITUDE_OUT" RIGHT="0" SIGIS="undef" SIGNAME="hier_atan_constellation_atan_constellation_b_0_ATAN_CONSTELLATION_AMPLITUDE_OUT">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hier_atan_constellation_atan_constellation_b_0" PORT="ATAN_CONSTELLATION_AMPLITUDE_OUT"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" LEFT="5" NAME="ATAN_CONSTELLATION_IN_CNTR" RIGHT="0" SIGIS="undef" SIGNAME="constellation_tracker_0_ATAN_CONSTELLATION_IN_CNTR">
           <CONNECTIONS>
             <CONNECTION INSTANCE="hier_atan_constellation_atan_constellation_b_0" PORT="ATAN_CONSTELLATION_IN_CNTR"/>
@@ -657,6 +662,11 @@
         <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLOCK" SIGIS="clk" SIGNAME="External_Ports_CLOCK">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="CLOCK"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="23" NAME="CONSTELLATION_BPSK_AMPLITUDE_REFERENCE" RIGHT="0" SIGIS="undef" SIGNAME="constellation_tracker_0_CONSTELLATION_BPSK_AMPLITUDE_REFERENCE">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="demapper_0" PORT="CONSTELLATION_BPSK_AMPLITUDE_REFERENCE"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER" SIGIS="undef" SIGNAME="constellation_tracker_0_CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER">
@@ -761,7 +771,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1714909624" FULLNAME="/data_delay_0" HWVERSION="1.0" INSTANCE="data_delay_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="data_delay" VLNV="xilinx.com:module_ref:data_delay:1.0">
+    <MODULE COREREVISION="1715024951" FULLNAME="/data_delay_0" HWVERSION="1.0" INSTANCE="data_delay_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="data_delay" VLNV="xilinx.com:module_ref:data_delay:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_data_delay_0_0"/>
@@ -780,9 +790,9 @@
         </PORT>
         <PORT DIR="O" NAME="DATA_OUT_STROBE" SIGIS="undef" SIGNAME="data_delay_0_DATA_OUT_STROBE">
           <CONNECTIONS>
+            <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="DATA_STROBE"/>
             <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="DATA_IN_STROBE"/>
             <CONNECTION INSTANCE="act_power_0" PORT="DATA_STROBE"/>
-            <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="DATA_STROBE"/>
             <CONNECTION INSTANCE="axi_regs_mux_0" PORT="DATA_STROBE"/>
           </CONNECTIONS>
         </PORT>
@@ -793,9 +803,9 @@
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="IDATA_OUT" RIGHT="0" SIGIS="undef" SIGNAME="data_delay_0_IDATA_OUT">
           <CONNECTIONS>
+            <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="IDATA"/>
             <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="IDATA_IN"/>
             <CONNECTION INSTANCE="act_power_0" PORT="IDATA"/>
-            <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="IDATA"/>
             <CONNECTION INSTANCE="axi_regs_mux_0" PORT="IDATA"/>
           </CONNECTIONS>
         </PORT>
@@ -826,9 +836,9 @@
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="QDATA_OUT" RIGHT="0" SIGIS="undef" SIGNAME="data_delay_0_QDATA_OUT">
           <CONNECTIONS>
+            <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="QDATA"/>
             <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="QDATA_IN"/>
             <CONNECTION INSTANCE="act_power_0" PORT="QDATA"/>
-            <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="QDATA"/>
             <CONNECTION INSTANCE="axi_regs_mux_0" PORT="QDATA"/>
           </CONNECTIONS>
         </PORT>
@@ -860,7 +870,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1714909621" FULLNAME="/data_interleaver_0" HWVERSION="1.0" INSTANCE="data_interleaver_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="data_interleaver" VLNV="xilinx.com:module_ref:data_interleaver:1.0">
+    <MODULE COREREVISION="1715024948" FULLNAME="/data_interleaver_0" HWVERSION="1.0" INSTANCE="data_interleaver_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="data_interleaver" VLNV="xilinx.com:module_ref:data_interleaver:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="interleave_period" VALUE="2"/>
@@ -911,7 +921,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1714909630" FULLNAME="/deinterleaver_0" HWVERSION="1.0" INSTANCE="deinterleaver_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="deinterleaver" VLNV="xilinx.com:module_ref:deinterleaver:1.0">
+    <MODULE COREREVISION="1715024960" FULLNAME="/deinterleaver_0" HWVERSION="1.0" INSTANCE="deinterleaver_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="deinterleaver" VLNV="xilinx.com:module_ref:deinterleaver:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_deinterleaver_0_0"/>
@@ -985,7 +995,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1714909630" FULLNAME="/demapper_0" HWVERSION="1.0" INSTANCE="demapper_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="demapper" VLNV="xilinx.com:module_ref:demapper:1.0">
+    <MODULE COREREVISION="1715024959" FULLNAME="/demapper_0" HWVERSION="1.0" INSTANCE="demapper_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="demapper" VLNV="xilinx.com:module_ref:demapper:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_demapper_0_0"/>
@@ -995,6 +1005,11 @@
         <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLOCK" SIGIS="clk" SIGNAME="External_Ports_CLOCK">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="CLOCK"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="23" NAME="CONSTELLATION_BPSK_AMPLITUDE_REFERENCE" RIGHT="0" SIGIS="undef" SIGNAME="constellation_tracker_0_CONSTELLATION_BPSK_AMPLITUDE_REFERENCE">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="constellation_tracker_0" PORT="CONSTELLATION_BPSK_AMPLITUDE_REFERENCE"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="CONSTELLATION_DATA_IN_FIRST_SYMBOL_MARKER" SIGIS="undef" SIGNAME="constellation_tracker_0_CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER">
@@ -1047,11 +1062,10 @@
             <CONNECTION INSTANCE="External_Ports" PORT="RESET"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="23" NAME="THRESH_16QAM" RIGHT="0" SIGIS="undef"/>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1714909631" FULLNAME="/descrambler_0" HWVERSION="1.0" INSTANCE="descrambler_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="descrambler" VLNV="xilinx.com:module_ref:descrambler:1.0">
+    <MODULE COREREVISION="1715024962" FULLNAME="/descrambler_0" HWVERSION="1.0" INSTANCE="descrambler_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="descrambler" VLNV="xilinx.com:module_ref:descrambler:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_descrambler_0_0"/>
@@ -1106,7 +1120,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1714909623" FULLNAME="/equalizer_time_frequ_0" HWVERSION="1.0" INSTANCE="equalizer_time_frequ_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="equalizer_time_frequency" VLNV="xilinx.com:module_ref:equalizer_time_frequency:1.0">
+    <MODULE COREREVISION="1715024953" FULLNAME="/equalizer_time_frequ_0" HWVERSION="1.0" INSTANCE="equalizer_time_frequ_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="equalizer_time_frequency" VLNV="xilinx.com:module_ref:equalizer_time_frequency:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_equalizer_time_frequ_0_0"/>
@@ -1281,7 +1295,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1714909620" FULLNAME="/hier_atan/atan_block_0" HWVERSION="1.0" INSTANCE="hier_atan_atan_block_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="atan_block" VLNV="xilinx.com:module_ref:atan_block:1.0">
+    <MODULE COREREVISION="1715024949" FULLNAME="/hier_atan/atan_block_0" HWVERSION="1.0" INSTANCE="hier_atan_atan_block_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="atan_block" VLNV="xilinx.com:module_ref:atan_block:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_atan_block_0_0"/>
@@ -1401,13 +1415,18 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="1714909627" FULLNAME="/hier_atan_constellation/atan_constellation_b_0" HWVERSION="1.0" INSTANCE="hier_atan_constellation_atan_constellation_b_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="atan_constellation_block" VLNV="xilinx.com:module_ref:atan_constellation_block:1.0">
+    <MODULE COREREVISION="1715024956" FULLNAME="/hier_atan_constellation/atan_constellation_b_0" HWVERSION="1.0" INSTANCE="hier_atan_constellation_atan_constellation_b_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="atan_constellation_block" VLNV="xilinx.com:module_ref:atan_constellation_block:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_atan_constellation_b_0_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
+        <PORT DIR="O" LEFT="23" NAME="ATAN_CONSTELLATION_AMPLITUDE_OUT" RIGHT="0" SIGIS="undef" SIGNAME="hier_atan_constellation_atan_constellation_b_0_ATAN_CONSTELLATION_AMPLITUDE_OUT">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="constellation_tracker_0" PORT="ATAN_CONSTELLATION_AMPLITUDE_OUT"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="I" LEFT="5" NAME="ATAN_CONSTELLATION_IN_CNTR" RIGHT="0" SIGIS="undef" SIGNAME="constellation_tracker_0_ATAN_CONSTELLATION_IN_CNTR">
           <CONNECTIONS>
             <CONNECTION INSTANCE="constellation_tracker_0" PORT="ATAN_CONSTELLATION_IN_CNTR"/>
@@ -1448,7 +1467,7 @@
             <CONNECTION INSTANCE="External_Ports" PORT="CLOCK"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="23" NAME="M_AXIS_DOUT_tdata" RIGHT="0" SIGIS="undef" SIGNAME="hier_atan_constellation_atan_constellation_b_0_M_AXIS_DOUT_tdata">
+        <PORT DIR="I" LEFT="47" NAME="M_AXIS_DOUT_tdata" RIGHT="0" SIGIS="undef" SIGNAME="hier_atan_constellation_atan_constellation_b_0_M_AXIS_DOUT_tdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="hier_atan_constellation_cordic_0" PORT="m_axis_dout_tdata"/>
           </CONNECTIONS>
@@ -1503,9 +1522,9 @@
           <PARAMETER NAME="HAS_TREADY" VALUE="0"/>
           <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
           <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
-          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 24} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_real {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value real} enabled {attribs {resolve_type generated dependency polar_mag_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_mag_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_mag_fractwidth format long minimum {} maximum {}} value -2} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}} field_phase {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase} enabled {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_phase_width format long minimum {} maximum {}} value 24} bitoffset {attribs {resolve_type generated dependency polar_phase_offset format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_phase_fractwidth format long minimum {} maximum {}} value 21} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}}}}} TDATA_WIDTH 24 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 6} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_cartesian_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value cartesian_tuser} enabled {attribs {resolve_type generated dependency cart_enabled format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency cart_width format long minimum {} maximum {}} value 6} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_phase_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase_tuser} enabled {attribs {resolve_type generated dependency phase_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency phase_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency phase_offset format long minimum {} maximum {}} value 6} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}}}} TUSER_WIDTH 6}"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 48} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_real {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value real} enabled {attribs {resolve_type generated dependency polar_mag_enabled format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_mag_width format long minimum {} maximum {}} value 24} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_mag_fractwidth format long minimum {} maximum {}} value 22} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}} field_phase {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase} enabled {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_phase_width format long minimum {} maximum {}} value 24} bitoffset {attribs {resolve_type generated dependency polar_phase_offset format long minimum {} maximum {}} value 24} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_phase_fractwidth format long minimum {} maximum {}} value 21} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}}}}} TDATA_WIDTH 48 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 6} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_cartesian_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value cartesian_tuser} enabled {attribs {resolve_type generated dependency cart_enabled format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency cart_width format long minimum {} maximum {}} value 6} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_phase_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase_tuser} enabled {attribs {resolve_type generated dependency phase_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency phase_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency phase_offset format long minimum {} maximum {}} value 6} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}}}} TUSER_WIDTH 6}"/>
           <PARAMETER NAME="PHASE" VALUE="0.0"/>
-          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="3"/>
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="6"/>
           <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TUSER_WIDTH" VALUE="6"/>
@@ -1520,7 +1539,7 @@
           <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
           <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
           <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
-          <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
+          <PARAMETER NAME="HAS_TREADY" VALUE="0"/>
           <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
           <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
           <PARAMETER NAME="LAYERED_METADATA" VALUE="undef"/>
@@ -1544,7 +1563,7 @@
       <PARAMETERS>
         <PARAMETER NAME="C_ARCHITECTURE" VALUE="2"/>
         <PARAMETER NAME="C_COARSE_ROTATE" VALUE="1"/>
-        <PARAMETER NAME="C_CORDIC_FUNCTION" VALUE="3"/>
+        <PARAMETER NAME="C_CORDIC_FUNCTION" VALUE="1"/>
         <PARAMETER NAME="C_DATA_FORMAT" VALUE="0"/>
         <PARAMETER NAME="C_HAS_ACLK" VALUE="1"/>
         <PARAMETER NAME="C_HAS_ACLKEN" VALUE="0"/>
@@ -1557,7 +1576,7 @@
         <PARAMETER NAME="C_HAS_S_AXIS_PHASE_TUSER" VALUE="0"/>
         <PARAMETER NAME="C_INPUT_WIDTH" VALUE="24"/>
         <PARAMETER NAME="C_ITERATIONS" VALUE="0"/>
-        <PARAMETER NAME="C_M_AXIS_DOUT_TDATA_WIDTH" VALUE="24"/>
+        <PARAMETER NAME="C_M_AXIS_DOUT_TDATA_WIDTH" VALUE="48"/>
         <PARAMETER NAME="C_M_AXIS_DOUT_TUSER_WIDTH" VALUE="6"/>
         <PARAMETER NAME="C_OUTPUT_WIDTH" VALUE="24"/>
         <PARAMETER NAME="C_PHASE_FORMAT" VALUE="1"/>
@@ -1579,7 +1598,7 @@
         <PARAMETER NAME="Compensation_Scaling" VALUE="No_Scale_Compensation"/>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_cordic_0_2"/>
         <PARAMETER NAME="Data_Format" VALUE="SignedFraction"/>
-        <PARAMETER NAME="Functional_Selection" VALUE="Arc_Tan"/>
+        <PARAMETER NAME="Functional_Selection" VALUE="Translate"/>
         <PARAMETER NAME="Input_Width" VALUE="24"/>
         <PARAMETER NAME="Iterations" VALUE="0"/>
         <PARAMETER NAME="Output_Width" VALUE="24"/>
@@ -1610,7 +1629,7 @@
             <CONNECTION INSTANCE="hier_atan_constellation_atan_constellation_b_0" PORT="aresetn"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="23" NAME="m_axis_dout_tdata" RIGHT="0" SIGIS="undef" SIGNAME="hier_atan_constellation_atan_constellation_b_0_M_AXIS_DOUT_tdata">
+        <PORT DIR="O" LEFT="47" NAME="m_axis_dout_tdata" RIGHT="0" SIGIS="undef" SIGNAME="hier_atan_constellation_atan_constellation_b_0_M_AXIS_DOUT_tdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="hier_atan_constellation_atan_constellation_b_0" PORT="M_AXIS_DOUT_tdata"/>
           </CONNECTIONS>
@@ -1670,9 +1689,9 @@
           <PARAMETER NAME="HAS_TREADY" VALUE="0"/>
           <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
           <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
-          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 24} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_real {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value real} enabled {attribs {resolve_type generated dependency polar_mag_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_mag_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_mag_fractwidth format long minimum {} maximum {}} value -2} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}} field_phase {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase} enabled {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_phase_width format long minimum {} maximum {}} value 24} bitoffset {attribs {resolve_type generated dependency polar_phase_offset format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_phase_fractwidth format long minimum {} maximum {}} value 21} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}}}}} TDATA_WIDTH 24 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 6} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_cartesian_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value cartesian_tuser} enabled {attribs {resolve_type generated dependency cart_enabled format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency cart_width format long minimum {} maximum {}} value 6} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_phase_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase_tuser} enabled {attribs {resolve_type generated dependency phase_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency phase_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency phase_offset format long minimum {} maximum {}} value 6} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}}}} TUSER_WIDTH 6}"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 48} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_real {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value real} enabled {attribs {resolve_type generated dependency polar_mag_enabled format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_mag_width format long minimum {} maximum {}} value 24} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_mag_fractwidth format long minimum {} maximum {}} value 22} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}} field_phase {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase} enabled {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_phase_width format long minimum {} maximum {}} value 24} bitoffset {attribs {resolve_type generated dependency polar_phase_offset format long minimum {} maximum {}} value 24} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_phase_fractwidth format long minimum {} maximum {}} value 21} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}}}}} TDATA_WIDTH 48 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 6} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_cartesian_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value cartesian_tuser} enabled {attribs {resolve_type generated dependency cart_enabled format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency cart_width format long minimum {} maximum {}} value 6} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_phase_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase_tuser} enabled {attribs {resolve_type generated dependency phase_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency phase_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency phase_offset format long minimum {} maximum {}} value 6} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}}}} TUSER_WIDTH 6}"/>
           <PARAMETER NAME="PHASE" VALUE="0.0"/>
-          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="3"/>
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="6"/>
           <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TUSER_WIDTH" VALUE="6"/>
@@ -1825,7 +1844,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="1714909622" FULLNAME="/hier_fft_ofdm/fft_ofdm_0" HWVERSION="1.0" INSTANCE="hier_fft_ofdm_fft_ofdm_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="fft_ofdm" VLNV="xilinx.com:module_ref:fft_ofdm:1.0">
+    <MODULE COREREVISION="1715025722" FULLNAME="/hier_fft_ofdm/fft_ofdm_0" HWVERSION="1.0" INSTANCE="hier_fft_ofdm_fft_ofdm_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="fft_ofdm" VLNV="xilinx.com:module_ref:fft_ofdm:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_fft_ofdm_0_1"/>
@@ -2394,7 +2413,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="1714909628" FULLNAME="/hier_rotation_constellation/rotation_constellati_0" HWVERSION="1.0" INSTANCE="hier_rotation_constellation_rotation_constellati_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="rotation_constellation_block" VLNV="xilinx.com:module_ref:rotation_constellation_block:1.0">
+    <MODULE COREREVISION="1715024957" FULLNAME="/hier_rotation_constellation/rotation_constellati_0" HWVERSION="1.0" INSTANCE="hier_rotation_constellation_rotation_constellati_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="rotation_constellation_block" VLNV="xilinx.com:module_ref:rotation_constellation_block:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_rotation_constellati_0_0"/>
@@ -2745,7 +2764,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="1714909626" FULLNAME="/hier_rotation/rotation_block_0" HWVERSION="1.0" INSTANCE="hier_rotation_rotation_block_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="rotation_block" VLNV="xilinx.com:module_ref:rotation_block:1.0">
+    <MODULE COREREVISION="1715024954" FULLNAME="/hier_rotation/rotation_block_0" HWVERSION="1.0" INSTANCE="hier_rotation_rotation_block_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="rotation_block" VLNV="xilinx.com:module_ref:rotation_block:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_rotation_block_0_0"/>
@@ -2925,7 +2944,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="1714909632" FULLNAME="/output_ser2par_0" HWVERSION="1.0" INSTANCE="output_ser2par_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="output_ser2par" VLNV="xilinx.com:module_ref:output_ser2par:1.0">
+    <MODULE COREREVISION="1715024963" FULLNAME="/output_ser2par_0" HWVERSION="1.0" INSTANCE="output_ser2par_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="output_ser2par" VLNV="xilinx.com:module_ref:output_ser2par:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_output_ser2par_0_0"/>
@@ -2976,7 +2995,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1714909632" FULLNAME="/rx_clock_domain_cros_0" HWVERSION="1.0" INSTANCE="rx_clock_domain_cros_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="rx_clock_domain_crossing" VLNV="xilinx.com:module_ref:rx_clock_domain_crossing:1.0">
+    <MODULE COREREVISION="1715024947" FULLNAME="/rx_clock_domain_cros_0" HWVERSION="1.0" INSTANCE="rx_clock_domain_cros_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="rx_clock_domain_crossing" VLNV="xilinx.com:module_ref:rx_clock_domain_crossing:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="buffer_depth" VALUE="3"/>
@@ -3042,7 +3061,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1714909625" FULLNAME="/timing_acquisition_8_0" HWVERSION="1.0" INSTANCE="timing_acquisition_8_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="timing_acquisition_802_11p" VLNV="xilinx.com:module_ref:timing_acquisition_802_11p:1.0">
+    <MODULE COREREVISION="1715024937" FULLNAME="/timing_acquisition_8_0" HWVERSION="1.0" INSTANCE="timing_acquisition_8_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="timing_acquisition_802_11p" VLNV="xilinx.com:module_ref:timing_acquisition_802_11p:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="INPUT_WIDTH" VALUE="16"/>
@@ -3147,7 +3166,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1714909631" FULLNAME="/viterbi_hard_0" HWVERSION="1.0" INSTANCE="viterbi_hard_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="viterbi_hard" VLNV="xilinx.com:module_ref:viterbi_hard:1.0">
+    <MODULE COREREVISION="1715024961" FULLNAME="/viterbi_hard_0" HWVERSION="1.0" INSTANCE="viterbi_hard_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="viterbi_hard" VLNV="xilinx.com:module_ref:viterbi_hard:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_viterbi_hard_0_0"/>

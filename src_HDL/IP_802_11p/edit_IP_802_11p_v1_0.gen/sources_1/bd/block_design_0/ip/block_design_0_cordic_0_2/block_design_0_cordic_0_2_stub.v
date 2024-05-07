@@ -2,7 +2,7 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-// Date        : Tue Apr 16 17:32:36 2024
+// Date        : Mon May  6 13:35:21 2024
 // Host        : lab817_01 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub -rename_top block_design_0_cordic_0_2 -prefix
 //               block_design_0_cordic_0_2_ block_design_0_cordic_0_2_stub.v
@@ -18,7 +18,7 @@
 module block_design_0_cordic_0_2(aclk, aresetn, s_axis_cartesian_tvalid, 
   s_axis_cartesian_tuser, s_axis_cartesian_tdata, m_axis_dout_tvalid, m_axis_dout_tuser, 
   m_axis_dout_tdata)
-/* synthesis syn_black_box black_box_pad_pin="aresetn,s_axis_cartesian_tvalid,s_axis_cartesian_tuser[5:0],s_axis_cartesian_tdata[47:0],m_axis_dout_tvalid,m_axis_dout_tuser[5:0],m_axis_dout_tdata[23:0]" */
+/* synthesis syn_black_box black_box_pad_pin="aresetn,s_axis_cartesian_tvalid,s_axis_cartesian_tuser[5:0],s_axis_cartesian_tdata[47:0],m_axis_dout_tvalid,m_axis_dout_tuser[5:0],m_axis_dout_tdata[47:0]" */
 /* synthesis syn_force_seq_prim="aclk" */;
   input aclk /* synthesis syn_isclock = 1 */;
   input aresetn;
@@ -27,5 +27,5 @@ module block_design_0_cordic_0_2(aclk, aresetn, s_axis_cartesian_tvalid,
   input [47:0]s_axis_cartesian_tdata;
   output m_axis_dout_tvalid;
   output [5:0]m_axis_dout_tuser;
-  output [23:0]m_axis_dout_tdata;
+  output [47:0]m_axis_dout_tdata;
 endmodule

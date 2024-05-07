@@ -66,20 +66,20 @@
     <Option Name="EnableBDX" Val="FALSE"/>
     <Option Name="DSABoardId" Val="zedboard"/>
     <Option Name="FeatureSet" Val="FeatureSet_Classic"/>
-    <Option Name="WTXSimLaunchSim" Val="142"/>
+    <Option Name="WTXSimLaunchSim" Val="175"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="93"/>
-    <Option Name="WTModelSimExportSim" Val="93"/>
-    <Option Name="WTQuestaExportSim" Val="93"/>
+    <Option Name="WTXSimExportSim" Val="106"/>
+    <Option Name="WTModelSimExportSim" Val="106"/>
+    <Option Name="WTQuestaExportSim" Val="106"/>
     <Option Name="WTIesExportSim" Val="0"/>
-    <Option Name="WTVcsExportSim" Val="92"/>
-    <Option Name="WTRivieraExportSim" Val="92"/>
-    <Option Name="WTActivehdlExportSim" Val="92"/>
+    <Option Name="WTVcsExportSim" Val="105"/>
+    <Option Name="WTRivieraExportSim" Val="105"/>
+    <Option Name="WTActivehdlExportSim" Val="105"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -229,9 +229,6 @@
         <CompFileExtendedInfo CompFileName="block_design_0.bd" FileRelPathName="ip/block_design_0_axi_regs_mux_0_0/block_design_0_axi_regs_mux_0_0.xci">
           <Proxy FileSetName="block_design_0_axi_regs_mux_0_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="block_design_0.bd" FileRelPathName="ip/block_design_0_blk_mem_gen_0_0/block_design_0_blk_mem_gen_0_0.xci">
-          <Proxy FileSetName="block_design_0_blk_mem_gen_0_0"/>
-        </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="block_design_0.bd" FileRelPathName="ip/block_design_0_constellation_tracker_0_0/block_design_0_constellation_tracker_0_0.xci">
           <Proxy FileSetName="block_design_0_constellation_tracker_0_0"/>
         </CompFileExtendedInfo>
@@ -361,12 +358,6 @@
       </File>
       <Config>
         <Option Name="TopAutoSet" Val="TRUE"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="block_design_0_blk_mem_gen_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/block_design_0_blk_mem_gen_0_0" RelGenDir="$PGENDIR/block_design_0_blk_mem_gen_0_0">
-      <Config>
-        <Option Name="TopModule" Val="block_design_0_blk_mem_gen_0_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
     <FileSet Name="block_design_0_rx_clock_domain_cros_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/block_design_0_rx_clock_domain_cros_0_0" RelGenDir="$PGENDIR/block_design_0_rx_clock_domain_cros_0_0">
@@ -510,7 +501,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="block_design_0_blk_mem_gen_0_0_synth_1" Type="Ft3:Synth" SrcSet="block_design_0_blk_mem_gen_0_0" Part="xc7z020clg484-1" ConstrsSet="block_design_0_blk_mem_gen_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/block_design_0_blk_mem_gen_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_blk_mem_gen_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_blk_mem_gen_0_0_synth_1">
+    <Run Id="block_design_0_rx_clock_domain_cros_0_0_synth_1" Type="Ft3:Synth" SrcSet="block_design_0_rx_clock_domain_cros_0_0" Part="xc7z020clg484-1" ConstrsSet="block_design_0_rx_clock_domain_cros_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/block_design_0_rx_clock_domain_cros_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_rx_clock_domain_cros_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_rx_clock_domain_cros_0_0_synth_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
         <Step Id="synth_design"/>
@@ -520,23 +511,9 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="block_design_0_rx_clock_domain_cros_0_0_synth_1" Type="Ft3:Synth" SrcSet="block_design_0_rx_clock_domain_cros_0_0" Part="xc7z020clg484-1" ConstrsSet="block_design_0_rx_clock_domain_cros_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/block_design_0_rx_clock_domain_cros_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_rx_clock_domain_cros_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_rx_clock_domain_cros_0_0_synth_1">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2023"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-      <RQSFiles/>
-    </Run>
     <Run Id="block_design_0_data_interleaver_0_0_synth_1" Type="Ft3:Synth" SrcSet="block_design_0_data_interleaver_0_0" Part="xc7z020clg484-1" ConstrsSet="block_design_0_data_interleaver_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/block_design_0_data_interleaver_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_data_interleaver_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_data_interleaver_0_0_synth_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -546,9 +523,7 @@
     </Run>
     <Run Id="block_design_0_data_delay_0_0_synth_1" Type="Ft3:Synth" SrcSet="block_design_0_data_delay_0_0" Part="xc7z020clg484-1" ConstrsSet="block_design_0_data_delay_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/block_design_0_data_delay_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_data_delay_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_data_delay_0_0_synth_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -558,9 +533,7 @@
     </Run>
     <Run Id="block_design_0_act_power_0_0_synth_1" Type="Ft3:Synth" SrcSet="block_design_0_act_power_0_0" Part="xc7z020clg484-1" ConstrsSet="block_design_0_act_power_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/block_design_0_act_power_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_act_power_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_act_power_0_0_synth_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -570,9 +543,7 @@
     </Run>
     <Run Id="block_design_0_timing_acquisition_8_0_0_synth_1" Type="Ft3:Synth" SrcSet="block_design_0_timing_acquisition_8_0_0" Part="xc7z020clg484-1" ConstrsSet="block_design_0_timing_acquisition_8_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/block_design_0_timing_acquisition_8_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_timing_acquisition_8_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_timing_acquisition_8_0_0_synth_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -582,9 +553,7 @@
     </Run>
     <Run Id="block_design_0_fft_ofdm_0_1_synth_1" Type="Ft3:Synth" SrcSet="block_design_0_fft_ofdm_0_1" Part="xc7z020clg484-1" ConstrsSet="block_design_0_fft_ofdm_0_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/block_design_0_fft_ofdm_0_1_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_fft_ofdm_0_1_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_fft_ofdm_0_1_synth_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -594,9 +563,7 @@
     </Run>
     <Run Id="block_design_0_atan_block_0_0_synth_1" Type="Ft3:Synth" SrcSet="block_design_0_atan_block_0_0" Part="xc7z020clg484-1" ConstrsSet="block_design_0_atan_block_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/block_design_0_atan_block_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_atan_block_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_atan_block_0_0_synth_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -606,9 +573,7 @@
     </Run>
     <Run Id="block_design_0_rotation_block_0_0_synth_1" Type="Ft3:Synth" SrcSet="block_design_0_rotation_block_0_0" Part="xc7z020clg484-1" ConstrsSet="block_design_0_rotation_block_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/block_design_0_rotation_block_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_rotation_block_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_rotation_block_0_0_synth_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -618,9 +583,7 @@
     </Run>
     <Run Id="block_design_0_equalizer_time_frequ_0_0_synth_1" Type="Ft3:Synth" SrcSet="block_design_0_equalizer_time_frequ_0_0" Part="xc7z020clg484-1" ConstrsSet="block_design_0_equalizer_time_frequ_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/block_design_0_equalizer_time_frequ_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_equalizer_time_frequ_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_equalizer_time_frequ_0_0_synth_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -630,9 +593,7 @@
     </Run>
     <Run Id="block_design_0_axi_regs_mux_0_0_synth_1" Type="Ft3:Synth" SrcSet="block_design_0_axi_regs_mux_0_0" Part="xc7z020clg484-1" ConstrsSet="block_design_0_axi_regs_mux_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/block_design_0_axi_regs_mux_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_axi_regs_mux_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_axi_regs_mux_0_0_synth_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -642,9 +603,7 @@
     </Run>
     <Run Id="block_design_0_atan_constellation_b_0_0_synth_1" Type="Ft3:Synth" SrcSet="block_design_0_atan_constellation_b_0_0" Part="xc7z020clg484-1" ConstrsSet="block_design_0_atan_constellation_b_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/block_design_0_atan_constellation_b_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_atan_constellation_b_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_atan_constellation_b_0_0_synth_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -654,9 +613,7 @@
     </Run>
     <Run Id="block_design_0_rotation_constellati_0_0_synth_1" Type="Ft3:Synth" SrcSet="block_design_0_rotation_constellati_0_0" Part="xc7z020clg484-1" ConstrsSet="block_design_0_rotation_constellati_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/block_design_0_rotation_constellati_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_rotation_constellati_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_rotation_constellati_0_0_synth_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -666,9 +623,7 @@
     </Run>
     <Run Id="block_design_0_constellation_tracker_0_0_synth_1" Type="Ft3:Synth" SrcSet="block_design_0_constellation_tracker_0_0" Part="xc7z020clg484-1" ConstrsSet="block_design_0_constellation_tracker_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/block_design_0_constellation_tracker_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_constellation_tracker_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_constellation_tracker_0_0_synth_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -678,9 +633,7 @@
     </Run>
     <Run Id="block_design_0_demapper_0_0_synth_1" Type="Ft3:Synth" SrcSet="block_design_0_demapper_0_0" Part="xc7z020clg484-1" ConstrsSet="block_design_0_demapper_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/block_design_0_demapper_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_demapper_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_demapper_0_0_synth_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -690,9 +643,7 @@
     </Run>
     <Run Id="block_design_0_deinterleaver_0_0_synth_1" Type="Ft3:Synth" SrcSet="block_design_0_deinterleaver_0_0" Part="xc7z020clg484-1" ConstrsSet="block_design_0_deinterleaver_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/block_design_0_deinterleaver_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_deinterleaver_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_deinterleaver_0_0_synth_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -702,9 +653,7 @@
     </Run>
     <Run Id="block_design_0_viterbi_hard_0_0_synth_1" Type="Ft3:Synth" SrcSet="block_design_0_viterbi_hard_0_0" Part="xc7z020clg484-1" ConstrsSet="block_design_0_viterbi_hard_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/block_design_0_viterbi_hard_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_viterbi_hard_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_viterbi_hard_0_0_synth_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -714,9 +663,7 @@
     </Run>
     <Run Id="block_design_0_descrambler_0_0_synth_1" Type="Ft3:Synth" SrcSet="block_design_0_descrambler_0_0" Part="xc7z020clg484-1" ConstrsSet="block_design_0_descrambler_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/block_design_0_descrambler_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_descrambler_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_descrambler_0_0_synth_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -726,9 +673,7 @@
     </Run>
     <Run Id="block_design_0_output_ser2par_0_0_synth_1" Type="Ft3:Synth" SrcSet="block_design_0_output_ser2par_0_0" Part="xc7z020clg484-1" ConstrsSet="block_design_0_output_ser2par_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/block_design_0_output_ser2par_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_output_ser2par_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_output_ser2par_0_0_synth_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -753,7 +698,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="block_design_0_blk_mem_gen_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="block_design_0_blk_mem_gen_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="block_design_0_blk_mem_gen_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_blk_mem_gen_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_blk_mem_gen_0_0_impl_1">
+    <Run Id="block_design_0_rx_clock_domain_cros_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="block_design_0_rx_clock_domain_cros_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="block_design_0_rx_clock_domain_cros_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_rx_clock_domain_cros_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_rx_clock_domain_cros_0_0_impl_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023"/>
         <Step Id="init_design"/>
@@ -770,30 +715,9 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="block_design_0_rx_clock_domain_cros_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="block_design_0_rx_clock_domain_cros_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="block_design_0_rx_clock_domain_cros_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_rx_clock_domain_cros_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_rx_clock_domain_cros_0_0_impl_1">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2023"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-      <RQSFiles/>
-    </Run>
     <Run Id="block_design_0_data_interleaver_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="block_design_0_data_interleaver_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="block_design_0_data_interleaver_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_data_interleaver_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_data_interleaver_0_0_impl_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -810,9 +734,7 @@
     </Run>
     <Run Id="block_design_0_data_delay_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="block_design_0_data_delay_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="block_design_0_data_delay_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_data_delay_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_data_delay_0_0_impl_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -829,9 +751,7 @@
     </Run>
     <Run Id="block_design_0_act_power_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="block_design_0_act_power_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="block_design_0_act_power_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_act_power_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_act_power_0_0_impl_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -848,9 +768,7 @@
     </Run>
     <Run Id="block_design_0_timing_acquisition_8_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="block_design_0_timing_acquisition_8_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="block_design_0_timing_acquisition_8_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_timing_acquisition_8_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_timing_acquisition_8_0_0_impl_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -867,9 +785,7 @@
     </Run>
     <Run Id="block_design_0_fft_ofdm_0_1_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="block_design_0_fft_ofdm_0_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="block_design_0_fft_ofdm_0_1_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_fft_ofdm_0_1_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_fft_ofdm_0_1_impl_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -886,9 +802,7 @@
     </Run>
     <Run Id="block_design_0_atan_block_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="block_design_0_atan_block_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="block_design_0_atan_block_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_atan_block_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_atan_block_0_0_impl_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -905,9 +819,7 @@
     </Run>
     <Run Id="block_design_0_rotation_block_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="block_design_0_rotation_block_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="block_design_0_rotation_block_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_rotation_block_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_rotation_block_0_0_impl_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -924,9 +836,7 @@
     </Run>
     <Run Id="block_design_0_equalizer_time_frequ_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="block_design_0_equalizer_time_frequ_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="block_design_0_equalizer_time_frequ_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_equalizer_time_frequ_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_equalizer_time_frequ_0_0_impl_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -943,9 +853,7 @@
     </Run>
     <Run Id="block_design_0_axi_regs_mux_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="block_design_0_axi_regs_mux_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="block_design_0_axi_regs_mux_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_axi_regs_mux_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_axi_regs_mux_0_0_impl_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -962,9 +870,7 @@
     </Run>
     <Run Id="block_design_0_atan_constellation_b_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="block_design_0_atan_constellation_b_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="block_design_0_atan_constellation_b_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_atan_constellation_b_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_atan_constellation_b_0_0_impl_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -981,9 +887,7 @@
     </Run>
     <Run Id="block_design_0_rotation_constellati_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="block_design_0_rotation_constellati_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="block_design_0_rotation_constellati_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_rotation_constellati_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_rotation_constellati_0_0_impl_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -1000,9 +904,7 @@
     </Run>
     <Run Id="block_design_0_constellation_tracker_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="block_design_0_constellation_tracker_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="block_design_0_constellation_tracker_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_constellation_tracker_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_constellation_tracker_0_0_impl_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -1019,9 +921,7 @@
     </Run>
     <Run Id="block_design_0_demapper_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="block_design_0_demapper_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="block_design_0_demapper_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_demapper_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_demapper_0_0_impl_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -1038,9 +938,7 @@
     </Run>
     <Run Id="block_design_0_deinterleaver_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="block_design_0_deinterleaver_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="block_design_0_deinterleaver_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_deinterleaver_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_deinterleaver_0_0_impl_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -1057,9 +955,7 @@
     </Run>
     <Run Id="block_design_0_viterbi_hard_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="block_design_0_viterbi_hard_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="block_design_0_viterbi_hard_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_viterbi_hard_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_viterbi_hard_0_0_impl_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -1076,9 +972,7 @@
     </Run>
     <Run Id="block_design_0_descrambler_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="block_design_0_descrambler_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="block_design_0_descrambler_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_descrambler_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_descrambler_0_0_impl_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -1095,9 +989,7 @@
     </Run>
     <Run Id="block_design_0_output_ser2par_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="block_design_0_output_ser2par_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="block_design_0_output_ser2par_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/block_design_0_output_ser2par_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/block_design_0_output_ser2par_0_0_impl_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>

@@ -156,8 +156,8 @@ begin
     
     simulation_process : process(CLOCK)
         -- files & define lines
-        constant filename : string := "signal_802_11p_rotated_int.txt";
-        FILE in_file : TEXT OPEN READ_MODE IS "signal_802_11p_rotated_int.txt";
+        constant filename : string := "signal_802_11p_int.txt";
+        FILE in_file : TEXT OPEN READ_MODE IS filename;
         VARIABLE in_line : LINE;
         VARIABLE a, b : integer;
 
