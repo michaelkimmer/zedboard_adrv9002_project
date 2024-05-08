@@ -194,7 +194,7 @@ tx_signal_int16_padded = [zeros(padding, 2); tx_signal_int16; zeros(padding, 2)]
 writematrix(tx_signal_int16_padded, filename_int);
 
 % Simulate freq offset
-f0 = 20e3; % set offset
+f0 = 127.789e3; % set offset
 fs = 10e6;
 t = (0:length(tx_signal_normed)-1).'/fs;
 tx_signal_normed_rotated = tx_signal_normed .* exp(1i*2*pi*t*f0);
@@ -247,6 +247,36 @@ plot(abs(xcorr(tx_signal,long_seq_time)));
 title('Long Training Sequence (LTF) - Correlation');
 xlabel('Sample Index');
 ylabel('Amplitude');
+
+% Xcorr of the whole signal with STS & LTS (with freq rotated frame)
+figure;
+subplot(2,1,1);
+plot(abs(xcorr(tx_signal_normed_rotated,short_seq_time)));
+title('Short Training Sequence (STF) - Correlation (with freq rotated frame)');
+xlabel('Sample Index');
+ylabel('Amplitude');
+subplot(2,1,2);
+plot(abs(xcorr(tx_signal_normed_rotated,long_seq_time)));
+title('Long Training Sequence (LTF) - Correlation (with freq rotated frame)');
+xlabel('Sample Index');
+ylabel('Amplitude');
+
+% Xcorr of the whole signal with STS & LTS (with freq rotated frame)
+xcorr_sts_1period = abs(xcorr(tx_signal_normed_rotated,short_seq_time_period));
+sts_sum_filter = repmat([1, zeros(1,15)], [1,10]);
+xcorr_sts_1period_summed_10periods = filter(sts_sum_filter, 1, xcorr_sts_1period);
+figure;
+subplot(2,1,1);
+plot(xcorr_sts_1period);
+title('Short Training Sequence 1 period - Correlation (with freq rotated frame)');
+xlabel('Sample Index');
+ylabel('Amplitude');
+subplot(2,1,2);
+plot(xcorr_sts_1period_summed_10periods);
+title('Short Training Sequence 10 periods summed - Correlation (with freq rotated frame)');
+xlabel('Sample Index');
+ylabel('Amplitude');
+
 
 
 

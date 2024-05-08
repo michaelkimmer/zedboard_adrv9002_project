@@ -25,6 +25,11 @@ import iio
 from access_axi_regs import *
 # AXI_ADDRESS_NUM = 512
 
+# default parameters
+DEFAULT_CARRIER_FREQ = 5.9e9
+# DEFAULT_RX_GAIN = ???
+DEFAULT_TX_GAIN = -10
+
 # IIO parameters
 IIO_uri="ip:192.168.1.12" # uri="ip:192.168.1.12", uri="ip:analog.local"
 
@@ -245,10 +250,10 @@ class Settings_Tab(ttk.Frame):
     
     def build_input_fileds_matrix(self, root, act_row, buttons_num_rows, buttons_num_cols): 
         # Function to build input fields and buttons
-        input_descriptions = ("RX Center Frequency:", "TX Center Frequency:", "Rx Gain:", "TX Attenuation:") #number of viewed fields can be edited in self.__init__()
-        input_default_vals = ("100 MHz", "100 MHz", "? dB", "? dB")
+        input_descriptions = ("RX Carrier Frequency:", "TX Carrier Frequency:", "Rx Gain:", "TX Attenuation:") #number of viewed fields can be edited in self.__init__()
+        input_default_vals = ("? MHz", "? MHz", "? dB", "? dB")
         input_placeholders = ("Hz", "Hz", "dB", "dB")
-        input_val_ranges=([25000000, 1, 6000000000-25000000+1], [25000000, 1, 6000000000-25000000+1], [0, 0.5, 255-195+1], [-42, 0.1, 42*10+1]) #freq: 25000000..6000000000, RXG: 195..255, TAT: 0..41950
+        input_val_ranges=([25000000, 1, 6000000000-25000000+1], [25000000, 1, 6000000000-25000000+1], [0, 0.5, 34*2+1], [-41.9, 0.1, 41.9*10+1]) #freq: 25000000..6000000000, RXG: 195..255, TAT: 0..41950
         
         # Build descriptor
         description_label = tk.Label(self, text="Edit Frequencies & Gains:", font=("Helvetica", 12))
@@ -383,7 +388,7 @@ class Settings_Tab(ttk.Frame):
         combobox['values'] = ["Tone", "Packet: BPSK 1/2", "Packet: BPSK 3/4", "Packet: QPSK 1/2", "Packet: QPSK 3/4", "Packet: 16-QAM 1/2", "Packet: 16-QAM 3/4", "Packet: BPSK 1/2 (4 symbols)", "Packet: 16-QAM 3/4 (4 symbols)"]
         combobox.current(0) # set default value
         # build input_fields
-        input_field0 = PlaceholderEntry_withValues(self, placeholder="Freq from Center [Hz]", val_range=[-3e6, 1, 2*(3e6)+1])
+        input_field0 = PlaceholderEntry_withValues(self, placeholder="Freq from Carrier [Hz]", val_range=[-3e6, 1, 2*(3e6)+1])
         input_field0.grid(row=self.act_row, column=2, padx=5, pady=5)
         input_field1 = PlaceholderEntry_withValues(self, placeholder="Amplitude [dBFS]", dB_bool=True, val_range=[0, 1, 2**15])
         input_field1.grid(row=self.act_row, column=3, padx=5, pady=5)
@@ -487,6 +492,22 @@ class Settings_Tab(ttk.Frame):
                 # Turn off RX and TX
                 root.iio_context.rx_ensm_mode_chan0 = "calibrated"
                 root.iio_context.tx_ensm_mode_chan0 = "calibrated"
+
+                # Set default carrier frequency
+                root.iio_context._set_iio_attr("altvoltage0", "RX1_LO_frequency", True, str(round(DEFAULT_CARRIER_FREQ)))
+                root.iio_context._set_iio_attr("altvoltage2", "TX1_LO_frequency", True, str(round(DEFAULT_CARRIER_FREQ)))
+
+                self.input_fields_matrix.value_labels[0].config(text = f"{DEFAULT_CARRIER_FREQ/1e6} MHz")
+                self.input_fields_matrix.value_labels[1].config(text = f"{DEFAULT_CARRIER_FREQ/1e6} MHz")
+
+                # Set default RX and TX gain
+                # root.iio_context.rx_hardwaregain_chan0 = DEFAULT_RX_GAIN # or AGC??? TODO !!!
+                root.iio_context.tx_hardwaregain_chan0 = DEFAULT_TX_GAIN
+
+                # self.input_fields_matrix.value_labels[2].config(text = f"{DEFAULT_RX_GAIN} dB")
+                self.input_fields_matrix.value_labels[3].config(text = f"{DEFAULT_TX_GAIN} dB")
+
+
                 
             except:
                 self.log_write_line("Stream and Profile loading: Failed !")
@@ -545,14 +566,14 @@ class Settings_Tab(ttk.Frame):
             return
         
         if idx == 0:
-            # Change RX Center Frequency 
+            # Change RX Carrier Frequency 
             try:
                 # root.iio_context.tx0_lo = value # (IIO error with versions of IIO --> next line OK)
                 root.iio_context._set_iio_attr("altvoltage0", "RX1_LO_frequency", True, str(round(value)))
             except:
-                self.log_write_line("Change RX Center Frequency: Failed !")
+                self.log_write_line("Change RX Carrier Frequency: Failed !")
             else:
-                self.log_write_line("Change RX Center Frequency: OK")
+                self.log_write_line("Change RX Carrier Frequency: OK")
                 self.input_fields_matrix.value_labels[idx].config(text = f"{value/1e6} MHz")
                 self.input_fields_matrix.value_labels[idx].config(text = f"{value/1e6} MHz")
 
@@ -560,14 +581,14 @@ class Settings_Tab(ttk.Frame):
 
 
         elif idx == 1:
-            # Change TX Center Frequency 
+            # Change TX Carrier Frequency 
             try:
                 # root.iio_context.tx0_lo = value # (IIO error with versions of IIO --> next line OK)
                 root.iio_context._set_iio_attr("altvoltage2", "TX1_LO_frequency", True, str(round(value)))
             except:
-                self.log_write_line("Change TX Center Frequency: Failed !")
+                self.log_write_line("Change TX Carrier Frequency: Failed !")
             else:
-                self.log_write_line("Change TX Center Frequency: OK")
+                self.log_write_line("Change TX Carrier Frequency: OK")
                 self.input_fields_matrix.value_labels[idx].config(text = f"{value/1e6} MHz")
                 self.input_fields_matrix.value_labels[idx].config(text = f"{value/1e6} MHz")
 
@@ -1252,12 +1273,11 @@ class Constellation_Tab(ttk.Frame):
         N_data = regs.shape[0]
 
         # Extract the data (Q at MSB !)
-        x_real_int = (regs & 0x0000ffff).astype(np.int16, casting='unsafe') * 2**8 #axi cannot transfer least byte --> rounding
-        x_imag_int = np.right_shift(regs & 0xffff0000, 16).astype(np.int16, casting='unsafe') * 2**8 #axi cannot transfer least byte --> rounding
+        x_real_int = (regs & 0x0000ffff).astype(np.int16, casting='unsafe') 
+        x_imag_int = np.right_shift(regs & 0xffff0000, 16).astype(np.int16, casting='unsafe') 
         
-
-        x_real = x_real_int.astype(np.float32, casting='safe')
-        x_imag = x_imag_int.astype(np.float32, casting='safe')
+        x_real = x_real_int.astype(np.float32, casting='safe') * 2**8 #axi cannot transfer least byte --> rounding
+        x_imag = x_imag_int.astype(np.float32, casting='safe') * 2**8 #axi cannot transfer least byte --> rounding
 
         # x = x_real + (1j * x_imag)
 
@@ -1377,7 +1397,7 @@ class Realtime_Tab(ttk.Frame):
         description_label.grid(row=self.act_row, column=0, columnspan=1, padx=5, pady=5, sticky="WN") 
         
         # Log of sent items
-        value_label = tk.Text(self, state=tk.DISABLED, width=100, height=15, font=("Helvetica", 8)) #width & height not optimal
+        value_label = tk.Text(self, state=tk.DISABLED, width=130, height=45, font=("Helvetica", 8)) #width & height not optimal
         value_label.grid(row=self.act_row, column=1, columnspan=4, padx=5, pady=5, sticky="we") 
         
         # Create the Vertical Scrollbar
@@ -1441,6 +1461,8 @@ class Realtime_Tab(ttk.Frame):
         self.log.value_labels.insert(tk.END, line + "\n")
         self.log.value_labels.config(state=tk.DISABLED) 
         self.log.value_labels.yview("moveto", 1.0) # scroll down
+
+
 
 
 # AXI Registers tab
@@ -1539,7 +1561,7 @@ class AXI_Regs_Tab(ttk.Frame):
         description_label.grid(row=self.act_row, column=0, columnspan=1, padx=5, pady=5, sticky="WN") 
         
         # Log of sent items
-        value_label = tk.Text(self, state=tk.DISABLED, width=130, height=3*15, font=("Helvetica", 8)) #width & height not optimal
+        value_label = tk.Text(self, state=tk.DISABLED, width=130, height=45, font=("Helvetica", 8)) #width & height not optimal
         value_label.grid(row=self.act_row, column=1, columnspan=4, padx=5, pady=5, sticky="we") 
         
         # Create the Vertical Scrollbar

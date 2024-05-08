@@ -2,8 +2,8 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-// Date        : Mon May  6 23:28:50 2024
-// Host        : ASUS_ROG running 64-bit major release  (build 9200)
+// Date        : Wed May  8 13:36:13 2024
+// Host        : lab817_01 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_output_ser2par_0_0/block_design_0_output_ser2par_0_0_sim_netlist.v
 // Design      : block_design_0_output_ser2par_0_0
@@ -61,8 +61,8 @@ endmodule
 (* ORIG_REF_NAME = "output_ser2par" *) 
 module block_design_0_output_ser2par_0_0_output_ser2par
    (PARALLEL_OUTPUT,
-    PARALLEL_OUTPUT_LAST,
     PARALLEL_OUTPUT_VALID,
+    PARALLEL_OUTPUT_LAST,
     RESET,
     DESCRAMBLED_OUTPUT_LAST,
     DESCRAMBLED_OUTPUT_VALID,
@@ -70,8 +70,8 @@ module block_design_0_output_ser2par_0_0_output_ser2par
     DESCRAMBLED_OUTPUT,
     VITERBI_SIGNAL_VALID);
   output [31:0]PARALLEL_OUTPUT;
-  output PARALLEL_OUTPUT_LAST;
   output PARALLEL_OUTPUT_VALID;
+  output PARALLEL_OUTPUT_LAST;
   input RESET;
   input DESCRAMBLED_OUTPUT_LAST;
   input DESCRAMBLED_OUTPUT_VALID;
@@ -137,10 +137,10 @@ module block_design_0_output_ser2par_0_0_output_ser2par
   wire [31:0]PARALLEL_OUTPUT;
   wire \PARALLEL_OUTPUT[31]_i_1_n_0 ;
   wire PARALLEL_OUTPUT_LAST;
-  wire PARALLEL_OUTPUT_LAST_BUFFER;
-  wire PARALLEL_OUTPUT_LAST_BUFFER_i_1_n_0;
+  wire PARALLEL_OUTPUT_LAST_REQUEST;
+  wire PARALLEL_OUTPUT_LAST_REQUEST_i_1_n_0;
+  wire PARALLEL_OUTPUT_LAST_i_1_n_0;
   wire PARALLEL_OUTPUT_VALID;
-  wire PARALLEL_OUTPUT_VALID_i_1_n_0;
   wire RESET;
   wire [1:0]STATE__0;
   wire VITERBI_SIGNAL_VALID;
@@ -591,45 +591,45 @@ module block_design_0_output_ser2par_0_0_output_ser2par
         .I1(RESET),
         .O(\PARALLEL_OUTPUT[31]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFFA0008)) 
-    PARALLEL_OUTPUT_LAST_BUFFER_i_1
-       (.I0(STATE__0[1]),
-        .I1(DESCRAMBLED_OUTPUT_LAST),
-        .I2(STATE__0[0]),
-        .I3(RESET),
-        .I4(PARALLEL_OUTPUT_LAST_BUFFER),
-        .O(PARALLEL_OUTPUT_LAST_BUFFER_i_1_n_0));
+    .INIT(32'h0000AAC8)) 
+    PARALLEL_OUTPUT_LAST_REQUEST_i_1
+       (.I0(PARALLEL_OUTPUT_LAST_REQUEST),
+        .I1(STATE__0[1]),
+        .I2(DESCRAMBLED_OUTPUT_LAST),
+        .I3(STATE__0[0]),
+        .I4(RESET),
+        .O(PARALLEL_OUTPUT_LAST_REQUEST_i_1_n_0));
   FDRE #(
     .INIT(1'b0)) 
-    PARALLEL_OUTPUT_LAST_BUFFER_reg
+    PARALLEL_OUTPUT_LAST_REQUEST_reg
        (.C(CLOCK),
         .CE(1'b1),
-        .D(PARALLEL_OUTPUT_LAST_BUFFER_i_1_n_0),
-        .Q(PARALLEL_OUTPUT_LAST_BUFFER),
+        .D(PARALLEL_OUTPUT_LAST_REQUEST_i_1_n_0),
+        .Q(PARALLEL_OUTPUT_LAST_REQUEST),
         .R(1'b0));
+  LUT3 #(
+    .INIT(8'h20)) 
+    PARALLEL_OUTPUT_LAST_i_1
+       (.I0(PARALLEL_OUTPUT_LAST_REQUEST),
+        .I1(RESET),
+        .I2(PARALLEL_BUFFER_FULL_reg_n_0),
+        .O(PARALLEL_OUTPUT_LAST_i_1_n_0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
     PARALLEL_OUTPUT_LAST_reg
        (.C(CLOCK),
-        .CE(\PARALLEL_OUTPUT[31]_i_1_n_0 ),
-        .D(PARALLEL_OUTPUT_LAST_BUFFER),
+        .CE(1'b1),
+        .D(PARALLEL_OUTPUT_LAST_i_1_n_0),
         .Q(PARALLEL_OUTPUT_LAST),
         .R(1'b0));
-  LUT3 #(
-    .INIT(8'hB8)) 
-    PARALLEL_OUTPUT_VALID_i_1
-       (.I0(PARALLEL_OUTPUT_VALID),
-        .I1(RESET),
-        .I2(PARALLEL_BUFFER_FULL_reg_n_0),
-        .O(PARALLEL_OUTPUT_VALID_i_1_n_0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
     PARALLEL_OUTPUT_VALID_reg
        (.C(CLOCK),
         .CE(1'b1),
-        .D(PARALLEL_OUTPUT_VALID_i_1_n_0),
+        .D(\PARALLEL_OUTPUT[31]_i_1_n_0 ),
         .Q(PARALLEL_OUTPUT_VALID),
         .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 

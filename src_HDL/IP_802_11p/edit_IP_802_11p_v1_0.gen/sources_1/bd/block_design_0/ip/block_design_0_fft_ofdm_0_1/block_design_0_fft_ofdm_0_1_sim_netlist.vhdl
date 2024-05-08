@@ -2,8 +2,8 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
--- Date        : Mon May  6 23:27:20 2024
--- Host        : ASUS_ROG running 64-bit major release  (build 9200)
+-- Date        : Wed May  8 16:48:07 2024
+-- Host        : lab817_01 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_fft_ofdm_0_1/block_design_0_fft_ofdm_0_1_sim_netlist.vhdl
 -- Design      : block_design_0_fft_ofdm_0_1
@@ -17,8 +17,8 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity block_design_0_fft_ofdm_0_1_fft_ofdm is
   port (
-    FFT_IDATA_OUT : out STD_LOGIC_VECTOR ( 23 downto 0 );
-    FFT_QDATA_OUT : out STD_LOGIC_VECTOR ( 23 downto 0 );
+    FFT_IDATA_OUT : out STD_LOGIC_VECTOR ( 22 downto 0 );
+    FFT_QDATA_OUT : out STD_LOGIC_VECTOR ( 22 downto 0 );
     FFT_DATA_OUT_VALID : out STD_LOGIC;
     FFT_DATA_OUT_LAST : out STD_LOGIC;
     FFT_DATA_OUT_FIRST_SYMBOL_MARKER : out STD_LOGIC;
@@ -30,7 +30,7 @@ entity block_design_0_fft_ofdm_0_1_fft_ofdm is
     S_AXIS_DATA_tready : in STD_LOGIC;
     FFT_DATA_IN_STROBE : in STD_LOGIC;
     FFT_DATA_IN_START : in STD_LOGIC;
-    M_AXIS_DATA_tdata : in STD_LOGIC_VECTOR ( 47 downto 0 );
+    M_AXIS_DATA_tdata : in STD_LOGIC_VECTOR ( 45 downto 0 );
     CLOCK : in STD_LOGIC;
     M_AXIS_DATA_tvalid : in STD_LOGIC;
     M_AXIS_DATA_tlast : in STD_LOGIC;
@@ -1216,7 +1216,6 @@ architecture STRUCTURE of block_design_0_fft_ofdm_0_1_fft_ofdm is
   attribute x_interface_ignore of FFT_DATA_OUT_FIRST_SYMBOL_MARKER_reg : label is "TRUE";
   attribute x_interface_ignore of FFT_DATA_OUT_LAST_reg : label is "TRUE";
   attribute x_interface_ignore of FFT_DATA_OUT_VALID_reg : label is "TRUE";
-  attribute x_interface_ignore of \FFT_IDATA_OUT_reg[0]\ : label is "TRUE";
   attribute x_interface_ignore of \FFT_IDATA_OUT_reg[10]\ : label is "TRUE";
   attribute x_interface_ignore of \FFT_IDATA_OUT_reg[11]\ : label is "TRUE";
   attribute x_interface_ignore of \FFT_IDATA_OUT_reg[12]\ : label is "TRUE";
@@ -1257,7 +1256,6 @@ architecture STRUCTURE of block_design_0_fft_ofdm_0_1_fft_ofdm is
   attribute ORIG_CELL_NAME of \FFT_NEXT_DATA_CNTR_reg[2]\ : label is "FFT_NEXT_DATA_CNTR_reg[2]";
   attribute ORIG_CELL_NAME of \FFT_NEXT_DATA_CNTR_reg[2]_rep\ : label is "FFT_NEXT_DATA_CNTR_reg[2]";
   attribute ORIG_CELL_NAME of \FFT_NEXT_DATA_CNTR_reg[2]_rep__0\ : label is "FFT_NEXT_DATA_CNTR_reg[2]";
-  attribute x_interface_ignore of \FFT_QDATA_OUT_reg[0]\ : label is "TRUE";
   attribute x_interface_ignore of \FFT_QDATA_OUT_reg[10]\ : label is "TRUE";
   attribute x_interface_ignore of \FFT_QDATA_OUT_reg[11]\ : label is "TRUE";
   attribute x_interface_ignore of \FFT_QDATA_OUT_reg[12]\ : label is "TRUE";
@@ -1446,18 +1444,18 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
       I0 => RESET,
       O => \FFT_IDATA_OUT[23]_i_1_n_0\
     );
-\FFT_IDATA_OUT_reg[0]\: unisim.vcomponents.FDRE
+\FFT_IDATA_OUT_reg[10]\: unisim.vcomponents.FDRE
     generic map(
       INIT => '0'
     )
         port map (
       C => CLOCK,
       CE => \FFT_IDATA_OUT[23]_i_1_n_0\,
-      D => M_AXIS_DATA_tdata(0),
-      Q => FFT_IDATA_OUT(0),
+      D => M_AXIS_DATA_tdata(9),
+      Q => FFT_IDATA_OUT(9),
       R => '0'
     );
-\FFT_IDATA_OUT_reg[10]\: unisim.vcomponents.FDRE
+\FFT_IDATA_OUT_reg[11]\: unisim.vcomponents.FDRE
     generic map(
       INIT => '0'
     )
@@ -1468,7 +1466,7 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
       Q => FFT_IDATA_OUT(10),
       R => '0'
     );
-\FFT_IDATA_OUT_reg[11]\: unisim.vcomponents.FDRE
+\FFT_IDATA_OUT_reg[12]\: unisim.vcomponents.FDRE
     generic map(
       INIT => '0'
     )
@@ -1479,7 +1477,7 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
       Q => FFT_IDATA_OUT(11),
       R => '0'
     );
-\FFT_IDATA_OUT_reg[12]\: unisim.vcomponents.FDRE
+\FFT_IDATA_OUT_reg[13]\: unisim.vcomponents.FDRE
     generic map(
       INIT => '0'
     )
@@ -1490,7 +1488,7 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
       Q => FFT_IDATA_OUT(12),
       R => '0'
     );
-\FFT_IDATA_OUT_reg[13]\: unisim.vcomponents.FDRE
+\FFT_IDATA_OUT_reg[14]\: unisim.vcomponents.FDRE
     generic map(
       INIT => '0'
     )
@@ -1501,7 +1499,7 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
       Q => FFT_IDATA_OUT(13),
       R => '0'
     );
-\FFT_IDATA_OUT_reg[14]\: unisim.vcomponents.FDRE
+\FFT_IDATA_OUT_reg[15]\: unisim.vcomponents.FDRE
     generic map(
       INIT => '0'
     )
@@ -1512,7 +1510,7 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
       Q => FFT_IDATA_OUT(14),
       R => '0'
     );
-\FFT_IDATA_OUT_reg[15]\: unisim.vcomponents.FDRE
+\FFT_IDATA_OUT_reg[16]\: unisim.vcomponents.FDRE
     generic map(
       INIT => '0'
     )
@@ -1523,7 +1521,7 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
       Q => FFT_IDATA_OUT(15),
       R => '0'
     );
-\FFT_IDATA_OUT_reg[16]\: unisim.vcomponents.FDRE
+\FFT_IDATA_OUT_reg[17]\: unisim.vcomponents.FDRE
     generic map(
       INIT => '0'
     )
@@ -1534,7 +1532,7 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
       Q => FFT_IDATA_OUT(16),
       R => '0'
     );
-\FFT_IDATA_OUT_reg[17]\: unisim.vcomponents.FDRE
+\FFT_IDATA_OUT_reg[18]\: unisim.vcomponents.FDRE
     generic map(
       INIT => '0'
     )
@@ -1545,7 +1543,7 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
       Q => FFT_IDATA_OUT(17),
       R => '0'
     );
-\FFT_IDATA_OUT_reg[18]\: unisim.vcomponents.FDRE
+\FFT_IDATA_OUT_reg[19]\: unisim.vcomponents.FDRE
     generic map(
       INIT => '0'
     )
@@ -1556,7 +1554,18 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
       Q => FFT_IDATA_OUT(18),
       R => '0'
     );
-\FFT_IDATA_OUT_reg[19]\: unisim.vcomponents.FDRE
+\FFT_IDATA_OUT_reg[1]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => \FFT_IDATA_OUT[23]_i_1_n_0\,
+      D => M_AXIS_DATA_tdata(0),
+      Q => FFT_IDATA_OUT(0),
+      R => '0'
+    );
+\FFT_IDATA_OUT_reg[20]\: unisim.vcomponents.FDRE
     generic map(
       INIT => '0'
     )
@@ -1567,18 +1576,7 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
       Q => FFT_IDATA_OUT(19),
       R => '0'
     );
-\FFT_IDATA_OUT_reg[1]\: unisim.vcomponents.FDRE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \FFT_IDATA_OUT[23]_i_1_n_0\,
-      D => M_AXIS_DATA_tdata(1),
-      Q => FFT_IDATA_OUT(1),
-      R => '0'
-    );
-\FFT_IDATA_OUT_reg[20]\: unisim.vcomponents.FDRE
+\FFT_IDATA_OUT_reg[21]\: unisim.vcomponents.FDRE
     generic map(
       INIT => '0'
     )
@@ -1589,7 +1587,7 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
       Q => FFT_IDATA_OUT(20),
       R => '0'
     );
-\FFT_IDATA_OUT_reg[21]\: unisim.vcomponents.FDRE
+\FFT_IDATA_OUT_reg[22]\: unisim.vcomponents.FDRE
     generic map(
       INIT => '0'
     )
@@ -1600,7 +1598,7 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
       Q => FFT_IDATA_OUT(21),
       R => '0'
     );
-\FFT_IDATA_OUT_reg[22]\: unisim.vcomponents.FDRE
+\FFT_IDATA_OUT_reg[23]\: unisim.vcomponents.FDRE
     generic map(
       INIT => '0'
     )
@@ -1611,18 +1609,18 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
       Q => FFT_IDATA_OUT(22),
       R => '0'
     );
-\FFT_IDATA_OUT_reg[23]\: unisim.vcomponents.FDRE
+\FFT_IDATA_OUT_reg[2]\: unisim.vcomponents.FDRE
     generic map(
       INIT => '0'
     )
         port map (
       C => CLOCK,
       CE => \FFT_IDATA_OUT[23]_i_1_n_0\,
-      D => M_AXIS_DATA_tdata(23),
-      Q => FFT_IDATA_OUT(23),
+      D => M_AXIS_DATA_tdata(1),
+      Q => FFT_IDATA_OUT(1),
       R => '0'
     );
-\FFT_IDATA_OUT_reg[2]\: unisim.vcomponents.FDRE
+\FFT_IDATA_OUT_reg[3]\: unisim.vcomponents.FDRE
     generic map(
       INIT => '0'
     )
@@ -1633,7 +1631,7 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
       Q => FFT_IDATA_OUT(2),
       R => '0'
     );
-\FFT_IDATA_OUT_reg[3]\: unisim.vcomponents.FDRE
+\FFT_IDATA_OUT_reg[4]\: unisim.vcomponents.FDRE
     generic map(
       INIT => '0'
     )
@@ -1644,7 +1642,7 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
       Q => FFT_IDATA_OUT(3),
       R => '0'
     );
-\FFT_IDATA_OUT_reg[4]\: unisim.vcomponents.FDRE
+\FFT_IDATA_OUT_reg[5]\: unisim.vcomponents.FDRE
     generic map(
       INIT => '0'
     )
@@ -1655,7 +1653,7 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
       Q => FFT_IDATA_OUT(4),
       R => '0'
     );
-\FFT_IDATA_OUT_reg[5]\: unisim.vcomponents.FDRE
+\FFT_IDATA_OUT_reg[6]\: unisim.vcomponents.FDRE
     generic map(
       INIT => '0'
     )
@@ -1666,7 +1664,7 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
       Q => FFT_IDATA_OUT(5),
       R => '0'
     );
-\FFT_IDATA_OUT_reg[6]\: unisim.vcomponents.FDRE
+\FFT_IDATA_OUT_reg[7]\: unisim.vcomponents.FDRE
     generic map(
       INIT => '0'
     )
@@ -1677,7 +1675,7 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
       Q => FFT_IDATA_OUT(6),
       R => '0'
     );
-\FFT_IDATA_OUT_reg[7]\: unisim.vcomponents.FDRE
+\FFT_IDATA_OUT_reg[8]\: unisim.vcomponents.FDRE
     generic map(
       INIT => '0'
     )
@@ -1688,7 +1686,7 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
       Q => FFT_IDATA_OUT(7),
       R => '0'
     );
-\FFT_IDATA_OUT_reg[8]\: unisim.vcomponents.FDRE
+\FFT_IDATA_OUT_reg[9]\: unisim.vcomponents.FDRE
     generic map(
       INIT => '0'
     )
@@ -1697,17 +1695,6 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
       CE => \FFT_IDATA_OUT[23]_i_1_n_0\,
       D => M_AXIS_DATA_tdata(8),
       Q => FFT_IDATA_OUT(8),
-      R => '0'
-    );
-\FFT_IDATA_OUT_reg[9]\: unisim.vcomponents.FDRE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \FFT_IDATA_OUT[23]_i_1_n_0\,
-      D => M_AXIS_DATA_tdata(9),
-      Q => FFT_IDATA_OUT(9),
       R => '0'
     );
 \FFT_NEXT_DATA_CNTR[0]_i_1\: unisim.vcomponents.LUT4
@@ -2092,17 +2079,6 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
       Q => \FFT_NEXT_DATA_CNTR_reg_n_0_[6]\,
       S => RESET
     );
-\FFT_QDATA_OUT_reg[0]\: unisim.vcomponents.FDRE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \FFT_IDATA_OUT[23]_i_1_n_0\,
-      D => M_AXIS_DATA_tdata(24),
-      Q => FFT_QDATA_OUT(0),
-      R => '0'
-    );
 \FFT_QDATA_OUT_reg[10]\: unisim.vcomponents.FDRE
     generic map(
       INIT => '0'
@@ -2110,8 +2086,8 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \FFT_IDATA_OUT[23]_i_1_n_0\,
-      D => M_AXIS_DATA_tdata(34),
-      Q => FFT_QDATA_OUT(10),
+      D => M_AXIS_DATA_tdata(32),
+      Q => FFT_QDATA_OUT(9),
       R => '0'
     );
 \FFT_QDATA_OUT_reg[11]\: unisim.vcomponents.FDRE
@@ -2121,8 +2097,8 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \FFT_IDATA_OUT[23]_i_1_n_0\,
-      D => M_AXIS_DATA_tdata(35),
-      Q => FFT_QDATA_OUT(11),
+      D => M_AXIS_DATA_tdata(33),
+      Q => FFT_QDATA_OUT(10),
       R => '0'
     );
 \FFT_QDATA_OUT_reg[12]\: unisim.vcomponents.FDRE
@@ -2132,8 +2108,8 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \FFT_IDATA_OUT[23]_i_1_n_0\,
-      D => M_AXIS_DATA_tdata(36),
-      Q => FFT_QDATA_OUT(12),
+      D => M_AXIS_DATA_tdata(34),
+      Q => FFT_QDATA_OUT(11),
       R => '0'
     );
 \FFT_QDATA_OUT_reg[13]\: unisim.vcomponents.FDRE
@@ -2143,8 +2119,8 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \FFT_IDATA_OUT[23]_i_1_n_0\,
-      D => M_AXIS_DATA_tdata(37),
-      Q => FFT_QDATA_OUT(13),
+      D => M_AXIS_DATA_tdata(35),
+      Q => FFT_QDATA_OUT(12),
       R => '0'
     );
 \FFT_QDATA_OUT_reg[14]\: unisim.vcomponents.FDRE
@@ -2154,8 +2130,8 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \FFT_IDATA_OUT[23]_i_1_n_0\,
-      D => M_AXIS_DATA_tdata(38),
-      Q => FFT_QDATA_OUT(14),
+      D => M_AXIS_DATA_tdata(36),
+      Q => FFT_QDATA_OUT(13),
       R => '0'
     );
 \FFT_QDATA_OUT_reg[15]\: unisim.vcomponents.FDRE
@@ -2165,8 +2141,8 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \FFT_IDATA_OUT[23]_i_1_n_0\,
-      D => M_AXIS_DATA_tdata(39),
-      Q => FFT_QDATA_OUT(15),
+      D => M_AXIS_DATA_tdata(37),
+      Q => FFT_QDATA_OUT(14),
       R => '0'
     );
 \FFT_QDATA_OUT_reg[16]\: unisim.vcomponents.FDRE
@@ -2176,8 +2152,8 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \FFT_IDATA_OUT[23]_i_1_n_0\,
-      D => M_AXIS_DATA_tdata(40),
-      Q => FFT_QDATA_OUT(16),
+      D => M_AXIS_DATA_tdata(38),
+      Q => FFT_QDATA_OUT(15),
       R => '0'
     );
 \FFT_QDATA_OUT_reg[17]\: unisim.vcomponents.FDRE
@@ -2187,8 +2163,8 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \FFT_IDATA_OUT[23]_i_1_n_0\,
-      D => M_AXIS_DATA_tdata(41),
-      Q => FFT_QDATA_OUT(17),
+      D => M_AXIS_DATA_tdata(39),
+      Q => FFT_QDATA_OUT(16),
       R => '0'
     );
 \FFT_QDATA_OUT_reg[18]\: unisim.vcomponents.FDRE
@@ -2198,8 +2174,8 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \FFT_IDATA_OUT[23]_i_1_n_0\,
-      D => M_AXIS_DATA_tdata(42),
-      Q => FFT_QDATA_OUT(18),
+      D => M_AXIS_DATA_tdata(40),
+      Q => FFT_QDATA_OUT(17),
       R => '0'
     );
 \FFT_QDATA_OUT_reg[19]\: unisim.vcomponents.FDRE
@@ -2209,8 +2185,8 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \FFT_IDATA_OUT[23]_i_1_n_0\,
-      D => M_AXIS_DATA_tdata(43),
-      Q => FFT_QDATA_OUT(19),
+      D => M_AXIS_DATA_tdata(41),
+      Q => FFT_QDATA_OUT(18),
       R => '0'
     );
 \FFT_QDATA_OUT_reg[1]\: unisim.vcomponents.FDRE
@@ -2220,8 +2196,8 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \FFT_IDATA_OUT[23]_i_1_n_0\,
-      D => M_AXIS_DATA_tdata(25),
-      Q => FFT_QDATA_OUT(1),
+      D => M_AXIS_DATA_tdata(23),
+      Q => FFT_QDATA_OUT(0),
       R => '0'
     );
 \FFT_QDATA_OUT_reg[20]\: unisim.vcomponents.FDRE
@@ -2231,8 +2207,8 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \FFT_IDATA_OUT[23]_i_1_n_0\,
-      D => M_AXIS_DATA_tdata(44),
-      Q => FFT_QDATA_OUT(20),
+      D => M_AXIS_DATA_tdata(42),
+      Q => FFT_QDATA_OUT(19),
       R => '0'
     );
 \FFT_QDATA_OUT_reg[21]\: unisim.vcomponents.FDRE
@@ -2242,8 +2218,8 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \FFT_IDATA_OUT[23]_i_1_n_0\,
-      D => M_AXIS_DATA_tdata(45),
-      Q => FFT_QDATA_OUT(21),
+      D => M_AXIS_DATA_tdata(43),
+      Q => FFT_QDATA_OUT(20),
       R => '0'
     );
 \FFT_QDATA_OUT_reg[22]\: unisim.vcomponents.FDRE
@@ -2253,8 +2229,8 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \FFT_IDATA_OUT[23]_i_1_n_0\,
-      D => M_AXIS_DATA_tdata(46),
-      Q => FFT_QDATA_OUT(22),
+      D => M_AXIS_DATA_tdata(44),
+      Q => FFT_QDATA_OUT(21),
       R => '0'
     );
 \FFT_QDATA_OUT_reg[23]\: unisim.vcomponents.FDRE
@@ -2264,8 +2240,8 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \FFT_IDATA_OUT[23]_i_1_n_0\,
-      D => M_AXIS_DATA_tdata(47),
-      Q => FFT_QDATA_OUT(23),
+      D => M_AXIS_DATA_tdata(45),
+      Q => FFT_QDATA_OUT(22),
       R => '0'
     );
 \FFT_QDATA_OUT_reg[2]\: unisim.vcomponents.FDRE
@@ -2275,8 +2251,8 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \FFT_IDATA_OUT[23]_i_1_n_0\,
-      D => M_AXIS_DATA_tdata(26),
-      Q => FFT_QDATA_OUT(2),
+      D => M_AXIS_DATA_tdata(24),
+      Q => FFT_QDATA_OUT(1),
       R => '0'
     );
 \FFT_QDATA_OUT_reg[3]\: unisim.vcomponents.FDRE
@@ -2286,8 +2262,8 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \FFT_IDATA_OUT[23]_i_1_n_0\,
-      D => M_AXIS_DATA_tdata(27),
-      Q => FFT_QDATA_OUT(3),
+      D => M_AXIS_DATA_tdata(25),
+      Q => FFT_QDATA_OUT(2),
       R => '0'
     );
 \FFT_QDATA_OUT_reg[4]\: unisim.vcomponents.FDRE
@@ -2297,8 +2273,8 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \FFT_IDATA_OUT[23]_i_1_n_0\,
-      D => M_AXIS_DATA_tdata(28),
-      Q => FFT_QDATA_OUT(4),
+      D => M_AXIS_DATA_tdata(26),
+      Q => FFT_QDATA_OUT(3),
       R => '0'
     );
 \FFT_QDATA_OUT_reg[5]\: unisim.vcomponents.FDRE
@@ -2308,8 +2284,8 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \FFT_IDATA_OUT[23]_i_1_n_0\,
-      D => M_AXIS_DATA_tdata(29),
-      Q => FFT_QDATA_OUT(5),
+      D => M_AXIS_DATA_tdata(27),
+      Q => FFT_QDATA_OUT(4),
       R => '0'
     );
 \FFT_QDATA_OUT_reg[6]\: unisim.vcomponents.FDRE
@@ -2319,8 +2295,8 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \FFT_IDATA_OUT[23]_i_1_n_0\,
-      D => M_AXIS_DATA_tdata(30),
-      Q => FFT_QDATA_OUT(6),
+      D => M_AXIS_DATA_tdata(28),
+      Q => FFT_QDATA_OUT(5),
       R => '0'
     );
 \FFT_QDATA_OUT_reg[7]\: unisim.vcomponents.FDRE
@@ -2330,8 +2306,8 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \FFT_IDATA_OUT[23]_i_1_n_0\,
-      D => M_AXIS_DATA_tdata(31),
-      Q => FFT_QDATA_OUT(7),
+      D => M_AXIS_DATA_tdata(29),
+      Q => FFT_QDATA_OUT(6),
       R => '0'
     );
 \FFT_QDATA_OUT_reg[8]\: unisim.vcomponents.FDRE
@@ -2341,8 +2317,8 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \FFT_IDATA_OUT[23]_i_1_n_0\,
-      D => M_AXIS_DATA_tdata(32),
-      Q => FFT_QDATA_OUT(8),
+      D => M_AXIS_DATA_tdata(30),
+      Q => FFT_QDATA_OUT(7),
       R => '0'
     );
 \FFT_QDATA_OUT_reg[9]\: unisim.vcomponents.FDRE
@@ -2352,8 +2328,8 @@ FFT_DATA_OUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => \FFT_IDATA_OUT[23]_i_1_n_0\,
-      D => M_AXIS_DATA_tdata(33),
-      Q => FFT_QDATA_OUT(9),
+      D => M_AXIS_DATA_tdata(31),
+      Q => FFT_QDATA_OUT(8),
       R => '0'
     );
 \IDATA_BUFFER[0][15]_i_1\: unisim.vcomponents.LUT6
@@ -36666,6 +36642,8 @@ end block_design_0_fft_ofdm_0_1;
 architecture STRUCTURE of block_design_0_fft_ofdm_0_1 is
   signal \<const0>\ : STD_LOGIC;
   signal \^clock\ : STD_LOGIC;
+  signal \^fft_idata_out\ : STD_LOGIC_VECTOR ( 23 downto 1 );
+  signal \^fft_qdata_out\ : STD_LOGIC_VECTOR ( 23 downto 1 );
   attribute x_interface_info : string;
   attribute x_interface_info of CLOCK : signal is "xilinx.com:signal:clock:1.0 CLOCK CLK";
   attribute x_interface_parameter : string;
@@ -36696,6 +36674,10 @@ architecture STRUCTURE of block_design_0_fft_ofdm_0_1 is
   attribute x_interface_info of S_AXIS_DATA_tdata : signal is "xilinx.com:interface:axis:1.0 S_AXIS_DATA TDATA";
   attribute x_interface_parameter of S_AXIS_DATA_tdata : signal is "XIL_INTERFACENAME S_AXIS_DATA, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 1, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN block_design_fft_aclk_0, LAYERED_METADATA undef, INSERT_VIP 0";
 begin
+  FFT_IDATA_OUT(23 downto 1) <= \^fft_idata_out\(23 downto 1);
+  FFT_IDATA_OUT(0) <= \<const0>\;
+  FFT_QDATA_OUT(23 downto 1) <= \^fft_qdata_out\(23 downto 1);
+  FFT_QDATA_OUT(0) <= \<const0>\;
   S_AXIS_CONFIG_tdata(7) <= \<const0>\;
   S_AXIS_CONFIG_tdata(6) <= \<const0>\;
   S_AXIS_CONFIG_tdata(5) <= \<const0>\;
@@ -36721,10 +36703,11 @@ U0: entity work.block_design_0_fft_ofdm_0_1_fft_ofdm
       FFT_DATA_OUT_LAST => FFT_DATA_OUT_LAST,
       FFT_DATA_OUT_VALID => FFT_DATA_OUT_VALID,
       FFT_IDATA_IN(15 downto 0) => FFT_IDATA_IN(15 downto 0),
-      FFT_IDATA_OUT(23 downto 0) => FFT_IDATA_OUT(23 downto 0),
+      FFT_IDATA_OUT(22 downto 0) => \^fft_idata_out\(23 downto 1),
       FFT_QDATA_IN(15 downto 0) => FFT_QDATA_IN(15 downto 0),
-      FFT_QDATA_OUT(23 downto 0) => FFT_QDATA_OUT(23 downto 0),
-      M_AXIS_DATA_tdata(47 downto 0) => M_AXIS_DATA_tdata(47 downto 0),
+      FFT_QDATA_OUT(22 downto 0) => \^fft_qdata_out\(23 downto 1),
+      M_AXIS_DATA_tdata(45 downto 23) => M_AXIS_DATA_tdata(46 downto 24),
+      M_AXIS_DATA_tdata(22 downto 0) => M_AXIS_DATA_tdata(22 downto 0),
       M_AXIS_DATA_tlast => M_AXIS_DATA_tlast,
       M_AXIS_DATA_tvalid => M_AXIS_DATA_tvalid,
       RESET => RESET,

@@ -2,8 +2,8 @@
 --Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
---Date        : Mon May  6 22:02:19 2024
---Host        : ASUS_ROG running 64-bit major release  (build 9200)
+--Date        : Wed May  8 16:54:51 2024
+--Host        : lab817_01 running 64-bit major release  (build 9200)
 --Command     : generate_target block_design_0.bd
 --Design      : block_design_0
 --Purpose     : IP block netlist
@@ -823,11 +823,9 @@ architecture STRUCTURE of block_design_0 is
     FFT_IDATA : in STD_LOGIC_VECTOR ( 23 downto 0 );
     FFT_QDATA : in STD_LOGIC_VECTOR ( 23 downto 0 );
     FFT_DATA_VALID : in STD_LOGIC;
-    FFT_DATA_FIRST_SYMBOL_MARKER : in STD_LOGIC;
     CONSTELLATION_IDATA : in STD_LOGIC_VECTOR ( 23 downto 0 );
     CONSTELLATION_QDATA : in STD_LOGIC_VECTOR ( 23 downto 0 );
     CONSTELLATION_DATA_VALID : in STD_LOGIC;
-    CONSTELLATION_DATA_FIRST_SYMBOL_MARKER : in STD_LOGIC;
     DEINTERLEAVER_STROBE : in STD_LOGIC;
     DEINTERLEAVER_BPSK : in STD_LOGIC_VECTOR ( 0 to 47 );
     DEINTERLEAVER_QPSK : in STD_LOGIC_VECTOR ( 0 to 95 );
@@ -836,6 +834,7 @@ architecture STRUCTURE of block_design_0 is
     VITERBI_SIGNAL : in STD_LOGIC_VECTOR ( 31 downto 0 );
     PARALLEL_OUTPUT_VALID : in STD_LOGIC;
     PARALLEL_OUTPUT : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    PARALLEL_OUTPUT_LAST : in STD_LOGIC;
     FPGA_REG_WRITE_ADDRESS : out STD_LOGIC_VECTOR ( 11 downto 0 );
     FPGA_REG_WRITE_DATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
     FPGA_REG_WRITE_STROBE : out STD_LOGIC
@@ -1050,6 +1049,7 @@ architecture STRUCTURE of block_design_0 is
   signal hier_rotation_constellation_ROTATION_CONSTELLATION_IDATA_OUT : STD_LOGIC_VECTOR ( 23 downto 0 );
   signal hier_rotation_constellation_ROTATION_CONSTELLATION_QDATA_OUT : STD_LOGIC_VECTOR ( 23 downto 0 );
   signal output_ser2par_0_PARALLEL_OUTPUT : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal output_ser2par_0_PARALLEL_OUTPUT_LAST : STD_LOGIC;
   signal output_ser2par_0_PARALLEL_OUTPUT_VALID : STD_LOGIC;
   signal receiver_802_11p_0_ATAN_AUTOCORR_I : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal receiver_802_11p_0_ATAN_AUTOCORR_Q : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -1080,7 +1080,6 @@ architecture STRUCTURE of block_design_0 is
   signal NLW_hier_fft_ofdm_event_frame_started_UNCONNECTED : STD_LOGIC;
   signal NLW_hier_fft_ofdm_event_tlast_missing_UNCONNECTED : STD_LOGIC;
   signal NLW_hier_fft_ofdm_event_tlast_unexpected_UNCONNECTED : STD_LOGIC;
-  signal NLW_output_ser2par_0_PARALLEL_OUTPUT_LAST_UNCONNECTED : STD_LOGIC;
   signal NLW_timing_acquisition_8_0_CONTINUOUS_XCORR_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_timing_acquisition_8_0_DETECTION_XCORR_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   attribute X_INTERFACE_INFO : string;
@@ -1141,7 +1140,6 @@ act_power_0: component block_design_0_act_power_0_0
 axi_regs_mux_0: component block_design_0_axi_regs_mux_0_0
      port map (
       CLOCK => CLOCK_0_1,
-      CONSTELLATION_DATA_FIRST_SYMBOL_MARKER => constellation_tracker_0_CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER,
       CONSTELLATION_DATA_VALID => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
       CONSTELLATION_IDATA(23 downto 0) => constellation_tracker_0_CONSTELLATION_IDATA_OUT(23 downto 0),
       CONSTELLATION_QDATA(23 downto 0) => constellation_tracker_0_CONSTELLATION_QDATA_OUT(23 downto 0),
@@ -1153,7 +1151,6 @@ axi_regs_mux_0: component block_design_0_axi_regs_mux_0_0
       EQUALIZER_REG_WRITE_DATA(31 downto 0) => equalizer_time_frequ_0_FPGA_REG_WRITE_DATA(31 downto 0),
       EQUALIZER_REG_WRITE_STROBE_PHASE_1 => equalizer_time_frequ_0_FPGA_REG_WRITE_STROBE_PHASE_1,
       EQUALIZER_REG_WRITE_STROBE_PHASE_2 => equalizer_time_frequ_0_FPGA_REG_WRITE_STROBE_PHASE_2,
-      FFT_DATA_FIRST_SYMBOL_MARKER => hier_fft_ofdm_FFT_DATA_OUT_FIRST_SYMBOL_MARKER,
       FFT_DATA_VALID => fft_ofdm_0_FFT_DATA_OUT_VALID,
       FFT_IDATA(23 downto 0) => fft_ofdm_0_FFT_IDATA_OUT(23 downto 0),
       FFT_QDATA(23 downto 0) => fft_ofdm_0_FFT_QDATA_OUT(23 downto 0),
@@ -1162,6 +1159,7 @@ axi_regs_mux_0: component block_design_0_axi_regs_mux_0_0
       FPGA_REG_WRITE_STROBE => axi_regs_mux_0_FPGA_REG_WRITE_STROBE,
       IDATA(15 downto 0) => data_delay_0_IDATA_OUT(15 downto 0),
       PARALLEL_OUTPUT(31 downto 0) => output_ser2par_0_PARALLEL_OUTPUT(31 downto 0),
+      PARALLEL_OUTPUT_LAST => output_ser2par_0_PARALLEL_OUTPUT_LAST,
       PARALLEL_OUTPUT_VALID => output_ser2par_0_PARALLEL_OUTPUT_VALID,
       QDATA(15 downto 0) => data_delay_0_QDATA_OUT(15 downto 0),
       RESET => RESET_0_1,
@@ -1399,7 +1397,7 @@ output_ser2par_0: component block_design_0_output_ser2par_0_0
       DESCRAMBLED_OUTPUT_LAST => descrambler_0_DESCRAMBLED_OUTPUT_LAST,
       DESCRAMBLED_OUTPUT_VALID => descrambler_0_DESCRAMBLED_OUTPUT_VALID,
       PARALLEL_OUTPUT(31 downto 0) => output_ser2par_0_PARALLEL_OUTPUT(31 downto 0),
-      PARALLEL_OUTPUT_LAST => NLW_output_ser2par_0_PARALLEL_OUTPUT_LAST_UNCONNECTED,
+      PARALLEL_OUTPUT_LAST => output_ser2par_0_PARALLEL_OUTPUT_LAST,
       PARALLEL_OUTPUT_VALID => output_ser2par_0_PARALLEL_OUTPUT_VALID,
       RESET => RESET_0_1,
       VITERBI_SIGNAL_VALID => viterbi_hard_0_VITERBI_SIGNAL_VALID

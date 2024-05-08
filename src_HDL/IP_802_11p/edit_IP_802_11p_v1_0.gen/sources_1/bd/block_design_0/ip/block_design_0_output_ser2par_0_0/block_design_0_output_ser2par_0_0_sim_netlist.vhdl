@@ -2,8 +2,8 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
--- Date        : Mon May  6 23:28:50 2024
--- Host        : ASUS_ROG running 64-bit major release  (build 9200)
+-- Date        : Wed May  8 13:36:13 2024
+-- Host        : lab817_01 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_output_ser2par_0_0/block_design_0_output_ser2par_0_0_sim_netlist.vhdl
 -- Design      : block_design_0_output_ser2par_0_0
@@ -18,8 +18,8 @@ use UNISIM.VCOMPONENTS.ALL;
 entity block_design_0_output_ser2par_0_0_output_ser2par is
   port (
     PARALLEL_OUTPUT : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    PARALLEL_OUTPUT_LAST : out STD_LOGIC;
     PARALLEL_OUTPUT_VALID : out STD_LOGIC;
+    PARALLEL_OUTPUT_LAST : out STD_LOGIC;
     RESET : in STD_LOGIC;
     DESCRAMBLED_OUTPUT_LAST : in STD_LOGIC;
     DESCRAMBLED_OUTPUT_VALID : in STD_LOGIC;
@@ -84,10 +84,9 @@ architecture STRUCTURE of block_design_0_output_ser2par_0_0_output_ser2par is
   signal \PARALLEL_BUFFER_reg_n_0_[8]\ : STD_LOGIC;
   signal \PARALLEL_BUFFER_reg_n_0_[9]\ : STD_LOGIC;
   signal \PARALLEL_OUTPUT[31]_i_1_n_0\ : STD_LOGIC;
-  signal PARALLEL_OUTPUT_LAST_BUFFER : STD_LOGIC;
-  signal PARALLEL_OUTPUT_LAST_BUFFER_i_1_n_0 : STD_LOGIC;
-  signal \^parallel_output_valid\ : STD_LOGIC;
-  signal PARALLEL_OUTPUT_VALID_i_1_n_0 : STD_LOGIC;
+  signal PARALLEL_OUTPUT_LAST_REQUEST : STD_LOGIC;
+  signal PARALLEL_OUTPUT_LAST_REQUEST_i_1_n_0 : STD_LOGIC;
+  signal PARALLEL_OUTPUT_LAST_i_1_n_0 : STD_LOGIC;
   signal \STATE__0\ : STD_LOGIC_VECTOR ( 1 downto 0 );
   attribute SOFT_HLUTNM : string;
   attribute SOFT_HLUTNM of \COUNTER[0]_i_1\ : label is "soft_lutpair1";
@@ -133,7 +132,6 @@ architecture STRUCTURE of block_design_0_output_ser2par_0_0_output_ser2par is
   attribute x_interface_ignore of \PARALLEL_OUTPUT_reg[8]\ : label is "TRUE";
   attribute x_interface_ignore of \PARALLEL_OUTPUT_reg[9]\ : label is "TRUE";
 begin
-  PARALLEL_OUTPUT_VALID <= \^parallel_output_valid\;
 \COUNTER[0]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"2E"
@@ -735,28 +733,38 @@ PARALLEL_BUFFER_FULL_reg: unisim.vcomponents.FDRE
       I1 => RESET,
       O => \PARALLEL_OUTPUT[31]_i_1_n_0\
     );
-PARALLEL_OUTPUT_LAST_BUFFER_i_1: unisim.vcomponents.LUT5
+PARALLEL_OUTPUT_LAST_REQUEST_i_1: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FFFA0008"
+      INIT => X"0000AAC8"
     )
         port map (
-      I0 => \STATE__0\(1),
-      I1 => DESCRAMBLED_OUTPUT_LAST,
-      I2 => \STATE__0\(0),
-      I3 => RESET,
-      I4 => PARALLEL_OUTPUT_LAST_BUFFER,
-      O => PARALLEL_OUTPUT_LAST_BUFFER_i_1_n_0
+      I0 => PARALLEL_OUTPUT_LAST_REQUEST,
+      I1 => \STATE__0\(1),
+      I2 => DESCRAMBLED_OUTPUT_LAST,
+      I3 => \STATE__0\(0),
+      I4 => RESET,
+      O => PARALLEL_OUTPUT_LAST_REQUEST_i_1_n_0
     );
-PARALLEL_OUTPUT_LAST_BUFFER_reg: unisim.vcomponents.FDRE
+PARALLEL_OUTPUT_LAST_REQUEST_reg: unisim.vcomponents.FDRE
     generic map(
       INIT => '0'
     )
         port map (
       C => CLOCK,
       CE => '1',
-      D => PARALLEL_OUTPUT_LAST_BUFFER_i_1_n_0,
-      Q => PARALLEL_OUTPUT_LAST_BUFFER,
+      D => PARALLEL_OUTPUT_LAST_REQUEST_i_1_n_0,
+      Q => PARALLEL_OUTPUT_LAST_REQUEST,
       R => '0'
+    );
+PARALLEL_OUTPUT_LAST_i_1: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"20"
+    )
+        port map (
+      I0 => PARALLEL_OUTPUT_LAST_REQUEST,
+      I1 => RESET,
+      I2 => PARALLEL_BUFFER_FULL_reg_n_0,
+      O => PARALLEL_OUTPUT_LAST_i_1_n_0
     );
 PARALLEL_OUTPUT_LAST_reg: unisim.vcomponents.FDRE
     generic map(
@@ -764,20 +772,10 @@ PARALLEL_OUTPUT_LAST_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \PARALLEL_OUTPUT[31]_i_1_n_0\,
-      D => PARALLEL_OUTPUT_LAST_BUFFER,
+      CE => '1',
+      D => PARALLEL_OUTPUT_LAST_i_1_n_0,
       Q => PARALLEL_OUTPUT_LAST,
       R => '0'
-    );
-PARALLEL_OUTPUT_VALID_i_1: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"B8"
-    )
-        port map (
-      I0 => \^parallel_output_valid\,
-      I1 => RESET,
-      I2 => PARALLEL_BUFFER_FULL_reg_n_0,
-      O => PARALLEL_OUTPUT_VALID_i_1_n_0
     );
 PARALLEL_OUTPUT_VALID_reg: unisim.vcomponents.FDRE
     generic map(
@@ -786,8 +784,8 @@ PARALLEL_OUTPUT_VALID_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => '1',
-      D => PARALLEL_OUTPUT_VALID_i_1_n_0,
-      Q => \^parallel_output_valid\,
+      D => \PARALLEL_OUTPUT[31]_i_1_n_0\,
+      Q => PARALLEL_OUTPUT_VALID,
       R => '0'
     );
 \PARALLEL_OUTPUT_reg[0]\: unisim.vcomponents.FDRE

@@ -2,8 +2,8 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-// Date        : Mon May  6 23:30:49 2024
-// Host        : ASUS_ROG running 64-bit major release  (build 9200)
+// Date        : Wed May  8 13:36:36 2024
+// Host        : lab817_01 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_timing_acquisition_8_0_0/block_design_0_timing_acquisition_8_0_0_sim_netlist.v
 // Design      : block_design_0_timing_acquisition_8_0_0
@@ -105,12 +105,13 @@ endmodule
 (* ORIG_REF_NAME = "Parallel_STS_FIR_Filter" *) 
 module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
    (DATA_OUT_STROBE,
-    RESET_0,
-    \FSM_onehot_DETECTION_STATE_reg[2] ,
     DATA_OUT_STROBE_reg_0,
-    \FSM_onehot_DETECTION_STATE_reg[2]_0 ,
     DATA_OUT_STROBE_reg_1,
-    DATA_OUT_STROBE_reg_2,
+    \FSM_sequential_DETECTION_STATE_reg[1] ,
+    \FSM_sequential_DETECTION_STATE_reg[0] ,
+    \FSM_sequential_DETECTION_STATE_reg[0]_0 ,
+    RESET_0,
+    \FSM_sequential_DETECTION_STATE_reg[1]_0 ,
     p_0_in,
     O,
     \SHIFT_REGISTER_reg[31][7] ,
@@ -189,12 +190,11 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     QDATA_DELAY_16,
     E,
     RESET,
-    \DETECTION_CNTR_reg[0] ,
-    \DETECTION_CNTR_reg[0]_0 ,
     CO,
-    \DETECTION_CNTR_reg[0]_1 ,
-    \DETECTION_CNTR_reg[0]_2 ,
-    \MAX_XCORR_reg[0] ,
+    \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[35] ,
+    DETECTION_STATE,
+    \FSM_sequential_DETECTION_STATE_reg[1]_1 ,
+    DETECTION_STATE__0,
     \SHIFT_REGISTER_reg[15] ,
     S,
     \SHIFT_REGISTER_reg[16][7] ,
@@ -268,12 +268,13 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \SHIFT_REGISTER_reg[144][23] ,
     \SHIFT_REGISTER_reg[144][27] );
   output DATA_OUT_STROBE;
-  output RESET_0;
-  output \FSM_onehot_DETECTION_STATE_reg[2] ;
-  output [0:0]DATA_OUT_STROBE_reg_0;
-  output [0:0]\FSM_onehot_DETECTION_STATE_reg[2]_0 ;
+  output DATA_OUT_STROBE_reg_0;
   output [0:0]DATA_OUT_STROBE_reg_1;
-  output [0:0]DATA_OUT_STROBE_reg_2;
+  output \FSM_sequential_DETECTION_STATE_reg[1] ;
+  output \FSM_sequential_DETECTION_STATE_reg[0] ;
+  output \FSM_sequential_DETECTION_STATE_reg[0]_0 ;
+  output [0:0]RESET_0;
+  output [0:0]\FSM_sequential_DETECTION_STATE_reg[1]_0 ;
   output [28:0]p_0_in;
   output [3:0]O;
   output [3:0]\SHIFT_REGISTER_reg[31][7] ;
@@ -352,12 +353,11 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
   input [15:0]QDATA_DELAY_16;
   input [0:0]E;
   input RESET;
-  input \DETECTION_CNTR_reg[0] ;
-  input \DETECTION_CNTR_reg[0]_0 ;
   input [0:0]CO;
-  input \DETECTION_CNTR_reg[0]_1 ;
-  input \DETECTION_CNTR_reg[0]_2 ;
-  input [0:0]\MAX_XCORR_reg[0] ;
+  input [0:0]\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[35] ;
+  input [1:0]DETECTION_STATE;
+  input \FSM_sequential_DETECTION_STATE_reg[1]_1 ;
+  input [0:0]DETECTION_STATE__0;
   input [27:0]\SHIFT_REGISTER_reg[15] ;
   input [3:0]S;
   input [3:0]\SHIFT_REGISTER_reg[16][7] ;
@@ -7216,23 +7216,23 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
   wire [0:0]CO;
   wire [31:0]D;
   wire DATA_OUT_STROBE;
-  wire [0:0]DATA_OUT_STROBE_reg_0;
+  wire DATA_OUT_STROBE_reg_0;
   wire [0:0]DATA_OUT_STROBE_reg_1;
-  wire [0:0]DATA_OUT_STROBE_reg_2;
   wire DATA_STROBE;
-  wire \DETECTION_CNTR_reg[0] ;
-  wire \DETECTION_CNTR_reg[0]_0 ;
-  wire \DETECTION_CNTR_reg[0]_1 ;
-  wire \DETECTION_CNTR_reg[0]_2 ;
+  wire [1:0]DETECTION_STATE;
+  wire [0:0]DETECTION_STATE__0;
   wire [0:0]E;
-  wire \FSM_onehot_DETECTION_STATE_reg[2] ;
-  wire [0:0]\FSM_onehot_DETECTION_STATE_reg[2]_0 ;
+  wire \FSM_sequential_DETECTION_STATE[1]_i_2_n_0 ;
+  wire \FSM_sequential_DETECTION_STATE_reg[0] ;
+  wire \FSM_sequential_DETECTION_STATE_reg[0]_0 ;
+  wire \FSM_sequential_DETECTION_STATE_reg[1] ;
+  wire [0:0]\FSM_sequential_DETECTION_STATE_reg[1]_0 ;
+  wire \FSM_sequential_DETECTION_STATE_reg[1]_1 ;
   wire [13:0]IDATA;
   wire [15:0]IDATA_DELAY_16;
   wire [15:0]IDATA_DELAY_32;
   wire [15:0]IDATA_DELAY_48;
   wire [15:0]IDATA_DELAY_64;
-  wire [0:0]\MAX_XCORR_reg[0] ;
   wire \MULT_REG_II[0][0]_i_1_n_0 ;
   wire \MULT_REG_II[0][10]_i_1_n_0 ;
   wire \MULT_REG_II[0][11]_i_1_n_0 ;
@@ -11475,7 +11475,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
   wire [15:0]QDATA_DELAY_48;
   wire [15:0]QDATA_DELAY_64;
   wire RESET;
-  wire RESET_0;
+  wire [0:0]RESET_0;
   wire [3:0]S;
   wire [31:0]\SHIFT_REGISTER_reg[111] ;
   wire [3:0]\SHIFT_REGISTER_reg[111][11] ;
@@ -11876,6 +11876,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
   wire \SHIFT_REGISTER_reg[96][7]_i_1_n_1 ;
   wire \SHIFT_REGISTER_reg[96][7]_i_1_n_2 ;
   wire \SHIFT_REGISTER_reg[96][7]_i_1_n_3 ;
+  wire [0:0]\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[35] ;
   wire [31:0]\STS_AUTOCORR_I_16_DELAYED_reg[31]_0 ;
   wire [31:0]\STS_AUTOCORR_Q_16_DELAYED_reg[31]_0 ;
   wire [28:0]p_0_in;
@@ -37117,7 +37118,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \AUTOCORR_DELAY2_REG_I[0][7]_i_9 
        (.I0(\AUTOCORR_ADD_REG_I_reg_n_99_[0] ),
         .O(\AUTOCORR_DELAY2_REG_I[0][7]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair388" *) 
+  (* SOFT_HLUTNM = "soft_lutpair389" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_I[1][11]_i_12 
@@ -37125,7 +37126,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_I_reg[1][15]_i_10_n_4 ),
         .I2(\AUTOCORR_ADD_REG_I_reg_n_93_[2] ),
         .O(\AUTOCORR_DELAY2_REG_I[1][11]_i_12_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair388" *) 
+  (* SOFT_HLUTNM = "soft_lutpair389" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_I[1][11]_i_13 
@@ -37133,7 +37134,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_I_reg[1][15]_i_10_n_5 ),
         .I2(\AUTOCORR_ADD_REG_I_reg_n_94_[2] ),
         .O(\AUTOCORR_DELAY2_REG_I[1][11]_i_13_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair389" *) 
+  (* SOFT_HLUTNM = "soft_lutpair390" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_I[1][11]_i_14 
@@ -37141,7 +37142,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_I_reg[1][15]_i_10_n_6 ),
         .I2(\AUTOCORR_ADD_REG_I_reg_n_95_[2] ),
         .O(\AUTOCORR_DELAY2_REG_I[1][11]_i_14_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair389" *) 
+  (* SOFT_HLUTNM = "soft_lutpair390" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_I[1][11]_i_15 
@@ -37265,7 +37266,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I3(\AUTOCORR_DELAY2_REG_I_reg[1]4 [9]),
         .I4(\AUTOCORR_ADD_REG_I_reg_n_96_[1] ),
         .O(\AUTOCORR_DELAY2_REG_I[1][11]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair386" *) 
+  (* SOFT_HLUTNM = "soft_lutpair387" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_I[1][15]_i_12 
@@ -37273,7 +37274,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_I_reg[1][19]_i_10_n_4 ),
         .I2(\AUTOCORR_ADD_REG_I_reg_n_89_[2] ),
         .O(\AUTOCORR_DELAY2_REG_I[1][15]_i_12_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair386" *) 
+  (* SOFT_HLUTNM = "soft_lutpair387" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_I[1][15]_i_13 
@@ -37281,7 +37282,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_I_reg[1][19]_i_10_n_5 ),
         .I2(\AUTOCORR_ADD_REG_I_reg_n_90_[2] ),
         .O(\AUTOCORR_DELAY2_REG_I[1][15]_i_13_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair387" *) 
+  (* SOFT_HLUTNM = "soft_lutpair388" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_I[1][15]_i_14 
@@ -37289,7 +37290,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_I_reg[1][19]_i_10_n_6 ),
         .I2(\AUTOCORR_ADD_REG_I_reg_n_91_[2] ),
         .O(\AUTOCORR_DELAY2_REG_I[1][15]_i_14_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair387" *) 
+  (* SOFT_HLUTNM = "soft_lutpair388" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_I[1][15]_i_15 
@@ -37413,7 +37414,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I3(\AUTOCORR_DELAY2_REG_I_reg[1]4 [13]),
         .I4(\AUTOCORR_ADD_REG_I_reg_n_92_[1] ),
         .O(\AUTOCORR_DELAY2_REG_I[1][15]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair384" *) 
+  (* SOFT_HLUTNM = "soft_lutpair385" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_I[1][19]_i_12 
@@ -37421,7 +37422,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_I_reg[1][23]_i_10_n_4 ),
         .I2(\AUTOCORR_ADD_REG_I_reg_n_85_[2] ),
         .O(\AUTOCORR_DELAY2_REG_I[1][19]_i_12_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair384" *) 
+  (* SOFT_HLUTNM = "soft_lutpair385" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_I[1][19]_i_13 
@@ -37429,7 +37430,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_I_reg[1][23]_i_10_n_5 ),
         .I2(\AUTOCORR_ADD_REG_I_reg_n_86_[2] ),
         .O(\AUTOCORR_DELAY2_REG_I[1][19]_i_13_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair385" *) 
+  (* SOFT_HLUTNM = "soft_lutpair386" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_I[1][19]_i_14 
@@ -37437,7 +37438,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_I_reg[1][23]_i_10_n_6 ),
         .I2(\AUTOCORR_ADD_REG_I_reg_n_87_[2] ),
         .O(\AUTOCORR_DELAY2_REG_I[1][19]_i_14_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair385" *) 
+  (* SOFT_HLUTNM = "soft_lutpair386" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_I[1][19]_i_15 
@@ -37561,7 +37562,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I3(\AUTOCORR_DELAY2_REG_I_reg[1]4 [17]),
         .I4(\AUTOCORR_ADD_REG_I_reg_n_88_[1] ),
         .O(\AUTOCORR_DELAY2_REG_I[1][19]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair382" *) 
+  (* SOFT_HLUTNM = "soft_lutpair383" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_I[1][23]_i_12 
@@ -37569,7 +37570,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_I_reg[1][27]_i_10_n_4 ),
         .I2(\AUTOCORR_ADD_REG_I_reg_n_81_[2] ),
         .O(\AUTOCORR_DELAY2_REG_I[1][23]_i_12_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair382" *) 
+  (* SOFT_HLUTNM = "soft_lutpair383" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_I[1][23]_i_13 
@@ -37577,7 +37578,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_I_reg[1][27]_i_10_n_5 ),
         .I2(\AUTOCORR_ADD_REG_I_reg_n_82_[2] ),
         .O(\AUTOCORR_DELAY2_REG_I[1][23]_i_13_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair383" *) 
+  (* SOFT_HLUTNM = "soft_lutpair384" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_I[1][23]_i_14 
@@ -37585,7 +37586,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_I_reg[1][27]_i_10_n_6 ),
         .I2(\AUTOCORR_ADD_REG_I_reg_n_83_[2] ),
         .O(\AUTOCORR_DELAY2_REG_I[1][23]_i_14_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair383" *) 
+  (* SOFT_HLUTNM = "soft_lutpair384" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_I[1][23]_i_15 
@@ -37709,7 +37710,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I3(\AUTOCORR_DELAY2_REG_I_reg[1]4 [21]),
         .I4(\AUTOCORR_ADD_REG_I_reg_n_84_[1] ),
         .O(\AUTOCORR_DELAY2_REG_I[1][23]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair380" *) 
+  (* SOFT_HLUTNM = "soft_lutpair381" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_I[1][27]_i_12 
@@ -37717,7 +37718,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_I_reg[1][31]_i_11_n_4 ),
         .I2(\AUTOCORR_ADD_REG_I_reg_n_77_[2] ),
         .O(\AUTOCORR_DELAY2_REG_I[1][27]_i_12_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair380" *) 
+  (* SOFT_HLUTNM = "soft_lutpair381" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_I[1][27]_i_13 
@@ -37725,7 +37726,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_I_reg[1][31]_i_11_n_5 ),
         .I2(\AUTOCORR_ADD_REG_I_reg_n_78_[2] ),
         .O(\AUTOCORR_DELAY2_REG_I[1][27]_i_13_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair381" *) 
+  (* SOFT_HLUTNM = "soft_lutpair382" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_I[1][27]_i_14 
@@ -37733,7 +37734,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_I_reg[1][31]_i_11_n_6 ),
         .I2(\AUTOCORR_ADD_REG_I_reg_n_79_[2] ),
         .O(\AUTOCORR_DELAY2_REG_I[1][27]_i_14_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair381" *) 
+  (* SOFT_HLUTNM = "soft_lutpair382" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_I[1][27]_i_15 
@@ -37857,7 +37858,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I3(\AUTOCORR_DELAY2_REG_I_reg[1]4 [25]),
         .I4(\AUTOCORR_ADD_REG_I_reg_n_80_[1] ),
         .O(\AUTOCORR_DELAY2_REG_I[1][27]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair379" *) 
+  (* SOFT_HLUTNM = "soft_lutpair380" *) 
   LUT3 #(
     .INIT(8'h2E)) 
     \AUTOCORR_DELAY2_REG_I[1][31]_i_13 
@@ -37865,7 +37866,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_ADD_REG_I_reg_n_74_[2] ),
         .I2(\AUTOCORR_DELAY2_REG_I_reg[1][31]_i_9_n_6 ),
         .O(\AUTOCORR_DELAY2_REG_I[1][31]_i_13_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair379" *) 
+  (* SOFT_HLUTNM = "soft_lutpair380" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_I[1][31]_i_14 
@@ -38010,7 +38011,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I3(\AUTOCORR_DELAY2_REG_I_reg[1]4 [29]),
         .I4(\AUTOCORR_ADD_REG_I_reg_n_76_[1] ),
         .O(\AUTOCORR_DELAY2_REG_I[1][31]_i_8_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair392" *) 
+  (* SOFT_HLUTNM = "soft_lutpair393" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_I[1][3]_i_10 
@@ -38092,7 +38093,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I4(\AUTOCORR_DELAY2_REG_I_reg[1][7]_i_10_n_7 ),
         .I5(\AUTOCORR_DELAY2_REG_I_reg[1]32_in ),
         .O(\AUTOCORR_DELAY2_REG_I[1][3]_i_8_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair392" *) 
+  (* SOFT_HLUTNM = "soft_lutpair393" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_I[1][3]_i_9 
@@ -38100,7 +38101,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_I_reg[1][7]_i_10_n_4 ),
         .I2(\AUTOCORR_ADD_REG_I_reg_n_101_[2] ),
         .O(\AUTOCORR_DELAY2_REG_I[1][3]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair390" *) 
+  (* SOFT_HLUTNM = "soft_lutpair391" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_I[1][7]_i_12 
@@ -38108,7 +38109,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_I_reg[1][11]_i_10_n_4 ),
         .I2(\AUTOCORR_ADD_REG_I_reg_n_97_[2] ),
         .O(\AUTOCORR_DELAY2_REG_I[1][7]_i_12_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair390" *) 
+  (* SOFT_HLUTNM = "soft_lutpair391" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_I[1][7]_i_13 
@@ -38116,7 +38117,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_I_reg[1][11]_i_10_n_5 ),
         .I2(\AUTOCORR_ADD_REG_I_reg_n_98_[2] ),
         .O(\AUTOCORR_DELAY2_REG_I[1][7]_i_13_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair391" *) 
+  (* SOFT_HLUTNM = "soft_lutpair392" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_I[1][7]_i_14 
@@ -38124,7 +38125,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_I_reg[1][11]_i_10_n_6 ),
         .I2(\AUTOCORR_ADD_REG_I_reg_n_99_[2] ),
         .O(\AUTOCORR_DELAY2_REG_I[1][7]_i_14_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair391" *) 
+  (* SOFT_HLUTNM = "soft_lutpair392" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_I[1][7]_i_15 
@@ -39476,7 +39477,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \AUTOCORR_DELAY2_REG_Q[0][7]_i_9 
        (.I0(\AUTOCORR_ADD_REG_Q_reg_n_99_[0] ),
         .O(\AUTOCORR_DELAY2_REG_Q[0][7]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair416" *) 
+  (* SOFT_HLUTNM = "soft_lutpair417" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_Q[1][11]_i_12 
@@ -39484,7 +39485,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_Q_reg[1][15]_i_10_n_4 ),
         .I2(\AUTOCORR_ADD_REG_Q_reg_n_93_[2] ),
         .O(\AUTOCORR_DELAY2_REG_Q[1][11]_i_12_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair416" *) 
+  (* SOFT_HLUTNM = "soft_lutpair417" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_Q[1][11]_i_13 
@@ -39492,7 +39493,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_Q_reg[1][15]_i_10_n_5 ),
         .I2(\AUTOCORR_ADD_REG_Q_reg_n_94_[2] ),
         .O(\AUTOCORR_DELAY2_REG_Q[1][11]_i_13_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair417" *) 
+  (* SOFT_HLUTNM = "soft_lutpair418" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_Q[1][11]_i_14 
@@ -39500,7 +39501,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_Q_reg[1][15]_i_10_n_6 ),
         .I2(\AUTOCORR_ADD_REG_Q_reg_n_95_[2] ),
         .O(\AUTOCORR_DELAY2_REG_Q[1][11]_i_14_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair417" *) 
+  (* SOFT_HLUTNM = "soft_lutpair418" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_Q[1][11]_i_15 
@@ -39624,7 +39625,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I3(\AUTOCORR_DELAY2_REG_Q_reg[1]4 [9]),
         .I4(\AUTOCORR_ADD_REG_Q_reg_n_96_[1] ),
         .O(\AUTOCORR_DELAY2_REG_Q[1][11]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair414" *) 
+  (* SOFT_HLUTNM = "soft_lutpair415" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_Q[1][15]_i_12 
@@ -39632,7 +39633,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_Q_reg[1][19]_i_10_n_4 ),
         .I2(\AUTOCORR_ADD_REG_Q_reg_n_89_[2] ),
         .O(\AUTOCORR_DELAY2_REG_Q[1][15]_i_12_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair414" *) 
+  (* SOFT_HLUTNM = "soft_lutpair415" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_Q[1][15]_i_13 
@@ -39640,7 +39641,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_Q_reg[1][19]_i_10_n_5 ),
         .I2(\AUTOCORR_ADD_REG_Q_reg_n_90_[2] ),
         .O(\AUTOCORR_DELAY2_REG_Q[1][15]_i_13_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair415" *) 
+  (* SOFT_HLUTNM = "soft_lutpair416" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_Q[1][15]_i_14 
@@ -39648,7 +39649,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_Q_reg[1][19]_i_10_n_6 ),
         .I2(\AUTOCORR_ADD_REG_Q_reg_n_91_[2] ),
         .O(\AUTOCORR_DELAY2_REG_Q[1][15]_i_14_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair415" *) 
+  (* SOFT_HLUTNM = "soft_lutpair416" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_Q[1][15]_i_15 
@@ -39772,7 +39773,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I3(\AUTOCORR_DELAY2_REG_Q_reg[1]4 [13]),
         .I4(\AUTOCORR_ADD_REG_Q_reg_n_92_[1] ),
         .O(\AUTOCORR_DELAY2_REG_Q[1][15]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair412" *) 
+  (* SOFT_HLUTNM = "soft_lutpair413" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_Q[1][19]_i_12 
@@ -39780,7 +39781,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_Q_reg[1][23]_i_10_n_4 ),
         .I2(\AUTOCORR_ADD_REG_Q_reg_n_85_[2] ),
         .O(\AUTOCORR_DELAY2_REG_Q[1][19]_i_12_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair412" *) 
+  (* SOFT_HLUTNM = "soft_lutpair413" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_Q[1][19]_i_13 
@@ -39788,7 +39789,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_Q_reg[1][23]_i_10_n_5 ),
         .I2(\AUTOCORR_ADD_REG_Q_reg_n_86_[2] ),
         .O(\AUTOCORR_DELAY2_REG_Q[1][19]_i_13_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair413" *) 
+  (* SOFT_HLUTNM = "soft_lutpair414" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_Q[1][19]_i_14 
@@ -39796,7 +39797,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_Q_reg[1][23]_i_10_n_6 ),
         .I2(\AUTOCORR_ADD_REG_Q_reg_n_87_[2] ),
         .O(\AUTOCORR_DELAY2_REG_Q[1][19]_i_14_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair413" *) 
+  (* SOFT_HLUTNM = "soft_lutpair414" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_Q[1][19]_i_15 
@@ -39920,7 +39921,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I3(\AUTOCORR_DELAY2_REG_Q_reg[1]4 [17]),
         .I4(\AUTOCORR_ADD_REG_Q_reg_n_88_[1] ),
         .O(\AUTOCORR_DELAY2_REG_Q[1][19]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair410" *) 
+  (* SOFT_HLUTNM = "soft_lutpair411" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_Q[1][23]_i_12 
@@ -39928,7 +39929,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_Q_reg[1][27]_i_10_n_4 ),
         .I2(\AUTOCORR_ADD_REG_Q_reg_n_81_[2] ),
         .O(\AUTOCORR_DELAY2_REG_Q[1][23]_i_12_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair410" *) 
+  (* SOFT_HLUTNM = "soft_lutpair411" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_Q[1][23]_i_13 
@@ -39936,7 +39937,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_Q_reg[1][27]_i_10_n_5 ),
         .I2(\AUTOCORR_ADD_REG_Q_reg_n_82_[2] ),
         .O(\AUTOCORR_DELAY2_REG_Q[1][23]_i_13_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair411" *) 
+  (* SOFT_HLUTNM = "soft_lutpair412" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_Q[1][23]_i_14 
@@ -39944,7 +39945,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_Q_reg[1][27]_i_10_n_6 ),
         .I2(\AUTOCORR_ADD_REG_Q_reg_n_83_[2] ),
         .O(\AUTOCORR_DELAY2_REG_Q[1][23]_i_14_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair411" *) 
+  (* SOFT_HLUTNM = "soft_lutpair412" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_Q[1][23]_i_15 
@@ -40068,7 +40069,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I3(\AUTOCORR_DELAY2_REG_Q_reg[1]4 [21]),
         .I4(\AUTOCORR_ADD_REG_Q_reg_n_84_[1] ),
         .O(\AUTOCORR_DELAY2_REG_Q[1][23]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair408" *) 
+  (* SOFT_HLUTNM = "soft_lutpair409" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_Q[1][27]_i_12 
@@ -40076,7 +40077,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_Q_reg[1][31]_i_11_n_4 ),
         .I2(\AUTOCORR_ADD_REG_Q_reg_n_77_[2] ),
         .O(\AUTOCORR_DELAY2_REG_Q[1][27]_i_12_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair408" *) 
+  (* SOFT_HLUTNM = "soft_lutpair409" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_Q[1][27]_i_13 
@@ -40084,7 +40085,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_Q_reg[1][31]_i_11_n_5 ),
         .I2(\AUTOCORR_ADD_REG_Q_reg_n_78_[2] ),
         .O(\AUTOCORR_DELAY2_REG_Q[1][27]_i_13_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair409" *) 
+  (* SOFT_HLUTNM = "soft_lutpair410" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_Q[1][27]_i_14 
@@ -40092,7 +40093,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_Q_reg[1][31]_i_11_n_6 ),
         .I2(\AUTOCORR_ADD_REG_Q_reg_n_79_[2] ),
         .O(\AUTOCORR_DELAY2_REG_Q[1][27]_i_14_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair409" *) 
+  (* SOFT_HLUTNM = "soft_lutpair410" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_Q[1][27]_i_15 
@@ -40216,7 +40217,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I3(\AUTOCORR_DELAY2_REG_Q_reg[1]4 [25]),
         .I4(\AUTOCORR_ADD_REG_Q_reg_n_80_[1] ),
         .O(\AUTOCORR_DELAY2_REG_Q[1][27]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair407" *) 
+  (* SOFT_HLUTNM = "soft_lutpair408" *) 
   LUT3 #(
     .INIT(8'h2E)) 
     \AUTOCORR_DELAY2_REG_Q[1][31]_i_13 
@@ -40224,7 +40225,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_ADD_REG_Q_reg_n_74_[2] ),
         .I2(\AUTOCORR_DELAY2_REG_Q_reg[1][31]_i_9_n_6 ),
         .O(\AUTOCORR_DELAY2_REG_Q[1][31]_i_13_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair407" *) 
+  (* SOFT_HLUTNM = "soft_lutpair408" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_Q[1][31]_i_14 
@@ -40369,7 +40370,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I3(\AUTOCORR_DELAY2_REG_Q_reg[1]4 [29]),
         .I4(\AUTOCORR_ADD_REG_Q_reg_n_76_[1] ),
         .O(\AUTOCORR_DELAY2_REG_Q[1][31]_i_8_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair420" *) 
+  (* SOFT_HLUTNM = "soft_lutpair421" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_Q[1][3]_i_10 
@@ -40451,7 +40452,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I4(\AUTOCORR_DELAY2_REG_Q_reg[1][7]_i_10_n_7 ),
         .I5(\AUTOCORR_DELAY2_REG_Q_reg[1]32_in ),
         .O(\AUTOCORR_DELAY2_REG_Q[1][3]_i_8_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair420" *) 
+  (* SOFT_HLUTNM = "soft_lutpair421" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_Q[1][3]_i_9 
@@ -40459,7 +40460,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_Q_reg[1][7]_i_10_n_4 ),
         .I2(\AUTOCORR_ADD_REG_Q_reg_n_101_[2] ),
         .O(\AUTOCORR_DELAY2_REG_Q[1][3]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair418" *) 
+  (* SOFT_HLUTNM = "soft_lutpair419" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_Q[1][7]_i_12 
@@ -40467,7 +40468,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_Q_reg[1][11]_i_10_n_4 ),
         .I2(\AUTOCORR_ADD_REG_Q_reg_n_97_[2] ),
         .O(\AUTOCORR_DELAY2_REG_Q[1][7]_i_12_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair418" *) 
+  (* SOFT_HLUTNM = "soft_lutpair419" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_Q[1][7]_i_13 
@@ -40475,7 +40476,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_Q_reg[1][11]_i_10_n_5 ),
         .I2(\AUTOCORR_ADD_REG_Q_reg_n_98_[2] ),
         .O(\AUTOCORR_DELAY2_REG_Q[1][7]_i_13_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair419" *) 
+  (* SOFT_HLUTNM = "soft_lutpair420" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_Q[1][7]_i_14 
@@ -40483,7 +40484,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_Q_reg[1][11]_i_10_n_6 ),
         .I2(\AUTOCORR_ADD_REG_Q_reg_n_99_[2] ),
         .O(\AUTOCORR_DELAY2_REG_Q[1][7]_i_14_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair419" *) 
+  (* SOFT_HLUTNM = "soft_lutpair420" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY2_REG_Q[1][7]_i_15 
@@ -41449,7 +41450,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .D(\AUTOCORR_DELAY2_REG_Q_reg[1][11]_i_1_n_6 ),
         .Q(\AUTOCORR_DELAY2_REG_Q_reg[1]_84 [9]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair402" *) 
+  (* SOFT_HLUTNM = "soft_lutpair403" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_I[1][11]_i_12 
@@ -41457,7 +41458,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_I_reg[1][15]_i_10_n_4 ),
         .I2(\AUTOCORR_DELAY2_REG_I_reg[1]_80 [12]),
         .O(\AUTOCORR_DELAY_REG_I[1][11]_i_12_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair402" *) 
+  (* SOFT_HLUTNM = "soft_lutpair403" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_I[1][11]_i_13 
@@ -41465,7 +41466,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_I_reg[1][15]_i_10_n_5 ),
         .I2(\AUTOCORR_DELAY2_REG_I_reg[1]_80 [11]),
         .O(\AUTOCORR_DELAY_REG_I[1][11]_i_13_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair403" *) 
+  (* SOFT_HLUTNM = "soft_lutpair404" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_I[1][11]_i_14 
@@ -41473,7 +41474,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_I_reg[1][15]_i_10_n_6 ),
         .I2(\AUTOCORR_DELAY2_REG_I_reg[1]_80 [10]),
         .O(\AUTOCORR_DELAY_REG_I[1][11]_i_14_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair403" *) 
+  (* SOFT_HLUTNM = "soft_lutpair404" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_I[1][11]_i_15 
@@ -41597,7 +41598,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I3(\AUTOCORR_DELAY_REG_I_reg[1]4 [9]),
         .I4(\AUTOCORR_DELAY2_REG_I_reg[0]_81 [9]),
         .O(\AUTOCORR_DELAY_REG_I[1][11]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair400" *) 
+  (* SOFT_HLUTNM = "soft_lutpair401" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_I[1][15]_i_12 
@@ -41605,7 +41606,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_I_reg[1][19]_i_10_n_4 ),
         .I2(\AUTOCORR_DELAY2_REG_I_reg[1]_80 [16]),
         .O(\AUTOCORR_DELAY_REG_I[1][15]_i_12_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair400" *) 
+  (* SOFT_HLUTNM = "soft_lutpair401" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_I[1][15]_i_13 
@@ -41613,7 +41614,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_I_reg[1][19]_i_10_n_5 ),
         .I2(\AUTOCORR_DELAY2_REG_I_reg[1]_80 [15]),
         .O(\AUTOCORR_DELAY_REG_I[1][15]_i_13_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair401" *) 
+  (* SOFT_HLUTNM = "soft_lutpair402" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_I[1][15]_i_14 
@@ -41621,7 +41622,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_I_reg[1][19]_i_10_n_6 ),
         .I2(\AUTOCORR_DELAY2_REG_I_reg[1]_80 [14]),
         .O(\AUTOCORR_DELAY_REG_I[1][15]_i_14_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair401" *) 
+  (* SOFT_HLUTNM = "soft_lutpair402" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_I[1][15]_i_15 
@@ -41745,7 +41746,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I3(\AUTOCORR_DELAY_REG_I_reg[1]4 [13]),
         .I4(\AUTOCORR_DELAY2_REG_I_reg[0]_81 [13]),
         .O(\AUTOCORR_DELAY_REG_I[1][15]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair398" *) 
+  (* SOFT_HLUTNM = "soft_lutpair399" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_I[1][19]_i_12 
@@ -41753,7 +41754,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_I_reg[1][23]_i_10_n_4 ),
         .I2(\AUTOCORR_DELAY2_REG_I_reg[1]_80 [20]),
         .O(\AUTOCORR_DELAY_REG_I[1][19]_i_12_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair398" *) 
+  (* SOFT_HLUTNM = "soft_lutpair399" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_I[1][19]_i_13 
@@ -41761,7 +41762,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_I_reg[1][23]_i_10_n_5 ),
         .I2(\AUTOCORR_DELAY2_REG_I_reg[1]_80 [19]),
         .O(\AUTOCORR_DELAY_REG_I[1][19]_i_13_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair399" *) 
+  (* SOFT_HLUTNM = "soft_lutpair400" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_I[1][19]_i_14 
@@ -41769,7 +41770,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_I_reg[1][23]_i_10_n_6 ),
         .I2(\AUTOCORR_DELAY2_REG_I_reg[1]_80 [18]),
         .O(\AUTOCORR_DELAY_REG_I[1][19]_i_14_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair399" *) 
+  (* SOFT_HLUTNM = "soft_lutpair400" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_I[1][19]_i_15 
@@ -41893,7 +41894,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I3(\AUTOCORR_DELAY_REG_I_reg[1]4 [17]),
         .I4(\AUTOCORR_DELAY2_REG_I_reg[0]_81 [17]),
         .O(\AUTOCORR_DELAY_REG_I[1][19]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair396" *) 
+  (* SOFT_HLUTNM = "soft_lutpair397" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_I[1][23]_i_12 
@@ -41901,7 +41902,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_I_reg[1][27]_i_10_n_4 ),
         .I2(\AUTOCORR_DELAY2_REG_I_reg[1]_80 [24]),
         .O(\AUTOCORR_DELAY_REG_I[1][23]_i_12_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair396" *) 
+  (* SOFT_HLUTNM = "soft_lutpair397" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_I[1][23]_i_13 
@@ -41909,7 +41910,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_I_reg[1][27]_i_10_n_5 ),
         .I2(\AUTOCORR_DELAY2_REG_I_reg[1]_80 [23]),
         .O(\AUTOCORR_DELAY_REG_I[1][23]_i_13_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair397" *) 
+  (* SOFT_HLUTNM = "soft_lutpair398" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_I[1][23]_i_14 
@@ -41917,7 +41918,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_I_reg[1][27]_i_10_n_6 ),
         .I2(\AUTOCORR_DELAY2_REG_I_reg[1]_80 [22]),
         .O(\AUTOCORR_DELAY_REG_I[1][23]_i_14_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair397" *) 
+  (* SOFT_HLUTNM = "soft_lutpair398" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_I[1][23]_i_15 
@@ -42041,7 +42042,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I3(\AUTOCORR_DELAY_REG_I_reg[1]4 [21]),
         .I4(\AUTOCORR_DELAY2_REG_I_reg[0]_81 [21]),
         .O(\AUTOCORR_DELAY_REG_I[1][23]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair394" *) 
+  (* SOFT_HLUTNM = "soft_lutpair395" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_I[1][27]_i_12 
@@ -42049,7 +42050,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_I_reg[1][31]_i_11_n_4 ),
         .I2(\AUTOCORR_DELAY2_REG_I_reg[1]_80 [28]),
         .O(\AUTOCORR_DELAY_REG_I[1][27]_i_12_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair394" *) 
+  (* SOFT_HLUTNM = "soft_lutpair395" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_I[1][27]_i_13 
@@ -42057,7 +42058,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_I_reg[1][31]_i_11_n_5 ),
         .I2(\AUTOCORR_DELAY2_REG_I_reg[1]_80 [27]),
         .O(\AUTOCORR_DELAY_REG_I[1][27]_i_13_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair395" *) 
+  (* SOFT_HLUTNM = "soft_lutpair396" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_I[1][27]_i_14 
@@ -42065,7 +42066,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_I_reg[1][31]_i_11_n_6 ),
         .I2(\AUTOCORR_DELAY2_REG_I_reg[1]_80 [26]),
         .O(\AUTOCORR_DELAY_REG_I[1][27]_i_14_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair395" *) 
+  (* SOFT_HLUTNM = "soft_lutpair396" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_I[1][27]_i_15 
@@ -42189,7 +42190,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I3(\AUTOCORR_DELAY_REG_I_reg[1]4 [25]),
         .I4(\AUTOCORR_DELAY2_REG_I_reg[0]_81 [25]),
         .O(\AUTOCORR_DELAY_REG_I[1][27]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair393" *) 
+  (* SOFT_HLUTNM = "soft_lutpair394" *) 
   LUT3 #(
     .INIT(8'h2E)) 
     \AUTOCORR_DELAY_REG_I[1][31]_i_13 
@@ -42197,7 +42198,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_I_reg[1]_80 [31]),
         .I2(\AUTOCORR_DELAY_REG_I_reg[1][31]_i_9_n_6 ),
         .O(\AUTOCORR_DELAY_REG_I[1][31]_i_13_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair393" *) 
+  (* SOFT_HLUTNM = "soft_lutpair394" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_I[1][31]_i_14 
@@ -42342,7 +42343,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I3(\AUTOCORR_DELAY_REG_I_reg[1]4 [29]),
         .I4(\AUTOCORR_DELAY2_REG_I_reg[0]_81 [29]),
         .O(\AUTOCORR_DELAY_REG_I[1][31]_i_8_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair406" *) 
+  (* SOFT_HLUTNM = "soft_lutpair407" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_I[1][3]_i_10 
@@ -42424,7 +42425,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I4(\AUTOCORR_DELAY_REG_I_reg[1][7]_i_10_n_7 ),
         .I5(\AUTOCORR_DELAY2_REG_I_reg[0]_81 [31]),
         .O(\AUTOCORR_DELAY_REG_I[1][3]_i_8_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair406" *) 
+  (* SOFT_HLUTNM = "soft_lutpair407" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_I[1][3]_i_9 
@@ -42432,7 +42433,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_I_reg[1][7]_i_10_n_4 ),
         .I2(\AUTOCORR_DELAY2_REG_I_reg[1]_80 [4]),
         .O(\AUTOCORR_DELAY_REG_I[1][3]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair404" *) 
+  (* SOFT_HLUTNM = "soft_lutpair405" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_I[1][7]_i_12 
@@ -42440,7 +42441,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_I_reg[1][11]_i_10_n_4 ),
         .I2(\AUTOCORR_DELAY2_REG_I_reg[1]_80 [8]),
         .O(\AUTOCORR_DELAY_REG_I[1][7]_i_12_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair404" *) 
+  (* SOFT_HLUTNM = "soft_lutpair405" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_I[1][7]_i_13 
@@ -42448,7 +42449,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_I_reg[1][11]_i_10_n_5 ),
         .I2(\AUTOCORR_DELAY2_REG_I_reg[1]_80 [7]),
         .O(\AUTOCORR_DELAY_REG_I[1][7]_i_13_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair405" *) 
+  (* SOFT_HLUTNM = "soft_lutpair406" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_I[1][7]_i_14 
@@ -42456,7 +42457,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_I_reg[1][11]_i_10_n_6 ),
         .I2(\AUTOCORR_DELAY2_REG_I_reg[1]_80 [6]),
         .O(\AUTOCORR_DELAY_REG_I[1][7]_i_14_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair405" *) 
+  (* SOFT_HLUTNM = "soft_lutpair406" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_I[1][7]_i_15 
@@ -43294,7 +43295,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .D(\AUTOCORR_DELAY_REG_I_reg[1][11]_i_1_n_6 ),
         .Q(\AUTOCORR_DELAY_REG_I_reg[1]_82 [9]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair430" *) 
+  (* SOFT_HLUTNM = "soft_lutpair431" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_Q[1][11]_i_12 
@@ -43302,7 +43303,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_Q_reg[1][15]_i_10_n_4 ),
         .I2(\AUTOCORR_DELAY2_REG_Q_reg[1]_84 [12]),
         .O(\AUTOCORR_DELAY_REG_Q[1][11]_i_12_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair430" *) 
+  (* SOFT_HLUTNM = "soft_lutpair431" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_Q[1][11]_i_13 
@@ -43310,7 +43311,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_Q_reg[1][15]_i_10_n_5 ),
         .I2(\AUTOCORR_DELAY2_REG_Q_reg[1]_84 [11]),
         .O(\AUTOCORR_DELAY_REG_Q[1][11]_i_13_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair431" *) 
+  (* SOFT_HLUTNM = "soft_lutpair432" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_Q[1][11]_i_14 
@@ -43318,7 +43319,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_Q_reg[1][15]_i_10_n_6 ),
         .I2(\AUTOCORR_DELAY2_REG_Q_reg[1]_84 [10]),
         .O(\AUTOCORR_DELAY_REG_Q[1][11]_i_14_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair431" *) 
+  (* SOFT_HLUTNM = "soft_lutpair432" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_Q[1][11]_i_15 
@@ -43442,7 +43443,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I3(\AUTOCORR_DELAY_REG_Q_reg[1]4 [9]),
         .I4(\AUTOCORR_DELAY2_REG_Q_reg[0]_85 [9]),
         .O(\AUTOCORR_DELAY_REG_Q[1][11]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair428" *) 
+  (* SOFT_HLUTNM = "soft_lutpair429" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_Q[1][15]_i_12 
@@ -43450,7 +43451,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_Q_reg[1][19]_i_10_n_4 ),
         .I2(\AUTOCORR_DELAY2_REG_Q_reg[1]_84 [16]),
         .O(\AUTOCORR_DELAY_REG_Q[1][15]_i_12_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair428" *) 
+  (* SOFT_HLUTNM = "soft_lutpair429" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_Q[1][15]_i_13 
@@ -43458,7 +43459,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_Q_reg[1][19]_i_10_n_5 ),
         .I2(\AUTOCORR_DELAY2_REG_Q_reg[1]_84 [15]),
         .O(\AUTOCORR_DELAY_REG_Q[1][15]_i_13_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair429" *) 
+  (* SOFT_HLUTNM = "soft_lutpair430" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_Q[1][15]_i_14 
@@ -43466,7 +43467,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_Q_reg[1][19]_i_10_n_6 ),
         .I2(\AUTOCORR_DELAY2_REG_Q_reg[1]_84 [14]),
         .O(\AUTOCORR_DELAY_REG_Q[1][15]_i_14_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair429" *) 
+  (* SOFT_HLUTNM = "soft_lutpair430" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_Q[1][15]_i_15 
@@ -43590,7 +43591,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I3(\AUTOCORR_DELAY_REG_Q_reg[1]4 [13]),
         .I4(\AUTOCORR_DELAY2_REG_Q_reg[0]_85 [13]),
         .O(\AUTOCORR_DELAY_REG_Q[1][15]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair426" *) 
+  (* SOFT_HLUTNM = "soft_lutpair427" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_Q[1][19]_i_12 
@@ -43598,7 +43599,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_Q_reg[1][23]_i_10_n_4 ),
         .I2(\AUTOCORR_DELAY2_REG_Q_reg[1]_84 [20]),
         .O(\AUTOCORR_DELAY_REG_Q[1][19]_i_12_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair426" *) 
+  (* SOFT_HLUTNM = "soft_lutpair427" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_Q[1][19]_i_13 
@@ -43606,7 +43607,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_Q_reg[1][23]_i_10_n_5 ),
         .I2(\AUTOCORR_DELAY2_REG_Q_reg[1]_84 [19]),
         .O(\AUTOCORR_DELAY_REG_Q[1][19]_i_13_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair427" *) 
+  (* SOFT_HLUTNM = "soft_lutpair428" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_Q[1][19]_i_14 
@@ -43614,7 +43615,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_Q_reg[1][23]_i_10_n_6 ),
         .I2(\AUTOCORR_DELAY2_REG_Q_reg[1]_84 [18]),
         .O(\AUTOCORR_DELAY_REG_Q[1][19]_i_14_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair427" *) 
+  (* SOFT_HLUTNM = "soft_lutpair428" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_Q[1][19]_i_15 
@@ -43738,7 +43739,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I3(\AUTOCORR_DELAY_REG_Q_reg[1]4 [17]),
         .I4(\AUTOCORR_DELAY2_REG_Q_reg[0]_85 [17]),
         .O(\AUTOCORR_DELAY_REG_Q[1][19]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair424" *) 
+  (* SOFT_HLUTNM = "soft_lutpair425" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_Q[1][23]_i_12 
@@ -43746,7 +43747,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_Q_reg[1][27]_i_10_n_4 ),
         .I2(\AUTOCORR_DELAY2_REG_Q_reg[1]_84 [24]),
         .O(\AUTOCORR_DELAY_REG_Q[1][23]_i_12_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair424" *) 
+  (* SOFT_HLUTNM = "soft_lutpair425" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_Q[1][23]_i_13 
@@ -43754,7 +43755,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_Q_reg[1][27]_i_10_n_5 ),
         .I2(\AUTOCORR_DELAY2_REG_Q_reg[1]_84 [23]),
         .O(\AUTOCORR_DELAY_REG_Q[1][23]_i_13_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair425" *) 
+  (* SOFT_HLUTNM = "soft_lutpair426" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_Q[1][23]_i_14 
@@ -43762,7 +43763,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_Q_reg[1][27]_i_10_n_6 ),
         .I2(\AUTOCORR_DELAY2_REG_Q_reg[1]_84 [22]),
         .O(\AUTOCORR_DELAY_REG_Q[1][23]_i_14_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair425" *) 
+  (* SOFT_HLUTNM = "soft_lutpair426" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_Q[1][23]_i_15 
@@ -43886,7 +43887,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I3(\AUTOCORR_DELAY_REG_Q_reg[1]4 [21]),
         .I4(\AUTOCORR_DELAY2_REG_Q_reg[0]_85 [21]),
         .O(\AUTOCORR_DELAY_REG_Q[1][23]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair422" *) 
+  (* SOFT_HLUTNM = "soft_lutpair423" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_Q[1][27]_i_12 
@@ -43894,7 +43895,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_Q_reg[1][31]_i_11_n_4 ),
         .I2(\AUTOCORR_DELAY2_REG_Q_reg[1]_84 [28]),
         .O(\AUTOCORR_DELAY_REG_Q[1][27]_i_12_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair422" *) 
+  (* SOFT_HLUTNM = "soft_lutpair423" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_Q[1][27]_i_13 
@@ -43902,7 +43903,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_Q_reg[1][31]_i_11_n_5 ),
         .I2(\AUTOCORR_DELAY2_REG_Q_reg[1]_84 [27]),
         .O(\AUTOCORR_DELAY_REG_Q[1][27]_i_13_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair423" *) 
+  (* SOFT_HLUTNM = "soft_lutpair424" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_Q[1][27]_i_14 
@@ -43910,7 +43911,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_Q_reg[1][31]_i_11_n_6 ),
         .I2(\AUTOCORR_DELAY2_REG_Q_reg[1]_84 [26]),
         .O(\AUTOCORR_DELAY_REG_Q[1][27]_i_14_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair423" *) 
+  (* SOFT_HLUTNM = "soft_lutpair424" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_Q[1][27]_i_15 
@@ -44034,7 +44035,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I3(\AUTOCORR_DELAY_REG_Q_reg[1]4 [25]),
         .I4(\AUTOCORR_DELAY2_REG_Q_reg[0]_85 [25]),
         .O(\AUTOCORR_DELAY_REG_Q[1][27]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair421" *) 
+  (* SOFT_HLUTNM = "soft_lutpair422" *) 
   LUT3 #(
     .INIT(8'h2E)) 
     \AUTOCORR_DELAY_REG_Q[1][31]_i_13 
@@ -44042,7 +44043,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY2_REG_Q_reg[1]_84 [31]),
         .I2(\AUTOCORR_DELAY_REG_Q_reg[1][31]_i_9_n_6 ),
         .O(\AUTOCORR_DELAY_REG_Q[1][31]_i_13_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair421" *) 
+  (* SOFT_HLUTNM = "soft_lutpair422" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_Q[1][31]_i_14 
@@ -44187,7 +44188,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I3(\AUTOCORR_DELAY_REG_Q_reg[1]4 [29]),
         .I4(\AUTOCORR_DELAY2_REG_Q_reg[0]_85 [29]),
         .O(\AUTOCORR_DELAY_REG_Q[1][31]_i_8_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair434" *) 
+  (* SOFT_HLUTNM = "soft_lutpair435" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_Q[1][3]_i_10 
@@ -44269,7 +44270,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I4(\AUTOCORR_DELAY_REG_Q_reg[1][7]_i_10_n_7 ),
         .I5(\AUTOCORR_DELAY2_REG_Q_reg[0]_85 [31]),
         .O(\AUTOCORR_DELAY_REG_Q[1][3]_i_8_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair434" *) 
+  (* SOFT_HLUTNM = "soft_lutpair435" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_Q[1][3]_i_9 
@@ -44277,7 +44278,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_Q_reg[1][7]_i_10_n_4 ),
         .I2(\AUTOCORR_DELAY2_REG_Q_reg[1]_84 [4]),
         .O(\AUTOCORR_DELAY_REG_Q[1][3]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair432" *) 
+  (* SOFT_HLUTNM = "soft_lutpair433" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_Q[1][7]_i_12 
@@ -44285,7 +44286,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_Q_reg[1][11]_i_10_n_4 ),
         .I2(\AUTOCORR_DELAY2_REG_Q_reg[1]_84 [8]),
         .O(\AUTOCORR_DELAY_REG_Q[1][7]_i_12_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair432" *) 
+  (* SOFT_HLUTNM = "soft_lutpair433" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_Q[1][7]_i_13 
@@ -44293,7 +44294,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_Q_reg[1][11]_i_10_n_5 ),
         .I2(\AUTOCORR_DELAY2_REG_Q_reg[1]_84 [7]),
         .O(\AUTOCORR_DELAY_REG_Q[1][7]_i_13_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair433" *) 
+  (* SOFT_HLUTNM = "soft_lutpair434" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_Q[1][7]_i_14 
@@ -44301,7 +44302,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\AUTOCORR_DELAY_REG_Q_reg[1][11]_i_10_n_6 ),
         .I2(\AUTOCORR_DELAY2_REG_Q_reg[1]_84 [6]),
         .O(\AUTOCORR_DELAY_REG_Q[1][7]_i_14_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair433" *) 
+  (* SOFT_HLUTNM = "soft_lutpair434" *) 
   LUT3 #(
     .INIT(8'h72)) 
     \AUTOCORR_DELAY_REG_Q[1][7]_i_15 
@@ -45603,42 +45604,59 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .D(E),
         .Q(DATA_OUT_STROBE),
         .R(1'b0));
-  LUT6 #(
-    .INIT(64'hAAAA2020AA202020)) 
-    \DETECTION_CNTR[4]_i_1 
-       (.I0(DATA_OUT_STROBE),
-        .I1(\DETECTION_CNTR_reg[0]_2 ),
-        .I2(\DETECTION_CNTR_reg[0]_1 ),
-        .I3(\DETECTION_CNTR_reg[0]_0 ),
-        .I4(CO),
-        .I5(\DETECTION_CNTR_reg[0] ),
-        .O(DATA_OUT_STROBE_reg_1));
   (* SOFT_HLUTNM = "soft_lutpair0" *) 
-  LUT3 #(
-    .INIT(8'h08)) 
+  LUT4 #(
+    .INIT(16'h0400)) 
     DETECTION_SIGNAL_DETECTED_i_1
-       (.I0(\DETECTION_CNTR_reg[0]_0 ),
-        .I1(DATA_OUT_STROBE),
-        .I2(RESET),
-        .O(\FSM_onehot_DETECTION_STATE_reg[2]_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+       (.I0(RESET),
+        .I1(DETECTION_STATE[1]),
+        .I2(DETECTION_STATE[0]),
+        .I3(DATA_OUT_STROBE),
+        .O(RESET_0));
   LUT2 #(
     .INIT(4'h2)) 
     DETECTION_STROBE_i_1
        (.I0(DATA_OUT_STROBE),
         .I1(RESET),
-        .O(DATA_OUT_STROBE_reg_0));
+        .O(DATA_OUT_STROBE_reg_1));
   LUT6 #(
-    .INIT(64'hAAAA8080AA808080)) 
-    \MAX_XCORR[31]_i_1 
+    .INIT(64'h0000000050EA55EA)) 
+    \FSM_sequential_DETECTION_STATE[0]_i_1 
+       (.I0(DETECTION_STATE[0]),
+        .I1(DATA_OUT_STROBE),
+        .I2(CO),
+        .I3(\FSM_sequential_DETECTION_STATE_reg[1]_1 ),
+        .I4(DETECTION_STATE[1]),
+        .I5(RESET),
+        .O(\FSM_sequential_DETECTION_STATE_reg[0] ));
+  LUT6 #(
+    .INIT(64'h00000000FFEA002A)) 
+    \FSM_sequential_DETECTION_STATE[1]_i_1 
+       (.I0(DETECTION_STATE[1]),
+        .I1(\FSM_sequential_DETECTION_STATE[1]_i_2_n_0 ),
+        .I2(CO),
+        .I3(\FSM_sequential_DETECTION_STATE_reg[1]_1 ),
+        .I4(DETECTION_STATE__0),
+        .I5(RESET),
+        .O(\FSM_sequential_DETECTION_STATE_reg[1] ));
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  LUT2 #(
+    .INIT(4'h2)) 
+    \FSM_sequential_DETECTION_STATE[1]_i_2 
        (.I0(DATA_OUT_STROBE),
-        .I1(\DETECTION_CNTR_reg[0]_1 ),
-        .I2(\MAX_XCORR_reg[0] ),
-        .I3(\DETECTION_CNTR_reg[0]_0 ),
-        .I4(CO),
-        .I5(\DETECTION_CNTR_reg[0] ),
-        .O(DATA_OUT_STROBE_reg_2));
-  (* SOFT_HLUTNM = "soft_lutpair12" *) 
+        .I1(DETECTION_STATE[0]),
+        .O(\FSM_sequential_DETECTION_STATE[1]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  LUT5 #(
+    .INIT(32'h4400F000)) 
+    \MAX_XCORR[31]_i_1 
+       (.I0(DETECTION_STATE[1]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[35] ),
+        .I2(CO),
+        .I3(DATA_OUT_STROBE),
+        .I4(DETECTION_STATE[0]),
+        .O(\FSM_sequential_DETECTION_STATE_reg[1]_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair13" *) 
   LUT3 #(
     .INIT(8'hCA)) 
     \MULT_REG_II[0][0]_i_1 
@@ -45691,7 +45709,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[0][0]_i_9 
        (.I0(ARG3__0_n_101),
         .O(p_0_out[4]));
-  (* SOFT_HLUTNM = "soft_lutpair18" *) 
+  (* SOFT_HLUTNM = "soft_lutpair19" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[0][10]_i_1 
@@ -45699,7 +45717,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__0_n_88),
         .I2(ARG3__0_n_81),
         .O(\MULT_REG_II[0][10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair18" *) 
+  (* SOFT_HLUTNM = "soft_lutpair19" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[0][11]_i_1 
@@ -45707,7 +45725,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__0_n_87),
         .I2(ARG3__0_n_81),
         .O(\MULT_REG_II[0][11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair17" *) 
+  (* SOFT_HLUTNM = "soft_lutpair18" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[0][12]_i_1 
@@ -45763,7 +45781,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[0][12]_i_9 
        (.I0(ARG3__0_n_90),
         .O(p_0_out[15]));
-  (* SOFT_HLUTNM = "soft_lutpair16" *) 
+  (* SOFT_HLUTNM = "soft_lutpair17" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[0][13]_i_1 
@@ -45771,7 +45789,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__0_n_85),
         .I2(ARG3__0_n_81),
         .O(\MULT_REG_II[0][13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair15" *) 
+  (* SOFT_HLUTNM = "soft_lutpair16" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[0][14]_i_1 
@@ -45779,7 +45797,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__0_n_84),
         .I2(ARG3__0_n_81),
         .O(\MULT_REG_II[0][14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair14" *) 
+  (* SOFT_HLUTNM = "soft_lutpair15" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[0][15]_i_1 
@@ -45787,7 +45805,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__0_n_83),
         .I2(ARG3__0_n_81),
         .O(\MULT_REG_II[0][15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair13" *) 
+  (* SOFT_HLUTNM = "soft_lutpair14" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[0][16]_i_1 
@@ -45843,7 +45861,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[0][16]_i_9 
        (.I0(ARG3__0_n_86),
         .O(p_0_out[19]));
-  (* SOFT_HLUTNM = "soft_lutpair17" *) 
+  (* SOFT_HLUTNM = "soft_lutpair18" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_II[0][17]_i_1 
@@ -45894,14 +45912,14 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[0][17]_i_9 
        (.I0(ARG3__0_n_82),
         .O(p_0_out[23]));
-  (* SOFT_HLUTNM = "soft_lutpair15" *) 
+  (* SOFT_HLUTNM = "soft_lutpair16" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_II[0][18]_i_1 
        (.I0(\MULT_REG_II_reg[0][17]_i_2_n_6 ),
         .I1(ARG3__0_n_81),
         .O(\MULT_REG_II[0][18]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair14" *) 
+  (* SOFT_HLUTNM = "soft_lutpair15" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_II[0][19]_i_1 
@@ -45915,21 +45933,21 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__0_n_97),
         .I2(ARG3__0_n_81),
         .O(\MULT_REG_II[0][1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair13" *) 
+  (* SOFT_HLUTNM = "soft_lutpair14" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_II[0][20]_i_1 
        (.I0(\MULT_REG_II_reg[0][17]_i_2_n_4 ),
         .I1(ARG3__0_n_81),
         .O(\MULT_REG_II[0][20]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair12" *) 
+  (* SOFT_HLUTNM = "soft_lutpair13" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_II[0][21]_i_1 
        (.I0(\MULT_REG_II_reg[0][22]_i_2_n_7 ),
         .I1(ARG3__0_n_81),
         .O(\MULT_REG_II[0][21]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair16" *) 
+  (* SOFT_HLUTNM = "soft_lutpair17" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \MULT_REG_II[0][22]_i_1 
@@ -45948,7 +45966,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
        (.I0(\MULT_REG_II_reg[0][22]_i_5_n_3 ),
         .I1(ARG3__0_n_81),
         .O(\MULT_REG_II[0][22]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair22" *) 
+  (* SOFT_HLUTNM = "soft_lutpair23" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[0][2]_i_1 
@@ -45956,7 +45974,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__0_n_96),
         .I2(ARG3__0_n_81),
         .O(\MULT_REG_II[0][2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair22" *) 
+  (* SOFT_HLUTNM = "soft_lutpair23" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[0][3]_i_1 
@@ -45964,7 +45982,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__0_n_95),
         .I2(ARG3__0_n_81),
         .O(\MULT_REG_II[0][3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair21" *) 
+  (* SOFT_HLUTNM = "soft_lutpair22" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[0][4]_i_1 
@@ -46007,7 +46025,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__33[8]),
         .I2(ARG3__0_n_97),
         .O(\MULT_REG_II[0][4]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair21" *) 
+  (* SOFT_HLUTNM = "soft_lutpair22" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[0][5]_i_1 
@@ -46015,7 +46033,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__0_n_93),
         .I2(ARG3__0_n_81),
         .O(\MULT_REG_II[0][5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair20" *) 
+  (* SOFT_HLUTNM = "soft_lutpair21" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[0][6]_i_1 
@@ -46023,7 +46041,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__0_n_92),
         .I2(ARG3__0_n_81),
         .O(\MULT_REG_II[0][6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair20" *) 
+  (* SOFT_HLUTNM = "soft_lutpair21" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[0][7]_i_1 
@@ -46031,7 +46049,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__0_n_91),
         .I2(ARG3__0_n_81),
         .O(\MULT_REG_II[0][7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair19" *) 
+  (* SOFT_HLUTNM = "soft_lutpair20" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[0][8]_i_1 
@@ -46087,7 +46105,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[0][8]_i_9 
        (.I0(ARG3__0_n_94),
         .O(p_0_out[11]));
-  (* SOFT_HLUTNM = "soft_lutpair19" *) 
+  (* SOFT_HLUTNM = "soft_lutpair20" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[0][9]_i_1 
@@ -46095,7 +46113,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__0_n_89),
         .I2(ARG3__0_n_81),
         .O(\MULT_REG_II[0][9]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair161" *) 
+  (* SOFT_HLUTNM = "soft_lutpair162" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[10][10]_i_1 
@@ -46103,7 +46121,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__5_n_88),
         .I2(ARG3__13_n_76),
         .O(\MULT_REG_II[10][10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair160" *) 
+  (* SOFT_HLUTNM = "soft_lutpair161" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[10][11]_i_1 
@@ -46111,7 +46129,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__5_n_87),
         .I2(ARG3__13_n_76),
         .O(\MULT_REG_II[10][11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair160" *) 
+  (* SOFT_HLUTNM = "soft_lutpair161" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[10][12]_i_1 
@@ -46139,7 +46157,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[10][12]_i_6 
        (.I0(ARG2__5_n_89),
         .O(\MULT_REG_II[10][12]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair159" *) 
+  (* SOFT_HLUTNM = "soft_lutpair160" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[10][13]_i_1 
@@ -46147,7 +46165,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__5_n_85),
         .I2(ARG3__13_n_76),
         .O(\MULT_REG_II[10][13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair159" *) 
+  (* SOFT_HLUTNM = "soft_lutpair160" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[10][14]_i_1 
@@ -46155,7 +46173,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__5_n_84),
         .I2(ARG3__13_n_76),
         .O(\MULT_REG_II[10][14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair158" *) 
+  (* SOFT_HLUTNM = "soft_lutpair159" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[10][15]_i_1 
@@ -46163,7 +46181,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__5_n_83),
         .I2(ARG3__13_n_76),
         .O(\MULT_REG_II[10][15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair158" *) 
+  (* SOFT_HLUTNM = "soft_lutpair159" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[10][16]_i_1 
@@ -46191,7 +46209,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[10][16]_i_6 
        (.I0(ARG2__5_n_85),
         .O(\MULT_REG_II[10][16]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair157" *) 
+  (* SOFT_HLUTNM = "soft_lutpair158" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[10][17]_i_1 
@@ -46199,7 +46217,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__5_n_81),
         .I2(ARG3__13_n_76),
         .O(\MULT_REG_II[10][17]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair157" *) 
+  (* SOFT_HLUTNM = "soft_lutpair158" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[10][18]_i_1 
@@ -46207,7 +46225,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__5_n_80),
         .I2(ARG3__13_n_76),
         .O(\MULT_REG_II[10][18]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair156" *) 
+  (* SOFT_HLUTNM = "soft_lutpair157" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[10][19]_i_1 
@@ -46215,7 +46233,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__5_n_79),
         .I2(ARG3__13_n_76),
         .O(\MULT_REG_II[10][19]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair165" *) 
+  (* SOFT_HLUTNM = "soft_lutpair166" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[10][1]_i_1 
@@ -46223,7 +46241,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__5_n_97),
         .I2(ARG3__13_n_76),
         .O(\MULT_REG_II[10][1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair155" *) 
+  (* SOFT_HLUTNM = "soft_lutpair156" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[10][20]_i_1 
@@ -46251,7 +46269,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[10][20]_i_6 
        (.I0(ARG2__5_n_81),
         .O(\MULT_REG_II[10][20]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair155" *) 
+  (* SOFT_HLUTNM = "soft_lutpair156" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[10][21]_i_1 
@@ -46259,7 +46277,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__5_n_77),
         .I2(ARG3__13_n_76),
         .O(\MULT_REG_II[10][21]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair156" *) 
+  (* SOFT_HLUTNM = "soft_lutpair157" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \MULT_REG_II[10][22]_i_1 
@@ -46276,7 +46294,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[10][22]_i_4 
        (.I0(ARG2__5_n_77),
         .O(\MULT_REG_II[10][22]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair165" *) 
+  (* SOFT_HLUTNM = "soft_lutpair166" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[10][2]_i_1 
@@ -46284,7 +46302,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__5_n_96),
         .I2(ARG3__13_n_76),
         .O(\MULT_REG_II[10][2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair164" *) 
+  (* SOFT_HLUTNM = "soft_lutpair165" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[10][3]_i_1 
@@ -46292,7 +46310,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__5_n_95),
         .I2(ARG3__13_n_76),
         .O(\MULT_REG_II[10][3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair164" *) 
+  (* SOFT_HLUTNM = "soft_lutpair165" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[10][4]_i_1 
@@ -46325,7 +46343,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[10][4]_i_7 
        (.I0(ARG2__5_n_97),
         .O(\MULT_REG_II[10][4]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair163" *) 
+  (* SOFT_HLUTNM = "soft_lutpair164" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[10][5]_i_1 
@@ -46333,7 +46351,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__5_n_93),
         .I2(ARG3__13_n_76),
         .O(\MULT_REG_II[10][5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair163" *) 
+  (* SOFT_HLUTNM = "soft_lutpair164" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[10][6]_i_1 
@@ -46341,7 +46359,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__5_n_92),
         .I2(ARG3__13_n_76),
         .O(\MULT_REG_II[10][6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair162" *) 
+  (* SOFT_HLUTNM = "soft_lutpair163" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[10][7]_i_1 
@@ -46349,7 +46367,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__5_n_91),
         .I2(ARG3__13_n_76),
         .O(\MULT_REG_II[10][7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair162" *) 
+  (* SOFT_HLUTNM = "soft_lutpair163" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[10][8]_i_1 
@@ -46377,7 +46395,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[10][8]_i_6 
        (.I0(ARG2__5_n_93),
         .O(\MULT_REG_II[10][8]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair161" *) 
+  (* SOFT_HLUTNM = "soft_lutpair162" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[10][9]_i_1 
@@ -46385,7 +46403,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__5_n_89),
         .I2(ARG3__13_n_76),
         .O(\MULT_REG_II[10][9]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair172" *) 
+  (* SOFT_HLUTNM = "soft_lutpair173" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[11][10]_i_1 
@@ -46393,7 +46411,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__6_n_88),
         .I2(ARG3__14_n_76),
         .O(\MULT_REG_II[11][10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair171" *) 
+  (* SOFT_HLUTNM = "soft_lutpair172" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[11][11]_i_1 
@@ -46401,7 +46419,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__6_n_87),
         .I2(ARG3__14_n_76),
         .O(\MULT_REG_II[11][11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair171" *) 
+  (* SOFT_HLUTNM = "soft_lutpair172" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[11][12]_i_1 
@@ -46429,7 +46447,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[11][12]_i_6 
        (.I0(ARG2__6_n_89),
         .O(\MULT_REG_II[11][12]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair170" *) 
+  (* SOFT_HLUTNM = "soft_lutpair171" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[11][13]_i_1 
@@ -46437,7 +46455,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__6_n_85),
         .I2(ARG3__14_n_76),
         .O(\MULT_REG_II[11][13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair170" *) 
+  (* SOFT_HLUTNM = "soft_lutpair171" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[11][14]_i_1 
@@ -46445,7 +46463,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__6_n_84),
         .I2(ARG3__14_n_76),
         .O(\MULT_REG_II[11][14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair169" *) 
+  (* SOFT_HLUTNM = "soft_lutpair170" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[11][15]_i_1 
@@ -46453,7 +46471,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__6_n_83),
         .I2(ARG3__14_n_76),
         .O(\MULT_REG_II[11][15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair169" *) 
+  (* SOFT_HLUTNM = "soft_lutpair170" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[11][16]_i_1 
@@ -46481,7 +46499,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[11][16]_i_6 
        (.I0(ARG2__6_n_85),
         .O(\MULT_REG_II[11][16]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair168" *) 
+  (* SOFT_HLUTNM = "soft_lutpair169" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[11][17]_i_1 
@@ -46489,7 +46507,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__6_n_81),
         .I2(ARG3__14_n_76),
         .O(\MULT_REG_II[11][17]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair168" *) 
+  (* SOFT_HLUTNM = "soft_lutpair169" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[11][18]_i_1 
@@ -46497,7 +46515,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__6_n_80),
         .I2(ARG3__14_n_76),
         .O(\MULT_REG_II[11][18]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair167" *) 
+  (* SOFT_HLUTNM = "soft_lutpair168" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[11][19]_i_1 
@@ -46505,7 +46523,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__6_n_79),
         .I2(ARG3__14_n_76),
         .O(\MULT_REG_II[11][19]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair176" *) 
+  (* SOFT_HLUTNM = "soft_lutpair177" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[11][1]_i_1 
@@ -46513,7 +46531,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__6_n_97),
         .I2(ARG3__14_n_76),
         .O(\MULT_REG_II[11][1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair167" *) 
+  (* SOFT_HLUTNM = "soft_lutpair168" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[11][20]_i_1 
@@ -46541,7 +46559,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[11][20]_i_6 
        (.I0(ARG2__6_n_81),
         .O(\MULT_REG_II[11][20]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair166" *) 
+  (* SOFT_HLUTNM = "soft_lutpair167" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[11][21]_i_1 
@@ -46549,7 +46567,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__6_n_77),
         .I2(ARG3__14_n_76),
         .O(\MULT_REG_II[11][21]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair166" *) 
+  (* SOFT_HLUTNM = "soft_lutpair167" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \MULT_REG_II[11][22]_i_1 
@@ -46566,7 +46584,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[11][22]_i_4 
        (.I0(ARG2__6_n_77),
         .O(\MULT_REG_II[11][22]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair176" *) 
+  (* SOFT_HLUTNM = "soft_lutpair177" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[11][2]_i_1 
@@ -46574,7 +46592,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__6_n_96),
         .I2(ARG3__14_n_76),
         .O(\MULT_REG_II[11][2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair175" *) 
+  (* SOFT_HLUTNM = "soft_lutpair176" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[11][3]_i_1 
@@ -46582,7 +46600,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__6_n_95),
         .I2(ARG3__14_n_76),
         .O(\MULT_REG_II[11][3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair175" *) 
+  (* SOFT_HLUTNM = "soft_lutpair176" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[11][4]_i_1 
@@ -46615,7 +46633,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[11][4]_i_7 
        (.I0(ARG2__6_n_97),
         .O(\MULT_REG_II[11][4]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair174" *) 
+  (* SOFT_HLUTNM = "soft_lutpair175" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[11][5]_i_1 
@@ -46623,7 +46641,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__6_n_93),
         .I2(ARG3__14_n_76),
         .O(\MULT_REG_II[11][5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair174" *) 
+  (* SOFT_HLUTNM = "soft_lutpair175" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[11][6]_i_1 
@@ -46631,7 +46649,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__6_n_92),
         .I2(ARG3__14_n_76),
         .O(\MULT_REG_II[11][6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair173" *) 
+  (* SOFT_HLUTNM = "soft_lutpair174" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[11][7]_i_1 
@@ -46639,7 +46657,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__6_n_91),
         .I2(ARG3__14_n_76),
         .O(\MULT_REG_II[11][7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair173" *) 
+  (* SOFT_HLUTNM = "soft_lutpair174" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[11][8]_i_1 
@@ -46667,7 +46685,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[11][8]_i_6 
        (.I0(ARG2__6_n_93),
         .O(\MULT_REG_II[11][8]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair172" *) 
+  (* SOFT_HLUTNM = "soft_lutpair173" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[11][9]_i_1 
@@ -46675,7 +46693,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__6_n_89),
         .I2(ARG3__14_n_76),
         .O(\MULT_REG_II[11][9]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair40" *) 
+  (* SOFT_HLUTNM = "soft_lutpair41" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[1][10]_i_1 
@@ -46683,7 +46701,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__0_n_88),
         .I2(ARG3__2_n_76),
         .O(\MULT_REG_II[1][10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair39" *) 
+  (* SOFT_HLUTNM = "soft_lutpair40" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[1][11]_i_1 
@@ -46691,7 +46709,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__0_n_87),
         .I2(ARG3__2_n_76),
         .O(\MULT_REG_II[1][11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair39" *) 
+  (* SOFT_HLUTNM = "soft_lutpair40" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[1][12]_i_1 
@@ -46719,7 +46737,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[1][12]_i_6 
        (.I0(ARG2__0_n_89),
         .O(\MULT_REG_II[1][12]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair38" *) 
+  (* SOFT_HLUTNM = "soft_lutpair39" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[1][13]_i_1 
@@ -46727,7 +46745,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__0_n_85),
         .I2(ARG3__2_n_76),
         .O(\MULT_REG_II[1][13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair38" *) 
+  (* SOFT_HLUTNM = "soft_lutpair39" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[1][14]_i_1 
@@ -46735,7 +46753,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__0_n_84),
         .I2(ARG3__2_n_76),
         .O(\MULT_REG_II[1][14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair37" *) 
+  (* SOFT_HLUTNM = "soft_lutpair38" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[1][15]_i_1 
@@ -46743,7 +46761,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__0_n_83),
         .I2(ARG3__2_n_76),
         .O(\MULT_REG_II[1][15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair37" *) 
+  (* SOFT_HLUTNM = "soft_lutpair38" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[1][16]_i_1 
@@ -46771,7 +46789,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[1][16]_i_6 
        (.I0(ARG2__0_n_85),
         .O(\MULT_REG_II[1][16]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair36" *) 
+  (* SOFT_HLUTNM = "soft_lutpair37" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[1][17]_i_1 
@@ -46779,7 +46797,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__0_n_81),
         .I2(ARG3__2_n_76),
         .O(\MULT_REG_II[1][17]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair36" *) 
+  (* SOFT_HLUTNM = "soft_lutpair37" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[1][18]_i_1 
@@ -46787,7 +46805,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__0_n_80),
         .I2(ARG3__2_n_76),
         .O(\MULT_REG_II[1][18]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair35" *) 
+  (* SOFT_HLUTNM = "soft_lutpair36" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[1][19]_i_1 
@@ -46795,7 +46813,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__0_n_79),
         .I2(ARG3__2_n_76),
         .O(\MULT_REG_II[1][19]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair44" *) 
+  (* SOFT_HLUTNM = "soft_lutpair45" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[1][1]_i_1 
@@ -46803,7 +46821,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__0_n_97),
         .I2(ARG3__2_n_76),
         .O(\MULT_REG_II[1][1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair34" *) 
+  (* SOFT_HLUTNM = "soft_lutpair35" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[1][20]_i_1 
@@ -46831,7 +46849,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[1][20]_i_6 
        (.I0(ARG2__0_n_81),
         .O(\MULT_REG_II[1][20]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair34" *) 
+  (* SOFT_HLUTNM = "soft_lutpair35" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[1][21]_i_1 
@@ -46839,7 +46857,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__0_n_77),
         .I2(ARG3__2_n_76),
         .O(\MULT_REG_II[1][21]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair35" *) 
+  (* SOFT_HLUTNM = "soft_lutpair36" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \MULT_REG_II[1][22]_i_1 
@@ -46856,7 +46874,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[1][22]_i_4 
        (.I0(ARG2__0_n_77),
         .O(\MULT_REG_II[1][22]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair44" *) 
+  (* SOFT_HLUTNM = "soft_lutpair45" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[1][2]_i_1 
@@ -46864,7 +46882,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__0_n_96),
         .I2(ARG3__2_n_76),
         .O(\MULT_REG_II[1][2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair43" *) 
+  (* SOFT_HLUTNM = "soft_lutpair44" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[1][3]_i_1 
@@ -46872,7 +46890,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__0_n_95),
         .I2(ARG3__2_n_76),
         .O(\MULT_REG_II[1][3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair43" *) 
+  (* SOFT_HLUTNM = "soft_lutpair44" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[1][4]_i_1 
@@ -46905,7 +46923,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[1][4]_i_7 
        (.I0(ARG2__0_n_97),
         .O(\MULT_REG_II[1][4]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair42" *) 
+  (* SOFT_HLUTNM = "soft_lutpair43" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[1][5]_i_1 
@@ -46913,7 +46931,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__0_n_93),
         .I2(ARG3__2_n_76),
         .O(\MULT_REG_II[1][5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair42" *) 
+  (* SOFT_HLUTNM = "soft_lutpair43" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[1][6]_i_1 
@@ -46921,7 +46939,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__0_n_92),
         .I2(ARG3__2_n_76),
         .O(\MULT_REG_II[1][6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair41" *) 
+  (* SOFT_HLUTNM = "soft_lutpair42" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[1][7]_i_1 
@@ -46929,7 +46947,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__0_n_91),
         .I2(ARG3__2_n_76),
         .O(\MULT_REG_II[1][7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair41" *) 
+  (* SOFT_HLUTNM = "soft_lutpair42" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[1][8]_i_1 
@@ -46957,7 +46975,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[1][8]_i_6 
        (.I0(ARG2__0_n_93),
         .O(\MULT_REG_II[1][8]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair40" *) 
+  (* SOFT_HLUTNM = "soft_lutpair41" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[1][9]_i_1 
@@ -46965,7 +46983,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__0_n_89),
         .I2(ARG3__2_n_76),
         .O(\MULT_REG_II[1][9]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair56" *) 
+  (* SOFT_HLUTNM = "soft_lutpair57" *) 
   LUT3 #(
     .INIT(8'hCA)) 
     \MULT_REG_II[2][0]_i_1 
@@ -47018,7 +47036,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[2][0]_i_9 
        (.I0(ARG3__4_n_101),
         .O(\MULT_REG_II[2][0]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair62" *) 
+  (* SOFT_HLUTNM = "soft_lutpair63" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[2][10]_i_1 
@@ -47026,7 +47044,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__4_n_88),
         .I2(ARG3__4_n_79),
         .O(\MULT_REG_II[2][10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair62" *) 
+  (* SOFT_HLUTNM = "soft_lutpair63" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[2][11]_i_1 
@@ -47034,7 +47052,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__4_n_87),
         .I2(ARG3__4_n_79),
         .O(\MULT_REG_II[2][11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair61" *) 
+  (* SOFT_HLUTNM = "soft_lutpair62" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[2][12]_i_1 
@@ -47090,7 +47108,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[2][12]_i_9 
        (.I0(ARG3__4_n_90),
         .O(\MULT_REG_II[2][12]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair61" *) 
+  (* SOFT_HLUTNM = "soft_lutpair62" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[2][13]_i_1 
@@ -47098,7 +47116,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__4_n_85),
         .I2(ARG3__4_n_79),
         .O(\MULT_REG_II[2][13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair60" *) 
+  (* SOFT_HLUTNM = "soft_lutpair61" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[2][14]_i_1 
@@ -47106,7 +47124,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__4_n_84),
         .I2(ARG3__4_n_79),
         .O(\MULT_REG_II[2][14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair60" *) 
+  (* SOFT_HLUTNM = "soft_lutpair61" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[2][15]_i_1 
@@ -47114,7 +47132,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__4_n_83),
         .I2(ARG3__4_n_79),
         .O(\MULT_REG_II[2][15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair59" *) 
+  (* SOFT_HLUTNM = "soft_lutpair60" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[2][16]_i_1 
@@ -47170,7 +47188,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[2][16]_i_9 
        (.I0(ARG3__4_n_86),
         .O(\MULT_REG_II[2][16]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair58" *) 
+  (* SOFT_HLUTNM = "soft_lutpair59" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[2][17]_i_1 
@@ -47178,7 +47196,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__4_n_81),
         .I2(ARG3__4_n_79),
         .O(\MULT_REG_II[2][17]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair57" *) 
+  (* SOFT_HLUTNM = "soft_lutpair58" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[2][18]_i_1 
@@ -47186,7 +47204,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__4_n_80),
         .I2(ARG3__4_n_79),
         .O(\MULT_REG_II[2][18]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair59" *) 
+  (* SOFT_HLUTNM = "soft_lutpair60" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_II[2][19]_i_1 
@@ -47200,7 +47218,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__4_n_97),
         .I2(ARG3__4_n_79),
         .O(\MULT_REG_II[2][1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair58" *) 
+  (* SOFT_HLUTNM = "soft_lutpair59" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_II[2][20]_i_1 
@@ -47253,14 +47271,14 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[2][20]_i_9 
        (.I0(ARG3__4_n_82),
         .O(\MULT_REG_II[2][20]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair57" *) 
+  (* SOFT_HLUTNM = "soft_lutpair58" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_II[2][21]_i_1 
        (.I0(\MULT_REG_II_reg[2][22]_i_2_n_7 ),
         .I1(ARG3__4_n_79),
         .O(\MULT_REG_II[2][21]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair56" *) 
+  (* SOFT_HLUTNM = "soft_lutpair57" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \MULT_REG_II[2][22]_i_1 
@@ -47289,7 +47307,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[2][22]_i_7 
        (.I0(ARG3__4_n_80),
         .O(\MULT_REG_II[2][22]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair66" *) 
+  (* SOFT_HLUTNM = "soft_lutpair67" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[2][2]_i_1 
@@ -47297,7 +47315,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__4_n_96),
         .I2(ARG3__4_n_79),
         .O(\MULT_REG_II[2][2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair66" *) 
+  (* SOFT_HLUTNM = "soft_lutpair67" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[2][3]_i_1 
@@ -47305,7 +47323,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__4_n_95),
         .I2(ARG3__4_n_79),
         .O(\MULT_REG_II[2][3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair65" *) 
+  (* SOFT_HLUTNM = "soft_lutpair66" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[2][4]_i_1 
@@ -47348,7 +47366,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\MULT_REG_II_reg[2][0]_i_2_n_4 ),
         .I2(ARG3__4_n_97),
         .O(\MULT_REG_II[2][4]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair65" *) 
+  (* SOFT_HLUTNM = "soft_lutpair66" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[2][5]_i_1 
@@ -47356,7 +47374,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__4_n_93),
         .I2(ARG3__4_n_79),
         .O(\MULT_REG_II[2][5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair64" *) 
+  (* SOFT_HLUTNM = "soft_lutpair65" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[2][6]_i_1 
@@ -47364,7 +47382,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__4_n_92),
         .I2(ARG3__4_n_79),
         .O(\MULT_REG_II[2][6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair64" *) 
+  (* SOFT_HLUTNM = "soft_lutpair65" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[2][7]_i_1 
@@ -47372,7 +47390,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__4_n_91),
         .I2(ARG3__4_n_79),
         .O(\MULT_REG_II[2][7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair63" *) 
+  (* SOFT_HLUTNM = "soft_lutpair64" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[2][8]_i_1 
@@ -47428,7 +47446,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[2][8]_i_9 
        (.I0(ARG3__4_n_94),
         .O(\MULT_REG_II[2][8]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair63" *) 
+  (* SOFT_HLUTNM = "soft_lutpair64" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[2][9]_i_1 
@@ -47436,7 +47454,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__4_n_89),
         .I2(ARG3__4_n_79),
         .O(\MULT_REG_II[2][9]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair89" *) 
+  (* SOFT_HLUTNM = "soft_lutpair90" *) 
   LUT3 #(
     .INIT(8'hCA)) 
     \MULT_REG_II[7][0]_i_1 
@@ -47489,7 +47507,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[7][0]_i_9 
        (.I0(ARG3__7_n_101),
         .O(\MULT_REG_II[7][0]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair95" *) 
+  (* SOFT_HLUTNM = "soft_lutpair96" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[7][10]_i_1 
@@ -47497,7 +47515,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__7_n_88),
         .I2(ARG3__7_n_77),
         .O(\MULT_REG_II[7][10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair95" *) 
+  (* SOFT_HLUTNM = "soft_lutpair96" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[7][11]_i_1 
@@ -47505,7 +47523,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__7_n_87),
         .I2(ARG3__7_n_77),
         .O(\MULT_REG_II[7][11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair94" *) 
+  (* SOFT_HLUTNM = "soft_lutpair95" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[7][12]_i_1 
@@ -47561,7 +47579,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[7][12]_i_9 
        (.I0(ARG3__7_n_90),
         .O(\MULT_REG_II[7][12]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair94" *) 
+  (* SOFT_HLUTNM = "soft_lutpair95" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[7][13]_i_1 
@@ -47569,7 +47587,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__7_n_85),
         .I2(ARG3__7_n_77),
         .O(\MULT_REG_II[7][13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair93" *) 
+  (* SOFT_HLUTNM = "soft_lutpair94" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[7][14]_i_1 
@@ -47577,7 +47595,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__7_n_84),
         .I2(ARG3__7_n_77),
         .O(\MULT_REG_II[7][14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair93" *) 
+  (* SOFT_HLUTNM = "soft_lutpair94" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[7][15]_i_1 
@@ -47585,7 +47603,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__7_n_83),
         .I2(ARG3__7_n_77),
         .O(\MULT_REG_II[7][15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair92" *) 
+  (* SOFT_HLUTNM = "soft_lutpair93" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[7][16]_i_1 
@@ -47641,7 +47659,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[7][16]_i_9 
        (.I0(ARG3__7_n_86),
         .O(\MULT_REG_II[7][16]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair92" *) 
+  (* SOFT_HLUTNM = "soft_lutpair93" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[7][17]_i_1 
@@ -47649,7 +47667,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__7_n_81),
         .I2(ARG3__7_n_77),
         .O(\MULT_REG_II[7][17]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair91" *) 
+  (* SOFT_HLUTNM = "soft_lutpair92" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[7][18]_i_1 
@@ -47657,7 +47675,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__7_n_80),
         .I2(ARG3__7_n_77),
         .O(\MULT_REG_II[7][18]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair91" *) 
+  (* SOFT_HLUTNM = "soft_lutpair92" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[7][19]_i_1 
@@ -47672,7 +47690,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__7_n_97),
         .I2(ARG3__7_n_77),
         .O(\MULT_REG_II[7][1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair90" *) 
+  (* SOFT_HLUTNM = "soft_lutpair91" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[7][20]_i_1 
@@ -47728,14 +47746,14 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[7][20]_i_9 
        (.I0(ARG3__7_n_82),
         .O(\MULT_REG_II[7][20]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair90" *) 
+  (* SOFT_HLUTNM = "soft_lutpair91" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_II[7][21]_i_1 
        (.I0(\MULT_REG_II_reg[7][22]_i_2_n_7 ),
         .I1(ARG3__7_n_77),
         .O(\MULT_REG_II[7][21]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair89" *) 
+  (* SOFT_HLUTNM = "soft_lutpair90" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \MULT_REG_II[7][22]_i_1 
@@ -47774,7 +47792,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[7][22]_i_9 
        (.I0(ARG3__7_n_79),
         .O(\MULT_REG_II[7][22]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair99" *) 
+  (* SOFT_HLUTNM = "soft_lutpair100" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[7][2]_i_1 
@@ -47782,7 +47800,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__7_n_96),
         .I2(ARG3__7_n_77),
         .O(\MULT_REG_II[7][2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair99" *) 
+  (* SOFT_HLUTNM = "soft_lutpair100" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[7][3]_i_1 
@@ -47790,7 +47808,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__7_n_95),
         .I2(ARG3__7_n_77),
         .O(\MULT_REG_II[7][3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair98" *) 
+  (* SOFT_HLUTNM = "soft_lutpair99" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[7][4]_i_1 
@@ -47833,7 +47851,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\MULT_REG_II_reg[7][0]_i_2_n_4 ),
         .I2(ARG3__7_n_97),
         .O(\MULT_REG_II[7][4]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair98" *) 
+  (* SOFT_HLUTNM = "soft_lutpair99" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[7][5]_i_1 
@@ -47841,7 +47859,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__7_n_93),
         .I2(ARG3__7_n_77),
         .O(\MULT_REG_II[7][5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair97" *) 
+  (* SOFT_HLUTNM = "soft_lutpair98" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[7][6]_i_1 
@@ -47849,7 +47867,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__7_n_92),
         .I2(ARG3__7_n_77),
         .O(\MULT_REG_II[7][6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair97" *) 
+  (* SOFT_HLUTNM = "soft_lutpair98" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[7][7]_i_1 
@@ -47857,7 +47875,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__7_n_91),
         .I2(ARG3__7_n_77),
         .O(\MULT_REG_II[7][7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair96" *) 
+  (* SOFT_HLUTNM = "soft_lutpair97" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[7][8]_i_1 
@@ -47913,7 +47931,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[7][8]_i_9 
        (.I0(ARG3__7_n_94),
         .O(\MULT_REG_II[7][8]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair96" *) 
+  (* SOFT_HLUTNM = "soft_lutpair97" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[7][9]_i_1 
@@ -47921,7 +47939,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__7_n_89),
         .I2(ARG3__7_n_77),
         .O(\MULT_REG_II[7][9]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair117" *) 
+  (* SOFT_HLUTNM = "soft_lutpair118" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[8][10]_i_1 
@@ -47929,7 +47947,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__3_n_88),
         .I2(ARG3__9_n_76),
         .O(\MULT_REG_II[8][10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair116" *) 
+  (* SOFT_HLUTNM = "soft_lutpair117" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[8][11]_i_1 
@@ -47937,7 +47955,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__3_n_87),
         .I2(ARG3__9_n_76),
         .O(\MULT_REG_II[8][11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair116" *) 
+  (* SOFT_HLUTNM = "soft_lutpair117" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[8][12]_i_1 
@@ -47965,7 +47983,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[8][12]_i_6 
        (.I0(ARG2__3_n_89),
         .O(\MULT_REG_II[8][12]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair115" *) 
+  (* SOFT_HLUTNM = "soft_lutpair116" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[8][13]_i_1 
@@ -47973,7 +47991,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__3_n_85),
         .I2(ARG3__9_n_76),
         .O(\MULT_REG_II[8][13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair115" *) 
+  (* SOFT_HLUTNM = "soft_lutpair116" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[8][14]_i_1 
@@ -47981,7 +47999,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__3_n_84),
         .I2(ARG3__9_n_76),
         .O(\MULT_REG_II[8][14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair114" *) 
+  (* SOFT_HLUTNM = "soft_lutpair115" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[8][15]_i_1 
@@ -47989,7 +48007,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__3_n_83),
         .I2(ARG3__9_n_76),
         .O(\MULT_REG_II[8][15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair114" *) 
+  (* SOFT_HLUTNM = "soft_lutpair115" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[8][16]_i_1 
@@ -48017,7 +48035,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[8][16]_i_6 
        (.I0(ARG2__3_n_85),
         .O(\MULT_REG_II[8][16]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair113" *) 
+  (* SOFT_HLUTNM = "soft_lutpair114" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[8][17]_i_1 
@@ -48025,7 +48043,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__3_n_81),
         .I2(ARG3__9_n_76),
         .O(\MULT_REG_II[8][17]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair113" *) 
+  (* SOFT_HLUTNM = "soft_lutpair114" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[8][18]_i_1 
@@ -48033,7 +48051,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__3_n_80),
         .I2(ARG3__9_n_76),
         .O(\MULT_REG_II[8][18]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair112" *) 
+  (* SOFT_HLUTNM = "soft_lutpair113" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[8][19]_i_1 
@@ -48041,7 +48059,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__3_n_79),
         .I2(ARG3__9_n_76),
         .O(\MULT_REG_II[8][19]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair121" *) 
+  (* SOFT_HLUTNM = "soft_lutpair122" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[8][1]_i_1 
@@ -48049,7 +48067,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__3_n_97),
         .I2(ARG3__9_n_76),
         .O(\MULT_REG_II[8][1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair111" *) 
+  (* SOFT_HLUTNM = "soft_lutpair112" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[8][20]_i_1 
@@ -48077,7 +48095,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[8][20]_i_6 
        (.I0(ARG2__3_n_81),
         .O(\MULT_REG_II[8][20]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair111" *) 
+  (* SOFT_HLUTNM = "soft_lutpair112" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[8][21]_i_1 
@@ -48085,7 +48103,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__3_n_77),
         .I2(ARG3__9_n_76),
         .O(\MULT_REG_II[8][21]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair112" *) 
+  (* SOFT_HLUTNM = "soft_lutpair113" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \MULT_REG_II[8][22]_i_1 
@@ -48102,7 +48120,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[8][22]_i_4 
        (.I0(ARG2__3_n_77),
         .O(\MULT_REG_II[8][22]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair121" *) 
+  (* SOFT_HLUTNM = "soft_lutpair122" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[8][2]_i_1 
@@ -48110,7 +48128,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__3_n_96),
         .I2(ARG3__9_n_76),
         .O(\MULT_REG_II[8][2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair120" *) 
+  (* SOFT_HLUTNM = "soft_lutpair121" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[8][3]_i_1 
@@ -48118,7 +48136,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__3_n_95),
         .I2(ARG3__9_n_76),
         .O(\MULT_REG_II[8][3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair120" *) 
+  (* SOFT_HLUTNM = "soft_lutpair121" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[8][4]_i_1 
@@ -48151,7 +48169,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[8][4]_i_7 
        (.I0(ARG2__3_n_97),
         .O(\MULT_REG_II[8][4]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair119" *) 
+  (* SOFT_HLUTNM = "soft_lutpair120" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[8][5]_i_1 
@@ -48159,7 +48177,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__3_n_93),
         .I2(ARG3__9_n_76),
         .O(\MULT_REG_II[8][5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair119" *) 
+  (* SOFT_HLUTNM = "soft_lutpair120" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[8][6]_i_1 
@@ -48167,7 +48185,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__3_n_92),
         .I2(ARG3__9_n_76),
         .O(\MULT_REG_II[8][6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair118" *) 
+  (* SOFT_HLUTNM = "soft_lutpair119" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[8][7]_i_1 
@@ -48175,7 +48193,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__3_n_91),
         .I2(ARG3__9_n_76),
         .O(\MULT_REG_II[8][7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair118" *) 
+  (* SOFT_HLUTNM = "soft_lutpair119" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[8][8]_i_1 
@@ -48203,7 +48221,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[8][8]_i_6 
        (.I0(ARG2__3_n_93),
         .O(\MULT_REG_II[8][8]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair117" *) 
+  (* SOFT_HLUTNM = "soft_lutpair118" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[8][9]_i_1 
@@ -48211,7 +48229,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__3_n_89),
         .I2(ARG3__9_n_76),
         .O(\MULT_REG_II[8][9]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair133" *) 
+  (* SOFT_HLUTNM = "soft_lutpair134" *) 
   LUT3 #(
     .INIT(8'hCA)) 
     \MULT_REG_II[9][0]_i_1 
@@ -48264,7 +48282,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[9][0]_i_9 
        (.I0(ARG3__11_n_101),
         .O(\MULT_REG_II[9][0]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair139" *) 
+  (* SOFT_HLUTNM = "soft_lutpair140" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[9][10]_i_1 
@@ -48272,7 +48290,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__11_n_88),
         .I2(ARG3__11_n_79),
         .O(\MULT_REG_II[9][10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair139" *) 
+  (* SOFT_HLUTNM = "soft_lutpair140" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[9][11]_i_1 
@@ -48280,7 +48298,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__11_n_87),
         .I2(ARG3__11_n_79),
         .O(\MULT_REG_II[9][11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair138" *) 
+  (* SOFT_HLUTNM = "soft_lutpair139" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[9][12]_i_1 
@@ -48336,7 +48354,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[9][12]_i_9 
        (.I0(ARG3__11_n_90),
         .O(\MULT_REG_II[9][12]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair138" *) 
+  (* SOFT_HLUTNM = "soft_lutpair139" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[9][13]_i_1 
@@ -48344,7 +48362,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__11_n_85),
         .I2(ARG3__11_n_79),
         .O(\MULT_REG_II[9][13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair137" *) 
+  (* SOFT_HLUTNM = "soft_lutpair138" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[9][14]_i_1 
@@ -48352,7 +48370,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__11_n_84),
         .I2(ARG3__11_n_79),
         .O(\MULT_REG_II[9][14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair137" *) 
+  (* SOFT_HLUTNM = "soft_lutpair138" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[9][15]_i_1 
@@ -48360,7 +48378,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__11_n_83),
         .I2(ARG3__11_n_79),
         .O(\MULT_REG_II[9][15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair136" *) 
+  (* SOFT_HLUTNM = "soft_lutpair137" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[9][16]_i_1 
@@ -48416,7 +48434,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[9][16]_i_9 
        (.I0(ARG3__11_n_86),
         .O(\MULT_REG_II[9][16]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair135" *) 
+  (* SOFT_HLUTNM = "soft_lutpair136" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[9][17]_i_1 
@@ -48424,7 +48442,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__11_n_81),
         .I2(ARG3__11_n_79),
         .O(\MULT_REG_II[9][17]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair134" *) 
+  (* SOFT_HLUTNM = "soft_lutpair135" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[9][18]_i_1 
@@ -48432,7 +48450,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__11_n_80),
         .I2(ARG3__11_n_79),
         .O(\MULT_REG_II[9][18]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair136" *) 
+  (* SOFT_HLUTNM = "soft_lutpair137" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_II[9][19]_i_1 
@@ -48446,7 +48464,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__11_n_97),
         .I2(ARG3__11_n_79),
         .O(\MULT_REG_II[9][1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair135" *) 
+  (* SOFT_HLUTNM = "soft_lutpair136" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_II[9][20]_i_1 
@@ -48499,14 +48517,14 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[9][20]_i_9 
        (.I0(ARG3__11_n_82),
         .O(\MULT_REG_II[9][20]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair134" *) 
+  (* SOFT_HLUTNM = "soft_lutpair135" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_II[9][21]_i_1 
        (.I0(\MULT_REG_II_reg[9][22]_i_2_n_7 ),
         .I1(ARG3__11_n_79),
         .O(\MULT_REG_II[9][21]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair133" *) 
+  (* SOFT_HLUTNM = "soft_lutpair134" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \MULT_REG_II[9][22]_i_1 
@@ -48535,7 +48553,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[9][22]_i_7 
        (.I0(ARG3__11_n_80),
         .O(\MULT_REG_II[9][22]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair143" *) 
+  (* SOFT_HLUTNM = "soft_lutpair144" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[9][2]_i_1 
@@ -48543,7 +48561,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__11_n_96),
         .I2(ARG3__11_n_79),
         .O(\MULT_REG_II[9][2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair143" *) 
+  (* SOFT_HLUTNM = "soft_lutpair144" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[9][3]_i_1 
@@ -48551,7 +48569,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__11_n_95),
         .I2(ARG3__11_n_79),
         .O(\MULT_REG_II[9][3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair142" *) 
+  (* SOFT_HLUTNM = "soft_lutpair143" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[9][4]_i_1 
@@ -48594,7 +48612,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\MULT_REG_II_reg[9][0]_i_2_n_4 ),
         .I2(ARG3__11_n_97),
         .O(\MULT_REG_II[9][4]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair142" *) 
+  (* SOFT_HLUTNM = "soft_lutpair143" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[9][5]_i_1 
@@ -48602,7 +48620,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__11_n_93),
         .I2(ARG3__11_n_79),
         .O(\MULT_REG_II[9][5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair141" *) 
+  (* SOFT_HLUTNM = "soft_lutpair142" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[9][6]_i_1 
@@ -48610,7 +48628,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__11_n_92),
         .I2(ARG3__11_n_79),
         .O(\MULT_REG_II[9][6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair141" *) 
+  (* SOFT_HLUTNM = "soft_lutpair142" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[9][7]_i_1 
@@ -48618,7 +48636,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__11_n_91),
         .I2(ARG3__11_n_79),
         .O(\MULT_REG_II[9][7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair140" *) 
+  (* SOFT_HLUTNM = "soft_lutpair141" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[9][8]_i_1 
@@ -48674,7 +48692,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_II[9][8]_i_9 
        (.I0(ARG3__11_n_94),
         .O(\MULT_REG_II[9][8]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair140" *) 
+  (* SOFT_HLUTNM = "soft_lutpair141" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_II[9][9]_i_1 
@@ -50693,7 +50711,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .D(\MULT_REG_II[9][9]_i_1_n_0 ),
         .Q(\MULT_REG_II_reg[9]_18 [9]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair194" *) 
+  (* SOFT_HLUTNM = "soft_lutpair195" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[0][10]_i_1 
@@ -50701,7 +50719,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__7_n_88),
         .I2(ARG3__16_n_76),
         .O(\MULT_REG_IQ[0][10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair193" *) 
+  (* SOFT_HLUTNM = "soft_lutpair194" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[0][11]_i_1 
@@ -50709,7 +50727,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__7_n_87),
         .I2(ARG3__16_n_76),
         .O(\MULT_REG_IQ[0][11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair193" *) 
+  (* SOFT_HLUTNM = "soft_lutpair194" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[0][12]_i_1 
@@ -50737,7 +50755,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[0][12]_i_6 
        (.I0(ARG2__7_n_89),
         .O(\MULT_REG_IQ[0][12]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair192" *) 
+  (* SOFT_HLUTNM = "soft_lutpair193" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[0][13]_i_1 
@@ -50745,7 +50763,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__7_n_85),
         .I2(ARG3__16_n_76),
         .O(\MULT_REG_IQ[0][13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair192" *) 
+  (* SOFT_HLUTNM = "soft_lutpair193" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[0][14]_i_1 
@@ -50753,7 +50771,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__7_n_84),
         .I2(ARG3__16_n_76),
         .O(\MULT_REG_IQ[0][14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair191" *) 
+  (* SOFT_HLUTNM = "soft_lutpair192" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[0][15]_i_1 
@@ -50761,7 +50779,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__7_n_83),
         .I2(ARG3__16_n_76),
         .O(\MULT_REG_IQ[0][15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair191" *) 
+  (* SOFT_HLUTNM = "soft_lutpair192" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[0][16]_i_1 
@@ -50789,7 +50807,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[0][16]_i_6 
        (.I0(ARG2__7_n_85),
         .O(\MULT_REG_IQ[0][16]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair190" *) 
+  (* SOFT_HLUTNM = "soft_lutpair191" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[0][17]_i_1 
@@ -50797,7 +50815,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__7_n_81),
         .I2(ARG3__16_n_76),
         .O(\MULT_REG_IQ[0][17]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair190" *) 
+  (* SOFT_HLUTNM = "soft_lutpair191" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[0][18]_i_1 
@@ -50805,7 +50823,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__7_n_80),
         .I2(ARG3__16_n_76),
         .O(\MULT_REG_IQ[0][18]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair189" *) 
+  (* SOFT_HLUTNM = "soft_lutpair190" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[0][19]_i_1 
@@ -50813,7 +50831,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__7_n_79),
         .I2(ARG3__16_n_76),
         .O(\MULT_REG_IQ[0][19]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair198" *) 
+  (* SOFT_HLUTNM = "soft_lutpair199" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[0][1]_i_1 
@@ -50821,7 +50839,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__7_n_97),
         .I2(ARG3__16_n_76),
         .O(\MULT_REG_IQ[0][1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair189" *) 
+  (* SOFT_HLUTNM = "soft_lutpair190" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[0][20]_i_1 
@@ -50849,7 +50867,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[0][20]_i_6 
        (.I0(ARG2__7_n_81),
         .O(\MULT_REG_IQ[0][20]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair188" *) 
+  (* SOFT_HLUTNM = "soft_lutpair189" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[0][21]_i_1 
@@ -50857,7 +50875,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__7_n_77),
         .I2(ARG3__16_n_76),
         .O(\MULT_REG_IQ[0][21]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair188" *) 
+  (* SOFT_HLUTNM = "soft_lutpair189" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \MULT_REG_IQ[0][22]_i_1 
@@ -50874,7 +50892,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[0][22]_i_4 
        (.I0(ARG2__7_n_77),
         .O(\MULT_REG_IQ[0][22]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair198" *) 
+  (* SOFT_HLUTNM = "soft_lutpair199" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[0][2]_i_1 
@@ -50882,7 +50900,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__7_n_96),
         .I2(ARG3__16_n_76),
         .O(\MULT_REG_IQ[0][2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair197" *) 
+  (* SOFT_HLUTNM = "soft_lutpair198" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[0][3]_i_1 
@@ -50890,7 +50908,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__7_n_95),
         .I2(ARG3__16_n_76),
         .O(\MULT_REG_IQ[0][3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair197" *) 
+  (* SOFT_HLUTNM = "soft_lutpair198" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[0][4]_i_1 
@@ -50923,7 +50941,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[0][4]_i_7 
        (.I0(ARG2__7_n_97),
         .O(\MULT_REG_IQ[0][4]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair196" *) 
+  (* SOFT_HLUTNM = "soft_lutpair197" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[0][5]_i_1 
@@ -50931,7 +50949,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__7_n_93),
         .I2(ARG3__16_n_76),
         .O(\MULT_REG_IQ[0][5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair196" *) 
+  (* SOFT_HLUTNM = "soft_lutpair197" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[0][6]_i_1 
@@ -50939,7 +50957,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__7_n_92),
         .I2(ARG3__16_n_76),
         .O(\MULT_REG_IQ[0][6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair195" *) 
+  (* SOFT_HLUTNM = "soft_lutpair196" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[0][7]_i_1 
@@ -50947,7 +50965,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__7_n_91),
         .I2(ARG3__16_n_76),
         .O(\MULT_REG_IQ[0][7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair195" *) 
+  (* SOFT_HLUTNM = "soft_lutpair196" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[0][8]_i_1 
@@ -50975,7 +50993,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[0][8]_i_6 
        (.I0(ARG2__7_n_93),
         .O(\MULT_REG_IQ[0][8]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair194" *) 
+  (* SOFT_HLUTNM = "soft_lutpair195" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[0][9]_i_1 
@@ -50983,7 +51001,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__7_n_89),
         .I2(ARG3__16_n_76),
         .O(\MULT_REG_IQ[0][9]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair331" *) 
+  (* SOFT_HLUTNM = "soft_lutpair332" *) 
   LUT3 #(
     .INIT(8'hCA)) 
     \MULT_REG_IQ[10][0]_i_1 
@@ -51036,7 +51054,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[10][0]_i_9 
        (.I0(ARG3__29_n_101),
         .O(\MULT_REG_IQ[10][0]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair337" *) 
+  (* SOFT_HLUTNM = "soft_lutpair338" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[10][10]_i_1 
@@ -51044,7 +51062,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__29_n_88),
         .I2(ARG3__29_n_79),
         .O(\MULT_REG_IQ[10][10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair337" *) 
+  (* SOFT_HLUTNM = "soft_lutpair338" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[10][11]_i_1 
@@ -51052,7 +51070,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__29_n_87),
         .I2(ARG3__29_n_79),
         .O(\MULT_REG_IQ[10][11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair336" *) 
+  (* SOFT_HLUTNM = "soft_lutpair337" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[10][12]_i_1 
@@ -51108,7 +51126,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[10][12]_i_9 
        (.I0(ARG3__29_n_90),
         .O(\MULT_REG_IQ[10][12]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair336" *) 
+  (* SOFT_HLUTNM = "soft_lutpair337" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[10][13]_i_1 
@@ -51116,7 +51134,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__29_n_85),
         .I2(ARG3__29_n_79),
         .O(\MULT_REG_IQ[10][13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair335" *) 
+  (* SOFT_HLUTNM = "soft_lutpair336" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[10][14]_i_1 
@@ -51124,7 +51142,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__29_n_84),
         .I2(ARG3__29_n_79),
         .O(\MULT_REG_IQ[10][14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair335" *) 
+  (* SOFT_HLUTNM = "soft_lutpair336" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[10][15]_i_1 
@@ -51132,7 +51150,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__29_n_83),
         .I2(ARG3__29_n_79),
         .O(\MULT_REG_IQ[10][15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair334" *) 
+  (* SOFT_HLUTNM = "soft_lutpair335" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[10][16]_i_1 
@@ -51188,7 +51206,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[10][16]_i_9 
        (.I0(ARG3__29_n_86),
         .O(\MULT_REG_IQ[10][16]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair333" *) 
+  (* SOFT_HLUTNM = "soft_lutpair334" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[10][17]_i_1 
@@ -51196,7 +51214,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__29_n_81),
         .I2(ARG3__29_n_79),
         .O(\MULT_REG_IQ[10][17]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair332" *) 
+  (* SOFT_HLUTNM = "soft_lutpair333" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[10][18]_i_1 
@@ -51204,7 +51222,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__29_n_80),
         .I2(ARG3__29_n_79),
         .O(\MULT_REG_IQ[10][18]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair334" *) 
+  (* SOFT_HLUTNM = "soft_lutpair335" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_IQ[10][19]_i_1 
@@ -51218,7 +51236,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__29_n_97),
         .I2(ARG3__29_n_79),
         .O(\MULT_REG_IQ[10][1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair333" *) 
+  (* SOFT_HLUTNM = "soft_lutpair334" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_IQ[10][20]_i_1 
@@ -51271,14 +51289,14 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[10][20]_i_9 
        (.I0(ARG3__29_n_82),
         .O(\MULT_REG_IQ[10][20]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair332" *) 
+  (* SOFT_HLUTNM = "soft_lutpair333" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_IQ[10][21]_i_1 
        (.I0(\MULT_REG_IQ_reg[10][22]_i_2_n_7 ),
         .I1(ARG3__29_n_79),
         .O(\MULT_REG_IQ[10][21]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair331" *) 
+  (* SOFT_HLUTNM = "soft_lutpair332" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \MULT_REG_IQ[10][22]_i_1 
@@ -51307,7 +51325,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[10][22]_i_7 
        (.I0(ARG3__29_n_80),
         .O(\MULT_REG_IQ[10][22]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair341" *) 
+  (* SOFT_HLUTNM = "soft_lutpair342" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[10][2]_i_1 
@@ -51315,7 +51333,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__29_n_96),
         .I2(ARG3__29_n_79),
         .O(\MULT_REG_IQ[10][2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair341" *) 
+  (* SOFT_HLUTNM = "soft_lutpair342" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[10][3]_i_1 
@@ -51323,7 +51341,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__29_n_95),
         .I2(ARG3__29_n_79),
         .O(\MULT_REG_IQ[10][3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair340" *) 
+  (* SOFT_HLUTNM = "soft_lutpair341" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[10][4]_i_1 
@@ -51366,7 +51384,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\MULT_REG_IQ_reg[10][0]_i_2_n_4 ),
         .I2(ARG3__29_n_97),
         .O(\MULT_REG_IQ[10][4]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair340" *) 
+  (* SOFT_HLUTNM = "soft_lutpair341" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[10][5]_i_1 
@@ -51374,7 +51392,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__29_n_93),
         .I2(ARG3__29_n_79),
         .O(\MULT_REG_IQ[10][5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair339" *) 
+  (* SOFT_HLUTNM = "soft_lutpair340" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[10][6]_i_1 
@@ -51382,7 +51400,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__29_n_92),
         .I2(ARG3__29_n_79),
         .O(\MULT_REG_IQ[10][6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair339" *) 
+  (* SOFT_HLUTNM = "soft_lutpair340" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[10][7]_i_1 
@@ -51390,7 +51408,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__29_n_91),
         .I2(ARG3__29_n_79),
         .O(\MULT_REG_IQ[10][7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair338" *) 
+  (* SOFT_HLUTNM = "soft_lutpair339" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[10][8]_i_1 
@@ -51446,7 +51464,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[10][8]_i_9 
        (.I0(ARG3__29_n_94),
         .O(\MULT_REG_IQ[10][8]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair338" *) 
+  (* SOFT_HLUTNM = "soft_lutpair339" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[10][9]_i_1 
@@ -51454,7 +51472,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__29_n_89),
         .I2(ARG3__29_n_79),
         .O(\MULT_REG_IQ[10][9]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair210" *) 
+  (* SOFT_HLUTNM = "soft_lutpair211" *) 
   LUT3 #(
     .INIT(8'hCA)) 
     \MULT_REG_IQ[1][0]_i_1 
@@ -51507,7 +51525,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[1][0]_i_9 
        (.I0(ARG3__18_n_101),
         .O(\MULT_REG_IQ[1][0]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair216" *) 
+  (* SOFT_HLUTNM = "soft_lutpair217" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[1][10]_i_1 
@@ -51515,7 +51533,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__18_n_88),
         .I2(ARG3__18_n_79),
         .O(\MULT_REG_IQ[1][10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair216" *) 
+  (* SOFT_HLUTNM = "soft_lutpair217" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[1][11]_i_1 
@@ -51523,7 +51541,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__18_n_87),
         .I2(ARG3__18_n_79),
         .O(\MULT_REG_IQ[1][11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair215" *) 
+  (* SOFT_HLUTNM = "soft_lutpair216" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[1][12]_i_1 
@@ -51579,7 +51597,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[1][12]_i_9 
        (.I0(ARG3__18_n_90),
         .O(\MULT_REG_IQ[1][12]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair215" *) 
+  (* SOFT_HLUTNM = "soft_lutpair216" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[1][13]_i_1 
@@ -51587,7 +51605,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__18_n_85),
         .I2(ARG3__18_n_79),
         .O(\MULT_REG_IQ[1][13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair214" *) 
+  (* SOFT_HLUTNM = "soft_lutpair215" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[1][14]_i_1 
@@ -51595,7 +51613,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__18_n_84),
         .I2(ARG3__18_n_79),
         .O(\MULT_REG_IQ[1][14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair214" *) 
+  (* SOFT_HLUTNM = "soft_lutpair215" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[1][15]_i_1 
@@ -51603,7 +51621,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__18_n_83),
         .I2(ARG3__18_n_79),
         .O(\MULT_REG_IQ[1][15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair213" *) 
+  (* SOFT_HLUTNM = "soft_lutpair214" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[1][16]_i_1 
@@ -51659,7 +51677,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[1][16]_i_9 
        (.I0(ARG3__18_n_86),
         .O(\MULT_REG_IQ[1][16]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair212" *) 
+  (* SOFT_HLUTNM = "soft_lutpair213" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[1][17]_i_1 
@@ -51667,7 +51685,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__18_n_81),
         .I2(ARG3__18_n_79),
         .O(\MULT_REG_IQ[1][17]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair211" *) 
+  (* SOFT_HLUTNM = "soft_lutpair212" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[1][18]_i_1 
@@ -51675,7 +51693,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__18_n_80),
         .I2(ARG3__18_n_79),
         .O(\MULT_REG_IQ[1][18]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair213" *) 
+  (* SOFT_HLUTNM = "soft_lutpair214" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_IQ[1][19]_i_1 
@@ -51689,7 +51707,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__18_n_97),
         .I2(ARG3__18_n_79),
         .O(\MULT_REG_IQ[1][1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair212" *) 
+  (* SOFT_HLUTNM = "soft_lutpair213" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_IQ[1][20]_i_1 
@@ -51742,14 +51760,14 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[1][20]_i_9 
        (.I0(ARG3__18_n_82),
         .O(\MULT_REG_IQ[1][20]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair211" *) 
+  (* SOFT_HLUTNM = "soft_lutpair212" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_IQ[1][21]_i_1 
        (.I0(\MULT_REG_IQ_reg[1][22]_i_2_n_7 ),
         .I1(ARG3__18_n_79),
         .O(\MULT_REG_IQ[1][21]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair210" *) 
+  (* SOFT_HLUTNM = "soft_lutpair211" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \MULT_REG_IQ[1][22]_i_1 
@@ -51778,7 +51796,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[1][22]_i_7 
        (.I0(ARG3__18_n_80),
         .O(\MULT_REG_IQ[1][22]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair220" *) 
+  (* SOFT_HLUTNM = "soft_lutpair221" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[1][2]_i_1 
@@ -51786,7 +51804,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__18_n_96),
         .I2(ARG3__18_n_79),
         .O(\MULT_REG_IQ[1][2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair220" *) 
+  (* SOFT_HLUTNM = "soft_lutpair221" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[1][3]_i_1 
@@ -51794,7 +51812,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__18_n_95),
         .I2(ARG3__18_n_79),
         .O(\MULT_REG_IQ[1][3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair219" *) 
+  (* SOFT_HLUTNM = "soft_lutpair220" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[1][4]_i_1 
@@ -51837,7 +51855,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\MULT_REG_IQ_reg[1][0]_i_2_n_4 ),
         .I2(ARG3__18_n_97),
         .O(\MULT_REG_IQ[1][4]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair219" *) 
+  (* SOFT_HLUTNM = "soft_lutpair220" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[1][5]_i_1 
@@ -51845,7 +51863,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__18_n_93),
         .I2(ARG3__18_n_79),
         .O(\MULT_REG_IQ[1][5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair218" *) 
+  (* SOFT_HLUTNM = "soft_lutpair219" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[1][6]_i_1 
@@ -51853,7 +51871,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__18_n_92),
         .I2(ARG3__18_n_79),
         .O(\MULT_REG_IQ[1][6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair218" *) 
+  (* SOFT_HLUTNM = "soft_lutpair219" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[1][7]_i_1 
@@ -51861,7 +51879,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__18_n_91),
         .I2(ARG3__18_n_79),
         .O(\MULT_REG_IQ[1][7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair217" *) 
+  (* SOFT_HLUTNM = "soft_lutpair218" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[1][8]_i_1 
@@ -51917,7 +51935,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[1][8]_i_9 
        (.I0(ARG3__18_n_94),
         .O(\MULT_REG_IQ[1][8]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair217" *) 
+  (* SOFT_HLUTNM = "soft_lutpair218" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[1][9]_i_1 
@@ -51925,7 +51943,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__18_n_89),
         .I2(ARG3__18_n_79),
         .O(\MULT_REG_IQ[1][9]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair238" *) 
+  (* SOFT_HLUTNM = "soft_lutpair239" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[2][10]_i_1 
@@ -51933,7 +51951,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__9_n_88),
         .I2(ARG3__20_n_76),
         .O(\MULT_REG_IQ[2][10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair237" *) 
+  (* SOFT_HLUTNM = "soft_lutpair238" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[2][11]_i_1 
@@ -51941,7 +51959,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__9_n_87),
         .I2(ARG3__20_n_76),
         .O(\MULT_REG_IQ[2][11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair237" *) 
+  (* SOFT_HLUTNM = "soft_lutpair238" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[2][12]_i_1 
@@ -51969,7 +51987,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[2][12]_i_6 
        (.I0(ARG2__9_n_89),
         .O(\MULT_REG_IQ[2][12]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair236" *) 
+  (* SOFT_HLUTNM = "soft_lutpair237" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[2][13]_i_1 
@@ -51977,7 +51995,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__9_n_85),
         .I2(ARG3__20_n_76),
         .O(\MULT_REG_IQ[2][13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair236" *) 
+  (* SOFT_HLUTNM = "soft_lutpair237" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[2][14]_i_1 
@@ -51985,7 +52003,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__9_n_84),
         .I2(ARG3__20_n_76),
         .O(\MULT_REG_IQ[2][14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair235" *) 
+  (* SOFT_HLUTNM = "soft_lutpair236" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[2][15]_i_1 
@@ -51993,7 +52011,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__9_n_83),
         .I2(ARG3__20_n_76),
         .O(\MULT_REG_IQ[2][15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair235" *) 
+  (* SOFT_HLUTNM = "soft_lutpair236" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[2][16]_i_1 
@@ -52021,7 +52039,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[2][16]_i_6 
        (.I0(ARG2__9_n_85),
         .O(\MULT_REG_IQ[2][16]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair234" *) 
+  (* SOFT_HLUTNM = "soft_lutpair235" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[2][17]_i_1 
@@ -52029,7 +52047,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__9_n_81),
         .I2(ARG3__20_n_76),
         .O(\MULT_REG_IQ[2][17]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair234" *) 
+  (* SOFT_HLUTNM = "soft_lutpair235" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[2][18]_i_1 
@@ -52037,7 +52055,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__9_n_80),
         .I2(ARG3__20_n_76),
         .O(\MULT_REG_IQ[2][18]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair233" *) 
+  (* SOFT_HLUTNM = "soft_lutpair234" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[2][19]_i_1 
@@ -52045,7 +52063,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__9_n_79),
         .I2(ARG3__20_n_76),
         .O(\MULT_REG_IQ[2][19]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair242" *) 
+  (* SOFT_HLUTNM = "soft_lutpair243" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[2][1]_i_1 
@@ -52053,7 +52071,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__9_n_97),
         .I2(ARG3__20_n_76),
         .O(\MULT_REG_IQ[2][1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair233" *) 
+  (* SOFT_HLUTNM = "soft_lutpair234" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[2][20]_i_1 
@@ -52081,7 +52099,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[2][20]_i_6 
        (.I0(ARG2__9_n_81),
         .O(\MULT_REG_IQ[2][20]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair232" *) 
+  (* SOFT_HLUTNM = "soft_lutpair233" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[2][21]_i_1 
@@ -52089,7 +52107,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__9_n_77),
         .I2(ARG3__20_n_76),
         .O(\MULT_REG_IQ[2][21]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair232" *) 
+  (* SOFT_HLUTNM = "soft_lutpair233" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \MULT_REG_IQ[2][22]_i_1 
@@ -52106,7 +52124,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[2][22]_i_4 
        (.I0(ARG2__9_n_77),
         .O(\MULT_REG_IQ[2][22]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair242" *) 
+  (* SOFT_HLUTNM = "soft_lutpair243" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[2][2]_i_1 
@@ -52114,7 +52132,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__9_n_96),
         .I2(ARG3__20_n_76),
         .O(\MULT_REG_IQ[2][2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair241" *) 
+  (* SOFT_HLUTNM = "soft_lutpair242" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[2][3]_i_1 
@@ -52122,7 +52140,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__9_n_95),
         .I2(ARG3__20_n_76),
         .O(\MULT_REG_IQ[2][3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair241" *) 
+  (* SOFT_HLUTNM = "soft_lutpair242" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[2][4]_i_1 
@@ -52155,7 +52173,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[2][4]_i_7 
        (.I0(ARG2__9_n_97),
         .O(\MULT_REG_IQ[2][4]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair240" *) 
+  (* SOFT_HLUTNM = "soft_lutpair241" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[2][5]_i_1 
@@ -52163,7 +52181,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__9_n_93),
         .I2(ARG3__20_n_76),
         .O(\MULT_REG_IQ[2][5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair240" *) 
+  (* SOFT_HLUTNM = "soft_lutpair241" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[2][6]_i_1 
@@ -52171,7 +52189,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__9_n_92),
         .I2(ARG3__20_n_76),
         .O(\MULT_REG_IQ[2][6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair239" *) 
+  (* SOFT_HLUTNM = "soft_lutpair240" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[2][7]_i_1 
@@ -52179,7 +52197,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__9_n_91),
         .I2(ARG3__20_n_76),
         .O(\MULT_REG_IQ[2][7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair239" *) 
+  (* SOFT_HLUTNM = "soft_lutpair240" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[2][8]_i_1 
@@ -52207,7 +52225,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[2][8]_i_6 
        (.I0(ARG2__9_n_93),
         .O(\MULT_REG_IQ[2][8]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair238" *) 
+  (* SOFT_HLUTNM = "soft_lutpair239" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[2][9]_i_1 
@@ -52215,7 +52233,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__9_n_89),
         .I2(ARG3__20_n_76),
         .O(\MULT_REG_IQ[2][9]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair249" *) 
+  (* SOFT_HLUTNM = "soft_lutpair250" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[3][10]_i_1 
@@ -52223,7 +52241,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__10_n_88),
         .I2(ARG3__21_n_76),
         .O(\MULT_REG_IQ[3][10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair248" *) 
+  (* SOFT_HLUTNM = "soft_lutpair249" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[3][11]_i_1 
@@ -52231,7 +52249,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__10_n_87),
         .I2(ARG3__21_n_76),
         .O(\MULT_REG_IQ[3][11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair248" *) 
+  (* SOFT_HLUTNM = "soft_lutpair249" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[3][12]_i_1 
@@ -52259,7 +52277,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[3][12]_i_6 
        (.I0(ARG2__10_n_89),
         .O(\MULT_REG_IQ[3][12]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair247" *) 
+  (* SOFT_HLUTNM = "soft_lutpair248" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[3][13]_i_1 
@@ -52267,7 +52285,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__10_n_85),
         .I2(ARG3__21_n_76),
         .O(\MULT_REG_IQ[3][13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair247" *) 
+  (* SOFT_HLUTNM = "soft_lutpair248" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[3][14]_i_1 
@@ -52275,7 +52293,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__10_n_84),
         .I2(ARG3__21_n_76),
         .O(\MULT_REG_IQ[3][14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair246" *) 
+  (* SOFT_HLUTNM = "soft_lutpair247" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[3][15]_i_1 
@@ -52283,7 +52301,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__10_n_83),
         .I2(ARG3__21_n_76),
         .O(\MULT_REG_IQ[3][15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair246" *) 
+  (* SOFT_HLUTNM = "soft_lutpair247" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[3][16]_i_1 
@@ -52311,7 +52329,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[3][16]_i_6 
        (.I0(ARG2__10_n_85),
         .O(\MULT_REG_IQ[3][16]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair245" *) 
+  (* SOFT_HLUTNM = "soft_lutpair246" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[3][17]_i_1 
@@ -52319,7 +52337,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__10_n_81),
         .I2(ARG3__21_n_76),
         .O(\MULT_REG_IQ[3][17]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair245" *) 
+  (* SOFT_HLUTNM = "soft_lutpair246" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[3][18]_i_1 
@@ -52327,7 +52345,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__10_n_80),
         .I2(ARG3__21_n_76),
         .O(\MULT_REG_IQ[3][18]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair244" *) 
+  (* SOFT_HLUTNM = "soft_lutpair245" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[3][19]_i_1 
@@ -52335,7 +52353,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__10_n_79),
         .I2(ARG3__21_n_76),
         .O(\MULT_REG_IQ[3][19]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair253" *) 
+  (* SOFT_HLUTNM = "soft_lutpair254" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[3][1]_i_1 
@@ -52343,7 +52361,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__10_n_97),
         .I2(ARG3__21_n_76),
         .O(\MULT_REG_IQ[3][1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair244" *) 
+  (* SOFT_HLUTNM = "soft_lutpair245" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[3][20]_i_1 
@@ -52371,7 +52389,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[3][20]_i_6 
        (.I0(ARG2__10_n_81),
         .O(\MULT_REG_IQ[3][20]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair243" *) 
+  (* SOFT_HLUTNM = "soft_lutpair244" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[3][21]_i_1 
@@ -52379,7 +52397,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__10_n_77),
         .I2(ARG3__21_n_76),
         .O(\MULT_REG_IQ[3][21]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair243" *) 
+  (* SOFT_HLUTNM = "soft_lutpair244" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \MULT_REG_IQ[3][22]_i_1 
@@ -52396,7 +52414,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[3][22]_i_4 
        (.I0(ARG2__10_n_77),
         .O(\MULT_REG_IQ[3][22]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair253" *) 
+  (* SOFT_HLUTNM = "soft_lutpair254" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[3][2]_i_1 
@@ -52404,7 +52422,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__10_n_96),
         .I2(ARG3__21_n_76),
         .O(\MULT_REG_IQ[3][2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair252" *) 
+  (* SOFT_HLUTNM = "soft_lutpair253" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[3][3]_i_1 
@@ -52412,7 +52430,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__10_n_95),
         .I2(ARG3__21_n_76),
         .O(\MULT_REG_IQ[3][3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair252" *) 
+  (* SOFT_HLUTNM = "soft_lutpair253" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[3][4]_i_1 
@@ -52445,7 +52463,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[3][4]_i_7 
        (.I0(ARG2__10_n_97),
         .O(\MULT_REG_IQ[3][4]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair251" *) 
+  (* SOFT_HLUTNM = "soft_lutpair252" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[3][5]_i_1 
@@ -52453,7 +52471,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__10_n_93),
         .I2(ARG3__21_n_76),
         .O(\MULT_REG_IQ[3][5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair251" *) 
+  (* SOFT_HLUTNM = "soft_lutpair252" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[3][6]_i_1 
@@ -52461,7 +52479,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__10_n_92),
         .I2(ARG3__21_n_76),
         .O(\MULT_REG_IQ[3][6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair250" *) 
+  (* SOFT_HLUTNM = "soft_lutpair251" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[3][7]_i_1 
@@ -52469,7 +52487,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__10_n_91),
         .I2(ARG3__21_n_76),
         .O(\MULT_REG_IQ[3][7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair250" *) 
+  (* SOFT_HLUTNM = "soft_lutpair251" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[3][8]_i_1 
@@ -52497,7 +52515,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[3][8]_i_6 
        (.I0(ARG2__10_n_93),
         .O(\MULT_REG_IQ[3][8]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair249" *) 
+  (* SOFT_HLUTNM = "soft_lutpair250" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[3][9]_i_1 
@@ -52505,7 +52523,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__10_n_89),
         .I2(ARG3__21_n_76),
         .O(\MULT_REG_IQ[3][9]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair265" *) 
+  (* SOFT_HLUTNM = "soft_lutpair266" *) 
   LUT3 #(
     .INIT(8'hCA)) 
     \MULT_REG_IQ[7][0]_i_1 
@@ -52558,7 +52576,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[7][0]_i_9 
        (.I0(ARG3__23_n_101),
         .O(\MULT_REG_IQ[7][0]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair271" *) 
+  (* SOFT_HLUTNM = "soft_lutpair272" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[7][10]_i_1 
@@ -52566,7 +52584,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__23_n_88),
         .I2(ARG3__23_n_77),
         .O(\MULT_REG_IQ[7][10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair271" *) 
+  (* SOFT_HLUTNM = "soft_lutpair272" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[7][11]_i_1 
@@ -52574,7 +52592,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__23_n_87),
         .I2(ARG3__23_n_77),
         .O(\MULT_REG_IQ[7][11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair270" *) 
+  (* SOFT_HLUTNM = "soft_lutpair271" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[7][12]_i_1 
@@ -52630,7 +52648,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[7][12]_i_9 
        (.I0(ARG3__23_n_90),
         .O(\MULT_REG_IQ[7][12]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair270" *) 
+  (* SOFT_HLUTNM = "soft_lutpair271" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[7][13]_i_1 
@@ -52638,7 +52656,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__23_n_85),
         .I2(ARG3__23_n_77),
         .O(\MULT_REG_IQ[7][13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair269" *) 
+  (* SOFT_HLUTNM = "soft_lutpair270" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[7][14]_i_1 
@@ -52646,7 +52664,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__23_n_84),
         .I2(ARG3__23_n_77),
         .O(\MULT_REG_IQ[7][14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair269" *) 
+  (* SOFT_HLUTNM = "soft_lutpair270" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[7][15]_i_1 
@@ -52654,7 +52672,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__23_n_83),
         .I2(ARG3__23_n_77),
         .O(\MULT_REG_IQ[7][15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair268" *) 
+  (* SOFT_HLUTNM = "soft_lutpair269" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[7][16]_i_1 
@@ -52710,7 +52728,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[7][16]_i_9 
        (.I0(ARG3__23_n_86),
         .O(\MULT_REG_IQ[7][16]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair268" *) 
+  (* SOFT_HLUTNM = "soft_lutpair269" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[7][17]_i_1 
@@ -52718,7 +52736,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__23_n_81),
         .I2(ARG3__23_n_77),
         .O(\MULT_REG_IQ[7][17]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair267" *) 
+  (* SOFT_HLUTNM = "soft_lutpair268" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[7][18]_i_1 
@@ -52726,7 +52744,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__23_n_80),
         .I2(ARG3__23_n_77),
         .O(\MULT_REG_IQ[7][18]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair267" *) 
+  (* SOFT_HLUTNM = "soft_lutpair268" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[7][19]_i_1 
@@ -52741,7 +52759,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__23_n_97),
         .I2(ARG3__23_n_77),
         .O(\MULT_REG_IQ[7][1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair266" *) 
+  (* SOFT_HLUTNM = "soft_lutpair267" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[7][20]_i_1 
@@ -52797,14 +52815,14 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[7][20]_i_9 
        (.I0(ARG3__23_n_82),
         .O(\MULT_REG_IQ[7][20]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair266" *) 
+  (* SOFT_HLUTNM = "soft_lutpair267" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_IQ[7][21]_i_1 
        (.I0(\MULT_REG_IQ_reg[7][22]_i_2_n_7 ),
         .I1(ARG3__23_n_77),
         .O(\MULT_REG_IQ[7][21]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair265" *) 
+  (* SOFT_HLUTNM = "soft_lutpair266" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \MULT_REG_IQ[7][22]_i_1 
@@ -52843,7 +52861,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[7][22]_i_9 
        (.I0(ARG3__23_n_79),
         .O(\MULT_REG_IQ[7][22]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair275" *) 
+  (* SOFT_HLUTNM = "soft_lutpair276" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[7][2]_i_1 
@@ -52851,7 +52869,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__23_n_96),
         .I2(ARG3__23_n_77),
         .O(\MULT_REG_IQ[7][2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair275" *) 
+  (* SOFT_HLUTNM = "soft_lutpair276" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[7][3]_i_1 
@@ -52859,7 +52877,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__23_n_95),
         .I2(ARG3__23_n_77),
         .O(\MULT_REG_IQ[7][3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair274" *) 
+  (* SOFT_HLUTNM = "soft_lutpair275" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[7][4]_i_1 
@@ -52902,7 +52920,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\MULT_REG_IQ_reg[7][0]_i_2_n_4 ),
         .I2(ARG3__23_n_97),
         .O(\MULT_REG_IQ[7][4]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair274" *) 
+  (* SOFT_HLUTNM = "soft_lutpair275" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[7][5]_i_1 
@@ -52910,7 +52928,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__23_n_93),
         .I2(ARG3__23_n_77),
         .O(\MULT_REG_IQ[7][5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair273" *) 
+  (* SOFT_HLUTNM = "soft_lutpair274" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[7][6]_i_1 
@@ -52918,7 +52936,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__23_n_92),
         .I2(ARG3__23_n_77),
         .O(\MULT_REG_IQ[7][6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair273" *) 
+  (* SOFT_HLUTNM = "soft_lutpair274" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[7][7]_i_1 
@@ -52926,7 +52944,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__23_n_91),
         .I2(ARG3__23_n_77),
         .O(\MULT_REG_IQ[7][7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair272" *) 
+  (* SOFT_HLUTNM = "soft_lutpair273" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[7][8]_i_1 
@@ -52982,7 +53000,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[7][8]_i_9 
        (.I0(ARG3__23_n_94),
         .O(\MULT_REG_IQ[7][8]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair272" *) 
+  (* SOFT_HLUTNM = "soft_lutpair273" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[7][9]_i_1 
@@ -52990,7 +53008,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__23_n_89),
         .I2(ARG3__23_n_77),
         .O(\MULT_REG_IQ[7][9]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair287" *) 
+  (* SOFT_HLUTNM = "soft_lutpair288" *) 
   LUT3 #(
     .INIT(8'hCA)) 
     \MULT_REG_IQ[8][0]_i_1 
@@ -53043,7 +53061,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[8][0]_i_9 
        (.I0(ARG3__25_n_101),
         .O(\MULT_REG_IQ[8][0]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair293" *) 
+  (* SOFT_HLUTNM = "soft_lutpair294" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[8][10]_i_1 
@@ -53051,7 +53069,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__25_n_88),
         .I2(ARG3__25_n_81),
         .O(\MULT_REG_IQ[8][10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair293" *) 
+  (* SOFT_HLUTNM = "soft_lutpair294" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[8][11]_i_1 
@@ -53059,7 +53077,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__25_n_87),
         .I2(ARG3__25_n_81),
         .O(\MULT_REG_IQ[8][11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair292" *) 
+  (* SOFT_HLUTNM = "soft_lutpair293" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[8][12]_i_1 
@@ -53115,7 +53133,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[8][12]_i_9 
        (.I0(ARG3__25_n_90),
         .O(\MULT_REG_IQ[8][12]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair291" *) 
+  (* SOFT_HLUTNM = "soft_lutpair292" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[8][13]_i_1 
@@ -53123,7 +53141,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__25_n_85),
         .I2(ARG3__25_n_81),
         .O(\MULT_REG_IQ[8][13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair290" *) 
+  (* SOFT_HLUTNM = "soft_lutpair291" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[8][14]_i_1 
@@ -53131,7 +53149,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__25_n_84),
         .I2(ARG3__25_n_81),
         .O(\MULT_REG_IQ[8][14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair289" *) 
+  (* SOFT_HLUTNM = "soft_lutpair290" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[8][15]_i_1 
@@ -53139,7 +53157,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__25_n_83),
         .I2(ARG3__25_n_81),
         .O(\MULT_REG_IQ[8][15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair288" *) 
+  (* SOFT_HLUTNM = "soft_lutpair289" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[8][16]_i_1 
@@ -53195,7 +53213,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[8][16]_i_9 
        (.I0(ARG3__25_n_86),
         .O(\MULT_REG_IQ[8][16]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair292" *) 
+  (* SOFT_HLUTNM = "soft_lutpair293" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_IQ[8][17]_i_1 
@@ -53246,14 +53264,14 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[8][17]_i_9 
        (.I0(ARG3__25_n_82),
         .O(\MULT_REG_IQ[8][17]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair290" *) 
+  (* SOFT_HLUTNM = "soft_lutpair291" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_IQ[8][18]_i_1 
        (.I0(\MULT_REG_IQ_reg[8][17]_i_2_n_6 ),
         .I1(ARG3__25_n_81),
         .O(\MULT_REG_IQ[8][18]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair289" *) 
+  (* SOFT_HLUTNM = "soft_lutpair290" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_IQ[8][19]_i_1 
@@ -53267,21 +53285,21 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__25_n_97),
         .I2(ARG3__25_n_81),
         .O(\MULT_REG_IQ[8][1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair288" *) 
+  (* SOFT_HLUTNM = "soft_lutpair289" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_IQ[8][20]_i_1 
        (.I0(\MULT_REG_IQ_reg[8][17]_i_2_n_4 ),
         .I1(ARG3__25_n_81),
         .O(\MULT_REG_IQ[8][20]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair287" *) 
+  (* SOFT_HLUTNM = "soft_lutpair288" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_IQ[8][21]_i_1 
        (.I0(\MULT_REG_IQ_reg[8][22]_i_2_n_7 ),
         .I1(ARG3__25_n_81),
         .O(\MULT_REG_IQ[8][21]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair291" *) 
+  (* SOFT_HLUTNM = "soft_lutpair292" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \MULT_REG_IQ[8][22]_i_1 
@@ -53300,7 +53318,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
        (.I0(\MULT_REG_IQ_reg[8][22]_i_5_n_3 ),
         .I1(ARG3__25_n_81),
         .O(\MULT_REG_IQ[8][22]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair297" *) 
+  (* SOFT_HLUTNM = "soft_lutpair298" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[8][2]_i_1 
@@ -53308,7 +53326,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__25_n_96),
         .I2(ARG3__25_n_81),
         .O(\MULT_REG_IQ[8][2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair297" *) 
+  (* SOFT_HLUTNM = "soft_lutpair298" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[8][3]_i_1 
@@ -53316,7 +53334,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__25_n_95),
         .I2(ARG3__25_n_81),
         .O(\MULT_REG_IQ[8][3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair296" *) 
+  (* SOFT_HLUTNM = "soft_lutpair297" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[8][4]_i_1 
@@ -53359,7 +53377,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\MULT_REG_IQ_reg[8][0]_i_2_n_4 ),
         .I2(ARG3__25_n_97),
         .O(\MULT_REG_IQ[8][4]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair296" *) 
+  (* SOFT_HLUTNM = "soft_lutpair297" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[8][5]_i_1 
@@ -53367,7 +53385,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__25_n_93),
         .I2(ARG3__25_n_81),
         .O(\MULT_REG_IQ[8][5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair295" *) 
+  (* SOFT_HLUTNM = "soft_lutpair296" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[8][6]_i_1 
@@ -53375,7 +53393,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__25_n_92),
         .I2(ARG3__25_n_81),
         .O(\MULT_REG_IQ[8][6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair295" *) 
+  (* SOFT_HLUTNM = "soft_lutpair296" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[8][7]_i_1 
@@ -53383,7 +53401,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__25_n_91),
         .I2(ARG3__25_n_81),
         .O(\MULT_REG_IQ[8][7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair294" *) 
+  (* SOFT_HLUTNM = "soft_lutpair295" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[8][8]_i_1 
@@ -53439,7 +53457,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[8][8]_i_9 
        (.I0(ARG3__25_n_94),
         .O(\MULT_REG_IQ[8][8]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair294" *) 
+  (* SOFT_HLUTNM = "soft_lutpair295" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[8][9]_i_1 
@@ -53447,7 +53465,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__25_n_89),
         .I2(ARG3__25_n_81),
         .O(\MULT_REG_IQ[8][9]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair315" *) 
+  (* SOFT_HLUTNM = "soft_lutpair316" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[9][10]_i_1 
@@ -53455,7 +53473,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__12_n_88),
         .I2(ARG3__27_n_76),
         .O(\MULT_REG_IQ[9][10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair314" *) 
+  (* SOFT_HLUTNM = "soft_lutpair315" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[9][11]_i_1 
@@ -53463,7 +53481,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__12_n_87),
         .I2(ARG3__27_n_76),
         .O(\MULT_REG_IQ[9][11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair314" *) 
+  (* SOFT_HLUTNM = "soft_lutpair315" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[9][12]_i_1 
@@ -53491,7 +53509,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[9][12]_i_6 
        (.I0(ARG2__12_n_89),
         .O(\MULT_REG_IQ[9][12]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair313" *) 
+  (* SOFT_HLUTNM = "soft_lutpair314" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[9][13]_i_1 
@@ -53499,7 +53517,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__12_n_85),
         .I2(ARG3__27_n_76),
         .O(\MULT_REG_IQ[9][13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair313" *) 
+  (* SOFT_HLUTNM = "soft_lutpair314" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[9][14]_i_1 
@@ -53507,7 +53525,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__12_n_84),
         .I2(ARG3__27_n_76),
         .O(\MULT_REG_IQ[9][14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair312" *) 
+  (* SOFT_HLUTNM = "soft_lutpair313" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[9][15]_i_1 
@@ -53515,7 +53533,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__12_n_83),
         .I2(ARG3__27_n_76),
         .O(\MULT_REG_IQ[9][15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair312" *) 
+  (* SOFT_HLUTNM = "soft_lutpair313" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[9][16]_i_1 
@@ -53543,7 +53561,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[9][16]_i_6 
        (.I0(ARG2__12_n_85),
         .O(\MULT_REG_IQ[9][16]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair311" *) 
+  (* SOFT_HLUTNM = "soft_lutpair312" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[9][17]_i_1 
@@ -53551,7 +53569,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__12_n_81),
         .I2(ARG3__27_n_76),
         .O(\MULT_REG_IQ[9][17]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair311" *) 
+  (* SOFT_HLUTNM = "soft_lutpair312" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[9][18]_i_1 
@@ -53559,7 +53577,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__12_n_80),
         .I2(ARG3__27_n_76),
         .O(\MULT_REG_IQ[9][18]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair310" *) 
+  (* SOFT_HLUTNM = "soft_lutpair311" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[9][19]_i_1 
@@ -53567,7 +53585,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__12_n_79),
         .I2(ARG3__27_n_76),
         .O(\MULT_REG_IQ[9][19]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair319" *) 
+  (* SOFT_HLUTNM = "soft_lutpair320" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[9][1]_i_1 
@@ -53575,7 +53593,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__12_n_97),
         .I2(ARG3__27_n_76),
         .O(\MULT_REG_IQ[9][1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair310" *) 
+  (* SOFT_HLUTNM = "soft_lutpair311" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[9][20]_i_1 
@@ -53603,7 +53621,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[9][20]_i_6 
        (.I0(ARG2__12_n_81),
         .O(\MULT_REG_IQ[9][20]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair309" *) 
+  (* SOFT_HLUTNM = "soft_lutpair310" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[9][21]_i_1 
@@ -53611,7 +53629,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__12_n_77),
         .I2(ARG3__27_n_76),
         .O(\MULT_REG_IQ[9][21]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair309" *) 
+  (* SOFT_HLUTNM = "soft_lutpair310" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \MULT_REG_IQ[9][22]_i_1 
@@ -53628,7 +53646,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[9][22]_i_4 
        (.I0(ARG2__12_n_77),
         .O(\MULT_REG_IQ[9][22]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair319" *) 
+  (* SOFT_HLUTNM = "soft_lutpair320" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[9][2]_i_1 
@@ -53636,7 +53654,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__12_n_96),
         .I2(ARG3__27_n_76),
         .O(\MULT_REG_IQ[9][2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair318" *) 
+  (* SOFT_HLUTNM = "soft_lutpair319" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[9][3]_i_1 
@@ -53644,7 +53662,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__12_n_95),
         .I2(ARG3__27_n_76),
         .O(\MULT_REG_IQ[9][3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair318" *) 
+  (* SOFT_HLUTNM = "soft_lutpair319" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[9][4]_i_1 
@@ -53677,7 +53695,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[9][4]_i_7 
        (.I0(ARG2__12_n_97),
         .O(\MULT_REG_IQ[9][4]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair317" *) 
+  (* SOFT_HLUTNM = "soft_lutpair318" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[9][5]_i_1 
@@ -53685,7 +53703,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__12_n_93),
         .I2(ARG3__27_n_76),
         .O(\MULT_REG_IQ[9][5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair317" *) 
+  (* SOFT_HLUTNM = "soft_lutpair318" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[9][6]_i_1 
@@ -53693,7 +53711,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__12_n_92),
         .I2(ARG3__27_n_76),
         .O(\MULT_REG_IQ[9][6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair316" *) 
+  (* SOFT_HLUTNM = "soft_lutpair317" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[9][7]_i_1 
@@ -53701,7 +53719,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__12_n_91),
         .I2(ARG3__27_n_76),
         .O(\MULT_REG_IQ[9][7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair316" *) 
+  (* SOFT_HLUTNM = "soft_lutpair317" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[9][8]_i_1 
@@ -53729,7 +53747,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_IQ[9][8]_i_6 
        (.I0(ARG2__12_n_93),
         .O(\MULT_REG_IQ[9][8]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair315" *) 
+  (* SOFT_HLUTNM = "soft_lutpair316" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_IQ[9][9]_i_1 
@@ -55748,7 +55766,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .D(\MULT_REG_IQ[9][9]_i_1_n_0 ),
         .Q(\MULT_REG_IQ_reg[9]_58 [9]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair177" *) 
+  (* SOFT_HLUTNM = "soft_lutpair178" *) 
   LUT3 #(
     .INIT(8'hCA)) 
     \MULT_REG_QI[0][0]_i_1 
@@ -55801,7 +55819,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[0][0]_i_9 
        (.I0(ARG3__15_n_101),
         .O(\MULT_REG_QI[0][0]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair183" *) 
+  (* SOFT_HLUTNM = "soft_lutpair184" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[0][10]_i_1 
@@ -55809,7 +55827,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__15_n_88),
         .I2(ARG3__15_n_81),
         .O(\MULT_REG_QI[0][10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair183" *) 
+  (* SOFT_HLUTNM = "soft_lutpair184" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[0][11]_i_1 
@@ -55817,7 +55835,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__15_n_87),
         .I2(ARG3__15_n_81),
         .O(\MULT_REG_QI[0][11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair182" *) 
+  (* SOFT_HLUTNM = "soft_lutpair183" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[0][12]_i_1 
@@ -55873,7 +55891,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[0][12]_i_9 
        (.I0(ARG3__15_n_90),
         .O(\MULT_REG_QI[0][12]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair181" *) 
+  (* SOFT_HLUTNM = "soft_lutpair182" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[0][13]_i_1 
@@ -55881,7 +55899,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__15_n_85),
         .I2(ARG3__15_n_81),
         .O(\MULT_REG_QI[0][13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair180" *) 
+  (* SOFT_HLUTNM = "soft_lutpair181" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[0][14]_i_1 
@@ -55889,7 +55907,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__15_n_84),
         .I2(ARG3__15_n_81),
         .O(\MULT_REG_QI[0][14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair179" *) 
+  (* SOFT_HLUTNM = "soft_lutpair180" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[0][15]_i_1 
@@ -55897,7 +55915,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__15_n_83),
         .I2(ARG3__15_n_81),
         .O(\MULT_REG_QI[0][15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair178" *) 
+  (* SOFT_HLUTNM = "soft_lutpair179" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[0][16]_i_1 
@@ -55953,7 +55971,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[0][16]_i_9 
        (.I0(ARG3__15_n_86),
         .O(\MULT_REG_QI[0][16]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair182" *) 
+  (* SOFT_HLUTNM = "soft_lutpair183" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_QI[0][17]_i_1 
@@ -56004,14 +56022,14 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[0][17]_i_9 
        (.I0(ARG3__15_n_82),
         .O(\MULT_REG_QI[0][17]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair180" *) 
+  (* SOFT_HLUTNM = "soft_lutpair181" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_QI[0][18]_i_1 
        (.I0(\MULT_REG_QI_reg[0][17]_i_2_n_6 ),
         .I1(ARG3__15_n_81),
         .O(\MULT_REG_QI[0][18]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair179" *) 
+  (* SOFT_HLUTNM = "soft_lutpair180" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_QI[0][19]_i_1 
@@ -56025,21 +56043,21 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__15_n_97),
         .I2(ARG3__15_n_81),
         .O(\MULT_REG_QI[0][1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair178" *) 
+  (* SOFT_HLUTNM = "soft_lutpair179" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_QI[0][20]_i_1 
        (.I0(\MULT_REG_QI_reg[0][17]_i_2_n_4 ),
         .I1(ARG3__15_n_81),
         .O(\MULT_REG_QI[0][20]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair177" *) 
+  (* SOFT_HLUTNM = "soft_lutpair178" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_QI[0][21]_i_1 
        (.I0(\MULT_REG_QI_reg[0][22]_i_2_n_7 ),
         .I1(ARG3__15_n_81),
         .O(\MULT_REG_QI[0][21]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair181" *) 
+  (* SOFT_HLUTNM = "soft_lutpair182" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \MULT_REG_QI[0][22]_i_1 
@@ -56058,7 +56076,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
        (.I0(\MULT_REG_QI_reg[0][22]_i_5_n_3 ),
         .I1(ARG3__15_n_81),
         .O(\MULT_REG_QI[0][22]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair187" *) 
+  (* SOFT_HLUTNM = "soft_lutpair188" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[0][2]_i_1 
@@ -56066,7 +56084,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__15_n_96),
         .I2(ARG3__15_n_81),
         .O(\MULT_REG_QI[0][2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair187" *) 
+  (* SOFT_HLUTNM = "soft_lutpair188" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[0][3]_i_1 
@@ -56074,7 +56092,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__15_n_95),
         .I2(ARG3__15_n_81),
         .O(\MULT_REG_QI[0][3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair186" *) 
+  (* SOFT_HLUTNM = "soft_lutpair187" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[0][4]_i_1 
@@ -56117,7 +56135,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\MULT_REG_QI_reg[0][0]_i_2_n_4 ),
         .I2(ARG3__15_n_97),
         .O(\MULT_REG_QI[0][4]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair186" *) 
+  (* SOFT_HLUTNM = "soft_lutpair187" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[0][5]_i_1 
@@ -56125,7 +56143,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__15_n_93),
         .I2(ARG3__15_n_81),
         .O(\MULT_REG_QI[0][5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair185" *) 
+  (* SOFT_HLUTNM = "soft_lutpair186" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[0][6]_i_1 
@@ -56133,7 +56151,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__15_n_92),
         .I2(ARG3__15_n_81),
         .O(\MULT_REG_QI[0][6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair185" *) 
+  (* SOFT_HLUTNM = "soft_lutpair186" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[0][7]_i_1 
@@ -56141,7 +56159,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__15_n_91),
         .I2(ARG3__15_n_81),
         .O(\MULT_REG_QI[0][7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair184" *) 
+  (* SOFT_HLUTNM = "soft_lutpair185" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[0][8]_i_1 
@@ -56197,7 +56215,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[0][8]_i_9 
        (.I0(ARG3__15_n_94),
         .O(\MULT_REG_QI[0][8]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair184" *) 
+  (* SOFT_HLUTNM = "soft_lutpair185" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[0][9]_i_1 
@@ -56205,7 +56223,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__15_n_89),
         .I2(ARG3__15_n_81),
         .O(\MULT_REG_QI[0][9]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair326" *) 
+  (* SOFT_HLUTNM = "soft_lutpair327" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[10][10]_i_1 
@@ -56213,7 +56231,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__13_n_88),
         .I2(ARG3__28_n_76),
         .O(\MULT_REG_QI[10][10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair325" *) 
+  (* SOFT_HLUTNM = "soft_lutpair326" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[10][11]_i_1 
@@ -56221,7 +56239,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__13_n_87),
         .I2(ARG3__28_n_76),
         .O(\MULT_REG_QI[10][11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair325" *) 
+  (* SOFT_HLUTNM = "soft_lutpair326" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[10][12]_i_1 
@@ -56249,7 +56267,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[10][12]_i_6 
        (.I0(ARG2__13_n_89),
         .O(\MULT_REG_QI[10][12]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair324" *) 
+  (* SOFT_HLUTNM = "soft_lutpair325" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[10][13]_i_1 
@@ -56257,7 +56275,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__13_n_85),
         .I2(ARG3__28_n_76),
         .O(\MULT_REG_QI[10][13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair324" *) 
+  (* SOFT_HLUTNM = "soft_lutpair325" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[10][14]_i_1 
@@ -56265,7 +56283,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__13_n_84),
         .I2(ARG3__28_n_76),
         .O(\MULT_REG_QI[10][14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair323" *) 
+  (* SOFT_HLUTNM = "soft_lutpair324" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[10][15]_i_1 
@@ -56273,7 +56291,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__13_n_83),
         .I2(ARG3__28_n_76),
         .O(\MULT_REG_QI[10][15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair323" *) 
+  (* SOFT_HLUTNM = "soft_lutpair324" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[10][16]_i_1 
@@ -56301,7 +56319,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[10][16]_i_6 
        (.I0(ARG2__13_n_85),
         .O(\MULT_REG_QI[10][16]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair322" *) 
+  (* SOFT_HLUTNM = "soft_lutpair323" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[10][17]_i_1 
@@ -56309,7 +56327,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__13_n_81),
         .I2(ARG3__28_n_76),
         .O(\MULT_REG_QI[10][17]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair322" *) 
+  (* SOFT_HLUTNM = "soft_lutpair323" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[10][18]_i_1 
@@ -56317,7 +56335,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__13_n_80),
         .I2(ARG3__28_n_76),
         .O(\MULT_REG_QI[10][18]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair321" *) 
+  (* SOFT_HLUTNM = "soft_lutpair322" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[10][19]_i_1 
@@ -56325,7 +56343,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__13_n_79),
         .I2(ARG3__28_n_76),
         .O(\MULT_REG_QI[10][19]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair330" *) 
+  (* SOFT_HLUTNM = "soft_lutpair331" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[10][1]_i_1 
@@ -56333,7 +56351,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__13_n_97),
         .I2(ARG3__28_n_76),
         .O(\MULT_REG_QI[10][1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair321" *) 
+  (* SOFT_HLUTNM = "soft_lutpair322" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[10][20]_i_1 
@@ -56361,7 +56379,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[10][20]_i_6 
        (.I0(ARG2__13_n_81),
         .O(\MULT_REG_QI[10][20]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair320" *) 
+  (* SOFT_HLUTNM = "soft_lutpair321" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[10][21]_i_1 
@@ -56369,7 +56387,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__13_n_77),
         .I2(ARG3__28_n_76),
         .O(\MULT_REG_QI[10][21]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair320" *) 
+  (* SOFT_HLUTNM = "soft_lutpair321" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \MULT_REG_QI[10][22]_i_1 
@@ -56386,7 +56404,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[10][22]_i_4 
        (.I0(ARG2__13_n_77),
         .O(\MULT_REG_QI[10][22]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair330" *) 
+  (* SOFT_HLUTNM = "soft_lutpair331" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[10][2]_i_1 
@@ -56394,7 +56412,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__13_n_96),
         .I2(ARG3__28_n_76),
         .O(\MULT_REG_QI[10][2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair329" *) 
+  (* SOFT_HLUTNM = "soft_lutpair330" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[10][3]_i_1 
@@ -56402,7 +56420,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__13_n_95),
         .I2(ARG3__28_n_76),
         .O(\MULT_REG_QI[10][3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair329" *) 
+  (* SOFT_HLUTNM = "soft_lutpair330" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[10][4]_i_1 
@@ -56435,7 +56453,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[10][4]_i_7 
        (.I0(ARG2__13_n_97),
         .O(\MULT_REG_QI[10][4]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair328" *) 
+  (* SOFT_HLUTNM = "soft_lutpair329" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[10][5]_i_1 
@@ -56443,7 +56461,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__13_n_93),
         .I2(ARG3__28_n_76),
         .O(\MULT_REG_QI[10][5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair328" *) 
+  (* SOFT_HLUTNM = "soft_lutpair329" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[10][6]_i_1 
@@ -56451,7 +56469,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__13_n_92),
         .I2(ARG3__28_n_76),
         .O(\MULT_REG_QI[10][6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair327" *) 
+  (* SOFT_HLUTNM = "soft_lutpair328" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[10][7]_i_1 
@@ -56459,7 +56477,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__13_n_91),
         .I2(ARG3__28_n_76),
         .O(\MULT_REG_QI[10][7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair327" *) 
+  (* SOFT_HLUTNM = "soft_lutpair328" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[10][8]_i_1 
@@ -56487,7 +56505,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[10][8]_i_6 
        (.I0(ARG2__13_n_93),
         .O(\MULT_REG_QI[10][8]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair326" *) 
+  (* SOFT_HLUTNM = "soft_lutpair327" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[10][9]_i_1 
@@ -56495,7 +56513,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__13_n_89),
         .I2(ARG3__28_n_76),
         .O(\MULT_REG_QI[10][9]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair348" *) 
+  (* SOFT_HLUTNM = "soft_lutpair349" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[11][10]_i_1 
@@ -56503,7 +56521,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__14_n_88),
         .I2(ARG3__30_n_76),
         .O(\MULT_REG_QI[11][10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair347" *) 
+  (* SOFT_HLUTNM = "soft_lutpair348" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[11][11]_i_1 
@@ -56511,7 +56529,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__14_n_87),
         .I2(ARG3__30_n_76),
         .O(\MULT_REG_QI[11][11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair347" *) 
+  (* SOFT_HLUTNM = "soft_lutpair348" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[11][12]_i_1 
@@ -56539,7 +56557,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[11][12]_i_6 
        (.I0(ARG2__14_n_89),
         .O(\MULT_REG_QI[11][12]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair346" *) 
+  (* SOFT_HLUTNM = "soft_lutpair347" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[11][13]_i_1 
@@ -56547,7 +56565,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__14_n_85),
         .I2(ARG3__30_n_76),
         .O(\MULT_REG_QI[11][13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair346" *) 
+  (* SOFT_HLUTNM = "soft_lutpair347" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[11][14]_i_1 
@@ -56555,7 +56573,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__14_n_84),
         .I2(ARG3__30_n_76),
         .O(\MULT_REG_QI[11][14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair345" *) 
+  (* SOFT_HLUTNM = "soft_lutpair346" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[11][15]_i_1 
@@ -56563,7 +56581,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__14_n_83),
         .I2(ARG3__30_n_76),
         .O(\MULT_REG_QI[11][15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair345" *) 
+  (* SOFT_HLUTNM = "soft_lutpair346" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[11][16]_i_1 
@@ -56591,7 +56609,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[11][16]_i_6 
        (.I0(ARG2__14_n_85),
         .O(\MULT_REG_QI[11][16]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair344" *) 
+  (* SOFT_HLUTNM = "soft_lutpair345" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[11][17]_i_1 
@@ -56599,7 +56617,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__14_n_81),
         .I2(ARG3__30_n_76),
         .O(\MULT_REG_QI[11][17]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair344" *) 
+  (* SOFT_HLUTNM = "soft_lutpair345" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[11][18]_i_1 
@@ -56607,7 +56625,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__14_n_80),
         .I2(ARG3__30_n_76),
         .O(\MULT_REG_QI[11][18]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair343" *) 
+  (* SOFT_HLUTNM = "soft_lutpair344" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[11][19]_i_1 
@@ -56615,7 +56633,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__14_n_79),
         .I2(ARG3__30_n_76),
         .O(\MULT_REG_QI[11][19]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair352" *) 
+  (* SOFT_HLUTNM = "soft_lutpair353" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[11][1]_i_1 
@@ -56623,7 +56641,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__14_n_97),
         .I2(ARG3__30_n_76),
         .O(\MULT_REG_QI[11][1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair343" *) 
+  (* SOFT_HLUTNM = "soft_lutpair344" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[11][20]_i_1 
@@ -56651,7 +56669,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[11][20]_i_6 
        (.I0(ARG2__14_n_81),
         .O(\MULT_REG_QI[11][20]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair342" *) 
+  (* SOFT_HLUTNM = "soft_lutpair343" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[11][21]_i_1 
@@ -56659,7 +56677,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__14_n_77),
         .I2(ARG3__30_n_76),
         .O(\MULT_REG_QI[11][21]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair342" *) 
+  (* SOFT_HLUTNM = "soft_lutpair343" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \MULT_REG_QI[11][22]_i_1 
@@ -56676,7 +56694,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[11][22]_i_4 
        (.I0(ARG2__14_n_77),
         .O(\MULT_REG_QI[11][22]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair352" *) 
+  (* SOFT_HLUTNM = "soft_lutpair353" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[11][2]_i_1 
@@ -56684,7 +56702,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__14_n_96),
         .I2(ARG3__30_n_76),
         .O(\MULT_REG_QI[11][2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair351" *) 
+  (* SOFT_HLUTNM = "soft_lutpair352" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[11][3]_i_1 
@@ -56692,7 +56710,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__14_n_95),
         .I2(ARG3__30_n_76),
         .O(\MULT_REG_QI[11][3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair351" *) 
+  (* SOFT_HLUTNM = "soft_lutpair352" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[11][4]_i_1 
@@ -56725,7 +56743,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[11][4]_i_7 
        (.I0(ARG2__14_n_97),
         .O(\MULT_REG_QI[11][4]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair350" *) 
+  (* SOFT_HLUTNM = "soft_lutpair351" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[11][5]_i_1 
@@ -56733,7 +56751,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__14_n_93),
         .I2(ARG3__30_n_76),
         .O(\MULT_REG_QI[11][5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair350" *) 
+  (* SOFT_HLUTNM = "soft_lutpair351" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[11][6]_i_1 
@@ -56741,7 +56759,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__14_n_92),
         .I2(ARG3__30_n_76),
         .O(\MULT_REG_QI[11][6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair349" *) 
+  (* SOFT_HLUTNM = "soft_lutpair350" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[11][7]_i_1 
@@ -56749,7 +56767,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__14_n_91),
         .I2(ARG3__30_n_76),
         .O(\MULT_REG_QI[11][7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair349" *) 
+  (* SOFT_HLUTNM = "soft_lutpair350" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[11][8]_i_1 
@@ -56777,7 +56795,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[11][8]_i_6 
        (.I0(ARG2__14_n_93),
         .O(\MULT_REG_QI[11][8]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair348" *) 
+  (* SOFT_HLUTNM = "soft_lutpair349" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[11][9]_i_1 
@@ -56785,7 +56803,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__14_n_89),
         .I2(ARG3__30_n_76),
         .O(\MULT_REG_QI[11][9]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair205" *) 
+  (* SOFT_HLUTNM = "soft_lutpair206" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[1][10]_i_1 
@@ -56793,7 +56811,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__8_n_88),
         .I2(ARG3__17_n_76),
         .O(\MULT_REG_QI[1][10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair204" *) 
+  (* SOFT_HLUTNM = "soft_lutpair205" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[1][11]_i_1 
@@ -56801,7 +56819,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__8_n_87),
         .I2(ARG3__17_n_76),
         .O(\MULT_REG_QI[1][11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair204" *) 
+  (* SOFT_HLUTNM = "soft_lutpair205" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[1][12]_i_1 
@@ -56829,7 +56847,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[1][12]_i_6 
        (.I0(ARG2__8_n_89),
         .O(\MULT_REG_QI[1][12]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair203" *) 
+  (* SOFT_HLUTNM = "soft_lutpair204" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[1][13]_i_1 
@@ -56837,7 +56855,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__8_n_85),
         .I2(ARG3__17_n_76),
         .O(\MULT_REG_QI[1][13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair203" *) 
+  (* SOFT_HLUTNM = "soft_lutpair204" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[1][14]_i_1 
@@ -56845,7 +56863,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__8_n_84),
         .I2(ARG3__17_n_76),
         .O(\MULT_REG_QI[1][14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair202" *) 
+  (* SOFT_HLUTNM = "soft_lutpair203" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[1][15]_i_1 
@@ -56853,7 +56871,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__8_n_83),
         .I2(ARG3__17_n_76),
         .O(\MULT_REG_QI[1][15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair202" *) 
+  (* SOFT_HLUTNM = "soft_lutpair203" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[1][16]_i_1 
@@ -56881,7 +56899,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[1][16]_i_6 
        (.I0(ARG2__8_n_85),
         .O(\MULT_REG_QI[1][16]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair201" *) 
+  (* SOFT_HLUTNM = "soft_lutpair202" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[1][17]_i_1 
@@ -56889,7 +56907,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__8_n_81),
         .I2(ARG3__17_n_76),
         .O(\MULT_REG_QI[1][17]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair201" *) 
+  (* SOFT_HLUTNM = "soft_lutpair202" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[1][18]_i_1 
@@ -56897,7 +56915,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__8_n_80),
         .I2(ARG3__17_n_76),
         .O(\MULT_REG_QI[1][18]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair200" *) 
+  (* SOFT_HLUTNM = "soft_lutpair201" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[1][19]_i_1 
@@ -56905,7 +56923,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__8_n_79),
         .I2(ARG3__17_n_76),
         .O(\MULT_REG_QI[1][19]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair209" *) 
+  (* SOFT_HLUTNM = "soft_lutpair210" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[1][1]_i_1 
@@ -56913,7 +56931,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__8_n_97),
         .I2(ARG3__17_n_76),
         .O(\MULT_REG_QI[1][1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair200" *) 
+  (* SOFT_HLUTNM = "soft_lutpair201" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[1][20]_i_1 
@@ -56941,7 +56959,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[1][20]_i_6 
        (.I0(ARG2__8_n_81),
         .O(\MULT_REG_QI[1][20]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair199" *) 
+  (* SOFT_HLUTNM = "soft_lutpair200" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[1][21]_i_1 
@@ -56949,7 +56967,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__8_n_77),
         .I2(ARG3__17_n_76),
         .O(\MULT_REG_QI[1][21]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair199" *) 
+  (* SOFT_HLUTNM = "soft_lutpair200" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \MULT_REG_QI[1][22]_i_1 
@@ -56966,7 +56984,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[1][22]_i_4 
        (.I0(ARG2__8_n_77),
         .O(\MULT_REG_QI[1][22]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair209" *) 
+  (* SOFT_HLUTNM = "soft_lutpair210" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[1][2]_i_1 
@@ -56974,7 +56992,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__8_n_96),
         .I2(ARG3__17_n_76),
         .O(\MULT_REG_QI[1][2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair208" *) 
+  (* SOFT_HLUTNM = "soft_lutpair209" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[1][3]_i_1 
@@ -56982,7 +57000,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__8_n_95),
         .I2(ARG3__17_n_76),
         .O(\MULT_REG_QI[1][3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair208" *) 
+  (* SOFT_HLUTNM = "soft_lutpair209" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[1][4]_i_1 
@@ -57015,7 +57033,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[1][4]_i_7 
        (.I0(ARG2__8_n_97),
         .O(\MULT_REG_QI[1][4]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair207" *) 
+  (* SOFT_HLUTNM = "soft_lutpair208" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[1][5]_i_1 
@@ -57023,7 +57041,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__8_n_93),
         .I2(ARG3__17_n_76),
         .O(\MULT_REG_QI[1][5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair207" *) 
+  (* SOFT_HLUTNM = "soft_lutpair208" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[1][6]_i_1 
@@ -57031,7 +57049,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__8_n_92),
         .I2(ARG3__17_n_76),
         .O(\MULT_REG_QI[1][6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair206" *) 
+  (* SOFT_HLUTNM = "soft_lutpair207" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[1][7]_i_1 
@@ -57039,7 +57057,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__8_n_91),
         .I2(ARG3__17_n_76),
         .O(\MULT_REG_QI[1][7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair206" *) 
+  (* SOFT_HLUTNM = "soft_lutpair207" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[1][8]_i_1 
@@ -57067,7 +57085,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[1][8]_i_6 
        (.I0(ARG2__8_n_93),
         .O(\MULT_REG_QI[1][8]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair205" *) 
+  (* SOFT_HLUTNM = "soft_lutpair206" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[1][9]_i_1 
@@ -57075,7 +57093,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__8_n_89),
         .I2(ARG3__17_n_76),
         .O(\MULT_REG_QI[1][9]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair221" *) 
+  (* SOFT_HLUTNM = "soft_lutpair222" *) 
   LUT3 #(
     .INIT(8'hCA)) 
     \MULT_REG_QI[2][0]_i_1 
@@ -57128,7 +57146,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[2][0]_i_9 
        (.I0(ARG3__19_n_101),
         .O(\MULT_REG_QI[2][0]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair227" *) 
+  (* SOFT_HLUTNM = "soft_lutpair228" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[2][10]_i_1 
@@ -57136,7 +57154,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__19_n_88),
         .I2(ARG3__19_n_79),
         .O(\MULT_REG_QI[2][10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair227" *) 
+  (* SOFT_HLUTNM = "soft_lutpair228" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[2][11]_i_1 
@@ -57144,7 +57162,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__19_n_87),
         .I2(ARG3__19_n_79),
         .O(\MULT_REG_QI[2][11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair226" *) 
+  (* SOFT_HLUTNM = "soft_lutpair227" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[2][12]_i_1 
@@ -57200,7 +57218,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[2][12]_i_9 
        (.I0(ARG3__19_n_90),
         .O(\MULT_REG_QI[2][12]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair226" *) 
+  (* SOFT_HLUTNM = "soft_lutpair227" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[2][13]_i_1 
@@ -57208,7 +57226,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__19_n_85),
         .I2(ARG3__19_n_79),
         .O(\MULT_REG_QI[2][13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair225" *) 
+  (* SOFT_HLUTNM = "soft_lutpair226" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[2][14]_i_1 
@@ -57216,7 +57234,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__19_n_84),
         .I2(ARG3__19_n_79),
         .O(\MULT_REG_QI[2][14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair225" *) 
+  (* SOFT_HLUTNM = "soft_lutpair226" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[2][15]_i_1 
@@ -57224,7 +57242,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__19_n_83),
         .I2(ARG3__19_n_79),
         .O(\MULT_REG_QI[2][15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair224" *) 
+  (* SOFT_HLUTNM = "soft_lutpair225" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[2][16]_i_1 
@@ -57280,7 +57298,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[2][16]_i_9 
        (.I0(ARG3__19_n_86),
         .O(\MULT_REG_QI[2][16]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair223" *) 
+  (* SOFT_HLUTNM = "soft_lutpair224" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[2][17]_i_1 
@@ -57288,7 +57306,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__19_n_81),
         .I2(ARG3__19_n_79),
         .O(\MULT_REG_QI[2][17]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair222" *) 
+  (* SOFT_HLUTNM = "soft_lutpair223" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[2][18]_i_1 
@@ -57296,7 +57314,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__19_n_80),
         .I2(ARG3__19_n_79),
         .O(\MULT_REG_QI[2][18]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair224" *) 
+  (* SOFT_HLUTNM = "soft_lutpair225" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_QI[2][19]_i_1 
@@ -57310,7 +57328,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__19_n_97),
         .I2(ARG3__19_n_79),
         .O(\MULT_REG_QI[2][1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair223" *) 
+  (* SOFT_HLUTNM = "soft_lutpair224" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_QI[2][20]_i_1 
@@ -57363,14 +57381,14 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[2][20]_i_9 
        (.I0(ARG3__19_n_82),
         .O(\MULT_REG_QI[2][20]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair222" *) 
+  (* SOFT_HLUTNM = "soft_lutpair223" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_QI[2][21]_i_1 
        (.I0(\MULT_REG_QI_reg[2][22]_i_2_n_7 ),
         .I1(ARG3__19_n_79),
         .O(\MULT_REG_QI[2][21]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair221" *) 
+  (* SOFT_HLUTNM = "soft_lutpair222" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \MULT_REG_QI[2][22]_i_1 
@@ -57399,7 +57417,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[2][22]_i_7 
        (.I0(ARG3__19_n_80),
         .O(\MULT_REG_QI[2][22]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair231" *) 
+  (* SOFT_HLUTNM = "soft_lutpair232" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[2][2]_i_1 
@@ -57407,7 +57425,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__19_n_96),
         .I2(ARG3__19_n_79),
         .O(\MULT_REG_QI[2][2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair231" *) 
+  (* SOFT_HLUTNM = "soft_lutpair232" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[2][3]_i_1 
@@ -57415,7 +57433,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__19_n_95),
         .I2(ARG3__19_n_79),
         .O(\MULT_REG_QI[2][3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair230" *) 
+  (* SOFT_HLUTNM = "soft_lutpair231" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[2][4]_i_1 
@@ -57458,7 +57476,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\MULT_REG_QI_reg[2][0]_i_2_n_4 ),
         .I2(ARG3__19_n_97),
         .O(\MULT_REG_QI[2][4]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair230" *) 
+  (* SOFT_HLUTNM = "soft_lutpair231" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[2][5]_i_1 
@@ -57466,7 +57484,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__19_n_93),
         .I2(ARG3__19_n_79),
         .O(\MULT_REG_QI[2][5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair229" *) 
+  (* SOFT_HLUTNM = "soft_lutpair230" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[2][6]_i_1 
@@ -57474,7 +57492,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__19_n_92),
         .I2(ARG3__19_n_79),
         .O(\MULT_REG_QI[2][6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair229" *) 
+  (* SOFT_HLUTNM = "soft_lutpair230" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[2][7]_i_1 
@@ -57482,7 +57500,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__19_n_91),
         .I2(ARG3__19_n_79),
         .O(\MULT_REG_QI[2][7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair228" *) 
+  (* SOFT_HLUTNM = "soft_lutpair229" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[2][8]_i_1 
@@ -57538,7 +57556,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[2][8]_i_9 
        (.I0(ARG3__19_n_94),
         .O(\MULT_REG_QI[2][8]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair228" *) 
+  (* SOFT_HLUTNM = "soft_lutpair229" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[2][9]_i_1 
@@ -57546,7 +57564,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__19_n_89),
         .I2(ARG3__19_n_79),
         .O(\MULT_REG_QI[2][9]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair254" *) 
+  (* SOFT_HLUTNM = "soft_lutpair255" *) 
   LUT3 #(
     .INIT(8'hCA)) 
     \MULT_REG_QI[7][0]_i_1 
@@ -57599,7 +57617,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[7][0]_i_9 
        (.I0(ARG3__22_n_101),
         .O(\MULT_REG_QI[7][0]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair260" *) 
+  (* SOFT_HLUTNM = "soft_lutpair261" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[7][10]_i_1 
@@ -57607,7 +57625,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__22_n_88),
         .I2(ARG3__22_n_77),
         .O(\MULT_REG_QI[7][10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair260" *) 
+  (* SOFT_HLUTNM = "soft_lutpair261" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[7][11]_i_1 
@@ -57615,7 +57633,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__22_n_87),
         .I2(ARG3__22_n_77),
         .O(\MULT_REG_QI[7][11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair259" *) 
+  (* SOFT_HLUTNM = "soft_lutpair260" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[7][12]_i_1 
@@ -57671,7 +57689,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[7][12]_i_9 
        (.I0(ARG3__22_n_90),
         .O(\MULT_REG_QI[7][12]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair259" *) 
+  (* SOFT_HLUTNM = "soft_lutpair260" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[7][13]_i_1 
@@ -57679,7 +57697,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__22_n_85),
         .I2(ARG3__22_n_77),
         .O(\MULT_REG_QI[7][13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair258" *) 
+  (* SOFT_HLUTNM = "soft_lutpair259" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[7][14]_i_1 
@@ -57687,7 +57705,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__22_n_84),
         .I2(ARG3__22_n_77),
         .O(\MULT_REG_QI[7][14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair258" *) 
+  (* SOFT_HLUTNM = "soft_lutpair259" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[7][15]_i_1 
@@ -57695,7 +57713,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__22_n_83),
         .I2(ARG3__22_n_77),
         .O(\MULT_REG_QI[7][15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair257" *) 
+  (* SOFT_HLUTNM = "soft_lutpair258" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[7][16]_i_1 
@@ -57751,7 +57769,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[7][16]_i_9 
        (.I0(ARG3__22_n_86),
         .O(\MULT_REG_QI[7][16]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair257" *) 
+  (* SOFT_HLUTNM = "soft_lutpair258" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[7][17]_i_1 
@@ -57759,7 +57777,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__22_n_81),
         .I2(ARG3__22_n_77),
         .O(\MULT_REG_QI[7][17]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair256" *) 
+  (* SOFT_HLUTNM = "soft_lutpair257" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[7][18]_i_1 
@@ -57767,7 +57785,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__22_n_80),
         .I2(ARG3__22_n_77),
         .O(\MULT_REG_QI[7][18]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair256" *) 
+  (* SOFT_HLUTNM = "soft_lutpair257" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[7][19]_i_1 
@@ -57782,7 +57800,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__22_n_97),
         .I2(ARG3__22_n_77),
         .O(\MULT_REG_QI[7][1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair255" *) 
+  (* SOFT_HLUTNM = "soft_lutpair256" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[7][20]_i_1 
@@ -57838,14 +57856,14 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[7][20]_i_9 
        (.I0(ARG3__22_n_82),
         .O(\MULT_REG_QI[7][20]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair255" *) 
+  (* SOFT_HLUTNM = "soft_lutpair256" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_QI[7][21]_i_1 
        (.I0(\MULT_REG_QI_reg[7][22]_i_2_n_7 ),
         .I1(ARG3__22_n_77),
         .O(\MULT_REG_QI[7][21]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair254" *) 
+  (* SOFT_HLUTNM = "soft_lutpair255" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \MULT_REG_QI[7][22]_i_1 
@@ -57884,7 +57902,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[7][22]_i_9 
        (.I0(ARG3__22_n_79),
         .O(\MULT_REG_QI[7][22]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair264" *) 
+  (* SOFT_HLUTNM = "soft_lutpair265" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[7][2]_i_1 
@@ -57892,7 +57910,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__22_n_96),
         .I2(ARG3__22_n_77),
         .O(\MULT_REG_QI[7][2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair264" *) 
+  (* SOFT_HLUTNM = "soft_lutpair265" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[7][3]_i_1 
@@ -57900,7 +57918,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__22_n_95),
         .I2(ARG3__22_n_77),
         .O(\MULT_REG_QI[7][3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair263" *) 
+  (* SOFT_HLUTNM = "soft_lutpair264" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[7][4]_i_1 
@@ -57943,7 +57961,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\MULT_REG_QI_reg[7][0]_i_2_n_4 ),
         .I2(ARG3__22_n_97),
         .O(\MULT_REG_QI[7][4]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair263" *) 
+  (* SOFT_HLUTNM = "soft_lutpair264" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[7][5]_i_1 
@@ -57951,7 +57969,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__22_n_93),
         .I2(ARG3__22_n_77),
         .O(\MULT_REG_QI[7][5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair262" *) 
+  (* SOFT_HLUTNM = "soft_lutpair263" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[7][6]_i_1 
@@ -57959,7 +57977,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__22_n_92),
         .I2(ARG3__22_n_77),
         .O(\MULT_REG_QI[7][6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair262" *) 
+  (* SOFT_HLUTNM = "soft_lutpair263" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[7][7]_i_1 
@@ -57967,7 +57985,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__22_n_91),
         .I2(ARG3__22_n_77),
         .O(\MULT_REG_QI[7][7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair261" *) 
+  (* SOFT_HLUTNM = "soft_lutpair262" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[7][8]_i_1 
@@ -58023,7 +58041,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[7][8]_i_9 
        (.I0(ARG3__22_n_94),
         .O(\MULT_REG_QI[7][8]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair261" *) 
+  (* SOFT_HLUTNM = "soft_lutpair262" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[7][9]_i_1 
@@ -58031,7 +58049,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__22_n_89),
         .I2(ARG3__22_n_77),
         .O(\MULT_REG_QI[7][9]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair282" *) 
+  (* SOFT_HLUTNM = "soft_lutpair283" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[8][10]_i_1 
@@ -58039,7 +58057,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__11_n_88),
         .I2(ARG3__24_n_76),
         .O(\MULT_REG_QI[8][10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair281" *) 
+  (* SOFT_HLUTNM = "soft_lutpair282" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[8][11]_i_1 
@@ -58047,7 +58065,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__11_n_87),
         .I2(ARG3__24_n_76),
         .O(\MULT_REG_QI[8][11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair281" *) 
+  (* SOFT_HLUTNM = "soft_lutpair282" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[8][12]_i_1 
@@ -58075,7 +58093,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[8][12]_i_6 
        (.I0(ARG2__11_n_89),
         .O(\MULT_REG_QI[8][12]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair280" *) 
+  (* SOFT_HLUTNM = "soft_lutpair281" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[8][13]_i_1 
@@ -58083,7 +58101,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__11_n_85),
         .I2(ARG3__24_n_76),
         .O(\MULT_REG_QI[8][13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair280" *) 
+  (* SOFT_HLUTNM = "soft_lutpair281" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[8][14]_i_1 
@@ -58091,7 +58109,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__11_n_84),
         .I2(ARG3__24_n_76),
         .O(\MULT_REG_QI[8][14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair279" *) 
+  (* SOFT_HLUTNM = "soft_lutpair280" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[8][15]_i_1 
@@ -58099,7 +58117,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__11_n_83),
         .I2(ARG3__24_n_76),
         .O(\MULT_REG_QI[8][15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair279" *) 
+  (* SOFT_HLUTNM = "soft_lutpair280" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[8][16]_i_1 
@@ -58127,7 +58145,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[8][16]_i_6 
        (.I0(ARG2__11_n_85),
         .O(\MULT_REG_QI[8][16]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair278" *) 
+  (* SOFT_HLUTNM = "soft_lutpair279" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[8][17]_i_1 
@@ -58135,7 +58153,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__11_n_81),
         .I2(ARG3__24_n_76),
         .O(\MULT_REG_QI[8][17]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair278" *) 
+  (* SOFT_HLUTNM = "soft_lutpair279" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[8][18]_i_1 
@@ -58143,7 +58161,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__11_n_80),
         .I2(ARG3__24_n_76),
         .O(\MULT_REG_QI[8][18]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair277" *) 
+  (* SOFT_HLUTNM = "soft_lutpair278" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[8][19]_i_1 
@@ -58151,7 +58169,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__11_n_79),
         .I2(ARG3__24_n_76),
         .O(\MULT_REG_QI[8][19]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair286" *) 
+  (* SOFT_HLUTNM = "soft_lutpair287" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[8][1]_i_1 
@@ -58159,7 +58177,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__11_n_97),
         .I2(ARG3__24_n_76),
         .O(\MULT_REG_QI[8][1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair277" *) 
+  (* SOFT_HLUTNM = "soft_lutpair278" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[8][20]_i_1 
@@ -58187,7 +58205,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[8][20]_i_6 
        (.I0(ARG2__11_n_81),
         .O(\MULT_REG_QI[8][20]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair276" *) 
+  (* SOFT_HLUTNM = "soft_lutpair277" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[8][21]_i_1 
@@ -58195,7 +58213,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__11_n_77),
         .I2(ARG3__24_n_76),
         .O(\MULT_REG_QI[8][21]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair276" *) 
+  (* SOFT_HLUTNM = "soft_lutpair277" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \MULT_REG_QI[8][22]_i_1 
@@ -58212,7 +58230,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[8][22]_i_4 
        (.I0(ARG2__11_n_77),
         .O(\MULT_REG_QI[8][22]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair286" *) 
+  (* SOFT_HLUTNM = "soft_lutpair287" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[8][2]_i_1 
@@ -58220,7 +58238,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__11_n_96),
         .I2(ARG3__24_n_76),
         .O(\MULT_REG_QI[8][2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair285" *) 
+  (* SOFT_HLUTNM = "soft_lutpair286" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[8][3]_i_1 
@@ -58228,7 +58246,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__11_n_95),
         .I2(ARG3__24_n_76),
         .O(\MULT_REG_QI[8][3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair285" *) 
+  (* SOFT_HLUTNM = "soft_lutpair286" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[8][4]_i_1 
@@ -58261,7 +58279,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[8][4]_i_7 
        (.I0(ARG2__11_n_97),
         .O(\MULT_REG_QI[8][4]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair284" *) 
+  (* SOFT_HLUTNM = "soft_lutpair285" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[8][5]_i_1 
@@ -58269,7 +58287,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__11_n_93),
         .I2(ARG3__24_n_76),
         .O(\MULT_REG_QI[8][5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair284" *) 
+  (* SOFT_HLUTNM = "soft_lutpair285" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[8][6]_i_1 
@@ -58277,7 +58295,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__11_n_92),
         .I2(ARG3__24_n_76),
         .O(\MULT_REG_QI[8][6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair283" *) 
+  (* SOFT_HLUTNM = "soft_lutpair284" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[8][7]_i_1 
@@ -58285,7 +58303,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__11_n_91),
         .I2(ARG3__24_n_76),
         .O(\MULT_REG_QI[8][7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair283" *) 
+  (* SOFT_HLUTNM = "soft_lutpair284" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[8][8]_i_1 
@@ -58313,7 +58331,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[8][8]_i_6 
        (.I0(ARG2__11_n_93),
         .O(\MULT_REG_QI[8][8]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair282" *) 
+  (* SOFT_HLUTNM = "soft_lutpair283" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[8][9]_i_1 
@@ -58321,7 +58339,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__11_n_89),
         .I2(ARG3__24_n_76),
         .O(\MULT_REG_QI[8][9]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair298" *) 
+  (* SOFT_HLUTNM = "soft_lutpair299" *) 
   LUT3 #(
     .INIT(8'hCA)) 
     \MULT_REG_QI[9][0]_i_1 
@@ -58374,7 +58392,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[9][0]_i_9 
        (.I0(ARG3__26_n_101),
         .O(\MULT_REG_QI[9][0]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair304" *) 
+  (* SOFT_HLUTNM = "soft_lutpair305" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[9][10]_i_1 
@@ -58382,7 +58400,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__26_n_88),
         .I2(ARG3__26_n_79),
         .O(\MULT_REG_QI[9][10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair304" *) 
+  (* SOFT_HLUTNM = "soft_lutpair305" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[9][11]_i_1 
@@ -58390,7 +58408,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__26_n_87),
         .I2(ARG3__26_n_79),
         .O(\MULT_REG_QI[9][11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair303" *) 
+  (* SOFT_HLUTNM = "soft_lutpair304" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[9][12]_i_1 
@@ -58446,7 +58464,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[9][12]_i_9 
        (.I0(ARG3__26_n_90),
         .O(\MULT_REG_QI[9][12]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair303" *) 
+  (* SOFT_HLUTNM = "soft_lutpair304" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[9][13]_i_1 
@@ -58454,7 +58472,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__26_n_85),
         .I2(ARG3__26_n_79),
         .O(\MULT_REG_QI[9][13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair302" *) 
+  (* SOFT_HLUTNM = "soft_lutpair303" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[9][14]_i_1 
@@ -58462,7 +58480,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__26_n_84),
         .I2(ARG3__26_n_79),
         .O(\MULT_REG_QI[9][14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair302" *) 
+  (* SOFT_HLUTNM = "soft_lutpair303" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[9][15]_i_1 
@@ -58470,7 +58488,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__26_n_83),
         .I2(ARG3__26_n_79),
         .O(\MULT_REG_QI[9][15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair301" *) 
+  (* SOFT_HLUTNM = "soft_lutpair302" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[9][16]_i_1 
@@ -58526,7 +58544,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[9][16]_i_9 
        (.I0(ARG3__26_n_86),
         .O(\MULT_REG_QI[9][16]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair300" *) 
+  (* SOFT_HLUTNM = "soft_lutpair301" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[9][17]_i_1 
@@ -58534,7 +58552,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__26_n_81),
         .I2(ARG3__26_n_79),
         .O(\MULT_REG_QI[9][17]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair299" *) 
+  (* SOFT_HLUTNM = "soft_lutpair300" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[9][18]_i_1 
@@ -58542,7 +58560,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__26_n_80),
         .I2(ARG3__26_n_79),
         .O(\MULT_REG_QI[9][18]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair301" *) 
+  (* SOFT_HLUTNM = "soft_lutpair302" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_QI[9][19]_i_1 
@@ -58556,7 +58574,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__26_n_97),
         .I2(ARG3__26_n_79),
         .O(\MULT_REG_QI[9][1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair300" *) 
+  (* SOFT_HLUTNM = "soft_lutpair301" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_QI[9][20]_i_1 
@@ -58609,14 +58627,14 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[9][20]_i_9 
        (.I0(ARG3__26_n_82),
         .O(\MULT_REG_QI[9][20]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair299" *) 
+  (* SOFT_HLUTNM = "soft_lutpair300" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_QI[9][21]_i_1 
        (.I0(\MULT_REG_QI_reg[9][22]_i_2_n_7 ),
         .I1(ARG3__26_n_79),
         .O(\MULT_REG_QI[9][21]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair298" *) 
+  (* SOFT_HLUTNM = "soft_lutpair299" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \MULT_REG_QI[9][22]_i_1 
@@ -58645,7 +58663,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[9][22]_i_7 
        (.I0(ARG3__26_n_80),
         .O(\MULT_REG_QI[9][22]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair308" *) 
+  (* SOFT_HLUTNM = "soft_lutpair309" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[9][2]_i_1 
@@ -58653,7 +58671,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__26_n_96),
         .I2(ARG3__26_n_79),
         .O(\MULT_REG_QI[9][2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair308" *) 
+  (* SOFT_HLUTNM = "soft_lutpair309" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[9][3]_i_1 
@@ -58661,7 +58679,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__26_n_95),
         .I2(ARG3__26_n_79),
         .O(\MULT_REG_QI[9][3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair307" *) 
+  (* SOFT_HLUTNM = "soft_lutpair308" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[9][4]_i_1 
@@ -58704,7 +58722,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\MULT_REG_QI_reg[9][0]_i_2_n_4 ),
         .I2(ARG3__26_n_97),
         .O(\MULT_REG_QI[9][4]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair307" *) 
+  (* SOFT_HLUTNM = "soft_lutpair308" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[9][5]_i_1 
@@ -58712,7 +58730,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__26_n_93),
         .I2(ARG3__26_n_79),
         .O(\MULT_REG_QI[9][5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair306" *) 
+  (* SOFT_HLUTNM = "soft_lutpair307" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[9][6]_i_1 
@@ -58720,7 +58738,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__26_n_92),
         .I2(ARG3__26_n_79),
         .O(\MULT_REG_QI[9][6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair306" *) 
+  (* SOFT_HLUTNM = "soft_lutpair307" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[9][7]_i_1 
@@ -58728,7 +58746,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__26_n_91),
         .I2(ARG3__26_n_79),
         .O(\MULT_REG_QI[9][7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair305" *) 
+  (* SOFT_HLUTNM = "soft_lutpair306" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[9][8]_i_1 
@@ -58784,7 +58802,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QI[9][8]_i_9 
        (.I0(ARG3__26_n_94),
         .O(\MULT_REG_QI[9][8]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair305" *) 
+  (* SOFT_HLUTNM = "soft_lutpair306" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QI[9][9]_i_1 
@@ -60803,7 +60821,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .D(\MULT_REG_QI[9][9]_i_1_n_0 ),
         .Q(\MULT_REG_QI_reg[9]_57 [9]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[0][10]_i_1 
@@ -60811,7 +60829,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2_n_88),
         .I2(ARG3_n_76),
         .O(ARG0[10]));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[0][11]_i_1 
@@ -60819,7 +60837,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2_n_87),
         .I2(ARG3_n_76),
         .O(ARG0[11]));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[0][12]_i_1 
@@ -60847,7 +60865,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[0][12]_i_6 
        (.I0(ARG2_n_89),
         .O(p_0_in_0[9]));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[0][13]_i_1 
@@ -60855,7 +60873,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2_n_85),
         .I2(ARG3_n_76),
         .O(ARG0[13]));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[0][14]_i_1 
@@ -60863,7 +60881,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2_n_84),
         .I2(ARG3_n_76),
         .O(ARG0[14]));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[0][15]_i_1 
@@ -60871,7 +60889,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2_n_83),
         .I2(ARG3_n_76),
         .O(ARG0[15]));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[0][16]_i_1 
@@ -60899,7 +60917,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[0][16]_i_6 
        (.I0(ARG2_n_85),
         .O(p_0_in_0[13]));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[0][17]_i_1 
@@ -60907,7 +60925,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2_n_81),
         .I2(ARG3_n_76),
         .O(ARG0[17]));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[0][18]_i_1 
@@ -60915,7 +60933,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2_n_80),
         .I2(ARG3_n_76),
         .O(ARG0[18]));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[0][19]_i_1 
@@ -60923,7 +60941,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2_n_79),
         .I2(ARG3_n_76),
         .O(ARG0[19]));
-  (* SOFT_HLUTNM = "soft_lutpair11" *) 
+  (* SOFT_HLUTNM = "soft_lutpair12" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[0][1]_i_1 
@@ -60931,7 +60949,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2_n_97),
         .I2(ARG3_n_76),
         .O(ARG0[1]));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[0][20]_i_1 
@@ -60959,7 +60977,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[0][20]_i_6 
        (.I0(ARG2_n_81),
         .O(p_0_in_0[17]));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[0][21]_i_1 
@@ -60967,7 +60985,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2_n_77),
         .I2(ARG3_n_76),
         .O(ARG0[21]));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \MULT_REG_QQ[0][22]_i_1 
@@ -60984,7 +61002,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[0][22]_i_4 
        (.I0(ARG2_n_77),
         .O(p_0_in_0[21]));
-  (* SOFT_HLUTNM = "soft_lutpair11" *) 
+  (* SOFT_HLUTNM = "soft_lutpair12" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[0][2]_i_1 
@@ -60992,7 +61010,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2_n_96),
         .I2(ARG3_n_76),
         .O(ARG0[2]));
-  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  (* SOFT_HLUTNM = "soft_lutpair11" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[0][3]_i_1 
@@ -61000,7 +61018,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2_n_95),
         .I2(ARG3_n_76),
         .O(ARG0[3]));
-  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  (* SOFT_HLUTNM = "soft_lutpair11" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[0][4]_i_1 
@@ -61033,7 +61051,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[0][4]_i_7 
        (.I0(ARG2_n_97),
         .O(p_0_in_0[1]));
-  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  (* SOFT_HLUTNM = "soft_lutpair10" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[0][5]_i_1 
@@ -61041,7 +61059,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2_n_93),
         .I2(ARG3_n_76),
         .O(ARG0[5]));
-  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  (* SOFT_HLUTNM = "soft_lutpair10" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[0][6]_i_1 
@@ -61049,7 +61067,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2_n_92),
         .I2(ARG3_n_76),
         .O(ARG0[6]));
-  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[0][7]_i_1 
@@ -61057,7 +61075,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2_n_91),
         .I2(ARG3_n_76),
         .O(ARG0[7]));
-  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[0][8]_i_1 
@@ -61085,7 +61103,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[0][8]_i_6 
        (.I0(ARG2_n_93),
         .O(p_0_in_0[5]));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[0][9]_i_1 
@@ -61093,7 +61111,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2_n_89),
         .I2(ARG3_n_76),
         .O(ARG0[9]));
-  (* SOFT_HLUTNM = "soft_lutpair144" *) 
+  (* SOFT_HLUTNM = "soft_lutpair145" *) 
   LUT3 #(
     .INIT(8'hCA)) 
     \MULT_REG_QQ[10][0]_i_1 
@@ -61146,7 +61164,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[10][0]_i_9 
        (.I0(ARG3__12_n_101),
         .O(\MULT_REG_QQ[10][0]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair150" *) 
+  (* SOFT_HLUTNM = "soft_lutpair151" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[10][10]_i_1 
@@ -61154,7 +61172,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__12_n_88),
         .I2(ARG3__12_n_79),
         .O(\MULT_REG_QQ[10][10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair150" *) 
+  (* SOFT_HLUTNM = "soft_lutpair151" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[10][11]_i_1 
@@ -61162,7 +61180,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__12_n_87),
         .I2(ARG3__12_n_79),
         .O(\MULT_REG_QQ[10][11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair149" *) 
+  (* SOFT_HLUTNM = "soft_lutpair150" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[10][12]_i_1 
@@ -61218,7 +61236,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[10][12]_i_9 
        (.I0(ARG3__12_n_90),
         .O(\MULT_REG_QQ[10][12]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair149" *) 
+  (* SOFT_HLUTNM = "soft_lutpair150" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[10][13]_i_1 
@@ -61226,7 +61244,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__12_n_85),
         .I2(ARG3__12_n_79),
         .O(\MULT_REG_QQ[10][13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair148" *) 
+  (* SOFT_HLUTNM = "soft_lutpair149" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[10][14]_i_1 
@@ -61234,7 +61252,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__12_n_84),
         .I2(ARG3__12_n_79),
         .O(\MULT_REG_QQ[10][14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair148" *) 
+  (* SOFT_HLUTNM = "soft_lutpair149" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[10][15]_i_1 
@@ -61242,7 +61260,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__12_n_83),
         .I2(ARG3__12_n_79),
         .O(\MULT_REG_QQ[10][15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair147" *) 
+  (* SOFT_HLUTNM = "soft_lutpair148" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[10][16]_i_1 
@@ -61298,7 +61316,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[10][16]_i_9 
        (.I0(ARG3__12_n_86),
         .O(\MULT_REG_QQ[10][16]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair146" *) 
+  (* SOFT_HLUTNM = "soft_lutpair147" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[10][17]_i_1 
@@ -61306,7 +61324,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__12_n_81),
         .I2(ARG3__12_n_79),
         .O(\MULT_REG_QQ[10][17]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair145" *) 
+  (* SOFT_HLUTNM = "soft_lutpair146" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[10][18]_i_1 
@@ -61314,7 +61332,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__12_n_80),
         .I2(ARG3__12_n_79),
         .O(\MULT_REG_QQ[10][18]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair147" *) 
+  (* SOFT_HLUTNM = "soft_lutpair148" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_QQ[10][19]_i_1 
@@ -61328,7 +61346,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__12_n_97),
         .I2(ARG3__12_n_79),
         .O(\MULT_REG_QQ[10][1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair146" *) 
+  (* SOFT_HLUTNM = "soft_lutpair147" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_QQ[10][20]_i_1 
@@ -61381,14 +61399,14 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[10][20]_i_9 
        (.I0(ARG3__12_n_82),
         .O(\MULT_REG_QQ[10][20]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair145" *) 
+  (* SOFT_HLUTNM = "soft_lutpair146" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_QQ[10][21]_i_1 
        (.I0(\MULT_REG_QQ_reg[10][22]_i_2_n_7 ),
         .I1(ARG3__12_n_79),
         .O(\MULT_REG_QQ[10][21]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair144" *) 
+  (* SOFT_HLUTNM = "soft_lutpair145" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \MULT_REG_QQ[10][22]_i_1 
@@ -61417,7 +61435,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[10][22]_i_7 
        (.I0(ARG3__12_n_80),
         .O(\MULT_REG_QQ[10][22]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair154" *) 
+  (* SOFT_HLUTNM = "soft_lutpair155" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[10][2]_i_1 
@@ -61425,7 +61443,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__12_n_96),
         .I2(ARG3__12_n_79),
         .O(\MULT_REG_QQ[10][2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair154" *) 
+  (* SOFT_HLUTNM = "soft_lutpair155" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[10][3]_i_1 
@@ -61433,7 +61451,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__12_n_95),
         .I2(ARG3__12_n_79),
         .O(\MULT_REG_QQ[10][3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair153" *) 
+  (* SOFT_HLUTNM = "soft_lutpair154" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[10][4]_i_1 
@@ -61476,7 +61494,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\MULT_REG_QQ_reg[10][0]_i_2_n_4 ),
         .I2(ARG3__12_n_97),
         .O(\MULT_REG_QQ[10][4]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair153" *) 
+  (* SOFT_HLUTNM = "soft_lutpair154" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[10][5]_i_1 
@@ -61484,7 +61502,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__12_n_93),
         .I2(ARG3__12_n_79),
         .O(\MULT_REG_QQ[10][5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair152" *) 
+  (* SOFT_HLUTNM = "soft_lutpair153" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[10][6]_i_1 
@@ -61492,7 +61510,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__12_n_92),
         .I2(ARG3__12_n_79),
         .O(\MULT_REG_QQ[10][6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair152" *) 
+  (* SOFT_HLUTNM = "soft_lutpair153" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[10][7]_i_1 
@@ -61500,7 +61518,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__12_n_91),
         .I2(ARG3__12_n_79),
         .O(\MULT_REG_QQ[10][7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair151" *) 
+  (* SOFT_HLUTNM = "soft_lutpair152" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[10][8]_i_1 
@@ -61556,7 +61574,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[10][8]_i_9 
        (.I0(ARG3__12_n_94),
         .O(\MULT_REG_QQ[10][8]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair151" *) 
+  (* SOFT_HLUTNM = "soft_lutpair152" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[10][9]_i_1 
@@ -61564,7 +61582,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__12_n_89),
         .I2(ARG3__12_n_79),
         .O(\MULT_REG_QQ[10][9]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair23" *) 
+  (* SOFT_HLUTNM = "soft_lutpair24" *) 
   LUT3 #(
     .INIT(8'hCA)) 
     \MULT_REG_QQ[1][0]_i_1 
@@ -61617,7 +61635,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[1][0]_i_9 
        (.I0(ARG3__1_n_101),
         .O(\MULT_REG_QQ[1][0]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair29" *) 
+  (* SOFT_HLUTNM = "soft_lutpair30" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[1][10]_i_1 
@@ -61625,7 +61643,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__1_n_88),
         .I2(ARG3__1_n_79),
         .O(\MULT_REG_QQ[1][10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair29" *) 
+  (* SOFT_HLUTNM = "soft_lutpair30" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[1][11]_i_1 
@@ -61633,7 +61651,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__1_n_87),
         .I2(ARG3__1_n_79),
         .O(\MULT_REG_QQ[1][11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair28" *) 
+  (* SOFT_HLUTNM = "soft_lutpair29" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[1][12]_i_1 
@@ -61689,7 +61707,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[1][12]_i_9 
        (.I0(ARG3__1_n_90),
         .O(\MULT_REG_QQ[1][12]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair28" *) 
+  (* SOFT_HLUTNM = "soft_lutpair29" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[1][13]_i_1 
@@ -61697,7 +61715,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__1_n_85),
         .I2(ARG3__1_n_79),
         .O(\MULT_REG_QQ[1][13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair27" *) 
+  (* SOFT_HLUTNM = "soft_lutpair28" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[1][14]_i_1 
@@ -61705,7 +61723,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__1_n_84),
         .I2(ARG3__1_n_79),
         .O(\MULT_REG_QQ[1][14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair27" *) 
+  (* SOFT_HLUTNM = "soft_lutpair28" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[1][15]_i_1 
@@ -61713,7 +61731,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__1_n_83),
         .I2(ARG3__1_n_79),
         .O(\MULT_REG_QQ[1][15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair26" *) 
+  (* SOFT_HLUTNM = "soft_lutpair27" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[1][16]_i_1 
@@ -61769,7 +61787,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[1][16]_i_9 
        (.I0(ARG3__1_n_86),
         .O(\MULT_REG_QQ[1][16]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair25" *) 
+  (* SOFT_HLUTNM = "soft_lutpair26" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[1][17]_i_1 
@@ -61777,7 +61795,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__1_n_81),
         .I2(ARG3__1_n_79),
         .O(\MULT_REG_QQ[1][17]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair24" *) 
+  (* SOFT_HLUTNM = "soft_lutpair25" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[1][18]_i_1 
@@ -61785,7 +61803,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__1_n_80),
         .I2(ARG3__1_n_79),
         .O(\MULT_REG_QQ[1][18]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair26" *) 
+  (* SOFT_HLUTNM = "soft_lutpair27" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_QQ[1][19]_i_1 
@@ -61799,7 +61817,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__1_n_97),
         .I2(ARG3__1_n_79),
         .O(\MULT_REG_QQ[1][1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair25" *) 
+  (* SOFT_HLUTNM = "soft_lutpair26" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_QQ[1][20]_i_1 
@@ -61852,14 +61870,14 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[1][20]_i_9 
        (.I0(ARG3__1_n_82),
         .O(\MULT_REG_QQ[1][20]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair24" *) 
+  (* SOFT_HLUTNM = "soft_lutpair25" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_QQ[1][21]_i_1 
        (.I0(\MULT_REG_QQ_reg[1][22]_i_2_n_7 ),
         .I1(ARG3__1_n_79),
         .O(\MULT_REG_QQ[1][21]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair23" *) 
+  (* SOFT_HLUTNM = "soft_lutpair24" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \MULT_REG_QQ[1][22]_i_1 
@@ -61888,7 +61906,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[1][22]_i_7 
        (.I0(ARG3__1_n_80),
         .O(\MULT_REG_QQ[1][22]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair33" *) 
+  (* SOFT_HLUTNM = "soft_lutpair34" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[1][2]_i_1 
@@ -61896,7 +61914,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__1_n_96),
         .I2(ARG3__1_n_79),
         .O(\MULT_REG_QQ[1][2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair33" *) 
+  (* SOFT_HLUTNM = "soft_lutpair34" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[1][3]_i_1 
@@ -61904,7 +61922,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__1_n_95),
         .I2(ARG3__1_n_79),
         .O(\MULT_REG_QQ[1][3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair32" *) 
+  (* SOFT_HLUTNM = "soft_lutpair33" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[1][4]_i_1 
@@ -61947,7 +61965,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\MULT_REG_QQ_reg[1][0]_i_2_n_4 ),
         .I2(ARG3__1_n_97),
         .O(\MULT_REG_QQ[1][4]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair32" *) 
+  (* SOFT_HLUTNM = "soft_lutpair33" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[1][5]_i_1 
@@ -61955,7 +61973,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__1_n_93),
         .I2(ARG3__1_n_79),
         .O(\MULT_REG_QQ[1][5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair31" *) 
+  (* SOFT_HLUTNM = "soft_lutpair32" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[1][6]_i_1 
@@ -61963,7 +61981,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__1_n_92),
         .I2(ARG3__1_n_79),
         .O(\MULT_REG_QQ[1][6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair31" *) 
+  (* SOFT_HLUTNM = "soft_lutpair32" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[1][7]_i_1 
@@ -61971,7 +61989,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__1_n_91),
         .I2(ARG3__1_n_79),
         .O(\MULT_REG_QQ[1][7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair30" *) 
+  (* SOFT_HLUTNM = "soft_lutpair31" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[1][8]_i_1 
@@ -62027,7 +62045,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[1][8]_i_9 
        (.I0(ARG3__1_n_94),
         .O(\MULT_REG_QQ[1][8]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair30" *) 
+  (* SOFT_HLUTNM = "soft_lutpair31" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[1][9]_i_1 
@@ -62035,7 +62053,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__1_n_89),
         .I2(ARG3__1_n_79),
         .O(\MULT_REG_QQ[1][9]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair51" *) 
+  (* SOFT_HLUTNM = "soft_lutpair52" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[2][10]_i_1 
@@ -62043,7 +62061,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__1_n_88),
         .I2(ARG3__3_n_76),
         .O(\MULT_REG_QQ[2][10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair50" *) 
+  (* SOFT_HLUTNM = "soft_lutpair51" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[2][11]_i_1 
@@ -62051,7 +62069,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__1_n_87),
         .I2(ARG3__3_n_76),
         .O(\MULT_REG_QQ[2][11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair50" *) 
+  (* SOFT_HLUTNM = "soft_lutpair51" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[2][12]_i_1 
@@ -62079,7 +62097,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[2][12]_i_6 
        (.I0(ARG2__1_n_89),
         .O(\MULT_REG_QQ[2][12]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair49" *) 
+  (* SOFT_HLUTNM = "soft_lutpair50" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[2][13]_i_1 
@@ -62087,7 +62105,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__1_n_85),
         .I2(ARG3__3_n_76),
         .O(\MULT_REG_QQ[2][13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair49" *) 
+  (* SOFT_HLUTNM = "soft_lutpair50" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[2][14]_i_1 
@@ -62095,7 +62113,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__1_n_84),
         .I2(ARG3__3_n_76),
         .O(\MULT_REG_QQ[2][14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair48" *) 
+  (* SOFT_HLUTNM = "soft_lutpair49" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[2][15]_i_1 
@@ -62103,7 +62121,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__1_n_83),
         .I2(ARG3__3_n_76),
         .O(\MULT_REG_QQ[2][15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair48" *) 
+  (* SOFT_HLUTNM = "soft_lutpair49" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[2][16]_i_1 
@@ -62131,7 +62149,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[2][16]_i_6 
        (.I0(ARG2__1_n_85),
         .O(\MULT_REG_QQ[2][16]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair47" *) 
+  (* SOFT_HLUTNM = "soft_lutpair48" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[2][17]_i_1 
@@ -62139,7 +62157,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__1_n_81),
         .I2(ARG3__3_n_76),
         .O(\MULT_REG_QQ[2][17]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair47" *) 
+  (* SOFT_HLUTNM = "soft_lutpair48" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[2][18]_i_1 
@@ -62147,7 +62165,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__1_n_80),
         .I2(ARG3__3_n_76),
         .O(\MULT_REG_QQ[2][18]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair46" *) 
+  (* SOFT_HLUTNM = "soft_lutpair47" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[2][19]_i_1 
@@ -62155,7 +62173,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__1_n_79),
         .I2(ARG3__3_n_76),
         .O(\MULT_REG_QQ[2][19]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair55" *) 
+  (* SOFT_HLUTNM = "soft_lutpair56" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[2][1]_i_1 
@@ -62163,7 +62181,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__1_n_97),
         .I2(ARG3__3_n_76),
         .O(\MULT_REG_QQ[2][1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair46" *) 
+  (* SOFT_HLUTNM = "soft_lutpair47" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[2][20]_i_1 
@@ -62191,7 +62209,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[2][20]_i_6 
        (.I0(ARG2__1_n_81),
         .O(\MULT_REG_QQ[2][20]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair45" *) 
+  (* SOFT_HLUTNM = "soft_lutpair46" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[2][21]_i_1 
@@ -62199,7 +62217,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__1_n_77),
         .I2(ARG3__3_n_76),
         .O(\MULT_REG_QQ[2][21]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair45" *) 
+  (* SOFT_HLUTNM = "soft_lutpair46" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \MULT_REG_QQ[2][22]_i_1 
@@ -62216,7 +62234,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[2][22]_i_4 
        (.I0(ARG2__1_n_77),
         .O(\MULT_REG_QQ[2][22]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair55" *) 
+  (* SOFT_HLUTNM = "soft_lutpair56" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[2][2]_i_1 
@@ -62224,7 +62242,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__1_n_96),
         .I2(ARG3__3_n_76),
         .O(\MULT_REG_QQ[2][2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair54" *) 
+  (* SOFT_HLUTNM = "soft_lutpair55" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[2][3]_i_1 
@@ -62232,7 +62250,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__1_n_95),
         .I2(ARG3__3_n_76),
         .O(\MULT_REG_QQ[2][3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair54" *) 
+  (* SOFT_HLUTNM = "soft_lutpair55" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[2][4]_i_1 
@@ -62265,7 +62283,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[2][4]_i_7 
        (.I0(ARG2__1_n_97),
         .O(\MULT_REG_QQ[2][4]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair53" *) 
+  (* SOFT_HLUTNM = "soft_lutpair54" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[2][5]_i_1 
@@ -62273,7 +62291,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__1_n_93),
         .I2(ARG3__3_n_76),
         .O(\MULT_REG_QQ[2][5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair53" *) 
+  (* SOFT_HLUTNM = "soft_lutpair54" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[2][6]_i_1 
@@ -62281,7 +62299,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__1_n_92),
         .I2(ARG3__3_n_76),
         .O(\MULT_REG_QQ[2][6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair52" *) 
+  (* SOFT_HLUTNM = "soft_lutpair53" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[2][7]_i_1 
@@ -62289,7 +62307,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__1_n_91),
         .I2(ARG3__3_n_76),
         .O(\MULT_REG_QQ[2][7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair52" *) 
+  (* SOFT_HLUTNM = "soft_lutpair53" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[2][8]_i_1 
@@ -62317,7 +62335,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[2][8]_i_6 
        (.I0(ARG2__1_n_93),
         .O(\MULT_REG_QQ[2][8]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair51" *) 
+  (* SOFT_HLUTNM = "soft_lutpair52" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[2][9]_i_1 
@@ -62325,7 +62343,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__1_n_89),
         .I2(ARG3__3_n_76),
         .O(\MULT_REG_QQ[2][9]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair73" *) 
+  (* SOFT_HLUTNM = "soft_lutpair74" *) 
   LUT3 #(
     .INIT(8'h53)) 
     \MULT_REG_QQ[3][10]_inv_i_1 
@@ -62333,7 +62351,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__2_n_88),
         .I2(ARG3__5_n_76),
         .O(\MULT_REG_QQ[3][10]_inv_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair72" *) 
+  (* SOFT_HLUTNM = "soft_lutpair73" *) 
   LUT3 #(
     .INIT(8'h53)) 
     \MULT_REG_QQ[3][11]_inv_i_1 
@@ -62341,7 +62359,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__2_n_87),
         .I2(ARG3__5_n_76),
         .O(\MULT_REG_QQ[3][11]_inv_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair72" *) 
+  (* SOFT_HLUTNM = "soft_lutpair73" *) 
   LUT3 #(
     .INIT(8'h53)) 
     \MULT_REG_QQ[3][12]_inv_i_1 
@@ -62369,7 +62387,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[3][12]_inv_i_6 
        (.I0(ARG2__2_n_89),
         .O(\MULT_REG_QQ[3][12]_inv_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair71" *) 
+  (* SOFT_HLUTNM = "soft_lutpair72" *) 
   LUT3 #(
     .INIT(8'h53)) 
     \MULT_REG_QQ[3][13]_inv_i_1 
@@ -62377,7 +62395,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__2_n_85),
         .I2(ARG3__5_n_76),
         .O(\MULT_REG_QQ[3][13]_inv_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair71" *) 
+  (* SOFT_HLUTNM = "soft_lutpair72" *) 
   LUT3 #(
     .INIT(8'h53)) 
     \MULT_REG_QQ[3][14]_inv_i_1 
@@ -62385,7 +62403,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__2_n_84),
         .I2(ARG3__5_n_76),
         .O(\MULT_REG_QQ[3][14]_inv_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair70" *) 
+  (* SOFT_HLUTNM = "soft_lutpair71" *) 
   LUT3 #(
     .INIT(8'h53)) 
     \MULT_REG_QQ[3][15]_inv_i_1 
@@ -62393,7 +62411,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__2_n_83),
         .I2(ARG3__5_n_76),
         .O(\MULT_REG_QQ[3][15]_inv_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair70" *) 
+  (* SOFT_HLUTNM = "soft_lutpair71" *) 
   LUT3 #(
     .INIT(8'h53)) 
     \MULT_REG_QQ[3][16]_inv_i_1 
@@ -62421,7 +62439,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[3][16]_inv_i_6 
        (.I0(ARG2__2_n_85),
         .O(\MULT_REG_QQ[3][16]_inv_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair69" *) 
+  (* SOFT_HLUTNM = "soft_lutpair70" *) 
   LUT3 #(
     .INIT(8'h53)) 
     \MULT_REG_QQ[3][17]_inv_i_1 
@@ -62429,7 +62447,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__2_n_81),
         .I2(ARG3__5_n_76),
         .O(\MULT_REG_QQ[3][17]_inv_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair69" *) 
+  (* SOFT_HLUTNM = "soft_lutpair70" *) 
   LUT3 #(
     .INIT(8'h53)) 
     \MULT_REG_QQ[3][18]_inv_i_1 
@@ -62437,7 +62455,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__2_n_80),
         .I2(ARG3__5_n_76),
         .O(\MULT_REG_QQ[3][18]_inv_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair68" *) 
+  (* SOFT_HLUTNM = "soft_lutpair69" *) 
   LUT3 #(
     .INIT(8'h53)) 
     \MULT_REG_QQ[3][19]_inv_i_1 
@@ -62445,7 +62463,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__2_n_79),
         .I2(ARG3__5_n_76),
         .O(\MULT_REG_QQ[3][19]_inv_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair77" *) 
+  (* SOFT_HLUTNM = "soft_lutpair78" *) 
   LUT3 #(
     .INIT(8'h53)) 
     \MULT_REG_QQ[3][1]_inv_i_1 
@@ -62453,7 +62471,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__2_n_97),
         .I2(ARG3__5_n_76),
         .O(\MULT_REG_QQ[3][1]_inv_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair68" *) 
+  (* SOFT_HLUTNM = "soft_lutpair69" *) 
   LUT3 #(
     .INIT(8'h53)) 
     \MULT_REG_QQ[3][20]_inv_i_1 
@@ -62481,7 +62499,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[3][20]_inv_i_6 
        (.I0(ARG2__2_n_81),
         .O(\MULT_REG_QQ[3][20]_inv_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair67" *) 
+  (* SOFT_HLUTNM = "soft_lutpair68" *) 
   LUT3 #(
     .INIT(8'h53)) 
     \MULT_REG_QQ[3][21]_inv_i_1 
@@ -62489,7 +62507,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__2_n_77),
         .I2(ARG3__5_n_76),
         .O(\MULT_REG_QQ[3][21]_inv_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair67" *) 
+  (* SOFT_HLUTNM = "soft_lutpair68" *) 
   LUT2 #(
     .INIT(4'hD)) 
     \MULT_REG_QQ[3][22]_inv_i_1 
@@ -62506,7 +62524,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[3][22]_inv_i_4 
        (.I0(ARG2__2_n_77),
         .O(\MULT_REG_QQ[3][22]_inv_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair77" *) 
+  (* SOFT_HLUTNM = "soft_lutpair78" *) 
   LUT3 #(
     .INIT(8'h53)) 
     \MULT_REG_QQ[3][2]_inv_i_1 
@@ -62514,7 +62532,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__2_n_96),
         .I2(ARG3__5_n_76),
         .O(\MULT_REG_QQ[3][2]_inv_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair76" *) 
+  (* SOFT_HLUTNM = "soft_lutpair77" *) 
   LUT3 #(
     .INIT(8'h53)) 
     \MULT_REG_QQ[3][3]_inv_i_1 
@@ -62522,7 +62540,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__2_n_95),
         .I2(ARG3__5_n_76),
         .O(\MULT_REG_QQ[3][3]_inv_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair76" *) 
+  (* SOFT_HLUTNM = "soft_lutpair77" *) 
   LUT3 #(
     .INIT(8'h53)) 
     \MULT_REG_QQ[3][4]_inv_i_1 
@@ -62555,7 +62573,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[3][4]_inv_i_7 
        (.I0(ARG2__2_n_97),
         .O(\MULT_REG_QQ[3][4]_inv_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair75" *) 
+  (* SOFT_HLUTNM = "soft_lutpair76" *) 
   LUT3 #(
     .INIT(8'h53)) 
     \MULT_REG_QQ[3][5]_inv_i_1 
@@ -62563,7 +62581,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__2_n_93),
         .I2(ARG3__5_n_76),
         .O(\MULT_REG_QQ[3][5]_inv_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair75" *) 
+  (* SOFT_HLUTNM = "soft_lutpair76" *) 
   LUT3 #(
     .INIT(8'h53)) 
     \MULT_REG_QQ[3][6]_inv_i_1 
@@ -62571,7 +62589,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__2_n_92),
         .I2(ARG3__5_n_76),
         .O(\MULT_REG_QQ[3][6]_inv_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair74" *) 
+  (* SOFT_HLUTNM = "soft_lutpair75" *) 
   LUT3 #(
     .INIT(8'h53)) 
     \MULT_REG_QQ[3][7]_inv_i_1 
@@ -62579,7 +62597,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__2_n_91),
         .I2(ARG3__5_n_76),
         .O(\MULT_REG_QQ[3][7]_inv_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair74" *) 
+  (* SOFT_HLUTNM = "soft_lutpair75" *) 
   LUT3 #(
     .INIT(8'h53)) 
     \MULT_REG_QQ[3][8]_inv_i_1 
@@ -62607,7 +62625,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[3][8]_inv_i_6 
        (.I0(ARG2__2_n_93),
         .O(\MULT_REG_QQ[3][8]_inv_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair73" *) 
+  (* SOFT_HLUTNM = "soft_lutpair74" *) 
   LUT3 #(
     .INIT(8'h53)) 
     \MULT_REG_QQ[3][9]_inv_i_1 
@@ -62615,7 +62633,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__2_n_89),
         .I2(ARG3__5_n_76),
         .O(\MULT_REG_QQ[3][9]_inv_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair78" *) 
+  (* SOFT_HLUTNM = "soft_lutpair79" *) 
   LUT3 #(
     .INIT(8'hCA)) 
     \MULT_REG_QQ[7][0]_i_1 
@@ -62668,7 +62686,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[7][0]_i_9 
        (.I0(ARG3__6_n_101),
         .O(\MULT_REG_QQ[7][0]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair84" *) 
+  (* SOFT_HLUTNM = "soft_lutpair85" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[7][10]_i_1 
@@ -62676,7 +62694,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__6_n_88),
         .I2(ARG3__6_n_77),
         .O(\MULT_REG_QQ[7][10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair84" *) 
+  (* SOFT_HLUTNM = "soft_lutpair85" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[7][11]_i_1 
@@ -62684,7 +62702,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__6_n_87),
         .I2(ARG3__6_n_77),
         .O(\MULT_REG_QQ[7][11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair83" *) 
+  (* SOFT_HLUTNM = "soft_lutpair84" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[7][12]_i_1 
@@ -62740,7 +62758,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[7][12]_i_9 
        (.I0(ARG3__6_n_90),
         .O(\MULT_REG_QQ[7][12]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair83" *) 
+  (* SOFT_HLUTNM = "soft_lutpair84" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[7][13]_i_1 
@@ -62748,7 +62766,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__6_n_85),
         .I2(ARG3__6_n_77),
         .O(\MULT_REG_QQ[7][13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair82" *) 
+  (* SOFT_HLUTNM = "soft_lutpair83" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[7][14]_i_1 
@@ -62756,7 +62774,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__6_n_84),
         .I2(ARG3__6_n_77),
         .O(\MULT_REG_QQ[7][14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair82" *) 
+  (* SOFT_HLUTNM = "soft_lutpair83" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[7][15]_i_1 
@@ -62764,7 +62782,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__6_n_83),
         .I2(ARG3__6_n_77),
         .O(\MULT_REG_QQ[7][15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair81" *) 
+  (* SOFT_HLUTNM = "soft_lutpair82" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[7][16]_i_1 
@@ -62820,7 +62838,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[7][16]_i_9 
        (.I0(ARG3__6_n_86),
         .O(\MULT_REG_QQ[7][16]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair81" *) 
+  (* SOFT_HLUTNM = "soft_lutpair82" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[7][17]_i_1 
@@ -62828,7 +62846,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__6_n_81),
         .I2(ARG3__6_n_77),
         .O(\MULT_REG_QQ[7][17]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair80" *) 
+  (* SOFT_HLUTNM = "soft_lutpair81" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[7][18]_i_1 
@@ -62836,7 +62854,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__6_n_80),
         .I2(ARG3__6_n_77),
         .O(\MULT_REG_QQ[7][18]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair80" *) 
+  (* SOFT_HLUTNM = "soft_lutpair81" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[7][19]_i_1 
@@ -62851,7 +62869,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__6_n_97),
         .I2(ARG3__6_n_77),
         .O(\MULT_REG_QQ[7][1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair79" *) 
+  (* SOFT_HLUTNM = "soft_lutpair80" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[7][20]_i_1 
@@ -62907,14 +62925,14 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[7][20]_i_9 
        (.I0(ARG3__6_n_82),
         .O(\MULT_REG_QQ[7][20]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair79" *) 
+  (* SOFT_HLUTNM = "soft_lutpair80" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_QQ[7][21]_i_1 
        (.I0(\MULT_REG_QQ_reg[7][22]_i_2_n_7 ),
         .I1(ARG3__6_n_77),
         .O(\MULT_REG_QQ[7][21]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair78" *) 
+  (* SOFT_HLUTNM = "soft_lutpair79" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \MULT_REG_QQ[7][22]_i_1 
@@ -62953,7 +62971,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[7][22]_i_9 
        (.I0(ARG3__6_n_79),
         .O(\MULT_REG_QQ[7][22]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair88" *) 
+  (* SOFT_HLUTNM = "soft_lutpair89" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[7][2]_i_1 
@@ -62961,7 +62979,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__6_n_96),
         .I2(ARG3__6_n_77),
         .O(\MULT_REG_QQ[7][2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair88" *) 
+  (* SOFT_HLUTNM = "soft_lutpair89" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[7][3]_i_1 
@@ -62969,7 +62987,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__6_n_95),
         .I2(ARG3__6_n_77),
         .O(\MULT_REG_QQ[7][3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair87" *) 
+  (* SOFT_HLUTNM = "soft_lutpair88" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[7][4]_i_1 
@@ -63012,7 +63030,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\MULT_REG_QQ_reg[7][0]_i_2_n_4 ),
         .I2(ARG3__6_n_97),
         .O(\MULT_REG_QQ[7][4]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair87" *) 
+  (* SOFT_HLUTNM = "soft_lutpair88" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[7][5]_i_1 
@@ -63020,7 +63038,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__6_n_93),
         .I2(ARG3__6_n_77),
         .O(\MULT_REG_QQ[7][5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair86" *) 
+  (* SOFT_HLUTNM = "soft_lutpair87" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[7][6]_i_1 
@@ -63028,7 +63046,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__6_n_92),
         .I2(ARG3__6_n_77),
         .O(\MULT_REG_QQ[7][6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair86" *) 
+  (* SOFT_HLUTNM = "soft_lutpair87" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[7][7]_i_1 
@@ -63036,7 +63054,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__6_n_91),
         .I2(ARG3__6_n_77),
         .O(\MULT_REG_QQ[7][7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair85" *) 
+  (* SOFT_HLUTNM = "soft_lutpair86" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[7][8]_i_1 
@@ -63092,7 +63110,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[7][8]_i_9 
        (.I0(ARG3__6_n_94),
         .O(\MULT_REG_QQ[7][8]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair85" *) 
+  (* SOFT_HLUTNM = "soft_lutpair86" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[7][9]_i_1 
@@ -63100,7 +63118,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__6_n_89),
         .I2(ARG3__6_n_77),
         .O(\MULT_REG_QQ[7][9]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair100" *) 
+  (* SOFT_HLUTNM = "soft_lutpair101" *) 
   LUT3 #(
     .INIT(8'hCA)) 
     \MULT_REG_QQ[8][0]_i_1 
@@ -63153,7 +63171,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[8][0]_i_9 
        (.I0(ARG3__8_n_101),
         .O(\MULT_REG_QQ[8][0]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair106" *) 
+  (* SOFT_HLUTNM = "soft_lutpair107" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[8][10]_i_1 
@@ -63161,7 +63179,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__8_n_88),
         .I2(ARG3__8_n_81),
         .O(\MULT_REG_QQ[8][10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair106" *) 
+  (* SOFT_HLUTNM = "soft_lutpair107" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[8][11]_i_1 
@@ -63169,7 +63187,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__8_n_87),
         .I2(ARG3__8_n_81),
         .O(\MULT_REG_QQ[8][11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair105" *) 
+  (* SOFT_HLUTNM = "soft_lutpair106" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[8][12]_i_1 
@@ -63225,7 +63243,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[8][12]_i_9 
        (.I0(ARG3__8_n_90),
         .O(\MULT_REG_QQ[8][12]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair104" *) 
+  (* SOFT_HLUTNM = "soft_lutpair105" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[8][13]_i_1 
@@ -63233,7 +63251,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__8_n_85),
         .I2(ARG3__8_n_81),
         .O(\MULT_REG_QQ[8][13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair103" *) 
+  (* SOFT_HLUTNM = "soft_lutpair104" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[8][14]_i_1 
@@ -63241,7 +63259,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__8_n_84),
         .I2(ARG3__8_n_81),
         .O(\MULT_REG_QQ[8][14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair102" *) 
+  (* SOFT_HLUTNM = "soft_lutpair103" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[8][15]_i_1 
@@ -63249,7 +63267,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__8_n_83),
         .I2(ARG3__8_n_81),
         .O(\MULT_REG_QQ[8][15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair101" *) 
+  (* SOFT_HLUTNM = "soft_lutpair102" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[8][16]_i_1 
@@ -63305,7 +63323,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[8][16]_i_9 
        (.I0(ARG3__8_n_86),
         .O(\MULT_REG_QQ[8][16]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair105" *) 
+  (* SOFT_HLUTNM = "soft_lutpair106" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_QQ[8][17]_i_1 
@@ -63356,14 +63374,14 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[8][17]_i_9 
        (.I0(ARG3__8_n_82),
         .O(\MULT_REG_QQ[8][17]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair103" *) 
+  (* SOFT_HLUTNM = "soft_lutpair104" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_QQ[8][18]_i_1 
        (.I0(\MULT_REG_QQ_reg[8][17]_i_2_n_6 ),
         .I1(ARG3__8_n_81),
         .O(\MULT_REG_QQ[8][18]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair102" *) 
+  (* SOFT_HLUTNM = "soft_lutpair103" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_QQ[8][19]_i_1 
@@ -63377,21 +63395,21 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__8_n_97),
         .I2(ARG3__8_n_81),
         .O(\MULT_REG_QQ[8][1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair101" *) 
+  (* SOFT_HLUTNM = "soft_lutpair102" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_QQ[8][20]_i_1 
        (.I0(\MULT_REG_QQ_reg[8][17]_i_2_n_4 ),
         .I1(ARG3__8_n_81),
         .O(\MULT_REG_QQ[8][20]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair100" *) 
+  (* SOFT_HLUTNM = "soft_lutpair101" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \MULT_REG_QQ[8][21]_i_1 
        (.I0(\MULT_REG_QQ_reg[8][22]_i_2_n_7 ),
         .I1(ARG3__8_n_81),
         .O(\MULT_REG_QQ[8][21]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair104" *) 
+  (* SOFT_HLUTNM = "soft_lutpair105" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \MULT_REG_QQ[8][22]_i_1 
@@ -63410,7 +63428,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
        (.I0(\MULT_REG_QQ_reg[8][22]_i_5_n_3 ),
         .I1(ARG3__8_n_81),
         .O(\MULT_REG_QQ[8][22]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair110" *) 
+  (* SOFT_HLUTNM = "soft_lutpair111" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[8][2]_i_1 
@@ -63418,7 +63436,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__8_n_96),
         .I2(ARG3__8_n_81),
         .O(\MULT_REG_QQ[8][2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair110" *) 
+  (* SOFT_HLUTNM = "soft_lutpair111" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[8][3]_i_1 
@@ -63426,7 +63444,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__8_n_95),
         .I2(ARG3__8_n_81),
         .O(\MULT_REG_QQ[8][3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair109" *) 
+  (* SOFT_HLUTNM = "soft_lutpair110" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[8][4]_i_1 
@@ -63469,7 +63487,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(\MULT_REG_QQ_reg[8][0]_i_2_n_4 ),
         .I2(ARG3__8_n_97),
         .O(\MULT_REG_QQ[8][4]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair109" *) 
+  (* SOFT_HLUTNM = "soft_lutpair110" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[8][5]_i_1 
@@ -63477,7 +63495,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__8_n_93),
         .I2(ARG3__8_n_81),
         .O(\MULT_REG_QQ[8][5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair108" *) 
+  (* SOFT_HLUTNM = "soft_lutpair109" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[8][6]_i_1 
@@ -63485,7 +63503,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__8_n_92),
         .I2(ARG3__8_n_81),
         .O(\MULT_REG_QQ[8][6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair108" *) 
+  (* SOFT_HLUTNM = "soft_lutpair109" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[8][7]_i_1 
@@ -63493,7 +63511,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__8_n_91),
         .I2(ARG3__8_n_81),
         .O(\MULT_REG_QQ[8][7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair107" *) 
+  (* SOFT_HLUTNM = "soft_lutpair108" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[8][8]_i_1 
@@ -63549,7 +63567,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[8][8]_i_9 
        (.I0(ARG3__8_n_94),
         .O(\MULT_REG_QQ[8][8]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair107" *) 
+  (* SOFT_HLUTNM = "soft_lutpair108" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[8][9]_i_1 
@@ -63557,7 +63575,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG3__8_n_89),
         .I2(ARG3__8_n_81),
         .O(\MULT_REG_QQ[8][9]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair128" *) 
+  (* SOFT_HLUTNM = "soft_lutpair129" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[9][10]_i_1 
@@ -63565,7 +63583,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__4_n_88),
         .I2(ARG3__10_n_76),
         .O(\MULT_REG_QQ[9][10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair127" *) 
+  (* SOFT_HLUTNM = "soft_lutpair128" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[9][11]_i_1 
@@ -63573,7 +63591,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__4_n_87),
         .I2(ARG3__10_n_76),
         .O(\MULT_REG_QQ[9][11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair127" *) 
+  (* SOFT_HLUTNM = "soft_lutpair128" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[9][12]_i_1 
@@ -63601,7 +63619,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[9][12]_i_6 
        (.I0(ARG2__4_n_89),
         .O(\MULT_REG_QQ[9][12]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair126" *) 
+  (* SOFT_HLUTNM = "soft_lutpair127" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[9][13]_i_1 
@@ -63609,7 +63627,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__4_n_85),
         .I2(ARG3__10_n_76),
         .O(\MULT_REG_QQ[9][13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair126" *) 
+  (* SOFT_HLUTNM = "soft_lutpair127" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[9][14]_i_1 
@@ -63617,7 +63635,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__4_n_84),
         .I2(ARG3__10_n_76),
         .O(\MULT_REG_QQ[9][14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair125" *) 
+  (* SOFT_HLUTNM = "soft_lutpair126" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[9][15]_i_1 
@@ -63625,7 +63643,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__4_n_83),
         .I2(ARG3__10_n_76),
         .O(\MULT_REG_QQ[9][15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair125" *) 
+  (* SOFT_HLUTNM = "soft_lutpair126" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[9][16]_i_1 
@@ -63653,7 +63671,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[9][16]_i_6 
        (.I0(ARG2__4_n_85),
         .O(\MULT_REG_QQ[9][16]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair124" *) 
+  (* SOFT_HLUTNM = "soft_lutpair125" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[9][17]_i_1 
@@ -63661,7 +63679,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__4_n_81),
         .I2(ARG3__10_n_76),
         .O(\MULT_REG_QQ[9][17]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair124" *) 
+  (* SOFT_HLUTNM = "soft_lutpair125" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[9][18]_i_1 
@@ -63669,7 +63687,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__4_n_80),
         .I2(ARG3__10_n_76),
         .O(\MULT_REG_QQ[9][18]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair123" *) 
+  (* SOFT_HLUTNM = "soft_lutpair124" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[9][19]_i_1 
@@ -63677,7 +63695,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__4_n_79),
         .I2(ARG3__10_n_76),
         .O(\MULT_REG_QQ[9][19]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair132" *) 
+  (* SOFT_HLUTNM = "soft_lutpair133" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[9][1]_i_1 
@@ -63685,7 +63703,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__4_n_97),
         .I2(ARG3__10_n_76),
         .O(\MULT_REG_QQ[9][1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair123" *) 
+  (* SOFT_HLUTNM = "soft_lutpair124" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[9][20]_i_1 
@@ -63713,7 +63731,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[9][20]_i_6 
        (.I0(ARG2__4_n_81),
         .O(\MULT_REG_QQ[9][20]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair122" *) 
+  (* SOFT_HLUTNM = "soft_lutpair123" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[9][21]_i_1 
@@ -63721,7 +63739,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__4_n_77),
         .I2(ARG3__10_n_76),
         .O(\MULT_REG_QQ[9][21]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair122" *) 
+  (* SOFT_HLUTNM = "soft_lutpair123" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \MULT_REG_QQ[9][22]_i_1 
@@ -63738,7 +63756,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[9][22]_i_4 
        (.I0(ARG2__4_n_77),
         .O(\MULT_REG_QQ[9][22]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair132" *) 
+  (* SOFT_HLUTNM = "soft_lutpair133" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[9][2]_i_1 
@@ -63746,7 +63764,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__4_n_96),
         .I2(ARG3__10_n_76),
         .O(\MULT_REG_QQ[9][2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair131" *) 
+  (* SOFT_HLUTNM = "soft_lutpair132" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[9][3]_i_1 
@@ -63754,7 +63772,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__4_n_95),
         .I2(ARG3__10_n_76),
         .O(\MULT_REG_QQ[9][3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair131" *) 
+  (* SOFT_HLUTNM = "soft_lutpair132" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[9][4]_i_1 
@@ -63787,7 +63805,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[9][4]_i_7 
        (.I0(ARG2__4_n_97),
         .O(\MULT_REG_QQ[9][4]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair130" *) 
+  (* SOFT_HLUTNM = "soft_lutpair131" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[9][5]_i_1 
@@ -63795,7 +63813,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__4_n_93),
         .I2(ARG3__10_n_76),
         .O(\MULT_REG_QQ[9][5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair130" *) 
+  (* SOFT_HLUTNM = "soft_lutpair131" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[9][6]_i_1 
@@ -63803,7 +63821,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__4_n_92),
         .I2(ARG3__10_n_76),
         .O(\MULT_REG_QQ[9][6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair129" *) 
+  (* SOFT_HLUTNM = "soft_lutpair130" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[9][7]_i_1 
@@ -63811,7 +63829,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__4_n_91),
         .I2(ARG3__10_n_76),
         .O(\MULT_REG_QQ[9][7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair129" *) 
+  (* SOFT_HLUTNM = "soft_lutpair130" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[9][8]_i_1 
@@ -63839,7 +63857,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \MULT_REG_QQ[9][8]_i_6 
        (.I0(ARG2__4_n_93),
         .O(\MULT_REG_QQ[9][8]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair128" *) 
+  (* SOFT_HLUTNM = "soft_lutpair129" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \MULT_REG_QQ[9][9]_i_1 
@@ -66272,7 +66290,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
        (.I0(POWER_II[4]),
         .I1(POWER_QQ[4]),
         .O(\POWER[7]_i_5_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair374" *) 
+  (* SOFT_HLUTNM = "soft_lutpair375" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_II[10]_i_1 
@@ -66280,7 +66298,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__16_n_93),
         .I2(ARG3__32_n_76),
         .O(\POWER_II[10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair374" *) 
+  (* SOFT_HLUTNM = "soft_lutpair375" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_II[11]_i_1 
@@ -66288,7 +66306,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__16_n_92),
         .I2(ARG3__32_n_76),
         .O(\POWER_II[11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair373" *) 
+  (* SOFT_HLUTNM = "soft_lutpair374" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_II[12]_i_1 
@@ -66316,7 +66334,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \POWER_II[12]_i_6 
        (.I0(ARG2__16_n_94),
         .O(\POWER_II[12]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair373" *) 
+  (* SOFT_HLUTNM = "soft_lutpair374" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_II[13]_i_1 
@@ -66324,7 +66342,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__16_n_90),
         .I2(ARG3__32_n_76),
         .O(\POWER_II[13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair372" *) 
+  (* SOFT_HLUTNM = "soft_lutpair373" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_II[14]_i_1 
@@ -66332,7 +66350,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__16_n_89),
         .I2(ARG3__32_n_76),
         .O(\POWER_II[14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair372" *) 
+  (* SOFT_HLUTNM = "soft_lutpair373" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_II[15]_i_1 
@@ -66340,7 +66358,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__16_n_88),
         .I2(ARG3__32_n_76),
         .O(\POWER_II[15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair371" *) 
+  (* SOFT_HLUTNM = "soft_lutpair372" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_II[16]_i_1 
@@ -66368,7 +66386,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \POWER_II[16]_i_6 
        (.I0(ARG2__16_n_90),
         .O(\POWER_II[16]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair371" *) 
+  (* SOFT_HLUTNM = "soft_lutpair372" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_II[17]_i_1 
@@ -66376,7 +66394,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__16_n_86),
         .I2(ARG3__32_n_76),
         .O(\POWER_II[17]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair370" *) 
+  (* SOFT_HLUTNM = "soft_lutpair371" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_II[18]_i_1 
@@ -66384,7 +66402,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__16_n_85),
         .I2(ARG3__32_n_76),
         .O(\POWER_II[18]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair370" *) 
+  (* SOFT_HLUTNM = "soft_lutpair371" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_II[19]_i_1 
@@ -66399,7 +66417,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__16_n_102),
         .I2(ARG3__32_n_76),
         .O(\POWER_II[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair369" *) 
+  (* SOFT_HLUTNM = "soft_lutpair370" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_II[20]_i_1 
@@ -66427,7 +66445,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \POWER_II[20]_i_6 
        (.I0(ARG2__16_n_86),
         .O(\POWER_II[20]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair369" *) 
+  (* SOFT_HLUTNM = "soft_lutpair370" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_II[21]_i_1 
@@ -66435,7 +66453,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__16_n_82),
         .I2(ARG3__32_n_76),
         .O(\POWER_II[21]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair368" *) 
+  (* SOFT_HLUTNM = "soft_lutpair369" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_II[22]_i_1 
@@ -66443,7 +66461,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__16_n_81),
         .I2(ARG3__32_n_76),
         .O(\POWER_II[22]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair368" *) 
+  (* SOFT_HLUTNM = "soft_lutpair369" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_II[23]_i_1 
@@ -66451,7 +66469,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__16_n_80),
         .I2(ARG3__32_n_76),
         .O(\POWER_II[23]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair367" *) 
+  (* SOFT_HLUTNM = "soft_lutpair368" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_II[24]_i_1 
@@ -66479,7 +66497,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \POWER_II[24]_i_6 
        (.I0(ARG2__16_n_82),
         .O(\POWER_II[24]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair366" *) 
+  (* SOFT_HLUTNM = "soft_lutpair367" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_II[25]_i_1 
@@ -66487,7 +66505,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__16_n_78),
         .I2(ARG3__32_n_76),
         .O(\POWER_II[25]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair366" *) 
+  (* SOFT_HLUTNM = "soft_lutpair367" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_II[26]_i_1 
@@ -66495,7 +66513,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__16_n_77),
         .I2(ARG3__32_n_76),
         .O(\POWER_II[26]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair367" *) 
+  (* SOFT_HLUTNM = "soft_lutpair368" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \POWER_II[27]_i_1 
@@ -66517,7 +66535,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \POWER_II[27]_i_5 
        (.I0(ARG2__16_n_78),
         .O(\POWER_II[27]_i_5_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair378" *) 
+  (* SOFT_HLUTNM = "soft_lutpair379" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_II[2]_i_1 
@@ -66525,7 +66543,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__16_n_101),
         .I2(ARG3__32_n_76),
         .O(\POWER_II[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair378" *) 
+  (* SOFT_HLUTNM = "soft_lutpair379" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_II[3]_i_1 
@@ -66533,7 +66551,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__16_n_100),
         .I2(ARG3__32_n_76),
         .O(\POWER_II[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair377" *) 
+  (* SOFT_HLUTNM = "soft_lutpair378" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_II[4]_i_1 
@@ -66566,7 +66584,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \POWER_II[4]_i_7 
        (.I0(ARG2__16_n_102),
         .O(\POWER_II[4]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair377" *) 
+  (* SOFT_HLUTNM = "soft_lutpair378" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_II[5]_i_1 
@@ -66574,7 +66592,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__16_n_98),
         .I2(ARG3__32_n_76),
         .O(\POWER_II[5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair376" *) 
+  (* SOFT_HLUTNM = "soft_lutpair377" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_II[6]_i_1 
@@ -66582,7 +66600,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__16_n_97),
         .I2(ARG3__32_n_76),
         .O(\POWER_II[6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair376" *) 
+  (* SOFT_HLUTNM = "soft_lutpair377" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_II[7]_i_1 
@@ -66590,7 +66608,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__16_n_96),
         .I2(ARG3__32_n_76),
         .O(\POWER_II[7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair375" *) 
+  (* SOFT_HLUTNM = "soft_lutpair376" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_II[8]_i_1 
@@ -66618,7 +66636,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \POWER_II[8]_i_6 
        (.I0(ARG2__16_n_98),
         .O(\POWER_II[8]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair375" *) 
+  (* SOFT_HLUTNM = "soft_lutpair376" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_II[9]_i_1 
@@ -66899,7 +66917,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .D(\POWER_II[9]_i_1_n_0 ),
         .Q(POWER_II[9]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair361" *) 
+  (* SOFT_HLUTNM = "soft_lutpair362" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_QQ[10]_i_1 
@@ -66907,7 +66925,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__15_n_93),
         .I2(ARG3__31_n_76),
         .O(\POWER_QQ[10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair361" *) 
+  (* SOFT_HLUTNM = "soft_lutpair362" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_QQ[11]_i_1 
@@ -66915,7 +66933,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__15_n_92),
         .I2(ARG3__31_n_76),
         .O(\POWER_QQ[11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair360" *) 
+  (* SOFT_HLUTNM = "soft_lutpair361" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_QQ[12]_i_1 
@@ -66943,7 +66961,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \POWER_QQ[12]_i_6 
        (.I0(ARG2__15_n_94),
         .O(\POWER_QQ[12]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair360" *) 
+  (* SOFT_HLUTNM = "soft_lutpair361" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_QQ[13]_i_1 
@@ -66951,7 +66969,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__15_n_90),
         .I2(ARG3__31_n_76),
         .O(\POWER_QQ[13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair359" *) 
+  (* SOFT_HLUTNM = "soft_lutpair360" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_QQ[14]_i_1 
@@ -66959,7 +66977,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__15_n_89),
         .I2(ARG3__31_n_76),
         .O(\POWER_QQ[14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair359" *) 
+  (* SOFT_HLUTNM = "soft_lutpair360" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_QQ[15]_i_1 
@@ -66967,7 +66985,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__15_n_88),
         .I2(ARG3__31_n_76),
         .O(\POWER_QQ[15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair358" *) 
+  (* SOFT_HLUTNM = "soft_lutpair359" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_QQ[16]_i_1 
@@ -66995,7 +67013,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \POWER_QQ[16]_i_6 
        (.I0(ARG2__15_n_90),
         .O(\POWER_QQ[16]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair358" *) 
+  (* SOFT_HLUTNM = "soft_lutpair359" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_QQ[17]_i_1 
@@ -67003,7 +67021,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__15_n_86),
         .I2(ARG3__31_n_76),
         .O(\POWER_QQ[17]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair357" *) 
+  (* SOFT_HLUTNM = "soft_lutpair358" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_QQ[18]_i_1 
@@ -67011,7 +67029,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__15_n_85),
         .I2(ARG3__31_n_76),
         .O(\POWER_QQ[18]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair357" *) 
+  (* SOFT_HLUTNM = "soft_lutpair358" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_QQ[19]_i_1 
@@ -67026,7 +67044,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__15_n_102),
         .I2(ARG3__31_n_76),
         .O(\POWER_QQ[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair356" *) 
+  (* SOFT_HLUTNM = "soft_lutpair357" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_QQ[20]_i_1 
@@ -67054,7 +67072,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \POWER_QQ[20]_i_6 
        (.I0(ARG2__15_n_86),
         .O(\POWER_QQ[20]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair356" *) 
+  (* SOFT_HLUTNM = "soft_lutpair357" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_QQ[21]_i_1 
@@ -67062,7 +67080,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__15_n_82),
         .I2(ARG3__31_n_76),
         .O(\POWER_QQ[21]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair355" *) 
+  (* SOFT_HLUTNM = "soft_lutpair356" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_QQ[22]_i_1 
@@ -67070,7 +67088,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__15_n_81),
         .I2(ARG3__31_n_76),
         .O(\POWER_QQ[22]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair355" *) 
+  (* SOFT_HLUTNM = "soft_lutpair356" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_QQ[23]_i_1 
@@ -67078,7 +67096,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__15_n_80),
         .I2(ARG3__31_n_76),
         .O(\POWER_QQ[23]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair354" *) 
+  (* SOFT_HLUTNM = "soft_lutpair355" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_QQ[24]_i_1 
@@ -67106,7 +67124,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \POWER_QQ[24]_i_6 
        (.I0(ARG2__15_n_82),
         .O(\POWER_QQ[24]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair354" *) 
+  (* SOFT_HLUTNM = "soft_lutpair355" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_QQ[25]_i_1 
@@ -67114,7 +67132,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__15_n_78),
         .I2(ARG3__31_n_76),
         .O(\POWER_QQ[25]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair353" *) 
+  (* SOFT_HLUTNM = "soft_lutpair354" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_QQ[26]_i_1 
@@ -67122,7 +67140,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__15_n_77),
         .I2(ARG3__31_n_76),
         .O(\POWER_QQ[26]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair353" *) 
+  (* SOFT_HLUTNM = "soft_lutpair354" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \POWER_QQ[27]_i_1 
@@ -67144,7 +67162,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \POWER_QQ[27]_i_5 
        (.I0(ARG2__15_n_78),
         .O(\POWER_QQ[27]_i_5_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair365" *) 
+  (* SOFT_HLUTNM = "soft_lutpair366" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_QQ[2]_i_1 
@@ -67152,7 +67170,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__15_n_101),
         .I2(ARG3__31_n_76),
         .O(\POWER_QQ[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair365" *) 
+  (* SOFT_HLUTNM = "soft_lutpair366" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_QQ[3]_i_1 
@@ -67160,7 +67178,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__15_n_100),
         .I2(ARG3__31_n_76),
         .O(\POWER_QQ[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair364" *) 
+  (* SOFT_HLUTNM = "soft_lutpair365" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_QQ[4]_i_1 
@@ -67193,7 +67211,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \POWER_QQ[4]_i_7 
        (.I0(ARG2__15_n_102),
         .O(\POWER_QQ[4]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair364" *) 
+  (* SOFT_HLUTNM = "soft_lutpair365" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_QQ[5]_i_1 
@@ -67201,7 +67219,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__15_n_98),
         .I2(ARG3__31_n_76),
         .O(\POWER_QQ[5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair363" *) 
+  (* SOFT_HLUTNM = "soft_lutpair364" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_QQ[6]_i_1 
@@ -67209,7 +67227,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__15_n_97),
         .I2(ARG3__31_n_76),
         .O(\POWER_QQ[6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair363" *) 
+  (* SOFT_HLUTNM = "soft_lutpair364" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_QQ[7]_i_1 
@@ -67217,7 +67235,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .I1(ARG2__15_n_96),
         .I2(ARG3__31_n_76),
         .O(\POWER_QQ[7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair362" *) 
+  (* SOFT_HLUTNM = "soft_lutpair363" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_QQ[8]_i_1 
@@ -67245,7 +67263,7 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
     \POWER_QQ[8]_i_6 
        (.I0(ARG2__15_n_98),
         .O(\POWER_QQ[8]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair362" *) 
+  (* SOFT_HLUTNM = "soft_lutpair363" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \POWER_QQ[9]_i_1 
@@ -68351,25 +68369,25 @@ module block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter
         .O(\SHIFT_REGISTER_reg[95][7] ),
         .S(\SHIFT_REGISTER_reg[96][7] ));
   LUT6 #(
-    .INIT(64'h0000000044400000)) 
+    .INIT(64'h0000202022002222)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]_i_1 
-       (.I0(RESET),
-        .I1(DATA_OUT_STROBE),
-        .I2(\DETECTION_CNTR_reg[0] ),
-        .I3(\DETECTION_CNTR_reg[0]_0 ),
-        .I4(CO),
-        .I5(\DETECTION_CNTR_reg[0]_1 ),
-        .O(RESET_0));
-  LUT6 #(
-    .INIT(64'h00000000FFA80000)) 
+       (.I0(DATA_OUT_STROBE),
+        .I1(RESET),
+        .I2(CO),
+        .I3(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[35] ),
+        .I4(DETECTION_STATE[0]),
+        .I5(DETECTION_STATE[1]),
+        .O(DATA_OUT_STROBE_reg_0));
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  LUT5 #(
+    .INIT(32'h04000F00)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]_i_2 
-       (.I0(CO),
-        .I1(\DETECTION_CNTR_reg[0]_0 ),
-        .I2(\DETECTION_CNTR_reg[0] ),
-        .I3(\DETECTION_CNTR_reg[0]_1 ),
-        .I4(DATA_OUT_STROBE),
-        .I5(RESET),
-        .O(\FSM_onehot_DETECTION_STATE_reg[2] ));
+       (.I0(DETECTION_STATE[0]),
+        .I1(CO),
+        .I2(RESET),
+        .I3(DATA_OUT_STROBE),
+        .I4(DETECTION_STATE[1]),
+        .O(\FSM_sequential_DETECTION_STATE_reg[0]_0 ));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_I_16_DELAYED_reg[0] 
@@ -68934,16 +68952,16 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
   wire [31:0]CONTINUOUS_XCORR;
   wire DATA_OUT_STROBE;
   wire DATA_STROBE;
-  wire [4:0]DETECTION_CNTR;
-  wire \DETECTION_CNTR[4]_i_3_n_0 ;
-  wire \DETECTION_CNTR[4]_i_4_n_0 ;
+  wire [3:0]DETECTION_CNTR;
+  wire \DETECTION_CNTR[3]_i_1_n_0 ;
+  wire \DETECTION_CNTR[3]_i_3_n_0 ;
+  wire \DETECTION_CNTR[3]_i_4_n_0 ;
   wire \DETECTION_CNTR_reg_n_0_[0] ;
   wire \DETECTION_CNTR_reg_n_0_[1] ;
   wire \DETECTION_CNTR_reg_n_0_[2] ;
   wire \DETECTION_CNTR_reg_n_0_[3] ;
-  wire \DETECTION_CNTR_reg_n_0_[4] ;
   wire DETECTION_SIGNAL_DETECTED;
-  wire DETECTION_STATE;
+  wire [1:0]DETECTION_STATE;
   wire DETECTION_STATE0_carry__0_i_1_n_0;
   wire DETECTION_STATE0_carry__0_i_2_n_0;
   wire DETECTION_STATE0_carry__0_i_3_n_0;
@@ -68992,22 +69010,87 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
   wire DETECTION_STATE0_carry_n_1;
   wire DETECTION_STATE0_carry_n_2;
   wire DETECTION_STATE0_carry_n_3;
-  wire \DETECTION_STATE1_inferred__0/i__carry__0_n_0 ;
-  wire \DETECTION_STATE1_inferred__0/i__carry__0_n_1 ;
-  wire \DETECTION_STATE1_inferred__0/i__carry__0_n_2 ;
-  wire \DETECTION_STATE1_inferred__0/i__carry__0_n_3 ;
-  wire \DETECTION_STATE1_inferred__0/i__carry__1_n_0 ;
-  wire \DETECTION_STATE1_inferred__0/i__carry__1_n_1 ;
-  wire \DETECTION_STATE1_inferred__0/i__carry__1_n_2 ;
-  wire \DETECTION_STATE1_inferred__0/i__carry__1_n_3 ;
-  wire \DETECTION_STATE1_inferred__0/i__carry__2_n_0 ;
-  wire \DETECTION_STATE1_inferred__0/i__carry__2_n_1 ;
-  wire \DETECTION_STATE1_inferred__0/i__carry__2_n_2 ;
-  wire \DETECTION_STATE1_inferred__0/i__carry__2_n_3 ;
-  wire \DETECTION_STATE1_inferred__0/i__carry_n_0 ;
-  wire \DETECTION_STATE1_inferred__0/i__carry_n_1 ;
-  wire \DETECTION_STATE1_inferred__0/i__carry_n_2 ;
-  wire \DETECTION_STATE1_inferred__0/i__carry_n_3 ;
+  wire DETECTION_STATE1_carry__0_i_1_n_0;
+  wire DETECTION_STATE1_carry__0_i_2_n_0;
+  wire DETECTION_STATE1_carry__0_i_3_n_0;
+  wire DETECTION_STATE1_carry__0_i_4_n_0;
+  wire DETECTION_STATE1_carry__0_i_5_n_0;
+  wire DETECTION_STATE1_carry__0_i_6_n_0;
+  wire DETECTION_STATE1_carry__0_i_7_n_0;
+  wire DETECTION_STATE1_carry__0_i_8_n_0;
+  wire DETECTION_STATE1_carry__0_n_0;
+  wire DETECTION_STATE1_carry__0_n_1;
+  wire DETECTION_STATE1_carry__0_n_2;
+  wire DETECTION_STATE1_carry__0_n_3;
+  wire DETECTION_STATE1_carry__1_i_1_n_0;
+  wire DETECTION_STATE1_carry__1_i_2_n_0;
+  wire DETECTION_STATE1_carry__1_i_3_n_0;
+  wire DETECTION_STATE1_carry__1_i_4_n_0;
+  wire DETECTION_STATE1_carry__1_i_5_n_0;
+  wire DETECTION_STATE1_carry__1_i_6_n_0;
+  wire DETECTION_STATE1_carry__1_i_7_n_0;
+  wire DETECTION_STATE1_carry__1_i_8_n_0;
+  wire DETECTION_STATE1_carry__1_n_0;
+  wire DETECTION_STATE1_carry__1_n_1;
+  wire DETECTION_STATE1_carry__1_n_2;
+  wire DETECTION_STATE1_carry__1_n_3;
+  wire DETECTION_STATE1_carry__2_i_1_n_0;
+  wire DETECTION_STATE1_carry__2_i_2_n_0;
+  wire DETECTION_STATE1_carry__2_i_3_n_0;
+  wire DETECTION_STATE1_carry__2_i_4_n_0;
+  wire DETECTION_STATE1_carry__2_i_5_n_0;
+  wire DETECTION_STATE1_carry__2_i_6_n_0;
+  wire DETECTION_STATE1_carry__2_i_7_n_0;
+  wire DETECTION_STATE1_carry__2_i_8_n_0;
+  wire DETECTION_STATE1_carry__2_n_0;
+  wire DETECTION_STATE1_carry__2_n_1;
+  wire DETECTION_STATE1_carry__2_n_2;
+  wire DETECTION_STATE1_carry__2_n_3;
+  wire DETECTION_STATE1_carry_i_1_n_0;
+  wire DETECTION_STATE1_carry_i_2_n_0;
+  wire DETECTION_STATE1_carry_i_3_n_0;
+  wire DETECTION_STATE1_carry_i_4_n_0;
+  wire DETECTION_STATE1_carry_i_5_n_0;
+  wire DETECTION_STATE1_carry_i_6_n_0;
+  wire DETECTION_STATE1_carry_i_7_n_0;
+  wire DETECTION_STATE1_carry_i_8_n_0;
+  wire DETECTION_STATE1_carry_n_0;
+  wire DETECTION_STATE1_carry_n_1;
+  wire DETECTION_STATE1_carry_n_2;
+  wire DETECTION_STATE1_carry_n_3;
+  wire \DETECTION_STATE1_inferred__1/i__carry__0_n_0 ;
+  wire \DETECTION_STATE1_inferred__1/i__carry__0_n_1 ;
+  wire \DETECTION_STATE1_inferred__1/i__carry__0_n_2 ;
+  wire \DETECTION_STATE1_inferred__1/i__carry__0_n_3 ;
+  wire \DETECTION_STATE1_inferred__1/i__carry__1_n_0 ;
+  wire \DETECTION_STATE1_inferred__1/i__carry__1_n_1 ;
+  wire \DETECTION_STATE1_inferred__1/i__carry__1_n_2 ;
+  wire \DETECTION_STATE1_inferred__1/i__carry__1_n_3 ;
+  wire \DETECTION_STATE1_inferred__1/i__carry__2_n_0 ;
+  wire \DETECTION_STATE1_inferred__1/i__carry__2_n_1 ;
+  wire \DETECTION_STATE1_inferred__1/i__carry__2_n_2 ;
+  wire \DETECTION_STATE1_inferred__1/i__carry__2_n_3 ;
+  wire \DETECTION_STATE1_inferred__1/i__carry_n_0 ;
+  wire \DETECTION_STATE1_inferred__1/i__carry_n_1 ;
+  wire \DETECTION_STATE1_inferred__1/i__carry_n_2 ;
+  wire \DETECTION_STATE1_inferred__1/i__carry_n_3 ;
+  wire \DETECTION_STATE1_inferred__2/i__carry__0_n_0 ;
+  wire \DETECTION_STATE1_inferred__2/i__carry__0_n_1 ;
+  wire \DETECTION_STATE1_inferred__2/i__carry__0_n_2 ;
+  wire \DETECTION_STATE1_inferred__2/i__carry__0_n_3 ;
+  wire \DETECTION_STATE1_inferred__2/i__carry__1_n_0 ;
+  wire \DETECTION_STATE1_inferred__2/i__carry__1_n_1 ;
+  wire \DETECTION_STATE1_inferred__2/i__carry__1_n_2 ;
+  wire \DETECTION_STATE1_inferred__2/i__carry__1_n_3 ;
+  wire \DETECTION_STATE1_inferred__2/i__carry__2_n_0 ;
+  wire \DETECTION_STATE1_inferred__2/i__carry__2_n_1 ;
+  wire \DETECTION_STATE1_inferred__2/i__carry__2_n_2 ;
+  wire \DETECTION_STATE1_inferred__2/i__carry__2_n_3 ;
+  wire \DETECTION_STATE1_inferred__2/i__carry_n_0 ;
+  wire \DETECTION_STATE1_inferred__2/i__carry_n_1 ;
+  wire \DETECTION_STATE1_inferred__2/i__carry_n_2 ;
+  wire \DETECTION_STATE1_inferred__2/i__carry_n_3 ;
+  wire [1:1]DETECTION_STATE__0;
   wire DETECTION_STROBE;
   wire [31:0]DETECTION_STS_AUTOCORR_I;
   wire \DETECTION_STS_AUTOCORR_I[0]_i_3_n_0 ;
@@ -69373,13 +69456,9 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
   wire \DETECTION_STS_AUTOCORR_Q_reg[8]_i_7_n_7 ;
   wire [31:0]DETECTION_THRESHOLD;
   wire [31:0]DETECTION_XCORR;
-  wire \FSM_onehot_DETECTION_STATE[0]_i_1_n_0 ;
-  wire \FSM_onehot_DETECTION_STATE[1]_i_1_n_0 ;
-  wire \FSM_onehot_DETECTION_STATE[1]_i_2_n_0 ;
-  wire \FSM_onehot_DETECTION_STATE[2]_i_1_n_0 ;
-  wire \FSM_onehot_DETECTION_STATE_reg_n_0_[0] ;
-  wire \FSM_onehot_DETECTION_STATE_reg_n_0_[1] ;
-  wire \FSM_onehot_DETECTION_STATE_reg_n_0_[2] ;
+  wire \FSM_sequential_DETECTION_STATE[1]_i_3_n_0 ;
+  wire \FSM_sequential_DETECTION_STATE[1]_i_5_n_0 ;
+  wire \FSM_sequential_DETECTION_STATE[1]_i_6_n_0 ;
   wire [13:0]IDATA;
   wire [15:0]IDATA_DELAY_16;
   wire [15:0]IDATA_DELAY_32;
@@ -69579,8 +69658,8 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
   wire Parallel_STS_FIR_Filter_inst_n_286;
   wire Parallel_STS_FIR_Filter_inst_n_287;
   wire Parallel_STS_FIR_Filter_inst_n_288;
+  wire Parallel_STS_FIR_Filter_inst_n_289;
   wire Parallel_STS_FIR_Filter_inst_n_3;
-  wire Parallel_STS_FIR_Filter_inst_n_36;
   wire Parallel_STS_FIR_Filter_inst_n_37;
   wire Parallel_STS_FIR_Filter_inst_n_38;
   wire Parallel_STS_FIR_Filter_inst_n_39;
@@ -69617,6 +69696,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
   wire Parallel_STS_FIR_Filter_inst_n_67;
   wire Parallel_STS_FIR_Filter_inst_n_68;
   wire Parallel_STS_FIR_Filter_inst_n_69;
+  wire Parallel_STS_FIR_Filter_inst_n_7;
   wire Parallel_STS_FIR_Filter_inst_n_70;
   wire Parallel_STS_FIR_Filter_inst_n_71;
   wire Parallel_STS_FIR_Filter_inst_n_72;
@@ -70444,7 +70524,6 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
   wire \SHIFT_REGISTER_reg_n_0_[96][8] ;
   wire \SHIFT_REGISTER_reg_n_0_[96][9] ;
   wire [31:0]STS_AUTOCORR_I_16_DELAYED;
-  wire [35:0]STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR;
   wire [35:0]STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0;
   wire STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__0_i_1_n_0;
   wire STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__0_i_2_n_0;
@@ -70518,9 +70597,44 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
   wire STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry_n_1;
   wire STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry_n_2;
   wire STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry_n_3;
+  wire \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[0] ;
+  wire \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[10] ;
+  wire \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[11] ;
+  wire \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[12] ;
+  wire \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[13] ;
+  wire \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[14] ;
+  wire \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[15] ;
+  wire \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[16] ;
+  wire \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[17] ;
+  wire \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[18] ;
+  wire \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[19] ;
+  wire \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[1] ;
+  wire \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[20] ;
+  wire \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[21] ;
+  wire \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[22] ;
+  wire \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[23] ;
+  wire \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[24] ;
+  wire \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[25] ;
+  wire \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[26] ;
+  wire \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[27] ;
+  wire \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[28] ;
+  wire \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[29] ;
+  wire \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[2] ;
+  wire \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[30] ;
+  wire \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[31] ;
+  wire \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[32] ;
+  wire \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[33] ;
+  wire \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[34] ;
+  wire \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ;
+  wire \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[3] ;
+  wire \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[4] ;
+  wire \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[5] ;
+  wire \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[6] ;
+  wire \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[7] ;
+  wire \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[8] ;
+  wire \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[9] ;
   wire [31:0]STS_AUTOCORR_I_16_DELAYED_BUFF;
   wire [31:0]STS_AUTOCORR_Q_16_DELAYED;
-  wire [35:0]STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR;
   wire [35:0]STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0;
   wire STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__0_i_1_n_0;
   wire STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__0_i_2_n_0;
@@ -70594,50 +70708,124 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
   wire STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry_n_1;
   wire STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry_n_2;
   wire STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry_n_3;
+  wire \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[0] ;
+  wire \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[10] ;
+  wire \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[11] ;
+  wire \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[12] ;
+  wire \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[13] ;
+  wire \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[14] ;
+  wire \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[15] ;
+  wire \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[16] ;
+  wire \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[17] ;
+  wire \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[18] ;
+  wire \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[19] ;
+  wire \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[1] ;
+  wire \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[20] ;
+  wire \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[21] ;
+  wire \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[22] ;
+  wire \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[23] ;
+  wire \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[24] ;
+  wire \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[25] ;
+  wire \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[26] ;
+  wire \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[27] ;
+  wire \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[28] ;
+  wire \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[29] ;
+  wire \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[2] ;
+  wire \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[30] ;
+  wire \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[31] ;
+  wire \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[32] ;
+  wire \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[33] ;
+  wire \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[34] ;
+  wire \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ;
+  wire \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[3] ;
+  wire \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[4] ;
+  wire \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[5] ;
+  wire \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[6] ;
+  wire \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[7] ;
+  wire \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[8] ;
+  wire \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[9] ;
   wire [31:0]STS_AUTOCORR_Q_16_DELAYED_BUFF;
+  wire i__carry__0_i_1__0_n_0;
   wire i__carry__0_i_1_n_0;
+  wire i__carry__0_i_2__0_n_0;
   wire i__carry__0_i_2_n_0;
+  wire i__carry__0_i_3__0_n_0;
   wire i__carry__0_i_3_n_0;
+  wire i__carry__0_i_4__0_n_0;
   wire i__carry__0_i_4_n_0;
+  wire i__carry__0_i_5__0_n_0;
   wire i__carry__0_i_5_n_0;
+  wire i__carry__0_i_6__0_n_0;
   wire i__carry__0_i_6_n_0;
+  wire i__carry__0_i_7__0_n_0;
   wire i__carry__0_i_7_n_0;
+  wire i__carry__0_i_8__0_n_0;
   wire i__carry__0_i_8_n_0;
+  wire i__carry__1_i_1__0_n_0;
   wire i__carry__1_i_1_n_0;
+  wire i__carry__1_i_2__0_n_0;
   wire i__carry__1_i_2_n_0;
+  wire i__carry__1_i_3__0_n_0;
   wire i__carry__1_i_3_n_0;
+  wire i__carry__1_i_4__0_n_0;
   wire i__carry__1_i_4_n_0;
+  wire i__carry__1_i_5__0_n_0;
   wire i__carry__1_i_5_n_0;
+  wire i__carry__1_i_6__0_n_0;
   wire i__carry__1_i_6_n_0;
+  wire i__carry__1_i_7__0_n_0;
   wire i__carry__1_i_7_n_0;
+  wire i__carry__1_i_8__0_n_0;
   wire i__carry__1_i_8_n_0;
+  wire i__carry__2_i_1__0_n_0;
   wire i__carry__2_i_1_n_0;
+  wire i__carry__2_i_2__0_n_0;
   wire i__carry__2_i_2_n_0;
+  wire i__carry__2_i_3__0_n_0;
   wire i__carry__2_i_3_n_0;
+  wire i__carry__2_i_4__0_n_0;
   wire i__carry__2_i_4_n_0;
+  wire i__carry__2_i_5__0_n_0;
   wire i__carry__2_i_5_n_0;
+  wire i__carry__2_i_6__0_n_0;
   wire i__carry__2_i_6_n_0;
+  wire i__carry__2_i_7__0_n_0;
   wire i__carry__2_i_7_n_0;
+  wire i__carry__2_i_8__0_n_0;
   wire i__carry__2_i_8_n_0;
+  wire i__carry_i_1__0_n_0;
   wire i__carry_i_1_n_0;
+  wire i__carry_i_2__0_n_0;
   wire i__carry_i_2_n_0;
+  wire i__carry_i_3__0_n_0;
   wire i__carry_i_3_n_0;
+  wire i__carry_i_4__0_n_0;
   wire i__carry_i_4_n_0;
+  wire i__carry_i_5__0_n_0;
   wire i__carry_i_5_n_0;
+  wire i__carry_i_6__0_n_0;
   wire i__carry_i_6_n_0;
+  wire i__carry_i_7__0_n_0;
   wire i__carry_i_7_n_0;
+  wire i__carry_i_8__0_n_0;
   wire i__carry_i_8_n_0;
-  wire [35:0]in13;
-  wire [35:0]in16;
   wire [28:0]p_0_in;
   wire [3:0]NLW_DETECTION_STATE0_carry_O_UNCONNECTED;
   wire [3:0]NLW_DETECTION_STATE0_carry__0_O_UNCONNECTED;
   wire [3:0]NLW_DETECTION_STATE0_carry__1_O_UNCONNECTED;
   wire [3:0]NLW_DETECTION_STATE0_carry__2_O_UNCONNECTED;
-  wire [3:0]\NLW_DETECTION_STATE1_inferred__0/i__carry_O_UNCONNECTED ;
-  wire [3:0]\NLW_DETECTION_STATE1_inferred__0/i__carry__0_O_UNCONNECTED ;
-  wire [3:0]\NLW_DETECTION_STATE1_inferred__0/i__carry__1_O_UNCONNECTED ;
-  wire [3:0]\NLW_DETECTION_STATE1_inferred__0/i__carry__2_O_UNCONNECTED ;
+  wire [3:0]NLW_DETECTION_STATE1_carry_O_UNCONNECTED;
+  wire [3:0]NLW_DETECTION_STATE1_carry__0_O_UNCONNECTED;
+  wire [3:0]NLW_DETECTION_STATE1_carry__1_O_UNCONNECTED;
+  wire [3:0]NLW_DETECTION_STATE1_carry__2_O_UNCONNECTED;
+  wire [3:0]\NLW_DETECTION_STATE1_inferred__1/i__carry_O_UNCONNECTED ;
+  wire [3:0]\NLW_DETECTION_STATE1_inferred__1/i__carry__0_O_UNCONNECTED ;
+  wire [3:0]\NLW_DETECTION_STATE1_inferred__1/i__carry__1_O_UNCONNECTED ;
+  wire [3:0]\NLW_DETECTION_STATE1_inferred__1/i__carry__2_O_UNCONNECTED ;
+  wire [3:0]\NLW_DETECTION_STATE1_inferred__2/i__carry_O_UNCONNECTED ;
+  wire [3:0]\NLW_DETECTION_STATE1_inferred__2/i__carry__0_O_UNCONNECTED ;
+  wire [3:0]\NLW_DETECTION_STATE1_inferred__2/i__carry__1_O_UNCONNECTED ;
+  wire [3:0]\NLW_DETECTION_STATE1_inferred__2/i__carry__2_O_UNCONNECTED ;
   wire [2:0]\NLW_DETECTION_STS_AUTOCORR_I_reg[0]_i_2_O_UNCONNECTED ;
   wire [3:3]\NLW_DETECTION_STS_AUTOCORR_I_reg[31]_i_2_CO_UNCONNECTED ;
   wire [3:2]\NLW_DETECTION_STS_AUTOCORR_I_reg[31]_i_2_O_UNCONNECTED ;
@@ -70651,265 +70839,333 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
   wire [3:3]NLW_STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__7_CO_UNCONNECTED;
   wire [3:3]NLW_STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__7_CO_UNCONNECTED;
 
-  FDRE \CONTINUOUS_XCORR_reg[0] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \CONTINUOUS_XCORR_reg[0] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_3),
+        .CE(Parallel_STS_FIR_Filter_inst_n_2),
         .D(\SHIFT_REGISTER_reg[144] [0]),
         .Q(CONTINUOUS_XCORR[0]),
         .R(1'b0));
-  FDRE \CONTINUOUS_XCORR_reg[10] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \CONTINUOUS_XCORR_reg[10] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_3),
+        .CE(Parallel_STS_FIR_Filter_inst_n_2),
         .D(\SHIFT_REGISTER_reg[144] [10]),
         .Q(CONTINUOUS_XCORR[10]),
         .R(1'b0));
-  FDRE \CONTINUOUS_XCORR_reg[11] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \CONTINUOUS_XCORR_reg[11] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_3),
+        .CE(Parallel_STS_FIR_Filter_inst_n_2),
         .D(\SHIFT_REGISTER_reg[144] [11]),
         .Q(CONTINUOUS_XCORR[11]),
         .R(1'b0));
-  FDRE \CONTINUOUS_XCORR_reg[12] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \CONTINUOUS_XCORR_reg[12] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_3),
+        .CE(Parallel_STS_FIR_Filter_inst_n_2),
         .D(\SHIFT_REGISTER_reg[144] [12]),
         .Q(CONTINUOUS_XCORR[12]),
         .R(1'b0));
-  FDRE \CONTINUOUS_XCORR_reg[13] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \CONTINUOUS_XCORR_reg[13] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_3),
+        .CE(Parallel_STS_FIR_Filter_inst_n_2),
         .D(\SHIFT_REGISTER_reg[144] [13]),
         .Q(CONTINUOUS_XCORR[13]),
         .R(1'b0));
-  FDRE \CONTINUOUS_XCORR_reg[14] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \CONTINUOUS_XCORR_reg[14] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_3),
+        .CE(Parallel_STS_FIR_Filter_inst_n_2),
         .D(\SHIFT_REGISTER_reg[144] [14]),
         .Q(CONTINUOUS_XCORR[14]),
         .R(1'b0));
-  FDRE \CONTINUOUS_XCORR_reg[15] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \CONTINUOUS_XCORR_reg[15] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_3),
+        .CE(Parallel_STS_FIR_Filter_inst_n_2),
         .D(\SHIFT_REGISTER_reg[144] [15]),
         .Q(CONTINUOUS_XCORR[15]),
         .R(1'b0));
-  FDRE \CONTINUOUS_XCORR_reg[16] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \CONTINUOUS_XCORR_reg[16] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_3),
+        .CE(Parallel_STS_FIR_Filter_inst_n_2),
         .D(\SHIFT_REGISTER_reg[144] [16]),
         .Q(CONTINUOUS_XCORR[16]),
         .R(1'b0));
-  FDRE \CONTINUOUS_XCORR_reg[17] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \CONTINUOUS_XCORR_reg[17] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_3),
+        .CE(Parallel_STS_FIR_Filter_inst_n_2),
         .D(\SHIFT_REGISTER_reg[144] [17]),
         .Q(CONTINUOUS_XCORR[17]),
         .R(1'b0));
-  FDRE \CONTINUOUS_XCORR_reg[18] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \CONTINUOUS_XCORR_reg[18] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_3),
+        .CE(Parallel_STS_FIR_Filter_inst_n_2),
         .D(\SHIFT_REGISTER_reg[144] [18]),
         .Q(CONTINUOUS_XCORR[18]),
         .R(1'b0));
-  FDRE \CONTINUOUS_XCORR_reg[19] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \CONTINUOUS_XCORR_reg[19] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_3),
+        .CE(Parallel_STS_FIR_Filter_inst_n_2),
         .D(\SHIFT_REGISTER_reg[144] [19]),
         .Q(CONTINUOUS_XCORR[19]),
         .R(1'b0));
-  FDRE \CONTINUOUS_XCORR_reg[1] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \CONTINUOUS_XCORR_reg[1] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_3),
+        .CE(Parallel_STS_FIR_Filter_inst_n_2),
         .D(\SHIFT_REGISTER_reg[144] [1]),
         .Q(CONTINUOUS_XCORR[1]),
         .R(1'b0));
-  FDRE \CONTINUOUS_XCORR_reg[20] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \CONTINUOUS_XCORR_reg[20] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_3),
+        .CE(Parallel_STS_FIR_Filter_inst_n_2),
         .D(\SHIFT_REGISTER_reg[144] [20]),
         .Q(CONTINUOUS_XCORR[20]),
         .R(1'b0));
-  FDRE \CONTINUOUS_XCORR_reg[21] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \CONTINUOUS_XCORR_reg[21] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_3),
+        .CE(Parallel_STS_FIR_Filter_inst_n_2),
         .D(\SHIFT_REGISTER_reg[144] [21]),
         .Q(CONTINUOUS_XCORR[21]),
         .R(1'b0));
-  FDRE \CONTINUOUS_XCORR_reg[22] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \CONTINUOUS_XCORR_reg[22] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_3),
+        .CE(Parallel_STS_FIR_Filter_inst_n_2),
         .D(\SHIFT_REGISTER_reg[144] [22]),
         .Q(CONTINUOUS_XCORR[22]),
         .R(1'b0));
-  FDRE \CONTINUOUS_XCORR_reg[23] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \CONTINUOUS_XCORR_reg[23] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_3),
+        .CE(Parallel_STS_FIR_Filter_inst_n_2),
         .D(\SHIFT_REGISTER_reg[144] [23]),
         .Q(CONTINUOUS_XCORR[23]),
         .R(1'b0));
-  FDRE \CONTINUOUS_XCORR_reg[24] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \CONTINUOUS_XCORR_reg[24] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_3),
+        .CE(Parallel_STS_FIR_Filter_inst_n_2),
         .D(\SHIFT_REGISTER_reg[144] [24]),
         .Q(CONTINUOUS_XCORR[24]),
         .R(1'b0));
-  FDRE \CONTINUOUS_XCORR_reg[25] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \CONTINUOUS_XCORR_reg[25] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_3),
+        .CE(Parallel_STS_FIR_Filter_inst_n_2),
         .D(\SHIFT_REGISTER_reg[144] [25]),
         .Q(CONTINUOUS_XCORR[25]),
         .R(1'b0));
-  FDRE \CONTINUOUS_XCORR_reg[26] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \CONTINUOUS_XCORR_reg[26] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_3),
+        .CE(Parallel_STS_FIR_Filter_inst_n_2),
         .D(\SHIFT_REGISTER_reg[144] [26]),
         .Q(CONTINUOUS_XCORR[26]),
         .R(1'b0));
-  FDRE \CONTINUOUS_XCORR_reg[27] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \CONTINUOUS_XCORR_reg[27] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_3),
+        .CE(Parallel_STS_FIR_Filter_inst_n_2),
         .D(\SHIFT_REGISTER_reg[144] [27]),
         .Q(CONTINUOUS_XCORR[27]),
         .R(1'b0));
-  FDRE \CONTINUOUS_XCORR_reg[28] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \CONTINUOUS_XCORR_reg[28] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_3),
+        .CE(Parallel_STS_FIR_Filter_inst_n_2),
         .D(\SHIFT_REGISTER_reg[144] [28]),
         .Q(CONTINUOUS_XCORR[28]),
         .R(1'b0));
-  FDRE \CONTINUOUS_XCORR_reg[29] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \CONTINUOUS_XCORR_reg[29] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_3),
+        .CE(Parallel_STS_FIR_Filter_inst_n_2),
         .D(\SHIFT_REGISTER_reg[144] [29]),
         .Q(CONTINUOUS_XCORR[29]),
         .R(1'b0));
-  FDRE \CONTINUOUS_XCORR_reg[2] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \CONTINUOUS_XCORR_reg[2] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_3),
+        .CE(Parallel_STS_FIR_Filter_inst_n_2),
         .D(\SHIFT_REGISTER_reg[144] [2]),
         .Q(CONTINUOUS_XCORR[2]),
         .R(1'b0));
-  FDRE \CONTINUOUS_XCORR_reg[30] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \CONTINUOUS_XCORR_reg[30] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_3),
+        .CE(Parallel_STS_FIR_Filter_inst_n_2),
         .D(\SHIFT_REGISTER_reg[144] [30]),
         .Q(CONTINUOUS_XCORR[30]),
         .R(1'b0));
-  FDRE \CONTINUOUS_XCORR_reg[31] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \CONTINUOUS_XCORR_reg[31] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_3),
+        .CE(Parallel_STS_FIR_Filter_inst_n_2),
         .D(\SHIFT_REGISTER_reg[144] [31]),
         .Q(CONTINUOUS_XCORR[31]),
         .R(1'b0));
-  FDRE \CONTINUOUS_XCORR_reg[3] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \CONTINUOUS_XCORR_reg[3] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_3),
+        .CE(Parallel_STS_FIR_Filter_inst_n_2),
         .D(\SHIFT_REGISTER_reg[144] [3]),
         .Q(CONTINUOUS_XCORR[3]),
         .R(1'b0));
-  FDRE \CONTINUOUS_XCORR_reg[4] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \CONTINUOUS_XCORR_reg[4] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_3),
+        .CE(Parallel_STS_FIR_Filter_inst_n_2),
         .D(\SHIFT_REGISTER_reg[144] [4]),
         .Q(CONTINUOUS_XCORR[4]),
         .R(1'b0));
-  FDRE \CONTINUOUS_XCORR_reg[5] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \CONTINUOUS_XCORR_reg[5] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_3),
+        .CE(Parallel_STS_FIR_Filter_inst_n_2),
         .D(\SHIFT_REGISTER_reg[144] [5]),
         .Q(CONTINUOUS_XCORR[5]),
         .R(1'b0));
-  FDRE \CONTINUOUS_XCORR_reg[6] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \CONTINUOUS_XCORR_reg[6] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_3),
+        .CE(Parallel_STS_FIR_Filter_inst_n_2),
         .D(\SHIFT_REGISTER_reg[144] [6]),
         .Q(CONTINUOUS_XCORR[6]),
         .R(1'b0));
-  FDRE \CONTINUOUS_XCORR_reg[7] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \CONTINUOUS_XCORR_reg[7] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_3),
+        .CE(Parallel_STS_FIR_Filter_inst_n_2),
         .D(\SHIFT_REGISTER_reg[144] [7]),
         .Q(CONTINUOUS_XCORR[7]),
         .R(1'b0));
-  FDRE \CONTINUOUS_XCORR_reg[8] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \CONTINUOUS_XCORR_reg[8] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_3),
+        .CE(Parallel_STS_FIR_Filter_inst_n_2),
         .D(\SHIFT_REGISTER_reg[144] [8]),
         .Q(CONTINUOUS_XCORR[8]),
         .R(1'b0));
-  FDRE \CONTINUOUS_XCORR_reg[9] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \CONTINUOUS_XCORR_reg[9] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_3),
+        .CE(Parallel_STS_FIR_Filter_inst_n_2),
         .D(\SHIFT_REGISTER_reg[144] [9]),
         .Q(CONTINUOUS_XCORR[9]),
         .R(1'b0));
-  LUT5 #(
-    .INIT(32'hFFFFEEAE)) 
-    \DETECTION_CNTR[0]_i_1 
-       (.I0(\FSM_onehot_DETECTION_STATE_reg_n_0_[0] ),
-        .I1(\FSM_onehot_DETECTION_STATE_reg_n_0_[1] ),
-        .I2(\DETECTION_CNTR_reg_n_0_[0] ),
-        .I3(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .I4(\FSM_onehot_DETECTION_STATE_reg_n_0_[2] ),
-        .O(DETECTION_CNTR[0]));
-  (* SOFT_HLUTNM = "soft_lutpair435" *) 
+  (* SOFT_HLUTNM = "soft_lutpair436" *) 
   LUT4 #(
-    .INIT(16'h0220)) 
-    \DETECTION_CNTR[1]_i_1 
-       (.I0(\FSM_onehot_DETECTION_STATE_reg_n_0_[1] ),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .I2(\DETECTION_CNTR_reg_n_0_[0] ),
-        .I3(\DETECTION_CNTR_reg_n_0_[1] ),
-        .O(DETECTION_CNTR[1]));
-  (* SOFT_HLUTNM = "soft_lutpair435" *) 
+    .INIT(16'h0004)) 
+    \DETECTION_CNTR[0]_i_1 
+       (.I0(DETECTION_STATE1_carry__2_n_0),
+        .I1(DETECTION_STATE[0]),
+        .I2(DETECTION_STATE[1]),
+        .I3(\DETECTION_CNTR_reg_n_0_[0] ),
+        .O(DETECTION_CNTR[0]));
+  (* SOFT_HLUTNM = "soft_lutpair436" *) 
   LUT5 #(
-    .INIT(32'h02222000)) 
+    .INIT(32'h00040400)) 
+    \DETECTION_CNTR[1]_i_1 
+       (.I0(DETECTION_STATE[1]),
+        .I1(DETECTION_STATE[0]),
+        .I2(DETECTION_STATE1_carry__2_n_0),
+        .I3(\DETECTION_CNTR_reg_n_0_[0] ),
+        .I4(\DETECTION_CNTR_reg_n_0_[1] ),
+        .O(DETECTION_CNTR[1]));
+  LUT6 #(
+    .INIT(64'h0004040404000000)) 
     \DETECTION_CNTR[2]_i_1 
-       (.I0(\FSM_onehot_DETECTION_STATE_reg_n_0_[1] ),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .I2(\DETECTION_CNTR_reg_n_0_[0] ),
+       (.I0(DETECTION_STATE[1]),
+        .I1(DETECTION_STATE[0]),
+        .I2(DETECTION_STATE1_carry__2_n_0),
         .I3(\DETECTION_CNTR_reg_n_0_[1] ),
-        .I4(\DETECTION_CNTR_reg_n_0_[2] ),
+        .I4(\DETECTION_CNTR_reg_n_0_[0] ),
+        .I5(\DETECTION_CNTR_reg_n_0_[2] ),
         .O(DETECTION_CNTR[2]));
   LUT6 #(
-    .INIT(64'h0222222220000000)) 
+    .INIT(64'h30003000F0C07040)) 
     \DETECTION_CNTR[3]_i_1 
-       (.I0(\FSM_onehot_DETECTION_STATE_reg_n_0_[1] ),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .I2(\DETECTION_CNTR_reg_n_0_[1] ),
-        .I3(\DETECTION_CNTR_reg_n_0_[0] ),
-        .I4(\DETECTION_CNTR_reg_n_0_[2] ),
-        .I5(\DETECTION_CNTR_reg_n_0_[3] ),
-        .O(DETECTION_CNTR[3]));
-  (* SOFT_HLUTNM = "soft_lutpair436" *) 
+       (.I0(\DETECTION_CNTR[3]_i_3_n_0 ),
+        .I1(DETECTION_STATE[0]),
+        .I2(DATA_OUT_STROBE),
+        .I3(DETECTION_STATE0_carry__2_n_0),
+        .I4(DETECTION_STATE1_carry__2_n_0),
+        .I5(DETECTION_STATE[1]),
+        .O(\DETECTION_CNTR[3]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair437" *) 
   LUT5 #(
-    .INIT(32'h02222000)) 
-    \DETECTION_CNTR[4]_i_2 
-       (.I0(\FSM_onehot_DETECTION_STATE_reg_n_0_[1] ),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .I2(\DETECTION_CNTR[4]_i_4_n_0 ),
-        .I3(\DETECTION_CNTR_reg_n_0_[3] ),
-        .I4(\DETECTION_CNTR_reg_n_0_[4] ),
-        .O(DETECTION_CNTR[4]));
-  (* SOFT_HLUTNM = "soft_lutpair436" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \DETECTION_CNTR[4]_i_3 
-       (.I0(\DETECTION_CNTR_reg_n_0_[4] ),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(\DETECTION_CNTR[4]_i_3_n_0 ));
+    .INIT(32'h2AAA8000)) 
+    \DETECTION_CNTR[3]_i_2 
+       (.I0(\DETECTION_CNTR[3]_i_4_n_0 ),
+        .I1(\DETECTION_CNTR_reg_n_0_[2] ),
+        .I2(\DETECTION_CNTR_reg_n_0_[0] ),
+        .I3(\DETECTION_CNTR_reg_n_0_[1] ),
+        .I4(\DETECTION_CNTR_reg_n_0_[3] ),
+        .O(DETECTION_CNTR[3]));
+  LUT5 #(
+    .INIT(32'h8000FFFF)) 
+    \DETECTION_CNTR[3]_i_3 
+       (.I0(\DETECTION_CNTR_reg_n_0_[3] ),
+        .I1(\DETECTION_CNTR_reg_n_0_[1] ),
+        .I2(\DETECTION_CNTR_reg_n_0_[0] ),
+        .I3(\DETECTION_CNTR_reg_n_0_[2] ),
+        .I4(\DETECTION_STATE1_inferred__1/i__carry__2_n_0 ),
+        .O(\DETECTION_CNTR[3]_i_3_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair438" *) 
   LUT3 #(
-    .INIT(8'h80)) 
-    \DETECTION_CNTR[4]_i_4 
-       (.I0(\DETECTION_CNTR_reg_n_0_[2] ),
-        .I1(\DETECTION_CNTR_reg_n_0_[0] ),
-        .I2(\DETECTION_CNTR_reg_n_0_[1] ),
-        .O(\DETECTION_CNTR[4]_i_4_n_0 ));
+    .INIT(8'h04)) 
+    \DETECTION_CNTR[3]_i_4 
+       (.I0(DETECTION_STATE[1]),
+        .I1(DETECTION_STATE[0]),
+        .I2(DETECTION_STATE1_carry__2_n_0),
+        .O(\DETECTION_CNTR[3]_i_4_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
     \DETECTION_CNTR_reg[0] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .CE(\DETECTION_CNTR[3]_i_1_n_0 ),
         .D(DETECTION_CNTR[0]),
         .Q(\DETECTION_CNTR_reg_n_0_[0] ),
         .R(RESET));
@@ -70917,7 +71173,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     .INIT(1'b0)) 
     \DETECTION_CNTR_reg[1] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .CE(\DETECTION_CNTR[3]_i_1_n_0 ),
         .D(DETECTION_CNTR[1]),
         .Q(\DETECTION_CNTR_reg_n_0_[1] ),
         .R(RESET));
@@ -70925,7 +71181,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     .INIT(1'b0)) 
     \DETECTION_CNTR_reg[2] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .CE(\DETECTION_CNTR[3]_i_1_n_0 ),
         .D(DETECTION_CNTR[2]),
         .Q(\DETECTION_CNTR_reg_n_0_[2] ),
         .R(RESET));
@@ -70933,24 +71189,16 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     .INIT(1'b0)) 
     \DETECTION_CNTR_reg[3] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .CE(\DETECTION_CNTR[3]_i_1_n_0 ),
         .D(DETECTION_CNTR[3]),
         .Q(\DETECTION_CNTR_reg_n_0_[3] ),
-        .R(RESET));
-  FDRE #(
-    .INIT(1'b0)) 
-    \DETECTION_CNTR_reg[4] 
-       (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_5),
-        .D(DETECTION_CNTR[4]),
-        .Q(\DETECTION_CNTR_reg_n_0_[4] ),
         .R(RESET));
   FDRE #(
     .INIT(1'b0)) 
     DETECTION_SIGNAL_DETECTED_reg
        (.C(CLOCK),
         .CE(1'b1),
-        .D(Parallel_STS_FIR_Filter_inst_n_4),
+        .D(Parallel_STS_FIR_Filter_inst_n_6),
         .Q(DETECTION_SIGNAL_DETECTED),
         .R(1'b0));
   (* COMPARATOR_THRESHOLD = "11" *) 
@@ -70970,68 +71218,68 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
         .O(NLW_DETECTION_STATE0_carry__0_O_UNCONNECTED[3:0]),
         .S({DETECTION_STATE0_carry__0_i_5_n_0,DETECTION_STATE0_carry__0_i_6_n_0,DETECTION_STATE0_carry__0_i_7_n_0,DETECTION_STATE0_carry__0_i_8_n_0}));
   LUT4 #(
-    .INIT(16'h2F02)) 
+    .INIT(16'h22B2)) 
     DETECTION_STATE0_carry__0_i_1
-       (.I0(\SHIFT_REGISTER_reg[144] [14]),
-        .I1(DETECTION_THRESHOLD[14]),
-        .I2(DETECTION_THRESHOLD[15]),
-        .I3(\SHIFT_REGISTER_reg[144] [15]),
+       (.I0(\SHIFT_REGISTER_reg[144] [15]),
+        .I1(DETECTION_THRESHOLD[15]),
+        .I2(\SHIFT_REGISTER_reg[144] [14]),
+        .I3(DETECTION_THRESHOLD[14]),
         .O(DETECTION_STATE0_carry__0_i_1_n_0));
   LUT4 #(
-    .INIT(16'h2F02)) 
+    .INIT(16'h22B2)) 
     DETECTION_STATE0_carry__0_i_2
-       (.I0(\SHIFT_REGISTER_reg[144] [12]),
-        .I1(DETECTION_THRESHOLD[12]),
-        .I2(DETECTION_THRESHOLD[13]),
-        .I3(\SHIFT_REGISTER_reg[144] [13]),
+       (.I0(\SHIFT_REGISTER_reg[144] [13]),
+        .I1(DETECTION_THRESHOLD[13]),
+        .I2(\SHIFT_REGISTER_reg[144] [12]),
+        .I3(DETECTION_THRESHOLD[12]),
         .O(DETECTION_STATE0_carry__0_i_2_n_0));
   LUT4 #(
-    .INIT(16'h2F02)) 
+    .INIT(16'h22B2)) 
     DETECTION_STATE0_carry__0_i_3
-       (.I0(\SHIFT_REGISTER_reg[144] [10]),
-        .I1(DETECTION_THRESHOLD[10]),
-        .I2(DETECTION_THRESHOLD[11]),
-        .I3(\SHIFT_REGISTER_reg[144] [11]),
+       (.I0(\SHIFT_REGISTER_reg[144] [11]),
+        .I1(DETECTION_THRESHOLD[11]),
+        .I2(\SHIFT_REGISTER_reg[144] [10]),
+        .I3(DETECTION_THRESHOLD[10]),
         .O(DETECTION_STATE0_carry__0_i_3_n_0));
   LUT4 #(
-    .INIT(16'h2F02)) 
+    .INIT(16'h22B2)) 
     DETECTION_STATE0_carry__0_i_4
-       (.I0(\SHIFT_REGISTER_reg[144] [8]),
-        .I1(DETECTION_THRESHOLD[8]),
-        .I2(DETECTION_THRESHOLD[9]),
-        .I3(\SHIFT_REGISTER_reg[144] [9]),
+       (.I0(\SHIFT_REGISTER_reg[144] [9]),
+        .I1(DETECTION_THRESHOLD[9]),
+        .I2(\SHIFT_REGISTER_reg[144] [8]),
+        .I3(DETECTION_THRESHOLD[8]),
         .O(DETECTION_STATE0_carry__0_i_4_n_0));
   LUT4 #(
     .INIT(16'h9009)) 
     DETECTION_STATE0_carry__0_i_5
-       (.I0(\SHIFT_REGISTER_reg[144] [14]),
-        .I1(DETECTION_THRESHOLD[14]),
-        .I2(\SHIFT_REGISTER_reg[144] [15]),
-        .I3(DETECTION_THRESHOLD[15]),
+       (.I0(DETECTION_THRESHOLD[15]),
+        .I1(\SHIFT_REGISTER_reg[144] [15]),
+        .I2(DETECTION_THRESHOLD[14]),
+        .I3(\SHIFT_REGISTER_reg[144] [14]),
         .O(DETECTION_STATE0_carry__0_i_5_n_0));
   LUT4 #(
     .INIT(16'h9009)) 
     DETECTION_STATE0_carry__0_i_6
-       (.I0(\SHIFT_REGISTER_reg[144] [12]),
-        .I1(DETECTION_THRESHOLD[12]),
-        .I2(\SHIFT_REGISTER_reg[144] [13]),
-        .I3(DETECTION_THRESHOLD[13]),
+       (.I0(DETECTION_THRESHOLD[13]),
+        .I1(\SHIFT_REGISTER_reg[144] [13]),
+        .I2(DETECTION_THRESHOLD[12]),
+        .I3(\SHIFT_REGISTER_reg[144] [12]),
         .O(DETECTION_STATE0_carry__0_i_6_n_0));
   LUT4 #(
     .INIT(16'h9009)) 
     DETECTION_STATE0_carry__0_i_7
-       (.I0(\SHIFT_REGISTER_reg[144] [10]),
-        .I1(DETECTION_THRESHOLD[10]),
-        .I2(\SHIFT_REGISTER_reg[144] [11]),
-        .I3(DETECTION_THRESHOLD[11]),
+       (.I0(DETECTION_THRESHOLD[11]),
+        .I1(\SHIFT_REGISTER_reg[144] [11]),
+        .I2(DETECTION_THRESHOLD[10]),
+        .I3(\SHIFT_REGISTER_reg[144] [10]),
         .O(DETECTION_STATE0_carry__0_i_7_n_0));
   LUT4 #(
     .INIT(16'h9009)) 
     DETECTION_STATE0_carry__0_i_8
-       (.I0(\SHIFT_REGISTER_reg[144] [8]),
-        .I1(DETECTION_THRESHOLD[8]),
-        .I2(\SHIFT_REGISTER_reg[144] [9]),
-        .I3(DETECTION_THRESHOLD[9]),
+       (.I0(DETECTION_THRESHOLD[9]),
+        .I1(\SHIFT_REGISTER_reg[144] [9]),
+        .I2(DETECTION_THRESHOLD[8]),
+        .I3(\SHIFT_REGISTER_reg[144] [8]),
         .O(DETECTION_STATE0_carry__0_i_8_n_0));
   (* COMPARATOR_THRESHOLD = "11" *) 
   CARRY4 DETECTION_STATE0_carry__1
@@ -71042,68 +71290,68 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
         .O(NLW_DETECTION_STATE0_carry__1_O_UNCONNECTED[3:0]),
         .S({DETECTION_STATE0_carry__1_i_5_n_0,DETECTION_STATE0_carry__1_i_6_n_0,DETECTION_STATE0_carry__1_i_7_n_0,DETECTION_STATE0_carry__1_i_8_n_0}));
   LUT4 #(
-    .INIT(16'h2F02)) 
+    .INIT(16'h22B2)) 
     DETECTION_STATE0_carry__1_i_1
-       (.I0(\SHIFT_REGISTER_reg[144] [22]),
-        .I1(DETECTION_THRESHOLD[22]),
-        .I2(DETECTION_THRESHOLD[23]),
-        .I3(\SHIFT_REGISTER_reg[144] [23]),
+       (.I0(\SHIFT_REGISTER_reg[144] [23]),
+        .I1(DETECTION_THRESHOLD[23]),
+        .I2(\SHIFT_REGISTER_reg[144] [22]),
+        .I3(DETECTION_THRESHOLD[22]),
         .O(DETECTION_STATE0_carry__1_i_1_n_0));
   LUT4 #(
-    .INIT(16'h2F02)) 
+    .INIT(16'h22B2)) 
     DETECTION_STATE0_carry__1_i_2
-       (.I0(\SHIFT_REGISTER_reg[144] [20]),
-        .I1(DETECTION_THRESHOLD[20]),
-        .I2(DETECTION_THRESHOLD[21]),
-        .I3(\SHIFT_REGISTER_reg[144] [21]),
+       (.I0(\SHIFT_REGISTER_reg[144] [21]),
+        .I1(DETECTION_THRESHOLD[21]),
+        .I2(\SHIFT_REGISTER_reg[144] [20]),
+        .I3(DETECTION_THRESHOLD[20]),
         .O(DETECTION_STATE0_carry__1_i_2_n_0));
   LUT4 #(
-    .INIT(16'h2F02)) 
+    .INIT(16'h22B2)) 
     DETECTION_STATE0_carry__1_i_3
-       (.I0(\SHIFT_REGISTER_reg[144] [18]),
-        .I1(DETECTION_THRESHOLD[18]),
-        .I2(DETECTION_THRESHOLD[19]),
-        .I3(\SHIFT_REGISTER_reg[144] [19]),
+       (.I0(\SHIFT_REGISTER_reg[144] [19]),
+        .I1(DETECTION_THRESHOLD[19]),
+        .I2(\SHIFT_REGISTER_reg[144] [18]),
+        .I3(DETECTION_THRESHOLD[18]),
         .O(DETECTION_STATE0_carry__1_i_3_n_0));
   LUT4 #(
-    .INIT(16'h2F02)) 
+    .INIT(16'h22B2)) 
     DETECTION_STATE0_carry__1_i_4
-       (.I0(\SHIFT_REGISTER_reg[144] [16]),
-        .I1(DETECTION_THRESHOLD[16]),
-        .I2(DETECTION_THRESHOLD[17]),
-        .I3(\SHIFT_REGISTER_reg[144] [17]),
+       (.I0(\SHIFT_REGISTER_reg[144] [17]),
+        .I1(DETECTION_THRESHOLD[17]),
+        .I2(\SHIFT_REGISTER_reg[144] [16]),
+        .I3(DETECTION_THRESHOLD[16]),
         .O(DETECTION_STATE0_carry__1_i_4_n_0));
   LUT4 #(
     .INIT(16'h9009)) 
     DETECTION_STATE0_carry__1_i_5
-       (.I0(\SHIFT_REGISTER_reg[144] [22]),
-        .I1(DETECTION_THRESHOLD[22]),
-        .I2(\SHIFT_REGISTER_reg[144] [23]),
-        .I3(DETECTION_THRESHOLD[23]),
+       (.I0(DETECTION_THRESHOLD[23]),
+        .I1(\SHIFT_REGISTER_reg[144] [23]),
+        .I2(DETECTION_THRESHOLD[22]),
+        .I3(\SHIFT_REGISTER_reg[144] [22]),
         .O(DETECTION_STATE0_carry__1_i_5_n_0));
   LUT4 #(
     .INIT(16'h9009)) 
     DETECTION_STATE0_carry__1_i_6
-       (.I0(\SHIFT_REGISTER_reg[144] [20]),
-        .I1(DETECTION_THRESHOLD[20]),
-        .I2(\SHIFT_REGISTER_reg[144] [21]),
-        .I3(DETECTION_THRESHOLD[21]),
+       (.I0(DETECTION_THRESHOLD[21]),
+        .I1(\SHIFT_REGISTER_reg[144] [21]),
+        .I2(DETECTION_THRESHOLD[20]),
+        .I3(\SHIFT_REGISTER_reg[144] [20]),
         .O(DETECTION_STATE0_carry__1_i_6_n_0));
   LUT4 #(
     .INIT(16'h9009)) 
     DETECTION_STATE0_carry__1_i_7
-       (.I0(\SHIFT_REGISTER_reg[144] [18]),
-        .I1(DETECTION_THRESHOLD[18]),
-        .I2(\SHIFT_REGISTER_reg[144] [19]),
-        .I3(DETECTION_THRESHOLD[19]),
+       (.I0(DETECTION_THRESHOLD[19]),
+        .I1(\SHIFT_REGISTER_reg[144] [19]),
+        .I2(DETECTION_THRESHOLD[18]),
+        .I3(\SHIFT_REGISTER_reg[144] [18]),
         .O(DETECTION_STATE0_carry__1_i_7_n_0));
   LUT4 #(
     .INIT(16'h9009)) 
     DETECTION_STATE0_carry__1_i_8
-       (.I0(\SHIFT_REGISTER_reg[144] [16]),
-        .I1(DETECTION_THRESHOLD[16]),
-        .I2(\SHIFT_REGISTER_reg[144] [17]),
-        .I3(DETECTION_THRESHOLD[17]),
+       (.I0(DETECTION_THRESHOLD[17]),
+        .I1(\SHIFT_REGISTER_reg[144] [17]),
+        .I2(DETECTION_THRESHOLD[16]),
+        .I3(\SHIFT_REGISTER_reg[144] [16]),
         .O(DETECTION_STATE0_carry__1_i_8_n_0));
   (* COMPARATOR_THRESHOLD = "11" *) 
   CARRY4 DETECTION_STATE0_carry__2
@@ -71114,834 +71362,1156 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
         .O(NLW_DETECTION_STATE0_carry__2_O_UNCONNECTED[3:0]),
         .S({DETECTION_STATE0_carry__2_i_5_n_0,DETECTION_STATE0_carry__2_i_6_n_0,DETECTION_STATE0_carry__2_i_7_n_0,DETECTION_STATE0_carry__2_i_8_n_0}));
   LUT4 #(
-    .INIT(16'h2F02)) 
+    .INIT(16'h22B2)) 
     DETECTION_STATE0_carry__2_i_1
-       (.I0(\SHIFT_REGISTER_reg[144] [30]),
-        .I1(DETECTION_THRESHOLD[30]),
-        .I2(DETECTION_THRESHOLD[31]),
-        .I3(\SHIFT_REGISTER_reg[144] [31]),
+       (.I0(\SHIFT_REGISTER_reg[144] [31]),
+        .I1(DETECTION_THRESHOLD[31]),
+        .I2(\SHIFT_REGISTER_reg[144] [30]),
+        .I3(DETECTION_THRESHOLD[30]),
         .O(DETECTION_STATE0_carry__2_i_1_n_0));
   LUT4 #(
-    .INIT(16'h2F02)) 
+    .INIT(16'h22B2)) 
     DETECTION_STATE0_carry__2_i_2
-       (.I0(\SHIFT_REGISTER_reg[144] [28]),
-        .I1(DETECTION_THRESHOLD[28]),
-        .I2(DETECTION_THRESHOLD[29]),
-        .I3(\SHIFT_REGISTER_reg[144] [29]),
+       (.I0(\SHIFT_REGISTER_reg[144] [29]),
+        .I1(DETECTION_THRESHOLD[29]),
+        .I2(\SHIFT_REGISTER_reg[144] [28]),
+        .I3(DETECTION_THRESHOLD[28]),
         .O(DETECTION_STATE0_carry__2_i_2_n_0));
   LUT4 #(
-    .INIT(16'h2F02)) 
+    .INIT(16'h22B2)) 
     DETECTION_STATE0_carry__2_i_3
-       (.I0(\SHIFT_REGISTER_reg[144] [26]),
-        .I1(DETECTION_THRESHOLD[26]),
-        .I2(DETECTION_THRESHOLD[27]),
-        .I3(\SHIFT_REGISTER_reg[144] [27]),
+       (.I0(\SHIFT_REGISTER_reg[144] [27]),
+        .I1(DETECTION_THRESHOLD[27]),
+        .I2(\SHIFT_REGISTER_reg[144] [26]),
+        .I3(DETECTION_THRESHOLD[26]),
         .O(DETECTION_STATE0_carry__2_i_3_n_0));
   LUT4 #(
-    .INIT(16'h2F02)) 
+    .INIT(16'h22B2)) 
     DETECTION_STATE0_carry__2_i_4
-       (.I0(\SHIFT_REGISTER_reg[144] [24]),
-        .I1(DETECTION_THRESHOLD[24]),
-        .I2(DETECTION_THRESHOLD[25]),
-        .I3(\SHIFT_REGISTER_reg[144] [25]),
+       (.I0(\SHIFT_REGISTER_reg[144] [25]),
+        .I1(DETECTION_THRESHOLD[25]),
+        .I2(\SHIFT_REGISTER_reg[144] [24]),
+        .I3(DETECTION_THRESHOLD[24]),
         .O(DETECTION_STATE0_carry__2_i_4_n_0));
   LUT4 #(
     .INIT(16'h9009)) 
     DETECTION_STATE0_carry__2_i_5
-       (.I0(\SHIFT_REGISTER_reg[144] [30]),
-        .I1(DETECTION_THRESHOLD[30]),
-        .I2(\SHIFT_REGISTER_reg[144] [31]),
-        .I3(DETECTION_THRESHOLD[31]),
+       (.I0(DETECTION_THRESHOLD[31]),
+        .I1(\SHIFT_REGISTER_reg[144] [31]),
+        .I2(DETECTION_THRESHOLD[30]),
+        .I3(\SHIFT_REGISTER_reg[144] [30]),
         .O(DETECTION_STATE0_carry__2_i_5_n_0));
   LUT4 #(
     .INIT(16'h9009)) 
     DETECTION_STATE0_carry__2_i_6
-       (.I0(\SHIFT_REGISTER_reg[144] [28]),
-        .I1(DETECTION_THRESHOLD[28]),
-        .I2(\SHIFT_REGISTER_reg[144] [29]),
-        .I3(DETECTION_THRESHOLD[29]),
+       (.I0(DETECTION_THRESHOLD[29]),
+        .I1(\SHIFT_REGISTER_reg[144] [29]),
+        .I2(DETECTION_THRESHOLD[28]),
+        .I3(\SHIFT_REGISTER_reg[144] [28]),
         .O(DETECTION_STATE0_carry__2_i_6_n_0));
   LUT4 #(
     .INIT(16'h9009)) 
     DETECTION_STATE0_carry__2_i_7
-       (.I0(\SHIFT_REGISTER_reg[144] [26]),
-        .I1(DETECTION_THRESHOLD[26]),
-        .I2(\SHIFT_REGISTER_reg[144] [27]),
-        .I3(DETECTION_THRESHOLD[27]),
+       (.I0(DETECTION_THRESHOLD[27]),
+        .I1(\SHIFT_REGISTER_reg[144] [27]),
+        .I2(DETECTION_THRESHOLD[26]),
+        .I3(\SHIFT_REGISTER_reg[144] [26]),
         .O(DETECTION_STATE0_carry__2_i_7_n_0));
   LUT4 #(
     .INIT(16'h9009)) 
     DETECTION_STATE0_carry__2_i_8
-       (.I0(\SHIFT_REGISTER_reg[144] [24]),
-        .I1(DETECTION_THRESHOLD[24]),
-        .I2(\SHIFT_REGISTER_reg[144] [25]),
-        .I3(DETECTION_THRESHOLD[25]),
+       (.I0(DETECTION_THRESHOLD[25]),
+        .I1(\SHIFT_REGISTER_reg[144] [25]),
+        .I2(DETECTION_THRESHOLD[24]),
+        .I3(\SHIFT_REGISTER_reg[144] [24]),
         .O(DETECTION_STATE0_carry__2_i_8_n_0));
   LUT4 #(
-    .INIT(16'h2F02)) 
+    .INIT(16'h22B2)) 
     DETECTION_STATE0_carry_i_1
-       (.I0(\SHIFT_REGISTER_reg[144] [6]),
-        .I1(DETECTION_THRESHOLD[6]),
-        .I2(DETECTION_THRESHOLD[7]),
-        .I3(\SHIFT_REGISTER_reg[144] [7]),
+       (.I0(\SHIFT_REGISTER_reg[144] [7]),
+        .I1(DETECTION_THRESHOLD[7]),
+        .I2(\SHIFT_REGISTER_reg[144] [6]),
+        .I3(DETECTION_THRESHOLD[6]),
         .O(DETECTION_STATE0_carry_i_1_n_0));
   LUT4 #(
-    .INIT(16'h2F02)) 
+    .INIT(16'h22B2)) 
     DETECTION_STATE0_carry_i_2
-       (.I0(\SHIFT_REGISTER_reg[144] [4]),
-        .I1(DETECTION_THRESHOLD[4]),
-        .I2(DETECTION_THRESHOLD[5]),
-        .I3(\SHIFT_REGISTER_reg[144] [5]),
+       (.I0(\SHIFT_REGISTER_reg[144] [5]),
+        .I1(DETECTION_THRESHOLD[5]),
+        .I2(\SHIFT_REGISTER_reg[144] [4]),
+        .I3(DETECTION_THRESHOLD[4]),
         .O(DETECTION_STATE0_carry_i_2_n_0));
   LUT4 #(
-    .INIT(16'h2F02)) 
+    .INIT(16'h22B2)) 
     DETECTION_STATE0_carry_i_3
-       (.I0(\SHIFT_REGISTER_reg[144] [2]),
-        .I1(DETECTION_THRESHOLD[2]),
-        .I2(DETECTION_THRESHOLD[3]),
-        .I3(\SHIFT_REGISTER_reg[144] [3]),
+       (.I0(\SHIFT_REGISTER_reg[144] [3]),
+        .I1(DETECTION_THRESHOLD[3]),
+        .I2(\SHIFT_REGISTER_reg[144] [2]),
+        .I3(DETECTION_THRESHOLD[2]),
         .O(DETECTION_STATE0_carry_i_3_n_0));
   LUT4 #(
-    .INIT(16'h2F02)) 
+    .INIT(16'h22B2)) 
     DETECTION_STATE0_carry_i_4
-       (.I0(\SHIFT_REGISTER_reg[144] [0]),
-        .I1(DETECTION_THRESHOLD[0]),
-        .I2(DETECTION_THRESHOLD[1]),
-        .I3(\SHIFT_REGISTER_reg[144] [1]),
+       (.I0(\SHIFT_REGISTER_reg[144] [1]),
+        .I1(DETECTION_THRESHOLD[1]),
+        .I2(\SHIFT_REGISTER_reg[144] [0]),
+        .I3(DETECTION_THRESHOLD[0]),
         .O(DETECTION_STATE0_carry_i_4_n_0));
   LUT4 #(
     .INIT(16'h9009)) 
     DETECTION_STATE0_carry_i_5
-       (.I0(\SHIFT_REGISTER_reg[144] [6]),
-        .I1(DETECTION_THRESHOLD[6]),
-        .I2(\SHIFT_REGISTER_reg[144] [7]),
-        .I3(DETECTION_THRESHOLD[7]),
+       (.I0(DETECTION_THRESHOLD[7]),
+        .I1(\SHIFT_REGISTER_reg[144] [7]),
+        .I2(DETECTION_THRESHOLD[6]),
+        .I3(\SHIFT_REGISTER_reg[144] [6]),
         .O(DETECTION_STATE0_carry_i_5_n_0));
   LUT4 #(
     .INIT(16'h9009)) 
     DETECTION_STATE0_carry_i_6
-       (.I0(\SHIFT_REGISTER_reg[144] [4]),
-        .I1(DETECTION_THRESHOLD[4]),
-        .I2(\SHIFT_REGISTER_reg[144] [5]),
-        .I3(DETECTION_THRESHOLD[5]),
+       (.I0(DETECTION_THRESHOLD[5]),
+        .I1(\SHIFT_REGISTER_reg[144] [5]),
+        .I2(DETECTION_THRESHOLD[4]),
+        .I3(\SHIFT_REGISTER_reg[144] [4]),
         .O(DETECTION_STATE0_carry_i_6_n_0));
   LUT4 #(
     .INIT(16'h9009)) 
     DETECTION_STATE0_carry_i_7
-       (.I0(\SHIFT_REGISTER_reg[144] [2]),
-        .I1(DETECTION_THRESHOLD[2]),
-        .I2(\SHIFT_REGISTER_reg[144] [3]),
-        .I3(DETECTION_THRESHOLD[3]),
+       (.I0(DETECTION_THRESHOLD[3]),
+        .I1(\SHIFT_REGISTER_reg[144] [3]),
+        .I2(DETECTION_THRESHOLD[2]),
+        .I3(\SHIFT_REGISTER_reg[144] [2]),
         .O(DETECTION_STATE0_carry_i_7_n_0));
   LUT4 #(
     .INIT(16'h9009)) 
     DETECTION_STATE0_carry_i_8
-       (.I0(\SHIFT_REGISTER_reg[144] [0]),
-        .I1(DETECTION_THRESHOLD[0]),
-        .I2(\SHIFT_REGISTER_reg[144] [1]),
-        .I3(DETECTION_THRESHOLD[1]),
+       (.I0(DETECTION_THRESHOLD[1]),
+        .I1(\SHIFT_REGISTER_reg[144] [1]),
+        .I2(DETECTION_THRESHOLD[0]),
+        .I3(\SHIFT_REGISTER_reg[144] [0]),
         .O(DETECTION_STATE0_carry_i_8_n_0));
   (* COMPARATOR_THRESHOLD = "11" *) 
-  CARRY4 \DETECTION_STATE1_inferred__0/i__carry 
+  CARRY4 DETECTION_STATE1_carry
        (.CI(1'b0),
-        .CO({\DETECTION_STATE1_inferred__0/i__carry_n_0 ,\DETECTION_STATE1_inferred__0/i__carry_n_1 ,\DETECTION_STATE1_inferred__0/i__carry_n_2 ,\DETECTION_STATE1_inferred__0/i__carry_n_3 }),
+        .CO({DETECTION_STATE1_carry_n_0,DETECTION_STATE1_carry_n_1,DETECTION_STATE1_carry_n_2,DETECTION_STATE1_carry_n_3}),
         .CYINIT(1'b1),
+        .DI({DETECTION_STATE1_carry_i_1_n_0,DETECTION_STATE1_carry_i_2_n_0,DETECTION_STATE1_carry_i_3_n_0,DETECTION_STATE1_carry_i_4_n_0}),
+        .O(NLW_DETECTION_STATE1_carry_O_UNCONNECTED[3:0]),
+        .S({DETECTION_STATE1_carry_i_5_n_0,DETECTION_STATE1_carry_i_6_n_0,DETECTION_STATE1_carry_i_7_n_0,DETECTION_STATE1_carry_i_8_n_0}));
+  (* COMPARATOR_THRESHOLD = "11" *) 
+  CARRY4 DETECTION_STATE1_carry__0
+       (.CI(DETECTION_STATE1_carry_n_0),
+        .CO({DETECTION_STATE1_carry__0_n_0,DETECTION_STATE1_carry__0_n_1,DETECTION_STATE1_carry__0_n_2,DETECTION_STATE1_carry__0_n_3}),
+        .CYINIT(1'b0),
+        .DI({DETECTION_STATE1_carry__0_i_1_n_0,DETECTION_STATE1_carry__0_i_2_n_0,DETECTION_STATE1_carry__0_i_3_n_0,DETECTION_STATE1_carry__0_i_4_n_0}),
+        .O(NLW_DETECTION_STATE1_carry__0_O_UNCONNECTED[3:0]),
+        .S({DETECTION_STATE1_carry__0_i_5_n_0,DETECTION_STATE1_carry__0_i_6_n_0,DETECTION_STATE1_carry__0_i_7_n_0,DETECTION_STATE1_carry__0_i_8_n_0}));
+  LUT4 #(
+    .INIT(16'h22B2)) 
+    DETECTION_STATE1_carry__0_i_1
+       (.I0(\SHIFT_REGISTER_reg[144] [15]),
+        .I1(MAX_XCORR[15]),
+        .I2(\SHIFT_REGISTER_reg[144] [14]),
+        .I3(MAX_XCORR[14]),
+        .O(DETECTION_STATE1_carry__0_i_1_n_0));
+  LUT4 #(
+    .INIT(16'h22B2)) 
+    DETECTION_STATE1_carry__0_i_2
+       (.I0(\SHIFT_REGISTER_reg[144] [13]),
+        .I1(MAX_XCORR[13]),
+        .I2(\SHIFT_REGISTER_reg[144] [12]),
+        .I3(MAX_XCORR[12]),
+        .O(DETECTION_STATE1_carry__0_i_2_n_0));
+  LUT4 #(
+    .INIT(16'h22B2)) 
+    DETECTION_STATE1_carry__0_i_3
+       (.I0(\SHIFT_REGISTER_reg[144] [11]),
+        .I1(MAX_XCORR[11]),
+        .I2(\SHIFT_REGISTER_reg[144] [10]),
+        .I3(MAX_XCORR[10]),
+        .O(DETECTION_STATE1_carry__0_i_3_n_0));
+  LUT4 #(
+    .INIT(16'h22B2)) 
+    DETECTION_STATE1_carry__0_i_4
+       (.I0(\SHIFT_REGISTER_reg[144] [9]),
+        .I1(MAX_XCORR[9]),
+        .I2(\SHIFT_REGISTER_reg[144] [8]),
+        .I3(MAX_XCORR[8]),
+        .O(DETECTION_STATE1_carry__0_i_4_n_0));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    DETECTION_STATE1_carry__0_i_5
+       (.I0(MAX_XCORR[15]),
+        .I1(\SHIFT_REGISTER_reg[144] [15]),
+        .I2(MAX_XCORR[14]),
+        .I3(\SHIFT_REGISTER_reg[144] [14]),
+        .O(DETECTION_STATE1_carry__0_i_5_n_0));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    DETECTION_STATE1_carry__0_i_6
+       (.I0(MAX_XCORR[13]),
+        .I1(\SHIFT_REGISTER_reg[144] [13]),
+        .I2(MAX_XCORR[12]),
+        .I3(\SHIFT_REGISTER_reg[144] [12]),
+        .O(DETECTION_STATE1_carry__0_i_6_n_0));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    DETECTION_STATE1_carry__0_i_7
+       (.I0(MAX_XCORR[11]),
+        .I1(\SHIFT_REGISTER_reg[144] [11]),
+        .I2(MAX_XCORR[10]),
+        .I3(\SHIFT_REGISTER_reg[144] [10]),
+        .O(DETECTION_STATE1_carry__0_i_7_n_0));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    DETECTION_STATE1_carry__0_i_8
+       (.I0(MAX_XCORR[9]),
+        .I1(\SHIFT_REGISTER_reg[144] [9]),
+        .I2(MAX_XCORR[8]),
+        .I3(\SHIFT_REGISTER_reg[144] [8]),
+        .O(DETECTION_STATE1_carry__0_i_8_n_0));
+  (* COMPARATOR_THRESHOLD = "11" *) 
+  CARRY4 DETECTION_STATE1_carry__1
+       (.CI(DETECTION_STATE1_carry__0_n_0),
+        .CO({DETECTION_STATE1_carry__1_n_0,DETECTION_STATE1_carry__1_n_1,DETECTION_STATE1_carry__1_n_2,DETECTION_STATE1_carry__1_n_3}),
+        .CYINIT(1'b0),
+        .DI({DETECTION_STATE1_carry__1_i_1_n_0,DETECTION_STATE1_carry__1_i_2_n_0,DETECTION_STATE1_carry__1_i_3_n_0,DETECTION_STATE1_carry__1_i_4_n_0}),
+        .O(NLW_DETECTION_STATE1_carry__1_O_UNCONNECTED[3:0]),
+        .S({DETECTION_STATE1_carry__1_i_5_n_0,DETECTION_STATE1_carry__1_i_6_n_0,DETECTION_STATE1_carry__1_i_7_n_0,DETECTION_STATE1_carry__1_i_8_n_0}));
+  LUT4 #(
+    .INIT(16'h22B2)) 
+    DETECTION_STATE1_carry__1_i_1
+       (.I0(\SHIFT_REGISTER_reg[144] [23]),
+        .I1(MAX_XCORR[23]),
+        .I2(\SHIFT_REGISTER_reg[144] [22]),
+        .I3(MAX_XCORR[22]),
+        .O(DETECTION_STATE1_carry__1_i_1_n_0));
+  LUT4 #(
+    .INIT(16'h22B2)) 
+    DETECTION_STATE1_carry__1_i_2
+       (.I0(\SHIFT_REGISTER_reg[144] [21]),
+        .I1(MAX_XCORR[21]),
+        .I2(\SHIFT_REGISTER_reg[144] [20]),
+        .I3(MAX_XCORR[20]),
+        .O(DETECTION_STATE1_carry__1_i_2_n_0));
+  LUT4 #(
+    .INIT(16'h22B2)) 
+    DETECTION_STATE1_carry__1_i_3
+       (.I0(\SHIFT_REGISTER_reg[144] [19]),
+        .I1(MAX_XCORR[19]),
+        .I2(\SHIFT_REGISTER_reg[144] [18]),
+        .I3(MAX_XCORR[18]),
+        .O(DETECTION_STATE1_carry__1_i_3_n_0));
+  LUT4 #(
+    .INIT(16'h22B2)) 
+    DETECTION_STATE1_carry__1_i_4
+       (.I0(\SHIFT_REGISTER_reg[144] [17]),
+        .I1(MAX_XCORR[17]),
+        .I2(\SHIFT_REGISTER_reg[144] [16]),
+        .I3(MAX_XCORR[16]),
+        .O(DETECTION_STATE1_carry__1_i_4_n_0));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    DETECTION_STATE1_carry__1_i_5
+       (.I0(MAX_XCORR[23]),
+        .I1(\SHIFT_REGISTER_reg[144] [23]),
+        .I2(MAX_XCORR[22]),
+        .I3(\SHIFT_REGISTER_reg[144] [22]),
+        .O(DETECTION_STATE1_carry__1_i_5_n_0));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    DETECTION_STATE1_carry__1_i_6
+       (.I0(MAX_XCORR[21]),
+        .I1(\SHIFT_REGISTER_reg[144] [21]),
+        .I2(MAX_XCORR[20]),
+        .I3(\SHIFT_REGISTER_reg[144] [20]),
+        .O(DETECTION_STATE1_carry__1_i_6_n_0));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    DETECTION_STATE1_carry__1_i_7
+       (.I0(MAX_XCORR[19]),
+        .I1(\SHIFT_REGISTER_reg[144] [19]),
+        .I2(MAX_XCORR[18]),
+        .I3(\SHIFT_REGISTER_reg[144] [18]),
+        .O(DETECTION_STATE1_carry__1_i_7_n_0));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    DETECTION_STATE1_carry__1_i_8
+       (.I0(MAX_XCORR[17]),
+        .I1(\SHIFT_REGISTER_reg[144] [17]),
+        .I2(MAX_XCORR[16]),
+        .I3(\SHIFT_REGISTER_reg[144] [16]),
+        .O(DETECTION_STATE1_carry__1_i_8_n_0));
+  (* COMPARATOR_THRESHOLD = "11" *) 
+  CARRY4 DETECTION_STATE1_carry__2
+       (.CI(DETECTION_STATE1_carry__1_n_0),
+        .CO({DETECTION_STATE1_carry__2_n_0,DETECTION_STATE1_carry__2_n_1,DETECTION_STATE1_carry__2_n_2,DETECTION_STATE1_carry__2_n_3}),
+        .CYINIT(1'b0),
+        .DI({DETECTION_STATE1_carry__2_i_1_n_0,DETECTION_STATE1_carry__2_i_2_n_0,DETECTION_STATE1_carry__2_i_3_n_0,DETECTION_STATE1_carry__2_i_4_n_0}),
+        .O(NLW_DETECTION_STATE1_carry__2_O_UNCONNECTED[3:0]),
+        .S({DETECTION_STATE1_carry__2_i_5_n_0,DETECTION_STATE1_carry__2_i_6_n_0,DETECTION_STATE1_carry__2_i_7_n_0,DETECTION_STATE1_carry__2_i_8_n_0}));
+  LUT4 #(
+    .INIT(16'h22B2)) 
+    DETECTION_STATE1_carry__2_i_1
+       (.I0(\SHIFT_REGISTER_reg[144] [31]),
+        .I1(MAX_XCORR[31]),
+        .I2(\SHIFT_REGISTER_reg[144] [30]),
+        .I3(MAX_XCORR[30]),
+        .O(DETECTION_STATE1_carry__2_i_1_n_0));
+  LUT4 #(
+    .INIT(16'h22B2)) 
+    DETECTION_STATE1_carry__2_i_2
+       (.I0(\SHIFT_REGISTER_reg[144] [29]),
+        .I1(MAX_XCORR[29]),
+        .I2(\SHIFT_REGISTER_reg[144] [28]),
+        .I3(MAX_XCORR[28]),
+        .O(DETECTION_STATE1_carry__2_i_2_n_0));
+  LUT4 #(
+    .INIT(16'h22B2)) 
+    DETECTION_STATE1_carry__2_i_3
+       (.I0(\SHIFT_REGISTER_reg[144] [27]),
+        .I1(MAX_XCORR[27]),
+        .I2(\SHIFT_REGISTER_reg[144] [26]),
+        .I3(MAX_XCORR[26]),
+        .O(DETECTION_STATE1_carry__2_i_3_n_0));
+  LUT4 #(
+    .INIT(16'h22B2)) 
+    DETECTION_STATE1_carry__2_i_4
+       (.I0(\SHIFT_REGISTER_reg[144] [25]),
+        .I1(MAX_XCORR[25]),
+        .I2(\SHIFT_REGISTER_reg[144] [24]),
+        .I3(MAX_XCORR[24]),
+        .O(DETECTION_STATE1_carry__2_i_4_n_0));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    DETECTION_STATE1_carry__2_i_5
+       (.I0(MAX_XCORR[31]),
+        .I1(\SHIFT_REGISTER_reg[144] [31]),
+        .I2(MAX_XCORR[30]),
+        .I3(\SHIFT_REGISTER_reg[144] [30]),
+        .O(DETECTION_STATE1_carry__2_i_5_n_0));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    DETECTION_STATE1_carry__2_i_6
+       (.I0(MAX_XCORR[29]),
+        .I1(\SHIFT_REGISTER_reg[144] [29]),
+        .I2(MAX_XCORR[28]),
+        .I3(\SHIFT_REGISTER_reg[144] [28]),
+        .O(DETECTION_STATE1_carry__2_i_6_n_0));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    DETECTION_STATE1_carry__2_i_7
+       (.I0(MAX_XCORR[27]),
+        .I1(\SHIFT_REGISTER_reg[144] [27]),
+        .I2(MAX_XCORR[26]),
+        .I3(\SHIFT_REGISTER_reg[144] [26]),
+        .O(DETECTION_STATE1_carry__2_i_7_n_0));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    DETECTION_STATE1_carry__2_i_8
+       (.I0(MAX_XCORR[25]),
+        .I1(\SHIFT_REGISTER_reg[144] [25]),
+        .I2(MAX_XCORR[24]),
+        .I3(\SHIFT_REGISTER_reg[144] [24]),
+        .O(DETECTION_STATE1_carry__2_i_8_n_0));
+  LUT4 #(
+    .INIT(16'h22B2)) 
+    DETECTION_STATE1_carry_i_1
+       (.I0(\SHIFT_REGISTER_reg[144] [7]),
+        .I1(MAX_XCORR[7]),
+        .I2(\SHIFT_REGISTER_reg[144] [6]),
+        .I3(MAX_XCORR[6]),
+        .O(DETECTION_STATE1_carry_i_1_n_0));
+  LUT4 #(
+    .INIT(16'h22B2)) 
+    DETECTION_STATE1_carry_i_2
+       (.I0(\SHIFT_REGISTER_reg[144] [5]),
+        .I1(MAX_XCORR[5]),
+        .I2(\SHIFT_REGISTER_reg[144] [4]),
+        .I3(MAX_XCORR[4]),
+        .O(DETECTION_STATE1_carry_i_2_n_0));
+  LUT4 #(
+    .INIT(16'h22B2)) 
+    DETECTION_STATE1_carry_i_3
+       (.I0(\SHIFT_REGISTER_reg[144] [3]),
+        .I1(MAX_XCORR[3]),
+        .I2(\SHIFT_REGISTER_reg[144] [2]),
+        .I3(MAX_XCORR[2]),
+        .O(DETECTION_STATE1_carry_i_3_n_0));
+  LUT4 #(
+    .INIT(16'h22B2)) 
+    DETECTION_STATE1_carry_i_4
+       (.I0(\SHIFT_REGISTER_reg[144] [1]),
+        .I1(MAX_XCORR[1]),
+        .I2(\SHIFT_REGISTER_reg[144] [0]),
+        .I3(MAX_XCORR[0]),
+        .O(DETECTION_STATE1_carry_i_4_n_0));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    DETECTION_STATE1_carry_i_5
+       (.I0(MAX_XCORR[7]),
+        .I1(\SHIFT_REGISTER_reg[144] [7]),
+        .I2(MAX_XCORR[6]),
+        .I3(\SHIFT_REGISTER_reg[144] [6]),
+        .O(DETECTION_STATE1_carry_i_5_n_0));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    DETECTION_STATE1_carry_i_6
+       (.I0(MAX_XCORR[5]),
+        .I1(\SHIFT_REGISTER_reg[144] [5]),
+        .I2(MAX_XCORR[4]),
+        .I3(\SHIFT_REGISTER_reg[144] [4]),
+        .O(DETECTION_STATE1_carry_i_6_n_0));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    DETECTION_STATE1_carry_i_7
+       (.I0(MAX_XCORR[3]),
+        .I1(\SHIFT_REGISTER_reg[144] [3]),
+        .I2(MAX_XCORR[2]),
+        .I3(\SHIFT_REGISTER_reg[144] [2]),
+        .O(DETECTION_STATE1_carry_i_7_n_0));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    DETECTION_STATE1_carry_i_8
+       (.I0(MAX_XCORR[1]),
+        .I1(\SHIFT_REGISTER_reg[144] [1]),
+        .I2(MAX_XCORR[0]),
+        .I3(\SHIFT_REGISTER_reg[144] [0]),
+        .O(DETECTION_STATE1_carry_i_8_n_0));
+  (* COMPARATOR_THRESHOLD = "11" *) 
+  CARRY4 \DETECTION_STATE1_inferred__1/i__carry 
+       (.CI(1'b0),
+        .CO({\DETECTION_STATE1_inferred__1/i__carry_n_0 ,\DETECTION_STATE1_inferred__1/i__carry_n_1 ,\DETECTION_STATE1_inferred__1/i__carry_n_2 ,\DETECTION_STATE1_inferred__1/i__carry_n_3 }),
+        .CYINIT(1'b0),
+        .DI({i__carry_i_1__0_n_0,i__carry_i_2__0_n_0,i__carry_i_3__0_n_0,i__carry_i_4__0_n_0}),
+        .O(\NLW_DETECTION_STATE1_inferred__1/i__carry_O_UNCONNECTED [3:0]),
+        .S({i__carry_i_5__0_n_0,i__carry_i_6__0_n_0,i__carry_i_7__0_n_0,i__carry_i_8__0_n_0}));
+  (* COMPARATOR_THRESHOLD = "11" *) 
+  CARRY4 \DETECTION_STATE1_inferred__1/i__carry__0 
+       (.CI(\DETECTION_STATE1_inferred__1/i__carry_n_0 ),
+        .CO({\DETECTION_STATE1_inferred__1/i__carry__0_n_0 ,\DETECTION_STATE1_inferred__1/i__carry__0_n_1 ,\DETECTION_STATE1_inferred__1/i__carry__0_n_2 ,\DETECTION_STATE1_inferred__1/i__carry__0_n_3 }),
+        .CYINIT(1'b0),
+        .DI({i__carry__0_i_1__0_n_0,i__carry__0_i_2__0_n_0,i__carry__0_i_3__0_n_0,i__carry__0_i_4__0_n_0}),
+        .O(\NLW_DETECTION_STATE1_inferred__1/i__carry__0_O_UNCONNECTED [3:0]),
+        .S({i__carry__0_i_5__0_n_0,i__carry__0_i_6__0_n_0,i__carry__0_i_7__0_n_0,i__carry__0_i_8__0_n_0}));
+  (* COMPARATOR_THRESHOLD = "11" *) 
+  CARRY4 \DETECTION_STATE1_inferred__1/i__carry__1 
+       (.CI(\DETECTION_STATE1_inferred__1/i__carry__0_n_0 ),
+        .CO({\DETECTION_STATE1_inferred__1/i__carry__1_n_0 ,\DETECTION_STATE1_inferred__1/i__carry__1_n_1 ,\DETECTION_STATE1_inferred__1/i__carry__1_n_2 ,\DETECTION_STATE1_inferred__1/i__carry__1_n_3 }),
+        .CYINIT(1'b0),
+        .DI({i__carry__1_i_1__0_n_0,i__carry__1_i_2__0_n_0,i__carry__1_i_3__0_n_0,i__carry__1_i_4__0_n_0}),
+        .O(\NLW_DETECTION_STATE1_inferred__1/i__carry__1_O_UNCONNECTED [3:0]),
+        .S({i__carry__1_i_5__0_n_0,i__carry__1_i_6__0_n_0,i__carry__1_i_7__0_n_0,i__carry__1_i_8__0_n_0}));
+  (* COMPARATOR_THRESHOLD = "11" *) 
+  CARRY4 \DETECTION_STATE1_inferred__1/i__carry__2 
+       (.CI(\DETECTION_STATE1_inferred__1/i__carry__1_n_0 ),
+        .CO({\DETECTION_STATE1_inferred__1/i__carry__2_n_0 ,\DETECTION_STATE1_inferred__1/i__carry__2_n_1 ,\DETECTION_STATE1_inferred__1/i__carry__2_n_2 ,\DETECTION_STATE1_inferred__1/i__carry__2_n_3 }),
+        .CYINIT(1'b0),
+        .DI({i__carry__2_i_1_n_0,i__carry__2_i_2__0_n_0,i__carry__2_i_3__0_n_0,i__carry__2_i_4__0_n_0}),
+        .O(\NLW_DETECTION_STATE1_inferred__1/i__carry__2_O_UNCONNECTED [3:0]),
+        .S({i__carry__2_i_5__0_n_0,i__carry__2_i_6__0_n_0,i__carry__2_i_7__0_n_0,i__carry__2_i_8__0_n_0}));
+  (* COMPARATOR_THRESHOLD = "11" *) 
+  CARRY4 \DETECTION_STATE1_inferred__2/i__carry 
+       (.CI(1'b0),
+        .CO({\DETECTION_STATE1_inferred__2/i__carry_n_0 ,\DETECTION_STATE1_inferred__2/i__carry_n_1 ,\DETECTION_STATE1_inferred__2/i__carry_n_2 ,\DETECTION_STATE1_inferred__2/i__carry_n_3 }),
+        .CYINIT(1'b0),
         .DI({i__carry_i_1_n_0,i__carry_i_2_n_0,i__carry_i_3_n_0,i__carry_i_4_n_0}),
-        .O(\NLW_DETECTION_STATE1_inferred__0/i__carry_O_UNCONNECTED [3:0]),
+        .O(\NLW_DETECTION_STATE1_inferred__2/i__carry_O_UNCONNECTED [3:0]),
         .S({i__carry_i_5_n_0,i__carry_i_6_n_0,i__carry_i_7_n_0,i__carry_i_8_n_0}));
   (* COMPARATOR_THRESHOLD = "11" *) 
-  CARRY4 \DETECTION_STATE1_inferred__0/i__carry__0 
-       (.CI(\DETECTION_STATE1_inferred__0/i__carry_n_0 ),
-        .CO({\DETECTION_STATE1_inferred__0/i__carry__0_n_0 ,\DETECTION_STATE1_inferred__0/i__carry__0_n_1 ,\DETECTION_STATE1_inferred__0/i__carry__0_n_2 ,\DETECTION_STATE1_inferred__0/i__carry__0_n_3 }),
+  CARRY4 \DETECTION_STATE1_inferred__2/i__carry__0 
+       (.CI(\DETECTION_STATE1_inferred__2/i__carry_n_0 ),
+        .CO({\DETECTION_STATE1_inferred__2/i__carry__0_n_0 ,\DETECTION_STATE1_inferred__2/i__carry__0_n_1 ,\DETECTION_STATE1_inferred__2/i__carry__0_n_2 ,\DETECTION_STATE1_inferred__2/i__carry__0_n_3 }),
         .CYINIT(1'b0),
         .DI({i__carry__0_i_1_n_0,i__carry__0_i_2_n_0,i__carry__0_i_3_n_0,i__carry__0_i_4_n_0}),
-        .O(\NLW_DETECTION_STATE1_inferred__0/i__carry__0_O_UNCONNECTED [3:0]),
+        .O(\NLW_DETECTION_STATE1_inferred__2/i__carry__0_O_UNCONNECTED [3:0]),
         .S({i__carry__0_i_5_n_0,i__carry__0_i_6_n_0,i__carry__0_i_7_n_0,i__carry__0_i_8_n_0}));
   (* COMPARATOR_THRESHOLD = "11" *) 
-  CARRY4 \DETECTION_STATE1_inferred__0/i__carry__1 
-       (.CI(\DETECTION_STATE1_inferred__0/i__carry__0_n_0 ),
-        .CO({\DETECTION_STATE1_inferred__0/i__carry__1_n_0 ,\DETECTION_STATE1_inferred__0/i__carry__1_n_1 ,\DETECTION_STATE1_inferred__0/i__carry__1_n_2 ,\DETECTION_STATE1_inferred__0/i__carry__1_n_3 }),
+  CARRY4 \DETECTION_STATE1_inferred__2/i__carry__1 
+       (.CI(\DETECTION_STATE1_inferred__2/i__carry__0_n_0 ),
+        .CO({\DETECTION_STATE1_inferred__2/i__carry__1_n_0 ,\DETECTION_STATE1_inferred__2/i__carry__1_n_1 ,\DETECTION_STATE1_inferred__2/i__carry__1_n_2 ,\DETECTION_STATE1_inferred__2/i__carry__1_n_3 }),
         .CYINIT(1'b0),
         .DI({i__carry__1_i_1_n_0,i__carry__1_i_2_n_0,i__carry__1_i_3_n_0,i__carry__1_i_4_n_0}),
-        .O(\NLW_DETECTION_STATE1_inferred__0/i__carry__1_O_UNCONNECTED [3:0]),
+        .O(\NLW_DETECTION_STATE1_inferred__2/i__carry__1_O_UNCONNECTED [3:0]),
         .S({i__carry__1_i_5_n_0,i__carry__1_i_6_n_0,i__carry__1_i_7_n_0,i__carry__1_i_8_n_0}));
   (* COMPARATOR_THRESHOLD = "11" *) 
-  CARRY4 \DETECTION_STATE1_inferred__0/i__carry__2 
-       (.CI(\DETECTION_STATE1_inferred__0/i__carry__1_n_0 ),
-        .CO({\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ,\DETECTION_STATE1_inferred__0/i__carry__2_n_1 ,\DETECTION_STATE1_inferred__0/i__carry__2_n_2 ,\DETECTION_STATE1_inferred__0/i__carry__2_n_3 }),
+  CARRY4 \DETECTION_STATE1_inferred__2/i__carry__2 
+       (.CI(\DETECTION_STATE1_inferred__2/i__carry__1_n_0 ),
+        .CO({\DETECTION_STATE1_inferred__2/i__carry__2_n_0 ,\DETECTION_STATE1_inferred__2/i__carry__2_n_1 ,\DETECTION_STATE1_inferred__2/i__carry__2_n_2 ,\DETECTION_STATE1_inferred__2/i__carry__2_n_3 }),
         .CYINIT(1'b0),
-        .DI({i__carry__2_i_1_n_0,i__carry__2_i_2_n_0,i__carry__2_i_3_n_0,i__carry__2_i_4_n_0}),
-        .O(\NLW_DETECTION_STATE1_inferred__0/i__carry__2_O_UNCONNECTED [3:0]),
+        .DI({i__carry__2_i_1__0_n_0,i__carry__2_i_2_n_0,i__carry__2_i_3_n_0,i__carry__2_i_4_n_0}),
+        .O(\NLW_DETECTION_STATE1_inferred__2/i__carry__2_O_UNCONNECTED [3:0]),
         .S({i__carry__2_i_5_n_0,i__carry__2_i_6_n_0,i__carry__2_i_7_n_0,i__carry__2_i_8_n_0}));
   FDRE #(
     .INIT(1'b0)) 
     DETECTION_STROBE_reg
        (.C(CLOCK),
         .CE(1'b1),
-        .D(Parallel_STS_FIR_Filter_inst_n_3),
+        .D(Parallel_STS_FIR_Filter_inst_n_2),
         .Q(DETECTION_STROBE),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair452" *) 
+  (* SOFT_HLUTNM = "soft_lutpair455" *) 
   LUT3 #(
-    .INIT(8'hCA)) 
+    .INIT(8'hE2)) 
     \DETECTION_STS_AUTOCORR_I[0]_i_1 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[4]),
-        .I1(ARG2[4]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[4] ),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(ARG2[4]),
         .O(ARG[0]));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_I[0]_i_3 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[0]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[0] ),
         .O(\DETECTION_STS_AUTOCORR_I[0]_i_3_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_I[0]_i_4 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[4]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[4] ),
         .O(\DETECTION_STS_AUTOCORR_I[0]_i_4_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_I[0]_i_5 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[3]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[3] ),
         .O(\DETECTION_STS_AUTOCORR_I[0]_i_5_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_I[0]_i_6 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[2]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[2] ),
         .O(\DETECTION_STS_AUTOCORR_I[0]_i_6_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_I[0]_i_7 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[1]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[1] ),
         .O(\DETECTION_STS_AUTOCORR_I[0]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair447" *) 
+  (* SOFT_HLUTNM = "soft_lutpair450" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_I[10]_i_1 
        (.I0(ARG0[10]),
-        .I1(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[14]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[14] ),
         .O(ARG[10]));
-  (* SOFT_HLUTNM = "soft_lutpair447" *) 
+  (* SOFT_HLUTNM = "soft_lutpair450" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_I[11]_i_1 
        (.I0(ARG0[11]),
-        .I1(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[15]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[15] ),
         .O(ARG[11]));
-  (* SOFT_HLUTNM = "soft_lutpair446" *) 
+  (* SOFT_HLUTNM = "soft_lutpair449" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_I[12]_i_1 
        (.I0(ARG0[12]),
-        .I1(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[16]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[16] ),
         .O(ARG[12]));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_I[12]_i_10 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[14]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[14] ),
         .O(\DETECTION_STS_AUTOCORR_I[12]_i_10_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_I[12]_i_11 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[13]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[13] ),
         .O(\DETECTION_STS_AUTOCORR_I[12]_i_11_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_I[12]_i_3 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
-        .I1(ARG2[16]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[16]),
+       (.I0(ARG2[16]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[16] ),
         .O(\DETECTION_STS_AUTOCORR_I[12]_i_3_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_I[12]_i_4 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
-        .I1(ARG2[15]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[15]),
+       (.I0(ARG2[15]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[15] ),
         .O(\DETECTION_STS_AUTOCORR_I[12]_i_4_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_I[12]_i_5 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
-        .I1(ARG2[14]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[14]),
+       (.I0(ARG2[14]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[14] ),
         .O(\DETECTION_STS_AUTOCORR_I[12]_i_5_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_I[12]_i_6 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
-        .I1(ARG2[13]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[13]),
+       (.I0(ARG2[13]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[13] ),
         .O(\DETECTION_STS_AUTOCORR_I[12]_i_6_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_I[12]_i_8 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[16]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[16] ),
         .O(\DETECTION_STS_AUTOCORR_I[12]_i_8_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_I[12]_i_9 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[15]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[15] ),
         .O(\DETECTION_STS_AUTOCORR_I[12]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair446" *) 
+  (* SOFT_HLUTNM = "soft_lutpair449" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_I[13]_i_1 
        (.I0(ARG0[13]),
-        .I1(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[17]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[17] ),
         .O(ARG[13]));
-  (* SOFT_HLUTNM = "soft_lutpair445" *) 
+  (* SOFT_HLUTNM = "soft_lutpair448" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_I[14]_i_1 
        (.I0(ARG0[14]),
-        .I1(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[18]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[18] ),
         .O(ARG[14]));
-  (* SOFT_HLUTNM = "soft_lutpair445" *) 
+  (* SOFT_HLUTNM = "soft_lutpair448" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_I[15]_i_1 
        (.I0(ARG0[15]),
-        .I1(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[19]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[19] ),
         .O(ARG[15]));
-  (* SOFT_HLUTNM = "soft_lutpair444" *) 
+  (* SOFT_HLUTNM = "soft_lutpair447" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_I[16]_i_1 
        (.I0(ARG0[16]),
-        .I1(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[20]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[20] ),
         .O(ARG[16]));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_I[16]_i_10 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[18]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[18] ),
         .O(\DETECTION_STS_AUTOCORR_I[16]_i_10_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_I[16]_i_11 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[17]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[17] ),
         .O(\DETECTION_STS_AUTOCORR_I[16]_i_11_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_I[16]_i_3 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
-        .I1(ARG2[20]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[20]),
+       (.I0(ARG2[20]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[20] ),
         .O(\DETECTION_STS_AUTOCORR_I[16]_i_3_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_I[16]_i_4 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
-        .I1(ARG2[19]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[19]),
+       (.I0(ARG2[19]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[19] ),
         .O(\DETECTION_STS_AUTOCORR_I[16]_i_4_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_I[16]_i_5 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
-        .I1(ARG2[18]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[18]),
+       (.I0(ARG2[18]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[18] ),
         .O(\DETECTION_STS_AUTOCORR_I[16]_i_5_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_I[16]_i_6 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
-        .I1(ARG2[17]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[17]),
+       (.I0(ARG2[17]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[17] ),
         .O(\DETECTION_STS_AUTOCORR_I[16]_i_6_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_I[16]_i_8 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[20]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[20] ),
         .O(\DETECTION_STS_AUTOCORR_I[16]_i_8_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_I[16]_i_9 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[19]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[19] ),
         .O(\DETECTION_STS_AUTOCORR_I[16]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair444" *) 
+  (* SOFT_HLUTNM = "soft_lutpair447" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_I[17]_i_1 
        (.I0(ARG0[17]),
-        .I1(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[21]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[21] ),
         .O(ARG[17]));
-  (* SOFT_HLUTNM = "soft_lutpair443" *) 
+  (* SOFT_HLUTNM = "soft_lutpair446" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_I[18]_i_1 
        (.I0(ARG0[18]),
-        .I1(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[22]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[22] ),
         .O(ARG[18]));
-  (* SOFT_HLUTNM = "soft_lutpair443" *) 
+  (* SOFT_HLUTNM = "soft_lutpair446" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_I[19]_i_1 
        (.I0(ARG0[19]),
-        .I1(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[23]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[23] ),
         .O(ARG[19]));
-  (* SOFT_HLUTNM = "soft_lutpair452" *) 
+  (* SOFT_HLUTNM = "soft_lutpair455" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_I[1]_i_1 
        (.I0(ARG0[1]),
-        .I1(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[5]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[5] ),
         .O(ARG[1]));
-  (* SOFT_HLUTNM = "soft_lutpair442" *) 
+  (* SOFT_HLUTNM = "soft_lutpair445" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_I[20]_i_1 
        (.I0(ARG0[20]),
-        .I1(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[24]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[24] ),
         .O(ARG[20]));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_I[20]_i_10 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[22]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[22] ),
         .O(\DETECTION_STS_AUTOCORR_I[20]_i_10_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_I[20]_i_11 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[21]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[21] ),
         .O(\DETECTION_STS_AUTOCORR_I[20]_i_11_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_I[20]_i_3 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
-        .I1(ARG2[24]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[24]),
+       (.I0(ARG2[24]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[24] ),
         .O(\DETECTION_STS_AUTOCORR_I[20]_i_3_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_I[20]_i_4 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
-        .I1(ARG2[23]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[23]),
+       (.I0(ARG2[23]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[23] ),
         .O(\DETECTION_STS_AUTOCORR_I[20]_i_4_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_I[20]_i_5 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
-        .I1(ARG2[22]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[22]),
+       (.I0(ARG2[22]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[22] ),
         .O(\DETECTION_STS_AUTOCORR_I[20]_i_5_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_I[20]_i_6 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
-        .I1(ARG2[21]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[21]),
+       (.I0(ARG2[21]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[21] ),
         .O(\DETECTION_STS_AUTOCORR_I[20]_i_6_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_I[20]_i_8 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[24]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[24] ),
         .O(\DETECTION_STS_AUTOCORR_I[20]_i_8_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_I[20]_i_9 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[23]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[23] ),
         .O(\DETECTION_STS_AUTOCORR_I[20]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair442" *) 
+  (* SOFT_HLUTNM = "soft_lutpair445" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_I[21]_i_1 
        (.I0(ARG0[21]),
-        .I1(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[25]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[25] ),
         .O(ARG[21]));
-  (* SOFT_HLUTNM = "soft_lutpair441" *) 
+  (* SOFT_HLUTNM = "soft_lutpair444" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_I[22]_i_1 
        (.I0(ARG0[22]),
-        .I1(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[26]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[26] ),
         .O(ARG[22]));
-  (* SOFT_HLUTNM = "soft_lutpair441" *) 
+  (* SOFT_HLUTNM = "soft_lutpair444" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_I[23]_i_1 
        (.I0(ARG0[23]),
-        .I1(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[27]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[27] ),
         .O(ARG[23]));
-  (* SOFT_HLUTNM = "soft_lutpair440" *) 
+  (* SOFT_HLUTNM = "soft_lutpair443" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_I[24]_i_1 
        (.I0(ARG0[24]),
-        .I1(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[28]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[28] ),
         .O(ARG[24]));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_I[24]_i_10 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[26]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[26] ),
         .O(\DETECTION_STS_AUTOCORR_I[24]_i_10_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_I[24]_i_11 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[25]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[25] ),
         .O(\DETECTION_STS_AUTOCORR_I[24]_i_11_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_I[24]_i_3 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
-        .I1(ARG2[28]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[28]),
+       (.I0(ARG2[28]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[28] ),
         .O(\DETECTION_STS_AUTOCORR_I[24]_i_3_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_I[24]_i_4 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
-        .I1(ARG2[27]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[27]),
+       (.I0(ARG2[27]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[27] ),
         .O(\DETECTION_STS_AUTOCORR_I[24]_i_4_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_I[24]_i_5 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
-        .I1(ARG2[26]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[26]),
+       (.I0(ARG2[26]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[26] ),
         .O(\DETECTION_STS_AUTOCORR_I[24]_i_5_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_I[24]_i_6 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
-        .I1(ARG2[25]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[25]),
+       (.I0(ARG2[25]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[25] ),
         .O(\DETECTION_STS_AUTOCORR_I[24]_i_6_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_I[24]_i_8 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[28]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[28] ),
         .O(\DETECTION_STS_AUTOCORR_I[24]_i_8_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_I[24]_i_9 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[27]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[27] ),
         .O(\DETECTION_STS_AUTOCORR_I[24]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair440" *) 
+  (* SOFT_HLUTNM = "soft_lutpair443" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_I[25]_i_1 
        (.I0(ARG0[25]),
-        .I1(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[29]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[29] ),
         .O(ARG[25]));
-  (* SOFT_HLUTNM = "soft_lutpair439" *) 
+  (* SOFT_HLUTNM = "soft_lutpair442" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_I[26]_i_1 
        (.I0(ARG0[26]),
-        .I1(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[30]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[30] ),
         .O(ARG[26]));
-  (* SOFT_HLUTNM = "soft_lutpair439" *) 
+  (* SOFT_HLUTNM = "soft_lutpair442" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_I[27]_i_1 
        (.I0(ARG0[27]),
-        .I1(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[31]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[31] ),
         .O(ARG[27]));
-  (* SOFT_HLUTNM = "soft_lutpair438" *) 
+  (* SOFT_HLUTNM = "soft_lutpair441" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_I[28]_i_1 
        (.I0(ARG0[28]),
-        .I1(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[32]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[32] ),
         .O(ARG[28]));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_I[28]_i_10 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[30]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[30] ),
         .O(\DETECTION_STS_AUTOCORR_I[28]_i_10_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_I[28]_i_11 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[29]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[29] ),
         .O(\DETECTION_STS_AUTOCORR_I[28]_i_11_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_I[28]_i_3 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
-        .I1(ARG2[32]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[32]),
+       (.I0(ARG2[32]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[32] ),
         .O(\DETECTION_STS_AUTOCORR_I[28]_i_3_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_I[28]_i_4 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
-        .I1(ARG2[31]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[31]),
+       (.I0(ARG2[31]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[31] ),
         .O(\DETECTION_STS_AUTOCORR_I[28]_i_4_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_I[28]_i_5 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
-        .I1(ARG2[30]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[30]),
+       (.I0(ARG2[30]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[30] ),
         .O(\DETECTION_STS_AUTOCORR_I[28]_i_5_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_I[28]_i_6 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
-        .I1(ARG2[29]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[29]),
+       (.I0(ARG2[29]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[29] ),
         .O(\DETECTION_STS_AUTOCORR_I[28]_i_6_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_I[28]_i_8 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[32]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[32] ),
         .O(\DETECTION_STS_AUTOCORR_I[28]_i_8_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_I[28]_i_9 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[31]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[31] ),
         .O(\DETECTION_STS_AUTOCORR_I[28]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair438" *) 
+  (* SOFT_HLUTNM = "soft_lutpair441" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_I[29]_i_1 
        (.I0(ARG0[29]),
-        .I1(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[33]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[33] ),
         .O(ARG[29]));
-  (* SOFT_HLUTNM = "soft_lutpair451" *) 
+  (* SOFT_HLUTNM = "soft_lutpair454" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_I[2]_i_1 
        (.I0(ARG0[2]),
-        .I1(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[6]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[6] ),
         .O(ARG[2]));
-  (* SOFT_HLUTNM = "soft_lutpair437" *) 
+  (* SOFT_HLUTNM = "soft_lutpair439" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_I[30]_i_1 
        (.I0(ARG0[30]),
-        .I1(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[34]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[34] ),
         .O(ARG[30]));
-  (* SOFT_HLUTNM = "soft_lutpair437" *) 
+  (* SOFT_HLUTNM = "soft_lutpair439" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \DETECTION_STS_AUTOCORR_I[31]_i_1 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
         .I1(\DETECTION_STS_AUTOCORR_I_reg[31]_i_2_n_1 ),
         .O(ARG[35]));
   LUT2 #(
     .INIT(4'h7)) 
     \DETECTION_STS_AUTOCORR_I[31]_i_3 
        (.I0(ARG2[35]),
-        .I1(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
         .O(\DETECTION_STS_AUTOCORR_I[31]_i_3_n_0 ));
   LUT3 #(
-    .INIT(8'h1D)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_I[31]_i_4 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[34]),
-        .I1(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
-        .I2(ARG2[34]),
+       (.I0(ARG2[34]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[34] ),
         .O(\DETECTION_STS_AUTOCORR_I[31]_i_4_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_I[31]_i_5 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
-        .I1(ARG2[33]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[33]),
+       (.I0(ARG2[33]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[33] ),
         .O(\DETECTION_STS_AUTOCORR_I[31]_i_5_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_I[31]_i_7 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
         .O(\DETECTION_STS_AUTOCORR_I[31]_i_7_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_I[31]_i_8 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[34]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[34] ),
         .O(\DETECTION_STS_AUTOCORR_I[31]_i_8_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_I[31]_i_9 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[33]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[33] ),
         .O(\DETECTION_STS_AUTOCORR_I[31]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair451" *) 
+  (* SOFT_HLUTNM = "soft_lutpair454" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_I[3]_i_1 
        (.I0(ARG0[3]),
-        .I1(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[7]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[7] ),
         .O(ARG[3]));
-  (* SOFT_HLUTNM = "soft_lutpair450" *) 
+  (* SOFT_HLUTNM = "soft_lutpair453" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_I[4]_i_1 
        (.I0(ARG0[4]),
-        .I1(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[8]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[8] ),
         .O(ARG[4]));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_I[4]_i_10 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[7]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[7] ),
         .O(\DETECTION_STS_AUTOCORR_I[4]_i_10_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_I[4]_i_11 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[6]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[6] ),
         .O(\DETECTION_STS_AUTOCORR_I[4]_i_11_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_I[4]_i_12 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[5]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[5] ),
         .O(\DETECTION_STS_AUTOCORR_I[4]_i_12_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_I[4]_i_3 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
-        .I1(ARG2[4]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[4]),
+       (.I0(ARG2[4]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[4] ),
         .O(\DETECTION_STS_AUTOCORR_I[4]_i_3_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_I[4]_i_4 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
-        .I1(ARG2[8]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[8]),
+       (.I0(ARG2[8]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[8] ),
         .O(\DETECTION_STS_AUTOCORR_I[4]_i_4_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_I[4]_i_5 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
-        .I1(ARG2[7]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[7]),
+       (.I0(ARG2[7]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[7] ),
         .O(\DETECTION_STS_AUTOCORR_I[4]_i_5_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_I[4]_i_6 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
-        .I1(ARG2[6]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[6]),
+       (.I0(ARG2[6]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[6] ),
         .O(\DETECTION_STS_AUTOCORR_I[4]_i_6_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_I[4]_i_7 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
-        .I1(ARG2[5]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[5]),
+       (.I0(ARG2[5]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[5] ),
         .O(\DETECTION_STS_AUTOCORR_I[4]_i_7_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_I[4]_i_9 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[8]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[8] ),
         .O(\DETECTION_STS_AUTOCORR_I[4]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair450" *) 
+  (* SOFT_HLUTNM = "soft_lutpair453" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_I[5]_i_1 
        (.I0(ARG0[5]),
-        .I1(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[9]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[9] ),
         .O(ARG[5]));
-  (* SOFT_HLUTNM = "soft_lutpair449" *) 
+  (* SOFT_HLUTNM = "soft_lutpair452" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_I[6]_i_1 
        (.I0(ARG0[6]),
-        .I1(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[10]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[10] ),
         .O(ARG[6]));
-  (* SOFT_HLUTNM = "soft_lutpair449" *) 
+  (* SOFT_HLUTNM = "soft_lutpair452" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_I[7]_i_1 
        (.I0(ARG0[7]),
-        .I1(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[11]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[11] ),
         .O(ARG[7]));
-  (* SOFT_HLUTNM = "soft_lutpair448" *) 
+  (* SOFT_HLUTNM = "soft_lutpair451" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_I[8]_i_1 
        (.I0(ARG0[8]),
-        .I1(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[12]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[12] ),
         .O(ARG[8]));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_I[8]_i_10 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[10]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[10] ),
         .O(\DETECTION_STS_AUTOCORR_I[8]_i_10_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_I[8]_i_11 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[9]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[9] ),
         .O(\DETECTION_STS_AUTOCORR_I[8]_i_11_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_I[8]_i_3 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
-        .I1(ARG2[12]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[12]),
+       (.I0(ARG2[12]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[12] ),
         .O(\DETECTION_STS_AUTOCORR_I[8]_i_3_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_I[8]_i_4 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
-        .I1(ARG2[11]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[11]),
+       (.I0(ARG2[11]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[11] ),
         .O(\DETECTION_STS_AUTOCORR_I[8]_i_4_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_I[8]_i_5 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
-        .I1(ARG2[10]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[10]),
+       (.I0(ARG2[10]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[10] ),
         .O(\DETECTION_STS_AUTOCORR_I[8]_i_5_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_I[8]_i_6 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
-        .I1(ARG2[9]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[9]),
+       (.I0(ARG2[9]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[9] ),
         .O(\DETECTION_STS_AUTOCORR_I[8]_i_6_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_I[8]_i_8 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[12]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[12] ),
         .O(\DETECTION_STS_AUTOCORR_I[8]_i_8_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_I[8]_i_9 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[11]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[11] ),
         .O(\DETECTION_STS_AUTOCORR_I[8]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair448" *) 
+  (* SOFT_HLUTNM = "soft_lutpair451" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_I[9]_i_1 
        (.I0(ARG0[9]),
-        .I1(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[13]),
-        .I2(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[13] ),
         .O(ARG[9]));
-  FDRE \DETECTION_STS_AUTOCORR_I_reg[0] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_I_reg[0] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(ARG[0]),
         .Q(DETECTION_STS_AUTOCORR_I[0]),
         .R(1'b0));
@@ -71953,21 +72523,27 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O({ARG2[4],\NLW_DETECTION_STS_AUTOCORR_I_reg[0]_i_2_O_UNCONNECTED [2:0]}),
         .S({\DETECTION_STS_AUTOCORR_I[0]_i_4_n_0 ,\DETECTION_STS_AUTOCORR_I[0]_i_5_n_0 ,\DETECTION_STS_AUTOCORR_I[0]_i_6_n_0 ,\DETECTION_STS_AUTOCORR_I[0]_i_7_n_0 }));
-  FDRE \DETECTION_STS_AUTOCORR_I_reg[10] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_I_reg[10] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(ARG[10]),
         .Q(DETECTION_STS_AUTOCORR_I[10]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_I_reg[11] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_I_reg[11] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(ARG[11]),
         .Q(DETECTION_STS_AUTOCORR_I[11]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_I_reg[12] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_I_reg[12] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(ARG[12]),
         .Q(DETECTION_STS_AUTOCORR_I[12]),
         .R(1'b0));
@@ -71986,27 +72562,35 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O(ARG2[16:13]),
         .S({\DETECTION_STS_AUTOCORR_I[12]_i_8_n_0 ,\DETECTION_STS_AUTOCORR_I[12]_i_9_n_0 ,\DETECTION_STS_AUTOCORR_I[12]_i_10_n_0 ,\DETECTION_STS_AUTOCORR_I[12]_i_11_n_0 }));
-  FDRE \DETECTION_STS_AUTOCORR_I_reg[13] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_I_reg[13] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(ARG[13]),
         .Q(DETECTION_STS_AUTOCORR_I[13]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_I_reg[14] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_I_reg[14] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(ARG[14]),
         .Q(DETECTION_STS_AUTOCORR_I[14]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_I_reg[15] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_I_reg[15] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(ARG[15]),
         .Q(DETECTION_STS_AUTOCORR_I[15]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_I_reg[16] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_I_reg[16] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(ARG[16]),
         .Q(DETECTION_STS_AUTOCORR_I[16]),
         .R(1'b0));
@@ -72025,33 +72609,43 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O(ARG2[20:17]),
         .S({\DETECTION_STS_AUTOCORR_I[16]_i_8_n_0 ,\DETECTION_STS_AUTOCORR_I[16]_i_9_n_0 ,\DETECTION_STS_AUTOCORR_I[16]_i_10_n_0 ,\DETECTION_STS_AUTOCORR_I[16]_i_11_n_0 }));
-  FDRE \DETECTION_STS_AUTOCORR_I_reg[17] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_I_reg[17] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(ARG[17]),
         .Q(DETECTION_STS_AUTOCORR_I[17]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_I_reg[18] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_I_reg[18] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(ARG[18]),
         .Q(DETECTION_STS_AUTOCORR_I[18]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_I_reg[19] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_I_reg[19] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(ARG[19]),
         .Q(DETECTION_STS_AUTOCORR_I[19]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_I_reg[1] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_I_reg[1] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(ARG[1]),
         .Q(DETECTION_STS_AUTOCORR_I[1]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_I_reg[20] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_I_reg[20] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(ARG[20]),
         .Q(DETECTION_STS_AUTOCORR_I[20]),
         .R(1'b0));
@@ -72070,27 +72664,35 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O(ARG2[24:21]),
         .S({\DETECTION_STS_AUTOCORR_I[20]_i_8_n_0 ,\DETECTION_STS_AUTOCORR_I[20]_i_9_n_0 ,\DETECTION_STS_AUTOCORR_I[20]_i_10_n_0 ,\DETECTION_STS_AUTOCORR_I[20]_i_11_n_0 }));
-  FDRE \DETECTION_STS_AUTOCORR_I_reg[21] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_I_reg[21] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(ARG[21]),
         .Q(DETECTION_STS_AUTOCORR_I[21]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_I_reg[22] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_I_reg[22] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(ARG[22]),
         .Q(DETECTION_STS_AUTOCORR_I[22]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_I_reg[23] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_I_reg[23] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(ARG[23]),
         .Q(DETECTION_STS_AUTOCORR_I[23]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_I_reg[24] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_I_reg[24] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(ARG[24]),
         .Q(DETECTION_STS_AUTOCORR_I[24]),
         .R(1'b0));
@@ -72109,27 +72711,35 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O(ARG2[28:25]),
         .S({\DETECTION_STS_AUTOCORR_I[24]_i_8_n_0 ,\DETECTION_STS_AUTOCORR_I[24]_i_9_n_0 ,\DETECTION_STS_AUTOCORR_I[24]_i_10_n_0 ,\DETECTION_STS_AUTOCORR_I[24]_i_11_n_0 }));
-  FDRE \DETECTION_STS_AUTOCORR_I_reg[25] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_I_reg[25] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(ARG[25]),
         .Q(DETECTION_STS_AUTOCORR_I[25]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_I_reg[26] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_I_reg[26] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(ARG[26]),
         .Q(DETECTION_STS_AUTOCORR_I[26]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_I_reg[27] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_I_reg[27] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(ARG[27]),
         .Q(DETECTION_STS_AUTOCORR_I[27]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_I_reg[28] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_I_reg[28] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(ARG[28]),
         .Q(DETECTION_STS_AUTOCORR_I[28]),
         .R(1'b0));
@@ -72148,27 +72758,35 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O(ARG2[32:29]),
         .S({\DETECTION_STS_AUTOCORR_I[28]_i_8_n_0 ,\DETECTION_STS_AUTOCORR_I[28]_i_9_n_0 ,\DETECTION_STS_AUTOCORR_I[28]_i_10_n_0 ,\DETECTION_STS_AUTOCORR_I[28]_i_11_n_0 }));
-  FDRE \DETECTION_STS_AUTOCORR_I_reg[29] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_I_reg[29] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(ARG[29]),
         .Q(DETECTION_STS_AUTOCORR_I[29]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_I_reg[2] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_I_reg[2] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(ARG[2]),
         .Q(DETECTION_STS_AUTOCORR_I[2]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_I_reg[30] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_I_reg[30] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(ARG[30]),
         .Q(DETECTION_STS_AUTOCORR_I[30]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_I_reg[31] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_I_reg[31] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(ARG[35]),
         .Q(DETECTION_STS_AUTOCORR_I[31]),
         .R(1'b0));
@@ -72187,15 +72805,19 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O({\NLW_DETECTION_STS_AUTOCORR_I_reg[31]_i_6_O_UNCONNECTED [3],ARG2[35:33]}),
         .S({1'b0,\DETECTION_STS_AUTOCORR_I[31]_i_7_n_0 ,\DETECTION_STS_AUTOCORR_I[31]_i_8_n_0 ,\DETECTION_STS_AUTOCORR_I[31]_i_9_n_0 }));
-  FDRE \DETECTION_STS_AUTOCORR_I_reg[3] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_I_reg[3] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(ARG[3]),
         .Q(DETECTION_STS_AUTOCORR_I[3]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_I_reg[4] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_I_reg[4] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(ARG[4]),
         .Q(DETECTION_STS_AUTOCORR_I[4]),
         .R(1'b0));
@@ -72214,27 +72836,35 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O(ARG2[8:5]),
         .S({\DETECTION_STS_AUTOCORR_I[4]_i_9_n_0 ,\DETECTION_STS_AUTOCORR_I[4]_i_10_n_0 ,\DETECTION_STS_AUTOCORR_I[4]_i_11_n_0 ,\DETECTION_STS_AUTOCORR_I[4]_i_12_n_0 }));
-  FDRE \DETECTION_STS_AUTOCORR_I_reg[5] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_I_reg[5] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(ARG[5]),
         .Q(DETECTION_STS_AUTOCORR_I[5]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_I_reg[6] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_I_reg[6] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(ARG[6]),
         .Q(DETECTION_STS_AUTOCORR_I[6]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_I_reg[7] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_I_reg[7] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(ARG[7]),
         .Q(DETECTION_STS_AUTOCORR_I[7]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_I_reg[8] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_I_reg[8] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(ARG[8]),
         .Q(DETECTION_STS_AUTOCORR_I[8]),
         .R(1'b0));
@@ -72253,673 +72883,677 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O(ARG2[12:9]),
         .S({\DETECTION_STS_AUTOCORR_I[8]_i_8_n_0 ,\DETECTION_STS_AUTOCORR_I[8]_i_9_n_0 ,\DETECTION_STS_AUTOCORR_I[8]_i_10_n_0 ,\DETECTION_STS_AUTOCORR_I[8]_i_11_n_0 }));
-  FDRE \DETECTION_STS_AUTOCORR_I_reg[9] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_I_reg[9] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(ARG[9]),
         .Q(DETECTION_STS_AUTOCORR_I[9]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair468" *) 
+  (* SOFT_HLUTNM = "soft_lutpair470" *) 
   LUT3 #(
-    .INIT(8'hCA)) 
+    .INIT(8'hE2)) 
     \DETECTION_STS_AUTOCORR_Q[0]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[4]),
-        .I1(\DETECTION_STS_AUTOCORR_Q_reg[0]_i_2_n_4 ),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[4] ),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\DETECTION_STS_AUTOCORR_Q_reg[0]_i_2_n_4 ),
         .O(\DETECTION_STS_AUTOCORR_Q[0]_i_1_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_Q[0]_i_3 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[0]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[0] ),
         .O(\DETECTION_STS_AUTOCORR_Q[0]_i_3_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_Q[0]_i_4 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[4]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[4] ),
         .O(\DETECTION_STS_AUTOCORR_Q[0]_i_4_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_Q[0]_i_5 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[3]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[3] ),
         .O(\DETECTION_STS_AUTOCORR_Q[0]_i_5_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_Q[0]_i_6 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[2]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[2] ),
         .O(\DETECTION_STS_AUTOCORR_Q[0]_i_6_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_Q[0]_i_7 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[1]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[1] ),
         .O(\DETECTION_STS_AUTOCORR_Q[0]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair463" *) 
+  (* SOFT_HLUTNM = "soft_lutpair465" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_Q[10]_i_1 
        (.I0(\DETECTION_STS_AUTOCORR_Q_reg[12]_i_2_n_6 ),
-        .I1(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[14]),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[14] ),
         .O(\DETECTION_STS_AUTOCORR_Q[10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair463" *) 
+  (* SOFT_HLUTNM = "soft_lutpair465" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_Q[11]_i_1 
        (.I0(\DETECTION_STS_AUTOCORR_Q_reg[12]_i_2_n_5 ),
-        .I1(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[15]),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[15] ),
         .O(\DETECTION_STS_AUTOCORR_Q[11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair462" *) 
+  (* SOFT_HLUTNM = "soft_lutpair464" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_Q[12]_i_1 
        (.I0(\DETECTION_STS_AUTOCORR_Q_reg[12]_i_2_n_4 ),
-        .I1(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[16]),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[16] ),
         .O(\DETECTION_STS_AUTOCORR_Q[12]_i_1_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_Q[12]_i_10 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[14]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[14] ),
         .O(\DETECTION_STS_AUTOCORR_Q[12]_i_10_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_Q[12]_i_11 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[13]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[13] ),
         .O(\DETECTION_STS_AUTOCORR_Q[12]_i_11_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_Q[12]_i_3 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
-        .I1(\DETECTION_STS_AUTOCORR_Q_reg[12]_i_7_n_4 ),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[16]),
+       (.I0(\DETECTION_STS_AUTOCORR_Q_reg[12]_i_7_n_4 ),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[16] ),
         .O(\DETECTION_STS_AUTOCORR_Q[12]_i_3_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_Q[12]_i_4 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
-        .I1(\DETECTION_STS_AUTOCORR_Q_reg[12]_i_7_n_5 ),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[15]),
+       (.I0(\DETECTION_STS_AUTOCORR_Q_reg[12]_i_7_n_5 ),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[15] ),
         .O(\DETECTION_STS_AUTOCORR_Q[12]_i_4_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_Q[12]_i_5 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
-        .I1(\DETECTION_STS_AUTOCORR_Q_reg[12]_i_7_n_6 ),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[14]),
+       (.I0(\DETECTION_STS_AUTOCORR_Q_reg[12]_i_7_n_6 ),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[14] ),
         .O(\DETECTION_STS_AUTOCORR_Q[12]_i_5_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_Q[12]_i_6 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
-        .I1(\DETECTION_STS_AUTOCORR_Q_reg[12]_i_7_n_7 ),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[13]),
+       (.I0(\DETECTION_STS_AUTOCORR_Q_reg[12]_i_7_n_7 ),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[13] ),
         .O(\DETECTION_STS_AUTOCORR_Q[12]_i_6_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_Q[12]_i_8 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[16]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[16] ),
         .O(\DETECTION_STS_AUTOCORR_Q[12]_i_8_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_Q[12]_i_9 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[15]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[15] ),
         .O(\DETECTION_STS_AUTOCORR_Q[12]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair462" *) 
+  (* SOFT_HLUTNM = "soft_lutpair464" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_Q[13]_i_1 
        (.I0(\DETECTION_STS_AUTOCORR_Q_reg[16]_i_2_n_7 ),
-        .I1(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[17]),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[17] ),
         .O(\DETECTION_STS_AUTOCORR_Q[13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair461" *) 
+  (* SOFT_HLUTNM = "soft_lutpair463" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_Q[14]_i_1 
        (.I0(\DETECTION_STS_AUTOCORR_Q_reg[16]_i_2_n_6 ),
-        .I1(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[18]),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[18] ),
         .O(\DETECTION_STS_AUTOCORR_Q[14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair461" *) 
+  (* SOFT_HLUTNM = "soft_lutpair463" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_Q[15]_i_1 
        (.I0(\DETECTION_STS_AUTOCORR_Q_reg[16]_i_2_n_5 ),
-        .I1(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[19]),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[19] ),
         .O(\DETECTION_STS_AUTOCORR_Q[15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair460" *) 
+  (* SOFT_HLUTNM = "soft_lutpair462" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_Q[16]_i_1 
        (.I0(\DETECTION_STS_AUTOCORR_Q_reg[16]_i_2_n_4 ),
-        .I1(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[20]),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[20] ),
         .O(\DETECTION_STS_AUTOCORR_Q[16]_i_1_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_Q[16]_i_10 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[18]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[18] ),
         .O(\DETECTION_STS_AUTOCORR_Q[16]_i_10_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_Q[16]_i_11 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[17]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[17] ),
         .O(\DETECTION_STS_AUTOCORR_Q[16]_i_11_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_Q[16]_i_3 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
-        .I1(\DETECTION_STS_AUTOCORR_Q_reg[16]_i_7_n_4 ),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[20]),
+       (.I0(\DETECTION_STS_AUTOCORR_Q_reg[16]_i_7_n_4 ),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[20] ),
         .O(\DETECTION_STS_AUTOCORR_Q[16]_i_3_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_Q[16]_i_4 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
-        .I1(\DETECTION_STS_AUTOCORR_Q_reg[16]_i_7_n_5 ),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[19]),
+       (.I0(\DETECTION_STS_AUTOCORR_Q_reg[16]_i_7_n_5 ),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[19] ),
         .O(\DETECTION_STS_AUTOCORR_Q[16]_i_4_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_Q[16]_i_5 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
-        .I1(\DETECTION_STS_AUTOCORR_Q_reg[16]_i_7_n_6 ),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[18]),
+       (.I0(\DETECTION_STS_AUTOCORR_Q_reg[16]_i_7_n_6 ),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[18] ),
         .O(\DETECTION_STS_AUTOCORR_Q[16]_i_5_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_Q[16]_i_6 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
-        .I1(\DETECTION_STS_AUTOCORR_Q_reg[16]_i_7_n_7 ),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[17]),
+       (.I0(\DETECTION_STS_AUTOCORR_Q_reg[16]_i_7_n_7 ),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[17] ),
         .O(\DETECTION_STS_AUTOCORR_Q[16]_i_6_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_Q[16]_i_8 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[20]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[20] ),
         .O(\DETECTION_STS_AUTOCORR_Q[16]_i_8_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_Q[16]_i_9 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[19]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[19] ),
         .O(\DETECTION_STS_AUTOCORR_Q[16]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair460" *) 
+  (* SOFT_HLUTNM = "soft_lutpair462" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_Q[17]_i_1 
        (.I0(\DETECTION_STS_AUTOCORR_Q_reg[20]_i_2_n_7 ),
-        .I1(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[21]),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[21] ),
         .O(\DETECTION_STS_AUTOCORR_Q[17]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair459" *) 
+  (* SOFT_HLUTNM = "soft_lutpair461" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_Q[18]_i_1 
        (.I0(\DETECTION_STS_AUTOCORR_Q_reg[20]_i_2_n_6 ),
-        .I1(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[22]),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[22] ),
         .O(\DETECTION_STS_AUTOCORR_Q[18]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair459" *) 
+  (* SOFT_HLUTNM = "soft_lutpair461" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_Q[19]_i_1 
        (.I0(\DETECTION_STS_AUTOCORR_Q_reg[20]_i_2_n_5 ),
-        .I1(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[23]),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[23] ),
         .O(\DETECTION_STS_AUTOCORR_Q[19]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair468" *) 
+  (* SOFT_HLUTNM = "soft_lutpair470" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_Q[1]_i_1 
        (.I0(\DETECTION_STS_AUTOCORR_Q_reg[4]_i_2_n_7 ),
-        .I1(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[5]),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[5] ),
         .O(\DETECTION_STS_AUTOCORR_Q[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair458" *) 
+  (* SOFT_HLUTNM = "soft_lutpair460" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_Q[20]_i_1 
        (.I0(\DETECTION_STS_AUTOCORR_Q_reg[20]_i_2_n_4 ),
-        .I1(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[24]),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[24] ),
         .O(\DETECTION_STS_AUTOCORR_Q[20]_i_1_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_Q[20]_i_10 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[22]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[22] ),
         .O(\DETECTION_STS_AUTOCORR_Q[20]_i_10_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_Q[20]_i_11 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[21]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[21] ),
         .O(\DETECTION_STS_AUTOCORR_Q[20]_i_11_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_Q[20]_i_3 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
-        .I1(\DETECTION_STS_AUTOCORR_Q_reg[20]_i_7_n_4 ),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[24]),
+       (.I0(\DETECTION_STS_AUTOCORR_Q_reg[20]_i_7_n_4 ),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[24] ),
         .O(\DETECTION_STS_AUTOCORR_Q[20]_i_3_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_Q[20]_i_4 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
-        .I1(\DETECTION_STS_AUTOCORR_Q_reg[20]_i_7_n_5 ),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[23]),
+       (.I0(\DETECTION_STS_AUTOCORR_Q_reg[20]_i_7_n_5 ),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[23] ),
         .O(\DETECTION_STS_AUTOCORR_Q[20]_i_4_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_Q[20]_i_5 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
-        .I1(\DETECTION_STS_AUTOCORR_Q_reg[20]_i_7_n_6 ),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[22]),
+       (.I0(\DETECTION_STS_AUTOCORR_Q_reg[20]_i_7_n_6 ),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[22] ),
         .O(\DETECTION_STS_AUTOCORR_Q[20]_i_5_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_Q[20]_i_6 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
-        .I1(\DETECTION_STS_AUTOCORR_Q_reg[20]_i_7_n_7 ),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[21]),
+       (.I0(\DETECTION_STS_AUTOCORR_Q_reg[20]_i_7_n_7 ),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[21] ),
         .O(\DETECTION_STS_AUTOCORR_Q[20]_i_6_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_Q[20]_i_8 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[24]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[24] ),
         .O(\DETECTION_STS_AUTOCORR_Q[20]_i_8_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_Q[20]_i_9 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[23]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[23] ),
         .O(\DETECTION_STS_AUTOCORR_Q[20]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair458" *) 
+  (* SOFT_HLUTNM = "soft_lutpair460" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_Q[21]_i_1 
        (.I0(\DETECTION_STS_AUTOCORR_Q_reg[24]_i_2_n_7 ),
-        .I1(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[25]),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[25] ),
         .O(\DETECTION_STS_AUTOCORR_Q[21]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair457" *) 
+  (* SOFT_HLUTNM = "soft_lutpair459" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_Q[22]_i_1 
        (.I0(\DETECTION_STS_AUTOCORR_Q_reg[24]_i_2_n_6 ),
-        .I1(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[26]),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[26] ),
         .O(\DETECTION_STS_AUTOCORR_Q[22]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair457" *) 
+  (* SOFT_HLUTNM = "soft_lutpair459" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_Q[23]_i_1 
        (.I0(\DETECTION_STS_AUTOCORR_Q_reg[24]_i_2_n_5 ),
-        .I1(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[27]),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[27] ),
         .O(\DETECTION_STS_AUTOCORR_Q[23]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair456" *) 
+  (* SOFT_HLUTNM = "soft_lutpair458" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_Q[24]_i_1 
        (.I0(\DETECTION_STS_AUTOCORR_Q_reg[24]_i_2_n_4 ),
-        .I1(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[28]),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[28] ),
         .O(\DETECTION_STS_AUTOCORR_Q[24]_i_1_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_Q[24]_i_10 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[26]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[26] ),
         .O(\DETECTION_STS_AUTOCORR_Q[24]_i_10_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_Q[24]_i_11 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[25]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[25] ),
         .O(\DETECTION_STS_AUTOCORR_Q[24]_i_11_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_Q[24]_i_3 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
-        .I1(\DETECTION_STS_AUTOCORR_Q_reg[24]_i_7_n_4 ),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[28]),
+       (.I0(\DETECTION_STS_AUTOCORR_Q_reg[24]_i_7_n_4 ),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[28] ),
         .O(\DETECTION_STS_AUTOCORR_Q[24]_i_3_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_Q[24]_i_4 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
-        .I1(\DETECTION_STS_AUTOCORR_Q_reg[24]_i_7_n_5 ),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[27]),
+       (.I0(\DETECTION_STS_AUTOCORR_Q_reg[24]_i_7_n_5 ),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[27] ),
         .O(\DETECTION_STS_AUTOCORR_Q[24]_i_4_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_Q[24]_i_5 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
-        .I1(\DETECTION_STS_AUTOCORR_Q_reg[24]_i_7_n_6 ),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[26]),
+       (.I0(\DETECTION_STS_AUTOCORR_Q_reg[24]_i_7_n_6 ),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[26] ),
         .O(\DETECTION_STS_AUTOCORR_Q[24]_i_5_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_Q[24]_i_6 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
-        .I1(\DETECTION_STS_AUTOCORR_Q_reg[24]_i_7_n_7 ),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[25]),
+       (.I0(\DETECTION_STS_AUTOCORR_Q_reg[24]_i_7_n_7 ),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[25] ),
         .O(\DETECTION_STS_AUTOCORR_Q[24]_i_6_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_Q[24]_i_8 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[28]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[28] ),
         .O(\DETECTION_STS_AUTOCORR_Q[24]_i_8_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_Q[24]_i_9 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[27]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[27] ),
         .O(\DETECTION_STS_AUTOCORR_Q[24]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair456" *) 
+  (* SOFT_HLUTNM = "soft_lutpair458" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_Q[25]_i_1 
        (.I0(\DETECTION_STS_AUTOCORR_Q_reg[28]_i_2_n_7 ),
-        .I1(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[29]),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[29] ),
         .O(\DETECTION_STS_AUTOCORR_Q[25]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair455" *) 
+  (* SOFT_HLUTNM = "soft_lutpair457" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_Q[26]_i_1 
        (.I0(\DETECTION_STS_AUTOCORR_Q_reg[28]_i_2_n_6 ),
-        .I1(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[30]),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[30] ),
         .O(\DETECTION_STS_AUTOCORR_Q[26]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair455" *) 
+  (* SOFT_HLUTNM = "soft_lutpair457" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_Q[27]_i_1 
        (.I0(\DETECTION_STS_AUTOCORR_Q_reg[28]_i_2_n_5 ),
-        .I1(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[31]),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[31] ),
         .O(\DETECTION_STS_AUTOCORR_Q[27]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair454" *) 
+  (* SOFT_HLUTNM = "soft_lutpair456" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_Q[28]_i_1 
        (.I0(\DETECTION_STS_AUTOCORR_Q_reg[28]_i_2_n_4 ),
-        .I1(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[32]),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[32] ),
         .O(\DETECTION_STS_AUTOCORR_Q[28]_i_1_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_Q[28]_i_10 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[30]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[30] ),
         .O(\DETECTION_STS_AUTOCORR_Q[28]_i_10_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_Q[28]_i_11 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[29]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[29] ),
         .O(\DETECTION_STS_AUTOCORR_Q[28]_i_11_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_Q[28]_i_3 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
-        .I1(\DETECTION_STS_AUTOCORR_Q_reg[28]_i_7_n_4 ),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[32]),
+       (.I0(\DETECTION_STS_AUTOCORR_Q_reg[28]_i_7_n_4 ),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[32] ),
         .O(\DETECTION_STS_AUTOCORR_Q[28]_i_3_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_Q[28]_i_4 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
-        .I1(\DETECTION_STS_AUTOCORR_Q_reg[28]_i_7_n_5 ),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[31]),
+       (.I0(\DETECTION_STS_AUTOCORR_Q_reg[28]_i_7_n_5 ),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[31] ),
         .O(\DETECTION_STS_AUTOCORR_Q[28]_i_4_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_Q[28]_i_5 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
-        .I1(\DETECTION_STS_AUTOCORR_Q_reg[28]_i_7_n_6 ),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[30]),
+       (.I0(\DETECTION_STS_AUTOCORR_Q_reg[28]_i_7_n_6 ),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[30] ),
         .O(\DETECTION_STS_AUTOCORR_Q[28]_i_5_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_Q[28]_i_6 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
-        .I1(\DETECTION_STS_AUTOCORR_Q_reg[28]_i_7_n_7 ),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[29]),
+       (.I0(\DETECTION_STS_AUTOCORR_Q_reg[28]_i_7_n_7 ),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[29] ),
         .O(\DETECTION_STS_AUTOCORR_Q[28]_i_6_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_Q[28]_i_8 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[32]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[32] ),
         .O(\DETECTION_STS_AUTOCORR_Q[28]_i_8_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_Q[28]_i_9 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[31]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[31] ),
         .O(\DETECTION_STS_AUTOCORR_Q[28]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair454" *) 
+  (* SOFT_HLUTNM = "soft_lutpair456" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_Q[29]_i_1 
        (.I0(\DETECTION_STS_AUTOCORR_Q_reg[31]_i_2_n_7 ),
-        .I1(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[33]),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[33] ),
         .O(\DETECTION_STS_AUTOCORR_Q[29]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair467" *) 
+  (* SOFT_HLUTNM = "soft_lutpair469" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_Q[2]_i_1 
        (.I0(\DETECTION_STS_AUTOCORR_Q_reg[4]_i_2_n_6 ),
-        .I1(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[6]),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[6] ),
         .O(\DETECTION_STS_AUTOCORR_Q[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair453" *) 
+  (* SOFT_HLUTNM = "soft_lutpair440" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_Q[30]_i_1 
        (.I0(\DETECTION_STS_AUTOCORR_Q_reg[31]_i_2_n_6 ),
-        .I1(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[34]),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[34] ),
         .O(\DETECTION_STS_AUTOCORR_Q[30]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair453" *) 
+  (* SOFT_HLUTNM = "soft_lutpair440" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \DETECTION_STS_AUTOCORR_Q[31]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
         .I1(\DETECTION_STS_AUTOCORR_Q_reg[31]_i_2_n_1 ),
         .O(\DETECTION_STS_AUTOCORR_Q[31]_i_1_n_0 ));
   LUT2 #(
     .INIT(4'h7)) 
     \DETECTION_STS_AUTOCORR_Q[31]_i_3 
        (.I0(\DETECTION_STS_AUTOCORR_Q_reg[31]_i_6_n_5 ),
-        .I1(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
         .O(\DETECTION_STS_AUTOCORR_Q[31]_i_3_n_0 ));
   LUT3 #(
-    .INIT(8'h1D)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_Q[31]_i_4 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[34]),
-        .I1(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
-        .I2(\DETECTION_STS_AUTOCORR_Q_reg[31]_i_6_n_6 ),
+       (.I0(\DETECTION_STS_AUTOCORR_Q_reg[31]_i_6_n_6 ),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[34] ),
         .O(\DETECTION_STS_AUTOCORR_Q[31]_i_4_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_Q[31]_i_5 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
-        .I1(\DETECTION_STS_AUTOCORR_Q_reg[31]_i_6_n_7 ),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[33]),
+       (.I0(\DETECTION_STS_AUTOCORR_Q_reg[31]_i_6_n_7 ),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[33] ),
         .O(\DETECTION_STS_AUTOCORR_Q[31]_i_5_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_Q[31]_i_7 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
         .O(\DETECTION_STS_AUTOCORR_Q[31]_i_7_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_Q[31]_i_8 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[34]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[34] ),
         .O(\DETECTION_STS_AUTOCORR_Q[31]_i_8_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_Q[31]_i_9 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[33]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[33] ),
         .O(\DETECTION_STS_AUTOCORR_Q[31]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair467" *) 
+  (* SOFT_HLUTNM = "soft_lutpair469" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_Q[3]_i_1 
        (.I0(\DETECTION_STS_AUTOCORR_Q_reg[4]_i_2_n_5 ),
-        .I1(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[7]),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[7] ),
         .O(\DETECTION_STS_AUTOCORR_Q[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair466" *) 
+  (* SOFT_HLUTNM = "soft_lutpair468" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_Q[4]_i_1 
        (.I0(\DETECTION_STS_AUTOCORR_Q_reg[4]_i_2_n_4 ),
-        .I1(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[8]),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[8] ),
         .O(\DETECTION_STS_AUTOCORR_Q[4]_i_1_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_Q[4]_i_10 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[7]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[7] ),
         .O(\DETECTION_STS_AUTOCORR_Q[4]_i_10_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_Q[4]_i_11 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[6]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[6] ),
         .O(\DETECTION_STS_AUTOCORR_Q[4]_i_11_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_Q[4]_i_12 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[5]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[5] ),
         .O(\DETECTION_STS_AUTOCORR_Q[4]_i_12_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_Q[4]_i_3 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
-        .I1(\DETECTION_STS_AUTOCORR_Q_reg[0]_i_2_n_4 ),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[4]),
+       (.I0(\DETECTION_STS_AUTOCORR_Q_reg[0]_i_2_n_4 ),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[4] ),
         .O(\DETECTION_STS_AUTOCORR_Q[4]_i_3_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_Q[4]_i_4 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
-        .I1(\DETECTION_STS_AUTOCORR_Q_reg[4]_i_8_n_4 ),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[8]),
+       (.I0(\DETECTION_STS_AUTOCORR_Q_reg[4]_i_8_n_4 ),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[8] ),
         .O(\DETECTION_STS_AUTOCORR_Q[4]_i_4_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_Q[4]_i_5 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
-        .I1(\DETECTION_STS_AUTOCORR_Q_reg[4]_i_8_n_5 ),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[7]),
+       (.I0(\DETECTION_STS_AUTOCORR_Q_reg[4]_i_8_n_5 ),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[7] ),
         .O(\DETECTION_STS_AUTOCORR_Q[4]_i_5_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_Q[4]_i_6 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
-        .I1(\DETECTION_STS_AUTOCORR_Q_reg[4]_i_8_n_6 ),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[6]),
+       (.I0(\DETECTION_STS_AUTOCORR_Q_reg[4]_i_8_n_6 ),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[6] ),
         .O(\DETECTION_STS_AUTOCORR_Q[4]_i_6_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_Q[4]_i_7 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
-        .I1(\DETECTION_STS_AUTOCORR_Q_reg[4]_i_8_n_7 ),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[5]),
+       (.I0(\DETECTION_STS_AUTOCORR_Q_reg[4]_i_8_n_7 ),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[5] ),
         .O(\DETECTION_STS_AUTOCORR_Q[4]_i_7_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_Q[4]_i_9 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[8]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[8] ),
         .O(\DETECTION_STS_AUTOCORR_Q[4]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair466" *) 
+  (* SOFT_HLUTNM = "soft_lutpair468" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_Q[5]_i_1 
        (.I0(\DETECTION_STS_AUTOCORR_Q_reg[8]_i_2_n_7 ),
-        .I1(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[9]),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[9] ),
         .O(\DETECTION_STS_AUTOCORR_Q[5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair465" *) 
+  (* SOFT_HLUTNM = "soft_lutpair467" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_Q[6]_i_1 
        (.I0(\DETECTION_STS_AUTOCORR_Q_reg[8]_i_2_n_6 ),
-        .I1(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[10]),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[10] ),
         .O(\DETECTION_STS_AUTOCORR_Q[6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair465" *) 
+  (* SOFT_HLUTNM = "soft_lutpair467" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_Q[7]_i_1 
        (.I0(\DETECTION_STS_AUTOCORR_Q_reg[8]_i_2_n_5 ),
-        .I1(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[11]),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[11] ),
         .O(\DETECTION_STS_AUTOCORR_Q[7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair464" *) 
+  (* SOFT_HLUTNM = "soft_lutpair466" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_Q[8]_i_1 
        (.I0(\DETECTION_STS_AUTOCORR_Q_reg[8]_i_2_n_4 ),
-        .I1(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[12]),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[12] ),
         .O(\DETECTION_STS_AUTOCORR_Q[8]_i_1_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_Q[8]_i_10 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[10]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[10] ),
         .O(\DETECTION_STS_AUTOCORR_Q[8]_i_10_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_Q[8]_i_11 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[9]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[9] ),
         .O(\DETECTION_STS_AUTOCORR_Q[8]_i_11_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_Q[8]_i_3 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
-        .I1(\DETECTION_STS_AUTOCORR_Q_reg[8]_i_7_n_4 ),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[12]),
+       (.I0(\DETECTION_STS_AUTOCORR_Q_reg[8]_i_7_n_4 ),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[12] ),
         .O(\DETECTION_STS_AUTOCORR_Q[8]_i_3_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_Q[8]_i_4 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
-        .I1(\DETECTION_STS_AUTOCORR_Q_reg[8]_i_7_n_5 ),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[11]),
+       (.I0(\DETECTION_STS_AUTOCORR_Q_reg[8]_i_7_n_5 ),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[11] ),
         .O(\DETECTION_STS_AUTOCORR_Q[8]_i_4_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_Q[8]_i_5 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
-        .I1(\DETECTION_STS_AUTOCORR_Q_reg[8]_i_7_n_6 ),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[10]),
+       (.I0(\DETECTION_STS_AUTOCORR_Q_reg[8]_i_7_n_6 ),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[10] ),
         .O(\DETECTION_STS_AUTOCORR_Q[8]_i_5_n_0 ));
   LUT3 #(
-    .INIT(8'h27)) 
+    .INIT(8'h47)) 
     \DETECTION_STS_AUTOCORR_Q[8]_i_6 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
-        .I1(\DETECTION_STS_AUTOCORR_Q_reg[8]_i_7_n_7 ),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[9]),
+       (.I0(\DETECTION_STS_AUTOCORR_Q_reg[8]_i_7_n_7 ),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[9] ),
         .O(\DETECTION_STS_AUTOCORR_Q[8]_i_6_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_Q[8]_i_8 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[12]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[12] ),
         .O(\DETECTION_STS_AUTOCORR_Q[8]_i_8_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \DETECTION_STS_AUTOCORR_Q[8]_i_9 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[11]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[11] ),
         .O(\DETECTION_STS_AUTOCORR_Q[8]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair464" *) 
+  (* SOFT_HLUTNM = "soft_lutpair466" *) 
   LUT3 #(
-    .INIT(8'hAC)) 
+    .INIT(8'hB8)) 
     \DETECTION_STS_AUTOCORR_Q[9]_i_1 
        (.I0(\DETECTION_STS_AUTOCORR_Q_reg[12]_i_2_n_7 ),
-        .I1(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[13]),
-        .I2(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
+        .I2(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[13] ),
         .O(\DETECTION_STS_AUTOCORR_Q[9]_i_1_n_0 ));
-  FDRE \DETECTION_STS_AUTOCORR_Q_reg[0] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_Q_reg[0] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(\DETECTION_STS_AUTOCORR_Q[0]_i_1_n_0 ),
         .Q(DETECTION_STS_AUTOCORR_Q[0]),
         .R(1'b0));
@@ -72931,21 +73565,27 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O({\DETECTION_STS_AUTOCORR_Q_reg[0]_i_2_n_4 ,\NLW_DETECTION_STS_AUTOCORR_Q_reg[0]_i_2_O_UNCONNECTED [2:0]}),
         .S({\DETECTION_STS_AUTOCORR_Q[0]_i_4_n_0 ,\DETECTION_STS_AUTOCORR_Q[0]_i_5_n_0 ,\DETECTION_STS_AUTOCORR_Q[0]_i_6_n_0 ,\DETECTION_STS_AUTOCORR_Q[0]_i_7_n_0 }));
-  FDRE \DETECTION_STS_AUTOCORR_Q_reg[10] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_Q_reg[10] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(\DETECTION_STS_AUTOCORR_Q[10]_i_1_n_0 ),
         .Q(DETECTION_STS_AUTOCORR_Q[10]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_Q_reg[11] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_Q_reg[11] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(\DETECTION_STS_AUTOCORR_Q[11]_i_1_n_0 ),
         .Q(DETECTION_STS_AUTOCORR_Q[11]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_Q_reg[12] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_Q_reg[12] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(\DETECTION_STS_AUTOCORR_Q[12]_i_1_n_0 ),
         .Q(DETECTION_STS_AUTOCORR_Q[12]),
         .R(1'b0));
@@ -72964,27 +73604,35 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O({\DETECTION_STS_AUTOCORR_Q_reg[12]_i_7_n_4 ,\DETECTION_STS_AUTOCORR_Q_reg[12]_i_7_n_5 ,\DETECTION_STS_AUTOCORR_Q_reg[12]_i_7_n_6 ,\DETECTION_STS_AUTOCORR_Q_reg[12]_i_7_n_7 }),
         .S({\DETECTION_STS_AUTOCORR_Q[12]_i_8_n_0 ,\DETECTION_STS_AUTOCORR_Q[12]_i_9_n_0 ,\DETECTION_STS_AUTOCORR_Q[12]_i_10_n_0 ,\DETECTION_STS_AUTOCORR_Q[12]_i_11_n_0 }));
-  FDRE \DETECTION_STS_AUTOCORR_Q_reg[13] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_Q_reg[13] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(\DETECTION_STS_AUTOCORR_Q[13]_i_1_n_0 ),
         .Q(DETECTION_STS_AUTOCORR_Q[13]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_Q_reg[14] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_Q_reg[14] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(\DETECTION_STS_AUTOCORR_Q[14]_i_1_n_0 ),
         .Q(DETECTION_STS_AUTOCORR_Q[14]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_Q_reg[15] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_Q_reg[15] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(\DETECTION_STS_AUTOCORR_Q[15]_i_1_n_0 ),
         .Q(DETECTION_STS_AUTOCORR_Q[15]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_Q_reg[16] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_Q_reg[16] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(\DETECTION_STS_AUTOCORR_Q[16]_i_1_n_0 ),
         .Q(DETECTION_STS_AUTOCORR_Q[16]),
         .R(1'b0));
@@ -73003,33 +73651,43 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O({\DETECTION_STS_AUTOCORR_Q_reg[16]_i_7_n_4 ,\DETECTION_STS_AUTOCORR_Q_reg[16]_i_7_n_5 ,\DETECTION_STS_AUTOCORR_Q_reg[16]_i_7_n_6 ,\DETECTION_STS_AUTOCORR_Q_reg[16]_i_7_n_7 }),
         .S({\DETECTION_STS_AUTOCORR_Q[16]_i_8_n_0 ,\DETECTION_STS_AUTOCORR_Q[16]_i_9_n_0 ,\DETECTION_STS_AUTOCORR_Q[16]_i_10_n_0 ,\DETECTION_STS_AUTOCORR_Q[16]_i_11_n_0 }));
-  FDRE \DETECTION_STS_AUTOCORR_Q_reg[17] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_Q_reg[17] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(\DETECTION_STS_AUTOCORR_Q[17]_i_1_n_0 ),
         .Q(DETECTION_STS_AUTOCORR_Q[17]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_Q_reg[18] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_Q_reg[18] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(\DETECTION_STS_AUTOCORR_Q[18]_i_1_n_0 ),
         .Q(DETECTION_STS_AUTOCORR_Q[18]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_Q_reg[19] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_Q_reg[19] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(\DETECTION_STS_AUTOCORR_Q[19]_i_1_n_0 ),
         .Q(DETECTION_STS_AUTOCORR_Q[19]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_Q_reg[1] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_Q_reg[1] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(\DETECTION_STS_AUTOCORR_Q[1]_i_1_n_0 ),
         .Q(DETECTION_STS_AUTOCORR_Q[1]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_Q_reg[20] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_Q_reg[20] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(\DETECTION_STS_AUTOCORR_Q[20]_i_1_n_0 ),
         .Q(DETECTION_STS_AUTOCORR_Q[20]),
         .R(1'b0));
@@ -73048,27 +73706,35 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O({\DETECTION_STS_AUTOCORR_Q_reg[20]_i_7_n_4 ,\DETECTION_STS_AUTOCORR_Q_reg[20]_i_7_n_5 ,\DETECTION_STS_AUTOCORR_Q_reg[20]_i_7_n_6 ,\DETECTION_STS_AUTOCORR_Q_reg[20]_i_7_n_7 }),
         .S({\DETECTION_STS_AUTOCORR_Q[20]_i_8_n_0 ,\DETECTION_STS_AUTOCORR_Q[20]_i_9_n_0 ,\DETECTION_STS_AUTOCORR_Q[20]_i_10_n_0 ,\DETECTION_STS_AUTOCORR_Q[20]_i_11_n_0 }));
-  FDRE \DETECTION_STS_AUTOCORR_Q_reg[21] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_Q_reg[21] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(\DETECTION_STS_AUTOCORR_Q[21]_i_1_n_0 ),
         .Q(DETECTION_STS_AUTOCORR_Q[21]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_Q_reg[22] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_Q_reg[22] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(\DETECTION_STS_AUTOCORR_Q[22]_i_1_n_0 ),
         .Q(DETECTION_STS_AUTOCORR_Q[22]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_Q_reg[23] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_Q_reg[23] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(\DETECTION_STS_AUTOCORR_Q[23]_i_1_n_0 ),
         .Q(DETECTION_STS_AUTOCORR_Q[23]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_Q_reg[24] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_Q_reg[24] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(\DETECTION_STS_AUTOCORR_Q[24]_i_1_n_0 ),
         .Q(DETECTION_STS_AUTOCORR_Q[24]),
         .R(1'b0));
@@ -73087,27 +73753,35 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O({\DETECTION_STS_AUTOCORR_Q_reg[24]_i_7_n_4 ,\DETECTION_STS_AUTOCORR_Q_reg[24]_i_7_n_5 ,\DETECTION_STS_AUTOCORR_Q_reg[24]_i_7_n_6 ,\DETECTION_STS_AUTOCORR_Q_reg[24]_i_7_n_7 }),
         .S({\DETECTION_STS_AUTOCORR_Q[24]_i_8_n_0 ,\DETECTION_STS_AUTOCORR_Q[24]_i_9_n_0 ,\DETECTION_STS_AUTOCORR_Q[24]_i_10_n_0 ,\DETECTION_STS_AUTOCORR_Q[24]_i_11_n_0 }));
-  FDRE \DETECTION_STS_AUTOCORR_Q_reg[25] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_Q_reg[25] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(\DETECTION_STS_AUTOCORR_Q[25]_i_1_n_0 ),
         .Q(DETECTION_STS_AUTOCORR_Q[25]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_Q_reg[26] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_Q_reg[26] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(\DETECTION_STS_AUTOCORR_Q[26]_i_1_n_0 ),
         .Q(DETECTION_STS_AUTOCORR_Q[26]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_Q_reg[27] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_Q_reg[27] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(\DETECTION_STS_AUTOCORR_Q[27]_i_1_n_0 ),
         .Q(DETECTION_STS_AUTOCORR_Q[27]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_Q_reg[28] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_Q_reg[28] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(\DETECTION_STS_AUTOCORR_Q[28]_i_1_n_0 ),
         .Q(DETECTION_STS_AUTOCORR_Q[28]),
         .R(1'b0));
@@ -73126,27 +73800,35 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O({\DETECTION_STS_AUTOCORR_Q_reg[28]_i_7_n_4 ,\DETECTION_STS_AUTOCORR_Q_reg[28]_i_7_n_5 ,\DETECTION_STS_AUTOCORR_Q_reg[28]_i_7_n_6 ,\DETECTION_STS_AUTOCORR_Q_reg[28]_i_7_n_7 }),
         .S({\DETECTION_STS_AUTOCORR_Q[28]_i_8_n_0 ,\DETECTION_STS_AUTOCORR_Q[28]_i_9_n_0 ,\DETECTION_STS_AUTOCORR_Q[28]_i_10_n_0 ,\DETECTION_STS_AUTOCORR_Q[28]_i_11_n_0 }));
-  FDRE \DETECTION_STS_AUTOCORR_Q_reg[29] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_Q_reg[29] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(\DETECTION_STS_AUTOCORR_Q[29]_i_1_n_0 ),
         .Q(DETECTION_STS_AUTOCORR_Q[29]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_Q_reg[2] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_Q_reg[2] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(\DETECTION_STS_AUTOCORR_Q[2]_i_1_n_0 ),
         .Q(DETECTION_STS_AUTOCORR_Q[2]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_Q_reg[30] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_Q_reg[30] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(\DETECTION_STS_AUTOCORR_Q[30]_i_1_n_0 ),
         .Q(DETECTION_STS_AUTOCORR_Q[30]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_Q_reg[31] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_Q_reg[31] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(\DETECTION_STS_AUTOCORR_Q[31]_i_1_n_0 ),
         .Q(DETECTION_STS_AUTOCORR_Q[31]),
         .R(1'b0));
@@ -73165,15 +73847,19 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O({\NLW_DETECTION_STS_AUTOCORR_Q_reg[31]_i_6_O_UNCONNECTED [3],\DETECTION_STS_AUTOCORR_Q_reg[31]_i_6_n_5 ,\DETECTION_STS_AUTOCORR_Q_reg[31]_i_6_n_6 ,\DETECTION_STS_AUTOCORR_Q_reg[31]_i_6_n_7 }),
         .S({1'b0,\DETECTION_STS_AUTOCORR_Q[31]_i_7_n_0 ,\DETECTION_STS_AUTOCORR_Q[31]_i_8_n_0 ,\DETECTION_STS_AUTOCORR_Q[31]_i_9_n_0 }));
-  FDRE \DETECTION_STS_AUTOCORR_Q_reg[3] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_Q_reg[3] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(\DETECTION_STS_AUTOCORR_Q[3]_i_1_n_0 ),
         .Q(DETECTION_STS_AUTOCORR_Q[3]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_Q_reg[4] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_Q_reg[4] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(\DETECTION_STS_AUTOCORR_Q[4]_i_1_n_0 ),
         .Q(DETECTION_STS_AUTOCORR_Q[4]),
         .R(1'b0));
@@ -73192,27 +73878,35 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O({\DETECTION_STS_AUTOCORR_Q_reg[4]_i_8_n_4 ,\DETECTION_STS_AUTOCORR_Q_reg[4]_i_8_n_5 ,\DETECTION_STS_AUTOCORR_Q_reg[4]_i_8_n_6 ,\DETECTION_STS_AUTOCORR_Q_reg[4]_i_8_n_7 }),
         .S({\DETECTION_STS_AUTOCORR_Q[4]_i_9_n_0 ,\DETECTION_STS_AUTOCORR_Q[4]_i_10_n_0 ,\DETECTION_STS_AUTOCORR_Q[4]_i_11_n_0 ,\DETECTION_STS_AUTOCORR_Q[4]_i_12_n_0 }));
-  FDRE \DETECTION_STS_AUTOCORR_Q_reg[5] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_Q_reg[5] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(\DETECTION_STS_AUTOCORR_Q[5]_i_1_n_0 ),
         .Q(DETECTION_STS_AUTOCORR_Q[5]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_Q_reg[6] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_Q_reg[6] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(\DETECTION_STS_AUTOCORR_Q[6]_i_1_n_0 ),
         .Q(DETECTION_STS_AUTOCORR_Q[6]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_Q_reg[7] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_Q_reg[7] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(\DETECTION_STS_AUTOCORR_Q[7]_i_1_n_0 ),
         .Q(DETECTION_STS_AUTOCORR_Q[7]),
         .R(1'b0));
-  FDRE \DETECTION_STS_AUTOCORR_Q_reg[8] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_Q_reg[8] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(\DETECTION_STS_AUTOCORR_Q[8]_i_1_n_0 ),
         .Q(DETECTION_STS_AUTOCORR_Q[8]),
         .R(1'b0));
@@ -73231,281 +73925,329 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O({\DETECTION_STS_AUTOCORR_Q_reg[8]_i_7_n_4 ,\DETECTION_STS_AUTOCORR_Q_reg[8]_i_7_n_5 ,\DETECTION_STS_AUTOCORR_Q_reg[8]_i_7_n_6 ,\DETECTION_STS_AUTOCORR_Q_reg[8]_i_7_n_7 }),
         .S({\DETECTION_STS_AUTOCORR_Q[8]_i_8_n_0 ,\DETECTION_STS_AUTOCORR_Q[8]_i_9_n_0 ,\DETECTION_STS_AUTOCORR_Q[8]_i_10_n_0 ,\DETECTION_STS_AUTOCORR_Q[8]_i_11_n_0 }));
-  FDRE \DETECTION_STS_AUTOCORR_Q_reg[9] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_STS_AUTOCORR_Q_reg[9] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(\DETECTION_STS_AUTOCORR_Q[9]_i_1_n_0 ),
         .Q(DETECTION_STS_AUTOCORR_Q[9]),
         .R(1'b0));
-  FDRE \DETECTION_XCORR_reg[0] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_XCORR_reg[0] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(MAX_XCORR[0]),
         .Q(DETECTION_XCORR[0]),
         .R(1'b0));
-  FDRE \DETECTION_XCORR_reg[10] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_XCORR_reg[10] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(MAX_XCORR[10]),
         .Q(DETECTION_XCORR[10]),
         .R(1'b0));
-  FDRE \DETECTION_XCORR_reg[11] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_XCORR_reg[11] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(MAX_XCORR[11]),
         .Q(DETECTION_XCORR[11]),
         .R(1'b0));
-  FDRE \DETECTION_XCORR_reg[12] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_XCORR_reg[12] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(MAX_XCORR[12]),
         .Q(DETECTION_XCORR[12]),
         .R(1'b0));
-  FDRE \DETECTION_XCORR_reg[13] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_XCORR_reg[13] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(MAX_XCORR[13]),
         .Q(DETECTION_XCORR[13]),
         .R(1'b0));
-  FDRE \DETECTION_XCORR_reg[14] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_XCORR_reg[14] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(MAX_XCORR[14]),
         .Q(DETECTION_XCORR[14]),
         .R(1'b0));
-  FDRE \DETECTION_XCORR_reg[15] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_XCORR_reg[15] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(MAX_XCORR[15]),
         .Q(DETECTION_XCORR[15]),
         .R(1'b0));
-  FDRE \DETECTION_XCORR_reg[16] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_XCORR_reg[16] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(MAX_XCORR[16]),
         .Q(DETECTION_XCORR[16]),
         .R(1'b0));
-  FDRE \DETECTION_XCORR_reg[17] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_XCORR_reg[17] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(MAX_XCORR[17]),
         .Q(DETECTION_XCORR[17]),
         .R(1'b0));
-  FDRE \DETECTION_XCORR_reg[18] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_XCORR_reg[18] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(MAX_XCORR[18]),
         .Q(DETECTION_XCORR[18]),
         .R(1'b0));
-  FDRE \DETECTION_XCORR_reg[19] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_XCORR_reg[19] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(MAX_XCORR[19]),
         .Q(DETECTION_XCORR[19]),
         .R(1'b0));
-  FDRE \DETECTION_XCORR_reg[1] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_XCORR_reg[1] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(MAX_XCORR[1]),
         .Q(DETECTION_XCORR[1]),
         .R(1'b0));
-  FDRE \DETECTION_XCORR_reg[20] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_XCORR_reg[20] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(MAX_XCORR[20]),
         .Q(DETECTION_XCORR[20]),
         .R(1'b0));
-  FDRE \DETECTION_XCORR_reg[21] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_XCORR_reg[21] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(MAX_XCORR[21]),
         .Q(DETECTION_XCORR[21]),
         .R(1'b0));
-  FDRE \DETECTION_XCORR_reg[22] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_XCORR_reg[22] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(MAX_XCORR[22]),
         .Q(DETECTION_XCORR[22]),
         .R(1'b0));
-  FDRE \DETECTION_XCORR_reg[23] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_XCORR_reg[23] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(MAX_XCORR[23]),
         .Q(DETECTION_XCORR[23]),
         .R(1'b0));
-  FDRE \DETECTION_XCORR_reg[24] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_XCORR_reg[24] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(MAX_XCORR[24]),
         .Q(DETECTION_XCORR[24]),
         .R(1'b0));
-  FDRE \DETECTION_XCORR_reg[25] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_XCORR_reg[25] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(MAX_XCORR[25]),
         .Q(DETECTION_XCORR[25]),
         .R(1'b0));
-  FDRE \DETECTION_XCORR_reg[26] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_XCORR_reg[26] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(MAX_XCORR[26]),
         .Q(DETECTION_XCORR[26]),
         .R(1'b0));
-  FDRE \DETECTION_XCORR_reg[27] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_XCORR_reg[27] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(MAX_XCORR[27]),
         .Q(DETECTION_XCORR[27]),
         .R(1'b0));
-  FDRE \DETECTION_XCORR_reg[28] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_XCORR_reg[28] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(MAX_XCORR[28]),
         .Q(DETECTION_XCORR[28]),
         .R(1'b0));
-  FDRE \DETECTION_XCORR_reg[29] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_XCORR_reg[29] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(MAX_XCORR[29]),
         .Q(DETECTION_XCORR[29]),
         .R(1'b0));
-  FDRE \DETECTION_XCORR_reg[2] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_XCORR_reg[2] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(MAX_XCORR[2]),
         .Q(DETECTION_XCORR[2]),
         .R(1'b0));
-  FDRE \DETECTION_XCORR_reg[30] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_XCORR_reg[30] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(MAX_XCORR[30]),
         .Q(DETECTION_XCORR[30]),
         .R(1'b0));
-  FDRE \DETECTION_XCORR_reg[31] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_XCORR_reg[31] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(MAX_XCORR[31]),
         .Q(DETECTION_XCORR[31]),
         .R(1'b0));
-  FDRE \DETECTION_XCORR_reg[3] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_XCORR_reg[3] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(MAX_XCORR[3]),
         .Q(DETECTION_XCORR[3]),
         .R(1'b0));
-  FDRE \DETECTION_XCORR_reg[4] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_XCORR_reg[4] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(MAX_XCORR[4]),
         .Q(DETECTION_XCORR[4]),
         .R(1'b0));
-  FDRE \DETECTION_XCORR_reg[5] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_XCORR_reg[5] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(MAX_XCORR[5]),
         .Q(DETECTION_XCORR[5]),
         .R(1'b0));
-  FDRE \DETECTION_XCORR_reg[6] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_XCORR_reg[6] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(MAX_XCORR[6]),
         .Q(DETECTION_XCORR[6]),
         .R(1'b0));
-  FDRE \DETECTION_XCORR_reg[7] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_XCORR_reg[7] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(MAX_XCORR[7]),
         .Q(DETECTION_XCORR[7]),
         .R(1'b0));
-  FDRE \DETECTION_XCORR_reg[8] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_XCORR_reg[8] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(MAX_XCORR[8]),
         .Q(DETECTION_XCORR[8]),
         .R(1'b0));
-  FDRE \DETECTION_XCORR_reg[9] 
+  FDRE #(
+    .INIT(1'b0)) 
+    \DETECTION_XCORR_reg[9] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_4),
+        .CE(Parallel_STS_FIR_Filter_inst_n_6),
         .D(MAX_XCORR[9]),
         .Q(DETECTION_XCORR[9]),
         .R(1'b0));
   LUT6 #(
-    .INIT(64'hFFFFFFFF2AEA2A2A)) 
-    \FSM_onehot_DETECTION_STATE[0]_i_1 
-       (.I0(\FSM_onehot_DETECTION_STATE_reg_n_0_[0] ),
-        .I1(DETECTION_STATE),
-        .I2(DATA_OUT_STROBE),
-        .I3(DETECTION_STATE0_carry__2_n_0),
-        .I4(\FSM_onehot_DETECTION_STATE_reg_n_0_[2] ),
-        .I5(RESET),
-        .O(\FSM_onehot_DETECTION_STATE[0]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'h0000EA2A)) 
-    \FSM_onehot_DETECTION_STATE[1]_i_1 
-       (.I0(\FSM_onehot_DETECTION_STATE_reg_n_0_[1] ),
-        .I1(DETECTION_STATE),
-        .I2(DATA_OUT_STROBE),
-        .I3(\FSM_onehot_DETECTION_STATE[1]_i_2_n_0 ),
-        .I4(RESET),
-        .O(\FSM_onehot_DETECTION_STATE[1]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hEA)) 
-    \FSM_onehot_DETECTION_STATE[1]_i_2 
-       (.I0(\FSM_onehot_DETECTION_STATE_reg_n_0_[0] ),
-        .I1(DETECTION_STATE0_carry__2_n_0),
-        .I2(\FSM_onehot_DETECTION_STATE_reg_n_0_[2] ),
-        .O(\FSM_onehot_DETECTION_STATE[1]_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'h0000EA2A)) 
-    \FSM_onehot_DETECTION_STATE[2]_i_1 
-       (.I0(\FSM_onehot_DETECTION_STATE_reg_n_0_[2] ),
-        .I1(DETECTION_STATE),
-        .I2(DATA_OUT_STROBE),
-        .I3(\FSM_onehot_DETECTION_STATE_reg_n_0_[1] ),
-        .I4(RESET),
-        .O(\FSM_onehot_DETECTION_STATE[2]_i_1_n_0 ));
+    .INIT(64'h00FF070000000000)) 
+    \FSM_sequential_DETECTION_STATE[1]_i_3 
+       (.I0(\FSM_sequential_DETECTION_STATE[1]_i_5_n_0 ),
+        .I1(\DETECTION_STATE1_inferred__1/i__carry__2_n_0 ),
+        .I2(DETECTION_STATE1_carry__2_n_0),
+        .I3(DETECTION_STATE[0]),
+        .I4(DETECTION_STATE[1]),
+        .I5(DATA_OUT_STROBE),
+        .O(\FSM_sequential_DETECTION_STATE[1]_i_3_n_0 ));
   LUT6 #(
-    .INIT(64'hEAEAFFEAEAEAEAEA)) 
-    \FSM_onehot_DETECTION_STATE[2]_i_2 
-       (.I0(\FSM_onehot_DETECTION_STATE_reg_n_0_[2] ),
-        .I1(\FSM_onehot_DETECTION_STATE_reg_n_0_[0] ),
-        .I2(DETECTION_STATE0_carry__2_n_0),
-        .I3(\FSM_onehot_DETECTION_STATE_reg_n_0_[1] ),
-        .I4(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .I5(\DETECTION_CNTR_reg_n_0_[4] ),
-        .O(DETECTION_STATE));
-  (* FSM_ENCODED_STATES = "detection:100,idle:001,waiting:010" *) 
-  FDRE #(
-    .INIT(1'b1)) 
-    \FSM_onehot_DETECTION_STATE_reg[0] 
-       (.C(CLOCK),
-        .CE(1'b1),
-        .D(\FSM_onehot_DETECTION_STATE[0]_i_1_n_0 ),
-        .Q(\FSM_onehot_DETECTION_STATE_reg_n_0_[0] ),
-        .R(1'b0));
-  (* FSM_ENCODED_STATES = "detection:100,idle:001,waiting:010" *) 
-  FDRE #(
-    .INIT(1'b0)) 
-    \FSM_onehot_DETECTION_STATE_reg[1] 
-       (.C(CLOCK),
-        .CE(1'b1),
-        .D(\FSM_onehot_DETECTION_STATE[1]_i_1_n_0 ),
-        .Q(\FSM_onehot_DETECTION_STATE_reg_n_0_[1] ),
-        .R(1'b0));
-  (* FSM_ENCODED_STATES = "detection:100,idle:001,waiting:010" *) 
+    .INIT(64'h8000000000000000)) 
+    \FSM_sequential_DETECTION_STATE[1]_i_4 
+       (.I0(\DETECTION_STATE1_inferred__2/i__carry__2_n_0 ),
+        .I1(\FSM_sequential_DETECTION_STATE[1]_i_6_n_0 ),
+        .I2(\DETECTION_CNTR_reg_n_0_[3] ),
+        .I3(\DETECTION_CNTR_reg_n_0_[1] ),
+        .I4(\DETECTION_CNTR_reg_n_0_[0] ),
+        .I5(\DETECTION_CNTR_reg_n_0_[2] ),
+        .O(DETECTION_STATE__0));
+  (* SOFT_HLUTNM = "soft_lutpair437" *) 
+  LUT4 #(
+    .INIT(16'h7FFF)) 
+    \FSM_sequential_DETECTION_STATE[1]_i_5 
+       (.I0(\DETECTION_CNTR_reg_n_0_[2] ),
+        .I1(\DETECTION_CNTR_reg_n_0_[0] ),
+        .I2(\DETECTION_CNTR_reg_n_0_[1] ),
+        .I3(\DETECTION_CNTR_reg_n_0_[3] ),
+        .O(\FSM_sequential_DETECTION_STATE[1]_i_5_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair438" *) 
+  LUT2 #(
+    .INIT(4'h2)) 
+    \FSM_sequential_DETECTION_STATE[1]_i_6 
+       (.I0(DETECTION_STATE[0]),
+        .I1(DETECTION_STATE[1]),
+        .O(\FSM_sequential_DETECTION_STATE[1]_i_6_n_0 ));
+  (* FSM_ENCODED_STATES = "detection:10,idle:00,waiting:01" *) 
   FDRE #(
     .INIT(1'b0)) 
-    \FSM_onehot_DETECTION_STATE_reg[2] 
+    \FSM_sequential_DETECTION_STATE_reg[0] 
        (.C(CLOCK),
         .CE(1'b1),
-        .D(\FSM_onehot_DETECTION_STATE[2]_i_1_n_0 ),
-        .Q(\FSM_onehot_DETECTION_STATE_reg_n_0_[2] ),
+        .D(Parallel_STS_FIR_Filter_inst_n_4),
+        .Q(DETECTION_STATE[0]),
+        .R(1'b0));
+  (* FSM_ENCODED_STATES = "detection:10,idle:00,waiting:01" *) 
+  FDRE #(
+    .INIT(1'b0)) 
+    \FSM_sequential_DETECTION_STATE_reg[1] 
+       (.C(CLOCK),
+        .CE(1'b1),
+        .D(Parallel_STS_FIR_Filter_inst_n_3),
+        .Q(DETECTION_STATE[1]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \MAX_XCORR_reg[0] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_6),
+        .CE(Parallel_STS_FIR_Filter_inst_n_7),
         .D(\SHIFT_REGISTER_reg[144] [0]),
         .Q(MAX_XCORR[0]),
         .R(RESET));
@@ -73513,7 +74255,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     .INIT(1'b0)) 
     \MAX_XCORR_reg[10] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_6),
+        .CE(Parallel_STS_FIR_Filter_inst_n_7),
         .D(\SHIFT_REGISTER_reg[144] [10]),
         .Q(MAX_XCORR[10]),
         .R(RESET));
@@ -73521,7 +74263,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     .INIT(1'b0)) 
     \MAX_XCORR_reg[11] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_6),
+        .CE(Parallel_STS_FIR_Filter_inst_n_7),
         .D(\SHIFT_REGISTER_reg[144] [11]),
         .Q(MAX_XCORR[11]),
         .R(RESET));
@@ -73529,7 +74271,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     .INIT(1'b0)) 
     \MAX_XCORR_reg[12] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_6),
+        .CE(Parallel_STS_FIR_Filter_inst_n_7),
         .D(\SHIFT_REGISTER_reg[144] [12]),
         .Q(MAX_XCORR[12]),
         .R(RESET));
@@ -73537,7 +74279,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     .INIT(1'b0)) 
     \MAX_XCORR_reg[13] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_6),
+        .CE(Parallel_STS_FIR_Filter_inst_n_7),
         .D(\SHIFT_REGISTER_reg[144] [13]),
         .Q(MAX_XCORR[13]),
         .R(RESET));
@@ -73545,7 +74287,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     .INIT(1'b0)) 
     \MAX_XCORR_reg[14] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_6),
+        .CE(Parallel_STS_FIR_Filter_inst_n_7),
         .D(\SHIFT_REGISTER_reg[144] [14]),
         .Q(MAX_XCORR[14]),
         .R(RESET));
@@ -73553,7 +74295,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     .INIT(1'b0)) 
     \MAX_XCORR_reg[15] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_6),
+        .CE(Parallel_STS_FIR_Filter_inst_n_7),
         .D(\SHIFT_REGISTER_reg[144] [15]),
         .Q(MAX_XCORR[15]),
         .R(RESET));
@@ -73561,7 +74303,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     .INIT(1'b0)) 
     \MAX_XCORR_reg[16] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_6),
+        .CE(Parallel_STS_FIR_Filter_inst_n_7),
         .D(\SHIFT_REGISTER_reg[144] [16]),
         .Q(MAX_XCORR[16]),
         .R(RESET));
@@ -73569,7 +74311,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     .INIT(1'b0)) 
     \MAX_XCORR_reg[17] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_6),
+        .CE(Parallel_STS_FIR_Filter_inst_n_7),
         .D(\SHIFT_REGISTER_reg[144] [17]),
         .Q(MAX_XCORR[17]),
         .R(RESET));
@@ -73577,7 +74319,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     .INIT(1'b0)) 
     \MAX_XCORR_reg[18] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_6),
+        .CE(Parallel_STS_FIR_Filter_inst_n_7),
         .D(\SHIFT_REGISTER_reg[144] [18]),
         .Q(MAX_XCORR[18]),
         .R(RESET));
@@ -73585,7 +74327,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     .INIT(1'b0)) 
     \MAX_XCORR_reg[19] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_6),
+        .CE(Parallel_STS_FIR_Filter_inst_n_7),
         .D(\SHIFT_REGISTER_reg[144] [19]),
         .Q(MAX_XCORR[19]),
         .R(RESET));
@@ -73593,7 +74335,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     .INIT(1'b0)) 
     \MAX_XCORR_reg[1] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_6),
+        .CE(Parallel_STS_FIR_Filter_inst_n_7),
         .D(\SHIFT_REGISTER_reg[144] [1]),
         .Q(MAX_XCORR[1]),
         .R(RESET));
@@ -73601,7 +74343,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     .INIT(1'b0)) 
     \MAX_XCORR_reg[20] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_6),
+        .CE(Parallel_STS_FIR_Filter_inst_n_7),
         .D(\SHIFT_REGISTER_reg[144] [20]),
         .Q(MAX_XCORR[20]),
         .R(RESET));
@@ -73609,7 +74351,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     .INIT(1'b0)) 
     \MAX_XCORR_reg[21] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_6),
+        .CE(Parallel_STS_FIR_Filter_inst_n_7),
         .D(\SHIFT_REGISTER_reg[144] [21]),
         .Q(MAX_XCORR[21]),
         .R(RESET));
@@ -73617,7 +74359,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     .INIT(1'b0)) 
     \MAX_XCORR_reg[22] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_6),
+        .CE(Parallel_STS_FIR_Filter_inst_n_7),
         .D(\SHIFT_REGISTER_reg[144] [22]),
         .Q(MAX_XCORR[22]),
         .R(RESET));
@@ -73625,7 +74367,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     .INIT(1'b0)) 
     \MAX_XCORR_reg[23] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_6),
+        .CE(Parallel_STS_FIR_Filter_inst_n_7),
         .D(\SHIFT_REGISTER_reg[144] [23]),
         .Q(MAX_XCORR[23]),
         .R(RESET));
@@ -73633,7 +74375,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     .INIT(1'b0)) 
     \MAX_XCORR_reg[24] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_6),
+        .CE(Parallel_STS_FIR_Filter_inst_n_7),
         .D(\SHIFT_REGISTER_reg[144] [24]),
         .Q(MAX_XCORR[24]),
         .R(RESET));
@@ -73641,7 +74383,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     .INIT(1'b0)) 
     \MAX_XCORR_reg[25] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_6),
+        .CE(Parallel_STS_FIR_Filter_inst_n_7),
         .D(\SHIFT_REGISTER_reg[144] [25]),
         .Q(MAX_XCORR[25]),
         .R(RESET));
@@ -73649,7 +74391,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     .INIT(1'b0)) 
     \MAX_XCORR_reg[26] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_6),
+        .CE(Parallel_STS_FIR_Filter_inst_n_7),
         .D(\SHIFT_REGISTER_reg[144] [26]),
         .Q(MAX_XCORR[26]),
         .R(RESET));
@@ -73657,7 +74399,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     .INIT(1'b0)) 
     \MAX_XCORR_reg[27] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_6),
+        .CE(Parallel_STS_FIR_Filter_inst_n_7),
         .D(\SHIFT_REGISTER_reg[144] [27]),
         .Q(MAX_XCORR[27]),
         .R(RESET));
@@ -73665,7 +74407,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     .INIT(1'b0)) 
     \MAX_XCORR_reg[28] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_6),
+        .CE(Parallel_STS_FIR_Filter_inst_n_7),
         .D(\SHIFT_REGISTER_reg[144] [28]),
         .Q(MAX_XCORR[28]),
         .R(RESET));
@@ -73673,7 +74415,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     .INIT(1'b0)) 
     \MAX_XCORR_reg[29] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_6),
+        .CE(Parallel_STS_FIR_Filter_inst_n_7),
         .D(\SHIFT_REGISTER_reg[144] [29]),
         .Q(MAX_XCORR[29]),
         .R(RESET));
@@ -73681,7 +74423,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     .INIT(1'b0)) 
     \MAX_XCORR_reg[2] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_6),
+        .CE(Parallel_STS_FIR_Filter_inst_n_7),
         .D(\SHIFT_REGISTER_reg[144] [2]),
         .Q(MAX_XCORR[2]),
         .R(RESET));
@@ -73689,7 +74431,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     .INIT(1'b0)) 
     \MAX_XCORR_reg[30] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_6),
+        .CE(Parallel_STS_FIR_Filter_inst_n_7),
         .D(\SHIFT_REGISTER_reg[144] [30]),
         .Q(MAX_XCORR[30]),
         .R(RESET));
@@ -73697,7 +74439,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     .INIT(1'b0)) 
     \MAX_XCORR_reg[31] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_6),
+        .CE(Parallel_STS_FIR_Filter_inst_n_7),
         .D(\SHIFT_REGISTER_reg[144] [31]),
         .Q(MAX_XCORR[31]),
         .R(RESET));
@@ -73705,7 +74447,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     .INIT(1'b0)) 
     \MAX_XCORR_reg[3] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_6),
+        .CE(Parallel_STS_FIR_Filter_inst_n_7),
         .D(\SHIFT_REGISTER_reg[144] [3]),
         .Q(MAX_XCORR[3]),
         .R(RESET));
@@ -73713,7 +74455,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     .INIT(1'b0)) 
     \MAX_XCORR_reg[4] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_6),
+        .CE(Parallel_STS_FIR_Filter_inst_n_7),
         .D(\SHIFT_REGISTER_reg[144] [4]),
         .Q(MAX_XCORR[4]),
         .R(RESET));
@@ -73721,7 +74463,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     .INIT(1'b0)) 
     \MAX_XCORR_reg[5] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_6),
+        .CE(Parallel_STS_FIR_Filter_inst_n_7),
         .D(\SHIFT_REGISTER_reg[144] [5]),
         .Q(MAX_XCORR[5]),
         .R(RESET));
@@ -73729,7 +74471,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     .INIT(1'b0)) 
     \MAX_XCORR_reg[6] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_6),
+        .CE(Parallel_STS_FIR_Filter_inst_n_7),
         .D(\SHIFT_REGISTER_reg[144] [6]),
         .Q(MAX_XCORR[6]),
         .R(RESET));
@@ -73737,7 +74479,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     .INIT(1'b0)) 
     \MAX_XCORR_reg[7] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_6),
+        .CE(Parallel_STS_FIR_Filter_inst_n_7),
         .D(\SHIFT_REGISTER_reg[144] [7]),
         .Q(MAX_XCORR[7]),
         .R(RESET));
@@ -73745,7 +74487,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     .INIT(1'b0)) 
     \MAX_XCORR_reg[8] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_6),
+        .CE(Parallel_STS_FIR_Filter_inst_n_7),
         .D(\SHIFT_REGISTER_reg[144] [8]),
         .Q(MAX_XCORR[8]),
         .R(RESET));
@@ -73753,7 +74495,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     .INIT(1'b0)) 
     \MAX_XCORR_reg[9] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_6),
+        .CE(Parallel_STS_FIR_Filter_inst_n_7),
         .D(\SHIFT_REGISTER_reg[144] [9]),
         .Q(MAX_XCORR[9]),
         .R(RESET));
@@ -73766,26 +74508,25 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
   block_design_0_timing_acquisition_8_0_0_Parallel_STS_FIR_Filter Parallel_STS_FIR_Filter_inst
        (.CLOCK(CLOCK),
         .CO(DETECTION_STATE0_carry__2_n_0),
-        .D({Parallel_STS_FIR_Filter_inst_n_257,Parallel_STS_FIR_Filter_inst_n_258,Parallel_STS_FIR_Filter_inst_n_259,Parallel_STS_FIR_Filter_inst_n_260,Parallel_STS_FIR_Filter_inst_n_261,Parallel_STS_FIR_Filter_inst_n_262,Parallel_STS_FIR_Filter_inst_n_263,Parallel_STS_FIR_Filter_inst_n_264,Parallel_STS_FIR_Filter_inst_n_265,Parallel_STS_FIR_Filter_inst_n_266,Parallel_STS_FIR_Filter_inst_n_267,Parallel_STS_FIR_Filter_inst_n_268,Parallel_STS_FIR_Filter_inst_n_269,Parallel_STS_FIR_Filter_inst_n_270,Parallel_STS_FIR_Filter_inst_n_271,Parallel_STS_FIR_Filter_inst_n_272,Parallel_STS_FIR_Filter_inst_n_273,Parallel_STS_FIR_Filter_inst_n_274,Parallel_STS_FIR_Filter_inst_n_275,Parallel_STS_FIR_Filter_inst_n_276,Parallel_STS_FIR_Filter_inst_n_277,Parallel_STS_FIR_Filter_inst_n_278,Parallel_STS_FIR_Filter_inst_n_279,Parallel_STS_FIR_Filter_inst_n_280,Parallel_STS_FIR_Filter_inst_n_281,Parallel_STS_FIR_Filter_inst_n_282,Parallel_STS_FIR_Filter_inst_n_283,Parallel_STS_FIR_Filter_inst_n_284,Parallel_STS_FIR_Filter_inst_n_285,Parallel_STS_FIR_Filter_inst_n_286,Parallel_STS_FIR_Filter_inst_n_287,Parallel_STS_FIR_Filter_inst_n_288}),
+        .D({Parallel_STS_FIR_Filter_inst_n_258,Parallel_STS_FIR_Filter_inst_n_259,Parallel_STS_FIR_Filter_inst_n_260,Parallel_STS_FIR_Filter_inst_n_261,Parallel_STS_FIR_Filter_inst_n_262,Parallel_STS_FIR_Filter_inst_n_263,Parallel_STS_FIR_Filter_inst_n_264,Parallel_STS_FIR_Filter_inst_n_265,Parallel_STS_FIR_Filter_inst_n_266,Parallel_STS_FIR_Filter_inst_n_267,Parallel_STS_FIR_Filter_inst_n_268,Parallel_STS_FIR_Filter_inst_n_269,Parallel_STS_FIR_Filter_inst_n_270,Parallel_STS_FIR_Filter_inst_n_271,Parallel_STS_FIR_Filter_inst_n_272,Parallel_STS_FIR_Filter_inst_n_273,Parallel_STS_FIR_Filter_inst_n_274,Parallel_STS_FIR_Filter_inst_n_275,Parallel_STS_FIR_Filter_inst_n_276,Parallel_STS_FIR_Filter_inst_n_277,Parallel_STS_FIR_Filter_inst_n_278,Parallel_STS_FIR_Filter_inst_n_279,Parallel_STS_FIR_Filter_inst_n_280,Parallel_STS_FIR_Filter_inst_n_281,Parallel_STS_FIR_Filter_inst_n_282,Parallel_STS_FIR_Filter_inst_n_283,Parallel_STS_FIR_Filter_inst_n_284,Parallel_STS_FIR_Filter_inst_n_285,Parallel_STS_FIR_Filter_inst_n_286,Parallel_STS_FIR_Filter_inst_n_287,Parallel_STS_FIR_Filter_inst_n_288,Parallel_STS_FIR_Filter_inst_n_289}),
         .DATA_OUT_STROBE(DATA_OUT_STROBE),
-        .DATA_OUT_STROBE_reg_0(Parallel_STS_FIR_Filter_inst_n_3),
-        .DATA_OUT_STROBE_reg_1(Parallel_STS_FIR_Filter_inst_n_5),
-        .DATA_OUT_STROBE_reg_2(Parallel_STS_FIR_Filter_inst_n_6),
+        .DATA_OUT_STROBE_reg_0(Parallel_STS_FIR_Filter_inst_n_1),
+        .DATA_OUT_STROBE_reg_1(Parallel_STS_FIR_Filter_inst_n_2),
         .DATA_STROBE(DATA_STROBE),
-        .\DETECTION_CNTR_reg[0] (\FSM_onehot_DETECTION_STATE_reg_n_0_[0] ),
-        .\DETECTION_CNTR_reg[0]_0 (\FSM_onehot_DETECTION_STATE_reg_n_0_[2] ),
-        .\DETECTION_CNTR_reg[0]_1 (\FSM_onehot_DETECTION_STATE_reg_n_0_[1] ),
-        .\DETECTION_CNTR_reg[0]_2 (\DETECTION_CNTR[4]_i_3_n_0 ),
+        .DETECTION_STATE(DETECTION_STATE),
+        .DETECTION_STATE__0(DETECTION_STATE__0),
         .E(\POWDATA_OUT_XCORR[27]_i_1_n_0 ),
-        .\FSM_onehot_DETECTION_STATE_reg[2] (Parallel_STS_FIR_Filter_inst_n_2),
-        .\FSM_onehot_DETECTION_STATE_reg[2]_0 (Parallel_STS_FIR_Filter_inst_n_4),
+        .\FSM_sequential_DETECTION_STATE_reg[0] (Parallel_STS_FIR_Filter_inst_n_4),
+        .\FSM_sequential_DETECTION_STATE_reg[0]_0 (Parallel_STS_FIR_Filter_inst_n_5),
+        .\FSM_sequential_DETECTION_STATE_reg[1] (Parallel_STS_FIR_Filter_inst_n_3),
+        .\FSM_sequential_DETECTION_STATE_reg[1]_0 (Parallel_STS_FIR_Filter_inst_n_7),
+        .\FSM_sequential_DETECTION_STATE_reg[1]_1 (\FSM_sequential_DETECTION_STATE[1]_i_3_n_0 ),
         .IDATA(IDATA),
         .IDATA_DELAY_16(IDATA_DELAY_16),
         .IDATA_DELAY_32(IDATA_DELAY_32),
         .IDATA_DELAY_48(IDATA_DELAY_48),
         .IDATA_DELAY_64(IDATA_DELAY_64),
-        .\MAX_XCORR_reg[0] (\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O({Parallel_STS_FIR_Filter_inst_n_36,Parallel_STS_FIR_Filter_inst_n_37,Parallel_STS_FIR_Filter_inst_n_38,Parallel_STS_FIR_Filter_inst_n_39}),
+        .O({Parallel_STS_FIR_Filter_inst_n_37,Parallel_STS_FIR_Filter_inst_n_38,Parallel_STS_FIR_Filter_inst_n_39,Parallel_STS_FIR_Filter_inst_n_40}),
         .Q(POWDATA_OUT_XCORR),
         .QDATA(QDATA),
         .QDATA_DELAY_16(QDATA_DELAY_16),
@@ -73793,17 +74534,17 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
         .QDATA_DELAY_48(QDATA_DELAY_48),
         .QDATA_DELAY_64(QDATA_DELAY_64),
         .RESET(RESET),
-        .RESET_0(Parallel_STS_FIR_Filter_inst_n_1),
+        .RESET_0(Parallel_STS_FIR_Filter_inst_n_6),
         .S({\SHIFT_REGISTER[16][3]_i_2_n_0 ,\SHIFT_REGISTER[16][3]_i_3_n_0 ,\SHIFT_REGISTER[16][3]_i_4_n_0 ,\SHIFT_REGISTER[16][3]_i_5_n_0 }),
         .\SHIFT_REGISTER_reg[111] (\SHIFT_REGISTER_reg[111] ),
-        .\SHIFT_REGISTER_reg[111][11] ({Parallel_STS_FIR_Filter_inst_n_201,Parallel_STS_FIR_Filter_inst_n_202,Parallel_STS_FIR_Filter_inst_n_203,Parallel_STS_FIR_Filter_inst_n_204}),
-        .\SHIFT_REGISTER_reg[111][15] ({Parallel_STS_FIR_Filter_inst_n_205,Parallel_STS_FIR_Filter_inst_n_206,Parallel_STS_FIR_Filter_inst_n_207,Parallel_STS_FIR_Filter_inst_n_208}),
-        .\SHIFT_REGISTER_reg[111][19] ({Parallel_STS_FIR_Filter_inst_n_209,Parallel_STS_FIR_Filter_inst_n_210,Parallel_STS_FIR_Filter_inst_n_211,Parallel_STS_FIR_Filter_inst_n_212}),
-        .\SHIFT_REGISTER_reg[111][23] ({Parallel_STS_FIR_Filter_inst_n_213,Parallel_STS_FIR_Filter_inst_n_214,Parallel_STS_FIR_Filter_inst_n_215,Parallel_STS_FIR_Filter_inst_n_216}),
-        .\SHIFT_REGISTER_reg[111][27] ({Parallel_STS_FIR_Filter_inst_n_217,Parallel_STS_FIR_Filter_inst_n_218,Parallel_STS_FIR_Filter_inst_n_219,Parallel_STS_FIR_Filter_inst_n_220}),
-        .\SHIFT_REGISTER_reg[111][31] ({Parallel_STS_FIR_Filter_inst_n_221,Parallel_STS_FIR_Filter_inst_n_222,Parallel_STS_FIR_Filter_inst_n_223,Parallel_STS_FIR_Filter_inst_n_224}),
-        .\SHIFT_REGISTER_reg[111][3] ({Parallel_STS_FIR_Filter_inst_n_193,Parallel_STS_FIR_Filter_inst_n_194,Parallel_STS_FIR_Filter_inst_n_195,Parallel_STS_FIR_Filter_inst_n_196}),
-        .\SHIFT_REGISTER_reg[111][7] ({Parallel_STS_FIR_Filter_inst_n_197,Parallel_STS_FIR_Filter_inst_n_198,Parallel_STS_FIR_Filter_inst_n_199,Parallel_STS_FIR_Filter_inst_n_200}),
+        .\SHIFT_REGISTER_reg[111][11] ({Parallel_STS_FIR_Filter_inst_n_202,Parallel_STS_FIR_Filter_inst_n_203,Parallel_STS_FIR_Filter_inst_n_204,Parallel_STS_FIR_Filter_inst_n_205}),
+        .\SHIFT_REGISTER_reg[111][15] ({Parallel_STS_FIR_Filter_inst_n_206,Parallel_STS_FIR_Filter_inst_n_207,Parallel_STS_FIR_Filter_inst_n_208,Parallel_STS_FIR_Filter_inst_n_209}),
+        .\SHIFT_REGISTER_reg[111][19] ({Parallel_STS_FIR_Filter_inst_n_210,Parallel_STS_FIR_Filter_inst_n_211,Parallel_STS_FIR_Filter_inst_n_212,Parallel_STS_FIR_Filter_inst_n_213}),
+        .\SHIFT_REGISTER_reg[111][23] ({Parallel_STS_FIR_Filter_inst_n_214,Parallel_STS_FIR_Filter_inst_n_215,Parallel_STS_FIR_Filter_inst_n_216,Parallel_STS_FIR_Filter_inst_n_217}),
+        .\SHIFT_REGISTER_reg[111][27] ({Parallel_STS_FIR_Filter_inst_n_218,Parallel_STS_FIR_Filter_inst_n_219,Parallel_STS_FIR_Filter_inst_n_220,Parallel_STS_FIR_Filter_inst_n_221}),
+        .\SHIFT_REGISTER_reg[111][31] ({Parallel_STS_FIR_Filter_inst_n_222,Parallel_STS_FIR_Filter_inst_n_223,Parallel_STS_FIR_Filter_inst_n_224,Parallel_STS_FIR_Filter_inst_n_225}),
+        .\SHIFT_REGISTER_reg[111][3] ({Parallel_STS_FIR_Filter_inst_n_194,Parallel_STS_FIR_Filter_inst_n_195,Parallel_STS_FIR_Filter_inst_n_196,Parallel_STS_FIR_Filter_inst_n_197}),
+        .\SHIFT_REGISTER_reg[111][7] ({Parallel_STS_FIR_Filter_inst_n_198,Parallel_STS_FIR_Filter_inst_n_199,Parallel_STS_FIR_Filter_inst_n_200,Parallel_STS_FIR_Filter_inst_n_201}),
         .\SHIFT_REGISTER_reg[112][11] ({\SHIFT_REGISTER[112][11]_i_2_n_0 ,\SHIFT_REGISTER[112][11]_i_3_n_0 ,\SHIFT_REGISTER[112][11]_i_4_n_0 ,\SHIFT_REGISTER[112][11]_i_5_n_0 }),
         .\SHIFT_REGISTER_reg[112][15] ({\SHIFT_REGISTER[112][15]_i_2_n_0 ,\SHIFT_REGISTER[112][15]_i_3_n_0 ,\SHIFT_REGISTER[112][15]_i_4_n_0 ,\SHIFT_REGISTER[112][15]_i_5_n_0 }),
         .\SHIFT_REGISTER_reg[112][19] ({\SHIFT_REGISTER[112][19]_i_2_n_0 ,\SHIFT_REGISTER[112][19]_i_3_n_0 ,\SHIFT_REGISTER[112][19]_i_4_n_0 ,\SHIFT_REGISTER[112][19]_i_5_n_0 }),
@@ -73812,14 +74553,14 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
         .\SHIFT_REGISTER_reg[112][3] ({\SHIFT_REGISTER[112][3]_i_2_n_0 ,\SHIFT_REGISTER[112][3]_i_3_n_0 ,\SHIFT_REGISTER[112][3]_i_4_n_0 ,\SHIFT_REGISTER[112][3]_i_5_n_0 }),
         .\SHIFT_REGISTER_reg[112][7] ({\SHIFT_REGISTER[112][7]_i_2_n_0 ,\SHIFT_REGISTER[112][7]_i_3_n_0 ,\SHIFT_REGISTER[112][7]_i_4_n_0 ,\SHIFT_REGISTER[112][7]_i_5_n_0 }),
         .\SHIFT_REGISTER_reg[127] (\SHIFT_REGISTER_reg[127] ),
-        .\SHIFT_REGISTER_reg[127][11] ({Parallel_STS_FIR_Filter_inst_n_233,Parallel_STS_FIR_Filter_inst_n_234,Parallel_STS_FIR_Filter_inst_n_235,Parallel_STS_FIR_Filter_inst_n_236}),
-        .\SHIFT_REGISTER_reg[127][15] ({Parallel_STS_FIR_Filter_inst_n_237,Parallel_STS_FIR_Filter_inst_n_238,Parallel_STS_FIR_Filter_inst_n_239,Parallel_STS_FIR_Filter_inst_n_240}),
-        .\SHIFT_REGISTER_reg[127][19] ({Parallel_STS_FIR_Filter_inst_n_241,Parallel_STS_FIR_Filter_inst_n_242,Parallel_STS_FIR_Filter_inst_n_243,Parallel_STS_FIR_Filter_inst_n_244}),
-        .\SHIFT_REGISTER_reg[127][23] ({Parallel_STS_FIR_Filter_inst_n_245,Parallel_STS_FIR_Filter_inst_n_246,Parallel_STS_FIR_Filter_inst_n_247,Parallel_STS_FIR_Filter_inst_n_248}),
-        .\SHIFT_REGISTER_reg[127][27] ({Parallel_STS_FIR_Filter_inst_n_249,Parallel_STS_FIR_Filter_inst_n_250,Parallel_STS_FIR_Filter_inst_n_251,Parallel_STS_FIR_Filter_inst_n_252}),
-        .\SHIFT_REGISTER_reg[127][31] ({Parallel_STS_FIR_Filter_inst_n_253,Parallel_STS_FIR_Filter_inst_n_254,Parallel_STS_FIR_Filter_inst_n_255,Parallel_STS_FIR_Filter_inst_n_256}),
-        .\SHIFT_REGISTER_reg[127][3] ({Parallel_STS_FIR_Filter_inst_n_225,Parallel_STS_FIR_Filter_inst_n_226,Parallel_STS_FIR_Filter_inst_n_227,Parallel_STS_FIR_Filter_inst_n_228}),
-        .\SHIFT_REGISTER_reg[127][7] ({Parallel_STS_FIR_Filter_inst_n_229,Parallel_STS_FIR_Filter_inst_n_230,Parallel_STS_FIR_Filter_inst_n_231,Parallel_STS_FIR_Filter_inst_n_232}),
+        .\SHIFT_REGISTER_reg[127][11] ({Parallel_STS_FIR_Filter_inst_n_234,Parallel_STS_FIR_Filter_inst_n_235,Parallel_STS_FIR_Filter_inst_n_236,Parallel_STS_FIR_Filter_inst_n_237}),
+        .\SHIFT_REGISTER_reg[127][15] ({Parallel_STS_FIR_Filter_inst_n_238,Parallel_STS_FIR_Filter_inst_n_239,Parallel_STS_FIR_Filter_inst_n_240,Parallel_STS_FIR_Filter_inst_n_241}),
+        .\SHIFT_REGISTER_reg[127][19] ({Parallel_STS_FIR_Filter_inst_n_242,Parallel_STS_FIR_Filter_inst_n_243,Parallel_STS_FIR_Filter_inst_n_244,Parallel_STS_FIR_Filter_inst_n_245}),
+        .\SHIFT_REGISTER_reg[127][23] ({Parallel_STS_FIR_Filter_inst_n_246,Parallel_STS_FIR_Filter_inst_n_247,Parallel_STS_FIR_Filter_inst_n_248,Parallel_STS_FIR_Filter_inst_n_249}),
+        .\SHIFT_REGISTER_reg[127][27] ({Parallel_STS_FIR_Filter_inst_n_250,Parallel_STS_FIR_Filter_inst_n_251,Parallel_STS_FIR_Filter_inst_n_252,Parallel_STS_FIR_Filter_inst_n_253}),
+        .\SHIFT_REGISTER_reg[127][31] ({Parallel_STS_FIR_Filter_inst_n_254,Parallel_STS_FIR_Filter_inst_n_255,Parallel_STS_FIR_Filter_inst_n_256,Parallel_STS_FIR_Filter_inst_n_257}),
+        .\SHIFT_REGISTER_reg[127][3] ({Parallel_STS_FIR_Filter_inst_n_226,Parallel_STS_FIR_Filter_inst_n_227,Parallel_STS_FIR_Filter_inst_n_228,Parallel_STS_FIR_Filter_inst_n_229}),
+        .\SHIFT_REGISTER_reg[127][7] ({Parallel_STS_FIR_Filter_inst_n_230,Parallel_STS_FIR_Filter_inst_n_231,Parallel_STS_FIR_Filter_inst_n_232,Parallel_STS_FIR_Filter_inst_n_233}),
         .\SHIFT_REGISTER_reg[128][11] ({\SHIFT_REGISTER[128][11]_i_2_n_0 ,\SHIFT_REGISTER[128][11]_i_3_n_0 ,\SHIFT_REGISTER[128][11]_i_4_n_0 ,\SHIFT_REGISTER[128][11]_i_5_n_0 }),
         .\SHIFT_REGISTER_reg[128][15] ({\SHIFT_REGISTER[128][15]_i_2_n_0 ,\SHIFT_REGISTER[128][15]_i_3_n_0 ,\SHIFT_REGISTER[128][15]_i_4_n_0 ,\SHIFT_REGISTER[128][15]_i_5_n_0 }),
         .\SHIFT_REGISTER_reg[128][19] ({\SHIFT_REGISTER[128][19]_i_2_n_0 ,\SHIFT_REGISTER[128][19]_i_3_n_0 ,\SHIFT_REGISTER[128][19]_i_4_n_0 ,\SHIFT_REGISTER[128][19]_i_5_n_0 }),
@@ -73843,14 +74584,14 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
         .\SHIFT_REGISTER_reg[16][27] ({\SHIFT_REGISTER[16][27]_i_2_n_0 ,\SHIFT_REGISTER[16][27]_i_3_n_0 ,\SHIFT_REGISTER[16][27]_i_4_n_0 ,\SHIFT_REGISTER[16][27]_i_5_n_0 }),
         .\SHIFT_REGISTER_reg[16][7] ({\SHIFT_REGISTER[16][7]_i_2_n_0 ,\SHIFT_REGISTER[16][7]_i_3_n_0 ,\SHIFT_REGISTER[16][7]_i_4_n_0 ,\SHIFT_REGISTER[16][7]_i_5_n_0 }),
         .\SHIFT_REGISTER_reg[31] (\SHIFT_REGISTER_reg[31] ),
-        .\SHIFT_REGISTER_reg[31][11] ({Parallel_STS_FIR_Filter_inst_n_44,Parallel_STS_FIR_Filter_inst_n_45,Parallel_STS_FIR_Filter_inst_n_46,Parallel_STS_FIR_Filter_inst_n_47}),
-        .\SHIFT_REGISTER_reg[31][15] ({Parallel_STS_FIR_Filter_inst_n_48,Parallel_STS_FIR_Filter_inst_n_49,Parallel_STS_FIR_Filter_inst_n_50,Parallel_STS_FIR_Filter_inst_n_51}),
-        .\SHIFT_REGISTER_reg[31][19] ({Parallel_STS_FIR_Filter_inst_n_52,Parallel_STS_FIR_Filter_inst_n_53,Parallel_STS_FIR_Filter_inst_n_54,Parallel_STS_FIR_Filter_inst_n_55}),
-        .\SHIFT_REGISTER_reg[31][23] ({Parallel_STS_FIR_Filter_inst_n_56,Parallel_STS_FIR_Filter_inst_n_57,Parallel_STS_FIR_Filter_inst_n_58,Parallel_STS_FIR_Filter_inst_n_59}),
-        .\SHIFT_REGISTER_reg[31][27] ({Parallel_STS_FIR_Filter_inst_n_60,Parallel_STS_FIR_Filter_inst_n_61,Parallel_STS_FIR_Filter_inst_n_62,Parallel_STS_FIR_Filter_inst_n_63}),
-        .\SHIFT_REGISTER_reg[31][28] (Parallel_STS_FIR_Filter_inst_n_64),
-        .\SHIFT_REGISTER_reg[31][28]_0 (Parallel_STS_FIR_Filter_inst_n_65),
-        .\SHIFT_REGISTER_reg[31][7] ({Parallel_STS_FIR_Filter_inst_n_40,Parallel_STS_FIR_Filter_inst_n_41,Parallel_STS_FIR_Filter_inst_n_42,Parallel_STS_FIR_Filter_inst_n_43}),
+        .\SHIFT_REGISTER_reg[31][11] ({Parallel_STS_FIR_Filter_inst_n_45,Parallel_STS_FIR_Filter_inst_n_46,Parallel_STS_FIR_Filter_inst_n_47,Parallel_STS_FIR_Filter_inst_n_48}),
+        .\SHIFT_REGISTER_reg[31][15] ({Parallel_STS_FIR_Filter_inst_n_49,Parallel_STS_FIR_Filter_inst_n_50,Parallel_STS_FIR_Filter_inst_n_51,Parallel_STS_FIR_Filter_inst_n_52}),
+        .\SHIFT_REGISTER_reg[31][19] ({Parallel_STS_FIR_Filter_inst_n_53,Parallel_STS_FIR_Filter_inst_n_54,Parallel_STS_FIR_Filter_inst_n_55,Parallel_STS_FIR_Filter_inst_n_56}),
+        .\SHIFT_REGISTER_reg[31][23] ({Parallel_STS_FIR_Filter_inst_n_57,Parallel_STS_FIR_Filter_inst_n_58,Parallel_STS_FIR_Filter_inst_n_59,Parallel_STS_FIR_Filter_inst_n_60}),
+        .\SHIFT_REGISTER_reg[31][27] ({Parallel_STS_FIR_Filter_inst_n_61,Parallel_STS_FIR_Filter_inst_n_62,Parallel_STS_FIR_Filter_inst_n_63,Parallel_STS_FIR_Filter_inst_n_64}),
+        .\SHIFT_REGISTER_reg[31][28] (Parallel_STS_FIR_Filter_inst_n_65),
+        .\SHIFT_REGISTER_reg[31][28]_0 (Parallel_STS_FIR_Filter_inst_n_66),
+        .\SHIFT_REGISTER_reg[31][7] ({Parallel_STS_FIR_Filter_inst_n_41,Parallel_STS_FIR_Filter_inst_n_42,Parallel_STS_FIR_Filter_inst_n_43,Parallel_STS_FIR_Filter_inst_n_44}),
         .\SHIFT_REGISTER_reg[32][11] ({\SHIFT_REGISTER[32][11]_i_2_n_0 ,\SHIFT_REGISTER[32][11]_i_3_n_0 ,\SHIFT_REGISTER[32][11]_i_4_n_0 ,\SHIFT_REGISTER[32][11]_i_5_n_0 }),
         .\SHIFT_REGISTER_reg[32][15] ({\SHIFT_REGISTER[32][15]_i_2_n_0 ,\SHIFT_REGISTER[32][15]_i_3_n_0 ,\SHIFT_REGISTER[32][15]_i_4_n_0 ,\SHIFT_REGISTER[32][15]_i_5_n_0 }),
         .\SHIFT_REGISTER_reg[32][19] ({\SHIFT_REGISTER[32][19]_i_2_n_0 ,\SHIFT_REGISTER[32][19]_i_3_n_0 ,\SHIFT_REGISTER[32][19]_i_4_n_0 ,\SHIFT_REGISTER[32][19]_i_5_n_0 }),
@@ -73859,15 +74600,15 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
         .\SHIFT_REGISTER_reg[32][3] ({\SHIFT_REGISTER[32][3]_i_2_n_0 ,\SHIFT_REGISTER[32][3]_i_3_n_0 ,\SHIFT_REGISTER[32][3]_i_4_n_0 ,\SHIFT_REGISTER[32][3]_i_5_n_0 }),
         .\SHIFT_REGISTER_reg[32][7] ({\SHIFT_REGISTER[32][7]_i_2_n_0 ,\SHIFT_REGISTER[32][7]_i_3_n_0 ,\SHIFT_REGISTER[32][7]_i_4_n_0 ,\SHIFT_REGISTER[32][7]_i_5_n_0 }),
         .\SHIFT_REGISTER_reg[47] (\SHIFT_REGISTER_reg[47] ),
-        .\SHIFT_REGISTER_reg[47][11] ({Parallel_STS_FIR_Filter_inst_n_74,Parallel_STS_FIR_Filter_inst_n_75,Parallel_STS_FIR_Filter_inst_n_76,Parallel_STS_FIR_Filter_inst_n_77}),
-        .\SHIFT_REGISTER_reg[47][15] ({Parallel_STS_FIR_Filter_inst_n_78,Parallel_STS_FIR_Filter_inst_n_79,Parallel_STS_FIR_Filter_inst_n_80,Parallel_STS_FIR_Filter_inst_n_81}),
-        .\SHIFT_REGISTER_reg[47][19] ({Parallel_STS_FIR_Filter_inst_n_82,Parallel_STS_FIR_Filter_inst_n_83,Parallel_STS_FIR_Filter_inst_n_84,Parallel_STS_FIR_Filter_inst_n_85}),
-        .\SHIFT_REGISTER_reg[47][23] ({Parallel_STS_FIR_Filter_inst_n_86,Parallel_STS_FIR_Filter_inst_n_87,Parallel_STS_FIR_Filter_inst_n_88,Parallel_STS_FIR_Filter_inst_n_89}),
-        .\SHIFT_REGISTER_reg[47][27] ({Parallel_STS_FIR_Filter_inst_n_90,Parallel_STS_FIR_Filter_inst_n_91,Parallel_STS_FIR_Filter_inst_n_92,Parallel_STS_FIR_Filter_inst_n_93}),
-        .\SHIFT_REGISTER_reg[47][29] (Parallel_STS_FIR_Filter_inst_n_94),
-        .\SHIFT_REGISTER_reg[47][29]_0 ({Parallel_STS_FIR_Filter_inst_n_95,Parallel_STS_FIR_Filter_inst_n_96}),
-        .\SHIFT_REGISTER_reg[47][3] ({Parallel_STS_FIR_Filter_inst_n_66,Parallel_STS_FIR_Filter_inst_n_67,Parallel_STS_FIR_Filter_inst_n_68,Parallel_STS_FIR_Filter_inst_n_69}),
-        .\SHIFT_REGISTER_reg[47][7] ({Parallel_STS_FIR_Filter_inst_n_70,Parallel_STS_FIR_Filter_inst_n_71,Parallel_STS_FIR_Filter_inst_n_72,Parallel_STS_FIR_Filter_inst_n_73}),
+        .\SHIFT_REGISTER_reg[47][11] ({Parallel_STS_FIR_Filter_inst_n_75,Parallel_STS_FIR_Filter_inst_n_76,Parallel_STS_FIR_Filter_inst_n_77,Parallel_STS_FIR_Filter_inst_n_78}),
+        .\SHIFT_REGISTER_reg[47][15] ({Parallel_STS_FIR_Filter_inst_n_79,Parallel_STS_FIR_Filter_inst_n_80,Parallel_STS_FIR_Filter_inst_n_81,Parallel_STS_FIR_Filter_inst_n_82}),
+        .\SHIFT_REGISTER_reg[47][19] ({Parallel_STS_FIR_Filter_inst_n_83,Parallel_STS_FIR_Filter_inst_n_84,Parallel_STS_FIR_Filter_inst_n_85,Parallel_STS_FIR_Filter_inst_n_86}),
+        .\SHIFT_REGISTER_reg[47][23] ({Parallel_STS_FIR_Filter_inst_n_87,Parallel_STS_FIR_Filter_inst_n_88,Parallel_STS_FIR_Filter_inst_n_89,Parallel_STS_FIR_Filter_inst_n_90}),
+        .\SHIFT_REGISTER_reg[47][27] ({Parallel_STS_FIR_Filter_inst_n_91,Parallel_STS_FIR_Filter_inst_n_92,Parallel_STS_FIR_Filter_inst_n_93,Parallel_STS_FIR_Filter_inst_n_94}),
+        .\SHIFT_REGISTER_reg[47][29] (Parallel_STS_FIR_Filter_inst_n_95),
+        .\SHIFT_REGISTER_reg[47][29]_0 ({Parallel_STS_FIR_Filter_inst_n_96,Parallel_STS_FIR_Filter_inst_n_97}),
+        .\SHIFT_REGISTER_reg[47][3] ({Parallel_STS_FIR_Filter_inst_n_67,Parallel_STS_FIR_Filter_inst_n_68,Parallel_STS_FIR_Filter_inst_n_69,Parallel_STS_FIR_Filter_inst_n_70}),
+        .\SHIFT_REGISTER_reg[47][7] ({Parallel_STS_FIR_Filter_inst_n_71,Parallel_STS_FIR_Filter_inst_n_72,Parallel_STS_FIR_Filter_inst_n_73,Parallel_STS_FIR_Filter_inst_n_74}),
         .\SHIFT_REGISTER_reg[48][11] ({\SHIFT_REGISTER[48][11]_i_2_n_0 ,\SHIFT_REGISTER[48][11]_i_3_n_0 ,\SHIFT_REGISTER[48][11]_i_4_n_0 ,\SHIFT_REGISTER[48][11]_i_5_n_0 }),
         .\SHIFT_REGISTER_reg[48][15] ({\SHIFT_REGISTER[48][15]_i_2_n_0 ,\SHIFT_REGISTER[48][15]_i_3_n_0 ,\SHIFT_REGISTER[48][15]_i_4_n_0 ,\SHIFT_REGISTER[48][15]_i_5_n_0 }),
         .\SHIFT_REGISTER_reg[48][19] ({\SHIFT_REGISTER[48][19]_i_2_n_0 ,\SHIFT_REGISTER[48][19]_i_3_n_0 ,\SHIFT_REGISTER[48][19]_i_4_n_0 ,\SHIFT_REGISTER[48][19]_i_5_n_0 }),
@@ -73876,15 +74617,15 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
         .\SHIFT_REGISTER_reg[48][3] ({\SHIFT_REGISTER[48][3]_i_2_n_0 ,\SHIFT_REGISTER[48][3]_i_3_n_0 ,\SHIFT_REGISTER[48][3]_i_4_n_0 ,\SHIFT_REGISTER[48][3]_i_5_n_0 }),
         .\SHIFT_REGISTER_reg[48][7] ({\SHIFT_REGISTER[48][7]_i_2_n_0 ,\SHIFT_REGISTER[48][7]_i_3_n_0 ,\SHIFT_REGISTER[48][7]_i_4_n_0 ,\SHIFT_REGISTER[48][7]_i_5_n_0 }),
         .\SHIFT_REGISTER_reg[63] (\SHIFT_REGISTER_reg[63] ),
-        .\SHIFT_REGISTER_reg[63][11] ({Parallel_STS_FIR_Filter_inst_n_105,Parallel_STS_FIR_Filter_inst_n_106,Parallel_STS_FIR_Filter_inst_n_107,Parallel_STS_FIR_Filter_inst_n_108}),
-        .\SHIFT_REGISTER_reg[63][15] ({Parallel_STS_FIR_Filter_inst_n_109,Parallel_STS_FIR_Filter_inst_n_110,Parallel_STS_FIR_Filter_inst_n_111,Parallel_STS_FIR_Filter_inst_n_112}),
-        .\SHIFT_REGISTER_reg[63][19] ({Parallel_STS_FIR_Filter_inst_n_113,Parallel_STS_FIR_Filter_inst_n_114,Parallel_STS_FIR_Filter_inst_n_115,Parallel_STS_FIR_Filter_inst_n_116}),
-        .\SHIFT_REGISTER_reg[63][23] ({Parallel_STS_FIR_Filter_inst_n_117,Parallel_STS_FIR_Filter_inst_n_118,Parallel_STS_FIR_Filter_inst_n_119,Parallel_STS_FIR_Filter_inst_n_120}),
-        .\SHIFT_REGISTER_reg[63][27] ({Parallel_STS_FIR_Filter_inst_n_121,Parallel_STS_FIR_Filter_inst_n_122,Parallel_STS_FIR_Filter_inst_n_123,Parallel_STS_FIR_Filter_inst_n_124}),
-        .\SHIFT_REGISTER_reg[63][30] (Parallel_STS_FIR_Filter_inst_n_125),
-        .\SHIFT_REGISTER_reg[63][30]_0 ({Parallel_STS_FIR_Filter_inst_n_126,Parallel_STS_FIR_Filter_inst_n_127,Parallel_STS_FIR_Filter_inst_n_128}),
-        .\SHIFT_REGISTER_reg[63][3] ({Parallel_STS_FIR_Filter_inst_n_97,Parallel_STS_FIR_Filter_inst_n_98,Parallel_STS_FIR_Filter_inst_n_99,Parallel_STS_FIR_Filter_inst_n_100}),
-        .\SHIFT_REGISTER_reg[63][7] ({Parallel_STS_FIR_Filter_inst_n_101,Parallel_STS_FIR_Filter_inst_n_102,Parallel_STS_FIR_Filter_inst_n_103,Parallel_STS_FIR_Filter_inst_n_104}),
+        .\SHIFT_REGISTER_reg[63][11] ({Parallel_STS_FIR_Filter_inst_n_106,Parallel_STS_FIR_Filter_inst_n_107,Parallel_STS_FIR_Filter_inst_n_108,Parallel_STS_FIR_Filter_inst_n_109}),
+        .\SHIFT_REGISTER_reg[63][15] ({Parallel_STS_FIR_Filter_inst_n_110,Parallel_STS_FIR_Filter_inst_n_111,Parallel_STS_FIR_Filter_inst_n_112,Parallel_STS_FIR_Filter_inst_n_113}),
+        .\SHIFT_REGISTER_reg[63][19] ({Parallel_STS_FIR_Filter_inst_n_114,Parallel_STS_FIR_Filter_inst_n_115,Parallel_STS_FIR_Filter_inst_n_116,Parallel_STS_FIR_Filter_inst_n_117}),
+        .\SHIFT_REGISTER_reg[63][23] ({Parallel_STS_FIR_Filter_inst_n_118,Parallel_STS_FIR_Filter_inst_n_119,Parallel_STS_FIR_Filter_inst_n_120,Parallel_STS_FIR_Filter_inst_n_121}),
+        .\SHIFT_REGISTER_reg[63][27] ({Parallel_STS_FIR_Filter_inst_n_122,Parallel_STS_FIR_Filter_inst_n_123,Parallel_STS_FIR_Filter_inst_n_124,Parallel_STS_FIR_Filter_inst_n_125}),
+        .\SHIFT_REGISTER_reg[63][30] (Parallel_STS_FIR_Filter_inst_n_126),
+        .\SHIFT_REGISTER_reg[63][30]_0 ({Parallel_STS_FIR_Filter_inst_n_127,Parallel_STS_FIR_Filter_inst_n_128,Parallel_STS_FIR_Filter_inst_n_129}),
+        .\SHIFT_REGISTER_reg[63][3] ({Parallel_STS_FIR_Filter_inst_n_98,Parallel_STS_FIR_Filter_inst_n_99,Parallel_STS_FIR_Filter_inst_n_100,Parallel_STS_FIR_Filter_inst_n_101}),
+        .\SHIFT_REGISTER_reg[63][7] ({Parallel_STS_FIR_Filter_inst_n_102,Parallel_STS_FIR_Filter_inst_n_103,Parallel_STS_FIR_Filter_inst_n_104,Parallel_STS_FIR_Filter_inst_n_105}),
         .\SHIFT_REGISTER_reg[64][11] ({\SHIFT_REGISTER[64][11]_i_2_n_0 ,\SHIFT_REGISTER[64][11]_i_3_n_0 ,\SHIFT_REGISTER[64][11]_i_4_n_0 ,\SHIFT_REGISTER[64][11]_i_5_n_0 }),
         .\SHIFT_REGISTER_reg[64][15] ({\SHIFT_REGISTER[64][15]_i_2_n_0 ,\SHIFT_REGISTER[64][15]_i_3_n_0 ,\SHIFT_REGISTER[64][15]_i_4_n_0 ,\SHIFT_REGISTER[64][15]_i_5_n_0 }),
         .\SHIFT_REGISTER_reg[64][19] ({\SHIFT_REGISTER[64][19]_i_2_n_0 ,\SHIFT_REGISTER[64][19]_i_3_n_0 ,\SHIFT_REGISTER[64][19]_i_4_n_0 ,\SHIFT_REGISTER[64][19]_i_5_n_0 }),
@@ -73893,14 +74634,14 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
         .\SHIFT_REGISTER_reg[64][3] ({\SHIFT_REGISTER[64][3]_i_2_n_0 ,\SHIFT_REGISTER[64][3]_i_3_n_0 ,\SHIFT_REGISTER[64][3]_i_4_n_0 ,\SHIFT_REGISTER[64][3]_i_5_n_0 }),
         .\SHIFT_REGISTER_reg[64][7] ({\SHIFT_REGISTER[64][7]_i_2_n_0 ,\SHIFT_REGISTER[64][7]_i_3_n_0 ,\SHIFT_REGISTER[64][7]_i_4_n_0 ,\SHIFT_REGISTER[64][7]_i_5_n_0 }),
         .\SHIFT_REGISTER_reg[79] (\SHIFT_REGISTER_reg[79] ),
-        .\SHIFT_REGISTER_reg[79][11] ({Parallel_STS_FIR_Filter_inst_n_137,Parallel_STS_FIR_Filter_inst_n_138,Parallel_STS_FIR_Filter_inst_n_139,Parallel_STS_FIR_Filter_inst_n_140}),
-        .\SHIFT_REGISTER_reg[79][15] ({Parallel_STS_FIR_Filter_inst_n_141,Parallel_STS_FIR_Filter_inst_n_142,Parallel_STS_FIR_Filter_inst_n_143,Parallel_STS_FIR_Filter_inst_n_144}),
-        .\SHIFT_REGISTER_reg[79][19] ({Parallel_STS_FIR_Filter_inst_n_145,Parallel_STS_FIR_Filter_inst_n_146,Parallel_STS_FIR_Filter_inst_n_147,Parallel_STS_FIR_Filter_inst_n_148}),
-        .\SHIFT_REGISTER_reg[79][23] ({Parallel_STS_FIR_Filter_inst_n_149,Parallel_STS_FIR_Filter_inst_n_150,Parallel_STS_FIR_Filter_inst_n_151,Parallel_STS_FIR_Filter_inst_n_152}),
-        .\SHIFT_REGISTER_reg[79][27] ({Parallel_STS_FIR_Filter_inst_n_153,Parallel_STS_FIR_Filter_inst_n_154,Parallel_STS_FIR_Filter_inst_n_155,Parallel_STS_FIR_Filter_inst_n_156}),
-        .\SHIFT_REGISTER_reg[79][31] ({Parallel_STS_FIR_Filter_inst_n_157,Parallel_STS_FIR_Filter_inst_n_158,Parallel_STS_FIR_Filter_inst_n_159,Parallel_STS_FIR_Filter_inst_n_160}),
-        .\SHIFT_REGISTER_reg[79][3] ({Parallel_STS_FIR_Filter_inst_n_129,Parallel_STS_FIR_Filter_inst_n_130,Parallel_STS_FIR_Filter_inst_n_131,Parallel_STS_FIR_Filter_inst_n_132}),
-        .\SHIFT_REGISTER_reg[79][7] ({Parallel_STS_FIR_Filter_inst_n_133,Parallel_STS_FIR_Filter_inst_n_134,Parallel_STS_FIR_Filter_inst_n_135,Parallel_STS_FIR_Filter_inst_n_136}),
+        .\SHIFT_REGISTER_reg[79][11] ({Parallel_STS_FIR_Filter_inst_n_138,Parallel_STS_FIR_Filter_inst_n_139,Parallel_STS_FIR_Filter_inst_n_140,Parallel_STS_FIR_Filter_inst_n_141}),
+        .\SHIFT_REGISTER_reg[79][15] ({Parallel_STS_FIR_Filter_inst_n_142,Parallel_STS_FIR_Filter_inst_n_143,Parallel_STS_FIR_Filter_inst_n_144,Parallel_STS_FIR_Filter_inst_n_145}),
+        .\SHIFT_REGISTER_reg[79][19] ({Parallel_STS_FIR_Filter_inst_n_146,Parallel_STS_FIR_Filter_inst_n_147,Parallel_STS_FIR_Filter_inst_n_148,Parallel_STS_FIR_Filter_inst_n_149}),
+        .\SHIFT_REGISTER_reg[79][23] ({Parallel_STS_FIR_Filter_inst_n_150,Parallel_STS_FIR_Filter_inst_n_151,Parallel_STS_FIR_Filter_inst_n_152,Parallel_STS_FIR_Filter_inst_n_153}),
+        .\SHIFT_REGISTER_reg[79][27] ({Parallel_STS_FIR_Filter_inst_n_154,Parallel_STS_FIR_Filter_inst_n_155,Parallel_STS_FIR_Filter_inst_n_156,Parallel_STS_FIR_Filter_inst_n_157}),
+        .\SHIFT_REGISTER_reg[79][31] ({Parallel_STS_FIR_Filter_inst_n_158,Parallel_STS_FIR_Filter_inst_n_159,Parallel_STS_FIR_Filter_inst_n_160,Parallel_STS_FIR_Filter_inst_n_161}),
+        .\SHIFT_REGISTER_reg[79][3] ({Parallel_STS_FIR_Filter_inst_n_130,Parallel_STS_FIR_Filter_inst_n_131,Parallel_STS_FIR_Filter_inst_n_132,Parallel_STS_FIR_Filter_inst_n_133}),
+        .\SHIFT_REGISTER_reg[79][7] ({Parallel_STS_FIR_Filter_inst_n_134,Parallel_STS_FIR_Filter_inst_n_135,Parallel_STS_FIR_Filter_inst_n_136,Parallel_STS_FIR_Filter_inst_n_137}),
         .\SHIFT_REGISTER_reg[80][11] ({\SHIFT_REGISTER[80][11]_i_2_n_0 ,\SHIFT_REGISTER[80][11]_i_3_n_0 ,\SHIFT_REGISTER[80][11]_i_4_n_0 ,\SHIFT_REGISTER[80][11]_i_5_n_0 }),
         .\SHIFT_REGISTER_reg[80][15] ({\SHIFT_REGISTER[80][15]_i_2_n_0 ,\SHIFT_REGISTER[80][15]_i_3_n_0 ,\SHIFT_REGISTER[80][15]_i_4_n_0 ,\SHIFT_REGISTER[80][15]_i_5_n_0 }),
         .\SHIFT_REGISTER_reg[80][19] ({\SHIFT_REGISTER[80][19]_i_2_n_0 ,\SHIFT_REGISTER[80][19]_i_3_n_0 ,\SHIFT_REGISTER[80][19]_i_4_n_0 ,\SHIFT_REGISTER[80][19]_i_5_n_0 }),
@@ -73909,14 +74650,14 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
         .\SHIFT_REGISTER_reg[80][3] ({\SHIFT_REGISTER[80][3]_i_2_n_0 ,\SHIFT_REGISTER[80][3]_i_3_n_0 ,\SHIFT_REGISTER[80][3]_i_4_n_0 ,\SHIFT_REGISTER[80][3]_i_5_n_0 }),
         .\SHIFT_REGISTER_reg[80][7] ({\SHIFT_REGISTER[80][7]_i_2_n_0 ,\SHIFT_REGISTER[80][7]_i_3_n_0 ,\SHIFT_REGISTER[80][7]_i_4_n_0 ,\SHIFT_REGISTER[80][7]_i_5_n_0 }),
         .\SHIFT_REGISTER_reg[95] (\SHIFT_REGISTER_reg[95] ),
-        .\SHIFT_REGISTER_reg[95][11] ({Parallel_STS_FIR_Filter_inst_n_169,Parallel_STS_FIR_Filter_inst_n_170,Parallel_STS_FIR_Filter_inst_n_171,Parallel_STS_FIR_Filter_inst_n_172}),
-        .\SHIFT_REGISTER_reg[95][15] ({Parallel_STS_FIR_Filter_inst_n_173,Parallel_STS_FIR_Filter_inst_n_174,Parallel_STS_FIR_Filter_inst_n_175,Parallel_STS_FIR_Filter_inst_n_176}),
-        .\SHIFT_REGISTER_reg[95][19] ({Parallel_STS_FIR_Filter_inst_n_177,Parallel_STS_FIR_Filter_inst_n_178,Parallel_STS_FIR_Filter_inst_n_179,Parallel_STS_FIR_Filter_inst_n_180}),
-        .\SHIFT_REGISTER_reg[95][23] ({Parallel_STS_FIR_Filter_inst_n_181,Parallel_STS_FIR_Filter_inst_n_182,Parallel_STS_FIR_Filter_inst_n_183,Parallel_STS_FIR_Filter_inst_n_184}),
-        .\SHIFT_REGISTER_reg[95][27] ({Parallel_STS_FIR_Filter_inst_n_185,Parallel_STS_FIR_Filter_inst_n_186,Parallel_STS_FIR_Filter_inst_n_187,Parallel_STS_FIR_Filter_inst_n_188}),
-        .\SHIFT_REGISTER_reg[95][31] ({Parallel_STS_FIR_Filter_inst_n_189,Parallel_STS_FIR_Filter_inst_n_190,Parallel_STS_FIR_Filter_inst_n_191,Parallel_STS_FIR_Filter_inst_n_192}),
-        .\SHIFT_REGISTER_reg[95][3] ({Parallel_STS_FIR_Filter_inst_n_161,Parallel_STS_FIR_Filter_inst_n_162,Parallel_STS_FIR_Filter_inst_n_163,Parallel_STS_FIR_Filter_inst_n_164}),
-        .\SHIFT_REGISTER_reg[95][7] ({Parallel_STS_FIR_Filter_inst_n_165,Parallel_STS_FIR_Filter_inst_n_166,Parallel_STS_FIR_Filter_inst_n_167,Parallel_STS_FIR_Filter_inst_n_168}),
+        .\SHIFT_REGISTER_reg[95][11] ({Parallel_STS_FIR_Filter_inst_n_170,Parallel_STS_FIR_Filter_inst_n_171,Parallel_STS_FIR_Filter_inst_n_172,Parallel_STS_FIR_Filter_inst_n_173}),
+        .\SHIFT_REGISTER_reg[95][15] ({Parallel_STS_FIR_Filter_inst_n_174,Parallel_STS_FIR_Filter_inst_n_175,Parallel_STS_FIR_Filter_inst_n_176,Parallel_STS_FIR_Filter_inst_n_177}),
+        .\SHIFT_REGISTER_reg[95][19] ({Parallel_STS_FIR_Filter_inst_n_178,Parallel_STS_FIR_Filter_inst_n_179,Parallel_STS_FIR_Filter_inst_n_180,Parallel_STS_FIR_Filter_inst_n_181}),
+        .\SHIFT_REGISTER_reg[95][23] ({Parallel_STS_FIR_Filter_inst_n_182,Parallel_STS_FIR_Filter_inst_n_183,Parallel_STS_FIR_Filter_inst_n_184,Parallel_STS_FIR_Filter_inst_n_185}),
+        .\SHIFT_REGISTER_reg[95][27] ({Parallel_STS_FIR_Filter_inst_n_186,Parallel_STS_FIR_Filter_inst_n_187,Parallel_STS_FIR_Filter_inst_n_188,Parallel_STS_FIR_Filter_inst_n_189}),
+        .\SHIFT_REGISTER_reg[95][31] ({Parallel_STS_FIR_Filter_inst_n_190,Parallel_STS_FIR_Filter_inst_n_191,Parallel_STS_FIR_Filter_inst_n_192,Parallel_STS_FIR_Filter_inst_n_193}),
+        .\SHIFT_REGISTER_reg[95][3] ({Parallel_STS_FIR_Filter_inst_n_162,Parallel_STS_FIR_Filter_inst_n_163,Parallel_STS_FIR_Filter_inst_n_164,Parallel_STS_FIR_Filter_inst_n_165}),
+        .\SHIFT_REGISTER_reg[95][7] ({Parallel_STS_FIR_Filter_inst_n_166,Parallel_STS_FIR_Filter_inst_n_167,Parallel_STS_FIR_Filter_inst_n_168,Parallel_STS_FIR_Filter_inst_n_169}),
         .\SHIFT_REGISTER_reg[96][11] ({\SHIFT_REGISTER[96][11]_i_2_n_0 ,\SHIFT_REGISTER[96][11]_i_3_n_0 ,\SHIFT_REGISTER[96][11]_i_4_n_0 ,\SHIFT_REGISTER[96][11]_i_5_n_0 }),
         .\SHIFT_REGISTER_reg[96][15] ({\SHIFT_REGISTER[96][15]_i_2_n_0 ,\SHIFT_REGISTER[96][15]_i_3_n_0 ,\SHIFT_REGISTER[96][15]_i_4_n_0 ,\SHIFT_REGISTER[96][15]_i_5_n_0 }),
         .\SHIFT_REGISTER_reg[96][19] ({\SHIFT_REGISTER[96][19]_i_2_n_0 ,\SHIFT_REGISTER[96][19]_i_3_n_0 ,\SHIFT_REGISTER[96][19]_i_4_n_0 ,\SHIFT_REGISTER[96][19]_i_5_n_0 }),
@@ -73924,6 +74665,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
         .\SHIFT_REGISTER_reg[96][27] ({\SHIFT_REGISTER[96][27]_i_2_n_0 ,\SHIFT_REGISTER[96][27]_i_3_n_0 ,\SHIFT_REGISTER[96][27]_i_4_n_0 ,\SHIFT_REGISTER[96][27]_i_5_n_0 }),
         .\SHIFT_REGISTER_reg[96][3] ({\SHIFT_REGISTER[96][3]_i_2_n_0 ,\SHIFT_REGISTER[96][3]_i_3_n_0 ,\SHIFT_REGISTER[96][3]_i_4_n_0 ,\SHIFT_REGISTER[96][3]_i_5_n_0 }),
         .\SHIFT_REGISTER_reg[96][7] ({\SHIFT_REGISTER[96][7]_i_2_n_0 ,\SHIFT_REGISTER[96][7]_i_3_n_0 ,\SHIFT_REGISTER[96][7]_i_4_n_0 ,\SHIFT_REGISTER[96][7]_i_5_n_0 }),
+        .\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[35] (DETECTION_STATE1_carry__2_n_0),
         .\STS_AUTOCORR_I_16_DELAYED_reg[31]_0 (STS_AUTOCORR_I_16_DELAYED),
         .\STS_AUTOCORR_Q_16_DELAYED_reg[31]_0 (STS_AUTOCORR_Q_16_DELAYED),
         .p_0_in(p_0_in));
@@ -76116,7 +76858,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[112][0] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_196),
+        .D(Parallel_STS_FIR_Filter_inst_n_197),
         .Q(\SHIFT_REGISTER_reg_n_0_[112][0] ),
         .R(1'b0));
   FDRE #(
@@ -76124,7 +76866,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[112][10] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_202),
+        .D(Parallel_STS_FIR_Filter_inst_n_203),
         .Q(\SHIFT_REGISTER_reg_n_0_[112][10] ),
         .R(1'b0));
   FDRE #(
@@ -76132,7 +76874,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[112][11] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_201),
+        .D(Parallel_STS_FIR_Filter_inst_n_202),
         .Q(\SHIFT_REGISTER_reg_n_0_[112][11] ),
         .R(1'b0));
   FDRE #(
@@ -76140,7 +76882,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[112][12] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_208),
+        .D(Parallel_STS_FIR_Filter_inst_n_209),
         .Q(\SHIFT_REGISTER_reg_n_0_[112][12] ),
         .R(1'b0));
   FDRE #(
@@ -76148,7 +76890,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[112][13] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_207),
+        .D(Parallel_STS_FIR_Filter_inst_n_208),
         .Q(\SHIFT_REGISTER_reg_n_0_[112][13] ),
         .R(1'b0));
   FDRE #(
@@ -76156,7 +76898,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[112][14] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_206),
+        .D(Parallel_STS_FIR_Filter_inst_n_207),
         .Q(\SHIFT_REGISTER_reg_n_0_[112][14] ),
         .R(1'b0));
   FDRE #(
@@ -76164,7 +76906,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[112][15] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_205),
+        .D(Parallel_STS_FIR_Filter_inst_n_206),
         .Q(\SHIFT_REGISTER_reg_n_0_[112][15] ),
         .R(1'b0));
   FDRE #(
@@ -76172,7 +76914,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[112][16] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_212),
+        .D(Parallel_STS_FIR_Filter_inst_n_213),
         .Q(\SHIFT_REGISTER_reg_n_0_[112][16] ),
         .R(1'b0));
   FDRE #(
@@ -76180,7 +76922,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[112][17] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_211),
+        .D(Parallel_STS_FIR_Filter_inst_n_212),
         .Q(\SHIFT_REGISTER_reg_n_0_[112][17] ),
         .R(1'b0));
   FDRE #(
@@ -76188,7 +76930,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[112][18] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_210),
+        .D(Parallel_STS_FIR_Filter_inst_n_211),
         .Q(\SHIFT_REGISTER_reg_n_0_[112][18] ),
         .R(1'b0));
   FDRE #(
@@ -76196,7 +76938,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[112][19] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_209),
+        .D(Parallel_STS_FIR_Filter_inst_n_210),
         .Q(\SHIFT_REGISTER_reg_n_0_[112][19] ),
         .R(1'b0));
   FDRE #(
@@ -76204,7 +76946,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[112][1] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_195),
+        .D(Parallel_STS_FIR_Filter_inst_n_196),
         .Q(\SHIFT_REGISTER_reg_n_0_[112][1] ),
         .R(1'b0));
   FDRE #(
@@ -76212,7 +76954,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[112][20] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_216),
+        .D(Parallel_STS_FIR_Filter_inst_n_217),
         .Q(\SHIFT_REGISTER_reg_n_0_[112][20] ),
         .R(1'b0));
   FDRE #(
@@ -76220,7 +76962,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[112][21] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_215),
+        .D(Parallel_STS_FIR_Filter_inst_n_216),
         .Q(\SHIFT_REGISTER_reg_n_0_[112][21] ),
         .R(1'b0));
   FDRE #(
@@ -76228,7 +76970,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[112][22] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_214),
+        .D(Parallel_STS_FIR_Filter_inst_n_215),
         .Q(\SHIFT_REGISTER_reg_n_0_[112][22] ),
         .R(1'b0));
   FDRE #(
@@ -76236,7 +76978,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[112][23] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_213),
+        .D(Parallel_STS_FIR_Filter_inst_n_214),
         .Q(\SHIFT_REGISTER_reg_n_0_[112][23] ),
         .R(1'b0));
   FDRE #(
@@ -76244,7 +76986,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[112][24] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_220),
+        .D(Parallel_STS_FIR_Filter_inst_n_221),
         .Q(\SHIFT_REGISTER_reg_n_0_[112][24] ),
         .R(1'b0));
   FDRE #(
@@ -76252,7 +76994,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[112][25] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_219),
+        .D(Parallel_STS_FIR_Filter_inst_n_220),
         .Q(\SHIFT_REGISTER_reg_n_0_[112][25] ),
         .R(1'b0));
   FDRE #(
@@ -76260,7 +77002,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[112][26] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_218),
+        .D(Parallel_STS_FIR_Filter_inst_n_219),
         .Q(\SHIFT_REGISTER_reg_n_0_[112][26] ),
         .R(1'b0));
   FDRE #(
@@ -76268,7 +77010,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[112][27] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_217),
+        .D(Parallel_STS_FIR_Filter_inst_n_218),
         .Q(\SHIFT_REGISTER_reg_n_0_[112][27] ),
         .R(1'b0));
   FDRE #(
@@ -76276,7 +77018,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[112][28] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_224),
+        .D(Parallel_STS_FIR_Filter_inst_n_225),
         .Q(\SHIFT_REGISTER_reg_n_0_[112][28] ),
         .R(1'b0));
   FDRE #(
@@ -76284,7 +77026,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[112][29] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_223),
+        .D(Parallel_STS_FIR_Filter_inst_n_224),
         .Q(\SHIFT_REGISTER_reg_n_0_[112][29] ),
         .R(1'b0));
   FDRE #(
@@ -76292,7 +77034,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[112][2] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_194),
+        .D(Parallel_STS_FIR_Filter_inst_n_195),
         .Q(\SHIFT_REGISTER_reg_n_0_[112][2] ),
         .R(1'b0));
   FDRE #(
@@ -76300,7 +77042,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[112][30] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_222),
+        .D(Parallel_STS_FIR_Filter_inst_n_223),
         .Q(\SHIFT_REGISTER_reg_n_0_[112][30] ),
         .R(1'b0));
   FDRE #(
@@ -76308,7 +77050,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[112][31] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_221),
+        .D(Parallel_STS_FIR_Filter_inst_n_222),
         .Q(\SHIFT_REGISTER_reg_n_0_[112][31] ),
         .R(1'b0));
   FDRE #(
@@ -76316,7 +77058,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[112][3] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_193),
+        .D(Parallel_STS_FIR_Filter_inst_n_194),
         .Q(\SHIFT_REGISTER_reg_n_0_[112][3] ),
         .R(1'b0));
   FDRE #(
@@ -76324,7 +77066,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[112][4] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_200),
+        .D(Parallel_STS_FIR_Filter_inst_n_201),
         .Q(\SHIFT_REGISTER_reg_n_0_[112][4] ),
         .R(1'b0));
   FDRE #(
@@ -76332,7 +77074,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[112][5] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_199),
+        .D(Parallel_STS_FIR_Filter_inst_n_200),
         .Q(\SHIFT_REGISTER_reg_n_0_[112][5] ),
         .R(1'b0));
   FDRE #(
@@ -76340,7 +77082,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[112][6] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_198),
+        .D(Parallel_STS_FIR_Filter_inst_n_199),
         .Q(\SHIFT_REGISTER_reg_n_0_[112][6] ),
         .R(1'b0));
   FDRE #(
@@ -76348,7 +77090,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[112][7] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_197),
+        .D(Parallel_STS_FIR_Filter_inst_n_198),
         .Q(\SHIFT_REGISTER_reg_n_0_[112][7] ),
         .R(1'b0));
   FDRE #(
@@ -76356,7 +77098,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[112][8] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_204),
+        .D(Parallel_STS_FIR_Filter_inst_n_205),
         .Q(\SHIFT_REGISTER_reg_n_0_[112][8] ),
         .R(1'b0));
   FDRE #(
@@ -76364,7 +77106,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[112][9] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_203),
+        .D(Parallel_STS_FIR_Filter_inst_n_204),
         .Q(\SHIFT_REGISTER_reg_n_0_[112][9] ),
         .R(1'b0));
   (* srl_bus_name = "\\U0/SHIFT_REGISTER_reg[126] " *) 
@@ -77044,7 +77786,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[128][0] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_228),
+        .D(Parallel_STS_FIR_Filter_inst_n_229),
         .Q(\SHIFT_REGISTER_reg_n_0_[128][0] ),
         .R(1'b0));
   FDRE #(
@@ -77052,7 +77794,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[128][10] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_234),
+        .D(Parallel_STS_FIR_Filter_inst_n_235),
         .Q(\SHIFT_REGISTER_reg_n_0_[128][10] ),
         .R(1'b0));
   FDRE #(
@@ -77060,7 +77802,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[128][11] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_233),
+        .D(Parallel_STS_FIR_Filter_inst_n_234),
         .Q(\SHIFT_REGISTER_reg_n_0_[128][11] ),
         .R(1'b0));
   FDRE #(
@@ -77068,7 +77810,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[128][12] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_240),
+        .D(Parallel_STS_FIR_Filter_inst_n_241),
         .Q(\SHIFT_REGISTER_reg_n_0_[128][12] ),
         .R(1'b0));
   FDRE #(
@@ -77076,7 +77818,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[128][13] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_239),
+        .D(Parallel_STS_FIR_Filter_inst_n_240),
         .Q(\SHIFT_REGISTER_reg_n_0_[128][13] ),
         .R(1'b0));
   FDRE #(
@@ -77084,7 +77826,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[128][14] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_238),
+        .D(Parallel_STS_FIR_Filter_inst_n_239),
         .Q(\SHIFT_REGISTER_reg_n_0_[128][14] ),
         .R(1'b0));
   FDRE #(
@@ -77092,7 +77834,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[128][15] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_237),
+        .D(Parallel_STS_FIR_Filter_inst_n_238),
         .Q(\SHIFT_REGISTER_reg_n_0_[128][15] ),
         .R(1'b0));
   FDRE #(
@@ -77100,7 +77842,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[128][16] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_244),
+        .D(Parallel_STS_FIR_Filter_inst_n_245),
         .Q(\SHIFT_REGISTER_reg_n_0_[128][16] ),
         .R(1'b0));
   FDRE #(
@@ -77108,7 +77850,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[128][17] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_243),
+        .D(Parallel_STS_FIR_Filter_inst_n_244),
         .Q(\SHIFT_REGISTER_reg_n_0_[128][17] ),
         .R(1'b0));
   FDRE #(
@@ -77116,7 +77858,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[128][18] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_242),
+        .D(Parallel_STS_FIR_Filter_inst_n_243),
         .Q(\SHIFT_REGISTER_reg_n_0_[128][18] ),
         .R(1'b0));
   FDRE #(
@@ -77124,7 +77866,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[128][19] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_241),
+        .D(Parallel_STS_FIR_Filter_inst_n_242),
         .Q(\SHIFT_REGISTER_reg_n_0_[128][19] ),
         .R(1'b0));
   FDRE #(
@@ -77132,7 +77874,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[128][1] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_227),
+        .D(Parallel_STS_FIR_Filter_inst_n_228),
         .Q(\SHIFT_REGISTER_reg_n_0_[128][1] ),
         .R(1'b0));
   FDRE #(
@@ -77140,7 +77882,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[128][20] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_248),
+        .D(Parallel_STS_FIR_Filter_inst_n_249),
         .Q(\SHIFT_REGISTER_reg_n_0_[128][20] ),
         .R(1'b0));
   FDRE #(
@@ -77148,7 +77890,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[128][21] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_247),
+        .D(Parallel_STS_FIR_Filter_inst_n_248),
         .Q(\SHIFT_REGISTER_reg_n_0_[128][21] ),
         .R(1'b0));
   FDRE #(
@@ -77156,7 +77898,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[128][22] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_246),
+        .D(Parallel_STS_FIR_Filter_inst_n_247),
         .Q(\SHIFT_REGISTER_reg_n_0_[128][22] ),
         .R(1'b0));
   FDRE #(
@@ -77164,7 +77906,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[128][23] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_245),
+        .D(Parallel_STS_FIR_Filter_inst_n_246),
         .Q(\SHIFT_REGISTER_reg_n_0_[128][23] ),
         .R(1'b0));
   FDRE #(
@@ -77172,7 +77914,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[128][24] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_252),
+        .D(Parallel_STS_FIR_Filter_inst_n_253),
         .Q(\SHIFT_REGISTER_reg_n_0_[128][24] ),
         .R(1'b0));
   FDRE #(
@@ -77180,7 +77922,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[128][25] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_251),
+        .D(Parallel_STS_FIR_Filter_inst_n_252),
         .Q(\SHIFT_REGISTER_reg_n_0_[128][25] ),
         .R(1'b0));
   FDRE #(
@@ -77188,7 +77930,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[128][26] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_250),
+        .D(Parallel_STS_FIR_Filter_inst_n_251),
         .Q(\SHIFT_REGISTER_reg_n_0_[128][26] ),
         .R(1'b0));
   FDRE #(
@@ -77196,7 +77938,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[128][27] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_249),
+        .D(Parallel_STS_FIR_Filter_inst_n_250),
         .Q(\SHIFT_REGISTER_reg_n_0_[128][27] ),
         .R(1'b0));
   FDRE #(
@@ -77204,7 +77946,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[128][28] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_256),
+        .D(Parallel_STS_FIR_Filter_inst_n_257),
         .Q(\SHIFT_REGISTER_reg_n_0_[128][28] ),
         .R(1'b0));
   FDRE #(
@@ -77212,7 +77954,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[128][29] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_255),
+        .D(Parallel_STS_FIR_Filter_inst_n_256),
         .Q(\SHIFT_REGISTER_reg_n_0_[128][29] ),
         .R(1'b0));
   FDRE #(
@@ -77220,7 +77962,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[128][2] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_226),
+        .D(Parallel_STS_FIR_Filter_inst_n_227),
         .Q(\SHIFT_REGISTER_reg_n_0_[128][2] ),
         .R(1'b0));
   FDRE #(
@@ -77228,7 +77970,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[128][30] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_254),
+        .D(Parallel_STS_FIR_Filter_inst_n_255),
         .Q(\SHIFT_REGISTER_reg_n_0_[128][30] ),
         .R(1'b0));
   FDRE #(
@@ -77236,7 +77978,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[128][31] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_253),
+        .D(Parallel_STS_FIR_Filter_inst_n_254),
         .Q(\SHIFT_REGISTER_reg_n_0_[128][31] ),
         .R(1'b0));
   FDRE #(
@@ -77244,7 +77986,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[128][3] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_225),
+        .D(Parallel_STS_FIR_Filter_inst_n_226),
         .Q(\SHIFT_REGISTER_reg_n_0_[128][3] ),
         .R(1'b0));
   FDRE #(
@@ -77252,7 +77994,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[128][4] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_232),
+        .D(Parallel_STS_FIR_Filter_inst_n_233),
         .Q(\SHIFT_REGISTER_reg_n_0_[128][4] ),
         .R(1'b0));
   FDRE #(
@@ -77260,7 +78002,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[128][5] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_231),
+        .D(Parallel_STS_FIR_Filter_inst_n_232),
         .Q(\SHIFT_REGISTER_reg_n_0_[128][5] ),
         .R(1'b0));
   FDRE #(
@@ -77268,7 +78010,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[128][6] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_230),
+        .D(Parallel_STS_FIR_Filter_inst_n_231),
         .Q(\SHIFT_REGISTER_reg_n_0_[128][6] ),
         .R(1'b0));
   FDRE #(
@@ -77276,7 +78018,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[128][7] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_229),
+        .D(Parallel_STS_FIR_Filter_inst_n_230),
         .Q(\SHIFT_REGISTER_reg_n_0_[128][7] ),
         .R(1'b0));
   FDRE #(
@@ -77284,7 +78026,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[128][8] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_236),
+        .D(Parallel_STS_FIR_Filter_inst_n_237),
         .Q(\SHIFT_REGISTER_reg_n_0_[128][8] ),
         .R(1'b0));
   FDRE #(
@@ -77292,7 +78034,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[128][9] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_235),
+        .D(Parallel_STS_FIR_Filter_inst_n_236),
         .Q(\SHIFT_REGISTER_reg_n_0_[128][9] ),
         .R(1'b0));
   (* srl_bus_name = "\\U0/SHIFT_REGISTER_reg[142] " *) 
@@ -77972,7 +78714,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[144][0] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_288),
+        .D(Parallel_STS_FIR_Filter_inst_n_289),
         .Q(\SHIFT_REGISTER_reg[144] [0]),
         .R(1'b0));
   FDRE #(
@@ -77980,7 +78722,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[144][10] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_278),
+        .D(Parallel_STS_FIR_Filter_inst_n_279),
         .Q(\SHIFT_REGISTER_reg[144] [10]),
         .R(1'b0));
   FDRE #(
@@ -77988,7 +78730,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[144][11] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_277),
+        .D(Parallel_STS_FIR_Filter_inst_n_278),
         .Q(\SHIFT_REGISTER_reg[144] [11]),
         .R(1'b0));
   FDRE #(
@@ -77996,7 +78738,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[144][12] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_276),
+        .D(Parallel_STS_FIR_Filter_inst_n_277),
         .Q(\SHIFT_REGISTER_reg[144] [12]),
         .R(1'b0));
   FDRE #(
@@ -78004,7 +78746,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[144][13] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_275),
+        .D(Parallel_STS_FIR_Filter_inst_n_276),
         .Q(\SHIFT_REGISTER_reg[144] [13]),
         .R(1'b0));
   FDRE #(
@@ -78012,7 +78754,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[144][14] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_274),
+        .D(Parallel_STS_FIR_Filter_inst_n_275),
         .Q(\SHIFT_REGISTER_reg[144] [14]),
         .R(1'b0));
   FDRE #(
@@ -78020,7 +78762,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[144][15] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_273),
+        .D(Parallel_STS_FIR_Filter_inst_n_274),
         .Q(\SHIFT_REGISTER_reg[144] [15]),
         .R(1'b0));
   FDRE #(
@@ -78028,7 +78770,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[144][16] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_272),
+        .D(Parallel_STS_FIR_Filter_inst_n_273),
         .Q(\SHIFT_REGISTER_reg[144] [16]),
         .R(1'b0));
   FDRE #(
@@ -78036,7 +78778,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[144][17] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_271),
+        .D(Parallel_STS_FIR_Filter_inst_n_272),
         .Q(\SHIFT_REGISTER_reg[144] [17]),
         .R(1'b0));
   FDRE #(
@@ -78044,7 +78786,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[144][18] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_270),
+        .D(Parallel_STS_FIR_Filter_inst_n_271),
         .Q(\SHIFT_REGISTER_reg[144] [18]),
         .R(1'b0));
   FDRE #(
@@ -78052,7 +78794,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[144][19] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_269),
+        .D(Parallel_STS_FIR_Filter_inst_n_270),
         .Q(\SHIFT_REGISTER_reg[144] [19]),
         .R(1'b0));
   FDRE #(
@@ -78060,7 +78802,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[144][1] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_287),
+        .D(Parallel_STS_FIR_Filter_inst_n_288),
         .Q(\SHIFT_REGISTER_reg[144] [1]),
         .R(1'b0));
   FDRE #(
@@ -78068,7 +78810,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[144][20] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_268),
+        .D(Parallel_STS_FIR_Filter_inst_n_269),
         .Q(\SHIFT_REGISTER_reg[144] [20]),
         .R(1'b0));
   FDRE #(
@@ -78076,7 +78818,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[144][21] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_267),
+        .D(Parallel_STS_FIR_Filter_inst_n_268),
         .Q(\SHIFT_REGISTER_reg[144] [21]),
         .R(1'b0));
   FDRE #(
@@ -78084,7 +78826,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[144][22] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_266),
+        .D(Parallel_STS_FIR_Filter_inst_n_267),
         .Q(\SHIFT_REGISTER_reg[144] [22]),
         .R(1'b0));
   FDRE #(
@@ -78092,7 +78834,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[144][23] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_265),
+        .D(Parallel_STS_FIR_Filter_inst_n_266),
         .Q(\SHIFT_REGISTER_reg[144] [23]),
         .R(1'b0));
   FDRE #(
@@ -78100,7 +78842,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[144][24] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_264),
+        .D(Parallel_STS_FIR_Filter_inst_n_265),
         .Q(\SHIFT_REGISTER_reg[144] [24]),
         .R(1'b0));
   FDRE #(
@@ -78108,7 +78850,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[144][25] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_263),
+        .D(Parallel_STS_FIR_Filter_inst_n_264),
         .Q(\SHIFT_REGISTER_reg[144] [25]),
         .R(1'b0));
   FDRE #(
@@ -78116,7 +78858,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[144][26] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_262),
+        .D(Parallel_STS_FIR_Filter_inst_n_263),
         .Q(\SHIFT_REGISTER_reg[144] [26]),
         .R(1'b0));
   FDRE #(
@@ -78124,7 +78866,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[144][27] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_261),
+        .D(Parallel_STS_FIR_Filter_inst_n_262),
         .Q(\SHIFT_REGISTER_reg[144] [27]),
         .R(1'b0));
   FDRE #(
@@ -78132,7 +78874,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[144][28] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_260),
+        .D(Parallel_STS_FIR_Filter_inst_n_261),
         .Q(\SHIFT_REGISTER_reg[144] [28]),
         .R(1'b0));
   FDRE #(
@@ -78140,7 +78882,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[144][29] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_259),
+        .D(Parallel_STS_FIR_Filter_inst_n_260),
         .Q(\SHIFT_REGISTER_reg[144] [29]),
         .R(1'b0));
   FDRE #(
@@ -78148,7 +78890,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[144][2] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_286),
+        .D(Parallel_STS_FIR_Filter_inst_n_287),
         .Q(\SHIFT_REGISTER_reg[144] [2]),
         .R(1'b0));
   FDRE #(
@@ -78156,7 +78898,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[144][30] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_258),
+        .D(Parallel_STS_FIR_Filter_inst_n_259),
         .Q(\SHIFT_REGISTER_reg[144] [30]),
         .R(1'b0));
   FDRE #(
@@ -78164,7 +78906,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[144][31] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_257),
+        .D(Parallel_STS_FIR_Filter_inst_n_258),
         .Q(\SHIFT_REGISTER_reg[144] [31]),
         .R(1'b0));
   FDRE #(
@@ -78172,7 +78914,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[144][3] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_285),
+        .D(Parallel_STS_FIR_Filter_inst_n_286),
         .Q(\SHIFT_REGISTER_reg[144] [3]),
         .R(1'b0));
   FDRE #(
@@ -78180,7 +78922,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[144][4] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_284),
+        .D(Parallel_STS_FIR_Filter_inst_n_285),
         .Q(\SHIFT_REGISTER_reg[144] [4]),
         .R(1'b0));
   FDRE #(
@@ -78188,7 +78930,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[144][5] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_283),
+        .D(Parallel_STS_FIR_Filter_inst_n_284),
         .Q(\SHIFT_REGISTER_reg[144] [5]),
         .R(1'b0));
   FDRE #(
@@ -78196,7 +78938,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[144][6] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_282),
+        .D(Parallel_STS_FIR_Filter_inst_n_283),
         .Q(\SHIFT_REGISTER_reg[144] [6]),
         .R(1'b0));
   FDRE #(
@@ -78204,7 +78946,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[144][7] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_281),
+        .D(Parallel_STS_FIR_Filter_inst_n_282),
         .Q(\SHIFT_REGISTER_reg[144] [7]),
         .R(1'b0));
   FDRE #(
@@ -78212,7 +78954,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[144][8] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_280),
+        .D(Parallel_STS_FIR_Filter_inst_n_281),
         .Q(\SHIFT_REGISTER_reg[144] [8]),
         .R(1'b0));
   FDRE #(
@@ -78220,7 +78962,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[144][9] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_279),
+        .D(Parallel_STS_FIR_Filter_inst_n_280),
         .Q(\SHIFT_REGISTER_reg[144] [9]),
         .R(1'b0));
   (* srl_bus_name = "\\U0/SHIFT_REGISTER_reg[14] " *) 
@@ -79657,7 +80399,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[32][0] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_39),
+        .D(Parallel_STS_FIR_Filter_inst_n_40),
         .Q(\SHIFT_REGISTER_reg_n_0_[32][0] ),
         .R(1'b0));
   FDRE #(
@@ -79665,7 +80407,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[32][10] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_45),
+        .D(Parallel_STS_FIR_Filter_inst_n_46),
         .Q(\SHIFT_REGISTER_reg_n_0_[32][10] ),
         .R(1'b0));
   FDRE #(
@@ -79673,7 +80415,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[32][11] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_44),
+        .D(Parallel_STS_FIR_Filter_inst_n_45),
         .Q(\SHIFT_REGISTER_reg_n_0_[32][11] ),
         .R(1'b0));
   FDRE #(
@@ -79681,7 +80423,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[32][12] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_51),
+        .D(Parallel_STS_FIR_Filter_inst_n_52),
         .Q(\SHIFT_REGISTER_reg_n_0_[32][12] ),
         .R(1'b0));
   FDRE #(
@@ -79689,7 +80431,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[32][13] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_50),
+        .D(Parallel_STS_FIR_Filter_inst_n_51),
         .Q(\SHIFT_REGISTER_reg_n_0_[32][13] ),
         .R(1'b0));
   FDRE #(
@@ -79697,7 +80439,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[32][14] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_49),
+        .D(Parallel_STS_FIR_Filter_inst_n_50),
         .Q(\SHIFT_REGISTER_reg_n_0_[32][14] ),
         .R(1'b0));
   FDRE #(
@@ -79705,7 +80447,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[32][15] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_48),
+        .D(Parallel_STS_FIR_Filter_inst_n_49),
         .Q(\SHIFT_REGISTER_reg_n_0_[32][15] ),
         .R(1'b0));
   FDRE #(
@@ -79713,7 +80455,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[32][16] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_55),
+        .D(Parallel_STS_FIR_Filter_inst_n_56),
         .Q(\SHIFT_REGISTER_reg_n_0_[32][16] ),
         .R(1'b0));
   FDRE #(
@@ -79721,7 +80463,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[32][17] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_54),
+        .D(Parallel_STS_FIR_Filter_inst_n_55),
         .Q(\SHIFT_REGISTER_reg_n_0_[32][17] ),
         .R(1'b0));
   FDRE #(
@@ -79729,7 +80471,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[32][18] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_53),
+        .D(Parallel_STS_FIR_Filter_inst_n_54),
         .Q(\SHIFT_REGISTER_reg_n_0_[32][18] ),
         .R(1'b0));
   FDRE #(
@@ -79737,7 +80479,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[32][19] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_52),
+        .D(Parallel_STS_FIR_Filter_inst_n_53),
         .Q(\SHIFT_REGISTER_reg_n_0_[32][19] ),
         .R(1'b0));
   FDRE #(
@@ -79745,7 +80487,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[32][1] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_38),
+        .D(Parallel_STS_FIR_Filter_inst_n_39),
         .Q(\SHIFT_REGISTER_reg_n_0_[32][1] ),
         .R(1'b0));
   FDRE #(
@@ -79753,7 +80495,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[32][20] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_59),
+        .D(Parallel_STS_FIR_Filter_inst_n_60),
         .Q(\SHIFT_REGISTER_reg_n_0_[32][20] ),
         .R(1'b0));
   FDRE #(
@@ -79761,7 +80503,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[32][21] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_58),
+        .D(Parallel_STS_FIR_Filter_inst_n_59),
         .Q(\SHIFT_REGISTER_reg_n_0_[32][21] ),
         .R(1'b0));
   FDRE #(
@@ -79769,7 +80511,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[32][22] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_57),
+        .D(Parallel_STS_FIR_Filter_inst_n_58),
         .Q(\SHIFT_REGISTER_reg_n_0_[32][22] ),
         .R(1'b0));
   FDRE #(
@@ -79777,7 +80519,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[32][23] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_56),
+        .D(Parallel_STS_FIR_Filter_inst_n_57),
         .Q(\SHIFT_REGISTER_reg_n_0_[32][23] ),
         .R(1'b0));
   FDRE #(
@@ -79785,7 +80527,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[32][24] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_63),
+        .D(Parallel_STS_FIR_Filter_inst_n_64),
         .Q(\SHIFT_REGISTER_reg_n_0_[32][24] ),
         .R(1'b0));
   FDRE #(
@@ -79793,7 +80535,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[32][25] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_62),
+        .D(Parallel_STS_FIR_Filter_inst_n_63),
         .Q(\SHIFT_REGISTER_reg_n_0_[32][25] ),
         .R(1'b0));
   FDRE #(
@@ -79801,7 +80543,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[32][26] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_61),
+        .D(Parallel_STS_FIR_Filter_inst_n_62),
         .Q(\SHIFT_REGISTER_reg_n_0_[32][26] ),
         .R(1'b0));
   FDRE #(
@@ -79809,7 +80551,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[32][27] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_60),
+        .D(Parallel_STS_FIR_Filter_inst_n_61),
         .Q(\SHIFT_REGISTER_reg_n_0_[32][27] ),
         .R(1'b0));
   FDRE #(
@@ -79817,7 +80559,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[32][28] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_65),
+        .D(Parallel_STS_FIR_Filter_inst_n_66),
         .Q(\SHIFT_REGISTER_reg_n_0_[32][28] ),
         .R(1'b0));
   FDRE #(
@@ -79825,7 +80567,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[32][29] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_64),
+        .D(Parallel_STS_FIR_Filter_inst_n_65),
         .Q(\SHIFT_REGISTER_reg_n_0_[32][29] ),
         .R(1'b0));
   FDRE #(
@@ -79833,7 +80575,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[32][2] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_37),
+        .D(Parallel_STS_FIR_Filter_inst_n_38),
         .Q(\SHIFT_REGISTER_reg_n_0_[32][2] ),
         .R(1'b0));
   FDRE #(
@@ -79841,7 +80583,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[32][3] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_36),
+        .D(Parallel_STS_FIR_Filter_inst_n_37),
         .Q(\SHIFT_REGISTER_reg_n_0_[32][3] ),
         .R(1'b0));
   FDRE #(
@@ -79849,7 +80591,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[32][4] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_43),
+        .D(Parallel_STS_FIR_Filter_inst_n_44),
         .Q(\SHIFT_REGISTER_reg_n_0_[32][4] ),
         .R(1'b0));
   FDRE #(
@@ -79857,7 +80599,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[32][5] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_42),
+        .D(Parallel_STS_FIR_Filter_inst_n_43),
         .Q(\SHIFT_REGISTER_reg_n_0_[32][5] ),
         .R(1'b0));
   FDRE #(
@@ -79865,7 +80607,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[32][6] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_41),
+        .D(Parallel_STS_FIR_Filter_inst_n_42),
         .Q(\SHIFT_REGISTER_reg_n_0_[32][6] ),
         .R(1'b0));
   FDRE #(
@@ -79873,7 +80615,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[32][7] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_40),
+        .D(Parallel_STS_FIR_Filter_inst_n_41),
         .Q(\SHIFT_REGISTER_reg_n_0_[32][7] ),
         .R(1'b0));
   FDRE #(
@@ -79881,7 +80623,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[32][8] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_47),
+        .D(Parallel_STS_FIR_Filter_inst_n_48),
         .Q(\SHIFT_REGISTER_reg_n_0_[32][8] ),
         .R(1'b0));
   FDRE #(
@@ -79889,7 +80631,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[32][9] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_46),
+        .D(Parallel_STS_FIR_Filter_inst_n_47),
         .Q(\SHIFT_REGISTER_reg_n_0_[32][9] ),
         .R(1'b0));
   (* srl_bus_name = "\\U0/SHIFT_REGISTER_reg[46] " *) 
@@ -80527,7 +81269,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[48][0] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_69),
+        .D(Parallel_STS_FIR_Filter_inst_n_70),
         .Q(\SHIFT_REGISTER_reg_n_0_[48][0] ),
         .R(1'b0));
   FDRE #(
@@ -80535,7 +81277,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[48][10] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_75),
+        .D(Parallel_STS_FIR_Filter_inst_n_76),
         .Q(\SHIFT_REGISTER_reg_n_0_[48][10] ),
         .R(1'b0));
   FDRE #(
@@ -80543,7 +81285,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[48][11] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_74),
+        .D(Parallel_STS_FIR_Filter_inst_n_75),
         .Q(\SHIFT_REGISTER_reg_n_0_[48][11] ),
         .R(1'b0));
   FDRE #(
@@ -80551,7 +81293,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[48][12] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_81),
+        .D(Parallel_STS_FIR_Filter_inst_n_82),
         .Q(\SHIFT_REGISTER_reg_n_0_[48][12] ),
         .R(1'b0));
   FDRE #(
@@ -80559,7 +81301,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[48][13] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_80),
+        .D(Parallel_STS_FIR_Filter_inst_n_81),
         .Q(\SHIFT_REGISTER_reg_n_0_[48][13] ),
         .R(1'b0));
   FDRE #(
@@ -80567,7 +81309,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[48][14] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_79),
+        .D(Parallel_STS_FIR_Filter_inst_n_80),
         .Q(\SHIFT_REGISTER_reg_n_0_[48][14] ),
         .R(1'b0));
   FDRE #(
@@ -80575,7 +81317,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[48][15] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_78),
+        .D(Parallel_STS_FIR_Filter_inst_n_79),
         .Q(\SHIFT_REGISTER_reg_n_0_[48][15] ),
         .R(1'b0));
   FDRE #(
@@ -80583,7 +81325,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[48][16] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_85),
+        .D(Parallel_STS_FIR_Filter_inst_n_86),
         .Q(\SHIFT_REGISTER_reg_n_0_[48][16] ),
         .R(1'b0));
   FDRE #(
@@ -80591,7 +81333,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[48][17] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_84),
+        .D(Parallel_STS_FIR_Filter_inst_n_85),
         .Q(\SHIFT_REGISTER_reg_n_0_[48][17] ),
         .R(1'b0));
   FDRE #(
@@ -80599,7 +81341,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[48][18] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_83),
+        .D(Parallel_STS_FIR_Filter_inst_n_84),
         .Q(\SHIFT_REGISTER_reg_n_0_[48][18] ),
         .R(1'b0));
   FDRE #(
@@ -80607,7 +81349,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[48][19] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_82),
+        .D(Parallel_STS_FIR_Filter_inst_n_83),
         .Q(\SHIFT_REGISTER_reg_n_0_[48][19] ),
         .R(1'b0));
   FDRE #(
@@ -80615,7 +81357,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[48][1] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_68),
+        .D(Parallel_STS_FIR_Filter_inst_n_69),
         .Q(\SHIFT_REGISTER_reg_n_0_[48][1] ),
         .R(1'b0));
   FDRE #(
@@ -80623,7 +81365,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[48][20] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_89),
+        .D(Parallel_STS_FIR_Filter_inst_n_90),
         .Q(\SHIFT_REGISTER_reg_n_0_[48][20] ),
         .R(1'b0));
   FDRE #(
@@ -80631,7 +81373,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[48][21] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_88),
+        .D(Parallel_STS_FIR_Filter_inst_n_89),
         .Q(\SHIFT_REGISTER_reg_n_0_[48][21] ),
         .R(1'b0));
   FDRE #(
@@ -80639,7 +81381,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[48][22] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_87),
+        .D(Parallel_STS_FIR_Filter_inst_n_88),
         .Q(\SHIFT_REGISTER_reg_n_0_[48][22] ),
         .R(1'b0));
   FDRE #(
@@ -80647,7 +81389,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[48][23] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_86),
+        .D(Parallel_STS_FIR_Filter_inst_n_87),
         .Q(\SHIFT_REGISTER_reg_n_0_[48][23] ),
         .R(1'b0));
   FDRE #(
@@ -80655,7 +81397,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[48][24] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_93),
+        .D(Parallel_STS_FIR_Filter_inst_n_94),
         .Q(\SHIFT_REGISTER_reg_n_0_[48][24] ),
         .R(1'b0));
   FDRE #(
@@ -80663,7 +81405,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[48][25] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_92),
+        .D(Parallel_STS_FIR_Filter_inst_n_93),
         .Q(\SHIFT_REGISTER_reg_n_0_[48][25] ),
         .R(1'b0));
   FDRE #(
@@ -80671,7 +81413,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[48][26] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_91),
+        .D(Parallel_STS_FIR_Filter_inst_n_92),
         .Q(\SHIFT_REGISTER_reg_n_0_[48][26] ),
         .R(1'b0));
   FDRE #(
@@ -80679,7 +81421,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[48][27] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_90),
+        .D(Parallel_STS_FIR_Filter_inst_n_91),
         .Q(\SHIFT_REGISTER_reg_n_0_[48][27] ),
         .R(1'b0));
   FDRE #(
@@ -80687,7 +81429,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[48][28] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_96),
+        .D(Parallel_STS_FIR_Filter_inst_n_97),
         .Q(\SHIFT_REGISTER_reg_n_0_[48][28] ),
         .R(1'b0));
   FDRE #(
@@ -80695,7 +81437,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[48][29] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_95),
+        .D(Parallel_STS_FIR_Filter_inst_n_96),
         .Q(\SHIFT_REGISTER_reg_n_0_[48][29] ),
         .R(1'b0));
   FDRE #(
@@ -80703,7 +81445,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[48][2] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_67),
+        .D(Parallel_STS_FIR_Filter_inst_n_68),
         .Q(\SHIFT_REGISTER_reg_n_0_[48][2] ),
         .R(1'b0));
   FDRE #(
@@ -80711,7 +81453,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[48][30] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_94),
+        .D(Parallel_STS_FIR_Filter_inst_n_95),
         .Q(\SHIFT_REGISTER_reg_n_0_[48][30] ),
         .R(1'b0));
   FDRE #(
@@ -80719,7 +81461,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[48][3] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_66),
+        .D(Parallel_STS_FIR_Filter_inst_n_67),
         .Q(\SHIFT_REGISTER_reg_n_0_[48][3] ),
         .R(1'b0));
   FDRE #(
@@ -80727,7 +81469,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[48][4] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_73),
+        .D(Parallel_STS_FIR_Filter_inst_n_74),
         .Q(\SHIFT_REGISTER_reg_n_0_[48][4] ),
         .R(1'b0));
   FDRE #(
@@ -80735,7 +81477,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[48][5] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_72),
+        .D(Parallel_STS_FIR_Filter_inst_n_73),
         .Q(\SHIFT_REGISTER_reg_n_0_[48][5] ),
         .R(1'b0));
   FDRE #(
@@ -80743,7 +81485,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[48][6] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_71),
+        .D(Parallel_STS_FIR_Filter_inst_n_72),
         .Q(\SHIFT_REGISTER_reg_n_0_[48][6] ),
         .R(1'b0));
   FDRE #(
@@ -80751,7 +81493,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[48][7] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_70),
+        .D(Parallel_STS_FIR_Filter_inst_n_71),
         .Q(\SHIFT_REGISTER_reg_n_0_[48][7] ),
         .R(1'b0));
   FDRE #(
@@ -80759,7 +81501,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[48][8] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_77),
+        .D(Parallel_STS_FIR_Filter_inst_n_78),
         .Q(\SHIFT_REGISTER_reg_n_0_[48][8] ),
         .R(1'b0));
   FDRE #(
@@ -80767,7 +81509,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[48][9] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_76),
+        .D(Parallel_STS_FIR_Filter_inst_n_77),
         .Q(\SHIFT_REGISTER_reg_n_0_[48][9] ),
         .R(1'b0));
   (* srl_bus_name = "\\U0/SHIFT_REGISTER_reg[62] " *) 
@@ -81426,7 +82168,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[64][0] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_100),
+        .D(Parallel_STS_FIR_Filter_inst_n_101),
         .Q(\SHIFT_REGISTER_reg_n_0_[64][0] ),
         .R(1'b0));
   FDRE #(
@@ -81434,7 +82176,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[64][10] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_106),
+        .D(Parallel_STS_FIR_Filter_inst_n_107),
         .Q(\SHIFT_REGISTER_reg_n_0_[64][10] ),
         .R(1'b0));
   FDRE #(
@@ -81442,7 +82184,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[64][11] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_105),
+        .D(Parallel_STS_FIR_Filter_inst_n_106),
         .Q(\SHIFT_REGISTER_reg_n_0_[64][11] ),
         .R(1'b0));
   FDRE #(
@@ -81450,7 +82192,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[64][12] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_112),
+        .D(Parallel_STS_FIR_Filter_inst_n_113),
         .Q(\SHIFT_REGISTER_reg_n_0_[64][12] ),
         .R(1'b0));
   FDRE #(
@@ -81458,7 +82200,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[64][13] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_111),
+        .D(Parallel_STS_FIR_Filter_inst_n_112),
         .Q(\SHIFT_REGISTER_reg_n_0_[64][13] ),
         .R(1'b0));
   FDRE #(
@@ -81466,7 +82208,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[64][14] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_110),
+        .D(Parallel_STS_FIR_Filter_inst_n_111),
         .Q(\SHIFT_REGISTER_reg_n_0_[64][14] ),
         .R(1'b0));
   FDRE #(
@@ -81474,7 +82216,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[64][15] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_109),
+        .D(Parallel_STS_FIR_Filter_inst_n_110),
         .Q(\SHIFT_REGISTER_reg_n_0_[64][15] ),
         .R(1'b0));
   FDRE #(
@@ -81482,7 +82224,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[64][16] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_116),
+        .D(Parallel_STS_FIR_Filter_inst_n_117),
         .Q(\SHIFT_REGISTER_reg_n_0_[64][16] ),
         .R(1'b0));
   FDRE #(
@@ -81490,7 +82232,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[64][17] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_115),
+        .D(Parallel_STS_FIR_Filter_inst_n_116),
         .Q(\SHIFT_REGISTER_reg_n_0_[64][17] ),
         .R(1'b0));
   FDRE #(
@@ -81498,7 +82240,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[64][18] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_114),
+        .D(Parallel_STS_FIR_Filter_inst_n_115),
         .Q(\SHIFT_REGISTER_reg_n_0_[64][18] ),
         .R(1'b0));
   FDRE #(
@@ -81506,7 +82248,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[64][19] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_113),
+        .D(Parallel_STS_FIR_Filter_inst_n_114),
         .Q(\SHIFT_REGISTER_reg_n_0_[64][19] ),
         .R(1'b0));
   FDRE #(
@@ -81514,7 +82256,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[64][1] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_99),
+        .D(Parallel_STS_FIR_Filter_inst_n_100),
         .Q(\SHIFT_REGISTER_reg_n_0_[64][1] ),
         .R(1'b0));
   FDRE #(
@@ -81522,7 +82264,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[64][20] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_120),
+        .D(Parallel_STS_FIR_Filter_inst_n_121),
         .Q(\SHIFT_REGISTER_reg_n_0_[64][20] ),
         .R(1'b0));
   FDRE #(
@@ -81530,7 +82272,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[64][21] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_119),
+        .D(Parallel_STS_FIR_Filter_inst_n_120),
         .Q(\SHIFT_REGISTER_reg_n_0_[64][21] ),
         .R(1'b0));
   FDRE #(
@@ -81538,7 +82280,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[64][22] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_118),
+        .D(Parallel_STS_FIR_Filter_inst_n_119),
         .Q(\SHIFT_REGISTER_reg_n_0_[64][22] ),
         .R(1'b0));
   FDRE #(
@@ -81546,7 +82288,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[64][23] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_117),
+        .D(Parallel_STS_FIR_Filter_inst_n_118),
         .Q(\SHIFT_REGISTER_reg_n_0_[64][23] ),
         .R(1'b0));
   FDRE #(
@@ -81554,7 +82296,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[64][24] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_124),
+        .D(Parallel_STS_FIR_Filter_inst_n_125),
         .Q(\SHIFT_REGISTER_reg_n_0_[64][24] ),
         .R(1'b0));
   FDRE #(
@@ -81562,7 +82304,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[64][25] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_123),
+        .D(Parallel_STS_FIR_Filter_inst_n_124),
         .Q(\SHIFT_REGISTER_reg_n_0_[64][25] ),
         .R(1'b0));
   FDRE #(
@@ -81570,7 +82312,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[64][26] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_122),
+        .D(Parallel_STS_FIR_Filter_inst_n_123),
         .Q(\SHIFT_REGISTER_reg_n_0_[64][26] ),
         .R(1'b0));
   FDRE #(
@@ -81578,7 +82320,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[64][27] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_121),
+        .D(Parallel_STS_FIR_Filter_inst_n_122),
         .Q(\SHIFT_REGISTER_reg_n_0_[64][27] ),
         .R(1'b0));
   FDRE #(
@@ -81586,7 +82328,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[64][28] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_128),
+        .D(Parallel_STS_FIR_Filter_inst_n_129),
         .Q(\SHIFT_REGISTER_reg_n_0_[64][28] ),
         .R(1'b0));
   FDRE #(
@@ -81594,7 +82336,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[64][29] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_127),
+        .D(Parallel_STS_FIR_Filter_inst_n_128),
         .Q(\SHIFT_REGISTER_reg_n_0_[64][29] ),
         .R(1'b0));
   FDRE #(
@@ -81602,7 +82344,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[64][2] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_98),
+        .D(Parallel_STS_FIR_Filter_inst_n_99),
         .Q(\SHIFT_REGISTER_reg_n_0_[64][2] ),
         .R(1'b0));
   FDRE #(
@@ -81610,7 +82352,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[64][30] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_126),
+        .D(Parallel_STS_FIR_Filter_inst_n_127),
         .Q(\SHIFT_REGISTER_reg_n_0_[64][30] ),
         .R(1'b0));
   FDRE #(
@@ -81618,7 +82360,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[64][31] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_125),
+        .D(Parallel_STS_FIR_Filter_inst_n_126),
         .Q(\SHIFT_REGISTER_reg_n_0_[64][31] ),
         .R(1'b0));
   FDRE #(
@@ -81626,7 +82368,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[64][3] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_97),
+        .D(Parallel_STS_FIR_Filter_inst_n_98),
         .Q(\SHIFT_REGISTER_reg_n_0_[64][3] ),
         .R(1'b0));
   FDRE #(
@@ -81634,7 +82376,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[64][4] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_104),
+        .D(Parallel_STS_FIR_Filter_inst_n_105),
         .Q(\SHIFT_REGISTER_reg_n_0_[64][4] ),
         .R(1'b0));
   FDRE #(
@@ -81642,7 +82384,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[64][5] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_103),
+        .D(Parallel_STS_FIR_Filter_inst_n_104),
         .Q(\SHIFT_REGISTER_reg_n_0_[64][5] ),
         .R(1'b0));
   FDRE #(
@@ -81650,7 +82392,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[64][6] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_102),
+        .D(Parallel_STS_FIR_Filter_inst_n_103),
         .Q(\SHIFT_REGISTER_reg_n_0_[64][6] ),
         .R(1'b0));
   FDRE #(
@@ -81658,7 +82400,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[64][7] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_101),
+        .D(Parallel_STS_FIR_Filter_inst_n_102),
         .Q(\SHIFT_REGISTER_reg_n_0_[64][7] ),
         .R(1'b0));
   FDRE #(
@@ -81666,7 +82408,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[64][8] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_108),
+        .D(Parallel_STS_FIR_Filter_inst_n_109),
         .Q(\SHIFT_REGISTER_reg_n_0_[64][8] ),
         .R(1'b0));
   FDRE #(
@@ -81674,7 +82416,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[64][9] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_107),
+        .D(Parallel_STS_FIR_Filter_inst_n_108),
         .Q(\SHIFT_REGISTER_reg_n_0_[64][9] ),
         .R(1'b0));
   (* srl_bus_name = "\\U0/SHIFT_REGISTER_reg[78] " *) 
@@ -82354,7 +83096,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[80][0] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_132),
+        .D(Parallel_STS_FIR_Filter_inst_n_133),
         .Q(\SHIFT_REGISTER_reg_n_0_[80][0] ),
         .R(1'b0));
   FDRE #(
@@ -82362,7 +83104,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[80][10] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_138),
+        .D(Parallel_STS_FIR_Filter_inst_n_139),
         .Q(\SHIFT_REGISTER_reg_n_0_[80][10] ),
         .R(1'b0));
   FDRE #(
@@ -82370,7 +83112,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[80][11] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_137),
+        .D(Parallel_STS_FIR_Filter_inst_n_138),
         .Q(\SHIFT_REGISTER_reg_n_0_[80][11] ),
         .R(1'b0));
   FDRE #(
@@ -82378,7 +83120,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[80][12] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_144),
+        .D(Parallel_STS_FIR_Filter_inst_n_145),
         .Q(\SHIFT_REGISTER_reg_n_0_[80][12] ),
         .R(1'b0));
   FDRE #(
@@ -82386,7 +83128,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[80][13] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_143),
+        .D(Parallel_STS_FIR_Filter_inst_n_144),
         .Q(\SHIFT_REGISTER_reg_n_0_[80][13] ),
         .R(1'b0));
   FDRE #(
@@ -82394,7 +83136,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[80][14] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_142),
+        .D(Parallel_STS_FIR_Filter_inst_n_143),
         .Q(\SHIFT_REGISTER_reg_n_0_[80][14] ),
         .R(1'b0));
   FDRE #(
@@ -82402,7 +83144,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[80][15] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_141),
+        .D(Parallel_STS_FIR_Filter_inst_n_142),
         .Q(\SHIFT_REGISTER_reg_n_0_[80][15] ),
         .R(1'b0));
   FDRE #(
@@ -82410,7 +83152,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[80][16] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_148),
+        .D(Parallel_STS_FIR_Filter_inst_n_149),
         .Q(\SHIFT_REGISTER_reg_n_0_[80][16] ),
         .R(1'b0));
   FDRE #(
@@ -82418,7 +83160,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[80][17] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_147),
+        .D(Parallel_STS_FIR_Filter_inst_n_148),
         .Q(\SHIFT_REGISTER_reg_n_0_[80][17] ),
         .R(1'b0));
   FDRE #(
@@ -82426,7 +83168,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[80][18] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_146),
+        .D(Parallel_STS_FIR_Filter_inst_n_147),
         .Q(\SHIFT_REGISTER_reg_n_0_[80][18] ),
         .R(1'b0));
   FDRE #(
@@ -82434,7 +83176,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[80][19] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_145),
+        .D(Parallel_STS_FIR_Filter_inst_n_146),
         .Q(\SHIFT_REGISTER_reg_n_0_[80][19] ),
         .R(1'b0));
   FDRE #(
@@ -82442,7 +83184,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[80][1] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_131),
+        .D(Parallel_STS_FIR_Filter_inst_n_132),
         .Q(\SHIFT_REGISTER_reg_n_0_[80][1] ),
         .R(1'b0));
   FDRE #(
@@ -82450,7 +83192,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[80][20] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_152),
+        .D(Parallel_STS_FIR_Filter_inst_n_153),
         .Q(\SHIFT_REGISTER_reg_n_0_[80][20] ),
         .R(1'b0));
   FDRE #(
@@ -82458,7 +83200,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[80][21] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_151),
+        .D(Parallel_STS_FIR_Filter_inst_n_152),
         .Q(\SHIFT_REGISTER_reg_n_0_[80][21] ),
         .R(1'b0));
   FDRE #(
@@ -82466,7 +83208,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[80][22] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_150),
+        .D(Parallel_STS_FIR_Filter_inst_n_151),
         .Q(\SHIFT_REGISTER_reg_n_0_[80][22] ),
         .R(1'b0));
   FDRE #(
@@ -82474,7 +83216,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[80][23] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_149),
+        .D(Parallel_STS_FIR_Filter_inst_n_150),
         .Q(\SHIFT_REGISTER_reg_n_0_[80][23] ),
         .R(1'b0));
   FDRE #(
@@ -82482,7 +83224,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[80][24] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_156),
+        .D(Parallel_STS_FIR_Filter_inst_n_157),
         .Q(\SHIFT_REGISTER_reg_n_0_[80][24] ),
         .R(1'b0));
   FDRE #(
@@ -82490,7 +83232,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[80][25] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_155),
+        .D(Parallel_STS_FIR_Filter_inst_n_156),
         .Q(\SHIFT_REGISTER_reg_n_0_[80][25] ),
         .R(1'b0));
   FDRE #(
@@ -82498,7 +83240,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[80][26] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_154),
+        .D(Parallel_STS_FIR_Filter_inst_n_155),
         .Q(\SHIFT_REGISTER_reg_n_0_[80][26] ),
         .R(1'b0));
   FDRE #(
@@ -82506,7 +83248,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[80][27] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_153),
+        .D(Parallel_STS_FIR_Filter_inst_n_154),
         .Q(\SHIFT_REGISTER_reg_n_0_[80][27] ),
         .R(1'b0));
   FDRE #(
@@ -82514,7 +83256,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[80][28] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_160),
+        .D(Parallel_STS_FIR_Filter_inst_n_161),
         .Q(\SHIFT_REGISTER_reg_n_0_[80][28] ),
         .R(1'b0));
   FDRE #(
@@ -82522,7 +83264,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[80][29] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_159),
+        .D(Parallel_STS_FIR_Filter_inst_n_160),
         .Q(\SHIFT_REGISTER_reg_n_0_[80][29] ),
         .R(1'b0));
   FDRE #(
@@ -82530,7 +83272,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[80][2] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_130),
+        .D(Parallel_STS_FIR_Filter_inst_n_131),
         .Q(\SHIFT_REGISTER_reg_n_0_[80][2] ),
         .R(1'b0));
   FDRE #(
@@ -82538,7 +83280,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[80][30] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_158),
+        .D(Parallel_STS_FIR_Filter_inst_n_159),
         .Q(\SHIFT_REGISTER_reg_n_0_[80][30] ),
         .R(1'b0));
   FDRE #(
@@ -82546,7 +83288,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[80][31] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_157),
+        .D(Parallel_STS_FIR_Filter_inst_n_158),
         .Q(\SHIFT_REGISTER_reg_n_0_[80][31] ),
         .R(1'b0));
   FDRE #(
@@ -82554,7 +83296,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[80][3] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_129),
+        .D(Parallel_STS_FIR_Filter_inst_n_130),
         .Q(\SHIFT_REGISTER_reg_n_0_[80][3] ),
         .R(1'b0));
   FDRE #(
@@ -82562,7 +83304,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[80][4] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_136),
+        .D(Parallel_STS_FIR_Filter_inst_n_137),
         .Q(\SHIFT_REGISTER_reg_n_0_[80][4] ),
         .R(1'b0));
   FDRE #(
@@ -82570,7 +83312,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[80][5] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_135),
+        .D(Parallel_STS_FIR_Filter_inst_n_136),
         .Q(\SHIFT_REGISTER_reg_n_0_[80][5] ),
         .R(1'b0));
   FDRE #(
@@ -82578,7 +83320,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[80][6] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_134),
+        .D(Parallel_STS_FIR_Filter_inst_n_135),
         .Q(\SHIFT_REGISTER_reg_n_0_[80][6] ),
         .R(1'b0));
   FDRE #(
@@ -82586,7 +83328,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[80][7] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_133),
+        .D(Parallel_STS_FIR_Filter_inst_n_134),
         .Q(\SHIFT_REGISTER_reg_n_0_[80][7] ),
         .R(1'b0));
   FDRE #(
@@ -82594,7 +83336,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[80][8] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_140),
+        .D(Parallel_STS_FIR_Filter_inst_n_141),
         .Q(\SHIFT_REGISTER_reg_n_0_[80][8] ),
         .R(1'b0));
   FDRE #(
@@ -82602,7 +83344,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[80][9] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_139),
+        .D(Parallel_STS_FIR_Filter_inst_n_140),
         .Q(\SHIFT_REGISTER_reg_n_0_[80][9] ),
         .R(1'b0));
   (* srl_bus_name = "\\U0/SHIFT_REGISTER_reg[94] " *) 
@@ -83282,7 +84024,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[96][0] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_164),
+        .D(Parallel_STS_FIR_Filter_inst_n_165),
         .Q(\SHIFT_REGISTER_reg_n_0_[96][0] ),
         .R(1'b0));
   FDRE #(
@@ -83290,7 +84032,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[96][10] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_170),
+        .D(Parallel_STS_FIR_Filter_inst_n_171),
         .Q(\SHIFT_REGISTER_reg_n_0_[96][10] ),
         .R(1'b0));
   FDRE #(
@@ -83298,7 +84040,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[96][11] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_169),
+        .D(Parallel_STS_FIR_Filter_inst_n_170),
         .Q(\SHIFT_REGISTER_reg_n_0_[96][11] ),
         .R(1'b0));
   FDRE #(
@@ -83306,7 +84048,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[96][12] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_176),
+        .D(Parallel_STS_FIR_Filter_inst_n_177),
         .Q(\SHIFT_REGISTER_reg_n_0_[96][12] ),
         .R(1'b0));
   FDRE #(
@@ -83314,7 +84056,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[96][13] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_175),
+        .D(Parallel_STS_FIR_Filter_inst_n_176),
         .Q(\SHIFT_REGISTER_reg_n_0_[96][13] ),
         .R(1'b0));
   FDRE #(
@@ -83322,7 +84064,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[96][14] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_174),
+        .D(Parallel_STS_FIR_Filter_inst_n_175),
         .Q(\SHIFT_REGISTER_reg_n_0_[96][14] ),
         .R(1'b0));
   FDRE #(
@@ -83330,7 +84072,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[96][15] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_173),
+        .D(Parallel_STS_FIR_Filter_inst_n_174),
         .Q(\SHIFT_REGISTER_reg_n_0_[96][15] ),
         .R(1'b0));
   FDRE #(
@@ -83338,7 +84080,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[96][16] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_180),
+        .D(Parallel_STS_FIR_Filter_inst_n_181),
         .Q(\SHIFT_REGISTER_reg_n_0_[96][16] ),
         .R(1'b0));
   FDRE #(
@@ -83346,7 +84088,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[96][17] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_179),
+        .D(Parallel_STS_FIR_Filter_inst_n_180),
         .Q(\SHIFT_REGISTER_reg_n_0_[96][17] ),
         .R(1'b0));
   FDRE #(
@@ -83354,7 +84096,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[96][18] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_178),
+        .D(Parallel_STS_FIR_Filter_inst_n_179),
         .Q(\SHIFT_REGISTER_reg_n_0_[96][18] ),
         .R(1'b0));
   FDRE #(
@@ -83362,7 +84104,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[96][19] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_177),
+        .D(Parallel_STS_FIR_Filter_inst_n_178),
         .Q(\SHIFT_REGISTER_reg_n_0_[96][19] ),
         .R(1'b0));
   FDRE #(
@@ -83370,7 +84112,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[96][1] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_163),
+        .D(Parallel_STS_FIR_Filter_inst_n_164),
         .Q(\SHIFT_REGISTER_reg_n_0_[96][1] ),
         .R(1'b0));
   FDRE #(
@@ -83378,7 +84120,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[96][20] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_184),
+        .D(Parallel_STS_FIR_Filter_inst_n_185),
         .Q(\SHIFT_REGISTER_reg_n_0_[96][20] ),
         .R(1'b0));
   FDRE #(
@@ -83386,7 +84128,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[96][21] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_183),
+        .D(Parallel_STS_FIR_Filter_inst_n_184),
         .Q(\SHIFT_REGISTER_reg_n_0_[96][21] ),
         .R(1'b0));
   FDRE #(
@@ -83394,7 +84136,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[96][22] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_182),
+        .D(Parallel_STS_FIR_Filter_inst_n_183),
         .Q(\SHIFT_REGISTER_reg_n_0_[96][22] ),
         .R(1'b0));
   FDRE #(
@@ -83402,7 +84144,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[96][23] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_181),
+        .D(Parallel_STS_FIR_Filter_inst_n_182),
         .Q(\SHIFT_REGISTER_reg_n_0_[96][23] ),
         .R(1'b0));
   FDRE #(
@@ -83410,7 +84152,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[96][24] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_188),
+        .D(Parallel_STS_FIR_Filter_inst_n_189),
         .Q(\SHIFT_REGISTER_reg_n_0_[96][24] ),
         .R(1'b0));
   FDRE #(
@@ -83418,7 +84160,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[96][25] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_187),
+        .D(Parallel_STS_FIR_Filter_inst_n_188),
         .Q(\SHIFT_REGISTER_reg_n_0_[96][25] ),
         .R(1'b0));
   FDRE #(
@@ -83426,7 +84168,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[96][26] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_186),
+        .D(Parallel_STS_FIR_Filter_inst_n_187),
         .Q(\SHIFT_REGISTER_reg_n_0_[96][26] ),
         .R(1'b0));
   FDRE #(
@@ -83434,7 +84176,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[96][27] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_185),
+        .D(Parallel_STS_FIR_Filter_inst_n_186),
         .Q(\SHIFT_REGISTER_reg_n_0_[96][27] ),
         .R(1'b0));
   FDRE #(
@@ -83442,7 +84184,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[96][28] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_192),
+        .D(Parallel_STS_FIR_Filter_inst_n_193),
         .Q(\SHIFT_REGISTER_reg_n_0_[96][28] ),
         .R(1'b0));
   FDRE #(
@@ -83450,7 +84192,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[96][29] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_191),
+        .D(Parallel_STS_FIR_Filter_inst_n_192),
         .Q(\SHIFT_REGISTER_reg_n_0_[96][29] ),
         .R(1'b0));
   FDRE #(
@@ -83458,7 +84200,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[96][2] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_162),
+        .D(Parallel_STS_FIR_Filter_inst_n_163),
         .Q(\SHIFT_REGISTER_reg_n_0_[96][2] ),
         .R(1'b0));
   FDRE #(
@@ -83466,7 +84208,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[96][30] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_190),
+        .D(Parallel_STS_FIR_Filter_inst_n_191),
         .Q(\SHIFT_REGISTER_reg_n_0_[96][30] ),
         .R(1'b0));
   FDRE #(
@@ -83474,7 +84216,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[96][31] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_189),
+        .D(Parallel_STS_FIR_Filter_inst_n_190),
         .Q(\SHIFT_REGISTER_reg_n_0_[96][31] ),
         .R(1'b0));
   FDRE #(
@@ -83482,7 +84224,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[96][3] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_161),
+        .D(Parallel_STS_FIR_Filter_inst_n_162),
         .Q(\SHIFT_REGISTER_reg_n_0_[96][3] ),
         .R(1'b0));
   FDRE #(
@@ -83490,7 +84232,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[96][4] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_168),
+        .D(Parallel_STS_FIR_Filter_inst_n_169),
         .Q(\SHIFT_REGISTER_reg_n_0_[96][4] ),
         .R(1'b0));
   FDRE #(
@@ -83498,7 +84240,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[96][5] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_167),
+        .D(Parallel_STS_FIR_Filter_inst_n_168),
         .Q(\SHIFT_REGISTER_reg_n_0_[96][5] ),
         .R(1'b0));
   FDRE #(
@@ -83506,7 +84248,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[96][6] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_166),
+        .D(Parallel_STS_FIR_Filter_inst_n_167),
         .Q(\SHIFT_REGISTER_reg_n_0_[96][6] ),
         .R(1'b0));
   FDRE #(
@@ -83514,7 +84256,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[96][7] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_165),
+        .D(Parallel_STS_FIR_Filter_inst_n_166),
         .Q(\SHIFT_REGISTER_reg_n_0_[96][7] ),
         .R(1'b0));
   FDRE #(
@@ -83522,7 +84264,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[96][8] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_172),
+        .D(Parallel_STS_FIR_Filter_inst_n_173),
         .Q(\SHIFT_REGISTER_reg_n_0_[96][8] ),
         .R(1'b0));
   FDRE #(
@@ -83530,7 +84272,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
     \SHIFT_REGISTER_reg[96][9] 
        (.C(CLOCK),
         .CE(DATA_OUT_STROBE),
-        .D(Parallel_STS_FIR_Filter_inst_n_171),
+        .D(Parallel_STS_FIR_Filter_inst_n_172),
         .Q(\SHIFT_REGISTER_reg_n_0_[96][9] ),
         .R(1'b0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -83538,7 +84280,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
        (.CI(1'b0),
         .CO({STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry_n_0,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry_n_1,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry_n_2,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry_n_3}),
         .CYINIT(1'b0),
-        .DI(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[3:0]),
+        .DI({\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[3] ,\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[2] ,\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[1] ,\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[0] }),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[3:0]),
         .S({STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry_i_1_n_0,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry_i_2_n_0,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry_i_3_n_0,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry_i_4_n_0}));
   (* ADDER_THRESHOLD = "35" *) 
@@ -83546,31 +84288,31 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
        (.CI(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry_n_0),
         .CO({STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__0_n_0,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__0_n_1,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__0_n_2,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__0_n_3}),
         .CYINIT(1'b0),
-        .DI(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[7:4]),
+        .DI({\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[7] ,\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[6] ,\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[5] ,\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[4] }),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[7:4]),
         .S({STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__0_i_1_n_0,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__0_i_2_n_0,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__0_i_3_n_0,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__0_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__0_i_1
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[7]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[7] ),
         .I1(STS_AUTOCORR_I_16_DELAYED_BUFF[7]),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__0_i_1_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__0_i_2
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[6]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[6] ),
         .I1(STS_AUTOCORR_I_16_DELAYED_BUFF[6]),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__0_i_2_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__0_i_3
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[5]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[5] ),
         .I1(STS_AUTOCORR_I_16_DELAYED_BUFF[5]),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__0_i_3_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__0_i_4
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[4]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[4] ),
         .I1(STS_AUTOCORR_I_16_DELAYED_BUFF[4]),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__0_i_4_n_0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -83578,31 +84320,31 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
        (.CI(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__0_n_0),
         .CO({STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__1_n_0,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__1_n_1,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__1_n_2,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__1_n_3}),
         .CYINIT(1'b0),
-        .DI(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[11:8]),
+        .DI({\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[11] ,\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[10] ,\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[9] ,\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[8] }),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[11:8]),
         .S({STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__1_i_1_n_0,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__1_i_2_n_0,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__1_i_3_n_0,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__1_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__1_i_1
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[11]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[11] ),
         .I1(STS_AUTOCORR_I_16_DELAYED_BUFF[11]),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__1_i_1_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__1_i_2
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[10]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[10] ),
         .I1(STS_AUTOCORR_I_16_DELAYED_BUFF[10]),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__1_i_2_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__1_i_3
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[9]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[9] ),
         .I1(STS_AUTOCORR_I_16_DELAYED_BUFF[9]),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__1_i_3_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__1_i_4
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[8]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[8] ),
         .I1(STS_AUTOCORR_I_16_DELAYED_BUFF[8]),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__1_i_4_n_0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -83610,31 +84352,31 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
        (.CI(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__1_n_0),
         .CO({STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__2_n_0,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__2_n_1,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__2_n_2,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__2_n_3}),
         .CYINIT(1'b0),
-        .DI(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[15:12]),
+        .DI({\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[15] ,\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[14] ,\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[13] ,\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[12] }),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[15:12]),
         .S({STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__2_i_1_n_0,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__2_i_2_n_0,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__2_i_3_n_0,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__2_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__2_i_1
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[15]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[15] ),
         .I1(STS_AUTOCORR_I_16_DELAYED_BUFF[15]),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__2_i_1_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__2_i_2
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[14]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[14] ),
         .I1(STS_AUTOCORR_I_16_DELAYED_BUFF[14]),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__2_i_2_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__2_i_3
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[13]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[13] ),
         .I1(STS_AUTOCORR_I_16_DELAYED_BUFF[13]),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__2_i_3_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__2_i_4
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[12]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[12] ),
         .I1(STS_AUTOCORR_I_16_DELAYED_BUFF[12]),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__2_i_4_n_0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -83642,31 +84384,31 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
        (.CI(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__2_n_0),
         .CO({STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__3_n_0,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__3_n_1,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__3_n_2,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__3_n_3}),
         .CYINIT(1'b0),
-        .DI(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[19:16]),
+        .DI({\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[19] ,\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[18] ,\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[17] ,\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[16] }),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[19:16]),
         .S({STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__3_i_1_n_0,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__3_i_2_n_0,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__3_i_3_n_0,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__3_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__3_i_1
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[19]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[19] ),
         .I1(STS_AUTOCORR_I_16_DELAYED_BUFF[19]),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__3_i_1_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__3_i_2
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[18]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[18] ),
         .I1(STS_AUTOCORR_I_16_DELAYED_BUFF[18]),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__3_i_2_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__3_i_3
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[17]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[17] ),
         .I1(STS_AUTOCORR_I_16_DELAYED_BUFF[17]),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__3_i_3_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__3_i_4
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[16]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[16] ),
         .I1(STS_AUTOCORR_I_16_DELAYED_BUFF[16]),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__3_i_4_n_0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -83674,31 +84416,31 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
        (.CI(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__3_n_0),
         .CO({STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__4_n_0,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__4_n_1,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__4_n_2,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__4_n_3}),
         .CYINIT(1'b0),
-        .DI(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[23:20]),
+        .DI({\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[23] ,\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[22] ,\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[21] ,\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[20] }),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[23:20]),
         .S({STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__4_i_1_n_0,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__4_i_2_n_0,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__4_i_3_n_0,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__4_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__4_i_1
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[23]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[23] ),
         .I1(STS_AUTOCORR_I_16_DELAYED_BUFF[23]),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__4_i_1_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__4_i_2
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[22]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[22] ),
         .I1(STS_AUTOCORR_I_16_DELAYED_BUFF[22]),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__4_i_2_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__4_i_3
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[21]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[21] ),
         .I1(STS_AUTOCORR_I_16_DELAYED_BUFF[21]),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__4_i_3_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__4_i_4
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[20]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[20] ),
         .I1(STS_AUTOCORR_I_16_DELAYED_BUFF[20]),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__4_i_4_n_0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -83706,31 +84448,31 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
        (.CI(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__4_n_0),
         .CO({STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__5_n_0,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__5_n_1,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__5_n_2,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__5_n_3}),
         .CYINIT(1'b0),
-        .DI(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[27:24]),
+        .DI({\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[27] ,\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[26] ,\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[25] ,\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[24] }),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[27:24]),
         .S({STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__5_i_1_n_0,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__5_i_2_n_0,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__5_i_3_n_0,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__5_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__5_i_1
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[27]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[27] ),
         .I1(STS_AUTOCORR_I_16_DELAYED_BUFF[27]),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__5_i_1_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__5_i_2
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[26]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[26] ),
         .I1(STS_AUTOCORR_I_16_DELAYED_BUFF[26]),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__5_i_2_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__5_i_3
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[25]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[25] ),
         .I1(STS_AUTOCORR_I_16_DELAYED_BUFF[25]),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__5_i_3_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__5_i_4
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[24]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[24] ),
         .I1(STS_AUTOCORR_I_16_DELAYED_BUFF[24]),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__5_i_4_n_0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -83738,31 +84480,31 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
        (.CI(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__5_n_0),
         .CO({STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__6_n_0,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__6_n_1,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__6_n_2,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__6_n_3}),
         .CYINIT(1'b0),
-        .DI({STS_AUTOCORR_I_16_DELAYED_BUFF[31],STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[30:28]}),
+        .DI({STS_AUTOCORR_I_16_DELAYED_BUFF[31],\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[30] ,\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[29] ,\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[28] }),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[31:28]),
         .S({STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__6_i_1_n_0,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__6_i_2_n_0,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__6_i_3_n_0,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__6_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__6_i_1
        (.I0(STS_AUTOCORR_I_16_DELAYED_BUFF[31]),
-        .I1(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[31]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[31] ),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__6_i_1_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__6_i_2
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[30]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[30] ),
         .I1(STS_AUTOCORR_I_16_DELAYED_BUFF[30]),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__6_i_2_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__6_i_3
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[29]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[29] ),
         .I1(STS_AUTOCORR_I_16_DELAYED_BUFF[29]),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__6_i_3_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__6_i_4
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[28]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[28] ),
         .I1(STS_AUTOCORR_I_16_DELAYED_BUFF[28]),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__6_i_4_n_0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -83770,7 +84512,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
        (.CI(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__6_n_0),
         .CO({NLW_STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__7_CO_UNCONNECTED[3],STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__7_n_1,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__7_n_2,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__7_n_3}),
         .CYINIT(1'b0),
-        .DI({1'b0,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[33:32],STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__7_i_1_n_0}),
+        .DI({1'b0,\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[33] ,\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[32] ,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__7_i_1_n_0}),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[35:32]),
         .S({STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__7_i_2_n_0,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__7_i_3_n_0,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__7_i_4_n_0,STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__7_i_5_n_0}));
   LUT1 #(
@@ -83781,590 +84523,338 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
   LUT2 #(
     .INIT(4'h9)) 
     STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__7_i_2
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[34]),
-        .I1(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[34] ),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__7_i_2_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__7_i_3
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[33]),
-        .I1(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[34]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[33] ),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[34] ),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__7_i_3_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__7_i_4
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[32]),
-        .I1(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[33]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[32] ),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[33] ),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__7_i_4_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__7_i_5
        (.I0(STS_AUTOCORR_I_16_DELAYED_BUFF[31]),
-        .I1(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[32]),
+        .I1(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[32] ),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry__7_i_5_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry_i_1
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[3]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[3] ),
         .I1(STS_AUTOCORR_I_16_DELAYED_BUFF[3]),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry_i_1_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry_i_2
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[2]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[2] ),
         .I1(STS_AUTOCORR_I_16_DELAYED_BUFF[2]),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry_i_2_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry_i_3
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[1]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[1] ),
         .I1(STS_AUTOCORR_I_16_DELAYED_BUFF[1]),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry_i_3_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry_i_4
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[0]),
+       (.I0(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[0] ),
         .I1(STS_AUTOCORR_I_16_DELAYED_BUFF[0]),
         .O(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0_carry_i_4_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair469" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[0]_i_1 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[0]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in13[0]));
-  (* SOFT_HLUTNM = "soft_lutpair474" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[10]_i_1 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[10]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in13[10]));
-  (* SOFT_HLUTNM = "soft_lutpair474" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[11]_i_1 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[11]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in13[11]));
-  (* SOFT_HLUTNM = "soft_lutpair475" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[12]_i_1 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[12]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in13[12]));
-  (* SOFT_HLUTNM = "soft_lutpair475" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[13]_i_1 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[13]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in13[13]));
-  (* SOFT_HLUTNM = "soft_lutpair476" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[14]_i_1 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[14]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in13[14]));
-  (* SOFT_HLUTNM = "soft_lutpair476" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[15]_i_1 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[15]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in13[15]));
-  (* SOFT_HLUTNM = "soft_lutpair477" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[16]_i_1 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[16]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in13[16]));
-  (* SOFT_HLUTNM = "soft_lutpair477" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[17]_i_1 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[17]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in13[17]));
-  (* SOFT_HLUTNM = "soft_lutpair478" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[18]_i_1 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[18]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in13[18]));
-  (* SOFT_HLUTNM = "soft_lutpair478" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[19]_i_1 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[19]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in13[19]));
-  (* SOFT_HLUTNM = "soft_lutpair469" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[1]_i_1 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[1]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in13[1]));
-  (* SOFT_HLUTNM = "soft_lutpair479" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[20]_i_1 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[20]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in13[20]));
-  (* SOFT_HLUTNM = "soft_lutpair479" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[21]_i_1 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[21]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in13[21]));
-  (* SOFT_HLUTNM = "soft_lutpair480" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[22]_i_1 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[22]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in13[22]));
-  (* SOFT_HLUTNM = "soft_lutpair480" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[23]_i_1 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[23]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in13[23]));
-  (* SOFT_HLUTNM = "soft_lutpair481" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[24]_i_1 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[24]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in13[24]));
-  (* SOFT_HLUTNM = "soft_lutpair481" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[25]_i_1 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[25]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in13[25]));
-  (* SOFT_HLUTNM = "soft_lutpair482" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[26]_i_1 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[26]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in13[26]));
-  (* SOFT_HLUTNM = "soft_lutpair482" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[27]_i_1 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[27]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in13[27]));
-  (* SOFT_HLUTNM = "soft_lutpair483" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[28]_i_1 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[28]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in13[28]));
-  (* SOFT_HLUTNM = "soft_lutpair483" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[29]_i_1 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[29]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in13[29]));
-  (* SOFT_HLUTNM = "soft_lutpair470" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[2]_i_1 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[2]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in13[2]));
-  (* SOFT_HLUTNM = "soft_lutpair484" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[30]_i_1 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[30]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in13[30]));
-  (* SOFT_HLUTNM = "soft_lutpair484" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[31]_i_1 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[31]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in13[31]));
-  (* SOFT_HLUTNM = "soft_lutpair485" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[32]_i_1 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[32]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in13[32]));
-  (* SOFT_HLUTNM = "soft_lutpair485" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[33]_i_1 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[33]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in13[33]));
-  (* SOFT_HLUTNM = "soft_lutpair486" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[34]_i_1 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[34]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in13[34]));
-  (* SOFT_HLUTNM = "soft_lutpair486" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]_i_3 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[35]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in13[35]));
-  (* SOFT_HLUTNM = "soft_lutpair470" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[3]_i_1 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[3]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in13[3]));
-  (* SOFT_HLUTNM = "soft_lutpair471" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[4]_i_1 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[4]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in13[4]));
-  (* SOFT_HLUTNM = "soft_lutpair471" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[5]_i_1 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[5]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in13[5]));
-  (* SOFT_HLUTNM = "soft_lutpair472" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[6]_i_1 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[6]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in13[6]));
-  (* SOFT_HLUTNM = "soft_lutpair472" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[7]_i_1 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[7]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in13[7]));
-  (* SOFT_HLUTNM = "soft_lutpair473" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[8]_i_1 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[8]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in13[8]));
-  (* SOFT_HLUTNM = "soft_lutpair473" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[9]_i_1 
-       (.I0(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[9]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in13[9]));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[0] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in13[0]),
-        .Q(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[0]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[0]),
+        .Q(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[0] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[10] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in13[10]),
-        .Q(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[10]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[10]),
+        .Q(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[10] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[11] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in13[11]),
-        .Q(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[11]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[11]),
+        .Q(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[11] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[12] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in13[12]),
-        .Q(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[12]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[12]),
+        .Q(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[12] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[13] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in13[13]),
-        .Q(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[13]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[13]),
+        .Q(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[13] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[14] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in13[14]),
-        .Q(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[14]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[14]),
+        .Q(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[14] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[15] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in13[15]),
-        .Q(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[15]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[15]),
+        .Q(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[15] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[16] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in13[16]),
-        .Q(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[16]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[16]),
+        .Q(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[16] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[17] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in13[17]),
-        .Q(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[17]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[17]),
+        .Q(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[17] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[18] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in13[18]),
-        .Q(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[18]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[18]),
+        .Q(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[18] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[19] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in13[19]),
-        .Q(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[19]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[19]),
+        .Q(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[19] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[1] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in13[1]),
-        .Q(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[1]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[1]),
+        .Q(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[1] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[20] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in13[20]),
-        .Q(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[20]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[20]),
+        .Q(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[20] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[21] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in13[21]),
-        .Q(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[21]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[21]),
+        .Q(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[21] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[22] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in13[22]),
-        .Q(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[22]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[22]),
+        .Q(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[22] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[23] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in13[23]),
-        .Q(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[23]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[23]),
+        .Q(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[23] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[24] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in13[24]),
-        .Q(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[24]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[24]),
+        .Q(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[24] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[25] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in13[25]),
-        .Q(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[25]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[25]),
+        .Q(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[25] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[26] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in13[26]),
-        .Q(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[26]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[26]),
+        .Q(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[26] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[27] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in13[27]),
-        .Q(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[27]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[27]),
+        .Q(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[27] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[28] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in13[28]),
-        .Q(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[28]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[28]),
+        .Q(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[28] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[29] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in13[29]),
-        .Q(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[29]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[29]),
+        .Q(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[29] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[2] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in13[2]),
-        .Q(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[2]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[2]),
+        .Q(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[2] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[30] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in13[30]),
-        .Q(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[30]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[30]),
+        .Q(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[30] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[31] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in13[31]),
-        .Q(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[31]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[31]),
+        .Q(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[31] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[32] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in13[32]),
-        .Q(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[32]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[32]),
+        .Q(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[32] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[33] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in13[33]),
-        .Q(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[33]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[33]),
+        .Q(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[33] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[34] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in13[34]),
-        .Q(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[34]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[34]),
+        .Q(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[34] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[35] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in13[35]),
-        .Q(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[35]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[35]),
+        .Q(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[3] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in13[3]),
-        .Q(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[3]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[3]),
+        .Q(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[3] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[4] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in13[4]),
-        .Q(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[4]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[4]),
+        .Q(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[4] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[5] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in13[5]),
-        .Q(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[5]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[5]),
+        .Q(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[5] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[6] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in13[6]),
-        .Q(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[6]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[6]),
+        .Q(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[6] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[7] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in13[7]),
-        .Q(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[7]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[7]),
+        .Q(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[7] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[8] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in13[8]),
-        .Q(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[8]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[8]),
+        .Q(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[8] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[9] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in13[9]),
-        .Q(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[9]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0[9]),
+        .Q(\STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[9] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
@@ -84627,7 +85117,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
        (.CI(1'b0),
         .CO({STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry_n_0,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry_n_1,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry_n_2,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry_n_3}),
         .CYINIT(1'b0),
-        .DI(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[3:0]),
+        .DI({\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[3] ,\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[2] ,\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[1] ,\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[0] }),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[3:0]),
         .S({STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry_i_1_n_0,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry_i_2_n_0,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry_i_3_n_0,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry_i_4_n_0}));
   (* ADDER_THRESHOLD = "35" *) 
@@ -84635,31 +85125,31 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
        (.CI(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry_n_0),
         .CO({STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__0_n_0,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__0_n_1,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__0_n_2,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__0_n_3}),
         .CYINIT(1'b0),
-        .DI(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[7:4]),
+        .DI({\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[7] ,\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[6] ,\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[5] ,\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[4] }),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[7:4]),
         .S({STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__0_i_1_n_0,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__0_i_2_n_0,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__0_i_3_n_0,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__0_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__0_i_1
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[7]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[7] ),
         .I1(STS_AUTOCORR_Q_16_DELAYED_BUFF[7]),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__0_i_1_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__0_i_2
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[6]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[6] ),
         .I1(STS_AUTOCORR_Q_16_DELAYED_BUFF[6]),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__0_i_2_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__0_i_3
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[5]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[5] ),
         .I1(STS_AUTOCORR_Q_16_DELAYED_BUFF[5]),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__0_i_3_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__0_i_4
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[4]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[4] ),
         .I1(STS_AUTOCORR_Q_16_DELAYED_BUFF[4]),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__0_i_4_n_0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -84667,31 +85157,31 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
        (.CI(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__0_n_0),
         .CO({STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__1_n_0,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__1_n_1,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__1_n_2,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__1_n_3}),
         .CYINIT(1'b0),
-        .DI(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[11:8]),
+        .DI({\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[11] ,\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[10] ,\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[9] ,\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[8] }),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[11:8]),
         .S({STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__1_i_1_n_0,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__1_i_2_n_0,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__1_i_3_n_0,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__1_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__1_i_1
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[11]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[11] ),
         .I1(STS_AUTOCORR_Q_16_DELAYED_BUFF[11]),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__1_i_1_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__1_i_2
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[10]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[10] ),
         .I1(STS_AUTOCORR_Q_16_DELAYED_BUFF[10]),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__1_i_2_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__1_i_3
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[9]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[9] ),
         .I1(STS_AUTOCORR_Q_16_DELAYED_BUFF[9]),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__1_i_3_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__1_i_4
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[8]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[8] ),
         .I1(STS_AUTOCORR_Q_16_DELAYED_BUFF[8]),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__1_i_4_n_0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -84699,31 +85189,31 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
        (.CI(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__1_n_0),
         .CO({STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__2_n_0,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__2_n_1,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__2_n_2,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__2_n_3}),
         .CYINIT(1'b0),
-        .DI(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[15:12]),
+        .DI({\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[15] ,\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[14] ,\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[13] ,\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[12] }),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[15:12]),
         .S({STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__2_i_1_n_0,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__2_i_2_n_0,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__2_i_3_n_0,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__2_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__2_i_1
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[15]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[15] ),
         .I1(STS_AUTOCORR_Q_16_DELAYED_BUFF[15]),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__2_i_1_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__2_i_2
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[14]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[14] ),
         .I1(STS_AUTOCORR_Q_16_DELAYED_BUFF[14]),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__2_i_2_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__2_i_3
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[13]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[13] ),
         .I1(STS_AUTOCORR_Q_16_DELAYED_BUFF[13]),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__2_i_3_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__2_i_4
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[12]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[12] ),
         .I1(STS_AUTOCORR_Q_16_DELAYED_BUFF[12]),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__2_i_4_n_0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -84731,31 +85221,31 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
        (.CI(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__2_n_0),
         .CO({STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__3_n_0,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__3_n_1,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__3_n_2,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__3_n_3}),
         .CYINIT(1'b0),
-        .DI(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[19:16]),
+        .DI({\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[19] ,\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[18] ,\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[17] ,\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[16] }),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[19:16]),
         .S({STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__3_i_1_n_0,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__3_i_2_n_0,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__3_i_3_n_0,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__3_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__3_i_1
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[19]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[19] ),
         .I1(STS_AUTOCORR_Q_16_DELAYED_BUFF[19]),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__3_i_1_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__3_i_2
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[18]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[18] ),
         .I1(STS_AUTOCORR_Q_16_DELAYED_BUFF[18]),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__3_i_2_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__3_i_3
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[17]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[17] ),
         .I1(STS_AUTOCORR_Q_16_DELAYED_BUFF[17]),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__3_i_3_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__3_i_4
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[16]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[16] ),
         .I1(STS_AUTOCORR_Q_16_DELAYED_BUFF[16]),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__3_i_4_n_0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -84763,31 +85253,31 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
        (.CI(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__3_n_0),
         .CO({STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__4_n_0,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__4_n_1,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__4_n_2,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__4_n_3}),
         .CYINIT(1'b0),
-        .DI(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[23:20]),
+        .DI({\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[23] ,\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[22] ,\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[21] ,\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[20] }),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[23:20]),
         .S({STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__4_i_1_n_0,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__4_i_2_n_0,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__4_i_3_n_0,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__4_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__4_i_1
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[23]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[23] ),
         .I1(STS_AUTOCORR_Q_16_DELAYED_BUFF[23]),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__4_i_1_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__4_i_2
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[22]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[22] ),
         .I1(STS_AUTOCORR_Q_16_DELAYED_BUFF[22]),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__4_i_2_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__4_i_3
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[21]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[21] ),
         .I1(STS_AUTOCORR_Q_16_DELAYED_BUFF[21]),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__4_i_3_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__4_i_4
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[20]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[20] ),
         .I1(STS_AUTOCORR_Q_16_DELAYED_BUFF[20]),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__4_i_4_n_0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -84795,31 +85285,31 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
        (.CI(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__4_n_0),
         .CO({STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__5_n_0,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__5_n_1,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__5_n_2,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__5_n_3}),
         .CYINIT(1'b0),
-        .DI(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[27:24]),
+        .DI({\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[27] ,\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[26] ,\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[25] ,\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[24] }),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[27:24]),
         .S({STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__5_i_1_n_0,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__5_i_2_n_0,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__5_i_3_n_0,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__5_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__5_i_1
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[27]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[27] ),
         .I1(STS_AUTOCORR_Q_16_DELAYED_BUFF[27]),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__5_i_1_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__5_i_2
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[26]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[26] ),
         .I1(STS_AUTOCORR_Q_16_DELAYED_BUFF[26]),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__5_i_2_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__5_i_3
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[25]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[25] ),
         .I1(STS_AUTOCORR_Q_16_DELAYED_BUFF[25]),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__5_i_3_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__5_i_4
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[24]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[24] ),
         .I1(STS_AUTOCORR_Q_16_DELAYED_BUFF[24]),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__5_i_4_n_0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -84827,31 +85317,31 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
        (.CI(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__5_n_0),
         .CO({STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__6_n_0,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__6_n_1,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__6_n_2,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__6_n_3}),
         .CYINIT(1'b0),
-        .DI({STS_AUTOCORR_Q_16_DELAYED_BUFF[31],STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[30:28]}),
+        .DI({STS_AUTOCORR_Q_16_DELAYED_BUFF[31],\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[30] ,\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[29] ,\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[28] }),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[31:28]),
         .S({STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__6_i_1_n_0,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__6_i_2_n_0,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__6_i_3_n_0,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__6_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__6_i_1
        (.I0(STS_AUTOCORR_Q_16_DELAYED_BUFF[31]),
-        .I1(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[31]),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[31] ),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__6_i_1_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__6_i_2
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[30]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[30] ),
         .I1(STS_AUTOCORR_Q_16_DELAYED_BUFF[30]),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__6_i_2_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__6_i_3
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[29]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[29] ),
         .I1(STS_AUTOCORR_Q_16_DELAYED_BUFF[29]),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__6_i_3_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__6_i_4
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[28]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[28] ),
         .I1(STS_AUTOCORR_Q_16_DELAYED_BUFF[28]),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__6_i_4_n_0));
   (* ADDER_THRESHOLD = "35" *) 
@@ -84859,7 +85349,7 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
        (.CI(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__6_n_0),
         .CO({NLW_STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__7_CO_UNCONNECTED[3],STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__7_n_1,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__7_n_2,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__7_n_3}),
         .CYINIT(1'b0),
-        .DI({1'b0,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[33:32],STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__7_i_1_n_0}),
+        .DI({1'b0,\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[33] ,\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[32] ,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__7_i_1_n_0}),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[35:32]),
         .S({STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__7_i_2_n_0,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__7_i_3_n_0,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__7_i_4_n_0,STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__7_i_5_n_0}));
   LUT1 #(
@@ -84870,590 +85360,338 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
   LUT2 #(
     .INIT(4'h9)) 
     STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__7_i_2
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[34]),
-        .I1(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[34] ),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__7_i_2_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__7_i_3
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[33]),
-        .I1(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[34]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[33] ),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[34] ),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__7_i_3_n_0));
   LUT2 #(
     .INIT(4'h9)) 
     STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__7_i_4
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[32]),
-        .I1(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[33]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[32] ),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[33] ),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__7_i_4_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__7_i_5
        (.I0(STS_AUTOCORR_Q_16_DELAYED_BUFF[31]),
-        .I1(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[32]),
+        .I1(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[32] ),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry__7_i_5_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry_i_1
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[3]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[3] ),
         .I1(STS_AUTOCORR_Q_16_DELAYED_BUFF[3]),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry_i_1_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry_i_2
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[2]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[2] ),
         .I1(STS_AUTOCORR_Q_16_DELAYED_BUFF[2]),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry_i_2_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry_i_3
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[1]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[1] ),
         .I1(STS_AUTOCORR_Q_16_DELAYED_BUFF[1]),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry_i_3_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry_i_4
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[0]),
+       (.I0(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[0] ),
         .I1(STS_AUTOCORR_Q_16_DELAYED_BUFF[0]),
         .O(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0_carry_i_4_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair487" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[0]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[0]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in16[0]));
-  (* SOFT_HLUTNM = "soft_lutpair492" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[10]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[10]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in16[10]));
-  (* SOFT_HLUTNM = "soft_lutpair492" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[11]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[11]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in16[11]));
-  (* SOFT_HLUTNM = "soft_lutpair493" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[12]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[12]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in16[12]));
-  (* SOFT_HLUTNM = "soft_lutpair493" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[13]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[13]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in16[13]));
-  (* SOFT_HLUTNM = "soft_lutpair494" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[14]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[14]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in16[14]));
-  (* SOFT_HLUTNM = "soft_lutpair494" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[15]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[15]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in16[15]));
-  (* SOFT_HLUTNM = "soft_lutpair495" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[16]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[16]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in16[16]));
-  (* SOFT_HLUTNM = "soft_lutpair495" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[17]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[17]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in16[17]));
-  (* SOFT_HLUTNM = "soft_lutpair496" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[18]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[18]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in16[18]));
-  (* SOFT_HLUTNM = "soft_lutpair496" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[19]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[19]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in16[19]));
-  (* SOFT_HLUTNM = "soft_lutpair487" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[1]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[1]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in16[1]));
-  (* SOFT_HLUTNM = "soft_lutpair497" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[20]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[20]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in16[20]));
-  (* SOFT_HLUTNM = "soft_lutpair497" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[21]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[21]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in16[21]));
-  (* SOFT_HLUTNM = "soft_lutpair498" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[22]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[22]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in16[22]));
-  (* SOFT_HLUTNM = "soft_lutpair498" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[23]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[23]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in16[23]));
-  (* SOFT_HLUTNM = "soft_lutpair499" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[24]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[24]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in16[24]));
-  (* SOFT_HLUTNM = "soft_lutpair499" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[25]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[25]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in16[25]));
-  (* SOFT_HLUTNM = "soft_lutpair500" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[26]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[26]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in16[26]));
-  (* SOFT_HLUTNM = "soft_lutpair500" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[27]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[27]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in16[27]));
-  (* SOFT_HLUTNM = "soft_lutpair501" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[28]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[28]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in16[28]));
-  (* SOFT_HLUTNM = "soft_lutpair501" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[29]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[29]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in16[29]));
-  (* SOFT_HLUTNM = "soft_lutpair488" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[2]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[2]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in16[2]));
-  (* SOFT_HLUTNM = "soft_lutpair502" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[30]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[30]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in16[30]));
-  (* SOFT_HLUTNM = "soft_lutpair502" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[31]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[31]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in16[31]));
-  (* SOFT_HLUTNM = "soft_lutpair503" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[32]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[32]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in16[32]));
-  (* SOFT_HLUTNM = "soft_lutpair503" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[33]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[33]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in16[33]));
-  (* SOFT_HLUTNM = "soft_lutpair504" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[34]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[34]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in16[34]));
-  (* SOFT_HLUTNM = "soft_lutpair504" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[35]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in16[35]));
-  (* SOFT_HLUTNM = "soft_lutpair488" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[3]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[3]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in16[3]));
-  (* SOFT_HLUTNM = "soft_lutpair489" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[4]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[4]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in16[4]));
-  (* SOFT_HLUTNM = "soft_lutpair489" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[5]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[5]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in16[5]));
-  (* SOFT_HLUTNM = "soft_lutpair490" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[6]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[6]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in16[6]));
-  (* SOFT_HLUTNM = "soft_lutpair490" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[7]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[7]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in16[7]));
-  (* SOFT_HLUTNM = "soft_lutpair491" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[8]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[8]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in16[8]));
-  (* SOFT_HLUTNM = "soft_lutpair491" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[9]_i_1 
-       (.I0(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[9]),
-        .I1(\DETECTION_STATE1_inferred__0/i__carry__2_n_0 ),
-        .O(in16[9]));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg[0] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in16[0]),
-        .Q(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[0]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[0]),
+        .Q(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[0] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg[10] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in16[10]),
-        .Q(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[10]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[10]),
+        .Q(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[10] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg[11] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in16[11]),
-        .Q(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[11]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[11]),
+        .Q(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[11] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg[12] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in16[12]),
-        .Q(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[12]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[12]),
+        .Q(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[12] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg[13] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in16[13]),
-        .Q(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[13]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[13]),
+        .Q(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[13] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg[14] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in16[14]),
-        .Q(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[14]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[14]),
+        .Q(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[14] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg[15] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in16[15]),
-        .Q(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[15]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[15]),
+        .Q(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[15] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg[16] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in16[16]),
-        .Q(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[16]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[16]),
+        .Q(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[16] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg[17] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in16[17]),
-        .Q(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[17]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[17]),
+        .Q(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[17] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg[18] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in16[18]),
-        .Q(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[18]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[18]),
+        .Q(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[18] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg[19] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in16[19]),
-        .Q(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[19]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[19]),
+        .Q(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[19] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg[1] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in16[1]),
-        .Q(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[1]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[1]),
+        .Q(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[1] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg[20] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in16[20]),
-        .Q(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[20]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[20]),
+        .Q(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[20] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg[21] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in16[21]),
-        .Q(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[21]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[21]),
+        .Q(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[21] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg[22] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in16[22]),
-        .Q(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[22]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[22]),
+        .Q(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[22] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg[23] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in16[23]),
-        .Q(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[23]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[23]),
+        .Q(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[23] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg[24] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in16[24]),
-        .Q(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[24]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[24]),
+        .Q(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[24] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg[25] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in16[25]),
-        .Q(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[25]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[25]),
+        .Q(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[25] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg[26] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in16[26]),
-        .Q(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[26]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[26]),
+        .Q(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[26] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg[27] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in16[27]),
-        .Q(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[27]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[27]),
+        .Q(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[27] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg[28] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in16[28]),
-        .Q(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[28]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[28]),
+        .Q(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[28] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg[29] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in16[29]),
-        .Q(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[29]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[29]),
+        .Q(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[29] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg[2] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in16[2]),
-        .Q(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[2]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[2]),
+        .Q(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[2] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg[30] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in16[30]),
-        .Q(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[30]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[30]),
+        .Q(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[30] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg[31] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in16[31]),
-        .Q(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[31]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[31]),
+        .Q(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[31] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg[32] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in16[32]),
-        .Q(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[32]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[32]),
+        .Q(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[32] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg[33] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in16[33]),
-        .Q(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[33]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[33]),
+        .Q(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[33] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg[34] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in16[34]),
-        .Q(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[34]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[34]),
+        .Q(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[34] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg[35] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in16[35]),
-        .Q(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[35]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[35]),
+        .Q(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg[3] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in16[3]),
-        .Q(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[3]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[3]),
+        .Q(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[3] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg[4] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in16[4]),
-        .Q(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[4]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[4]),
+        .Q(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[4] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg[5] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in16[5]),
-        .Q(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[5]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[5]),
+        .Q(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[5] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg[6] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in16[6]),
-        .Q(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[6]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[6]),
+        .Q(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[6] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg[7] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in16[7]),
-        .Q(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[7]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[7]),
+        .Q(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[7] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg[8] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in16[8]),
-        .Q(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[8]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[8]),
+        .Q(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[8] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
     \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg[9] 
        (.C(CLOCK),
-        .CE(Parallel_STS_FIR_Filter_inst_n_2),
-        .D(in16[9]),
-        .Q(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR[9]),
+        .CE(Parallel_STS_FIR_Filter_inst_n_5),
+        .D(STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR0[9]),
+        .Q(\STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[9] ),
         .R(Parallel_STS_FIR_Filter_inst_n_1));
   FDRE #(
     .INIT(1'b0)) 
@@ -85712,261 +85950,513 @@ module block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p
         .Q(STS_AUTOCORR_Q_16_DELAYED_BUFF[9]),
         .R(1'b0));
   LUT4 #(
-    .INIT(16'h2F02)) 
+    .INIT(16'h20F2)) 
     i__carry__0_i_1
        (.I0(\SHIFT_REGISTER_reg[144] [14]),
-        .I1(MAX_XCORR[14]),
-        .I2(MAX_XCORR[15]),
-        .I3(\SHIFT_REGISTER_reg[144] [15]),
+        .I1(MAX_XCORR[15]),
+        .I2(\SHIFT_REGISTER_reg[144] [15]),
+        .I3(MAX_XCORR[16]),
         .O(i__carry__0_i_1_n_0));
   LUT4 #(
-    .INIT(16'h2F02)) 
+    .INIT(16'h20F2)) 
+    i__carry__0_i_1__0
+       (.I0(MAX_XCORR[15]),
+        .I1(\SHIFT_REGISTER_reg[144] [14]),
+        .I2(MAX_XCORR[16]),
+        .I3(\SHIFT_REGISTER_reg[144] [15]),
+        .O(i__carry__0_i_1__0_n_0));
+  LUT4 #(
+    .INIT(16'h20F2)) 
     i__carry__0_i_2
        (.I0(\SHIFT_REGISTER_reg[144] [12]),
-        .I1(MAX_XCORR[12]),
-        .I2(MAX_XCORR[13]),
-        .I3(\SHIFT_REGISTER_reg[144] [13]),
+        .I1(MAX_XCORR[13]),
+        .I2(\SHIFT_REGISTER_reg[144] [13]),
+        .I3(MAX_XCORR[14]),
         .O(i__carry__0_i_2_n_0));
   LUT4 #(
-    .INIT(16'h2F02)) 
+    .INIT(16'h20F2)) 
+    i__carry__0_i_2__0
+       (.I0(MAX_XCORR[13]),
+        .I1(\SHIFT_REGISTER_reg[144] [12]),
+        .I2(MAX_XCORR[14]),
+        .I3(\SHIFT_REGISTER_reg[144] [13]),
+        .O(i__carry__0_i_2__0_n_0));
+  LUT4 #(
+    .INIT(16'h20F2)) 
     i__carry__0_i_3
        (.I0(\SHIFT_REGISTER_reg[144] [10]),
-        .I1(MAX_XCORR[10]),
-        .I2(MAX_XCORR[11]),
-        .I3(\SHIFT_REGISTER_reg[144] [11]),
+        .I1(MAX_XCORR[11]),
+        .I2(\SHIFT_REGISTER_reg[144] [11]),
+        .I3(MAX_XCORR[12]),
         .O(i__carry__0_i_3_n_0));
   LUT4 #(
-    .INIT(16'h2F02)) 
+    .INIT(16'h20F2)) 
+    i__carry__0_i_3__0
+       (.I0(MAX_XCORR[11]),
+        .I1(\SHIFT_REGISTER_reg[144] [10]),
+        .I2(MAX_XCORR[12]),
+        .I3(\SHIFT_REGISTER_reg[144] [11]),
+        .O(i__carry__0_i_3__0_n_0));
+  LUT4 #(
+    .INIT(16'h20F2)) 
     i__carry__0_i_4
        (.I0(\SHIFT_REGISTER_reg[144] [8]),
-        .I1(MAX_XCORR[8]),
-        .I2(MAX_XCORR[9]),
-        .I3(\SHIFT_REGISTER_reg[144] [9]),
+        .I1(MAX_XCORR[9]),
+        .I2(\SHIFT_REGISTER_reg[144] [9]),
+        .I3(MAX_XCORR[10]),
         .O(i__carry__0_i_4_n_0));
+  LUT4 #(
+    .INIT(16'h20F2)) 
+    i__carry__0_i_4__0
+       (.I0(MAX_XCORR[9]),
+        .I1(\SHIFT_REGISTER_reg[144] [8]),
+        .I2(MAX_XCORR[10]),
+        .I3(\SHIFT_REGISTER_reg[144] [9]),
+        .O(i__carry__0_i_4__0_n_0));
   LUT4 #(
     .INIT(16'h9009)) 
     i__carry__0_i_5
        (.I0(\SHIFT_REGISTER_reg[144] [14]),
-        .I1(MAX_XCORR[14]),
+        .I1(MAX_XCORR[15]),
         .I2(\SHIFT_REGISTER_reg[144] [15]),
-        .I3(MAX_XCORR[15]),
+        .I3(MAX_XCORR[16]),
         .O(i__carry__0_i_5_n_0));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    i__carry__0_i_5__0
+       (.I0(\SHIFT_REGISTER_reg[144] [14]),
+        .I1(MAX_XCORR[15]),
+        .I2(\SHIFT_REGISTER_reg[144] [15]),
+        .I3(MAX_XCORR[16]),
+        .O(i__carry__0_i_5__0_n_0));
   LUT4 #(
     .INIT(16'h9009)) 
     i__carry__0_i_6
        (.I0(\SHIFT_REGISTER_reg[144] [12]),
-        .I1(MAX_XCORR[12]),
+        .I1(MAX_XCORR[13]),
         .I2(\SHIFT_REGISTER_reg[144] [13]),
-        .I3(MAX_XCORR[13]),
+        .I3(MAX_XCORR[14]),
         .O(i__carry__0_i_6_n_0));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    i__carry__0_i_6__0
+       (.I0(\SHIFT_REGISTER_reg[144] [12]),
+        .I1(MAX_XCORR[13]),
+        .I2(\SHIFT_REGISTER_reg[144] [13]),
+        .I3(MAX_XCORR[14]),
+        .O(i__carry__0_i_6__0_n_0));
   LUT4 #(
     .INIT(16'h9009)) 
     i__carry__0_i_7
        (.I0(\SHIFT_REGISTER_reg[144] [10]),
-        .I1(MAX_XCORR[10]),
+        .I1(MAX_XCORR[11]),
         .I2(\SHIFT_REGISTER_reg[144] [11]),
-        .I3(MAX_XCORR[11]),
+        .I3(MAX_XCORR[12]),
         .O(i__carry__0_i_7_n_0));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    i__carry__0_i_7__0
+       (.I0(\SHIFT_REGISTER_reg[144] [10]),
+        .I1(MAX_XCORR[11]),
+        .I2(\SHIFT_REGISTER_reg[144] [11]),
+        .I3(MAX_XCORR[12]),
+        .O(i__carry__0_i_7__0_n_0));
   LUT4 #(
     .INIT(16'h9009)) 
     i__carry__0_i_8
        (.I0(\SHIFT_REGISTER_reg[144] [8]),
-        .I1(MAX_XCORR[8]),
+        .I1(MAX_XCORR[9]),
         .I2(\SHIFT_REGISTER_reg[144] [9]),
-        .I3(MAX_XCORR[9]),
+        .I3(MAX_XCORR[10]),
         .O(i__carry__0_i_8_n_0));
   LUT4 #(
-    .INIT(16'h2F02)) 
+    .INIT(16'h9009)) 
+    i__carry__0_i_8__0
+       (.I0(\SHIFT_REGISTER_reg[144] [8]),
+        .I1(MAX_XCORR[9]),
+        .I2(\SHIFT_REGISTER_reg[144] [9]),
+        .I3(MAX_XCORR[10]),
+        .O(i__carry__0_i_8__0_n_0));
+  LUT4 #(
+    .INIT(16'h20F2)) 
     i__carry__1_i_1
        (.I0(\SHIFT_REGISTER_reg[144] [22]),
-        .I1(MAX_XCORR[22]),
-        .I2(MAX_XCORR[23]),
-        .I3(\SHIFT_REGISTER_reg[144] [23]),
+        .I1(MAX_XCORR[23]),
+        .I2(\SHIFT_REGISTER_reg[144] [23]),
+        .I3(MAX_XCORR[24]),
         .O(i__carry__1_i_1_n_0));
   LUT4 #(
-    .INIT(16'h2F02)) 
+    .INIT(16'h20F2)) 
+    i__carry__1_i_1__0
+       (.I0(MAX_XCORR[23]),
+        .I1(\SHIFT_REGISTER_reg[144] [22]),
+        .I2(MAX_XCORR[24]),
+        .I3(\SHIFT_REGISTER_reg[144] [23]),
+        .O(i__carry__1_i_1__0_n_0));
+  LUT4 #(
+    .INIT(16'h20F2)) 
     i__carry__1_i_2
        (.I0(\SHIFT_REGISTER_reg[144] [20]),
-        .I1(MAX_XCORR[20]),
-        .I2(MAX_XCORR[21]),
-        .I3(\SHIFT_REGISTER_reg[144] [21]),
+        .I1(MAX_XCORR[21]),
+        .I2(\SHIFT_REGISTER_reg[144] [21]),
+        .I3(MAX_XCORR[22]),
         .O(i__carry__1_i_2_n_0));
   LUT4 #(
-    .INIT(16'h2F02)) 
+    .INIT(16'h20F2)) 
+    i__carry__1_i_2__0
+       (.I0(MAX_XCORR[21]),
+        .I1(\SHIFT_REGISTER_reg[144] [20]),
+        .I2(MAX_XCORR[22]),
+        .I3(\SHIFT_REGISTER_reg[144] [21]),
+        .O(i__carry__1_i_2__0_n_0));
+  LUT4 #(
+    .INIT(16'h20F2)) 
     i__carry__1_i_3
        (.I0(\SHIFT_REGISTER_reg[144] [18]),
-        .I1(MAX_XCORR[18]),
-        .I2(MAX_XCORR[19]),
-        .I3(\SHIFT_REGISTER_reg[144] [19]),
+        .I1(MAX_XCORR[19]),
+        .I2(\SHIFT_REGISTER_reg[144] [19]),
+        .I3(MAX_XCORR[20]),
         .O(i__carry__1_i_3_n_0));
   LUT4 #(
-    .INIT(16'h2F02)) 
+    .INIT(16'h20F2)) 
+    i__carry__1_i_3__0
+       (.I0(MAX_XCORR[19]),
+        .I1(\SHIFT_REGISTER_reg[144] [18]),
+        .I2(MAX_XCORR[20]),
+        .I3(\SHIFT_REGISTER_reg[144] [19]),
+        .O(i__carry__1_i_3__0_n_0));
+  LUT4 #(
+    .INIT(16'h20F2)) 
     i__carry__1_i_4
        (.I0(\SHIFT_REGISTER_reg[144] [16]),
-        .I1(MAX_XCORR[16]),
-        .I2(MAX_XCORR[17]),
-        .I3(\SHIFT_REGISTER_reg[144] [17]),
+        .I1(MAX_XCORR[17]),
+        .I2(\SHIFT_REGISTER_reg[144] [17]),
+        .I3(MAX_XCORR[18]),
         .O(i__carry__1_i_4_n_0));
+  LUT4 #(
+    .INIT(16'h20F2)) 
+    i__carry__1_i_4__0
+       (.I0(MAX_XCORR[17]),
+        .I1(\SHIFT_REGISTER_reg[144] [16]),
+        .I2(MAX_XCORR[18]),
+        .I3(\SHIFT_REGISTER_reg[144] [17]),
+        .O(i__carry__1_i_4__0_n_0));
   LUT4 #(
     .INIT(16'h9009)) 
     i__carry__1_i_5
        (.I0(\SHIFT_REGISTER_reg[144] [22]),
-        .I1(MAX_XCORR[22]),
+        .I1(MAX_XCORR[23]),
         .I2(\SHIFT_REGISTER_reg[144] [23]),
-        .I3(MAX_XCORR[23]),
+        .I3(MAX_XCORR[24]),
         .O(i__carry__1_i_5_n_0));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    i__carry__1_i_5__0
+       (.I0(\SHIFT_REGISTER_reg[144] [22]),
+        .I1(MAX_XCORR[23]),
+        .I2(\SHIFT_REGISTER_reg[144] [23]),
+        .I3(MAX_XCORR[24]),
+        .O(i__carry__1_i_5__0_n_0));
   LUT4 #(
     .INIT(16'h9009)) 
     i__carry__1_i_6
        (.I0(\SHIFT_REGISTER_reg[144] [20]),
-        .I1(MAX_XCORR[20]),
+        .I1(MAX_XCORR[21]),
         .I2(\SHIFT_REGISTER_reg[144] [21]),
-        .I3(MAX_XCORR[21]),
+        .I3(MAX_XCORR[22]),
         .O(i__carry__1_i_6_n_0));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    i__carry__1_i_6__0
+       (.I0(\SHIFT_REGISTER_reg[144] [20]),
+        .I1(MAX_XCORR[21]),
+        .I2(\SHIFT_REGISTER_reg[144] [21]),
+        .I3(MAX_XCORR[22]),
+        .O(i__carry__1_i_6__0_n_0));
   LUT4 #(
     .INIT(16'h9009)) 
     i__carry__1_i_7
        (.I0(\SHIFT_REGISTER_reg[144] [18]),
-        .I1(MAX_XCORR[18]),
+        .I1(MAX_XCORR[19]),
         .I2(\SHIFT_REGISTER_reg[144] [19]),
-        .I3(MAX_XCORR[19]),
+        .I3(MAX_XCORR[20]),
         .O(i__carry__1_i_7_n_0));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    i__carry__1_i_7__0
+       (.I0(\SHIFT_REGISTER_reg[144] [18]),
+        .I1(MAX_XCORR[19]),
+        .I2(\SHIFT_REGISTER_reg[144] [19]),
+        .I3(MAX_XCORR[20]),
+        .O(i__carry__1_i_7__0_n_0));
   LUT4 #(
     .INIT(16'h9009)) 
     i__carry__1_i_8
        (.I0(\SHIFT_REGISTER_reg[144] [16]),
-        .I1(MAX_XCORR[16]),
+        .I1(MAX_XCORR[17]),
         .I2(\SHIFT_REGISTER_reg[144] [17]),
-        .I3(MAX_XCORR[17]),
+        .I3(MAX_XCORR[18]),
         .O(i__carry__1_i_8_n_0));
   LUT4 #(
-    .INIT(16'h2F02)) 
+    .INIT(16'h9009)) 
+    i__carry__1_i_8__0
+       (.I0(\SHIFT_REGISTER_reg[144] [16]),
+        .I1(MAX_XCORR[17]),
+        .I2(\SHIFT_REGISTER_reg[144] [17]),
+        .I3(MAX_XCORR[18]),
+        .O(i__carry__1_i_8__0_n_0));
+  LUT3 #(
+    .INIT(8'h02)) 
     i__carry__2_i_1
-       (.I0(\SHIFT_REGISTER_reg[144] [30]),
-        .I1(MAX_XCORR[30]),
-        .I2(MAX_XCORR[31]),
-        .I3(\SHIFT_REGISTER_reg[144] [31]),
+       (.I0(MAX_XCORR[31]),
+        .I1(\SHIFT_REGISTER_reg[144] [31]),
+        .I2(\SHIFT_REGISTER_reg[144] [30]),
         .O(i__carry__2_i_1_n_0));
+  LUT3 #(
+    .INIT(8'hF4)) 
+    i__carry__2_i_1__0
+       (.I0(MAX_XCORR[31]),
+        .I1(\SHIFT_REGISTER_reg[144] [30]),
+        .I2(\SHIFT_REGISTER_reg[144] [31]),
+        .O(i__carry__2_i_1__0_n_0));
   LUT4 #(
-    .INIT(16'h2F02)) 
+    .INIT(16'h20F2)) 
     i__carry__2_i_2
        (.I0(\SHIFT_REGISTER_reg[144] [28]),
-        .I1(MAX_XCORR[28]),
-        .I2(MAX_XCORR[29]),
-        .I3(\SHIFT_REGISTER_reg[144] [29]),
+        .I1(MAX_XCORR[29]),
+        .I2(\SHIFT_REGISTER_reg[144] [29]),
+        .I3(MAX_XCORR[30]),
         .O(i__carry__2_i_2_n_0));
   LUT4 #(
-    .INIT(16'h2F02)) 
+    .INIT(16'h20F2)) 
+    i__carry__2_i_2__0
+       (.I0(MAX_XCORR[29]),
+        .I1(\SHIFT_REGISTER_reg[144] [28]),
+        .I2(MAX_XCORR[30]),
+        .I3(\SHIFT_REGISTER_reg[144] [29]),
+        .O(i__carry__2_i_2__0_n_0));
+  LUT4 #(
+    .INIT(16'h20F2)) 
     i__carry__2_i_3
        (.I0(\SHIFT_REGISTER_reg[144] [26]),
-        .I1(MAX_XCORR[26]),
-        .I2(MAX_XCORR[27]),
-        .I3(\SHIFT_REGISTER_reg[144] [27]),
+        .I1(MAX_XCORR[27]),
+        .I2(\SHIFT_REGISTER_reg[144] [27]),
+        .I3(MAX_XCORR[28]),
         .O(i__carry__2_i_3_n_0));
   LUT4 #(
-    .INIT(16'h2F02)) 
+    .INIT(16'h20F2)) 
+    i__carry__2_i_3__0
+       (.I0(MAX_XCORR[27]),
+        .I1(\SHIFT_REGISTER_reg[144] [26]),
+        .I2(MAX_XCORR[28]),
+        .I3(\SHIFT_REGISTER_reg[144] [27]),
+        .O(i__carry__2_i_3__0_n_0));
+  LUT4 #(
+    .INIT(16'h20F2)) 
     i__carry__2_i_4
        (.I0(\SHIFT_REGISTER_reg[144] [24]),
-        .I1(MAX_XCORR[24]),
-        .I2(MAX_XCORR[25]),
-        .I3(\SHIFT_REGISTER_reg[144] [25]),
+        .I1(MAX_XCORR[25]),
+        .I2(\SHIFT_REGISTER_reg[144] [25]),
+        .I3(MAX_XCORR[26]),
         .O(i__carry__2_i_4_n_0));
   LUT4 #(
-    .INIT(16'h9009)) 
+    .INIT(16'h20F2)) 
+    i__carry__2_i_4__0
+       (.I0(MAX_XCORR[25]),
+        .I1(\SHIFT_REGISTER_reg[144] [24]),
+        .I2(MAX_XCORR[26]),
+        .I3(\SHIFT_REGISTER_reg[144] [25]),
+        .O(i__carry__2_i_4__0_n_0));
+  LUT3 #(
+    .INIT(8'h41)) 
     i__carry__2_i_5
-       (.I0(\SHIFT_REGISTER_reg[144] [30]),
-        .I1(MAX_XCORR[30]),
-        .I2(\SHIFT_REGISTER_reg[144] [31]),
-        .I3(MAX_XCORR[31]),
+       (.I0(\SHIFT_REGISTER_reg[144] [31]),
+        .I1(MAX_XCORR[31]),
+        .I2(\SHIFT_REGISTER_reg[144] [30]),
         .O(i__carry__2_i_5_n_0));
+  LUT3 #(
+    .INIT(8'h41)) 
+    i__carry__2_i_5__0
+       (.I0(\SHIFT_REGISTER_reg[144] [31]),
+        .I1(MAX_XCORR[31]),
+        .I2(\SHIFT_REGISTER_reg[144] [30]),
+        .O(i__carry__2_i_5__0_n_0));
   LUT4 #(
     .INIT(16'h9009)) 
     i__carry__2_i_6
        (.I0(\SHIFT_REGISTER_reg[144] [28]),
-        .I1(MAX_XCORR[28]),
+        .I1(MAX_XCORR[29]),
         .I2(\SHIFT_REGISTER_reg[144] [29]),
-        .I3(MAX_XCORR[29]),
+        .I3(MAX_XCORR[30]),
         .O(i__carry__2_i_6_n_0));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    i__carry__2_i_6__0
+       (.I0(\SHIFT_REGISTER_reg[144] [28]),
+        .I1(MAX_XCORR[29]),
+        .I2(\SHIFT_REGISTER_reg[144] [29]),
+        .I3(MAX_XCORR[30]),
+        .O(i__carry__2_i_6__0_n_0));
   LUT4 #(
     .INIT(16'h9009)) 
     i__carry__2_i_7
        (.I0(\SHIFT_REGISTER_reg[144] [26]),
-        .I1(MAX_XCORR[26]),
+        .I1(MAX_XCORR[27]),
         .I2(\SHIFT_REGISTER_reg[144] [27]),
-        .I3(MAX_XCORR[27]),
+        .I3(MAX_XCORR[28]),
         .O(i__carry__2_i_7_n_0));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    i__carry__2_i_7__0
+       (.I0(\SHIFT_REGISTER_reg[144] [26]),
+        .I1(MAX_XCORR[27]),
+        .I2(\SHIFT_REGISTER_reg[144] [27]),
+        .I3(MAX_XCORR[28]),
+        .O(i__carry__2_i_7__0_n_0));
   LUT4 #(
     .INIT(16'h9009)) 
     i__carry__2_i_8
        (.I0(\SHIFT_REGISTER_reg[144] [24]),
-        .I1(MAX_XCORR[24]),
+        .I1(MAX_XCORR[25]),
         .I2(\SHIFT_REGISTER_reg[144] [25]),
-        .I3(MAX_XCORR[25]),
+        .I3(MAX_XCORR[26]),
         .O(i__carry__2_i_8_n_0));
   LUT4 #(
-    .INIT(16'h2F02)) 
+    .INIT(16'h9009)) 
+    i__carry__2_i_8__0
+       (.I0(\SHIFT_REGISTER_reg[144] [24]),
+        .I1(MAX_XCORR[25]),
+        .I2(\SHIFT_REGISTER_reg[144] [25]),
+        .I3(MAX_XCORR[26]),
+        .O(i__carry__2_i_8__0_n_0));
+  LUT4 #(
+    .INIT(16'h20F2)) 
     i__carry_i_1
        (.I0(\SHIFT_REGISTER_reg[144] [6]),
-        .I1(MAX_XCORR[6]),
-        .I2(MAX_XCORR[7]),
-        .I3(\SHIFT_REGISTER_reg[144] [7]),
+        .I1(MAX_XCORR[7]),
+        .I2(\SHIFT_REGISTER_reg[144] [7]),
+        .I3(MAX_XCORR[8]),
         .O(i__carry_i_1_n_0));
   LUT4 #(
-    .INIT(16'h2F02)) 
+    .INIT(16'h20F2)) 
+    i__carry_i_1__0
+       (.I0(MAX_XCORR[7]),
+        .I1(\SHIFT_REGISTER_reg[144] [6]),
+        .I2(MAX_XCORR[8]),
+        .I3(\SHIFT_REGISTER_reg[144] [7]),
+        .O(i__carry_i_1__0_n_0));
+  LUT4 #(
+    .INIT(16'h20F2)) 
     i__carry_i_2
        (.I0(\SHIFT_REGISTER_reg[144] [4]),
-        .I1(MAX_XCORR[4]),
-        .I2(MAX_XCORR[5]),
-        .I3(\SHIFT_REGISTER_reg[144] [5]),
+        .I1(MAX_XCORR[5]),
+        .I2(\SHIFT_REGISTER_reg[144] [5]),
+        .I3(MAX_XCORR[6]),
         .O(i__carry_i_2_n_0));
   LUT4 #(
-    .INIT(16'h2F02)) 
+    .INIT(16'h20F2)) 
+    i__carry_i_2__0
+       (.I0(MAX_XCORR[5]),
+        .I1(\SHIFT_REGISTER_reg[144] [4]),
+        .I2(MAX_XCORR[6]),
+        .I3(\SHIFT_REGISTER_reg[144] [5]),
+        .O(i__carry_i_2__0_n_0));
+  LUT4 #(
+    .INIT(16'h20F2)) 
     i__carry_i_3
        (.I0(\SHIFT_REGISTER_reg[144] [2]),
-        .I1(MAX_XCORR[2]),
-        .I2(MAX_XCORR[3]),
-        .I3(\SHIFT_REGISTER_reg[144] [3]),
+        .I1(MAX_XCORR[3]),
+        .I2(\SHIFT_REGISTER_reg[144] [3]),
+        .I3(MAX_XCORR[4]),
         .O(i__carry_i_3_n_0));
   LUT4 #(
-    .INIT(16'h2F02)) 
+    .INIT(16'h20F2)) 
+    i__carry_i_3__0
+       (.I0(MAX_XCORR[3]),
+        .I1(\SHIFT_REGISTER_reg[144] [2]),
+        .I2(MAX_XCORR[4]),
+        .I3(\SHIFT_REGISTER_reg[144] [3]),
+        .O(i__carry_i_3__0_n_0));
+  LUT4 #(
+    .INIT(16'h20F2)) 
     i__carry_i_4
        (.I0(\SHIFT_REGISTER_reg[144] [0]),
-        .I1(MAX_XCORR[0]),
-        .I2(MAX_XCORR[1]),
-        .I3(\SHIFT_REGISTER_reg[144] [1]),
+        .I1(MAX_XCORR[1]),
+        .I2(\SHIFT_REGISTER_reg[144] [1]),
+        .I3(MAX_XCORR[2]),
         .O(i__carry_i_4_n_0));
+  LUT4 #(
+    .INIT(16'h20F2)) 
+    i__carry_i_4__0
+       (.I0(MAX_XCORR[1]),
+        .I1(\SHIFT_REGISTER_reg[144] [0]),
+        .I2(MAX_XCORR[2]),
+        .I3(\SHIFT_REGISTER_reg[144] [1]),
+        .O(i__carry_i_4__0_n_0));
   LUT4 #(
     .INIT(16'h9009)) 
     i__carry_i_5
        (.I0(\SHIFT_REGISTER_reg[144] [6]),
-        .I1(MAX_XCORR[6]),
+        .I1(MAX_XCORR[7]),
         .I2(\SHIFT_REGISTER_reg[144] [7]),
-        .I3(MAX_XCORR[7]),
+        .I3(MAX_XCORR[8]),
         .O(i__carry_i_5_n_0));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    i__carry_i_5__0
+       (.I0(\SHIFT_REGISTER_reg[144] [6]),
+        .I1(MAX_XCORR[7]),
+        .I2(\SHIFT_REGISTER_reg[144] [7]),
+        .I3(MAX_XCORR[8]),
+        .O(i__carry_i_5__0_n_0));
   LUT4 #(
     .INIT(16'h9009)) 
     i__carry_i_6
        (.I0(\SHIFT_REGISTER_reg[144] [4]),
-        .I1(MAX_XCORR[4]),
+        .I1(MAX_XCORR[5]),
         .I2(\SHIFT_REGISTER_reg[144] [5]),
-        .I3(MAX_XCORR[5]),
+        .I3(MAX_XCORR[6]),
         .O(i__carry_i_6_n_0));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    i__carry_i_6__0
+       (.I0(\SHIFT_REGISTER_reg[144] [4]),
+        .I1(MAX_XCORR[5]),
+        .I2(\SHIFT_REGISTER_reg[144] [5]),
+        .I3(MAX_XCORR[6]),
+        .O(i__carry_i_6__0_n_0));
   LUT4 #(
     .INIT(16'h9009)) 
     i__carry_i_7
        (.I0(\SHIFT_REGISTER_reg[144] [2]),
-        .I1(MAX_XCORR[2]),
+        .I1(MAX_XCORR[3]),
         .I2(\SHIFT_REGISTER_reg[144] [3]),
-        .I3(MAX_XCORR[3]),
+        .I3(MAX_XCORR[4]),
         .O(i__carry_i_7_n_0));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    i__carry_i_7__0
+       (.I0(\SHIFT_REGISTER_reg[144] [2]),
+        .I1(MAX_XCORR[3]),
+        .I2(\SHIFT_REGISTER_reg[144] [3]),
+        .I3(MAX_XCORR[4]),
+        .O(i__carry_i_7__0_n_0));
   LUT4 #(
     .INIT(16'h9009)) 
     i__carry_i_8
        (.I0(\SHIFT_REGISTER_reg[144] [0]),
-        .I1(MAX_XCORR[0]),
+        .I1(MAX_XCORR[1]),
         .I2(\SHIFT_REGISTER_reg[144] [1]),
-        .I3(MAX_XCORR[1]),
+        .I3(MAX_XCORR[2]),
         .O(i__carry_i_8_n_0));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    i__carry_i_8__0
+       (.I0(\SHIFT_REGISTER_reg[144] [0]),
+        .I1(MAX_XCORR[1]),
+        .I2(\SHIFT_REGISTER_reg[144] [1]),
+        .I3(MAX_XCORR[2]),
+        .O(i__carry_i_8__0_n_0));
 endmodule
 `ifndef GLBL
 `define GLBL

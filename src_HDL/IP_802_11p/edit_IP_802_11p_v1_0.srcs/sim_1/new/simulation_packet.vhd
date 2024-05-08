@@ -156,7 +156,7 @@ begin
     
     simulation_process : process(CLOCK)
         -- files & define lines
-        constant filename : string := "signal_802_11p_int.txt";
+        constant filename : string := "signal_802_11p_rotated_int.txt"; -- signal_802_11p_int.txt / signal_802_11p_rotated_int.txt
         FILE in_file : TEXT OPEN READ_MODE IS filename;
         VARIABLE in_line : LINE;
         VARIABLE a, b : integer;
@@ -171,7 +171,7 @@ begin
                 
                 if WAIT_NOW = '0' then
 
-                    -- read IQ samples from signal_802_11p_int.txt (repeat each sample twice --> 10MHz by interleaving inside)
+                    -- read IQ samples from signal_802_11p_int.txt/signal_802_11p_rotated_int.txt (repeat each sample twice --> 10MHz by interleaving inside)
                     READLINE(in_file, in_line); --get line of input stimulus
                     READ(in_line, a); --get first operand
                     READ(in_line, b); --get second operand

@@ -2,8 +2,8 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-// Date        : Mon May  6 23:27:20 2024
-// Host        : ASUS_ROG running 64-bit major release  (build 9200)
+// Date        : Wed May  8 16:48:07 2024
+// Host        : lab817_01 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_fft_ofdm_0_1/block_design_0_fft_ofdm_0_1_sim_netlist.v
 // Design      : block_design_0_fft_ofdm_0_1
@@ -75,9 +75,9 @@ module block_design_0_fft_ofdm_0_1
   wire FFT_DATA_OUT_LAST;
   wire FFT_DATA_OUT_VALID;
   wire [15:0]FFT_IDATA_IN;
-  wire [23:0]FFT_IDATA_OUT;
+  wire [23:1]\^FFT_IDATA_OUT ;
   wire [15:0]FFT_QDATA_IN;
-  wire [23:0]FFT_QDATA_OUT;
+  wire [23:1]\^FFT_QDATA_OUT ;
   wire [47:0]M_AXIS_DATA_tdata;
   wire M_AXIS_DATA_tlast;
   wire M_AXIS_DATA_tvalid;
@@ -88,6 +88,10 @@ module block_design_0_fft_ofdm_0_1
   wire S_AXIS_DATA_tvalid;
   wire aresetn;
 
+  assign FFT_IDATA_OUT[23:1] = \^FFT_IDATA_OUT [23:1];
+  assign FFT_IDATA_OUT[0] = \<const0> ;
+  assign FFT_QDATA_OUT[23:1] = \^FFT_QDATA_OUT [23:1];
+  assign FFT_QDATA_OUT[0] = \<const0> ;
   assign S_AXIS_CONFIG_tdata[7] = \<const0> ;
   assign S_AXIS_CONFIG_tdata[6] = \<const0> ;
   assign S_AXIS_CONFIG_tdata[5] = \<const0> ;
@@ -109,10 +113,10 @@ module block_design_0_fft_ofdm_0_1
         .FFT_DATA_OUT_LAST(FFT_DATA_OUT_LAST),
         .FFT_DATA_OUT_VALID(FFT_DATA_OUT_VALID),
         .FFT_IDATA_IN(FFT_IDATA_IN),
-        .FFT_IDATA_OUT(FFT_IDATA_OUT),
+        .FFT_IDATA_OUT(\^FFT_IDATA_OUT ),
         .FFT_QDATA_IN(FFT_QDATA_IN),
-        .FFT_QDATA_OUT(FFT_QDATA_OUT),
-        .M_AXIS_DATA_tdata(M_AXIS_DATA_tdata),
+        .FFT_QDATA_OUT(\^FFT_QDATA_OUT ),
+        .M_AXIS_DATA_tdata({M_AXIS_DATA_tdata[46:24],M_AXIS_DATA_tdata[22:0]}),
         .M_AXIS_DATA_tlast(M_AXIS_DATA_tlast),
         .M_AXIS_DATA_tvalid(M_AXIS_DATA_tvalid),
         .RESET(RESET),
@@ -145,8 +149,8 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
     FFT_IDATA_IN,
     FFT_QDATA_IN,
     FFT_DATA_IN_FIRST_SYMBOL_MARKER);
-  output [23:0]FFT_IDATA_OUT;
-  output [23:0]FFT_QDATA_OUT;
+  output [22:0]FFT_IDATA_OUT;
+  output [22:0]FFT_QDATA_OUT;
   output FFT_DATA_OUT_VALID;
   output FFT_DATA_OUT_LAST;
   output FFT_DATA_OUT_FIRST_SYMBOL_MARKER;
@@ -158,7 +162,7 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
   input S_AXIS_DATA_tready;
   input FFT_DATA_IN_STROBE;
   input FFT_DATA_IN_START;
-  input [47:0]M_AXIS_DATA_tdata;
+  input [45:0]M_AXIS_DATA_tdata;
   input CLOCK;
   input M_AXIS_DATA_tvalid;
   input M_AXIS_DATA_tlast;
@@ -175,7 +179,7 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
   wire FFT_DATA_OUT_LAST;
   wire FFT_DATA_OUT_VALID;
   wire [15:0]FFT_IDATA_IN;
-  wire [23:0]FFT_IDATA_OUT;
+  wire [22:0]FFT_IDATA_OUT;
   wire \FFT_IDATA_OUT[23]_i_1_n_0 ;
   wire FFT_NEXT_DATA_CNTR0;
   wire FFT_NEXT_DATA_CNTR1;
@@ -215,7 +219,7 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
   wire \FFT_NEXT_DATA_CNTR_reg_n_0_[5] ;
   wire \FFT_NEXT_DATA_CNTR_reg_n_0_[6] ;
   wire [15:0]FFT_QDATA_IN;
-  wire [23:0]FFT_QDATA_OUT;
+  wire [22:0]FFT_QDATA_OUT;
   wire \IDATA_BUFFER[0][15]_i_1_n_0 ;
   wire \IDATA_BUFFER[0][15]_i_2_n_0 ;
   wire \IDATA_BUFFER[0][15]_i_3_n_0 ;
@@ -400,7 +404,7 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
   wire \INPUT_DATA_CNTR_reg_n_0_[4] ;
   wire \INPUT_DATA_CNTR_reg_n_0_[5] ;
   wire \INPUT_DATA_CNTR_reg_n_0_[6] ;
-  wire [47:0]M_AXIS_DATA_tdata;
+  wire [45:0]M_AXIS_DATA_tdata;
   wire M_AXIS_DATA_tlast;
   wire M_AXIS_DATA_tvalid;
   wire [15:0]\QDATA_BUFFER_reg[0]_0 ;
@@ -1394,16 +1398,16 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
-    \FFT_IDATA_OUT_reg[0] 
+    \FFT_IDATA_OUT_reg[10] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
-        .D(M_AXIS_DATA_tdata[0]),
-        .Q(FFT_IDATA_OUT[0]),
+        .D(M_AXIS_DATA_tdata[9]),
+        .Q(FFT_IDATA_OUT[9]),
         .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
-    \FFT_IDATA_OUT_reg[10] 
+    \FFT_IDATA_OUT_reg[11] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
         .D(M_AXIS_DATA_tdata[10]),
@@ -1412,7 +1416,7 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
-    \FFT_IDATA_OUT_reg[11] 
+    \FFT_IDATA_OUT_reg[12] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
         .D(M_AXIS_DATA_tdata[11]),
@@ -1421,7 +1425,7 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
-    \FFT_IDATA_OUT_reg[12] 
+    \FFT_IDATA_OUT_reg[13] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
         .D(M_AXIS_DATA_tdata[12]),
@@ -1430,7 +1434,7 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
-    \FFT_IDATA_OUT_reg[13] 
+    \FFT_IDATA_OUT_reg[14] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
         .D(M_AXIS_DATA_tdata[13]),
@@ -1439,7 +1443,7 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
-    \FFT_IDATA_OUT_reg[14] 
+    \FFT_IDATA_OUT_reg[15] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
         .D(M_AXIS_DATA_tdata[14]),
@@ -1448,7 +1452,7 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
-    \FFT_IDATA_OUT_reg[15] 
+    \FFT_IDATA_OUT_reg[16] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
         .D(M_AXIS_DATA_tdata[15]),
@@ -1457,7 +1461,7 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
-    \FFT_IDATA_OUT_reg[16] 
+    \FFT_IDATA_OUT_reg[17] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
         .D(M_AXIS_DATA_tdata[16]),
@@ -1466,7 +1470,7 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
-    \FFT_IDATA_OUT_reg[17] 
+    \FFT_IDATA_OUT_reg[18] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
         .D(M_AXIS_DATA_tdata[17]),
@@ -1475,7 +1479,7 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
-    \FFT_IDATA_OUT_reg[18] 
+    \FFT_IDATA_OUT_reg[19] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
         .D(M_AXIS_DATA_tdata[18]),
@@ -1484,7 +1488,16 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
-    \FFT_IDATA_OUT_reg[19] 
+    \FFT_IDATA_OUT_reg[1] 
+       (.C(CLOCK),
+        .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
+        .D(M_AXIS_DATA_tdata[0]),
+        .Q(FFT_IDATA_OUT[0]),
+        .R(1'b0));
+  (* x_interface_ignore = "TRUE" *) 
+  FDRE #(
+    .INIT(1'b0)) 
+    \FFT_IDATA_OUT_reg[20] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
         .D(M_AXIS_DATA_tdata[19]),
@@ -1493,16 +1506,7 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
-    \FFT_IDATA_OUT_reg[1] 
-       (.C(CLOCK),
-        .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
-        .D(M_AXIS_DATA_tdata[1]),
-        .Q(FFT_IDATA_OUT[1]),
-        .R(1'b0));
-  (* x_interface_ignore = "TRUE" *) 
-  FDRE #(
-    .INIT(1'b0)) 
-    \FFT_IDATA_OUT_reg[20] 
+    \FFT_IDATA_OUT_reg[21] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
         .D(M_AXIS_DATA_tdata[20]),
@@ -1511,7 +1515,7 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
-    \FFT_IDATA_OUT_reg[21] 
+    \FFT_IDATA_OUT_reg[22] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
         .D(M_AXIS_DATA_tdata[21]),
@@ -1520,7 +1524,7 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
-    \FFT_IDATA_OUT_reg[22] 
+    \FFT_IDATA_OUT_reg[23] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
         .D(M_AXIS_DATA_tdata[22]),
@@ -1529,16 +1533,16 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
-    \FFT_IDATA_OUT_reg[23] 
+    \FFT_IDATA_OUT_reg[2] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
-        .D(M_AXIS_DATA_tdata[23]),
-        .Q(FFT_IDATA_OUT[23]),
+        .D(M_AXIS_DATA_tdata[1]),
+        .Q(FFT_IDATA_OUT[1]),
         .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
-    \FFT_IDATA_OUT_reg[2] 
+    \FFT_IDATA_OUT_reg[3] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
         .D(M_AXIS_DATA_tdata[2]),
@@ -1547,7 +1551,7 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
-    \FFT_IDATA_OUT_reg[3] 
+    \FFT_IDATA_OUT_reg[4] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
         .D(M_AXIS_DATA_tdata[3]),
@@ -1556,7 +1560,7 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
-    \FFT_IDATA_OUT_reg[4] 
+    \FFT_IDATA_OUT_reg[5] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
         .D(M_AXIS_DATA_tdata[4]),
@@ -1565,7 +1569,7 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
-    \FFT_IDATA_OUT_reg[5] 
+    \FFT_IDATA_OUT_reg[6] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
         .D(M_AXIS_DATA_tdata[5]),
@@ -1574,7 +1578,7 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
-    \FFT_IDATA_OUT_reg[6] 
+    \FFT_IDATA_OUT_reg[7] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
         .D(M_AXIS_DATA_tdata[6]),
@@ -1583,7 +1587,7 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
-    \FFT_IDATA_OUT_reg[7] 
+    \FFT_IDATA_OUT_reg[8] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
         .D(M_AXIS_DATA_tdata[7]),
@@ -1592,20 +1596,11 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
-    \FFT_IDATA_OUT_reg[8] 
+    \FFT_IDATA_OUT_reg[9] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
         .D(M_AXIS_DATA_tdata[8]),
         .Q(FFT_IDATA_OUT[8]),
-        .R(1'b0));
-  (* x_interface_ignore = "TRUE" *) 
-  FDRE #(
-    .INIT(1'b0)) 
-    \FFT_IDATA_OUT_reg[9] 
-       (.C(CLOCK),
-        .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
-        .D(M_AXIS_DATA_tdata[9]),
-        .Q(FFT_IDATA_OUT[9]),
         .R(1'b0));
   LUT4 #(
     .INIT(16'hFBAE)) 
@@ -1900,20 +1895,11 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
     .INIT(1'b0)) 
-    \FFT_QDATA_OUT_reg[0] 
-       (.C(CLOCK),
-        .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
-        .D(M_AXIS_DATA_tdata[24]),
-        .Q(FFT_QDATA_OUT[0]),
-        .R(1'b0));
-  (* x_interface_ignore = "TRUE" *) 
-  FDRE #(
-    .INIT(1'b0)) 
     \FFT_QDATA_OUT_reg[10] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
-        .D(M_AXIS_DATA_tdata[34]),
-        .Q(FFT_QDATA_OUT[10]),
+        .D(M_AXIS_DATA_tdata[32]),
+        .Q(FFT_QDATA_OUT[9]),
         .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
@@ -1921,8 +1907,8 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
     \FFT_QDATA_OUT_reg[11] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
-        .D(M_AXIS_DATA_tdata[35]),
-        .Q(FFT_QDATA_OUT[11]),
+        .D(M_AXIS_DATA_tdata[33]),
+        .Q(FFT_QDATA_OUT[10]),
         .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
@@ -1930,8 +1916,8 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
     \FFT_QDATA_OUT_reg[12] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
-        .D(M_AXIS_DATA_tdata[36]),
-        .Q(FFT_QDATA_OUT[12]),
+        .D(M_AXIS_DATA_tdata[34]),
+        .Q(FFT_QDATA_OUT[11]),
         .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
@@ -1939,8 +1925,8 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
     \FFT_QDATA_OUT_reg[13] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
-        .D(M_AXIS_DATA_tdata[37]),
-        .Q(FFT_QDATA_OUT[13]),
+        .D(M_AXIS_DATA_tdata[35]),
+        .Q(FFT_QDATA_OUT[12]),
         .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
@@ -1948,8 +1934,8 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
     \FFT_QDATA_OUT_reg[14] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
-        .D(M_AXIS_DATA_tdata[38]),
-        .Q(FFT_QDATA_OUT[14]),
+        .D(M_AXIS_DATA_tdata[36]),
+        .Q(FFT_QDATA_OUT[13]),
         .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
@@ -1957,8 +1943,8 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
     \FFT_QDATA_OUT_reg[15] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
-        .D(M_AXIS_DATA_tdata[39]),
-        .Q(FFT_QDATA_OUT[15]),
+        .D(M_AXIS_DATA_tdata[37]),
+        .Q(FFT_QDATA_OUT[14]),
         .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
@@ -1966,8 +1952,8 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
     \FFT_QDATA_OUT_reg[16] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
-        .D(M_AXIS_DATA_tdata[40]),
-        .Q(FFT_QDATA_OUT[16]),
+        .D(M_AXIS_DATA_tdata[38]),
+        .Q(FFT_QDATA_OUT[15]),
         .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
@@ -1975,8 +1961,8 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
     \FFT_QDATA_OUT_reg[17] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
-        .D(M_AXIS_DATA_tdata[41]),
-        .Q(FFT_QDATA_OUT[17]),
+        .D(M_AXIS_DATA_tdata[39]),
+        .Q(FFT_QDATA_OUT[16]),
         .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
@@ -1984,8 +1970,8 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
     \FFT_QDATA_OUT_reg[18] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
-        .D(M_AXIS_DATA_tdata[42]),
-        .Q(FFT_QDATA_OUT[18]),
+        .D(M_AXIS_DATA_tdata[40]),
+        .Q(FFT_QDATA_OUT[17]),
         .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
@@ -1993,8 +1979,8 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
     \FFT_QDATA_OUT_reg[19] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
-        .D(M_AXIS_DATA_tdata[43]),
-        .Q(FFT_QDATA_OUT[19]),
+        .D(M_AXIS_DATA_tdata[41]),
+        .Q(FFT_QDATA_OUT[18]),
         .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
@@ -2002,8 +1988,8 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
     \FFT_QDATA_OUT_reg[1] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
-        .D(M_AXIS_DATA_tdata[25]),
-        .Q(FFT_QDATA_OUT[1]),
+        .D(M_AXIS_DATA_tdata[23]),
+        .Q(FFT_QDATA_OUT[0]),
         .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
@@ -2011,8 +1997,8 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
     \FFT_QDATA_OUT_reg[20] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
-        .D(M_AXIS_DATA_tdata[44]),
-        .Q(FFT_QDATA_OUT[20]),
+        .D(M_AXIS_DATA_tdata[42]),
+        .Q(FFT_QDATA_OUT[19]),
         .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
@@ -2020,8 +2006,8 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
     \FFT_QDATA_OUT_reg[21] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
-        .D(M_AXIS_DATA_tdata[45]),
-        .Q(FFT_QDATA_OUT[21]),
+        .D(M_AXIS_DATA_tdata[43]),
+        .Q(FFT_QDATA_OUT[20]),
         .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
@@ -2029,8 +2015,8 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
     \FFT_QDATA_OUT_reg[22] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
-        .D(M_AXIS_DATA_tdata[46]),
-        .Q(FFT_QDATA_OUT[22]),
+        .D(M_AXIS_DATA_tdata[44]),
+        .Q(FFT_QDATA_OUT[21]),
         .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
@@ -2038,8 +2024,8 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
     \FFT_QDATA_OUT_reg[23] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
-        .D(M_AXIS_DATA_tdata[47]),
-        .Q(FFT_QDATA_OUT[23]),
+        .D(M_AXIS_DATA_tdata[45]),
+        .Q(FFT_QDATA_OUT[22]),
         .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
@@ -2047,8 +2033,8 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
     \FFT_QDATA_OUT_reg[2] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
-        .D(M_AXIS_DATA_tdata[26]),
-        .Q(FFT_QDATA_OUT[2]),
+        .D(M_AXIS_DATA_tdata[24]),
+        .Q(FFT_QDATA_OUT[1]),
         .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
@@ -2056,8 +2042,8 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
     \FFT_QDATA_OUT_reg[3] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
-        .D(M_AXIS_DATA_tdata[27]),
-        .Q(FFT_QDATA_OUT[3]),
+        .D(M_AXIS_DATA_tdata[25]),
+        .Q(FFT_QDATA_OUT[2]),
         .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
@@ -2065,8 +2051,8 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
     \FFT_QDATA_OUT_reg[4] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
-        .D(M_AXIS_DATA_tdata[28]),
-        .Q(FFT_QDATA_OUT[4]),
+        .D(M_AXIS_DATA_tdata[26]),
+        .Q(FFT_QDATA_OUT[3]),
         .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
@@ -2074,8 +2060,8 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
     \FFT_QDATA_OUT_reg[5] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
-        .D(M_AXIS_DATA_tdata[29]),
-        .Q(FFT_QDATA_OUT[5]),
+        .D(M_AXIS_DATA_tdata[27]),
+        .Q(FFT_QDATA_OUT[4]),
         .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
@@ -2083,8 +2069,8 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
     \FFT_QDATA_OUT_reg[6] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
-        .D(M_AXIS_DATA_tdata[30]),
-        .Q(FFT_QDATA_OUT[6]),
+        .D(M_AXIS_DATA_tdata[28]),
+        .Q(FFT_QDATA_OUT[5]),
         .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
@@ -2092,8 +2078,8 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
     \FFT_QDATA_OUT_reg[7] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
-        .D(M_AXIS_DATA_tdata[31]),
-        .Q(FFT_QDATA_OUT[7]),
+        .D(M_AXIS_DATA_tdata[29]),
+        .Q(FFT_QDATA_OUT[6]),
         .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
@@ -2101,8 +2087,8 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
     \FFT_QDATA_OUT_reg[8] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
-        .D(M_AXIS_DATA_tdata[32]),
-        .Q(FFT_QDATA_OUT[8]),
+        .D(M_AXIS_DATA_tdata[30]),
+        .Q(FFT_QDATA_OUT[7]),
         .R(1'b0));
   (* x_interface_ignore = "TRUE" *) 
   FDRE #(
@@ -2110,8 +2096,8 @@ module block_design_0_fft_ofdm_0_1_fft_ofdm
     \FFT_QDATA_OUT_reg[9] 
        (.C(CLOCK),
         .CE(\FFT_IDATA_OUT[23]_i_1_n_0 ),
-        .D(M_AXIS_DATA_tdata[33]),
-        .Q(FFT_QDATA_OUT[9]),
+        .D(M_AXIS_DATA_tdata[31]),
+        .Q(FFT_QDATA_OUT[8]),
         .R(1'b0));
   LUT6 #(
     .INIT(64'h00000000FF080000)) 
