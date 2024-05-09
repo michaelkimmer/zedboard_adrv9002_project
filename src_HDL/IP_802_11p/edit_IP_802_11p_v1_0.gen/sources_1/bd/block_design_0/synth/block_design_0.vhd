@@ -2,8 +2,8 @@
 --Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
---Date        : Wed May  8 16:54:51 2024
---Host        : lab817_01 running 64-bit major release  (build 9200)
+--Date        : Thu May  9 03:19:00 2024
+--Host        : ASUS_ROG running 64-bit major release  (build 9200)
 --Command     : generate_target block_design_0.bd
 --Design      : block_design_0
 --Purpose     : IP block netlist
@@ -669,7 +669,7 @@ entity block_design_0 is
     BRAM_PORTB_dout : out STD_LOGIC_VECTOR ( 31 downto 0 );
     BRAM_PORTB_en : in STD_LOGIC;
     CLOCK : in STD_LOGIC;
-    DETECTION_THRESHOLD : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    DETECTION_THRESHOLD : in STD_LOGIC_VECTOR ( 63 downto 0 );
     FPGA_REG_WRITE_ADDRESS : out STD_LOGIC_VECTOR ( 11 downto 0 );
     FPGA_REG_WRITE_DATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
     FPGA_REG_WRITE_STROBE : out STD_LOGIC;
@@ -763,11 +763,11 @@ architecture STRUCTURE of block_design_0 is
     QDATA_DELAY_48 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     IDATA_DELAY_64 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     QDATA_DELAY_64 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    DETECTION_THRESHOLD : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    DETECTION_THRESHOLD : in STD_LOGIC_VECTOR ( 63 downto 0 );
     DETECTION_STROBE : out STD_LOGIC;
     DETECTION_SIGNAL_DETECTED : out STD_LOGIC;
-    DETECTION_XCORR : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    CONTINUOUS_XCORR : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    DETECTION_XCORR : out STD_LOGIC_VECTOR ( 63 downto 0 );
+    CONTINUOUS_XCORR : out STD_LOGIC_VECTOR ( 63 downto 0 );
     DETECTION_STS_AUTOCORR_I : out STD_LOGIC_VECTOR ( 31 downto 0 );
     DETECTION_STS_AUTOCORR_Q : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
@@ -970,7 +970,7 @@ architecture STRUCTURE of block_design_0 is
   signal BRAM_PORTB_0_1_DOUT : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal BRAM_PORTB_0_1_EN : STD_LOGIC;
   signal CLOCK_0_1 : STD_LOGIC;
-  signal DETECTION_THRESHOLD_0_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal DETECTION_THRESHOLD_0_1 : STD_LOGIC_VECTOR ( 63 downto 0 );
   signal RESET_0_1 : STD_LOGIC;
   signal RX_CLOCK_0_1 : STD_LOGIC;
   signal RX_ENABLE_0_1 : STD_LOGIC;
@@ -1080,8 +1080,8 @@ architecture STRUCTURE of block_design_0 is
   signal NLW_hier_fft_ofdm_event_frame_started_UNCONNECTED : STD_LOGIC;
   signal NLW_hier_fft_ofdm_event_tlast_missing_UNCONNECTED : STD_LOGIC;
   signal NLW_hier_fft_ofdm_event_tlast_unexpected_UNCONNECTED : STD_LOGIC;
-  signal NLW_timing_acquisition_8_0_CONTINUOUS_XCORR_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal NLW_timing_acquisition_8_0_DETECTION_XCORR_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal NLW_timing_acquisition_8_0_CONTINUOUS_XCORR_UNCONNECTED : STD_LOGIC_VECTOR ( 63 downto 0 );
+  signal NLW_timing_acquisition_8_0_DETECTION_XCORR_UNCONNECTED : STD_LOGIC_VECTOR ( 63 downto 0 );
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of BRAM_PORTA_clk : signal is "xilinx.com:interface:bram:1.0 BRAM_PORTA CLK";
   attribute X_INTERFACE_INFO of BRAM_PORTA_en : signal is "xilinx.com:interface:bram:1.0 BRAM_PORTA EN";
@@ -1114,7 +1114,7 @@ begin
   BRAM_PORTB_0_1_EN <= BRAM_PORTB_en;
   BRAM_PORTB_dout(31 downto 0) <= BRAM_PORTB_0_1_DOUT(31 downto 0);
   CLOCK_0_1 <= CLOCK;
-  DETECTION_THRESHOLD_0_1(31 downto 0) <= DETECTION_THRESHOLD(31 downto 0);
+  DETECTION_THRESHOLD_0_1(63 downto 0) <= DETECTION_THRESHOLD(63 downto 0);
   FPGA_REG_WRITE_ADDRESS(11 downto 0) <= receiver_802_11p_0_FPGA_REG_WRITE_ADDRESS(11 downto 0);
   FPGA_REG_WRITE_DATA(31 downto 0) <= axi_regs_mux_0_FPGA_REG_WRITE_DATA(31 downto 0);
   FPGA_REG_WRITE_STROBE <= axi_regs_mux_0_FPGA_REG_WRITE_STROBE;
@@ -1419,14 +1419,14 @@ rx_clock_domain_cros_0: component block_design_0_rx_clock_domain_cros_0_0
 timing_acquisition_8_0: component block_design_0_timing_acquisition_8_0_0
      port map (
       CLOCK => CLOCK_0_1,
-      CONTINUOUS_XCORR(31 downto 0) => NLW_timing_acquisition_8_0_CONTINUOUS_XCORR_UNCONNECTED(31 downto 0),
+      CONTINUOUS_XCORR(63 downto 0) => NLW_timing_acquisition_8_0_CONTINUOUS_XCORR_UNCONNECTED(63 downto 0),
       DATA_STROBE => data_delay_0_DATA_OUT_STROBE,
       DETECTION_SIGNAL_DETECTED => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
       DETECTION_STROBE => timing_acquisition_8_0_DETECTION_STROBE,
       DETECTION_STS_AUTOCORR_I(31 downto 0) => timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I(31 downto 0),
       DETECTION_STS_AUTOCORR_Q(31 downto 0) => timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q(31 downto 0),
-      DETECTION_THRESHOLD(31 downto 0) => DETECTION_THRESHOLD_0_1(31 downto 0),
-      DETECTION_XCORR(31 downto 0) => NLW_timing_acquisition_8_0_DETECTION_XCORR_UNCONNECTED(31 downto 0),
+      DETECTION_THRESHOLD(63 downto 0) => DETECTION_THRESHOLD_0_1(63 downto 0),
+      DETECTION_XCORR(63 downto 0) => NLW_timing_acquisition_8_0_DETECTION_XCORR_UNCONNECTED(63 downto 0),
       IDATA(15 downto 0) => data_delay_0_IDATA_OUT(15 downto 0),
       IDATA_DELAY_16(15 downto 0) => data_delay_0_IDATA_OUT_DELAY_16(15 downto 0),
       IDATA_DELAY_32(15 downto 0) => data_delay_0_IDATA_OUT_DELAY_32(15 downto 0),

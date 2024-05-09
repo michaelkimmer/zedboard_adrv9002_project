@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:module_ref:demapper:1.0
--- IP Revision: 1715168008
+-- IP Revision: 1715197126
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;

@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter import ttk #tkk.Combobox
 
+import os
+
 import matplotlib
 matplotlib.use('TkAgg') #TkAgg backend -- which is made to integrate into Tkinter
 from matplotlib.figure import Figure
@@ -29,6 +31,9 @@ from access_axi_regs import *
 DEFAULT_CARRIER_FREQ = 5.9e9
 # DEFAULT_RX_GAIN = ???
 DEFAULT_TX_GAIN = -10
+
+# GUI read update interval
+READ_UPDATE_INTERVAL_MS = 500
 
 # IIO parameters
 IIO_uri="ip:192.168.1.12" # uri="ip:192.168.1.12", uri="ip:analog.local"
@@ -996,7 +1001,12 @@ class Reception_Tab(ttk.Frame):
         # Set the FPGA to output IQ samples TODO
 
         # Read AXI registers 
-        regs = read_axi_data(addresses)
+        try:
+            regs = read_axi_data(addresses)
+        except:
+            self.log_write_line("AXI read failed !")
+            return
+        
         N_data = regs.shape[0]
 
         # Extract the data (Q at MSB !)
@@ -1269,7 +1279,12 @@ class Constellation_Tab(ttk.Frame):
 
 
         # Read AXI registers 
-        regs = read_axi_data(addresses)
+        try:
+            regs = read_axi_data(addresses)
+        except:
+            self.log_write_line("AXI read failed !")
+            return
+
         N_data = regs.shape[0]
 
         # Extract the data (Q at MSB !)
@@ -1325,6 +1340,7 @@ class Realtime_Tab(ttk.Frame):
         self.root = root
 
         self.active = False
+        self.counter_decodings_done_memory = 0 #TODO: reset !!!
 
         self.act_row = 0 #used for actual grid position
         
@@ -1356,7 +1372,7 @@ class Realtime_Tab(ttk.Frame):
         description_label.grid(row=self.act_row, column=2, columnspan=2, padx=5, pady=5, sticky="W")
 
         # Read button
-        connect_button = tk.Button(self, text="Read Once", command=lambda: self.read_once_button_clicked(root))
+        connect_button = tk.Button(self, text="Read Once & Write to file", command=lambda: self.read_once_button_clicked(root))
         connect_button.grid(row=self.act_row, column=3, padx=5, pady=5, sticky="WE") 
 
         self.act_row += 1
@@ -1433,20 +1449,17 @@ class Realtime_Tab(ttk.Frame):
 
     # Stop read new data from FPGA AXI regs
     def stop_button_clicked(self, root):
-        # Set the FPGA to output decoded data TODO
-
-        # Stop reading AXI registers
+        # Stop reading AXI registers TODO
         self.active = False
 
         self.description_label.config(text="Idle")
         self.log_write_line(f"Realtime reading stopped")
 
+
     # read once new data from FPGA AXI regs
     def read_once_button_clicked(self, root):
-        # Set the FPGA to output decoded data TODO
 
-
-        self.log_write_line(f"Data read once")
+        self.read_rx_write_data_to_log(write_no_new_data_to_log=True, write_data_to_file=True)
 
 
     # Clear log
@@ -1461,6 +1474,155 @@ class Realtime_Tab(ttk.Frame):
         self.log.value_labels.insert(tk.END, line + "\n")
         self.log.value_labels.config(state=tk.DISABLED) 
         self.log.value_labels.yview("moveto", 1.0) # scroll down
+
+
+    def read_rx_write_data_to_log(self, write_no_new_data_to_log=False, write_data_to_file=False):
+        # Set the FPGA to output decoded data TODO (with the tab change ?? !!)
+
+        # Params
+        fs = 10e6
+        foldername = "./received_data/"
+        filename = foldername + "received_data.txt"
+
+
+        # Read AXI registers 
+        addresses = [0, 15+1024+1] #read all registers at once ! (all that can have rx decoded data + service field)
+        try:
+            regs = read_axi_data(addresses)
+        except:
+            self.log_write_line("AXI read failed !")
+            return
+        N_data = regs.shape[0]
+
+
+        # Decode and check MODE (reg2 -- unsigned(7 downto 0))
+        mode = regs[2]
+        # TODO: check MODE ?
+
+
+        # Decode frequency offset after STS (reg3 -- signed(19 downto 0))
+        frequency_first_int = np.left_shift(regs[3] & 0x000fffff, 12).astype(np.int32, casting='unsafe') / 2**12  # shift left for the sign bit, then divide
+        frequency_first_rad = frequency_first_int.astype(np.float32, casting='safe') /2**17 *np.pi  # Get rad/sample change value from 2QN Scaled Radians format (3 MSB is integer part, 1==pi) 
+        frequency_first_hz  = frequency_first_rad /(2*np.pi) * fs
+
+        # Decode frequency offset after LTS (reg4 -- signed(19 downto 0))
+        frequency_second_int = np.left_shift(regs[4] & 0x000fffff, 12).astype(np.int32, casting='unsafe') / 2**12  # shift left for the sign bit, then divide
+        frequency_second_rad = frequency_second_int.astype(np.float32, casting='safe') /2**17 *np.pi  # Get rad/sample change value from 2QN Scaled Radians format (3 MSB is integer part, 1==pi) 
+        frequency_second_hz  = frequency_second_rad /(2*np.pi) * fs
+
+        # Decode number of RX start processing (reg5 -- unsigned(31 downto 0))
+        counter_start_rx = regs[5]
+
+        # Decode number of done decodings (reg14 -- unsigned(31 downto 0))
+        counter_decodings_done = regs[14]
+
+
+        # If no new decoding done --> return !
+        if counter_decodings_done == self.counter_decodings_done_memory:
+            if write_no_new_data_to_log:
+                self.log_write_line("No new data received !")
+            return
+        else:
+            self.counter_decodings_done_memory = counter_decodings_done
+
+
+        # Decode signal field (reg15)
+        signal_bytes_big_bit_order = np.frombuffer(regs[15].byteswap().tobytes(), dtype=np.uint8) # for each uint32 -- 4 bytes (np.uint8) in little-endian byte order (MSB byte at index 0)
+        # signal_bytes_little_bit_order = np.packbits(np.unpackbits(signal_bytes_big_bit_order, bitorder='big'), bitorder='little') # flip each byte from little to big bit order !!
+        
+        signal_field_bits = np.unpackbits(signal_bytes_big_bit_order, bitorder='big')[0:24] # 24 signal bits
+        signal_field_string = '"' + np.array2string(signal_field_bits,separator='')[1:-1] + '"'
+        
+        #   Get PHY parameters from the signal field
+        rate = signal_field_string[1:5]
+
+        if rate[0:2] == "11":
+            modulation = "BPSK"
+        elif rate[0:2] == "01":
+            modulation = "QPSK"
+        elif rate[0:2] == "10":
+            modulation = "16-QAM"
+        else:
+            modulation = "Unknown"
+
+        if rate[2:4] == "01":
+            code_rate = "R=1/2"
+        elif rate[2:4] == "11":
+            code_rate = "R=3/4"
+        else:
+            code_rate = "Unknown"
+
+        # Note: LENGTH field <--> SIGNAL bits: 5..16 [LSB at 5 !!] ---> append 4 zeros, pack to 2 bytes (with little order !!), view as uint16
+        bytes_length = np.packbits(np.concatenate((signal_field_bits[5:17], np.zeros(4, dtype=np.uint8))), bitorder='little').view(np.uint16)[0]
+        regs_used = int(np.ceil((float(bytes_length) + 2)/4))
+
+
+        # Decode decoded 2025 data fileds + service field (reg16..reg2040)  !!!!!!!! -1 -->length
+        val_bytes_big_bit_order = np.frombuffer(regs[16:16+regs_used].byteswap().tobytes(), dtype=np.uint8) # for each uint32 -- 4 bytes (np.uint8) in little-endian byte order (MSB byte at index 0)
+        val_bytes_little_bit_order = np.packbits(np.unpackbits(val_bytes_big_bit_order, bitorder='big'), bitorder='little') # flip each byte from little to big bit order !!
+
+        #   Extract SERVICE(0 to 16) field from decoded data [LSB first !!]
+        service_field_bits = np.unpackbits(val_bytes_big_bit_order[0:2], bitorder='big')
+        service_field_string = '"' + np.array2string(service_field_bits,separator='')[1:-1] + '"'
+        
+        #   Extract DATA(0 to LENGTH-1) bytes 
+        data_bytes = val_bytes_little_bit_order[2:2+bytes_length]
+
+        data_hex_string = ""
+        data_ascii_string = ""
+        for data_byte in data_bytes:
+            # Get current data value in hex
+            hex_val = "0" + hex(data_byte)[2:]
+            hex_val = hex_val[-2:].upper()
+
+            data_hex_string += hex_val + " "
+
+            # Get current data value in ascii (Note: extended ascii .decode('latin-1') breaks the log)
+            if (data_byte >= 32 and data_byte <= 126) or data_byte == ord('\r') or data_byte == ord('\n'):
+                char_val = chr(data_byte) # display only displayable chars
+            else:
+                char_val = "?"
+
+            data_ascii_string += char_val
+            
+        # Write ouput to the binary file
+        if write_data_to_file:
+            try:
+                os.mkdir(foldername)
+            except:
+                pass
+            with open(filename, "wb") as f:
+                f.write(data_bytes.tobytes())
+
+
+        # Write output and info to the log
+        self.log_write_line("------------------------------------------------------------")
+        self.log_write_line(f"Started rx counter: {counter_start_rx}")
+        self.log_write_line(f"Decodings done counter: {counter_decodings_done}")
+        self.log_write_line("")
+
+        self.log_write_line(f"First (STS) frequency synchronization: {round(frequency_first_hz)} Hz")
+        self.log_write_line(f"Second (LTS) frequency synchronization: {round(frequency_second_hz)} Hz")
+        self.log_write_line("")
+
+        self.log_write_line(f"SIGNAL field: {signal_field_string} (LSB first)")
+        self.log_write_line(f"   Modulation: {modulation}")
+        self.log_write_line(f"   Code Rate: {code_rate}")
+        self.log_write_line(f"   LENGTH: {bytes_length} B")
+        self.log_write_line("")
+
+        self.log_write_line(f"SERVICE field: {service_field_string} (LSB first)")
+        self.log_write_line("")
+
+        self.log_write_line("DATA field in hex:")
+        self.log_write_line(f"{data_hex_string}")
+        self.log_write_line("")
+
+
+        self.log_write_line("DATA field in ASCII:")
+        self.log_write_line(f"{data_ascii_string}")
+
+        self.log_write_line("------------------------------------------------------------")
 
 
 
@@ -1608,7 +1770,11 @@ class AXI_Regs_Tab(ttk.Frame):
 
 
         # Read AXI registers 
-        regs = read_axi_data(addresses)
+        try:
+            regs = read_axi_data(addresses)
+        except:
+            self.log_write_line("AXI read failed !")
+            return
         N_data = regs.shape[0]
 
         # Extract the data (Q at MSB !)
@@ -1628,8 +1794,8 @@ class AXI_Regs_Tab(ttk.Frame):
             hex_val = "00000000" + hex(int(regs[i]))[2:]
             hex_val = hex_val[-8:]
 
-            string_val_bytes_big = np.frombuffer(regs[i].byteswap().tobytes(), dtype=np.uint8) # 4 bytes (np.uint8) in big-endian byte order
-            string_val_bytes_little = np.packbits(np.unpackbits(string_val_bytes_big, bitorder='big'), bitorder='little') # flip each byte from little to big order !!!!!! (is it already done ???)
+            string_val_bytes_big = np.frombuffer(regs[i].byteswap().tobytes(), dtype=np.uint8) # 4 bytes (np.uint8) in little-endian byte order (MSB byte at index 0)
+            string_val_bytes_little = np.packbits(np.unpackbits(string_val_bytes_big, bitorder='big'), bitorder='little') # flip each byte from little to big bit order !!
 
 
             # string_val = string_val_bytes_big.tobytes().decode('latin-1') # Extended ascii (breaks the log table)
@@ -1785,7 +1951,7 @@ class GUI_class():
     def __init__(self) -> None:
         self.root = tk.Tk()
         self.root.title("Receiver 802.11p")
-        # self.root.after(100, self.serial_get_line_loop) #check for incomming data (must then call itself) !!! 
+        self.root.after(READ_UPDATE_INTERVAL_MS, self.update_loop) #check for incomming data (must then call itself) !!! 
 
 
         # ADI context
@@ -1795,7 +1961,7 @@ class GUI_class():
         
         # Notebook + Tabs
         self.tabControl = ttk.Notebook(self.root)
-        # self.tabControl.bind("<<NotebookTabChanged>>", self.tab_changed_update_responses)
+        self.tabControl.bind("<<NotebookTabChanged>>", self.tab_changed_update_responses)
         self.tab1 = Settings_Tab(self, self.tabControl)
         self.tab2 = Reception_Tab(self, self.tabControl)
         self.tab3 = Constellation_Tab(self, self.tabControl)
@@ -1813,6 +1979,25 @@ class GUI_class():
         self.tabControl.pack(expand = 1, fill ="both")
         
 
+    # Tab changed update
+    def tab_changed_update_responses(self, event):
+        # Only tab 'Responses' has been chosen
+        selected_tab = event.widget.select()
+        tab_text = event.widget.tab(selected_tab, "text")
+
+        # TODO
+        # if tab_text == "":
+        #     pass
+
+
+
+
+
+    # Update loop -- check for new data
+    def update_loop(self):
+        
+        # Call itself again
+        self.root.after(READ_UPDATE_INTERVAL_MS, self.update_loop)
 
 
 
