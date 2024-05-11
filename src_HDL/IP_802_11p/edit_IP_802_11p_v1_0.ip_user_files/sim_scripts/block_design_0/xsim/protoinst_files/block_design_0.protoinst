@@ -17,7 +17,7 @@
 					"ports": {
 						"ACLK": { "actual": "aclk"},
 						"ARESETN": { "actual": "aresetn"},
-						"TDATA": { "actual": "S_AXIS_CARTESIAN_tdata[63:0]"},
+						"TDATA": { "actual": "S_AXIS_CARTESIAN_tdata[79:0]"},
 						"TREADY": { "actual": "S_AXIS_CARTESIAN_tready"},
 						"TVALID": { "actual": "S_AXIS_CARTESIAN_tvalid"}
 					}
@@ -36,7 +36,7 @@
 					"ports": {
 						"ACLK": { "actual": "aclk"},
 						"ARESETN": { "actual": "aresetn"},
-						"TDATA": { "actual": "s_axis_cartesian_tdata[63:0]"},
+						"TDATA": { "actual": "s_axis_cartesian_tdata[79:0]"},
 						"TREADY": { "actual": "s_axis_cartesian_tready"},
 						"TVALID": { "actual": "s_axis_cartesian_tvalid"}
 					}

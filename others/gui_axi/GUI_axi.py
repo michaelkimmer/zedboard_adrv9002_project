@@ -190,7 +190,7 @@ class Settings_Tab(ttk.Frame):
         buttons_num_cols = 3     # Number of columns in the button matrix
 
         # Control button matrix
-        self.buttons_matrix_names = ("Load stream & profile", "802.11p Reset", None, None, "802.11p Disable", None, None, None, None)
+        self.buttons_matrix_names = ("Load stream & profile", "802.11p Reset", "RX AGC On", None, "802.11p Disable", None, None, None, None)
         self.buttons_matrix = self.build_buttons_matrix(root, self.act_row + 2, buttons_num_rows, buttons_num_cols)
         
         # Input field: Freqs + Gains
@@ -517,10 +517,10 @@ class Settings_Tab(ttk.Frame):
                 self.input_fields_matrix.value_labels[1].config(text = f"{DEFAULT_CARRIER_FREQ/1e6} MHz")
 
                 # Set default RX and TX gain
-                # root.iio_context.rx_hardwaregain_chan0 = DEFAULT_RX_GAIN # or AGC??? TODO !!!
+                root.iio_context.gain_control_mode_chan0 = "automatic" # AGC On
                 root.iio_context.tx_hardwaregain_chan0 = DEFAULT_TX_GAIN
 
-                # self.input_fields_matrix.value_labels[2].config(text = f"{DEFAULT_RX_GAIN} dB")
+                self.input_fields_matrix.value_labels[2].config(text = f"AGC")
                 self.input_fields_matrix.value_labels[3].config(text = f"{DEFAULT_TX_GAIN} dB")
 
 
@@ -555,6 +555,16 @@ class Settings_Tab(ttk.Frame):
             else:
                 self.buttons_matrix.value_labels[0].config(text="802.11p Disabled")
                 self.log_write_line("802.11p Disabled: OK")
+
+        # Turn On AGC
+        elif btn_idx == 2:
+            try:
+                root.iio_context.gain_control_mode_chan0 = "automatic" # AGC On
+            except:
+                self.log_write_line("RX AGC On: Failed !")
+            else:  
+                self.log_write_line("RX AGC Turned ON")
+                self.input_fields_matrix.value_labels[2].config(text = f"AGC")
 
 
         # TODO: Add other buttons !!
@@ -621,7 +631,6 @@ class Settings_Tab(ttk.Frame):
             else:
                 self.log_write_line("Change RX Carrier Frequency: OK")
                 self.input_fields_matrix.value_labels[idx].config(text = f"{value/1e6} MHz")
-                self.input_fields_matrix.value_labels[idx].config(text = f"{value/1e6} MHz")
 
             # Determine change success??? !!
 
@@ -636,7 +645,6 @@ class Settings_Tab(ttk.Frame):
             else:
                 self.log_write_line("Change TX Carrier Frequency: OK")
                 self.input_fields_matrix.value_labels[idx].config(text = f"{value/1e6} MHz")
-                self.input_fields_matrix.value_labels[idx].config(text = f"{value/1e6} MHz")
 
             # Determine change success??? !!
 
@@ -645,12 +653,12 @@ class Settings_Tab(ttk.Frame):
         elif idx == 2:
             # Change RX Gain 
             try:
+                root.iio_context.gain_control_mode_chan0 = "spi" # AGC Off
                 root.iio_context.rx_hardwaregain_chan0 = value
             except:
                 self.log_write_line("Change RX Gain: Failed !")
             else:
                 self.log_write_line("Change RX Gain: OK")
-                self.input_fields_matrix.value_labels[idx].config(text = f"{value} dB")
                 self.input_fields_matrix.value_labels[idx].config(text = f"{value} dB")
 
 
@@ -666,7 +674,6 @@ class Settings_Tab(ttk.Frame):
                 self.log_write_line("Change TX Attenuation: Failed !")
             else:
                 self.log_write_line("Change TX Attenuation: OK")
-                self.input_fields_matrix.value_labels[idx].config(text = f"{value} dB")
                 self.input_fields_matrix.value_labels[idx].config(text = f"{value} dB")
                 
 
@@ -1030,8 +1037,8 @@ class Reception_Tab(ttk.Frame):
 
         # Check addresses 
         try:
-            addresses[0] = int(self.addresses_entries[0].get())
-            addresses[1] = int(self.addresses_entries[1].get())
+            addresses[0] = int(addresses[0])
+            addresses[1] = int(addresses[1])
         except:
             self.log_write_line("Fill entry with integer !")
             return
@@ -1211,28 +1218,38 @@ class Constellation_Tab(ttk.Frame):
         # Build addresses input fields
         input_fields = []
 
+        # build a combobox with data selection
+        selected_constellation = tk.StringVar()
+        combobox = ttk.Combobox(self, width=25, textvariable=selected_constellation) #postcommand executes before opening
+        combobox.grid(row=self.act_row, column=0, columnspan=1, padx=5, pady=5)
+        combobox['state'] = 'readonly' # prevent typing a value
+        combobox['values'] = ["FFT output (16 MSB)", "FFT output (16 LSB)", "Tracked Constellation. (16 MSB)", "Tracked Constellation (16 LSB)"]
+        combobox.current(3) # set default value
+        combobox.bind("<<ComboboxSelected>>", self.state_combobox_update)  # Executes with value change
+        input_fields.append(selected_constellation)
+
         # Start address
         placeholder = "Start address"
         val_range = [0, 1, AXI_ADDRESS_NUM] #[start, step, numOfVals]
         input_field = PlaceholderEntry_withValues(self, placeholder=placeholder, val_range=val_range)
-        input_field.grid(row=self.act_row, column=0, padx=5, pady=5)
+        input_field.grid(row=self.act_row, column=1, padx=5, pady=5)
         input_fields.append(input_field)
 
         # End address
         placeholder = "End address"
         val_range = [0, 1, AXI_ADDRESS_NUM] #[start, step, numOfVals]
         input_field = PlaceholderEntry_withValues(self, placeholder=placeholder, val_range=val_range)
-        input_field.grid(row=self.act_row, column=1, padx=5, pady=5)
+        input_field.grid(row=self.act_row, column=2, padx=5, pady=5)
         input_fields.append(input_field)
 
         
         # Read button
         connect_button = tk.Button(self, text="Read", command=lambda: self.read_button_clicked(root))
-        connect_button.grid(row=self.act_row, column=2, padx=5, pady=5, sticky="WE") 
+        connect_button.grid(row=self.act_row, column=3, padx=5, pady=5, sticky="WE") 
 
         # Clear axes button 
         connect_button = tk.Button(self, text="Clear", command=lambda: self.axes_clear_button_clicked())
-        connect_button.grid(row=self.act_row, column=3, padx=5, pady=5, sticky="WE") 
+        connect_button.grid(row=self.act_row, column=4, padx=5, pady=5, sticky="WE") 
 
         self.act_row += 1
 
@@ -1272,7 +1289,7 @@ class Constellation_Tab(ttk.Frame):
         description_label.grid(row=self.act_row, column=0, columnspan=1, padx=5, pady=5, sticky="WN") 
         
         # Log of sent items
-        value_label = tk.Text(self, state=tk.DISABLED, width=60, height=15, font=("Helvetica", 8)) #width & height not optimal
+        value_label = tk.Text(self, state=tk.DISABLED, width=60, height=10, font=("Helvetica", 8)) #width & height not optimal
         value_label.grid(row=self.act_row, column=1, columnspan=4, padx=5, pady=5, sticky="we") 
         
         # Create the Vertical Scrollbar
@@ -1296,19 +1313,29 @@ class Constellation_Tab(ttk.Frame):
     
 
     ################# Constellation Tab Callback methods ################
+    # Update MODE from combobox
+    def state_combobox_update(self, event):
+        # selected_mode_text = self.addresses_entries[0].get() 
+
+        # just call TabChange function
+        self.root.tab_changed_update_responses(None)
+
+
+
+
     # Read new data from FPGA AXI regs
     def read_button_clicked(self, root):
         #confirm the entries (the last changed can be not refreshed)
-        self.addresses_entries[0]._add_placeholder(None)
         self.addresses_entries[1]._add_placeholder(None)
+        self.addresses_entries[2]._add_placeholder(None)
 
         # Read addresses
-        addresses = [self.addresses_entries[0].get(), self.addresses_entries[1].get()]
+        addresses = [self.addresses_entries[1].get(), self.addresses_entries[2].get()]
 
         # Check addresses 
         try:
-            addresses[0] = int(self.addresses_entries[0].get())
-            addresses[1] = int(self.addresses_entries[1].get())
+            addresses[0] = int(addresses[0])
+            addresses[1] = int(addresses[1])
         except:
             self.log_write_line("Fill entry with integer !")
             return
@@ -1332,8 +1359,14 @@ class Constellation_Tab(ttk.Frame):
         x_real_int = (regs & 0x0000ffff).astype(np.int16, casting='unsafe') 
         x_imag_int = np.right_shift(regs & 0xffff0000, 16).astype(np.int16, casting='unsafe') 
         
-        x_real = x_real_int.astype(np.float32, casting='safe') * 2**8 #axi cannot transfer least byte --> rounding
-        x_imag = x_imag_int.astype(np.float32, casting='safe') * 2**8 #axi cannot transfer least byte --> rounding
+        x_real = x_real_int.astype(np.float32, casting='safe') 
+        x_imag = x_imag_int.astype(np.float32, casting='safe') 
+
+        selected_mode_text = self.addresses_entries[0].get() 
+        if selected_mode_text == "FFT output (16 MSB)" or selected_mode_text == "Tracked Constellation. (16 MSB)":
+            x_real *= 2**8 #axi cannot transfer least byte --> rounding
+            x_imag *= 2**8 #axi cannot transfer least byte --> rounding
+
 
         # x = x_real + (1j * x_imag)
 
@@ -2050,12 +2083,12 @@ class GUI_class():
 
     # Tab changed update
     def tab_changed_update_responses(self, event):
-        selected_tab = event.widget.select()
-        tab_index = event.widget.index(selected_tab)
-        tab_reference = event.widget.nametowidget(selected_tab)
-        tab_text = event.widget.tab(selected_tab, "text")
+        selected_tab = self.tabControl.select()
+        tab_index = self.tabControl.index(selected_tab)
+        tab_reference = self.tabControl.nametowidget(selected_tab)
+        tab_text = self.tabControl.tab(selected_tab, "text")
 
-        event.widget.tabs()
+        # self.tabControl.tabs()
 
         # Disable all continuous activities
         #   Realtime Tab -- read new rx decoded data disable (+ change label)
@@ -2071,8 +2104,21 @@ class GUI_class():
         if not disable_tabchange_mode_changes:
             if tab_text == "RX Samples":
                 new_mode = 1
+
             elif tab_text == "RX Constellation":
-                new_mode = 4    # TODO: Select Mode 3..5
+                selected_mode_text = tab_reference.addresses_entries[0].get() 
+                if selected_mode_text == "FFT output (16 MSB)":
+                    new_mode = 2                    
+                elif selected_mode_text == "FFT output (16 LSB)":
+                    new_mode = 3
+                elif selected_mode_text == "Tracked Constellation. (16 MSB)":
+                    new_mode = 4   
+                elif selected_mode_text == "Tracked Constellation (16 LSB)":
+                    new_mode = 5
+                else:
+                    tab_reference.log_write_line(f"TabChange: In combobox selected not supported MODE!")
+                    return
+
             elif tab_text == "RX Realtime":
                 new_mode = 9   
             else:

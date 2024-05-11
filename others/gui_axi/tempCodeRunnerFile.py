@@ -1,1 +1,1 @@
-tk.Label
+gain_control_mode_chan0

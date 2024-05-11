@@ -62,7 +62,7 @@ ENTITY block_design_0_cordic_0_0 IS
     aresetn : IN STD_LOGIC;
     s_axis_cartesian_tvalid : IN STD_LOGIC;
     s_axis_cartesian_tready : OUT STD_LOGIC;
-    s_axis_cartesian_tdata : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
+    s_axis_cartesian_tdata : IN STD_LOGIC_VECTOR(79 DOWNTO 0);
     m_axis_dout_tvalid : OUT STD_LOGIC;
     m_axis_dout_tdata : OUT STD_LOGIC_VECTOR(23 DOWNTO 0)
   );
@@ -112,12 +112,12 @@ ARCHITECTURE block_design_0_cordic_0_0_arch OF block_design_0_cordic_0_0 IS
       s_axis_phase_tready : OUT STD_LOGIC;
       s_axis_phase_tuser : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
       s_axis_phase_tlast : IN STD_LOGIC;
-      s_axis_phase_tdata : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      s_axis_phase_tdata : IN STD_LOGIC_VECTOR(39 DOWNTO 0);
       s_axis_cartesian_tvalid : IN STD_LOGIC;
       s_axis_cartesian_tready : OUT STD_LOGIC;
       s_axis_cartesian_tuser : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
       s_axis_cartesian_tlast : IN STD_LOGIC;
-      s_axis_cartesian_tdata : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
+      s_axis_cartesian_tdata : IN STD_LOGIC_VECTOR(79 DOWNTO 0);
       m_axis_dout_tvalid : OUT STD_LOGIC;
       m_axis_dout_tready : IN STD_LOGIC;
       m_axis_dout_tuser : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
@@ -130,8 +130,8 @@ ARCHITECTURE block_design_0_cordic_0_0_arch OF block_design_0_cordic_0_0 IS
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF block_design_0_cordic_0_0_arch : ARCHITECTURE IS "block_design_0_cordic_0_0,cordic_v6_0_21,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF block_design_0_cordic_0_0_arch: ARCHITECTURE IS "block_design_0_cordic_0_0,cordic_v6_0_21,{x_ipProduct=Vivado 2023.2.2,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=cordic,x_ipVersion=6.0,x_ipCoreRevision=21,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_ARCHITECTURE=1,C_CORDIC_FUNCTION=3,C_COARSE_ROTATE=1,C_DATA_FORMAT=0,C_XDEVICEFAMILY=zynq,C_HAS_ACLKEN=0,C_HAS_ACLK=1,C_HAS_S_AXIS_CARTESIAN=1,C_HAS_S_AXIS_PHASE=0,C_HAS_ARESETN=1,C_INPUT_WIDTH=32,C_ITERATIONS=0,C_OUTPUT_WIDTH=20,C_PHASE_FORMAT=1,C_PIPELINE_MODE=-1,C_PRECISION=0,C_ROUND_MODE=0,C_SC" & 
-"ALE_COMP=0,C_THROTTLE_SCHEME=3,C_TLAST_RESOLUTION=0,C_HAS_S_AXIS_PHASE_TUSER=0,C_HAS_S_AXIS_PHASE_TLAST=0,C_S_AXIS_PHASE_TDATA_WIDTH=32,C_S_AXIS_PHASE_TUSER_WIDTH=1,C_HAS_S_AXIS_CARTESIAN_TUSER=0,C_HAS_S_AXIS_CARTESIAN_TLAST=0,C_S_AXIS_CARTESIAN_TDATA_WIDTH=64,C_S_AXIS_CARTESIAN_TUSER_WIDTH=1,C_M_AXIS_DOUT_TDATA_WIDTH=24,C_M_AXIS_DOUT_TUSER_WIDTH=1}";
+  ATTRIBUTE CORE_GENERATION_INFO OF block_design_0_cordic_0_0_arch: ARCHITECTURE IS "block_design_0_cordic_0_0,cordic_v6_0_21,{x_ipProduct=Vivado 2023.2.2,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=cordic,x_ipVersion=6.0,x_ipCoreRevision=21,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_ARCHITECTURE=1,C_CORDIC_FUNCTION=3,C_COARSE_ROTATE=1,C_DATA_FORMAT=0,C_XDEVICEFAMILY=zynq,C_HAS_ACLKEN=0,C_HAS_ACLK=1,C_HAS_S_AXIS_CARTESIAN=1,C_HAS_S_AXIS_PHASE=0,C_HAS_ARESETN=1,C_INPUT_WIDTH=36,C_ITERATIONS=0,C_OUTPUT_WIDTH=20,C_PHASE_FORMAT=1,C_PIPELINE_MODE=-1,C_PRECISION=0,C_ROUND_MODE=0,C_SC" & 
+"ALE_COMP=0,C_THROTTLE_SCHEME=3,C_TLAST_RESOLUTION=0,C_HAS_S_AXIS_PHASE_TUSER=0,C_HAS_S_AXIS_PHASE_TLAST=0,C_S_AXIS_PHASE_TDATA_WIDTH=40,C_S_AXIS_PHASE_TUSER_WIDTH=1,C_HAS_S_AXIS_CARTESIAN_TUSER=0,C_HAS_S_AXIS_CARTESIAN_TLAST=0,C_S_AXIS_CARTESIAN_TDATA_WIDTH=80,C_S_AXIS_CARTESIAN_TUSER_WIDTH=1,C_M_AXIS_DOUT_TDATA_WIDTH=24,C_M_AXIS_DOUT_TUSER_WIDTH=1}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER OF aclk: SIGNAL IS "XIL_INTERFACENAME aclk_intf, ASSOCIATED_BUSIF M_AXIS_DOUT:S_AXIS_PHASE:S_AXIS_CARTESIAN, ASSOCIATED_RESET aresetn, ASSOCIATED_CLKEN aclken, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN block_design_atan_aclk_0, INSERT_VIP 0";
@@ -150,7 +150,7 @@ ARCHITECTURE block_design_0_cordic_0_0_arch OF block_design_0_cordic_0_0 IS
   ATTRIBUTE X_INTERFACE_INFO OF m_axis_dout_tvalid: SIGNAL IS "xilinx.com:interface:axis:1.0 M_AXIS_DOUT TVALID";
   ATTRIBUTE X_INTERFACE_INFO OF s_axis_cartesian_tdata: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TDATA";
   ATTRIBUTE X_INTERFACE_INFO OF s_axis_cartesian_tready: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TREADY";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF s_axis_cartesian_tvalid: SIGNAL IS "XIL_INTERFACENAME S_AXIS_CARTESIAN, TDATA_NUM_BYTES 8, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN block_design_atan_aclk_0, LAYERED_METADATA undef, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF s_axis_cartesian_tvalid: SIGNAL IS "XIL_INTERFACENAME S_AXIS_CARTESIAN, TDATA_NUM_BYTES 10, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN block_design_atan_aclk_0, LAYERED_METADATA undef, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF s_axis_cartesian_tvalid: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_CARTESIAN TVALID";
 BEGIN
   U0 : cordic_v6_0_21
@@ -165,7 +165,7 @@ BEGIN
       C_HAS_S_AXIS_CARTESIAN => 1,
       C_HAS_S_AXIS_PHASE => 0,
       C_HAS_ARESETN => 1,
-      C_INPUT_WIDTH => 32,
+      C_INPUT_WIDTH => 36,
       C_ITERATIONS => 0,
       C_OUTPUT_WIDTH => 20,
       C_PHASE_FORMAT => 1,
@@ -177,11 +177,11 @@ BEGIN
       C_TLAST_RESOLUTION => 0,
       C_HAS_S_AXIS_PHASE_TUSER => 0,
       C_HAS_S_AXIS_PHASE_TLAST => 0,
-      C_S_AXIS_PHASE_TDATA_WIDTH => 32,
+      C_S_AXIS_PHASE_TDATA_WIDTH => 40,
       C_S_AXIS_PHASE_TUSER_WIDTH => 1,
       C_HAS_S_AXIS_CARTESIAN_TUSER => 0,
       C_HAS_S_AXIS_CARTESIAN_TLAST => 0,
-      C_S_AXIS_CARTESIAN_TDATA_WIDTH => 64,
+      C_S_AXIS_CARTESIAN_TDATA_WIDTH => 80,
       C_S_AXIS_CARTESIAN_TUSER_WIDTH => 1,
       C_M_AXIS_DOUT_TDATA_WIDTH => 24,
       C_M_AXIS_DOUT_TUSER_WIDTH => 1
@@ -193,7 +193,7 @@ BEGIN
       s_axis_phase_tvalid => '0',
       s_axis_phase_tuser => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 1)),
       s_axis_phase_tlast => '0',
-      s_axis_phase_tdata => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 32)),
+      s_axis_phase_tdata => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 40)),
       s_axis_cartesian_tvalid => s_axis_cartesian_tvalid,
       s_axis_cartesian_tready => s_axis_cartesian_tready,
       s_axis_cartesian_tuser => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 1)),

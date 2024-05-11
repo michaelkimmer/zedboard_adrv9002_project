@@ -2,8 +2,8 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-// Date        : Thu May  9 03:20:16 2024
-// Host        : ASUS_ROG running 64-bit major release  (build 9200)
+// Date        : Sat May 11 15:50:52 2024
+// Host        : lab817_01 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_timing_acquisition_8_0_0/block_design_0_timing_acquisition_8_0_0_stub.v
 // Design      : block_design_0_timing_acquisition_8_0_0
@@ -20,7 +20,7 @@ module block_design_0_timing_acquisition_8_0_0(RESET, CLOCK, DATA_STROBE, IDATA,
   QDATA_DELAY_48, IDATA_DELAY_64, QDATA_DELAY_64, DETECTION_THRESHOLD, DETECTION_STROBE, 
   DETECTION_SIGNAL_DETECTED, DETECTION_XCORR, CONTINUOUS_XCORR, DETECTION_STS_AUTOCORR_I, 
   DETECTION_STS_AUTOCORR_Q)
-/* synthesis syn_black_box black_box_pad_pin="RESET,DATA_STROBE,IDATA[15:0],QDATA[15:0],IDATA_DELAY_16[15:0],QDATA_DELAY_16[15:0],IDATA_DELAY_32[15:0],QDATA_DELAY_32[15:0],IDATA_DELAY_48[15:0],QDATA_DELAY_48[15:0],IDATA_DELAY_64[15:0],QDATA_DELAY_64[15:0],DETECTION_THRESHOLD[63:0],DETECTION_STROBE,DETECTION_SIGNAL_DETECTED,DETECTION_XCORR[63:0],CONTINUOUS_XCORR[63:0],DETECTION_STS_AUTOCORR_I[31:0],DETECTION_STS_AUTOCORR_Q[31:0]" */
+/* synthesis syn_black_box black_box_pad_pin="RESET,DATA_STROBE,IDATA[15:0],QDATA[15:0],IDATA_DELAY_16[15:0],QDATA_DELAY_16[15:0],IDATA_DELAY_32[15:0],QDATA_DELAY_32[15:0],IDATA_DELAY_48[15:0],QDATA_DELAY_48[15:0],IDATA_DELAY_64[15:0],QDATA_DELAY_64[15:0],DETECTION_THRESHOLD[63:0],DETECTION_STROBE,DETECTION_SIGNAL_DETECTED,DETECTION_XCORR[63:0],CONTINUOUS_XCORR[63:0],DETECTION_STS_AUTOCORR_I[35:0],DETECTION_STS_AUTOCORR_Q[35:0]" */
 /* synthesis syn_force_seq_prim="CLOCK" */;
   input RESET;
   input CLOCK /* synthesis syn_isclock = 1 */;
@@ -40,6 +40,6 @@ module block_design_0_timing_acquisition_8_0_0(RESET, CLOCK, DATA_STROBE, IDATA,
   output DETECTION_SIGNAL_DETECTED;
   output [63:0]DETECTION_XCORR;
   output [63:0]CONTINUOUS_XCORR;
-  output [31:0]DETECTION_STS_AUTOCORR_I;
-  output [31:0]DETECTION_STS_AUTOCORR_Q;
+  output [35:0]DETECTION_STS_AUTOCORR_I;
+  output [35:0]DETECTION_STS_AUTOCORR_Q;
 endmodule

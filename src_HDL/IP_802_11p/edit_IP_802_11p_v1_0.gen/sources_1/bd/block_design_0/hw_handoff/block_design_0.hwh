@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu May  9 03:19:02 2024" VIVADOVERSION="2023.2.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat May 11 15:51:13 2024" VIVADOVERSION="2023.2.2">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z020" NAME="block_design_0" PACKAGE="clg484" SPEEDGRADE="-1"/>
 
@@ -56,19 +56,19 @@
         <CONNECTION INSTANCE="hier_rotation_rotation_block_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="hier_atan_constellation_atan_constellation_b_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="hier_rotation_constellation_rotation_constellati_0" PORT="CLOCK"/>
-        <CONNECTION INSTANCE="viterbi_hard_0" PORT="CLOCK"/>
-        <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="CLOCK"/>
-        <CONNECTION INSTANCE="rx_clock_domain_cros_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="act_power_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="data_interleaver_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="data_delay_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="axi_regs_mux_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="constellation_tracker_0" PORT="CLOCK"/>
-        <CONNECTION INSTANCE="descrambler_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="demapper_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="deinterleaver_0" PORT="CLOCK"/>
+        <CONNECTION INSTANCE="viterbi_hard_0" PORT="CLOCK"/>
+        <CONNECTION INSTANCE="descrambler_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="output_ser2par_0" PORT="CLOCK"/>
+        <CONNECTION INSTANCE="rx_clock_domain_cros_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="CLOCK"/>
+        <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="CLOCK"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" LEFT="63" NAME="DETECTION_THRESHOLD" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_DETECTION_THRESHOLD">
@@ -103,19 +103,19 @@
         <CONNECTION INSTANCE="hier_rotation_rotation_block_0" PORT="RESET"/>
         <CONNECTION INSTANCE="hier_atan_constellation_atan_constellation_b_0" PORT="RESET"/>
         <CONNECTION INSTANCE="hier_rotation_constellation_rotation_constellati_0" PORT="RESET"/>
-        <CONNECTION INSTANCE="viterbi_hard_0" PORT="RESET"/>
-        <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="RESET"/>
-        <CONNECTION INSTANCE="rx_clock_domain_cros_0" PORT="RESET"/>
         <CONNECTION INSTANCE="act_power_0" PORT="RESET"/>
         <CONNECTION INSTANCE="data_interleaver_0" PORT="RESET"/>
         <CONNECTION INSTANCE="data_delay_0" PORT="RESET"/>
         <CONNECTION INSTANCE="axi_regs_mux_0" PORT="RESET"/>
         <CONNECTION INSTANCE="constellation_tracker_0" PORT="RESET"/>
-        <CONNECTION INSTANCE="descrambler_0" PORT="RESET"/>
         <CONNECTION INSTANCE="demapper_0" PORT="RESET"/>
         <CONNECTION INSTANCE="deinterleaver_0" PORT="RESET"/>
+        <CONNECTION INSTANCE="viterbi_hard_0" PORT="RESET"/>
+        <CONNECTION INSTANCE="descrambler_0" PORT="RESET"/>
         <CONNECTION INSTANCE="output_ser2par_0" PORT="RESET"/>
+        <CONNECTION INSTANCE="rx_clock_domain_cros_0" PORT="RESET"/>
         <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="RESET"/>
+        <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="RESET"/>
       </CONNECTIONS>
     </PORT>
     <PORT CLKFREQUENCY="10000000" DIR="I" NAME="RX_CLOCK" SIGIS="clk" SIGNAME="External_Ports_RX_CLOCK">
@@ -188,7 +188,7 @@
   </EXTERNALINTERFACES>
 
   <MODULES>
-    <MODULE COREREVISION="1715197114" FULLNAME="/act_power_0" HWVERSION="1.0" INSTANCE="act_power_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="act_power" VLNV="xilinx.com:module_ref:act_power:1.0">
+    <MODULE COREREVISION="1715434518" FULLNAME="/act_power_0" HWVERSION="1.0" INSTANCE="act_power_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="act_power" VLNV="xilinx.com:module_ref:act_power:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_act_power_0_0"/>
@@ -229,7 +229,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1715197122" FULLNAME="/axi_regs_mux_0" HWVERSION="1.0" INSTANCE="axi_regs_mux_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="axi_regs_mux" VLNV="xilinx.com:module_ref:axi_regs_mux:1.0">
+    <MODULE COREREVISION="1715434521" FULLNAME="/axi_regs_mux_0" HWVERSION="1.0" INSTANCE="axi_regs_mux_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="axi_regs_mux" VLNV="xilinx.com:module_ref:axi_regs_mux:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_axi_regs_mux_0_0"/>
@@ -607,7 +607,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="1715197124" FULLNAME="/constellation_tracker_0" HWVERSION="1.0" INSTANCE="constellation_tracker_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="constellation_tracker" VLNV="xilinx.com:module_ref:constellation_tracker:1.0">
+    <MODULE COREREVISION="1715434525" FULLNAME="/constellation_tracker_0" HWVERSION="1.0" INSTANCE="constellation_tracker_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="constellation_tracker" VLNV="xilinx.com:module_ref:constellation_tracker:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_constellation_tracker_0_0"/>
@@ -765,7 +765,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1715197118" FULLNAME="/data_delay_0" HWVERSION="1.0" INSTANCE="data_delay_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="data_delay" VLNV="xilinx.com:module_ref:data_delay:1.0">
+    <MODULE COREREVISION="1715434520" FULLNAME="/data_delay_0" HWVERSION="1.0" INSTANCE="data_delay_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="data_delay" VLNV="xilinx.com:module_ref:data_delay:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_data_delay_0_0"/>
@@ -784,10 +784,10 @@
         </PORT>
         <PORT DIR="O" NAME="DATA_OUT_STROBE" SIGIS="undef" SIGNAME="data_delay_0_DATA_OUT_STROBE">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="DATA_IN_STROBE"/>
             <CONNECTION INSTANCE="act_power_0" PORT="DATA_STROBE"/>
             <CONNECTION INSTANCE="axi_regs_mux_0" PORT="DATA_STROBE"/>
             <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="DATA_STROBE"/>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="DATA_IN_STROBE"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="15" NAME="IDATA_IN" RIGHT="0" SIGIS="undef" SIGNAME="data_interleaver_0_IDATA_OUT">
@@ -797,10 +797,10 @@
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="IDATA_OUT" RIGHT="0" SIGIS="undef" SIGNAME="data_delay_0_IDATA_OUT">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="IDATA_IN"/>
             <CONNECTION INSTANCE="act_power_0" PORT="IDATA"/>
             <CONNECTION INSTANCE="axi_regs_mux_0" PORT="IDATA"/>
             <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="IDATA"/>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="IDATA_IN"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="IDATA_OUT_DELAY_16" RIGHT="0" SIGIS="undef" SIGNAME="data_delay_0_IDATA_OUT_DELAY_16">
@@ -830,10 +830,10 @@
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="QDATA_OUT" RIGHT="0" SIGIS="undef" SIGNAME="data_delay_0_QDATA_OUT">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="QDATA_IN"/>
             <CONNECTION INSTANCE="act_power_0" PORT="QDATA"/>
             <CONNECTION INSTANCE="axi_regs_mux_0" PORT="QDATA"/>
             <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="QDATA"/>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="QDATA_IN"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="QDATA_OUT_DELAY_16" RIGHT="0" SIGIS="undef" SIGNAME="data_delay_0_QDATA_OUT_DELAY_16">
@@ -864,7 +864,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1715197116" FULLNAME="/data_interleaver_0" HWVERSION="1.0" INSTANCE="data_interleaver_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="data_interleaver" VLNV="xilinx.com:module_ref:data_interleaver:1.0">
+    <MODULE COREREVISION="1715434519" FULLNAME="/data_interleaver_0" HWVERSION="1.0" INSTANCE="data_interleaver_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="data_interleaver" VLNV="xilinx.com:module_ref:data_interleaver:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="interleave_period" VALUE="2"/>
@@ -915,7 +915,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1715197127" FULLNAME="/deinterleaver_0" HWVERSION="1.0" INSTANCE="deinterleaver_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="deinterleaver" VLNV="xilinx.com:module_ref:deinterleaver:1.0">
+    <MODULE COREREVISION="1715434526" FULLNAME="/deinterleaver_0" HWVERSION="1.0" INSTANCE="deinterleaver_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="deinterleaver" VLNV="xilinx.com:module_ref:deinterleaver:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_deinterleaver_0_0"/>
@@ -929,20 +929,20 @@
         </PORT>
         <PORT DIR="O" LEFT="0" NAME="DEINTERLEAVER_16QAM" RIGHT="191" SIGIS="undef" SIGNAME="deinterleaver_0_DEINTERLEAVER_16QAM">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="viterbi_hard_0" PORT="DEINTERLEAVER_16QAM"/>
             <CONNECTION INSTANCE="axi_regs_mux_0" PORT="DEINTERLEAVER_16QAM"/>
+            <CONNECTION INSTANCE="viterbi_hard_0" PORT="DEINTERLEAVER_16QAM"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="0" NAME="DEINTERLEAVER_BPSK" RIGHT="47" SIGIS="undef" SIGNAME="deinterleaver_0_DEINTERLEAVER_BPSK">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="viterbi_hard_0" PORT="DEINTERLEAVER_BPSK"/>
             <CONNECTION INSTANCE="axi_regs_mux_0" PORT="DEINTERLEAVER_BPSK"/>
+            <CONNECTION INSTANCE="viterbi_hard_0" PORT="DEINTERLEAVER_BPSK"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="0" NAME="DEINTERLEAVER_QPSK" RIGHT="95" SIGIS="undef" SIGNAME="deinterleaver_0_DEINTERLEAVER_QPSK">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="viterbi_hard_0" PORT="DEINTERLEAVER_QPSK"/>
             <CONNECTION INSTANCE="axi_regs_mux_0" PORT="DEINTERLEAVER_QPSK"/>
+            <CONNECTION INSTANCE="viterbi_hard_0" PORT="DEINTERLEAVER_QPSK"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="DEINTERLEAVER_START_MARKER" SIGIS="undef" SIGNAME="deinterleaver_0_DEINTERLEAVER_START_MARKER">
@@ -952,8 +952,8 @@
         </PORT>
         <PORT DIR="O" NAME="DEINTERLEAVER_STROBE" SIGIS="undef" SIGNAME="deinterleaver_0_DEINTERLEAVER_STROBE">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="viterbi_hard_0" PORT="DEINTERLEAVER_STROBE"/>
             <CONNECTION INSTANCE="axi_regs_mux_0" PORT="DEINTERLEAVER_STROBE"/>
+            <CONNECTION INSTANCE="viterbi_hard_0" PORT="DEINTERLEAVER_STROBE"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="0" NAME="DEMAPPING_16QAM" RIGHT="207" SIGIS="undef" SIGNAME="demapper_0_DEMAPPING_16QAM">
@@ -989,7 +989,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1715197126" FULLNAME="/demapper_0" HWVERSION="1.0" INSTANCE="demapper_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="demapper" VLNV="xilinx.com:module_ref:demapper:1.0">
+    <MODULE COREREVISION="1715434526" FULLNAME="/demapper_0" HWVERSION="1.0" INSTANCE="demapper_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="demapper" VLNV="xilinx.com:module_ref:demapper:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_demapper_0_0"/>
@@ -1059,7 +1059,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1715197125" FULLNAME="/descrambler_0" HWVERSION="1.0" INSTANCE="descrambler_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="descrambler" VLNV="xilinx.com:module_ref:descrambler:1.0">
+    <MODULE COREREVISION="1715434527" FULLNAME="/descrambler_0" HWVERSION="1.0" INSTANCE="descrambler_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="descrambler" VLNV="xilinx.com:module_ref:descrambler:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_descrambler_0_0"/>
@@ -1114,19 +1114,19 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1715197110" FULLNAME="/equalizer_time_frequ_0" HWVERSION="1.0" INSTANCE="equalizer_time_frequ_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="equalizer_time_frequency" VLNV="xilinx.com:module_ref:equalizer_time_frequency:1.0">
+    <MODULE COREREVISION="1715435467" FULLNAME="/equalizer_time_frequ_0" HWVERSION="1.0" INSTANCE="equalizer_time_frequ_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="equalizer_time_frequency" VLNV="xilinx.com:module_ref:equalizer_time_frequency:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_equalizer_time_frequ_0_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="O" LEFT="31" NAME="ATAN_AUTOCORR_I" RIGHT="0" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_ATAN_AUTOCORR_I">
+        <PORT DIR="O" LEFT="35" NAME="ATAN_AUTOCORR_I" RIGHT="0" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_ATAN_AUTOCORR_I">
           <CONNECTIONS>
             <CONNECTION INSTANCE="hier_atan_atan_block_0" PORT="ATAN_AUTOCORR_I"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="ATAN_AUTOCORR_Q" RIGHT="0" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_ATAN_AUTOCORR_Q">
+        <PORT DIR="O" LEFT="35" NAME="ATAN_AUTOCORR_Q" RIGHT="0" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_ATAN_AUTOCORR_Q">
           <CONNECTIONS>
             <CONNECTION INSTANCE="hier_atan_atan_block_0" PORT="ATAN_AUTOCORR_Q"/>
           </CONNECTIONS>
@@ -1166,12 +1166,12 @@
             <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="DETECTION_STROBE"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="DETECTION_STS_AUTOCORR_I" RIGHT="0" SIGIS="undef" SIGNAME="timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I">
+        <PORT DIR="I" LEFT="35" NAME="DETECTION_STS_AUTOCORR_I" RIGHT="0" SIGIS="undef" SIGNAME="timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I">
           <CONNECTIONS>
             <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="DETECTION_STS_AUTOCORR_I"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="DETECTION_STS_AUTOCORR_Q" RIGHT="0" SIGIS="undef" SIGNAME="timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q">
+        <PORT DIR="I" LEFT="35" NAME="DETECTION_STS_AUTOCORR_Q" RIGHT="0" SIGIS="undef" SIGNAME="timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q">
           <CONNECTIONS>
             <CONNECTION INSTANCE="timing_acquisition_8_0" PORT="DETECTION_STS_AUTOCORR_Q"/>
           </CONNECTIONS>
@@ -1289,19 +1289,19 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1715197121" FULLNAME="/hier_atan/atan_block_0" HWVERSION="1.0" INSTANCE="hier_atan_atan_block_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="atan_block" VLNV="xilinx.com:module_ref:atan_block:1.0">
+    <MODULE COREREVISION="1715435276" FULLNAME="/hier_atan/atan_block_0" HWVERSION="1.0" INSTANCE="hier_atan_atan_block_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="atan_block" VLNV="xilinx.com:module_ref:atan_block:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_atan_block_0_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="31" NAME="ATAN_AUTOCORR_I" RIGHT="0" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_ATAN_AUTOCORR_I">
+        <PORT DIR="I" LEFT="35" NAME="ATAN_AUTOCORR_I" RIGHT="0" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_ATAN_AUTOCORR_I">
           <CONNECTIONS>
             <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="ATAN_AUTOCORR_I"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="ATAN_AUTOCORR_Q" RIGHT="0" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_ATAN_AUTOCORR_Q">
+        <PORT DIR="I" LEFT="35" NAME="ATAN_AUTOCORR_Q" RIGHT="0" SIGIS="undef" SIGNAME="equalizer_time_frequ_0_ATAN_AUTOCORR_Q">
           <CONNECTIONS>
             <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="ATAN_AUTOCORR_Q"/>
           </CONNECTIONS>
@@ -1341,7 +1341,7 @@
             <CONNECTION INSTANCE="External_Ports" PORT="RESET"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="63" NAME="S_AXIS_CARTESIAN_tdata" RIGHT="0" SIGIS="undef" SIGNAME="hier_atan_atan_block_0_S_AXIS_CARTESIAN_tdata">
+        <PORT DIR="O" LEFT="79" NAME="S_AXIS_CARTESIAN_tdata" RIGHT="0" SIGIS="undef" SIGNAME="hier_atan_atan_block_0_S_AXIS_CARTESIAN_tdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="hier_atan_cordic_0" PORT="s_axis_cartesian_tdata"/>
           </CONNECTIONS>
@@ -1397,7 +1397,7 @@
           <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
           <PARAMETER NAME="LAYERED_METADATA" VALUE="undef"/>
           <PARAMETER NAME="PHASE" VALUE="0.0"/>
-          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="8"/>
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="10"/>
           <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
@@ -1409,7 +1409,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="1715197115" FULLNAME="/hier_atan_constellation/atan_constellation_b_0" HWVERSION="1.0" INSTANCE="hier_atan_constellation_atan_constellation_b_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="atan_constellation_block" VLNV="xilinx.com:module_ref:atan_constellation_block:1.0">
+    <MODULE COREREVISION="1715434524" FULLNAME="/hier_atan_constellation/atan_constellation_b_0" HWVERSION="1.0" INSTANCE="hier_atan_constellation_atan_constellation_b_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="atan_constellation_block" VLNV="xilinx.com:module_ref:atan_constellation_block:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_atan_constellation_b_0_0"/>
@@ -1715,7 +1715,7 @@
         <PARAMETER NAME="C_HAS_S_AXIS_PHASE" VALUE="0"/>
         <PARAMETER NAME="C_HAS_S_AXIS_PHASE_TLAST" VALUE="0"/>
         <PARAMETER NAME="C_HAS_S_AXIS_PHASE_TUSER" VALUE="0"/>
-        <PARAMETER NAME="C_INPUT_WIDTH" VALUE="32"/>
+        <PARAMETER NAME="C_INPUT_WIDTH" VALUE="36"/>
         <PARAMETER NAME="C_ITERATIONS" VALUE="0"/>
         <PARAMETER NAME="C_M_AXIS_DOUT_TDATA_WIDTH" VALUE="24"/>
         <PARAMETER NAME="C_M_AXIS_DOUT_TUSER_WIDTH" VALUE="1"/>
@@ -1725,9 +1725,9 @@
         <PARAMETER NAME="C_PRECISION" VALUE="0"/>
         <PARAMETER NAME="C_ROUND_MODE" VALUE="0"/>
         <PARAMETER NAME="C_SCALE_COMP" VALUE="0"/>
-        <PARAMETER NAME="C_S_AXIS_CARTESIAN_TDATA_WIDTH" VALUE="64"/>
+        <PARAMETER NAME="C_S_AXIS_CARTESIAN_TDATA_WIDTH" VALUE="80"/>
         <PARAMETER NAME="C_S_AXIS_CARTESIAN_TUSER_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_S_AXIS_PHASE_TDATA_WIDTH" VALUE="32"/>
+        <PARAMETER NAME="C_S_AXIS_PHASE_TDATA_WIDTH" VALUE="40"/>
         <PARAMETER NAME="C_S_AXIS_PHASE_TUSER_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_THROTTLE_SCHEME" VALUE="3"/>
         <PARAMETER NAME="C_TLAST_RESOLUTION" VALUE="0"/>
@@ -1740,7 +1740,7 @@
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_cordic_0_0"/>
         <PARAMETER NAME="Data_Format" VALUE="SignedFraction"/>
         <PARAMETER NAME="Functional_Selection" VALUE="Arc_Tan"/>
-        <PARAMETER NAME="Input_Width" VALUE="32"/>
+        <PARAMETER NAME="Input_Width" VALUE="36"/>
         <PARAMETER NAME="Iterations" VALUE="0"/>
         <PARAMETER NAME="Output_Width" VALUE="20"/>
         <PARAMETER NAME="Phase_Format" VALUE="Scaled_Radians"/>
@@ -1780,7 +1780,7 @@
             <CONNECTION INSTANCE="hier_atan_atan_block_0" PORT="M_AXIS_DOUT_tvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="63" NAME="s_axis_cartesian_tdata" RIGHT="0" SIGIS="undef" SIGNAME="hier_atan_atan_block_0_S_AXIS_CARTESIAN_tdata">
+        <PORT DIR="I" LEFT="79" NAME="s_axis_cartesian_tdata" RIGHT="0" SIGIS="undef" SIGNAME="hier_atan_atan_block_0_S_AXIS_CARTESIAN_tdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="hier_atan_atan_block_0" PORT="S_AXIS_CARTESIAN_tdata"/>
           </CONNECTIONS>
@@ -1807,7 +1807,7 @@
           <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
           <PARAMETER NAME="LAYERED_METADATA" VALUE="undef"/>
           <PARAMETER NAME="PHASE" VALUE="0.0"/>
-          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="8"/>
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="10"/>
           <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
@@ -1838,7 +1838,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="1715197117" FULLNAME="/hier_fft_ofdm/fft_ofdm_0" HWVERSION="1.0" INSTANCE="hier_fft_ofdm_fft_ofdm_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="fft_ofdm" VLNV="xilinx.com:module_ref:fft_ofdm:1.0">
+    <MODULE COREREVISION="1715434523" FULLNAME="/hier_fft_ofdm/fft_ofdm_0" HWVERSION="1.0" INSTANCE="hier_fft_ofdm_fft_ofdm_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="fft_ofdm" VLNV="xilinx.com:module_ref:fft_ofdm:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_fft_ofdm_0_1"/>
@@ -2406,7 +2406,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="1715197123" FULLNAME="/hier_rotation_constellation/rotation_constellati_0" HWVERSION="1.0" INSTANCE="hier_rotation_constellation_rotation_constellati_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="rotation_constellation_block" VLNV="xilinx.com:module_ref:rotation_constellation_block:1.0">
+    <MODULE COREREVISION="1715434525" FULLNAME="/hier_rotation_constellation/rotation_constellati_0" HWVERSION="1.0" INSTANCE="hier_rotation_constellation_rotation_constellati_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="rotation_constellation_block" VLNV="xilinx.com:module_ref:rotation_constellation_block:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_rotation_constellati_0_0"/>
@@ -2757,7 +2757,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="1715197113" FULLNAME="/hier_rotation/rotation_block_0" HWVERSION="1.0" INSTANCE="hier_rotation_rotation_block_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="rotation_block" VLNV="xilinx.com:module_ref:rotation_block:1.0">
+    <MODULE COREREVISION="1715434523" FULLNAME="/hier_rotation/rotation_block_0" HWVERSION="1.0" INSTANCE="hier_rotation_rotation_block_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="rotation_block" VLNV="xilinx.com:module_ref:rotation_block:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_rotation_block_0_0"/>
@@ -2937,7 +2937,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="1715197128" FULLNAME="/output_ser2par_0" HWVERSION="1.0" INSTANCE="output_ser2par_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="output_ser2par" VLNV="xilinx.com:module_ref:output_ser2par:1.0">
+    <MODULE COREREVISION="1715434528" FULLNAME="/output_ser2par_0" HWVERSION="1.0" INSTANCE="output_ser2par_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="output_ser2par" VLNV="xilinx.com:module_ref:output_ser2par:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_output_ser2par_0_0"/>
@@ -2992,7 +2992,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1715197111" FULLNAME="/rx_clock_domain_cros_0" HWVERSION="1.0" INSTANCE="rx_clock_domain_cros_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="rx_clock_domain_crossing" VLNV="xilinx.com:module_ref:rx_clock_domain_crossing:1.0">
+    <MODULE COREREVISION="1715434528" FULLNAME="/rx_clock_domain_cros_0" HWVERSION="1.0" INSTANCE="rx_clock_domain_cros_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="rx_clock_domain_crossing" VLNV="xilinx.com:module_ref:rx_clock_domain_crossing:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="buffer_depth" VALUE="3"/>
@@ -3058,11 +3058,11 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1715217532" FULLNAME="/timing_acquisition_8_0" HWVERSION="1.0" INSTANCE="timing_acquisition_8_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="timing_acquisition_802_11p" VLNV="xilinx.com:module_ref:timing_acquisition_802_11p:1.0">
+    <MODULE COREREVISION="1715435183" FULLNAME="/timing_acquisition_8_0" HWVERSION="1.0" INSTANCE="timing_acquisition_8_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="timing_acquisition_802_11p" VLNV="xilinx.com:module_ref:timing_acquisition_802_11p:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="INPUT_WIDTH" VALUE="16"/>
-        <PARAMETER NAME="OUTPUT_AUTOCORR_WIDTH" VALUE="32"/>
+        <PARAMETER NAME="OUTPUT_AUTOCORR_WIDTH" VALUE="36"/>
         <PARAMETER NAME="OUTPUT_WIDTH" VALUE="64"/>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_timing_acquisition_8_0_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
@@ -3089,12 +3089,12 @@
             <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="DETECTION_STROBE"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="DETECTION_STS_AUTOCORR_I" RIGHT="0" SIGIS="undef" SIGNAME="timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I">
+        <PORT DIR="O" LEFT="35" NAME="DETECTION_STS_AUTOCORR_I" RIGHT="0" SIGIS="undef" SIGNAME="timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I">
           <CONNECTIONS>
             <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="DETECTION_STS_AUTOCORR_I"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="DETECTION_STS_AUTOCORR_Q" RIGHT="0" SIGIS="undef" SIGNAME="timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q">
+        <PORT DIR="O" LEFT="35" NAME="DETECTION_STS_AUTOCORR_Q" RIGHT="0" SIGIS="undef" SIGNAME="timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q">
           <CONNECTIONS>
             <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="DETECTION_STS_AUTOCORR_Q"/>
           </CONNECTIONS>
@@ -3163,7 +3163,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1715197098" FULLNAME="/viterbi_hard_0" HWVERSION="1.0" INSTANCE="viterbi_hard_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="viterbi_hard" VLNV="xilinx.com:module_ref:viterbi_hard:1.0">
+    <MODULE COREREVISION="1715434527" FULLNAME="/viterbi_hard_0" HWVERSION="1.0" INSTANCE="viterbi_hard_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="viterbi_hard" VLNV="xilinx.com:module_ref:viterbi_hard:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_viterbi_hard_0_0"/>
@@ -3217,8 +3217,8 @@
         </PORT>
         <PORT DIR="O" NAME="VITERBI_RX_ENDED" SIGIS="undef" SIGNAME="viterbi_hard_0_VITERBI_RX_ENDED">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="STOP_RX_DONE"/>
             <CONNECTION INSTANCE="descrambler_0" PORT="VITERBI_RX_ENDED"/>
+            <CONNECTION INSTANCE="equalizer_time_frequ_0" PORT="STOP_RX_DONE"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="VITERBI_SIGNAL" RIGHT="0" SIGIS="undef" SIGNAME="viterbi_hard_0_VITERBI_SIGNAL">

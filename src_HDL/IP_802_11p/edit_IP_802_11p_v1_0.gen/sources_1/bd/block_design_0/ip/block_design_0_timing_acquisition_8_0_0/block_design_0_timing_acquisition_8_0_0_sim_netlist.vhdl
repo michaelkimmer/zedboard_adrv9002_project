@@ -2,8 +2,8 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
--- Date        : Thu May  9 03:20:16 2024
--- Host        : ASUS_ROG running 64-bit major release  (build 9200)
+-- Date        : Sat May 11 15:50:53 2024
+-- Host        : lab817_01 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_timing_acquisition_8_0_0/block_design_0_timing_acquisition_8_0_0_sim_netlist.vhdl
 -- Design      : block_design_0_timing_acquisition_8_0_0
@@ -71867,8 +71867,8 @@ entity block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p is
   port (
     DETECTION_XCORR : out STD_LOGIC_VECTOR ( 63 downto 0 );
     CONTINUOUS_XCORR : out STD_LOGIC_VECTOR ( 63 downto 0 );
-    DETECTION_STS_AUTOCORR_I : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    DETECTION_STS_AUTOCORR_Q : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    DETECTION_STS_AUTOCORR_I : out STD_LOGIC_VECTOR ( 35 downto 0 );
+    DETECTION_STS_AUTOCORR_Q : out STD_LOGIC_VECTOR ( 35 downto 0 );
     DETECTION_STROBE : out STD_LOGIC;
     DETECTION_SIGNAL_DETECTED : out STD_LOGIC;
     CLOCK : in STD_LOGIC;
@@ -71892,8 +71892,7 @@ end block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p;
 
 architecture STRUCTURE of block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_11p is
   signal ARG : STD_LOGIC_VECTOR ( 35 downto 0 );
-  signal ARG0 : STD_LOGIC_VECTOR ( 30 downto 1 );
-  signal ARG2 : STD_LOGIC_VECTOR ( 35 downto 4 );
+  signal ARG0 : STD_LOGIC_VECTOR ( 35 downto 1 );
   signal DATA_OUT_STROBE : STD_LOGIC;
   signal DETECTION_CNTR : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal \DETECTION_CNTR[3]_i_3_n_0\ : STD_LOGIC;
@@ -71904,11 +71903,6 @@ architecture STRUCTURE of block_design_0_timing_acquisition_8_0_0_timing_acquisi
   signal \DETECTION_CNTR_reg_n_0_[3]\ : STD_LOGIC;
   signal DETECTION_STATE : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal \DETECTION_STATE__0\ : STD_LOGIC_VECTOR ( 1 to 1 );
-  signal \DETECTION_STS_AUTOCORR_I[0]_i_3_n_0\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_I[0]_i_4_n_0\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_I[0]_i_5_n_0\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_I[0]_i_6_n_0\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_I[0]_i_7_n_0\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I[12]_i_10_n_0\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I[12]_i_11_n_0\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I[12]_i_3_n_0\ : STD_LOGIC;
@@ -71949,15 +71943,24 @@ architecture STRUCTURE of block_design_0_timing_acquisition_8_0_0_timing_acquisi
   signal \DETECTION_STS_AUTOCORR_I[28]_i_6_n_0\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I[28]_i_8_n_0\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I[28]_i_9_n_0\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_I[31]_i_3_n_0\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_I[31]_i_4_n_0\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_I[31]_i_5_n_0\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_I[31]_i_7_n_0\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_I[31]_i_8_n_0\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_I[31]_i_9_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I[32]_i_10_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I[32]_i_11_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I[32]_i_3_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I[32]_i_4_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I[32]_i_5_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I[32]_i_6_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I[32]_i_8_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I[32]_i_9_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I[35]_i_3_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I[35]_i_4_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I[35]_i_5_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I[35]_i_7_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I[35]_i_8_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I[35]_i_9_n_0\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I[4]_i_10_n_0\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I[4]_i_11_n_0\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I[4]_i_12_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I[4]_i_13_n_0\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I[4]_i_3_n_0\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I[4]_i_4_n_0\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I[4]_i_5_n_0\ : STD_LOGIC;
@@ -71972,10 +71975,6 @@ architecture STRUCTURE of block_design_0_timing_acquisition_8_0_0_timing_acquisi
   signal \DETECTION_STS_AUTOCORR_I[8]_i_6_n_0\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I[8]_i_8_n_0\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I[8]_i_9_n_0\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_I_reg[0]_i_2_n_0\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_I_reg[0]_i_2_n_1\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_I_reg[0]_i_2_n_2\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_I_reg[0]_i_2_n_3\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I_reg[12]_i_2_n_0\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I_reg[12]_i_2_n_1\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I_reg[12]_i_2_n_2\ : STD_LOGIC;
@@ -71984,6 +71983,10 @@ architecture STRUCTURE of block_design_0_timing_acquisition_8_0_0_timing_acquisi
   signal \DETECTION_STS_AUTOCORR_I_reg[12]_i_7_n_1\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I_reg[12]_i_7_n_2\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I_reg[12]_i_7_n_3\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[12]_i_7_n_4\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[12]_i_7_n_5\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[12]_i_7_n_6\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[12]_i_7_n_7\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I_reg[16]_i_2_n_0\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I_reg[16]_i_2_n_1\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I_reg[16]_i_2_n_2\ : STD_LOGIC;
@@ -71992,6 +71995,10 @@ architecture STRUCTURE of block_design_0_timing_acquisition_8_0_0_timing_acquisi
   signal \DETECTION_STS_AUTOCORR_I_reg[16]_i_7_n_1\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I_reg[16]_i_7_n_2\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I_reg[16]_i_7_n_3\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[16]_i_7_n_4\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[16]_i_7_n_5\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[16]_i_7_n_6\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[16]_i_7_n_7\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I_reg[20]_i_2_n_0\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I_reg[20]_i_2_n_1\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I_reg[20]_i_2_n_2\ : STD_LOGIC;
@@ -72000,6 +72007,10 @@ architecture STRUCTURE of block_design_0_timing_acquisition_8_0_0_timing_acquisi
   signal \DETECTION_STS_AUTOCORR_I_reg[20]_i_7_n_1\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I_reg[20]_i_7_n_2\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I_reg[20]_i_7_n_3\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[20]_i_7_n_4\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[20]_i_7_n_5\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[20]_i_7_n_6\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[20]_i_7_n_7\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I_reg[24]_i_2_n_0\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I_reg[24]_i_2_n_1\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I_reg[24]_i_2_n_2\ : STD_LOGIC;
@@ -72008,6 +72019,10 @@ architecture STRUCTURE of block_design_0_timing_acquisition_8_0_0_timing_acquisi
   signal \DETECTION_STS_AUTOCORR_I_reg[24]_i_7_n_1\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I_reg[24]_i_7_n_2\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I_reg[24]_i_7_n_3\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[24]_i_7_n_4\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[24]_i_7_n_5\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[24]_i_7_n_6\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[24]_i_7_n_7\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I_reg[28]_i_2_n_0\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I_reg[28]_i_2_n_1\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I_reg[28]_i_2_n_2\ : STD_LOGIC;
@@ -72016,11 +72031,29 @@ architecture STRUCTURE of block_design_0_timing_acquisition_8_0_0_timing_acquisi
   signal \DETECTION_STS_AUTOCORR_I_reg[28]_i_7_n_1\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I_reg[28]_i_7_n_2\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I_reg[28]_i_7_n_3\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_I_reg[31]_i_2_n_1\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_I_reg[31]_i_2_n_2\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_I_reg[31]_i_2_n_3\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_I_reg[31]_i_6_n_2\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_I_reg[31]_i_6_n_3\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[28]_i_7_n_4\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[28]_i_7_n_5\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[28]_i_7_n_6\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[28]_i_7_n_7\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[32]_i_2_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[32]_i_2_n_1\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[32]_i_2_n_2\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[32]_i_2_n_3\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[32]_i_7_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[32]_i_7_n_1\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[32]_i_7_n_2\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[32]_i_7_n_3\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[32]_i_7_n_4\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[32]_i_7_n_5\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[32]_i_7_n_6\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[32]_i_7_n_7\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[35]_i_2_n_2\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[35]_i_2_n_3\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[35]_i_6_n_2\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[35]_i_6_n_3\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[35]_i_6_n_5\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[35]_i_6_n_6\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[35]_i_6_n_7\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I_reg[4]_i_2_n_0\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I_reg[4]_i_2_n_1\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I_reg[4]_i_2_n_2\ : STD_LOGIC;
@@ -72029,6 +72062,10 @@ architecture STRUCTURE of block_design_0_timing_acquisition_8_0_0_timing_acquisi
   signal \DETECTION_STS_AUTOCORR_I_reg[4]_i_8_n_1\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I_reg[4]_i_8_n_2\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I_reg[4]_i_8_n_3\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[4]_i_8_n_4\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[4]_i_8_n_5\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[4]_i_8_n_6\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[4]_i_8_n_7\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I_reg[8]_i_2_n_0\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I_reg[8]_i_2_n_1\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I_reg[8]_i_2_n_2\ : STD_LOGIC;
@@ -72037,12 +72074,10 @@ architecture STRUCTURE of block_design_0_timing_acquisition_8_0_0_timing_acquisi
   signal \DETECTION_STS_AUTOCORR_I_reg[8]_i_7_n_1\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I_reg[8]_i_7_n_2\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_I_reg[8]_i_7_n_3\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_Q[0]_i_1_n_0\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_Q[0]_i_3_n_0\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_Q[0]_i_4_n_0\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_Q[0]_i_5_n_0\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_Q[0]_i_6_n_0\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_Q[0]_i_7_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[8]_i_7_n_4\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[8]_i_7_n_5\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[8]_i_7_n_6\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_I_reg[8]_i_7_n_7\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_Q[10]_i_1_n_0\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_Q[11]_i_1_n_0\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_Q[12]_i_10_n_0\ : STD_LOGIC;
@@ -72107,16 +72142,29 @@ architecture STRUCTURE of block_design_0_timing_acquisition_8_0_0_timing_acquisi
   signal \DETECTION_STS_AUTOCORR_Q[2]_i_1_n_0\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_Q[30]_i_1_n_0\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_Q[31]_i_1_n_0\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_Q[31]_i_3_n_0\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_Q[31]_i_4_n_0\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_Q[31]_i_5_n_0\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_Q[31]_i_7_n_0\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_Q[31]_i_8_n_0\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_Q[31]_i_9_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q[32]_i_10_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q[32]_i_11_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q[32]_i_1_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q[32]_i_3_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q[32]_i_4_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q[32]_i_5_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q[32]_i_6_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q[32]_i_8_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q[32]_i_9_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q[33]_i_1_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q[34]_i_1_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q[35]_i_1_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q[35]_i_3_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q[35]_i_4_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q[35]_i_5_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q[35]_i_7_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q[35]_i_8_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q[35]_i_9_n_0\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_Q[3]_i_1_n_0\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_Q[4]_i_10_n_0\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_Q[4]_i_11_n_0\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_Q[4]_i_12_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q[4]_i_13_n_0\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_Q[4]_i_1_n_0\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_Q[4]_i_3_n_0\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_Q[4]_i_4_n_0\ : STD_LOGIC;
@@ -72137,11 +72185,6 @@ architecture STRUCTURE of block_design_0_timing_acquisition_8_0_0_timing_acquisi
   signal \DETECTION_STS_AUTOCORR_Q[8]_i_8_n_0\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_Q[8]_i_9_n_0\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_Q[9]_i_1_n_0\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_Q_reg[0]_i_2_n_0\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_Q_reg[0]_i_2_n_1\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_Q_reg[0]_i_2_n_2\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_Q_reg[0]_i_2_n_3\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_Q_reg[0]_i_2_n_4\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_Q_reg[12]_i_2_n_0\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_Q_reg[12]_i_2_n_1\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_Q_reg[12]_i_2_n_2\ : STD_LOGIC;
@@ -72222,16 +72265,32 @@ architecture STRUCTURE of block_design_0_timing_acquisition_8_0_0_timing_acquisi
   signal \DETECTION_STS_AUTOCORR_Q_reg[28]_i_7_n_5\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_Q_reg[28]_i_7_n_6\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_Q_reg[28]_i_7_n_7\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_Q_reg[31]_i_2_n_1\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_Q_reg[31]_i_2_n_2\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_Q_reg[31]_i_2_n_3\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_Q_reg[31]_i_2_n_6\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_Q_reg[31]_i_2_n_7\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_Q_reg[31]_i_6_n_2\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_Q_reg[31]_i_6_n_3\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_Q_reg[31]_i_6_n_5\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_Q_reg[31]_i_6_n_6\ : STD_LOGIC;
-  signal \DETECTION_STS_AUTOCORR_Q_reg[31]_i_6_n_7\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q_reg[32]_i_2_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q_reg[32]_i_2_n_1\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q_reg[32]_i_2_n_2\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q_reg[32]_i_2_n_3\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q_reg[32]_i_2_n_4\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q_reg[32]_i_2_n_5\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q_reg[32]_i_2_n_6\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q_reg[32]_i_2_n_7\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q_reg[32]_i_7_n_0\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q_reg[32]_i_7_n_1\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q_reg[32]_i_7_n_2\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q_reg[32]_i_7_n_3\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q_reg[32]_i_7_n_4\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q_reg[32]_i_7_n_5\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q_reg[32]_i_7_n_6\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q_reg[32]_i_7_n_7\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q_reg[35]_i_2_n_2\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q_reg[35]_i_2_n_3\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q_reg[35]_i_2_n_5\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q_reg[35]_i_2_n_6\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q_reg[35]_i_2_n_7\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q_reg[35]_i_6_n_2\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q_reg[35]_i_6_n_3\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q_reg[35]_i_6_n_5\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q_reg[35]_i_6_n_6\ : STD_LOGIC;
+  signal \DETECTION_STS_AUTOCORR_Q_reg[35]_i_6_n_7\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_Q_reg[4]_i_2_n_0\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_Q_reg[4]_i_2_n_1\ : STD_LOGIC;
   signal \DETECTION_STS_AUTOCORR_Q_reg[4]_i_2_n_2\ : STD_LOGIC;
@@ -74334,7 +74393,6 @@ architecture STRUCTURE of block_design_0_timing_acquisition_8_0_0_timing_acquisi
   signal \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[7]_i_1_n_1\ : STD_LOGIC;
   signal \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[7]_i_1_n_2\ : STD_LOGIC;
   signal \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[7]_i_1_n_3\ : STD_LOGIC;
-  signal \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[0]\ : STD_LOGIC;
   signal \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[10]\ : STD_LOGIC;
   signal \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[11]\ : STD_LOGIC;
   signal \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[12]\ : STD_LOGIC;
@@ -74483,16 +74541,14 @@ architecture STRUCTURE of block_design_0_timing_acquisition_8_0_0_timing_acquisi
   signal \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[9]\ : STD_LOGIC;
   signal STS_AUTOCORR_Q_16_DELAYED_BUFF : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal p_0_in : STD_LOGIC_VECTOR ( 61 downto 0 );
-  signal \NLW_DETECTION_STS_AUTOCORR_I_reg[0]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal \NLW_DETECTION_STS_AUTOCORR_I_reg[31]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
-  signal \NLW_DETECTION_STS_AUTOCORR_I_reg[31]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 2 );
-  signal \NLW_DETECTION_STS_AUTOCORR_I_reg[31]_i_6_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 2 );
-  signal \NLW_DETECTION_STS_AUTOCORR_I_reg[31]_i_6_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
-  signal \NLW_DETECTION_STS_AUTOCORR_Q_reg[0]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal \NLW_DETECTION_STS_AUTOCORR_Q_reg[31]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
-  signal \NLW_DETECTION_STS_AUTOCORR_Q_reg[31]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 2 );
-  signal \NLW_DETECTION_STS_AUTOCORR_Q_reg[31]_i_6_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 2 );
-  signal \NLW_DETECTION_STS_AUTOCORR_Q_reg[31]_i_6_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
+  signal \NLW_DETECTION_STS_AUTOCORR_I_reg[35]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 2 );
+  signal \NLW_DETECTION_STS_AUTOCORR_I_reg[35]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
+  signal \NLW_DETECTION_STS_AUTOCORR_I_reg[35]_i_6_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 2 );
+  signal \NLW_DETECTION_STS_AUTOCORR_I_reg[35]_i_6_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
+  signal \NLW_DETECTION_STS_AUTOCORR_Q_reg[35]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 2 );
+  signal \NLW_DETECTION_STS_AUTOCORR_Q_reg[35]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
+  signal \NLW_DETECTION_STS_AUTOCORR_Q_reg[35]_i_6_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 2 );
+  signal \NLW_DETECTION_STS_AUTOCORR_Q_reg[35]_i_6_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
   signal \NLW_FSM_sequential_DETECTION_STATE_reg[1]_i_100_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal \NLW_FSM_sequential_DETECTION_STATE_reg[1]_i_109_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal \NLW_FSM_sequential_DETECTION_STATE_reg[1]_i_118_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -74532,88 +74588,110 @@ architecture STRUCTURE of block_design_0_timing_acquisition_8_0_0_timing_acquisi
   attribute SOFT_HLUTNM of \DETECTION_CNTR[1]_i_1\ : label is "soft_lutpair58";
   attribute SOFT_HLUTNM of \DETECTION_CNTR[3]_i_2\ : label is "soft_lutpair59";
   attribute SOFT_HLUTNM of \DETECTION_CNTR[3]_i_4\ : label is "soft_lutpair60";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[0]_i_1\ : label is "soft_lutpair77";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[10]_i_1\ : label is "soft_lutpair72";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[11]_i_1\ : label is "soft_lutpair72";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[12]_i_1\ : label is "soft_lutpair71";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[13]_i_1\ : label is "soft_lutpair71";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[14]_i_1\ : label is "soft_lutpair70";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[15]_i_1\ : label is "soft_lutpair70";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[16]_i_1\ : label is "soft_lutpair69";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[17]_i_1\ : label is "soft_lutpair69";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[18]_i_1\ : label is "soft_lutpair68";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[19]_i_1\ : label is "soft_lutpair68";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[1]_i_1\ : label is "soft_lutpair77";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[20]_i_1\ : label is "soft_lutpair67";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[21]_i_1\ : label is "soft_lutpair67";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[22]_i_1\ : label is "soft_lutpair66";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[23]_i_1\ : label is "soft_lutpair66";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[24]_i_1\ : label is "soft_lutpair65";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[25]_i_1\ : label is "soft_lutpair65";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[26]_i_1\ : label is "soft_lutpair64";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[27]_i_1\ : label is "soft_lutpair64";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[28]_i_1\ : label is "soft_lutpair63";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[29]_i_1\ : label is "soft_lutpair63";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[2]_i_1\ : label is "soft_lutpair76";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[30]_i_1\ : label is "soft_lutpair61";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[31]_i_1\ : label is "soft_lutpair61";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[3]_i_1\ : label is "soft_lutpair76";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[4]_i_1\ : label is "soft_lutpair75";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[5]_i_1\ : label is "soft_lutpair75";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[6]_i_1\ : label is "soft_lutpair74";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[7]_i_1\ : label is "soft_lutpair74";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[8]_i_1\ : label is "soft_lutpair73";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[9]_i_1\ : label is "soft_lutpair73";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[10]_i_1\ : label is "soft_lutpair74";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[11]_i_1\ : label is "soft_lutpair74";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[12]_i_1\ : label is "soft_lutpair73";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[13]_i_1\ : label is "soft_lutpair73";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[14]_i_1\ : label is "soft_lutpair72";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[15]_i_1\ : label is "soft_lutpair72";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[16]_i_1\ : label is "soft_lutpair71";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[17]_i_1\ : label is "soft_lutpair71";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[18]_i_1\ : label is "soft_lutpair70";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[19]_i_1\ : label is "soft_lutpair70";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[20]_i_1\ : label is "soft_lutpair69";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[21]_i_1\ : label is "soft_lutpair69";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[22]_i_1\ : label is "soft_lutpair68";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[23]_i_1\ : label is "soft_lutpair68";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[24]_i_1\ : label is "soft_lutpair67";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[25]_i_1\ : label is "soft_lutpair67";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[26]_i_1\ : label is "soft_lutpair66";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[27]_i_1\ : label is "soft_lutpair66";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[28]_i_1\ : label is "soft_lutpair65";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[29]_i_1\ : label is "soft_lutpair65";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[2]_i_1\ : label is "soft_lutpair78";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[30]_i_1\ : label is "soft_lutpair64";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[31]_i_1\ : label is "soft_lutpair64";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[32]_i_1\ : label is "soft_lutpair63";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[33]_i_1\ : label is "soft_lutpair63";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[34]_i_1\ : label is "soft_lutpair61";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[35]_i_1\ : label is "soft_lutpair61";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[3]_i_1\ : label is "soft_lutpair78";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[4]_i_1\ : label is "soft_lutpair77";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[5]_i_1\ : label is "soft_lutpair77";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[6]_i_1\ : label is "soft_lutpair76";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[7]_i_1\ : label is "soft_lutpair76";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[8]_i_1\ : label is "soft_lutpair75";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_I[9]_i_1\ : label is "soft_lutpair75";
   attribute ADDER_THRESHOLD : integer;
-  attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_I_reg[0]_i_2\ : label is 35;
+  attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_I_reg[12]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_I_reg[12]_i_7\ : label is 35;
+  attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_I_reg[16]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_I_reg[16]_i_7\ : label is 35;
+  attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_I_reg[20]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_I_reg[20]_i_7\ : label is 35;
+  attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_I_reg[24]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_I_reg[24]_i_7\ : label is 35;
+  attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_I_reg[28]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_I_reg[28]_i_7\ : label is 35;
-  attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_I_reg[31]_i_6\ : label is 35;
+  attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_I_reg[32]_i_2\ : label is 35;
+  attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_I_reg[32]_i_7\ : label is 35;
+  attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_I_reg[35]_i_2\ : label is 35;
+  attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_I_reg[35]_i_6\ : label is 35;
+  attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_I_reg[4]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_I_reg[4]_i_8\ : label is 35;
+  attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_I_reg[8]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_I_reg[8]_i_7\ : label is 35;
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[0]_i_1\ : label is "soft_lutpair92";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[10]_i_1\ : label is "soft_lutpair87";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[11]_i_1\ : label is "soft_lutpair87";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[12]_i_1\ : label is "soft_lutpair86";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[13]_i_1\ : label is "soft_lutpair86";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[14]_i_1\ : label is "soft_lutpair85";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[15]_i_1\ : label is "soft_lutpair85";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[16]_i_1\ : label is "soft_lutpair84";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[17]_i_1\ : label is "soft_lutpair84";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[18]_i_1\ : label is "soft_lutpair83";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[19]_i_1\ : label is "soft_lutpair83";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[1]_i_1\ : label is "soft_lutpair92";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[20]_i_1\ : label is "soft_lutpair82";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[21]_i_1\ : label is "soft_lutpair82";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[22]_i_1\ : label is "soft_lutpair81";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[23]_i_1\ : label is "soft_lutpair81";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[24]_i_1\ : label is "soft_lutpair80";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[25]_i_1\ : label is "soft_lutpair80";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[26]_i_1\ : label is "soft_lutpair79";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[27]_i_1\ : label is "soft_lutpair79";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[28]_i_1\ : label is "soft_lutpair78";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[29]_i_1\ : label is "soft_lutpair78";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[2]_i_1\ : label is "soft_lutpair91";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[30]_i_1\ : label is "soft_lutpair62";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[31]_i_1\ : label is "soft_lutpair62";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[3]_i_1\ : label is "soft_lutpair91";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[4]_i_1\ : label is "soft_lutpair90";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[5]_i_1\ : label is "soft_lutpair90";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[6]_i_1\ : label is "soft_lutpair89";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[7]_i_1\ : label is "soft_lutpair89";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[8]_i_1\ : label is "soft_lutpair88";
-  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[9]_i_1\ : label is "soft_lutpair88";
-  attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_Q_reg[0]_i_2\ : label is 35;
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[10]_i_1\ : label is "soft_lutpair90";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[11]_i_1\ : label is "soft_lutpair90";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[12]_i_1\ : label is "soft_lutpair89";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[13]_i_1\ : label is "soft_lutpair89";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[14]_i_1\ : label is "soft_lutpair88";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[15]_i_1\ : label is "soft_lutpair88";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[16]_i_1\ : label is "soft_lutpair87";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[17]_i_1\ : label is "soft_lutpair87";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[18]_i_1\ : label is "soft_lutpair86";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[19]_i_1\ : label is "soft_lutpair86";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[20]_i_1\ : label is "soft_lutpair85";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[21]_i_1\ : label is "soft_lutpair85";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[22]_i_1\ : label is "soft_lutpair84";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[23]_i_1\ : label is "soft_lutpair84";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[24]_i_1\ : label is "soft_lutpair83";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[25]_i_1\ : label is "soft_lutpair83";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[26]_i_1\ : label is "soft_lutpair82";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[27]_i_1\ : label is "soft_lutpair82";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[28]_i_1\ : label is "soft_lutpair81";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[29]_i_1\ : label is "soft_lutpair81";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[2]_i_1\ : label is "soft_lutpair94";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[30]_i_1\ : label is "soft_lutpair80";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[31]_i_1\ : label is "soft_lutpair80";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[32]_i_1\ : label is "soft_lutpair79";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[33]_i_1\ : label is "soft_lutpair79";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[34]_i_1\ : label is "soft_lutpair62";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[35]_i_1\ : label is "soft_lutpair62";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[3]_i_1\ : label is "soft_lutpair94";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[4]_i_1\ : label is "soft_lutpair93";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[5]_i_1\ : label is "soft_lutpair93";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[6]_i_1\ : label is "soft_lutpair92";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[7]_i_1\ : label is "soft_lutpair92";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[8]_i_1\ : label is "soft_lutpair91";
+  attribute SOFT_HLUTNM of \DETECTION_STS_AUTOCORR_Q[9]_i_1\ : label is "soft_lutpair91";
+  attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_Q_reg[12]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_Q_reg[12]_i_7\ : label is 35;
+  attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_Q_reg[16]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_Q_reg[16]_i_7\ : label is 35;
+  attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_Q_reg[20]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_Q_reg[20]_i_7\ : label is 35;
+  attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_Q_reg[24]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_Q_reg[24]_i_7\ : label is 35;
+  attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_Q_reg[28]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_Q_reg[28]_i_7\ : label is 35;
-  attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_Q_reg[31]_i_6\ : label is 35;
+  attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_Q_reg[32]_i_2\ : label is 35;
+  attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_Q_reg[32]_i_7\ : label is 35;
+  attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_Q_reg[35]_i_2\ : label is 35;
+  attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_Q_reg[35]_i_6\ : label is 35;
+  attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_Q_reg[4]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_Q_reg[4]_i_8\ : label is 35;
+  attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_Q_reg[8]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \DETECTION_STS_AUTOCORR_Q_reg[8]_i_7\ : label is 35;
   attribute SOFT_HLUTNM of \FSM_sequential_DETECTION_STATE[1]_i_15\ : label is "soft_lutpair59";
   attribute SOFT_HLUTNM of \FSM_sequential_DETECTION_STATE[1]_i_18\ : label is "soft_lutpair60";
@@ -76654,56 +76732,6 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       Q => DETECTION_STROBE,
       R => '0'
     );
-\DETECTION_STS_AUTOCORR_I[0]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"E2"
-    )
-        port map (
-      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[4]\,
-      I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => ARG2(4),
-      O => ARG(0)
-    );
-\DETECTION_STS_AUTOCORR_I[0]_i_3\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[0]\,
-      O => \DETECTION_STS_AUTOCORR_I[0]_i_3_n_0\
-    );
-\DETECTION_STS_AUTOCORR_I[0]_i_4\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[4]\,
-      O => \DETECTION_STS_AUTOCORR_I[0]_i_4_n_0\
-    );
-\DETECTION_STS_AUTOCORR_I[0]_i_5\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[3]\,
-      O => \DETECTION_STS_AUTOCORR_I[0]_i_5_n_0\
-    );
-\DETECTION_STS_AUTOCORR_I[0]_i_6\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[2]\,
-      O => \DETECTION_STS_AUTOCORR_I[0]_i_6_n_0\
-    );
-\DETECTION_STS_AUTOCORR_I[0]_i_7\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[1]\,
-      O => \DETECTION_STS_AUTOCORR_I[0]_i_7_n_0\
-    );
 \DETECTION_STS_AUTOCORR_I[10]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
@@ -76711,7 +76739,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => ARG0(10),
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[14]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[10]\,
       O => ARG(10)
     );
 \DETECTION_STS_AUTOCORR_I[11]_i_1\: unisim.vcomponents.LUT3
@@ -76721,7 +76749,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => ARG0(11),
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[15]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[11]\,
       O => ARG(11)
     );
 \DETECTION_STS_AUTOCORR_I[12]_i_1\: unisim.vcomponents.LUT3
@@ -76731,7 +76759,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => ARG0(12),
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[16]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[12]\,
       O => ARG(12)
     );
 \DETECTION_STS_AUTOCORR_I[12]_i_10\: unisim.vcomponents.LUT1
@@ -76739,7 +76767,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[14]\,
+      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[10]\,
       O => \DETECTION_STS_AUTOCORR_I[12]_i_10_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[12]_i_11\: unisim.vcomponents.LUT1
@@ -76747,7 +76775,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[13]\,
+      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[9]\,
       O => \DETECTION_STS_AUTOCORR_I[12]_i_11_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[12]_i_3\: unisim.vcomponents.LUT3
@@ -76755,9 +76783,9 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(16),
+      I0 => \DETECTION_STS_AUTOCORR_I_reg[12]_i_7_n_4\,
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[16]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[12]\,
       O => \DETECTION_STS_AUTOCORR_I[12]_i_3_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[12]_i_4\: unisim.vcomponents.LUT3
@@ -76765,9 +76793,9 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(15),
+      I0 => \DETECTION_STS_AUTOCORR_I_reg[12]_i_7_n_5\,
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[15]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[11]\,
       O => \DETECTION_STS_AUTOCORR_I[12]_i_4_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[12]_i_5\: unisim.vcomponents.LUT3
@@ -76775,9 +76803,9 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(14),
+      I0 => \DETECTION_STS_AUTOCORR_I_reg[12]_i_7_n_6\,
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[14]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[10]\,
       O => \DETECTION_STS_AUTOCORR_I[12]_i_5_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[12]_i_6\: unisim.vcomponents.LUT3
@@ -76785,9 +76813,9 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(13),
+      I0 => \DETECTION_STS_AUTOCORR_I_reg[12]_i_7_n_7\,
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[13]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[9]\,
       O => \DETECTION_STS_AUTOCORR_I[12]_i_6_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[12]_i_8\: unisim.vcomponents.LUT1
@@ -76795,7 +76823,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[16]\,
+      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[12]\,
       O => \DETECTION_STS_AUTOCORR_I[12]_i_8_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[12]_i_9\: unisim.vcomponents.LUT1
@@ -76803,7 +76831,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[15]\,
+      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[11]\,
       O => \DETECTION_STS_AUTOCORR_I[12]_i_9_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[13]_i_1\: unisim.vcomponents.LUT3
@@ -76813,7 +76841,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => ARG0(13),
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[17]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[13]\,
       O => ARG(13)
     );
 \DETECTION_STS_AUTOCORR_I[14]_i_1\: unisim.vcomponents.LUT3
@@ -76823,7 +76851,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => ARG0(14),
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[18]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[14]\,
       O => ARG(14)
     );
 \DETECTION_STS_AUTOCORR_I[15]_i_1\: unisim.vcomponents.LUT3
@@ -76833,7 +76861,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => ARG0(15),
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[19]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[15]\,
       O => ARG(15)
     );
 \DETECTION_STS_AUTOCORR_I[16]_i_1\: unisim.vcomponents.LUT3
@@ -76843,7 +76871,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => ARG0(16),
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[20]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[16]\,
       O => ARG(16)
     );
 \DETECTION_STS_AUTOCORR_I[16]_i_10\: unisim.vcomponents.LUT1
@@ -76851,7 +76879,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[18]\,
+      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[14]\,
       O => \DETECTION_STS_AUTOCORR_I[16]_i_10_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[16]_i_11\: unisim.vcomponents.LUT1
@@ -76859,7 +76887,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[17]\,
+      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[13]\,
       O => \DETECTION_STS_AUTOCORR_I[16]_i_11_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[16]_i_3\: unisim.vcomponents.LUT3
@@ -76867,9 +76895,9 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(20),
+      I0 => \DETECTION_STS_AUTOCORR_I_reg[16]_i_7_n_4\,
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[20]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[16]\,
       O => \DETECTION_STS_AUTOCORR_I[16]_i_3_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[16]_i_4\: unisim.vcomponents.LUT3
@@ -76877,9 +76905,9 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(19),
+      I0 => \DETECTION_STS_AUTOCORR_I_reg[16]_i_7_n_5\,
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[19]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[15]\,
       O => \DETECTION_STS_AUTOCORR_I[16]_i_4_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[16]_i_5\: unisim.vcomponents.LUT3
@@ -76887,9 +76915,9 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(18),
+      I0 => \DETECTION_STS_AUTOCORR_I_reg[16]_i_7_n_6\,
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[18]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[14]\,
       O => \DETECTION_STS_AUTOCORR_I[16]_i_5_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[16]_i_6\: unisim.vcomponents.LUT3
@@ -76897,9 +76925,9 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(17),
+      I0 => \DETECTION_STS_AUTOCORR_I_reg[16]_i_7_n_7\,
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[17]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[13]\,
       O => \DETECTION_STS_AUTOCORR_I[16]_i_6_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[16]_i_8\: unisim.vcomponents.LUT1
@@ -76907,7 +76935,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[20]\,
+      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[16]\,
       O => \DETECTION_STS_AUTOCORR_I[16]_i_8_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[16]_i_9\: unisim.vcomponents.LUT1
@@ -76915,7 +76943,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[19]\,
+      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[15]\,
       O => \DETECTION_STS_AUTOCORR_I[16]_i_9_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[17]_i_1\: unisim.vcomponents.LUT3
@@ -76925,7 +76953,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => ARG0(17),
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[21]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[17]\,
       O => ARG(17)
     );
 \DETECTION_STS_AUTOCORR_I[18]_i_1\: unisim.vcomponents.LUT3
@@ -76935,7 +76963,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => ARG0(18),
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[22]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[18]\,
       O => ARG(18)
     );
 \DETECTION_STS_AUTOCORR_I[19]_i_1\: unisim.vcomponents.LUT3
@@ -76945,7 +76973,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => ARG0(19),
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[23]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[19]\,
       O => ARG(19)
     );
 \DETECTION_STS_AUTOCORR_I[1]_i_1\: unisim.vcomponents.LUT3
@@ -76955,7 +76983,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => ARG0(1),
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[5]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[1]\,
       O => ARG(1)
     );
 \DETECTION_STS_AUTOCORR_I[20]_i_1\: unisim.vcomponents.LUT3
@@ -76965,7 +76993,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => ARG0(20),
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[24]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[20]\,
       O => ARG(20)
     );
 \DETECTION_STS_AUTOCORR_I[20]_i_10\: unisim.vcomponents.LUT1
@@ -76973,7 +77001,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[22]\,
+      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[18]\,
       O => \DETECTION_STS_AUTOCORR_I[20]_i_10_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[20]_i_11\: unisim.vcomponents.LUT1
@@ -76981,7 +77009,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[21]\,
+      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[17]\,
       O => \DETECTION_STS_AUTOCORR_I[20]_i_11_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[20]_i_3\: unisim.vcomponents.LUT3
@@ -76989,9 +77017,9 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(24),
+      I0 => \DETECTION_STS_AUTOCORR_I_reg[20]_i_7_n_4\,
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[24]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[20]\,
       O => \DETECTION_STS_AUTOCORR_I[20]_i_3_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[20]_i_4\: unisim.vcomponents.LUT3
@@ -76999,9 +77027,9 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(23),
+      I0 => \DETECTION_STS_AUTOCORR_I_reg[20]_i_7_n_5\,
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[23]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[19]\,
       O => \DETECTION_STS_AUTOCORR_I[20]_i_4_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[20]_i_5\: unisim.vcomponents.LUT3
@@ -77009,9 +77037,9 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(22),
+      I0 => \DETECTION_STS_AUTOCORR_I_reg[20]_i_7_n_6\,
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[22]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[18]\,
       O => \DETECTION_STS_AUTOCORR_I[20]_i_5_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[20]_i_6\: unisim.vcomponents.LUT3
@@ -77019,9 +77047,9 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(21),
+      I0 => \DETECTION_STS_AUTOCORR_I_reg[20]_i_7_n_7\,
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[21]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[17]\,
       O => \DETECTION_STS_AUTOCORR_I[20]_i_6_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[20]_i_8\: unisim.vcomponents.LUT1
@@ -77029,7 +77057,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[24]\,
+      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[20]\,
       O => \DETECTION_STS_AUTOCORR_I[20]_i_8_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[20]_i_9\: unisim.vcomponents.LUT1
@@ -77037,7 +77065,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[23]\,
+      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[19]\,
       O => \DETECTION_STS_AUTOCORR_I[20]_i_9_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[21]_i_1\: unisim.vcomponents.LUT3
@@ -77047,7 +77075,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => ARG0(21),
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[25]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[21]\,
       O => ARG(21)
     );
 \DETECTION_STS_AUTOCORR_I[22]_i_1\: unisim.vcomponents.LUT3
@@ -77057,7 +77085,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => ARG0(22),
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[26]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[22]\,
       O => ARG(22)
     );
 \DETECTION_STS_AUTOCORR_I[23]_i_1\: unisim.vcomponents.LUT3
@@ -77067,7 +77095,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => ARG0(23),
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[27]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[23]\,
       O => ARG(23)
     );
 \DETECTION_STS_AUTOCORR_I[24]_i_1\: unisim.vcomponents.LUT3
@@ -77077,7 +77105,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => ARG0(24),
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[28]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[24]\,
       O => ARG(24)
     );
 \DETECTION_STS_AUTOCORR_I[24]_i_10\: unisim.vcomponents.LUT1
@@ -77085,7 +77113,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[26]\,
+      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[22]\,
       O => \DETECTION_STS_AUTOCORR_I[24]_i_10_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[24]_i_11\: unisim.vcomponents.LUT1
@@ -77093,7 +77121,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[25]\,
+      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[21]\,
       O => \DETECTION_STS_AUTOCORR_I[24]_i_11_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[24]_i_3\: unisim.vcomponents.LUT3
@@ -77101,9 +77129,9 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(28),
+      I0 => \DETECTION_STS_AUTOCORR_I_reg[24]_i_7_n_4\,
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[28]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[24]\,
       O => \DETECTION_STS_AUTOCORR_I[24]_i_3_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[24]_i_4\: unisim.vcomponents.LUT3
@@ -77111,9 +77139,9 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(27),
+      I0 => \DETECTION_STS_AUTOCORR_I_reg[24]_i_7_n_5\,
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[27]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[23]\,
       O => \DETECTION_STS_AUTOCORR_I[24]_i_4_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[24]_i_5\: unisim.vcomponents.LUT3
@@ -77121,9 +77149,9 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(26),
+      I0 => \DETECTION_STS_AUTOCORR_I_reg[24]_i_7_n_6\,
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[26]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[22]\,
       O => \DETECTION_STS_AUTOCORR_I[24]_i_5_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[24]_i_6\: unisim.vcomponents.LUT3
@@ -77131,9 +77159,9 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(25),
+      I0 => \DETECTION_STS_AUTOCORR_I_reg[24]_i_7_n_7\,
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[25]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[21]\,
       O => \DETECTION_STS_AUTOCORR_I[24]_i_6_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[24]_i_8\: unisim.vcomponents.LUT1
@@ -77141,7 +77169,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[28]\,
+      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[24]\,
       O => \DETECTION_STS_AUTOCORR_I[24]_i_8_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[24]_i_9\: unisim.vcomponents.LUT1
@@ -77149,7 +77177,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[27]\,
+      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[23]\,
       O => \DETECTION_STS_AUTOCORR_I[24]_i_9_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[25]_i_1\: unisim.vcomponents.LUT3
@@ -77159,7 +77187,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => ARG0(25),
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[29]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[25]\,
       O => ARG(25)
     );
 \DETECTION_STS_AUTOCORR_I[26]_i_1\: unisim.vcomponents.LUT3
@@ -77169,7 +77197,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => ARG0(26),
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[30]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[26]\,
       O => ARG(26)
     );
 \DETECTION_STS_AUTOCORR_I[27]_i_1\: unisim.vcomponents.LUT3
@@ -77179,7 +77207,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => ARG0(27),
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[31]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[27]\,
       O => ARG(27)
     );
 \DETECTION_STS_AUTOCORR_I[28]_i_1\: unisim.vcomponents.LUT3
@@ -77189,7 +77217,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => ARG0(28),
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[32]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[28]\,
       O => ARG(28)
     );
 \DETECTION_STS_AUTOCORR_I[28]_i_10\: unisim.vcomponents.LUT1
@@ -77197,7 +77225,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[30]\,
+      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[26]\,
       O => \DETECTION_STS_AUTOCORR_I[28]_i_10_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[28]_i_11\: unisim.vcomponents.LUT1
@@ -77205,7 +77233,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[29]\,
+      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[25]\,
       O => \DETECTION_STS_AUTOCORR_I[28]_i_11_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[28]_i_3\: unisim.vcomponents.LUT3
@@ -77213,9 +77241,9 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(32),
+      I0 => \DETECTION_STS_AUTOCORR_I_reg[28]_i_7_n_4\,
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[32]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[28]\,
       O => \DETECTION_STS_AUTOCORR_I[28]_i_3_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[28]_i_4\: unisim.vcomponents.LUT3
@@ -77223,9 +77251,9 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(31),
+      I0 => \DETECTION_STS_AUTOCORR_I_reg[28]_i_7_n_5\,
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[31]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[27]\,
       O => \DETECTION_STS_AUTOCORR_I[28]_i_4_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[28]_i_5\: unisim.vcomponents.LUT3
@@ -77233,9 +77261,9 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(30),
+      I0 => \DETECTION_STS_AUTOCORR_I_reg[28]_i_7_n_6\,
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[30]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[26]\,
       O => \DETECTION_STS_AUTOCORR_I[28]_i_5_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[28]_i_6\: unisim.vcomponents.LUT3
@@ -77243,9 +77271,9 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(29),
+      I0 => \DETECTION_STS_AUTOCORR_I_reg[28]_i_7_n_7\,
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[29]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[25]\,
       O => \DETECTION_STS_AUTOCORR_I[28]_i_6_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[28]_i_8\: unisim.vcomponents.LUT1
@@ -77253,7 +77281,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[32]\,
+      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[28]\,
       O => \DETECTION_STS_AUTOCORR_I[28]_i_8_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[28]_i_9\: unisim.vcomponents.LUT1
@@ -77261,7 +77289,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[31]\,
+      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[27]\,
       O => \DETECTION_STS_AUTOCORR_I[28]_i_9_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[29]_i_1\: unisim.vcomponents.LUT3
@@ -77271,7 +77299,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => ARG0(29),
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[33]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[29]\,
       O => ARG(29)
     );
 \DETECTION_STS_AUTOCORR_I[2]_i_1\: unisim.vcomponents.LUT3
@@ -77281,7 +77309,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => ARG0(2),
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[6]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[2]\,
       O => ARG(2)
     );
 \DETECTION_STS_AUTOCORR_I[30]_i_1\: unisim.vcomponents.LUT3
@@ -77291,70 +77319,182 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => ARG0(30),
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[34]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[30]\,
       O => ARG(30)
     );
-\DETECTION_STS_AUTOCORR_I[31]_i_1\: unisim.vcomponents.LUT2
+\DETECTION_STS_AUTOCORR_I[31]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"2"
+      INIT => X"B8"
     )
         port map (
-      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I1 => \DETECTION_STS_AUTOCORR_I_reg[31]_i_2_n_1\,
+      I0 => ARG0(31),
+      I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[31]\,
+      O => ARG(31)
+    );
+\DETECTION_STS_AUTOCORR_I[32]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => ARG0(32),
+      I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[32]\,
+      O => ARG(32)
+    );
+\DETECTION_STS_AUTOCORR_I[32]_i_10\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[30]\,
+      O => \DETECTION_STS_AUTOCORR_I[32]_i_10_n_0\
+    );
+\DETECTION_STS_AUTOCORR_I[32]_i_11\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[29]\,
+      O => \DETECTION_STS_AUTOCORR_I[32]_i_11_n_0\
+    );
+\DETECTION_STS_AUTOCORR_I[32]_i_3\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"47"
+    )
+        port map (
+      I0 => \DETECTION_STS_AUTOCORR_I_reg[32]_i_7_n_4\,
+      I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[32]\,
+      O => \DETECTION_STS_AUTOCORR_I[32]_i_3_n_0\
+    );
+\DETECTION_STS_AUTOCORR_I[32]_i_4\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"47"
+    )
+        port map (
+      I0 => \DETECTION_STS_AUTOCORR_I_reg[32]_i_7_n_5\,
+      I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[31]\,
+      O => \DETECTION_STS_AUTOCORR_I[32]_i_4_n_0\
+    );
+\DETECTION_STS_AUTOCORR_I[32]_i_5\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"47"
+    )
+        port map (
+      I0 => \DETECTION_STS_AUTOCORR_I_reg[32]_i_7_n_6\,
+      I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[30]\,
+      O => \DETECTION_STS_AUTOCORR_I[32]_i_5_n_0\
+    );
+\DETECTION_STS_AUTOCORR_I[32]_i_6\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"47"
+    )
+        port map (
+      I0 => \DETECTION_STS_AUTOCORR_I_reg[32]_i_7_n_7\,
+      I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[29]\,
+      O => \DETECTION_STS_AUTOCORR_I[32]_i_6_n_0\
+    );
+\DETECTION_STS_AUTOCORR_I[32]_i_8\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[32]\,
+      O => \DETECTION_STS_AUTOCORR_I[32]_i_8_n_0\
+    );
+\DETECTION_STS_AUTOCORR_I[32]_i_9\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[31]\,
+      O => \DETECTION_STS_AUTOCORR_I[32]_i_9_n_0\
+    );
+\DETECTION_STS_AUTOCORR_I[33]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => ARG0(33),
+      I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[33]\,
+      O => ARG(33)
+    );
+\DETECTION_STS_AUTOCORR_I[34]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => ARG0(34),
+      I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[34]\,
+      O => ARG(34)
+    );
+\DETECTION_STS_AUTOCORR_I[35]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"8"
+    )
+        port map (
+      I0 => ARG0(35),
+      I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
       O => ARG(35)
     );
-\DETECTION_STS_AUTOCORR_I[31]_i_3\: unisim.vcomponents.LUT2
+\DETECTION_STS_AUTOCORR_I[35]_i_3\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"7"
     )
         port map (
-      I0 => ARG2(35),
+      I0 => \DETECTION_STS_AUTOCORR_I_reg[35]_i_6_n_5\,
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      O => \DETECTION_STS_AUTOCORR_I[31]_i_3_n_0\
+      O => \DETECTION_STS_AUTOCORR_I[35]_i_3_n_0\
     );
-\DETECTION_STS_AUTOCORR_I[31]_i_4\: unisim.vcomponents.LUT3
+\DETECTION_STS_AUTOCORR_I[35]_i_4\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(34),
+      I0 => \DETECTION_STS_AUTOCORR_I_reg[35]_i_6_n_6\,
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
       I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[34]\,
-      O => \DETECTION_STS_AUTOCORR_I[31]_i_4_n_0\
+      O => \DETECTION_STS_AUTOCORR_I[35]_i_4_n_0\
     );
-\DETECTION_STS_AUTOCORR_I[31]_i_5\: unisim.vcomponents.LUT3
+\DETECTION_STS_AUTOCORR_I[35]_i_5\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(33),
+      I0 => \DETECTION_STS_AUTOCORR_I_reg[35]_i_6_n_7\,
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
       I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[33]\,
-      O => \DETECTION_STS_AUTOCORR_I[31]_i_5_n_0\
+      O => \DETECTION_STS_AUTOCORR_I[35]_i_5_n_0\
     );
-\DETECTION_STS_AUTOCORR_I[31]_i_7\: unisim.vcomponents.LUT1
+\DETECTION_STS_AUTOCORR_I[35]_i_7\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
       I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      O => \DETECTION_STS_AUTOCORR_I[31]_i_7_n_0\
+      O => \DETECTION_STS_AUTOCORR_I[35]_i_7_n_0\
     );
-\DETECTION_STS_AUTOCORR_I[31]_i_8\: unisim.vcomponents.LUT1
+\DETECTION_STS_AUTOCORR_I[35]_i_8\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
       I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[34]\,
-      O => \DETECTION_STS_AUTOCORR_I[31]_i_8_n_0\
+      O => \DETECTION_STS_AUTOCORR_I[35]_i_8_n_0\
     );
-\DETECTION_STS_AUTOCORR_I[31]_i_9\: unisim.vcomponents.LUT1
+\DETECTION_STS_AUTOCORR_I[35]_i_9\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
       I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[33]\,
-      O => \DETECTION_STS_AUTOCORR_I[31]_i_9_n_0\
+      O => \DETECTION_STS_AUTOCORR_I[35]_i_9_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[3]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -77363,7 +77503,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => ARG0(3),
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[7]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[3]\,
       O => ARG(3)
     );
 \DETECTION_STS_AUTOCORR_I[4]_i_1\: unisim.vcomponents.LUT3
@@ -77373,7 +77513,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => ARG0(4),
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[8]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[4]\,
       O => ARG(4)
     );
 \DETECTION_STS_AUTOCORR_I[4]_i_10\: unisim.vcomponents.LUT1
@@ -77381,7 +77521,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[7]\,
+      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[4]\,
       O => \DETECTION_STS_AUTOCORR_I[4]_i_10_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[4]_i_11\: unisim.vcomponents.LUT1
@@ -77389,7 +77529,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[6]\,
+      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[3]\,
       O => \DETECTION_STS_AUTOCORR_I[4]_i_11_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[4]_i_12\: unisim.vcomponents.LUT1
@@ -77397,17 +77537,23 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[5]\,
+      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[2]\,
       O => \DETECTION_STS_AUTOCORR_I[4]_i_12_n_0\
     );
-\DETECTION_STS_AUTOCORR_I[4]_i_3\: unisim.vcomponents.LUT3
+\DETECTION_STS_AUTOCORR_I[4]_i_13\: unisim.vcomponents.LUT1
     generic map(
-      INIT => X"47"
+      INIT => X"1"
     )
         port map (
-      I0 => ARG2(4),
-      I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[4]\,
+      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[1]\,
+      O => \DETECTION_STS_AUTOCORR_I[4]_i_13_n_0\
+    );
+\DETECTION_STS_AUTOCORR_I[4]_i_3\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => ARG(0),
       O => \DETECTION_STS_AUTOCORR_I[4]_i_3_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[4]_i_4\: unisim.vcomponents.LUT3
@@ -77415,9 +77561,9 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(8),
+      I0 => \DETECTION_STS_AUTOCORR_I_reg[4]_i_8_n_4\,
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[8]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[4]\,
       O => \DETECTION_STS_AUTOCORR_I[4]_i_4_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[4]_i_5\: unisim.vcomponents.LUT3
@@ -77425,9 +77571,9 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(7),
+      I0 => \DETECTION_STS_AUTOCORR_I_reg[4]_i_8_n_5\,
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[7]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[3]\,
       O => \DETECTION_STS_AUTOCORR_I[4]_i_5_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[4]_i_6\: unisim.vcomponents.LUT3
@@ -77435,9 +77581,9 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(6),
+      I0 => \DETECTION_STS_AUTOCORR_I_reg[4]_i_8_n_6\,
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[6]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[2]\,
       O => \DETECTION_STS_AUTOCORR_I[4]_i_6_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[4]_i_7\: unisim.vcomponents.LUT3
@@ -77445,9 +77591,9 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(5),
+      I0 => \DETECTION_STS_AUTOCORR_I_reg[4]_i_8_n_7\,
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[5]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[1]\,
       O => \DETECTION_STS_AUTOCORR_I[4]_i_7_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[4]_i_9\: unisim.vcomponents.LUT1
@@ -77455,7 +77601,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[8]\,
+      I0 => ARG(0),
       O => \DETECTION_STS_AUTOCORR_I[4]_i_9_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[5]_i_1\: unisim.vcomponents.LUT3
@@ -77465,7 +77611,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => ARG0(5),
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[9]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[5]\,
       O => ARG(5)
     );
 \DETECTION_STS_AUTOCORR_I[6]_i_1\: unisim.vcomponents.LUT3
@@ -77475,7 +77621,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => ARG0(6),
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[10]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[6]\,
       O => ARG(6)
     );
 \DETECTION_STS_AUTOCORR_I[7]_i_1\: unisim.vcomponents.LUT3
@@ -77485,7 +77631,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => ARG0(7),
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[11]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[7]\,
       O => ARG(7)
     );
 \DETECTION_STS_AUTOCORR_I[8]_i_1\: unisim.vcomponents.LUT3
@@ -77495,7 +77641,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => ARG0(8),
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[12]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[8]\,
       O => ARG(8)
     );
 \DETECTION_STS_AUTOCORR_I[8]_i_10\: unisim.vcomponents.LUT1
@@ -77503,7 +77649,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[10]\,
+      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[6]\,
       O => \DETECTION_STS_AUTOCORR_I[8]_i_10_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[8]_i_11\: unisim.vcomponents.LUT1
@@ -77511,7 +77657,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[9]\,
+      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[5]\,
       O => \DETECTION_STS_AUTOCORR_I[8]_i_11_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[8]_i_3\: unisim.vcomponents.LUT3
@@ -77519,9 +77665,9 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(12),
+      I0 => \DETECTION_STS_AUTOCORR_I_reg[8]_i_7_n_4\,
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[12]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[8]\,
       O => \DETECTION_STS_AUTOCORR_I[8]_i_3_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[8]_i_4\: unisim.vcomponents.LUT3
@@ -77529,9 +77675,9 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(11),
+      I0 => \DETECTION_STS_AUTOCORR_I_reg[8]_i_7_n_5\,
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[11]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[7]\,
       O => \DETECTION_STS_AUTOCORR_I[8]_i_4_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[8]_i_5\: unisim.vcomponents.LUT3
@@ -77539,9 +77685,9 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(10),
+      I0 => \DETECTION_STS_AUTOCORR_I_reg[8]_i_7_n_6\,
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[10]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[6]\,
       O => \DETECTION_STS_AUTOCORR_I[8]_i_5_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[8]_i_6\: unisim.vcomponents.LUT3
@@ -77549,9 +77695,9 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(9),
+      I0 => \DETECTION_STS_AUTOCORR_I_reg[8]_i_7_n_7\,
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[9]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[5]\,
       O => \DETECTION_STS_AUTOCORR_I[8]_i_6_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[8]_i_8\: unisim.vcomponents.LUT1
@@ -77559,7 +77705,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[12]\,
+      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[8]\,
       O => \DETECTION_STS_AUTOCORR_I[8]_i_8_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[8]_i_9\: unisim.vcomponents.LUT1
@@ -77567,7 +77713,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[11]\,
+      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[7]\,
       O => \DETECTION_STS_AUTOCORR_I[8]_i_9_n_0\
     );
 \DETECTION_STS_AUTOCORR_I[9]_i_1\: unisim.vcomponents.LUT3
@@ -77577,7 +77723,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => ARG0(9),
       I1 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[13]\,
+      I2 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[9]\,
       O => ARG(9)
     );
 \DETECTION_STS_AUTOCORR_I_reg[0]\: unisim.vcomponents.FDRE
@@ -77590,22 +77736,6 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       D => ARG(0),
       Q => DETECTION_STS_AUTOCORR_I(0),
       R => '0'
-    );
-\DETECTION_STS_AUTOCORR_I_reg[0]_i_2\: unisim.vcomponents.CARRY4
-     port map (
-      CI => '0',
-      CO(3) => \DETECTION_STS_AUTOCORR_I_reg[0]_i_2_n_0\,
-      CO(2) => \DETECTION_STS_AUTOCORR_I_reg[0]_i_2_n_1\,
-      CO(1) => \DETECTION_STS_AUTOCORR_I_reg[0]_i_2_n_2\,
-      CO(0) => \DETECTION_STS_AUTOCORR_I_reg[0]_i_2_n_3\,
-      CYINIT => \DETECTION_STS_AUTOCORR_I[0]_i_3_n_0\,
-      DI(3 downto 0) => B"0000",
-      O(3) => ARG2(4),
-      O(2 downto 0) => \NLW_DETECTION_STS_AUTOCORR_I_reg[0]_i_2_O_UNCONNECTED\(2 downto 0),
-      S(3) => \DETECTION_STS_AUTOCORR_I[0]_i_4_n_0\,
-      S(2) => \DETECTION_STS_AUTOCORR_I[0]_i_5_n_0\,
-      S(1) => \DETECTION_STS_AUTOCORR_I[0]_i_6_n_0\,
-      S(0) => \DETECTION_STS_AUTOCORR_I[0]_i_7_n_0\
     );
 \DETECTION_STS_AUTOCORR_I_reg[10]\: unisim.vcomponents.FDRE
     generic map(
@@ -77664,7 +77794,10 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       CO(0) => \DETECTION_STS_AUTOCORR_I_reg[12]_i_7_n_3\,
       CYINIT => '0',
       DI(3 downto 0) => B"0000",
-      O(3 downto 0) => ARG2(16 downto 13),
+      O(3) => \DETECTION_STS_AUTOCORR_I_reg[12]_i_7_n_4\,
+      O(2) => \DETECTION_STS_AUTOCORR_I_reg[12]_i_7_n_5\,
+      O(1) => \DETECTION_STS_AUTOCORR_I_reg[12]_i_7_n_6\,
+      O(0) => \DETECTION_STS_AUTOCORR_I_reg[12]_i_7_n_7\,
       S(3) => \DETECTION_STS_AUTOCORR_I[12]_i_8_n_0\,
       S(2) => \DETECTION_STS_AUTOCORR_I[12]_i_9_n_0\,
       S(1) => \DETECTION_STS_AUTOCORR_I[12]_i_10_n_0\,
@@ -77738,7 +77871,10 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       CO(0) => \DETECTION_STS_AUTOCORR_I_reg[16]_i_7_n_3\,
       CYINIT => '0',
       DI(3 downto 0) => B"0000",
-      O(3 downto 0) => ARG2(20 downto 17),
+      O(3) => \DETECTION_STS_AUTOCORR_I_reg[16]_i_7_n_4\,
+      O(2) => \DETECTION_STS_AUTOCORR_I_reg[16]_i_7_n_5\,
+      O(1) => \DETECTION_STS_AUTOCORR_I_reg[16]_i_7_n_6\,
+      O(0) => \DETECTION_STS_AUTOCORR_I_reg[16]_i_7_n_7\,
       S(3) => \DETECTION_STS_AUTOCORR_I[16]_i_8_n_0\,
       S(2) => \DETECTION_STS_AUTOCORR_I[16]_i_9_n_0\,
       S(1) => \DETECTION_STS_AUTOCORR_I[16]_i_10_n_0\,
@@ -77823,7 +77959,10 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       CO(0) => \DETECTION_STS_AUTOCORR_I_reg[20]_i_7_n_3\,
       CYINIT => '0',
       DI(3 downto 0) => B"0000",
-      O(3 downto 0) => ARG2(24 downto 21),
+      O(3) => \DETECTION_STS_AUTOCORR_I_reg[20]_i_7_n_4\,
+      O(2) => \DETECTION_STS_AUTOCORR_I_reg[20]_i_7_n_5\,
+      O(1) => \DETECTION_STS_AUTOCORR_I_reg[20]_i_7_n_6\,
+      O(0) => \DETECTION_STS_AUTOCORR_I_reg[20]_i_7_n_7\,
       S(3) => \DETECTION_STS_AUTOCORR_I[20]_i_8_n_0\,
       S(2) => \DETECTION_STS_AUTOCORR_I[20]_i_9_n_0\,
       S(1) => \DETECTION_STS_AUTOCORR_I[20]_i_10_n_0\,
@@ -77897,7 +78036,10 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       CO(0) => \DETECTION_STS_AUTOCORR_I_reg[24]_i_7_n_3\,
       CYINIT => '0',
       DI(3 downto 0) => B"0000",
-      O(3 downto 0) => ARG2(28 downto 25),
+      O(3) => \DETECTION_STS_AUTOCORR_I_reg[24]_i_7_n_4\,
+      O(2) => \DETECTION_STS_AUTOCORR_I_reg[24]_i_7_n_5\,
+      O(1) => \DETECTION_STS_AUTOCORR_I_reg[24]_i_7_n_6\,
+      O(0) => \DETECTION_STS_AUTOCORR_I_reg[24]_i_7_n_7\,
       S(3) => \DETECTION_STS_AUTOCORR_I[24]_i_8_n_0\,
       S(2) => \DETECTION_STS_AUTOCORR_I[24]_i_9_n_0\,
       S(1) => \DETECTION_STS_AUTOCORR_I[24]_i_10_n_0\,
@@ -77971,7 +78113,10 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       CO(0) => \DETECTION_STS_AUTOCORR_I_reg[28]_i_7_n_3\,
       CYINIT => '0',
       DI(3 downto 0) => B"0000",
-      O(3 downto 0) => ARG2(32 downto 29),
+      O(3) => \DETECTION_STS_AUTOCORR_I_reg[28]_i_7_n_4\,
+      O(2) => \DETECTION_STS_AUTOCORR_I_reg[28]_i_7_n_5\,
+      O(1) => \DETECTION_STS_AUTOCORR_I_reg[28]_i_7_n_6\,
+      O(0) => \DETECTION_STS_AUTOCORR_I_reg[28]_i_7_n_7\,
       S(3) => \DETECTION_STS_AUTOCORR_I[28]_i_8_n_0\,
       S(2) => \DETECTION_STS_AUTOCORR_I[28]_i_9_n_0\,
       S(1) => \DETECTION_STS_AUTOCORR_I[28]_i_10_n_0\,
@@ -78017,40 +78162,118 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => Parallel_STS_FIR_Filter_inst_n_6,
-      D => ARG(35),
+      D => ARG(31),
       Q => DETECTION_STS_AUTOCORR_I(31),
       R => '0'
     );
-\DETECTION_STS_AUTOCORR_I_reg[31]_i_2\: unisim.vcomponents.CARRY4
+\DETECTION_STS_AUTOCORR_I_reg[32]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => Parallel_STS_FIR_Filter_inst_n_6,
+      D => ARG(32),
+      Q => DETECTION_STS_AUTOCORR_I(32),
+      R => '0'
+    );
+\DETECTION_STS_AUTOCORR_I_reg[32]_i_2\: unisim.vcomponents.CARRY4
      port map (
       CI => \DETECTION_STS_AUTOCORR_I_reg[28]_i_2_n_0\,
-      CO(3) => \NLW_DETECTION_STS_AUTOCORR_I_reg[31]_i_2_CO_UNCONNECTED\(3),
-      CO(2) => \DETECTION_STS_AUTOCORR_I_reg[31]_i_2_n_1\,
-      CO(1) => \DETECTION_STS_AUTOCORR_I_reg[31]_i_2_n_2\,
-      CO(0) => \DETECTION_STS_AUTOCORR_I_reg[31]_i_2_n_3\,
+      CO(3) => \DETECTION_STS_AUTOCORR_I_reg[32]_i_2_n_0\,
+      CO(2) => \DETECTION_STS_AUTOCORR_I_reg[32]_i_2_n_1\,
+      CO(1) => \DETECTION_STS_AUTOCORR_I_reg[32]_i_2_n_2\,
+      CO(0) => \DETECTION_STS_AUTOCORR_I_reg[32]_i_2_n_3\,
       CYINIT => '0',
       DI(3 downto 0) => B"0000",
-      O(3 downto 2) => \NLW_DETECTION_STS_AUTOCORR_I_reg[31]_i_2_O_UNCONNECTED\(3 downto 2),
-      O(1 downto 0) => ARG0(30 downto 29),
-      S(3) => '0',
-      S(2) => \DETECTION_STS_AUTOCORR_I[31]_i_3_n_0\,
-      S(1) => \DETECTION_STS_AUTOCORR_I[31]_i_4_n_0\,
-      S(0) => \DETECTION_STS_AUTOCORR_I[31]_i_5_n_0\
+      O(3 downto 0) => ARG0(32 downto 29),
+      S(3) => \DETECTION_STS_AUTOCORR_I[32]_i_3_n_0\,
+      S(2) => \DETECTION_STS_AUTOCORR_I[32]_i_4_n_0\,
+      S(1) => \DETECTION_STS_AUTOCORR_I[32]_i_5_n_0\,
+      S(0) => \DETECTION_STS_AUTOCORR_I[32]_i_6_n_0\
     );
-\DETECTION_STS_AUTOCORR_I_reg[31]_i_6\: unisim.vcomponents.CARRY4
+\DETECTION_STS_AUTOCORR_I_reg[32]_i_7\: unisim.vcomponents.CARRY4
      port map (
       CI => \DETECTION_STS_AUTOCORR_I_reg[28]_i_7_n_0\,
-      CO(3 downto 2) => \NLW_DETECTION_STS_AUTOCORR_I_reg[31]_i_6_CO_UNCONNECTED\(3 downto 2),
-      CO(1) => \DETECTION_STS_AUTOCORR_I_reg[31]_i_6_n_2\,
-      CO(0) => \DETECTION_STS_AUTOCORR_I_reg[31]_i_6_n_3\,
+      CO(3) => \DETECTION_STS_AUTOCORR_I_reg[32]_i_7_n_0\,
+      CO(2) => \DETECTION_STS_AUTOCORR_I_reg[32]_i_7_n_1\,
+      CO(1) => \DETECTION_STS_AUTOCORR_I_reg[32]_i_7_n_2\,
+      CO(0) => \DETECTION_STS_AUTOCORR_I_reg[32]_i_7_n_3\,
       CYINIT => '0',
       DI(3 downto 0) => B"0000",
-      O(3) => \NLW_DETECTION_STS_AUTOCORR_I_reg[31]_i_6_O_UNCONNECTED\(3),
-      O(2 downto 0) => ARG2(35 downto 33),
+      O(3) => \DETECTION_STS_AUTOCORR_I_reg[32]_i_7_n_4\,
+      O(2) => \DETECTION_STS_AUTOCORR_I_reg[32]_i_7_n_5\,
+      O(1) => \DETECTION_STS_AUTOCORR_I_reg[32]_i_7_n_6\,
+      O(0) => \DETECTION_STS_AUTOCORR_I_reg[32]_i_7_n_7\,
+      S(3) => \DETECTION_STS_AUTOCORR_I[32]_i_8_n_0\,
+      S(2) => \DETECTION_STS_AUTOCORR_I[32]_i_9_n_0\,
+      S(1) => \DETECTION_STS_AUTOCORR_I[32]_i_10_n_0\,
+      S(0) => \DETECTION_STS_AUTOCORR_I[32]_i_11_n_0\
+    );
+\DETECTION_STS_AUTOCORR_I_reg[33]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => Parallel_STS_FIR_Filter_inst_n_6,
+      D => ARG(33),
+      Q => DETECTION_STS_AUTOCORR_I(33),
+      R => '0'
+    );
+\DETECTION_STS_AUTOCORR_I_reg[34]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => Parallel_STS_FIR_Filter_inst_n_6,
+      D => ARG(34),
+      Q => DETECTION_STS_AUTOCORR_I(34),
+      R => '0'
+    );
+\DETECTION_STS_AUTOCORR_I_reg[35]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => Parallel_STS_FIR_Filter_inst_n_6,
+      D => ARG(35),
+      Q => DETECTION_STS_AUTOCORR_I(35),
+      R => '0'
+    );
+\DETECTION_STS_AUTOCORR_I_reg[35]_i_2\: unisim.vcomponents.CARRY4
+     port map (
+      CI => \DETECTION_STS_AUTOCORR_I_reg[32]_i_2_n_0\,
+      CO(3 downto 2) => \NLW_DETECTION_STS_AUTOCORR_I_reg[35]_i_2_CO_UNCONNECTED\(3 downto 2),
+      CO(1) => \DETECTION_STS_AUTOCORR_I_reg[35]_i_2_n_2\,
+      CO(0) => \DETECTION_STS_AUTOCORR_I_reg[35]_i_2_n_3\,
+      CYINIT => '0',
+      DI(3 downto 0) => B"0000",
+      O(3) => \NLW_DETECTION_STS_AUTOCORR_I_reg[35]_i_2_O_UNCONNECTED\(3),
+      O(2 downto 0) => ARG0(35 downto 33),
       S(3) => '0',
-      S(2) => \DETECTION_STS_AUTOCORR_I[31]_i_7_n_0\,
-      S(1) => \DETECTION_STS_AUTOCORR_I[31]_i_8_n_0\,
-      S(0) => \DETECTION_STS_AUTOCORR_I[31]_i_9_n_0\
+      S(2) => \DETECTION_STS_AUTOCORR_I[35]_i_3_n_0\,
+      S(1) => \DETECTION_STS_AUTOCORR_I[35]_i_4_n_0\,
+      S(0) => \DETECTION_STS_AUTOCORR_I[35]_i_5_n_0\
+    );
+\DETECTION_STS_AUTOCORR_I_reg[35]_i_6\: unisim.vcomponents.CARRY4
+     port map (
+      CI => \DETECTION_STS_AUTOCORR_I_reg[32]_i_7_n_0\,
+      CO(3 downto 2) => \NLW_DETECTION_STS_AUTOCORR_I_reg[35]_i_6_CO_UNCONNECTED\(3 downto 2),
+      CO(1) => \DETECTION_STS_AUTOCORR_I_reg[35]_i_6_n_2\,
+      CO(0) => \DETECTION_STS_AUTOCORR_I_reg[35]_i_6_n_3\,
+      CYINIT => '0',
+      DI(3 downto 0) => B"0000",
+      O(3) => \NLW_DETECTION_STS_AUTOCORR_I_reg[35]_i_6_O_UNCONNECTED\(3),
+      O(2) => \DETECTION_STS_AUTOCORR_I_reg[35]_i_6_n_5\,
+      O(1) => \DETECTION_STS_AUTOCORR_I_reg[35]_i_6_n_6\,
+      O(0) => \DETECTION_STS_AUTOCORR_I_reg[35]_i_6_n_7\,
+      S(3) => '0',
+      S(2) => \DETECTION_STS_AUTOCORR_I[35]_i_7_n_0\,
+      S(1) => \DETECTION_STS_AUTOCORR_I[35]_i_8_n_0\,
+      S(0) => \DETECTION_STS_AUTOCORR_I[35]_i_9_n_0\
     );
 \DETECTION_STS_AUTOCORR_I_reg[3]\: unisim.vcomponents.FDRE
     generic map(
@@ -78091,18 +78314,21 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
     );
 \DETECTION_STS_AUTOCORR_I_reg[4]_i_8\: unisim.vcomponents.CARRY4
      port map (
-      CI => \DETECTION_STS_AUTOCORR_I_reg[0]_i_2_n_0\,
+      CI => '0',
       CO(3) => \DETECTION_STS_AUTOCORR_I_reg[4]_i_8_n_0\,
       CO(2) => \DETECTION_STS_AUTOCORR_I_reg[4]_i_8_n_1\,
       CO(1) => \DETECTION_STS_AUTOCORR_I_reg[4]_i_8_n_2\,
       CO(0) => \DETECTION_STS_AUTOCORR_I_reg[4]_i_8_n_3\,
-      CYINIT => '0',
+      CYINIT => \DETECTION_STS_AUTOCORR_I[4]_i_9_n_0\,
       DI(3 downto 0) => B"0000",
-      O(3 downto 0) => ARG2(8 downto 5),
-      S(3) => \DETECTION_STS_AUTOCORR_I[4]_i_9_n_0\,
-      S(2) => \DETECTION_STS_AUTOCORR_I[4]_i_10_n_0\,
-      S(1) => \DETECTION_STS_AUTOCORR_I[4]_i_11_n_0\,
-      S(0) => \DETECTION_STS_AUTOCORR_I[4]_i_12_n_0\
+      O(3) => \DETECTION_STS_AUTOCORR_I_reg[4]_i_8_n_4\,
+      O(2) => \DETECTION_STS_AUTOCORR_I_reg[4]_i_8_n_5\,
+      O(1) => \DETECTION_STS_AUTOCORR_I_reg[4]_i_8_n_6\,
+      O(0) => \DETECTION_STS_AUTOCORR_I_reg[4]_i_8_n_7\,
+      S(3) => \DETECTION_STS_AUTOCORR_I[4]_i_10_n_0\,
+      S(2) => \DETECTION_STS_AUTOCORR_I[4]_i_11_n_0\,
+      S(1) => \DETECTION_STS_AUTOCORR_I[4]_i_12_n_0\,
+      S(0) => \DETECTION_STS_AUTOCORR_I[4]_i_13_n_0\
     );
 \DETECTION_STS_AUTOCORR_I_reg[5]\: unisim.vcomponents.FDRE
     generic map(
@@ -78172,7 +78398,10 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       CO(0) => \DETECTION_STS_AUTOCORR_I_reg[8]_i_7_n_3\,
       CYINIT => '0',
       DI(3 downto 0) => B"0000",
-      O(3 downto 0) => ARG2(12 downto 9),
+      O(3) => \DETECTION_STS_AUTOCORR_I_reg[8]_i_7_n_4\,
+      O(2) => \DETECTION_STS_AUTOCORR_I_reg[8]_i_7_n_5\,
+      O(1) => \DETECTION_STS_AUTOCORR_I_reg[8]_i_7_n_6\,
+      O(0) => \DETECTION_STS_AUTOCORR_I_reg[8]_i_7_n_7\,
       S(3) => \DETECTION_STS_AUTOCORR_I[8]_i_8_n_0\,
       S(2) => \DETECTION_STS_AUTOCORR_I[8]_i_9_n_0\,
       S(1) => \DETECTION_STS_AUTOCORR_I[8]_i_10_n_0\,
@@ -78189,56 +78418,6 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       Q => DETECTION_STS_AUTOCORR_I(9),
       R => '0'
     );
-\DETECTION_STS_AUTOCORR_Q[0]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"E2"
-    )
-        port map (
-      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[4]\,
-      I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \DETECTION_STS_AUTOCORR_Q_reg[0]_i_2_n_4\,
-      O => \DETECTION_STS_AUTOCORR_Q[0]_i_1_n_0\
-    );
-\DETECTION_STS_AUTOCORR_Q[0]_i_3\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[0]\,
-      O => \DETECTION_STS_AUTOCORR_Q[0]_i_3_n_0\
-    );
-\DETECTION_STS_AUTOCORR_Q[0]_i_4\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[4]\,
-      O => \DETECTION_STS_AUTOCORR_Q[0]_i_4_n_0\
-    );
-\DETECTION_STS_AUTOCORR_Q[0]_i_5\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[3]\,
-      O => \DETECTION_STS_AUTOCORR_Q[0]_i_5_n_0\
-    );
-\DETECTION_STS_AUTOCORR_Q[0]_i_6\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[2]\,
-      O => \DETECTION_STS_AUTOCORR_Q[0]_i_6_n_0\
-    );
-\DETECTION_STS_AUTOCORR_Q[0]_i_7\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[1]\,
-      O => \DETECTION_STS_AUTOCORR_Q[0]_i_7_n_0\
-    );
 \DETECTION_STS_AUTOCORR_Q[10]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
@@ -78246,7 +78425,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[12]_i_2_n_6\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[14]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[10]\,
       O => \DETECTION_STS_AUTOCORR_Q[10]_i_1_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[11]_i_1\: unisim.vcomponents.LUT3
@@ -78256,7 +78435,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[12]_i_2_n_5\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[15]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[11]\,
       O => \DETECTION_STS_AUTOCORR_Q[11]_i_1_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[12]_i_1\: unisim.vcomponents.LUT3
@@ -78266,7 +78445,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[12]_i_2_n_4\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[16]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[12]\,
       O => \DETECTION_STS_AUTOCORR_Q[12]_i_1_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[12]_i_10\: unisim.vcomponents.LUT1
@@ -78274,7 +78453,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[14]\,
+      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[10]\,
       O => \DETECTION_STS_AUTOCORR_Q[12]_i_10_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[12]_i_11\: unisim.vcomponents.LUT1
@@ -78282,7 +78461,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[13]\,
+      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[9]\,
       O => \DETECTION_STS_AUTOCORR_Q[12]_i_11_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[12]_i_3\: unisim.vcomponents.LUT3
@@ -78292,7 +78471,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[12]_i_7_n_4\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[16]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[12]\,
       O => \DETECTION_STS_AUTOCORR_Q[12]_i_3_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[12]_i_4\: unisim.vcomponents.LUT3
@@ -78302,7 +78481,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[12]_i_7_n_5\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[15]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[11]\,
       O => \DETECTION_STS_AUTOCORR_Q[12]_i_4_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[12]_i_5\: unisim.vcomponents.LUT3
@@ -78312,7 +78491,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[12]_i_7_n_6\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[14]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[10]\,
       O => \DETECTION_STS_AUTOCORR_Q[12]_i_5_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[12]_i_6\: unisim.vcomponents.LUT3
@@ -78322,7 +78501,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[12]_i_7_n_7\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[13]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[9]\,
       O => \DETECTION_STS_AUTOCORR_Q[12]_i_6_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[12]_i_8\: unisim.vcomponents.LUT1
@@ -78330,7 +78509,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[16]\,
+      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[12]\,
       O => \DETECTION_STS_AUTOCORR_Q[12]_i_8_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[12]_i_9\: unisim.vcomponents.LUT1
@@ -78338,7 +78517,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[15]\,
+      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[11]\,
       O => \DETECTION_STS_AUTOCORR_Q[12]_i_9_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[13]_i_1\: unisim.vcomponents.LUT3
@@ -78348,7 +78527,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[16]_i_2_n_7\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[17]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[13]\,
       O => \DETECTION_STS_AUTOCORR_Q[13]_i_1_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[14]_i_1\: unisim.vcomponents.LUT3
@@ -78358,7 +78537,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[16]_i_2_n_6\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[18]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[14]\,
       O => \DETECTION_STS_AUTOCORR_Q[14]_i_1_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[15]_i_1\: unisim.vcomponents.LUT3
@@ -78368,7 +78547,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[16]_i_2_n_5\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[19]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[15]\,
       O => \DETECTION_STS_AUTOCORR_Q[15]_i_1_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[16]_i_1\: unisim.vcomponents.LUT3
@@ -78378,7 +78557,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[16]_i_2_n_4\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[20]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[16]\,
       O => \DETECTION_STS_AUTOCORR_Q[16]_i_1_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[16]_i_10\: unisim.vcomponents.LUT1
@@ -78386,7 +78565,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[18]\,
+      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[14]\,
       O => \DETECTION_STS_AUTOCORR_Q[16]_i_10_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[16]_i_11\: unisim.vcomponents.LUT1
@@ -78394,7 +78573,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[17]\,
+      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[13]\,
       O => \DETECTION_STS_AUTOCORR_Q[16]_i_11_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[16]_i_3\: unisim.vcomponents.LUT3
@@ -78404,7 +78583,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[16]_i_7_n_4\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[20]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[16]\,
       O => \DETECTION_STS_AUTOCORR_Q[16]_i_3_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[16]_i_4\: unisim.vcomponents.LUT3
@@ -78414,7 +78593,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[16]_i_7_n_5\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[19]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[15]\,
       O => \DETECTION_STS_AUTOCORR_Q[16]_i_4_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[16]_i_5\: unisim.vcomponents.LUT3
@@ -78424,7 +78603,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[16]_i_7_n_6\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[18]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[14]\,
       O => \DETECTION_STS_AUTOCORR_Q[16]_i_5_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[16]_i_6\: unisim.vcomponents.LUT3
@@ -78434,7 +78613,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[16]_i_7_n_7\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[17]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[13]\,
       O => \DETECTION_STS_AUTOCORR_Q[16]_i_6_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[16]_i_8\: unisim.vcomponents.LUT1
@@ -78442,7 +78621,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[20]\,
+      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[16]\,
       O => \DETECTION_STS_AUTOCORR_Q[16]_i_8_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[16]_i_9\: unisim.vcomponents.LUT1
@@ -78450,7 +78629,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[19]\,
+      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[15]\,
       O => \DETECTION_STS_AUTOCORR_Q[16]_i_9_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[17]_i_1\: unisim.vcomponents.LUT3
@@ -78460,7 +78639,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[20]_i_2_n_7\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[21]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[17]\,
       O => \DETECTION_STS_AUTOCORR_Q[17]_i_1_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[18]_i_1\: unisim.vcomponents.LUT3
@@ -78470,7 +78649,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[20]_i_2_n_6\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[22]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[18]\,
       O => \DETECTION_STS_AUTOCORR_Q[18]_i_1_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[19]_i_1\: unisim.vcomponents.LUT3
@@ -78480,7 +78659,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[20]_i_2_n_5\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[23]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[19]\,
       O => \DETECTION_STS_AUTOCORR_Q[19]_i_1_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[1]_i_1\: unisim.vcomponents.LUT3
@@ -78490,7 +78669,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[4]_i_2_n_7\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[5]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[1]\,
       O => \DETECTION_STS_AUTOCORR_Q[1]_i_1_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[20]_i_1\: unisim.vcomponents.LUT3
@@ -78500,7 +78679,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[20]_i_2_n_4\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[24]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[20]\,
       O => \DETECTION_STS_AUTOCORR_Q[20]_i_1_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[20]_i_10\: unisim.vcomponents.LUT1
@@ -78508,7 +78687,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[22]\,
+      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[18]\,
       O => \DETECTION_STS_AUTOCORR_Q[20]_i_10_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[20]_i_11\: unisim.vcomponents.LUT1
@@ -78516,7 +78695,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[21]\,
+      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[17]\,
       O => \DETECTION_STS_AUTOCORR_Q[20]_i_11_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[20]_i_3\: unisim.vcomponents.LUT3
@@ -78526,7 +78705,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[20]_i_7_n_4\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[24]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[20]\,
       O => \DETECTION_STS_AUTOCORR_Q[20]_i_3_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[20]_i_4\: unisim.vcomponents.LUT3
@@ -78536,7 +78715,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[20]_i_7_n_5\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[23]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[19]\,
       O => \DETECTION_STS_AUTOCORR_Q[20]_i_4_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[20]_i_5\: unisim.vcomponents.LUT3
@@ -78546,7 +78725,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[20]_i_7_n_6\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[22]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[18]\,
       O => \DETECTION_STS_AUTOCORR_Q[20]_i_5_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[20]_i_6\: unisim.vcomponents.LUT3
@@ -78556,7 +78735,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[20]_i_7_n_7\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[21]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[17]\,
       O => \DETECTION_STS_AUTOCORR_Q[20]_i_6_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[20]_i_8\: unisim.vcomponents.LUT1
@@ -78564,7 +78743,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[24]\,
+      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[20]\,
       O => \DETECTION_STS_AUTOCORR_Q[20]_i_8_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[20]_i_9\: unisim.vcomponents.LUT1
@@ -78572,7 +78751,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[23]\,
+      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[19]\,
       O => \DETECTION_STS_AUTOCORR_Q[20]_i_9_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[21]_i_1\: unisim.vcomponents.LUT3
@@ -78582,7 +78761,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[24]_i_2_n_7\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[25]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[21]\,
       O => \DETECTION_STS_AUTOCORR_Q[21]_i_1_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[22]_i_1\: unisim.vcomponents.LUT3
@@ -78592,7 +78771,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[24]_i_2_n_6\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[26]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[22]\,
       O => \DETECTION_STS_AUTOCORR_Q[22]_i_1_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[23]_i_1\: unisim.vcomponents.LUT3
@@ -78602,7 +78781,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[24]_i_2_n_5\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[27]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[23]\,
       O => \DETECTION_STS_AUTOCORR_Q[23]_i_1_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[24]_i_1\: unisim.vcomponents.LUT3
@@ -78612,7 +78791,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[24]_i_2_n_4\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[28]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[24]\,
       O => \DETECTION_STS_AUTOCORR_Q[24]_i_1_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[24]_i_10\: unisim.vcomponents.LUT1
@@ -78620,7 +78799,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[26]\,
+      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[22]\,
       O => \DETECTION_STS_AUTOCORR_Q[24]_i_10_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[24]_i_11\: unisim.vcomponents.LUT1
@@ -78628,7 +78807,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[25]\,
+      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[21]\,
       O => \DETECTION_STS_AUTOCORR_Q[24]_i_11_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[24]_i_3\: unisim.vcomponents.LUT3
@@ -78638,7 +78817,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[24]_i_7_n_4\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[28]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[24]\,
       O => \DETECTION_STS_AUTOCORR_Q[24]_i_3_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[24]_i_4\: unisim.vcomponents.LUT3
@@ -78648,7 +78827,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[24]_i_7_n_5\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[27]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[23]\,
       O => \DETECTION_STS_AUTOCORR_Q[24]_i_4_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[24]_i_5\: unisim.vcomponents.LUT3
@@ -78658,7 +78837,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[24]_i_7_n_6\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[26]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[22]\,
       O => \DETECTION_STS_AUTOCORR_Q[24]_i_5_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[24]_i_6\: unisim.vcomponents.LUT3
@@ -78668,7 +78847,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[24]_i_7_n_7\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[25]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[21]\,
       O => \DETECTION_STS_AUTOCORR_Q[24]_i_6_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[24]_i_8\: unisim.vcomponents.LUT1
@@ -78676,7 +78855,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[28]\,
+      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[24]\,
       O => \DETECTION_STS_AUTOCORR_Q[24]_i_8_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[24]_i_9\: unisim.vcomponents.LUT1
@@ -78684,7 +78863,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[27]\,
+      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[23]\,
       O => \DETECTION_STS_AUTOCORR_Q[24]_i_9_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[25]_i_1\: unisim.vcomponents.LUT3
@@ -78694,7 +78873,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[28]_i_2_n_7\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[29]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[25]\,
       O => \DETECTION_STS_AUTOCORR_Q[25]_i_1_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[26]_i_1\: unisim.vcomponents.LUT3
@@ -78704,7 +78883,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[28]_i_2_n_6\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[30]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[26]\,
       O => \DETECTION_STS_AUTOCORR_Q[26]_i_1_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[27]_i_1\: unisim.vcomponents.LUT3
@@ -78714,7 +78893,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[28]_i_2_n_5\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[31]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[27]\,
       O => \DETECTION_STS_AUTOCORR_Q[27]_i_1_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[28]_i_1\: unisim.vcomponents.LUT3
@@ -78724,7 +78903,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[28]_i_2_n_4\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[32]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[28]\,
       O => \DETECTION_STS_AUTOCORR_Q[28]_i_1_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[28]_i_10\: unisim.vcomponents.LUT1
@@ -78732,7 +78911,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[30]\,
+      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[26]\,
       O => \DETECTION_STS_AUTOCORR_Q[28]_i_10_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[28]_i_11\: unisim.vcomponents.LUT1
@@ -78740,7 +78919,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[29]\,
+      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[25]\,
       O => \DETECTION_STS_AUTOCORR_Q[28]_i_11_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[28]_i_3\: unisim.vcomponents.LUT3
@@ -78750,7 +78929,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[28]_i_7_n_4\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[32]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[28]\,
       O => \DETECTION_STS_AUTOCORR_Q[28]_i_3_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[28]_i_4\: unisim.vcomponents.LUT3
@@ -78760,7 +78939,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[28]_i_7_n_5\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[31]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[27]\,
       O => \DETECTION_STS_AUTOCORR_Q[28]_i_4_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[28]_i_5\: unisim.vcomponents.LUT3
@@ -78770,7 +78949,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[28]_i_7_n_6\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[30]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[26]\,
       O => \DETECTION_STS_AUTOCORR_Q[28]_i_5_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[28]_i_6\: unisim.vcomponents.LUT3
@@ -78780,7 +78959,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[28]_i_7_n_7\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[29]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[25]\,
       O => \DETECTION_STS_AUTOCORR_Q[28]_i_6_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[28]_i_8\: unisim.vcomponents.LUT1
@@ -78788,7 +78967,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[32]\,
+      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[28]\,
       O => \DETECTION_STS_AUTOCORR_Q[28]_i_8_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[28]_i_9\: unisim.vcomponents.LUT1
@@ -78796,7 +78975,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[31]\,
+      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[27]\,
       O => \DETECTION_STS_AUTOCORR_Q[28]_i_9_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[29]_i_1\: unisim.vcomponents.LUT3
@@ -78804,9 +78983,9 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"B8"
     )
         port map (
-      I0 => \DETECTION_STS_AUTOCORR_Q_reg[31]_i_2_n_7\,
+      I0 => \DETECTION_STS_AUTOCORR_Q_reg[32]_i_2_n_7\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[33]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[29]\,
       O => \DETECTION_STS_AUTOCORR_Q[29]_i_1_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[2]_i_1\: unisim.vcomponents.LUT3
@@ -78816,7 +78995,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[4]_i_2_n_6\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[6]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[2]\,
       O => \DETECTION_STS_AUTOCORR_Q[2]_i_1_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[30]_i_1\: unisim.vcomponents.LUT3
@@ -78824,72 +79003,184 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"B8"
     )
         port map (
-      I0 => \DETECTION_STS_AUTOCORR_Q_reg[31]_i_2_n_6\,
+      I0 => \DETECTION_STS_AUTOCORR_Q_reg[32]_i_2_n_6\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[34]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[30]\,
       O => \DETECTION_STS_AUTOCORR_Q[30]_i_1_n_0\
     );
-\DETECTION_STS_AUTOCORR_Q[31]_i_1\: unisim.vcomponents.LUT2
+\DETECTION_STS_AUTOCORR_Q[31]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"2"
+      INIT => X"B8"
     )
         port map (
-      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I1 => \DETECTION_STS_AUTOCORR_Q_reg[31]_i_2_n_1\,
+      I0 => \DETECTION_STS_AUTOCORR_Q_reg[32]_i_2_n_5\,
+      I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[31]\,
       O => \DETECTION_STS_AUTOCORR_Q[31]_i_1_n_0\
     );
-\DETECTION_STS_AUTOCORR_Q[31]_i_3\: unisim.vcomponents.LUT2
+\DETECTION_STS_AUTOCORR_Q[32]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => \DETECTION_STS_AUTOCORR_Q_reg[32]_i_2_n_4\,
+      I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[32]\,
+      O => \DETECTION_STS_AUTOCORR_Q[32]_i_1_n_0\
+    );
+\DETECTION_STS_AUTOCORR_Q[32]_i_10\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[30]\,
+      O => \DETECTION_STS_AUTOCORR_Q[32]_i_10_n_0\
+    );
+\DETECTION_STS_AUTOCORR_Q[32]_i_11\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[29]\,
+      O => \DETECTION_STS_AUTOCORR_Q[32]_i_11_n_0\
+    );
+\DETECTION_STS_AUTOCORR_Q[32]_i_3\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"47"
+    )
+        port map (
+      I0 => \DETECTION_STS_AUTOCORR_Q_reg[32]_i_7_n_4\,
+      I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[32]\,
+      O => \DETECTION_STS_AUTOCORR_Q[32]_i_3_n_0\
+    );
+\DETECTION_STS_AUTOCORR_Q[32]_i_4\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"47"
+    )
+        port map (
+      I0 => \DETECTION_STS_AUTOCORR_Q_reg[32]_i_7_n_5\,
+      I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[31]\,
+      O => \DETECTION_STS_AUTOCORR_Q[32]_i_4_n_0\
+    );
+\DETECTION_STS_AUTOCORR_Q[32]_i_5\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"47"
+    )
+        port map (
+      I0 => \DETECTION_STS_AUTOCORR_Q_reg[32]_i_7_n_6\,
+      I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[30]\,
+      O => \DETECTION_STS_AUTOCORR_Q[32]_i_5_n_0\
+    );
+\DETECTION_STS_AUTOCORR_Q[32]_i_6\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"47"
+    )
+        port map (
+      I0 => \DETECTION_STS_AUTOCORR_Q_reg[32]_i_7_n_7\,
+      I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[29]\,
+      O => \DETECTION_STS_AUTOCORR_Q[32]_i_6_n_0\
+    );
+\DETECTION_STS_AUTOCORR_Q[32]_i_8\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[32]\,
+      O => \DETECTION_STS_AUTOCORR_Q[32]_i_8_n_0\
+    );
+\DETECTION_STS_AUTOCORR_Q[32]_i_9\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[31]\,
+      O => \DETECTION_STS_AUTOCORR_Q[32]_i_9_n_0\
+    );
+\DETECTION_STS_AUTOCORR_Q[33]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => \DETECTION_STS_AUTOCORR_Q_reg[35]_i_2_n_7\,
+      I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[33]\,
+      O => \DETECTION_STS_AUTOCORR_Q[33]_i_1_n_0\
+    );
+\DETECTION_STS_AUTOCORR_Q[34]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => \DETECTION_STS_AUTOCORR_Q_reg[35]_i_2_n_6\,
+      I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[34]\,
+      O => \DETECTION_STS_AUTOCORR_Q[34]_i_1_n_0\
+    );
+\DETECTION_STS_AUTOCORR_Q[35]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"8"
+    )
+        port map (
+      I0 => \DETECTION_STS_AUTOCORR_Q_reg[35]_i_2_n_5\,
+      I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
+      O => \DETECTION_STS_AUTOCORR_Q[35]_i_1_n_0\
+    );
+\DETECTION_STS_AUTOCORR_Q[35]_i_3\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"7"
     )
         port map (
-      I0 => \DETECTION_STS_AUTOCORR_Q_reg[31]_i_6_n_5\,
+      I0 => \DETECTION_STS_AUTOCORR_Q_reg[35]_i_6_n_5\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      O => \DETECTION_STS_AUTOCORR_Q[31]_i_3_n_0\
+      O => \DETECTION_STS_AUTOCORR_Q[35]_i_3_n_0\
     );
-\DETECTION_STS_AUTOCORR_Q[31]_i_4\: unisim.vcomponents.LUT3
+\DETECTION_STS_AUTOCORR_Q[35]_i_4\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"47"
     )
         port map (
-      I0 => \DETECTION_STS_AUTOCORR_Q_reg[31]_i_6_n_6\,
+      I0 => \DETECTION_STS_AUTOCORR_Q_reg[35]_i_6_n_6\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
       I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[34]\,
-      O => \DETECTION_STS_AUTOCORR_Q[31]_i_4_n_0\
+      O => \DETECTION_STS_AUTOCORR_Q[35]_i_4_n_0\
     );
-\DETECTION_STS_AUTOCORR_Q[31]_i_5\: unisim.vcomponents.LUT3
+\DETECTION_STS_AUTOCORR_Q[35]_i_5\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"47"
     )
         port map (
-      I0 => \DETECTION_STS_AUTOCORR_Q_reg[31]_i_6_n_7\,
+      I0 => \DETECTION_STS_AUTOCORR_Q_reg[35]_i_6_n_7\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
       I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[33]\,
-      O => \DETECTION_STS_AUTOCORR_Q[31]_i_5_n_0\
+      O => \DETECTION_STS_AUTOCORR_Q[35]_i_5_n_0\
     );
-\DETECTION_STS_AUTOCORR_Q[31]_i_7\: unisim.vcomponents.LUT1
+\DETECTION_STS_AUTOCORR_Q[35]_i_7\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
       I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      O => \DETECTION_STS_AUTOCORR_Q[31]_i_7_n_0\
+      O => \DETECTION_STS_AUTOCORR_Q[35]_i_7_n_0\
     );
-\DETECTION_STS_AUTOCORR_Q[31]_i_8\: unisim.vcomponents.LUT1
+\DETECTION_STS_AUTOCORR_Q[35]_i_8\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
       I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[34]\,
-      O => \DETECTION_STS_AUTOCORR_Q[31]_i_8_n_0\
+      O => \DETECTION_STS_AUTOCORR_Q[35]_i_8_n_0\
     );
-\DETECTION_STS_AUTOCORR_Q[31]_i_9\: unisim.vcomponents.LUT1
+\DETECTION_STS_AUTOCORR_Q[35]_i_9\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
       I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[33]\,
-      O => \DETECTION_STS_AUTOCORR_Q[31]_i_9_n_0\
+      O => \DETECTION_STS_AUTOCORR_Q[35]_i_9_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[3]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -78898,7 +79189,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[4]_i_2_n_5\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[7]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[3]\,
       O => \DETECTION_STS_AUTOCORR_Q[3]_i_1_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[4]_i_1\: unisim.vcomponents.LUT3
@@ -78908,7 +79199,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[4]_i_2_n_4\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[8]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[4]\,
       O => \DETECTION_STS_AUTOCORR_Q[4]_i_1_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[4]_i_10\: unisim.vcomponents.LUT1
@@ -78916,7 +79207,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[7]\,
+      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[4]\,
       O => \DETECTION_STS_AUTOCORR_Q[4]_i_10_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[4]_i_11\: unisim.vcomponents.LUT1
@@ -78924,7 +79215,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[6]\,
+      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[3]\,
       O => \DETECTION_STS_AUTOCORR_Q[4]_i_11_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[4]_i_12\: unisim.vcomponents.LUT1
@@ -78932,17 +79223,23 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[5]\,
+      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[2]\,
       O => \DETECTION_STS_AUTOCORR_Q[4]_i_12_n_0\
     );
-\DETECTION_STS_AUTOCORR_Q[4]_i_3\: unisim.vcomponents.LUT3
+\DETECTION_STS_AUTOCORR_Q[4]_i_13\: unisim.vcomponents.LUT1
     generic map(
-      INIT => X"47"
+      INIT => X"1"
     )
         port map (
-      I0 => \DETECTION_STS_AUTOCORR_Q_reg[0]_i_2_n_4\,
-      I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[4]\,
+      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[1]\,
+      O => \DETECTION_STS_AUTOCORR_Q[4]_i_13_n_0\
+    );
+\DETECTION_STS_AUTOCORR_Q[4]_i_3\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[0]\,
       O => \DETECTION_STS_AUTOCORR_Q[4]_i_3_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[4]_i_4\: unisim.vcomponents.LUT3
@@ -78952,7 +79249,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[4]_i_8_n_4\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[8]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[4]\,
       O => \DETECTION_STS_AUTOCORR_Q[4]_i_4_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[4]_i_5\: unisim.vcomponents.LUT3
@@ -78962,7 +79259,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[4]_i_8_n_5\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[7]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[3]\,
       O => \DETECTION_STS_AUTOCORR_Q[4]_i_5_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[4]_i_6\: unisim.vcomponents.LUT3
@@ -78972,7 +79269,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[4]_i_8_n_6\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[6]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[2]\,
       O => \DETECTION_STS_AUTOCORR_Q[4]_i_6_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[4]_i_7\: unisim.vcomponents.LUT3
@@ -78982,7 +79279,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[4]_i_8_n_7\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[5]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[1]\,
       O => \DETECTION_STS_AUTOCORR_Q[4]_i_7_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[4]_i_9\: unisim.vcomponents.LUT1
@@ -78990,7 +79287,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[8]\,
+      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[0]\,
       O => \DETECTION_STS_AUTOCORR_Q[4]_i_9_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[5]_i_1\: unisim.vcomponents.LUT3
@@ -79000,7 +79297,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[8]_i_2_n_7\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[9]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[5]\,
       O => \DETECTION_STS_AUTOCORR_Q[5]_i_1_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[6]_i_1\: unisim.vcomponents.LUT3
@@ -79010,7 +79307,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[8]_i_2_n_6\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[10]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[6]\,
       O => \DETECTION_STS_AUTOCORR_Q[6]_i_1_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[7]_i_1\: unisim.vcomponents.LUT3
@@ -79020,7 +79317,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[8]_i_2_n_5\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[11]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[7]\,
       O => \DETECTION_STS_AUTOCORR_Q[7]_i_1_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[8]_i_1\: unisim.vcomponents.LUT3
@@ -79030,7 +79327,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[8]_i_2_n_4\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[12]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[8]\,
       O => \DETECTION_STS_AUTOCORR_Q[8]_i_1_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[8]_i_10\: unisim.vcomponents.LUT1
@@ -79038,7 +79335,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[10]\,
+      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[6]\,
       O => \DETECTION_STS_AUTOCORR_Q[8]_i_10_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[8]_i_11\: unisim.vcomponents.LUT1
@@ -79046,7 +79343,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[9]\,
+      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[5]\,
       O => \DETECTION_STS_AUTOCORR_Q[8]_i_11_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[8]_i_3\: unisim.vcomponents.LUT3
@@ -79056,7 +79353,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[8]_i_7_n_4\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[12]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[8]\,
       O => \DETECTION_STS_AUTOCORR_Q[8]_i_3_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[8]_i_4\: unisim.vcomponents.LUT3
@@ -79066,7 +79363,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[8]_i_7_n_5\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[11]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[7]\,
       O => \DETECTION_STS_AUTOCORR_Q[8]_i_4_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[8]_i_5\: unisim.vcomponents.LUT3
@@ -79076,7 +79373,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[8]_i_7_n_6\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[10]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[6]\,
       O => \DETECTION_STS_AUTOCORR_Q[8]_i_5_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[8]_i_6\: unisim.vcomponents.LUT3
@@ -79086,7 +79383,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[8]_i_7_n_7\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[9]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[5]\,
       O => \DETECTION_STS_AUTOCORR_Q[8]_i_6_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[8]_i_8\: unisim.vcomponents.LUT1
@@ -79094,7 +79391,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[12]\,
+      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[8]\,
       O => \DETECTION_STS_AUTOCORR_Q[8]_i_8_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[8]_i_9\: unisim.vcomponents.LUT1
@@ -79102,7 +79399,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[11]\,
+      I0 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[7]\,
       O => \DETECTION_STS_AUTOCORR_Q[8]_i_9_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q[9]_i_1\: unisim.vcomponents.LUT3
@@ -79112,7 +79409,7 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \DETECTION_STS_AUTOCORR_Q_reg[12]_i_2_n_7\,
       I1 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[35]\,
-      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[13]\,
+      I2 => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[9]\,
       O => \DETECTION_STS_AUTOCORR_Q[9]_i_1_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q_reg[0]\: unisim.vcomponents.FDRE
@@ -79122,25 +79419,9 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       C => CLOCK,
       CE => Parallel_STS_FIR_Filter_inst_n_6,
-      D => \DETECTION_STS_AUTOCORR_Q[0]_i_1_n_0\,
+      D => \STS_AUTOCORR_Q_16_DELAYED_ACCUMULATOR_reg_n_0_[0]\,
       Q => DETECTION_STS_AUTOCORR_Q(0),
       R => '0'
-    );
-\DETECTION_STS_AUTOCORR_Q_reg[0]_i_2\: unisim.vcomponents.CARRY4
-     port map (
-      CI => '0',
-      CO(3) => \DETECTION_STS_AUTOCORR_Q_reg[0]_i_2_n_0\,
-      CO(2) => \DETECTION_STS_AUTOCORR_Q_reg[0]_i_2_n_1\,
-      CO(1) => \DETECTION_STS_AUTOCORR_Q_reg[0]_i_2_n_2\,
-      CO(0) => \DETECTION_STS_AUTOCORR_Q_reg[0]_i_2_n_3\,
-      CYINIT => \DETECTION_STS_AUTOCORR_Q[0]_i_3_n_0\,
-      DI(3 downto 0) => B"0000",
-      O(3) => \DETECTION_STS_AUTOCORR_Q_reg[0]_i_2_n_4\,
-      O(2 downto 0) => \NLW_DETECTION_STS_AUTOCORR_Q_reg[0]_i_2_O_UNCONNECTED\(2 downto 0),
-      S(3) => \DETECTION_STS_AUTOCORR_Q[0]_i_4_n_0\,
-      S(2) => \DETECTION_STS_AUTOCORR_Q[0]_i_5_n_0\,
-      S(1) => \DETECTION_STS_AUTOCORR_Q[0]_i_6_n_0\,
-      S(0) => \DETECTION_STS_AUTOCORR_Q[0]_i_7_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q_reg[10]\: unisim.vcomponents.FDRE
     generic map(
@@ -79586,39 +79867,119 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
       Q => DETECTION_STS_AUTOCORR_Q(31),
       R => '0'
     );
-\DETECTION_STS_AUTOCORR_Q_reg[31]_i_2\: unisim.vcomponents.CARRY4
+\DETECTION_STS_AUTOCORR_Q_reg[32]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => Parallel_STS_FIR_Filter_inst_n_6,
+      D => \DETECTION_STS_AUTOCORR_Q[32]_i_1_n_0\,
+      Q => DETECTION_STS_AUTOCORR_Q(32),
+      R => '0'
+    );
+\DETECTION_STS_AUTOCORR_Q_reg[32]_i_2\: unisim.vcomponents.CARRY4
      port map (
       CI => \DETECTION_STS_AUTOCORR_Q_reg[28]_i_2_n_0\,
-      CO(3) => \NLW_DETECTION_STS_AUTOCORR_Q_reg[31]_i_2_CO_UNCONNECTED\(3),
-      CO(2) => \DETECTION_STS_AUTOCORR_Q_reg[31]_i_2_n_1\,
-      CO(1) => \DETECTION_STS_AUTOCORR_Q_reg[31]_i_2_n_2\,
-      CO(0) => \DETECTION_STS_AUTOCORR_Q_reg[31]_i_2_n_3\,
+      CO(3) => \DETECTION_STS_AUTOCORR_Q_reg[32]_i_2_n_0\,
+      CO(2) => \DETECTION_STS_AUTOCORR_Q_reg[32]_i_2_n_1\,
+      CO(1) => \DETECTION_STS_AUTOCORR_Q_reg[32]_i_2_n_2\,
+      CO(0) => \DETECTION_STS_AUTOCORR_Q_reg[32]_i_2_n_3\,
       CYINIT => '0',
       DI(3 downto 0) => B"0000",
-      O(3 downto 2) => \NLW_DETECTION_STS_AUTOCORR_Q_reg[31]_i_2_O_UNCONNECTED\(3 downto 2),
-      O(1) => \DETECTION_STS_AUTOCORR_Q_reg[31]_i_2_n_6\,
-      O(0) => \DETECTION_STS_AUTOCORR_Q_reg[31]_i_2_n_7\,
-      S(3) => '0',
-      S(2) => \DETECTION_STS_AUTOCORR_Q[31]_i_3_n_0\,
-      S(1) => \DETECTION_STS_AUTOCORR_Q[31]_i_4_n_0\,
-      S(0) => \DETECTION_STS_AUTOCORR_Q[31]_i_5_n_0\
+      O(3) => \DETECTION_STS_AUTOCORR_Q_reg[32]_i_2_n_4\,
+      O(2) => \DETECTION_STS_AUTOCORR_Q_reg[32]_i_2_n_5\,
+      O(1) => \DETECTION_STS_AUTOCORR_Q_reg[32]_i_2_n_6\,
+      O(0) => \DETECTION_STS_AUTOCORR_Q_reg[32]_i_2_n_7\,
+      S(3) => \DETECTION_STS_AUTOCORR_Q[32]_i_3_n_0\,
+      S(2) => \DETECTION_STS_AUTOCORR_Q[32]_i_4_n_0\,
+      S(1) => \DETECTION_STS_AUTOCORR_Q[32]_i_5_n_0\,
+      S(0) => \DETECTION_STS_AUTOCORR_Q[32]_i_6_n_0\
     );
-\DETECTION_STS_AUTOCORR_Q_reg[31]_i_6\: unisim.vcomponents.CARRY4
+\DETECTION_STS_AUTOCORR_Q_reg[32]_i_7\: unisim.vcomponents.CARRY4
      port map (
       CI => \DETECTION_STS_AUTOCORR_Q_reg[28]_i_7_n_0\,
-      CO(3 downto 2) => \NLW_DETECTION_STS_AUTOCORR_Q_reg[31]_i_6_CO_UNCONNECTED\(3 downto 2),
-      CO(1) => \DETECTION_STS_AUTOCORR_Q_reg[31]_i_6_n_2\,
-      CO(0) => \DETECTION_STS_AUTOCORR_Q_reg[31]_i_6_n_3\,
+      CO(3) => \DETECTION_STS_AUTOCORR_Q_reg[32]_i_7_n_0\,
+      CO(2) => \DETECTION_STS_AUTOCORR_Q_reg[32]_i_7_n_1\,
+      CO(1) => \DETECTION_STS_AUTOCORR_Q_reg[32]_i_7_n_2\,
+      CO(0) => \DETECTION_STS_AUTOCORR_Q_reg[32]_i_7_n_3\,
       CYINIT => '0',
       DI(3 downto 0) => B"0000",
-      O(3) => \NLW_DETECTION_STS_AUTOCORR_Q_reg[31]_i_6_O_UNCONNECTED\(3),
-      O(2) => \DETECTION_STS_AUTOCORR_Q_reg[31]_i_6_n_5\,
-      O(1) => \DETECTION_STS_AUTOCORR_Q_reg[31]_i_6_n_6\,
-      O(0) => \DETECTION_STS_AUTOCORR_Q_reg[31]_i_6_n_7\,
+      O(3) => \DETECTION_STS_AUTOCORR_Q_reg[32]_i_7_n_4\,
+      O(2) => \DETECTION_STS_AUTOCORR_Q_reg[32]_i_7_n_5\,
+      O(1) => \DETECTION_STS_AUTOCORR_Q_reg[32]_i_7_n_6\,
+      O(0) => \DETECTION_STS_AUTOCORR_Q_reg[32]_i_7_n_7\,
+      S(3) => \DETECTION_STS_AUTOCORR_Q[32]_i_8_n_0\,
+      S(2) => \DETECTION_STS_AUTOCORR_Q[32]_i_9_n_0\,
+      S(1) => \DETECTION_STS_AUTOCORR_Q[32]_i_10_n_0\,
+      S(0) => \DETECTION_STS_AUTOCORR_Q[32]_i_11_n_0\
+    );
+\DETECTION_STS_AUTOCORR_Q_reg[33]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => Parallel_STS_FIR_Filter_inst_n_6,
+      D => \DETECTION_STS_AUTOCORR_Q[33]_i_1_n_0\,
+      Q => DETECTION_STS_AUTOCORR_Q(33),
+      R => '0'
+    );
+\DETECTION_STS_AUTOCORR_Q_reg[34]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => Parallel_STS_FIR_Filter_inst_n_6,
+      D => \DETECTION_STS_AUTOCORR_Q[34]_i_1_n_0\,
+      Q => DETECTION_STS_AUTOCORR_Q(34),
+      R => '0'
+    );
+\DETECTION_STS_AUTOCORR_Q_reg[35]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => Parallel_STS_FIR_Filter_inst_n_6,
+      D => \DETECTION_STS_AUTOCORR_Q[35]_i_1_n_0\,
+      Q => DETECTION_STS_AUTOCORR_Q(35),
+      R => '0'
+    );
+\DETECTION_STS_AUTOCORR_Q_reg[35]_i_2\: unisim.vcomponents.CARRY4
+     port map (
+      CI => \DETECTION_STS_AUTOCORR_Q_reg[32]_i_2_n_0\,
+      CO(3 downto 2) => \NLW_DETECTION_STS_AUTOCORR_Q_reg[35]_i_2_CO_UNCONNECTED\(3 downto 2),
+      CO(1) => \DETECTION_STS_AUTOCORR_Q_reg[35]_i_2_n_2\,
+      CO(0) => \DETECTION_STS_AUTOCORR_Q_reg[35]_i_2_n_3\,
+      CYINIT => '0',
+      DI(3 downto 0) => B"0000",
+      O(3) => \NLW_DETECTION_STS_AUTOCORR_Q_reg[35]_i_2_O_UNCONNECTED\(3),
+      O(2) => \DETECTION_STS_AUTOCORR_Q_reg[35]_i_2_n_5\,
+      O(1) => \DETECTION_STS_AUTOCORR_Q_reg[35]_i_2_n_6\,
+      O(0) => \DETECTION_STS_AUTOCORR_Q_reg[35]_i_2_n_7\,
       S(3) => '0',
-      S(2) => \DETECTION_STS_AUTOCORR_Q[31]_i_7_n_0\,
-      S(1) => \DETECTION_STS_AUTOCORR_Q[31]_i_8_n_0\,
-      S(0) => \DETECTION_STS_AUTOCORR_Q[31]_i_9_n_0\
+      S(2) => \DETECTION_STS_AUTOCORR_Q[35]_i_3_n_0\,
+      S(1) => \DETECTION_STS_AUTOCORR_Q[35]_i_4_n_0\,
+      S(0) => \DETECTION_STS_AUTOCORR_Q[35]_i_5_n_0\
+    );
+\DETECTION_STS_AUTOCORR_Q_reg[35]_i_6\: unisim.vcomponents.CARRY4
+     port map (
+      CI => \DETECTION_STS_AUTOCORR_Q_reg[32]_i_7_n_0\,
+      CO(3 downto 2) => \NLW_DETECTION_STS_AUTOCORR_Q_reg[35]_i_6_CO_UNCONNECTED\(3 downto 2),
+      CO(1) => \DETECTION_STS_AUTOCORR_Q_reg[35]_i_6_n_2\,
+      CO(0) => \DETECTION_STS_AUTOCORR_Q_reg[35]_i_6_n_3\,
+      CYINIT => '0',
+      DI(3 downto 0) => B"0000",
+      O(3) => \NLW_DETECTION_STS_AUTOCORR_Q_reg[35]_i_6_O_UNCONNECTED\(3),
+      O(2) => \DETECTION_STS_AUTOCORR_Q_reg[35]_i_6_n_5\,
+      O(1) => \DETECTION_STS_AUTOCORR_Q_reg[35]_i_6_n_6\,
+      O(0) => \DETECTION_STS_AUTOCORR_Q_reg[35]_i_6_n_7\,
+      S(3) => '0',
+      S(2) => \DETECTION_STS_AUTOCORR_Q[35]_i_7_n_0\,
+      S(1) => \DETECTION_STS_AUTOCORR_Q[35]_i_8_n_0\,
+      S(0) => \DETECTION_STS_AUTOCORR_Q[35]_i_9_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q_reg[3]\: unisim.vcomponents.FDRE
     generic map(
@@ -79662,21 +80023,21 @@ DETECTION_STROBE_reg: unisim.vcomponents.FDRE
     );
 \DETECTION_STS_AUTOCORR_Q_reg[4]_i_8\: unisim.vcomponents.CARRY4
      port map (
-      CI => \DETECTION_STS_AUTOCORR_Q_reg[0]_i_2_n_0\,
+      CI => '0',
       CO(3) => \DETECTION_STS_AUTOCORR_Q_reg[4]_i_8_n_0\,
       CO(2) => \DETECTION_STS_AUTOCORR_Q_reg[4]_i_8_n_1\,
       CO(1) => \DETECTION_STS_AUTOCORR_Q_reg[4]_i_8_n_2\,
       CO(0) => \DETECTION_STS_AUTOCORR_Q_reg[4]_i_8_n_3\,
-      CYINIT => '0',
+      CYINIT => \DETECTION_STS_AUTOCORR_Q[4]_i_9_n_0\,
       DI(3 downto 0) => B"0000",
       O(3) => \DETECTION_STS_AUTOCORR_Q_reg[4]_i_8_n_4\,
       O(2) => \DETECTION_STS_AUTOCORR_Q_reg[4]_i_8_n_5\,
       O(1) => \DETECTION_STS_AUTOCORR_Q_reg[4]_i_8_n_6\,
       O(0) => \DETECTION_STS_AUTOCORR_Q_reg[4]_i_8_n_7\,
-      S(3) => \DETECTION_STS_AUTOCORR_Q[4]_i_9_n_0\,
-      S(2) => \DETECTION_STS_AUTOCORR_Q[4]_i_10_n_0\,
-      S(1) => \DETECTION_STS_AUTOCORR_Q[4]_i_11_n_0\,
-      S(0) => \DETECTION_STS_AUTOCORR_Q[4]_i_12_n_0\
+      S(3) => \DETECTION_STS_AUTOCORR_Q[4]_i_10_n_0\,
+      S(2) => \DETECTION_STS_AUTOCORR_Q[4]_i_11_n_0\,
+      S(1) => \DETECTION_STS_AUTOCORR_Q[4]_i_12_n_0\,
+      S(0) => \DETECTION_STS_AUTOCORR_Q[4]_i_13_n_0\
     );
 \DETECTION_STS_AUTOCORR_Q_reg[5]\: unisim.vcomponents.FDRE
     generic map(
@@ -106021,7 +106382,7 @@ Parallel_STS_FIR_Filter_inst: entity work.block_design_0_timing_acquisition_8_0_
       INIT => X"6"
     )
         port map (
-      I0 => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[0]\,
+      I0 => ARG(0),
       I1 => STS_AUTOCORR_I_16_DELAYED_BUFF(0),
       O => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[3]_i_5_n_0\
     );
@@ -106069,7 +106430,7 @@ Parallel_STS_FIR_Filter_inst: entity work.block_design_0_timing_acquisition_8_0_
       C => CLOCK,
       CE => Parallel_STS_FIR_Filter_inst_n_5,
       D => STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0(0),
-      Q => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[0]\,
+      Q => ARG(0),
       R => Parallel_STS_FIR_Filter_inst_n_0
     );
 \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg[10]\: unisim.vcomponents.FDRE
@@ -106528,7 +106889,7 @@ Parallel_STS_FIR_Filter_inst: entity work.block_design_0_timing_acquisition_8_0_
       DI(3) => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[3]\,
       DI(2) => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[2]\,
       DI(1) => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[1]\,
-      DI(0) => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR_reg_n_0_[0]\,
+      DI(0) => ARG(0),
       O(3 downto 0) => STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR0(3 downto 0),
       S(3) => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[3]_i_2_n_0\,
       S(2) => \STS_AUTOCORR_I_16_DELAYED_ACCUMULATOR[3]_i_3_n_0\,
@@ -108238,8 +108599,8 @@ entity block_design_0_timing_acquisition_8_0_0 is
     DETECTION_SIGNAL_DETECTED : out STD_LOGIC;
     DETECTION_XCORR : out STD_LOGIC_VECTOR ( 63 downto 0 );
     CONTINUOUS_XCORR : out STD_LOGIC_VECTOR ( 63 downto 0 );
-    DETECTION_STS_AUTOCORR_I : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    DETECTION_STS_AUTOCORR_Q : out STD_LOGIC_VECTOR ( 31 downto 0 )
+    DETECTION_STS_AUTOCORR_I : out STD_LOGIC_VECTOR ( 35 downto 0 );
+    DETECTION_STS_AUTOCORR_Q : out STD_LOGIC_VECTOR ( 35 downto 0 )
   );
   attribute NotValidForBitStream : boolean;
   attribute NotValidForBitStream of block_design_0_timing_acquisition_8_0_0 : entity is true;
@@ -108268,8 +108629,8 @@ U0: entity work.block_design_0_timing_acquisition_8_0_0_timing_acquisition_802_1
       DATA_STROBE => DATA_STROBE,
       DETECTION_SIGNAL_DETECTED => DETECTION_SIGNAL_DETECTED,
       DETECTION_STROBE => DETECTION_STROBE,
-      DETECTION_STS_AUTOCORR_I(31 downto 0) => DETECTION_STS_AUTOCORR_I(31 downto 0),
-      DETECTION_STS_AUTOCORR_Q(31 downto 0) => DETECTION_STS_AUTOCORR_Q(31 downto 0),
+      DETECTION_STS_AUTOCORR_I(35 downto 0) => DETECTION_STS_AUTOCORR_I(35 downto 0),
+      DETECTION_STS_AUTOCORR_Q(35 downto 0) => DETECTION_STS_AUTOCORR_Q(35 downto 0),
       DETECTION_THRESHOLD(63 downto 0) => DETECTION_THRESHOLD(63 downto 0),
       DETECTION_XCORR(63 downto 0) => DETECTION_XCORR(63 downto 0),
       IDATA(15 downto 0) => IDATA(15 downto 0),

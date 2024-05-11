@@ -2,8 +2,8 @@
 --Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
---Date        : Thu May  9 03:19:00 2024
---Host        : ASUS_ROG running 64-bit major release  (build 9200)
+--Date        : Sat May 11 15:51:12 2024
+--Host        : lab817_01 running 64-bit major release  (build 9200)
 --Command     : generate_target block_design_0.bd
 --Design      : block_design_0
 --Purpose     : IP block netlist
@@ -130,8 +130,8 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity hier_atan_imp_GD512 is
   port (
-    ATAN_AUTOCORR_I : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    ATAN_AUTOCORR_Q : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    ATAN_AUTOCORR_I : in STD_LOGIC_VECTOR ( 35 downto 0 );
+    ATAN_AUTOCORR_Q : in STD_LOGIC_VECTOR ( 35 downto 0 );
     ATAN_AUTOCORR_STROBE : in STD_LOGIC;
     ATAN_PHASE_OUT : out STD_LOGIC_VECTOR ( 19 downto 0 );
     ATAN_PHASE_OUT_STROBE : out STD_LOGIC;
@@ -147,7 +147,7 @@ architecture STRUCTURE of hier_atan_imp_GD512 is
     aresetn : in STD_LOGIC;
     s_axis_cartesian_tvalid : in STD_LOGIC;
     s_axis_cartesian_tready : out STD_LOGIC;
-    s_axis_cartesian_tdata : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    s_axis_cartesian_tdata : in STD_LOGIC_VECTOR ( 79 downto 0 );
     m_axis_dout_tvalid : out STD_LOGIC;
     m_axis_dout_tdata : out STD_LOGIC_VECTOR ( 23 downto 0 )
   );
@@ -157,27 +157,27 @@ architecture STRUCTURE of hier_atan_imp_GD512 is
     RESET : in STD_LOGIC;
     CLOCK : in STD_LOGIC;
     ATAN_AUTOCORR_STROBE : in STD_LOGIC;
-    ATAN_AUTOCORR_I : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    ATAN_AUTOCORR_Q : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    ATAN_AUTOCORR_I : in STD_LOGIC_VECTOR ( 35 downto 0 );
+    ATAN_AUTOCORR_Q : in STD_LOGIC_VECTOR ( 35 downto 0 );
     ATAN_PHASE_OUT_STROBE : out STD_LOGIC;
     ATAN_PHASE_OUT : out STD_LOGIC_VECTOR ( 19 downto 0 );
     aclk : out STD_LOGIC;
     aresetn : out STD_LOGIC;
     M_AXIS_DOUT_tdata : in STD_LOGIC_VECTOR ( 23 downto 0 );
     M_AXIS_DOUT_tvalid : in STD_LOGIC;
-    S_AXIS_CARTESIAN_tdata : out STD_LOGIC_VECTOR ( 63 downto 0 );
+    S_AXIS_CARTESIAN_tdata : out STD_LOGIC_VECTOR ( 79 downto 0 );
     S_AXIS_CARTESIAN_tready : in STD_LOGIC;
     S_AXIS_CARTESIAN_tvalid : out STD_LOGIC
   );
   end component block_design_0_atan_block_0_0;
-  signal ATAN_AUTOCORR_I_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal ATAN_AUTOCORR_Q_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal ATAN_AUTOCORR_I_1 : STD_LOGIC_VECTOR ( 35 downto 0 );
+  signal ATAN_AUTOCORR_Q_1 : STD_LOGIC_VECTOR ( 35 downto 0 );
   signal ATAN_AUTOCORR_STROBE_1 : STD_LOGIC;
   signal CLOCK_1 : STD_LOGIC;
   signal RESET_1 : STD_LOGIC;
   signal atan_block_0_ATAN_PHASE_OUT : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal atan_block_0_ATAN_PHASE_OUT_STROBE : STD_LOGIC;
-  signal atan_block_0_S_AXIS_CARTESIAN_TDATA : STD_LOGIC_VECTOR ( 63 downto 0 );
+  signal atan_block_0_S_AXIS_CARTESIAN_TDATA : STD_LOGIC_VECTOR ( 79 downto 0 );
   signal atan_block_0_S_AXIS_CARTESIAN_TREADY : STD_LOGIC;
   signal atan_block_0_S_AXIS_CARTESIAN_TVALID : STD_LOGIC;
   signal atan_block_0_aclk : STD_LOGIC;
@@ -185,8 +185,8 @@ architecture STRUCTURE of hier_atan_imp_GD512 is
   signal cordic_0_M_AXIS_DOUT_TDATA : STD_LOGIC_VECTOR ( 23 downto 0 );
   signal cordic_0_M_AXIS_DOUT_TVALID : STD_LOGIC;
 begin
-  ATAN_AUTOCORR_I_1(31 downto 0) <= ATAN_AUTOCORR_I(31 downto 0);
-  ATAN_AUTOCORR_Q_1(31 downto 0) <= ATAN_AUTOCORR_Q(31 downto 0);
+  ATAN_AUTOCORR_I_1(35 downto 0) <= ATAN_AUTOCORR_I(35 downto 0);
+  ATAN_AUTOCORR_Q_1(35 downto 0) <= ATAN_AUTOCORR_Q(35 downto 0);
   ATAN_AUTOCORR_STROBE_1 <= ATAN_AUTOCORR_STROBE;
   ATAN_PHASE_OUT(19 downto 0) <= atan_block_0_ATAN_PHASE_OUT(19 downto 0);
   ATAN_PHASE_OUT_STROBE <= atan_block_0_ATAN_PHASE_OUT_STROBE;
@@ -194,8 +194,8 @@ begin
   RESET_1 <= RESET;
 atan_block_0: component block_design_0_atan_block_0_0
      port map (
-      ATAN_AUTOCORR_I(31 downto 0) => ATAN_AUTOCORR_I_1(31 downto 0),
-      ATAN_AUTOCORR_Q(31 downto 0) => ATAN_AUTOCORR_Q_1(31 downto 0),
+      ATAN_AUTOCORR_I(35 downto 0) => ATAN_AUTOCORR_I_1(35 downto 0),
+      ATAN_AUTOCORR_Q(35 downto 0) => ATAN_AUTOCORR_Q_1(35 downto 0),
       ATAN_AUTOCORR_STROBE => ATAN_AUTOCORR_STROBE_1,
       ATAN_PHASE_OUT(19 downto 0) => atan_block_0_ATAN_PHASE_OUT(19 downto 0),
       ATAN_PHASE_OUT_STROBE => atan_block_0_ATAN_PHASE_OUT_STROBE,
@@ -203,7 +203,7 @@ atan_block_0: component block_design_0_atan_block_0_0
       M_AXIS_DOUT_tdata(23 downto 0) => cordic_0_M_AXIS_DOUT_TDATA(23 downto 0),
       M_AXIS_DOUT_tvalid => cordic_0_M_AXIS_DOUT_TVALID,
       RESET => RESET_1,
-      S_AXIS_CARTESIAN_tdata(63 downto 0) => atan_block_0_S_AXIS_CARTESIAN_TDATA(63 downto 0),
+      S_AXIS_CARTESIAN_tdata(79 downto 0) => atan_block_0_S_AXIS_CARTESIAN_TDATA(79 downto 0),
       S_AXIS_CARTESIAN_tready => atan_block_0_S_AXIS_CARTESIAN_TREADY,
       S_AXIS_CARTESIAN_tvalid => atan_block_0_S_AXIS_CARTESIAN_TVALID,
       aclk => atan_block_0_aclk,
@@ -215,7 +215,7 @@ cordic_0: component block_design_0_cordic_0_0
       aresetn => atan_block_0_aresetn,
       m_axis_dout_tdata(23 downto 0) => cordic_0_M_AXIS_DOUT_TDATA(23 downto 0),
       m_axis_dout_tvalid => cordic_0_M_AXIS_DOUT_TVALID,
-      s_axis_cartesian_tdata(63 downto 0) => atan_block_0_S_AXIS_CARTESIAN_TDATA(63 downto 0),
+      s_axis_cartesian_tdata(79 downto 0) => atan_block_0_S_AXIS_CARTESIAN_TDATA(79 downto 0),
       s_axis_cartesian_tready => atan_block_0_S_AXIS_CARTESIAN_TREADY,
       s_axis_cartesian_tvalid => atan_block_0_S_AXIS_CARTESIAN_TVALID
     );
@@ -768,8 +768,8 @@ architecture STRUCTURE of block_design_0 is
     DETECTION_SIGNAL_DETECTED : out STD_LOGIC;
     DETECTION_XCORR : out STD_LOGIC_VECTOR ( 63 downto 0 );
     CONTINUOUS_XCORR : out STD_LOGIC_VECTOR ( 63 downto 0 );
-    DETECTION_STS_AUTOCORR_I : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    DETECTION_STS_AUTOCORR_Q : out STD_LOGIC_VECTOR ( 31 downto 0 )
+    DETECTION_STS_AUTOCORR_I : out STD_LOGIC_VECTOR ( 35 downto 0 );
+    DETECTION_STS_AUTOCORR_Q : out STD_LOGIC_VECTOR ( 35 downto 0 )
   );
   end component block_design_0_timing_acquisition_8_0_0;
   component block_design_0_equalizer_time_frequ_0_0 is
@@ -781,15 +781,15 @@ architecture STRUCTURE of block_design_0 is
     DATA_IN_STROBE : in STD_LOGIC;
     DETECTION_STROBE : in STD_LOGIC;
     DETECTION_SIGNAL_DETECTED : in STD_LOGIC;
-    DETECTION_STS_AUTOCORR_I : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    DETECTION_STS_AUTOCORR_Q : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    DETECTION_STS_AUTOCORR_I : in STD_LOGIC_VECTOR ( 35 downto 0 );
+    DETECTION_STS_AUTOCORR_Q : in STD_LOGIC_VECTOR ( 35 downto 0 );
     FPGA_REG_WRITE_STROBE_PHASE_1 : out STD_LOGIC;
     FPGA_REG_WRITE_STROBE_PHASE_2 : out STD_LOGIC;
     FPGA_REG_WRITE_DATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
     STOP_RX_DONE : in STD_LOGIC;
     ATAN_AUTOCORR_STROBE : out STD_LOGIC;
-    ATAN_AUTOCORR_I : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    ATAN_AUTOCORR_Q : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    ATAN_AUTOCORR_I : out STD_LOGIC_VECTOR ( 35 downto 0 );
+    ATAN_AUTOCORR_Q : out STD_LOGIC_VECTOR ( 35 downto 0 );
     ATAN_PHASE_OUT_STROBE : in STD_LOGIC;
     ATAN_PHASE_OUT : in STD_LOGIC_VECTOR ( 19 downto 0 );
     ROTATION_DATA_IN_STROBE : out STD_LOGIC;
@@ -1051,8 +1051,8 @@ architecture STRUCTURE of block_design_0 is
   signal output_ser2par_0_PARALLEL_OUTPUT : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal output_ser2par_0_PARALLEL_OUTPUT_LAST : STD_LOGIC;
   signal output_ser2par_0_PARALLEL_OUTPUT_VALID : STD_LOGIC;
-  signal receiver_802_11p_0_ATAN_AUTOCORR_I : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal receiver_802_11p_0_ATAN_AUTOCORR_Q : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal receiver_802_11p_0_ATAN_AUTOCORR_I : STD_LOGIC_VECTOR ( 35 downto 0 );
+  signal receiver_802_11p_0_ATAN_AUTOCORR_Q : STD_LOGIC_VECTOR ( 35 downto 0 );
   signal receiver_802_11p_0_ATAN_AUTOCORR_STROBE : STD_LOGIC;
   signal receiver_802_11p_0_FFT_DATA_IN_START : STD_LOGIC;
   signal receiver_802_11p_0_FFT_DATA_IN_STROBE : STD_LOGIC;
@@ -1068,8 +1068,8 @@ architecture STRUCTURE of block_design_0 is
   signal rx_clock_domain_cros_0_QDATA : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED : STD_LOGIC;
   signal timing_acquisition_8_0_DETECTION_STROBE : STD_LOGIC;
-  signal timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I : STD_LOGIC_VECTOR ( 35 downto 0 );
+  signal timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q : STD_LOGIC_VECTOR ( 35 downto 0 );
   signal viterbi_hard_0_VITERBI_DECODED_OUTPUT : STD_LOGIC;
   signal viterbi_hard_0_VITERBI_DECODED_OUTPUT_VALID : STD_LOGIC;
   signal viterbi_hard_0_VITERBI_RX_ENDED : STD_LOGIC;
@@ -1285,8 +1285,8 @@ descrambler_0: component block_design_0_descrambler_0_0
     );
 equalizer_time_frequ_0: component block_design_0_equalizer_time_frequ_0_0
      port map (
-      ATAN_AUTOCORR_I(31 downto 0) => receiver_802_11p_0_ATAN_AUTOCORR_I(31 downto 0),
-      ATAN_AUTOCORR_Q(31 downto 0) => receiver_802_11p_0_ATAN_AUTOCORR_Q(31 downto 0),
+      ATAN_AUTOCORR_I(35 downto 0) => receiver_802_11p_0_ATAN_AUTOCORR_I(35 downto 0),
+      ATAN_AUTOCORR_Q(35 downto 0) => receiver_802_11p_0_ATAN_AUTOCORR_Q(35 downto 0),
       ATAN_AUTOCORR_STROBE => receiver_802_11p_0_ATAN_AUTOCORR_STROBE,
       ATAN_PHASE_OUT(19 downto 0) => hier_atan_ATAN_PHASE_OUT(19 downto 0),
       ATAN_PHASE_OUT_STROBE => hier_atan_ATAN_PHASE_OUT_STROBE,
@@ -1294,8 +1294,8 @@ equalizer_time_frequ_0: component block_design_0_equalizer_time_frequ_0_0
       DATA_IN_STROBE => data_delay_0_DATA_OUT_STROBE,
       DETECTION_SIGNAL_DETECTED => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
       DETECTION_STROBE => timing_acquisition_8_0_DETECTION_STROBE,
-      DETECTION_STS_AUTOCORR_I(31 downto 0) => timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I(31 downto 0),
-      DETECTION_STS_AUTOCORR_Q(31 downto 0) => timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q(31 downto 0),
+      DETECTION_STS_AUTOCORR_I(35 downto 0) => timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I(35 downto 0),
+      DETECTION_STS_AUTOCORR_Q(35 downto 0) => timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q(35 downto 0),
       FFT_DATA_IN_FIRST_SYMBOL_MARKER => equalizer_time_frequ_0_FFT_DATA_IN_FIRST_SYMBOL_MARKER,
       FFT_DATA_IN_START => receiver_802_11p_0_FFT_DATA_IN_START,
       FFT_DATA_IN_STROBE => receiver_802_11p_0_FFT_DATA_IN_STROBE,
@@ -1321,8 +1321,8 @@ equalizer_time_frequ_0: component block_design_0_equalizer_time_frequ_0_0
     );
 hier_atan: entity work.hier_atan_imp_GD512
      port map (
-      ATAN_AUTOCORR_I(31 downto 0) => receiver_802_11p_0_ATAN_AUTOCORR_I(31 downto 0),
-      ATAN_AUTOCORR_Q(31 downto 0) => receiver_802_11p_0_ATAN_AUTOCORR_Q(31 downto 0),
+      ATAN_AUTOCORR_I(35 downto 0) => receiver_802_11p_0_ATAN_AUTOCORR_I(35 downto 0),
+      ATAN_AUTOCORR_Q(35 downto 0) => receiver_802_11p_0_ATAN_AUTOCORR_Q(35 downto 0),
       ATAN_AUTOCORR_STROBE => receiver_802_11p_0_ATAN_AUTOCORR_STROBE,
       ATAN_PHASE_OUT(19 downto 0) => hier_atan_ATAN_PHASE_OUT(19 downto 0),
       ATAN_PHASE_OUT_STROBE => hier_atan_ATAN_PHASE_OUT_STROBE,
@@ -1423,8 +1423,8 @@ timing_acquisition_8_0: component block_design_0_timing_acquisition_8_0_0
       DATA_STROBE => data_delay_0_DATA_OUT_STROBE,
       DETECTION_SIGNAL_DETECTED => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
       DETECTION_STROBE => timing_acquisition_8_0_DETECTION_STROBE,
-      DETECTION_STS_AUTOCORR_I(31 downto 0) => timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I(31 downto 0),
-      DETECTION_STS_AUTOCORR_Q(31 downto 0) => timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q(31 downto 0),
+      DETECTION_STS_AUTOCORR_I(35 downto 0) => timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I(35 downto 0),
+      DETECTION_STS_AUTOCORR_Q(35 downto 0) => timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q(35 downto 0),
       DETECTION_THRESHOLD(63 downto 0) => DETECTION_THRESHOLD_0_1(63 downto 0),
       DETECTION_XCORR(63 downto 0) => NLW_timing_acquisition_8_0_DETECTION_XCORR_UNCONNECTED(63 downto 0),
       IDATA(15 downto 0) => data_delay_0_IDATA_OUT(15 downto 0),

@@ -2,8 +2,8 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
--- Date        : Thu May  9 01:04:59 2024
--- Host        : ASUS_ROG running 64-bit major release  (build 9200)
+-- Date        : Sat May 11 15:51:51 2024
+-- Host        : lab817_01 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_equalizer_time_frequ_0_0/block_design_0_equalizer_time_frequ_0_0_sim_netlist.vhdl
 -- Design      : block_design_0_equalizer_time_frequ_0_0
@@ -18,8 +18,8 @@ use UNISIM.VCOMPONENTS.ALL;
 entity block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency is
   port (
     FPGA_REG_WRITE_DATA : out STD_LOGIC_VECTOR ( 16 downto 0 );
-    ATAN_AUTOCORR_I : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    ATAN_AUTOCORR_Q : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    ATAN_AUTOCORR_I : out STD_LOGIC_VECTOR ( 35 downto 0 );
+    ATAN_AUTOCORR_Q : out STD_LOGIC_VECTOR ( 35 downto 0 );
     ROTATION_PHASE_NEW_DIFF : out STD_LOGIC_VECTOR ( 19 downto 0 );
     FFT_IDATA_IN : out STD_LOGIC_VECTOR ( 15 downto 0 );
     FFT_QDATA_IN : out STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -31,18 +31,18 @@ entity block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency is
     FFT_DATA_IN_STROBE : out STD_LOGIC;
     FPGA_REG_WRITE_STROBE_PHASE_1 : out STD_LOGIC;
     FPGA_REG_WRITE_STROBE_PHASE_2 : out STD_LOGIC;
-    DETECTION_SIGNAL_DETECTED : in STD_LOGIC;
     ROTATION_DATA_OUT_STROBE : in STD_LOGIC;
-    ROTATION_DATA_OUT_MARKER : in STD_LOGIC;
+    DETECTION_SIGNAL_DETECTED : in STD_LOGIC;
     ATAN_PHASE_OUT : in STD_LOGIC_VECTOR ( 19 downto 0 );
     ATAN_PHASE_OUT_STROBE : in STD_LOGIC;
     RESET : in STD_LOGIC;
     CLOCK : in STD_LOGIC;
     ROTATION_IDATA_OUT : in STD_LOGIC_VECTOR ( 15 downto 0 );
     ROTATION_QDATA_OUT : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    DETECTION_STS_AUTOCORR_I : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    DETECTION_STS_AUTOCORR_Q : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    DETECTION_STS_AUTOCORR_I : in STD_LOGIC_VECTOR ( 35 downto 0 );
+    DETECTION_STS_AUTOCORR_Q : in STD_LOGIC_VECTOR ( 35 downto 0 );
     DATA_IN_STROBE : in STD_LOGIC;
+    ROTATION_DATA_OUT_MARKER : in STD_LOGIC;
     STOP_RX_DONE : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
@@ -50,37 +50,25 @@ entity block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency is
 end block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency;
 
 architecture STRUCTURE of block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency is
-  signal ARG0 : STD_LOGIC_VECTOR ( 30 downto 1 );
-  signal ARG2 : STD_LOGIC_VECTOR ( 39 downto 8 );
-  signal ATAN_AUTOCORR_I0_in : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal \ATAN_AUTOCORR_I[0]_i_10_n_0\ : STD_LOGIC;
-  signal \ATAN_AUTOCORR_I[0]_i_11_n_0\ : STD_LOGIC;
-  signal \ATAN_AUTOCORR_I[0]_i_12_n_0\ : STD_LOGIC;
+  signal ARG0 : STD_LOGIC_VECTOR ( 34 downto 1 );
+  signal ARG2 : STD_LOGIC_VECTOR ( 37 downto 2 );
+  signal ATAN_AUTOCORR_I0_in : STD_LOGIC_VECTOR ( 35 downto 0 );
+  signal \ATAN_AUTOCORR_I[0]_i_3_n_0\ : STD_LOGIC;
   signal \ATAN_AUTOCORR_I[0]_i_4_n_0\ : STD_LOGIC;
   signal \ATAN_AUTOCORR_I[0]_i_5_n_0\ : STD_LOGIC;
   signal \ATAN_AUTOCORR_I[0]_i_6_n_0\ : STD_LOGIC;
   signal \ATAN_AUTOCORR_I[0]_i_7_n_0\ : STD_LOGIC;
-  signal \ATAN_AUTOCORR_I[0]_i_8_n_0\ : STD_LOGIC;
-  signal \ATAN_AUTOCORR_I[0]_i_9_n_0\ : STD_LOGIC;
-  signal \ATAN_AUTOCORR_I[31]_i_1_n_0\ : STD_LOGIC;
+  signal \ATAN_AUTOCORR_I[35]_i_1_n_0\ : STD_LOGIC;
   signal \ATAN_AUTOCORR_I_reg[0]_i_2_n_0\ : STD_LOGIC;
   signal \ATAN_AUTOCORR_I_reg[0]_i_2_n_1\ : STD_LOGIC;
   signal \ATAN_AUTOCORR_I_reg[0]_i_2_n_2\ : STD_LOGIC;
   signal \ATAN_AUTOCORR_I_reg[0]_i_2_n_3\ : STD_LOGIC;
-  signal \ATAN_AUTOCORR_I_reg[0]_i_3_n_0\ : STD_LOGIC;
-  signal \ATAN_AUTOCORR_I_reg[0]_i_3_n_1\ : STD_LOGIC;
-  signal \ATAN_AUTOCORR_I_reg[0]_i_3_n_2\ : STD_LOGIC;
-  signal \ATAN_AUTOCORR_I_reg[0]_i_3_n_3\ : STD_LOGIC;
-  signal \ATAN_AUTOCORR_Q[0]_i_10_n_0\ : STD_LOGIC;
-  signal \ATAN_AUTOCORR_Q[0]_i_11_n_0\ : STD_LOGIC;
-  signal \ATAN_AUTOCORR_Q[0]_i_12_n_0\ : STD_LOGIC;
   signal \ATAN_AUTOCORR_Q[0]_i_1_n_0\ : STD_LOGIC;
+  signal \ATAN_AUTOCORR_Q[0]_i_3_n_0\ : STD_LOGIC;
   signal \ATAN_AUTOCORR_Q[0]_i_4_n_0\ : STD_LOGIC;
   signal \ATAN_AUTOCORR_Q[0]_i_5_n_0\ : STD_LOGIC;
   signal \ATAN_AUTOCORR_Q[0]_i_6_n_0\ : STD_LOGIC;
   signal \ATAN_AUTOCORR_Q[0]_i_7_n_0\ : STD_LOGIC;
-  signal \ATAN_AUTOCORR_Q[0]_i_8_n_0\ : STD_LOGIC;
-  signal \ATAN_AUTOCORR_Q[0]_i_9_n_0\ : STD_LOGIC;
   signal \ATAN_AUTOCORR_Q[10]_i_1_n_0\ : STD_LOGIC;
   signal \ATAN_AUTOCORR_Q[11]_i_1_n_0\ : STD_LOGIC;
   signal \ATAN_AUTOCORR_Q[12]_i_1_n_0\ : STD_LOGIC;
@@ -105,6 +93,10 @@ architecture STRUCTURE of block_design_0_equalizer_time_frequ_0_0_equalizer_time
   signal \ATAN_AUTOCORR_Q[2]_i_1_n_0\ : STD_LOGIC;
   signal \ATAN_AUTOCORR_Q[30]_i_1_n_0\ : STD_LOGIC;
   signal \ATAN_AUTOCORR_Q[31]_i_1_n_0\ : STD_LOGIC;
+  signal \ATAN_AUTOCORR_Q[32]_i_1_n_0\ : STD_LOGIC;
+  signal \ATAN_AUTOCORR_Q[33]_i_1_n_0\ : STD_LOGIC;
+  signal \ATAN_AUTOCORR_Q[34]_i_1_n_0\ : STD_LOGIC;
+  signal \ATAN_AUTOCORR_Q[35]_i_1_n_0\ : STD_LOGIC;
   signal \ATAN_AUTOCORR_Q[3]_i_1_n_0\ : STD_LOGIC;
   signal \ATAN_AUTOCORR_Q[4]_i_1_n_0\ : STD_LOGIC;
   signal \ATAN_AUTOCORR_Q[5]_i_1_n_0\ : STD_LOGIC;
@@ -117,23 +109,20 @@ architecture STRUCTURE of block_design_0_equalizer_time_frequ_0_0_equalizer_time
   signal \ATAN_AUTOCORR_Q_reg[0]_i_2_n_2\ : STD_LOGIC;
   signal \ATAN_AUTOCORR_Q_reg[0]_i_2_n_3\ : STD_LOGIC;
   signal \ATAN_AUTOCORR_Q_reg[0]_i_2_n_4\ : STD_LOGIC;
-  signal \ATAN_AUTOCORR_Q_reg[0]_i_3_n_0\ : STD_LOGIC;
-  signal \ATAN_AUTOCORR_Q_reg[0]_i_3_n_1\ : STD_LOGIC;
-  signal \ATAN_AUTOCORR_Q_reg[0]_i_3_n_2\ : STD_LOGIC;
-  signal \ATAN_AUTOCORR_Q_reg[0]_i_3_n_3\ : STD_LOGIC;
+  signal \ATAN_AUTOCORR_Q_reg[0]_i_2_n_5\ : STD_LOGIC;
+  signal \ATAN_AUTOCORR_Q_reg[0]_i_2_n_6\ : STD_LOGIC;
   signal \^atan_autocorr_strobe\ : STD_LOGIC;
   signal ATAN_AUTOCORR_STROBE_i_1_n_0 : STD_LOGIC;
-  signal AUTOCORR_I_BUFF : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal \AUTOCORR_I_BUFF[31]_i_1_n_0\ : STD_LOGIC;
+  signal AUTOCORR_I_BUFF : STD_LOGIC_VECTOR ( 35 downto 0 );
+  signal \AUTOCORR_I_BUFF[35]_i_1_n_0\ : STD_LOGIC;
   signal AUTOCORR_PHASE_BUFF : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal \AUTOCORR_PHASE_BUFF[19]_i_1_n_0\ : STD_LOGIC;
-  signal AUTOCORR_Q_BUFF : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal AUTOCORR_Q_BUFF : STD_LOGIC_VECTOR ( 35 downto 0 );
   signal CEM : STD_LOGIC;
   signal CEP : STD_LOGIC;
   signal COUNTER : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal \COUNTER[0]_i_1_n_0\ : STD_LOGIC;
   signal \COUNTER[31]_i_10_n_0\ : STD_LOGIC;
-  signal \COUNTER[31]_i_11_n_0\ : STD_LOGIC;
   signal \COUNTER[31]_i_1_n_0\ : STD_LOGIC;
   signal \COUNTER[31]_i_2_n_0\ : STD_LOGIC;
   signal \COUNTER[31]_i_4_n_0\ : STD_LOGIC;
@@ -251,6 +240,11 @@ architecture STRUCTURE of block_design_0_equalizer_time_frequ_0_0_equalizer_time
   signal \COUNTER_OFDM_SYMBOL[7]_i_1_n_0\ : STD_LOGIC;
   signal \COUNTER_OFDM_SYMBOL[8]_i_1_n_0\ : STD_LOGIC;
   signal \COUNTER_OFDM_SYMBOL[9]_i_10_n_0\ : STD_LOGIC;
+  signal \COUNTER_OFDM_SYMBOL[9]_i_11_n_0\ : STD_LOGIC;
+  signal \COUNTER_OFDM_SYMBOL[9]_i_12_n_0\ : STD_LOGIC;
+  signal \COUNTER_OFDM_SYMBOL[9]_i_13_n_0\ : STD_LOGIC;
+  signal \COUNTER_OFDM_SYMBOL[9]_i_14_n_0\ : STD_LOGIC;
+  signal \COUNTER_OFDM_SYMBOL[9]_i_15_n_0\ : STD_LOGIC;
   signal \COUNTER_OFDM_SYMBOL[9]_i_1_n_0\ : STD_LOGIC;
   signal \COUNTER_OFDM_SYMBOL[9]_i_2_n_0\ : STD_LOGIC;
   signal \COUNTER_OFDM_SYMBOL[9]_i_3_n_0\ : STD_LOGIC;
@@ -312,7 +306,6 @@ architecture STRUCTURE of block_design_0_equalizer_time_frequ_0_0_equalizer_time
   signal FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_8_n_0 : STD_LOGIC;
   signal \^fft_data_in_start\ : STD_LOGIC;
   signal FFT_DATA_IN_START_i_10_n_0 : STD_LOGIC;
-  signal FFT_DATA_IN_START_i_11_n_0 : STD_LOGIC;
   signal FFT_DATA_IN_START_i_1_n_0 : STD_LOGIC;
   signal FFT_DATA_IN_START_i_2_n_0 : STD_LOGIC;
   signal FFT_DATA_IN_START_i_3_n_0 : STD_LOGIC;
@@ -437,18 +430,12 @@ architecture STRUCTURE of block_design_0_equalizer_time_frequ_0_0_equalizer_time
   signal FPGA_REG_WRITE_STROBE_PHASE_20 : STD_LOGIC;
   signal FPGA_REG_WRITE_STROBE_PHASE_2_i_1_n_0 : STD_LOGIC;
   signal \FSM_sequential_RX_STATE[0]_i_1_n_0\ : STD_LOGIC;
-  signal \FSM_sequential_RX_STATE[0]_i_2_n_0\ : STD_LOGIC;
-  signal \FSM_sequential_RX_STATE[0]_i_3_n_0\ : STD_LOGIC;
-  signal \FSM_sequential_RX_STATE[0]_i_4_n_0\ : STD_LOGIC;
   signal \FSM_sequential_RX_STATE[1]_i_1_n_0\ : STD_LOGIC;
   signal \FSM_sequential_RX_STATE[2]_i_1_n_0\ : STD_LOGIC;
   signal \FSM_sequential_RX_STATE[2]_i_2_n_0\ : STD_LOGIC;
   signal \FSM_sequential_RX_STATE[2]_i_3_n_0\ : STD_LOGIC;
   signal \FSM_sequential_RX_STATE[2]_i_4_n_0\ : STD_LOGIC;
-  signal \FSM_sequential_RX_STATE[2]_i_6_n_0\ : STD_LOGIC;
-  signal \FSM_sequential_RX_STATE[2]_i_7_n_0\ : STD_LOGIC;
-  signal \FSM_sequential_RX_STATE[2]_i_8_n_0\ : STD_LOGIC;
-  signal \FSM_sequential_RX_STATE[2]_i_9_n_0\ : STD_LOGIC;
+  signal \FSM_sequential_RX_STATE[2]_i_5_n_0\ : STD_LOGIC;
   signal LTS_AUTOCORR_ADD_REG_I_reg_i_2_n_0 : STD_LOGIC;
   signal LTS_AUTOCORR_ADD_REG_I_reg_n_100 : STD_LOGIC;
   signal LTS_AUTOCORR_ADD_REG_I_reg_n_101 : STD_LOGIC;
@@ -514,7 +501,7 @@ architecture STRUCTURE of block_design_0_equalizer_time_frequ_0_0_equalizer_time
   signal LTS_AUTOCORR_ADD_REG_Q_reg_n_97 : STD_LOGIC;
   signal LTS_AUTOCORR_ADD_REG_Q_reg_n_98 : STD_LOGIC;
   signal LTS_AUTOCORR_ADD_REG_Q_reg_n_99 : STD_LOGIC;
-  signal LTS_AUTOCORR_I_ACCUMULATOR : STD_LOGIC_VECTOR ( 39 downto 0 );
+  signal LTS_AUTOCORR_I_ACCUMULATOR : STD_LOGIC_VECTOR ( 37 downto 0 );
   signal \LTS_AUTOCORR_I_ACCUMULATOR0_carry__0_i_1_n_0\ : STD_LOGIC;
   signal \LTS_AUTOCORR_I_ACCUMULATOR0_carry__0_i_2_n_0\ : STD_LOGIC;
   signal \LTS_AUTOCORR_I_ACCUMULATOR0_carry__0_i_3_n_0\ : STD_LOGIC;
@@ -614,13 +601,7 @@ architecture STRUCTURE of block_design_0_equalizer_time_frequ_0_0_equalizer_time
   signal \LTS_AUTOCORR_I_ACCUMULATOR0_carry__7_n_7\ : STD_LOGIC;
   signal \LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_i_1_n_0\ : STD_LOGIC;
   signal \LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_i_2_n_0\ : STD_LOGIC;
-  signal \LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_i_3_n_0\ : STD_LOGIC;
-  signal \LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_i_4_n_0\ : STD_LOGIC;
-  signal \LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_n_1\ : STD_LOGIC;
-  signal \LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_n_2\ : STD_LOGIC;
   signal \LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_n_3\ : STD_LOGIC;
-  signal \LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_n_4\ : STD_LOGIC;
-  signal \LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_n_5\ : STD_LOGIC;
   signal \LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_n_6\ : STD_LOGIC;
   signal \LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_n_7\ : STD_LOGIC;
   signal LTS_AUTOCORR_I_ACCUMULATOR0_carry_i_1_n_0 : STD_LOGIC;
@@ -662,8 +643,8 @@ architecture STRUCTURE of block_design_0_equalizer_time_frequ_0_0_equalizer_time
   signal LTS_AUTOCORR_I_ACCUMULATOR1_carry_n_1 : STD_LOGIC;
   signal LTS_AUTOCORR_I_ACCUMULATOR1_carry_n_2 : STD_LOGIC;
   signal LTS_AUTOCORR_I_ACCUMULATOR1_carry_n_3 : STD_LOGIC;
-  signal \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\ : STD_LOGIC;
-  signal \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_3_n_0\ : STD_LOGIC;
+  signal \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\ : STD_LOGIC;
+  signal \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_3_n_0\ : STD_LOGIC;
   signal LTS_AUTOCORR_MULT_REG_II_reg_n_106 : STD_LOGIC;
   signal LTS_AUTOCORR_MULT_REG_II_reg_n_107 : STD_LOGIC;
   signal LTS_AUTOCORR_MULT_REG_II_reg_n_108 : STD_LOGIC;
@@ -760,7 +741,7 @@ architecture STRUCTURE of block_design_0_equalizer_time_frequ_0_0_equalizer_time
   signal LTS_AUTOCORR_MULT_REG_QI_reg_n_151 : STD_LOGIC;
   signal LTS_AUTOCORR_MULT_REG_QI_reg_n_152 : STD_LOGIC;
   signal LTS_AUTOCORR_MULT_REG_QI_reg_n_153 : STD_LOGIC;
-  signal LTS_AUTOCORR_Q_ACCUMULATOR : STD_LOGIC_VECTOR ( 39 downto 0 );
+  signal LTS_AUTOCORR_Q_ACCUMULATOR : STD_LOGIC_VECTOR ( 37 downto 0 );
   signal \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__0_i_1_n_0\ : STD_LOGIC;
   signal \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__0_i_2_n_0\ : STD_LOGIC;
   signal \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__0_i_3_n_0\ : STD_LOGIC;
@@ -860,13 +841,7 @@ architecture STRUCTURE of block_design_0_equalizer_time_frequ_0_0_equalizer_time
   signal \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__7_n_7\ : STD_LOGIC;
   signal \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_i_1_n_0\ : STD_LOGIC;
   signal \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_i_2_n_0\ : STD_LOGIC;
-  signal \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_i_3_n_0\ : STD_LOGIC;
-  signal \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_i_4_n_0\ : STD_LOGIC;
-  signal \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_n_1\ : STD_LOGIC;
-  signal \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_n_2\ : STD_LOGIC;
   signal \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_n_3\ : STD_LOGIC;
-  signal \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_n_4\ : STD_LOGIC;
-  signal \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_n_5\ : STD_LOGIC;
   signal \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_n_6\ : STD_LOGIC;
   signal \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_n_7\ : STD_LOGIC;
   signal LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_1_n_0 : STD_LOGIC;
@@ -1065,7 +1040,6 @@ architecture STRUCTURE of block_design_0_equalizer_time_frequ_0_0_equalizer_time
   signal \RX_STATE0_inferred__0/i__carry_n_1\ : STD_LOGIC;
   signal \RX_STATE0_inferred__0/i__carry_n_2\ : STD_LOGIC;
   signal \RX_STATE0_inferred__0/i__carry_n_3\ : STD_LOGIC;
-  signal \RX_STATE__0\ : STD_LOGIC_VECTOR ( 2 to 2 );
   signal RX_STATE_reg : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[12]_i_2_n_0\ : STD_LOGIC;
   signal \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[12]_i_3_n_0\ : STD_LOGIC;
@@ -1133,9 +1107,13 @@ architecture STRUCTURE of block_design_0_equalizer_time_frequ_0_0_equalizer_time
   signal \_inferred__15/i__carry__5_n_1\ : STD_LOGIC;
   signal \_inferred__15/i__carry__5_n_2\ : STD_LOGIC;
   signal \_inferred__15/i__carry__5_n_3\ : STD_LOGIC;
+  signal \_inferred__15/i__carry__6_n_0\ : STD_LOGIC;
   signal \_inferred__15/i__carry__6_n_1\ : STD_LOGIC;
   signal \_inferred__15/i__carry__6_n_2\ : STD_LOGIC;
   signal \_inferred__15/i__carry__6_n_3\ : STD_LOGIC;
+  signal \_inferred__15/i__carry__7_n_1\ : STD_LOGIC;
+  signal \_inferred__15/i__carry__7_n_2\ : STD_LOGIC;
+  signal \_inferred__15/i__carry__7_n_3\ : STD_LOGIC;
   signal \_inferred__15/i__carry_n_0\ : STD_LOGIC;
   signal \_inferred__15/i__carry_n_1\ : STD_LOGIC;
   signal \_inferred__15/i__carry_n_2\ : STD_LOGIC;
@@ -1188,11 +1166,19 @@ architecture STRUCTURE of block_design_0_equalizer_time_frequ_0_0_equalizer_time
   signal \_inferred__20/i__carry__5_n_5\ : STD_LOGIC;
   signal \_inferred__20/i__carry__5_n_6\ : STD_LOGIC;
   signal \_inferred__20/i__carry__5_n_7\ : STD_LOGIC;
+  signal \_inferred__20/i__carry__6_n_0\ : STD_LOGIC;
   signal \_inferred__20/i__carry__6_n_1\ : STD_LOGIC;
   signal \_inferred__20/i__carry__6_n_2\ : STD_LOGIC;
   signal \_inferred__20/i__carry__6_n_3\ : STD_LOGIC;
+  signal \_inferred__20/i__carry__6_n_4\ : STD_LOGIC;
+  signal \_inferred__20/i__carry__6_n_5\ : STD_LOGIC;
   signal \_inferred__20/i__carry__6_n_6\ : STD_LOGIC;
   signal \_inferred__20/i__carry__6_n_7\ : STD_LOGIC;
+  signal \_inferred__20/i__carry__7_n_1\ : STD_LOGIC;
+  signal \_inferred__20/i__carry__7_n_2\ : STD_LOGIC;
+  signal \_inferred__20/i__carry__7_n_3\ : STD_LOGIC;
+  signal \_inferred__20/i__carry__7_n_6\ : STD_LOGIC;
+  signal \_inferred__20/i__carry__7_n_7\ : STD_LOGIC;
   signal \_inferred__20/i__carry_n_0\ : STD_LOGIC;
   signal \_inferred__20/i__carry_n_1\ : STD_LOGIC;
   signal \_inferred__20/i__carry_n_2\ : STD_LOGIC;
@@ -1402,19 +1388,37 @@ architecture STRUCTURE of block_design_0_equalizer_time_frequ_0_0_equalizer_time
   signal \i__carry__6_i_2_n_0\ : STD_LOGIC;
   signal \i__carry__6_i_3__0_n_0\ : STD_LOGIC;
   signal \i__carry__6_i_3_n_0\ : STD_LOGIC;
-  signal \i__carry__6_i_4__0_n_2\ : STD_LOGIC;
-  signal \i__carry__6_i_4__0_n_3\ : STD_LOGIC;
-  signal \i__carry__6_i_4__0_n_5\ : STD_LOGIC;
-  signal \i__carry__6_i_4__0_n_6\ : STD_LOGIC;
-  signal \i__carry__6_i_4__0_n_7\ : STD_LOGIC;
-  signal \i__carry__6_i_4_n_2\ : STD_LOGIC;
-  signal \i__carry__6_i_4_n_3\ : STD_LOGIC;
+  signal \i__carry__6_i_4__0_n_0\ : STD_LOGIC;
+  signal \i__carry__6_i_4_n_0\ : STD_LOGIC;
   signal \i__carry__6_i_5__0_n_0\ : STD_LOGIC;
+  signal \i__carry__6_i_5__0_n_1\ : STD_LOGIC;
+  signal \i__carry__6_i_5__0_n_2\ : STD_LOGIC;
+  signal \i__carry__6_i_5__0_n_3\ : STD_LOGIC;
+  signal \i__carry__6_i_5__0_n_4\ : STD_LOGIC;
+  signal \i__carry__6_i_5__0_n_5\ : STD_LOGIC;
+  signal \i__carry__6_i_5__0_n_6\ : STD_LOGIC;
+  signal \i__carry__6_i_5__0_n_7\ : STD_LOGIC;
   signal \i__carry__6_i_5_n_0\ : STD_LOGIC;
+  signal \i__carry__6_i_5_n_1\ : STD_LOGIC;
+  signal \i__carry__6_i_5_n_2\ : STD_LOGIC;
+  signal \i__carry__6_i_5_n_3\ : STD_LOGIC;
   signal \i__carry__6_i_6__0_n_0\ : STD_LOGIC;
   signal \i__carry__6_i_6_n_0\ : STD_LOGIC;
   signal \i__carry__6_i_7__0_n_0\ : STD_LOGIC;
   signal \i__carry__6_i_7_n_0\ : STD_LOGIC;
+  signal \i__carry__6_i_8__0_n_0\ : STD_LOGIC;
+  signal \i__carry__6_i_8_n_0\ : STD_LOGIC;
+  signal \i__carry__6_i_9__0_n_0\ : STD_LOGIC;
+  signal \i__carry__6_i_9_n_0\ : STD_LOGIC;
+  signal \i__carry__7_i_1__0_n_0\ : STD_LOGIC;
+  signal \i__carry__7_i_1_n_0\ : STD_LOGIC;
+  signal \i__carry__7_i_2__0_n_0\ : STD_LOGIC;
+  signal \i__carry__7_i_2_n_0\ : STD_LOGIC;
+  signal \i__carry__7_i_3__0_n_0\ : STD_LOGIC;
+  signal \i__carry__7_i_3_n_0\ : STD_LOGIC;
+  signal \i__carry__7_i_4__0_n_7\ : STD_LOGIC;
+  signal \i__carry__7_i_5__0_n_0\ : STD_LOGIC;
+  signal \i__carry__7_i_5_n_0\ : STD_LOGIC;
   signal \i__carry_i_10__0_n_0\ : STD_LOGIC;
   signal \i__carry_i_10_n_0\ : STD_LOGIC;
   signal \i__carry_i_1__0_n_0\ : STD_LOGIC;
@@ -1456,10 +1460,8 @@ architecture STRUCTURE of block_design_0_equalizer_time_frequ_0_0_equalizer_time
   signal in25 : STD_LOGIC_VECTOR ( 19 downto 1 );
   signal p_0_in : STD_LOGIC;
   signal p_2_in : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal \NLW_ATAN_AUTOCORR_I_reg[0]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal \NLW_ATAN_AUTOCORR_I_reg[0]_i_3_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal \NLW_ATAN_AUTOCORR_Q_reg[0]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal \NLW_ATAN_AUTOCORR_Q_reg[0]_i_3_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal \NLW_ATAN_AUTOCORR_I_reg[0]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal \NLW_ATAN_AUTOCORR_Q_reg[0]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 0 to 0 );
   signal \NLW_COUNTER_IQ0_inferred__1/i__carry__6_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 2 );
   signal \NLW_COUNTER_IQ0_inferred__1/i__carry__6_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
   signal \NLW_COUNTER_reg[31]_i_3_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 2 );
@@ -1495,7 +1497,8 @@ architecture STRUCTURE of block_design_0_equalizer_time_frequ_0_0_equalizer_time
   signal NLW_LTS_AUTOCORR_ADD_REG_Q_reg_CARRYOUT_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal NLW_LTS_AUTOCORR_ADD_REG_Q_reg_P_UNCONNECTED : STD_LOGIC_VECTOR ( 47 downto 32 );
   signal NLW_LTS_AUTOCORR_ADD_REG_Q_reg_PCOUT_UNCONNECTED : STD_LOGIC_VECTOR ( 47 downto 0 );
-  signal \NLW_LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
+  signal \NLW_LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 1 );
+  signal \NLW_LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 2 );
   signal NLW_LTS_AUTOCORR_I_ACCUMULATOR1_carry_O_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal \NLW_LTS_AUTOCORR_I_ACCUMULATOR1_carry__0_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal \NLW_LTS_AUTOCORR_I_ACCUMULATOR1_carry__1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -1521,7 +1524,8 @@ architecture STRUCTURE of block_design_0_equalizer_time_frequ_0_0_equalizer_time
   signal NLW_LTS_AUTOCORR_MULT_REG_QI_reg_BCOUT_UNCONNECTED : STD_LOGIC_VECTOR ( 17 downto 0 );
   signal NLW_LTS_AUTOCORR_MULT_REG_QI_reg_CARRYOUT_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal NLW_LTS_AUTOCORR_MULT_REG_QI_reg_P_UNCONNECTED : STD_LOGIC_VECTOR ( 47 downto 0 );
-  signal \NLW_LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
+  signal \NLW_LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 1 );
+  signal \NLW_LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 2 );
   signal \NLW_ROTATION_PHASE_NEW_DIFF0_carry__3_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
   signal NLW_ROTATION_PHASE_NEW_DIFF0_carry_i_10_O_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_ROTATION_PHASE_NEW_DIFF0_carry_i_15_O_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -1531,24 +1535,17 @@ architecture STRUCTURE of block_design_0_equalizer_time_frequ_0_0_equalizer_time
   signal \NLW_RX_STATE0_inferred__0/i__carry__2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal \NLW_RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[19]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 2 );
   signal \NLW_RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE_reg[19]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
-  signal \NLW__inferred__15/i__carry__6_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
-  signal \NLW__inferred__15/i__carry__6_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 2 );
-  signal \NLW__inferred__20/i__carry__6_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
-  signal \NLW__inferred__20/i__carry__6_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 2 );
-  signal \NLW_i__carry__6_i_4_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 2 );
-  signal \NLW_i__carry__6_i_4_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
-  signal \NLW_i__carry__6_i_4__0_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 2 );
-  signal \NLW_i__carry__6_i_4__0_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
+  signal \NLW__inferred__15/i__carry__7_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
+  signal \NLW__inferred__15/i__carry__7_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 2 );
+  signal \NLW__inferred__20/i__carry__7_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
+  signal \NLW__inferred__20/i__carry__7_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 2 );
+  signal \NLW_i__carry__7_i_4_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal \NLW_i__carry__7_i_4_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 1 );
+  signal \NLW_i__carry__7_i_4__0_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal \NLW_i__carry__7_i_4__0_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 1 );
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \ATAN_AUTOCORR_I_reg[0]_i_2\ : label is 35;
-  attribute ADDER_THRESHOLD of \ATAN_AUTOCORR_I_reg[0]_i_3\ : label is 35;
   attribute ADDER_THRESHOLD of \ATAN_AUTOCORR_Q_reg[0]_i_2\ : label is 35;
-  attribute ADDER_THRESHOLD of \ATAN_AUTOCORR_Q_reg[0]_i_3\ : label is 35;
-  attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \COUNTER[31]_i_4\ : label is "soft_lutpair6";
-  attribute SOFT_HLUTNM of \COUNTER[31]_i_5\ : label is "soft_lutpair11";
-  attribute SOFT_HLUTNM of \COUNTER[31]_i_6\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of \COUNTER[31]_i_7\ : label is "soft_lutpair11";
   attribute ADDER_THRESHOLD of \COUNTER_IQ0_inferred__1/i__carry\ : label is 35;
   attribute ADDER_THRESHOLD of \COUNTER_IQ0_inferred__1/i__carry__0\ : label is 35;
   attribute ADDER_THRESHOLD of \COUNTER_IQ0_inferred__1/i__carry__1\ : label is 35;
@@ -1557,18 +1554,16 @@ architecture STRUCTURE of block_design_0_equalizer_time_frequ_0_0_equalizer_time
   attribute ADDER_THRESHOLD of \COUNTER_IQ0_inferred__1/i__carry__4\ : label is 35;
   attribute ADDER_THRESHOLD of \COUNTER_IQ0_inferred__1/i__carry__5\ : label is 35;
   attribute ADDER_THRESHOLD of \COUNTER_IQ0_inferred__1/i__carry__6\ : label is 35;
+  attribute SOFT_HLUTNM : string;
   attribute SOFT_HLUTNM of \COUNTER_IQ[1]_i_1\ : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of \COUNTER_IQ[2]_i_1\ : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of \COUNTER_IQ[3]_i_1\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \COUNTER_OFDM_SYMBOL[0]_i_1\ : label is "soft_lutpair12";
-  attribute SOFT_HLUTNM of \COUNTER_OFDM_SYMBOL[10]_i_2\ : label is "soft_lutpair13";
-  attribute SOFT_HLUTNM of \COUNTER_OFDM_SYMBOL[2]_i_1\ : label is "soft_lutpair5";
-  attribute SOFT_HLUTNM of \COUNTER_OFDM_SYMBOL[3]_i_1\ : label is "soft_lutpair5";
-  attribute SOFT_HLUTNM of \COUNTER_OFDM_SYMBOL[6]_i_1\ : label is "soft_lutpair13";
-  attribute SOFT_HLUTNM of \COUNTER_OFDM_SYMBOL[7]_i_1\ : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \COUNTER_OFDM_SYMBOL[8]_i_1\ : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \COUNTER_OFDM_SYMBOL[9]_i_10\ : label is "soft_lutpair10";
-  attribute SOFT_HLUTNM of \COUNTER_OFDM_SYMBOL[9]_i_9\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \COUNTER_OFDM_SYMBOL[10]_i_2\ : label is "soft_lutpair10";
+  attribute SOFT_HLUTNM of \COUNTER_OFDM_SYMBOL[2]_i_1\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \COUNTER_OFDM_SYMBOL[3]_i_1\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \COUNTER_OFDM_SYMBOL[6]_i_1\ : label is "soft_lutpair10";
+  attribute SOFT_HLUTNM of \COUNTER_OFDM_SYMBOL[7]_i_1\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \COUNTER_OFDM_SYMBOL[8]_i_1\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \COUNTER_OFDM_SYMBOL[9]_i_14\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \COUNTER_OFDM_SYMBOL[9]_i_15\ : label is "soft_lutpair4";
   attribute ADDER_THRESHOLD of \COUNTER_reg[12]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \COUNTER_reg[16]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \COUNTER_reg[20]_i_1\ : label is 35;
@@ -1577,10 +1572,14 @@ architecture STRUCTURE of block_design_0_equalizer_time_frequ_0_0_equalizer_time
   attribute ADDER_THRESHOLD of \COUNTER_reg[31]_i_3\ : label is 35;
   attribute ADDER_THRESHOLD of \COUNTER_reg[4]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \COUNTER_reg[8]_i_1\ : label is 35;
+  attribute SOFT_HLUTNM of FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_4 : label is "soft_lutpair5";
   attribute x_interface_ignore : string;
   attribute x_interface_ignore of FFT_DATA_IN_FIRST_SYMBOL_MARKER_reg : label is "TRUE";
-  attribute SOFT_HLUTNM of FFT_DATA_IN_START_i_7 : label is "soft_lutpair10";
+  attribute SOFT_HLUTNM of FFT_DATA_IN_START_i_10 : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of FFT_DATA_IN_START_i_6 : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of FFT_DATA_IN_START_i_8 : label is "soft_lutpair4";
   attribute x_interface_ignore of FFT_DATA_IN_START_reg : label is "TRUE";
+  attribute SOFT_HLUTNM of FFT_DATA_IN_STROBE_i_1 : label is "soft_lutpair9";
   attribute x_interface_ignore of FFT_DATA_IN_STROBE_reg : label is "TRUE";
   attribute x_interface_ignore of \FFT_IDATA_IN_reg[0]\ : label is "TRUE";
   attribute x_interface_ignore of \FFT_IDATA_IN_reg[10]\ : label is "TRUE";
@@ -1614,21 +1613,21 @@ architecture STRUCTURE of block_design_0_equalizer_time_frequ_0_0_equalizer_time
   attribute x_interface_ignore of \FFT_QDATA_IN_reg[7]\ : label is "TRUE";
   attribute x_interface_ignore of \FFT_QDATA_IN_reg[8]\ : label is "TRUE";
   attribute x_interface_ignore of \FFT_QDATA_IN_reg[9]\ : label is "TRUE";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[10]_i_2\ : label is "soft_lutpair16";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[11]_i_2\ : label is "soft_lutpair15";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[12]_i_3\ : label is "soft_lutpair14";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[13]_i_2\ : label is "soft_lutpair15";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[15]_i_2\ : label is "soft_lutpair14";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[19]_i_3\ : label is "soft_lutpair8";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[1]_i_2\ : label is "soft_lutpair20";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[2]_i_2\ : label is "soft_lutpair20";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[3]_i_2\ : label is "soft_lutpair19";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[4]_i_3\ : label is "soft_lutpair19";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[5]_i_2\ : label is "soft_lutpair18";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[6]_i_2\ : label is "soft_lutpair18";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[7]_i_2\ : label is "soft_lutpair17";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[8]_i_3\ : label is "soft_lutpair17";
-  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[9]_i_2\ : label is "soft_lutpair16";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[10]_i_2\ : label is "soft_lutpair14";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[11]_i_2\ : label is "soft_lutpair13";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[12]_i_3\ : label is "soft_lutpair12";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[13]_i_2\ : label is "soft_lutpair13";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[15]_i_2\ : label is "soft_lutpair12";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[19]_i_3\ : label is "soft_lutpair7";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[1]_i_2\ : label is "soft_lutpair18";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[2]_i_2\ : label is "soft_lutpair18";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[3]_i_2\ : label is "soft_lutpair17";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[4]_i_3\ : label is "soft_lutpair17";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[5]_i_2\ : label is "soft_lutpair16";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[6]_i_2\ : label is "soft_lutpair16";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[7]_i_2\ : label is "soft_lutpair15";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[8]_i_3\ : label is "soft_lutpair15";
+  attribute SOFT_HLUTNM of \FPGA_REG_WRITE_DATA[9]_i_2\ : label is "soft_lutpair14";
   attribute x_interface_ignore of \FPGA_REG_WRITE_DATA_reg[0]\ : label is "TRUE";
   attribute ADDER_THRESHOLD of \FPGA_REG_WRITE_DATA_reg[0]_i_3\ : label is 35;
   attribute x_interface_ignore of \FPGA_REG_WRITE_DATA_reg[10]\ : label is "TRUE";
@@ -1652,19 +1651,16 @@ architecture STRUCTURE of block_design_0_equalizer_time_frequ_0_0_equalizer_time
   attribute x_interface_ignore of \FPGA_REG_WRITE_DATA_reg[8]\ : label is "TRUE";
   attribute ADDER_THRESHOLD of \FPGA_REG_WRITE_DATA_reg[8]_i_8\ : label is 35;
   attribute x_interface_ignore of \FPGA_REG_WRITE_DATA_reg[9]\ : label is "TRUE";
-  attribute SOFT_HLUTNM of FPGA_REG_WRITE_STROBE_PHASE_2_i_1 : label is "soft_lutpair9";
-  attribute SOFT_HLUTNM of \FSM_sequential_RX_STATE[0]_i_3\ : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \FSM_sequential_RX_STATE[0]_i_4\ : label is "soft_lutpair12";
-  attribute SOFT_HLUTNM of \FSM_sequential_RX_STATE[2]_i_2\ : label is "soft_lutpair8";
-  attribute SOFT_HLUTNM of \FSM_sequential_RX_STATE[2]_i_3\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of \FSM_sequential_RX_STATE[2]_i_5\ : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of \FSM_sequential_RX_STATE[2]_i_8\ : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \FSM_sequential_RX_STATE[2]_i_9\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of FPGA_REG_WRITE_STROBE_PHASE_2_i_1 : label is "soft_lutpair8";
+  attribute SOFT_HLUTNM of \FSM_sequential_RX_STATE[0]_i_1\ : label is "soft_lutpair11";
+  attribute SOFT_HLUTNM of \FSM_sequential_RX_STATE[1]_i_1\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \FSM_sequential_RX_STATE[2]_i_1\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \FSM_sequential_RX_STATE[2]_i_3\ : label is "soft_lutpair11";
+  attribute SOFT_HLUTNM of \FSM_sequential_RX_STATE[2]_i_5\ : label is "soft_lutpair7";
   attribute FSM_ENCODED_STATES : string;
   attribute FSM_ENCODED_STATES of \FSM_sequential_RX_STATE_reg[0]\ : label is "idle:000,sts_atan_init:001,sts_atan_wait:010,set_rotation_block:011,wait_for_lts_marker:100,receive_lts:101,receive_data:110,ignore_ending_false_detection:111";
   attribute FSM_ENCODED_STATES of \FSM_sequential_RX_STATE_reg[1]\ : label is "idle:000,sts_atan_init:001,sts_atan_wait:010,set_rotation_block:011,wait_for_lts_marker:100,receive_lts:101,receive_data:110,ignore_ending_false_detection:111";
   attribute FSM_ENCODED_STATES of \FSM_sequential_RX_STATE_reg[2]\ : label is "idle:000,sts_atan_init:001,sts_atan_wait:010,set_rotation_block:011,wait_for_lts_marker:100,receive_lts:101,receive_data:110,ignore_ending_false_detection:111";
-  attribute SOFT_HLUTNM of LTS_AUTOCORR_ADD_REG_I_reg_i_2 : label is "soft_lutpair21";
   attribute ADDER_THRESHOLD of LTS_AUTOCORR_I_ACCUMULATOR0_carry : label is 35;
   attribute ADDER_THRESHOLD of \LTS_AUTOCORR_I_ACCUMULATOR0_carry__0\ : label is 35;
   attribute ADDER_THRESHOLD of \LTS_AUTOCORR_I_ACCUMULATOR0_carry__1\ : label is 35;
@@ -1680,7 +1676,7 @@ architecture STRUCTURE of block_design_0_equalizer_time_frequ_0_0_equalizer_time
   attribute COMPARATOR_THRESHOLD of \LTS_AUTOCORR_I_ACCUMULATOR1_carry__0\ : label is 11;
   attribute COMPARATOR_THRESHOLD of \LTS_AUTOCORR_I_ACCUMULATOR1_carry__1\ : label is 11;
   attribute COMPARATOR_THRESHOLD of \LTS_AUTOCORR_I_ACCUMULATOR1_carry__2\ : label is 11;
-  attribute SOFT_HLUTNM of \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_3\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_3\ : label is "soft_lutpair9";
   attribute ADDER_THRESHOLD of LTS_AUTOCORR_Q_ACCUMULATOR0_carry : label is 35;
   attribute ADDER_THRESHOLD of \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__0\ : label is 35;
   attribute ADDER_THRESHOLD of \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__1\ : label is 35;
@@ -1691,7 +1687,7 @@ architecture STRUCTURE of block_design_0_equalizer_time_frequ_0_0_equalizer_time
   attribute ADDER_THRESHOLD of \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__6\ : label is 35;
   attribute ADDER_THRESHOLD of \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__7\ : label is 35;
   attribute ADDER_THRESHOLD of \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8\ : label is 35;
-  attribute SOFT_HLUTNM of LTS_AUTOCORR_READY_i_2 : label is "soft_lutpair21";
+  attribute SOFT_HLUTNM of LTS_AUTOCORR_READY_i_2 : label is "soft_lutpair0";
   attribute RTL_RAM_BITS : integer;
   attribute RTL_RAM_BITS of LTS_I_BUFFER_reg_0_63_0_0 : label is 1024;
   attribute RTL_RAM_NAME : string;
@@ -1966,7 +1962,7 @@ architecture STRUCTURE of block_design_0_equalizer_time_frequ_0_0_equalizer_time
   attribute ADDER_THRESHOLD of ROTATION_PHASE_NEW_DIFF0_carry_i_10 : label is 35;
   attribute ADDER_THRESHOLD of ROTATION_PHASE_NEW_DIFF0_carry_i_15 : label is 35;
   attribute ADDER_THRESHOLD of ROTATION_PHASE_NEW_DIFF0_carry_i_20 : label is 35;
-  attribute SOFT_HLUTNM of ROTATION_PHASE_NEW_DIFF_STROBE_i_1 : label is "soft_lutpair9";
+  attribute SOFT_HLUTNM of ROTATION_PHASE_NEW_DIFF_STROBE_i_1 : label is "soft_lutpair8";
   attribute x_interface_ignore of ROTATION_PHASE_NEW_DIFF_STROBE_reg : label is "TRUE";
   attribute x_interface_ignore of \ROTATION_PHASE_NEW_DIFF_reg[0]\ : label is "TRUE";
   attribute x_interface_ignore of \ROTATION_PHASE_NEW_DIFF_reg[10]\ : label is "TRUE";
@@ -2009,8 +2005,10 @@ architecture STRUCTURE of block_design_0_equalizer_time_frequ_0_0_equalizer_time
   attribute ADDER_THRESHOLD of \i__carry__4_i_5__0\ : label is 35;
   attribute ADDER_THRESHOLD of \i__carry__5_i_5\ : label is 35;
   attribute ADDER_THRESHOLD of \i__carry__5_i_5__0\ : label is 35;
-  attribute ADDER_THRESHOLD of \i__carry__6_i_4\ : label is 35;
-  attribute ADDER_THRESHOLD of \i__carry__6_i_4__0\ : label is 35;
+  attribute ADDER_THRESHOLD of \i__carry__6_i_5\ : label is 35;
+  attribute ADDER_THRESHOLD of \i__carry__6_i_5__0\ : label is 35;
+  attribute ADDER_THRESHOLD of \i__carry__7_i_4\ : label is 35;
+  attribute ADDER_THRESHOLD of \i__carry__7_i_4__0\ : label is 35;
   attribute ADDER_THRESHOLD of \i__carry_i_6__0\ : label is 35;
   attribute ADDER_THRESHOLD of \i__carry_i_6__1\ : label is 35;
 begin
@@ -2027,41 +2025,25 @@ begin
         port map (
       I0 => AUTOCORR_I_BUFF(0),
       I1 => RX_STATE_reg(0),
-      I2 => ARG2(8),
-      I3 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_I_ACCUMULATOR(8),
+      I2 => ARG2(2),
+      I3 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_I_ACCUMULATOR(2),
       O => ATAN_AUTOCORR_I0_in(0)
     );
-\ATAN_AUTOCORR_I[0]_i_10\: unisim.vcomponents.LUT1
+\ATAN_AUTOCORR_I[0]_i_3\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(3),
-      O => \ATAN_AUTOCORR_I[0]_i_10_n_0\
-    );
-\ATAN_AUTOCORR_I[0]_i_11\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(2),
-      O => \ATAN_AUTOCORR_I[0]_i_11_n_0\
-    );
-\ATAN_AUTOCORR_I[0]_i_12\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(1),
-      O => \ATAN_AUTOCORR_I[0]_i_12_n_0\
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(0),
+      O => \ATAN_AUTOCORR_I[0]_i_3_n_0\
     );
 \ATAN_AUTOCORR_I[0]_i_4\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(8),
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(4),
       O => \ATAN_AUTOCORR_I[0]_i_4_n_0\
     );
 \ATAN_AUTOCORR_I[0]_i_5\: unisim.vcomponents.LUT1
@@ -2069,7 +2051,7 @@ begin
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(7),
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(3),
       O => \ATAN_AUTOCORR_I[0]_i_5_n_0\
     );
 \ATAN_AUTOCORR_I[0]_i_6\: unisim.vcomponents.LUT1
@@ -2077,7 +2059,7 @@ begin
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(6),
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(2),
       O => \ATAN_AUTOCORR_I[0]_i_6_n_0\
     );
 \ATAN_AUTOCORR_I[0]_i_7\: unisim.vcomponents.LUT1
@@ -2085,24 +2067,8 @@ begin
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(5),
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(1),
       O => \ATAN_AUTOCORR_I[0]_i_7_n_0\
-    );
-\ATAN_AUTOCORR_I[0]_i_8\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(0),
-      O => \ATAN_AUTOCORR_I[0]_i_8_n_0\
-    );
-\ATAN_AUTOCORR_I[0]_i_9\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(4),
-      O => \ATAN_AUTOCORR_I[0]_i_9_n_0\
     );
 \ATAN_AUTOCORR_I[10]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -2112,8 +2078,8 @@ begin
       I0 => AUTOCORR_I_BUFF(10),
       I1 => RX_STATE_reg(0),
       I2 => ARG0(10),
-      I3 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_I_ACCUMULATOR(18),
+      I3 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_I_ACCUMULATOR(12),
       O => ATAN_AUTOCORR_I0_in(10)
     );
 \ATAN_AUTOCORR_I[11]_i_1\: unisim.vcomponents.LUT5
@@ -2124,8 +2090,8 @@ begin
       I0 => AUTOCORR_I_BUFF(11),
       I1 => RX_STATE_reg(0),
       I2 => ARG0(11),
-      I3 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_I_ACCUMULATOR(19),
+      I3 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_I_ACCUMULATOR(13),
       O => ATAN_AUTOCORR_I0_in(11)
     );
 \ATAN_AUTOCORR_I[12]_i_1\: unisim.vcomponents.LUT5
@@ -2136,8 +2102,8 @@ begin
       I0 => AUTOCORR_I_BUFF(12),
       I1 => RX_STATE_reg(0),
       I2 => ARG0(12),
-      I3 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_I_ACCUMULATOR(20),
+      I3 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_I_ACCUMULATOR(14),
       O => ATAN_AUTOCORR_I0_in(12)
     );
 \ATAN_AUTOCORR_I[13]_i_1\: unisim.vcomponents.LUT5
@@ -2148,8 +2114,8 @@ begin
       I0 => AUTOCORR_I_BUFF(13),
       I1 => RX_STATE_reg(0),
       I2 => ARG0(13),
-      I3 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_I_ACCUMULATOR(21),
+      I3 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_I_ACCUMULATOR(15),
       O => ATAN_AUTOCORR_I0_in(13)
     );
 \ATAN_AUTOCORR_I[14]_i_1\: unisim.vcomponents.LUT5
@@ -2160,8 +2126,8 @@ begin
       I0 => AUTOCORR_I_BUFF(14),
       I1 => RX_STATE_reg(0),
       I2 => ARG0(14),
-      I3 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_I_ACCUMULATOR(22),
+      I3 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_I_ACCUMULATOR(16),
       O => ATAN_AUTOCORR_I0_in(14)
     );
 \ATAN_AUTOCORR_I[15]_i_1\: unisim.vcomponents.LUT5
@@ -2172,8 +2138,8 @@ begin
       I0 => AUTOCORR_I_BUFF(15),
       I1 => RX_STATE_reg(0),
       I2 => ARG0(15),
-      I3 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_I_ACCUMULATOR(23),
+      I3 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_I_ACCUMULATOR(17),
       O => ATAN_AUTOCORR_I0_in(15)
     );
 \ATAN_AUTOCORR_I[16]_i_1\: unisim.vcomponents.LUT5
@@ -2184,8 +2150,8 @@ begin
       I0 => AUTOCORR_I_BUFF(16),
       I1 => RX_STATE_reg(0),
       I2 => ARG0(16),
-      I3 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_I_ACCUMULATOR(24),
+      I3 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_I_ACCUMULATOR(18),
       O => ATAN_AUTOCORR_I0_in(16)
     );
 \ATAN_AUTOCORR_I[17]_i_1\: unisim.vcomponents.LUT5
@@ -2196,8 +2162,8 @@ begin
       I0 => AUTOCORR_I_BUFF(17),
       I1 => RX_STATE_reg(0),
       I2 => ARG0(17),
-      I3 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_I_ACCUMULATOR(25),
+      I3 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_I_ACCUMULATOR(19),
       O => ATAN_AUTOCORR_I0_in(17)
     );
 \ATAN_AUTOCORR_I[18]_i_1\: unisim.vcomponents.LUT5
@@ -2208,8 +2174,8 @@ begin
       I0 => AUTOCORR_I_BUFF(18),
       I1 => RX_STATE_reg(0),
       I2 => ARG0(18),
-      I3 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_I_ACCUMULATOR(26),
+      I3 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_I_ACCUMULATOR(20),
       O => ATAN_AUTOCORR_I0_in(18)
     );
 \ATAN_AUTOCORR_I[19]_i_1\: unisim.vcomponents.LUT5
@@ -2220,8 +2186,8 @@ begin
       I0 => AUTOCORR_I_BUFF(19),
       I1 => RX_STATE_reg(0),
       I2 => ARG0(19),
-      I3 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_I_ACCUMULATOR(27),
+      I3 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_I_ACCUMULATOR(21),
       O => ATAN_AUTOCORR_I0_in(19)
     );
 \ATAN_AUTOCORR_I[1]_i_1\: unisim.vcomponents.LUT5
@@ -2232,8 +2198,8 @@ begin
       I0 => AUTOCORR_I_BUFF(1),
       I1 => RX_STATE_reg(0),
       I2 => ARG0(1),
-      I3 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_I_ACCUMULATOR(9),
+      I3 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_I_ACCUMULATOR(3),
       O => ATAN_AUTOCORR_I0_in(1)
     );
 \ATAN_AUTOCORR_I[20]_i_1\: unisim.vcomponents.LUT5
@@ -2244,8 +2210,8 @@ begin
       I0 => AUTOCORR_I_BUFF(20),
       I1 => RX_STATE_reg(0),
       I2 => ARG0(20),
-      I3 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_I_ACCUMULATOR(28),
+      I3 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_I_ACCUMULATOR(22),
       O => ATAN_AUTOCORR_I0_in(20)
     );
 \ATAN_AUTOCORR_I[21]_i_1\: unisim.vcomponents.LUT5
@@ -2256,8 +2222,8 @@ begin
       I0 => AUTOCORR_I_BUFF(21),
       I1 => RX_STATE_reg(0),
       I2 => ARG0(21),
-      I3 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_I_ACCUMULATOR(29),
+      I3 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_I_ACCUMULATOR(23),
       O => ATAN_AUTOCORR_I0_in(21)
     );
 \ATAN_AUTOCORR_I[22]_i_1\: unisim.vcomponents.LUT5
@@ -2268,8 +2234,8 @@ begin
       I0 => AUTOCORR_I_BUFF(22),
       I1 => RX_STATE_reg(0),
       I2 => ARG0(22),
-      I3 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_I_ACCUMULATOR(30),
+      I3 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_I_ACCUMULATOR(24),
       O => ATAN_AUTOCORR_I0_in(22)
     );
 \ATAN_AUTOCORR_I[23]_i_1\: unisim.vcomponents.LUT5
@@ -2280,8 +2246,8 @@ begin
       I0 => AUTOCORR_I_BUFF(23),
       I1 => RX_STATE_reg(0),
       I2 => ARG0(23),
-      I3 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_I_ACCUMULATOR(31),
+      I3 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_I_ACCUMULATOR(25),
       O => ATAN_AUTOCORR_I0_in(23)
     );
 \ATAN_AUTOCORR_I[24]_i_1\: unisim.vcomponents.LUT5
@@ -2292,8 +2258,8 @@ begin
       I0 => AUTOCORR_I_BUFF(24),
       I1 => RX_STATE_reg(0),
       I2 => ARG0(24),
-      I3 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_I_ACCUMULATOR(32),
+      I3 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_I_ACCUMULATOR(26),
       O => ATAN_AUTOCORR_I0_in(24)
     );
 \ATAN_AUTOCORR_I[25]_i_1\: unisim.vcomponents.LUT5
@@ -2304,8 +2270,8 @@ begin
       I0 => AUTOCORR_I_BUFF(25),
       I1 => RX_STATE_reg(0),
       I2 => ARG0(25),
-      I3 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_I_ACCUMULATOR(33),
+      I3 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_I_ACCUMULATOR(27),
       O => ATAN_AUTOCORR_I0_in(25)
     );
 \ATAN_AUTOCORR_I[26]_i_1\: unisim.vcomponents.LUT5
@@ -2316,8 +2282,8 @@ begin
       I0 => AUTOCORR_I_BUFF(26),
       I1 => RX_STATE_reg(0),
       I2 => ARG0(26),
-      I3 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_I_ACCUMULATOR(34),
+      I3 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_I_ACCUMULATOR(28),
       O => ATAN_AUTOCORR_I0_in(26)
     );
 \ATAN_AUTOCORR_I[27]_i_1\: unisim.vcomponents.LUT5
@@ -2328,8 +2294,8 @@ begin
       I0 => AUTOCORR_I_BUFF(27),
       I1 => RX_STATE_reg(0),
       I2 => ARG0(27),
-      I3 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_I_ACCUMULATOR(35),
+      I3 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_I_ACCUMULATOR(29),
       O => ATAN_AUTOCORR_I0_in(27)
     );
 \ATAN_AUTOCORR_I[28]_i_1\: unisim.vcomponents.LUT5
@@ -2340,8 +2306,8 @@ begin
       I0 => AUTOCORR_I_BUFF(28),
       I1 => RX_STATE_reg(0),
       I2 => ARG0(28),
-      I3 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_I_ACCUMULATOR(36),
+      I3 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_I_ACCUMULATOR(30),
       O => ATAN_AUTOCORR_I0_in(28)
     );
 \ATAN_AUTOCORR_I[29]_i_1\: unisim.vcomponents.LUT5
@@ -2352,8 +2318,8 @@ begin
       I0 => AUTOCORR_I_BUFF(29),
       I1 => RX_STATE_reg(0),
       I2 => ARG0(29),
-      I3 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I3 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_I_ACCUMULATOR(31),
       O => ATAN_AUTOCORR_I0_in(29)
     );
 \ATAN_AUTOCORR_I[2]_i_1\: unisim.vcomponents.LUT5
@@ -2364,8 +2330,8 @@ begin
       I0 => AUTOCORR_I_BUFF(2),
       I1 => RX_STATE_reg(0),
       I2 => ARG0(2),
-      I3 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_I_ACCUMULATOR(10),
+      I3 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_I_ACCUMULATOR(4),
       O => ATAN_AUTOCORR_I0_in(2)
     );
 \ATAN_AUTOCORR_I[30]_i_1\: unisim.vcomponents.LUT5
@@ -2376,11 +2342,59 @@ begin
       I0 => AUTOCORR_I_BUFF(30),
       I1 => RX_STATE_reg(0),
       I2 => ARG0(30),
-      I3 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_I_ACCUMULATOR(38),
+      I3 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_I_ACCUMULATOR(32),
       O => ATAN_AUTOCORR_I0_in(30)
     );
-\ATAN_AUTOCORR_I[31]_i_1\: unisim.vcomponents.LUT4
+\ATAN_AUTOCORR_I[31]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"B8BBB888"
+    )
+        port map (
+      I0 => AUTOCORR_I_BUFF(31),
+      I1 => RX_STATE_reg(0),
+      I2 => ARG0(31),
+      I3 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_I_ACCUMULATOR(33),
+      O => ATAN_AUTOCORR_I0_in(31)
+    );
+\ATAN_AUTOCORR_I[32]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"B8BBB888"
+    )
+        port map (
+      I0 => AUTOCORR_I_BUFF(32),
+      I1 => RX_STATE_reg(0),
+      I2 => ARG0(32),
+      I3 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_I_ACCUMULATOR(34),
+      O => ATAN_AUTOCORR_I0_in(32)
+    );
+\ATAN_AUTOCORR_I[33]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"B8BBB888"
+    )
+        port map (
+      I0 => AUTOCORR_I_BUFF(33),
+      I1 => RX_STATE_reg(0),
+      I2 => ARG0(33),
+      I3 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_I_ACCUMULATOR(35),
+      O => ATAN_AUTOCORR_I0_in(33)
+    );
+\ATAN_AUTOCORR_I[34]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"B8BBB888"
+    )
+        port map (
+      I0 => AUTOCORR_I_BUFF(34),
+      I1 => RX_STATE_reg(0),
+      I2 => ARG0(34),
+      I3 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_I_ACCUMULATOR(36),
+      O => ATAN_AUTOCORR_I0_in(34)
+    );
+\ATAN_AUTOCORR_I[35]_i_1\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"0830"
     )
@@ -2389,18 +2403,18 @@ begin
       I1 => RX_STATE_reg(1),
       I2 => RX_STATE_reg(0),
       I3 => RX_STATE_reg(2),
-      O => \ATAN_AUTOCORR_I[31]_i_1_n_0\
+      O => \ATAN_AUTOCORR_I[35]_i_1_n_0\
     );
-\ATAN_AUTOCORR_I[31]_i_2\: unisim.vcomponents.LUT4
+\ATAN_AUTOCORR_I[35]_i_2\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"88B8"
     )
         port map (
-      I0 => AUTOCORR_I_BUFF(31),
+      I0 => AUTOCORR_I_BUFF(35),
       I1 => RX_STATE_reg(0),
-      I2 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I3 => \_inferred__15/i__carry__6_n_1\,
-      O => ATAN_AUTOCORR_I0_in(31)
+      I2 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I3 => \_inferred__15/i__carry__7_n_1\,
+      O => ATAN_AUTOCORR_I0_in(35)
     );
 \ATAN_AUTOCORR_I[3]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -2410,8 +2424,8 @@ begin
       I0 => AUTOCORR_I_BUFF(3),
       I1 => RX_STATE_reg(0),
       I2 => ARG0(3),
-      I3 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_I_ACCUMULATOR(11),
+      I3 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_I_ACCUMULATOR(5),
       O => ATAN_AUTOCORR_I0_in(3)
     );
 \ATAN_AUTOCORR_I[4]_i_1\: unisim.vcomponents.LUT5
@@ -2422,8 +2436,8 @@ begin
       I0 => AUTOCORR_I_BUFF(4),
       I1 => RX_STATE_reg(0),
       I2 => ARG0(4),
-      I3 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_I_ACCUMULATOR(12),
+      I3 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_I_ACCUMULATOR(6),
       O => ATAN_AUTOCORR_I0_in(4)
     );
 \ATAN_AUTOCORR_I[5]_i_1\: unisim.vcomponents.LUT5
@@ -2434,8 +2448,8 @@ begin
       I0 => AUTOCORR_I_BUFF(5),
       I1 => RX_STATE_reg(0),
       I2 => ARG0(5),
-      I3 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_I_ACCUMULATOR(13),
+      I3 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_I_ACCUMULATOR(7),
       O => ATAN_AUTOCORR_I0_in(5)
     );
 \ATAN_AUTOCORR_I[6]_i_1\: unisim.vcomponents.LUT5
@@ -2446,8 +2460,8 @@ begin
       I0 => AUTOCORR_I_BUFF(6),
       I1 => RX_STATE_reg(0),
       I2 => ARG0(6),
-      I3 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_I_ACCUMULATOR(14),
+      I3 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_I_ACCUMULATOR(8),
       O => ATAN_AUTOCORR_I0_in(6)
     );
 \ATAN_AUTOCORR_I[7]_i_1\: unisim.vcomponents.LUT5
@@ -2458,8 +2472,8 @@ begin
       I0 => AUTOCORR_I_BUFF(7),
       I1 => RX_STATE_reg(0),
       I2 => ARG0(7),
-      I3 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_I_ACCUMULATOR(15),
+      I3 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_I_ACCUMULATOR(9),
       O => ATAN_AUTOCORR_I0_in(7)
     );
 \ATAN_AUTOCORR_I[8]_i_1\: unisim.vcomponents.LUT5
@@ -2470,8 +2484,8 @@ begin
       I0 => AUTOCORR_I_BUFF(8),
       I1 => RX_STATE_reg(0),
       I2 => ARG0(8),
-      I3 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_I_ACCUMULATOR(16),
+      I3 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_I_ACCUMULATOR(10),
       O => ATAN_AUTOCORR_I0_in(8)
     );
 \ATAN_AUTOCORR_I[9]_i_1\: unisim.vcomponents.LUT5
@@ -2482,8 +2496,8 @@ begin
       I0 => AUTOCORR_I_BUFF(9),
       I1 => RX_STATE_reg(0),
       I2 => ARG0(9),
-      I3 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_I_ACCUMULATOR(17),
+      I3 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_I_ACCUMULATOR(11),
       O => ATAN_AUTOCORR_I0_in(9)
     );
 \ATAN_AUTOCORR_I_reg[0]\: unisim.vcomponents.FDRE
@@ -2492,41 +2506,26 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => ATAN_AUTOCORR_I0_in(0),
       Q => ATAN_AUTOCORR_I(0),
       R => '0'
     );
 \ATAN_AUTOCORR_I_reg[0]_i_2\: unisim.vcomponents.CARRY4
      port map (
-      CI => \ATAN_AUTOCORR_I_reg[0]_i_3_n_0\,
+      CI => '0',
       CO(3) => \ATAN_AUTOCORR_I_reg[0]_i_2_n_0\,
       CO(2) => \ATAN_AUTOCORR_I_reg[0]_i_2_n_1\,
       CO(1) => \ATAN_AUTOCORR_I_reg[0]_i_2_n_2\,
       CO(0) => \ATAN_AUTOCORR_I_reg[0]_i_2_n_3\,
-      CYINIT => '0',
+      CYINIT => \ATAN_AUTOCORR_I[0]_i_3_n_0\,
       DI(3 downto 0) => B"0000",
-      O(3) => ARG2(8),
-      O(2 downto 0) => \NLW_ATAN_AUTOCORR_I_reg[0]_i_2_O_UNCONNECTED\(2 downto 0),
+      O(3 downto 1) => ARG2(4 downto 2),
+      O(0) => \NLW_ATAN_AUTOCORR_I_reg[0]_i_2_O_UNCONNECTED\(0),
       S(3) => \ATAN_AUTOCORR_I[0]_i_4_n_0\,
       S(2) => \ATAN_AUTOCORR_I[0]_i_5_n_0\,
       S(1) => \ATAN_AUTOCORR_I[0]_i_6_n_0\,
       S(0) => \ATAN_AUTOCORR_I[0]_i_7_n_0\
-    );
-\ATAN_AUTOCORR_I_reg[0]_i_3\: unisim.vcomponents.CARRY4
-     port map (
-      CI => '0',
-      CO(3) => \ATAN_AUTOCORR_I_reg[0]_i_3_n_0\,
-      CO(2) => \ATAN_AUTOCORR_I_reg[0]_i_3_n_1\,
-      CO(1) => \ATAN_AUTOCORR_I_reg[0]_i_3_n_2\,
-      CO(0) => \ATAN_AUTOCORR_I_reg[0]_i_3_n_3\,
-      CYINIT => \ATAN_AUTOCORR_I[0]_i_8_n_0\,
-      DI(3 downto 0) => B"0000",
-      O(3 downto 0) => \NLW_ATAN_AUTOCORR_I_reg[0]_i_3_O_UNCONNECTED\(3 downto 0),
-      S(3) => \ATAN_AUTOCORR_I[0]_i_9_n_0\,
-      S(2) => \ATAN_AUTOCORR_I[0]_i_10_n_0\,
-      S(1) => \ATAN_AUTOCORR_I[0]_i_11_n_0\,
-      S(0) => \ATAN_AUTOCORR_I[0]_i_12_n_0\
     );
 \ATAN_AUTOCORR_I_reg[10]\: unisim.vcomponents.FDRE
     generic map(
@@ -2534,7 +2533,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => ATAN_AUTOCORR_I0_in(10),
       Q => ATAN_AUTOCORR_I(10),
       R => '0'
@@ -2545,7 +2544,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => ATAN_AUTOCORR_I0_in(11),
       Q => ATAN_AUTOCORR_I(11),
       R => '0'
@@ -2556,7 +2555,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => ATAN_AUTOCORR_I0_in(12),
       Q => ATAN_AUTOCORR_I(12),
       R => '0'
@@ -2567,7 +2566,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => ATAN_AUTOCORR_I0_in(13),
       Q => ATAN_AUTOCORR_I(13),
       R => '0'
@@ -2578,7 +2577,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => ATAN_AUTOCORR_I0_in(14),
       Q => ATAN_AUTOCORR_I(14),
       R => '0'
@@ -2589,7 +2588,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => ATAN_AUTOCORR_I0_in(15),
       Q => ATAN_AUTOCORR_I(15),
       R => '0'
@@ -2600,7 +2599,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => ATAN_AUTOCORR_I0_in(16),
       Q => ATAN_AUTOCORR_I(16),
       R => '0'
@@ -2611,7 +2610,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => ATAN_AUTOCORR_I0_in(17),
       Q => ATAN_AUTOCORR_I(17),
       R => '0'
@@ -2622,7 +2621,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => ATAN_AUTOCORR_I0_in(18),
       Q => ATAN_AUTOCORR_I(18),
       R => '0'
@@ -2633,7 +2632,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => ATAN_AUTOCORR_I0_in(19),
       Q => ATAN_AUTOCORR_I(19),
       R => '0'
@@ -2644,7 +2643,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => ATAN_AUTOCORR_I0_in(1),
       Q => ATAN_AUTOCORR_I(1),
       R => '0'
@@ -2655,7 +2654,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => ATAN_AUTOCORR_I0_in(20),
       Q => ATAN_AUTOCORR_I(20),
       R => '0'
@@ -2666,7 +2665,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => ATAN_AUTOCORR_I0_in(21),
       Q => ATAN_AUTOCORR_I(21),
       R => '0'
@@ -2677,7 +2676,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => ATAN_AUTOCORR_I0_in(22),
       Q => ATAN_AUTOCORR_I(22),
       R => '0'
@@ -2688,7 +2687,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => ATAN_AUTOCORR_I0_in(23),
       Q => ATAN_AUTOCORR_I(23),
       R => '0'
@@ -2699,7 +2698,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => ATAN_AUTOCORR_I0_in(24),
       Q => ATAN_AUTOCORR_I(24),
       R => '0'
@@ -2710,7 +2709,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => ATAN_AUTOCORR_I0_in(25),
       Q => ATAN_AUTOCORR_I(25),
       R => '0'
@@ -2721,7 +2720,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => ATAN_AUTOCORR_I0_in(26),
       Q => ATAN_AUTOCORR_I(26),
       R => '0'
@@ -2732,7 +2731,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => ATAN_AUTOCORR_I0_in(27),
       Q => ATAN_AUTOCORR_I(27),
       R => '0'
@@ -2743,7 +2742,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => ATAN_AUTOCORR_I0_in(28),
       Q => ATAN_AUTOCORR_I(28),
       R => '0'
@@ -2754,7 +2753,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => ATAN_AUTOCORR_I0_in(29),
       Q => ATAN_AUTOCORR_I(29),
       R => '0'
@@ -2765,7 +2764,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => ATAN_AUTOCORR_I0_in(2),
       Q => ATAN_AUTOCORR_I(2),
       R => '0'
@@ -2776,7 +2775,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => ATAN_AUTOCORR_I0_in(30),
       Q => ATAN_AUTOCORR_I(30),
       R => '0'
@@ -2787,9 +2786,53 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => ATAN_AUTOCORR_I0_in(31),
       Q => ATAN_AUTOCORR_I(31),
+      R => '0'
+    );
+\ATAN_AUTOCORR_I_reg[32]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
+      D => ATAN_AUTOCORR_I0_in(32),
+      Q => ATAN_AUTOCORR_I(32),
+      R => '0'
+    );
+\ATAN_AUTOCORR_I_reg[33]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
+      D => ATAN_AUTOCORR_I0_in(33),
+      Q => ATAN_AUTOCORR_I(33),
+      R => '0'
+    );
+\ATAN_AUTOCORR_I_reg[34]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
+      D => ATAN_AUTOCORR_I0_in(34),
+      Q => ATAN_AUTOCORR_I(34),
+      R => '0'
+    );
+\ATAN_AUTOCORR_I_reg[35]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
+      D => ATAN_AUTOCORR_I0_in(35),
+      Q => ATAN_AUTOCORR_I(35),
       R => '0'
     );
 \ATAN_AUTOCORR_I_reg[3]\: unisim.vcomponents.FDRE
@@ -2798,7 +2841,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => ATAN_AUTOCORR_I0_in(3),
       Q => ATAN_AUTOCORR_I(3),
       R => '0'
@@ -2809,7 +2852,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => ATAN_AUTOCORR_I0_in(4),
       Q => ATAN_AUTOCORR_I(4),
       R => '0'
@@ -2820,7 +2863,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => ATAN_AUTOCORR_I0_in(5),
       Q => ATAN_AUTOCORR_I(5),
       R => '0'
@@ -2831,7 +2874,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => ATAN_AUTOCORR_I0_in(6),
       Q => ATAN_AUTOCORR_I(6),
       R => '0'
@@ -2842,7 +2885,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => ATAN_AUTOCORR_I0_in(7),
       Q => ATAN_AUTOCORR_I(7),
       R => '0'
@@ -2853,7 +2896,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => ATAN_AUTOCORR_I0_in(8),
       Q => ATAN_AUTOCORR_I(8),
       R => '0'
@@ -2864,7 +2907,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => ATAN_AUTOCORR_I0_in(9),
       Q => ATAN_AUTOCORR_I(9),
       R => '0'
@@ -2876,41 +2919,25 @@ begin
         port map (
       I0 => AUTOCORR_Q_BUFF(0),
       I1 => RX_STATE_reg(0),
-      I2 => \ATAN_AUTOCORR_Q_reg[0]_i_2_n_4\,
-      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(8),
+      I2 => \ATAN_AUTOCORR_Q_reg[0]_i_2_n_6\,
+      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(2),
       O => \ATAN_AUTOCORR_Q[0]_i_1_n_0\
     );
-\ATAN_AUTOCORR_Q[0]_i_10\: unisim.vcomponents.LUT1
+\ATAN_AUTOCORR_Q[0]_i_3\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(3),
-      O => \ATAN_AUTOCORR_Q[0]_i_10_n_0\
-    );
-\ATAN_AUTOCORR_Q[0]_i_11\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(2),
-      O => \ATAN_AUTOCORR_Q[0]_i_11_n_0\
-    );
-\ATAN_AUTOCORR_Q[0]_i_12\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(1),
-      O => \ATAN_AUTOCORR_Q[0]_i_12_n_0\
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(0),
+      O => \ATAN_AUTOCORR_Q[0]_i_3_n_0\
     );
 \ATAN_AUTOCORR_Q[0]_i_4\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(8),
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(4),
       O => \ATAN_AUTOCORR_Q[0]_i_4_n_0\
     );
 \ATAN_AUTOCORR_Q[0]_i_5\: unisim.vcomponents.LUT1
@@ -2918,7 +2945,7 @@ begin
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(7),
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(3),
       O => \ATAN_AUTOCORR_Q[0]_i_5_n_0\
     );
 \ATAN_AUTOCORR_Q[0]_i_6\: unisim.vcomponents.LUT1
@@ -2926,7 +2953,7 @@ begin
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(6),
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(2),
       O => \ATAN_AUTOCORR_Q[0]_i_6_n_0\
     );
 \ATAN_AUTOCORR_Q[0]_i_7\: unisim.vcomponents.LUT1
@@ -2934,24 +2961,8 @@ begin
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(5),
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(1),
       O => \ATAN_AUTOCORR_Q[0]_i_7_n_0\
-    );
-\ATAN_AUTOCORR_Q[0]_i_8\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(0),
-      O => \ATAN_AUTOCORR_Q[0]_i_8_n_0\
-    );
-\ATAN_AUTOCORR_Q[0]_i_9\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(4),
-      O => \ATAN_AUTOCORR_Q[0]_i_9_n_0\
     );
 \ATAN_AUTOCORR_Q[10]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -2961,8 +2972,8 @@ begin
       I0 => AUTOCORR_Q_BUFF(10),
       I1 => RX_STATE_reg(0),
       I2 => \_inferred__20/i__carry__1_n_6\,
-      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(18),
+      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(12),
       O => \ATAN_AUTOCORR_Q[10]_i_1_n_0\
     );
 \ATAN_AUTOCORR_Q[11]_i_1\: unisim.vcomponents.LUT5
@@ -2973,8 +2984,8 @@ begin
       I0 => AUTOCORR_Q_BUFF(11),
       I1 => RX_STATE_reg(0),
       I2 => \_inferred__20/i__carry__1_n_5\,
-      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(19),
+      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(13),
       O => \ATAN_AUTOCORR_Q[11]_i_1_n_0\
     );
 \ATAN_AUTOCORR_Q[12]_i_1\: unisim.vcomponents.LUT5
@@ -2985,8 +2996,8 @@ begin
       I0 => AUTOCORR_Q_BUFF(12),
       I1 => RX_STATE_reg(0),
       I2 => \_inferred__20/i__carry__1_n_4\,
-      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(20),
+      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(14),
       O => \ATAN_AUTOCORR_Q[12]_i_1_n_0\
     );
 \ATAN_AUTOCORR_Q[13]_i_1\: unisim.vcomponents.LUT5
@@ -2997,8 +3008,8 @@ begin
       I0 => AUTOCORR_Q_BUFF(13),
       I1 => RX_STATE_reg(0),
       I2 => \_inferred__20/i__carry__2_n_7\,
-      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(21),
+      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(15),
       O => \ATAN_AUTOCORR_Q[13]_i_1_n_0\
     );
 \ATAN_AUTOCORR_Q[14]_i_1\: unisim.vcomponents.LUT5
@@ -3009,8 +3020,8 @@ begin
       I0 => AUTOCORR_Q_BUFF(14),
       I1 => RX_STATE_reg(0),
       I2 => \_inferred__20/i__carry__2_n_6\,
-      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(22),
+      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(16),
       O => \ATAN_AUTOCORR_Q[14]_i_1_n_0\
     );
 \ATAN_AUTOCORR_Q[15]_i_1\: unisim.vcomponents.LUT5
@@ -3021,8 +3032,8 @@ begin
       I0 => AUTOCORR_Q_BUFF(15),
       I1 => RX_STATE_reg(0),
       I2 => \_inferred__20/i__carry__2_n_5\,
-      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(23),
+      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(17),
       O => \ATAN_AUTOCORR_Q[15]_i_1_n_0\
     );
 \ATAN_AUTOCORR_Q[16]_i_1\: unisim.vcomponents.LUT5
@@ -3033,8 +3044,8 @@ begin
       I0 => AUTOCORR_Q_BUFF(16),
       I1 => RX_STATE_reg(0),
       I2 => \_inferred__20/i__carry__2_n_4\,
-      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(24),
+      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(18),
       O => \ATAN_AUTOCORR_Q[16]_i_1_n_0\
     );
 \ATAN_AUTOCORR_Q[17]_i_1\: unisim.vcomponents.LUT5
@@ -3045,8 +3056,8 @@ begin
       I0 => AUTOCORR_Q_BUFF(17),
       I1 => RX_STATE_reg(0),
       I2 => \_inferred__20/i__carry__3_n_7\,
-      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(25),
+      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(19),
       O => \ATAN_AUTOCORR_Q[17]_i_1_n_0\
     );
 \ATAN_AUTOCORR_Q[18]_i_1\: unisim.vcomponents.LUT5
@@ -3057,8 +3068,8 @@ begin
       I0 => AUTOCORR_Q_BUFF(18),
       I1 => RX_STATE_reg(0),
       I2 => \_inferred__20/i__carry__3_n_6\,
-      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(26),
+      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(20),
       O => \ATAN_AUTOCORR_Q[18]_i_1_n_0\
     );
 \ATAN_AUTOCORR_Q[19]_i_1\: unisim.vcomponents.LUT5
@@ -3069,8 +3080,8 @@ begin
       I0 => AUTOCORR_Q_BUFF(19),
       I1 => RX_STATE_reg(0),
       I2 => \_inferred__20/i__carry__3_n_5\,
-      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(27),
+      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(21),
       O => \ATAN_AUTOCORR_Q[19]_i_1_n_0\
     );
 \ATAN_AUTOCORR_Q[1]_i_1\: unisim.vcomponents.LUT5
@@ -3081,8 +3092,8 @@ begin
       I0 => AUTOCORR_Q_BUFF(1),
       I1 => RX_STATE_reg(0),
       I2 => \_inferred__20/i__carry_n_7\,
-      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(9),
+      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(3),
       O => \ATAN_AUTOCORR_Q[1]_i_1_n_0\
     );
 \ATAN_AUTOCORR_Q[20]_i_1\: unisim.vcomponents.LUT5
@@ -3093,8 +3104,8 @@ begin
       I0 => AUTOCORR_Q_BUFF(20),
       I1 => RX_STATE_reg(0),
       I2 => \_inferred__20/i__carry__3_n_4\,
-      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(28),
+      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(22),
       O => \ATAN_AUTOCORR_Q[20]_i_1_n_0\
     );
 \ATAN_AUTOCORR_Q[21]_i_1\: unisim.vcomponents.LUT5
@@ -3105,8 +3116,8 @@ begin
       I0 => AUTOCORR_Q_BUFF(21),
       I1 => RX_STATE_reg(0),
       I2 => \_inferred__20/i__carry__4_n_7\,
-      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(29),
+      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(23),
       O => \ATAN_AUTOCORR_Q[21]_i_1_n_0\
     );
 \ATAN_AUTOCORR_Q[22]_i_1\: unisim.vcomponents.LUT5
@@ -3117,8 +3128,8 @@ begin
       I0 => AUTOCORR_Q_BUFF(22),
       I1 => RX_STATE_reg(0),
       I2 => \_inferred__20/i__carry__4_n_6\,
-      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(30),
+      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(24),
       O => \ATAN_AUTOCORR_Q[22]_i_1_n_0\
     );
 \ATAN_AUTOCORR_Q[23]_i_1\: unisim.vcomponents.LUT5
@@ -3129,8 +3140,8 @@ begin
       I0 => AUTOCORR_Q_BUFF(23),
       I1 => RX_STATE_reg(0),
       I2 => \_inferred__20/i__carry__4_n_5\,
-      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(31),
+      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(25),
       O => \ATAN_AUTOCORR_Q[23]_i_1_n_0\
     );
 \ATAN_AUTOCORR_Q[24]_i_1\: unisim.vcomponents.LUT5
@@ -3141,8 +3152,8 @@ begin
       I0 => AUTOCORR_Q_BUFF(24),
       I1 => RX_STATE_reg(0),
       I2 => \_inferred__20/i__carry__4_n_4\,
-      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(32),
+      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(26),
       O => \ATAN_AUTOCORR_Q[24]_i_1_n_0\
     );
 \ATAN_AUTOCORR_Q[25]_i_1\: unisim.vcomponents.LUT5
@@ -3153,8 +3164,8 @@ begin
       I0 => AUTOCORR_Q_BUFF(25),
       I1 => RX_STATE_reg(0),
       I2 => \_inferred__20/i__carry__5_n_7\,
-      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(33),
+      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(27),
       O => \ATAN_AUTOCORR_Q[25]_i_1_n_0\
     );
 \ATAN_AUTOCORR_Q[26]_i_1\: unisim.vcomponents.LUT5
@@ -3165,8 +3176,8 @@ begin
       I0 => AUTOCORR_Q_BUFF(26),
       I1 => RX_STATE_reg(0),
       I2 => \_inferred__20/i__carry__5_n_6\,
-      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(34),
+      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(28),
       O => \ATAN_AUTOCORR_Q[26]_i_1_n_0\
     );
 \ATAN_AUTOCORR_Q[27]_i_1\: unisim.vcomponents.LUT5
@@ -3177,8 +3188,8 @@ begin
       I0 => AUTOCORR_Q_BUFF(27),
       I1 => RX_STATE_reg(0),
       I2 => \_inferred__20/i__carry__5_n_5\,
-      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(35),
+      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(29),
       O => \ATAN_AUTOCORR_Q[27]_i_1_n_0\
     );
 \ATAN_AUTOCORR_Q[28]_i_1\: unisim.vcomponents.LUT5
@@ -3189,8 +3200,8 @@ begin
       I0 => AUTOCORR_Q_BUFF(28),
       I1 => RX_STATE_reg(0),
       I2 => \_inferred__20/i__carry__5_n_4\,
-      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(36),
+      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(30),
       O => \ATAN_AUTOCORR_Q[28]_i_1_n_0\
     );
 \ATAN_AUTOCORR_Q[29]_i_1\: unisim.vcomponents.LUT5
@@ -3201,8 +3212,8 @@ begin
       I0 => AUTOCORR_Q_BUFF(29),
       I1 => RX_STATE_reg(0),
       I2 => \_inferred__20/i__carry__6_n_7\,
-      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(31),
       O => \ATAN_AUTOCORR_Q[29]_i_1_n_0\
     );
 \ATAN_AUTOCORR_Q[2]_i_1\: unisim.vcomponents.LUT5
@@ -3213,8 +3224,8 @@ begin
       I0 => AUTOCORR_Q_BUFF(2),
       I1 => RX_STATE_reg(0),
       I2 => \_inferred__20/i__carry_n_6\,
-      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(10),
+      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(4),
       O => \ATAN_AUTOCORR_Q[2]_i_1_n_0\
     );
 \ATAN_AUTOCORR_Q[30]_i_1\: unisim.vcomponents.LUT5
@@ -3225,20 +3236,68 @@ begin
       I0 => AUTOCORR_Q_BUFF(30),
       I1 => RX_STATE_reg(0),
       I2 => \_inferred__20/i__carry__6_n_6\,
-      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(38),
+      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(32),
       O => \ATAN_AUTOCORR_Q[30]_i_1_n_0\
     );
-\ATAN_AUTOCORR_Q[31]_i_1\: unisim.vcomponents.LUT4
+\ATAN_AUTOCORR_Q[31]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88B8"
+      INIT => X"B8BBB888"
     )
         port map (
       I0 => AUTOCORR_Q_BUFF(31),
       I1 => RX_STATE_reg(0),
-      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I3 => \_inferred__20/i__carry__6_n_1\,
+      I2 => \_inferred__20/i__carry__6_n_5\,
+      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(33),
       O => \ATAN_AUTOCORR_Q[31]_i_1_n_0\
+    );
+\ATAN_AUTOCORR_Q[32]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"B8BBB888"
+    )
+        port map (
+      I0 => AUTOCORR_Q_BUFF(32),
+      I1 => RX_STATE_reg(0),
+      I2 => \_inferred__20/i__carry__6_n_4\,
+      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(34),
+      O => \ATAN_AUTOCORR_Q[32]_i_1_n_0\
+    );
+\ATAN_AUTOCORR_Q[33]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"B8BBB888"
+    )
+        port map (
+      I0 => AUTOCORR_Q_BUFF(33),
+      I1 => RX_STATE_reg(0),
+      I2 => \_inferred__20/i__carry__7_n_7\,
+      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(35),
+      O => \ATAN_AUTOCORR_Q[33]_i_1_n_0\
+    );
+\ATAN_AUTOCORR_Q[34]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"B8BBB888"
+    )
+        port map (
+      I0 => AUTOCORR_Q_BUFF(34),
+      I1 => RX_STATE_reg(0),
+      I2 => \_inferred__20/i__carry__7_n_6\,
+      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(36),
+      O => \ATAN_AUTOCORR_Q[34]_i_1_n_0\
+    );
+\ATAN_AUTOCORR_Q[35]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"88B8"
+    )
+        port map (
+      I0 => AUTOCORR_Q_BUFF(35),
+      I1 => RX_STATE_reg(0),
+      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I3 => \_inferred__20/i__carry__7_n_1\,
+      O => \ATAN_AUTOCORR_Q[35]_i_1_n_0\
     );
 \ATAN_AUTOCORR_Q[3]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -3248,8 +3307,8 @@ begin
       I0 => AUTOCORR_Q_BUFF(3),
       I1 => RX_STATE_reg(0),
       I2 => \_inferred__20/i__carry_n_5\,
-      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(11),
+      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(5),
       O => \ATAN_AUTOCORR_Q[3]_i_1_n_0\
     );
 \ATAN_AUTOCORR_Q[4]_i_1\: unisim.vcomponents.LUT5
@@ -3260,8 +3319,8 @@ begin
       I0 => AUTOCORR_Q_BUFF(4),
       I1 => RX_STATE_reg(0),
       I2 => \_inferred__20/i__carry_n_4\,
-      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(12),
+      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(6),
       O => \ATAN_AUTOCORR_Q[4]_i_1_n_0\
     );
 \ATAN_AUTOCORR_Q[5]_i_1\: unisim.vcomponents.LUT5
@@ -3272,8 +3331,8 @@ begin
       I0 => AUTOCORR_Q_BUFF(5),
       I1 => RX_STATE_reg(0),
       I2 => \_inferred__20/i__carry__0_n_7\,
-      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(13),
+      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(7),
       O => \ATAN_AUTOCORR_Q[5]_i_1_n_0\
     );
 \ATAN_AUTOCORR_Q[6]_i_1\: unisim.vcomponents.LUT5
@@ -3284,8 +3343,8 @@ begin
       I0 => AUTOCORR_Q_BUFF(6),
       I1 => RX_STATE_reg(0),
       I2 => \_inferred__20/i__carry__0_n_6\,
-      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(14),
+      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(8),
       O => \ATAN_AUTOCORR_Q[6]_i_1_n_0\
     );
 \ATAN_AUTOCORR_Q[7]_i_1\: unisim.vcomponents.LUT5
@@ -3296,8 +3355,8 @@ begin
       I0 => AUTOCORR_Q_BUFF(7),
       I1 => RX_STATE_reg(0),
       I2 => \_inferred__20/i__carry__0_n_5\,
-      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(15),
+      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(9),
       O => \ATAN_AUTOCORR_Q[7]_i_1_n_0\
     );
 \ATAN_AUTOCORR_Q[8]_i_1\: unisim.vcomponents.LUT5
@@ -3308,8 +3367,8 @@ begin
       I0 => AUTOCORR_Q_BUFF(8),
       I1 => RX_STATE_reg(0),
       I2 => \_inferred__20/i__carry__0_n_4\,
-      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(16),
+      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(10),
       O => \ATAN_AUTOCORR_Q[8]_i_1_n_0\
     );
 \ATAN_AUTOCORR_Q[9]_i_1\: unisim.vcomponents.LUT5
@@ -3320,8 +3379,8 @@ begin
       I0 => AUTOCORR_Q_BUFF(9),
       I1 => RX_STATE_reg(0),
       I2 => \_inferred__20/i__carry__1_n_7\,
-      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(17),
+      I3 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I4 => LTS_AUTOCORR_Q_ACCUMULATOR(11),
       O => \ATAN_AUTOCORR_Q[9]_i_1_n_0\
     );
 \ATAN_AUTOCORR_Q_reg[0]\: unisim.vcomponents.FDRE
@@ -3330,41 +3389,28 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => \ATAN_AUTOCORR_Q[0]_i_1_n_0\,
       Q => ATAN_AUTOCORR_Q(0),
       R => '0'
     );
 \ATAN_AUTOCORR_Q_reg[0]_i_2\: unisim.vcomponents.CARRY4
      port map (
-      CI => \ATAN_AUTOCORR_Q_reg[0]_i_3_n_0\,
+      CI => '0',
       CO(3) => \ATAN_AUTOCORR_Q_reg[0]_i_2_n_0\,
       CO(2) => \ATAN_AUTOCORR_Q_reg[0]_i_2_n_1\,
       CO(1) => \ATAN_AUTOCORR_Q_reg[0]_i_2_n_2\,
       CO(0) => \ATAN_AUTOCORR_Q_reg[0]_i_2_n_3\,
-      CYINIT => '0',
+      CYINIT => \ATAN_AUTOCORR_Q[0]_i_3_n_0\,
       DI(3 downto 0) => B"0000",
       O(3) => \ATAN_AUTOCORR_Q_reg[0]_i_2_n_4\,
-      O(2 downto 0) => \NLW_ATAN_AUTOCORR_Q_reg[0]_i_2_O_UNCONNECTED\(2 downto 0),
+      O(2) => \ATAN_AUTOCORR_Q_reg[0]_i_2_n_5\,
+      O(1) => \ATAN_AUTOCORR_Q_reg[0]_i_2_n_6\,
+      O(0) => \NLW_ATAN_AUTOCORR_Q_reg[0]_i_2_O_UNCONNECTED\(0),
       S(3) => \ATAN_AUTOCORR_Q[0]_i_4_n_0\,
       S(2) => \ATAN_AUTOCORR_Q[0]_i_5_n_0\,
       S(1) => \ATAN_AUTOCORR_Q[0]_i_6_n_0\,
       S(0) => \ATAN_AUTOCORR_Q[0]_i_7_n_0\
-    );
-\ATAN_AUTOCORR_Q_reg[0]_i_3\: unisim.vcomponents.CARRY4
-     port map (
-      CI => '0',
-      CO(3) => \ATAN_AUTOCORR_Q_reg[0]_i_3_n_0\,
-      CO(2) => \ATAN_AUTOCORR_Q_reg[0]_i_3_n_1\,
-      CO(1) => \ATAN_AUTOCORR_Q_reg[0]_i_3_n_2\,
-      CO(0) => \ATAN_AUTOCORR_Q_reg[0]_i_3_n_3\,
-      CYINIT => \ATAN_AUTOCORR_Q[0]_i_8_n_0\,
-      DI(3 downto 0) => B"0000",
-      O(3 downto 0) => \NLW_ATAN_AUTOCORR_Q_reg[0]_i_3_O_UNCONNECTED\(3 downto 0),
-      S(3) => \ATAN_AUTOCORR_Q[0]_i_9_n_0\,
-      S(2) => \ATAN_AUTOCORR_Q[0]_i_10_n_0\,
-      S(1) => \ATAN_AUTOCORR_Q[0]_i_11_n_0\,
-      S(0) => \ATAN_AUTOCORR_Q[0]_i_12_n_0\
     );
 \ATAN_AUTOCORR_Q_reg[10]\: unisim.vcomponents.FDRE
     generic map(
@@ -3372,7 +3418,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => \ATAN_AUTOCORR_Q[10]_i_1_n_0\,
       Q => ATAN_AUTOCORR_Q(10),
       R => '0'
@@ -3383,7 +3429,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => \ATAN_AUTOCORR_Q[11]_i_1_n_0\,
       Q => ATAN_AUTOCORR_Q(11),
       R => '0'
@@ -3394,7 +3440,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => \ATAN_AUTOCORR_Q[12]_i_1_n_0\,
       Q => ATAN_AUTOCORR_Q(12),
       R => '0'
@@ -3405,7 +3451,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => \ATAN_AUTOCORR_Q[13]_i_1_n_0\,
       Q => ATAN_AUTOCORR_Q(13),
       R => '0'
@@ -3416,7 +3462,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => \ATAN_AUTOCORR_Q[14]_i_1_n_0\,
       Q => ATAN_AUTOCORR_Q(14),
       R => '0'
@@ -3427,7 +3473,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => \ATAN_AUTOCORR_Q[15]_i_1_n_0\,
       Q => ATAN_AUTOCORR_Q(15),
       R => '0'
@@ -3438,7 +3484,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => \ATAN_AUTOCORR_Q[16]_i_1_n_0\,
       Q => ATAN_AUTOCORR_Q(16),
       R => '0'
@@ -3449,7 +3495,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => \ATAN_AUTOCORR_Q[17]_i_1_n_0\,
       Q => ATAN_AUTOCORR_Q(17),
       R => '0'
@@ -3460,7 +3506,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => \ATAN_AUTOCORR_Q[18]_i_1_n_0\,
       Q => ATAN_AUTOCORR_Q(18),
       R => '0'
@@ -3471,7 +3517,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => \ATAN_AUTOCORR_Q[19]_i_1_n_0\,
       Q => ATAN_AUTOCORR_Q(19),
       R => '0'
@@ -3482,7 +3528,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => \ATAN_AUTOCORR_Q[1]_i_1_n_0\,
       Q => ATAN_AUTOCORR_Q(1),
       R => '0'
@@ -3493,7 +3539,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => \ATAN_AUTOCORR_Q[20]_i_1_n_0\,
       Q => ATAN_AUTOCORR_Q(20),
       R => '0'
@@ -3504,7 +3550,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => \ATAN_AUTOCORR_Q[21]_i_1_n_0\,
       Q => ATAN_AUTOCORR_Q(21),
       R => '0'
@@ -3515,7 +3561,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => \ATAN_AUTOCORR_Q[22]_i_1_n_0\,
       Q => ATAN_AUTOCORR_Q(22),
       R => '0'
@@ -3526,7 +3572,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => \ATAN_AUTOCORR_Q[23]_i_1_n_0\,
       Q => ATAN_AUTOCORR_Q(23),
       R => '0'
@@ -3537,7 +3583,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => \ATAN_AUTOCORR_Q[24]_i_1_n_0\,
       Q => ATAN_AUTOCORR_Q(24),
       R => '0'
@@ -3548,7 +3594,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => \ATAN_AUTOCORR_Q[25]_i_1_n_0\,
       Q => ATAN_AUTOCORR_Q(25),
       R => '0'
@@ -3559,7 +3605,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => \ATAN_AUTOCORR_Q[26]_i_1_n_0\,
       Q => ATAN_AUTOCORR_Q(26),
       R => '0'
@@ -3570,7 +3616,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => \ATAN_AUTOCORR_Q[27]_i_1_n_0\,
       Q => ATAN_AUTOCORR_Q(27),
       R => '0'
@@ -3581,7 +3627,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => \ATAN_AUTOCORR_Q[28]_i_1_n_0\,
       Q => ATAN_AUTOCORR_Q(28),
       R => '0'
@@ -3592,7 +3638,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => \ATAN_AUTOCORR_Q[29]_i_1_n_0\,
       Q => ATAN_AUTOCORR_Q(29),
       R => '0'
@@ -3603,7 +3649,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => \ATAN_AUTOCORR_Q[2]_i_1_n_0\,
       Q => ATAN_AUTOCORR_Q(2),
       R => '0'
@@ -3614,7 +3660,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => \ATAN_AUTOCORR_Q[30]_i_1_n_0\,
       Q => ATAN_AUTOCORR_Q(30),
       R => '0'
@@ -3625,9 +3671,53 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => \ATAN_AUTOCORR_Q[31]_i_1_n_0\,
       Q => ATAN_AUTOCORR_Q(31),
+      R => '0'
+    );
+\ATAN_AUTOCORR_Q_reg[32]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
+      D => \ATAN_AUTOCORR_Q[32]_i_1_n_0\,
+      Q => ATAN_AUTOCORR_Q(32),
+      R => '0'
+    );
+\ATAN_AUTOCORR_Q_reg[33]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
+      D => \ATAN_AUTOCORR_Q[33]_i_1_n_0\,
+      Q => ATAN_AUTOCORR_Q(33),
+      R => '0'
+    );
+\ATAN_AUTOCORR_Q_reg[34]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
+      D => \ATAN_AUTOCORR_Q[34]_i_1_n_0\,
+      Q => ATAN_AUTOCORR_Q(34),
+      R => '0'
+    );
+\ATAN_AUTOCORR_Q_reg[35]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
+      D => \ATAN_AUTOCORR_Q[35]_i_1_n_0\,
+      Q => ATAN_AUTOCORR_Q(35),
       R => '0'
     );
 \ATAN_AUTOCORR_Q_reg[3]\: unisim.vcomponents.FDRE
@@ -3636,7 +3726,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => \ATAN_AUTOCORR_Q[3]_i_1_n_0\,
       Q => ATAN_AUTOCORR_Q(3),
       R => '0'
@@ -3647,7 +3737,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => \ATAN_AUTOCORR_Q[4]_i_1_n_0\,
       Q => ATAN_AUTOCORR_Q(4),
       R => '0'
@@ -3658,7 +3748,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => \ATAN_AUTOCORR_Q[5]_i_1_n_0\,
       Q => ATAN_AUTOCORR_Q(5),
       R => '0'
@@ -3669,7 +3759,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => \ATAN_AUTOCORR_Q[6]_i_1_n_0\,
       Q => ATAN_AUTOCORR_Q(6),
       R => '0'
@@ -3680,7 +3770,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => \ATAN_AUTOCORR_Q[7]_i_1_n_0\,
       Q => ATAN_AUTOCORR_Q(7),
       R => '0'
@@ -3691,7 +3781,7 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => \ATAN_AUTOCORR_Q[8]_i_1_n_0\,
       Q => ATAN_AUTOCORR_Q(8),
       R => '0'
@@ -3702,19 +3792,19 @@ begin
     )
         port map (
       C => CLOCK,
-      CE => \ATAN_AUTOCORR_I[31]_i_1_n_0\,
+      CE => \ATAN_AUTOCORR_I[35]_i_1_n_0\,
       D => \ATAN_AUTOCORR_Q[9]_i_1_n_0\,
       Q => ATAN_AUTOCORR_Q(9),
       R => '0'
     );
 ATAN_AUTOCORR_STROBE_i_1: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"ECFC200C"
+      INIT => X"F8FC0830"
     )
         port map (
       I0 => LTS_AUTOCORR_READY_reg_n_0,
-      I1 => RX_STATE_reg(0),
-      I2 => RX_STATE_reg(2),
+      I1 => RX_STATE_reg(2),
+      I2 => RX_STATE_reg(0),
       I3 => RX_STATE_reg(1),
       I4 => \^atan_autocorr_strobe\,
       O => ATAN_AUTOCORR_STROBE_i_1_n_0
@@ -3730,7 +3820,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
       Q => \^atan_autocorr_strobe\,
       R => '0'
     );
-\AUTOCORR_I_BUFF[31]_i_1\: unisim.vcomponents.LUT4
+\AUTOCORR_I_BUFF[35]_i_1\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"0001"
     )
@@ -3739,7 +3829,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
       I1 => RX_STATE_reg(1),
       I2 => RX_STATE_reg(2),
       I3 => RESET,
-      O => \AUTOCORR_I_BUFF[31]_i_1_n_0\
+      O => \AUTOCORR_I_BUFF[35]_i_1_n_0\
     );
 \AUTOCORR_I_BUFF_reg[0]\: unisim.vcomponents.FDRE
     generic map(
@@ -3747,7 +3837,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_I(0),
       Q => AUTOCORR_I_BUFF(0),
       R => '0'
@@ -3758,7 +3848,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_I(10),
       Q => AUTOCORR_I_BUFF(10),
       R => '0'
@@ -3769,7 +3859,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_I(11),
       Q => AUTOCORR_I_BUFF(11),
       R => '0'
@@ -3780,7 +3870,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_I(12),
       Q => AUTOCORR_I_BUFF(12),
       R => '0'
@@ -3791,7 +3881,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_I(13),
       Q => AUTOCORR_I_BUFF(13),
       R => '0'
@@ -3802,7 +3892,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_I(14),
       Q => AUTOCORR_I_BUFF(14),
       R => '0'
@@ -3813,7 +3903,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_I(15),
       Q => AUTOCORR_I_BUFF(15),
       R => '0'
@@ -3824,7 +3914,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_I(16),
       Q => AUTOCORR_I_BUFF(16),
       R => '0'
@@ -3835,7 +3925,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_I(17),
       Q => AUTOCORR_I_BUFF(17),
       R => '0'
@@ -3846,7 +3936,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_I(18),
       Q => AUTOCORR_I_BUFF(18),
       R => '0'
@@ -3857,7 +3947,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_I(19),
       Q => AUTOCORR_I_BUFF(19),
       R => '0'
@@ -3868,7 +3958,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_I(1),
       Q => AUTOCORR_I_BUFF(1),
       R => '0'
@@ -3879,7 +3969,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_I(20),
       Q => AUTOCORR_I_BUFF(20),
       R => '0'
@@ -3890,7 +3980,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_I(21),
       Q => AUTOCORR_I_BUFF(21),
       R => '0'
@@ -3901,7 +3991,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_I(22),
       Q => AUTOCORR_I_BUFF(22),
       R => '0'
@@ -3912,7 +4002,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_I(23),
       Q => AUTOCORR_I_BUFF(23),
       R => '0'
@@ -3923,7 +4013,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_I(24),
       Q => AUTOCORR_I_BUFF(24),
       R => '0'
@@ -3934,7 +4024,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_I(25),
       Q => AUTOCORR_I_BUFF(25),
       R => '0'
@@ -3945,7 +4035,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_I(26),
       Q => AUTOCORR_I_BUFF(26),
       R => '0'
@@ -3956,7 +4046,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_I(27),
       Q => AUTOCORR_I_BUFF(27),
       R => '0'
@@ -3967,7 +4057,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_I(28),
       Q => AUTOCORR_I_BUFF(28),
       R => '0'
@@ -3978,7 +4068,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_I(29),
       Q => AUTOCORR_I_BUFF(29),
       R => '0'
@@ -3989,7 +4079,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_I(2),
       Q => AUTOCORR_I_BUFF(2),
       R => '0'
@@ -4000,7 +4090,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_I(30),
       Q => AUTOCORR_I_BUFF(30),
       R => '0'
@@ -4011,9 +4101,53 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_I(31),
       Q => AUTOCORR_I_BUFF(31),
+      R => '0'
+    );
+\AUTOCORR_I_BUFF_reg[32]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
+      D => DETECTION_STS_AUTOCORR_I(32),
+      Q => AUTOCORR_I_BUFF(32),
+      R => '0'
+    );
+\AUTOCORR_I_BUFF_reg[33]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
+      D => DETECTION_STS_AUTOCORR_I(33),
+      Q => AUTOCORR_I_BUFF(33),
+      R => '0'
+    );
+\AUTOCORR_I_BUFF_reg[34]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
+      D => DETECTION_STS_AUTOCORR_I(34),
+      Q => AUTOCORR_I_BUFF(34),
+      R => '0'
+    );
+\AUTOCORR_I_BUFF_reg[35]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
+      D => DETECTION_STS_AUTOCORR_I(35),
+      Q => AUTOCORR_I_BUFF(35),
       R => '0'
     );
 \AUTOCORR_I_BUFF_reg[3]\: unisim.vcomponents.FDRE
@@ -4022,7 +4156,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_I(3),
       Q => AUTOCORR_I_BUFF(3),
       R => '0'
@@ -4033,7 +4167,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_I(4),
       Q => AUTOCORR_I_BUFF(4),
       R => '0'
@@ -4044,7 +4178,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_I(5),
       Q => AUTOCORR_I_BUFF(5),
       R => '0'
@@ -4055,7 +4189,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_I(6),
       Q => AUTOCORR_I_BUFF(6),
       R => '0'
@@ -4066,7 +4200,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_I(7),
       Q => AUTOCORR_I_BUFF(7),
       R => '0'
@@ -4077,7 +4211,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_I(8),
       Q => AUTOCORR_I_BUFF(8),
       R => '0'
@@ -4088,7 +4222,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_I(9),
       Q => AUTOCORR_I_BUFF(9),
       R => '0'
@@ -4331,7 +4465,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_Q(0),
       Q => AUTOCORR_Q_BUFF(0),
       R => '0'
@@ -4342,7 +4476,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_Q(10),
       Q => AUTOCORR_Q_BUFF(10),
       R => '0'
@@ -4353,7 +4487,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_Q(11),
       Q => AUTOCORR_Q_BUFF(11),
       R => '0'
@@ -4364,7 +4498,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_Q(12),
       Q => AUTOCORR_Q_BUFF(12),
       R => '0'
@@ -4375,7 +4509,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_Q(13),
       Q => AUTOCORR_Q_BUFF(13),
       R => '0'
@@ -4386,7 +4520,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_Q(14),
       Q => AUTOCORR_Q_BUFF(14),
       R => '0'
@@ -4397,7 +4531,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_Q(15),
       Q => AUTOCORR_Q_BUFF(15),
       R => '0'
@@ -4408,7 +4542,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_Q(16),
       Q => AUTOCORR_Q_BUFF(16),
       R => '0'
@@ -4419,7 +4553,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_Q(17),
       Q => AUTOCORR_Q_BUFF(17),
       R => '0'
@@ -4430,7 +4564,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_Q(18),
       Q => AUTOCORR_Q_BUFF(18),
       R => '0'
@@ -4441,7 +4575,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_Q(19),
       Q => AUTOCORR_Q_BUFF(19),
       R => '0'
@@ -4452,7 +4586,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_Q(1),
       Q => AUTOCORR_Q_BUFF(1),
       R => '0'
@@ -4463,7 +4597,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_Q(20),
       Q => AUTOCORR_Q_BUFF(20),
       R => '0'
@@ -4474,7 +4608,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_Q(21),
       Q => AUTOCORR_Q_BUFF(21),
       R => '0'
@@ -4485,7 +4619,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_Q(22),
       Q => AUTOCORR_Q_BUFF(22),
       R => '0'
@@ -4496,7 +4630,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_Q(23),
       Q => AUTOCORR_Q_BUFF(23),
       R => '0'
@@ -4507,7 +4641,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_Q(24),
       Q => AUTOCORR_Q_BUFF(24),
       R => '0'
@@ -4518,7 +4652,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_Q(25),
       Q => AUTOCORR_Q_BUFF(25),
       R => '0'
@@ -4529,7 +4663,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_Q(26),
       Q => AUTOCORR_Q_BUFF(26),
       R => '0'
@@ -4540,7 +4674,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_Q(27),
       Q => AUTOCORR_Q_BUFF(27),
       R => '0'
@@ -4551,7 +4685,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_Q(28),
       Q => AUTOCORR_Q_BUFF(28),
       R => '0'
@@ -4562,7 +4696,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_Q(29),
       Q => AUTOCORR_Q_BUFF(29),
       R => '0'
@@ -4573,7 +4707,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_Q(2),
       Q => AUTOCORR_Q_BUFF(2),
       R => '0'
@@ -4584,7 +4718,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_Q(30),
       Q => AUTOCORR_Q_BUFF(30),
       R => '0'
@@ -4595,9 +4729,53 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_Q(31),
       Q => AUTOCORR_Q_BUFF(31),
+      R => '0'
+    );
+\AUTOCORR_Q_BUFF_reg[32]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
+      D => DETECTION_STS_AUTOCORR_Q(32),
+      Q => AUTOCORR_Q_BUFF(32),
+      R => '0'
+    );
+\AUTOCORR_Q_BUFF_reg[33]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
+      D => DETECTION_STS_AUTOCORR_Q(33),
+      Q => AUTOCORR_Q_BUFF(33),
+      R => '0'
+    );
+\AUTOCORR_Q_BUFF_reg[34]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
+      D => DETECTION_STS_AUTOCORR_Q(34),
+      Q => AUTOCORR_Q_BUFF(34),
+      R => '0'
+    );
+\AUTOCORR_Q_BUFF_reg[35]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
+      D => DETECTION_STS_AUTOCORR_Q(35),
+      Q => AUTOCORR_Q_BUFF(35),
       R => '0'
     );
 \AUTOCORR_Q_BUFF_reg[3]\: unisim.vcomponents.FDRE
@@ -4606,7 +4784,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_Q(3),
       Q => AUTOCORR_Q_BUFF(3),
       R => '0'
@@ -4617,7 +4795,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_Q(4),
       Q => AUTOCORR_Q_BUFF(4),
       R => '0'
@@ -4628,7 +4806,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_Q(5),
       Q => AUTOCORR_Q_BUFF(5),
       R => '0'
@@ -4639,7 +4817,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_Q(6),
       Q => AUTOCORR_Q_BUFF(6),
       R => '0'
@@ -4650,7 +4828,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_Q(7),
       Q => AUTOCORR_Q_BUFF(7),
       R => '0'
@@ -4661,7 +4839,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_Q(8),
       Q => AUTOCORR_Q_BUFF(8),
       R => '0'
@@ -4672,38 +4850,109 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => CLOCK,
-      CE => \AUTOCORR_I_BUFF[31]_i_1_n_0\,
+      CE => \AUTOCORR_I_BUFF[35]_i_1_n_0\,
       D => DETECTION_STS_AUTOCORR_Q(9),
       Q => AUTOCORR_Q_BUFF(9),
       R => '0'
     );
 \COUNTER[0]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"00000000FF5D0D0D"
+      INIT => X"000000000800FFFF"
     )
         port map (
       I0 => \COUNTER[31]_i_4_n_0\,
-      I1 => \COUNTER[31]_i_5_n_0\,
-      I2 => \COUNTER[31]_i_6_n_0\,
-      I3 => \COUNTER[31]_i_7_n_0\,
-      I4 => RX_STATE_reg(0),
+      I1 => RX_STATE_reg(1),
+      I2 => RX_STATE_reg(0),
+      I3 => \COUNTER[31]_i_5_n_0\,
+      I4 => \COUNTER[31]_i_6_n_0\,
       I5 => COUNTER(0),
       O => \COUNTER[0]_i_1_n_0\
     );
 \COUNTER[31]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"00A2F2F200000000"
+      INIT => X"F7FF000000000000"
     )
         port map (
       I0 => \COUNTER[31]_i_4_n_0\,
-      I1 => \COUNTER[31]_i_5_n_0\,
-      I2 => \COUNTER[31]_i_6_n_0\,
-      I3 => \COUNTER[31]_i_7_n_0\,
-      I4 => RX_STATE_reg(0),
+      I1 => RX_STATE_reg(1),
+      I2 => RX_STATE_reg(0),
+      I3 => \COUNTER[31]_i_5_n_0\,
+      I4 => \COUNTER[31]_i_6_n_0\,
       I5 => \COUNTER[31]_i_2_n_0\,
       O => \COUNTER[31]_i_1_n_0\
     );
-\COUNTER[31]_i_10\: unisim.vcomponents.LUT6
+\COUNTER[31]_i_10\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"EFFFFFFF"
+    )
+        port map (
+      I0 => \COUNTER_OFDM_SYMBOL[9]_i_13_n_0\,
+      I1 => RX_STATE_reg(1),
+      I2 => COUNTER(5),
+      I3 => COUNTER(3),
+      I4 => COUNTER(4),
+      O => \COUNTER[31]_i_10_n_0\
+    );
+\COUNTER[31]_i_2\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"04"
+    )
+        port map (
+      I0 => RESET,
+      I1 => RX_STATE_reg(2),
+      I2 => \COUNTER[31]_i_7_n_0\,
+      O => \COUNTER[31]_i_2_n_0\
+    );
+\COUNTER[31]_i_4\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFFFFFFFFFFFFFE"
+    )
+        port map (
+      I0 => \COUNTER_OFDM_SYMBOL[9]_i_5_n_0\,
+      I1 => COUNTER(13),
+      I2 => COUNTER(12),
+      I3 => COUNTER(15),
+      I4 => COUNTER(14),
+      I5 => \COUNTER_OFDM_SYMBOL[9]_i_7_n_0\,
+      O => \COUNTER[31]_i_4_n_0\
+    );
+\COUNTER[31]_i_5\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"45"
+    )
+        port map (
+      I0 => STOP_RX_DONE,
+      I1 => \COUNTER[31]_i_8_n_0\,
+      I2 => \COUNTER[31]_i_9_n_0\,
+      O => \COUNTER[31]_i_5_n_0\
+    );
+\COUNTER[31]_i_6\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"00800000FFFFFFFF"
+    )
+        port map (
+      I0 => COUNTER(0),
+      I1 => COUNTER(1),
+      I2 => COUNTER(2),
+      I3 => \COUNTER[31]_i_10_n_0\,
+      I4 => FFT_DATA_IN_START_i_3_n_0,
+      I5 => RX_STATE_reg(0),
+      O => \COUNTER[31]_i_6_n_0\
+    );
+\COUNTER[31]_i_7\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"C0C0000FFFFFAFAF"
+    )
+        port map (
+      I0 => \COUNTER[31]_i_5_n_0\,
+      I1 => \RX_STATE0_inferred__0/i__carry__2_n_0\,
+      I2 => RX_STATE_reg(1),
+      I3 => ROTATION_DATA_OUT_MARKER,
+      I4 => RX_STATE_reg(0),
+      I5 => ROTATION_DATA_OUT_STROBE,
+      O => \COUNTER[31]_i_7_n_0\
+    );
+\COUNTER[31]_i_8\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"FFFFFFFFFBFFFFFF"
     )
@@ -4714,9 +4963,9 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
       I3 => \COUNTER_OFDM_SYMBOL_reg_n_0_[1]\,
       I4 => \COUNTER_OFDM_SYMBOL_reg_n_0_[2]\,
       I5 => \COUNTER_OFDM_SYMBOL_reg_n_0_[0]\,
-      O => \COUNTER[31]_i_10_n_0\
+      O => \COUNTER[31]_i_8_n_0\
     );
-\COUNTER[31]_i_11\: unisim.vcomponents.LUT5
+\COUNTER[31]_i_9\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"00400000"
     )
@@ -4726,85 +4975,6 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
       I2 => \COUNTER_OFDM_SYMBOL_reg_n_0_[6]\,
       I3 => \COUNTER_OFDM_SYMBOL_reg_n_0_[7]\,
       I4 => \COUNTER_OFDM_SYMBOL_reg_n_0_[8]\,
-      O => \COUNTER[31]_i_11_n_0\
-    );
-\COUNTER[31]_i_2\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"000000007F557F5F"
-    )
-        port map (
-      I0 => RX_STATE_reg(1),
-      I1 => \RX_STATE0_inferred__0/i__carry__2_n_0\,
-      I2 => RX_STATE_reg(0),
-      I3 => ROTATION_DATA_OUT_STROBE,
-      I4 => \COUNTER[31]_i_8_n_0\,
-      I5 => \COUNTER[31]_i_9_n_0\,
-      O => \COUNTER[31]_i_2_n_0\
-    );
-\COUNTER[31]_i_4\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00008000"
-    )
-        port map (
-      I0 => \COUNTER_OFDM_SYMBOL[9]_i_5_n_0\,
-      I1 => COUNTER(2),
-      I2 => COUNTER(1),
-      I3 => COUNTER(0),
-      I4 => FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_2_n_0,
-      O => \COUNTER[31]_i_4_n_0\
-    );
-\COUNTER[31]_i_5\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"EF"
-    )
-        port map (
-      I0 => COUNTER(4),
-      I1 => COUNTER(5),
-      I2 => COUNTER(3),
-      O => \COUNTER[31]_i_5_n_0\
-    );
-\COUNTER[31]_i_6\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"DF"
-    )
-        port map (
-      I0 => \COUNTER[31]_i_8_n_0\,
-      I1 => RX_STATE_reg(0),
-      I2 => RX_STATE_reg(1),
-      O => \COUNTER[31]_i_6_n_0\
-    );
-\COUNTER[31]_i_7\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"FF7F"
-    )
-        port map (
-      I0 => COUNTER(4),
-      I1 => COUNTER(3),
-      I2 => COUNTER(5),
-      I3 => RX_STATE_reg(1),
-      O => \COUNTER[31]_i_7_n_0\
-    );
-\COUNTER[31]_i_8\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"45"
-    )
-        port map (
-      I0 => STOP_RX_DONE,
-      I1 => \COUNTER[31]_i_10_n_0\,
-      I2 => \COUNTER[31]_i_11_n_0\,
-      O => \COUNTER[31]_i_8_n_0\
-    );
-\COUNTER[31]_i_9\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFF0515FFFFFFFF"
-    )
-        port map (
-      I0 => RX_STATE_reg(1),
-      I1 => RX_STATE_reg(0),
-      I2 => ROTATION_DATA_OUT_STROBE,
-      I3 => ROTATION_DATA_OUT_MARKER,
-      I4 => RESET,
-      I5 => RX_STATE_reg(2),
       O => \COUNTER[31]_i_9_n_0\
     );
 \COUNTER_IQ0_inferred__1/i__carry\: unisim.vcomponents.CARRY4
@@ -5715,7 +5885,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \COUNTER_OFDM_SYMBOL_reg_n_0_[8]\,
       I1 => \COUNTER_OFDM_SYMBOL_reg_n_0_[7]\,
-      I2 => \COUNTER_OFDM_SYMBOL[9]_i_8_n_0\,
+      I2 => \COUNTER_OFDM_SYMBOL[9]_i_9_n_0\,
       I3 => \COUNTER_OFDM_SYMBOL_reg_n_0_[6]\,
       O => \COUNTER_OFDM_SYMBOL[10]_i_2_n_0\
     );
@@ -5795,7 +5965,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
         port map (
       I0 => RX_STATE_reg(1),
       I1 => \COUNTER_OFDM_SYMBOL_reg_n_0_[6]\,
-      I2 => \COUNTER_OFDM_SYMBOL[9]_i_8_n_0\,
+      I2 => \COUNTER_OFDM_SYMBOL[9]_i_9_n_0\,
       O => \COUNTER_OFDM_SYMBOL[6]_i_1_n_0\
     );
 \COUNTER_OFDM_SYMBOL[7]_i_1\: unisim.vcomponents.LUT4
@@ -5806,7 +5976,7 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
       I0 => RX_STATE_reg(1),
       I1 => \COUNTER_OFDM_SYMBOL_reg_n_0_[7]\,
       I2 => \COUNTER_OFDM_SYMBOL_reg_n_0_[6]\,
-      I3 => \COUNTER_OFDM_SYMBOL[9]_i_8_n_0\,
+      I3 => \COUNTER_OFDM_SYMBOL[9]_i_9_n_0\,
       O => \COUNTER_OFDM_SYMBOL[7]_i_1_n_0\
     );
 \COUNTER_OFDM_SYMBOL[8]_i_1\: unisim.vcomponents.LUT5
@@ -5817,33 +5987,93 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
       I0 => RX_STATE_reg(1),
       I1 => \COUNTER_OFDM_SYMBOL_reg_n_0_[8]\,
       I2 => \COUNTER_OFDM_SYMBOL_reg_n_0_[7]\,
-      I3 => \COUNTER_OFDM_SYMBOL[9]_i_8_n_0\,
+      I3 => \COUNTER_OFDM_SYMBOL[9]_i_9_n_0\,
       I4 => \COUNTER_OFDM_SYMBOL_reg_n_0_[6]\,
       O => \COUNTER_OFDM_SYMBOL[8]_i_1_n_0\
     );
 \COUNTER_OFDM_SYMBOL[9]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"1000FF0010001000"
+      INIT => X"8888888F88888888"
     )
         port map (
-      I0 => \COUNTER[31]_i_5_n_0\,
-      I1 => \COUNTER_OFDM_SYMBOL[9]_i_3_n_0\,
-      I2 => \COUNTER_OFDM_SYMBOL[9]_i_4_n_0\,
-      I3 => \COUNTER_OFDM_SYMBOL[9]_i_5_n_0\,
-      I4 => \COUNTER_OFDM_SYMBOL[9]_i_6_n_0\,
-      I5 => \COUNTER_OFDM_SYMBOL[9]_i_7_n_0\,
+      I0 => \COUNTER_OFDM_SYMBOL[9]_i_3_n_0\,
+      I1 => \COUNTER_OFDM_SYMBOL[9]_i_4_n_0\,
+      I2 => \COUNTER_OFDM_SYMBOL[9]_i_5_n_0\,
+      I3 => \COUNTER_OFDM_SYMBOL[9]_i_6_n_0\,
+      I4 => \COUNTER_OFDM_SYMBOL[9]_i_7_n_0\,
+      I5 => \COUNTER_OFDM_SYMBOL[9]_i_8_n_0\,
       O => \COUNTER_OFDM_SYMBOL[9]_i_1_n_0\
     );
-\COUNTER_OFDM_SYMBOL[9]_i_10\: unisim.vcomponents.LUT4
+\COUNTER_OFDM_SYMBOL[9]_i_10\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFDF"
+      INIT => X"FFFFFFFFFFFFF7FF"
     )
         port map (
-      I0 => ROTATION_DATA_OUT_STROBE,
-      I1 => COUNTER(25),
-      I2 => COUNTER(5),
-      I3 => COUNTER(26),
+      I0 => COUNTER(4),
+      I1 => COUNTER(3),
+      I2 => COUNTER(7),
+      I3 => COUNTER(6),
+      I4 => COUNTER(18),
+      I5 => COUNTER(19),
       O => \COUNTER_OFDM_SYMBOL[9]_i_10_n_0\
+    );
+\COUNTER_OFDM_SYMBOL[9]_i_11\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFFFFFFFBFFFFFF"
+    )
+        port map (
+      I0 => RX_STATE_reg(1),
+      I1 => RX_STATE_reg(0),
+      I2 => FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_8_n_0,
+      I3 => COUNTER(5),
+      I4 => COUNTER(4),
+      I5 => FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_7_n_0,
+      O => \COUNTER_OFDM_SYMBOL[9]_i_11_n_0\
+    );
+\COUNTER_OFDM_SYMBOL[9]_i_12\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFFFFFFFFFFFFFB"
+    )
+        port map (
+      I0 => COUNTER(14),
+      I1 => ROTATION_DATA_OUT_STROBE,
+      I2 => COUNTER(15),
+      I3 => COUNTER(13),
+      I4 => COUNTER(26),
+      I5 => COUNTER(12),
+      O => \COUNTER_OFDM_SYMBOL[9]_i_12_n_0\
+    );
+\COUNTER_OFDM_SYMBOL[9]_i_13\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FFEF"
+    )
+        port map (
+      I0 => COUNTER(31),
+      I1 => COUNTER(30),
+      I2 => COUNTER(6),
+      I3 => COUNTER(7),
+      O => \COUNTER_OFDM_SYMBOL[9]_i_13_n_0\
+    );
+\COUNTER_OFDM_SYMBOL[9]_i_14\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"FFFFFFFE"
+    )
+        port map (
+      I0 => FFT_DATA_IN_START_i_5_n_0,
+      I1 => COUNTER(18),
+      I2 => COUNTER(19),
+      I3 => COUNTER(16),
+      I4 => COUNTER(17),
+      O => \COUNTER_OFDM_SYMBOL[9]_i_14_n_0\
+    );
+\COUNTER_OFDM_SYMBOL[9]_i_15\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => COUNTER(20),
+      I1 => COUNTER(21),
+      O => \COUNTER_OFDM_SYMBOL[9]_i_15_n_0\
     );
 \COUNTER_OFDM_SYMBOL[9]_i_2\: unisim.vcomponents.LUT6
     generic map(
@@ -5853,70 +6083,84 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
       I0 => RX_STATE_reg(1),
       I1 => \COUNTER_OFDM_SYMBOL_reg_n_0_[9]\,
       I2 => \COUNTER_OFDM_SYMBOL_reg_n_0_[6]\,
-      I3 => \COUNTER_OFDM_SYMBOL[9]_i_8_n_0\,
+      I3 => \COUNTER_OFDM_SYMBOL[9]_i_9_n_0\,
       I4 => \COUNTER_OFDM_SYMBOL_reg_n_0_[7]\,
       I5 => \COUNTER_OFDM_SYMBOL_reg_n_0_[8]\,
       O => \COUNTER_OFDM_SYMBOL[9]_i_2_n_0\
     );
 \COUNTER_OFDM_SYMBOL[9]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFFFFFFFFFFFFE"
+      INIT => X"0000000000000001"
     )
         port map (
-      I0 => FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_4_n_0,
-      I1 => COUNTER(25),
-      I2 => COUNTER(24),
-      I3 => FFT_DATA_IN_START_i_8_n_0,
-      I4 => COUNTER(26),
-      I5 => \COUNTER_OFDM_SYMBOL[9]_i_9_n_0\,
+      I0 => \COUNTER_OFDM_SYMBOL[9]_i_7_n_0\,
+      I1 => FFT_DATA_IN_START_i_5_n_0,
+      I2 => FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_4_n_0,
+      I3 => \COUNTER_OFDM_SYMBOL[9]_i_10_n_0\,
+      I4 => \COUNTER_OFDM_SYMBOL[9]_i_11_n_0\,
+      I5 => \COUNTER_OFDM_SYMBOL[9]_i_12_n_0\,
       O => \COUNTER_OFDM_SYMBOL[9]_i_3_n_0\
     );
-\COUNTER_OFDM_SYMBOL[9]_i_4\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0000000020000000"
-    )
-        port map (
-      I0 => \COUNTER[31]_i_8_n_0\,
-      I1 => RX_STATE_reg(0),
-      I2 => RX_STATE_reg(1),
-      I3 => RX_STATE_reg(2),
-      I4 => ROTATION_DATA_OUT_STROBE,
-      I5 => RESET,
-      O => \COUNTER_OFDM_SYMBOL[9]_i_4_n_0\
-    );
-\COUNTER_OFDM_SYMBOL[9]_i_5\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"04"
-    )
-        port map (
-      I0 => COUNTER(7),
-      I1 => COUNTER(6),
-      I2 => FFT_DATA_IN_START_i_4_n_0,
-      O => \COUNTER_OFDM_SYMBOL[9]_i_5_n_0\
-    );
-\COUNTER_OFDM_SYMBOL[9]_i_6\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFFFFFFFFBFFF"
-    )
-        port map (
-      I0 => \FSM_sequential_RX_STATE[2]_i_6_n_0\,
-      I1 => COUNTER(0),
-      I2 => COUNTER(1),
-      I3 => COUNTER(2),
-      I4 => \COUNTER_OFDM_SYMBOL[9]_i_10_n_0\,
-      I5 => FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_4_n_0,
-      O => \COUNTER_OFDM_SYMBOL[9]_i_6_n_0\
-    );
-\COUNTER_OFDM_SYMBOL[9]_i_7\: unisim.vcomponents.LUT2
+\COUNTER_OFDM_SYMBOL[9]_i_4\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"2"
     )
         port map (
       I0 => RX_STATE_reg(2),
       I1 => RESET,
+      O => \COUNTER_OFDM_SYMBOL[9]_i_4_n_0\
+    );
+\COUNTER_OFDM_SYMBOL[9]_i_5\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFFFFFFFFFFFFDF"
+    )
+        port map (
+      I0 => FFT_DATA_IN_START_i_7_n_0,
+      I1 => \COUNTER_OFDM_SYMBOL[9]_i_13_n_0\,
+      I2 => COUNTER(3),
+      I3 => COUNTER(5),
+      I4 => COUNTER(4),
+      I5 => \COUNTER_OFDM_SYMBOL[9]_i_14_n_0\,
+      O => \COUNTER_OFDM_SYMBOL[9]_i_5_n_0\
+    );
+\COUNTER_OFDM_SYMBOL[9]_i_6\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FFFE"
+    )
+        port map (
+      I0 => COUNTER(13),
+      I1 => COUNTER(12),
+      I2 => COUNTER(15),
+      I3 => COUNTER(14),
+      O => \COUNTER_OFDM_SYMBOL[9]_i_6_n_0\
+    );
+\COUNTER_OFDM_SYMBOL[9]_i_7\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFFFFFFFFFF7FFF"
+    )
+        port map (
+      I0 => COUNTER(0),
+      I1 => COUNTER(1),
+      I2 => COUNTER(2),
+      I3 => \COUNTER_OFDM_SYMBOL[9]_i_15_n_0\,
+      I4 => COUNTER(22),
+      I5 => COUNTER(23),
       O => \COUNTER_OFDM_SYMBOL[9]_i_7_n_0\
     );
 \COUNTER_OFDM_SYMBOL[9]_i_8\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0000000008000000"
+    )
+        port map (
+      I0 => \COUNTER[31]_i_5_n_0\,
+      I1 => RX_STATE_reg(1),
+      I2 => RX_STATE_reg(0),
+      I3 => RX_STATE_reg(2),
+      I4 => ROTATION_DATA_OUT_STROBE,
+      I5 => RESET,
+      O => \COUNTER_OFDM_SYMBOL[9]_i_8_n_0\
+    );
+\COUNTER_OFDM_SYMBOL[9]_i_9\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"7FFFFFFFFFFFFFFF"
     )
@@ -5927,16 +6171,6 @@ ATAN_AUTOCORR_STROBE_reg: unisim.vcomponents.FDRE
       I3 => \COUNTER_OFDM_SYMBOL_reg_n_0_[1]\,
       I4 => \COUNTER_OFDM_SYMBOL_reg_n_0_[3]\,
       I5 => \COUNTER_OFDM_SYMBOL_reg_n_0_[5]\,
-      O => \COUNTER_OFDM_SYMBOL[9]_i_8_n_0\
-    );
-\COUNTER_OFDM_SYMBOL[9]_i_9\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"7F"
-    )
-        port map (
-      I0 => COUNTER(2),
-      I1 => COUNTER(1),
-      I2 => COUNTER(0),
       O => \COUNTER_OFDM_SYMBOL[9]_i_9_n_0\
     );
 \COUNTER_OFDM_SYMBOL_reg[0]\: unisim.vcomponents.FDRE
@@ -6524,76 +6758,70 @@ FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_1: unisim.vcomponents.LUT6
     );
 FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_2: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFFFFFFFFFFFFE"
+      INIT => X"FFFFFFFFFFFFFEFF"
     )
         port map (
-      I0 => COUNTER(26),
-      I1 => COUNTER(31),
-      I2 => COUNTER(30),
-      I3 => COUNTER(24),
-      I4 => COUNTER(25),
-      I5 => FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_4_n_0,
+      I0 => FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_4_n_0,
+      I1 => COUNTER(4),
+      I2 => COUNTER(5),
+      I3 => FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_5_n_0,
+      I4 => FFT_DATA_IN_START_i_6_n_0,
+      I5 => FFT_DATA_IN_START_i_8_n_0,
       O => FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_2_n_0
     );
-FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_3: unisim.vcomponents.LUT6
+FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_3: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"0000000000000100"
-    )
-        port map (
-      I0 => COUNTER(18),
-      I1 => COUNTER(19),
-      I2 => COUNTER(7),
-      I3 => ROTATION_DATA_OUT_STROBE,
-      I4 => COUNTER(6),
-      I5 => FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_5_n_0,
-      O => FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_3_n_0
-    );
-FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_4: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFFFFFFFFFFFE"
+      INIT => X"00000200"
     )
         port map (
       I0 => FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_6_n_0,
-      I1 => COUNTER(27),
-      I2 => COUNTER(14),
-      I3 => COUNTER(15),
-      I4 => COUNTER(12),
-      I5 => COUNTER(13),
-      O => FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_4_n_0
+      I1 => COUNTER(26),
+      I2 => COUNTER(20),
+      I3 => ROTATION_DATA_OUT_STROBE,
+      I4 => FFT_DATA_IN_START_i_5_n_0,
+      O => FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_3_n_0
     );
-FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_5: unisim.vcomponents.LUT6
+FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_4: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FFFFFFFFFFFFFFFE"
+      INIT => X"FFFFFFFE"
     )
         port map (
-      I0 => FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_7_n_0,
-      I1 => FFT_DATA_IN_START_i_11_n_0,
-      I2 => COUNTER(23),
-      I3 => COUNTER(22),
-      I4 => COUNTER(17),
-      I5 => COUNTER(16),
+      I0 => COUNTER(31),
+      I1 => COUNTER(30),
+      I2 => COUNTER(28),
+      I3 => COUNTER(29),
+      I4 => COUNTER(27),
+      O => FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_4_n_0
+    );
+FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_5: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => COUNTER(0),
+      I1 => COUNTER(1),
       O => FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_5_n_0
     );
-FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_6: unisim.vcomponents.LUT2
+FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_6: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0000000000000001"
+    )
+        port map (
+      I0 => COUNTER(6),
+      I1 => COUNTER(7),
+      I2 => COUNTER(2),
+      I3 => COUNTER(3),
+      I4 => FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_7_n_0,
+      I5 => FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_8_n_0,
+      O => FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_6_n_0
+    );
+FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_7: unisim.vcomponents.LUT2
     generic map(
       INIT => X"E"
     )
         port map (
-      I0 => COUNTER(28),
-      I1 => COUNTER(29),
-      O => FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_6_n_0
-    );
-FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_7: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFFFFFFFEFFFF"
-    )
-        port map (
-      I0 => COUNTER(2),
-      I1 => COUNTER(3),
-      I2 => COUNTER(5),
-      I3 => COUNTER(4),
-      I4 => FFT_DATA_IN_START_i_6_n_0,
-      I5 => FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_8_n_0,
+      I0 => COUNTER(24),
+      I1 => COUNTER(25),
       O => FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_7_n_0
     );
 FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_8: unisim.vcomponents.LUT2
@@ -6601,8 +6829,8 @@ FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_8: unisim.vcomponents.LUT2
       INIT => X"E"
     )
         port map (
-      I0 => COUNTER(20),
-      I1 => COUNTER(21),
+      I0 => COUNTER(16),
+      I1 => COUNTER(17),
       O => FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_8_n_0
     );
 FFT_DATA_IN_FIRST_SYMBOL_MARKER_reg: unisim.vcomponents.FDRE
@@ -6629,18 +6857,54 @@ FFT_DATA_IN_START_i_1: unisim.vcomponents.LUT6
       I5 => RX_STATE_reg(2),
       O => FFT_DATA_IN_START_i_1_n_0
     );
-FFT_DATA_IN_START_i_10: unisim.vcomponents.LUT4
+FFT_DATA_IN_START_i_10: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"FFFE"
+      INIT => X"E"
     )
         port map (
-      I0 => COUNTER(23),
-      I1 => COUNTER(22),
-      I2 => COUNTER(17),
-      I3 => COUNTER(16),
+      I0 => COUNTER(30),
+      I1 => COUNTER(31),
       O => FFT_DATA_IN_START_i_10_n_0
     );
-FFT_DATA_IN_START_i_11: unisim.vcomponents.LUT4
+FFT_DATA_IN_START_i_2: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"FFFFF7B7"
+    )
+        port map (
+      I0 => RX_STATE_reg(0),
+      I1 => ROTATION_DATA_OUT_STROBE,
+      I2 => COUNTER(4),
+      I3 => COUNTER(6),
+      I4 => FFT_DATA_IN_START_i_4_n_0,
+      O => FFT_DATA_IN_START_i_2_n_0
+    );
+FFT_DATA_IN_START_i_3: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0000000000010000"
+    )
+        port map (
+      I0 => FFT_DATA_IN_START_i_5_n_0,
+      I1 => FFT_DATA_IN_START_i_6_n_0,
+      I2 => COUNTER(16),
+      I3 => COUNTER(17),
+      I4 => FFT_DATA_IN_START_i_7_n_0,
+      I5 => FFT_DATA_IN_START_i_8_n_0,
+      O => FFT_DATA_IN_START_i_3_n_0
+    );
+FFT_DATA_IN_START_i_4: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFFFFFFFFFEFFFF"
+    )
+        port map (
+      I0 => COUNTER(5),
+      I1 => COUNTER(7),
+      I2 => COUNTER(0),
+      I3 => COUNTER(1),
+      I4 => FFT_DATA_IN_START_i_9_n_0,
+      I5 => FFT_DATA_IN_START_i_10_n_0,
+      O => FFT_DATA_IN_START_i_4_n_0
+    );
+FFT_DATA_IN_START_i_5: unisim.vcomponents.LUT4
     generic map(
       INIT => X"FFFE"
     )
@@ -6649,96 +6913,49 @@ FFT_DATA_IN_START_i_11: unisim.vcomponents.LUT4
       I1 => COUNTER(10),
       I2 => COUNTER(9),
       I3 => COUNTER(8),
-      O => FFT_DATA_IN_START_i_11_n_0
-    );
-FFT_DATA_IN_START_i_2: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFFAFFFEFFFFF"
-    )
-        port map (
-      I0 => FFT_DATA_IN_START_i_4_n_0,
-      I1 => COUNTER(6),
-      I2 => ROTATION_DATA_OUT_STROBE,
-      I3 => COUNTER(5),
-      I4 => COUNTER(4),
-      I5 => RX_STATE_reg(0),
-      O => FFT_DATA_IN_START_i_2_n_0
-    );
-FFT_DATA_IN_START_i_3: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0000000000000800"
-    )
-        port map (
-      I0 => FFT_DATA_IN_START_i_5_n_0,
-      I1 => FFT_DATA_IN_START_i_6_n_0,
-      I2 => COUNTER(7),
-      I3 => FFT_DATA_IN_START_i_7_n_0,
-      I4 => FFT_DATA_IN_START_i_8_n_0,
-      I5 => FFT_DATA_IN_START_i_9_n_0,
-      O => FFT_DATA_IN_START_i_3_n_0
-    );
-FFT_DATA_IN_START_i_4: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFFFFFFFFFFFE"
-    )
-        port map (
-      I0 => FFT_DATA_IN_START_i_10_n_0,
-      I1 => FFT_DATA_IN_START_i_11_n_0,
-      I2 => COUNTER(21),
-      I3 => COUNTER(20),
-      I4 => COUNTER(19),
-      I5 => COUNTER(18),
-      O => FFT_DATA_IN_START_i_4_n_0
-    );
-FFT_DATA_IN_START_i_5: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0000000000000001"
-    )
-        port map (
-      I0 => COUNTER(3),
-      I1 => COUNTER(2),
-      I2 => COUNTER(28),
-      I3 => COUNTER(29),
-      I4 => COUNTER(24),
-      I5 => COUNTER(25),
       O => FFT_DATA_IN_START_i_5_n_0
     );
 FFT_DATA_IN_START_i_6: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => COUNTER(0),
-      I1 => COUNTER(1),
-      O => FFT_DATA_IN_START_i_6_n_0
-    );
-FFT_DATA_IN_START_i_7: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => COUNTER(26),
-      I1 => COUNTER(27),
-      O => FFT_DATA_IN_START_i_7_n_0
-    );
-FFT_DATA_IN_START_i_8: unisim.vcomponents.LUT2
-    generic map(
       INIT => X"E"
     )
         port map (
-      I0 => COUNTER(30),
-      I1 => COUNTER(31),
-      O => FFT_DATA_IN_START_i_8_n_0
+      I0 => COUNTER(18),
+      I1 => COUNTER(19),
+      O => FFT_DATA_IN_START_i_6_n_0
     );
-FFT_DATA_IN_START_i_9: unisim.vcomponents.LUT4
+FFT_DATA_IN_START_i_7: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFE"
+      INIT => X"0000000000000001"
     )
         port map (
-      I0 => COUNTER(13),
-      I1 => COUNTER(12),
-      I2 => COUNTER(15),
-      I3 => COUNTER(14),
+      I0 => COUNTER(28),
+      I1 => COUNTER(29),
+      I2 => COUNTER(27),
+      I3 => COUNTER(24),
+      I4 => COUNTER(25),
+      I5 => COUNTER(26),
+      O => FFT_DATA_IN_START_i_7_n_0
+    );
+FFT_DATA_IN_START_i_8: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"FFFFFFFE"
+    )
+        port map (
+      I0 => COUNTER(20),
+      I1 => COUNTER(21),
+      I2 => COUNTER(22),
+      I3 => COUNTER(23),
+      I4 => \COUNTER_OFDM_SYMBOL[9]_i_6_n_0\,
+      O => FFT_DATA_IN_START_i_8_n_0
+    );
+FFT_DATA_IN_START_i_9: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => COUNTER(2),
+      I1 => COUNTER(3),
       O => FFT_DATA_IN_START_i_9_n_0
     );
 FFT_DATA_IN_START_reg: unisim.vcomponents.FDRE
@@ -7461,13 +7678,13 @@ FFT_DATA_IN_STROBE_reg: unisim.vcomponents.FDRE
     );
 \FPGA_REG_WRITE_DATA[19]_i_3\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"2000"
+      INIT => X"0800"
     )
         port map (
       I0 => ATAN_PHASE_OUT_STROBE,
-      I1 => RX_STATE_reg(0),
-      I2 => RX_STATE_reg(2),
-      I3 => RX_STATE_reg(1),
+      I1 => RX_STATE_reg(1),
+      I2 => RX_STATE_reg(0),
+      I3 => RX_STATE_reg(2),
       O => FPGA_REG_WRITE_STROBE_PHASE_20
     );
 \FPGA_REG_WRITE_DATA[19]_i_5\: unisim.vcomponents.LUT2
@@ -8254,82 +8471,75 @@ FPGA_REG_WRITE_STROBE_PHASE_2_reg: unisim.vcomponents.FDRE
       Q => FPGA_REG_WRITE_STROBE_PHASE_2,
       R => '0'
     );
-\FSM_sequential_RX_STATE[0]_i_1\: unisim.vcomponents.LUT6
+\FSM_sequential_RX_STATE[0]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"00000000AAAA5556"
+      INIT => X"06"
     )
         port map (
       I0 => RX_STATE_reg(0),
-      I1 => \FSM_sequential_RX_STATE[0]_i_2_n_0\,
-      I2 => \FSM_sequential_RX_STATE[0]_i_3_n_0\,
-      I3 => \FSM_sequential_RX_STATE[2]_i_3_n_0\,
-      I4 => \FSM_sequential_RX_STATE[2]_i_2_n_0\,
-      I5 => RESET,
+      I1 => \FSM_sequential_RX_STATE[2]_i_2_n_0\,
+      I2 => RESET,
       O => \FSM_sequential_RX_STATE[0]_i_1_n_0\
     );
-\FSM_sequential_RX_STATE[0]_i_2\: unisim.vcomponents.LUT6
+\FSM_sequential_RX_STATE[1]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"0000000002020002"
-    )
-        port map (
-      I0 => \COUNTER_OFDM_SYMBOL[9]_i_5_n_0\,
-      I1 => \FSM_sequential_RX_STATE[2]_i_7_n_0\,
-      I2 => FFT_DATA_IN_START_i_8_n_0,
-      I3 => COUNTER(24),
-      I4 => COUNTER(25),
-      I5 => \FSM_sequential_RX_STATE[0]_i_4_n_0\,
-      O => \FSM_sequential_RX_STATE[0]_i_2_n_0\
-    );
-\FSM_sequential_RX_STATE[0]_i_3\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"0040FFFF"
-    )
-        port map (
-      I0 => RX_STATE_reg(0),
-      I1 => ROTATION_DATA_OUT_MARKER,
-      I2 => ROTATION_DATA_OUT_STROBE,
-      I3 => RX_STATE_reg(1),
-      I4 => RX_STATE_reg(2),
-      O => \FSM_sequential_RX_STATE[0]_i_3_n_0\
-    );
-\FSM_sequential_RX_STATE[0]_i_4\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"DFFF"
-    )
-        port map (
-      I0 => RX_STATE_reg(0),
-      I1 => RX_STATE_reg(1),
-      I2 => COUNTER(4),
-      I3 => COUNTER(3),
-      O => \FSM_sequential_RX_STATE[0]_i_4_n_0\
-    );
-\FSM_sequential_RX_STATE[1]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"00000000999AAAAA"
+      INIT => X"006A"
     )
         port map (
       I0 => RX_STATE_reg(1),
       I1 => \FSM_sequential_RX_STATE[2]_i_2_n_0\,
-      I2 => \FSM_sequential_RX_STATE[2]_i_3_n_0\,
-      I3 => \FSM_sequential_RX_STATE[2]_i_4_n_0\,
-      I4 => RX_STATE_reg(0),
-      I5 => RESET,
+      I2 => RX_STATE_reg(0),
+      I3 => RESET,
       O => \FSM_sequential_RX_STATE[1]_i_1_n_0\
     );
-\FSM_sequential_RX_STATE[2]_i_1\: unisim.vcomponents.LUT6
+\FSM_sequential_RX_STATE[2]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"00000000BBBA888A"
+      INIT => X"00006AAA"
     )
         port map (
       I0 => RX_STATE_reg(2),
       I1 => \FSM_sequential_RX_STATE[2]_i_2_n_0\,
-      I2 => \FSM_sequential_RX_STATE[2]_i_3_n_0\,
-      I3 => \FSM_sequential_RX_STATE[2]_i_4_n_0\,
-      I4 => \RX_STATE__0\(2),
-      I5 => RESET,
+      I2 => RX_STATE_reg(1),
+      I3 => RX_STATE_reg(0),
+      I4 => RESET,
       O => \FSM_sequential_RX_STATE[2]_i_1_n_0\
     );
-\FSM_sequential_RX_STATE[2]_i_2\: unisim.vcomponents.LUT5
+\FSM_sequential_RX_STATE[2]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"00000000FFFFBBBF"
+    )
+        port map (
+      I0 => \COUNTER_OFDM_SYMBOL[9]_i_3_n_0\,
+      I1 => RX_STATE_reg(2),
+      I2 => RX_STATE_reg(1),
+      I3 => \FSM_sequential_RX_STATE[2]_i_3_n_0\,
+      I4 => \FSM_sequential_RX_STATE[2]_i_4_n_0\,
+      I5 => \FSM_sequential_RX_STATE[2]_i_5_n_0\,
+      O => \FSM_sequential_RX_STATE[2]_i_2_n_0\
+    );
+\FSM_sequential_RX_STATE[2]_i_3\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"DF"
+    )
+        port map (
+      I0 => ROTATION_DATA_OUT_STROBE,
+      I1 => RX_STATE_reg(0),
+      I2 => ROTATION_DATA_OUT_MARKER,
+      O => \FSM_sequential_RX_STATE[2]_i_3_n_0\
+    );
+\FSM_sequential_RX_STATE[2]_i_4\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"80008A0A"
+    )
+        port map (
+      I0 => RX_STATE_reg(1),
+      I1 => \RX_STATE0_inferred__0/i__carry__2_n_0\,
+      I2 => RX_STATE_reg(0),
+      I3 => ROTATION_DATA_OUT_STROBE,
+      I4 => \COUNTER[31]_i_5_n_0\,
+      O => \FSM_sequential_RX_STATE[2]_i_4_n_0\
+    );
+\FSM_sequential_RX_STATE[2]_i_5\: unisim.vcomponents.LUT5
     generic map(
       INIT => X"00010301"
     )
@@ -8339,87 +8549,7 @@ FPGA_REG_WRITE_STROBE_PHASE_2_reg: unisim.vcomponents.FDRE
       I2 => RX_STATE_reg(2),
       I3 => RX_STATE_reg(1),
       I4 => ATAN_PHASE_OUT_STROBE,
-      O => \FSM_sequential_RX_STATE[2]_i_2_n_0\
-    );
-\FSM_sequential_RX_STATE[2]_i_3\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"80008A0A"
-    )
-        port map (
-      I0 => RX_STATE_reg(1),
-      I1 => \RX_STATE0_inferred__0/i__carry__2_n_0\,
-      I2 => RX_STATE_reg(0),
-      I3 => ROTATION_DATA_OUT_STROBE,
-      I4 => \COUNTER[31]_i_8_n_0\,
-      O => \FSM_sequential_RX_STATE[2]_i_3_n_0\
-    );
-\FSM_sequential_RX_STATE[2]_i_4\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"10FF10FF10FFFFFF"
-    )
-        port map (
-      I0 => \FSM_sequential_RX_STATE[2]_i_6_n_0\,
-      I1 => \FSM_sequential_RX_STATE[2]_i_7_n_0\,
-      I2 => \COUNTER_OFDM_SYMBOL[9]_i_5_n_0\,
-      I3 => RX_STATE_reg(2),
-      I4 => RX_STATE_reg(1),
-      I5 => \FSM_sequential_RX_STATE[2]_i_8_n_0\,
-      O => \FSM_sequential_RX_STATE[2]_i_4_n_0\
-    );
-\FSM_sequential_RX_STATE[2]_i_5\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"78"
-    )
-        port map (
-      I0 => RX_STATE_reg(0),
-      I1 => RX_STATE_reg(1),
-      I2 => RX_STATE_reg(2),
-      O => \RX_STATE__0\(2)
-    );
-\FSM_sequential_RX_STATE[2]_i_6\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFFFFAEFFFFFF"
-    )
-        port map (
-      I0 => FFT_DATA_IN_START_i_8_n_0,
-      I1 => COUNTER(24),
-      I2 => COUNTER(25),
-      I3 => COUNTER(3),
-      I4 => COUNTER(4),
-      I5 => \FSM_sequential_RX_STATE[2]_i_9_n_0\,
-      O => \FSM_sequential_RX_STATE[2]_i_6_n_0\
-    );
-\FSM_sequential_RX_STATE[2]_i_7\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFFFFFFFFFFBFF"
-    )
-        port map (
-      I0 => FFT_DATA_IN_FIRST_SYMBOL_MARKER_i_4_n_0,
-      I1 => ROTATION_DATA_OUT_STROBE,
-      I2 => COUNTER(25),
-      I3 => COUNTER(5),
-      I4 => COUNTER(26),
-      I5 => \COUNTER_OFDM_SYMBOL[9]_i_9_n_0\,
-      O => \FSM_sequential_RX_STATE[2]_i_7_n_0\
-    );
-\FSM_sequential_RX_STATE[2]_i_8\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"BF"
-    )
-        port map (
-      I0 => RX_STATE_reg(0),
-      I1 => ROTATION_DATA_OUT_MARKER,
-      I2 => ROTATION_DATA_OUT_STROBE,
-      O => \FSM_sequential_RX_STATE[2]_i_8_n_0\
-    );
-\FSM_sequential_RX_STATE[2]_i_9\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"B"
-    )
-        port map (
-      I0 => RX_STATE_reg(1),
-      I1 => RX_STATE_reg(0),
-      O => \FSM_sequential_RX_STATE[2]_i_9_n_0\
+      O => \FSM_sequential_RX_STATE[2]_i_5_n_0\
     );
 \FSM_sequential_RX_STATE_reg[0]\: unisim.vcomponents.FDRE
     generic map(
@@ -8645,24 +8775,28 @@ LTS_AUTOCORR_ADD_REG_I_reg: unisim.vcomponents.DSP48E1
     );
 LTS_AUTOCORR_ADD_REG_I_reg_i_1: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0350000000000000"
+      INIT => X"FFFFFFFF00004000"
     )
         port map (
       I0 => \LTS_AUTOCORR_I_ACCUMULATOR1_carry__2_n_3\,
-      I1 => LTS_AUTOCORR_ADD_REG_I_reg_i_2_n_0,
-      I2 => RX_STATE_reg(0),
-      I3 => RX_STATE_reg(1),
-      I4 => RX_STATE_reg(2),
-      I5 => ROTATION_DATA_OUT_STROBE,
+      I1 => RX_STATE_reg(2),
+      I2 => ROTATION_DATA_OUT_STROBE,
+      I3 => RX_STATE_reg(0),
+      I4 => RX_STATE_reg(1),
+      I5 => LTS_AUTOCORR_ADD_REG_I_reg_i_2_n_0,
       O => CEP
     );
-LTS_AUTOCORR_ADD_REG_I_reg_i_2: unisim.vcomponents.LUT2
+LTS_AUTOCORR_ADD_REG_I_reg_i_2: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"B"
+      INIT => X"0000000008000000"
     )
         port map (
-      I0 => VAR_COMPLETE_COMPUTATION(0),
-      I1 => VAR_COMPLETE_COMPUTATION(1),
+      I0 => ROTATION_DATA_OUT_STROBE,
+      I1 => RX_STATE_reg(2),
+      I2 => RX_STATE_reg(0),
+      I3 => RX_STATE_reg(1),
+      I4 => VAR_COMPLETE_COMPUTATION(1),
+      I5 => VAR_COMPLETE_COMPUTATION(0),
       O => LTS_AUTOCORR_ADD_REG_I_reg_i_2_n_0
     );
 LTS_AUTOCORR_ADD_REG_Q_reg: unisim.vcomponents.DSP48E1
@@ -9317,29 +9451,25 @@ LTS_AUTOCORR_I_ACCUMULATOR0_carry: unisim.vcomponents.CARRY4
 \LTS_AUTOCORR_I_ACCUMULATOR0_carry__8\: unisim.vcomponents.CARRY4
      port map (
       CI => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__7_n_0\,
-      CO(3) => \NLW_LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_CO_UNCONNECTED\(3),
-      CO(2) => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_n_1\,
-      CO(1) => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_n_2\,
+      CO(3 downto 1) => \NLW_LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_CO_UNCONNECTED\(3 downto 1),
       CO(0) => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_n_3\,
       CYINIT => '0',
-      DI(3) => '0',
-      DI(2 downto 0) => LTS_AUTOCORR_I_ACCUMULATOR(37 downto 35),
-      O(3) => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_n_4\,
-      O(2) => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_n_5\,
+      DI(3 downto 1) => B"000",
+      DI(0) => LTS_AUTOCORR_I_ACCUMULATOR(35),
+      O(3 downto 2) => \NLW_LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_O_UNCONNECTED\(3 downto 2),
       O(1) => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_n_6\,
       O(0) => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_n_7\,
-      S(3) => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_i_1_n_0\,
-      S(2) => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_i_2_n_0\,
-      S(1) => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_i_3_n_0\,
-      S(0) => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_i_4_n_0\
+      S(3 downto 2) => B"00",
+      S(1) => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_i_1_n_0\,
+      S(0) => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_i_2_n_0\
     );
 \LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(38),
-      I1 => LTS_AUTOCORR_I_ACCUMULATOR(39),
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(36),
+      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
       O => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_i_1_n_0\
     );
 \LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_i_2\: unisim.vcomponents.LUT2
@@ -9347,27 +9477,9 @@ LTS_AUTOCORR_I_ACCUMULATOR0_carry: unisim.vcomponents.CARRY4
       INIT => X"9"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(37),
-      I1 => LTS_AUTOCORR_I_ACCUMULATOR(38),
-      O => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_i_2_n_0\
-    );
-\LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_i_3\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(36),
-      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
-      O => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_i_3_n_0\
-    );
-\LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_i_4\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
       I0 => LTS_AUTOCORR_I_ACCUMULATOR(35),
       I1 => LTS_AUTOCORR_I_ACCUMULATOR(36),
-      O => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_i_4_n_0\
+      O => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_i_2_n_0\
     );
 LTS_AUTOCORR_I_ACCUMULATOR0_carry_i_1: unisim.vcomponents.LUT2
     generic map(
@@ -9441,8 +9553,8 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry: unisim.vcomponents.CARRY4
       INIT => X"1"
     )
         port map (
-      I0 => COUNTER(21),
-      I1 => COUNTER(20),
+      I0 => COUNTER(20),
+      I1 => COUNTER(21),
       O => \LTS_AUTOCORR_I_ACCUMULATOR1_carry__0_i_1_n_0\
     );
 \LTS_AUTOCORR_I_ACCUMULATOR1_carry__0_i_2\: unisim.vcomponents.LUT2
@@ -9576,8 +9688,8 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_4: unisim.vcomponents.LUT2
       INIT => X"1"
     )
         port map (
-      I0 => COUNTER(8),
-      I1 => COUNTER(9),
+      I0 => COUNTER(9),
+      I1 => COUNTER(8),
       O => LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_4_n_0
     );
 LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
@@ -9589,7 +9701,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
       I1 => COUNTER(7),
       O => LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5_n_0
     );
-\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_1\: unisim.vcomponents.LUT3
+\LTS_AUTOCORR_I_ACCUMULATOR[37]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"01"
     )
@@ -9599,27 +9711,27 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
       I2 => RX_STATE_reg(0),
       O => FFT_DATA_IN_STROBE0
     );
-\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2\: unisim.vcomponents.LUT6
+\LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"BEAAAAAAAAAAAAAA"
+      INIT => X"ABBA"
     )
         port map (
       I0 => CEM,
-      I1 => VAR_COMPLETE_COMPUTATION(1),
+      I1 => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_3_n_0\,
       I2 => VAR_COMPLETE_COMPUTATION(0),
-      I3 => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_3_n_0\,
-      I4 => RX_STATE_reg(2),
-      I5 => ROTATION_DATA_OUT_STROBE,
-      O => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\
+      I3 => VAR_COMPLETE_COMPUTATION(1),
+      O => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\
     );
-\LTS_AUTOCORR_I_ACCUMULATOR[39]_i_3\: unisim.vcomponents.LUT2
+\LTS_AUTOCORR_I_ACCUMULATOR[37]_i_3\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"2"
+      INIT => X"DFFF"
     )
         port map (
       I0 => RX_STATE_reg(1),
       I1 => RX_STATE_reg(0),
-      O => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_3_n_0\
+      I2 => RX_STATE_reg(2),
+      I3 => ROTATION_DATA_OUT_STROBE,
+      O => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_3_n_0\
     );
 \LTS_AUTOCORR_I_ACCUMULATOR_reg[0]\: unisim.vcomponents.FDRE
     generic map(
@@ -9627,7 +9739,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => LTS_AUTOCORR_I_ACCUMULATOR0_carry_n_7,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(0),
       R => FFT_DATA_IN_STROBE0
@@ -9638,7 +9750,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__1_n_5\,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(10),
       R => FFT_DATA_IN_STROBE0
@@ -9649,7 +9761,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__1_n_4\,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(11),
       R => FFT_DATA_IN_STROBE0
@@ -9660,7 +9772,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__2_n_7\,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(12),
       R => FFT_DATA_IN_STROBE0
@@ -9671,7 +9783,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__2_n_6\,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(13),
       R => FFT_DATA_IN_STROBE0
@@ -9682,7 +9794,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__2_n_5\,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(14),
       R => FFT_DATA_IN_STROBE0
@@ -9693,7 +9805,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__2_n_4\,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(15),
       R => FFT_DATA_IN_STROBE0
@@ -9704,7 +9816,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__3_n_7\,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(16),
       R => FFT_DATA_IN_STROBE0
@@ -9715,7 +9827,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__3_n_6\,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(17),
       R => FFT_DATA_IN_STROBE0
@@ -9726,7 +9838,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__3_n_5\,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(18),
       R => FFT_DATA_IN_STROBE0
@@ -9737,7 +9849,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__3_n_4\,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(19),
       R => FFT_DATA_IN_STROBE0
@@ -9748,7 +9860,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => LTS_AUTOCORR_I_ACCUMULATOR0_carry_n_6,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(1),
       R => FFT_DATA_IN_STROBE0
@@ -9759,7 +9871,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__4_n_7\,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(20),
       R => FFT_DATA_IN_STROBE0
@@ -9770,7 +9882,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__4_n_6\,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(21),
       R => FFT_DATA_IN_STROBE0
@@ -9781,7 +9893,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__4_n_5\,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(22),
       R => FFT_DATA_IN_STROBE0
@@ -9792,7 +9904,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__4_n_4\,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(23),
       R => FFT_DATA_IN_STROBE0
@@ -9803,7 +9915,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__5_n_7\,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(24),
       R => FFT_DATA_IN_STROBE0
@@ -9814,7 +9926,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__5_n_6\,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(25),
       R => FFT_DATA_IN_STROBE0
@@ -9825,7 +9937,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__5_n_5\,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(26),
       R => FFT_DATA_IN_STROBE0
@@ -9836,7 +9948,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__5_n_4\,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(27),
       R => FFT_DATA_IN_STROBE0
@@ -9847,7 +9959,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__6_n_7\,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(28),
       R => FFT_DATA_IN_STROBE0
@@ -9858,7 +9970,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__6_n_6\,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(29),
       R => FFT_DATA_IN_STROBE0
@@ -9869,7 +9981,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => LTS_AUTOCORR_I_ACCUMULATOR0_carry_n_5,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(2),
       R => FFT_DATA_IN_STROBE0
@@ -9880,7 +9992,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__6_n_5\,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(30),
       R => FFT_DATA_IN_STROBE0
@@ -9891,7 +10003,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__6_n_4\,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(31),
       R => FFT_DATA_IN_STROBE0
@@ -9902,7 +10014,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__7_n_7\,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(32),
       R => FFT_DATA_IN_STROBE0
@@ -9913,7 +10025,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__7_n_6\,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(33),
       R => FFT_DATA_IN_STROBE0
@@ -9924,7 +10036,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__7_n_5\,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(34),
       R => FFT_DATA_IN_STROBE0
@@ -9935,7 +10047,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__7_n_4\,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(35),
       R => FFT_DATA_IN_STROBE0
@@ -9946,7 +10058,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_n_7\,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(36),
       R => FFT_DATA_IN_STROBE0
@@ -9957,31 +10069,9 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_n_6\,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(37),
-      R => FFT_DATA_IN_STROBE0
-    );
-\LTS_AUTOCORR_I_ACCUMULATOR_reg[38]\: unisim.vcomponents.FDRE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
-      D => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_n_5\,
-      Q => LTS_AUTOCORR_I_ACCUMULATOR(38),
-      R => FFT_DATA_IN_STROBE0
-    );
-\LTS_AUTOCORR_I_ACCUMULATOR_reg[39]\: unisim.vcomponents.FDRE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
-      D => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__8_n_4\,
-      Q => LTS_AUTOCORR_I_ACCUMULATOR(39),
       R => FFT_DATA_IN_STROBE0
     );
 \LTS_AUTOCORR_I_ACCUMULATOR_reg[3]\: unisim.vcomponents.FDRE
@@ -9990,7 +10080,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => LTS_AUTOCORR_I_ACCUMULATOR0_carry_n_4,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(3),
       R => FFT_DATA_IN_STROBE0
@@ -10001,7 +10091,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__0_n_7\,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(4),
       R => FFT_DATA_IN_STROBE0
@@ -10012,7 +10102,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__0_n_6\,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(5),
       R => FFT_DATA_IN_STROBE0
@@ -10023,7 +10113,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__0_n_5\,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(6),
       R => FFT_DATA_IN_STROBE0
@@ -10034,7 +10124,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__0_n_4\,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(7),
       R => FFT_DATA_IN_STROBE0
@@ -10045,7 +10135,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__1_n_7\,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(8),
       R => FFT_DATA_IN_STROBE0
@@ -10056,7 +10146,7 @@ LTS_AUTOCORR_I_ACCUMULATOR1_carry_i_5: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_I_ACCUMULATOR0_carry__1_n_6\,
       Q => LTS_AUTOCORR_I_ACCUMULATOR(9),
       R => FFT_DATA_IN_STROBE0
@@ -10220,14 +10310,14 @@ LTS_AUTOCORR_MULT_REG_II_reg: unisim.vcomponents.DSP48E1
     );
 LTS_AUTOCORR_MULT_REG_II_reg_i_1: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"00000800"
+      INIT => X"00004000"
     )
         port map (
-      I0 => ROTATION_DATA_OUT_STROBE,
-      I1 => RX_STATE_reg(2),
-      I2 => \LTS_AUTOCORR_I_ACCUMULATOR1_carry__2_n_3\,
-      I3 => RX_STATE_reg(0),
-      I4 => RX_STATE_reg(1),
+      I0 => RX_STATE_reg(1),
+      I1 => RX_STATE_reg(0),
+      I2 => ROTATION_DATA_OUT_STROBE,
+      I3 => RX_STATE_reg(2),
+      I4 => \LTS_AUTOCORR_I_ACCUMULATOR1_carry__2_n_3\,
       O => CEM
     );
 LTS_AUTOCORR_MULT_REG_QI_reg: unisim.vcomponents.DSP48E1
@@ -10850,29 +10940,25 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry: unisim.vcomponents.CARRY4
 \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8\: unisim.vcomponents.CARRY4
      port map (
       CI => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__7_n_0\,
-      CO(3) => \NLW_LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_CO_UNCONNECTED\(3),
-      CO(2) => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_n_1\,
-      CO(1) => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_n_2\,
+      CO(3 downto 1) => \NLW_LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_CO_UNCONNECTED\(3 downto 1),
       CO(0) => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_n_3\,
       CYINIT => '0',
-      DI(3) => '0',
-      DI(2 downto 0) => LTS_AUTOCORR_Q_ACCUMULATOR(37 downto 35),
-      O(3) => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_n_4\,
-      O(2) => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_n_5\,
+      DI(3 downto 1) => B"000",
+      DI(0) => LTS_AUTOCORR_Q_ACCUMULATOR(35),
+      O(3 downto 2) => \NLW_LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_O_UNCONNECTED\(3 downto 2),
       O(1) => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_n_6\,
       O(0) => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_n_7\,
-      S(3) => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_i_1_n_0\,
-      S(2) => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_i_2_n_0\,
-      S(1) => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_i_3_n_0\,
-      S(0) => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_i_4_n_0\
+      S(3 downto 2) => B"00",
+      S(1) => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_i_1_n_0\,
+      S(0) => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_i_2_n_0\
     );
 \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"9"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(38),
-      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(36),
+      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
       O => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_i_1_n_0\
     );
 \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_i_2\: unisim.vcomponents.LUT2
@@ -10880,27 +10966,9 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry: unisim.vcomponents.CARRY4
       INIT => X"9"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
-      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(38),
-      O => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_i_2_n_0\
-    );
-\LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_i_3\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(36),
-      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
-      O => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_i_3_n_0\
-    );
-\LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_i_4\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"9"
-    )
-        port map (
       I0 => LTS_AUTOCORR_Q_ACCUMULATOR(35),
       I1 => LTS_AUTOCORR_Q_ACCUMULATOR(36),
-      O => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_i_4_n_0\
+      O => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_i_2_n_0\
     );
 LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_1: unisim.vcomponents.LUT2
     generic map(
@@ -10944,7 +11012,7 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => LTS_AUTOCORR_Q_ACCUMULATOR0_carry_n_7,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(0),
       R => FFT_DATA_IN_STROBE0
@@ -10955,7 +11023,7 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__1_n_5\,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(10),
       R => FFT_DATA_IN_STROBE0
@@ -10966,7 +11034,7 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__1_n_4\,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(11),
       R => FFT_DATA_IN_STROBE0
@@ -10977,7 +11045,7 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__2_n_7\,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(12),
       R => FFT_DATA_IN_STROBE0
@@ -10988,7 +11056,7 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__2_n_6\,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(13),
       R => FFT_DATA_IN_STROBE0
@@ -10999,7 +11067,7 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__2_n_5\,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(14),
       R => FFT_DATA_IN_STROBE0
@@ -11010,7 +11078,7 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__2_n_4\,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(15),
       R => FFT_DATA_IN_STROBE0
@@ -11021,7 +11089,7 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__3_n_7\,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(16),
       R => FFT_DATA_IN_STROBE0
@@ -11032,7 +11100,7 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__3_n_6\,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(17),
       R => FFT_DATA_IN_STROBE0
@@ -11043,7 +11111,7 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__3_n_5\,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(18),
       R => FFT_DATA_IN_STROBE0
@@ -11054,7 +11122,7 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__3_n_4\,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(19),
       R => FFT_DATA_IN_STROBE0
@@ -11065,7 +11133,7 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => LTS_AUTOCORR_Q_ACCUMULATOR0_carry_n_6,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(1),
       R => FFT_DATA_IN_STROBE0
@@ -11076,7 +11144,7 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__4_n_7\,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(20),
       R => FFT_DATA_IN_STROBE0
@@ -11087,7 +11155,7 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__4_n_6\,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(21),
       R => FFT_DATA_IN_STROBE0
@@ -11098,7 +11166,7 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__4_n_5\,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(22),
       R => FFT_DATA_IN_STROBE0
@@ -11109,7 +11177,7 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__4_n_4\,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(23),
       R => FFT_DATA_IN_STROBE0
@@ -11120,7 +11188,7 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__5_n_7\,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(24),
       R => FFT_DATA_IN_STROBE0
@@ -11131,7 +11199,7 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__5_n_6\,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(25),
       R => FFT_DATA_IN_STROBE0
@@ -11142,7 +11210,7 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__5_n_5\,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(26),
       R => FFT_DATA_IN_STROBE0
@@ -11153,7 +11221,7 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__5_n_4\,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(27),
       R => FFT_DATA_IN_STROBE0
@@ -11164,7 +11232,7 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__6_n_7\,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(28),
       R => FFT_DATA_IN_STROBE0
@@ -11175,7 +11243,7 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__6_n_6\,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(29),
       R => FFT_DATA_IN_STROBE0
@@ -11186,7 +11254,7 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => LTS_AUTOCORR_Q_ACCUMULATOR0_carry_n_5,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(2),
       R => FFT_DATA_IN_STROBE0
@@ -11197,7 +11265,7 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__6_n_5\,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(30),
       R => FFT_DATA_IN_STROBE0
@@ -11208,7 +11276,7 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__6_n_4\,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(31),
       R => FFT_DATA_IN_STROBE0
@@ -11219,7 +11287,7 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__7_n_7\,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(32),
       R => FFT_DATA_IN_STROBE0
@@ -11230,7 +11298,7 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__7_n_6\,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(33),
       R => FFT_DATA_IN_STROBE0
@@ -11241,7 +11309,7 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__7_n_5\,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(34),
       R => FFT_DATA_IN_STROBE0
@@ -11252,7 +11320,7 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__7_n_4\,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(35),
       R => FFT_DATA_IN_STROBE0
@@ -11263,7 +11331,7 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_n_7\,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(36),
       R => FFT_DATA_IN_STROBE0
@@ -11274,31 +11342,9 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_n_6\,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(37),
-      R => FFT_DATA_IN_STROBE0
-    );
-\LTS_AUTOCORR_Q_ACCUMULATOR_reg[38]\: unisim.vcomponents.FDRE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
-      D => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_n_5\,
-      Q => LTS_AUTOCORR_Q_ACCUMULATOR(38),
-      R => FFT_DATA_IN_STROBE0
-    );
-\LTS_AUTOCORR_Q_ACCUMULATOR_reg[39]\: unisim.vcomponents.FDRE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
-      D => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__8_n_4\,
-      Q => LTS_AUTOCORR_Q_ACCUMULATOR(39),
       R => FFT_DATA_IN_STROBE0
     );
 \LTS_AUTOCORR_Q_ACCUMULATOR_reg[3]\: unisim.vcomponents.FDRE
@@ -11307,7 +11353,7 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => LTS_AUTOCORR_Q_ACCUMULATOR0_carry_n_4,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(3),
       R => FFT_DATA_IN_STROBE0
@@ -11318,7 +11364,7 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__0_n_7\,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(4),
       R => FFT_DATA_IN_STROBE0
@@ -11329,7 +11375,7 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__0_n_6\,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(5),
       R => FFT_DATA_IN_STROBE0
@@ -11340,7 +11386,7 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__0_n_5\,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(6),
       R => FFT_DATA_IN_STROBE0
@@ -11351,7 +11397,7 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__0_n_4\,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(7),
       R => FFT_DATA_IN_STROBE0
@@ -11362,7 +11408,7 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__1_n_7\,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(8),
       R => FFT_DATA_IN_STROBE0
@@ -11373,31 +11419,32 @@ LTS_AUTOCORR_Q_ACCUMULATOR0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       C => CLOCK,
-      CE => \LTS_AUTOCORR_I_ACCUMULATOR[39]_i_2_n_0\,
+      CE => \LTS_AUTOCORR_I_ACCUMULATOR[37]_i_2_n_0\,
       D => \LTS_AUTOCORR_Q_ACCUMULATOR0_carry__1_n_6\,
       Q => LTS_AUTOCORR_Q_ACCUMULATOR(9),
       R => FFT_DATA_IN_STROBE0
     );
 LTS_AUTOCORR_READY_i_1: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"AAC8AAAAAAAAAA00"
+      INIT => X"00000000ABAA8888"
     )
         port map (
       I0 => LTS_AUTOCORR_READY_reg_n_0,
-      I1 => ROTATION_DATA_OUT_STROBE,
-      I2 => LTS_AUTOCORR_READY_i_2_n_0,
-      I3 => RX_STATE_reg(0),
-      I4 => RX_STATE_reg(1),
-      I5 => RX_STATE_reg(2),
+      I1 => LTS_AUTOCORR_READY_i_2_n_0,
+      I2 => VAR_COMPLETE_COMPUTATION(1),
+      I3 => VAR_COMPLETE_COMPUTATION(0),
+      I4 => ROTATION_DATA_OUT_STROBE,
+      I5 => FFT_DATA_IN_STROBE0,
       O => LTS_AUTOCORR_READY_i_1_n_0
     );
-LTS_AUTOCORR_READY_i_2: unisim.vcomponents.LUT2
+LTS_AUTOCORR_READY_i_2: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"2"
+      INIT => X"DF"
     )
         port map (
-      I0 => VAR_COMPLETE_COMPUTATION(0),
-      I1 => VAR_COMPLETE_COMPUTATION(1),
+      I0 => RX_STATE_reg(2),
+      I1 => RX_STATE_reg(0),
+      I2 => RX_STATE_reg(1),
       O => LTS_AUTOCORR_READY_i_2_n_0
     );
 LTS_AUTOCORR_READY_reg: unisim.vcomponents.FDRE
@@ -13740,7 +13787,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       O(3 downto 0) => \NLW_RX_STATE0_inferred__0/i__carry_O_UNCONNECTED\(3 downto 0),
       S(3) => \i__carry_i_5_n_0\,
       S(2) => \i__carry_i_6_n_0\,
-      S(1) => \i__carry_i_7_n_0\,
+      S(1) => \i__carry_i_7__1_n_0\,
       S(0) => \i__carry_i_8__1_n_0\
     );
 \RX_STATE0_inferred__0/i__carry__0\: unisim.vcomponents.CARRY4
@@ -13770,12 +13817,12 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       CO(0) => \RX_STATE0_inferred__0/i__carry__1_n_3\,
       CYINIT => '0',
       DI(3) => \i__carry__1_i_1_n_0\,
-      DI(2) => \i__carry__1_i_2__1_n_0\,
-      DI(1) => \i__carry__1_i_3_n_0\,
-      DI(0) => \i__carry__1_i_4_n_0\,
+      DI(2) => \i__carry__1_i_2_n_0\,
+      DI(1) => \i__carry__1_i_3__1_n_0\,
+      DI(0) => \i__carry__1_i_4__1_n_0\,
       O(3 downto 0) => \NLW_RX_STATE0_inferred__0/i__carry__1_O_UNCONNECTED\(3 downto 0),
       S(3) => \i__carry__1_i_5_n_0\,
-      S(2) => \i__carry__1_i_6_n_0\,
+      S(2) => \i__carry__1_i_6__1_n_0\,
       S(1) => \i__carry__1_i_7_n_0\,
       S(0) => \i__carry__1_i_8_n_0\
     );
@@ -13788,13 +13835,13 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       CO(0) => \RX_STATE0_inferred__0/i__carry__2_n_3\,
       CYINIT => '0',
       DI(3) => \i__carry__2_i_1_n_0\,
-      DI(2) => \i__carry__2_i_2__1_n_0\,
+      DI(2) => \i__carry__2_i_2_n_0\,
       DI(1) => \i__carry__2_i_3_n_0\,
-      DI(0) => \i__carry__2_i_4_n_0\,
+      DI(0) => \i__carry__2_i_4__1_n_0\,
       O(3 downto 0) => \NLW_RX_STATE0_inferred__0/i__carry__2_O_UNCONNECTED\(3 downto 0),
       S(3) => \i__carry__2_i_5_n_0\,
       S(2) => \i__carry__2_i_6_n_0\,
-      S(1) => \i__carry__2_i_7__1_n_0\,
+      S(1) => \i__carry__2_i_7_n_0\,
       S(0) => \i__carry__2_i_8_n_0\
     );
 \RX_outputs.VAR_AUTOCORR_PHASE_1SAMPLE[0]_i_1\: unisim.vcomponents.LUT3
@@ -14338,9 +14385,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       DI(3 downto 0) => B"0000",
       O(3 downto 0) => ARG0(12 downto 9),
       S(3) => \i__carry__1_i_1__0_n_0\,
-      S(2) => \i__carry__1_i_2_n_0\,
-      S(1) => \i__carry__1_i_3__0_n_0\,
-      S(0) => \i__carry__1_i_4__0_n_0\
+      S(2) => \i__carry__1_i_2__0_n_0\,
+      S(1) => \i__carry__1_i_3_n_0\,
+      S(0) => \i__carry__1_i_4_n_0\
     );
 \_inferred__15/i__carry__2\: unisim.vcomponents.CARRY4
      port map (
@@ -14353,9 +14400,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       DI(3 downto 0) => B"0000",
       O(3 downto 0) => ARG0(16 downto 13),
       S(3) => \i__carry__2_i_1__0_n_0\,
-      S(2) => \i__carry__2_i_2_n_0\,
+      S(2) => \i__carry__2_i_2__0_n_0\,
       S(1) => \i__carry__2_i_3__0_n_0\,
-      S(0) => \i__carry__2_i_4__0_n_0\
+      S(0) => \i__carry__2_i_4_n_0\
     );
 \_inferred__15/i__carry__3\: unisim.vcomponents.CARRY4
      port map (
@@ -14405,18 +14452,33 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
 \_inferred__15/i__carry__6\: unisim.vcomponents.CARRY4
      port map (
       CI => \_inferred__15/i__carry__5_n_0\,
-      CO(3) => \NLW__inferred__15/i__carry__6_CO_UNCONNECTED\(3),
+      CO(3) => \_inferred__15/i__carry__6_n_0\,
       CO(2) => \_inferred__15/i__carry__6_n_1\,
       CO(1) => \_inferred__15/i__carry__6_n_2\,
       CO(0) => \_inferred__15/i__carry__6_n_3\,
       CYINIT => '0',
       DI(3 downto 0) => B"0000",
-      O(3 downto 2) => \NLW__inferred__15/i__carry__6_O_UNCONNECTED\(3 downto 2),
-      O(1 downto 0) => ARG0(30 downto 29),
+      O(3 downto 0) => ARG0(32 downto 29),
+      S(3) => \i__carry__6_i_1_n_0\,
+      S(2) => \i__carry__6_i_2_n_0\,
+      S(1) => \i__carry__6_i_3_n_0\,
+      S(0) => \i__carry__6_i_4_n_0\
+    );
+\_inferred__15/i__carry__7\: unisim.vcomponents.CARRY4
+     port map (
+      CI => \_inferred__15/i__carry__6_n_0\,
+      CO(3) => \NLW__inferred__15/i__carry__7_CO_UNCONNECTED\(3),
+      CO(2) => \_inferred__15/i__carry__7_n_1\,
+      CO(1) => \_inferred__15/i__carry__7_n_2\,
+      CO(0) => \_inferred__15/i__carry__7_n_3\,
+      CYINIT => '0',
+      DI(3 downto 0) => B"0000",
+      O(3 downto 2) => \NLW__inferred__15/i__carry__7_O_UNCONNECTED\(3 downto 2),
+      O(1 downto 0) => ARG0(34 downto 33),
       S(3) => '0',
-      S(2) => \i__carry__6_i_1_n_0\,
-      S(1) => \i__carry__6_i_2_n_0\,
-      S(0) => \i__carry__6_i_3_n_0\
+      S(2) => \i__carry__7_i_1_n_0\,
+      S(1) => \i__carry__7_i_2_n_0\,
+      S(0) => \i__carry__7_i_3_n_0\
     );
 \_inferred__20/i__carry\: unisim.vcomponents.CARRY4
      port map (
@@ -14468,9 +14530,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       O(1) => \_inferred__20/i__carry__1_n_6\,
       O(0) => \_inferred__20/i__carry__1_n_7\,
       S(3) => \i__carry__1_i_1__1_n_0\,
-      S(2) => \i__carry__1_i_2__0_n_0\,
-      S(1) => \i__carry__1_i_3__1_n_0\,
-      S(0) => \i__carry__1_i_4__1_n_0\
+      S(2) => \i__carry__1_i_2__1_n_0\,
+      S(1) => \i__carry__1_i_3__0_n_0\,
+      S(0) => \i__carry__1_i_4__0_n_0\
     );
 \_inferred__20/i__carry__2\: unisim.vcomponents.CARRY4
      port map (
@@ -14486,9 +14548,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       O(1) => \_inferred__20/i__carry__2_n_6\,
       O(0) => \_inferred__20/i__carry__2_n_7\,
       S(3) => \i__carry__2_i_1__1_n_0\,
-      S(2) => \i__carry__2_i_2__0_n_0\,
+      S(2) => \i__carry__2_i_2__1_n_0\,
       S(1) => \i__carry__2_i_3__1_n_0\,
-      S(0) => \i__carry__2_i_4__1_n_0\
+      S(0) => \i__carry__2_i_4__0_n_0\
     );
 \_inferred__20/i__carry__3\: unisim.vcomponents.CARRY4
      port map (
@@ -14547,44 +14609,62 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
 \_inferred__20/i__carry__6\: unisim.vcomponents.CARRY4
      port map (
       CI => \_inferred__20/i__carry__5_n_0\,
-      CO(3) => \NLW__inferred__20/i__carry__6_CO_UNCONNECTED\(3),
+      CO(3) => \_inferred__20/i__carry__6_n_0\,
       CO(2) => \_inferred__20/i__carry__6_n_1\,
       CO(1) => \_inferred__20/i__carry__6_n_2\,
       CO(0) => \_inferred__20/i__carry__6_n_3\,
       CYINIT => '0',
       DI(3 downto 0) => B"0000",
-      O(3 downto 2) => \NLW__inferred__20/i__carry__6_O_UNCONNECTED\(3 downto 2),
+      O(3) => \_inferred__20/i__carry__6_n_4\,
+      O(2) => \_inferred__20/i__carry__6_n_5\,
       O(1) => \_inferred__20/i__carry__6_n_6\,
       O(0) => \_inferred__20/i__carry__6_n_7\,
+      S(3) => \i__carry__6_i_1__0_n_0\,
+      S(2) => \i__carry__6_i_2__0_n_0\,
+      S(1) => \i__carry__6_i_3__0_n_0\,
+      S(0) => \i__carry__6_i_4__0_n_0\
+    );
+\_inferred__20/i__carry__7\: unisim.vcomponents.CARRY4
+     port map (
+      CI => \_inferred__20/i__carry__6_n_0\,
+      CO(3) => \NLW__inferred__20/i__carry__7_CO_UNCONNECTED\(3),
+      CO(2) => \_inferred__20/i__carry__7_n_1\,
+      CO(1) => \_inferred__20/i__carry__7_n_2\,
+      CO(0) => \_inferred__20/i__carry__7_n_3\,
+      CYINIT => '0',
+      DI(3 downto 0) => B"0000",
+      O(3 downto 2) => \NLW__inferred__20/i__carry__7_O_UNCONNECTED\(3 downto 2),
+      O(1) => \_inferred__20/i__carry__7_n_6\,
+      O(0) => \_inferred__20/i__carry__7_n_7\,
       S(3) => '0',
-      S(2) => \i__carry__6_i_1__0_n_0\,
-      S(1) => \i__carry__6_i_2__0_n_0\,
-      S(0) => \i__carry__6_i_3__0_n_0\
+      S(2) => \i__carry__7_i_1__0_n_0\,
+      S(1) => \i__carry__7_i_2__0_n_0\,
+      S(0) => \i__carry__7_i_3__0_n_0\
     );
 \compute_lts_autocorr_process.VAR_COMPLETE_COMPUTATION[0]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"CCACCCCC00CCCC00"
+      INIT => X"BEB60800BEBE0000"
     )
         port map (
-      I0 => VAR_COMPLETE_COMPUTATION(1),
-      I1 => VAR_COMPLETE_COMPUTATION(0),
-      I2 => ROTATION_DATA_OUT_STROBE,
-      I3 => RX_STATE_reg(0),
-      I4 => RX_STATE_reg(2),
-      I5 => RX_STATE_reg(1),
+      I0 => RX_STATE_reg(1),
+      I1 => RX_STATE_reg(2),
+      I2 => RX_STATE_reg(0),
+      I3 => VAR_COMPLETE_COMPUTATION(1),
+      I4 => VAR_COMPLETE_COMPUTATION(0),
+      I5 => ROTATION_DATA_OUT_STROBE,
       O => \compute_lts_autocorr_process.VAR_COMPLETE_COMPUTATION[0]_i_1_n_0\
     );
 \compute_lts_autocorr_process.VAR_COMPLETE_COMPUTATION[1]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"AA8AAAAAFFAAAA00"
+      INIT => X"FE40F640FE40FE40"
     )
         port map (
-      I0 => VAR_COMPLETE_COMPUTATION(1),
-      I1 => VAR_COMPLETE_COMPUTATION(0),
-      I2 => ROTATION_DATA_OUT_STROBE,
-      I3 => RX_STATE_reg(0),
-      I4 => RX_STATE_reg(2),
-      I5 => RX_STATE_reg(1),
+      I0 => RX_STATE_reg(1),
+      I1 => RX_STATE_reg(2),
+      I2 => RX_STATE_reg(0),
+      I3 => VAR_COMPLETE_COMPUTATION(1),
+      I4 => VAR_COMPLETE_COMPUTATION(0),
+      I5 => ROTATION_DATA_OUT_STROBE,
       O => \compute_lts_autocorr_process.VAR_COMPLETE_COMPUTATION[1]_i_1_n_0\
     );
 \compute_lts_autocorr_process.VAR_COMPLETE_COMPUTATION_reg[0]\: unisim.vcomponents.FDRE
@@ -14623,9 +14703,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(16),
-      I1 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_I_ACCUMULATOR(16),
+      I0 => ARG2(10),
+      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_I_ACCUMULATOR(10),
       O => \i__carry__0_i_1__0_n_0\
     );
 \i__carry__0_i_1__1\: unisim.vcomponents.LUT3
@@ -14633,9 +14713,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => \i__carry__0_i_5__1_n_4\,
-      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(16),
+      I0 => \i__carry__0_i_5__1_n_6\,
+      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(10),
       O => \i__carry__0_i_1__1_n_0\
     );
 \i__carry__0_i_2\: unisim.vcomponents.LUT2
@@ -14652,9 +14732,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(15),
-      I1 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_I_ACCUMULATOR(15),
+      I0 => ARG2(9),
+      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_I_ACCUMULATOR(9),
       O => \i__carry__0_i_2__0_n_0\
     );
 \i__carry__0_i_2__1\: unisim.vcomponents.LUT3
@@ -14662,9 +14742,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => \i__carry__0_i_5__1_n_5\,
-      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(15),
+      I0 => \i__carry__0_i_5__1_n_7\,
+      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(9),
       O => \i__carry__0_i_2__1_n_0\
     );
 \i__carry__0_i_3\: unisim.vcomponents.LUT2
@@ -14681,9 +14761,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(14),
-      I1 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_I_ACCUMULATOR(14),
+      I0 => ARG2(8),
+      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_I_ACCUMULATOR(8),
       O => \i__carry__0_i_3__0_n_0\
     );
 \i__carry__0_i_3__1\: unisim.vcomponents.LUT3
@@ -14691,9 +14771,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => \i__carry__0_i_5__1_n_6\,
-      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(14),
+      I0 => \i__carry_i_6__1_n_4\,
+      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(8),
       O => \i__carry__0_i_3__1_n_0\
     );
 \i__carry__0_i_4\: unisim.vcomponents.LUT2
@@ -14701,8 +14781,8 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"E"
     )
         port map (
-      I0 => COUNTER(9),
-      I1 => COUNTER(8),
+      I0 => COUNTER(8),
+      I1 => COUNTER(9),
       O => \i__carry__0_i_4_n_0\
     );
 \i__carry__0_i_4__0\: unisim.vcomponents.LUT3
@@ -14710,9 +14790,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(13),
-      I1 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_I_ACCUMULATOR(13),
+      I0 => ARG2(7),
+      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_I_ACCUMULATOR(7),
       O => \i__carry__0_i_4__0_n_0\
     );
 \i__carry__0_i_4__1\: unisim.vcomponents.LUT3
@@ -14720,9 +14800,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => \i__carry__0_i_5__1_n_7\,
-      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(13),
+      I0 => \i__carry_i_6__1_n_5\,
+      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(7),
       O => \i__carry__0_i_4__1_n_0\
     );
 \i__carry__0_i_5\: unisim.vcomponents.LUT2
@@ -14743,7 +14823,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       CO(0) => \i__carry__0_i_5__0_n_3\,
       CYINIT => '0',
       DI(3 downto 0) => B"0000",
-      O(3 downto 0) => ARG2(16 downto 13),
+      O(3 downto 0) => ARG2(12 downto 9),
       S(3) => \i__carry__0_i_6__0_n_0\,
       S(2) => \i__carry__0_i_7__0_n_0\,
       S(1) => \i__carry__0_i_8__0_n_0\,
@@ -14781,7 +14861,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(16),
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(12),
       O => \i__carry__0_i_6__0_n_0\
     );
 \i__carry__0_i_6__1\: unisim.vcomponents.LUT1
@@ -14789,7 +14869,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(16),
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(12),
       O => \i__carry__0_i_6__1_n_0\
     );
 \i__carry__0_i_7\: unisim.vcomponents.LUT2
@@ -14806,7 +14886,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(15),
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(11),
       O => \i__carry__0_i_7__0_n_0\
     );
 \i__carry__0_i_7__1\: unisim.vcomponents.LUT1
@@ -14814,7 +14894,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(15),
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(11),
       O => \i__carry__0_i_7__1_n_0\
     );
 \i__carry__0_i_8\: unisim.vcomponents.LUT2
@@ -14822,8 +14902,8 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => COUNTER(8),
-      I1 => COUNTER(9),
+      I0 => COUNTER(9),
+      I1 => COUNTER(8),
       O => \i__carry__0_i_8_n_0\
     );
 \i__carry__0_i_8__0\: unisim.vcomponents.LUT1
@@ -14831,7 +14911,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(14),
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(10),
       O => \i__carry__0_i_8__0_n_0\
     );
 \i__carry__0_i_8__1\: unisim.vcomponents.LUT1
@@ -14839,7 +14919,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(14),
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(10),
       O => \i__carry__0_i_8__1_n_0\
     );
 \i__carry__0_i_9\: unisim.vcomponents.LUT1
@@ -14847,7 +14927,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(13),
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(9),
       O => \i__carry__0_i_9_n_0\
     );
 \i__carry__0_i_9__0\: unisim.vcomponents.LUT1
@@ -14855,7 +14935,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(13),
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(9),
       O => \i__carry__0_i_9__0_n_0\
     );
 \i__carry__1_i_1\: unisim.vcomponents.LUT2
@@ -14872,9 +14952,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(20),
-      I1 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_I_ACCUMULATOR(20),
+      I0 => ARG2(14),
+      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_I_ACCUMULATOR(14),
       O => \i__carry__1_i_1__0_n_0\
     );
 \i__carry__1_i_1__1\: unisim.vcomponents.LUT3
@@ -14882,19 +14962,18 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => \i__carry__1_i_5__1_n_4\,
-      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(20),
+      I0 => \i__carry__1_i_5__1_n_6\,
+      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(14),
       O => \i__carry__1_i_1__1_n_0\
     );
-\i__carry__1_i_2\: unisim.vcomponents.LUT3
+\i__carry__1_i_2\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"47"
+      INIT => X"E"
     )
         port map (
-      I0 => ARG2(19),
-      I1 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_I_ACCUMULATOR(19),
+      I0 => COUNTER(21),
+      I1 => COUNTER(20),
       O => \i__carry__1_i_2_n_0\
     );
 \i__carry__1_i_2__0\: unisim.vcomponents.LUT3
@@ -14902,27 +14981,29 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => \i__carry__1_i_5__1_n_5\,
-      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(19),
+      I0 => ARG2(13),
+      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_I_ACCUMULATOR(13),
       O => \i__carry__1_i_2__0_n_0\
     );
-\i__carry__1_i_2__1\: unisim.vcomponents.LUT2
+\i__carry__1_i_2__1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"E"
+      INIT => X"47"
     )
         port map (
-      I0 => COUNTER(20),
-      I1 => COUNTER(21),
+      I0 => \i__carry__1_i_5__1_n_7\,
+      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(13),
       O => \i__carry__1_i_2__1_n_0\
     );
-\i__carry__1_i_3\: unisim.vcomponents.LUT2
+\i__carry__1_i_3\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"E"
+      INIT => X"47"
     )
         port map (
-      I0 => COUNTER(18),
-      I1 => COUNTER(19),
+      I0 => ARG2(12),
+      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_I_ACCUMULATOR(12),
       O => \i__carry__1_i_3_n_0\
     );
 \i__carry__1_i_3__0\: unisim.vcomponents.LUT3
@@ -14930,28 +15011,28 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(18),
-      I1 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_I_ACCUMULATOR(18),
+      I0 => \i__carry__0_i_5__1_n_4\,
+      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(12),
       O => \i__carry__1_i_3__0_n_0\
     );
-\i__carry__1_i_3__1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"47"
-    )
-        port map (
-      I0 => \i__carry__1_i_5__1_n_6\,
-      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(18),
-      O => \i__carry__1_i_3__1_n_0\
-    );
-\i__carry__1_i_4\: unisim.vcomponents.LUT2
+\i__carry__1_i_3__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"E"
     )
         port map (
-      I0 => COUNTER(16),
-      I1 => COUNTER(17),
+      I0 => COUNTER(18),
+      I1 => COUNTER(19),
+      O => \i__carry__1_i_3__1_n_0\
+    );
+\i__carry__1_i_4\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"47"
+    )
+        port map (
+      I0 => ARG2(11),
+      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_I_ACCUMULATOR(11),
       O => \i__carry__1_i_4_n_0\
     );
 \i__carry__1_i_4__0\: unisim.vcomponents.LUT3
@@ -14959,19 +15040,18 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(17),
-      I1 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_I_ACCUMULATOR(17),
+      I0 => \i__carry__0_i_5__1_n_5\,
+      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(11),
       O => \i__carry__1_i_4__0_n_0\
     );
-\i__carry__1_i_4__1\: unisim.vcomponents.LUT3
+\i__carry__1_i_4__1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"47"
+      INIT => X"E"
     )
         port map (
-      I0 => \i__carry__1_i_5__1_n_7\,
-      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(17),
+      I0 => COUNTER(16),
+      I1 => COUNTER(17),
       O => \i__carry__1_i_4__1_n_0\
     );
 \i__carry__1_i_5\: unisim.vcomponents.LUT2
@@ -14992,8 +15072,8 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       CO(0) => \i__carry__1_i_5__0_n_3\,
       CYINIT => '0',
       DI(3 downto 0) => B"0000",
-      O(3 downto 0) => ARG2(20 downto 17),
-      S(3) => \i__carry__1_i_6__0_n_0\,
+      O(3 downto 0) => ARG2(16 downto 13),
+      S(3) => \i__carry__1_i_6_n_0\,
       S(2) => \i__carry__1_i_7__0_n_0\,
       S(1) => \i__carry__1_i_8__0_n_0\,
       S(0) => \i__carry__1_i_9_n_0\
@@ -15011,18 +15091,17 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       O(2) => \i__carry__1_i_5__1_n_5\,
       O(1) => \i__carry__1_i_5__1_n_6\,
       O(0) => \i__carry__1_i_5__1_n_7\,
-      S(3) => \i__carry__1_i_6__1_n_0\,
+      S(3) => \i__carry__1_i_6__0_n_0\,
       S(2) => \i__carry__1_i_7__1_n_0\,
       S(1) => \i__carry__1_i_8__1_n_0\,
       S(0) => \i__carry__1_i_9__0_n_0\
     );
-\i__carry__1_i_6\: unisim.vcomponents.LUT2
+\i__carry__1_i_6\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
-      I0 => COUNTER(21),
-      I1 => COUNTER(20),
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(16),
       O => \i__carry__1_i_6_n_0\
     );
 \i__carry__1_i_6__0\: unisim.vcomponents.LUT1
@@ -15030,15 +15109,16 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(20),
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(16),
       O => \i__carry__1_i_6__0_n_0\
     );
-\i__carry__1_i_6__1\: unisim.vcomponents.LUT1
+\i__carry__1_i_6__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(20),
+      I0 => COUNTER(20),
+      I1 => COUNTER(21),
       O => \i__carry__1_i_6__1_n_0\
     );
 \i__carry__1_i_7\: unisim.vcomponents.LUT2
@@ -15055,7 +15135,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(19),
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(15),
       O => \i__carry__1_i_7__0_n_0\
     );
 \i__carry__1_i_7__1\: unisim.vcomponents.LUT1
@@ -15063,7 +15143,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(19),
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(15),
       O => \i__carry__1_i_7__1_n_0\
     );
 \i__carry__1_i_8\: unisim.vcomponents.LUT2
@@ -15080,7 +15160,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(18),
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(14),
       O => \i__carry__1_i_8__0_n_0\
     );
 \i__carry__1_i_8__1\: unisim.vcomponents.LUT1
@@ -15088,7 +15168,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(18),
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(14),
       O => \i__carry__1_i_8__1_n_0\
     );
 \i__carry__1_i_9\: unisim.vcomponents.LUT1
@@ -15096,7 +15176,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(17),
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(13),
       O => \i__carry__1_i_9_n_0\
     );
 \i__carry__1_i_9__0\: unisim.vcomponents.LUT1
@@ -15104,7 +15184,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(17),
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(13),
       O => \i__carry__1_i_9__0_n_0\
     );
 \i__carry__2_i_1\: unisim.vcomponents.LUT2
@@ -15121,9 +15201,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(24),
-      I1 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_I_ACCUMULATOR(24),
+      I0 => ARG2(18),
+      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_I_ACCUMULATOR(18),
       O => \i__carry__2_i_1__0_n_0\
     );
 \i__carry__2_i_1__1\: unisim.vcomponents.LUT3
@@ -15131,19 +15211,18 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => \i__carry__2_i_5__1_n_4\,
-      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(24),
+      I0 => \i__carry__2_i_5__1_n_6\,
+      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(18),
       O => \i__carry__2_i_1__1_n_0\
     );
-\i__carry__2_i_2\: unisim.vcomponents.LUT3
+\i__carry__2_i_2\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"47"
+      INIT => X"E"
     )
         port map (
-      I0 => ARG2(23),
-      I1 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_I_ACCUMULATOR(23),
+      I0 => COUNTER(28),
+      I1 => COUNTER(29),
       O => \i__carry__2_i_2_n_0\
     );
 \i__carry__2_i_2__0\: unisim.vcomponents.LUT3
@@ -15151,18 +15230,19 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => \i__carry__2_i_5__1_n_5\,
-      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(23),
+      I0 => ARG2(17),
+      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_I_ACCUMULATOR(17),
       O => \i__carry__2_i_2__0_n_0\
     );
-\i__carry__2_i_2__1\: unisim.vcomponents.LUT2
+\i__carry__2_i_2__1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"E"
+      INIT => X"47"
     )
         port map (
-      I0 => COUNTER(28),
-      I1 => COUNTER(29),
+      I0 => \i__carry__2_i_5__1_n_7\,
+      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(17),
       O => \i__carry__2_i_2__1_n_0\
     );
 \i__carry__2_i_3\: unisim.vcomponents.LUT2
@@ -15179,9 +15259,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(22),
-      I1 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_I_ACCUMULATOR(22),
+      I0 => ARG2(16),
+      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_I_ACCUMULATOR(16),
       O => \i__carry__2_i_3__0_n_0\
     );
 \i__carry__2_i_3__1\: unisim.vcomponents.LUT3
@@ -15189,18 +15269,19 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => \i__carry__2_i_5__1_n_6\,
-      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(22),
+      I0 => \i__carry__1_i_5__1_n_4\,
+      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(16),
       O => \i__carry__2_i_3__1_n_0\
     );
-\i__carry__2_i_4\: unisim.vcomponents.LUT2
+\i__carry__2_i_4\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"E"
+      INIT => X"47"
     )
         port map (
-      I0 => COUNTER(24),
-      I1 => COUNTER(25),
+      I0 => ARG2(15),
+      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_I_ACCUMULATOR(15),
       O => \i__carry__2_i_4_n_0\
     );
 \i__carry__2_i_4__0\: unisim.vcomponents.LUT3
@@ -15208,19 +15289,18 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(21),
-      I1 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_I_ACCUMULATOR(21),
+      I0 => \i__carry__1_i_5__1_n_5\,
+      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(15),
       O => \i__carry__2_i_4__0_n_0\
     );
-\i__carry__2_i_4__1\: unisim.vcomponents.LUT3
+\i__carry__2_i_4__1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"47"
+      INIT => X"E"
     )
         port map (
-      I0 => \i__carry__2_i_5__1_n_7\,
-      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(21),
+      I0 => COUNTER(24),
+      I1 => COUNTER(25),
       O => \i__carry__2_i_4__1_n_0\
     );
 \i__carry__2_i_5\: unisim.vcomponents.LUT2
@@ -15241,9 +15321,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       CO(0) => \i__carry__2_i_5__0_n_3\,
       CYINIT => '0',
       DI(3 downto 0) => B"0000",
-      O(3 downto 0) => ARG2(24 downto 21),
+      O(3 downto 0) => ARG2(20 downto 17),
       S(3) => \i__carry__2_i_6__0_n_0\,
-      S(2) => \i__carry__2_i_7_n_0\,
+      S(2) => \i__carry__2_i_7__0_n_0\,
       S(1) => \i__carry__2_i_8__0_n_0\,
       S(0) => \i__carry__2_i_9_n_0\
     );
@@ -15261,7 +15341,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       O(1) => \i__carry__2_i_5__1_n_6\,
       O(0) => \i__carry__2_i_5__1_n_7\,
       S(3) => \i__carry__2_i_6__1_n_0\,
-      S(2) => \i__carry__2_i_7__0_n_0\,
+      S(2) => \i__carry__2_i_7__1_n_0\,
       S(1) => \i__carry__2_i_8__1_n_0\,
       S(0) => \i__carry__2_i_9__0_n_0\
     );
@@ -15279,7 +15359,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(24),
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(20),
       O => \i__carry__2_i_6__0_n_0\
     );
 \i__carry__2_i_6__1\: unisim.vcomponents.LUT1
@@ -15287,15 +15367,16 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(24),
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(20),
       O => \i__carry__2_i_6__1_n_0\
     );
-\i__carry__2_i_7\: unisim.vcomponents.LUT1
+\i__carry__2_i_7\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(23),
+      I0 => COUNTER(26),
+      I1 => COUNTER(27),
       O => \i__carry__2_i_7_n_0\
     );
 \i__carry__2_i_7__0\: unisim.vcomponents.LUT1
@@ -15303,16 +15384,15 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(23),
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(19),
       O => \i__carry__2_i_7__0_n_0\
     );
-\i__carry__2_i_7__1\: unisim.vcomponents.LUT2
+\i__carry__2_i_7__1\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
-      I0 => COUNTER(26),
-      I1 => COUNTER(27),
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(19),
       O => \i__carry__2_i_7__1_n_0\
     );
 \i__carry__2_i_8\: unisim.vcomponents.LUT2
@@ -15329,7 +15409,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(22),
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(18),
       O => \i__carry__2_i_8__0_n_0\
     );
 \i__carry__2_i_8__1\: unisim.vcomponents.LUT1
@@ -15337,7 +15417,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(22),
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(18),
       O => \i__carry__2_i_8__1_n_0\
     );
 \i__carry__2_i_9\: unisim.vcomponents.LUT1
@@ -15345,7 +15425,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(21),
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(17),
       O => \i__carry__2_i_9_n_0\
     );
 \i__carry__2_i_9__0\: unisim.vcomponents.LUT1
@@ -15353,7 +15433,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(21),
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(17),
       O => \i__carry__2_i_9__0_n_0\
     );
 \i__carry__3_i_1\: unisim.vcomponents.LUT3
@@ -15361,9 +15441,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(28),
-      I1 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_I_ACCUMULATOR(28),
+      I0 => ARG2(22),
+      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_I_ACCUMULATOR(22),
       O => \i__carry__3_i_1_n_0\
     );
 \i__carry__3_i_1__0\: unisim.vcomponents.LUT3
@@ -15371,9 +15451,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => \i__carry__3_i_5__0_n_4\,
-      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(28),
+      I0 => \i__carry__3_i_5__0_n_6\,
+      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(22),
       O => \i__carry__3_i_1__0_n_0\
     );
 \i__carry__3_i_2\: unisim.vcomponents.LUT3
@@ -15381,9 +15461,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(27),
-      I1 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_I_ACCUMULATOR(27),
+      I0 => ARG2(21),
+      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_I_ACCUMULATOR(21),
       O => \i__carry__3_i_2_n_0\
     );
 \i__carry__3_i_2__0\: unisim.vcomponents.LUT3
@@ -15391,9 +15471,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => \i__carry__3_i_5__0_n_5\,
-      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(27),
+      I0 => \i__carry__3_i_5__0_n_7\,
+      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(21),
       O => \i__carry__3_i_2__0_n_0\
     );
 \i__carry__3_i_3\: unisim.vcomponents.LUT3
@@ -15401,9 +15481,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(26),
-      I1 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_I_ACCUMULATOR(26),
+      I0 => ARG2(20),
+      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_I_ACCUMULATOR(20),
       O => \i__carry__3_i_3_n_0\
     );
 \i__carry__3_i_3__0\: unisim.vcomponents.LUT3
@@ -15411,9 +15491,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => \i__carry__3_i_5__0_n_6\,
-      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(26),
+      I0 => \i__carry__2_i_5__1_n_4\,
+      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(20),
       O => \i__carry__3_i_3__0_n_0\
     );
 \i__carry__3_i_4\: unisim.vcomponents.LUT3
@@ -15421,9 +15501,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(25),
-      I1 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_I_ACCUMULATOR(25),
+      I0 => ARG2(19),
+      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_I_ACCUMULATOR(19),
       O => \i__carry__3_i_4_n_0\
     );
 \i__carry__3_i_4__0\: unisim.vcomponents.LUT3
@@ -15431,9 +15511,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => \i__carry__3_i_5__0_n_7\,
-      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(25),
+      I0 => \i__carry__2_i_5__1_n_5\,
+      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(19),
       O => \i__carry__3_i_4__0_n_0\
     );
 \i__carry__3_i_5\: unisim.vcomponents.CARRY4
@@ -15445,7 +15525,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       CO(0) => \i__carry__3_i_5_n_3\,
       CYINIT => '0',
       DI(3 downto 0) => B"0000",
-      O(3 downto 0) => ARG2(28 downto 25),
+      O(3 downto 0) => ARG2(24 downto 21),
       S(3) => \i__carry__3_i_6_n_0\,
       S(2) => \i__carry__3_i_7_n_0\,
       S(1) => \i__carry__3_i_8_n_0\,
@@ -15474,7 +15554,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(28),
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(24),
       O => \i__carry__3_i_6_n_0\
     );
 \i__carry__3_i_6__0\: unisim.vcomponents.LUT1
@@ -15482,7 +15562,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(28),
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(24),
       O => \i__carry__3_i_6__0_n_0\
     );
 \i__carry__3_i_7\: unisim.vcomponents.LUT1
@@ -15490,7 +15570,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(27),
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(23),
       O => \i__carry__3_i_7_n_0\
     );
 \i__carry__3_i_7__0\: unisim.vcomponents.LUT1
@@ -15498,7 +15578,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(27),
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(23),
       O => \i__carry__3_i_7__0_n_0\
     );
 \i__carry__3_i_8\: unisim.vcomponents.LUT1
@@ -15506,7 +15586,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(26),
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(22),
       O => \i__carry__3_i_8_n_0\
     );
 \i__carry__3_i_8__0\: unisim.vcomponents.LUT1
@@ -15514,7 +15594,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(26),
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(22),
       O => \i__carry__3_i_8__0_n_0\
     );
 \i__carry__3_i_9\: unisim.vcomponents.LUT1
@@ -15522,7 +15602,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(25),
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(21),
       O => \i__carry__3_i_9_n_0\
     );
 \i__carry__3_i_9__0\: unisim.vcomponents.LUT1
@@ -15530,7 +15610,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(25),
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(21),
       O => \i__carry__3_i_9__0_n_0\
     );
 \i__carry__4_i_1\: unisim.vcomponents.LUT3
@@ -15538,9 +15618,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(32),
-      I1 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_I_ACCUMULATOR(32),
+      I0 => ARG2(26),
+      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_I_ACCUMULATOR(26),
       O => \i__carry__4_i_1_n_0\
     );
 \i__carry__4_i_1__0\: unisim.vcomponents.LUT3
@@ -15548,9 +15628,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => \i__carry__4_i_5__0_n_4\,
-      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(32),
+      I0 => \i__carry__4_i_5__0_n_6\,
+      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(26),
       O => \i__carry__4_i_1__0_n_0\
     );
 \i__carry__4_i_2\: unisim.vcomponents.LUT3
@@ -15558,9 +15638,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(31),
-      I1 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_I_ACCUMULATOR(31),
+      I0 => ARG2(25),
+      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_I_ACCUMULATOR(25),
       O => \i__carry__4_i_2_n_0\
     );
 \i__carry__4_i_2__0\: unisim.vcomponents.LUT3
@@ -15568,9 +15648,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => \i__carry__4_i_5__0_n_5\,
-      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(31),
+      I0 => \i__carry__4_i_5__0_n_7\,
+      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(25),
       O => \i__carry__4_i_2__0_n_0\
     );
 \i__carry__4_i_3\: unisim.vcomponents.LUT3
@@ -15578,9 +15658,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(30),
-      I1 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_I_ACCUMULATOR(30),
+      I0 => ARG2(24),
+      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_I_ACCUMULATOR(24),
       O => \i__carry__4_i_3_n_0\
     );
 \i__carry__4_i_3__0\: unisim.vcomponents.LUT3
@@ -15588,9 +15668,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => \i__carry__4_i_5__0_n_6\,
-      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(30),
+      I0 => \i__carry__3_i_5__0_n_4\,
+      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(24),
       O => \i__carry__4_i_3__0_n_0\
     );
 \i__carry__4_i_4\: unisim.vcomponents.LUT3
@@ -15598,9 +15678,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(29),
-      I1 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_I_ACCUMULATOR(29),
+      I0 => ARG2(23),
+      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_I_ACCUMULATOR(23),
       O => \i__carry__4_i_4_n_0\
     );
 \i__carry__4_i_4__0\: unisim.vcomponents.LUT3
@@ -15608,9 +15688,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => \i__carry__4_i_5__0_n_7\,
-      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(29),
+      I0 => \i__carry__3_i_5__0_n_5\,
+      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(23),
       O => \i__carry__4_i_4__0_n_0\
     );
 \i__carry__4_i_5\: unisim.vcomponents.CARRY4
@@ -15622,7 +15702,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       CO(0) => \i__carry__4_i_5_n_3\,
       CYINIT => '0',
       DI(3 downto 0) => B"0000",
-      O(3 downto 0) => ARG2(32 downto 29),
+      O(3 downto 0) => ARG2(28 downto 25),
       S(3) => \i__carry__4_i_6_n_0\,
       S(2) => \i__carry__4_i_7_n_0\,
       S(1) => \i__carry__4_i_8_n_0\,
@@ -15651,7 +15731,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(32),
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(28),
       O => \i__carry__4_i_6_n_0\
     );
 \i__carry__4_i_6__0\: unisim.vcomponents.LUT1
@@ -15659,7 +15739,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(32),
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(28),
       O => \i__carry__4_i_6__0_n_0\
     );
 \i__carry__4_i_7\: unisim.vcomponents.LUT1
@@ -15667,7 +15747,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(31),
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(27),
       O => \i__carry__4_i_7_n_0\
     );
 \i__carry__4_i_7__0\: unisim.vcomponents.LUT1
@@ -15675,7 +15755,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(31),
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(27),
       O => \i__carry__4_i_7__0_n_0\
     );
 \i__carry__4_i_8\: unisim.vcomponents.LUT1
@@ -15683,7 +15763,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(30),
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(26),
       O => \i__carry__4_i_8_n_0\
     );
 \i__carry__4_i_8__0\: unisim.vcomponents.LUT1
@@ -15691,7 +15771,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(30),
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(26),
       O => \i__carry__4_i_8__0_n_0\
     );
 \i__carry__4_i_9\: unisim.vcomponents.LUT1
@@ -15699,7 +15779,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(29),
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(25),
       O => \i__carry__4_i_9_n_0\
     );
 \i__carry__4_i_9__0\: unisim.vcomponents.LUT1
@@ -15707,7 +15787,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(29),
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(25),
       O => \i__carry__4_i_9__0_n_0\
     );
 \i__carry__5_i_1\: unisim.vcomponents.LUT3
@@ -15715,9 +15795,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(36),
-      I1 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_I_ACCUMULATOR(36),
+      I0 => ARG2(30),
+      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_I_ACCUMULATOR(30),
       O => \i__carry__5_i_1_n_0\
     );
 \i__carry__5_i_1__0\: unisim.vcomponents.LUT3
@@ -15725,9 +15805,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => \i__carry__5_i_5__0_n_4\,
-      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(36),
+      I0 => \i__carry__5_i_5__0_n_6\,
+      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(30),
       O => \i__carry__5_i_1__0_n_0\
     );
 \i__carry__5_i_2\: unisim.vcomponents.LUT3
@@ -15735,9 +15815,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(35),
-      I1 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_I_ACCUMULATOR(35),
+      I0 => ARG2(29),
+      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_I_ACCUMULATOR(29),
       O => \i__carry__5_i_2_n_0\
     );
 \i__carry__5_i_2__0\: unisim.vcomponents.LUT3
@@ -15745,9 +15825,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => \i__carry__5_i_5__0_n_5\,
-      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(35),
+      I0 => \i__carry__5_i_5__0_n_7\,
+      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(29),
       O => \i__carry__5_i_2__0_n_0\
     );
 \i__carry__5_i_3\: unisim.vcomponents.LUT3
@@ -15755,9 +15835,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(34),
-      I1 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_I_ACCUMULATOR(34),
+      I0 => ARG2(28),
+      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_I_ACCUMULATOR(28),
       O => \i__carry__5_i_3_n_0\
     );
 \i__carry__5_i_3__0\: unisim.vcomponents.LUT3
@@ -15765,9 +15845,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => \i__carry__5_i_5__0_n_6\,
-      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(34),
+      I0 => \i__carry__4_i_5__0_n_4\,
+      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(28),
       O => \i__carry__5_i_3__0_n_0\
     );
 \i__carry__5_i_4\: unisim.vcomponents.LUT3
@@ -15775,9 +15855,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(33),
-      I1 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_I_ACCUMULATOR(33),
+      I0 => ARG2(27),
+      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_I_ACCUMULATOR(27),
       O => \i__carry__5_i_4_n_0\
     );
 \i__carry__5_i_4__0\: unisim.vcomponents.LUT3
@@ -15785,9 +15865,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => \i__carry__5_i_5__0_n_7\,
-      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(33),
+      I0 => \i__carry__4_i_5__0_n_5\,
+      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(27),
       O => \i__carry__5_i_4__0_n_0\
     );
 \i__carry__5_i_5\: unisim.vcomponents.CARRY4
@@ -15799,7 +15879,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       CO(0) => \i__carry__5_i_5_n_3\,
       CYINIT => '0',
       DI(3 downto 0) => B"0000",
-      O(3 downto 0) => ARG2(36 downto 33),
+      O(3 downto 0) => ARG2(32 downto 29),
       S(3) => \i__carry__5_i_6_n_0\,
       S(2) => \i__carry__5_i_7_n_0\,
       S(1) => \i__carry__5_i_8_n_0\,
@@ -15828,7 +15908,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(36),
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(32),
       O => \i__carry__5_i_6_n_0\
     );
 \i__carry__5_i_6__0\: unisim.vcomponents.LUT1
@@ -15836,7 +15916,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(36),
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(32),
       O => \i__carry__5_i_6__0_n_0\
     );
 \i__carry__5_i_7\: unisim.vcomponents.LUT1
@@ -15844,7 +15924,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(35),
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(31),
       O => \i__carry__5_i_7_n_0\
     );
 \i__carry__5_i_7__0\: unisim.vcomponents.LUT1
@@ -15852,7 +15932,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(35),
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(31),
       O => \i__carry__5_i_7__0_n_0\
     );
 \i__carry__5_i_8\: unisim.vcomponents.LUT1
@@ -15860,7 +15940,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(34),
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(30),
       O => \i__carry__5_i_8_n_0\
     );
 \i__carry__5_i_8__0\: unisim.vcomponents.LUT1
@@ -15868,7 +15948,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(34),
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(30),
       O => \i__carry__5_i_8__0_n_0\
     );
 \i__carry__5_i_9\: unisim.vcomponents.LUT1
@@ -15876,7 +15956,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(33),
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(29),
       O => \i__carry__5_i_9_n_0\
     );
 \i__carry__5_i_9__0\: unisim.vcomponents.LUT1
@@ -15884,25 +15964,27 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(33),
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(29),
       O => \i__carry__5_i_9__0_n_0\
     );
-\i__carry__6_i_1\: unisim.vcomponents.LUT2
+\i__carry__6_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"7"
+      INIT => X"47"
     )
         port map (
-      I0 => ARG2(39),
-      I1 => LTS_AUTOCORR_I_ACCUMULATOR(39),
+      I0 => ARG2(34),
+      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_I_ACCUMULATOR(34),
       O => \i__carry__6_i_1_n_0\
     );
-\i__carry__6_i_1__0\: unisim.vcomponents.LUT2
+\i__carry__6_i_1__0\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"7"
+      INIT => X"47"
     )
         port map (
-      I0 => \i__carry__6_i_4__0_n_5\,
-      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
+      I0 => \i__carry__6_i_5__0_n_6\,
+      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(34),
       O => \i__carry__6_i_1__0_n_0\
     );
 \i__carry__6_i_2\: unisim.vcomponents.LUT3
@@ -15910,9 +15992,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(38),
-      I1 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_I_ACCUMULATOR(38),
+      I0 => ARG2(33),
+      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_I_ACCUMULATOR(33),
       O => \i__carry__6_i_2_n_0\
     );
 \i__carry__6_i_2__0\: unisim.vcomponents.LUT3
@@ -15920,9 +16002,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => \i__carry__6_i_4__0_n_6\,
-      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(38),
+      I0 => \i__carry__6_i_5__0_n_7\,
+      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(33),
       O => \i__carry__6_i_2__0_n_0\
     );
 \i__carry__6_i_3\: unisim.vcomponents.LUT3
@@ -15930,9 +16012,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(37),
-      I1 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I0 => ARG2(32),
+      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_I_ACCUMULATOR(32),
       O => \i__carry__6_i_3_n_0\
     );
 \i__carry__6_i_3__0\: unisim.vcomponents.LUT3
@@ -15940,65 +16022,70 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => \i__carry__6_i_4__0_n_7\,
-      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I0 => \i__carry__5_i_5__0_n_4\,
+      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(32),
       O => \i__carry__6_i_3__0_n_0\
     );
-\i__carry__6_i_4\: unisim.vcomponents.CARRY4
+\i__carry__6_i_4\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"47"
+    )
+        port map (
+      I0 => ARG2(31),
+      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_I_ACCUMULATOR(31),
+      O => \i__carry__6_i_4_n_0\
+    );
+\i__carry__6_i_4__0\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"47"
+    )
+        port map (
+      I0 => \i__carry__5_i_5__0_n_5\,
+      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(31),
+      O => \i__carry__6_i_4__0_n_0\
+    );
+\i__carry__6_i_5\: unisim.vcomponents.CARRY4
      port map (
       CI => \i__carry__5_i_5_n_0\,
-      CO(3 downto 2) => \NLW_i__carry__6_i_4_CO_UNCONNECTED\(3 downto 2),
-      CO(1) => \i__carry__6_i_4_n_2\,
-      CO(0) => \i__carry__6_i_4_n_3\,
+      CO(3) => \i__carry__6_i_5_n_0\,
+      CO(2) => \i__carry__6_i_5_n_1\,
+      CO(1) => \i__carry__6_i_5_n_2\,
+      CO(0) => \i__carry__6_i_5_n_3\,
       CYINIT => '0',
       DI(3 downto 0) => B"0000",
-      O(3) => \NLW_i__carry__6_i_4_O_UNCONNECTED\(3),
-      O(2 downto 0) => ARG2(39 downto 37),
-      S(3) => '0',
-      S(2) => \i__carry__6_i_5_n_0\,
-      S(1) => \i__carry__6_i_6_n_0\,
-      S(0) => \i__carry__6_i_7_n_0\
+      O(3 downto 0) => ARG2(36 downto 33),
+      S(3) => \i__carry__6_i_6_n_0\,
+      S(2) => \i__carry__6_i_7_n_0\,
+      S(1) => \i__carry__6_i_8_n_0\,
+      S(0) => \i__carry__6_i_9_n_0\
     );
-\i__carry__6_i_4__0\: unisim.vcomponents.CARRY4
+\i__carry__6_i_5__0\: unisim.vcomponents.CARRY4
      port map (
       CI => \i__carry__5_i_5__0_n_0\,
-      CO(3 downto 2) => \NLW_i__carry__6_i_4__0_CO_UNCONNECTED\(3 downto 2),
-      CO(1) => \i__carry__6_i_4__0_n_2\,
-      CO(0) => \i__carry__6_i_4__0_n_3\,
+      CO(3) => \i__carry__6_i_5__0_n_0\,
+      CO(2) => \i__carry__6_i_5__0_n_1\,
+      CO(1) => \i__carry__6_i_5__0_n_2\,
+      CO(0) => \i__carry__6_i_5__0_n_3\,
       CYINIT => '0',
       DI(3 downto 0) => B"0000",
-      O(3) => \NLW_i__carry__6_i_4__0_O_UNCONNECTED\(3),
-      O(2) => \i__carry__6_i_4__0_n_5\,
-      O(1) => \i__carry__6_i_4__0_n_6\,
-      O(0) => \i__carry__6_i_4__0_n_7\,
-      S(3) => '0',
-      S(2) => \i__carry__6_i_5__0_n_0\,
-      S(1) => \i__carry__6_i_6__0_n_0\,
-      S(0) => \i__carry__6_i_7__0_n_0\
-    );
-\i__carry__6_i_5\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      O => \i__carry__6_i_5_n_0\
-    );
-\i__carry__6_i_5__0\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      O => \i__carry__6_i_5__0_n_0\
+      O(3) => \i__carry__6_i_5__0_n_4\,
+      O(2) => \i__carry__6_i_5__0_n_5\,
+      O(1) => \i__carry__6_i_5__0_n_6\,
+      O(0) => \i__carry__6_i_5__0_n_7\,
+      S(3) => \i__carry__6_i_6__0_n_0\,
+      S(2) => \i__carry__6_i_7__0_n_0\,
+      S(1) => \i__carry__6_i_8__0_n_0\,
+      S(0) => \i__carry__6_i_9__0_n_0\
     );
 \i__carry__6_i_6\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(38),
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(36),
       O => \i__carry__6_i_6_n_0\
     );
 \i__carry__6_i_6__0\: unisim.vcomponents.LUT1
@@ -16006,7 +16093,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(38),
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(36),
       O => \i__carry__6_i_6__0_n_0\
     );
 \i__carry__6_i_7\: unisim.vcomponents.LUT1
@@ -16014,7 +16101,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(35),
       O => \i__carry__6_i_7_n_0\
     );
 \i__carry__6_i_7__0\: unisim.vcomponents.LUT1
@@ -16022,8 +16109,136 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(35),
       O => \i__carry__6_i_7__0_n_0\
+    );
+\i__carry__6_i_8\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(34),
+      O => \i__carry__6_i_8_n_0\
+    );
+\i__carry__6_i_8__0\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(34),
+      O => \i__carry__6_i_8__0_n_0\
+    );
+\i__carry__6_i_9\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(33),
+      O => \i__carry__6_i_9_n_0\
+    );
+\i__carry__6_i_9__0\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(33),
+      O => \i__carry__6_i_9__0_n_0\
+    );
+\i__carry__7_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"7"
+    )
+        port map (
+      I0 => ARG2(37),
+      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      O => \i__carry__7_i_1_n_0\
+    );
+\i__carry__7_i_1__0\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"7"
+    )
+        port map (
+      I0 => \i__carry__7_i_4__0_n_7\,
+      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      O => \i__carry__7_i_1__0_n_0\
+    );
+\i__carry__7_i_2\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"47"
+    )
+        port map (
+      I0 => ARG2(36),
+      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_I_ACCUMULATOR(36),
+      O => \i__carry__7_i_2_n_0\
+    );
+\i__carry__7_i_2__0\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"47"
+    )
+        port map (
+      I0 => \i__carry__6_i_5__0_n_4\,
+      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(36),
+      O => \i__carry__7_i_2__0_n_0\
+    );
+\i__carry__7_i_3\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"47"
+    )
+        port map (
+      I0 => ARG2(35),
+      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_I_ACCUMULATOR(35),
+      O => \i__carry__7_i_3_n_0\
+    );
+\i__carry__7_i_3__0\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"47"
+    )
+        port map (
+      I0 => \i__carry__6_i_5__0_n_5\,
+      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(35),
+      O => \i__carry__7_i_3__0_n_0\
+    );
+\i__carry__7_i_4\: unisim.vcomponents.CARRY4
+     port map (
+      CI => \i__carry__6_i_5_n_0\,
+      CO(3 downto 0) => \NLW_i__carry__7_i_4_CO_UNCONNECTED\(3 downto 0),
+      CYINIT => '0',
+      DI(3 downto 0) => B"0000",
+      O(3 downto 1) => \NLW_i__carry__7_i_4_O_UNCONNECTED\(3 downto 1),
+      O(0) => ARG2(37),
+      S(3 downto 1) => B"000",
+      S(0) => \i__carry__7_i_5_n_0\
+    );
+\i__carry__7_i_4__0\: unisim.vcomponents.CARRY4
+     port map (
+      CI => \i__carry__6_i_5__0_n_0\,
+      CO(3 downto 0) => \NLW_i__carry__7_i_4__0_CO_UNCONNECTED\(3 downto 0),
+      CYINIT => '0',
+      DI(3 downto 0) => B"0000",
+      O(3 downto 1) => \NLW_i__carry__7_i_4__0_O_UNCONNECTED\(3 downto 1),
+      O(0) => \i__carry__7_i_4__0_n_7\,
+      S(3 downto 1) => B"000",
+      S(0) => \i__carry__7_i_5__0_n_0\
+    );
+\i__carry__7_i_5\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      O => \i__carry__7_i_5_n_0\
+    );
+\i__carry__7_i_5__0\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      O => \i__carry__7_i_5__0_n_0\
     );
 \i__carry_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -16039,7 +16254,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(9),
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(5),
       O => \i__carry_i_10_n_0\
     );
 \i__carry_i_10__0\: unisim.vcomponents.LUT1
@@ -16047,7 +16262,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(9),
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(5),
       O => \i__carry_i_10__0_n_0\
     );
 \i__carry_i_1__0\: unisim.vcomponents.LUT3
@@ -16055,9 +16270,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1D"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(8),
-      I1 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I2 => ARG2(8),
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(2),
+      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I2 => ARG2(2),
       O => \i__carry_i_1__0_n_0\
     );
 \i__carry_i_1__1\: unisim.vcomponents.LUT3
@@ -16065,9 +16280,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1D"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(8),
-      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I2 => \ATAN_AUTOCORR_Q_reg[0]_i_2_n_4\,
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(2),
+      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I2 => \ATAN_AUTOCORR_Q_reg[0]_i_2_n_6\,
       O => \i__carry_i_1__1_n_0\
     );
 \i__carry_i_2\: unisim.vcomponents.LUT2
@@ -16075,8 +16290,8 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"8"
     )
         port map (
-      I0 => COUNTER(5),
-      I1 => COUNTER(4),
+      I0 => COUNTER(4),
+      I1 => COUNTER(5),
       O => \i__carry_i_2_n_0\
     );
 \i__carry_i_2__0\: unisim.vcomponents.LUT3
@@ -16084,9 +16299,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(12),
-      I1 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_I_ACCUMULATOR(12),
+      I0 => ARG2(6),
+      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_I_ACCUMULATOR(6),
       O => \i__carry_i_2__0_n_0\
     );
 \i__carry_i_2__1\: unisim.vcomponents.LUT3
@@ -16094,9 +16309,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => \i__carry_i_6__1_n_4\,
-      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(12),
+      I0 => \i__carry_i_6__1_n_6\,
+      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(6),
       O => \i__carry_i_2__1_n_0\
     );
 \i__carry_i_3\: unisim.vcomponents.LUT2
@@ -16113,9 +16328,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(11),
-      I1 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_I_ACCUMULATOR(11),
+      I0 => ARG2(5),
+      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_I_ACCUMULATOR(5),
       O => \i__carry_i_3__0_n_0\
     );
 \i__carry_i_3__1\: unisim.vcomponents.LUT3
@@ -16123,9 +16338,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => \i__carry_i_6__1_n_5\,
-      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(11),
+      I0 => \i__carry_i_6__1_n_7\,
+      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(5),
       O => \i__carry_i_3__1_n_0\
     );
 \i__carry_i_4\: unisim.vcomponents.LUT2
@@ -16142,9 +16357,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(10),
-      I1 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_I_ACCUMULATOR(10),
+      I0 => ARG2(4),
+      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_I_ACCUMULATOR(4),
       O => \i__carry_i_4__0_n_0\
     );
 \i__carry_i_4__1\: unisim.vcomponents.LUT3
@@ -16152,9 +16367,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => \i__carry_i_6__1_n_6\,
-      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(10),
+      I0 => \ATAN_AUTOCORR_Q_reg[0]_i_2_n_4\,
+      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(4),
       O => \i__carry_i_4__1_n_0\
     );
 \i__carry_i_5\: unisim.vcomponents.LUT2
@@ -16171,9 +16386,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => ARG2(9),
-      I1 => LTS_AUTOCORR_I_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_I_ACCUMULATOR(9),
+      I0 => ARG2(3),
+      I1 => LTS_AUTOCORR_I_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_I_ACCUMULATOR(3),
       O => \i__carry_i_5__0_n_0\
     );
 \i__carry_i_5__1\: unisim.vcomponents.LUT3
@@ -16181,9 +16396,9 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"47"
     )
         port map (
-      I0 => \i__carry_i_6__1_n_7\,
-      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(39),
-      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(9),
+      I0 => \ATAN_AUTOCORR_Q_reg[0]_i_2_n_5\,
+      I1 => LTS_AUTOCORR_Q_ACCUMULATOR(37),
+      I2 => LTS_AUTOCORR_Q_ACCUMULATOR(3),
       O => \i__carry_i_5__1_n_0\
     );
 \i__carry_i_6\: unisim.vcomponents.LUT2
@@ -16204,8 +16419,8 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       CO(0) => \i__carry_i_6__0_n_3\,
       CYINIT => '0',
       DI(3 downto 0) => B"0000",
-      O(3 downto 0) => ARG2(12 downto 9),
-      S(3) => \i__carry_i_7__0_n_0\,
+      O(3 downto 0) => ARG2(8 downto 5),
+      S(3) => \i__carry_i_7_n_0\,
       S(2) => \i__carry_i_8_n_0\,
       S(1) => \i__carry_i_9_n_0\,
       S(0) => \i__carry_i_10_n_0\
@@ -16223,18 +16438,17 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       O(2) => \i__carry_i_6__1_n_5\,
       O(1) => \i__carry_i_6__1_n_6\,
       O(0) => \i__carry_i_6__1_n_7\,
-      S(3) => \i__carry_i_7__1_n_0\,
+      S(3) => \i__carry_i_7__0_n_0\,
       S(2) => \i__carry_i_8__0_n_0\,
       S(1) => \i__carry_i_9__0_n_0\,
       S(0) => \i__carry_i_10__0_n_0\
     );
-\i__carry_i_7\: unisim.vcomponents.LUT2
+\i__carry_i_7\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
-      I0 => COUNTER(2),
-      I1 => COUNTER(3),
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(8),
       O => \i__carry_i_7_n_0\
     );
 \i__carry_i_7__0\: unisim.vcomponents.LUT1
@@ -16242,15 +16456,16 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(12),
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(8),
       O => \i__carry_i_7__0_n_0\
     );
-\i__carry_i_7__1\: unisim.vcomponents.LUT1
+\i__carry_i_7__1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(12),
+      I0 => COUNTER(2),
+      I1 => COUNTER(3),
       O => \i__carry_i_7__1_n_0\
     );
 \i__carry_i_8\: unisim.vcomponents.LUT1
@@ -16258,7 +16473,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(11),
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(7),
       O => \i__carry_i_8_n_0\
     );
 \i__carry_i_8__0\: unisim.vcomponents.LUT1
@@ -16266,7 +16481,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(11),
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(7),
       O => \i__carry_i_8__0_n_0\
     );
 \i__carry_i_8__1\: unisim.vcomponents.LUT2
@@ -16283,7 +16498,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_I_ACCUMULATOR(10),
+      I0 => LTS_AUTOCORR_I_ACCUMULATOR(6),
       O => \i__carry_i_9_n_0\
     );
 \i__carry_i_9__0\: unisim.vcomponents.LUT1
@@ -16291,7 +16506,7 @@ ROTATION_PHASE_NEW_DIFF_STROBE_reg: unisim.vcomponents.FDRE
       INIT => X"1"
     )
         port map (
-      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(10),
+      I0 => LTS_AUTOCORR_Q_ACCUMULATOR(6),
       O => \i__carry_i_9__0_n_0\
     );
 end STRUCTURE;
@@ -16308,15 +16523,15 @@ entity block_design_0_equalizer_time_frequ_0_0 is
     DATA_IN_STROBE : in STD_LOGIC;
     DETECTION_STROBE : in STD_LOGIC;
     DETECTION_SIGNAL_DETECTED : in STD_LOGIC;
-    DETECTION_STS_AUTOCORR_I : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    DETECTION_STS_AUTOCORR_Q : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    DETECTION_STS_AUTOCORR_I : in STD_LOGIC_VECTOR ( 35 downto 0 );
+    DETECTION_STS_AUTOCORR_Q : in STD_LOGIC_VECTOR ( 35 downto 0 );
     FPGA_REG_WRITE_STROBE_PHASE_1 : out STD_LOGIC;
     FPGA_REG_WRITE_STROBE_PHASE_2 : out STD_LOGIC;
     FPGA_REG_WRITE_DATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
     STOP_RX_DONE : in STD_LOGIC;
     ATAN_AUTOCORR_STROBE : out STD_LOGIC;
-    ATAN_AUTOCORR_I : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    ATAN_AUTOCORR_Q : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    ATAN_AUTOCORR_I : out STD_LOGIC_VECTOR ( 35 downto 0 );
+    ATAN_AUTOCORR_Q : out STD_LOGIC_VECTOR ( 35 downto 0 );
     ATAN_PHASE_OUT_STROBE : in STD_LOGIC;
     ATAN_PHASE_OUT : in STD_LOGIC_VECTOR ( 19 downto 0 );
     ROTATION_DATA_IN_STROBE : out STD_LOGIC;
@@ -16394,16 +16609,16 @@ GND: unisim.vcomponents.GND
     );
 U0: entity work.block_design_0_equalizer_time_frequ_0_0_equalizer_time_frequency
      port map (
-      ATAN_AUTOCORR_I(31 downto 0) => ATAN_AUTOCORR_I(31 downto 0),
-      ATAN_AUTOCORR_Q(31 downto 0) => ATAN_AUTOCORR_Q(31 downto 0),
+      ATAN_AUTOCORR_I(35 downto 0) => ATAN_AUTOCORR_I(35 downto 0),
+      ATAN_AUTOCORR_Q(35 downto 0) => ATAN_AUTOCORR_Q(35 downto 0),
       ATAN_AUTOCORR_STROBE => ATAN_AUTOCORR_STROBE,
       ATAN_PHASE_OUT(19 downto 0) => ATAN_PHASE_OUT(19 downto 0),
       ATAN_PHASE_OUT_STROBE => ATAN_PHASE_OUT_STROBE,
       CLOCK => CLOCK,
       DATA_IN_STROBE => \^data_in_strobe\,
       DETECTION_SIGNAL_DETECTED => DETECTION_SIGNAL_DETECTED,
-      DETECTION_STS_AUTOCORR_I(31 downto 0) => DETECTION_STS_AUTOCORR_I(31 downto 0),
-      DETECTION_STS_AUTOCORR_Q(31 downto 0) => DETECTION_STS_AUTOCORR_Q(31 downto 0),
+      DETECTION_STS_AUTOCORR_I(35 downto 0) => DETECTION_STS_AUTOCORR_I(35 downto 0),
+      DETECTION_STS_AUTOCORR_Q(35 downto 0) => DETECTION_STS_AUTOCORR_Q(35 downto 0),
       FFT_DATA_IN_FIRST_SYMBOL_MARKER => FFT_DATA_IN_FIRST_SYMBOL_MARKER,
       FFT_DATA_IN_START => FFT_DATA_IN_START,
       FFT_DATA_IN_STROBE => FFT_DATA_IN_STROBE,
