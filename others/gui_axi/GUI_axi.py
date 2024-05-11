@@ -25,7 +25,7 @@ import iio
 
 # Parameters & AXI functions
 from access_axi_regs import *
-# AXI_ADDRESS_NUM = 512
+# AXI_ADDRESS_NUM = 4096
 
 # default parameters
 DEFAULT_CARRIER_FREQ = 5.9e9
@@ -190,7 +190,7 @@ class Settings_Tab(ttk.Frame):
         buttons_num_cols = 3     # Number of columns in the button matrix
 
         # Control button matrix
-        self.buttons_matrix_names = ("Load stream & profile", None, None, None, None, None, None, None, None)
+        self.buttons_matrix_names = ("Load stream & profile", "802.11p Reset", None, None, "802.11p Disable", None, None, None, None)
         self.buttons_matrix = self.build_buttons_matrix(root, self.act_row + 2, buttons_num_rows, buttons_num_cols)
         
         # Input field: Freqs + Gains
@@ -320,6 +320,7 @@ class Settings_Tab(ttk.Frame):
         buttonframe.grid(row=act_row, column=0, columnspan=2, rowspan = buttons_num_rows, padx=5, pady=5)
         buttons = []
         comboboxes = []
+        indicators = []
         for i in range(buttons_num_rows):
             for j in range(buttons_num_cols):
                 btn_idx = i * buttons_num_cols + j
@@ -343,11 +344,20 @@ class Settings_Tab(ttk.Frame):
                     # Use then: combobox.get()
                     comboboxes.append(combobox)
 
+                # Build 802.11p Enabled/Disabled indicator
+                elif btn_idx == 7:
+                    label_802_11p_enabled_disabled = tk.Label(buttonframe, text="802.11p Disabled", font=("Helvetica", 9))
+                    label_802_11p_enabled_disabled.grid(row=i, column=j, padx=5, pady=5, sticky="we")
+                    indicators.append(label_802_11p_enabled_disabled)
 
+
+                # Assigned buttons
                 elif btn_idx < len(self.buttons_matrix_names) and self.buttons_matrix_names[btn_idx] is not None:
                     button = tk.Button(buttonframe, text=self.buttons_matrix_names[btn_idx], command=lambda root=root, idx=btn_idx: self.buttons_matrix_button_clicked(root, idx))
                     button.grid(row=i, column=j, padx=5, pady=5, sticky="we")
                     buttons.append(button)
+
+                # Unused buttons
                 else:
                     button = tk.Button(buttonframe, text=f"Unused Button {btn_idx}", command=lambda idx=btn_idx: self.buttons_matrix_button_clicked(root, idx))
                     button.grid(row=i, column=j, padx=5, pady=5, sticky="we")
@@ -356,6 +366,7 @@ class Settings_Tab(ttk.Frame):
         buttons_matrix = Group_wrapper()
         buttons_matrix.buttons = buttons
         buttons_matrix.input_fields = comboboxes
+        buttons_matrix.value_labels = indicators
 
         return buttons_matrix
     
@@ -519,6 +530,33 @@ class Settings_Tab(ttk.Frame):
             else:
                 self.log_write_line("Stream and Profile loading: OK")
 
+
+        # Reset 802.11p button
+        elif btn_idx == 1:
+                
+            try:
+                write_axi_data(address_start=0, data=np.array([int(0)], dtype=np.uint32)) # Null all AXI registers
+                write_axi_data(address_start=0, data=np.array([int(1)], dtype=np.uint32)) #reg(0)(0) == "ENABLE"
+            except:
+                self.log_write_line("802.11p Reset: Failed AXI write !")
+            else:
+                self.buttons_matrix.value_labels[0].config(text="802.11p Enabled")
+                self.log_write_line("802.11p Reset: OK")
+        
+            
+
+        # Disable 802.11p button
+        elif btn_idx == 4:
+
+            try:
+                write_axi_data(address_start=0, data=np.zeros(AXI_ADDRESS_NUM, dtype=np.uint32)) #reg(0)(0) == "ENABLE"  # + Null all AXI registers
+            except:
+                self.log_write_line("802.11p Reset: Failed AXI write !")
+            else:
+                self.buttons_matrix.value_labels[0].config(text="802.11p Disabled")
+                self.log_write_line("802.11p Disabled: OK")
+
+
         # TODO: Add other buttons !!
 
 
@@ -564,6 +602,9 @@ class Settings_Tab(ttk.Frame):
         
     # input_fields_matrix button clicked
     def input_fields_matrix_button_clicked(self, root, idx):
+        #confirm the entries (the last changed can be not refreshed)
+        self.input_fields_matrix.input_fields[idx]._add_placeholder(None)
+
         try:
             value = float( self.input_fields_matrix.input_fields[idx].get() )
         except:
@@ -1453,7 +1494,7 @@ class Realtime_Tab(ttk.Frame):
         self.active = False
 
         self.description_label.config(text="Idle")
-        self.log_write_line(f"Realtime reading stopped")
+        self.log_write_line(f"Realtime reading of decoded data stopped")
 
 
     # read once new data from FPGA AXI regs
@@ -1497,7 +1538,7 @@ class Realtime_Tab(ttk.Frame):
 
         # Decode and check MODE (reg2 -- unsigned(7 downto 0))
         mode = regs[2]
-        # TODO: check MODE ?
+        # check MODE ?!!
 
 
         # Decode frequency offset after STS (reg3 -- signed(19 downto 0))
@@ -1644,6 +1685,9 @@ class AXI_Regs_Tab(ttk.Frame):
         # read registers entry line
         self.read_addresses_entries = self.build_read_addresses_entries(root)
 
+        # disable tab change AXI writes to MODE
+        self.disable_tabchange_axi_mode_change = self.build_disable_tabchange_axi_mode_change(root)
+
         # log
         self.log = self.build_log()
      
@@ -1653,29 +1697,32 @@ class AXI_Regs_Tab(ttk.Frame):
 
         # Write regs label
         description_label = tk.Label(self, text="Write to Axi registers:", font=("Helvetica", 12))
-        description_label.grid(row=self.act_row, column=0, columnspan=2, padx=5, pady=5, sticky="W") 
-        self.act_row += 1
+        description_label.grid(row=self.act_row, column=0, columnspan=1, padx=5, pady=5, sticky="W") 
 
         # Build address-value input fields
         input_fields = []
 
+        # Frame for follwing (log makes these too long)
+        input_frame = tk.Frame(self)
+        input_frame.grid(row=self.act_row, column=1, columnspan=2, rowspan = 1, padx=0, pady=0)
+
         # Address
         placeholder = "Address"
         val_range = [0, 1, AXI_ADDRESS_NUM] #[start, step, numOfVals]
-        input_field = PlaceholderEntry_withValues(self, placeholder=placeholder, val_range=val_range)
-        input_field.grid(row=self.act_row, column=0, padx=5, pady=5)
+        input_field = PlaceholderEntry_withValues(input_frame, width=20, placeholder=placeholder, val_range=val_range)
+        input_field.grid(row=self.act_row, column=0, padx=5, pady=5, sticky="WE")
         input_fields.append(input_field)
 
         # Value
         placeholder = "Value [uint32]"
         val_range = [0, 1, round(2**32)] #[start, step, numOfVals]
-        input_field = PlaceholderEntry_withValues(self, placeholder=placeholder, val_range=val_range)
-        input_field.grid(row=self.act_row, column=1, padx=5, pady=5)
+        input_field = PlaceholderEntry_withValues(input_frame, width=20, placeholder=placeholder, val_range=val_range)
+        input_field.grid(row=self.act_row, column=1, padx=5, pady=5, sticky="WE")
         input_fields.append(input_field)
 
         
         # Read button
-        connect_button = tk.Button(self, text="Write", command=lambda: self.write_button_clicked(root))
+        connect_button = tk.Button(input_frame, text="Write", width=20, command=lambda: self.write_button_clicked(root))
         connect_button.grid(row=self.act_row, column=2, padx=5, pady=5, sticky="WE") 
 
 
@@ -1687,36 +1734,59 @@ class AXI_Regs_Tab(ttk.Frame):
 
         # Read regs label
         description_label = tk.Label(self, text="Read Axi registers:", font=("Helvetica", 12))
-        description_label.grid(row=self.act_row, column=0, columnspan=2, padx=5, pady=5, sticky="W") 
-        self.act_row += 1
+        description_label.grid(row=self.act_row, column=0, columnspan=1, padx=5, pady=5, sticky="W") 
 
 
         # Build addresses input fields
         input_fields = []
 
+        # Frame for follwing (log makes these too long)
+        input_frame = tk.Frame(self)
+        input_frame.grid(row=self.act_row, column=1, columnspan=2, rowspan = 1, padx=0, pady=0)
+
         # Start address
         placeholder = "Start address"
         val_range = [0, 1, AXI_ADDRESS_NUM] #[start, step, numOfVals]
-        input_field = PlaceholderEntry_withValues(self, placeholder=placeholder, val_range=val_range)
-        input_field.grid(row=self.act_row, column=0, padx=5, pady=5)
+        input_field = PlaceholderEntry_withValues(input_frame, width=20, placeholder=placeholder, val_range=val_range)
+        input_field.grid(row=0, column=0, padx=5, pady=5, sticky="WE")
         input_fields.append(input_field)
 
         # End address
         placeholder = "End address"
         val_range = [0, 1, AXI_ADDRESS_NUM] #[start, step, numOfVals]
-        input_field = PlaceholderEntry_withValues(self, placeholder=placeholder, val_range=val_range)
-        input_field.grid(row=self.act_row, column=1, padx=5, pady=5)
+        input_field = PlaceholderEntry_withValues(input_frame, width=20, placeholder=placeholder, val_range=val_range)
+        input_field.grid(row=0, column=1, padx=5, pady=5, sticky="WE")
         input_fields.append(input_field)
 
         
         # Read button
-        connect_button = tk.Button(self, text="Read", command=lambda: self.read_button_clicked(root))
-        connect_button.grid(row=self.act_row, column=2, padx=5, pady=5, sticky="WE") 
+        connect_button = tk.Button(input_frame, text="Read", width=20, command=lambda: self.read_button_clicked(root))
+        connect_button.grid(row=0, column=2, padx=5, pady=5, sticky="WE") 
 
 
         self.act_row += 1
 
         return input_fields
+    
+    def build_disable_tabchange_axi_mode_change(self, root):
+
+        # Label
+        description_label = tk.Label(self, text="TabChange:", font=("Helvetica", 12))
+        description_label.grid(row=self.act_row, column=0, columnspan=1, padx=5, pady=5, sticky="W") 
+
+        # Build checkbutton
+        CheckVar = tk.IntVar()
+        checkbutton = tk.Checkbutton(self, text = "Disable TabChange AXI write to MODE (regs[2])", variable = CheckVar, onvalue = 1, offvalue = 0, height=1) # No command, read directly from tabchange
+        checkbutton.grid(row=self.act_row, column=1, columnspan=1, padx=5, pady=5, sticky="W") 
+
+        
+        # Gather input fields
+        input_fields = [CheckVar, checkbutton]
+
+        self.act_row += 1
+
+        return input_fields
+
 
     def build_log(self):        
         description_label = tk.Label(self, text="Log:", font=("Helvetica", 12))
@@ -1842,7 +1912,6 @@ class AXI_Regs_Tab(ttk.Frame):
 
             #TODO: clear the fields?
             #TODO: readback
-
 
 
 
@@ -1981,20 +2050,52 @@ class GUI_class():
 
     # Tab changed update
     def tab_changed_update_responses(self, event):
-        # Only tab 'Responses' has been chosen
         selected_tab = event.widget.select()
+        tab_index = event.widget.index(selected_tab)
+        tab_reference = event.widget.nametowidget(selected_tab)
         tab_text = event.widget.tab(selected_tab, "text")
 
-        # TODO
-        # if tab_text == "":
-        #     pass
+        event.widget.tabs()
 
+        # Disable all continuous activities
+        #   Realtime Tab -- read new rx decoded data disable (+ change label)
+        if self.tab4.active:
+            self.tab4.active = False
+            self.tab4.description_label.config(text="Idle")
+            self.tab4.log_write_line(f"TabChange: Realtime reading of decoded data stopped")
+
+
+        # Switch MODE according to the current Tab (write MODE to AXI reg(2) !)
+        disable_tabchange_mode_changes = self.tab5.disable_tabchange_axi_mode_change[0].get() # Checkbutton to disable this functionality
+
+        if not disable_tabchange_mode_changes:
+            if tab_text == "RX Samples":
+                new_mode = 1
+            elif tab_text == "RX Constellation":
+                new_mode = 4    # TODO: Select Mode 3..5
+            elif tab_text == "RX Realtime":
+                new_mode = 9   
+            else:
+                new_mode = None
+
+            # Write to AXI reg(2)
+            if new_mode is not None:
+                try:
+                    write_axi_data(address_start=2, data=np.array([int(new_mode)], dtype=np.uint32))
+                except:
+                    tab_reference.log_write_line(f"TabChange: MODE:={new_mode} AXI write Failed !")
+                else:
+                    tab_reference.log_write_line(f"TabChange: MODE:={new_mode} OK")
 
 
 
 
     # Update loop -- check for new data
     def update_loop(self):
+
+        # Realtime Tab -- read new rx decoded data
+        if self.tab4.active:
+            self.tab4.read_rx_write_data_to_log(write_no_new_data_to_log=False, write_data_to_file=False)
         
         # Call itself again
         self.root.after(READ_UPDATE_INTERVAL_MS, self.update_loop)
