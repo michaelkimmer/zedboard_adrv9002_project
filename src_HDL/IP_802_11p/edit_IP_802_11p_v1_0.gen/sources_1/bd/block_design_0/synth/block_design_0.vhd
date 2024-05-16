@@ -2,7 +2,7 @@
 --Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
---Date        : Sat May 11 15:51:12 2024
+--Date        : Thu May 16 17:50:22 2024
 --Host        : lab817_01 running 64-bit major release  (build 9200)
 --Command     : generate_target block_design_0.bd
 --Design      : block_design_0
@@ -246,7 +246,7 @@ entity hier_fft_ofdm_imp_1SUMJVQ is
 end hier_fft_ofdm_imp_1SUMJVQ;
 
 architecture STRUCTURE of hier_fft_ofdm_imp_1SUMJVQ is
-  component block_design_0_fft_ofdm_0_1 is
+  component block_design_0_fft_ofdm_0_0 is
   port (
     RESET : in STD_LOGIC;
     CLOCK : in STD_LOGIC;
@@ -273,7 +273,7 @@ architecture STRUCTURE of hier_fft_ofdm_imp_1SUMJVQ is
     aclk : out STD_LOGIC;
     aresetn : out STD_LOGIC
   );
-  end component block_design_0_fft_ofdm_0_1;
+  end component block_design_0_fft_ofdm_0_0;
   component block_design_0_xfft_0_0 is
   port (
     aclk : in STD_LOGIC;
@@ -339,7 +339,7 @@ begin
   receiver_802_11p_0_FFT_DATA_IN_STROBE <= FFT_DATA_IN_STROBE;
   receiver_802_11p_0_FFT_IDATA_IN(15 downto 0) <= FFT_IDATA_IN(15 downto 0);
   receiver_802_11p_0_FFT_QDATA_IN(15 downto 0) <= FFT_QDATA_IN(15 downto 0);
-fft_ofdm_0: component block_design_0_fft_ofdm_0_1
+fft_ofdm_0: component block_design_0_fft_ofdm_0_0
      port map (
       CLOCK => Net1,
       FFT_DATA_IN_FIRST_SYMBOL_MARKER => FFT_DATA_IN_FIRST_SYMBOL_MARKER_1,
@@ -873,54 +873,6 @@ architecture STRUCTURE of block_design_0 is
     ROTATION_CONSTELLATION_DATA_OUT_CNTR : in STD_LOGIC_VECTOR ( 5 downto 0 )
   );
   end component block_design_0_constellation_tracker_0_0;
-  component block_design_0_demapper_0_0 is
-  port (
-    RESET : in STD_LOGIC;
-    CLOCK : in STD_LOGIC;
-    CONSTELLATION_DATA_IN_VALID : in STD_LOGIC;
-    CONSTELLATION_IDATA_IN : in STD_LOGIC_VECTOR ( 23 downto 0 );
-    CONSTELLATION_QDATA_IN : in STD_LOGIC_VECTOR ( 23 downto 0 );
-    CONSTELLATION_DATA_IN_FIRST_SYMBOL_MARKER : in STD_LOGIC;
-    CONSTELLATION_BPSK_AMPLITUDE_REFERENCE : in STD_LOGIC_VECTOR ( 23 downto 0 );
-    DEMAPPING_START_MARKER : out STD_LOGIC;
-    DEMAPPING_STROBE : out STD_LOGIC;
-    DEMAPPING_BPSK : out STD_LOGIC_VECTOR ( 0 to 51 );
-    DEMAPPING_QPSK : out STD_LOGIC_VECTOR ( 0 to 103 );
-    DEMAPPING_16QAM : out STD_LOGIC_VECTOR ( 0 to 207 )
-  );
-  end component block_design_0_demapper_0_0;
-  component block_design_0_deinterleaver_0_0 is
-  port (
-    RESET : in STD_LOGIC;
-    CLOCK : in STD_LOGIC;
-    DEMAPPING_START_MARKER : in STD_LOGIC;
-    DEMAPPING_STROBE : in STD_LOGIC;
-    DEMAPPING_BPSK : in STD_LOGIC_VECTOR ( 0 to 51 );
-    DEMAPPING_QPSK : in STD_LOGIC_VECTOR ( 0 to 103 );
-    DEMAPPING_16QAM : in STD_LOGIC_VECTOR ( 0 to 207 );
-    DEINTERLEAVER_START_MARKER : out STD_LOGIC;
-    DEINTERLEAVER_STROBE : out STD_LOGIC;
-    DEINTERLEAVER_BPSK : out STD_LOGIC_VECTOR ( 0 to 47 );
-    DEINTERLEAVER_QPSK : out STD_LOGIC_VECTOR ( 0 to 95 );
-    DEINTERLEAVER_16QAM : out STD_LOGIC_VECTOR ( 0 to 191 )
-  );
-  end component block_design_0_deinterleaver_0_0;
-  component block_design_0_viterbi_hard_0_0 is
-  port (
-    RESET : in STD_LOGIC;
-    CLOCK : in STD_LOGIC;
-    DEINTERLEAVER_START_MARKER : in STD_LOGIC;
-    DEINTERLEAVER_STROBE : in STD_LOGIC;
-    DEINTERLEAVER_BPSK : in STD_LOGIC_VECTOR ( 0 to 47 );
-    DEINTERLEAVER_QPSK : in STD_LOGIC_VECTOR ( 0 to 95 );
-    DEINTERLEAVER_16QAM : in STD_LOGIC_VECTOR ( 0 to 191 );
-    VITERBI_SIGNAL_VALID : out STD_LOGIC;
-    VITERBI_SIGNAL : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    VITERBI_DECODED_OUTPUT_VALID : out STD_LOGIC;
-    VITERBI_DECODED_OUTPUT : out STD_LOGIC;
-    VITERBI_RX_ENDED : out STD_LOGIC
-  );
-  end component block_design_0_viterbi_hard_0_0;
   component block_design_0_descrambler_0_0 is
   port (
     RESET : in STD_LOGIC;
@@ -960,6 +912,78 @@ architecture STRUCTURE of block_design_0 is
     doutb : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   end component block_design_0_blk_mem_gen_0_0;
+  component block_design_0_demapper_soft_0_0 is
+  port (
+    RESET : in STD_LOGIC;
+    CLOCK : in STD_LOGIC;
+    CONSTELLATION_DATA_IN_VALID : in STD_LOGIC;
+    CONSTELLATION_IDATA_IN : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    CONSTELLATION_QDATA_IN : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    CONSTELLATION_DATA_IN_FIRST_SYMBOL_MARKER : in STD_LOGIC;
+    CONSTELLATION_BPSK_AMPLITUDE_REFERENCE : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    DEMAPPING_START_MARKER : out STD_LOGIC;
+    DEMAPPING_STROBE : out STD_LOGIC;
+    DEMAPPING_BPSK : out STD_LOGIC_VECTOR ( 0 to 51 );
+    DEMAPPING_QPSK : out STD_LOGIC_VECTOR ( 0 to 103 );
+    DEMAPPING_16QAM : out STD_LOGIC_VECTOR ( 0 to 207 );
+    DEMAPPING_BPSK_DIST_1B : out STD_LOGIC_VECTOR ( 0 to 51 );
+    DEMAPPING_QPSK_DIST_1B : out STD_LOGIC_VECTOR ( 0 to 103 );
+    DEMAPPING_16QAM_DIST_1B : out STD_LOGIC_VECTOR ( 0 to 207 );
+    DEMAPPING_BPSK_DIST_0B : out STD_LOGIC_VECTOR ( 0 to 51 );
+    DEMAPPING_QPSK_DIST_0B : out STD_LOGIC_VECTOR ( 0 to 103 );
+    DEMAPPING_16QAM_DIST_0B : out STD_LOGIC_VECTOR ( 0 to 207 )
+  );
+  end component block_design_0_demapper_soft_0_0;
+  component block_design_0_deinterleaver_soft_0_0 is
+  port (
+    RESET : in STD_LOGIC;
+    CLOCK : in STD_LOGIC;
+    DEMAPPING_START_MARKER : in STD_LOGIC;
+    DEMAPPING_STROBE : in STD_LOGIC;
+    DEMAPPING_BPSK : in STD_LOGIC_VECTOR ( 0 to 51 );
+    DEMAPPING_QPSK : in STD_LOGIC_VECTOR ( 0 to 103 );
+    DEMAPPING_16QAM : in STD_LOGIC_VECTOR ( 0 to 207 );
+    DEMAPPING_BPSK_DIST_1B : in STD_LOGIC_VECTOR ( 0 to 51 );
+    DEMAPPING_QPSK_DIST_1B : in STD_LOGIC_VECTOR ( 0 to 103 );
+    DEMAPPING_16QAM_DIST_1B : in STD_LOGIC_VECTOR ( 0 to 207 );
+    DEMAPPING_BPSK_DIST_0B : in STD_LOGIC_VECTOR ( 0 to 51 );
+    DEMAPPING_QPSK_DIST_0B : in STD_LOGIC_VECTOR ( 0 to 103 );
+    DEMAPPING_16QAM_DIST_0B : in STD_LOGIC_VECTOR ( 0 to 207 );
+    DEINTERLEAVER_START_MARKER : out STD_LOGIC;
+    DEINTERLEAVER_STROBE : out STD_LOGIC;
+    DEINTERLEAVER_BPSK : out STD_LOGIC_VECTOR ( 0 to 47 );
+    DEINTERLEAVER_QPSK : out STD_LOGIC_VECTOR ( 0 to 95 );
+    DEINTERLEAVER_16QAM : out STD_LOGIC_VECTOR ( 0 to 191 );
+    DEINTERLEAVER_BPSK_DIST_1B : out STD_LOGIC_VECTOR ( 0 to 47 );
+    DEINTERLEAVER_QPSK_DIST_1B : out STD_LOGIC_VECTOR ( 0 to 95 );
+    DEINTERLEAVER_16QAM_DIST_1B : out STD_LOGIC_VECTOR ( 0 to 191 );
+    DEINTERLEAVER_BPSK_DIST_0B : out STD_LOGIC_VECTOR ( 0 to 47 );
+    DEINTERLEAVER_QPSK_DIST_0B : out STD_LOGIC_VECTOR ( 0 to 95 );
+    DEINTERLEAVER_16QAM_DIST_0B : out STD_LOGIC_VECTOR ( 0 to 191 )
+  );
+  end component block_design_0_deinterleaver_soft_0_0;
+  component block_design_0_viterbi_soft_0_0 is
+  port (
+    RESET : in STD_LOGIC;
+    CLOCK : in STD_LOGIC;
+    DEINTERLEAVER_START_MARKER : in STD_LOGIC;
+    DEINTERLEAVER_STROBE : in STD_LOGIC;
+    DEINTERLEAVER_BPSK : in STD_LOGIC_VECTOR ( 0 to 47 );
+    DEINTERLEAVER_QPSK : in STD_LOGIC_VECTOR ( 0 to 95 );
+    DEINTERLEAVER_16QAM : in STD_LOGIC_VECTOR ( 0 to 191 );
+    DEINTERLEAVER_BPSK_DIST_1B : in STD_LOGIC_VECTOR ( 0 to 47 );
+    DEINTERLEAVER_QPSK_DIST_1B : in STD_LOGIC_VECTOR ( 0 to 95 );
+    DEINTERLEAVER_16QAM_DIST_1B : in STD_LOGIC_VECTOR ( 0 to 191 );
+    DEINTERLEAVER_BPSK_DIST_0B : in STD_LOGIC_VECTOR ( 0 to 47 );
+    DEINTERLEAVER_QPSK_DIST_0B : in STD_LOGIC_VECTOR ( 0 to 95 );
+    DEINTERLEAVER_16QAM_DIST_0B : in STD_LOGIC_VECTOR ( 0 to 191 );
+    VITERBI_SIGNAL_VALID : out STD_LOGIC;
+    VITERBI_SIGNAL : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    VITERBI_DECODED_OUTPUT_VALID : out STD_LOGIC;
+    VITERBI_DECODED_OUTPUT : out STD_LOGIC;
+    VITERBI_RX_ENDED : out STD_LOGIC
+  );
+  end component block_design_0_viterbi_soft_0_0;
   signal BRAM_PORTA_0_1_ADDR : STD_LOGIC_VECTOR ( 11 downto 0 );
   signal BRAM_PORTA_0_1_CLK : STD_LOGIC;
   signal BRAM_PORTA_0_1_DIN : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -1010,16 +1034,28 @@ architecture STRUCTURE of block_design_0 is
   signal data_interleaver_0_DATA_OUT_STROBE : STD_LOGIC;
   signal data_interleaver_0_IDATA_OUT : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal data_interleaver_0_QDATA_OUT : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal deinterleaver_0_DEINTERLEAVER_16QAM : STD_LOGIC_VECTOR ( 0 to 191 );
-  signal deinterleaver_0_DEINTERLEAVER_BPSK : STD_LOGIC_VECTOR ( 0 to 47 );
-  signal deinterleaver_0_DEINTERLEAVER_QPSK : STD_LOGIC_VECTOR ( 0 to 95 );
-  signal deinterleaver_0_DEINTERLEAVER_START_MARKER : STD_LOGIC;
-  signal deinterleaver_0_DEINTERLEAVER_STROBE : STD_LOGIC;
-  signal demapper_0_DEMAPPING_16QAM : STD_LOGIC_VECTOR ( 0 to 207 );
-  signal demapper_0_DEMAPPING_BPSK : STD_LOGIC_VECTOR ( 0 to 51 );
-  signal demapper_0_DEMAPPING_QPSK : STD_LOGIC_VECTOR ( 0 to 103 );
-  signal demapper_0_DEMAPPING_START_MARKER : STD_LOGIC;
-  signal demapper_0_DEMAPPING_STROBE : STD_LOGIC;
+  signal deinterleaver_soft_0_DEINTERLEAVER_16QAM : STD_LOGIC_VECTOR ( 0 to 191 );
+  signal deinterleaver_soft_0_DEINTERLEAVER_16QAM_DIST_0B : STD_LOGIC_VECTOR ( 0 to 191 );
+  signal deinterleaver_soft_0_DEINTERLEAVER_16QAM_DIST_1B : STD_LOGIC_VECTOR ( 0 to 191 );
+  signal deinterleaver_soft_0_DEINTERLEAVER_BPSK : STD_LOGIC_VECTOR ( 0 to 47 );
+  signal deinterleaver_soft_0_DEINTERLEAVER_BPSK_DIST_0B : STD_LOGIC_VECTOR ( 0 to 47 );
+  signal deinterleaver_soft_0_DEINTERLEAVER_BPSK_DIST_1B : STD_LOGIC_VECTOR ( 0 to 47 );
+  signal deinterleaver_soft_0_DEINTERLEAVER_QPSK : STD_LOGIC_VECTOR ( 0 to 95 );
+  signal deinterleaver_soft_0_DEINTERLEAVER_QPSK_DIST_0B : STD_LOGIC_VECTOR ( 0 to 95 );
+  signal deinterleaver_soft_0_DEINTERLEAVER_QPSK_DIST_1B : STD_LOGIC_VECTOR ( 0 to 95 );
+  signal deinterleaver_soft_0_DEINTERLEAVER_START_MARKER : STD_LOGIC;
+  signal deinterleaver_soft_0_DEINTERLEAVER_STROBE : STD_LOGIC;
+  signal demapper_soft_0_DEMAPPING_16QAM : STD_LOGIC_VECTOR ( 0 to 207 );
+  signal demapper_soft_0_DEMAPPING_16QAM_DIST_0B : STD_LOGIC_VECTOR ( 0 to 207 );
+  signal demapper_soft_0_DEMAPPING_16QAM_DIST_1B : STD_LOGIC_VECTOR ( 0 to 207 );
+  signal demapper_soft_0_DEMAPPING_BPSK : STD_LOGIC_VECTOR ( 0 to 51 );
+  signal demapper_soft_0_DEMAPPING_BPSK_DIST_0B : STD_LOGIC_VECTOR ( 0 to 51 );
+  signal demapper_soft_0_DEMAPPING_BPSK_DIST_1B : STD_LOGIC_VECTOR ( 0 to 51 );
+  signal demapper_soft_0_DEMAPPING_QPSK : STD_LOGIC_VECTOR ( 0 to 103 );
+  signal demapper_soft_0_DEMAPPING_QPSK_DIST_0B : STD_LOGIC_VECTOR ( 0 to 103 );
+  signal demapper_soft_0_DEMAPPING_QPSK_DIST_1B : STD_LOGIC_VECTOR ( 0 to 103 );
+  signal demapper_soft_0_DEMAPPING_START_MARKER : STD_LOGIC;
+  signal demapper_soft_0_DEMAPPING_STROBE : STD_LOGIC;
   signal descrambler_0_DESCRAMBLED_OUTPUT : STD_LOGIC;
   signal descrambler_0_DESCRAMBLED_OUTPUT_LAST : STD_LOGIC;
   signal descrambler_0_DESCRAMBLED_OUTPUT_VALID : STD_LOGIC;
@@ -1070,11 +1106,11 @@ architecture STRUCTURE of block_design_0 is
   signal timing_acquisition_8_0_DETECTION_STROBE : STD_LOGIC;
   signal timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I : STD_LOGIC_VECTOR ( 35 downto 0 );
   signal timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q : STD_LOGIC_VECTOR ( 35 downto 0 );
-  signal viterbi_hard_0_VITERBI_DECODED_OUTPUT : STD_LOGIC;
-  signal viterbi_hard_0_VITERBI_DECODED_OUTPUT_VALID : STD_LOGIC;
   signal viterbi_hard_0_VITERBI_RX_ENDED : STD_LOGIC;
-  signal viterbi_hard_0_VITERBI_SIGNAL : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal viterbi_hard_0_VITERBI_SIGNAL_VALID : STD_LOGIC;
+  signal viterbi_soft_0_VITERBI_DECODED_OUTPUT : STD_LOGIC;
+  signal viterbi_soft_0_VITERBI_DECODED_OUTPUT_VALID : STD_LOGIC;
+  signal viterbi_soft_0_VITERBI_SIGNAL : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_act_power_0_POWER_STROBE_UNCONNECTED : STD_LOGIC;
   signal NLW_hier_fft_ofdm_event_data_in_channel_halt_UNCONNECTED : STD_LOGIC;
   signal NLW_hier_fft_ofdm_event_frame_started_UNCONNECTED : STD_LOGIC;
@@ -1144,10 +1180,10 @@ axi_regs_mux_0: component block_design_0_axi_regs_mux_0_0
       CONSTELLATION_IDATA(23 downto 0) => constellation_tracker_0_CONSTELLATION_IDATA_OUT(23 downto 0),
       CONSTELLATION_QDATA(23 downto 0) => constellation_tracker_0_CONSTELLATION_QDATA_OUT(23 downto 0),
       DATA_STROBE => data_delay_0_DATA_OUT_STROBE,
-      DEINTERLEAVER_16QAM(0 to 191) => deinterleaver_0_DEINTERLEAVER_16QAM(0 to 191),
-      DEINTERLEAVER_BPSK(0 to 47) => deinterleaver_0_DEINTERLEAVER_BPSK(0 to 47),
-      DEINTERLEAVER_QPSK(0 to 95) => deinterleaver_0_DEINTERLEAVER_QPSK(0 to 95),
-      DEINTERLEAVER_STROBE => deinterleaver_0_DEINTERLEAVER_STROBE,
+      DEINTERLEAVER_16QAM(0 to 191) => deinterleaver_soft_0_DEINTERLEAVER_16QAM(0 to 191),
+      DEINTERLEAVER_BPSK(0 to 47) => deinterleaver_soft_0_DEINTERLEAVER_BPSK(0 to 47),
+      DEINTERLEAVER_QPSK(0 to 95) => deinterleaver_soft_0_DEINTERLEAVER_QPSK(0 to 95),
+      DEINTERLEAVER_STROBE => deinterleaver_soft_0_DEINTERLEAVER_STROBE,
       EQUALIZER_REG_WRITE_DATA(31 downto 0) => equalizer_time_frequ_0_FPGA_REG_WRITE_DATA(31 downto 0),
       EQUALIZER_REG_WRITE_STROBE_PHASE_1 => equalizer_time_frequ_0_FPGA_REG_WRITE_STROBE_PHASE_1,
       EQUALIZER_REG_WRITE_STROBE_PHASE_2 => equalizer_time_frequ_0_FPGA_REG_WRITE_STROBE_PHASE_2,
@@ -1164,7 +1200,7 @@ axi_regs_mux_0: component block_design_0_axi_regs_mux_0_0
       QDATA(15 downto 0) => data_delay_0_QDATA_OUT(15 downto 0),
       RESET => RESET_0_1,
       SELECT_AXI_REGS_MODE(7 downto 0) => SELECT_AXI_REGS_MODE_0_1(7 downto 0),
-      VITERBI_SIGNAL(31 downto 0) => viterbi_hard_0_VITERBI_SIGNAL(31 downto 0),
+      VITERBI_SIGNAL(31 downto 0) => viterbi_soft_0_VITERBI_SIGNAL(31 downto 0),
       VITERBI_SIGNAL_VALID => viterbi_hard_0_VITERBI_SIGNAL_VALID
     );
 blk_mem_gen_0: component block_design_0_blk_mem_gen_0_0
@@ -1241,22 +1277,34 @@ data_interleaver_0: component block_design_0_data_interleaver_0_0
       QDATA_OUT(15 downto 0) => data_interleaver_0_QDATA_OUT(15 downto 0),
       RESET => RESET_0_1
     );
-deinterleaver_0: component block_design_0_deinterleaver_0_0
+deinterleaver_soft_0: component block_design_0_deinterleaver_soft_0_0
      port map (
       CLOCK => CLOCK_0_1,
-      DEINTERLEAVER_16QAM(0 to 191) => deinterleaver_0_DEINTERLEAVER_16QAM(0 to 191),
-      DEINTERLEAVER_BPSK(0 to 47) => deinterleaver_0_DEINTERLEAVER_BPSK(0 to 47),
-      DEINTERLEAVER_QPSK(0 to 95) => deinterleaver_0_DEINTERLEAVER_QPSK(0 to 95),
-      DEINTERLEAVER_START_MARKER => deinterleaver_0_DEINTERLEAVER_START_MARKER,
-      DEINTERLEAVER_STROBE => deinterleaver_0_DEINTERLEAVER_STROBE,
-      DEMAPPING_16QAM(0 to 207) => demapper_0_DEMAPPING_16QAM(0 to 207),
-      DEMAPPING_BPSK(0 to 51) => demapper_0_DEMAPPING_BPSK(0 to 51),
-      DEMAPPING_QPSK(0 to 103) => demapper_0_DEMAPPING_QPSK(0 to 103),
-      DEMAPPING_START_MARKER => demapper_0_DEMAPPING_START_MARKER,
-      DEMAPPING_STROBE => demapper_0_DEMAPPING_STROBE,
+      DEINTERLEAVER_16QAM(0 to 191) => deinterleaver_soft_0_DEINTERLEAVER_16QAM(0 to 191),
+      DEINTERLEAVER_16QAM_DIST_0B(0 to 191) => deinterleaver_soft_0_DEINTERLEAVER_16QAM_DIST_0B(0 to 191),
+      DEINTERLEAVER_16QAM_DIST_1B(0 to 191) => deinterleaver_soft_0_DEINTERLEAVER_16QAM_DIST_1B(0 to 191),
+      DEINTERLEAVER_BPSK(0 to 47) => deinterleaver_soft_0_DEINTERLEAVER_BPSK(0 to 47),
+      DEINTERLEAVER_BPSK_DIST_0B(0 to 47) => deinterleaver_soft_0_DEINTERLEAVER_BPSK_DIST_0B(0 to 47),
+      DEINTERLEAVER_BPSK_DIST_1B(0 to 47) => deinterleaver_soft_0_DEINTERLEAVER_BPSK_DIST_1B(0 to 47),
+      DEINTERLEAVER_QPSK(0 to 95) => deinterleaver_soft_0_DEINTERLEAVER_QPSK(0 to 95),
+      DEINTERLEAVER_QPSK_DIST_0B(0 to 95) => deinterleaver_soft_0_DEINTERLEAVER_QPSK_DIST_0B(0 to 95),
+      DEINTERLEAVER_QPSK_DIST_1B(0 to 95) => deinterleaver_soft_0_DEINTERLEAVER_QPSK_DIST_1B(0 to 95),
+      DEINTERLEAVER_START_MARKER => deinterleaver_soft_0_DEINTERLEAVER_START_MARKER,
+      DEINTERLEAVER_STROBE => deinterleaver_soft_0_DEINTERLEAVER_STROBE,
+      DEMAPPING_16QAM(0 to 207) => demapper_soft_0_DEMAPPING_16QAM(0 to 207),
+      DEMAPPING_16QAM_DIST_0B(0 to 207) => demapper_soft_0_DEMAPPING_16QAM_DIST_0B(0 to 207),
+      DEMAPPING_16QAM_DIST_1B(0 to 207) => demapper_soft_0_DEMAPPING_16QAM_DIST_1B(0 to 207),
+      DEMAPPING_BPSK(0 to 51) => demapper_soft_0_DEMAPPING_BPSK(0 to 51),
+      DEMAPPING_BPSK_DIST_0B(0 to 51) => demapper_soft_0_DEMAPPING_BPSK_DIST_0B(0 to 51),
+      DEMAPPING_BPSK_DIST_1B(0 to 51) => demapper_soft_0_DEMAPPING_BPSK_DIST_1B(0 to 51),
+      DEMAPPING_QPSK(0 to 103) => demapper_soft_0_DEMAPPING_QPSK(0 to 103),
+      DEMAPPING_QPSK_DIST_0B(0 to 103) => demapper_soft_0_DEMAPPING_QPSK_DIST_0B(0 to 103),
+      DEMAPPING_QPSK_DIST_1B(0 to 103) => demapper_soft_0_DEMAPPING_QPSK_DIST_1B(0 to 103),
+      DEMAPPING_START_MARKER => demapper_soft_0_DEMAPPING_START_MARKER,
+      DEMAPPING_STROBE => demapper_soft_0_DEMAPPING_STROBE,
       RESET => RESET_0_1
     );
-demapper_0: component block_design_0_demapper_0_0
+demapper_soft_0: component block_design_0_demapper_soft_0_0
      port map (
       CLOCK => CLOCK_0_1,
       CONSTELLATION_BPSK_AMPLITUDE_REFERENCE(23 downto 0) => constellation_tracker_0_CONSTELLATION_BPSK_AMPLITUDE_REFERENCE(23 downto 0),
@@ -1264,11 +1312,17 @@ demapper_0: component block_design_0_demapper_0_0
       CONSTELLATION_DATA_IN_VALID => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
       CONSTELLATION_IDATA_IN(23 downto 0) => constellation_tracker_0_CONSTELLATION_IDATA_OUT(23 downto 0),
       CONSTELLATION_QDATA_IN(23 downto 0) => constellation_tracker_0_CONSTELLATION_QDATA_OUT(23 downto 0),
-      DEMAPPING_16QAM(0 to 207) => demapper_0_DEMAPPING_16QAM(0 to 207),
-      DEMAPPING_BPSK(0 to 51) => demapper_0_DEMAPPING_BPSK(0 to 51),
-      DEMAPPING_QPSK(0 to 103) => demapper_0_DEMAPPING_QPSK(0 to 103),
-      DEMAPPING_START_MARKER => demapper_0_DEMAPPING_START_MARKER,
-      DEMAPPING_STROBE => demapper_0_DEMAPPING_STROBE,
+      DEMAPPING_16QAM(0 to 207) => demapper_soft_0_DEMAPPING_16QAM(0 to 207),
+      DEMAPPING_16QAM_DIST_0B(0 to 207) => demapper_soft_0_DEMAPPING_16QAM_DIST_0B(0 to 207),
+      DEMAPPING_16QAM_DIST_1B(0 to 207) => demapper_soft_0_DEMAPPING_16QAM_DIST_1B(0 to 207),
+      DEMAPPING_BPSK(0 to 51) => demapper_soft_0_DEMAPPING_BPSK(0 to 51),
+      DEMAPPING_BPSK_DIST_0B(0 to 51) => demapper_soft_0_DEMAPPING_BPSK_DIST_0B(0 to 51),
+      DEMAPPING_BPSK_DIST_1B(0 to 51) => demapper_soft_0_DEMAPPING_BPSK_DIST_1B(0 to 51),
+      DEMAPPING_QPSK(0 to 103) => demapper_soft_0_DEMAPPING_QPSK(0 to 103),
+      DEMAPPING_QPSK_DIST_0B(0 to 103) => demapper_soft_0_DEMAPPING_QPSK_DIST_0B(0 to 103),
+      DEMAPPING_QPSK_DIST_1B(0 to 103) => demapper_soft_0_DEMAPPING_QPSK_DIST_1B(0 to 103),
+      DEMAPPING_START_MARKER => demapper_soft_0_DEMAPPING_START_MARKER,
+      DEMAPPING_STROBE => demapper_soft_0_DEMAPPING_STROBE,
       RESET => RESET_0_1
     );
 descrambler_0: component block_design_0_descrambler_0_0
@@ -1278,8 +1332,8 @@ descrambler_0: component block_design_0_descrambler_0_0
       DESCRAMBLED_OUTPUT_LAST => descrambler_0_DESCRAMBLED_OUTPUT_LAST,
       DESCRAMBLED_OUTPUT_VALID => descrambler_0_DESCRAMBLED_OUTPUT_VALID,
       RESET => RESET_0_1,
-      VITERBI_DECODED_OUTPUT => viterbi_hard_0_VITERBI_DECODED_OUTPUT,
-      VITERBI_DECODED_OUTPUT_VALID => viterbi_hard_0_VITERBI_DECODED_OUTPUT_VALID,
+      VITERBI_DECODED_OUTPUT => viterbi_soft_0_VITERBI_DECODED_OUTPUT,
+      VITERBI_DECODED_OUTPUT_VALID => viterbi_soft_0_VITERBI_DECODED_OUTPUT_VALID,
       VITERBI_RX_ENDED => viterbi_hard_0_VITERBI_RX_ENDED,
       VITERBI_SIGNAL_VALID => viterbi_hard_0_VITERBI_SIGNAL_VALID
     );
@@ -1439,19 +1493,25 @@ timing_acquisition_8_0: component block_design_0_timing_acquisition_8_0_0
       QDATA_DELAY_64(15 downto 0) => data_delay_0_QDATA_OUT_DELAY_64(15 downto 0),
       RESET => RESET_0_1
     );
-viterbi_hard_0: component block_design_0_viterbi_hard_0_0
+viterbi_soft_0: component block_design_0_viterbi_soft_0_0
      port map (
       CLOCK => CLOCK_0_1,
-      DEINTERLEAVER_16QAM(0 to 191) => deinterleaver_0_DEINTERLEAVER_16QAM(0 to 191),
-      DEINTERLEAVER_BPSK(0 to 47) => deinterleaver_0_DEINTERLEAVER_BPSK(0 to 47),
-      DEINTERLEAVER_QPSK(0 to 95) => deinterleaver_0_DEINTERLEAVER_QPSK(0 to 95),
-      DEINTERLEAVER_START_MARKER => deinterleaver_0_DEINTERLEAVER_START_MARKER,
-      DEINTERLEAVER_STROBE => deinterleaver_0_DEINTERLEAVER_STROBE,
+      DEINTERLEAVER_16QAM(0 to 191) => deinterleaver_soft_0_DEINTERLEAVER_16QAM(0 to 191),
+      DEINTERLEAVER_16QAM_DIST_0B(0 to 191) => deinterleaver_soft_0_DEINTERLEAVER_16QAM_DIST_0B(0 to 191),
+      DEINTERLEAVER_16QAM_DIST_1B(0 to 191) => deinterleaver_soft_0_DEINTERLEAVER_16QAM_DIST_1B(0 to 191),
+      DEINTERLEAVER_BPSK(0 to 47) => deinterleaver_soft_0_DEINTERLEAVER_BPSK(0 to 47),
+      DEINTERLEAVER_BPSK_DIST_0B(0 to 47) => deinterleaver_soft_0_DEINTERLEAVER_BPSK_DIST_0B(0 to 47),
+      DEINTERLEAVER_BPSK_DIST_1B(0 to 47) => deinterleaver_soft_0_DEINTERLEAVER_BPSK_DIST_1B(0 to 47),
+      DEINTERLEAVER_QPSK(0 to 95) => deinterleaver_soft_0_DEINTERLEAVER_QPSK(0 to 95),
+      DEINTERLEAVER_QPSK_DIST_0B(0 to 95) => deinterleaver_soft_0_DEINTERLEAVER_QPSK_DIST_0B(0 to 95),
+      DEINTERLEAVER_QPSK_DIST_1B(0 to 95) => deinterleaver_soft_0_DEINTERLEAVER_QPSK_DIST_1B(0 to 95),
+      DEINTERLEAVER_START_MARKER => deinterleaver_soft_0_DEINTERLEAVER_START_MARKER,
+      DEINTERLEAVER_STROBE => deinterleaver_soft_0_DEINTERLEAVER_STROBE,
       RESET => RESET_0_1,
-      VITERBI_DECODED_OUTPUT => viterbi_hard_0_VITERBI_DECODED_OUTPUT,
-      VITERBI_DECODED_OUTPUT_VALID => viterbi_hard_0_VITERBI_DECODED_OUTPUT_VALID,
+      VITERBI_DECODED_OUTPUT => viterbi_soft_0_VITERBI_DECODED_OUTPUT,
+      VITERBI_DECODED_OUTPUT_VALID => viterbi_soft_0_VITERBI_DECODED_OUTPUT_VALID,
       VITERBI_RX_ENDED => viterbi_hard_0_VITERBI_RX_ENDED,
-      VITERBI_SIGNAL(31 downto 0) => viterbi_hard_0_VITERBI_SIGNAL(31 downto 0),
+      VITERBI_SIGNAL(31 downto 0) => viterbi_soft_0_VITERBI_SIGNAL(31 downto 0),
       VITERBI_SIGNAL_VALID => viterbi_hard_0_VITERBI_SIGNAL_VALID
     );
 end STRUCTURE;

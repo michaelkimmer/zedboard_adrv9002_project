@@ -39,12 +39,12 @@
         "rotation_constellati_0": ""
       },
       "constellation_tracker_0": "",
-      "demapper_0": "",
-      "deinterleaver_0": "",
-      "viterbi_hard_0": "",
       "descrambler_0": "",
       "output_ser2par_0": "",
-      "blk_mem_gen_0": ""
+      "blk_mem_gen_0": "",
+      "demapper_soft_0": "",
+      "deinterleaver_soft_0": "",
+      "viterbi_soft_0": ""
     },
     "interface_ports": {
       "BRAM_PORTA": {
@@ -763,8 +763,8 @@
           "fft_ofdm_0": {
             "vlnv": "xilinx.com:module_ref:fft_ofdm:1.0",
             "ip_revision": "1715434523",
-            "xci_name": "block_design_0_fft_ofdm_0_1",
-            "xci_path": "ip\\block_design_0_fft_ofdm_0_1\\block_design_0_fft_ofdm_0_1.xci",
+            "xci_name": "block_design_0_fft_ofdm_0_0",
+            "xci_path": "ip\\block_design_0_fft_ofdm_0_0\\block_design_0_fft_ofdm_0_0.xci",
             "inst_hier_path": "hier_fft_ofdm/fft_ofdm_0",
             "reference_info": {
               "ref_type": "hdl",
@@ -3682,224 +3682,6 @@
           }
         }
       },
-      "demapper_0": {
-        "vlnv": "xilinx.com:module_ref:demapper:1.0",
-        "ip_revision": "1715434526",
-        "xci_name": "block_design_0_demapper_0_0",
-        "xci_path": "ip\\block_design_0_demapper_0_0\\block_design_0_demapper_0_0.xci",
-        "inst_hier_path": "demapper_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "demapper",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "RESET": {
-            "type": "rst",
-            "direction": "I"
-          },
-          "CLOCK": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "ASSOCIATED_RESET": {
-                "value": "RESET",
-                "value_src": "constant"
-              },
-              "CLK_DOMAIN": {
-                "value": "block_design_0_CLOCK",
-                "value_src": "default_prop"
-              }
-            }
-          },
-          "CONSTELLATION_DATA_IN_VALID": {
-            "direction": "I"
-          },
-          "CONSTELLATION_IDATA_IN": {
-            "direction": "I",
-            "left": "23",
-            "right": "0"
-          },
-          "CONSTELLATION_QDATA_IN": {
-            "direction": "I",
-            "left": "23",
-            "right": "0"
-          },
-          "CONSTELLATION_DATA_IN_FIRST_SYMBOL_MARKER": {
-            "direction": "I"
-          },
-          "CONSTELLATION_BPSK_AMPLITUDE_REFERENCE": {
-            "direction": "I",
-            "left": "23",
-            "right": "0"
-          },
-          "DEMAPPING_START_MARKER": {
-            "direction": "O"
-          },
-          "DEMAPPING_STROBE": {
-            "direction": "O"
-          },
-          "DEMAPPING_BPSK": {
-            "direction": "O",
-            "left": "0",
-            "right": "51"
-          },
-          "DEMAPPING_QPSK": {
-            "direction": "O",
-            "left": "0",
-            "right": "103"
-          },
-          "DEMAPPING_16QAM": {
-            "direction": "O",
-            "left": "0",
-            "right": "207"
-          }
-        }
-      },
-      "deinterleaver_0": {
-        "vlnv": "xilinx.com:module_ref:deinterleaver:1.0",
-        "ip_revision": "1715434526",
-        "xci_name": "block_design_0_deinterleaver_0_0",
-        "xci_path": "ip\\block_design_0_deinterleaver_0_0\\block_design_0_deinterleaver_0_0.xci",
-        "inst_hier_path": "deinterleaver_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "deinterleaver",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "RESET": {
-            "type": "rst",
-            "direction": "I"
-          },
-          "CLOCK": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "ASSOCIATED_RESET": {
-                "value": "RESET",
-                "value_src": "constant"
-              },
-              "CLK_DOMAIN": {
-                "value": "block_design_0_CLOCK",
-                "value_src": "default_prop"
-              }
-            }
-          },
-          "DEMAPPING_START_MARKER": {
-            "direction": "I"
-          },
-          "DEMAPPING_STROBE": {
-            "direction": "I"
-          },
-          "DEMAPPING_BPSK": {
-            "direction": "I",
-            "left": "0",
-            "right": "51"
-          },
-          "DEMAPPING_QPSK": {
-            "direction": "I",
-            "left": "0",
-            "right": "103"
-          },
-          "DEMAPPING_16QAM": {
-            "direction": "I",
-            "left": "0",
-            "right": "207"
-          },
-          "DEINTERLEAVER_START_MARKER": {
-            "direction": "O"
-          },
-          "DEINTERLEAVER_STROBE": {
-            "direction": "O"
-          },
-          "DEINTERLEAVER_BPSK": {
-            "direction": "O",
-            "left": "0",
-            "right": "47"
-          },
-          "DEINTERLEAVER_QPSK": {
-            "direction": "O",
-            "left": "0",
-            "right": "95"
-          },
-          "DEINTERLEAVER_16QAM": {
-            "direction": "O",
-            "left": "0",
-            "right": "191"
-          }
-        }
-      },
-      "viterbi_hard_0": {
-        "vlnv": "xilinx.com:module_ref:viterbi_hard:1.0",
-        "ip_revision": "1715434527",
-        "xci_name": "block_design_0_viterbi_hard_0_0",
-        "xci_path": "ip\\block_design_0_viterbi_hard_0_0\\block_design_0_viterbi_hard_0_0.xci",
-        "inst_hier_path": "viterbi_hard_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "viterbi_hard",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "RESET": {
-            "type": "rst",
-            "direction": "I"
-          },
-          "CLOCK": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "ASSOCIATED_RESET": {
-                "value": "RESET",
-                "value_src": "constant"
-              },
-              "CLK_DOMAIN": {
-                "value": "block_design_0_CLOCK",
-                "value_src": "default_prop"
-              }
-            }
-          },
-          "DEINTERLEAVER_START_MARKER": {
-            "direction": "I"
-          },
-          "DEINTERLEAVER_STROBE": {
-            "direction": "I"
-          },
-          "DEINTERLEAVER_BPSK": {
-            "direction": "I",
-            "left": "0",
-            "right": "47"
-          },
-          "DEINTERLEAVER_QPSK": {
-            "direction": "I",
-            "left": "0",
-            "right": "95"
-          },
-          "DEINTERLEAVER_16QAM": {
-            "direction": "I",
-            "left": "0",
-            "right": "191"
-          },
-          "VITERBI_SIGNAL_VALID": {
-            "direction": "O"
-          },
-          "VITERBI_SIGNAL": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "VITERBI_DECODED_OUTPUT_VALID": {
-            "direction": "O"
-          },
-          "VITERBI_DECODED_OUTPUT": {
-            "direction": "O"
-          },
-          "VITERBI_RX_ENDED": {
-            "direction": "O"
-          }
-        }
-      },
       "descrambler_0": {
         "vlnv": "xilinx.com:module_ref:descrambler:1.0",
         "ip_revision": "1715434527",
@@ -4049,6 +3831,344 @@
             "value": "Stand_Alone"
           }
         }
+      },
+      "demapper_soft_0": {
+        "vlnv": "xilinx.com:module_ref:demapper_soft:1.0",
+        "ip_revision": "1715864371",
+        "xci_name": "block_design_0_demapper_soft_0_0",
+        "xci_path": "ip\\block_design_0_demapper_soft_0_0\\block_design_0_demapper_soft_0_0.xci",
+        "inst_hier_path": "demapper_soft_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "demapper_soft",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "RESET": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "CLOCK": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "RESET",
+                "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "block_design_0_CLOCK",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "CONSTELLATION_DATA_IN_VALID": {
+            "direction": "I"
+          },
+          "CONSTELLATION_IDATA_IN": {
+            "direction": "I",
+            "left": "23",
+            "right": "0"
+          },
+          "CONSTELLATION_QDATA_IN": {
+            "direction": "I",
+            "left": "23",
+            "right": "0"
+          },
+          "CONSTELLATION_DATA_IN_FIRST_SYMBOL_MARKER": {
+            "direction": "I"
+          },
+          "CONSTELLATION_BPSK_AMPLITUDE_REFERENCE": {
+            "direction": "I",
+            "left": "23",
+            "right": "0"
+          },
+          "DEMAPPING_START_MARKER": {
+            "direction": "O"
+          },
+          "DEMAPPING_STROBE": {
+            "direction": "O"
+          },
+          "DEMAPPING_BPSK": {
+            "direction": "O",
+            "left": "0",
+            "right": "51"
+          },
+          "DEMAPPING_QPSK": {
+            "direction": "O",
+            "left": "0",
+            "right": "103"
+          },
+          "DEMAPPING_16QAM": {
+            "direction": "O",
+            "left": "0",
+            "right": "207"
+          },
+          "DEMAPPING_BPSK_DIST_1B": {
+            "direction": "O",
+            "left": "0",
+            "right": "51"
+          },
+          "DEMAPPING_QPSK_DIST_1B": {
+            "direction": "O",
+            "left": "0",
+            "right": "103"
+          },
+          "DEMAPPING_16QAM_DIST_1B": {
+            "direction": "O",
+            "left": "0",
+            "right": "207"
+          },
+          "DEMAPPING_BPSK_DIST_0B": {
+            "direction": "O",
+            "left": "0",
+            "right": "51"
+          },
+          "DEMAPPING_QPSK_DIST_0B": {
+            "direction": "O",
+            "left": "0",
+            "right": "103"
+          },
+          "DEMAPPING_16QAM_DIST_0B": {
+            "direction": "O",
+            "left": "0",
+            "right": "207"
+          }
+        }
+      },
+      "deinterleaver_soft_0": {
+        "vlnv": "xilinx.com:module_ref:deinterleaver_soft:1.0",
+        "ip_revision": "1715865957",
+        "xci_name": "block_design_0_deinterleaver_soft_0_0",
+        "xci_path": "ip\\block_design_0_deinterleaver_soft_0_0\\block_design_0_deinterleaver_soft_0_0.xci",
+        "inst_hier_path": "deinterleaver_soft_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "deinterleaver_soft",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "RESET": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "CLOCK": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "RESET",
+                "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "block_design_0_CLOCK",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "DEMAPPING_START_MARKER": {
+            "direction": "I"
+          },
+          "DEMAPPING_STROBE": {
+            "direction": "I"
+          },
+          "DEMAPPING_BPSK": {
+            "direction": "I",
+            "left": "0",
+            "right": "51"
+          },
+          "DEMAPPING_QPSK": {
+            "direction": "I",
+            "left": "0",
+            "right": "103"
+          },
+          "DEMAPPING_16QAM": {
+            "direction": "I",
+            "left": "0",
+            "right": "207"
+          },
+          "DEMAPPING_BPSK_DIST_1B": {
+            "direction": "I",
+            "left": "0",
+            "right": "51"
+          },
+          "DEMAPPING_QPSK_DIST_1B": {
+            "direction": "I",
+            "left": "0",
+            "right": "103"
+          },
+          "DEMAPPING_16QAM_DIST_1B": {
+            "direction": "I",
+            "left": "0",
+            "right": "207"
+          },
+          "DEMAPPING_BPSK_DIST_0B": {
+            "direction": "I",
+            "left": "0",
+            "right": "51"
+          },
+          "DEMAPPING_QPSK_DIST_0B": {
+            "direction": "I",
+            "left": "0",
+            "right": "103"
+          },
+          "DEMAPPING_16QAM_DIST_0B": {
+            "direction": "I",
+            "left": "0",
+            "right": "207"
+          },
+          "DEINTERLEAVER_START_MARKER": {
+            "direction": "O"
+          },
+          "DEINTERLEAVER_STROBE": {
+            "direction": "O"
+          },
+          "DEINTERLEAVER_BPSK": {
+            "direction": "O",
+            "left": "0",
+            "right": "47"
+          },
+          "DEINTERLEAVER_QPSK": {
+            "direction": "O",
+            "left": "0",
+            "right": "95"
+          },
+          "DEINTERLEAVER_16QAM": {
+            "direction": "O",
+            "left": "0",
+            "right": "191"
+          },
+          "DEINTERLEAVER_BPSK_DIST_1B": {
+            "direction": "O",
+            "left": "0",
+            "right": "47"
+          },
+          "DEINTERLEAVER_QPSK_DIST_1B": {
+            "direction": "O",
+            "left": "0",
+            "right": "95"
+          },
+          "DEINTERLEAVER_16QAM_DIST_1B": {
+            "direction": "O",
+            "left": "0",
+            "right": "191"
+          },
+          "DEINTERLEAVER_BPSK_DIST_0B": {
+            "direction": "O",
+            "left": "0",
+            "right": "47"
+          },
+          "DEINTERLEAVER_QPSK_DIST_0B": {
+            "direction": "O",
+            "left": "0",
+            "right": "95"
+          },
+          "DEINTERLEAVER_16QAM_DIST_0B": {
+            "direction": "O",
+            "left": "0",
+            "right": "191"
+          }
+        }
+      },
+      "viterbi_soft_0": {
+        "vlnv": "xilinx.com:module_ref:viterbi_soft:1.0",
+        "ip_revision": "1715869668",
+        "xci_name": "block_design_0_viterbi_soft_0_0",
+        "xci_path": "ip\\block_design_0_viterbi_soft_0_0\\block_design_0_viterbi_soft_0_0.xci",
+        "inst_hier_path": "viterbi_soft_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "viterbi_soft",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "RESET": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "CLOCK": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "RESET",
+                "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "block_design_0_CLOCK",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "DEINTERLEAVER_START_MARKER": {
+            "direction": "I"
+          },
+          "DEINTERLEAVER_STROBE": {
+            "direction": "I"
+          },
+          "DEINTERLEAVER_BPSK": {
+            "direction": "I",
+            "left": "0",
+            "right": "47"
+          },
+          "DEINTERLEAVER_QPSK": {
+            "direction": "I",
+            "left": "0",
+            "right": "95"
+          },
+          "DEINTERLEAVER_16QAM": {
+            "direction": "I",
+            "left": "0",
+            "right": "191"
+          },
+          "DEINTERLEAVER_BPSK_DIST_1B": {
+            "direction": "I",
+            "left": "0",
+            "right": "47"
+          },
+          "DEINTERLEAVER_QPSK_DIST_1B": {
+            "direction": "I",
+            "left": "0",
+            "right": "95"
+          },
+          "DEINTERLEAVER_16QAM_DIST_1B": {
+            "direction": "I",
+            "left": "0",
+            "right": "191"
+          },
+          "DEINTERLEAVER_BPSK_DIST_0B": {
+            "direction": "I",
+            "left": "0",
+            "right": "47"
+          },
+          "DEINTERLEAVER_QPSK_DIST_0B": {
+            "direction": "I",
+            "left": "0",
+            "right": "95"
+          },
+          "DEINTERLEAVER_16QAM_DIST_0B": {
+            "direction": "I",
+            "left": "0",
+            "right": "191"
+          },
+          "VITERBI_SIGNAL_VALID": {
+            "direction": "O"
+          },
+          "VITERBI_SIGNAL": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "VITERBI_DECODED_OUTPUT_VALID": {
+            "direction": "O"
+          },
+          "VITERBI_DECODED_OUTPUT": {
+            "direction": "O"
+          },
+          "VITERBI_RX_ENDED": {
+            "direction": "O"
+          }
+        }
       }
     },
     "interface_nets": {
@@ -4079,14 +4199,14 @@
           "data_delay_0/CLOCK",
           "axi_regs_mux_0/CLOCK",
           "constellation_tracker_0/CLOCK",
-          "demapper_0/CLOCK",
-          "deinterleaver_0/CLOCK",
-          "viterbi_hard_0/CLOCK",
           "descrambler_0/CLOCK",
           "output_ser2par_0/CLOCK",
           "rx_clock_domain_cros_0/CLOCK",
           "timing_acquisition_8_0/CLOCK",
-          "equalizer_time_frequ_0/CLOCK"
+          "equalizer_time_frequ_0/CLOCK",
+          "viterbi_soft_0/CLOCK",
+          "deinterleaver_soft_0/CLOCK",
+          "demapper_soft_0/CLOCK"
         ]
       },
       "DETECTION_THRESHOLD_0_1": {
@@ -4108,14 +4228,14 @@
           "data_delay_0/RESET",
           "axi_regs_mux_0/RESET",
           "constellation_tracker_0/RESET",
-          "demapper_0/RESET",
-          "deinterleaver_0/RESET",
-          "viterbi_hard_0/RESET",
           "descrambler_0/RESET",
           "output_ser2par_0/RESET",
           "rx_clock_domain_cros_0/RESET",
           "timing_acquisition_8_0/RESET",
-          "equalizer_time_frequ_0/RESET"
+          "equalizer_time_frequ_0/RESET",
+          "viterbi_soft_0/RESET",
+          "deinterleaver_soft_0/RESET",
+          "demapper_soft_0/RESET"
         ]
       },
       "RX_CLOCK_0_1": {
@@ -4205,34 +4325,34 @@
       "constellation_tracker_0_CONSTELLATION_BPSK_AMPLITUDE_REFERENCE": {
         "ports": [
           "constellation_tracker_0/CONSTELLATION_BPSK_AMPLITUDE_REFERENCE",
-          "demapper_0/CONSTELLATION_BPSK_AMPLITUDE_REFERENCE"
+          "demapper_soft_0/CONSTELLATION_BPSK_AMPLITUDE_REFERENCE"
         ]
       },
       "constellation_tracker_0_CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER": {
         "ports": [
           "constellation_tracker_0/CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER",
-          "demapper_0/CONSTELLATION_DATA_IN_FIRST_SYMBOL_MARKER"
+          "demapper_soft_0/CONSTELLATION_DATA_IN_FIRST_SYMBOL_MARKER"
         ]
       },
       "constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID": {
         "ports": [
           "constellation_tracker_0/CONSTELLATION_DATA_OUT_VALID",
           "axi_regs_mux_0/CONSTELLATION_DATA_VALID",
-          "demapper_0/CONSTELLATION_DATA_IN_VALID"
+          "demapper_soft_0/CONSTELLATION_DATA_IN_VALID"
         ]
       },
       "constellation_tracker_0_CONSTELLATION_IDATA_OUT": {
         "ports": [
           "constellation_tracker_0/CONSTELLATION_IDATA_OUT",
           "axi_regs_mux_0/CONSTELLATION_IDATA",
-          "demapper_0/CONSTELLATION_IDATA_IN"
+          "demapper_soft_0/CONSTELLATION_IDATA_IN"
         ]
       },
       "constellation_tracker_0_CONSTELLATION_QDATA_OUT": {
         "ports": [
           "constellation_tracker_0/CONSTELLATION_QDATA_OUT",
           "axi_regs_mux_0/CONSTELLATION_QDATA",
-          "demapper_0/CONSTELLATION_QDATA_IN"
+          "demapper_soft_0/CONSTELLATION_QDATA_IN"
         ]
       },
       "constellation_tracker_0_ROTATION_CONSTELLATION_CNTR_IN": {
@@ -4358,68 +4478,140 @@
           "data_delay_0/QDATA_IN"
         ]
       },
-      "deinterleaver_0_DEINTERLEAVER_16QAM": {
+      "deinterleaver_soft_0_DEINTERLEAVER_16QAM": {
         "ports": [
-          "deinterleaver_0/DEINTERLEAVER_16QAM",
-          "axi_regs_mux_0/DEINTERLEAVER_16QAM",
-          "viterbi_hard_0/DEINTERLEAVER_16QAM"
+          "deinterleaver_soft_0/DEINTERLEAVER_16QAM",
+          "viterbi_soft_0/DEINTERLEAVER_16QAM",
+          "axi_regs_mux_0/DEINTERLEAVER_16QAM"
         ]
       },
-      "deinterleaver_0_DEINTERLEAVER_BPSK": {
+      "deinterleaver_soft_0_DEINTERLEAVER_16QAM_DIST_0B": {
         "ports": [
-          "deinterleaver_0/DEINTERLEAVER_BPSK",
-          "axi_regs_mux_0/DEINTERLEAVER_BPSK",
-          "viterbi_hard_0/DEINTERLEAVER_BPSK"
+          "deinterleaver_soft_0/DEINTERLEAVER_16QAM_DIST_0B",
+          "viterbi_soft_0/DEINTERLEAVER_16QAM_DIST_0B"
         ]
       },
-      "deinterleaver_0_DEINTERLEAVER_QPSK": {
+      "deinterleaver_soft_0_DEINTERLEAVER_16QAM_DIST_1B": {
         "ports": [
-          "deinterleaver_0/DEINTERLEAVER_QPSK",
-          "axi_regs_mux_0/DEINTERLEAVER_QPSK",
-          "viterbi_hard_0/DEINTERLEAVER_QPSK"
+          "deinterleaver_soft_0/DEINTERLEAVER_16QAM_DIST_1B",
+          "viterbi_soft_0/DEINTERLEAVER_16QAM_DIST_1B"
         ]
       },
-      "deinterleaver_0_DEINTERLEAVER_START_MARKER": {
+      "deinterleaver_soft_0_DEINTERLEAVER_BPSK": {
         "ports": [
-          "deinterleaver_0/DEINTERLEAVER_START_MARKER",
-          "viterbi_hard_0/DEINTERLEAVER_START_MARKER"
+          "deinterleaver_soft_0/DEINTERLEAVER_BPSK",
+          "viterbi_soft_0/DEINTERLEAVER_BPSK",
+          "axi_regs_mux_0/DEINTERLEAVER_BPSK"
         ]
       },
-      "deinterleaver_0_DEINTERLEAVER_STROBE": {
+      "deinterleaver_soft_0_DEINTERLEAVER_BPSK_DIST_0B": {
         "ports": [
-          "deinterleaver_0/DEINTERLEAVER_STROBE",
-          "axi_regs_mux_0/DEINTERLEAVER_STROBE",
-          "viterbi_hard_0/DEINTERLEAVER_STROBE"
+          "deinterleaver_soft_0/DEINTERLEAVER_BPSK_DIST_0B",
+          "viterbi_soft_0/DEINTERLEAVER_BPSK_DIST_0B"
         ]
       },
-      "demapper_0_DEMAPPING_16QAM": {
+      "deinterleaver_soft_0_DEINTERLEAVER_BPSK_DIST_1B": {
         "ports": [
-          "demapper_0/DEMAPPING_16QAM",
-          "deinterleaver_0/DEMAPPING_16QAM"
+          "deinterleaver_soft_0/DEINTERLEAVER_BPSK_DIST_1B",
+          "viterbi_soft_0/DEINTERLEAVER_BPSK_DIST_1B"
         ]
       },
-      "demapper_0_DEMAPPING_BPSK": {
+      "deinterleaver_soft_0_DEINTERLEAVER_QPSK": {
         "ports": [
-          "demapper_0/DEMAPPING_BPSK",
-          "deinterleaver_0/DEMAPPING_BPSK"
+          "deinterleaver_soft_0/DEINTERLEAVER_QPSK",
+          "viterbi_soft_0/DEINTERLEAVER_QPSK",
+          "axi_regs_mux_0/DEINTERLEAVER_QPSK"
         ]
       },
-      "demapper_0_DEMAPPING_QPSK": {
+      "deinterleaver_soft_0_DEINTERLEAVER_QPSK_DIST_0B": {
         "ports": [
-          "demapper_0/DEMAPPING_QPSK",
-          "deinterleaver_0/DEMAPPING_QPSK"
+          "deinterleaver_soft_0/DEINTERLEAVER_QPSK_DIST_0B",
+          "viterbi_soft_0/DEINTERLEAVER_QPSK_DIST_0B"
         ]
       },
-      "demapper_0_DEMAPPING_START_MARKER": {
+      "deinterleaver_soft_0_DEINTERLEAVER_QPSK_DIST_1B": {
         "ports": [
-          "demapper_0/DEMAPPING_START_MARKER",
-          "deinterleaver_0/DEMAPPING_START_MARKER"
+          "deinterleaver_soft_0/DEINTERLEAVER_QPSK_DIST_1B",
+          "viterbi_soft_0/DEINTERLEAVER_QPSK_DIST_1B"
         ]
       },
-      "demapper_0_DEMAPPING_STROBE": {
+      "deinterleaver_soft_0_DEINTERLEAVER_START_MARKER": {
         "ports": [
-          "demapper_0/DEMAPPING_STROBE",
-          "deinterleaver_0/DEMAPPING_STROBE"
+          "deinterleaver_soft_0/DEINTERLEAVER_START_MARKER",
+          "viterbi_soft_0/DEINTERLEAVER_START_MARKER"
+        ]
+      },
+      "deinterleaver_soft_0_DEINTERLEAVER_STROBE": {
+        "ports": [
+          "deinterleaver_soft_0/DEINTERLEAVER_STROBE",
+          "viterbi_soft_0/DEINTERLEAVER_STROBE",
+          "axi_regs_mux_0/DEINTERLEAVER_STROBE"
+        ]
+      },
+      "demapper_soft_0_DEMAPPING_16QAM": {
+        "ports": [
+          "demapper_soft_0/DEMAPPING_16QAM",
+          "deinterleaver_soft_0/DEMAPPING_16QAM"
+        ]
+      },
+      "demapper_soft_0_DEMAPPING_16QAM_DIST_0B": {
+        "ports": [
+          "demapper_soft_0/DEMAPPING_16QAM_DIST_0B",
+          "deinterleaver_soft_0/DEMAPPING_16QAM_DIST_0B"
+        ]
+      },
+      "demapper_soft_0_DEMAPPING_16QAM_DIST_1B": {
+        "ports": [
+          "demapper_soft_0/DEMAPPING_16QAM_DIST_1B",
+          "deinterleaver_soft_0/DEMAPPING_16QAM_DIST_1B"
+        ]
+      },
+      "demapper_soft_0_DEMAPPING_BPSK": {
+        "ports": [
+          "demapper_soft_0/DEMAPPING_BPSK",
+          "deinterleaver_soft_0/DEMAPPING_BPSK"
+        ]
+      },
+      "demapper_soft_0_DEMAPPING_BPSK_DIST_0B": {
+        "ports": [
+          "demapper_soft_0/DEMAPPING_BPSK_DIST_0B",
+          "deinterleaver_soft_0/DEMAPPING_BPSK_DIST_0B"
+        ]
+      },
+      "demapper_soft_0_DEMAPPING_BPSK_DIST_1B": {
+        "ports": [
+          "demapper_soft_0/DEMAPPING_BPSK_DIST_1B",
+          "deinterleaver_soft_0/DEMAPPING_BPSK_DIST_1B"
+        ]
+      },
+      "demapper_soft_0_DEMAPPING_QPSK": {
+        "ports": [
+          "demapper_soft_0/DEMAPPING_QPSK",
+          "deinterleaver_soft_0/DEMAPPING_QPSK"
+        ]
+      },
+      "demapper_soft_0_DEMAPPING_QPSK_DIST_0B": {
+        "ports": [
+          "demapper_soft_0/DEMAPPING_QPSK_DIST_0B",
+          "deinterleaver_soft_0/DEMAPPING_QPSK_DIST_0B"
+        ]
+      },
+      "demapper_soft_0_DEMAPPING_QPSK_DIST_1B": {
+        "ports": [
+          "demapper_soft_0/DEMAPPING_QPSK_DIST_1B",
+          "deinterleaver_soft_0/DEMAPPING_QPSK_DIST_1B"
+        ]
+      },
+      "demapper_soft_0_DEMAPPING_START_MARKER": {
+        "ports": [
+          "demapper_soft_0/DEMAPPING_START_MARKER",
+          "deinterleaver_soft_0/DEMAPPING_START_MARKER"
+        ]
+      },
+      "demapper_soft_0_DEMAPPING_STROBE": {
+        "ports": [
+          "demapper_soft_0/DEMAPPING_STROBE",
+          "deinterleaver_soft_0/DEMAPPING_STROBE"
         ]
       },
       "descrambler_0_DESCRAMBLED_OUTPUT": {
@@ -4725,37 +4917,37 @@
           "equalizer_time_frequ_0/DETECTION_STS_AUTOCORR_Q"
         ]
       },
-      "viterbi_hard_0_VITERBI_DECODED_OUTPUT": {
-        "ports": [
-          "viterbi_hard_0/VITERBI_DECODED_OUTPUT",
-          "descrambler_0/VITERBI_DECODED_OUTPUT"
-        ]
-      },
-      "viterbi_hard_0_VITERBI_DECODED_OUTPUT_VALID": {
-        "ports": [
-          "viterbi_hard_0/VITERBI_DECODED_OUTPUT_VALID",
-          "descrambler_0/VITERBI_DECODED_OUTPUT_VALID"
-        ]
-      },
       "viterbi_hard_0_VITERBI_RX_ENDED": {
         "ports": [
-          "viterbi_hard_0/VITERBI_RX_ENDED",
+          "viterbi_soft_0/VITERBI_RX_ENDED",
           "descrambler_0/VITERBI_RX_ENDED",
           "equalizer_time_frequ_0/STOP_RX_DONE"
         ]
       },
-      "viterbi_hard_0_VITERBI_SIGNAL": {
-        "ports": [
-          "viterbi_hard_0/VITERBI_SIGNAL",
-          "axi_regs_mux_0/VITERBI_SIGNAL"
-        ]
-      },
       "viterbi_hard_0_VITERBI_SIGNAL_VALID": {
         "ports": [
-          "viterbi_hard_0/VITERBI_SIGNAL_VALID",
+          "viterbi_soft_0/VITERBI_SIGNAL_VALID",
           "axi_regs_mux_0/VITERBI_SIGNAL_VALID",
           "descrambler_0/VITERBI_SIGNAL_VALID",
           "output_ser2par_0/VITERBI_SIGNAL_VALID"
+        ]
+      },
+      "viterbi_soft_0_VITERBI_DECODED_OUTPUT": {
+        "ports": [
+          "viterbi_soft_0/VITERBI_DECODED_OUTPUT",
+          "descrambler_0/VITERBI_DECODED_OUTPUT"
+        ]
+      },
+      "viterbi_soft_0_VITERBI_DECODED_OUTPUT_VALID": {
+        "ports": [
+          "viterbi_soft_0/VITERBI_DECODED_OUTPUT_VALID",
+          "descrambler_0/VITERBI_DECODED_OUTPUT_VALID"
+        ]
+      },
+      "viterbi_soft_0_VITERBI_SIGNAL": {
+        "ports": [
+          "viterbi_soft_0/VITERBI_SIGNAL",
+          "axi_regs_mux_0/VITERBI_SIGNAL"
         ]
       }
     }

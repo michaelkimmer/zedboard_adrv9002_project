@@ -36,7 +36,7 @@ preamble(length(short_seq_time)) = preamble(length(short_seq_time)) + short_seq_
 % ---  6: Coding rate 1/2, BPSK   ---  9: Coding rate 3/4, BPSK
 % --- 12: Coding rate 1/2, QPSK   --- 18: Coding rate 3/4, QPSK 
 % --- 24: Coding rate 3/4, 16-QAM --- 36: Coding rate 3/4, 16-QAM
-DATARATE = 24; 
+DATARATE = 9; 
 
 %% Create SIGNAL symbol
 %   SIGNAL symbol is not scrambled

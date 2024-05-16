@@ -77,6 +77,10 @@ for k=0:N_CBPS-1
     text = text + "DEINTERLEAVER_BPSK(" + num2str(k) + ") <= DEMAPPING_BPSK(" + num2str(deinterleaving_indexes_with_pilots(k+1)) + ");" + newline;
 end
 
+% Print indexes
+disp("BPSK indexes: ");
+disp(deinterleaving_indexes_with_pilots);
+
 
 %% QPSK
 N_CBPS = 96; % Number of coded bits per OFDM symbol, N_CBPS
@@ -141,6 +145,9 @@ for k=0:N_CBPS-1
     text = text + "DEINTERLEAVER_QPSK(" + num2str(k) + ") <= DEMAPPING_QPSK(" + num2str(deinterleaving_indexes_with_pilots(k+1)) + ");" + newline;
 end
 
+% Print indexes
+disp("QPSK indexes: ");
+disp(deinterleaving_indexes_with_pilots);
 
 %% 16-QAM, R=3/4
 N_CBPS = 192; % Number of coded bits per OFDM symbol, N_CBPS
@@ -205,10 +212,15 @@ for k=0:N_CBPS-1
     text = text + "DEINTERLEAVER_16QAM(" + num2str(k) + ") <= DEMAPPING_16QAM(" + num2str(deinterleaving_indexes_with_pilots(k+1)) + ");" + newline;
 end
 
+% Print indexes
+disp("16-QAM indexes: ");
+disp(deinterleaving_indexes_with_pilots);
 
 
-%% Print text 
+%% Print vhdl text 
 disp(text);
+
+
 
 %% Save text to file
 file = fopen(filename, "w");
