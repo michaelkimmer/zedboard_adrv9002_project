@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk #tkk.Combobox
 
 import os
+import time
 
 import matplotlib
 matplotlib.use('TkAgg') #TkAgg backend -- which is made to integrate into Tkinter
@@ -536,6 +537,7 @@ class Settings_Tab(ttk.Frame):
                 
             try:
                 write_axi_data(address_start=0, data=np.array([int(0)], dtype=np.uint32)) # Null all AXI registers
+                time.sleep(0.1)
                 write_axi_data(address_start=0, data=np.array([int(1)], dtype=np.uint32)) #reg(0)(0) == "ENABLE"
             except:
                 self.log_write_line("802.11p Reset: Failed AXI write !")

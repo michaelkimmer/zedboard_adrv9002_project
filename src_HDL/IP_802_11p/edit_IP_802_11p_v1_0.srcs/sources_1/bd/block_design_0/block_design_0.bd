@@ -4072,7 +4072,7 @@
       },
       "viterbi_soft_0": {
         "vlnv": "xilinx.com:module_ref:viterbi_soft:1.0",
-        "ip_revision": "1715869668",
+        "ip_revision": "1715949487",
         "xci_name": "block_design_0_viterbi_soft_0_0",
         "xci_path": "ip\\block_design_0_viterbi_soft_0_0\\block_design_0_viterbi_soft_0_0.xci",
         "inst_hier_path": "viterbi_soft_0",
@@ -4204,9 +4204,9 @@
           "rx_clock_domain_cros_0/CLOCK",
           "timing_acquisition_8_0/CLOCK",
           "equalizer_time_frequ_0/CLOCK",
-          "viterbi_soft_0/CLOCK",
           "deinterleaver_soft_0/CLOCK",
-          "demapper_soft_0/CLOCK"
+          "demapper_soft_0/CLOCK",
+          "viterbi_soft_0/CLOCK"
         ]
       },
       "DETECTION_THRESHOLD_0_1": {
@@ -4233,9 +4233,9 @@
           "rx_clock_domain_cros_0/RESET",
           "timing_acquisition_8_0/RESET",
           "equalizer_time_frequ_0/RESET",
-          "viterbi_soft_0/RESET",
           "deinterleaver_soft_0/RESET",
-          "demapper_soft_0/RESET"
+          "demapper_soft_0/RESET",
+          "viterbi_soft_0/RESET"
         ]
       },
       "RX_CLOCK_0_1": {
@@ -4481,8 +4481,8 @@
       "deinterleaver_soft_0_DEINTERLEAVER_16QAM": {
         "ports": [
           "deinterleaver_soft_0/DEINTERLEAVER_16QAM",
-          "viterbi_soft_0/DEINTERLEAVER_16QAM",
-          "axi_regs_mux_0/DEINTERLEAVER_16QAM"
+          "axi_regs_mux_0/DEINTERLEAVER_16QAM",
+          "viterbi_soft_0/DEINTERLEAVER_16QAM"
         ]
       },
       "deinterleaver_soft_0_DEINTERLEAVER_16QAM_DIST_0B": {
@@ -4500,8 +4500,8 @@
       "deinterleaver_soft_0_DEINTERLEAVER_BPSK": {
         "ports": [
           "deinterleaver_soft_0/DEINTERLEAVER_BPSK",
-          "viterbi_soft_0/DEINTERLEAVER_BPSK",
-          "axi_regs_mux_0/DEINTERLEAVER_BPSK"
+          "axi_regs_mux_0/DEINTERLEAVER_BPSK",
+          "viterbi_soft_0/DEINTERLEAVER_BPSK"
         ]
       },
       "deinterleaver_soft_0_DEINTERLEAVER_BPSK_DIST_0B": {
@@ -4519,8 +4519,8 @@
       "deinterleaver_soft_0_DEINTERLEAVER_QPSK": {
         "ports": [
           "deinterleaver_soft_0/DEINTERLEAVER_QPSK",
-          "viterbi_soft_0/DEINTERLEAVER_QPSK",
-          "axi_regs_mux_0/DEINTERLEAVER_QPSK"
+          "axi_regs_mux_0/DEINTERLEAVER_QPSK",
+          "viterbi_soft_0/DEINTERLEAVER_QPSK"
         ]
       },
       "deinterleaver_soft_0_DEINTERLEAVER_QPSK_DIST_0B": {
@@ -4544,8 +4544,8 @@
       "deinterleaver_soft_0_DEINTERLEAVER_STROBE": {
         "ports": [
           "deinterleaver_soft_0/DEINTERLEAVER_STROBE",
-          "viterbi_soft_0/DEINTERLEAVER_STROBE",
-          "axi_regs_mux_0/DEINTERLEAVER_STROBE"
+          "axi_regs_mux_0/DEINTERLEAVER_STROBE",
+          "viterbi_soft_0/DEINTERLEAVER_STROBE"
         ]
       },
       "demapper_soft_0_DEMAPPING_16QAM": {
