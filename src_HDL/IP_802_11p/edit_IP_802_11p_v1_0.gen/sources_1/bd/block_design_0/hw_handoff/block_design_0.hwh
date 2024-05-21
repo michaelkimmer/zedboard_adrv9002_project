@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri May 17 14:38:22 2024" VIVADOVERSION="2023.2.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue May 21 11:11:55 2024" VIVADOVERSION="2023.2.2">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z020" NAME="block_design_0" PACKAGE="clg484" SPEEDGRADE="-1"/>
 
@@ -60,7 +60,6 @@
         <CONNECTION INSTANCE="data_interleaver_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="data_delay_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="axi_regs_mux_0" PORT="CLOCK"/>
-        <CONNECTION INSTANCE="constellation_tracker_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="descrambler_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="output_ser2par_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="rx_clock_domain_cros_0" PORT="CLOCK"/>
@@ -69,6 +68,7 @@
         <CONNECTION INSTANCE="deinterleaver_soft_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="demapper_soft_0" PORT="CLOCK"/>
         <CONNECTION INSTANCE="viterbi_soft_0" PORT="CLOCK"/>
+        <CONNECTION INSTANCE="constellation_tracker_0" PORT="CLOCK"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" LEFT="63" NAME="DETECTION_THRESHOLD" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_DETECTION_THRESHOLD">
@@ -107,7 +107,6 @@
         <CONNECTION INSTANCE="data_interleaver_0" PORT="RESET"/>
         <CONNECTION INSTANCE="data_delay_0" PORT="RESET"/>
         <CONNECTION INSTANCE="axi_regs_mux_0" PORT="RESET"/>
-        <CONNECTION INSTANCE="constellation_tracker_0" PORT="RESET"/>
         <CONNECTION INSTANCE="descrambler_0" PORT="RESET"/>
         <CONNECTION INSTANCE="output_ser2par_0" PORT="RESET"/>
         <CONNECTION INSTANCE="rx_clock_domain_cros_0" PORT="RESET"/>
@@ -116,6 +115,7 @@
         <CONNECTION INSTANCE="deinterleaver_soft_0" PORT="RESET"/>
         <CONNECTION INSTANCE="demapper_soft_0" PORT="RESET"/>
         <CONNECTION INSTANCE="viterbi_soft_0" PORT="RESET"/>
+        <CONNECTION INSTANCE="constellation_tracker_0" PORT="RESET"/>
       </CONNECTIONS>
     </PORT>
     <PORT CLKFREQUENCY="10000000" DIR="I" NAME="RX_CLOCK" SIGIS="clk" SIGNAME="External_Ports_RX_CLOCK">
@@ -607,7 +607,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="1715434525" FULLNAME="/constellation_tracker_0" HWVERSION="1.0" INSTANCE="constellation_tracker_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="constellation_tracker" VLNV="xilinx.com:module_ref:constellation_tracker:1.0">
+    <MODULE COREREVISION="1716282692" FULLNAME="/constellation_tracker_0" HWVERSION="1.0" INSTANCE="constellation_tracker_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="constellation_tracker" VLNV="xilinx.com:module_ref:constellation_tracker:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="block_design_0_constellation_tracker_0_0"/>

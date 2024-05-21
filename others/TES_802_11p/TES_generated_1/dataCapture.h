@@ -14,12 +14,12 @@
 /* */
 /* FPGA: v0.0.0*/
 /* Device Driver API: v0.0.0*/
-/* Device Driver Client: v68.8.1*/
-/* Firmware: v0.22.24*/
-/* Profile Generator: v0.53.1.0*/
-/* Stream Generator Assembly: v0.7.9.0*/
-/* Transceiver Evaluation Software: v0.24.1*/
-/* ADRV9001 Plugin: v0.24.0*/
+/* Device Driver Client: v68.10.1*/
+/* Firmware: v0.22.27*/
+/* Profile Generator: v0.53.2.0*/
+/* Stream Generator Assembly: v0.7.10.0*/
+/* Transceiver Evaluation Software: v0.25.0*/
+/* ADRV9001 Plugin: v0.25.0*/
 
 #ifndef _DATACAPTURE_H_
 #define _DATACAPTURE_H_
@@ -30,6 +30,8 @@ extern "C" {
 #include "adi_fpga9001_datachain.h"
 #include <stdlib.h>
 #include "linux_uio_init.h"
+extern int16_t dataCapture_iData_1[4096];
+extern int16_t dataCapture_qData_1[4096];
 
 int dataCapture(adi_fpga9001_Device_t * fpga9001Device_0);
 

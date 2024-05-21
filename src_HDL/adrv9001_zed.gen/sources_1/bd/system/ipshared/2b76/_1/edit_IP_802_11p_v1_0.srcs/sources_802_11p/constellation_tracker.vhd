@@ -443,8 +443,8 @@ begin
 
               -- update CHANNEL_RESPONSE_PHASE (one by one -- there is a lot of time until next ofdm symbol) 
               if CHANNEL_RESPONSE_PHASE_UPDATE_INDEX < 52 then
-                -- update CHANNEL_RESPONSE_PHASE by sth like exp forgetting (alpha=1/4) !!
-                CHANNEL_RESPONSE_PHASE(CHANNEL_RESPONSE_PHASE_UPDATE_INDEX) <= CHANNEL_RESPONSE_PHASE(CHANNEL_RESPONSE_PHASE_UPDATE_INDEX) + PILOT_PHASE/4; 
+                -- update CHANNEL_RESPONSE_PHASE by 100%  -- [possibility: by sth like exp forgetting (alpha=1/4) !!]
+                CHANNEL_RESPONSE_PHASE(CHANNEL_RESPONSE_PHASE_UPDATE_INDEX) <= CHANNEL_RESPONSE_PHASE(CHANNEL_RESPONSE_PHASE_UPDATE_INDEX) + PILOT_PHASE; 
 
                 CHANNEL_RESPONSE_PHASE_UPDATE_INDEX <= CHANNEL_RESPONSE_PHASE_UPDATE_INDEX + 1;
               end if;
@@ -466,18 +466,6 @@ begin
 
     end process;
 
-
-    -- -- Use rotated DATA ofdm symbols 
-    -- process(RESET, CLOCK)
-    -- begin
-
-
-    --   if rising_edge(CLOCK) then
-
-
-    --   end if;
-
-    -- end process;
 
 
 end Behavioral;

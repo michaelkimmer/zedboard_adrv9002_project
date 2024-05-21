@@ -14,12 +14,12 @@
 /* */
 /* FPGA: v0.0.0*/
 /* Device Driver API: v0.0.0*/
-/* Device Driver Client: v68.8.1*/
-/* Firmware: v0.22.24*/
-/* Profile Generator: v0.53.1.0*/
-/* Stream Generator Assembly: v0.7.9.0*/
-/* Transceiver Evaluation Software: v0.24.1*/
-/* ADRV9001 Plugin: v0.24.0*/
+/* Device Driver Client: v68.10.1*/
+/* Firmware: v0.22.27*/
+/* Profile Generator: v0.53.2.0*/
+/* Stream Generator Assembly: v0.7.10.0*/
+/* Transceiver Evaluation Software: v0.25.0*/
+/* ADRV9001 Plugin: v0.25.0*/
 
 #include "beginReceiving.h"
 
@@ -29,15 +29,24 @@ int beginReceiving(adi_adrv9001_Device_t * adrv9001Device_0, adi_fpga9001_Device
 
 	printf("%s", "Ready to capture Rx data. Turn your signal source ON, then press Enter.");
 	getchar();
+
 	error_code = adi_adrv9001_Radio_ChannelEnableMode_Set(adrv9001Device_0, ADI_RX, ADI_CHANNEL_1, ADI_ADRV9001_SPI_MODE);
+
 	error_code = adi_adrv9001_Rx_FrequencyCorrection_Set(adrv9001Device_0, ADI_CHANNEL_1, 0, true);
+
 	error_code = adi_adrv9001_Rx_Gain_Set(adrv9001Device_0, ADI_CHANNEL_1, 247);
+
 	error_code = adi_adrv9001_bbdc_RejectionEnable_Set(adrv9001Device_0, ADI_RX, ADI_CHANNEL_1, ADI_ADRV9001_BBDC_REJECTION_PAUSED);
+
 	error_code = adi_fpga9001_Tdd_Enable_Set(fpga9001Device_0, ADI_FPGA9001_TDDSELECT_DMA_RX1, ADI_FPGA9001_TDD_ENABLE_HIGH);
+
 	error_code = adi_adrv9001_Radio_Channel_EnableRf(adrv9001Device_0, ADI_RX, ADI_CHANNEL_1, true);
+
 	adi_adrv9001_ChannelState_e channelState_7 = ADI_ADRV9001_CHANNEL_STANDBY;
 	error_code = adi_adrv9001_Radio_Channel_State_Get(adrv9001Device_0, ADI_RX, ADI_CHANNEL_1, &channelState_7);
+
 	printf("adi_adrv9001_Radio_Channel_State_Get parameter 'channelState' read back as '%X' \n", channelState_7);
+
 
 	return error_code;
 }

@@ -36,6 +36,9 @@ DEFAULT_TX_GAIN = -10
 # GUI read update interval
 READ_UPDATE_INTERVAL_MS = 500
 
+#default detection threshold after 802.11p block reset
+DEFAULT_DETECTION_THRESHOLD = 100e3
+
 # IIO parameters
 IIO_uri="ip:192.168.1.12" # uri="ip:192.168.1.12", uri="ip:analog.local"
 
@@ -536,8 +539,9 @@ class Settings_Tab(ttk.Frame):
         elif btn_idx == 1:
                 
             try:
-                write_axi_data(address_start=0, data=np.array([int(0)], dtype=np.uint32)) # Null all AXI registers
+                write_axi_data(address_start=0, data=np.zeros(AXI_ADDRESS_NUM, dtype=np.uint32)) # Null all AXI registers
                 time.sleep(0.1)
+                write_axi_data(address_start=1, data=np.array([int(DEFAULT_DETECTION_THRESHOLD)], dtype=np.uint32)) #reg(1) == "DETECTION_THRESHOLD"
                 write_axi_data(address_start=0, data=np.array([int(1)], dtype=np.uint32)) #reg(0)(0) == "ENABLE"
             except:
                 self.log_write_line("802.11p Reset: Failed AXI write !")

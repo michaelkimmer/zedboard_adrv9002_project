@@ -510,7 +510,7 @@
       }, {
         "profile": {
           "primarySigBandwidth_Hz": 10000000,
-          "rxOutputRate_Hz": 20000000,
+          "rxOutputRate_Hz": 40000000,
           "rxInterfaceSampleRate_Hz": 20000000,
           "rxOffsetLo_kHz": 0,
           "rxNcoEnable": false,
@@ -546,7 +546,7 @@
               "decBy2Blk27En": 0,
               "decBy2Blk29En": 0,
               "decBy2Blk31En": 0,
-              "decBy2Blk33En": 1,
+              "decBy2Blk33En": 0,
               "wbLpfBlk33p1En": 0
             },
             "rxDecTop": {
@@ -1006,7 +1006,7 @@
             "txPreProcSymbol1": 0,
             "txPreProcSymbol2": 0,
             "txPreProcSymbol3": 0,
-            "txPreProcSymMapDivFactor": 1,
+            "txPreProcSymMapDivFactor": 2,
             "txPreProcMode": 5,
             "txPreProcWbNbPfirIBankSel": 0,
             "txPreProcWbNbPfirQBankSel": 1
@@ -1016,7 +1016,7 @@
             "txInterpBy2Blk28En": 0,
             "txInterpBy2Blk26En": 0,
             "txInterpBy2Blk24En": 0,
-            "txInterpBy2Blk22En": 1,
+            "txInterpBy2Blk22En": 0,
             "txWbLpfBlk22p1En": 0
           },
           "txNbIntTop": {

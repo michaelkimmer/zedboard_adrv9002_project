@@ -3535,7 +3535,7 @@
       },
       "constellation_tracker_0": {
         "vlnv": "xilinx.com:module_ref:constellation_tracker:1.0",
-        "ip_revision": "1715434525",
+        "ip_revision": "1716282692",
         "xci_name": "block_design_0_constellation_tracker_0_0",
         "xci_path": "ip\\block_design_0_constellation_tracker_0_0\\block_design_0_constellation_tracker_0_0.xci",
         "inst_hier_path": "constellation_tracker_0",
@@ -4198,7 +4198,6 @@
           "data_interleaver_0/CLOCK",
           "data_delay_0/CLOCK",
           "axi_regs_mux_0/CLOCK",
-          "constellation_tracker_0/CLOCK",
           "descrambler_0/CLOCK",
           "output_ser2par_0/CLOCK",
           "rx_clock_domain_cros_0/CLOCK",
@@ -4206,7 +4205,8 @@
           "equalizer_time_frequ_0/CLOCK",
           "deinterleaver_soft_0/CLOCK",
           "demapper_soft_0/CLOCK",
-          "viterbi_soft_0/CLOCK"
+          "viterbi_soft_0/CLOCK",
+          "constellation_tracker_0/CLOCK"
         ]
       },
       "DETECTION_THRESHOLD_0_1": {
@@ -4227,7 +4227,6 @@
           "data_interleaver_0/RESET",
           "data_delay_0/RESET",
           "axi_regs_mux_0/RESET",
-          "constellation_tracker_0/RESET",
           "descrambler_0/RESET",
           "output_ser2par_0/RESET",
           "rx_clock_domain_cros_0/RESET",
@@ -4235,7 +4234,8 @@
           "equalizer_time_frequ_0/RESET",
           "deinterleaver_soft_0/RESET",
           "demapper_soft_0/RESET",
-          "viterbi_soft_0/RESET"
+          "viterbi_soft_0/RESET",
+          "constellation_tracker_0/RESET"
         ]
       },
       "RX_CLOCK_0_1": {

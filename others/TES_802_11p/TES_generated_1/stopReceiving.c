@@ -14,12 +14,12 @@
 /* */
 /* FPGA: v0.0.0*/
 /* Device Driver API: v0.0.0*/
-/* Device Driver Client: v68.8.1*/
-/* Firmware: v0.22.24*/
-/* Profile Generator: v0.53.1.0*/
-/* Stream Generator Assembly: v0.7.9.0*/
-/* Transceiver Evaluation Software: v0.24.1*/
-/* ADRV9001 Plugin: v0.24.0*/
+/* Device Driver Client: v68.10.1*/
+/* Firmware: v0.22.27*/
+/* Profile Generator: v0.53.2.0*/
+/* Stream Generator Assembly: v0.7.10.0*/
+/* Transceiver Evaluation Software: v0.25.0*/
+/* ADRV9001 Plugin: v0.25.0*/
 
 #include "stopReceiving.h"
 
@@ -28,7 +28,9 @@ int stopReceiving(adi_fpga9001_Device_t * fpga9001Device_0, adi_adrv9001_Device_
 	int32_t error_code = 0;
 
 	error_code = adi_fpga9001_Tdd_Enable_Set(fpga9001Device_0, ADI_FPGA9001_TDDSELECT_RX1, ADI_FPGA9001_TDD_ENABLE_LOW);
+
 	error_code = adi_adrv9001_Radio_Channel_EnableRf(adrv9001Device_0, ADI_RX, ADI_CHANNEL_1, false);
+
 
 	return error_code;
 }

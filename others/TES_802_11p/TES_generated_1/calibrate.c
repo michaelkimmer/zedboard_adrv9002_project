@@ -14,12 +14,12 @@
 /* */
 /* FPGA: v0.0.0*/
 /* Device Driver API: v0.0.0*/
-/* Device Driver Client: v68.8.1*/
-/* Firmware: v0.22.24*/
-/* Profile Generator: v0.53.1.0*/
-/* Stream Generator Assembly: v0.7.9.0*/
-/* Transceiver Evaluation Software: v0.24.1*/
-/* ADRV9001 Plugin: v0.24.0*/
+/* Device Driver Client: v68.10.1*/
+/* Firmware: v0.22.27*/
+/* Profile Generator: v0.53.2.0*/
+/* Stream Generator Assembly: v0.7.10.0*/
+/* Transceiver Evaluation Software: v0.25.0*/
+/* ADRV9001 Plugin: v0.25.0*/
 
 #include "calibrate.h"
 
@@ -29,18 +29,23 @@ int calibrate(adi_adrv9001_Device_t * adrv9001Device_0)
 
 	printf("%s", "Preparing to calibrate. Turn your signal source OFF, then press Enter.");
 	getchar();
-	adi_adrv9001_InitCals_t initCals_1 = {
+
+	adi_adrv9001_InitCals_t initCals_1 = { 
 		.sysInitCalMask = (adi_adrv9001_InitCalibrations_e) 0, 
 		.chanInitCalMask = { ADI_ADRV9001_INIT_CAL_TX_QEC | ADI_ADRV9001_INIT_CAL_TX_LO_LEAKAGE | ADI_ADRV9001_INIT_CAL_TX_LB_PD | ADI_ADRV9001_INIT_CAL_TX_BBAF | ADI_ADRV9001_INIT_CAL_TX_BBAF_GD | ADI_ADRV9001_INIT_CAL_TX_ATTEN_DELAY | ADI_ADRV9001_INIT_CAL_TX_DAC | ADI_ADRV9001_INIT_CAL_TX_PATH_DELAY | ADI_ADRV9001_INIT_CAL_RX_HPADC_FLASH | ADI_ADRV9001_INIT_CAL_RX_LPADC | ADI_ADRV9001_INIT_CAL_RX_TIA_CUTOFF | ADI_ADRV9001_INIT_CAL_RX_GROUP_DELAY | ADI_ADRV9001_INIT_CAL_RX_QEC_TCAL | ADI_ADRV9001_INIT_CAL_RX_QEC_FIC | ADI_ADRV9001_INIT_CAL_RX_RF_DC_OFFSET | ADI_ADRV9001_INIT_CAL_RX_GAIN_PATH_DELAY, (adi_adrv9001_InitCalibrations_e) 0  }, 
 		.calMode = ADI_ADRV9001_INIT_CAL_MODE_ALL, 
-		.force = false};
+		.force = false };
 	uint8_t errorFlag_1 = 0;
 	error_code = adi_adrv9001_cals_InitCals_Run(adrv9001Device_0, &initCals_1, 300000, &errorFlag_1);
+
 	uint8_t readData_2 = 0;
 	error_code = adi_adrv9001_spi_Byte_Read(adrv9001Device_0, 11, &readData_2);
+
 	printf("adi_adrv9001_spi_Byte_Read parameter 'readData' read back as '%lu' \n", readData_2);
+
 	uint32_t internalPathDelays_ns_3[6] = { 0 };
 	error_code = adi_adrv9001_cals_InternalPathDelay_Get(adrv9001Device_0, ADI_RX, ADI_CHANNEL_1, internalPathDelays_ns_3, 6);
+
 	printf("adi_adrv9001_cals_InternalPathDelay_Get parameter 'internalPathDelays_ns' read back as '");
 	printf("{ %lu", internalPathDelays_ns_3[0]);
 	int32_t internalPathDelays_ns_3_indexer = 1;
@@ -49,8 +54,10 @@ int calibrate(adi_adrv9001_Device_t * adrv9001Device_0)
 		printf(", %lu", internalPathDelays_ns_3[internalPathDelays_ns_3_indexer]);
 	}
 	printf(" }\n");
+
 	uint32_t internalPathDelays_ns_4[6] = { 0 };
 	error_code = adi_adrv9001_cals_InternalPathDelay_Get(adrv9001Device_0, ADI_TX, ADI_CHANNEL_1, internalPathDelays_ns_4, 6);
+
 	printf("adi_adrv9001_cals_InternalPathDelay_Get parameter 'internalPathDelays_ns' read back as '");
 	printf("{ %lu", internalPathDelays_ns_4[0]);
 	int32_t internalPathDelays_ns_4_indexer = 1;
@@ -59,25 +66,35 @@ int calibrate(adi_adrv9001_Device_t * adrv9001Device_0)
 		printf(", %lu", internalPathDelays_ns_4[internalPathDelays_ns_4_indexer]);
 	}
 	printf(" }\n");
+
 	uint8_t minGainIndex_5 = 187;
 	uint8_t maxGainIndex_5 = 255;
 	error_code = adi_adrv9001_Rx_GainControl_MinMaxGainIndex_Get(adrv9001Device_0, ADI_CHANNEL_1, &minGainIndex_5, &maxGainIndex_5);
+
 	printf("adi_adrv9001_Rx_GainControl_MinMaxGainIndex_Get parameter 'minGainIndex' read back as '%lu' \n", minGainIndex_5);
+
 	printf("adi_adrv9001_Rx_GainControl_MinMaxGainIndex_Get parameter 'maxGainIndex' read back as '%lu' \n", maxGainIndex_5);
+
 	uint16_t numGainIndicesRead_6 = 0;
 	error_code = adi_adrv9001_Rx_GainTable_Read(adrv9001Device_0, ADI_CHANNEL_1, 255, calibrate_gainTableRows_6, 69, &numGainIndicesRead_6);
+
 	printf("adi_adrv9001_Rx_GainTable_Read parameter 'gainTableRows' read back as '");
-	printf("{ {\n\t\trxFeGain: %lu, \n\t\textControl: %lu, \n\t\tadcTiaGain: %lu, \n\t\tdigGain: %ld, \n\t\tphaseOffset: %lu\n}", calibrate_gainTableRows_6[0]);
+	printf("{ { \n\t\trxFeGain: %lu, \n\t\textControl: %lu, \n\t\tadcTiaGain: %lu, \n\t\tdigGain: %ld, \n\t\tphaseOffset: %lu\n }", calibrate_gainTableRows_6[0]);
 	int32_t calibrate_gainTableRows_6_indexer = 1;
 	for (calibrate_gainTableRows_6_indexer = 1; calibrate_gainTableRows_6_indexer < 69; calibrate_gainTableRows_6_indexer++)
 	{
-		printf(", {\n\t\trxFeGain: %lu, \n\t\textControl: %lu, \n\t\tadcTiaGain: %lu, \n\t\tdigGain: %ld, \n\t\tphaseOffset: %lu\n}", calibrate_gainTableRows_6[calibrate_gainTableRows_6_indexer]);
+		printf(", { \n\t\trxFeGain: %lu, \n\t\textControl: %lu, \n\t\tadcTiaGain: %lu, \n\t\tdigGain: %ld, \n\t\tphaseOffset: %lu\n }", calibrate_gainTableRows_6[calibrate_gainTableRows_6_indexer]);
 	}
 	printf(" }\n");
+
 	printf("adi_adrv9001_Rx_GainTable_Read parameter 'numGainIndicesRead' read back as '%lu' \n", numGainIndicesRead_6);
+
 	error_code = adi_adrv9001_Tx_DataPath_Loopback_Set(adrv9001Device_0, ADI_CHANNEL_1, false);
+
 	error_code = adi_adrv9001_Ssi_Loopback_Set(adrv9001Device_0, ADI_CHANNEL_1, ADI_ADRV9001_SSI_TYPE_CMOS, false);
+
 	printf("%s", "Calibrations complete.");
+
 
 	return error_code;
 }

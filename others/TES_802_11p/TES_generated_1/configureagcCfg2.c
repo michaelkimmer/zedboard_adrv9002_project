@@ -7,7 +7,7 @@
 #include "adi_adrv9001_tx.h"
 #include <stdlib.h>
 #include "linux_uio_init.h"
-adi_adrv9001_GainControlCfg_t configure_agcCfg_2 = {
+adi_adrv9001_GainControlCfg_t configure_agcCfg_2 = { 
 		.peakWaitTime = 4, 
 		.maxGainIndex = 255, 
 		.minGainIndex = 195, 
@@ -21,7 +21,7 @@ adi_adrv9001_GainControlCfg_t configure_agcCfg_2 = {
 		.resetOnRxonGainIndex = 255, 
 		.enableSyncPulseForGainCounter = false, 
 		.enableFastRecoveryLoop = false, 
-		.power = {
+		.power = { 
 		.powerEnableMeasurement = true, 
 		.underRangeHighPowerThresh = 10, 
 		.underRangeLowPowerThresh = 4, 
@@ -36,9 +36,9 @@ adi_adrv9001_GainControlCfg_t configure_agcCfg_2 = {
 		.overRangeHighPowerGainStepAttack = 4, 
 		.overRangeLowPowerGainStepAttack = 4, 
 		.feedback_inner_high_inner_low = ADI_ADRV9001_GPIO_PIN_CRUMB_UNASSIGNED, 
-		.feedback_apd_high_apd_low = ADI_ADRV9001_GPIO_PIN_CRUMB_UNASSIGNED}
-, 
-		.peak = {
+		.feedback_apd_high_apd_low = ADI_ADRV9001_GPIO_PIN_CRUMB_UNASSIGNED }
+	, 
+		.peak = { 
 		.agcUnderRangeLowInterval = 50, 
 		.agcUnderRangeMidInterval = 2, 
 		.agcUnderRangeHighInterval = 4, 
@@ -65,10 +65,10 @@ adi_adrv9001_GainControlCfg_t configure_agcCfg_2 = {
 		.hbUnderRangeMidThreshExceededCount = 3, 
 		.hbUnderRangeLowThreshExceededCount = 3, 
 		.feedback_apd_low_hb_low = ADI_ADRV9001_GPIO_PIN_CRUMB_UNASSIGNED, 
-		.feedback_apd_high_hb_high = ADI_ADRV9001_GPIO_PIN_CRUMB_UNASSIGNED}
-, 
-		.extLna = {
-		.settlingDelay = 0}
-, 
+		.feedback_apd_high_hb_high = ADI_ADRV9001_GPIO_PIN_CRUMB_UNASSIGNED }
+	, 
+		.extLna = { 
+		.settlingDelay = 0 }
+	, 
 		.rxQecFreezeEnable = true, 
-		.gpioFreezePin = ADI_ADRV9001_GPIO_UNASSIGNED};
+		.gpioFreezePin = ADI_ADRV9001_GPIO_UNASSIGNED };

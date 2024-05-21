@@ -14,12 +14,12 @@
 /* */
 /* FPGA: v0.0.0*/
 /* Device Driver API: v0.0.0*/
-/* Device Driver Client: v68.8.1*/
-/* Firmware: v0.22.24*/
-/* Profile Generator: v0.53.1.0*/
-/* Stream Generator Assembly: v0.7.9.0*/
-/* Transceiver Evaluation Software: v0.24.1*/
-/* ADRV9001 Plugin: v0.24.0*/
+/* Device Driver Client: v68.10.1*/
+/* Firmware: v0.22.27*/
+/* Profile Generator: v0.53.2.0*/
+/* Stream Generator Assembly: v0.7.10.0*/
+/* Transceiver Evaluation Software: v0.25.0*/
+/* ADRV9001 Plugin: v0.25.0*/
 
 #include "prime.h"
 
@@ -28,9 +28,13 @@ int prime(adi_adrv9001_Device_t * adrv9001Device_0)
 	int32_t error_code = 0;
 
 	printf("%s", "Priming channels.");
+
 	error_code = adi_adrv9001_Tx_AttenuationMode_Set(adrv9001Device_0, ADI_CHANNEL_1, ADI_ADRV9001_TX_ATTENUATION_CONTROL_MODE_SPI);
+
 	error_code = adi_adrv9001_Radio_Channel_ToPrimed(adrv9001Device_0, ADI_RX, ADI_CHANNEL_1);
+
 	error_code = adi_adrv9001_Radio_Channel_ToPrimed(adrv9001Device_0, ADI_TX, ADI_CHANNEL_1);
+
 
 	return error_code;
 }
