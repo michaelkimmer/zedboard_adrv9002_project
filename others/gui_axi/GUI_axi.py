@@ -1376,11 +1376,21 @@ class Constellation_Tab(ttk.Frame):
 
         # x = x_real + (1j * x_imag)
 
+        # Find max value for square plot limits
+        max_val = np.max((np.max(np.abs(x_real)), np.max(np.abs(x_imag)))) * 1.05
+
+
 
         # Plot the data
         title = self.constellation_graph[1].get_title()
         self.constellation_graph[1].clear()
         self.constellation_graph[1].scatter(x_real, x_imag, color="blue")
+
+        # set the same limits in the graph
+        self.constellation_graph[1].set_aspect('equal')
+        self.constellation_graph[1].set_xlim([-max_val,max_val])
+        self.constellation_graph[1].set_ylim([-max_val,max_val])
+        
         self.constellation_graph[1].set_title(title)
         self.constellation_graph[0].draw()
 
