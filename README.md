@@ -7,12 +7,27 @@
 `Faculty`: Faculty of Electrical Engineering\
 `Department`: Department of radio engineering
 
+`Official thesis URI`: http://hdl.handle.net/10467/114801
+
+`Abstract`:\
+The goal of this thesis is to get acquainted
+with the IEEE 802.11p standard and subsequently to create a custom receiver
+which is able to process the signal in realtime. This receiver should be then ready
+for further improvements. The chosen
+method is an FPGA block design. The
+used hardware is ZedBoard and EVAL-ADRV9002.
+
+`Rights`:\
+A university thesis is a work protected by the Copyright Act. Extracts, copies and transcripts of the thesis are allowed for personal use only and at one?s own expense. The use of thesis should be in compliance with the Copyright Act http://www.mkcr.cz/assets/autorske-pravo/01-3982006.pdf and the citation ethics http://knihovny.cvut.cz/vychova/vskp.html
+
+
 
 ## Overview
 `Content:`
 - "doc/": (Folder added after submission) It contains submitted code, submitted Master's thesis and stylized Master's thesis
     - ["doc/Kimmer_diploma_thesis_submitted.pdf"](./doc/Kimmer_diploma_thesis_submitted.pdf): The submitted master's thesis, submitted: 24.05.2024
     - ["doc/Kimmer_diploma_thesis_stylized.pdf"](./doc/Kimmer_diploma_thesis_stylized.pdf): Repaired styling only (overfull lines, typos), created: 27.05.2024
+    - ["doc/Kimmer_masters_thesis_presentation.pdf"](./doc/Kimmer_masters_thesis_presentation.pdf): Presentation of the Master's thesis (in Czech), presented: 13.05.2024
 
 - "adi_hdl_2022_r2/" It is a collection of Analog Devices Inc. HDL Reference Designs (it was cloned from the last stable branch 2022_r2: https://github.com/analogdevicesinc/hdl/tree/hdl_2022_r2)
 - "src_HDL/" It is built instance of adi_hdl_2022_r2/projects/adrv9001/zed/ for ZedBoard + ADRV9001 (built by GNU make (in Cygwin) with Vivado 2022.2, copied to src_HDL) [migrated to Vivado 2023.2 (2023.2.2), project recreated]
