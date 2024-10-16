@@ -2,10 +2,10 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
--- Date        : Sat Apr  6 00:37:47 2024
--- Host        : ASUS_ROG running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim -rename_top system_axi_adrv9001_tx1_dma_0 -prefix
---               system_axi_adrv9001_tx1_dma_0_ system_axi_adrv9001_tx1_dma_0_sim_netlist.vhdl
+-- Date        : Mon Sep 23 20:33:47 2024
+-- Host        : lab817_01 running 64-bit major release  (build 9200)
+-- Command     : write_vhdl -force -mode funcsim
+--               c:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_adrv9001_tx1_dma_0/system_axi_adrv9001_tx1_dma_0_sim_netlist.vhdl
 -- Design      : system_axi_adrv9001_tx1_dma_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -30,6 +30,8 @@ entity system_axi_adrv9001_tx1_dma_0_ad_mem_asym is
     m_ram_reg_1 : in STD_LOGIC;
     dest_valid : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_adrv9001_tx1_dma_0_ad_mem_asym : entity is "ad_mem_asym";
 end system_axi_adrv9001_tx1_dma_0_ad_mem_asym;
 
 architecture STRUCTURE of system_axi_adrv9001_tx1_dma_0_ad_mem_asym is
@@ -178,6 +180,8 @@ entity system_axi_adrv9001_tx1_dma_0_address_generator is
     bl_ready_reg_2 : in STD_LOGIC;
     enabled_reg_2 : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_adrv9001_tx1_dma_0_address_generator : entity is "address_generator";
 end system_axi_adrv9001_tx1_dma_0_address_generator;
 
 architecture STRUCTURE of system_axi_adrv9001_tx1_dma_0_address_generator is
@@ -1421,6 +1425,8 @@ entity system_axi_adrv9001_tx1_dma_0_request_generator is
     response_id : in STD_LOGIC_VECTOR ( 3 downto 0 );
     up_dma_x_length : in STD_LOGIC_VECTOR ( 16 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_adrv9001_tx1_dma_0_request_generator : entity is "request_generator";
 end system_axi_adrv9001_tx1_dma_0_request_generator;
 
 architecture STRUCTURE of system_axi_adrv9001_tx1_dma_0_request_generator is
@@ -2376,6 +2382,8 @@ entity system_axi_adrv9001_tx1_dma_0_response_generator is
     enabled_reg_3 : in STD_LOGIC;
     data_enabled : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_adrv9001_tx1_dma_0_response_generator : entity is "response_generator";
 end system_axi_adrv9001_tx1_dma_0_response_generator;
 
 architecture STRUCTURE of system_axi_adrv9001_tx1_dma_0_response_generator is
@@ -2568,6 +2576,8 @@ entity system_axi_adrv9001_tx1_dma_0_splitter is
     Q : in STD_LOGIC_VECTOR ( 0 to 0 );
     m_src_axi_aclk : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_adrv9001_tx1_dma_0_splitter : entity is "splitter";
 end system_axi_adrv9001_tx1_dma_0_splitter;
 
 architecture STRUCTURE of system_axi_adrv9001_tx1_dma_0_splitter is
@@ -2634,6 +2644,8 @@ entity system_axi_adrv9001_tx1_dma_0_sync_bits is
     \state_reg[0]_2\ : in STD_LOGIC;
     \state_reg[0]_3\ : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_adrv9001_tx1_dma_0_sync_bits : entity is "sync_bits";
 end system_axi_adrv9001_tx1_dma_0_sync_bits;
 
 architecture STRUCTURE of system_axi_adrv9001_tx1_dma_0_sync_bits is
@@ -3779,6 +3791,8 @@ entity system_axi_adrv9001_tx1_dma_0_up_axi is
     s_axi_awaddr : in STD_LOGIC_VECTOR ( 8 downto 0 );
     s_axi_araddr : in STD_LOGIC_VECTOR ( 8 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_adrv9001_tx1_dma_0_up_axi : entity is "up_axi";
 end system_axi_adrv9001_tx1_dma_0_up_axi;
 
 architecture STRUCTURE of system_axi_adrv9001_tx1_dma_0_up_axi is
@@ -8514,6 +8528,8 @@ entity system_axi_adrv9001_tx1_dma_0_util_axis_fifo_address_generator is
     \m_axis_raddr_reg_reg[0]_0\ : in STD_LOGIC;
     s_axi_aclk : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_adrv9001_tx1_dma_0_util_axis_fifo_address_generator : entity is "util_axis_fifo_address_generator";
 end system_axi_adrv9001_tx1_dma_0_util_axis_fifo_address_generator;
 
 architecture STRUCTURE of system_axi_adrv9001_tx1_dma_0_util_axis_fifo_address_generator is
@@ -8796,6 +8812,8 @@ entity system_axi_adrv9001_tx1_dma_0_axi_dmac_burst_memory is
     req_xlast_d : in STD_LOGIC;
     SR : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_adrv9001_tx1_dma_0_axi_dmac_burst_memory : entity is "axi_dmac_burst_memory";
 end system_axi_adrv9001_tx1_dma_0_axi_dmac_burst_memory;
 
 architecture STRUCTURE of system_axi_adrv9001_tx1_dma_0_axi_dmac_burst_memory is
@@ -9603,6 +9621,8 @@ entity system_axi_adrv9001_tx1_dma_0_axi_dmac_reset_manager is
     \state_reg[0]_0\ : in STD_LOGIC_VECTOR ( 0 to 0 );
     \FSM_onehot_state_reg[1]_0\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_adrv9001_tx1_dma_0_axi_dmac_reset_manager : entity is "axi_dmac_reset_manager";
 end system_axi_adrv9001_tx1_dma_0_axi_dmac_reset_manager;
 
 architecture STRUCTURE of system_axi_adrv9001_tx1_dma_0_axi_dmac_reset_manager is
@@ -10156,6 +10176,8 @@ entity system_axi_adrv9001_tx1_dma_0_dest_axi_stream is
     data_eot : in STD_LOGIC;
     dest_fifo_last : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_adrv9001_tx1_dma_0_dest_axi_stream : entity is "dest_axi_stream";
 end system_axi_adrv9001_tx1_dma_0_dest_axi_stream;
 
 architecture STRUCTURE of system_axi_adrv9001_tx1_dma_0_dest_axi_stream is
@@ -10391,6 +10413,8 @@ entity system_axi_adrv9001_tx1_dma_0_src_axi_mm is
     m_src_axi_rlast : in STD_LOGIC;
     m_src_axi_rvalid : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_adrv9001_tx1_dma_0_src_axi_mm : entity is "src_axi_mm";
 end system_axi_adrv9001_tx1_dma_0_src_axi_mm;
 
 architecture STRUCTURE of system_axi_adrv9001_tx1_dma_0_src_axi_mm is
@@ -10665,6 +10689,8 @@ entity system_axi_adrv9001_tx1_dma_0_util_axis_fifo is
     \m_axis_raddr_reg_reg[0]\ : in STD_LOGIC;
     up_partial_length_valid_reg : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_adrv9001_tx1_dma_0_util_axis_fifo : entity is "util_axis_fifo";
 end system_axi_adrv9001_tx1_dma_0_util_axis_fifo;
 
 architecture STRUCTURE of system_axi_adrv9001_tx1_dma_0_util_axis_fifo is
@@ -12044,6 +12070,8 @@ entity system_axi_adrv9001_tx1_dma_0_axi_dmac_regmap_request is
     \up_dma_dest_address_reg[28]_1\ : in STD_LOGIC_VECTOR ( 0 to 0 );
     \up_measured_transfer_length_reg[7]_0\ : in STD_LOGIC_VECTOR ( 6 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_adrv9001_tx1_dma_0_axi_dmac_regmap_request : entity is "axi_dmac_regmap_request";
 end system_axi_adrv9001_tx1_dma_0_axi_dmac_regmap_request;
 
 architecture STRUCTURE of system_axi_adrv9001_tx1_dma_0_axi_dmac_regmap_request is
@@ -13893,6 +13921,8 @@ entity system_axi_adrv9001_tx1_dma_0_axi_dmac_response_manager is
     up_clear_tl_reg : in STD_LOGIC_VECTOR ( 0 to 0 );
     up_clear_tl : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_adrv9001_tx1_dma_0_axi_dmac_response_manager : entity is "axi_dmac_response_manager";
 end system_axi_adrv9001_tx1_dma_0_axi_dmac_response_manager;
 
 architecture STRUCTURE of system_axi_adrv9001_tx1_dma_0_axi_dmac_response_manager is
@@ -14498,6 +14528,8 @@ entity system_axi_adrv9001_tx1_dma_0_axi_dmac_regmap is
     s_axi_araddr : in STD_LOGIC_VECTOR ( 8 downto 0 );
     \up_measured_transfer_length_reg[7]\ : in STD_LOGIC_VECTOR ( 6 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_adrv9001_tx1_dma_0_axi_dmac_regmap : entity is "axi_dmac_regmap";
 end system_axi_adrv9001_tx1_dma_0_axi_dmac_regmap;
 
 architecture STRUCTURE of system_axi_adrv9001_tx1_dma_0_axi_dmac_regmap is
@@ -15699,6 +15731,8 @@ entity system_axi_adrv9001_tx1_dma_0_request_arb is
     D : in STD_LOGIC_VECTOR ( 52 downto 0 );
     SR : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_adrv9001_tx1_dma_0_request_arb : entity is "request_arb";
 end system_axi_adrv9001_tx1_dma_0_request_arb;
 
 architecture STRUCTURE of system_axi_adrv9001_tx1_dma_0_request_arb is
@@ -16492,6 +16526,8 @@ entity system_axi_adrv9001_tx1_dma_0_axi_dmac_transfer is
     SR : in STD_LOGIC_VECTOR ( 0 to 0 );
     D : in STD_LOGIC_VECTOR ( 52 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_adrv9001_tx1_dma_0_axi_dmac_transfer : entity is "axi_dmac_transfer";
 end system_axi_adrv9001_tx1_dma_0_axi_dmac_transfer;
 
 architecture STRUCTURE of system_axi_adrv9001_tx1_dma_0_axi_dmac_transfer is
@@ -16815,6 +16851,8 @@ entity system_axi_adrv9001_tx1_dma_0_axi_dmac is
   attribute ID_WIDTH of system_axi_adrv9001_tx1_dma_0_axi_dmac : entity is 4;
   attribute MAX_BYTES_PER_BURST : integer;
   attribute MAX_BYTES_PER_BURST of system_axi_adrv9001_tx1_dma_0_axi_dmac : entity is 128;
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_adrv9001_tx1_dma_0_axi_dmac : entity is "axi_dmac";
   attribute REAL_MAX_BYTES_PER_BURST : integer;
   attribute REAL_MAX_BYTES_PER_BURST of system_axi_adrv9001_tx1_dma_0_axi_dmac : entity is 128;
   attribute SYNC_TRANSFER_START : string;

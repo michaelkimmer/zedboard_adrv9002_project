@@ -245,8 +245,8 @@
       <xilinx:designToolContexts>
         <xilinx:designToolContext>IPI</xilinx:designToolContext>
       </xilinx:designToolContexts>
-      <xilinx:coreRevision>1715434527</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2024-05-11T13:35:27Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>1727095678</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2024-09-23T12:47:58Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2023.2.2</xilinx:xilinxVersion>

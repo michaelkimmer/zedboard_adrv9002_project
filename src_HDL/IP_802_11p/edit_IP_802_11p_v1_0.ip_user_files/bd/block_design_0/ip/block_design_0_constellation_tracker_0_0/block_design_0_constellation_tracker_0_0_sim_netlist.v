@@ -2,7 +2,7 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-// Date        : Thu May 16 18:37:35 2024
+// Date        : Tue Sep 10 14:21:42 2024
 // Host        : lab817_01 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_constellation_tracker_0_0/block_design_0_constellation_tracker_0_0_sim_netlist.v
@@ -152,14 +152,14 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER,
     ATAN_CONSTELLATION_IN_STROBE,
     ROTATION_CONSTELLATION_DATA_IN_STROBE,
+    ROTATION_CONSTELLATION_IDATA_OUT,
+    ROTATION_CONSTELLATION_QDATA_OUT,
     FFT_DATA_IN_VALID,
     RESET,
     ATAN_CONSTELLATION_PHASE_OUT_STROBE,
     ROTATION_CONSTELLATION_DATA_OUT_STROBE,
     ROTATION_CONSTELLATION_DATA_OUT_CNTR,
     ATAN_CONSTELLATION_PHASE_OUT,
-    ROTATION_CONSTELLATION_IDATA_OUT,
-    ROTATION_CONSTELLATION_QDATA_OUT,
     CLOCK,
     FFT_DATA_IN_FIRST_SYMBOL_MARKER,
     ATAN_CONSTELLATION_AMPLITUDE_OUT,
@@ -180,14 +180,14 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   output CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER;
   output ATAN_CONSTELLATION_IN_STROBE;
   output ROTATION_CONSTELLATION_DATA_IN_STROBE;
+  input [23:0]ROTATION_CONSTELLATION_IDATA_OUT;
+  input [23:0]ROTATION_CONSTELLATION_QDATA_OUT;
   input FFT_DATA_IN_VALID;
   input RESET;
   input ATAN_CONSTELLATION_PHASE_OUT_STROBE;
   input ROTATION_CONSTELLATION_DATA_OUT_STROBE;
   input [5:0]ROTATION_CONSTELLATION_DATA_OUT_CNTR;
   input [23:0]ATAN_CONSTELLATION_PHASE_OUT;
-  input [23:0]ROTATION_CONSTELLATION_IDATA_OUT;
-  input [23:0]ROTATION_CONSTELLATION_QDATA_OUT;
   input CLOCK;
   input FFT_DATA_IN_FIRST_SYMBOL_MARKER;
   input [23:0]ATAN_CONSTELLATION_AMPLITUDE_OUT;
@@ -556,6 +556,14 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_11_n_0;
   wire ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_12_n_0;
   wire ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_13_n_0;
+  wire ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_14_n_2;
+  wire ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_14_n_3;
+  wire ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_14_n_5;
+  wire ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_14_n_6;
+  wire ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_14_n_7;
+  wire ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_15_n_0;
+  wire ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_16_n_0;
+  wire ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_17_n_0;
   wire ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_5_n_0;
   wire ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_6_n_0;
   wire ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_7_n_0;
@@ -576,10 +584,16 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire ATAN_CONSTELLATION_IN_Q0__21_carry__3_n_5;
   wire ATAN_CONSTELLATION_IN_Q0__21_carry__3_n_6;
   wire ATAN_CONSTELLATION_IN_Q0__21_carry__3_n_7;
+  wire ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_10_n_0;
+  wire ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_11_n_0;
   wire ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_4_n_0;
   wire ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_5_n_0;
   wire ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_6_n_0;
   wire ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_7_n_0;
+  wire ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_9_n_1;
+  wire ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_9_n_3;
+  wire ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_9_n_6;
+  wire ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_9_n_7;
   wire ATAN_CONSTELLATION_IN_Q0__21_carry__4_n_1;
   wire ATAN_CONSTELLATION_IN_Q0__21_carry__4_n_2;
   wire ATAN_CONSTELLATION_IN_Q0__21_carry__4_n_3;
@@ -1132,20 +1146,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire CHANNEL_RESPONSE_Q_reg_0_31_0_0__20_i_6_n_0;
   wire CHANNEL_RESPONSE_Q_reg_0_31_0_0__20_n_0;
   wire CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_1_n_0;
-  wire CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_2_n_1;
-  wire CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_2_n_3;
-  wire CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_2_n_6;
-  wire CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_2_n_7;
-  wire CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_3_n_0;
-  wire CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_4_n_0;
-  wire CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_5_n_2;
-  wire CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_5_n_3;
-  wire CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_5_n_5;
-  wire CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_5_n_6;
-  wire CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_5_n_7;
-  wire CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_6_n_0;
-  wire CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_7_n_0;
-  wire CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_8_n_0;
+  wire CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_2_n_0;
   wire CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_n_0;
   wire CHANNEL_RESPONSE_Q_reg_0_31_0_0__22_i_1_n_0;
   wire CHANNEL_RESPONSE_Q_reg_0_31_0_0__22_i_2_n_0;
@@ -1328,12 +1329,11 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire \INPUT_DATA_CNTR[4]_i_1_n_0 ;
   wire \INPUT_DATA_CNTR[5]_i_1_n_0 ;
   wire \INPUT_DATA_CNTR[5]_i_2_n_0 ;
+  wire \INPUT_DATA_CNTR[5]_i_3_n_0 ;
   wire \INPUT_DATA_CNTR[5]_i_4_n_0 ;
-  wire \INPUT_DATA_CNTR[5]_i_5_n_0 ;
   wire \INPUT_DATA_CNTR[5]_i_6_n_0 ;
   wire \INPUT_DATA_CNTR[5]_i_7_n_0 ;
   wire INPUT_DATA_VALID;
-  wire INPUT_DATA_VALID_i_1_n_0;
   wire \INPUT_FFT_CNTR[0]_i_1_n_0 ;
   wire \INPUT_FFT_CNTR[1]_i_1_n_0 ;
   wire \INPUT_FFT_CNTR[2]_i_1_n_0 ;
@@ -1567,10 +1567,9 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire \PILOT_POLARITY_CNTR[1]_i_1_n_0 ;
   wire \PILOT_POLARITY_CNTR[2]_i_1_n_0 ;
   wire \PILOT_POLARITY_CNTR[2]_i_2_n_0 ;
+  wire \PILOT_POLARITY_CNTR[2]_i_3_n_0 ;
   wire \PILOT_POLARITY_CNTR[3]_i_1_n_0 ;
-  wire \PILOT_POLARITY_CNTR[3]_i_2_n_0 ;
   wire \PILOT_POLARITY_CNTR[4]_i_1_n_0 ;
-  wire \PILOT_POLARITY_CNTR[4]_i_2_n_0 ;
   wire \PILOT_POLARITY_CNTR[5]_i_1_n_0 ;
   wire \PILOT_POLARITY_CNTR[5]_i_2_n_0 ;
   wire \PILOT_POLARITY_CNTR[5]_i_3_n_0 ;
@@ -1579,6 +1578,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire \PILOT_POLARITY_CNTR[6]_i_3_n_0 ;
   wire \PILOT_POLARITY_CNTR[6]_i_4_n_0 ;
   wire \PILOT_POLARITY_CNTR[6]_i_5_n_0 ;
+  wire \PILOT_POLARITY_CNTR[6]_i_6_n_0 ;
   wire \PILOT_POLARITY_CNTR_reg_n_0_[0] ;
   wire \PILOT_POLARITY_CNTR_reg_n_0_[1] ;
   wire \PILOT_POLARITY_CNTR_reg_n_0_[2] ;
@@ -1591,7 +1591,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire PILOT_POLARITY_i_2_n_0;
   wire PILOT_POLARITY_i_3_n_0;
   wire PILOT_POLARITY_i_4_n_0;
-  wire PILOT_POLARITY_i_5_n_0;
   wire [25:0]PILOT_Q_ACCUMULATOR;
   wire \PILOT_Q_ACCUMULATOR[11]_i_10_n_0 ;
   wire \PILOT_Q_ACCUMULATOR[11]_i_11_n_0 ;
@@ -1859,19 +1858,15 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire [23:0]ROTATION_CONSTELLATION_QDATA_OUT;
   wire i__carry__0_i_1__0_n_0;
   wire i__carry__0_i_1__1_n_0;
-  wire i__carry__0_i_1__2_n_0;
   wire i__carry__0_i_1_n_0;
   wire i__carry__0_i_2__0_n_0;
   wire i__carry__0_i_2__1_n_0;
-  wire i__carry__0_i_2__2_n_0;
   wire i__carry__0_i_2_n_0;
   wire i__carry__0_i_3__0_n_0;
   wire i__carry__0_i_3__1_n_0;
-  wire i__carry__0_i_3__2_n_0;
   wire i__carry__0_i_3_n_0;
   wire i__carry__0_i_4__0_n_0;
   wire i__carry__0_i_4__1_n_0;
-  wire i__carry__0_i_4__2_n_0;
   wire i__carry__0_i_4_n_0;
   wire i__carry__0_i_5__0_n_0;
   wire i__carry__0_i_5__0_n_1;
@@ -1881,14 +1876,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire i__carry__0_i_5__0_n_5;
   wire i__carry__0_i_5__0_n_6;
   wire i__carry__0_i_5__0_n_7;
-  wire i__carry__0_i_5__1_n_0;
-  wire i__carry__0_i_5__1_n_1;
-  wire i__carry__0_i_5__1_n_2;
-  wire i__carry__0_i_5__1_n_3;
-  wire i__carry__0_i_5__1_n_4;
-  wire i__carry__0_i_5__1_n_5;
-  wire i__carry__0_i_5__1_n_6;
-  wire i__carry__0_i_5__1_n_7;
   wire i__carry__0_i_5_n_0;
   wire i__carry__0_i_5_n_1;
   wire i__carry__0_i_5_n_2;
@@ -1898,32 +1885,24 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire i__carry__0_i_5_n_6;
   wire i__carry__0_i_5_n_7;
   wire i__carry__0_i_6__0_n_0;
-  wire i__carry__0_i_6__1_n_0;
   wire i__carry__0_i_6_n_0;
   wire i__carry__0_i_7__0_n_0;
-  wire i__carry__0_i_7__1_n_0;
   wire i__carry__0_i_7_n_0;
   wire i__carry__0_i_8__0_n_0;
-  wire i__carry__0_i_8__1_n_0;
   wire i__carry__0_i_8_n_0;
   wire i__carry__0_i_9__0_n_0;
-  wire i__carry__0_i_9__1_n_0;
   wire i__carry__0_i_9_n_0;
   wire i__carry__1_i_1__0_n_0;
   wire i__carry__1_i_1__1_n_0;
-  wire i__carry__1_i_1__2_n_0;
   wire i__carry__1_i_1_n_0;
   wire i__carry__1_i_2__0_n_0;
   wire i__carry__1_i_2__1_n_0;
-  wire i__carry__1_i_2__2_n_0;
   wire i__carry__1_i_2_n_0;
   wire i__carry__1_i_3__0_n_0;
   wire i__carry__1_i_3__1_n_0;
-  wire i__carry__1_i_3__2_n_0;
   wire i__carry__1_i_3_n_0;
   wire i__carry__1_i_4__0_n_0;
   wire i__carry__1_i_4__1_n_0;
-  wire i__carry__1_i_4__2_n_0;
   wire i__carry__1_i_4_n_0;
   wire i__carry__1_i_5__0_n_0;
   wire i__carry__1_i_5__0_n_1;
@@ -1933,14 +1912,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire i__carry__1_i_5__0_n_5;
   wire i__carry__1_i_5__0_n_6;
   wire i__carry__1_i_5__0_n_7;
-  wire i__carry__1_i_5__1_n_0;
-  wire i__carry__1_i_5__1_n_1;
-  wire i__carry__1_i_5__1_n_2;
-  wire i__carry__1_i_5__1_n_3;
-  wire i__carry__1_i_5__1_n_4;
-  wire i__carry__1_i_5__1_n_5;
-  wire i__carry__1_i_5__1_n_6;
-  wire i__carry__1_i_5__1_n_7;
   wire i__carry__1_i_5_n_0;
   wire i__carry__1_i_5_n_1;
   wire i__carry__1_i_5_n_2;
@@ -1950,32 +1921,24 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire i__carry__1_i_5_n_6;
   wire i__carry__1_i_5_n_7;
   wire i__carry__1_i_6__0_n_0;
-  wire i__carry__1_i_6__1_n_0;
   wire i__carry__1_i_6_n_0;
   wire i__carry__1_i_7__0_n_0;
-  wire i__carry__1_i_7__1_n_0;
   wire i__carry__1_i_7_n_0;
   wire i__carry__1_i_8__0_n_0;
-  wire i__carry__1_i_8__1_n_0;
   wire i__carry__1_i_8_n_0;
   wire i__carry__1_i_9__0_n_0;
-  wire i__carry__1_i_9__1_n_0;
   wire i__carry__1_i_9_n_0;
   wire i__carry__2_i_1__0_n_0;
   wire i__carry__2_i_1__1_n_0;
-  wire i__carry__2_i_1__2_n_0;
   wire i__carry__2_i_1_n_0;
   wire i__carry__2_i_2__0_n_0;
   wire i__carry__2_i_2__1_n_0;
-  wire i__carry__2_i_2__2_n_0;
   wire i__carry__2_i_2_n_0;
   wire i__carry__2_i_3__0_n_0;
   wire i__carry__2_i_3__1_n_0;
-  wire i__carry__2_i_3__2_n_0;
   wire i__carry__2_i_3_n_0;
   wire i__carry__2_i_4__0_n_0;
   wire i__carry__2_i_4__1_n_0;
-  wire i__carry__2_i_4__2_n_0;
   wire i__carry__2_i_4_n_0;
   wire i__carry__2_i_5__0_n_0;
   wire i__carry__2_i_5__0_n_1;
@@ -1985,14 +1948,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire i__carry__2_i_5__0_n_5;
   wire i__carry__2_i_5__0_n_6;
   wire i__carry__2_i_5__0_n_7;
-  wire i__carry__2_i_5__1_n_0;
-  wire i__carry__2_i_5__1_n_1;
-  wire i__carry__2_i_5__1_n_2;
-  wire i__carry__2_i_5__1_n_3;
-  wire i__carry__2_i_5__1_n_4;
-  wire i__carry__2_i_5__1_n_5;
-  wire i__carry__2_i_5__1_n_6;
-  wire i__carry__2_i_5__1_n_7;
   wire i__carry__2_i_5_n_0;
   wire i__carry__2_i_5_n_1;
   wire i__carry__2_i_5_n_2;
@@ -2002,32 +1957,24 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire i__carry__2_i_5_n_6;
   wire i__carry__2_i_5_n_7;
   wire i__carry__2_i_6__0_n_0;
-  wire i__carry__2_i_6__1_n_0;
   wire i__carry__2_i_6_n_0;
   wire i__carry__2_i_7__0_n_0;
-  wire i__carry__2_i_7__1_n_0;
   wire i__carry__2_i_7_n_0;
   wire i__carry__2_i_8__0_n_0;
-  wire i__carry__2_i_8__1_n_0;
   wire i__carry__2_i_8_n_0;
   wire i__carry__2_i_9__0_n_0;
-  wire i__carry__2_i_9__1_n_0;
   wire i__carry__2_i_9_n_0;
   wire i__carry__3_i_1__0_n_0;
   wire i__carry__3_i_1__1_n_0;
-  wire i__carry__3_i_1__2_n_0;
   wire i__carry__3_i_1_n_0;
   wire i__carry__3_i_2__0_n_0;
   wire i__carry__3_i_2__1_n_0;
-  wire i__carry__3_i_2__2_n_0;
   wire i__carry__3_i_2_n_0;
   wire i__carry__3_i_3__0_n_0;
   wire i__carry__3_i_3__1_n_0;
-  wire i__carry__3_i_3__2_n_0;
   wire i__carry__3_i_3_n_0;
   wire i__carry__3_i_4__0_n_0;
   wire i__carry__3_i_4__1_n_0;
-  wire i__carry__3_i_4__2_n_0;
   wire i__carry__3_i_4_n_0;
   wire i__carry__3_i_5__0_n_0;
   wire i__carry__3_i_5__0_n_1;
@@ -2037,11 +1984,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire i__carry__3_i_5__0_n_5;
   wire i__carry__3_i_5__0_n_6;
   wire i__carry__3_i_5__0_n_7;
-  wire i__carry__3_i_5__1_n_2;
-  wire i__carry__3_i_5__1_n_3;
-  wire i__carry__3_i_5__1_n_5;
-  wire i__carry__3_i_5__1_n_6;
-  wire i__carry__3_i_5__1_n_7;
   wire i__carry__3_i_5_n_0;
   wire i__carry__3_i_5_n_1;
   wire i__carry__3_i_5_n_2;
@@ -2051,19 +1993,15 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire i__carry__3_i_5_n_6;
   wire i__carry__3_i_5_n_7;
   wire i__carry__3_i_6__0_n_0;
-  wire i__carry__3_i_6__1_n_0;
   wire i__carry__3_i_6_n_0;
   wire i__carry__3_i_7__0_n_0;
-  wire i__carry__3_i_7__1_n_0;
   wire i__carry__3_i_7_n_0;
   wire i__carry__3_i_8__0_n_0;
-  wire i__carry__3_i_8__1_n_0;
   wire i__carry__3_i_8_n_0;
   wire i__carry__3_i_9__0_n_0;
   wire i__carry__3_i_9_n_0;
   wire i__carry__4_i_1__0_n_0;
   wire i__carry__4_i_1__1_n_0;
-  wire i__carry__4_i_1__2_n_0;
   wire i__carry__4_i_1_n_0;
   wire i__carry__4_i_2__0_n_0;
   wire i__carry__4_i_2__1_n_0;
@@ -2075,47 +2013,34 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire i__carry__4_i_4__1_n_0;
   wire i__carry__4_i_4_n_7;
   wire i__carry__4_i_5__0_n_0;
-  wire i__carry__4_i_5__1_n_0;
   wire i__carry__4_i_5_n_0;
   wire i__carry_i_10__0_n_0;
-  wire i__carry_i_10__1_n_0;
   wire i__carry_i_10_n_0;
   wire i__carry_i_11__0_n_0;
-  wire i__carry_i_11__1_n_0;
   wire i__carry_i_11_n_0;
   wire i__carry_i_12__0_n_0;
-  wire i__carry_i_12__1_n_0;
   wire i__carry_i_12_n_0;
   wire i__carry_i_13__0_n_0;
-  wire i__carry_i_13__1_n_0;
   wire i__carry_i_13_n_0;
   wire i__carry_i_14__0_n_0;
-  wire i__carry_i_14__1_n_0;
   wire i__carry_i_14_n_0;
   wire i__carry_i_15__0_n_0;
-  wire i__carry_i_15__1_n_0;
   wire i__carry_i_15_n_0;
   wire i__carry_i_16__0_n_0;
-  wire i__carry_i_16__1_n_0;
   wire i__carry_i_16_n_0;
   wire i__carry_i_1__0_n_0;
   wire i__carry_i_1__1_n_0;
-  wire i__carry_i_1__2_n_0;
   wire i__carry_i_1_n_0;
   wire i__carry_i_2__0_n_0;
   wire i__carry_i_2__1_n_0;
-  wire i__carry_i_2__2_n_0;
   wire i__carry_i_2_n_0;
   wire i__carry_i_3__0_n_0;
   wire i__carry_i_3__1_n_0;
-  wire i__carry_i_3__2_n_0;
   wire i__carry_i_3_n_0;
   wire i__carry_i_4__0_n_0;
   wire i__carry_i_4__1_n_0;
-  wire i__carry_i_4__2_n_0;
   wire i__carry_i_4_n_0;
   wire i__carry_i_5__0_n_0;
-  wire i__carry_i_5__1_n_0;
   wire i__carry_i_5_n_0;
   wire i__carry_i_6__0_n_0;
   wire i__carry_i_6__0_n_1;
@@ -2124,13 +2049,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire i__carry_i_6__0_n_4;
   wire i__carry_i_6__0_n_5;
   wire i__carry_i_6__0_n_6;
-  wire i__carry_i_6__1_n_0;
-  wire i__carry_i_6__1_n_1;
-  wire i__carry_i_6__1_n_2;
-  wire i__carry_i_6__1_n_3;
-  wire i__carry_i_6__1_n_4;
-  wire i__carry_i_6__1_n_5;
-  wire i__carry_i_6__1_n_6;
   wire i__carry_i_6_n_0;
   wire i__carry_i_6_n_1;
   wire i__carry_i_6_n_2;
@@ -2146,14 +2064,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire i__carry_i_7__0_n_5;
   wire i__carry_i_7__0_n_6;
   wire i__carry_i_7__0_n_7;
-  wire i__carry_i_7__1_n_0;
-  wire i__carry_i_7__1_n_1;
-  wire i__carry_i_7__1_n_2;
-  wire i__carry_i_7__1_n_3;
-  wire i__carry_i_7__1_n_4;
-  wire i__carry_i_7__1_n_5;
-  wire i__carry_i_7__1_n_6;
-  wire i__carry_i_7__1_n_7;
   wire i__carry_i_7_n_0;
   wire i__carry_i_7_n_1;
   wire i__carry_i_7_n_2;
@@ -2163,10 +2073,8 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire i__carry_i_7_n_6;
   wire i__carry_i_7_n_7;
   wire i__carry_i_8__0_n_0;
-  wire i__carry_i_8__1_n_0;
   wire i__carry_i_8_n_0;
   wire i__carry_i_9__0_n_0;
-  wire i__carry_i_9__1_n_0;
   wire i__carry_i_9_n_0;
   wire in;
   wire [23:0]in30;
@@ -2221,71 +2129,29 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire \p_1_out_inferred__10/i__carry_n_5 ;
   wire \p_1_out_inferred__10/i__carry_n_6 ;
   wire \p_1_out_inferred__10/i__carry_n_7 ;
-  wire \p_1_out_inferred__17/i__carry__0_n_0 ;
-  wire \p_1_out_inferred__17/i__carry__0_n_1 ;
-  wire \p_1_out_inferred__17/i__carry__0_n_2 ;
-  wire \p_1_out_inferred__17/i__carry__0_n_3 ;
-  wire \p_1_out_inferred__17/i__carry__0_n_4 ;
-  wire \p_1_out_inferred__17/i__carry__0_n_5 ;
-  wire \p_1_out_inferred__17/i__carry__0_n_6 ;
-  wire \p_1_out_inferred__17/i__carry__0_n_7 ;
-  wire \p_1_out_inferred__17/i__carry__1_n_0 ;
-  wire \p_1_out_inferred__17/i__carry__1_n_1 ;
-  wire \p_1_out_inferred__17/i__carry__1_n_2 ;
-  wire \p_1_out_inferred__17/i__carry__1_n_3 ;
-  wire \p_1_out_inferred__17/i__carry__1_n_4 ;
-  wire \p_1_out_inferred__17/i__carry__1_n_5 ;
-  wire \p_1_out_inferred__17/i__carry__1_n_6 ;
-  wire \p_1_out_inferred__17/i__carry__1_n_7 ;
-  wire \p_1_out_inferred__17/i__carry__2_n_0 ;
-  wire \p_1_out_inferred__17/i__carry__2_n_1 ;
-  wire \p_1_out_inferred__17/i__carry__2_n_2 ;
-  wire \p_1_out_inferred__17/i__carry__2_n_3 ;
-  wire \p_1_out_inferred__17/i__carry__2_n_4 ;
-  wire \p_1_out_inferred__17/i__carry__2_n_5 ;
-  wire \p_1_out_inferred__17/i__carry__2_n_6 ;
-  wire \p_1_out_inferred__17/i__carry__2_n_7 ;
-  wire \p_1_out_inferred__17/i__carry__3_n_0 ;
-  wire \p_1_out_inferred__17/i__carry__3_n_1 ;
-  wire \p_1_out_inferred__17/i__carry__3_n_2 ;
-  wire \p_1_out_inferred__17/i__carry__3_n_3 ;
-  wire \p_1_out_inferred__17/i__carry__3_n_4 ;
-  wire \p_1_out_inferred__17/i__carry__3_n_5 ;
-  wire \p_1_out_inferred__17/i__carry__3_n_6 ;
-  wire \p_1_out_inferred__17/i__carry__3_n_7 ;
-  wire \p_1_out_inferred__17/i__carry__4_n_2 ;
-  wire \p_1_out_inferred__17/i__carry__4_n_7 ;
-  wire \p_1_out_inferred__17/i__carry_n_0 ;
-  wire \p_1_out_inferred__17/i__carry_n_1 ;
-  wire \p_1_out_inferred__17/i__carry_n_2 ;
-  wire \p_1_out_inferred__17/i__carry_n_3 ;
-  wire \p_1_out_inferred__17/i__carry_n_4 ;
-  wire \p_1_out_inferred__17/i__carry_n_5 ;
-  wire \p_1_out_inferred__17/i__carry_n_6 ;
-  wire \p_1_out_inferred__17/i__carry_n_7 ;
-  wire \p_1_out_inferred__18/i__carry__0_n_0 ;
-  wire \p_1_out_inferred__18/i__carry__0_n_1 ;
-  wire \p_1_out_inferred__18/i__carry__0_n_2 ;
-  wire \p_1_out_inferred__18/i__carry__0_n_3 ;
-  wire \p_1_out_inferred__18/i__carry__1_n_0 ;
-  wire \p_1_out_inferred__18/i__carry__1_n_1 ;
-  wire \p_1_out_inferred__18/i__carry__1_n_2 ;
-  wire \p_1_out_inferred__18/i__carry__1_n_3 ;
-  wire \p_1_out_inferred__18/i__carry__2_n_0 ;
-  wire \p_1_out_inferred__18/i__carry__2_n_1 ;
-  wire \p_1_out_inferred__18/i__carry__2_n_2 ;
-  wire \p_1_out_inferred__18/i__carry__2_n_3 ;
-  wire \p_1_out_inferred__18/i__carry__3_n_0 ;
-  wire \p_1_out_inferred__18/i__carry__3_n_1 ;
-  wire \p_1_out_inferred__18/i__carry__3_n_2 ;
-  wire \p_1_out_inferred__18/i__carry__3_n_3 ;
-  wire \p_1_out_inferred__18/i__carry__4_n_1 ;
-  wire \p_1_out_inferred__18/i__carry__4_n_2 ;
-  wire \p_1_out_inferred__18/i__carry__4_n_3 ;
-  wire \p_1_out_inferred__18/i__carry_n_0 ;
-  wire \p_1_out_inferred__18/i__carry_n_1 ;
-  wire \p_1_out_inferred__18/i__carry_n_2 ;
-  wire \p_1_out_inferred__18/i__carry_n_3 ;
+  wire \p_1_out_inferred__16/i__carry__0_n_0 ;
+  wire \p_1_out_inferred__16/i__carry__0_n_1 ;
+  wire \p_1_out_inferred__16/i__carry__0_n_2 ;
+  wire \p_1_out_inferred__16/i__carry__0_n_3 ;
+  wire \p_1_out_inferred__16/i__carry__1_n_0 ;
+  wire \p_1_out_inferred__16/i__carry__1_n_1 ;
+  wire \p_1_out_inferred__16/i__carry__1_n_2 ;
+  wire \p_1_out_inferred__16/i__carry__1_n_3 ;
+  wire \p_1_out_inferred__16/i__carry__2_n_0 ;
+  wire \p_1_out_inferred__16/i__carry__2_n_1 ;
+  wire \p_1_out_inferred__16/i__carry__2_n_2 ;
+  wire \p_1_out_inferred__16/i__carry__2_n_3 ;
+  wire \p_1_out_inferred__16/i__carry__3_n_0 ;
+  wire \p_1_out_inferred__16/i__carry__3_n_1 ;
+  wire \p_1_out_inferred__16/i__carry__3_n_2 ;
+  wire \p_1_out_inferred__16/i__carry__3_n_3 ;
+  wire \p_1_out_inferred__16/i__carry__4_n_1 ;
+  wire \p_1_out_inferred__16/i__carry__4_n_2 ;
+  wire \p_1_out_inferred__16/i__carry__4_n_3 ;
+  wire \p_1_out_inferred__16/i__carry_n_0 ;
+  wire \p_1_out_inferred__16/i__carry_n_1 ;
+  wire \p_1_out_inferred__16/i__carry_n_2 ;
+  wire \p_1_out_inferred__16/i__carry_n_3 ;
   wire \p_1_out_inferred__3/i__carry__0_n_0 ;
   wire \p_1_out_inferred__3/i__carry__0_n_1 ;
   wire \p_1_out_inferred__3/i__carry__0_n_2 ;
@@ -2338,7 +2204,11 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire [23:0]p_4_in;
   wire [23:0]p_5_out;
   wire [3:3]NLW_ATAN_CONSTELLATION_IN_I0__21_carry__4_CO_UNCONNECTED;
+  wire [3:2]NLW_ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_14_CO_UNCONNECTED;
+  wire [3:3]NLW_ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_14_O_UNCONNECTED;
   wire [3:3]NLW_ATAN_CONSTELLATION_IN_Q0__21_carry__4_CO_UNCONNECTED;
+  wire [3:1]NLW_ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_9_CO_UNCONNECTED;
+  wire [3:2]NLW_ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_9_O_UNCONNECTED;
   wire NLW_CHANNEL_RESPONSE_AMPLITUDE_reg_r1_0_63_0_2_DOD_UNCONNECTED;
   wire NLW_CHANNEL_RESPONSE_AMPLITUDE_reg_r1_0_63_12_14_DOD_UNCONNECTED;
   wire NLW_CHANNEL_RESPONSE_AMPLITUDE_reg_r1_0_63_15_17_DOD_UNCONNECTED;
@@ -2387,10 +2257,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire NLW_CHANNEL_RESPONSE_PHASE_reg_r3_0_63_9_11_DOD_UNCONNECTED;
   wire [3:2]NLW_CHANNEL_RESPONSE_Q_reg_0_31_0_0__20_i_3_CO_UNCONNECTED;
   wire [3:3]NLW_CHANNEL_RESPONSE_Q_reg_0_31_0_0__20_i_3_O_UNCONNECTED;
-  wire [3:1]NLW_CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_2_CO_UNCONNECTED;
-  wire [3:2]NLW_CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_2_O_UNCONNECTED;
-  wire [3:2]NLW_CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_5_CO_UNCONNECTED;
-  wire [3:3]NLW_CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_5_O_UNCONNECTED;
   wire [1:0]NLW_CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_DOD_UNCONNECTED;
   wire [1:0]NLW_CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_12_17_DOD_UNCONNECTED;
   wire [1:0]NLW_CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_18_23_DOD_UNCONNECTED;
@@ -2410,20 +2276,15 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   wire [3:1]\NLW_PILOT_Q_ACCUMULATOR_reg[25]_i_3_CO_UNCONNECTED ;
   wire [3:2]\NLW_PILOT_Q_ACCUMULATOR_reg[25]_i_3_O_UNCONNECTED ;
   wire [3:3]\NLW_ROTATION_CONSTELLATION_PHASE_IN_reg[23]_i_1_CO_UNCONNECTED ;
-  wire [3:2]NLW_i__carry__3_i_5__1_CO_UNCONNECTED;
-  wire [3:3]NLW_i__carry__3_i_5__1_O_UNCONNECTED;
   wire [3:0]NLW_i__carry__4_i_4_CO_UNCONNECTED;
   wire [3:1]NLW_i__carry__4_i_4_O_UNCONNECTED;
   wire [3:0]NLW_i__carry__4_i_4__0_CO_UNCONNECTED;
   wire [3:1]NLW_i__carry__4_i_4__0_O_UNCONNECTED;
   wire [0:0]NLW_i__carry_i_6_O_UNCONNECTED;
   wire [0:0]NLW_i__carry_i_6__0_O_UNCONNECTED;
-  wire [0:0]NLW_i__carry_i_6__1_O_UNCONNECTED;
   wire [3:3]\NLW_p_1_out_inferred__10/i__carry__4_CO_UNCONNECTED ;
   wire [3:2]\NLW_p_1_out_inferred__10/i__carry__4_O_UNCONNECTED ;
-  wire [3:0]\NLW_p_1_out_inferred__17/i__carry__4_CO_UNCONNECTED ;
-  wire [3:1]\NLW_p_1_out_inferred__17/i__carry__4_O_UNCONNECTED ;
-  wire [3:3]\NLW_p_1_out_inferred__18/i__carry__4_CO_UNCONNECTED ;
+  wire [3:3]\NLW_p_1_out_inferred__16/i__carry__4_CO_UNCONNECTED ;
   wire [3:3]\NLW_p_1_out_inferred__3/i__carry__4_CO_UNCONNECTED ;
   wire [3:2]\NLW_p_1_out_inferred__3/i__carry__4_O_UNCONNECTED ;
 
@@ -3321,7 +3182,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\ATAN_CONSTELLATION_IN_I[10]_i_2_n_0 ),
         .I5(\FSM_onehot_STATE_reg_n_0_[1] ),
         .O(ATAN_CONSTELLATION_IN_I0_in[10]));
-  (* SOFT_HLUTNM = "soft_lutpair44" *) 
+  (* SOFT_HLUTNM = "soft_lutpair46" *) 
   LUT3 #(
     .INIT(8'hEA)) 
     \ATAN_CONSTELLATION_IN_I[10]_i_2 
@@ -3356,7 +3217,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\ATAN_CONSTELLATION_IN_I[12]_i_2_n_0 ),
         .I5(\FSM_onehot_STATE_reg_n_0_[1] ),
         .O(ATAN_CONSTELLATION_IN_I0_in[12]));
-  (* SOFT_HLUTNM = "soft_lutpair43" *) 
+  (* SOFT_HLUTNM = "soft_lutpair46" *) 
   LUT3 #(
     .INIT(8'hEA)) 
     \ATAN_CONSTELLATION_IN_I[12]_i_2 
@@ -3382,33 +3243,34 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I1(ATAN_CONSTELLATION_IN_I0__21_carry__2_n_6),
         .O(\ATAN_CONSTELLATION_IN_I[13]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFEFFF4FFF0FFF0)) 
+    .INIT(64'hFFFFFFFFFFFFC480)) 
     \ATAN_CONSTELLATION_IN_I[14]_i_1 
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[25] ),
-        .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[16] ),
-        .I2(\ATAN_CONSTELLATION_IN_I[23]_i_4_n_0 ),
-        .I3(\ATAN_CONSTELLATION_IN_I[14]_i_2_n_0 ),
-        .I4(\p_1_out_inferred__3/i__carry__2_n_6 ),
-        .I5(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
+        .I1(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
+        .I2(\p_1_out_inferred__3/i__carry__2_n_6 ),
+        .I3(\PILOT_I_ACCUMULATOR_reg_n_0_[16] ),
+        .I4(\ATAN_CONSTELLATION_IN_I[14]_i_2_n_0 ),
+        .I5(\FSM_onehot_STATE_reg_n_0_[1] ),
         .O(ATAN_CONSTELLATION_IN_I0_in[14]));
-  (* SOFT_HLUTNM = "soft_lutpair14" *) 
-  LUT2 #(
-    .INIT(4'h8)) 
+  (* SOFT_HLUTNM = "soft_lutpair45" *) 
+  LUT3 #(
+    .INIT(8'hEA)) 
     \ATAN_CONSTELLATION_IN_I[14]_i_2 
-       (.I0(CHANNEL_RESPONSE_AMPLITUDE),
+       (.I0(\FSM_onehot_STATE_reg_n_0_[0] ),
         .I1(ATAN_CONSTELLATION_IN_I0__21_carry__2_n_5),
+        .I2(CHANNEL_RESPONSE_AMPLITUDE),
         .O(\ATAN_CONSTELLATION_IN_I[14]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFDFFF0FFF8FFF0)) 
+    .INIT(64'hFFFEFFF4FFF0FFF0)) 
     \ATAN_CONSTELLATION_IN_I[15]_i_1 
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[25] ),
-        .I1(\p_1_out_inferred__3/i__carry__2_n_5 ),
+        .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[17] ),
         .I2(\ATAN_CONSTELLATION_IN_I[23]_i_4_n_0 ),
         .I3(\ATAN_CONSTELLATION_IN_I[15]_i_2_n_0 ),
-        .I4(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
-        .I5(\PILOT_I_ACCUMULATOR_reg_n_0_[17] ),
+        .I4(\p_1_out_inferred__3/i__carry__2_n_5 ),
+        .I5(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
         .O(ATAN_CONSTELLATION_IN_I0_in[15]));
-  (* SOFT_HLUTNM = "soft_lutpair13" *) 
+  (* SOFT_HLUTNM = "soft_lutpair14" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \ATAN_CONSTELLATION_IN_I[15]_i_2 
@@ -3416,16 +3278,16 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I1(ATAN_CONSTELLATION_IN_I0__21_carry__2_n_4),
         .O(\ATAN_CONSTELLATION_IN_I[15]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFDFFF0FFF8FFF0)) 
+    .INIT(64'hFFFEFFF4FFF0FFF0)) 
     \ATAN_CONSTELLATION_IN_I[16]_i_1 
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[25] ),
-        .I1(\p_1_out_inferred__3/i__carry__2_n_4 ),
+        .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[18] ),
         .I2(\ATAN_CONSTELLATION_IN_I[23]_i_4_n_0 ),
         .I3(\ATAN_CONSTELLATION_IN_I[16]_i_2_n_0 ),
-        .I4(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
-        .I5(\PILOT_I_ACCUMULATOR_reg_n_0_[18] ),
+        .I4(\p_1_out_inferred__3/i__carry__2_n_4 ),
+        .I5(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
         .O(ATAN_CONSTELLATION_IN_I0_in[16]));
-  (* SOFT_HLUTNM = "soft_lutpair12" *) 
+  (* SOFT_HLUTNM = "soft_lutpair13" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \ATAN_CONSTELLATION_IN_I[16]_i_2 
@@ -3433,21 +3295,22 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I1(ATAN_CONSTELLATION_IN_I0__21_carry__3_n_7),
         .O(\ATAN_CONSTELLATION_IN_I[16]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFEFFF4FFF0FFF0)) 
+    .INIT(64'hFFFFFFFFFFFFC480)) 
     \ATAN_CONSTELLATION_IN_I[17]_i_1 
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[25] ),
-        .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[19] ),
-        .I2(\ATAN_CONSTELLATION_IN_I[23]_i_4_n_0 ),
-        .I3(\ATAN_CONSTELLATION_IN_I[17]_i_2_n_0 ),
-        .I4(\p_1_out_inferred__3/i__carry__3_n_7 ),
-        .I5(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
+        .I1(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
+        .I2(\p_1_out_inferred__3/i__carry__3_n_7 ),
+        .I3(\PILOT_I_ACCUMULATOR_reg_n_0_[19] ),
+        .I4(\ATAN_CONSTELLATION_IN_I[17]_i_2_n_0 ),
+        .I5(\FSM_onehot_STATE_reg_n_0_[1] ),
         .O(ATAN_CONSTELLATION_IN_I0_in[17]));
-  (* SOFT_HLUTNM = "soft_lutpair11" *) 
-  LUT2 #(
-    .INIT(4'h8)) 
+  (* SOFT_HLUTNM = "soft_lutpair45" *) 
+  LUT3 #(
+    .INIT(8'hEA)) 
     \ATAN_CONSTELLATION_IN_I[17]_i_2 
-       (.I0(CHANNEL_RESPONSE_AMPLITUDE),
+       (.I0(\FSM_onehot_STATE_reg_n_0_[0] ),
         .I1(ATAN_CONSTELLATION_IN_I0__21_carry__3_n_6),
+        .I2(CHANNEL_RESPONSE_AMPLITUDE),
         .O(\ATAN_CONSTELLATION_IN_I[17]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hFFFFFFFFFFFFC480)) 
@@ -3459,7 +3322,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\ATAN_CONSTELLATION_IN_I[18]_i_2_n_0 ),
         .I5(\FSM_onehot_STATE_reg_n_0_[1] ),
         .O(ATAN_CONSTELLATION_IN_I0_in[18]));
-  (* SOFT_HLUTNM = "soft_lutpair43" *) 
+  (* SOFT_HLUTNM = "soft_lutpair44" *) 
   LUT3 #(
     .INIT(8'hEA)) 
     \ATAN_CONSTELLATION_IN_I[18]_i_2 
@@ -3468,16 +3331,16 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(CHANNEL_RESPONSE_AMPLITUDE),
         .O(\ATAN_CONSTELLATION_IN_I[18]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFEFFF4FFF0FFF0)) 
+    .INIT(64'hFFFDFFF0FFF8FFF0)) 
     \ATAN_CONSTELLATION_IN_I[19]_i_1 
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[25] ),
-        .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[21] ),
+        .I1(\p_1_out_inferred__3/i__carry__3_n_5 ),
         .I2(\ATAN_CONSTELLATION_IN_I[23]_i_4_n_0 ),
         .I3(\ATAN_CONSTELLATION_IN_I[19]_i_2_n_0 ),
-        .I4(\p_1_out_inferred__3/i__carry__3_n_5 ),
-        .I5(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
+        .I4(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
+        .I5(\PILOT_I_ACCUMULATOR_reg_n_0_[21] ),
         .O(ATAN_CONSTELLATION_IN_I0_in[19]));
-  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  (* SOFT_HLUTNM = "soft_lutpair12" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \ATAN_CONSTELLATION_IN_I[19]_i_2 
@@ -3494,7 +3357,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\p_1_out_inferred__3/i__carry_n_7 ),
         .I5(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
         .O(ATAN_CONSTELLATION_IN_I0_in[1]));
-  (* SOFT_HLUTNM = "soft_lutpair22" *) 
+  (* SOFT_HLUTNM = "soft_lutpair23" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \ATAN_CONSTELLATION_IN_I[1]_i_2 
@@ -3502,33 +3365,34 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I1(ATAN_CONSTELLATION_IN_I0__21_carry_n_6),
         .O(\ATAN_CONSTELLATION_IN_I[1]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFDFFF0FFF8FFF0)) 
+    .INIT(64'hFFFFFFFFFFFFC480)) 
     \ATAN_CONSTELLATION_IN_I[20]_i_1 
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[25] ),
-        .I1(\p_1_out_inferred__3/i__carry__3_n_4 ),
-        .I2(\ATAN_CONSTELLATION_IN_I[23]_i_4_n_0 ),
-        .I3(\ATAN_CONSTELLATION_IN_I[20]_i_2_n_0 ),
-        .I4(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
-        .I5(\PILOT_I_ACCUMULATOR_reg_n_0_[22] ),
+        .I1(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
+        .I2(\p_1_out_inferred__3/i__carry__3_n_4 ),
+        .I3(\PILOT_I_ACCUMULATOR_reg_n_0_[22] ),
+        .I4(\ATAN_CONSTELLATION_IN_I[20]_i_2_n_0 ),
+        .I5(\FSM_onehot_STATE_reg_n_0_[1] ),
         .O(ATAN_CONSTELLATION_IN_I0_in[20]));
-  (* SOFT_HLUTNM = "soft_lutpair9" *) 
-  LUT2 #(
-    .INIT(4'h8)) 
+  (* SOFT_HLUTNM = "soft_lutpair44" *) 
+  LUT3 #(
+    .INIT(8'hEA)) 
     \ATAN_CONSTELLATION_IN_I[20]_i_2 
-       (.I0(CHANNEL_RESPONSE_AMPLITUDE),
+       (.I0(\FSM_onehot_STATE_reg_n_0_[0] ),
         .I1(ATAN_CONSTELLATION_IN_I0__21_carry__4_n_7),
+        .I2(CHANNEL_RESPONSE_AMPLITUDE),
         .O(\ATAN_CONSTELLATION_IN_I[20]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFDFFF0FFF8FFF0)) 
+    .INIT(64'hFFFEFFF4FFF0FFF0)) 
     \ATAN_CONSTELLATION_IN_I[21]_i_1 
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[25] ),
-        .I1(\p_1_out_inferred__3/i__carry__4_n_7 ),
+        .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[23] ),
         .I2(\ATAN_CONSTELLATION_IN_I[23]_i_4_n_0 ),
         .I3(\ATAN_CONSTELLATION_IN_I[21]_i_2_n_0 ),
-        .I4(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
-        .I5(\PILOT_I_ACCUMULATOR_reg_n_0_[23] ),
+        .I4(\p_1_out_inferred__3/i__carry__4_n_7 ),
+        .I5(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
         .O(ATAN_CONSTELLATION_IN_I0_in[21]));
-  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  (* SOFT_HLUTNM = "soft_lutpair11" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \ATAN_CONSTELLATION_IN_I[21]_i_2 
@@ -3545,7 +3409,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\ATAN_CONSTELLATION_IN_I[22]_i_2_n_0 ),
         .I5(\FSM_onehot_STATE_reg_n_0_[1] ),
         .O(ATAN_CONSTELLATION_IN_I0_in[22]));
-  (* SOFT_HLUTNM = "soft_lutpair37" *) 
+  (* SOFT_HLUTNM = "soft_lutpair38" *) 
   LUT3 #(
     .INIT(8'hEA)) 
     \ATAN_CONSTELLATION_IN_I[22]_i_2 
@@ -3575,26 +3439,25 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     .INIT(32'hFFFFBFFF)) 
     \ATAN_CONSTELLATION_IN_I[23]_i_3 
        (.I0(ROTATION_CONSTELLATION_DATA_OUT_CNTR[2]),
-        .I1(ROTATION_CONSTELLATION_DATA_OUT_CNTR[3]),
+        .I1(ROTATION_CONSTELLATION_DATA_OUT_CNTR[0]),
         .I2(ROTATION_CONSTELLATION_DATA_OUT_STROBE),
-        .I3(ROTATION_CONSTELLATION_DATA_OUT_CNTR[0]),
+        .I3(ROTATION_CONSTELLATION_DATA_OUT_CNTR[4]),
         .I4(\ATAN_CONSTELLATION_IN_I[23]_i_5_n_0 ),
         .O(\ATAN_CONSTELLATION_IN_I[23]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair52" *) 
   LUT2 #(
     .INIT(4'hE)) 
     \ATAN_CONSTELLATION_IN_I[23]_i_4 
        (.I0(\FSM_onehot_STATE_reg_n_0_[1] ),
         .I1(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(\ATAN_CONSTELLATION_IN_I[23]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair31" *) 
+  (* SOFT_HLUTNM = "soft_lutpair34" *) 
   LUT4 #(
     .INIT(16'hFFDF)) 
     \ATAN_CONSTELLATION_IN_I[23]_i_5 
-       (.I0(ROTATION_CONSTELLATION_DATA_OUT_CNTR[4]),
-        .I1(ROTATION_CONSTELLATION_DATA_OUT_CNTR[1]),
+       (.I0(ROTATION_CONSTELLATION_DATA_OUT_CNTR[3]),
+        .I1(ROTATION_CONSTELLATION_DATA_OUT_CNTR[5]),
         .I2(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
-        .I3(ROTATION_CONSTELLATION_DATA_OUT_CNTR[5]),
+        .I3(ROTATION_CONSTELLATION_DATA_OUT_CNTR[1]),
         .O(\ATAN_CONSTELLATION_IN_I[23]_i_5_n_0 ));
   LUT6 #(
     .INIT(64'hFFFFFFFFFFFFC480)) 
@@ -3606,7 +3469,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\ATAN_CONSTELLATION_IN_I[2]_i_2_n_0 ),
         .I5(\FSM_onehot_STATE_reg_n_0_[1] ),
         .O(ATAN_CONSTELLATION_IN_I0_in[2]));
-  (* SOFT_HLUTNM = "soft_lutpair45" *) 
+  (* SOFT_HLUTNM = "soft_lutpair47" *) 
   LUT3 #(
     .INIT(8'hEA)) 
     \ATAN_CONSTELLATION_IN_I[2]_i_2 
@@ -3615,67 +3478,66 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(CHANNEL_RESPONSE_AMPLITUDE),
         .O(\ATAN_CONSTELLATION_IN_I[2]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFEFFF4FFF0FFF0)) 
+    .INIT(64'hFFFFFFFFFFFFC480)) 
     \ATAN_CONSTELLATION_IN_I[3]_i_1 
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[25] ),
-        .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[5] ),
-        .I2(\ATAN_CONSTELLATION_IN_I[23]_i_4_n_0 ),
-        .I3(\ATAN_CONSTELLATION_IN_I[3]_i_2_n_0 ),
-        .I4(\p_1_out_inferred__3/i__carry_n_5 ),
-        .I5(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
+        .I1(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
+        .I2(\p_1_out_inferred__3/i__carry_n_5 ),
+        .I3(\PILOT_I_ACCUMULATOR_reg_n_0_[5] ),
+        .I4(\ATAN_CONSTELLATION_IN_I[3]_i_2_n_0 ),
+        .I5(\FSM_onehot_STATE_reg_n_0_[1] ),
         .O(ATAN_CONSTELLATION_IN_I0_in[3]));
+  (* SOFT_HLUTNM = "soft_lutpair47" *) 
+  LUT3 #(
+    .INIT(8'hEA)) 
+    \ATAN_CONSTELLATION_IN_I[3]_i_2 
+       (.I0(\FSM_onehot_STATE_reg_n_0_[0] ),
+        .I1(ATAN_CONSTELLATION_IN_I0__21_carry_n_4),
+        .I2(CHANNEL_RESPONSE_AMPLITUDE),
+        .O(\ATAN_CONSTELLATION_IN_I[3]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFDFFF0FFF8FFF0)) 
+    \ATAN_CONSTELLATION_IN_I[4]_i_1 
+       (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[25] ),
+        .I1(\p_1_out_inferred__3/i__carry_n_4 ),
+        .I2(\ATAN_CONSTELLATION_IN_I[23]_i_4_n_0 ),
+        .I3(\ATAN_CONSTELLATION_IN_I[4]_i_2_n_0 ),
+        .I4(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
+        .I5(\PILOT_I_ACCUMULATOR_reg_n_0_[6] ),
+        .O(ATAN_CONSTELLATION_IN_I0_in[4]));
+  (* SOFT_HLUTNM = "soft_lutpair22" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \ATAN_CONSTELLATION_IN_I[4]_i_2 
+       (.I0(CHANNEL_RESPONSE_AMPLITUDE),
+        .I1(ATAN_CONSTELLATION_IN_I0__21_carry__0_n_7),
+        .O(\ATAN_CONSTELLATION_IN_I[4]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFEFFF4FFF0FFF0)) 
+    \ATAN_CONSTELLATION_IN_I[5]_i_1 
+       (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[25] ),
+        .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[7] ),
+        .I2(\ATAN_CONSTELLATION_IN_I[23]_i_4_n_0 ),
+        .I3(\ATAN_CONSTELLATION_IN_I[5]_i_2_n_0 ),
+        .I4(\p_1_out_inferred__3/i__carry__0_n_7 ),
+        .I5(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
+        .O(ATAN_CONSTELLATION_IN_I0_in[5]));
   (* SOFT_HLUTNM = "soft_lutpair21" *) 
   LUT2 #(
     .INIT(4'h8)) 
-    \ATAN_CONSTELLATION_IN_I[3]_i_2 
-       (.I0(CHANNEL_RESPONSE_AMPLITUDE),
-        .I1(ATAN_CONSTELLATION_IN_I0__21_carry_n_4),
-        .O(\ATAN_CONSTELLATION_IN_I[3]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFC480)) 
-    \ATAN_CONSTELLATION_IN_I[4]_i_1 
-       (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[25] ),
-        .I1(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
-        .I2(\p_1_out_inferred__3/i__carry_n_4 ),
-        .I3(\PILOT_I_ACCUMULATOR_reg_n_0_[6] ),
-        .I4(\ATAN_CONSTELLATION_IN_I[4]_i_2_n_0 ),
-        .I5(\FSM_onehot_STATE_reg_n_0_[1] ),
-        .O(ATAN_CONSTELLATION_IN_I0_in[4]));
-  (* SOFT_HLUTNM = "soft_lutpair45" *) 
-  LUT3 #(
-    .INIT(8'hEA)) 
-    \ATAN_CONSTELLATION_IN_I[4]_i_2 
-       (.I0(\FSM_onehot_STATE_reg_n_0_[0] ),
-        .I1(ATAN_CONSTELLATION_IN_I0__21_carry__0_n_7),
-        .I2(CHANNEL_RESPONSE_AMPLITUDE),
-        .O(\ATAN_CONSTELLATION_IN_I[4]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFC480)) 
-    \ATAN_CONSTELLATION_IN_I[5]_i_1 
-       (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[25] ),
-        .I1(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
-        .I2(\p_1_out_inferred__3/i__carry__0_n_7 ),
-        .I3(\PILOT_I_ACCUMULATOR_reg_n_0_[7] ),
-        .I4(\ATAN_CONSTELLATION_IN_I[5]_i_2_n_0 ),
-        .I5(\FSM_onehot_STATE_reg_n_0_[1] ),
-        .O(ATAN_CONSTELLATION_IN_I0_in[5]));
-  (* SOFT_HLUTNM = "soft_lutpair44" *) 
-  LUT3 #(
-    .INIT(8'hEA)) 
     \ATAN_CONSTELLATION_IN_I[5]_i_2 
-       (.I0(\FSM_onehot_STATE_reg_n_0_[0] ),
+       (.I0(CHANNEL_RESPONSE_AMPLITUDE),
         .I1(ATAN_CONSTELLATION_IN_I0__21_carry__0_n_6),
-        .I2(CHANNEL_RESPONSE_AMPLITUDE),
         .O(\ATAN_CONSTELLATION_IN_I[5]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFEFFF4FFF0FFF0)) 
+    .INIT(64'hFFFDFFF0FFF8FFF0)) 
     \ATAN_CONSTELLATION_IN_I[6]_i_1 
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[25] ),
-        .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[8] ),
+        .I1(\p_1_out_inferred__3/i__carry__0_n_6 ),
         .I2(\ATAN_CONSTELLATION_IN_I[23]_i_4_n_0 ),
         .I3(\ATAN_CONSTELLATION_IN_I[6]_i_2_n_0 ),
-        .I4(\p_1_out_inferred__3/i__carry__0_n_6 ),
-        .I5(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
+        .I4(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
+        .I5(\PILOT_I_ACCUMULATOR_reg_n_0_[8] ),
         .O(ATAN_CONSTELLATION_IN_I0_in[6]));
   (* SOFT_HLUTNM = "soft_lutpair20" *) 
   LUT2 #(
@@ -3702,14 +3564,14 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I1(ATAN_CONSTELLATION_IN_I0__21_carry__0_n_4),
         .O(\ATAN_CONSTELLATION_IN_I[7]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFDFFF0FFF8FFF0)) 
+    .INIT(64'hFFFEFFF4FFF0FFF0)) 
     \ATAN_CONSTELLATION_IN_I[8]_i_1 
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[25] ),
-        .I1(\p_1_out_inferred__3/i__carry__0_n_4 ),
+        .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[10] ),
         .I2(\ATAN_CONSTELLATION_IN_I[23]_i_4_n_0 ),
         .I3(\ATAN_CONSTELLATION_IN_I[8]_i_2_n_0 ),
-        .I4(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
-        .I5(\PILOT_I_ACCUMULATOR_reg_n_0_[10] ),
+        .I4(\p_1_out_inferred__3/i__carry__0_n_4 ),
+        .I5(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
         .O(ATAN_CONSTELLATION_IN_I0_in[8]));
   (* SOFT_HLUTNM = "soft_lutpair18" *) 
   LUT2 #(
@@ -4396,7 +4258,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     .INIT(8'h35)) 
     ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_10
        (.I0(QDATA_BUFFER[21]),
-        .I1(CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_5_n_7),
+        .I1(ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_14_n_7),
         .I2(QDATA_BUFFER[23]),
         .O(ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_10_n_0));
   LUT3 #(
@@ -4420,6 +4282,30 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I1(ATAN_CONSTELLATION_IN_Q0__21_carry__2_i_14_n_6),
         .I2(QDATA_BUFFER[23]),
         .O(ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_13_n_0));
+  (* ADDER_THRESHOLD = "35" *) 
+  (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
+  CARRY4 ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_14
+       (.CI(ATAN_CONSTELLATION_IN_Q0__21_carry__2_i_14_n_0),
+        .CO({NLW_ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_14_CO_UNCONNECTED[3:2],ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_14_n_2,ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_14_n_3}),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O({NLW_ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_14_O_UNCONNECTED[3],ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_14_n_5,ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_14_n_6,ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_14_n_7}),
+        .S({1'b0,ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_15_n_0,ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_16_n_0,ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_17_n_0}));
+  LUT1 #(
+    .INIT(2'h1)) 
+    ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_15
+       (.I0(QDATA_BUFFER[23]),
+        .O(ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_15_n_0));
+  LUT1 #(
+    .INIT(2'h1)) 
+    ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_16
+       (.I0(QDATA_BUFFER[22]),
+        .O(ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_16_n_0));
+  LUT1 #(
+    .INIT(2'h1)) 
+    ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_17
+       (.I0(QDATA_BUFFER[21]),
+        .O(ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_17_n_0));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
     ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_2
@@ -4509,6 +4395,19 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I3(INPUT_DATA_CNTR[5]),
         .I4(CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_n_0),
         .O(p_1_out_1[22]));
+  LUT2 #(
+    .INIT(4'h7)) 
+    ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_10
+       (.I0(ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_14_n_5),
+        .I1(QDATA_BUFFER[23]),
+        .O(ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_10_n_0));
+  LUT3 #(
+    .INIT(8'h47)) 
+    ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_11
+       (.I0(ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_14_n_6),
+        .I1(QDATA_BUFFER[23]),
+        .I2(QDATA_BUFFER[22]),
+        .O(ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_11_n_0));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
     ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_2
@@ -4532,13 +4431,13 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_4
        (.I0(p_1_out_1[23]),
         .I1(QDATA_BUFFER[23]),
-        .I2(CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_2_n_1),
+        .I2(ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_9_n_1),
         .I3(in),
         .O(ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_4_n_0));
   LUT4 #(
     .INIT(16'h7887)) 
     ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_5
-       (.I0(CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_2_n_6),
+       (.I0(ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_9_n_6),
         .I1(QDATA_BUFFER[23]),
         .I2(in),
         .I3(p_1_out_1[22]),
@@ -4546,7 +4445,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   LUT5 #(
     .INIT(32'h47B8B847)) 
     ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_6
-       (.I0(CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_2_n_7),
+       (.I0(ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_9_n_7),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[22]),
         .I3(in),
@@ -4570,6 +4469,14 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I3(INPUT_DATA_CNTR[5]),
         .I4(CHANNEL_RESPONSE_Q_reg_0_31_0_0__22_n_0),
         .O(p_1_out_1[23]));
+  (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
+  CARRY4 ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_9
+       (.CI(ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_9_n_0),
+        .CO({NLW_ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_9_CO_UNCONNECTED[3],ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_9_n_1,NLW_ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_9_CO_UNCONNECTED[1],ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_9_n_3}),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O({NLW_ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_9_O_UNCONNECTED[3:2],ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_9_n_6,ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_9_n_7}),
+        .S({1'b0,1'b1,ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_10_n_0,ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_11_n_0}));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
     ATAN_CONSTELLATION_IN_Q0__21_carry_i_1
@@ -4757,52 +4664,50 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(\PILOT_Q_ACCUMULATOR_reg_n_0_[2] ),
         .O(\ATAN_CONSTELLATION_IN_Q[0]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFC480)) 
+    .INIT(64'hFFFEFFF4FFF0FFF0)) 
     \ATAN_CONSTELLATION_IN_Q[10]_i_1 
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
-        .I1(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
-        .I2(\p_1_out_inferred__10/i__carry__1_n_6 ),
-        .I3(\PILOT_Q_ACCUMULATOR_reg_n_0_[12] ),
-        .I4(\ATAN_CONSTELLATION_IN_Q[10]_i_2_n_0 ),
-        .I5(\FSM_onehot_STATE_reg_n_0_[1] ),
+        .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[12] ),
+        .I2(\ATAN_CONSTELLATION_IN_I[23]_i_4_n_0 ),
+        .I3(\ATAN_CONSTELLATION_IN_Q[10]_i_2_n_0 ),
+        .I4(\p_1_out_inferred__10/i__carry__1_n_6 ),
+        .I5(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
         .O(\ATAN_CONSTELLATION_IN_Q[10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair48" *) 
-  LUT3 #(
-    .INIT(8'hEA)) 
+  (* SOFT_HLUTNM = "soft_lutpair33" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
     \ATAN_CONSTELLATION_IN_Q[10]_i_2 
-       (.I0(\FSM_onehot_STATE_reg_n_0_[0] ),
+       (.I0(CHANNEL_RESPONSE_AMPLITUDE),
         .I1(ATAN_CONSTELLATION_IN_Q0__21_carry__1_n_5),
-        .I2(CHANNEL_RESPONSE_AMPLITUDE),
         .O(\ATAN_CONSTELLATION_IN_Q[10]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFC480)) 
+    .INIT(64'hFFFEFFF4FFF0FFF0)) 
     \ATAN_CONSTELLATION_IN_Q[11]_i_1 
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
-        .I1(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
-        .I2(\p_1_out_inferred__10/i__carry__1_n_5 ),
-        .I3(\PILOT_Q_ACCUMULATOR_reg_n_0_[13] ),
-        .I4(\ATAN_CONSTELLATION_IN_Q[11]_i_2_n_0 ),
-        .I5(\FSM_onehot_STATE_reg_n_0_[1] ),
+        .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[13] ),
+        .I2(\ATAN_CONSTELLATION_IN_I[23]_i_4_n_0 ),
+        .I3(\ATAN_CONSTELLATION_IN_Q[11]_i_2_n_0 ),
+        .I4(\p_1_out_inferred__10/i__carry__1_n_5 ),
+        .I5(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
         .O(\ATAN_CONSTELLATION_IN_Q[11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair48" *) 
-  LUT3 #(
-    .INIT(8'hEA)) 
+  (* SOFT_HLUTNM = "soft_lutpair32" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
     \ATAN_CONSTELLATION_IN_Q[11]_i_2 
-       (.I0(\FSM_onehot_STATE_reg_n_0_[0] ),
+       (.I0(CHANNEL_RESPONSE_AMPLITUDE),
         .I1(ATAN_CONSTELLATION_IN_Q0__21_carry__1_n_4),
-        .I2(CHANNEL_RESPONSE_AMPLITUDE),
         .O(\ATAN_CONSTELLATION_IN_Q[11]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFDFFF0FFF8FFF0)) 
+    .INIT(64'hFFFEFFF4FFF0FFF0)) 
     \ATAN_CONSTELLATION_IN_Q[12]_i_1 
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
-        .I1(\p_1_out_inferred__10/i__carry__1_n_4 ),
+        .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[14] ),
         .I2(\ATAN_CONSTELLATION_IN_I[23]_i_4_n_0 ),
         .I3(\ATAN_CONSTELLATION_IN_Q[12]_i_2_n_0 ),
-        .I4(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
-        .I5(\PILOT_Q_ACCUMULATOR_reg_n_0_[14] ),
+        .I4(\p_1_out_inferred__10/i__carry__1_n_4 ),
+        .I5(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
         .O(\ATAN_CONSTELLATION_IN_Q[12]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair30" *) 
+  (* SOFT_HLUTNM = "soft_lutpair31" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \ATAN_CONSTELLATION_IN_Q[12]_i_2 
@@ -4819,7 +4724,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\ATAN_CONSTELLATION_IN_Q[13]_i_2_n_0 ),
         .I5(\FSM_onehot_STATE_reg_n_0_[1] ),
         .O(\ATAN_CONSTELLATION_IN_Q[13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair47" *) 
+  (* SOFT_HLUTNM = "soft_lutpair49" *) 
   LUT3 #(
     .INIT(8'hEA)) 
     \ATAN_CONSTELLATION_IN_Q[13]_i_2 
@@ -4837,7 +4742,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\ATAN_CONSTELLATION_IN_Q[14]_i_2_n_0 ),
         .I5(\FSM_onehot_STATE_reg_n_0_[1] ),
         .O(\ATAN_CONSTELLATION_IN_Q[14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair47" *) 
+  (* SOFT_HLUTNM = "soft_lutpair49" *) 
   LUT3 #(
     .INIT(8'hEA)) 
     \ATAN_CONSTELLATION_IN_Q[14]_i_2 
@@ -4846,32 +4751,31 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(CHANNEL_RESPONSE_AMPLITUDE),
         .O(\ATAN_CONSTELLATION_IN_Q[14]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFC480)) 
+    .INIT(64'hFFFEFFF4FFF0FFF0)) 
     \ATAN_CONSTELLATION_IN_Q[15]_i_1 
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
-        .I1(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
-        .I2(\p_1_out_inferred__10/i__carry__2_n_5 ),
-        .I3(\PILOT_Q_ACCUMULATOR_reg_n_0_[17] ),
-        .I4(\ATAN_CONSTELLATION_IN_Q[15]_i_2_n_0 ),
-        .I5(\FSM_onehot_STATE_reg_n_0_[1] ),
+        .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[17] ),
+        .I2(\ATAN_CONSTELLATION_IN_I[23]_i_4_n_0 ),
+        .I3(\ATAN_CONSTELLATION_IN_Q[15]_i_2_n_0 ),
+        .I4(\p_1_out_inferred__10/i__carry__2_n_5 ),
+        .I5(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
         .O(\ATAN_CONSTELLATION_IN_Q[15]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair46" *) 
-  LUT3 #(
-    .INIT(8'hEA)) 
+  (* SOFT_HLUTNM = "soft_lutpair30" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
     \ATAN_CONSTELLATION_IN_Q[15]_i_2 
-       (.I0(\FSM_onehot_STATE_reg_n_0_[0] ),
+       (.I0(CHANNEL_RESPONSE_AMPLITUDE),
         .I1(ATAN_CONSTELLATION_IN_Q0__21_carry__2_n_4),
-        .I2(CHANNEL_RESPONSE_AMPLITUDE),
         .O(\ATAN_CONSTELLATION_IN_Q[15]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFEFFF4FFF0FFF0)) 
+    .INIT(64'hFFFDFFF0FFF8FFF0)) 
     \ATAN_CONSTELLATION_IN_Q[16]_i_1 
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
-        .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[18] ),
+        .I1(\p_1_out_inferred__10/i__carry__2_n_4 ),
         .I2(\ATAN_CONSTELLATION_IN_I[23]_i_4_n_0 ),
         .I3(\ATAN_CONSTELLATION_IN_Q[16]_i_2_n_0 ),
-        .I4(\p_1_out_inferred__10/i__carry__2_n_4 ),
-        .I5(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
+        .I4(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
+        .I5(\PILOT_Q_ACCUMULATOR_reg_n_0_[18] ),
         .O(\ATAN_CONSTELLATION_IN_Q[16]_i_1_n_0 ));
   (* SOFT_HLUTNM = "soft_lutpair29" *) 
   LUT2 #(
@@ -4881,21 +4785,22 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I1(ATAN_CONSTELLATION_IN_Q0__21_carry__3_n_7),
         .O(\ATAN_CONSTELLATION_IN_Q[16]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFEFFF4FFF0FFF0)) 
+    .INIT(64'hFFFFFFFFFFFFC480)) 
     \ATAN_CONSTELLATION_IN_Q[17]_i_1 
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
-        .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[19] ),
-        .I2(\ATAN_CONSTELLATION_IN_I[23]_i_4_n_0 ),
-        .I3(\ATAN_CONSTELLATION_IN_Q[17]_i_2_n_0 ),
-        .I4(\p_1_out_inferred__10/i__carry__3_n_7 ),
-        .I5(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
+        .I1(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
+        .I2(\p_1_out_inferred__10/i__carry__3_n_7 ),
+        .I3(\PILOT_Q_ACCUMULATOR_reg_n_0_[19] ),
+        .I4(\ATAN_CONSTELLATION_IN_Q[17]_i_2_n_0 ),
+        .I5(\FSM_onehot_STATE_reg_n_0_[1] ),
         .O(\ATAN_CONSTELLATION_IN_Q[17]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair28" *) 
-  LUT2 #(
-    .INIT(4'h8)) 
+  (* SOFT_HLUTNM = "soft_lutpair48" *) 
+  LUT3 #(
+    .INIT(8'hEA)) 
     \ATAN_CONSTELLATION_IN_Q[17]_i_2 
-       (.I0(CHANNEL_RESPONSE_AMPLITUDE),
+       (.I0(\FSM_onehot_STATE_reg_n_0_[0] ),
         .I1(ATAN_CONSTELLATION_IN_Q0__21_carry__3_n_6),
+        .I2(CHANNEL_RESPONSE_AMPLITUDE),
         .O(\ATAN_CONSTELLATION_IN_Q[17]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hFFFDFFF0FFF8FFF0)) 
@@ -4907,7 +4812,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
         .I5(\PILOT_Q_ACCUMULATOR_reg_n_0_[20] ),
         .O(\ATAN_CONSTELLATION_IN_Q[18]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair27" *) 
+  (* SOFT_HLUTNM = "soft_lutpair28" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \ATAN_CONSTELLATION_IN_Q[18]_i_2 
@@ -4915,39 +4820,38 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I1(ATAN_CONSTELLATION_IN_Q0__21_carry__3_n_5),
         .O(\ATAN_CONSTELLATION_IN_Q[18]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFEFFF4FFF0FFF0)) 
+    .INIT(64'hFFFFFFFFFFFFC480)) 
     \ATAN_CONSTELLATION_IN_Q[19]_i_1 
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
-        .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[21] ),
-        .I2(\ATAN_CONSTELLATION_IN_I[23]_i_4_n_0 ),
-        .I3(\ATAN_CONSTELLATION_IN_Q[19]_i_2_n_0 ),
-        .I4(\p_1_out_inferred__10/i__carry__3_n_5 ),
-        .I5(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
-        .O(\ATAN_CONSTELLATION_IN_Q[19]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair26" *) 
-  LUT2 #(
-    .INIT(4'h8)) 
-    \ATAN_CONSTELLATION_IN_Q[19]_i_2 
-       (.I0(CHANNEL_RESPONSE_AMPLITUDE),
-        .I1(ATAN_CONSTELLATION_IN_Q0__21_carry__3_n_4),
-        .O(\ATAN_CONSTELLATION_IN_Q[19]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFC480)) 
-    \ATAN_CONSTELLATION_IN_Q[1]_i_1 
-       (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
         .I1(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
-        .I2(\p_1_out_inferred__10/i__carry_n_7 ),
-        .I3(\PILOT_Q_ACCUMULATOR_reg_n_0_[3] ),
-        .I4(\ATAN_CONSTELLATION_IN_Q[1]_i_2_n_0 ),
+        .I2(\p_1_out_inferred__10/i__carry__3_n_5 ),
+        .I3(\PILOT_Q_ACCUMULATOR_reg_n_0_[21] ),
+        .I4(\ATAN_CONSTELLATION_IN_Q[19]_i_2_n_0 ),
         .I5(\FSM_onehot_STATE_reg_n_0_[1] ),
-        .O(\ATAN_CONSTELLATION_IN_Q[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair52" *) 
+        .O(\ATAN_CONSTELLATION_IN_Q[19]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair48" *) 
   LUT3 #(
     .INIT(8'hEA)) 
-    \ATAN_CONSTELLATION_IN_Q[1]_i_2 
+    \ATAN_CONSTELLATION_IN_Q[19]_i_2 
        (.I0(\FSM_onehot_STATE_reg_n_0_[0] ),
-        .I1(ATAN_CONSTELLATION_IN_Q0__21_carry_n_6),
+        .I1(ATAN_CONSTELLATION_IN_Q0__21_carry__3_n_4),
         .I2(CHANNEL_RESPONSE_AMPLITUDE),
+        .O(\ATAN_CONSTELLATION_IN_Q[19]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFEFFF4FFF0FFF0)) 
+    \ATAN_CONSTELLATION_IN_Q[1]_i_1 
+       (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
+        .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[3] ),
+        .I2(\ATAN_CONSTELLATION_IN_I[23]_i_4_n_0 ),
+        .I3(\ATAN_CONSTELLATION_IN_Q[1]_i_2_n_0 ),
+        .I4(\p_1_out_inferred__10/i__carry_n_7 ),
+        .I5(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
+        .O(\ATAN_CONSTELLATION_IN_Q[1]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h8)) 
+    \ATAN_CONSTELLATION_IN_Q[1]_i_2 
+       (.I0(CHANNEL_RESPONSE_AMPLITUDE),
+        .I1(ATAN_CONSTELLATION_IN_Q0__21_carry_n_6),
         .O(\ATAN_CONSTELLATION_IN_Q[1]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hFFFEFFF4FFF0FFF0)) 
@@ -4959,7 +4863,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\p_1_out_inferred__10/i__carry__3_n_4 ),
         .I5(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
         .O(\ATAN_CONSTELLATION_IN_Q[20]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair25" *) 
+  (* SOFT_HLUTNM = "soft_lutpair27" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \ATAN_CONSTELLATION_IN_Q[20]_i_2 
@@ -4976,7 +4880,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\p_1_out_inferred__10/i__carry__4_n_7 ),
         .I5(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
         .O(\ATAN_CONSTELLATION_IN_Q[21]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair24" *) 
+  (* SOFT_HLUTNM = "soft_lutpair26" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \ATAN_CONSTELLATION_IN_Q[21]_i_2 
@@ -4984,22 +4888,21 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I1(ATAN_CONSTELLATION_IN_Q0__21_carry__4_n_6),
         .O(\ATAN_CONSTELLATION_IN_Q[21]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFFFFFFFFF88A0)) 
+    .INIT(64'hFEFEFFEEEEEEEEEE)) 
     \ATAN_CONSTELLATION_IN_Q[22]_i_1 
-       (.I0(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
-        .I1(\p_1_out_inferred__10/i__carry__4_n_6 ),
-        .I2(\PILOT_Q_ACCUMULATOR_reg_n_0_[24] ),
-        .I3(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
-        .I4(\ATAN_CONSTELLATION_IN_Q[22]_i_2_n_0 ),
-        .I5(\FSM_onehot_STATE_reg_n_0_[1] ),
+       (.I0(\ATAN_CONSTELLATION_IN_I[23]_i_4_n_0 ),
+        .I1(\ATAN_CONSTELLATION_IN_Q[22]_i_2_n_0 ),
+        .I2(\p_1_out_inferred__10/i__carry__4_n_6 ),
+        .I3(\PILOT_Q_ACCUMULATOR_reg_n_0_[24] ),
+        .I4(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
+        .I5(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
         .O(\ATAN_CONSTELLATION_IN_Q[22]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair46" *) 
-  LUT3 #(
-    .INIT(8'hEA)) 
+  (* SOFT_HLUTNM = "soft_lutpair25" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
     \ATAN_CONSTELLATION_IN_Q[22]_i_2 
-       (.I0(\FSM_onehot_STATE_reg_n_0_[0] ),
+       (.I0(CHANNEL_RESPONSE_AMPLITUDE),
         .I1(ATAN_CONSTELLATION_IN_Q0__21_carry__4_n_5),
-        .I2(CHANNEL_RESPONSE_AMPLITUDE),
         .O(\ATAN_CONSTELLATION_IN_Q[22]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hFFFFFFFFFF080808)) 
@@ -5012,58 +4915,55 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I5(\ATAN_CONSTELLATION_IN_I[23]_i_4_n_0 ),
         .O(\ATAN_CONSTELLATION_IN_Q[23]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFC480)) 
+    .INIT(64'hFFFEFFF4FFF0FFF0)) 
     \ATAN_CONSTELLATION_IN_Q[2]_i_1 
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
-        .I1(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
-        .I2(\p_1_out_inferred__10/i__carry_n_6 ),
-        .I3(\PILOT_Q_ACCUMULATOR_reg_n_0_[4] ),
-        .I4(\ATAN_CONSTELLATION_IN_Q[2]_i_2_n_0 ),
-        .I5(\FSM_onehot_STATE_reg_n_0_[1] ),
+        .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[4] ),
+        .I2(\ATAN_CONSTELLATION_IN_I[23]_i_4_n_0 ),
+        .I3(\ATAN_CONSTELLATION_IN_Q[2]_i_2_n_0 ),
+        .I4(\p_1_out_inferred__10/i__carry_n_6 ),
+        .I5(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
         .O(\ATAN_CONSTELLATION_IN_Q[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair51" *) 
-  LUT3 #(
-    .INIT(8'hEA)) 
+  (* SOFT_HLUTNM = "soft_lutpair75" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
     \ATAN_CONSTELLATION_IN_Q[2]_i_2 
-       (.I0(\FSM_onehot_STATE_reg_n_0_[0] ),
+       (.I0(CHANNEL_RESPONSE_AMPLITUDE),
         .I1(ATAN_CONSTELLATION_IN_Q0__21_carry_n_5),
-        .I2(CHANNEL_RESPONSE_AMPLITUDE),
         .O(\ATAN_CONSTELLATION_IN_Q[2]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFC480)) 
+    .INIT(64'hFFFEFFF4FFF0FFF0)) 
     \ATAN_CONSTELLATION_IN_Q[3]_i_1 
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
-        .I1(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
-        .I2(\p_1_out_inferred__10/i__carry_n_5 ),
-        .I3(\PILOT_Q_ACCUMULATOR_reg_n_0_[5] ),
-        .I4(\ATAN_CONSTELLATION_IN_Q[3]_i_2_n_0 ),
-        .I5(\FSM_onehot_STATE_reg_n_0_[1] ),
+        .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[5] ),
+        .I2(\ATAN_CONSTELLATION_IN_I[23]_i_4_n_0 ),
+        .I3(\ATAN_CONSTELLATION_IN_Q[3]_i_2_n_0 ),
+        .I4(\p_1_out_inferred__10/i__carry_n_5 ),
+        .I5(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
         .O(\ATAN_CONSTELLATION_IN_Q[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair51" *) 
-  LUT3 #(
-    .INIT(8'hEA)) 
+  (* SOFT_HLUTNM = "soft_lutpair75" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
     \ATAN_CONSTELLATION_IN_Q[3]_i_2 
-       (.I0(\FSM_onehot_STATE_reg_n_0_[0] ),
+       (.I0(CHANNEL_RESPONSE_AMPLITUDE),
         .I1(ATAN_CONSTELLATION_IN_Q0__21_carry_n_4),
-        .I2(CHANNEL_RESPONSE_AMPLITUDE),
         .O(\ATAN_CONSTELLATION_IN_Q[3]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFC480)) 
+    .INIT(64'hFFFDFFF0FFF8FFF0)) 
     \ATAN_CONSTELLATION_IN_Q[4]_i_1 
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
-        .I1(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
-        .I2(\p_1_out_inferred__10/i__carry_n_4 ),
-        .I3(\PILOT_Q_ACCUMULATOR_reg_n_0_[6] ),
-        .I4(\ATAN_CONSTELLATION_IN_Q[4]_i_2_n_0 ),
-        .I5(\FSM_onehot_STATE_reg_n_0_[1] ),
+        .I1(\p_1_out_inferred__10/i__carry_n_4 ),
+        .I2(\ATAN_CONSTELLATION_IN_I[23]_i_4_n_0 ),
+        .I3(\ATAN_CONSTELLATION_IN_Q[4]_i_2_n_0 ),
+        .I4(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
+        .I5(\PILOT_Q_ACCUMULATOR_reg_n_0_[6] ),
         .O(\ATAN_CONSTELLATION_IN_Q[4]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair50" *) 
-  LUT3 #(
-    .INIT(8'hEA)) 
+  (* SOFT_HLUTNM = "soft_lutpair74" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
     \ATAN_CONSTELLATION_IN_Q[4]_i_2 
-       (.I0(\FSM_onehot_STATE_reg_n_0_[0] ),
+       (.I0(CHANNEL_RESPONSE_AMPLITUDE),
         .I1(ATAN_CONSTELLATION_IN_Q0__21_carry__0_n_7),
-        .I2(CHANNEL_RESPONSE_AMPLITUDE),
         .O(\ATAN_CONSTELLATION_IN_Q[4]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hFFFEFFF4FFF0FFF0)) 
@@ -5101,22 +5001,21 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(CHANNEL_RESPONSE_AMPLITUDE),
         .O(\ATAN_CONSTELLATION_IN_Q[6]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFC480)) 
+    .INIT(64'hFFFDFFF0FFF8FFF0)) 
     \ATAN_CONSTELLATION_IN_Q[7]_i_1 
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
-        .I1(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
-        .I2(\p_1_out_inferred__10/i__carry__0_n_5 ),
-        .I3(\PILOT_Q_ACCUMULATOR_reg_n_0_[9] ),
-        .I4(\ATAN_CONSTELLATION_IN_Q[7]_i_2_n_0 ),
-        .I5(\FSM_onehot_STATE_reg_n_0_[1] ),
+        .I1(\p_1_out_inferred__10/i__carry__0_n_5 ),
+        .I2(\ATAN_CONSTELLATION_IN_I[23]_i_4_n_0 ),
+        .I3(\ATAN_CONSTELLATION_IN_Q[7]_i_2_n_0 ),
+        .I4(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
+        .I5(\PILOT_Q_ACCUMULATOR_reg_n_0_[9] ),
         .O(\ATAN_CONSTELLATION_IN_Q[7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair49" *) 
-  LUT3 #(
-    .INIT(8'hEA)) 
+  (* SOFT_HLUTNM = "soft_lutpair73" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
     \ATAN_CONSTELLATION_IN_Q[7]_i_2 
-       (.I0(\FSM_onehot_STATE_reg_n_0_[0] ),
+       (.I0(CHANNEL_RESPONSE_AMPLITUDE),
         .I1(ATAN_CONSTELLATION_IN_Q0__21_carry__0_n_4),
-        .I2(CHANNEL_RESPONSE_AMPLITUDE),
         .O(\ATAN_CONSTELLATION_IN_Q[7]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hFFFEFFF4FFF0FFF0)) 
@@ -5128,7 +5027,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\p_1_out_inferred__10/i__carry__0_n_4 ),
         .I5(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
         .O(\ATAN_CONSTELLATION_IN_Q[8]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair74" *) 
+  (* SOFT_HLUTNM = "soft_lutpair73" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \ATAN_CONSTELLATION_IN_Q[8]_i_2 
@@ -5136,22 +5035,21 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I1(ATAN_CONSTELLATION_IN_Q0__21_carry__1_n_7),
         .O(\ATAN_CONSTELLATION_IN_Q[8]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFC480)) 
+    .INIT(64'hFFFEFFF4FFF0FFF0)) 
     \ATAN_CONSTELLATION_IN_Q[9]_i_1 
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
-        .I1(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
-        .I2(\p_1_out_inferred__10/i__carry__1_n_7 ),
-        .I3(\PILOT_Q_ACCUMULATOR_reg_n_0_[11] ),
-        .I4(\ATAN_CONSTELLATION_IN_Q[9]_i_2_n_0 ),
-        .I5(\FSM_onehot_STATE_reg_n_0_[1] ),
+        .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[11] ),
+        .I2(\ATAN_CONSTELLATION_IN_I[23]_i_4_n_0 ),
+        .I3(\ATAN_CONSTELLATION_IN_Q[9]_i_2_n_0 ),
+        .I4(\p_1_out_inferred__10/i__carry__1_n_7 ),
+        .I5(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
         .O(\ATAN_CONSTELLATION_IN_Q[9]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair49" *) 
-  LUT3 #(
-    .INIT(8'hEA)) 
+  (* SOFT_HLUTNM = "soft_lutpair50" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
     \ATAN_CONSTELLATION_IN_Q[9]_i_2 
-       (.I0(\FSM_onehot_STATE_reg_n_0_[0] ),
+       (.I0(CHANNEL_RESPONSE_AMPLITUDE),
         .I1(ATAN_CONSTELLATION_IN_Q0__21_carry__1_n_6),
-        .I2(CHANNEL_RESPONSE_AMPLITUDE),
         .O(\ATAN_CONSTELLATION_IN_Q[9]_i_2_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
@@ -5355,7 +5253,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
         .I5(ATAN_CONSTELLATION_IN_STROBE),
         .O(ATAN_CONSTELLATION_IN_STROBE_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair35" *) 
+  (* SOFT_HLUTNM = "soft_lutpair37" *) 
   LUT3 #(
     .INIT(8'h2A)) 
     ATAN_CONSTELLATION_IN_STROBE_i_2
@@ -7108,7 +7006,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\ATAN_CONSTELLATION_IN_I[11]_i_2_n_0 ),
         .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_I_reg_0_31_0_0__10_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair57" *) 
+  (* SOFT_HLUTNM = "soft_lutpair55" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_I_reg_0_31_0_0__10_i_2
@@ -7145,7 +7043,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I3(CHANNEL_RESPONSE_I_reg_0_31_0_0__8_i_3_n_4),
         .I4(\ATAN_CONSTELLATION_IN_I[12]_i_2_n_0 ),
         .O(CHANNEL_RESPONSE_I_reg_0_31_0_0__11_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair57" *) 
+  (* SOFT_HLUTNM = "soft_lutpair55" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_I_reg_0_31_0_0__11_i_2
@@ -7183,7 +7081,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\ATAN_CONSTELLATION_IN_I[13]_i_2_n_0 ),
         .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_I_reg_0_31_0_0__12_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair56" *) 
+  (* SOFT_HLUTNM = "soft_lutpair54" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_I_reg_0_31_0_0__12_i_2
@@ -7247,17 +7145,16 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .O(CHANNEL_RESPONSE_I_reg_0_31_0_0__13_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
-  LUT6 #(
-    .INIT(64'hFFFFFFFFFFFF8A80)) 
+  LUT5 #(
+    .INIT(32'hFFFF8A80)) 
     CHANNEL_RESPONSE_I_reg_0_31_0_0__13_i_1
        (.I0(\FSM_onehot_STATE_reg_n_0_[1] ),
         .I1(CHANNEL_RESPONSE_I_reg_0_31_0_0__13_i_2_n_0),
         .I2(in),
         .I3(CHANNEL_RESPONSE_I_reg_0_31_0_0__12_i_3_n_6),
         .I4(\ATAN_CONSTELLATION_IN_I[14]_i_2_n_0 ),
-        .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_I_reg_0_31_0_0__13_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair56" *) 
+  (* SOFT_HLUTNM = "soft_lutpair54" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_I_reg_0_31_0_0__13_i_2
@@ -7295,7 +7192,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\ATAN_CONSTELLATION_IN_I[15]_i_2_n_0 ),
         .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_I_reg_0_31_0_0__14_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair55" *) 
+  (* SOFT_HLUTNM = "soft_lutpair53" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_I_reg_0_31_0_0__14_i_2
@@ -7333,7 +7230,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\ATAN_CONSTELLATION_IN_I[16]_i_2_n_0 ),
         .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_I_reg_0_31_0_0__15_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair55" *) 
+  (* SOFT_HLUTNM = "soft_lutpair53" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_I_reg_0_31_0_0__15_i_2
@@ -7361,17 +7258,16 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .O(CHANNEL_RESPONSE_I_reg_0_31_0_0__16_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
-  LUT6 #(
-    .INIT(64'hFFFFFFFFFFFF8A80)) 
+  LUT5 #(
+    .INIT(32'hFFFF8A80)) 
     CHANNEL_RESPONSE_I_reg_0_31_0_0__16_i_1
        (.I0(\FSM_onehot_STATE_reg_n_0_[1] ),
         .I1(CHANNEL_RESPONSE_I_reg_0_31_0_0__16_i_2_n_0),
         .I2(in),
         .I3(CHANNEL_RESPONSE_I_reg_0_31_0_0__16_i_3_n_7),
         .I4(\ATAN_CONSTELLATION_IN_I[17]_i_2_n_0 ),
-        .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_I_reg_0_31_0_0__16_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair54" *) 
+  (* SOFT_HLUTNM = "soft_lutpair52" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_I_reg_0_31_0_0__16_i_2
@@ -7444,7 +7340,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I3(CHANNEL_RESPONSE_I_reg_0_31_0_0__16_i_3_n_6),
         .I4(\ATAN_CONSTELLATION_IN_I[18]_i_2_n_0 ),
         .O(CHANNEL_RESPONSE_I_reg_0_31_0_0__17_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair54" *) 
+  (* SOFT_HLUTNM = "soft_lutpair52" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_I_reg_0_31_0_0__17_i_2
@@ -7482,7 +7378,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\ATAN_CONSTELLATION_IN_I[19]_i_2_n_0 ),
         .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_I_reg_0_31_0_0__18_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair53" *) 
+  (* SOFT_HLUTNM = "soft_lutpair51" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_I_reg_0_31_0_0__18_i_2
@@ -7510,17 +7406,16 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .O(CHANNEL_RESPONSE_I_reg_0_31_0_0__19_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
-  LUT6 #(
-    .INIT(64'hFFFFFFFFFFFF8A80)) 
+  LUT5 #(
+    .INIT(32'hFFFF8A80)) 
     CHANNEL_RESPONSE_I_reg_0_31_0_0__19_i_1
        (.I0(\FSM_onehot_STATE_reg_n_0_[1] ),
         .I1(CHANNEL_RESPONSE_I_reg_0_31_0_0__19_i_2_n_0),
         .I2(in),
         .I3(CHANNEL_RESPONSE_I_reg_0_31_0_0__16_i_3_n_4),
         .I4(\ATAN_CONSTELLATION_IN_I[20]_i_2_n_0 ),
-        .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_I_reg_0_31_0_0__19_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair40" *) 
+  (* SOFT_HLUTNM = "soft_lutpair41" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_I_reg_0_31_0_0__19_i_2
@@ -7537,7 +7432,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I3(CHANNEL_RESPONSE_I_reg_0_31_0_0__0_i_4_n_6),
         .I4(\ATAN_CONSTELLATION_IN_I[2]_i_2_n_0 ),
         .O(CHANNEL_RESPONSE_I_reg_0_31_0_0__1_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair62" *) 
+  (* SOFT_HLUTNM = "soft_lutpair60" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_I_reg_0_31_0_0__1_i_2
@@ -7595,7 +7490,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\ATAN_CONSTELLATION_IN_I[21]_i_2_n_0 ),
         .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_I_reg_0_31_0_0__20_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair40" *) 
+  (* SOFT_HLUTNM = "soft_lutpair41" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_I_reg_0_31_0_0__20_i_2
@@ -7733,31 +7628,30 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(CHANNEL_RESPONSE_I_reg_0_31_0_0__22_i_3_n_0),
         .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_I_reg_0_31_0_0__22_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair53" *) 
+  (* SOFT_HLUTNM = "soft_lutpair51" *) 
   LUT2 #(
     .INIT(4'h2)) 
     CHANNEL_RESPONSE_I_reg_0_31_0_0__22_i_2
        (.I0(IDATA_BUFFER[23]),
         .I1(CHANNEL_RESPONSE_I_reg_0_31_0_0__21_i_2_n_1),
         .O(CHANNEL_RESPONSE_I_reg_0_31_0_0__22_i_2_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  (* SOFT_HLUTNM = "soft_lutpair10" *) 
   LUT2 #(
     .INIT(4'h8)) 
     CHANNEL_RESPONSE_I_reg_0_31_0_0__22_i_3
        (.I0(CHANNEL_RESPONSE_AMPLITUDE),
         .I1(ATAN_CONSTELLATION_IN_I0__21_carry__4_n_4),
         .O(CHANNEL_RESPONSE_I_reg_0_31_0_0__22_i_3_n_0));
-  LUT6 #(
-    .INIT(64'hFFFFFFFFFFFF8A80)) 
+  LUT5 #(
+    .INIT(32'hFFFF8A80)) 
     CHANNEL_RESPONSE_I_reg_0_31_0_0__2_i_1
        (.I0(\FSM_onehot_STATE_reg_n_0_[1] ),
         .I1(CHANNEL_RESPONSE_I_reg_0_31_0_0__2_i_2_n_0),
         .I2(in),
         .I3(CHANNEL_RESPONSE_I_reg_0_31_0_0__0_i_4_n_5),
         .I4(\ATAN_CONSTELLATION_IN_I[3]_i_2_n_0 ),
-        .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_I_reg_0_31_0_0__2_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair62" *) 
+  (* SOFT_HLUTNM = "soft_lutpair60" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_I_reg_0_31_0_0__2_i_2
@@ -7785,16 +7679,17 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .O(CHANNEL_RESPONSE_I_reg_0_31_0_0__3_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
-  LUT5 #(
-    .INIT(32'hFFFF8A80)) 
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFF8A80)) 
     CHANNEL_RESPONSE_I_reg_0_31_0_0__3_i_1
        (.I0(\FSM_onehot_STATE_reg_n_0_[1] ),
         .I1(CHANNEL_RESPONSE_I_reg_0_31_0_0__3_i_2_n_0),
         .I2(in),
         .I3(CHANNEL_RESPONSE_I_reg_0_31_0_0__0_i_4_n_4),
         .I4(\ATAN_CONSTELLATION_IN_I[4]_i_2_n_0 ),
+        .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_I_reg_0_31_0_0__3_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair61" *) 
+  (* SOFT_HLUTNM = "soft_lutpair59" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_I_reg_0_31_0_0__3_i_2
@@ -7822,16 +7717,17 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .O(CHANNEL_RESPONSE_I_reg_0_31_0_0__4_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
-  LUT5 #(
-    .INIT(32'hFFFF8A80)) 
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFF8A80)) 
     CHANNEL_RESPONSE_I_reg_0_31_0_0__4_i_1
        (.I0(\FSM_onehot_STATE_reg_n_0_[1] ),
         .I1(CHANNEL_RESPONSE_I_reg_0_31_0_0__4_i_2_n_0),
         .I2(in),
         .I3(CHANNEL_RESPONSE_I_reg_0_31_0_0__4_i_3_n_7),
         .I4(\ATAN_CONSTELLATION_IN_I[5]_i_2_n_0 ),
+        .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_I_reg_0_31_0_0__4_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair60" *) 
+  (* SOFT_HLUTNM = "soft_lutpair58" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_I_reg_0_31_0_0__4_i_2
@@ -7905,7 +7801,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\ATAN_CONSTELLATION_IN_I[6]_i_2_n_0 ),
         .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_I_reg_0_31_0_0__5_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair60" *) 
+  (* SOFT_HLUTNM = "soft_lutpair58" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_I_reg_0_31_0_0__5_i_2
@@ -7943,7 +7839,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\ATAN_CONSTELLATION_IN_I[7]_i_2_n_0 ),
         .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_I_reg_0_31_0_0__6_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair59" *) 
+  (* SOFT_HLUTNM = "soft_lutpair57" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_I_reg_0_31_0_0__6_i_2
@@ -7981,7 +7877,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\ATAN_CONSTELLATION_IN_I[8]_i_2_n_0 ),
         .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_I_reg_0_31_0_0__7_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair59" *) 
+  (* SOFT_HLUTNM = "soft_lutpair57" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_I_reg_0_31_0_0__7_i_2
@@ -8019,7 +7915,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\ATAN_CONSTELLATION_IN_I[9]_i_2_n_0 ),
         .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_I_reg_0_31_0_0__8_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair58" *) 
+  (* SOFT_HLUTNM = "soft_lutpair56" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_I_reg_0_31_0_0__8_i_2
@@ -8092,7 +7988,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I3(CHANNEL_RESPONSE_I_reg_0_31_0_0__8_i_3_n_6),
         .I4(\ATAN_CONSTELLATION_IN_I[10]_i_2_n_0 ),
         .O(CHANNEL_RESPONSE_I_reg_0_31_0_0__9_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair58" *) 
+  (* SOFT_HLUTNM = "soft_lutpair56" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_I_reg_0_31_0_0__9_i_2
@@ -8118,7 +8014,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I3(INPUT_DATA_VALID),
         .I4(INPUT_DATA_CNTR[5]),
         .O(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair61" *) 
+  (* SOFT_HLUTNM = "soft_lutpair59" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_I_reg_0_31_0_0_i_3
@@ -8126,7 +8022,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I1(IDATA_BUFFER[23]),
         .I2(IDATA_BUFFER[1]),
         .O(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_3_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair34" *) 
+  (* SOFT_HLUTNM = "soft_lutpair36" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \CHANNEL_RESPONSE_PHASE_UPDATE_INDEX[0]_i_1 
@@ -8150,14 +8046,14 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I3(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
         .I4(CHANNEL_RESPONSE_AMPLITUDE),
         .O(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX[1]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \CHANNEL_RESPONSE_PHASE_UPDATE_INDEX[1]_i_3 
        (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[0] ),
         .I1(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[1] ),
         .O(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX[1]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT4 #(
     .INIT(16'hE000)) 
     \CHANNEL_RESPONSE_PHASE_UPDATE_INDEX[1]_i_4 
@@ -8166,7 +8062,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[5] ),
         .I3(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[4] ),
         .O(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX[1]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT5 #(
     .INIT(32'h04444000)) 
     \CHANNEL_RESPONSE_PHASE_UPDATE_INDEX[2]_i_1 
@@ -8196,7 +8092,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[3] ),
         .I5(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[4] ),
         .O(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX[4]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT5 #(
     .INIT(32'h2A2A2AAA)) 
     \CHANNEL_RESPONSE_PHASE_UPDATE_INDEX[4]_i_2 
@@ -8222,7 +8118,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX[5]_i_3_n_0 ),
         .I5(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[5] ),
         .O(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX[5]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair34" *) 
+  (* SOFT_HLUTNM = "soft_lutpair36" *) 
   LUT4 #(
     .INIT(16'h7FFF)) 
     \CHANNEL_RESPONSE_PHASE_UPDATE_INDEX[5]_i_3 
@@ -8398,7 +8294,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\FSM_onehot_STATE_reg_n_0_[1] ),
         .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(p_3_in[0]));
-  (* SOFT_HLUTNM = "soft_lutpair30" *) 
+  (* SOFT_HLUTNM = "soft_lutpair33" *) 
   LUT4 #(
     .INIT(16'hE200)) 
     CHANNEL_RESPONSE_PHASE_reg_r1_0_63_0_2_i_11
@@ -8407,7 +8303,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(ATAN_CONSTELLATION_PHASE_OUT[0]),
         .I3(CHANNEL_RESPONSE_AMPLITUDE),
         .O(CHANNEL_RESPONSE_PHASE_reg_r1_0_63_0_2_i_11_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair29" *) 
+  (* SOFT_HLUTNM = "soft_lutpair32" *) 
   LUT4 #(
     .INIT(16'hE200)) 
     CHANNEL_RESPONSE_PHASE_reg_r1_0_63_0_2_i_12
@@ -8416,7 +8312,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(ATAN_CONSTELLATION_PHASE_OUT[1]),
         .I3(CHANNEL_RESPONSE_AMPLITUDE),
         .O(CHANNEL_RESPONSE_PHASE_reg_r1_0_63_0_2_i_12_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair28" *) 
+  (* SOFT_HLUTNM = "soft_lutpair31" *) 
   LUT4 #(
     .INIT(16'hE200)) 
     CHANNEL_RESPONSE_PHASE_reg_r1_0_63_0_2_i_13
@@ -8556,7 +8452,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I3(\FSM_onehot_STATE_reg_n_0_[1] ),
         .I4(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(p_4_in[14]));
-  (* SOFT_HLUTNM = "soft_lutpair18" *) 
+  (* SOFT_HLUTNM = "soft_lutpair21" *) 
   LUT4 #(
     .INIT(16'hE200)) 
     CHANNEL_RESPONSE_PHASE_reg_r1_0_63_12_14_i_4
@@ -8565,7 +8461,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(ATAN_CONSTELLATION_PHASE_OUT[12]),
         .I3(CHANNEL_RESPONSE_AMPLITUDE),
         .O(CHANNEL_RESPONSE_PHASE_reg_r1_0_63_12_14_i_4_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair17" *) 
+  (* SOFT_HLUTNM = "soft_lutpair20" *) 
   LUT4 #(
     .INIT(16'hE200)) 
     CHANNEL_RESPONSE_PHASE_reg_r1_0_63_12_14_i_5
@@ -8574,7 +8470,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(ATAN_CONSTELLATION_PHASE_OUT[13]),
         .I3(CHANNEL_RESPONSE_AMPLITUDE),
         .O(CHANNEL_RESPONSE_PHASE_reg_r1_0_63_12_14_i_5_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair16" *) 
+  (* SOFT_HLUTNM = "soft_lutpair19" *) 
   LUT4 #(
     .INIT(16'hE200)) 
     CHANNEL_RESPONSE_PHASE_reg_r1_0_63_12_14_i_6
@@ -8639,7 +8535,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I3(\FSM_onehot_STATE_reg_n_0_[1] ),
         .I4(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(p_4_in[17]));
-  (* SOFT_HLUTNM = "soft_lutpair15" *) 
+  (* SOFT_HLUTNM = "soft_lutpair18" *) 
   LUT4 #(
     .INIT(16'hE200)) 
     CHANNEL_RESPONSE_PHASE_reg_r1_0_63_15_17_i_4
@@ -8648,7 +8544,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(ATAN_CONSTELLATION_PHASE_OUT[15]),
         .I3(CHANNEL_RESPONSE_AMPLITUDE),
         .O(CHANNEL_RESPONSE_PHASE_reg_r1_0_63_15_17_i_4_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair14" *) 
+  (* SOFT_HLUTNM = "soft_lutpair17" *) 
   LUT4 #(
     .INIT(16'hE200)) 
     CHANNEL_RESPONSE_PHASE_reg_r1_0_63_15_17_i_5
@@ -8657,7 +8553,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(ATAN_CONSTELLATION_PHASE_OUT[16]),
         .I3(CHANNEL_RESPONSE_AMPLITUDE),
         .O(CHANNEL_RESPONSE_PHASE_reg_r1_0_63_15_17_i_5_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair13" *) 
+  (* SOFT_HLUTNM = "soft_lutpair16" *) 
   LUT4 #(
     .INIT(16'hE200)) 
     CHANNEL_RESPONSE_PHASE_reg_r1_0_63_15_17_i_6
@@ -8722,7 +8618,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I3(\FSM_onehot_STATE_reg_n_0_[1] ),
         .I4(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(p_4_in[20]));
-  (* SOFT_HLUTNM = "soft_lutpair12" *) 
+  (* SOFT_HLUTNM = "soft_lutpair15" *) 
   LUT4 #(
     .INIT(16'hE200)) 
     CHANNEL_RESPONSE_PHASE_reg_r1_0_63_18_20_i_4
@@ -8731,7 +8627,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(ATAN_CONSTELLATION_PHASE_OUT[18]),
         .I3(CHANNEL_RESPONSE_AMPLITUDE),
         .O(CHANNEL_RESPONSE_PHASE_reg_r1_0_63_18_20_i_4_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair11" *) 
+  (* SOFT_HLUTNM = "soft_lutpair14" *) 
   LUT4 #(
     .INIT(16'hE200)) 
     CHANNEL_RESPONSE_PHASE_reg_r1_0_63_18_20_i_5
@@ -8740,7 +8636,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(ATAN_CONSTELLATION_PHASE_OUT[19]),
         .I3(CHANNEL_RESPONSE_AMPLITUDE),
         .O(CHANNEL_RESPONSE_PHASE_reg_r1_0_63_18_20_i_5_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  (* SOFT_HLUTNM = "soft_lutpair13" *) 
   LUT4 #(
     .INIT(16'hE200)) 
     CHANNEL_RESPONSE_PHASE_reg_r1_0_63_18_20_i_6
@@ -8805,7 +8701,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I3(\FSM_onehot_STATE_reg_n_0_[1] ),
         .I4(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(p_4_in[23]));
-  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  (* SOFT_HLUTNM = "soft_lutpair12" *) 
   LUT4 #(
     .INIT(16'hE200)) 
     CHANNEL_RESPONSE_PHASE_reg_r1_0_63_21_23_i_4
@@ -8814,7 +8710,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(ATAN_CONSTELLATION_PHASE_OUT[21]),
         .I3(CHANNEL_RESPONSE_AMPLITUDE),
         .O(CHANNEL_RESPONSE_PHASE_reg_r1_0_63_21_23_i_4_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  (* SOFT_HLUTNM = "soft_lutpair11" *) 
   LUT4 #(
     .INIT(16'hE200)) 
     CHANNEL_RESPONSE_PHASE_reg_r1_0_63_21_23_i_5
@@ -8823,7 +8719,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(ATAN_CONSTELLATION_PHASE_OUT[22]),
         .I3(CHANNEL_RESPONSE_AMPLITUDE),
         .O(CHANNEL_RESPONSE_PHASE_reg_r1_0_63_21_23_i_5_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  (* SOFT_HLUTNM = "soft_lutpair10" *) 
   LUT4 #(
     .INIT(16'hE200)) 
     CHANNEL_RESPONSE_PHASE_reg_r1_0_63_21_23_i_6
@@ -8888,7 +8784,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I3(\FSM_onehot_STATE_reg_n_0_[1] ),
         .I4(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(p_4_in[5]));
-  (* SOFT_HLUTNM = "soft_lutpair27" *) 
+  (* SOFT_HLUTNM = "soft_lutpair30" *) 
   LUT4 #(
     .INIT(16'hE200)) 
     CHANNEL_RESPONSE_PHASE_reg_r1_0_63_3_5_i_4
@@ -8897,7 +8793,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(ATAN_CONSTELLATION_PHASE_OUT[3]),
         .I3(CHANNEL_RESPONSE_AMPLITUDE),
         .O(CHANNEL_RESPONSE_PHASE_reg_r1_0_63_3_5_i_4_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair26" *) 
+  (* SOFT_HLUTNM = "soft_lutpair29" *) 
   LUT4 #(
     .INIT(16'hE200)) 
     CHANNEL_RESPONSE_PHASE_reg_r1_0_63_3_5_i_5
@@ -8906,7 +8802,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(ATAN_CONSTELLATION_PHASE_OUT[4]),
         .I3(CHANNEL_RESPONSE_AMPLITUDE),
         .O(CHANNEL_RESPONSE_PHASE_reg_r1_0_63_3_5_i_5_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair25" *) 
+  (* SOFT_HLUTNM = "soft_lutpair28" *) 
   LUT4 #(
     .INIT(16'hE200)) 
     CHANNEL_RESPONSE_PHASE_reg_r1_0_63_3_5_i_6
@@ -8971,7 +8867,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I3(\FSM_onehot_STATE_reg_n_0_[1] ),
         .I4(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(p_4_in[8]));
-  (* SOFT_HLUTNM = "soft_lutpair24" *) 
+  (* SOFT_HLUTNM = "soft_lutpair27" *) 
   LUT4 #(
     .INIT(16'hE200)) 
     CHANNEL_RESPONSE_PHASE_reg_r1_0_63_6_8_i_4
@@ -8980,7 +8876,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(ATAN_CONSTELLATION_PHASE_OUT[6]),
         .I3(CHANNEL_RESPONSE_AMPLITUDE),
         .O(CHANNEL_RESPONSE_PHASE_reg_r1_0_63_6_8_i_4_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair23" *) 
+  (* SOFT_HLUTNM = "soft_lutpair26" *) 
   LUT4 #(
     .INIT(16'hE200)) 
     CHANNEL_RESPONSE_PHASE_reg_r1_0_63_6_8_i_5
@@ -8989,7 +8885,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(ATAN_CONSTELLATION_PHASE_OUT[7]),
         .I3(CHANNEL_RESPONSE_AMPLITUDE),
         .O(CHANNEL_RESPONSE_PHASE_reg_r1_0_63_6_8_i_5_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair22" *) 
+  (* SOFT_HLUTNM = "soft_lutpair25" *) 
   LUT4 #(
     .INIT(16'hE200)) 
     CHANNEL_RESPONSE_PHASE_reg_r1_0_63_6_8_i_6
@@ -9054,7 +8950,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I3(\FSM_onehot_STATE_reg_n_0_[1] ),
         .I4(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(p_4_in[11]));
-  (* SOFT_HLUTNM = "soft_lutpair21" *) 
+  (* SOFT_HLUTNM = "soft_lutpair24" *) 
   LUT4 #(
     .INIT(16'hE200)) 
     CHANNEL_RESPONSE_PHASE_reg_r1_0_63_9_11_i_4
@@ -9063,7 +8959,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(ATAN_CONSTELLATION_PHASE_OUT[9]),
         .I3(CHANNEL_RESPONSE_AMPLITUDE),
         .O(CHANNEL_RESPONSE_PHASE_reg_r1_0_63_9_11_i_4_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair20" *) 
+  (* SOFT_HLUTNM = "soft_lutpair23" *) 
   LUT4 #(
     .INIT(16'hE200)) 
     CHANNEL_RESPONSE_PHASE_reg_r1_0_63_9_11_i_5
@@ -9072,7 +8968,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(ATAN_CONSTELLATION_PHASE_OUT[10]),
         .I3(CHANNEL_RESPONSE_AMPLITUDE),
         .O(CHANNEL_RESPONSE_PHASE_reg_r1_0_63_9_11_i_5_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair19" *) 
+  (* SOFT_HLUTNM = "soft_lutpair22" *) 
   LUT4 #(
     .INIT(16'hE200)) 
     CHANNEL_RESPONSE_PHASE_reg_r1_0_63_9_11_i_6
@@ -10641,15 +10537,17 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__0_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
-  LUT5 #(
-    .INIT(32'hFFFF8A80)) 
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFF8A80)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__0_i_1
        (.I0(\FSM_onehot_STATE_reg_n_0_[1] ),
         .I1(CHANNEL_RESPONSE_Q_reg_0_31_0_0__0_i_2_n_0),
         .I2(in),
         .I3(CHANNEL_RESPONSE_Q_reg_0_31_0_0__0_i_3_n_7),
         .I4(\ATAN_CONSTELLATION_IN_Q[1]_i_2_n_0 ),
+        .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__0_i_1_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair71" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__0_i_2
@@ -10741,16 +10639,17 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__10_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
-  LUT5 #(
-    .INIT(32'hFFFF8A80)) 
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFF8A80)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__10_i_1
        (.I0(\FSM_onehot_STATE_reg_n_0_[1] ),
         .I1(CHANNEL_RESPONSE_Q_reg_0_31_0_0__10_i_2_n_0),
         .I2(in),
         .I3(CHANNEL_RESPONSE_Q_reg_0_31_0_0__8_i_3_n_5),
         .I4(\ATAN_CONSTELLATION_IN_Q[11]_i_2_n_0 ),
+        .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__10_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair67" *) 
+  (* SOFT_HLUTNM = "soft_lutpair66" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__10_i_2
@@ -10788,7 +10687,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\ATAN_CONSTELLATION_IN_Q[12]_i_2_n_0 ),
         .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__11_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair67" *) 
+  (* SOFT_HLUTNM = "soft_lutpair65" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__11_i_2
@@ -10825,7 +10724,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I3(CHANNEL_RESPONSE_Q_reg_0_31_0_0__12_i_3_n_7),
         .I4(\ATAN_CONSTELLATION_IN_Q[13]_i_2_n_0 ),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__12_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair66" *) 
+  (* SOFT_HLUTNM = "soft_lutpair65" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__12_i_2
@@ -10899,7 +10798,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I3(CHANNEL_RESPONSE_Q_reg_0_31_0_0__12_i_3_n_6),
         .I4(\ATAN_CONSTELLATION_IN_Q[14]_i_2_n_0 ),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__13_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair66" *) 
+  (* SOFT_HLUTNM = "soft_lutpair64" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__13_i_2
@@ -10927,16 +10826,17 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__14_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
-  LUT5 #(
-    .INIT(32'hFFFF8A80)) 
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFF8A80)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__14_i_1
        (.I0(\FSM_onehot_STATE_reg_n_0_[1] ),
         .I1(CHANNEL_RESPONSE_Q_reg_0_31_0_0__14_i_2_n_0),
         .I2(in),
         .I3(CHANNEL_RESPONSE_Q_reg_0_31_0_0__12_i_3_n_5),
         .I4(\ATAN_CONSTELLATION_IN_Q[15]_i_2_n_0 ),
+        .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__14_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair65" *) 
+  (* SOFT_HLUTNM = "soft_lutpair64" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__14_i_2
@@ -10974,7 +10874,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\ATAN_CONSTELLATION_IN_Q[16]_i_2_n_0 ),
         .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__15_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair65" *) 
+  (* SOFT_HLUTNM = "soft_lutpair63" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__15_i_2
@@ -11002,17 +10902,16 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__16_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
-  LUT6 #(
-    .INIT(64'hFFFFFFFFFFFF8A80)) 
+  LUT5 #(
+    .INIT(32'hFFFF8A80)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__16_i_1
        (.I0(\FSM_onehot_STATE_reg_n_0_[1] ),
         .I1(CHANNEL_RESPONSE_Q_reg_0_31_0_0__16_i_2_n_0),
         .I2(in),
         .I3(CHANNEL_RESPONSE_Q_reg_0_31_0_0__16_i_3_n_7),
         .I4(\ATAN_CONSTELLATION_IN_Q[17]_i_2_n_0 ),
-        .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__16_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair64" *) 
+  (* SOFT_HLUTNM = "soft_lutpair63" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__16_i_2
@@ -11087,7 +10986,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\ATAN_CONSTELLATION_IN_Q[18]_i_2_n_0 ),
         .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__17_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair64" *) 
+  (* SOFT_HLUTNM = "soft_lutpair62" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__17_i_2
@@ -11115,17 +11014,16 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__18_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
-  LUT6 #(
-    .INIT(64'hFFFFFFFFFFFF8A80)) 
+  LUT5 #(
+    .INIT(32'hFFFF8A80)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__18_i_1
        (.I0(\FSM_onehot_STATE_reg_n_0_[1] ),
         .I1(CHANNEL_RESPONSE_Q_reg_0_31_0_0__18_i_2_n_0),
         .I2(in),
         .I3(CHANNEL_RESPONSE_Q_reg_0_31_0_0__16_i_3_n_5),
         .I4(\ATAN_CONSTELLATION_IN_Q[19]_i_2_n_0 ),
-        .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__18_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair63" *) 
+  (* SOFT_HLUTNM = "soft_lutpair62" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__18_i_2
@@ -11163,7 +11061,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\ATAN_CONSTELLATION_IN_Q[20]_i_2_n_0 ),
         .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__19_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair41" *) 
+  (* SOFT_HLUTNM = "soft_lutpair61" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__19_i_2
@@ -11171,16 +11069,17 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[21]),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__19_i_2_n_0));
-  LUT5 #(
-    .INIT(32'hFFFF8A80)) 
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFF8A80)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__1_i_1
        (.I0(\FSM_onehot_STATE_reg_n_0_[1] ),
         .I1(CHANNEL_RESPONSE_Q_reg_0_31_0_0__1_i_2_n_0),
         .I2(in),
         .I3(CHANNEL_RESPONSE_Q_reg_0_31_0_0__0_i_3_n_6),
         .I4(\ATAN_CONSTELLATION_IN_Q[2]_i_2_n_0 ),
+        .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__1_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair72" *) 
+  (* SOFT_HLUTNM = "soft_lutpair71" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__1_i_2
@@ -11238,11 +11137,11 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\ATAN_CONSTELLATION_IN_Q[21]_i_2_n_0 ),
         .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__20_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair41" *) 
+  (* SOFT_HLUTNM = "soft_lutpair42" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__20_i_2
-       (.I0(CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_2_n_7),
+       (.I0(ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_9_n_7),
         .I1(QDATA_BUFFER[23]),
         .I2(QDATA_BUFFER[22]),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__20_i_2_n_0));
@@ -11258,21 +11157,21 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   LUT2 #(
     .INIT(4'hB)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__20_i_4
-       (.I0(CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_2_n_1),
+       (.I0(ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_9_n_1),
         .I1(QDATA_BUFFER[23]),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__20_i_4_n_0));
   LUT2 #(
     .INIT(4'h7)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__20_i_5
        (.I0(QDATA_BUFFER[23]),
-        .I1(CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_2_n_6),
+        .I1(ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_9_n_6),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__20_i_5_n_0));
   LUT3 #(
     .INIT(8'h1D)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__20_i_6
        (.I0(QDATA_BUFFER[22]),
         .I1(QDATA_BUFFER[23]),
-        .I2(CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_2_n_7),
+        .I2(ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_9_n_7),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__20_i_6_n_0));
   (* RTL_RAM_BITS = "1248" *) 
   (* RTL_RAM_NAME = "U0/CHANNEL_RESPONSE_Q_reg" *) 
@@ -11295,60 +11194,22 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
   LUT6 #(
-    .INIT(64'hFFFFFFFF80F08000)) 
+    .INIT(64'hFFFFFFFFFFFF8A80)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_1
-       (.I0(CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_2_n_6),
-        .I1(QDATA_BUFFER[23]),
-        .I2(\FSM_onehot_STATE_reg_n_0_[1] ),
-        .I3(in),
-        .I4(CHANNEL_RESPONSE_Q_reg_0_31_0_0__20_i_3_n_6),
-        .I5(\ATAN_CONSTELLATION_IN_Q[22]_i_2_n_0 ),
+       (.I0(\FSM_onehot_STATE_reg_n_0_[1] ),
+        .I1(CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_2_n_0),
+        .I2(in),
+        .I3(CHANNEL_RESPONSE_Q_reg_0_31_0_0__20_i_3_n_6),
+        .I4(\ATAN_CONSTELLATION_IN_Q[22]_i_2_n_0 ),
+        .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_1_n_0));
-  (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
-  CARRY4 CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_2
-       (.CI(ATAN_CONSTELLATION_IN_Q0__21_carry__3_i_9_n_0),
-        .CO({NLW_CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_2_CO_UNCONNECTED[3],CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_2_n_1,NLW_CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_2_CO_UNCONNECTED[1],CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_2_n_3}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({NLW_CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_2_O_UNCONNECTED[3:2],CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_2_n_6,CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_2_n_7}),
-        .S({1'b0,1'b1,CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_3_n_0,CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_4_n_0}));
+  (* SOFT_HLUTNM = "soft_lutpair42" *) 
   LUT2 #(
-    .INIT(4'h7)) 
-    CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_3
-       (.I0(CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_5_n_5),
+    .INIT(4'h8)) 
+    CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_2
+       (.I0(ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_9_n_6),
         .I1(QDATA_BUFFER[23]),
-        .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_3_n_0));
-  LUT3 #(
-    .INIT(8'h47)) 
-    CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_4
-       (.I0(CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_5_n_6),
-        .I1(QDATA_BUFFER[23]),
-        .I2(QDATA_BUFFER[22]),
-        .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_4_n_0));
-  (* ADDER_THRESHOLD = "35" *) 
-  (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
-  CARRY4 CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_5
-       (.CI(ATAN_CONSTELLATION_IN_Q0__21_carry__2_i_14_n_0),
-        .CO({NLW_CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_5_CO_UNCONNECTED[3:2],CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_5_n_2,CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_5_n_3}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({NLW_CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_5_O_UNCONNECTED[3],CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_5_n_5,CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_5_n_6,CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_5_n_7}),
-        .S({1'b0,CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_6_n_0,CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_7_n_0,CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_8_n_0}));
-  LUT1 #(
-    .INIT(2'h1)) 
-    CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_6
-       (.I0(QDATA_BUFFER[23]),
-        .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_6_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_7
-       (.I0(QDATA_BUFFER[22]),
-        .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_7_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_8
-       (.I0(QDATA_BUFFER[21]),
-        .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_8_n_0));
+        .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_2_n_0));
   (* RTL_RAM_BITS = "1248" *) 
   (* RTL_RAM_NAME = "U0/CHANNEL_RESPONSE_Q_reg" *) 
   (* RTL_RAM_TYPE = "RAM_SP" *) 
@@ -11379,30 +11240,31 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(CHANNEL_RESPONSE_Q_reg_0_31_0_0__22_i_3_n_0),
         .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__22_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair63" *) 
+  (* SOFT_HLUTNM = "soft_lutpair61" *) 
   LUT2 #(
     .INIT(4'h2)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__22_i_2
        (.I0(QDATA_BUFFER[23]),
-        .I1(CHANNEL_RESPONSE_Q_reg_0_31_0_0__21_i_2_n_1),
+        .I1(ATAN_CONSTELLATION_IN_Q0__21_carry__4_i_9_n_1),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__22_i_2_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair23" *) 
+  (* SOFT_HLUTNM = "soft_lutpair24" *) 
   LUT2 #(
     .INIT(4'h8)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__22_i_3
        (.I0(CHANNEL_RESPONSE_AMPLITUDE),
         .I1(ATAN_CONSTELLATION_IN_Q0__21_carry__4_n_4),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__22_i_3_n_0));
-  LUT5 #(
-    .INIT(32'hFFFF8A80)) 
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFF8A80)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__2_i_1
        (.I0(\FSM_onehot_STATE_reg_n_0_[1] ),
         .I1(CHANNEL_RESPONSE_Q_reg_0_31_0_0__2_i_2_n_0),
         .I2(in),
         .I3(CHANNEL_RESPONSE_Q_reg_0_31_0_0__0_i_3_n_5),
         .I4(\ATAN_CONSTELLATION_IN_Q[3]_i_2_n_0 ),
+        .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__2_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair72" *) 
+  (* SOFT_HLUTNM = "soft_lutpair70" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__2_i_2
@@ -11430,16 +11292,17 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__3_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
-  LUT5 #(
-    .INIT(32'hFFFF8A80)) 
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFF8A80)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__3_i_1
        (.I0(\FSM_onehot_STATE_reg_n_0_[1] ),
         .I1(CHANNEL_RESPONSE_Q_reg_0_31_0_0__3_i_2_n_0),
         .I2(in),
         .I3(CHANNEL_RESPONSE_Q_reg_0_31_0_0__0_i_3_n_4),
         .I4(\ATAN_CONSTELLATION_IN_Q[4]_i_2_n_0 ),
+        .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__3_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair71" *) 
+  (* SOFT_HLUTNM = "soft_lutpair69" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__3_i_2
@@ -11477,7 +11340,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\ATAN_CONSTELLATION_IN_Q[5]_i_2_n_0 ),
         .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__4_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair70" *) 
+  (* SOFT_HLUTNM = "soft_lutpair69" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__4_i_2
@@ -11551,7 +11414,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I3(CHANNEL_RESPONSE_Q_reg_0_31_0_0__4_i_3_n_6),
         .I4(\ATAN_CONSTELLATION_IN_Q[6]_i_2_n_0 ),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__5_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair70" *) 
+  (* SOFT_HLUTNM = "soft_lutpair68" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__5_i_2
@@ -11579,16 +11442,17 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__6_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
-  LUT5 #(
-    .INIT(32'hFFFF8A80)) 
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFF8A80)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__6_i_1
        (.I0(\FSM_onehot_STATE_reg_n_0_[1] ),
         .I1(CHANNEL_RESPONSE_Q_reg_0_31_0_0__6_i_2_n_0),
         .I2(in),
         .I3(CHANNEL_RESPONSE_Q_reg_0_31_0_0__4_i_3_n_5),
         .I4(\ATAN_CONSTELLATION_IN_Q[7]_i_2_n_0 ),
+        .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__6_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair69" *) 
+  (* SOFT_HLUTNM = "soft_lutpair68" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__6_i_2
@@ -11626,7 +11490,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\ATAN_CONSTELLATION_IN_Q[8]_i_2_n_0 ),
         .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__7_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair69" *) 
+  (* SOFT_HLUTNM = "soft_lutpair67" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__7_i_2
@@ -11654,16 +11518,17 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__8_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
-  LUT5 #(
-    .INIT(32'hFFFF8A80)) 
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFF8A80)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__8_i_1
        (.I0(\FSM_onehot_STATE_reg_n_0_[1] ),
         .I1(CHANNEL_RESPONSE_Q_reg_0_31_0_0__8_i_2_n_0),
         .I2(in),
         .I3(CHANNEL_RESPONSE_Q_reg_0_31_0_0__8_i_3_n_7),
         .I4(\ATAN_CONSTELLATION_IN_Q[9]_i_2_n_0 ),
+        .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__8_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair68" *) 
+  (* SOFT_HLUTNM = "soft_lutpair67" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__8_i_2
@@ -11728,16 +11593,17 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__9_n_0),
         .WCLK(CLOCK),
         .WE(CHANNEL_RESPONSE_I_reg_0_31_0_0_i_2_n_0));
-  LUT5 #(
-    .INIT(32'hFFFF8A80)) 
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFF8A80)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__9_i_1
        (.I0(\FSM_onehot_STATE_reg_n_0_[1] ),
         .I1(CHANNEL_RESPONSE_Q_reg_0_31_0_0__9_i_2_n_0),
         .I2(in),
         .I3(CHANNEL_RESPONSE_Q_reg_0_31_0_0__8_i_3_n_6),
         .I4(\ATAN_CONSTELLATION_IN_Q[10]_i_2_n_0 ),
+        .I5(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0__9_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair68" *) 
+  (* SOFT_HLUTNM = "soft_lutpair66" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0__9_i_2
@@ -11754,7 +11620,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I3(ATAN_CONSTELLATION_IN_Q0__21_carry_n_7),
         .I4(\FSM_onehot_STATE_reg_n_0_[0] ),
         .O(CHANNEL_RESPONSE_Q_reg_0_31_0_0_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair71" *) 
+  (* SOFT_HLUTNM = "soft_lutpair70" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     CHANNEL_RESPONSE_Q_reg_0_31_0_0_i_2
@@ -12204,7 +12070,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\CONSTELLATION_IDATA_OUT[23]_i_3_n_0 ),
         .I5(CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER),
         .O(CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair31" *) 
   LUT2 #(
     .INIT(4'h1)) 
     CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER_i_2
@@ -12337,7 +12202,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_5
        (.I0(ROTATION_CONSTELLATION_DATA_OUT_CNTR[1]),
         .O(CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_5_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair38" *) 
+  (* SOFT_HLUTNM = "soft_lutpair39" *) 
   LUT3 #(
     .INIT(8'h20)) 
     CONSTELLATION_IDATA_LAST_HALF_BUFFER_reg_0_31_0_5_i_6
@@ -12601,16 +12466,16 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I5(p_2_out[23]),
         .O(\CONSTELLATION_IDATA_OUT[23]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'h4000404040404040)) 
+    .INIT(64'h0000000088880888)) 
     \CONSTELLATION_IDATA_OUT[23]_i_3 
-       (.I0(ROTATION_CONSTELLATION_DATA_OUT_CNTR[5]),
-        .I1(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
-        .I2(ROTATION_CONSTELLATION_DATA_OUT_STROBE),
-        .I3(CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER_i_2_n_0),
-        .I4(ROTATION_CONSTELLATION_DATA_OUT_CNTR[3]),
-        .I5(ROTATION_CONSTELLATION_DATA_OUT_CNTR[4]),
+       (.I0(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
+        .I1(ROTATION_CONSTELLATION_DATA_OUT_STROBE),
+        .I2(ROTATION_CONSTELLATION_DATA_OUT_CNTR[4]),
+        .I3(ROTATION_CONSTELLATION_DATA_OUT_CNTR[3]),
+        .I4(CONSTELLATION_DATA_OUT_FIRST_SYMBOL_MARKER_i_2_n_0),
+        .I5(ROTATION_CONSTELLATION_DATA_OUT_CNTR[5]),
         .O(\CONSTELLATION_IDATA_OUT[23]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT4 #(
     .INIT(16'hE000)) 
     \CONSTELLATION_IDATA_OUT[23]_i_4 
@@ -12963,7 +12828,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(CONSTELLATION_OUT_LAST_HALF_CNTR__1[3]),
         .I5(\CONSTELLATION_OUT_LAST_HALF_CNTR[3]_i_2_n_0 ),
         .O(\CONSTELLATION_OUT_LAST_HALF_CNTR[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT5 #(
     .INIT(32'h2A2A2AAA)) 
     \CONSTELLATION_OUT_LAST_HALF_CNTR[3]_i_2 
@@ -12974,7 +12839,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(CONSTELLATION_OUT_LAST_HALF_CNTR__1[2]),
         .O(\CONSTELLATION_OUT_LAST_HALF_CNTR[3]_i_2_n_0 ));
   LUT5 #(
-    .INIT(32'hAAAABEAA)) 
+    .INIT(32'hAAAAFEAA)) 
     \CONSTELLATION_OUT_LAST_HALF_CNTR[4]_i_1 
        (.I0(\FSM_onehot_STATE_reg_n_0_[0] ),
         .I1(CONSTELLATION_OUT_LAST_HALF_CNTR__1[4]),
@@ -13610,7 +13475,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .D(FFT_DATA_IN_VALID),
         .Q(FFT_DATA_IN_VALID_BUFFER),
         .R(RESET));
-  (* SOFT_HLUTNM = "soft_lutpair37" *) 
+  (* SOFT_HLUTNM = "soft_lutpair38" *) 
   LUT3 #(
     .INIT(8'h8A)) 
     \FSM_onehot_STATE[0]_i_1 
@@ -13618,7 +13483,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I1(FFT_DATA_IN_VALID_BUFFER),
         .I2(FFT_DATA_IN_VALID),
         .O(\FSM_onehot_STATE[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair38" *) 
+  (* SOFT_HLUTNM = "soft_lutpair34" *) 
   LUT2 #(
     .INIT(4'hE)) 
     \FSM_onehot_STATE[1]_i_1 
@@ -13635,7 +13500,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\FSM_onehot_STATE_reg_n_0_[1] ),
         .I5(p_0_in8_out),
         .O(\FSM_onehot_STATE[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair35" *) 
+  (* SOFT_HLUTNM = "soft_lutpair37" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \FSM_onehot_STATE[3]_i_2 
@@ -13876,14 +13741,14 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .D(FFT_IDATA_IN[9]),
         .Q(IDATA_BUFFER[9]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair39" *) 
+  (* SOFT_HLUTNM = "soft_lutpair40" *) 
   LUT2 #(
     .INIT(4'h9)) 
     \INPUT_DATA_CNTR[0]_i_1 
        (.I0(\INPUT_FFT_CNTR_reg_n_0_[0] ),
         .I1(INPUT_DATA_CNTR1),
         .O(\INPUT_DATA_CNTR[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair39" *) 
+  (* SOFT_HLUTNM = "soft_lutpair40" *) 
   LUT3 #(
     .INIT(8'h59)) 
     \INPUT_DATA_CNTR[1]_i_1 
@@ -13891,7 +13756,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I1(\INPUT_FFT_CNTR_reg_n_0_[0] ),
         .I2(INPUT_DATA_CNTR1),
         .O(\INPUT_DATA_CNTR[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT4 #(
     .INIT(16'h339C)) 
     \INPUT_DATA_CNTR[2]_i_1 
@@ -13900,7 +13765,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(\INPUT_FFT_CNTR_reg_n_0_[0] ),
         .I3(\INPUT_FFT_CNTR_reg_n_0_[1] ),
         .O(\INPUT_DATA_CNTR[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT5 #(
     .INIT(32'hC6C33333)) 
     \INPUT_DATA_CNTR[3]_i_1 
@@ -13921,55 +13786,55 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I5(\INPUT_FFT_CNTR_reg_n_0_[3] ),
         .O(\INPUT_DATA_CNTR[4]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hAABAAAAAAAAAAAAA)) 
+    .INIT(64'hFFFFFFFF04000000)) 
     \INPUT_DATA_CNTR[5]_i_1 
-       (.I0(INPUT_DATA_CNTR1),
-        .I1(\INPUT_DATA_CNTR[5]_i_4_n_0 ),
-        .I2(\INPUT_FFT_CNTR_reg_n_0_[5] ),
-        .I3(\INPUT_DATA_CNTR[5]_i_5_n_0 ),
-        .I4(FFT_DATA_IN_VALID),
-        .I5(p_1_in_0),
-        .O(\INPUT_DATA_CNTR[5]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h04FFFB000400FBFF)) 
-    \INPUT_DATA_CNTR[5]_i_2 
-       (.I0(\INPUT_FFT_CNTR_reg_n_0_[4] ),
-        .I1(\INPUT_DATA_CNTR[5]_i_6_n_0 ),
-        .I2(\INPUT_FFT_CNTR_reg_n_0_[3] ),
-        .I3(INPUT_DATA_CNTR1),
-        .I4(\INPUT_FFT_CNTR_reg_n_0_[5] ),
-        .I5(\INPUT_DATA_CNTR[5]_i_5_n_0 ),
-        .O(\INPUT_DATA_CNTR[5]_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'h00006A00)) 
-    \INPUT_DATA_CNTR[5]_i_3 
-       (.I0(p_1_in_0),
+       (.I0(\INPUT_DATA_CNTR[5]_i_3_n_0 ),
         .I1(\INPUT_FFT_CNTR_reg_n_0_[5] ),
         .I2(\INPUT_DATA_CNTR[5]_i_4_n_0 ),
         .I3(FFT_DATA_IN_VALID),
-        .I4(\INPUT_DATA_CNTR[5]_i_7_n_0 ),
-        .O(INPUT_DATA_CNTR1));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+        .I4(p_1_in_0),
+        .I5(INPUT_DATA_CNTR1),
+        .O(\INPUT_DATA_CNTR[5]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h5959595959A95959)) 
+    \INPUT_DATA_CNTR[5]_i_2 
+       (.I0(\INPUT_FFT_CNTR_reg_n_0_[5] ),
+        .I1(\INPUT_DATA_CNTR[5]_i_4_n_0 ),
+        .I2(INPUT_DATA_CNTR1),
+        .I3(\INPUT_FFT_CNTR_reg_n_0_[4] ),
+        .I4(\INPUT_DATA_CNTR[5]_i_6_n_0 ),
+        .I5(\INPUT_FFT_CNTR_reg_n_0_[3] ),
+        .O(\INPUT_DATA_CNTR[5]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT5 #(
     .INIT(32'h80000000)) 
-    \INPUT_DATA_CNTR[5]_i_4 
+    \INPUT_DATA_CNTR[5]_i_3 
        (.I0(\INPUT_FFT_CNTR_reg_n_0_[4] ),
         .I1(\INPUT_FFT_CNTR_reg_n_0_[3] ),
         .I2(\INPUT_FFT_CNTR_reg_n_0_[2] ),
         .I3(\INPUT_FFT_CNTR_reg_n_0_[1] ),
         .I4(\INPUT_FFT_CNTR_reg_n_0_[0] ),
-        .O(\INPUT_DATA_CNTR[5]_i_4_n_0 ));
+        .O(\INPUT_DATA_CNTR[5]_i_3_n_0 ));
   (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT5 #(
     .INIT(32'h00001115)) 
-    \INPUT_DATA_CNTR[5]_i_5 
+    \INPUT_DATA_CNTR[5]_i_4 
        (.I0(\INPUT_FFT_CNTR_reg_n_0_[4] ),
         .I1(\INPUT_FFT_CNTR_reg_n_0_[2] ),
         .I2(\INPUT_FFT_CNTR_reg_n_0_[0] ),
         .I3(\INPUT_FFT_CNTR_reg_n_0_[1] ),
         .I4(\INPUT_FFT_CNTR_reg_n_0_[3] ),
-        .O(\INPUT_DATA_CNTR[5]_i_5_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair42" *) 
+        .O(\INPUT_DATA_CNTR[5]_i_4_n_0 ));
+  LUT5 #(
+    .INIT(32'h00006A00)) 
+    \INPUT_DATA_CNTR[5]_i_5 
+       (.I0(p_1_in_0),
+        .I1(\INPUT_FFT_CNTR_reg_n_0_[5] ),
+        .I2(\INPUT_DATA_CNTR[5]_i_3_n_0 ),
+        .I3(FFT_DATA_IN_VALID),
+        .I4(\INPUT_DATA_CNTR[5]_i_7_n_0 ),
+        .O(INPUT_DATA_CNTR1));
+  (* SOFT_HLUTNM = "soft_lutpair43" *) 
   LUT2 #(
     .INIT(4'h7)) 
     \INPUT_DATA_CNTR[5]_i_6 
@@ -14034,38 +13899,28 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .D(\INPUT_DATA_CNTR[5]_i_2_n_0 ),
         .Q(INPUT_DATA_CNTR[5]),
         .R(RESET));
-  LUT6 #(
-    .INIT(64'hFFFFFFFF04000000)) 
-    INPUT_DATA_VALID_i_1
-       (.I0(\INPUT_DATA_CNTR[5]_i_4_n_0 ),
-        .I1(\INPUT_FFT_CNTR_reg_n_0_[5] ),
-        .I2(\INPUT_DATA_CNTR[5]_i_5_n_0 ),
-        .I3(FFT_DATA_IN_VALID),
-        .I4(p_1_in_0),
-        .I5(INPUT_DATA_CNTR1),
-        .O(INPUT_DATA_VALID_i_1_n_0));
   FDRE #(
     .INIT(1'b0)) 
     INPUT_DATA_VALID_reg
        (.C(CLOCK),
         .CE(1'b1),
-        .D(INPUT_DATA_VALID_i_1_n_0),
+        .D(\INPUT_DATA_CNTR[5]_i_1_n_0 ),
         .Q(INPUT_DATA_VALID),
         .R(RESET));
-  (* SOFT_HLUTNM = "soft_lutpair73" *) 
+  (* SOFT_HLUTNM = "soft_lutpair72" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \INPUT_FFT_CNTR[0]_i_1 
        (.I0(\INPUT_FFT_CNTR_reg_n_0_[0] ),
         .O(\INPUT_FFT_CNTR[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair73" *) 
+  (* SOFT_HLUTNM = "soft_lutpair72" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \INPUT_FFT_CNTR[1]_i_1 
        (.I0(\INPUT_FFT_CNTR_reg_n_0_[1] ),
         .I1(\INPUT_FFT_CNTR_reg_n_0_[0] ),
         .O(\INPUT_FFT_CNTR[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair42" *) 
+  (* SOFT_HLUTNM = "soft_lutpair43" *) 
   LUT3 #(
     .INIT(8'h6A)) 
     \INPUT_FFT_CNTR[2]_i_1 
@@ -14073,7 +13928,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I1(\INPUT_FFT_CNTR_reg_n_0_[0] ),
         .I2(\INPUT_FFT_CNTR_reg_n_0_[1] ),
         .O(\INPUT_FFT_CNTR[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT4 #(
     .INIT(16'h6AAA)) 
     \INPUT_FFT_CNTR[3]_i_1 
@@ -14113,7 +13968,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   LUT6 #(
     .INIT(64'hFFFF77F7FFFF00F0)) 
     \INPUT_FFT_CNTR[6]_inv_i_1 
-       (.I0(\INPUT_DATA_CNTR[5]_i_4_n_0 ),
+       (.I0(\INPUT_DATA_CNTR[5]_i_3_n_0 ),
         .I1(\INPUT_FFT_CNTR_reg_n_0_[5] ),
         .I2(FFT_DATA_IN_VALID),
         .I3(FFT_DATA_IN_VALID_BUFFER),
@@ -14358,49 +14213,49 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\PILOT_POLARITY_CNTR[6]_i_3_n_0 ),
         .O(PILOT_I_ACCUMULATOR[11]));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_I_ACCUMULATOR[11]_i_10 
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[9] ),
         .I1(ROTATION_CONSTELLATION_IDATA_OUT[9]),
         .O(\PILOT_I_ACCUMULATOR[11]_i_10_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_I_ACCUMULATOR[11]_i_11 
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[8] ),
         .I1(ROTATION_CONSTELLATION_IDATA_OUT[8]),
         .O(\PILOT_I_ACCUMULATOR[11]_i_11_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_I_ACCUMULATOR[11]_i_4 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[11]),
         .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[11] ),
         .O(\PILOT_I_ACCUMULATOR[11]_i_4_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_I_ACCUMULATOR[11]_i_5 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[10]),
         .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[10] ),
         .O(\PILOT_I_ACCUMULATOR[11]_i_5_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_I_ACCUMULATOR[11]_i_6 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[9]),
         .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[9] ),
         .O(\PILOT_I_ACCUMULATOR[11]_i_6_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_I_ACCUMULATOR[11]_i_7 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[8]),
         .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[8] ),
         .O(\PILOT_I_ACCUMULATOR[11]_i_7_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_I_ACCUMULATOR[11]_i_8 
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[11] ),
         .I1(ROTATION_CONSTELLATION_IDATA_OUT[11]),
         .O(\PILOT_I_ACCUMULATOR[11]_i_8_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_I_ACCUMULATOR[11]_i_9 
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[10] ),
         .I1(ROTATION_CONSTELLATION_IDATA_OUT[10]),
@@ -14442,49 +14297,49 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\PILOT_POLARITY_CNTR[6]_i_3_n_0 ),
         .O(PILOT_I_ACCUMULATOR[15]));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_I_ACCUMULATOR[15]_i_10 
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[13] ),
         .I1(ROTATION_CONSTELLATION_IDATA_OUT[13]),
         .O(\PILOT_I_ACCUMULATOR[15]_i_10_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_I_ACCUMULATOR[15]_i_11 
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[12] ),
         .I1(ROTATION_CONSTELLATION_IDATA_OUT[12]),
         .O(\PILOT_I_ACCUMULATOR[15]_i_11_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_I_ACCUMULATOR[15]_i_4 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[15]),
         .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[15] ),
         .O(\PILOT_I_ACCUMULATOR[15]_i_4_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_I_ACCUMULATOR[15]_i_5 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[14]),
         .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[14] ),
         .O(\PILOT_I_ACCUMULATOR[15]_i_5_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_I_ACCUMULATOR[15]_i_6 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[13]),
         .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[13] ),
         .O(\PILOT_I_ACCUMULATOR[15]_i_6_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_I_ACCUMULATOR[15]_i_7 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[12]),
         .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[12] ),
         .O(\PILOT_I_ACCUMULATOR[15]_i_7_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_I_ACCUMULATOR[15]_i_8 
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[15] ),
         .I1(ROTATION_CONSTELLATION_IDATA_OUT[15]),
         .O(\PILOT_I_ACCUMULATOR[15]_i_8_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_I_ACCUMULATOR[15]_i_9 
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[14] ),
         .I1(ROTATION_CONSTELLATION_IDATA_OUT[14]),
@@ -14526,49 +14381,49 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\PILOT_POLARITY_CNTR[6]_i_3_n_0 ),
         .O(PILOT_I_ACCUMULATOR[19]));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_I_ACCUMULATOR[19]_i_10 
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[17] ),
         .I1(ROTATION_CONSTELLATION_IDATA_OUT[17]),
         .O(\PILOT_I_ACCUMULATOR[19]_i_10_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_I_ACCUMULATOR[19]_i_11 
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[16] ),
         .I1(ROTATION_CONSTELLATION_IDATA_OUT[16]),
         .O(\PILOT_I_ACCUMULATOR[19]_i_11_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_I_ACCUMULATOR[19]_i_4 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[19]),
         .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[19] ),
         .O(\PILOT_I_ACCUMULATOR[19]_i_4_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_I_ACCUMULATOR[19]_i_5 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[18]),
         .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[18] ),
         .O(\PILOT_I_ACCUMULATOR[19]_i_5_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_I_ACCUMULATOR[19]_i_6 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[17]),
         .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[17] ),
         .O(\PILOT_I_ACCUMULATOR[19]_i_6_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_I_ACCUMULATOR[19]_i_7 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[16]),
         .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[16] ),
         .O(\PILOT_I_ACCUMULATOR[19]_i_7_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_I_ACCUMULATOR[19]_i_8 
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[19] ),
         .I1(ROTATION_CONSTELLATION_IDATA_OUT[19]),
         .O(\PILOT_I_ACCUMULATOR[19]_i_8_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_I_ACCUMULATOR[19]_i_9 
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[18] ),
         .I1(ROTATION_CONSTELLATION_IDATA_OUT[18]),
@@ -14619,49 +14474,49 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\PILOT_POLARITY_CNTR[6]_i_3_n_0 ),
         .O(PILOT_I_ACCUMULATOR[23]));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_I_ACCUMULATOR[23]_i_10 
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[21] ),
         .I1(ROTATION_CONSTELLATION_IDATA_OUT[21]),
         .O(\PILOT_I_ACCUMULATOR[23]_i_10_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_I_ACCUMULATOR[23]_i_11 
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[20] ),
         .I1(ROTATION_CONSTELLATION_IDATA_OUT[20]),
         .O(\PILOT_I_ACCUMULATOR[23]_i_11_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_I_ACCUMULATOR[23]_i_4 
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[23] ),
         .I1(ROTATION_CONSTELLATION_IDATA_OUT[23]),
         .O(\PILOT_I_ACCUMULATOR[23]_i_4_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_I_ACCUMULATOR[23]_i_5 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[22]),
         .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[22] ),
         .O(\PILOT_I_ACCUMULATOR[23]_i_5_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_I_ACCUMULATOR[23]_i_6 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[21]),
         .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[21] ),
         .O(\PILOT_I_ACCUMULATOR[23]_i_6_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_I_ACCUMULATOR[23]_i_7 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[20]),
         .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[20] ),
         .O(\PILOT_I_ACCUMULATOR[23]_i_7_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_I_ACCUMULATOR[23]_i_8 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[23]),
         .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[23] ),
         .O(\PILOT_I_ACCUMULATOR[23]_i_8_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_I_ACCUMULATOR[23]_i_9 
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[22] ),
         .I1(ROTATION_CONSTELLATION_IDATA_OUT[22]),
@@ -14690,7 +14545,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[24] ),
         .O(\PILOT_I_ACCUMULATOR[25]_i_10_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_I_ACCUMULATOR[25]_i_11 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[23]),
         .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[24] ),
@@ -14715,31 +14570,31 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I5(ROTATION_CONSTELLATION_DATA_OUT_CNTR[0]),
         .O(\PILOT_I_ACCUMULATOR[25]_i_3_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFFBFFFFFBFFEF)) 
+    .INIT(64'h0000000104001000)) 
     \PILOT_I_ACCUMULATOR[25]_i_4 
        (.I0(ROTATION_CONSTELLATION_DATA_OUT_CNTR[3]),
-        .I1(ROTATION_CONSTELLATION_DATA_OUT_CNTR[0]),
-        .I2(ROTATION_CONSTELLATION_DATA_OUT_CNTR[5]),
-        .I3(ROTATION_CONSTELLATION_DATA_OUT_CNTR[4]),
-        .I4(ROTATION_CONSTELLATION_DATA_OUT_CNTR[2]),
-        .I5(ROTATION_CONSTELLATION_DATA_OUT_CNTR[1]),
+        .I1(ROTATION_CONSTELLATION_DATA_OUT_CNTR[1]),
+        .I2(ROTATION_CONSTELLATION_DATA_OUT_CNTR[2]),
+        .I3(ROTATION_CONSTELLATION_DATA_OUT_CNTR[0]),
+        .I4(ROTATION_CONSTELLATION_DATA_OUT_CNTR[4]),
+        .I5(ROTATION_CONSTELLATION_DATA_OUT_CNTR[5]),
         .O(\PILOT_I_ACCUMULATOR[25]_i_4_n_0 ));
-  LUT1 #(
-    .INIT(2'h1)) 
+  LUT2 #(
+    .INIT(4'h9)) 
     \PILOT_I_ACCUMULATOR[25]_i_7 
-       (.I0(ROTATION_CONSTELLATION_IDATA_OUT[23]),
+       (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[25] ),
+        .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[24] ),
         .O(\PILOT_I_ACCUMULATOR[25]_i_7_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \PILOT_I_ACCUMULATOR[25]_i_8 
-       (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[25] ),
-        .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[24] ),
-        .O(\PILOT_I_ACCUMULATOR[25]_i_8_n_0 ));
-  LUT2 #(
-    .INIT(4'h6)) 
-    \PILOT_I_ACCUMULATOR[25]_i_9 
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[24] ),
         .I1(ROTATION_CONSTELLATION_IDATA_OUT[23]),
+        .O(\PILOT_I_ACCUMULATOR[25]_i_8_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \PILOT_I_ACCUMULATOR[25]_i_9 
+       (.I0(ROTATION_CONSTELLATION_IDATA_OUT[23]),
         .O(\PILOT_I_ACCUMULATOR[25]_i_9_n_0 ));
   LUT5 #(
     .INIT(32'h0000F690)) 
@@ -14760,49 +14615,49 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\PILOT_POLARITY_CNTR[6]_i_3_n_0 ),
         .O(PILOT_I_ACCUMULATOR[3]));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_I_ACCUMULATOR[3]_i_10 
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[1] ),
         .I1(ROTATION_CONSTELLATION_IDATA_OUT[1]),
         .O(\PILOT_I_ACCUMULATOR[3]_i_10_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_I_ACCUMULATOR[3]_i_11 
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[0] ),
         .I1(ROTATION_CONSTELLATION_IDATA_OUT[0]),
         .O(\PILOT_I_ACCUMULATOR[3]_i_11_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_I_ACCUMULATOR[3]_i_4 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[3]),
         .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[3] ),
         .O(\PILOT_I_ACCUMULATOR[3]_i_4_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_I_ACCUMULATOR[3]_i_5 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[2]),
         .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[2] ),
         .O(\PILOT_I_ACCUMULATOR[3]_i_5_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_I_ACCUMULATOR[3]_i_6 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[1]),
         .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[1] ),
         .O(\PILOT_I_ACCUMULATOR[3]_i_6_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_I_ACCUMULATOR[3]_i_7 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[0]),
         .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[0] ),
         .O(\PILOT_I_ACCUMULATOR[3]_i_7_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_I_ACCUMULATOR[3]_i_8 
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[3] ),
         .I1(ROTATION_CONSTELLATION_IDATA_OUT[3]),
         .O(\PILOT_I_ACCUMULATOR[3]_i_8_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_I_ACCUMULATOR[3]_i_9 
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[2] ),
         .I1(ROTATION_CONSTELLATION_IDATA_OUT[2]),
@@ -14844,49 +14699,49 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\PILOT_POLARITY_CNTR[6]_i_3_n_0 ),
         .O(PILOT_I_ACCUMULATOR[7]));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_I_ACCUMULATOR[7]_i_10 
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[5] ),
         .I1(ROTATION_CONSTELLATION_IDATA_OUT[5]),
         .O(\PILOT_I_ACCUMULATOR[7]_i_10_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_I_ACCUMULATOR[7]_i_11 
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[4] ),
         .I1(ROTATION_CONSTELLATION_IDATA_OUT[4]),
         .O(\PILOT_I_ACCUMULATOR[7]_i_11_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_I_ACCUMULATOR[7]_i_4 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[7]),
         .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[7] ),
         .O(\PILOT_I_ACCUMULATOR[7]_i_4_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_I_ACCUMULATOR[7]_i_5 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[6]),
         .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[6] ),
         .O(\PILOT_I_ACCUMULATOR[7]_i_5_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_I_ACCUMULATOR[7]_i_6 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[5]),
         .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[5] ),
         .O(\PILOT_I_ACCUMULATOR[7]_i_6_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_I_ACCUMULATOR[7]_i_7 
        (.I0(ROTATION_CONSTELLATION_IDATA_OUT[4]),
         .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[4] ),
         .O(\PILOT_I_ACCUMULATOR[7]_i_7_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_I_ACCUMULATOR[7]_i_8 
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[7] ),
         .I1(ROTATION_CONSTELLATION_IDATA_OUT[7]),
         .O(\PILOT_I_ACCUMULATOR[7]_i_8_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_I_ACCUMULATOR[7]_i_9 
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[6] ),
         .I1(ROTATION_CONSTELLATION_IDATA_OUT[6]),
@@ -15090,7 +14945,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
        (.CI(\PILOT_I_ACCUMULATOR_reg[19]_i_2_n_0 ),
         .CO({\PILOT_I_ACCUMULATOR_reg[23]_i_2_n_0 ,\PILOT_I_ACCUMULATOR_reg[23]_i_2_n_1 ,\PILOT_I_ACCUMULATOR_reg[23]_i_2_n_2 ,\PILOT_I_ACCUMULATOR_reg[23]_i_2_n_3 }),
         .CYINIT(1'b0),
-        .DI({ROTATION_CONSTELLATION_IDATA_OUT[23],\PILOT_I_ACCUMULATOR_reg_n_0_[22] ,\PILOT_I_ACCUMULATOR_reg_n_0_[21] ,\PILOT_I_ACCUMULATOR_reg_n_0_[20] }),
+        .DI({\PILOT_I_ACCUMULATOR_reg_n_0_[23] ,\PILOT_I_ACCUMULATOR_reg_n_0_[22] ,\PILOT_I_ACCUMULATOR_reg_n_0_[21] ,\PILOT_I_ACCUMULATOR_reg_n_0_[20] }),
         .O({\PILOT_I_ACCUMULATOR_reg[23]_i_2_n_4 ,\PILOT_I_ACCUMULATOR_reg[23]_i_2_n_5 ,\PILOT_I_ACCUMULATOR_reg[23]_i_2_n_6 ,\PILOT_I_ACCUMULATOR_reg[23]_i_2_n_7 }),
         .S({\PILOT_I_ACCUMULATOR[23]_i_4_n_0 ,\PILOT_I_ACCUMULATOR[23]_i_5_n_0 ,\PILOT_I_ACCUMULATOR[23]_i_6_n_0 ,\PILOT_I_ACCUMULATOR[23]_i_7_n_0 }));
   (* ADDER_THRESHOLD = "35" *) 
@@ -15098,7 +14953,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
        (.CI(\PILOT_I_ACCUMULATOR_reg[19]_i_3_n_0 ),
         .CO({\PILOT_I_ACCUMULATOR_reg[23]_i_3_n_0 ,\PILOT_I_ACCUMULATOR_reg[23]_i_3_n_1 ,\PILOT_I_ACCUMULATOR_reg[23]_i_3_n_2 ,\PILOT_I_ACCUMULATOR_reg[23]_i_3_n_3 }),
         .CYINIT(1'b0),
-        .DI({\PILOT_I_ACCUMULATOR_reg_n_0_[23] ,\PILOT_I_ACCUMULATOR_reg_n_0_[22] ,\PILOT_I_ACCUMULATOR_reg_n_0_[21] ,\PILOT_I_ACCUMULATOR_reg_n_0_[20] }),
+        .DI({ROTATION_CONSTELLATION_IDATA_OUT[23],\PILOT_I_ACCUMULATOR_reg_n_0_[22] ,\PILOT_I_ACCUMULATOR_reg_n_0_[21] ,\PILOT_I_ACCUMULATOR_reg_n_0_[20] }),
         .O({\PILOT_I_ACCUMULATOR_reg[23]_i_3_n_4 ,\PILOT_I_ACCUMULATOR_reg[23]_i_3_n_5 ,\PILOT_I_ACCUMULATOR_reg[23]_i_3_n_6 ,\PILOT_I_ACCUMULATOR_reg[23]_i_3_n_7 }),
         .S({\PILOT_I_ACCUMULATOR[23]_i_8_n_0 ,\PILOT_I_ACCUMULATOR[23]_i_9_n_0 ,\PILOT_I_ACCUMULATOR[23]_i_10_n_0 ,\PILOT_I_ACCUMULATOR[23]_i_11_n_0 }));
   FDRE #(
@@ -15122,15 +14977,15 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
        (.CI(\PILOT_I_ACCUMULATOR_reg[23]_i_2_n_0 ),
         .CO({\NLW_PILOT_I_ACCUMULATOR_reg[25]_i_5_CO_UNCONNECTED [3:1],\PILOT_I_ACCUMULATOR_reg[25]_i_5_n_3 }),
         .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,\PILOT_I_ACCUMULATOR[25]_i_7_n_0 }),
+        .DI({1'b0,1'b0,1'b0,ROTATION_CONSTELLATION_IDATA_OUT[23]}),
         .O({\NLW_PILOT_I_ACCUMULATOR_reg[25]_i_5_O_UNCONNECTED [3:2],\PILOT_I_ACCUMULATOR_reg[25]_i_5_n_6 ,\PILOT_I_ACCUMULATOR_reg[25]_i_5_n_7 }),
-        .S({1'b0,1'b0,\PILOT_I_ACCUMULATOR[25]_i_8_n_0 ,\PILOT_I_ACCUMULATOR[25]_i_9_n_0 }));
+        .S({1'b0,1'b0,\PILOT_I_ACCUMULATOR[25]_i_7_n_0 ,\PILOT_I_ACCUMULATOR[25]_i_8_n_0 }));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 \PILOT_I_ACCUMULATOR_reg[25]_i_6 
        (.CI(\PILOT_I_ACCUMULATOR_reg[23]_i_3_n_0 ),
         .CO({\NLW_PILOT_I_ACCUMULATOR_reg[25]_i_6_CO_UNCONNECTED [3:1],\PILOT_I_ACCUMULATOR_reg[25]_i_6_n_3 }),
         .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,ROTATION_CONSTELLATION_IDATA_OUT[23]}),
+        .DI({1'b0,1'b0,1'b0,\PILOT_I_ACCUMULATOR[25]_i_9_n_0 }),
         .O({\NLW_PILOT_I_ACCUMULATOR_reg[25]_i_6_O_UNCONNECTED [3:2],\PILOT_I_ACCUMULATOR_reg[25]_i_6_n_6 ,\PILOT_I_ACCUMULATOR_reg[25]_i_6_n_7 }),
         .S({1'b0,1'b0,\PILOT_I_ACCUMULATOR[25]_i_10_n_0 ,\PILOT_I_ACCUMULATOR[25]_i_11_n_0 }));
   FDRE #(
@@ -15153,7 +15008,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   CARRY4 \PILOT_I_ACCUMULATOR_reg[3]_i_2 
        (.CI(1'b0),
         .CO({\PILOT_I_ACCUMULATOR_reg[3]_i_2_n_0 ,\PILOT_I_ACCUMULATOR_reg[3]_i_2_n_1 ,\PILOT_I_ACCUMULATOR_reg[3]_i_2_n_2 ,\PILOT_I_ACCUMULATOR_reg[3]_i_2_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(1'b1),
         .DI({\PILOT_I_ACCUMULATOR_reg_n_0_[3] ,\PILOT_I_ACCUMULATOR_reg_n_0_[2] ,\PILOT_I_ACCUMULATOR_reg_n_0_[1] ,\PILOT_I_ACCUMULATOR_reg_n_0_[0] }),
         .O({\PILOT_I_ACCUMULATOR_reg[3]_i_2_n_4 ,\PILOT_I_ACCUMULATOR_reg[3]_i_2_n_5 ,\PILOT_I_ACCUMULATOR_reg[3]_i_2_n_6 ,\PILOT_I_ACCUMULATOR_reg[3]_i_2_n_7 }),
         .S({\PILOT_I_ACCUMULATOR[3]_i_4_n_0 ,\PILOT_I_ACCUMULATOR[3]_i_5_n_0 ,\PILOT_I_ACCUMULATOR[3]_i_6_n_0 ,\PILOT_I_ACCUMULATOR[3]_i_7_n_0 }));
@@ -15161,7 +15016,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   CARRY4 \PILOT_I_ACCUMULATOR_reg[3]_i_3 
        (.CI(1'b0),
         .CO({\PILOT_I_ACCUMULATOR_reg[3]_i_3_n_0 ,\PILOT_I_ACCUMULATOR_reg[3]_i_3_n_1 ,\PILOT_I_ACCUMULATOR_reg[3]_i_3_n_2 ,\PILOT_I_ACCUMULATOR_reg[3]_i_3_n_3 }),
-        .CYINIT(1'b1),
+        .CYINIT(1'b0),
         .DI({\PILOT_I_ACCUMULATOR_reg_n_0_[3] ,\PILOT_I_ACCUMULATOR_reg_n_0_[2] ,\PILOT_I_ACCUMULATOR_reg_n_0_[1] ,\PILOT_I_ACCUMULATOR_reg_n_0_[0] }),
         .O({\PILOT_I_ACCUMULATOR_reg[3]_i_3_n_4 ,\PILOT_I_ACCUMULATOR_reg[3]_i_3_n_5 ,\PILOT_I_ACCUMULATOR_reg[3]_i_3_n_6 ,\PILOT_I_ACCUMULATOR_reg[3]_i_3_n_7 }),
         .S({\PILOT_I_ACCUMULATOR[3]_i_8_n_0 ,\PILOT_I_ACCUMULATOR[3]_i_9_n_0 ,\PILOT_I_ACCUMULATOR[3]_i_10_n_0 ,\PILOT_I_ACCUMULATOR[3]_i_11_n_0 }));
@@ -15428,14 +15283,13 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .D(ATAN_CONSTELLATION_PHASE_OUT[9]),
         .Q(PILOT_PHASE__0[9]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair32" *) 
   LUT2 #(
     .INIT(4'h1)) 
     \PILOT_POLARITY_CNTR[0]_i_1 
        (.I0(\PILOT_POLARITY_CNTR_reg_n_0_[0] ),
         .I1(\PILOT_POLARITY_CNTR[2]_i_2_n_0 ),
         .O(\PILOT_POLARITY_CNTR[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair36" *) 
+  (* SOFT_HLUTNM = "soft_lutpair35" *) 
   LUT3 #(
     .INIT(8'h06)) 
     \PILOT_POLARITY_CNTR[1]_i_1 
@@ -15443,7 +15297,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I1(\PILOT_POLARITY_CNTR_reg_n_0_[0] ),
         .I2(\PILOT_POLARITY_CNTR[2]_i_2_n_0 ),
         .O(\PILOT_POLARITY_CNTR[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair33" *) 
+  (* SOFT_HLUTNM = "soft_lutpair35" *) 
   LUT4 #(
     .INIT(16'h0078)) 
     \PILOT_POLARITY_CNTR[2]_i_1 
@@ -15453,81 +15307,67 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I3(\PILOT_POLARITY_CNTR[2]_i_2_n_0 ),
         .O(\PILOT_POLARITY_CNTR[2]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h80000000FFFFFFFF)) 
+    .INIT(64'h20000000FFFFFFFF)) 
     \PILOT_POLARITY_CNTR[2]_i_2 
-       (.I0(\PILOT_POLARITY_CNTR_reg_n_0_[5] ),
-        .I1(\PILOT_POLARITY_CNTR[6]_i_4_n_0 ),
-        .I2(\PILOT_POLARITY_CNTR_reg_n_0_[6] ),
-        .I3(\PILOT_POLARITY_CNTR_reg_n_0_[2] ),
-        .I4(\PILOT_POLARITY_CNTR_reg_n_0_[1] ),
+       (.I0(\PILOT_POLARITY_CNTR_reg_n_0_[3] ),
+        .I1(\PILOT_POLARITY_CNTR[2]_i_3_n_0 ),
+        .I2(\PILOT_POLARITY_CNTR_reg_n_0_[5] ),
+        .I3(\PILOT_POLARITY_CNTR_reg_n_0_[4] ),
+        .I4(\PILOT_POLARITY_CNTR_reg_n_0_[6] ),
         .I5(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
         .O(\PILOT_POLARITY_CNTR[2]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h780078000000F000)) 
-    \PILOT_POLARITY_CNTR[3]_i_1 
-       (.I0(\PILOT_POLARITY_CNTR_reg_n_0_[2] ),
-        .I1(\PILOT_POLARITY_CNTR_reg_n_0_[1] ),
-        .I2(\PILOT_POLARITY_CNTR_reg_n_0_[3] ),
-        .I3(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
-        .I4(\PILOT_POLARITY_CNTR[3]_i_2_n_0 ),
-        .I5(\PILOT_POLARITY_CNTR_reg_n_0_[0] ),
-        .O(\PILOT_POLARITY_CNTR[3]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h8000000000000000)) 
-    \PILOT_POLARITY_CNTR[3]_i_2 
+  LUT2 #(
+    .INIT(4'h7)) 
+    \PILOT_POLARITY_CNTR[2]_i_3 
        (.I0(\PILOT_POLARITY_CNTR_reg_n_0_[1] ),
         .I1(\PILOT_POLARITY_CNTR_reg_n_0_[2] ),
-        .I2(\PILOT_POLARITY_CNTR_reg_n_0_[6] ),
+        .O(\PILOT_POLARITY_CNTR[2]_i_3_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  LUT5 #(
+    .INIT(32'h00007F80)) 
+    \PILOT_POLARITY_CNTR[3]_i_1 
+       (.I0(\PILOT_POLARITY_CNTR_reg_n_0_[0] ),
+        .I1(\PILOT_POLARITY_CNTR_reg_n_0_[2] ),
+        .I2(\PILOT_POLARITY_CNTR_reg_n_0_[1] ),
         .I3(\PILOT_POLARITY_CNTR_reg_n_0_[3] ),
-        .I4(\PILOT_POLARITY_CNTR_reg_n_0_[4] ),
-        .I5(\PILOT_POLARITY_CNTR_reg_n_0_[5] ),
-        .O(\PILOT_POLARITY_CNTR[3]_i_2_n_0 ));
+        .I4(\PILOT_POLARITY_CNTR[6]_i_5_n_0 ),
+        .O(\PILOT_POLARITY_CNTR[3]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h000000007FFF8000)) 
     \PILOT_POLARITY_CNTR[4]_i_1 
-       (.I0(\PILOT_POLARITY_CNTR_reg_n_0_[3] ),
-        .I1(\PILOT_POLARITY_CNTR_reg_n_0_[1] ),
-        .I2(\PILOT_POLARITY_CNTR_reg_n_0_[2] ),
-        .I3(\PILOT_POLARITY_CNTR_reg_n_0_[0] ),
-        .I4(\PILOT_POLARITY_CNTR_reg_n_0_[4] ),
-        .I5(\PILOT_POLARITY_CNTR[4]_i_2_n_0 ),
-        .O(\PILOT_POLARITY_CNTR[4]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair36" *) 
-  LUT3 #(
-    .INIT(8'h4F)) 
-    \PILOT_POLARITY_CNTR[4]_i_2 
-       (.I0(\PILOT_POLARITY_CNTR_reg_n_0_[0] ),
-        .I1(\PILOT_POLARITY_CNTR[3]_i_2_n_0 ),
-        .I2(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
-        .O(\PILOT_POLARITY_CNTR[4]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h8888888808888888)) 
-    \PILOT_POLARITY_CNTR[5]_i_1 
-       (.I0(\PILOT_POLARITY_CNTR[5]_i_2_n_0 ),
-        .I1(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
-        .I2(\PILOT_POLARITY_CNTR_reg_n_0_[1] ),
+       (.I0(\PILOT_POLARITY_CNTR_reg_n_0_[1] ),
+        .I1(\PILOT_POLARITY_CNTR_reg_n_0_[0] ),
+        .I2(\PILOT_POLARITY_CNTR_reg_n_0_[3] ),
         .I3(\PILOT_POLARITY_CNTR_reg_n_0_[2] ),
-        .I4(\PILOT_POLARITY_CNTR_reg_n_0_[6] ),
+        .I4(\PILOT_POLARITY_CNTR_reg_n_0_[4] ),
+        .I5(\PILOT_POLARITY_CNTR[6]_i_5_n_0 ),
+        .O(\PILOT_POLARITY_CNTR[4]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h4488888844888088)) 
+    \PILOT_POLARITY_CNTR[5]_i_1 
+       (.I0(\PILOT_POLARITY_CNTR_reg_n_0_[5] ),
+        .I1(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
+        .I2(\PILOT_POLARITY_CNTR[5]_i_2_n_0 ),
+        .I3(\PILOT_POLARITY_CNTR_reg_n_0_[4] ),
+        .I4(\PILOT_POLARITY_CNTR[6]_i_4_n_0 ),
         .I5(\PILOT_POLARITY_CNTR[5]_i_3_n_0 ),
         .O(\PILOT_POLARITY_CNTR[5]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h6AAAAAAAAAAAAAAA)) 
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  LUT2 #(
+    .INIT(4'hB)) 
     \PILOT_POLARITY_CNTR[5]_i_2 
-       (.I0(\PILOT_POLARITY_CNTR_reg_n_0_[5] ),
-        .I1(\PILOT_POLARITY_CNTR_reg_n_0_[3] ),
-        .I2(\PILOT_POLARITY_CNTR_reg_n_0_[4] ),
-        .I3(\PILOT_POLARITY_CNTR_reg_n_0_[0] ),
-        .I4(\PILOT_POLARITY_CNTR_reg_n_0_[2] ),
-        .I5(\PILOT_POLARITY_CNTR_reg_n_0_[1] ),
+       (.I0(\PILOT_POLARITY_CNTR_reg_n_0_[0] ),
+        .I1(\PILOT_POLARITY_CNTR_reg_n_0_[6] ),
         .O(\PILOT_POLARITY_CNTR[5]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair32" *) 
-  LUT4 #(
-    .INIT(16'hFF4F)) 
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  LUT5 #(
+    .INIT(32'h7FFF7777)) 
     \PILOT_POLARITY_CNTR[5]_i_3 
-       (.I0(\PILOT_POLARITY_CNTR_reg_n_0_[3] ),
-        .I1(\PILOT_POLARITY_CNTR_reg_n_0_[5] ),
-        .I2(\PILOT_POLARITY_CNTR_reg_n_0_[4] ),
-        .I3(\PILOT_POLARITY_CNTR_reg_n_0_[0] ),
+       (.I0(\PILOT_POLARITY_CNTR_reg_n_0_[2] ),
+        .I1(\PILOT_POLARITY_CNTR_reg_n_0_[1] ),
+        .I2(\PILOT_POLARITY_CNTR_reg_n_0_[3] ),
+        .I3(\PILOT_POLARITY_CNTR_reg_n_0_[4] ),
+        .I4(\PILOT_POLARITY_CNTR_reg_n_0_[5] ),
         .O(\PILOT_POLARITY_CNTR[5]_i_3_n_0 ));
   LUT5 #(
     .INIT(32'h0E0A0A0A)) 
@@ -15538,15 +15378,15 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I3(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
         .I4(\PILOT_POLARITY_CNTR[6]_i_3_n_0 ),
         .O(\PILOT_POLARITY_CNTR[6]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hAA002A80AA002A00)) 
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  LUT5 #(
+    .INIT(32'h00007F80)) 
     \PILOT_POLARITY_CNTR[6]_i_2 
-       (.I0(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
+       (.I0(\PILOT_POLARITY_CNTR[6]_i_4_n_0 ),
         .I1(\PILOT_POLARITY_CNTR_reg_n_0_[5] ),
-        .I2(\PILOT_POLARITY_CNTR[6]_i_4_n_0 ),
+        .I2(\PILOT_POLARITY_CNTR_reg_n_0_[4] ),
         .I3(\PILOT_POLARITY_CNTR_reg_n_0_[6] ),
         .I4(\PILOT_POLARITY_CNTR[6]_i_5_n_0 ),
-        .I5(\PILOT_POLARITY_CNTR_reg_n_0_[0] ),
         .O(\PILOT_POLARITY_CNTR[6]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'h0000040000000000)) 
@@ -15558,19 +15398,34 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(ROTATION_CONSTELLATION_DATA_OUT_CNTR[0]),
         .I5(ROTATION_CONSTELLATION_DATA_OUT_CNTR[4]),
         .O(\PILOT_POLARITY_CNTR[6]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
-  LUT2 #(
-    .INIT(4'h8)) 
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  LUT4 #(
+    .INIT(16'h8000)) 
     \PILOT_POLARITY_CNTR[6]_i_4 
-       (.I0(\PILOT_POLARITY_CNTR_reg_n_0_[3] ),
-        .I1(\PILOT_POLARITY_CNTR_reg_n_0_[4] ),
-        .O(\PILOT_POLARITY_CNTR[6]_i_4_n_0 ));
-  LUT2 #(
-    .INIT(4'h7)) 
-    \PILOT_POLARITY_CNTR[6]_i_5 
        (.I0(\PILOT_POLARITY_CNTR_reg_n_0_[1] ),
-        .I1(\PILOT_POLARITY_CNTR_reg_n_0_[2] ),
+        .I1(\PILOT_POLARITY_CNTR_reg_n_0_[0] ),
+        .I2(\PILOT_POLARITY_CNTR_reg_n_0_[3] ),
+        .I3(\PILOT_POLARITY_CNTR_reg_n_0_[2] ),
+        .O(\PILOT_POLARITY_CNTR[6]_i_4_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  LUT4 #(
+    .INIT(16'h04FF)) 
+    \PILOT_POLARITY_CNTR[6]_i_5 
+       (.I0(\PILOT_POLARITY_CNTR_reg_n_0_[0] ),
+        .I1(\PILOT_POLARITY_CNTR_reg_n_0_[6] ),
+        .I2(\PILOT_POLARITY_CNTR[6]_i_6_n_0 ),
+        .I3(CONSTELLATION_IDATA_LAST_HALF_BUFFER),
         .O(\PILOT_POLARITY_CNTR[6]_i_5_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  LUT5 #(
+    .INIT(32'h7FFFFFFF)) 
+    \PILOT_POLARITY_CNTR[6]_i_6 
+       (.I0(\PILOT_POLARITY_CNTR_reg_n_0_[3] ),
+        .I1(\PILOT_POLARITY_CNTR_reg_n_0_[1] ),
+        .I2(\PILOT_POLARITY_CNTR_reg_n_0_[2] ),
+        .I3(\PILOT_POLARITY_CNTR_reg_n_0_[5] ),
+        .I4(\PILOT_POLARITY_CNTR_reg_n_0_[4] ),
+        .O(\PILOT_POLARITY_CNTR[6]_i_6_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
     \PILOT_POLARITY_CNTR_reg[0] 
@@ -15638,43 +15493,34 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I5(PILOT_POLARITY__0),
         .O(PILOT_POLARITY_i_1_n_0));
   LUT6 #(
-    .INIT(64'h0CC6BBF695E28FB7)) 
+    .INIT(64'h2F12AECFD41AB5FB)) 
     PILOT_POLARITY_i_2
        (.I0(\PILOT_POLARITY_CNTR_reg_n_0_[5] ),
-        .I1(\PILOT_POLARITY_CNTR_reg_n_0_[3] ),
-        .I2(\PILOT_POLARITY_CNTR_reg_n_0_[4] ),
-        .I3(\PILOT_POLARITY_CNTR_reg_n_0_[0] ),
+        .I1(\PILOT_POLARITY_CNTR_reg_n_0_[1] ),
+        .I2(\PILOT_POLARITY_CNTR_reg_n_0_[0] ),
+        .I3(\PILOT_POLARITY_CNTR_reg_n_0_[3] ),
         .I4(\PILOT_POLARITY_CNTR_reg_n_0_[2] ),
-        .I5(\PILOT_POLARITY_CNTR_reg_n_0_[1] ),
+        .I5(\PILOT_POLARITY_CNTR_reg_n_0_[4] ),
         .O(PILOT_POLARITY_i_2_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
-  LUT5 #(
-    .INIT(32'h6AAAAAAA)) 
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  LUT4 #(
+    .INIT(16'h6AAA)) 
     PILOT_POLARITY_i_3
        (.I0(\PILOT_POLARITY_CNTR_reg_n_0_[6] ),
-        .I1(PILOT_POLARITY_i_5_n_0),
-        .I2(\PILOT_POLARITY_CNTR_reg_n_0_[4] ),
-        .I3(\PILOT_POLARITY_CNTR_reg_n_0_[3] ),
-        .I4(\PILOT_POLARITY_CNTR_reg_n_0_[5] ),
+        .I1(\PILOT_POLARITY_CNTR_reg_n_0_[4] ),
+        .I2(\PILOT_POLARITY_CNTR_reg_n_0_[5] ),
+        .I3(\PILOT_POLARITY_CNTR[6]_i_4_n_0 ),
         .O(PILOT_POLARITY_i_3_n_0));
   LUT6 #(
-    .INIT(64'h106F242EAB991434)) 
+    .INIT(64'h2669009B2E3D5D08)) 
     PILOT_POLARITY_i_4
        (.I0(\PILOT_POLARITY_CNTR_reg_n_0_[5] ),
-        .I1(\PILOT_POLARITY_CNTR_reg_n_0_[3] ),
-        .I2(\PILOT_POLARITY_CNTR_reg_n_0_[4] ),
-        .I3(\PILOT_POLARITY_CNTR_reg_n_0_[0] ),
+        .I1(\PILOT_POLARITY_CNTR_reg_n_0_[1] ),
+        .I2(\PILOT_POLARITY_CNTR_reg_n_0_[0] ),
+        .I3(\PILOT_POLARITY_CNTR_reg_n_0_[3] ),
         .I4(\PILOT_POLARITY_CNTR_reg_n_0_[2] ),
-        .I5(\PILOT_POLARITY_CNTR_reg_n_0_[1] ),
+        .I5(\PILOT_POLARITY_CNTR_reg_n_0_[4] ),
         .O(PILOT_POLARITY_i_4_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair33" *) 
-  LUT3 #(
-    .INIT(8'h80)) 
-    PILOT_POLARITY_i_5
-       (.I0(\PILOT_POLARITY_CNTR_reg_n_0_[0] ),
-        .I1(\PILOT_POLARITY_CNTR_reg_n_0_[2] ),
-        .I2(\PILOT_POLARITY_CNTR_reg_n_0_[1] ),
-        .O(PILOT_POLARITY_i_5_n_0));
   FDRE #(
     .INIT(1'b0)) 
     PILOT_POLARITY_reg
@@ -15711,49 +15557,49 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\PILOT_POLARITY_CNTR[6]_i_3_n_0 ),
         .O(PILOT_Q_ACCUMULATOR[11]));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_Q_ACCUMULATOR[11]_i_10 
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[9] ),
         .I1(ROTATION_CONSTELLATION_QDATA_OUT[9]),
         .O(\PILOT_Q_ACCUMULATOR[11]_i_10_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_Q_ACCUMULATOR[11]_i_11 
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[8] ),
         .I1(ROTATION_CONSTELLATION_QDATA_OUT[8]),
         .O(\PILOT_Q_ACCUMULATOR[11]_i_11_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_Q_ACCUMULATOR[11]_i_4 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[11]),
         .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[11] ),
         .O(\PILOT_Q_ACCUMULATOR[11]_i_4_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_Q_ACCUMULATOR[11]_i_5 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[10]),
         .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[10] ),
         .O(\PILOT_Q_ACCUMULATOR[11]_i_5_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_Q_ACCUMULATOR[11]_i_6 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[9]),
         .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[9] ),
         .O(\PILOT_Q_ACCUMULATOR[11]_i_6_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_Q_ACCUMULATOR[11]_i_7 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[8]),
         .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[8] ),
         .O(\PILOT_Q_ACCUMULATOR[11]_i_7_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_Q_ACCUMULATOR[11]_i_8 
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[11] ),
         .I1(ROTATION_CONSTELLATION_QDATA_OUT[11]),
         .O(\PILOT_Q_ACCUMULATOR[11]_i_8_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_Q_ACCUMULATOR[11]_i_9 
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[10] ),
         .I1(ROTATION_CONSTELLATION_QDATA_OUT[10]),
@@ -15795,49 +15641,49 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\PILOT_POLARITY_CNTR[6]_i_3_n_0 ),
         .O(PILOT_Q_ACCUMULATOR[15]));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_Q_ACCUMULATOR[15]_i_10 
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[13] ),
         .I1(ROTATION_CONSTELLATION_QDATA_OUT[13]),
         .O(\PILOT_Q_ACCUMULATOR[15]_i_10_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_Q_ACCUMULATOR[15]_i_11 
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[12] ),
         .I1(ROTATION_CONSTELLATION_QDATA_OUT[12]),
         .O(\PILOT_Q_ACCUMULATOR[15]_i_11_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_Q_ACCUMULATOR[15]_i_4 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[15]),
         .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[15] ),
         .O(\PILOT_Q_ACCUMULATOR[15]_i_4_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_Q_ACCUMULATOR[15]_i_5 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[14]),
         .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[14] ),
         .O(\PILOT_Q_ACCUMULATOR[15]_i_5_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_Q_ACCUMULATOR[15]_i_6 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[13]),
         .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[13] ),
         .O(\PILOT_Q_ACCUMULATOR[15]_i_6_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_Q_ACCUMULATOR[15]_i_7 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[12]),
         .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[12] ),
         .O(\PILOT_Q_ACCUMULATOR[15]_i_7_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_Q_ACCUMULATOR[15]_i_8 
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[15] ),
         .I1(ROTATION_CONSTELLATION_QDATA_OUT[15]),
         .O(\PILOT_Q_ACCUMULATOR[15]_i_8_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_Q_ACCUMULATOR[15]_i_9 
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[14] ),
         .I1(ROTATION_CONSTELLATION_QDATA_OUT[14]),
@@ -15879,49 +15725,49 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\PILOT_POLARITY_CNTR[6]_i_3_n_0 ),
         .O(PILOT_Q_ACCUMULATOR[19]));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_Q_ACCUMULATOR[19]_i_10 
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[17] ),
         .I1(ROTATION_CONSTELLATION_QDATA_OUT[17]),
         .O(\PILOT_Q_ACCUMULATOR[19]_i_10_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_Q_ACCUMULATOR[19]_i_11 
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[16] ),
         .I1(ROTATION_CONSTELLATION_QDATA_OUT[16]),
         .O(\PILOT_Q_ACCUMULATOR[19]_i_11_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_Q_ACCUMULATOR[19]_i_4 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[19]),
         .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[19] ),
         .O(\PILOT_Q_ACCUMULATOR[19]_i_4_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_Q_ACCUMULATOR[19]_i_5 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[18]),
         .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[18] ),
         .O(\PILOT_Q_ACCUMULATOR[19]_i_5_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_Q_ACCUMULATOR[19]_i_6 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[17]),
         .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[17] ),
         .O(\PILOT_Q_ACCUMULATOR[19]_i_6_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_Q_ACCUMULATOR[19]_i_7 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[16]),
         .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[16] ),
         .O(\PILOT_Q_ACCUMULATOR[19]_i_7_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_Q_ACCUMULATOR[19]_i_8 
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[19] ),
         .I1(ROTATION_CONSTELLATION_QDATA_OUT[19]),
         .O(\PILOT_Q_ACCUMULATOR[19]_i_8_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_Q_ACCUMULATOR[19]_i_9 
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[18] ),
         .I1(ROTATION_CONSTELLATION_QDATA_OUT[18]),
@@ -15972,49 +15818,49 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\PILOT_POLARITY_CNTR[6]_i_3_n_0 ),
         .O(PILOT_Q_ACCUMULATOR[23]));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_Q_ACCUMULATOR[23]_i_10 
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[21] ),
         .I1(ROTATION_CONSTELLATION_QDATA_OUT[21]),
         .O(\PILOT_Q_ACCUMULATOR[23]_i_10_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_Q_ACCUMULATOR[23]_i_11 
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[20] ),
         .I1(ROTATION_CONSTELLATION_QDATA_OUT[20]),
         .O(\PILOT_Q_ACCUMULATOR[23]_i_11_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_Q_ACCUMULATOR[23]_i_4 
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[23] ),
         .I1(ROTATION_CONSTELLATION_QDATA_OUT[23]),
         .O(\PILOT_Q_ACCUMULATOR[23]_i_4_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_Q_ACCUMULATOR[23]_i_5 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[22]),
         .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[22] ),
         .O(\PILOT_Q_ACCUMULATOR[23]_i_5_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_Q_ACCUMULATOR[23]_i_6 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[21]),
         .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[21] ),
         .O(\PILOT_Q_ACCUMULATOR[23]_i_6_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_Q_ACCUMULATOR[23]_i_7 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[20]),
         .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[20] ),
         .O(\PILOT_Q_ACCUMULATOR[23]_i_7_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_Q_ACCUMULATOR[23]_i_8 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[23]),
         .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[23] ),
         .O(\PILOT_Q_ACCUMULATOR[23]_i_8_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_Q_ACCUMULATOR[23]_i_9 
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[22] ),
         .I1(ROTATION_CONSTELLATION_QDATA_OUT[22]),
@@ -16037,22 +15883,22 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I3(\PILOT_Q_ACCUMULATOR_reg[25]_i_3_n_6 ),
         .I4(\PILOT_POLARITY_CNTR[6]_i_3_n_0 ),
         .O(PILOT_Q_ACCUMULATOR[25]));
-  LUT1 #(
-    .INIT(2'h1)) 
+  LUT2 #(
+    .INIT(4'h9)) 
     \PILOT_Q_ACCUMULATOR[25]_i_4 
-       (.I0(ROTATION_CONSTELLATION_QDATA_OUT[23]),
+       (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
+        .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[24] ),
         .O(\PILOT_Q_ACCUMULATOR[25]_i_4_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
     \PILOT_Q_ACCUMULATOR[25]_i_5 
-       (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
-        .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[24] ),
-        .O(\PILOT_Q_ACCUMULATOR[25]_i_5_n_0 ));
-  LUT2 #(
-    .INIT(4'h6)) 
-    \PILOT_Q_ACCUMULATOR[25]_i_6 
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[24] ),
         .I1(ROTATION_CONSTELLATION_QDATA_OUT[23]),
+        .O(\PILOT_Q_ACCUMULATOR[25]_i_5_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \PILOT_Q_ACCUMULATOR[25]_i_6 
+       (.I0(ROTATION_CONSTELLATION_QDATA_OUT[23]),
         .O(\PILOT_Q_ACCUMULATOR[25]_i_6_n_0 ));
   LUT2 #(
     .INIT(4'h9)) 
@@ -16061,7 +15907,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[24] ),
         .O(\PILOT_Q_ACCUMULATOR[25]_i_7_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_Q_ACCUMULATOR[25]_i_8 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[23]),
         .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[24] ),
@@ -16085,49 +15931,49 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\PILOT_POLARITY_CNTR[6]_i_3_n_0 ),
         .O(PILOT_Q_ACCUMULATOR[3]));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_Q_ACCUMULATOR[3]_i_10 
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[1] ),
         .I1(ROTATION_CONSTELLATION_QDATA_OUT[1]),
         .O(\PILOT_Q_ACCUMULATOR[3]_i_10_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_Q_ACCUMULATOR[3]_i_11 
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[0] ),
         .I1(ROTATION_CONSTELLATION_QDATA_OUT[0]),
         .O(\PILOT_Q_ACCUMULATOR[3]_i_11_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_Q_ACCUMULATOR[3]_i_4 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[3]),
         .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[3] ),
         .O(\PILOT_Q_ACCUMULATOR[3]_i_4_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_Q_ACCUMULATOR[3]_i_5 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[2]),
         .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[2] ),
         .O(\PILOT_Q_ACCUMULATOR[3]_i_5_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_Q_ACCUMULATOR[3]_i_6 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[1]),
         .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[1] ),
         .O(\PILOT_Q_ACCUMULATOR[3]_i_6_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_Q_ACCUMULATOR[3]_i_7 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[0]),
         .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[0] ),
         .O(\PILOT_Q_ACCUMULATOR[3]_i_7_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_Q_ACCUMULATOR[3]_i_8 
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[3] ),
         .I1(ROTATION_CONSTELLATION_QDATA_OUT[3]),
         .O(\PILOT_Q_ACCUMULATOR[3]_i_8_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_Q_ACCUMULATOR[3]_i_9 
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[2] ),
         .I1(ROTATION_CONSTELLATION_QDATA_OUT[2]),
@@ -16169,49 +16015,49 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I4(\PILOT_POLARITY_CNTR[6]_i_3_n_0 ),
         .O(PILOT_Q_ACCUMULATOR[7]));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_Q_ACCUMULATOR[7]_i_10 
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[5] ),
         .I1(ROTATION_CONSTELLATION_QDATA_OUT[5]),
         .O(\PILOT_Q_ACCUMULATOR[7]_i_10_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_Q_ACCUMULATOR[7]_i_11 
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[4] ),
         .I1(ROTATION_CONSTELLATION_QDATA_OUT[4]),
         .O(\PILOT_Q_ACCUMULATOR[7]_i_11_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_Q_ACCUMULATOR[7]_i_4 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[7]),
         .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[7] ),
         .O(\PILOT_Q_ACCUMULATOR[7]_i_4_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_Q_ACCUMULATOR[7]_i_5 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[6]),
         .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[6] ),
         .O(\PILOT_Q_ACCUMULATOR[7]_i_5_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_Q_ACCUMULATOR[7]_i_6 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[5]),
         .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[5] ),
         .O(\PILOT_Q_ACCUMULATOR[7]_i_6_n_0 ));
   LUT2 #(
-    .INIT(4'h6)) 
+    .INIT(4'h9)) 
     \PILOT_Q_ACCUMULATOR[7]_i_7 
        (.I0(ROTATION_CONSTELLATION_QDATA_OUT[4]),
         .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[4] ),
         .O(\PILOT_Q_ACCUMULATOR[7]_i_7_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_Q_ACCUMULATOR[7]_i_8 
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[7] ),
         .I1(ROTATION_CONSTELLATION_QDATA_OUT[7]),
         .O(\PILOT_Q_ACCUMULATOR[7]_i_8_n_0 ));
   LUT2 #(
-    .INIT(4'h9)) 
+    .INIT(4'h6)) 
     \PILOT_Q_ACCUMULATOR[7]_i_9 
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[6] ),
         .I1(ROTATION_CONSTELLATION_QDATA_OUT[6]),
@@ -16422,7 +16268,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
        (.CI(\PILOT_Q_ACCUMULATOR_reg[19]_i_2_n_0 ),
         .CO({\PILOT_Q_ACCUMULATOR_reg[23]_i_2_n_0 ,\PILOT_Q_ACCUMULATOR_reg[23]_i_2_n_1 ,\PILOT_Q_ACCUMULATOR_reg[23]_i_2_n_2 ,\PILOT_Q_ACCUMULATOR_reg[23]_i_2_n_3 }),
         .CYINIT(1'b0),
-        .DI({ROTATION_CONSTELLATION_QDATA_OUT[23],\PILOT_Q_ACCUMULATOR_reg_n_0_[22] ,\PILOT_Q_ACCUMULATOR_reg_n_0_[21] ,\PILOT_Q_ACCUMULATOR_reg_n_0_[20] }),
+        .DI({\PILOT_Q_ACCUMULATOR_reg_n_0_[23] ,\PILOT_Q_ACCUMULATOR_reg_n_0_[22] ,\PILOT_Q_ACCUMULATOR_reg_n_0_[21] ,\PILOT_Q_ACCUMULATOR_reg_n_0_[20] }),
         .O({\PILOT_Q_ACCUMULATOR_reg[23]_i_2_n_4 ,\PILOT_Q_ACCUMULATOR_reg[23]_i_2_n_5 ,\PILOT_Q_ACCUMULATOR_reg[23]_i_2_n_6 ,\PILOT_Q_ACCUMULATOR_reg[23]_i_2_n_7 }),
         .S({\PILOT_Q_ACCUMULATOR[23]_i_4_n_0 ,\PILOT_Q_ACCUMULATOR[23]_i_5_n_0 ,\PILOT_Q_ACCUMULATOR[23]_i_6_n_0 ,\PILOT_Q_ACCUMULATOR[23]_i_7_n_0 }));
   (* ADDER_THRESHOLD = "35" *) 
@@ -16431,7 +16277,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
        (.CI(\PILOT_Q_ACCUMULATOR_reg[19]_i_3_n_0 ),
         .CO({\PILOT_Q_ACCUMULATOR_reg[23]_i_3_n_0 ,\PILOT_Q_ACCUMULATOR_reg[23]_i_3_n_1 ,\PILOT_Q_ACCUMULATOR_reg[23]_i_3_n_2 ,\PILOT_Q_ACCUMULATOR_reg[23]_i_3_n_3 }),
         .CYINIT(1'b0),
-        .DI({\PILOT_Q_ACCUMULATOR_reg_n_0_[23] ,\PILOT_Q_ACCUMULATOR_reg_n_0_[22] ,\PILOT_Q_ACCUMULATOR_reg_n_0_[21] ,\PILOT_Q_ACCUMULATOR_reg_n_0_[20] }),
+        .DI({ROTATION_CONSTELLATION_QDATA_OUT[23],\PILOT_Q_ACCUMULATOR_reg_n_0_[22] ,\PILOT_Q_ACCUMULATOR_reg_n_0_[21] ,\PILOT_Q_ACCUMULATOR_reg_n_0_[20] }),
         .O({\PILOT_Q_ACCUMULATOR_reg[23]_i_3_n_4 ,\PILOT_Q_ACCUMULATOR_reg[23]_i_3_n_5 ,\PILOT_Q_ACCUMULATOR_reg[23]_i_3_n_6 ,\PILOT_Q_ACCUMULATOR_reg[23]_i_3_n_7 }),
         .S({\PILOT_Q_ACCUMULATOR[23]_i_8_n_0 ,\PILOT_Q_ACCUMULATOR[23]_i_9_n_0 ,\PILOT_Q_ACCUMULATOR[23]_i_10_n_0 ,\PILOT_Q_ACCUMULATOR[23]_i_11_n_0 }));
   FDRE #(
@@ -16456,16 +16302,16 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
        (.CI(\PILOT_Q_ACCUMULATOR_reg[23]_i_2_n_0 ),
         .CO({\NLW_PILOT_Q_ACCUMULATOR_reg[25]_i_2_CO_UNCONNECTED [3:1],\PILOT_Q_ACCUMULATOR_reg[25]_i_2_n_3 }),
         .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,\PILOT_Q_ACCUMULATOR[25]_i_4_n_0 }),
+        .DI({1'b0,1'b0,1'b0,ROTATION_CONSTELLATION_QDATA_OUT[23]}),
         .O({\NLW_PILOT_Q_ACCUMULATOR_reg[25]_i_2_O_UNCONNECTED [3:2],\PILOT_Q_ACCUMULATOR_reg[25]_i_2_n_6 ,\PILOT_Q_ACCUMULATOR_reg[25]_i_2_n_7 }),
-        .S({1'b0,1'b0,\PILOT_Q_ACCUMULATOR[25]_i_5_n_0 ,\PILOT_Q_ACCUMULATOR[25]_i_6_n_0 }));
+        .S({1'b0,1'b0,\PILOT_Q_ACCUMULATOR[25]_i_4_n_0 ,\PILOT_Q_ACCUMULATOR[25]_i_5_n_0 }));
   (* ADDER_THRESHOLD = "35" *) 
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
   CARRY4 \PILOT_Q_ACCUMULATOR_reg[25]_i_3 
        (.CI(\PILOT_Q_ACCUMULATOR_reg[23]_i_3_n_0 ),
         .CO({\NLW_PILOT_Q_ACCUMULATOR_reg[25]_i_3_CO_UNCONNECTED [3:1],\PILOT_Q_ACCUMULATOR_reg[25]_i_3_n_3 }),
         .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,ROTATION_CONSTELLATION_QDATA_OUT[23]}),
+        .DI({1'b0,1'b0,1'b0,\PILOT_Q_ACCUMULATOR[25]_i_6_n_0 }),
         .O({\NLW_PILOT_Q_ACCUMULATOR_reg[25]_i_3_O_UNCONNECTED [3:2],\PILOT_Q_ACCUMULATOR_reg[25]_i_3_n_6 ,\PILOT_Q_ACCUMULATOR_reg[25]_i_3_n_7 }),
         .S({1'b0,1'b0,\PILOT_Q_ACCUMULATOR[25]_i_7_n_0 ,\PILOT_Q_ACCUMULATOR[25]_i_8_n_0 }));
   FDRE #(
@@ -16489,7 +16335,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   CARRY4 \PILOT_Q_ACCUMULATOR_reg[3]_i_2 
        (.CI(1'b0),
         .CO({\PILOT_Q_ACCUMULATOR_reg[3]_i_2_n_0 ,\PILOT_Q_ACCUMULATOR_reg[3]_i_2_n_1 ,\PILOT_Q_ACCUMULATOR_reg[3]_i_2_n_2 ,\PILOT_Q_ACCUMULATOR_reg[3]_i_2_n_3 }),
-        .CYINIT(1'b0),
+        .CYINIT(1'b1),
         .DI({\PILOT_Q_ACCUMULATOR_reg_n_0_[3] ,\PILOT_Q_ACCUMULATOR_reg_n_0_[2] ,\PILOT_Q_ACCUMULATOR_reg_n_0_[1] ,\PILOT_Q_ACCUMULATOR_reg_n_0_[0] }),
         .O({\PILOT_Q_ACCUMULATOR_reg[3]_i_2_n_4 ,\PILOT_Q_ACCUMULATOR_reg[3]_i_2_n_5 ,\PILOT_Q_ACCUMULATOR_reg[3]_i_2_n_6 ,\PILOT_Q_ACCUMULATOR_reg[3]_i_2_n_7 }),
         .S({\PILOT_Q_ACCUMULATOR[3]_i_4_n_0 ,\PILOT_Q_ACCUMULATOR[3]_i_5_n_0 ,\PILOT_Q_ACCUMULATOR[3]_i_6_n_0 ,\PILOT_Q_ACCUMULATOR[3]_i_7_n_0 }));
@@ -16498,7 +16344,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
   CARRY4 \PILOT_Q_ACCUMULATOR_reg[3]_i_3 
        (.CI(1'b0),
         .CO({\PILOT_Q_ACCUMULATOR_reg[3]_i_3_n_0 ,\PILOT_Q_ACCUMULATOR_reg[3]_i_3_n_1 ,\PILOT_Q_ACCUMULATOR_reg[3]_i_3_n_2 ,\PILOT_Q_ACCUMULATOR_reg[3]_i_3_n_3 }),
-        .CYINIT(1'b1),
+        .CYINIT(1'b0),
         .DI({\PILOT_Q_ACCUMULATOR_reg_n_0_[3] ,\PILOT_Q_ACCUMULATOR_reg_n_0_[2] ,\PILOT_Q_ACCUMULATOR_reg_n_0_[1] ,\PILOT_Q_ACCUMULATOR_reg_n_0_[0] }),
         .O({\PILOT_Q_ACCUMULATOR_reg[3]_i_3_n_4 ,\PILOT_Q_ACCUMULATOR_reg[3]_i_3_n_5 ,\PILOT_Q_ACCUMULATOR_reg[3]_i_3_n_6 ,\PILOT_Q_ACCUMULATOR_reg[3]_i_3_n_7 }),
         .S({\PILOT_Q_ACCUMULATOR[3]_i_8_n_0 ,\PILOT_Q_ACCUMULATOR[3]_i_9_n_0 ,\PILOT_Q_ACCUMULATOR[3]_i_10_n_0 ,\PILOT_Q_ACCUMULATOR[3]_i_11_n_0 }));
@@ -16814,6 +16660,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .D(INPUT_DATA_CNTR[5]),
         .Q(ROTATION_CONSTELLATION_CNTR_IN[5]),
         .R(1'b0));
+  (* SOFT_HLUTNM = "soft_lutpair39" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     ROTATION_CONSTELLATION_DATA_IN_STROBE_i_1
@@ -17662,22 +17509,16 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I1(i__carry__0_i_5__0_n_6),
         .I2(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
         .O(i__carry__0_i_1__0_n_0));
-  LUT3 #(
-    .INIT(8'h35)) 
+  LUT6 #(
+    .INIT(64'hE000FFFF1FFF0000)) 
     i__carry__0_i_1__1
-       (.I0(PILOT_PHASE__0[10]),
-        .I1(i__carry__0_i_5__1_n_6),
-        .I2(PILOT_PHASE__0[23]),
+       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[3] ),
+        .I1(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[2] ),
+        .I2(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[5] ),
+        .I3(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[4] ),
+        .I4(PILOT_PHASE__0[7]),
+        .I5(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_6_8_n_1),
         .O(i__carry__0_i_1__1_n_0));
-  LUT5 #(
-    .INIT(32'hBABF4540)) 
-    i__carry__0_i_1__2
-       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX[1]_i_4_n_0 ),
-        .I1(\p_1_out_inferred__17/i__carry__0_n_5 ),
-        .I2(PILOT_PHASE__0[23]),
-        .I3(PILOT_PHASE__0[9]),
-        .I4(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_6_8_n_1),
-        .O(i__carry__0_i_1__2_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     i__carry__0_i_2
@@ -17686,28 +17527,22 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(\PILOT_I_ACCUMULATOR_reg_n_0_[25] ),
         .O(i__carry__0_i_2_n_0));
   LUT3 #(
-    .INIT(8'h47)) 
-    i__carry__0_i_2__0
-       (.I0(i__carry__0_i_5__0_n_7),
-        .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
-        .I2(\PILOT_Q_ACCUMULATOR_reg_n_0_[9] ),
-        .O(i__carry__0_i_2__0_n_0));
-  LUT3 #(
     .INIT(8'h35)) 
+    i__carry__0_i_2__0
+       (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[9] ),
+        .I1(i__carry__0_i_5__0_n_7),
+        .I2(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
+        .O(i__carry__0_i_2__0_n_0));
+  LUT6 #(
+    .INIT(64'hE000FFFF1FFF0000)) 
     i__carry__0_i_2__1
-       (.I0(PILOT_PHASE__0[9]),
-        .I1(i__carry__0_i_5__1_n_7),
-        .I2(PILOT_PHASE__0[23]),
+       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[3] ),
+        .I1(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[2] ),
+        .I2(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[5] ),
+        .I3(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[4] ),
+        .I4(PILOT_PHASE__0[6]),
+        .I5(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_6_8_n_0),
         .O(i__carry__0_i_2__1_n_0));
-  LUT5 #(
-    .INIT(32'hBABF4540)) 
-    i__carry__0_i_2__2
-       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX[1]_i_4_n_0 ),
-        .I1(\p_1_out_inferred__17/i__carry__0_n_6 ),
-        .I2(PILOT_PHASE__0[23]),
-        .I3(PILOT_PHASE__0[8]),
-        .I4(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_6_8_n_0),
-        .O(i__carry__0_i_2__2_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     i__carry__0_i_3
@@ -17722,28 +17557,22 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
         .I2(\PILOT_Q_ACCUMULATOR_reg_n_0_[8] ),
         .O(i__carry__0_i_3__0_n_0));
+  LUT6 #(
+    .INIT(64'hE000FFFF1FFF0000)) 
+    i__carry__0_i_3__1
+       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[3] ),
+        .I1(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[2] ),
+        .I2(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[5] ),
+        .I3(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[4] ),
+        .I4(PILOT_PHASE__0[5]),
+        .I5(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_3_5_n_2),
+        .O(i__carry__0_i_3__1_n_0));
   LUT3 #(
     .INIT(8'h35)) 
-    i__carry__0_i_3__1
-       (.I0(PILOT_PHASE__0[8]),
-        .I1(i__carry_i_7__1_n_4),
-        .I2(PILOT_PHASE__0[23]),
-        .O(i__carry__0_i_3__1_n_0));
-  LUT5 #(
-    .INIT(32'hBABF4540)) 
-    i__carry__0_i_3__2
-       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX[1]_i_4_n_0 ),
-        .I1(\p_1_out_inferred__17/i__carry__0_n_7 ),
-        .I2(PILOT_PHASE__0[23]),
-        .I3(PILOT_PHASE__0[7]),
-        .I4(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_3_5_n_2),
-        .O(i__carry__0_i_3__2_n_0));
-  LUT3 #(
-    .INIT(8'h47)) 
     i__carry__0_i_4
-       (.I0(i__carry_i_7_n_5),
-        .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[25] ),
-        .I2(\PILOT_I_ACCUMULATOR_reg_n_0_[7] ),
+       (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[7] ),
+        .I1(i__carry_i_7_n_5),
+        .I2(\PILOT_I_ACCUMULATOR_reg_n_0_[25] ),
         .O(i__carry__0_i_4_n_0));
   LUT3 #(
     .INIT(8'h35)) 
@@ -17752,22 +17581,16 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I1(i__carry_i_7__0_n_5),
         .I2(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
         .O(i__carry__0_i_4__0_n_0));
-  LUT3 #(
-    .INIT(8'h35)) 
+  LUT6 #(
+    .INIT(64'hE000FFFF1FFF0000)) 
     i__carry__0_i_4__1
-       (.I0(PILOT_PHASE__0[7]),
-        .I1(i__carry_i_7__1_n_5),
-        .I2(PILOT_PHASE__0[23]),
+       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[3] ),
+        .I1(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[2] ),
+        .I2(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[5] ),
+        .I3(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[4] ),
+        .I4(PILOT_PHASE__0[4]),
+        .I5(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_3_5_n_1),
         .O(i__carry__0_i_4__1_n_0));
-  LUT5 #(
-    .INIT(32'hBABF4540)) 
-    i__carry__0_i_4__2
-       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX[1]_i_4_n_0 ),
-        .I1(\p_1_out_inferred__17/i__carry_n_4 ),
-        .I2(PILOT_PHASE__0[23]),
-        .I3(PILOT_PHASE__0[6]),
-        .I4(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_3_5_n_1),
-        .O(i__carry__0_i_4__2_n_0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 i__carry__0_i_5
        (.CI(i__carry_i_7_n_0),
@@ -17785,15 +17608,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O({i__carry__0_i_5__0_n_4,i__carry__0_i_5__0_n_5,i__carry__0_i_5__0_n_6,i__carry__0_i_5__0_n_7}),
         .S({i__carry__0_i_6__0_n_0,i__carry__0_i_7__0_n_0,i__carry__0_i_8__0_n_0,i__carry__0_i_9__0_n_0}));
-  (* ADDER_THRESHOLD = "35" *) 
-  (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
-  CARRY4 i__carry__0_i_5__1
-       (.CI(i__carry_i_7__1_n_0),
-        .CO({i__carry__0_i_5__1_n_0,i__carry__0_i_5__1_n_1,i__carry__0_i_5__1_n_2,i__carry__0_i_5__1_n_3}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({i__carry__0_i_5__1_n_4,i__carry__0_i_5__1_n_5,i__carry__0_i_5__1_n_6,i__carry__0_i_5__1_n_7}),
-        .S({i__carry__0_i_6__1_n_0,i__carry__0_i_7__1_n_0,i__carry__0_i_8__1_n_0,i__carry__0_i_9__1_n_0}));
   LUT1 #(
     .INIT(2'h1)) 
     i__carry__0_i_6
@@ -17806,11 +17620,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .O(i__carry__0_i_6__0_n_0));
   LUT1 #(
     .INIT(2'h1)) 
-    i__carry__0_i_6__1
-       (.I0(PILOT_PHASE__0[12]),
-        .O(i__carry__0_i_6__1_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
     i__carry__0_i_7
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[11] ),
         .O(i__carry__0_i_7_n_0));
@@ -17819,11 +17628,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     i__carry__0_i_7__0
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[11] ),
         .O(i__carry__0_i_7__0_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    i__carry__0_i_7__1
-       (.I0(PILOT_PHASE__0[11]),
-        .O(i__carry__0_i_7__1_n_0));
   LUT1 #(
     .INIT(2'h1)) 
     i__carry__0_i_8
@@ -17836,11 +17640,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .O(i__carry__0_i_8__0_n_0));
   LUT1 #(
     .INIT(2'h1)) 
-    i__carry__0_i_8__1
-       (.I0(PILOT_PHASE__0[10]),
-        .O(i__carry__0_i_8__1_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
     i__carry__0_i_9
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[9] ),
         .O(i__carry__0_i_9_n_0));
@@ -17849,11 +17648,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     i__carry__0_i_9__0
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[9] ),
         .O(i__carry__0_i_9__0_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    i__carry__0_i_9__1
-       (.I0(PILOT_PHASE__0[9]),
-        .O(i__carry__0_i_9__1_n_0));
   LUT3 #(
     .INIT(8'h47)) 
     i__carry__1_i_1
@@ -17868,22 +17662,16 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I1(i__carry__1_i_5__0_n_6),
         .I2(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
         .O(i__carry__1_i_1__0_n_0));
-  LUT3 #(
-    .INIT(8'h35)) 
+  LUT6 #(
+    .INIT(64'hE000FFFF1FFF0000)) 
     i__carry__1_i_1__1
-       (.I0(PILOT_PHASE__0[14]),
-        .I1(i__carry__1_i_5__1_n_6),
-        .I2(PILOT_PHASE__0[23]),
+       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[3] ),
+        .I1(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[2] ),
+        .I2(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[5] ),
+        .I3(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[4] ),
+        .I4(PILOT_PHASE__0[11]),
+        .I5(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_9_11_n_2),
         .O(i__carry__1_i_1__1_n_0));
-  LUT5 #(
-    .INIT(32'hBABF4540)) 
-    i__carry__1_i_1__2
-       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX[1]_i_4_n_0 ),
-        .I1(\p_1_out_inferred__17/i__carry__1_n_5 ),
-        .I2(PILOT_PHASE__0[23]),
-        .I3(PILOT_PHASE__0[13]),
-        .I4(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_9_11_n_2),
-        .O(i__carry__1_i_1__2_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     i__carry__1_i_2
@@ -17892,28 +17680,22 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(\PILOT_I_ACCUMULATOR_reg_n_0_[25] ),
         .O(i__carry__1_i_2_n_0));
   LUT3 #(
-    .INIT(8'h47)) 
-    i__carry__1_i_2__0
-       (.I0(i__carry__1_i_5__0_n_7),
-        .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
-        .I2(\PILOT_Q_ACCUMULATOR_reg_n_0_[13] ),
-        .O(i__carry__1_i_2__0_n_0));
-  LUT3 #(
     .INIT(8'h35)) 
+    i__carry__1_i_2__0
+       (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[13] ),
+        .I1(i__carry__1_i_5__0_n_7),
+        .I2(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
+        .O(i__carry__1_i_2__0_n_0));
+  LUT6 #(
+    .INIT(64'hE000FFFF1FFF0000)) 
     i__carry__1_i_2__1
-       (.I0(PILOT_PHASE__0[13]),
-        .I1(i__carry__1_i_5__1_n_7),
-        .I2(PILOT_PHASE__0[23]),
+       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[3] ),
+        .I1(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[2] ),
+        .I2(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[5] ),
+        .I3(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[4] ),
+        .I4(PILOT_PHASE__0[10]),
+        .I5(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_9_11_n_1),
         .O(i__carry__1_i_2__1_n_0));
-  LUT5 #(
-    .INIT(32'hBABF4540)) 
-    i__carry__1_i_2__2
-       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX[1]_i_4_n_0 ),
-        .I1(\p_1_out_inferred__17/i__carry__1_n_6 ),
-        .I2(PILOT_PHASE__0[23]),
-        .I3(PILOT_PHASE__0[12]),
-        .I4(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_9_11_n_1),
-        .O(i__carry__1_i_2__2_n_0));
   LUT3 #(
     .INIT(8'h47)) 
     i__carry__1_i_3
@@ -17922,28 +17704,22 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(\PILOT_I_ACCUMULATOR_reg_n_0_[12] ),
         .O(i__carry__1_i_3_n_0));
   LUT3 #(
-    .INIT(8'h47)) 
-    i__carry__1_i_3__0
-       (.I0(i__carry__0_i_5__0_n_4),
-        .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
-        .I2(\PILOT_Q_ACCUMULATOR_reg_n_0_[12] ),
-        .O(i__carry__1_i_3__0_n_0));
-  LUT3 #(
     .INIT(8'h35)) 
+    i__carry__1_i_3__0
+       (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[12] ),
+        .I1(i__carry__0_i_5__0_n_4),
+        .I2(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
+        .O(i__carry__1_i_3__0_n_0));
+  LUT6 #(
+    .INIT(64'hE000FFFF1FFF0000)) 
     i__carry__1_i_3__1
-       (.I0(PILOT_PHASE__0[12]),
-        .I1(i__carry__0_i_5__1_n_4),
-        .I2(PILOT_PHASE__0[23]),
+       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[3] ),
+        .I1(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[2] ),
+        .I2(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[5] ),
+        .I3(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[4] ),
+        .I4(PILOT_PHASE__0[9]),
+        .I5(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_9_11_n_0),
         .O(i__carry__1_i_3__1_n_0));
-  LUT5 #(
-    .INIT(32'hBABF4540)) 
-    i__carry__1_i_3__2
-       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX[1]_i_4_n_0 ),
-        .I1(\p_1_out_inferred__17/i__carry__1_n_7 ),
-        .I2(PILOT_PHASE__0[23]),
-        .I3(PILOT_PHASE__0[11]),
-        .I4(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_9_11_n_0),
-        .O(i__carry__1_i_3__2_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     i__carry__1_i_4
@@ -17952,28 +17728,22 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(\PILOT_I_ACCUMULATOR_reg_n_0_[25] ),
         .O(i__carry__1_i_4_n_0));
   LUT3 #(
-    .INIT(8'h47)) 
-    i__carry__1_i_4__0
-       (.I0(i__carry__0_i_5__0_n_5),
-        .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
-        .I2(\PILOT_Q_ACCUMULATOR_reg_n_0_[11] ),
-        .O(i__carry__1_i_4__0_n_0));
-  LUT3 #(
     .INIT(8'h35)) 
+    i__carry__1_i_4__0
+       (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[11] ),
+        .I1(i__carry__0_i_5__0_n_5),
+        .I2(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
+        .O(i__carry__1_i_4__0_n_0));
+  LUT6 #(
+    .INIT(64'hE000FFFF1FFF0000)) 
     i__carry__1_i_4__1
-       (.I0(PILOT_PHASE__0[11]),
-        .I1(i__carry__0_i_5__1_n_5),
-        .I2(PILOT_PHASE__0[23]),
+       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[3] ),
+        .I1(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[2] ),
+        .I2(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[5] ),
+        .I3(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[4] ),
+        .I4(PILOT_PHASE__0[8]),
+        .I5(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_6_8_n_2),
         .O(i__carry__1_i_4__1_n_0));
-  LUT5 #(
-    .INIT(32'hBABF4540)) 
-    i__carry__1_i_4__2
-       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX[1]_i_4_n_0 ),
-        .I1(\p_1_out_inferred__17/i__carry__0_n_4 ),
-        .I2(PILOT_PHASE__0[23]),
-        .I3(PILOT_PHASE__0[10]),
-        .I4(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_6_8_n_2),
-        .O(i__carry__1_i_4__2_n_0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 i__carry__1_i_5
        (.CI(i__carry__0_i_5_n_0),
@@ -17991,15 +17761,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O({i__carry__1_i_5__0_n_4,i__carry__1_i_5__0_n_5,i__carry__1_i_5__0_n_6,i__carry__1_i_5__0_n_7}),
         .S({i__carry__1_i_6__0_n_0,i__carry__1_i_7__0_n_0,i__carry__1_i_8__0_n_0,i__carry__1_i_9__0_n_0}));
-  (* ADDER_THRESHOLD = "35" *) 
-  (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
-  CARRY4 i__carry__1_i_5__1
-       (.CI(i__carry__0_i_5__1_n_0),
-        .CO({i__carry__1_i_5__1_n_0,i__carry__1_i_5__1_n_1,i__carry__1_i_5__1_n_2,i__carry__1_i_5__1_n_3}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({i__carry__1_i_5__1_n_4,i__carry__1_i_5__1_n_5,i__carry__1_i_5__1_n_6,i__carry__1_i_5__1_n_7}),
-        .S({i__carry__1_i_6__1_n_0,i__carry__1_i_7__1_n_0,i__carry__1_i_8__1_n_0,i__carry__1_i_9__1_n_0}));
   LUT1 #(
     .INIT(2'h1)) 
     i__carry__1_i_6
@@ -18012,11 +17773,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .O(i__carry__1_i_6__0_n_0));
   LUT1 #(
     .INIT(2'h1)) 
-    i__carry__1_i_6__1
-       (.I0(PILOT_PHASE__0[16]),
-        .O(i__carry__1_i_6__1_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
     i__carry__1_i_7
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[15] ),
         .O(i__carry__1_i_7_n_0));
@@ -18025,11 +17781,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     i__carry__1_i_7__0
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[15] ),
         .O(i__carry__1_i_7__0_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    i__carry__1_i_7__1
-       (.I0(PILOT_PHASE__0[15]),
-        .O(i__carry__1_i_7__1_n_0));
   LUT1 #(
     .INIT(2'h1)) 
     i__carry__1_i_8
@@ -18042,11 +17793,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .O(i__carry__1_i_8__0_n_0));
   LUT1 #(
     .INIT(2'h1)) 
-    i__carry__1_i_8__1
-       (.I0(PILOT_PHASE__0[14]),
-        .O(i__carry__1_i_8__1_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
     i__carry__1_i_9
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[13] ),
         .O(i__carry__1_i_9_n_0));
@@ -18055,11 +17801,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     i__carry__1_i_9__0
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[13] ),
         .O(i__carry__1_i_9__0_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    i__carry__1_i_9__1
-       (.I0(PILOT_PHASE__0[13]),
-        .O(i__carry__1_i_9__1_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     i__carry__2_i_1
@@ -18074,22 +17815,16 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I1(i__carry__2_i_5__0_n_6),
         .I2(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
         .O(i__carry__2_i_1__0_n_0));
-  LUT3 #(
-    .INIT(8'h35)) 
+  LUT6 #(
+    .INIT(64'hE000FFFF1FFF0000)) 
     i__carry__2_i_1__1
-       (.I0(PILOT_PHASE__0[18]),
-        .I1(i__carry__2_i_5__1_n_6),
-        .I2(PILOT_PHASE__0[23]),
+       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[3] ),
+        .I1(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[2] ),
+        .I2(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[5] ),
+        .I3(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[4] ),
+        .I4(PILOT_PHASE__0[15]),
+        .I5(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_15_17_n_0),
         .O(i__carry__2_i_1__1_n_0));
-  LUT5 #(
-    .INIT(32'hBABF4540)) 
-    i__carry__2_i_1__2
-       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX[1]_i_4_n_0 ),
-        .I1(\p_1_out_inferred__17/i__carry__2_n_5 ),
-        .I2(PILOT_PHASE__0[23]),
-        .I3(PILOT_PHASE__0[17]),
-        .I4(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_15_17_n_0),
-        .O(i__carry__2_i_1__2_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     i__carry__2_i_2
@@ -18098,34 +17833,28 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(\PILOT_I_ACCUMULATOR_reg_n_0_[25] ),
         .O(i__carry__2_i_2_n_0));
   LUT3 #(
-    .INIT(8'h47)) 
+    .INIT(8'h35)) 
     i__carry__2_i_2__0
-       (.I0(i__carry__2_i_5__0_n_7),
-        .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
-        .I2(\PILOT_Q_ACCUMULATOR_reg_n_0_[17] ),
+       (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[17] ),
+        .I1(i__carry__2_i_5__0_n_7),
+        .I2(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
         .O(i__carry__2_i_2__0_n_0));
-  LUT3 #(
-    .INIT(8'h35)) 
+  LUT6 #(
+    .INIT(64'hE000FFFF1FFF0000)) 
     i__carry__2_i_2__1
-       (.I0(PILOT_PHASE__0[17]),
-        .I1(i__carry__2_i_5__1_n_7),
-        .I2(PILOT_PHASE__0[23]),
+       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[3] ),
+        .I1(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[2] ),
+        .I2(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[5] ),
+        .I3(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[4] ),
+        .I4(PILOT_PHASE__0[14]),
+        .I5(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_12_14_n_2),
         .O(i__carry__2_i_2__1_n_0));
-  LUT5 #(
-    .INIT(32'hBABF4540)) 
-    i__carry__2_i_2__2
-       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX[1]_i_4_n_0 ),
-        .I1(\p_1_out_inferred__17/i__carry__2_n_6 ),
-        .I2(PILOT_PHASE__0[23]),
-        .I3(PILOT_PHASE__0[16]),
-        .I4(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_12_14_n_2),
-        .O(i__carry__2_i_2__2_n_0));
   LUT3 #(
-    .INIT(8'h35)) 
+    .INIT(8'h47)) 
     i__carry__2_i_3
-       (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[16] ),
-        .I1(i__carry__1_i_5_n_4),
-        .I2(\PILOT_I_ACCUMULATOR_reg_n_0_[25] ),
+       (.I0(i__carry__1_i_5_n_4),
+        .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[25] ),
+        .I2(\PILOT_I_ACCUMULATOR_reg_n_0_[16] ),
         .O(i__carry__2_i_3_n_0));
   LUT3 #(
     .INIT(8'h47)) 
@@ -18134,22 +17863,16 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
         .I2(\PILOT_Q_ACCUMULATOR_reg_n_0_[16] ),
         .O(i__carry__2_i_3__0_n_0));
-  LUT3 #(
-    .INIT(8'h35)) 
+  LUT6 #(
+    .INIT(64'hE000FFFF1FFF0000)) 
     i__carry__2_i_3__1
-       (.I0(PILOT_PHASE__0[16]),
-        .I1(i__carry__1_i_5__1_n_4),
-        .I2(PILOT_PHASE__0[23]),
+       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[3] ),
+        .I1(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[2] ),
+        .I2(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[5] ),
+        .I3(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[4] ),
+        .I4(PILOT_PHASE__0[13]),
+        .I5(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_12_14_n_1),
         .O(i__carry__2_i_3__1_n_0));
-  LUT5 #(
-    .INIT(32'hBABF4540)) 
-    i__carry__2_i_3__2
-       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX[1]_i_4_n_0 ),
-        .I1(\p_1_out_inferred__17/i__carry__2_n_7 ),
-        .I2(PILOT_PHASE__0[23]),
-        .I3(PILOT_PHASE__0[15]),
-        .I4(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_12_14_n_1),
-        .O(i__carry__2_i_3__2_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     i__carry__2_i_4
@@ -18164,22 +17887,16 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
         .I2(\PILOT_Q_ACCUMULATOR_reg_n_0_[15] ),
         .O(i__carry__2_i_4__0_n_0));
-  LUT3 #(
-    .INIT(8'h35)) 
+  LUT6 #(
+    .INIT(64'hE000FFFF1FFF0000)) 
     i__carry__2_i_4__1
-       (.I0(PILOT_PHASE__0[15]),
-        .I1(i__carry__1_i_5__1_n_5),
-        .I2(PILOT_PHASE__0[23]),
+       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[3] ),
+        .I1(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[2] ),
+        .I2(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[5] ),
+        .I3(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[4] ),
+        .I4(PILOT_PHASE__0[12]),
+        .I5(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_12_14_n_0),
         .O(i__carry__2_i_4__1_n_0));
-  LUT5 #(
-    .INIT(32'hBABF4540)) 
-    i__carry__2_i_4__2
-       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX[1]_i_4_n_0 ),
-        .I1(\p_1_out_inferred__17/i__carry__1_n_4 ),
-        .I2(PILOT_PHASE__0[23]),
-        .I3(PILOT_PHASE__0[14]),
-        .I4(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_12_14_n_0),
-        .O(i__carry__2_i_4__2_n_0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 i__carry__2_i_5
        (.CI(i__carry__1_i_5_n_0),
@@ -18197,15 +17914,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O({i__carry__2_i_5__0_n_4,i__carry__2_i_5__0_n_5,i__carry__2_i_5__0_n_6,i__carry__2_i_5__0_n_7}),
         .S({i__carry__2_i_6__0_n_0,i__carry__2_i_7__0_n_0,i__carry__2_i_8__0_n_0,i__carry__2_i_9__0_n_0}));
-  (* ADDER_THRESHOLD = "35" *) 
-  (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
-  CARRY4 i__carry__2_i_5__1
-       (.CI(i__carry__1_i_5__1_n_0),
-        .CO({i__carry__2_i_5__1_n_0,i__carry__2_i_5__1_n_1,i__carry__2_i_5__1_n_2,i__carry__2_i_5__1_n_3}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({i__carry__2_i_5__1_n_4,i__carry__2_i_5__1_n_5,i__carry__2_i_5__1_n_6,i__carry__2_i_5__1_n_7}),
-        .S({i__carry__2_i_6__1_n_0,i__carry__2_i_7__1_n_0,i__carry__2_i_8__1_n_0,i__carry__2_i_9__1_n_0}));
   LUT1 #(
     .INIT(2'h1)) 
     i__carry__2_i_6
@@ -18218,11 +17926,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .O(i__carry__2_i_6__0_n_0));
   LUT1 #(
     .INIT(2'h1)) 
-    i__carry__2_i_6__1
-       (.I0(PILOT_PHASE__0[20]),
-        .O(i__carry__2_i_6__1_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
     i__carry__2_i_7
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[19] ),
         .O(i__carry__2_i_7_n_0));
@@ -18231,11 +17934,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     i__carry__2_i_7__0
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[19] ),
         .O(i__carry__2_i_7__0_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    i__carry__2_i_7__1
-       (.I0(PILOT_PHASE__0[19]),
-        .O(i__carry__2_i_7__1_n_0));
   LUT1 #(
     .INIT(2'h1)) 
     i__carry__2_i_8
@@ -18248,11 +17946,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .O(i__carry__2_i_8__0_n_0));
   LUT1 #(
     .INIT(2'h1)) 
-    i__carry__2_i_8__1
-       (.I0(PILOT_PHASE__0[18]),
-        .O(i__carry__2_i_8__1_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
     i__carry__2_i_9
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[17] ),
         .O(i__carry__2_i_9_n_0));
@@ -18261,41 +17954,30 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     i__carry__2_i_9__0
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[17] ),
         .O(i__carry__2_i_9__0_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    i__carry__2_i_9__1
-       (.I0(PILOT_PHASE__0[17]),
-        .O(i__carry__2_i_9__1_n_0));
   LUT3 #(
-    .INIT(8'h53)) 
+    .INIT(8'h47)) 
     i__carry__3_i_1
-       (.I0(i__carry__3_i_5__1_n_6),
-        .I1(PILOT_PHASE__0[22]),
-        .I2(PILOT_PHASE__0[23]),
+       (.I0(i__carry__3_i_5_n_6),
+        .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[25] ),
+        .I2(\PILOT_I_ACCUMULATOR_reg_n_0_[22] ),
         .O(i__carry__3_i_1_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     i__carry__3_i_1__0
-       (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[22] ),
-        .I1(i__carry__3_i_5_n_6),
-        .I2(\PILOT_I_ACCUMULATOR_reg_n_0_[25] ),
-        .O(i__carry__3_i_1__0_n_0));
-  LUT3 #(
-    .INIT(8'h35)) 
-    i__carry__3_i_1__1
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[22] ),
         .I1(i__carry__3_i_5__0_n_6),
         .I2(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
+        .O(i__carry__3_i_1__0_n_0));
+  LUT6 #(
+    .INIT(64'hE000FFFF1FFF0000)) 
+    i__carry__3_i_1__1
+       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[3] ),
+        .I1(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[2] ),
+        .I2(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[5] ),
+        .I3(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[4] ),
+        .I4(PILOT_PHASE__0[19]),
+        .I5(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_18_20_n_1),
         .O(i__carry__3_i_1__1_n_0));
-  LUT5 #(
-    .INIT(32'hBABF4540)) 
-    i__carry__3_i_1__2
-       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX[1]_i_4_n_0 ),
-        .I1(\p_1_out_inferred__17/i__carry__3_n_5 ),
-        .I2(PILOT_PHASE__0[23]),
-        .I3(PILOT_PHASE__0[21]),
-        .I4(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_18_20_n_1),
-        .O(i__carry__3_i_1__2_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     i__carry__3_i_2
@@ -18304,28 +17986,22 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(\PILOT_I_ACCUMULATOR_reg_n_0_[25] ),
         .O(i__carry__3_i_2_n_0));
   LUT3 #(
-    .INIT(8'h35)) 
+    .INIT(8'h47)) 
     i__carry__3_i_2__0
-       (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[21] ),
-        .I1(i__carry__3_i_5__0_n_7),
-        .I2(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
+       (.I0(i__carry__3_i_5__0_n_7),
+        .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
+        .I2(\PILOT_Q_ACCUMULATOR_reg_n_0_[21] ),
         .O(i__carry__3_i_2__0_n_0));
-  LUT3 #(
-    .INIT(8'h35)) 
+  LUT6 #(
+    .INIT(64'hE000FFFF1FFF0000)) 
     i__carry__3_i_2__1
-       (.I0(PILOT_PHASE__0[21]),
-        .I1(i__carry__3_i_5__1_n_7),
-        .I2(PILOT_PHASE__0[23]),
+       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[3] ),
+        .I1(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[2] ),
+        .I2(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[5] ),
+        .I3(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[4] ),
+        .I4(PILOT_PHASE__0[18]),
+        .I5(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_18_20_n_0),
         .O(i__carry__3_i_2__1_n_0));
-  LUT5 #(
-    .INIT(32'hBABF4540)) 
-    i__carry__3_i_2__2
-       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX[1]_i_4_n_0 ),
-        .I1(\p_1_out_inferred__17/i__carry__3_n_6 ),
-        .I2(PILOT_PHASE__0[23]),
-        .I3(PILOT_PHASE__0[20]),
-        .I4(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_18_20_n_0),
-        .O(i__carry__3_i_2__2_n_0));
   LUT3 #(
     .INIT(8'h47)) 
     i__carry__3_i_3
@@ -18340,52 +18016,40 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I1(i__carry__2_i_5__0_n_4),
         .I2(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
         .O(i__carry__3_i_3__0_n_0));
-  LUT3 #(
-    .INIT(8'h35)) 
+  LUT6 #(
+    .INIT(64'hE000FFFF1FFF0000)) 
     i__carry__3_i_3__1
-       (.I0(PILOT_PHASE__0[20]),
-        .I1(i__carry__2_i_5__1_n_4),
-        .I2(PILOT_PHASE__0[23]),
+       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[3] ),
+        .I1(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[2] ),
+        .I2(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[5] ),
+        .I3(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[4] ),
+        .I4(PILOT_PHASE__0[17]),
+        .I5(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_15_17_n_2),
         .O(i__carry__3_i_3__1_n_0));
-  LUT5 #(
-    .INIT(32'hBABF4540)) 
-    i__carry__3_i_3__2
-       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX[1]_i_4_n_0 ),
-        .I1(\p_1_out_inferred__17/i__carry__3_n_7 ),
-        .I2(PILOT_PHASE__0[23]),
-        .I3(PILOT_PHASE__0[19]),
-        .I4(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_15_17_n_2),
-        .O(i__carry__3_i_3__2_n_0));
   LUT3 #(
-    .INIT(8'h35)) 
+    .INIT(8'h47)) 
     i__carry__3_i_4
-       (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[19] ),
-        .I1(i__carry__2_i_5_n_5),
-        .I2(\PILOT_I_ACCUMULATOR_reg_n_0_[25] ),
+       (.I0(i__carry__2_i_5_n_5),
+        .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[25] ),
+        .I2(\PILOT_I_ACCUMULATOR_reg_n_0_[19] ),
         .O(i__carry__3_i_4_n_0));
   LUT3 #(
-    .INIT(8'h35)) 
+    .INIT(8'h47)) 
     i__carry__3_i_4__0
-       (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[19] ),
-        .I1(i__carry__2_i_5__0_n_5),
-        .I2(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
+       (.I0(i__carry__2_i_5__0_n_5),
+        .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
+        .I2(\PILOT_Q_ACCUMULATOR_reg_n_0_[19] ),
         .O(i__carry__3_i_4__0_n_0));
-  LUT3 #(
-    .INIT(8'h35)) 
+  LUT6 #(
+    .INIT(64'hE000FFFF1FFF0000)) 
     i__carry__3_i_4__1
-       (.I0(PILOT_PHASE__0[19]),
-        .I1(i__carry__2_i_5__1_n_5),
-        .I2(PILOT_PHASE__0[23]),
+       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[3] ),
+        .I1(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[2] ),
+        .I2(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[5] ),
+        .I3(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[4] ),
+        .I4(PILOT_PHASE__0[16]),
+        .I5(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_15_17_n_1),
         .O(i__carry__3_i_4__1_n_0));
-  LUT5 #(
-    .INIT(32'hBABF4540)) 
-    i__carry__3_i_4__2
-       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX[1]_i_4_n_0 ),
-        .I1(\p_1_out_inferred__17/i__carry__2_n_4 ),
-        .I2(PILOT_PHASE__0[23]),
-        .I3(PILOT_PHASE__0[18]),
-        .I4(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_15_17_n_1),
-        .O(i__carry__3_i_4__2_n_0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 i__carry__3_i_5
        (.CI(i__carry__2_i_5_n_0),
@@ -18403,15 +18067,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O({i__carry__3_i_5__0_n_4,i__carry__3_i_5__0_n_5,i__carry__3_i_5__0_n_6,i__carry__3_i_5__0_n_7}),
         .S({i__carry__3_i_6__0_n_0,i__carry__3_i_7__0_n_0,i__carry__3_i_8__0_n_0,i__carry__3_i_9__0_n_0}));
-  (* ADDER_THRESHOLD = "35" *) 
-  (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
-  CARRY4 i__carry__3_i_5__1
-       (.CI(i__carry__2_i_5__1_n_0),
-        .CO({NLW_i__carry__3_i_5__1_CO_UNCONNECTED[3:2],i__carry__3_i_5__1_n_2,i__carry__3_i_5__1_n_3}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({NLW_i__carry__3_i_5__1_O_UNCONNECTED[3],i__carry__3_i_5__1_n_5,i__carry__3_i_5__1_n_6,i__carry__3_i_5__1_n_7}),
-        .S({1'b0,i__carry__3_i_6__1_n_0,i__carry__3_i_7__1_n_0,i__carry__3_i_8__1_n_0}));
   LUT1 #(
     .INIT(2'h1)) 
     i__carry__3_i_6
@@ -18424,11 +18079,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .O(i__carry__3_i_6__0_n_0));
   LUT1 #(
     .INIT(2'h1)) 
-    i__carry__3_i_6__1
-       (.I0(PILOT_PHASE__0[23]),
-        .O(i__carry__3_i_6__1_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
     i__carry__3_i_7
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[23] ),
         .O(i__carry__3_i_7_n_0));
@@ -18437,11 +18087,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     i__carry__3_i_7__0
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[23] ),
         .O(i__carry__3_i_7__0_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    i__carry__3_i_7__1
-       (.I0(PILOT_PHASE__0[22]),
-        .O(i__carry__3_i_7__1_n_0));
   LUT1 #(
     .INIT(2'h1)) 
     i__carry__3_i_8
@@ -18454,11 +18099,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .O(i__carry__3_i_8__0_n_0));
   LUT1 #(
     .INIT(2'h1)) 
-    i__carry__3_i_8__1
-       (.I0(PILOT_PHASE__0[21]),
-        .O(i__carry__3_i_8__1_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
     i__carry__3_i_9
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[21] ),
         .O(i__carry__3_i_9_n_0));
@@ -18467,34 +18107,28 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     i__carry__3_i_9__0
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[21] ),
         .O(i__carry__3_i_9__0_n_0));
-  LUT2 #(
-    .INIT(4'h7)) 
+  LUT6 #(
+    .INIT(64'hA9555555AAAAAAAA)) 
     i__carry__4_i_1
-       (.I0(i__carry__4_i_4_n_7),
-        .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[25] ),
+       (.I0(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_21_23_n_2),
+        .I1(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[3] ),
+        .I2(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[2] ),
+        .I3(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[5] ),
+        .I4(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[4] ),
+        .I5(PILOT_PHASE__0[23]),
         .O(i__carry__4_i_1_n_0));
   LUT2 #(
     .INIT(4'h7)) 
     i__carry__4_i_1__0
-       (.I0(i__carry__4_i_4__0_n_7),
-        .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
+       (.I0(i__carry__4_i_4_n_7),
+        .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[25] ),
         .O(i__carry__4_i_1__0_n_0));
   LUT2 #(
     .INIT(4'h7)) 
     i__carry__4_i_1__1
-       (.I0(i__carry__3_i_5__1_n_5),
-        .I1(PILOT_PHASE__0[23]),
+       (.I0(i__carry__4_i_4__0_n_7),
+        .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
         .O(i__carry__4_i_1__1_n_0));
-  LUT6 #(
-    .INIT(64'h0222022202222222)) 
-    i__carry__4_i_1__2
-       (.I0(PILOT_PHASE__0[23]),
-        .I1(\p_1_out_inferred__17/i__carry__4_n_2 ),
-        .I2(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[4] ),
-        .I3(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[5] ),
-        .I4(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[2] ),
-        .I5(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[3] ),
-        .O(i__carry__4_i_1__2_n_0));
   LUT3 #(
     .INIT(8'h53)) 
     i__carry__4_i_2
@@ -18509,13 +18143,15 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[24] ),
         .I2(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
         .O(i__carry__4_i_2__0_n_0));
-  LUT4 #(
-    .INIT(16'hAA9A)) 
+  LUT6 #(
+    .INIT(64'hE000FFFF1FFF0000)) 
     i__carry__4_i_2__1
-       (.I0(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_21_23_n_2),
-        .I1(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX[1]_i_4_n_0 ),
-        .I2(PILOT_PHASE__0[23]),
-        .I3(\p_1_out_inferred__17/i__carry__4_n_2 ),
+       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[3] ),
+        .I1(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[2] ),
+        .I2(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[5] ),
+        .I3(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[4] ),
+        .I4(PILOT_PHASE__0[22]),
+        .I5(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_21_23_n_1),
         .O(i__carry__4_i_2__1_n_0));
   LUT3 #(
     .INIT(8'h35)) 
@@ -18531,13 +18167,15 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I1(i__carry__3_i_5__0_n_5),
         .I2(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
         .O(i__carry__4_i_3__0_n_0));
-  LUT4 #(
-    .INIT(16'hFB04)) 
+  LUT6 #(
+    .INIT(64'hE000FFFF1FFF0000)) 
     i__carry__4_i_3__1
-       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX[1]_i_4_n_0 ),
-        .I1(PILOT_PHASE__0[23]),
-        .I2(\p_1_out_inferred__17/i__carry__4_n_2 ),
-        .I3(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_21_23_n_1),
+       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[3] ),
+        .I1(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[2] ),
+        .I2(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[5] ),
+        .I3(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[4] ),
+        .I4(PILOT_PHASE__0[21]),
+        .I5(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_21_23_n_0),
         .O(i__carry__4_i_3__1_n_0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 i__carry__4_i_4
@@ -18556,13 +18194,15 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O({NLW_i__carry__4_i_4__0_O_UNCONNECTED[3:1],i__carry__4_i_4__0_n_7}),
         .S({1'b0,1'b0,1'b0,i__carry__4_i_5__0_n_0}));
-  LUT4 #(
-    .INIT(16'hBF40)) 
+  LUT6 #(
+    .INIT(64'hE000FFFF1FFF0000)) 
     i__carry__4_i_4__1
-       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX[1]_i_4_n_0 ),
-        .I1(\p_1_out_inferred__17/i__carry__4_n_7 ),
-        .I2(PILOT_PHASE__0[23]),
-        .I3(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_21_23_n_0),
+       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[3] ),
+        .I1(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[2] ),
+        .I2(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[5] ),
+        .I3(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[4] ),
+        .I4(PILOT_PHASE__0[20]),
+        .I5(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_18_20_n_2),
         .O(i__carry__4_i_4__1_n_0));
   LUT1 #(
     .INIT(2'h1)) 
@@ -18574,15 +18214,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     i__carry__4_i_5__0
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
         .O(i__carry__4_i_5__0_n_0));
-  LUT5 #(
-    .INIT(32'hBBAF4450)) 
-    i__carry__4_i_5__1
-       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX[1]_i_4_n_0 ),
-        .I1(\p_1_out_inferred__17/i__carry__3_n_4 ),
-        .I2(PILOT_PHASE__0[22]),
-        .I3(PILOT_PHASE__0[23]),
-        .I4(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_18_20_n_2),
-        .O(i__carry__4_i_5__1_n_0));
   LUT3 #(
     .INIT(8'h1D)) 
     i__carry_i_1
@@ -18602,11 +18233,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .O(i__carry_i_10__0_n_0));
   LUT1 #(
     .INIT(2'h1)) 
-    i__carry_i_10__1
-       (.I0(PILOT_PHASE__0[3]),
-        .O(i__carry_i_10__1_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
     i__carry_i_11
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[2] ),
         .O(i__carry_i_11_n_0));
@@ -18615,11 +18241,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     i__carry_i_11__0
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[2] ),
         .O(i__carry_i_11__0_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    i__carry_i_11__1
-       (.I0(PILOT_PHASE__0[2]),
-        .O(i__carry_i_11__1_n_0));
   LUT1 #(
     .INIT(2'h1)) 
     i__carry_i_12
@@ -18632,11 +18253,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .O(i__carry_i_12__0_n_0));
   LUT1 #(
     .INIT(2'h1)) 
-    i__carry_i_12__1
-       (.I0(PILOT_PHASE__0[1]),
-        .O(i__carry_i_12__1_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
     i__carry_i_13
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[8] ),
         .O(i__carry_i_13_n_0));
@@ -18645,11 +18261,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     i__carry_i_13__0
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[8] ),
         .O(i__carry_i_13__0_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    i__carry_i_13__1
-       (.I0(PILOT_PHASE__0[8]),
-        .O(i__carry_i_13__1_n_0));
   LUT1 #(
     .INIT(2'h1)) 
     i__carry_i_14
@@ -18662,11 +18273,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .O(i__carry_i_14__0_n_0));
   LUT1 #(
     .INIT(2'h1)) 
-    i__carry_i_14__1
-       (.I0(PILOT_PHASE__0[7]),
-        .O(i__carry_i_14__1_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
     i__carry_i_15
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[6] ),
         .O(i__carry_i_15_n_0));
@@ -18677,11 +18283,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .O(i__carry_i_15__0_n_0));
   LUT1 #(
     .INIT(2'h1)) 
-    i__carry_i_15__1
-       (.I0(PILOT_PHASE__0[6]),
-        .O(i__carry_i_15__1_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
     i__carry_i_16
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[5] ),
         .O(i__carry_i_16_n_0));
@@ -18690,11 +18291,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     i__carry_i_16__0
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[5] ),
         .O(i__carry_i_16__0_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    i__carry_i_16__1
-       (.I0(PILOT_PHASE__0[5]),
-        .O(i__carry_i_16__1_n_0));
   LUT3 #(
     .INIT(8'h1D)) 
     i__carry_i_1__0
@@ -18702,82 +18298,64 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
         .I2(i__carry_i_6__0_n_6),
         .O(i__carry_i_1__0_n_0));
-  LUT3 #(
-    .INIT(8'h1D)) 
+  LUT6 #(
+    .INIT(64'hE000FFFF1FFF0000)) 
     i__carry_i_1__1
-       (.I0(PILOT_PHASE__0[2]),
-        .I1(PILOT_PHASE__0[23]),
-        .I2(i__carry_i_6__1_n_6),
+       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[3] ),
+        .I1(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[2] ),
+        .I2(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[5] ),
+        .I3(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[4] ),
+        .I4(PILOT_PHASE__0[3]),
+        .I5(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_3_5_n_0),
         .O(i__carry_i_1__1_n_0));
-  LUT5 #(
-    .INIT(32'hBABF4540)) 
-    i__carry_i_1__2
-       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX[1]_i_4_n_0 ),
-        .I1(\p_1_out_inferred__17/i__carry_n_5 ),
-        .I2(PILOT_PHASE__0[23]),
-        .I3(PILOT_PHASE__0[5]),
-        .I4(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_3_5_n_0),
-        .O(i__carry_i_1__2_n_0));
   LUT3 #(
-    .INIT(8'h47)) 
+    .INIT(8'h35)) 
     i__carry_i_2
-       (.I0(i__carry_i_7_n_6),
-        .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[25] ),
-        .I2(\PILOT_I_ACCUMULATOR_reg_n_0_[6] ),
+       (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[6] ),
+        .I1(i__carry_i_7_n_6),
+        .I2(\PILOT_I_ACCUMULATOR_reg_n_0_[25] ),
         .O(i__carry_i_2_n_0));
   LUT3 #(
-    .INIT(8'h47)) 
+    .INIT(8'h35)) 
     i__carry_i_2__0
-       (.I0(i__carry_i_7__0_n_6),
-        .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
-        .I2(\PILOT_Q_ACCUMULATOR_reg_n_0_[6] ),
+       (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[6] ),
+        .I1(i__carry_i_7__0_n_6),
+        .I2(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
         .O(i__carry_i_2__0_n_0));
-  LUT3 #(
-    .INIT(8'h35)) 
+  LUT6 #(
+    .INIT(64'hE000FFFF1FFF0000)) 
     i__carry_i_2__1
-       (.I0(PILOT_PHASE__0[6]),
-        .I1(i__carry_i_7__1_n_6),
-        .I2(PILOT_PHASE__0[23]),
+       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[3] ),
+        .I1(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[2] ),
+        .I2(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[5] ),
+        .I3(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[4] ),
+        .I4(PILOT_PHASE__0[2]),
+        .I5(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_0_2_n_2),
         .O(i__carry_i_2__1_n_0));
-  LUT5 #(
-    .INIT(32'hBABF4540)) 
-    i__carry_i_2__2
-       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX[1]_i_4_n_0 ),
-        .I1(\p_1_out_inferred__17/i__carry_n_6 ),
-        .I2(PILOT_PHASE__0[23]),
-        .I3(PILOT_PHASE__0[4]),
-        .I4(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_0_2_n_2),
-        .O(i__carry_i_2__2_n_0));
   LUT3 #(
-    .INIT(8'h35)) 
+    .INIT(8'h47)) 
     i__carry_i_3
-       (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[5] ),
-        .I1(i__carry_i_7_n_7),
-        .I2(\PILOT_I_ACCUMULATOR_reg_n_0_[25] ),
+       (.I0(i__carry_i_7_n_7),
+        .I1(\PILOT_I_ACCUMULATOR_reg_n_0_[25] ),
+        .I2(\PILOT_I_ACCUMULATOR_reg_n_0_[5] ),
         .O(i__carry_i_3_n_0));
   LUT3 #(
-    .INIT(8'h47)) 
-    i__carry_i_3__0
-       (.I0(i__carry_i_7__0_n_7),
-        .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
-        .I2(\PILOT_Q_ACCUMULATOR_reg_n_0_[5] ),
-        .O(i__carry_i_3__0_n_0));
-  LUT3 #(
     .INIT(8'h35)) 
+    i__carry_i_3__0
+       (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[5] ),
+        .I1(i__carry_i_7__0_n_7),
+        .I2(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
+        .O(i__carry_i_3__0_n_0));
+  LUT6 #(
+    .INIT(64'hE000FFFF1FFF0000)) 
     i__carry_i_3__1
-       (.I0(PILOT_PHASE__0[5]),
-        .I1(i__carry_i_7__1_n_7),
-        .I2(PILOT_PHASE__0[23]),
+       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[3] ),
+        .I1(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[2] ),
+        .I2(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[5] ),
+        .I3(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[4] ),
+        .I4(PILOT_PHASE__0[1]),
+        .I5(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_0_2_n_1),
         .O(i__carry_i_3__1_n_0));
-  LUT5 #(
-    .INIT(32'hBABF4540)) 
-    i__carry_i_3__2
-       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX[1]_i_4_n_0 ),
-        .I1(\p_1_out_inferred__17/i__carry_n_7 ),
-        .I2(PILOT_PHASE__0[23]),
-        .I3(PILOT_PHASE__0[3]),
-        .I4(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_0_2_n_1),
-        .O(i__carry_i_3__2_n_0));
   LUT3 #(
     .INIT(8'h47)) 
     i__carry_i_4
@@ -18786,28 +18364,22 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(\PILOT_I_ACCUMULATOR_reg_n_0_[4] ),
         .O(i__carry_i_4_n_0));
   LUT3 #(
-    .INIT(8'h47)) 
-    i__carry_i_4__0
-       (.I0(i__carry_i_6__0_n_4),
-        .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
-        .I2(\PILOT_Q_ACCUMULATOR_reg_n_0_[4] ),
-        .O(i__carry_i_4__0_n_0));
-  LUT3 #(
     .INIT(8'h35)) 
+    i__carry_i_4__0
+       (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[4] ),
+        .I1(i__carry_i_6__0_n_4),
+        .I2(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
+        .O(i__carry_i_4__0_n_0));
+  LUT6 #(
+    .INIT(64'hE000FFFF1FFF0000)) 
     i__carry_i_4__1
-       (.I0(PILOT_PHASE__0[4]),
-        .I1(i__carry_i_6__1_n_4),
-        .I2(PILOT_PHASE__0[23]),
+       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[3] ),
+        .I1(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[2] ),
+        .I2(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[5] ),
+        .I3(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX_reg_n_0_[4] ),
+        .I4(PILOT_PHASE__0[0]),
+        .I5(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_0_2_n_0),
         .O(i__carry_i_4__1_n_0));
-  LUT5 #(
-    .INIT(32'hBABF4540)) 
-    i__carry_i_4__2
-       (.I0(\CHANNEL_RESPONSE_PHASE_UPDATE_INDEX[1]_i_4_n_0 ),
-        .I1(i__carry_i_6__1_n_6),
-        .I2(PILOT_PHASE__0[23]),
-        .I3(PILOT_PHASE__0[2]),
-        .I4(CHANNEL_RESPONSE_PHASE_reg_r2_0_63_0_2_n_0),
-        .O(i__carry_i_4__2_n_0));
   LUT3 #(
     .INIT(8'h35)) 
     i__carry_i_5
@@ -18816,19 +18388,12 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .I2(\PILOT_I_ACCUMULATOR_reg_n_0_[25] ),
         .O(i__carry_i_5_n_0));
   LUT3 #(
-    .INIT(8'h47)) 
-    i__carry_i_5__0
-       (.I0(i__carry_i_6__0_n_5),
-        .I1(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
-        .I2(\PILOT_Q_ACCUMULATOR_reg_n_0_[3] ),
-        .O(i__carry_i_5__0_n_0));
-  LUT3 #(
     .INIT(8'h35)) 
-    i__carry_i_5__1
-       (.I0(PILOT_PHASE__0[3]),
-        .I1(i__carry_i_6__1_n_5),
-        .I2(PILOT_PHASE__0[23]),
-        .O(i__carry_i_5__1_n_0));
+    i__carry_i_5__0
+       (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[3] ),
+        .I1(i__carry_i_6__0_n_5),
+        .I2(\PILOT_Q_ACCUMULATOR_reg_n_0_[25] ),
+        .O(i__carry_i_5__0_n_0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 i__carry_i_6
        (.CI(1'b0),
@@ -18847,15 +18412,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .O({i__carry_i_6__0_n_4,i__carry_i_6__0_n_5,i__carry_i_6__0_n_6,NLW_i__carry_i_6__0_O_UNCONNECTED[0]}),
         .S({i__carry_i_9__0_n_0,i__carry_i_10__0_n_0,i__carry_i_11__0_n_0,i__carry_i_12__0_n_0}));
   (* ADDER_THRESHOLD = "35" *) 
-  (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
-  CARRY4 i__carry_i_6__1
-       (.CI(1'b0),
-        .CO({i__carry_i_6__1_n_0,i__carry_i_6__1_n_1,i__carry_i_6__1_n_2,i__carry_i_6__1_n_3}),
-        .CYINIT(i__carry_i_8__1_n_0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({i__carry_i_6__1_n_4,i__carry_i_6__1_n_5,i__carry_i_6__1_n_6,NLW_i__carry_i_6__1_O_UNCONNECTED[0]}),
-        .S({i__carry_i_9__1_n_0,i__carry_i_10__1_n_0,i__carry_i_11__1_n_0,i__carry_i_12__1_n_0}));
-  (* ADDER_THRESHOLD = "35" *) 
   CARRY4 i__carry_i_7
        (.CI(i__carry_i_6_n_0),
         .CO({i__carry_i_7_n_0,i__carry_i_7_n_1,i__carry_i_7_n_2,i__carry_i_7_n_3}),
@@ -18872,15 +18428,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O({i__carry_i_7__0_n_4,i__carry_i_7__0_n_5,i__carry_i_7__0_n_6,i__carry_i_7__0_n_7}),
         .S({i__carry_i_13__0_n_0,i__carry_i_14__0_n_0,i__carry_i_15__0_n_0,i__carry_i_16__0_n_0}));
-  (* ADDER_THRESHOLD = "35" *) 
-  (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
-  CARRY4 i__carry_i_7__1
-       (.CI(i__carry_i_6__1_n_0),
-        .CO({i__carry_i_7__1_n_0,i__carry_i_7__1_n_1,i__carry_i_7__1_n_2,i__carry_i_7__1_n_3}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({i__carry_i_7__1_n_4,i__carry_i_7__1_n_5,i__carry_i_7__1_n_6,i__carry_i_7__1_n_7}),
-        .S({i__carry_i_13__1_n_0,i__carry_i_14__1_n_0,i__carry_i_15__1_n_0,i__carry_i_16__1_n_0}));
   LUT1 #(
     .INIT(2'h1)) 
     i__carry_i_8
@@ -18893,11 +18440,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .O(i__carry_i_8__0_n_0));
   LUT1 #(
     .INIT(2'h1)) 
-    i__carry_i_8__1
-       (.I0(PILOT_PHASE__0[0]),
-        .O(i__carry_i_8__1_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
     i__carry_i_9
        (.I0(\PILOT_I_ACCUMULATOR_reg_n_0_[4] ),
         .O(i__carry_i_9_n_0));
@@ -18906,11 +18448,6 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
     i__carry_i_9__0
        (.I0(\PILOT_Q_ACCUMULATOR_reg_n_0_[4] ),
         .O(i__carry_i_9__0_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    i__carry_i_9__1
-       (.I0(PILOT_PHASE__0[4]),
-        .O(i__carry_i_9__1_n_0));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
   CARRY4 \p_1_out_inferred__10/i__carry 
        (.CI(1'b0),
@@ -18950,7 +18487,7 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O({\p_1_out_inferred__10/i__carry__3_n_4 ,\p_1_out_inferred__10/i__carry__3_n_5 ,\p_1_out_inferred__10/i__carry__3_n_6 ,\p_1_out_inferred__10/i__carry__3_n_7 }),
-        .S({i__carry__3_i_1__1_n_0,i__carry__3_i_2__0_n_0,i__carry__3_i_3__0_n_0,i__carry__3_i_4__0_n_0}));
+        .S({i__carry__3_i_1__0_n_0,i__carry__3_i_2__0_n_0,i__carry__3_i_3__0_n_0,i__carry__3_i_4__0_n_0}));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
   CARRY4 \p_1_out_inferred__10/i__carry__4 
        (.CI(\p_1_out_inferred__10/i__carry__3_n_0 ),
@@ -18958,109 +18495,61 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O({\NLW_p_1_out_inferred__10/i__carry__4_O_UNCONNECTED [3:2],\p_1_out_inferred__10/i__carry__4_n_6 ,\p_1_out_inferred__10/i__carry__4_n_7 }),
-        .S({1'b0,i__carry__4_i_1__0_n_0,i__carry__4_i_2__0_n_0,i__carry__4_i_3__0_n_0}));
-  (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
-  CARRY4 \p_1_out_inferred__17/i__carry 
-       (.CI(1'b0),
-        .CO({\p_1_out_inferred__17/i__carry_n_0 ,\p_1_out_inferred__17/i__carry_n_1 ,\p_1_out_inferred__17/i__carry_n_2 ,\p_1_out_inferred__17/i__carry_n_3 }),
-        .CYINIT(i__carry_i_1__1_n_0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({\p_1_out_inferred__17/i__carry_n_4 ,\p_1_out_inferred__17/i__carry_n_5 ,\p_1_out_inferred__17/i__carry_n_6 ,\p_1_out_inferred__17/i__carry_n_7 }),
-        .S({i__carry_i_2__1_n_0,i__carry_i_3__1_n_0,i__carry_i_4__1_n_0,i__carry_i_5__1_n_0}));
-  (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
-  CARRY4 \p_1_out_inferred__17/i__carry__0 
-       (.CI(\p_1_out_inferred__17/i__carry_n_0 ),
-        .CO({\p_1_out_inferred__17/i__carry__0_n_0 ,\p_1_out_inferred__17/i__carry__0_n_1 ,\p_1_out_inferred__17/i__carry__0_n_2 ,\p_1_out_inferred__17/i__carry__0_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({\p_1_out_inferred__17/i__carry__0_n_4 ,\p_1_out_inferred__17/i__carry__0_n_5 ,\p_1_out_inferred__17/i__carry__0_n_6 ,\p_1_out_inferred__17/i__carry__0_n_7 }),
-        .S({i__carry__0_i_1__1_n_0,i__carry__0_i_2__1_n_0,i__carry__0_i_3__1_n_0,i__carry__0_i_4__1_n_0}));
-  (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
-  CARRY4 \p_1_out_inferred__17/i__carry__1 
-       (.CI(\p_1_out_inferred__17/i__carry__0_n_0 ),
-        .CO({\p_1_out_inferred__17/i__carry__1_n_0 ,\p_1_out_inferred__17/i__carry__1_n_1 ,\p_1_out_inferred__17/i__carry__1_n_2 ,\p_1_out_inferred__17/i__carry__1_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({\p_1_out_inferred__17/i__carry__1_n_4 ,\p_1_out_inferred__17/i__carry__1_n_5 ,\p_1_out_inferred__17/i__carry__1_n_6 ,\p_1_out_inferred__17/i__carry__1_n_7 }),
-        .S({i__carry__1_i_1__1_n_0,i__carry__1_i_2__1_n_0,i__carry__1_i_3__1_n_0,i__carry__1_i_4__1_n_0}));
-  (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
-  CARRY4 \p_1_out_inferred__17/i__carry__2 
-       (.CI(\p_1_out_inferred__17/i__carry__1_n_0 ),
-        .CO({\p_1_out_inferred__17/i__carry__2_n_0 ,\p_1_out_inferred__17/i__carry__2_n_1 ,\p_1_out_inferred__17/i__carry__2_n_2 ,\p_1_out_inferred__17/i__carry__2_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({\p_1_out_inferred__17/i__carry__2_n_4 ,\p_1_out_inferred__17/i__carry__2_n_5 ,\p_1_out_inferred__17/i__carry__2_n_6 ,\p_1_out_inferred__17/i__carry__2_n_7 }),
-        .S({i__carry__2_i_1__1_n_0,i__carry__2_i_2__1_n_0,i__carry__2_i_3__1_n_0,i__carry__2_i_4__1_n_0}));
-  (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
-  CARRY4 \p_1_out_inferred__17/i__carry__3 
-       (.CI(\p_1_out_inferred__17/i__carry__2_n_0 ),
-        .CO({\p_1_out_inferred__17/i__carry__3_n_0 ,\p_1_out_inferred__17/i__carry__3_n_1 ,\p_1_out_inferred__17/i__carry__3_n_2 ,\p_1_out_inferred__17/i__carry__3_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({\p_1_out_inferred__17/i__carry__3_n_4 ,\p_1_out_inferred__17/i__carry__3_n_5 ,\p_1_out_inferred__17/i__carry__3_n_6 ,\p_1_out_inferred__17/i__carry__3_n_7 }),
-        .S({i__carry__3_i_1_n_0,i__carry__3_i_2__1_n_0,i__carry__3_i_3__1_n_0,i__carry__3_i_4__1_n_0}));
-  (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
-  CARRY4 \p_1_out_inferred__17/i__carry__4 
-       (.CI(\p_1_out_inferred__17/i__carry__3_n_0 ),
-        .CO({\NLW_p_1_out_inferred__17/i__carry__4_CO_UNCONNECTED [3:2],\p_1_out_inferred__17/i__carry__4_n_2 ,\NLW_p_1_out_inferred__17/i__carry__4_CO_UNCONNECTED [0]}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({\NLW_p_1_out_inferred__17/i__carry__4_O_UNCONNECTED [3:1],\p_1_out_inferred__17/i__carry__4_n_7 }),
-        .S({1'b0,1'b0,1'b1,i__carry__4_i_1__1_n_0}));
+        .S({1'b0,i__carry__4_i_1__1_n_0,i__carry__4_i_2__0_n_0,i__carry__4_i_3__0_n_0}));
   (* ADDER_THRESHOLD = "35" *) 
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
-  CARRY4 \p_1_out_inferred__18/i__carry 
+  CARRY4 \p_1_out_inferred__16/i__carry 
        (.CI(1'b0),
-        .CO({\p_1_out_inferred__18/i__carry_n_0 ,\p_1_out_inferred__18/i__carry_n_1 ,\p_1_out_inferred__18/i__carry_n_2 ,\p_1_out_inferred__18/i__carry_n_3 }),
+        .CO({\p_1_out_inferred__16/i__carry_n_0 ,\p_1_out_inferred__16/i__carry_n_1 ,\p_1_out_inferred__16/i__carry_n_2 ,\p_1_out_inferred__16/i__carry_n_3 }),
         .CYINIT(1'b0),
         .DI({CHANNEL_RESPONSE_PHASE_reg_r2_0_63_3_5_n_0,CHANNEL_RESPONSE_PHASE_reg_r2_0_63_0_2_n_2,CHANNEL_RESPONSE_PHASE_reg_r2_0_63_0_2_n_1,CHANNEL_RESPONSE_PHASE_reg_r2_0_63_0_2_n_0}),
         .O(in30[3:0]),
-        .S({i__carry_i_1__2_n_0,i__carry_i_2__2_n_0,i__carry_i_3__2_n_0,i__carry_i_4__2_n_0}));
+        .S({i__carry_i_1__1_n_0,i__carry_i_2__1_n_0,i__carry_i_3__1_n_0,i__carry_i_4__1_n_0}));
   (* ADDER_THRESHOLD = "35" *) 
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
-  CARRY4 \p_1_out_inferred__18/i__carry__0 
-       (.CI(\p_1_out_inferred__18/i__carry_n_0 ),
-        .CO({\p_1_out_inferred__18/i__carry__0_n_0 ,\p_1_out_inferred__18/i__carry__0_n_1 ,\p_1_out_inferred__18/i__carry__0_n_2 ,\p_1_out_inferred__18/i__carry__0_n_3 }),
+  CARRY4 \p_1_out_inferred__16/i__carry__0 
+       (.CI(\p_1_out_inferred__16/i__carry_n_0 ),
+        .CO({\p_1_out_inferred__16/i__carry__0_n_0 ,\p_1_out_inferred__16/i__carry__0_n_1 ,\p_1_out_inferred__16/i__carry__0_n_2 ,\p_1_out_inferred__16/i__carry__0_n_3 }),
         .CYINIT(1'b0),
         .DI({CHANNEL_RESPONSE_PHASE_reg_r2_0_63_6_8_n_1,CHANNEL_RESPONSE_PHASE_reg_r2_0_63_6_8_n_0,CHANNEL_RESPONSE_PHASE_reg_r2_0_63_3_5_n_2,CHANNEL_RESPONSE_PHASE_reg_r2_0_63_3_5_n_1}),
         .O(in30[7:4]),
-        .S({i__carry__0_i_1__2_n_0,i__carry__0_i_2__2_n_0,i__carry__0_i_3__2_n_0,i__carry__0_i_4__2_n_0}));
+        .S({i__carry__0_i_1__1_n_0,i__carry__0_i_2__1_n_0,i__carry__0_i_3__1_n_0,i__carry__0_i_4__1_n_0}));
   (* ADDER_THRESHOLD = "35" *) 
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
-  CARRY4 \p_1_out_inferred__18/i__carry__1 
-       (.CI(\p_1_out_inferred__18/i__carry__0_n_0 ),
-        .CO({\p_1_out_inferred__18/i__carry__1_n_0 ,\p_1_out_inferred__18/i__carry__1_n_1 ,\p_1_out_inferred__18/i__carry__1_n_2 ,\p_1_out_inferred__18/i__carry__1_n_3 }),
+  CARRY4 \p_1_out_inferred__16/i__carry__1 
+       (.CI(\p_1_out_inferred__16/i__carry__0_n_0 ),
+        .CO({\p_1_out_inferred__16/i__carry__1_n_0 ,\p_1_out_inferred__16/i__carry__1_n_1 ,\p_1_out_inferred__16/i__carry__1_n_2 ,\p_1_out_inferred__16/i__carry__1_n_3 }),
         .CYINIT(1'b0),
         .DI({CHANNEL_RESPONSE_PHASE_reg_r2_0_63_9_11_n_2,CHANNEL_RESPONSE_PHASE_reg_r2_0_63_9_11_n_1,CHANNEL_RESPONSE_PHASE_reg_r2_0_63_9_11_n_0,CHANNEL_RESPONSE_PHASE_reg_r2_0_63_6_8_n_2}),
         .O(in30[11:8]),
-        .S({i__carry__1_i_1__2_n_0,i__carry__1_i_2__2_n_0,i__carry__1_i_3__2_n_0,i__carry__1_i_4__2_n_0}));
+        .S({i__carry__1_i_1__1_n_0,i__carry__1_i_2__1_n_0,i__carry__1_i_3__1_n_0,i__carry__1_i_4__1_n_0}));
   (* ADDER_THRESHOLD = "35" *) 
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
-  CARRY4 \p_1_out_inferred__18/i__carry__2 
-       (.CI(\p_1_out_inferred__18/i__carry__1_n_0 ),
-        .CO({\p_1_out_inferred__18/i__carry__2_n_0 ,\p_1_out_inferred__18/i__carry__2_n_1 ,\p_1_out_inferred__18/i__carry__2_n_2 ,\p_1_out_inferred__18/i__carry__2_n_3 }),
+  CARRY4 \p_1_out_inferred__16/i__carry__2 
+       (.CI(\p_1_out_inferred__16/i__carry__1_n_0 ),
+        .CO({\p_1_out_inferred__16/i__carry__2_n_0 ,\p_1_out_inferred__16/i__carry__2_n_1 ,\p_1_out_inferred__16/i__carry__2_n_2 ,\p_1_out_inferred__16/i__carry__2_n_3 }),
         .CYINIT(1'b0),
         .DI({CHANNEL_RESPONSE_PHASE_reg_r2_0_63_15_17_n_0,CHANNEL_RESPONSE_PHASE_reg_r2_0_63_12_14_n_2,CHANNEL_RESPONSE_PHASE_reg_r2_0_63_12_14_n_1,CHANNEL_RESPONSE_PHASE_reg_r2_0_63_12_14_n_0}),
         .O(in30[15:12]),
-        .S({i__carry__2_i_1__2_n_0,i__carry__2_i_2__2_n_0,i__carry__2_i_3__2_n_0,i__carry__2_i_4__2_n_0}));
+        .S({i__carry__2_i_1__1_n_0,i__carry__2_i_2__1_n_0,i__carry__2_i_3__1_n_0,i__carry__2_i_4__1_n_0}));
   (* ADDER_THRESHOLD = "35" *) 
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
-  CARRY4 \p_1_out_inferred__18/i__carry__3 
-       (.CI(\p_1_out_inferred__18/i__carry__2_n_0 ),
-        .CO({\p_1_out_inferred__18/i__carry__3_n_0 ,\p_1_out_inferred__18/i__carry__3_n_1 ,\p_1_out_inferred__18/i__carry__3_n_2 ,\p_1_out_inferred__18/i__carry__3_n_3 }),
+  CARRY4 \p_1_out_inferred__16/i__carry__3 
+       (.CI(\p_1_out_inferred__16/i__carry__2_n_0 ),
+        .CO({\p_1_out_inferred__16/i__carry__3_n_0 ,\p_1_out_inferred__16/i__carry__3_n_1 ,\p_1_out_inferred__16/i__carry__3_n_2 ,\p_1_out_inferred__16/i__carry__3_n_3 }),
         .CYINIT(1'b0),
         .DI({CHANNEL_RESPONSE_PHASE_reg_r2_0_63_18_20_n_1,CHANNEL_RESPONSE_PHASE_reg_r2_0_63_18_20_n_0,CHANNEL_RESPONSE_PHASE_reg_r2_0_63_15_17_n_2,CHANNEL_RESPONSE_PHASE_reg_r2_0_63_15_17_n_1}),
         .O(in30[19:16]),
-        .S({i__carry__3_i_1__2_n_0,i__carry__3_i_2__2_n_0,i__carry__3_i_3__2_n_0,i__carry__3_i_4__2_n_0}));
+        .S({i__carry__3_i_1__1_n_0,i__carry__3_i_2__1_n_0,i__carry__3_i_3__1_n_0,i__carry__3_i_4__1_n_0}));
   (* ADDER_THRESHOLD = "35" *) 
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-8 {cell *THIS*}}" *) 
-  CARRY4 \p_1_out_inferred__18/i__carry__4 
-       (.CI(\p_1_out_inferred__18/i__carry__3_n_0 ),
-        .CO({\NLW_p_1_out_inferred__18/i__carry__4_CO_UNCONNECTED [3],\p_1_out_inferred__18/i__carry__4_n_1 ,\p_1_out_inferred__18/i__carry__4_n_2 ,\p_1_out_inferred__18/i__carry__4_n_3 }),
+  CARRY4 \p_1_out_inferred__16/i__carry__4 
+       (.CI(\p_1_out_inferred__16/i__carry__3_n_0 ),
+        .CO({\NLW_p_1_out_inferred__16/i__carry__4_CO_UNCONNECTED [3],\p_1_out_inferred__16/i__carry__4_n_1 ,\p_1_out_inferred__16/i__carry__4_n_2 ,\p_1_out_inferred__16/i__carry__4_n_3 }),
         .CYINIT(1'b0),
-        .DI({1'b0,i__carry__4_i_1__2_n_0,CHANNEL_RESPONSE_PHASE_reg_r2_0_63_21_23_n_0,CHANNEL_RESPONSE_PHASE_reg_r2_0_63_18_20_n_2}),
+        .DI({1'b0,CHANNEL_RESPONSE_PHASE_reg_r2_0_63_21_23_n_1,CHANNEL_RESPONSE_PHASE_reg_r2_0_63_21_23_n_0,CHANNEL_RESPONSE_PHASE_reg_r2_0_63_18_20_n_2}),
         .O(in30[23:20]),
-        .S({i__carry__4_i_2__1_n_0,i__carry__4_i_3__1_n_0,i__carry__4_i_4__1_n_0,i__carry__4_i_5__1_n_0}));
+        .S({i__carry__4_i_1_n_0,i__carry__4_i_2__1_n_0,i__carry__4_i_3__1_n_0,i__carry__4_i_4__1_n_0}));
   CARRY4 \p_1_out_inferred__3/i__carry 
        (.CI(1'b0),
         .CO({\p_1_out_inferred__3/i__carry_n_0 ,\p_1_out_inferred__3/i__carry_n_1 ,\p_1_out_inferred__3/i__carry_n_2 ,\p_1_out_inferred__3/i__carry_n_3 }),
@@ -19095,14 +18584,14 @@ module block_design_0_constellation_tracker_0_0_constellation_tracker
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O({\p_1_out_inferred__3/i__carry__3_n_4 ,\p_1_out_inferred__3/i__carry__3_n_5 ,\p_1_out_inferred__3/i__carry__3_n_6 ,\p_1_out_inferred__3/i__carry__3_n_7 }),
-        .S({i__carry__3_i_1__0_n_0,i__carry__3_i_2_n_0,i__carry__3_i_3_n_0,i__carry__3_i_4_n_0}));
+        .S({i__carry__3_i_1_n_0,i__carry__3_i_2_n_0,i__carry__3_i_3_n_0,i__carry__3_i_4_n_0}));
   CARRY4 \p_1_out_inferred__3/i__carry__4 
        (.CI(\p_1_out_inferred__3/i__carry__3_n_0 ),
         .CO({\NLW_p_1_out_inferred__3/i__carry__4_CO_UNCONNECTED [3],\p_1_out_inferred__3/i__carry__4_n_1 ,\p_1_out_inferred__3/i__carry__4_n_2 ,\p_1_out_inferred__3/i__carry__4_n_3 }),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O({\NLW_p_1_out_inferred__3/i__carry__4_O_UNCONNECTED [3:2],\p_1_out_inferred__3/i__carry__4_n_6 ,\p_1_out_inferred__3/i__carry__4_n_7 }),
-        .S({1'b0,i__carry__4_i_1_n_0,i__carry__4_i_2_n_0,i__carry__4_i_3_n_0}));
+        .S({1'b0,i__carry__4_i_1__0_n_0,i__carry__4_i_2_n_0,i__carry__4_i_3_n_0}));
 endmodule
 `ifndef GLBL
 `define GLBL

@@ -55,7 +55,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>2df27fdf</spirit:value>
+            <spirit:value>70d5ecc5</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -68,7 +68,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>2df27fdf</spirit:value>
+            <spirit:value>70d5ecc5</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -390,6 +390,13 @@
         </spirit:wire>
       </spirit:port>
     </spirit:ports>
+    <spirit:modelParameters>
+      <spirit:modelParameter xsi:type="spirit:nameValueTypeType" spirit:dataType="integer">
+        <spirit:name>VITERBI_TRACEBACK_DEPTH</spirit:name>
+        <spirit:displayName>Viterbi Traceback Depth</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.VITERBI_TRACEBACK_DEPTH">96</spirit:value>
+      </spirit:modelParameter>
+    </spirit:modelParameters>
   </spirit:model>
   <spirit:fileSets>
     <spirit:fileSet>
@@ -397,13 +404,18 @@
       <spirit:file>
         <spirit:name>xgui/viterbi_soft_v1_0.tcl</spirit:name>
         <spirit:fileType>tclSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_f64a5dae</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_af42ab0a</spirit:userFileType>
         <spirit:userFileType>XGUI_VERSION_2</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
   </spirit:fileSets>
   <spirit:description>xilinx.com:module_ref:viterbi_soft:1.0</spirit:description>
   <spirit:parameters>
+    <spirit:parameter>
+      <spirit:name>VITERBI_TRACEBACK_DEPTH</spirit:name>
+      <spirit:displayName>Viterbi Traceback Depth</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.VITERBI_TRACEBACK_DEPTH">96</spirit:value>
+    </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Component_Name</spirit:name>
       <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Component_Name" spirit:order="1">viterbi_soft_v1_0</spirit:value>
@@ -423,8 +435,8 @@
       <xilinx:designToolContexts>
         <xilinx:designToolContext>IPI</xilinx:designToolContext>
       </xilinx:designToolContexts>
-      <xilinx:coreRevision>1715949487</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2024-05-17T12:38:07Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>1727116934</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2024-09-23T18:42:14Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2023.2.2</xilinx:xilinxVersion>

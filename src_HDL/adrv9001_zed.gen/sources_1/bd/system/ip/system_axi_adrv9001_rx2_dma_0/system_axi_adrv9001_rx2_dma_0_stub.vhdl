@@ -2,10 +2,10 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
--- Date        : Sat Apr  6 00:38:55 2024
--- Host        : ASUS_ROG running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub -rename_top system_axi_adrv9001_rx2_dma_0 -prefix
---               system_axi_adrv9001_rx2_dma_0_ system_axi_adrv9001_rx2_dma_0_stub.vhdl
+-- Date        : Mon Sep 23 20:31:41 2024
+-- Host        : lab817_01 running 64-bit major release  (build 9200)
+-- Command     : write_vhdl -force -mode synth_stub
+--               c:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_adrv9001_rx2_dma_0/system_axi_adrv9001_rx2_dma_0_stub.vhdl
 -- Design      : system_axi_adrv9001_rx2_dma_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7z020clg484-1

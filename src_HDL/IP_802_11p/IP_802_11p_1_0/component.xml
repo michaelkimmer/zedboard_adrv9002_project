@@ -332,7 +332,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>59cf53da</spirit:value>
+            <spirit:value>260ba639</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -360,7 +360,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>2e927cbb</spirit:value>
+            <spirit:value>6e2547cb</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -388,7 +388,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>080b65eb</spirit:value>
+            <spirit:value>0e5443b4</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1104,6 +1104,11 @@
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>CHECKSUM_aba2d5c3</spirit:userFileType>
       </spirit:file>
+      <spirit:file>
+        <spirit:name>../edit_IP_802_11p_v1_0.srcs/sources_802_11p/viterbi_core.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:userFileType>CHECKSUM_c332f637</spirit:userFileType>
+      </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
       <spirit:name>xilinx_vhdlsynthesis_xilinx_com_ip_xfft_9_1__ref_view_fileset</spirit:name>
@@ -1341,6 +1346,10 @@
         <spirit:name>hdl/IP_802_11p_v1_0.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
+      <spirit:file>
+        <spirit:name>../edit_IP_802_11p_v1_0.srcs/sources_802_11p/viterbi_core.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+      </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
       <spirit:name>xilinx_vhdlbehavioralsimulation_xilinx_com_ip_xfft_9_1__ref_view_fileset</spirit:name>
@@ -1509,17 +1518,22 @@
       <xilinx:xpmLibraries>
         <xilinx:xpmLibrary>XPM_MEMORY</xilinx:xpmLibrary>
       </xilinx:xpmLibraries>
-      <xilinx:coreRevision>67</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2024-08-14T16:56:46Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>74</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2024-09-23T18:44:42Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2023.2.2</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="52e76a8a"/>
       <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="233ead04"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="78e384ca"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="1b2f9725"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="b1c33d18"/>
       <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="cb9cd76d"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="98a5b890"/>
+      <xilinx:targetDRCs>
+        <xilinx:targetDRC xilinx:tool="ipi">
+          <xilinx:targetDRCOption xilinx:name="ignore_freq_hz" xilinx:value="false"/>
+        </xilinx:targetDRC>
+      </xilinx:targetDRCs>
     </xilinx:packagingInfo>
   </spirit:vendorExtensions>
 </spirit:component>

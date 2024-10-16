@@ -4588,9 +4588,9 @@
       },
       "IP_802_11p_0": {
         "vlnv": "xilinx.com:user:IP_802_11p:1.0",
-        "ip_revision": "67",
-        "xci_name": "system_IP_802_11p_0_0",
-        "xci_path": "ip\\system_IP_802_11p_0_0\\system_IP_802_11p_0_0.xci",
+        "ip_revision": "74",
+        "xci_name": "system_IP_802_11p_0_1",
+        "xci_path": "ip\\system_IP_802_11p_0_1\\system_IP_802_11p_0_1.xci",
         "inst_hier_path": "IP_802_11p_0"
       }
     },
@@ -4845,7 +4845,7 @@
           "LEDS"
         ]
       },
-      "SW_0_1": {
+      "SW_1": {
         "ports": [
           "SW",
           "IP_802_11p_0/SW"

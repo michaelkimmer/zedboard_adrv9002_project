@@ -2,10 +2,10 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
--- Date        : Sat Apr  6 00:30:30 2024
--- Host        : ASUS_ROG running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim -rename_top system_axi_hdmi_core_0 -prefix
---               system_axi_hdmi_core_0_ system_axi_hdmi_core_0_sim_netlist.vhdl
+-- Date        : Mon Sep 23 20:33:27 2024
+-- Host        : lab817_01 running 64-bit major release  (build 9200)
+-- Command     : write_vhdl -force -mode funcsim
+--               c:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_hdmi_core_0/system_axi_hdmi_core_0_sim_netlist.vhdl
 -- Design      : system_axi_hdmi_core_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -29,6 +29,8 @@ entity system_axi_hdmi_core_0_ad_csc is
     hdmi_data_e : in STD_LOGIC;
     hdmi_24_csc_hsync_reg : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_hdmi_core_0_ad_csc : entity is "ad_csc";
 end system_axi_hdmi_core_0_ad_csc;
 
 architecture STRUCTURE of system_axi_hdmi_core_0_ad_csc is
@@ -1982,6 +1984,8 @@ entity system_axi_hdmi_core_0_ad_mem is
     hdmi_de_2d : in STD_LOGIC;
     CO : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_hdmi_core_0_ad_mem : entity is "ad_mem";
 end system_axi_hdmi_core_0_ad_mem;
 
 architecture STRUCTURE of system_axi_hdmi_core_0_ad_mem is
@@ -2529,6 +2533,8 @@ entity system_axi_hdmi_core_0_ad_rst is
     up_core_preset : in STD_LOGIC;
     vdma_fs : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_hdmi_core_0_ad_rst : entity is "ad_rst";
 end system_axi_hdmi_core_0_ad_rst;
 
 architecture STRUCTURE of system_axi_hdmi_core_0_ad_rst is
@@ -2712,6 +2718,8 @@ entity system_axi_hdmi_core_0_ad_ss_444to422 is
     hdmi_16_data_e_d_reg : in STD_LOGIC_VECTOR ( 0 to 0 );
     Q : in STD_LOGIC_VECTOR ( 23 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_hdmi_core_0_ad_ss_444to422 : entity is "ad_ss_444to422";
 end system_axi_hdmi_core_0_ad_ss_444to422;
 
 architecture STRUCTURE of system_axi_hdmi_core_0_ad_ss_444to422 is
@@ -4636,6 +4644,8 @@ entity system_axi_hdmi_core_0_axi_hdmi_tx_vdma is
     vdma_data : in STD_LOGIC_VECTOR ( 47 downto 0 );
     \vdma_tpm_data_reg[22]_0\ : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_hdmi_core_0_axi_hdmi_tx_vdma : entity is "axi_hdmi_tx_vdma";
 end system_axi_hdmi_core_0_axi_hdmi_tx_vdma;
 
 architecture STRUCTURE of system_axi_hdmi_core_0_axi_hdmi_tx_vdma is
@@ -7090,6 +7100,8 @@ entity system_axi_hdmi_core_0_up_axi is
     s_axi_wdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
     s_axi_araddr : in STD_LOGIC_VECTOR ( 13 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_hdmi_core_0_up_axi : entity is "up_axi";
 end system_axi_hdmi_core_0_up_axi;
 
 architecture STRUCTURE of system_axi_hdmi_core_0_up_axi is
@@ -11885,6 +11897,8 @@ entity system_axi_hdmi_core_0_up_clock_mon is
     s_axi_aclk : in STD_LOGIC;
     s_axi_aresetn : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_hdmi_core_0_up_clock_mon : entity is "up_clock_mon";
 end system_axi_hdmi_core_0_up_clock_mon;
 
 architecture STRUCTURE of system_axi_hdmi_core_0_up_clock_mon is
@@ -13702,6 +13716,8 @@ entity system_axi_hdmi_core_0_up_xfer_cntrl is
     \hdmi_clip_data1_inferred__1/i__carry\ : in STD_LOGIC_VECTOR ( 23 downto 0 );
     \up_xfer_data_reg[235]_0\ : in STD_LOGIC_VECTOR ( 203 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_hdmi_core_0_up_xfer_cntrl : entity is "up_xfer_cntrl";
 end system_axi_hdmi_core_0_up_xfer_cntrl;
 
 architecture STRUCTURE of system_axi_hdmi_core_0_up_xfer_cntrl is
@@ -19939,6 +19955,8 @@ entity system_axi_hdmi_core_0_up_xfer_status is
     hdmi_tpm_oos_s : in STD_LOGIC;
     hdmi_status_s : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_hdmi_core_0_up_xfer_status : entity is "up_xfer_status";
 end system_axi_hdmi_core_0_up_xfer_status;
 
 architecture STRUCTURE of system_axi_hdmi_core_0_up_xfer_status is
@@ -20859,6 +20877,8 @@ entity system_axi_hdmi_core_0_ad_csc_RGB2CrYCb is
     hdmi_data_e : in STD_LOGIC;
     hdmi_24_csc_hsync_reg : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_hdmi_core_0_ad_csc_RGB2CrYCb : entity is "ad_csc_RGB2CrYCb";
 end system_axi_hdmi_core_0_ad_csc_RGB2CrYCb;
 
 architecture STRUCTURE of system_axi_hdmi_core_0_ad_csc_RGB2CrYCb is
@@ -21040,6 +21060,8 @@ entity system_axi_hdmi_core_0_up_hdmi_tx is
     \up_scratch_reg[31]_1\ : in STD_LOGIC_VECTOR ( 0 to 0 );
     \up_rdata_reg[31]_1\ : in STD_LOGIC_VECTOR ( 31 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_hdmi_core_0_up_hdmi_tx : entity is "up_hdmi_tx";
 end system_axi_hdmi_core_0_up_hdmi_tx;
 
 architecture STRUCTURE of system_axi_hdmi_core_0_up_hdmi_tx is
@@ -24789,6 +24811,8 @@ entity system_axi_hdmi_core_0_axi_hdmi_tx_core is
     \hdmi_fs_waddr_reg[8]_0\ : in STD_LOGIC_VECTOR ( 8 downto 0 );
     hdmi_tpm_data0 : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_hdmi_core_0_axi_hdmi_tx_core : entity is "axi_hdmi_tx_core";
 end system_axi_hdmi_core_0_axi_hdmi_tx_core;
 
 architecture STRUCTURE of system_axi_hdmi_core_0_axi_hdmi_tx_core is
@@ -30924,6 +30948,8 @@ entity system_axi_hdmi_core_0_axi_hdmi_tx is
   attribute INTEL_5SERIES of system_axi_hdmi_core_0_axi_hdmi_tx : entity is 101;
   attribute INTERFACE : string;
   attribute INTERFACE of system_axi_hdmi_core_0_axi_hdmi_tx : entity is "16_BIT";
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_hdmi_core_0_axi_hdmi_tx : entity is "axi_hdmi_tx";
   attribute OUT_CLK_POLARITY : integer;
   attribute OUT_CLK_POLARITY of system_axi_hdmi_core_0_axi_hdmi_tx : entity is 0;
   attribute XILINX_7SERIES : integer;

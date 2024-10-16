@@ -32,6 +32,9 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 entity viterbi_soft is
+  Generic (
+    VITERBI_TRACEBACK_DEPTH : integer := 96
+  );
   Port(
     RESET          : in std_logic;
     CLOCK          : in std_logic;
@@ -75,20 +78,41 @@ architecture Behavioral of viterbi_soft is
   ATTRIBUTE X_INTERFACE_IGNORE OF VITERBI_DECODED_OUTPUT_VALID: SIGNAL IS "TRUE";
   ATTRIBUTE X_INTERFACE_IGNORE OF VITERBI_DECODED_OUTPUT: SIGNAL IS "TRUE";
 
+  -- define viterbi_core
+  component viterbi_core is
+    Generic (
+      VITERBI_TRACEBACK_DEPTH : integer := 96
+    );
+    Port ( 
+      RESET          : in std_logic;
+      CLOCK          : in std_logic;
+  
+      -- Inputs
+      VITERBI_RESET           : in std_logic; 
+      VITERBI_INPUT_VALID     : in std_logic; 
+      VITERBI_INPUT           : in std_logic_vector(0 to 1);
+      VITERBI_INPUT_DIST_0    : in std_logic_vector(1 downto 0);
+      VITERBI_INPUT_DIST_1    : in std_logic_vector(1 downto 0);
+  
+      -- Outputs
+      VITERBI_OUTPUT_VALID : out std_logic := '0';
+      VITERBI_OUTPUT       : out std_logic := '0'
+    );
+end component viterbi_core;
 
--- -- VHDL Coder FORWARD transitions memory for Viterbi
---   type viterbi_mem_t is array (0 to 127) of std_logic_vector(0 to 1);
---   constant VITERBI_FORWARD_MEM : viterbi_mem_t := (
---   "00", "01", "11", "10", "11", "10", "00", "01", "00", "01", "11", "10", "11", "10", "00", "01", "10", "11", "01", "00", "01", "00", "10", "11", "10", "11", "01", "00", "01", "00", "10", "11", "11", "10", "00", "01", "00", "01", "11", "10", "11", "10", "00", "01", "00", "01", "11", "10", "01", "00", "10", "11", "10", "11", "01", "00", "01", "00", "10", "11", "10", "11", "01", "00", 
---   "11", "10", "00", "01", "00", "01", "11", "10", "11", "10", "00", "01", "00", "01", "11", "10", "01", "00", "10", "11", "10", "11", "01", "00", "01", "00", "10", "11", "10", "11", "01", "00", "00", "01", "11", "10", "11", "10", "00", "01", "00", "01", "11", "10", "11", "10", "00", "01", "10", "11", "01", "00", "01", "00", "10", "11", "10", "11", "01", "00", "01", "00", "10", "11"
---   ); -- Input: to_integer(unsigned(state & b))
+  -- states
+  type state_t is (IDLE, RX_SIGNAL, PROCESS_RATE, WAIT_FOR_VITERBI_RESET, WAIT_FOR_DATA, FEED_DATA, END_DECODING); 
+  signal STATE : state_t := IDLE;
 
-  -- VHDL Coder BACKWARD transitions memory for Viterbi
-  type viterbi_mem_t is array (0 to 127) of std_logic_vector(0 to 1);
-  constant VITERBI_BACKWARD_MEM : viterbi_mem_t := (
-  "00", "11", "01", "10", "11", "00", "10", "01", "11", "00", "10", "01", "00", "11", "01", "10", "00", "11", "01", "10", "11", "00", "10", "01", "11", "00", "10", "01", "00", "11", "01", "10", "10", "01", "11", "00", "01", "10", "00", "11", "01", "10", "00", "11", "10", "01", "11", "00", "10", "01", "11", "00", "01", "10", "00", "11", "01", "10", "00", "11", "10", "01", "11", "00",
-  "11", "00", "10", "01", "00", "11", "01", "10", "00", "11", "01", "10", "11", "00", "10", "01", "11", "00", "10", "01", "00", "11", "01", "10", "00", "11", "01", "10", "11", "00", "10", "01", "01", "10", "00", "11", "10", "01", "11", "00", "10", "01", "11", "00", "01", "10", "00", "11", "01", "10", "00", "11", "10", "01", "11", "00", "10", "01", "11", "00", "01", "10", "00", "11"
-  ); -- Input: to_integer(unsigned(s7 & state))
+  signal INPUT_DATA_CNTR : integer range 0 to 511 := 0;
+  signal OUTPUT_DATA_CNTR : integer range 0 to 511 := 0;
+
+   
+  signal COUNTER_OFDM_SYMBOL : integer range 0 to 2047 := 0;
+  signal COUNTER_DECODED_BYTES : integer range 0 to 4095 := 0;
+  signal COUNTER_DECODED_BITS  : integer range 0 to 7 := 0;
+  signal END_DECODING_DONE : std_logic := '0';
+   
 
   -- input buffer (decoded OFDM symbol)
   signal INPUT_BPSK_BUFFER              : std_logic_vector(0 to 47) := (others => '0');
@@ -103,18 +127,17 @@ architecture Behavioral of viterbi_soft is
   signal INPUT_QPSK_DIST_0B_BUFFER              : std_logic_vector(0 to 95) := (others => '0');
   signal INPUT_16QAM_DIST_0B_BUFFER            : std_logic_vector(0 to 191) := (others => '0');
 
+  -- Viterbi signals
+  signal VITERBI_RESET           :  std_logic := '1';
+  signal VITERBI_INPUT_VALID     :  std_logic := '0';
+  signal VITERBI_INPUT           :  std_logic_vector(0 to 1)     := (others => '0');
+  signal VITERBI_INPUT_DIST_0    :  std_logic_vector(1 downto 0) := (others => '0');
+  signal VITERBI_INPUT_DIST_1    :  std_logic_vector(1 downto 0) := (others => '0');
 
-  -- states
-  type state_t is (IDLE, RX_SIGNAL, PROCESS_RATE, WAIT_FOR_DATA, RX_DATA, END_DECODING); 
-  signal STATE : state_t := IDLE;
-  signal RX_SIGNAL_DONE : std_logic := '0';
-  signal RX_SIGNAL_FAILED : std_logic := '0';
-  signal RX_SYMBOL_DONE : std_logic := '0';
-  signal RX_LAST_SYMBOL_DONE : std_logic := '0';
-  signal END_DECODING_DONE : std_logic := '0';
+  signal VITERBI_OUTPUT_VALID :  std_logic  := '0';
+  signal VITERBI_OUTPUT       :  std_logic  := '0';
 
-  signal INPUT_DATA_CNTR : integer := 0;
-  signal OUTPUT_DATA_CNTR : integer := 0;
+  signal VITERBI_SIGNAL_OUTPUT_BUFFER : std_logic_vector(31 downto 0) := (others => '0');
 
   type modulation_t is (BPSK, QPSK, QAM16, UNSUPPORTED); 
   signal MODULATION : modulation_t := BPSK;
@@ -124,146 +147,61 @@ architecture Behavioral of viterbi_soft is
   signal N_CBPS : integer range 48 to 288 := 48;
   signal N_DBPS : integer range 24 to 216 := 24;
 
-
-  signal COUNTER_OFDM_SYMBOL : integer := 0;
-  signal COUNTER_BYTES : integer := 0;
-  signal LENGTH_BYTES : integer := 0;
-
+  signal LENGTH_BYTES : integer range 0 to 4095 := 0;
   type PUNCTURING_STATE_t is (BOTH, FIRST, SECOND);
   signal PUNCTURING_STATE : PUNCTURING_STATE_t := BOTH;
 
 
 
-  -- Viterbi parameters
-  constant VITERBI_TRACEBACK_DEPTH : integer := 40; --- !!! ???
-
-  -- Viterbi signals
-  signal VITERBI_RESET           : std_logic := '0';
-  signal VITERBI_INPUT_VALID     : std_logic := '0';
-  signal VITERBI_INPUT_VALID_OLD : std_logic := '0';
-  signal VITERBI_INPUT           : std_logic_vector(0 to 1) := "00";
-  type VITERBI_INPUT_DIST_t is array(0 to 1) of unsigned(1 downto 0); 
-  signal VITERBI_INPUT_DIST      : VITERBI_INPUT_DIST_t := (others => (others => '0'));
-
-  constant VITERBI_FIRST_VALID_OUTPUT : integer := VITERBI_TRACEBACK_DEPTH + 2+5+1; --- +5 ??? !!! (+1 from the first pipeline without accumulating)
-  signal VITERBI_FIRST_VALID_CNTR : integer range 0 to 65535 := 0; 
-
-  signal VITERBI_OUTPUT_VALID : std_logic := '0';
-  signal VITERBI_OUTPUT : std_logic := '0';
-  signal VITERBI_OUTPUT_VALID_OLD : std_logic := '0';
-
-  signal VITERBI_INPUT_RESET_VALID_NEXT_CLOCK : std_logic := '0';
-  
-
-  signal VITERBI_SIGNAL_OUTPUT_BUFFER : std_logic_vector(31 downto 0) := (others => '0');
-
-  -- Viterbi states
-  type state_distance_t is array (0 to 63) of integer range 0 to 32767; -- 4095*6 ~~ 4095*8
-  signal STATE_DISTANCE : state_distance_t := (0 => 0, others => 32700); ----- as inf (but capable of adding one iteration) !!
-
-  type state_traceback_registers_t is array (0 to 63) of std_logic_vector(0 to VITERBI_TRACEBACK_DEPTH-1);
-  signal STATE_TRACEBACK_REGISTERS : state_traceback_registers_t := (others=>(others=>'0'));
-
-  type PATH_SOFT_DISTANCE_t is array (0 to 63) of integer range 0 to 15;
-  signal PATH_0_SOFT_DISTANCE : PATH_SOFT_DISTANCE_t := (others => 0);
-  signal PATH_1_SOFT_DISTANCE : PATH_SOFT_DISTANCE_t := (others => 0);
-
-
-  -- Compare all 64 distances registers
-  signal COMPARE16_TRACEBACK_BIT_REGISTER : std_logic_vector(0 to 15) := (others=>'0');
-  signal COMPARE4_TRACEBACK_BIT_REGISTER  : std_logic_vector(0 to 3) := (others=>'0');
-
-  -- signal COMPARE16_TRACEBACK_STATE_REGISTER : integer range 0 to 63 := 0;
-  -- signal COMPARE4_TRACEBACK_STATE_REGISTER  : integer range 0 to 63 := 0;
-  
-  type COMPARE16_TRACEBACK_DISTANCE_REGISTER_t is array (0 to 15) of integer range 0 to 4095;
-  signal COMPARE16_TRACEBACK_DISTANCE_REGISTER : COMPARE16_TRACEBACK_DISTANCE_REGISTER_t := (others => 0);
-  type COMPARE4_TRACEBACK_DISTANCE_REGISTER_t is array (0 to 15) of integer range 0 to 4095;
-  signal COMPARE4_TRACEBACK_DISTANCE_REGISTER  : COMPARE4_TRACEBACK_DISTANCE_REGISTER_t := (others => 0);
-
 
 
 begin
 
-  state_update_process : process(CLOCK)
+      -- Connect 
+      viterbi_core_inst : viterbi_core
+      generic map (
+        VITERBI_TRACEBACK_DEPTH => VITERBI_TRACEBACK_DEPTH
+      )
+      port map (
+        RESET          => RESET,
+        CLOCK          => CLOCK,
+    
+        -- Inputs
+        VITERBI_RESET           => VITERBI_RESET,
+        VITERBI_INPUT_VALID     => VITERBI_INPUT_VALID,
+        VITERBI_INPUT           => VITERBI_INPUT,
+        VITERBI_INPUT_DIST_0    => VITERBI_INPUT_DIST_0,
+        VITERBI_INPUT_DIST_1    => VITERBI_INPUT_DIST_1,
+    
+        -- Outputs
+        VITERBI_OUTPUT_VALID  => VITERBI_OUTPUT_VALID,
+        VITERBI_OUTPUT        => VITERBI_OUTPUT
+        );
+
+
+  viterbi_process : process(CLOCK)
 
   begin
     
     if rising_edge(CLOCK) then
 
-      -- synchronous reset
+ -- synchronous reset
       if RESET = '1' then
         -- reset states
         STATE <= IDLE;
+        VITERBI_RESET <= '1';
+
+        -- reset outputs
+        VITERBI_DECODED_OUTPUT_VALID <= '0';
+        VITERBI_DECODED_OUTPUT       <= '0';
+        VITERBI_SIGNAL_VALID   <= '0';
+        VITERBI_SIGNAL         <= (others => '0');
+        VITERBI_RX_ENDED       <= '0';
 
       else
 
-      case STATE is
-
-        -- wait for SIGNAL field
-        when IDLE =>
-
-          if DEINTERLEAVER_START_MARKER = '1' then
-            STATE <= RX_SIGNAL;
-          end if;
-
-        -- process SIGNAL field
-        when RX_SIGNAL =>
-          if RX_SIGNAL_DONE = '1' then
-            STATE <= PROCESS_RATE;
-          elsif RX_SIGNAL_FAILED = '1' then
-            STATE <= IDLE;
-          end if;
-
-
-        when PROCESS_RATE =>
-          STATE <= WAIT_FOR_DATA;
-
-
-        when WAIT_FOR_DATA =>
-          if modulation = UNSUPPORTED then
-            STATE <= IDLE;
-          elsif DEINTERLEAVER_STROBE = '1' then
-            STATE <= RX_DATA;
-          end if;
-
-
-        when RX_DATA =>
-          if RX_LAST_SYMBOL_DONE = '1' then
-            STATE <= END_DECODING;
-          elsif RX_SYMBOL_DONE = '1' then
-            STATE <= WAIT_FOR_DATA;
-          end if;
-        
-
-        when END_DECODING =>
-          if END_DECODING_DONE = '1' then
-            STATE <= IDLE;
-          end if;
-
-        when others =>
-          STATE <= IDLE;
-
-      end case;
-
-      end if; -- reset
-    
-    end if;
-
-  end process state_update_process;
-
-
-
-
-  input_output_process : process(CLOCK)
-
-  begin
-    
-    if rising_edge(CLOCK) then
-
-
+      -- input buffering
       if DEINTERLEAVER_STROBE = '1' then
-        -- buffer new input data
         INPUT_BPSK_BUFFER  <= DEINTERLEAVER_BPSK;
         INPUT_QPSK_BUFFER  <= DEINTERLEAVER_QPSK;
         INPUT_16QAM_BUFFER <= DEINTERLEAVER_16QAM;
@@ -275,45 +213,27 @@ begin
         INPUT_BPSK_DIST_0B_BUFFER     <= DEINTERLEAVER_BPSK_DIST_0B;
         INPUT_QPSK_DIST_0B_BUFFER     <= DEINTERLEAVER_QPSK_DIST_0B;
         INPUT_16QAM_DIST_0B_BUFFER    <= DEINTERLEAVER_16QAM_DIST_0B;
-
       end if;
 
-      
-      -- State machine
       case STATE is
 
         -- wait for SIGNAL field
         when IDLE =>
-
-
-          -- reset outputs
-          VITERBI_SIGNAL_VALID <= '0';
-          VITERBI_DECODED_OUTPUT_VALID <= '0';
-          VITERBI_RX_ENDED <= '0';
-
-          -- reset viterbi_process
           VITERBI_RESET <= '1';
           VITERBI_INPUT_VALID <= '0';
-
-          -- reset states (state_update_process)
-          RX_SIGNAL_DONE <= '0';
-          RX_SIGNAL_FAILED <= '0';
-          END_DECODING_DONE <= '0';
-
-          -- reset internal states
           INPUT_DATA_CNTR <= 0;
+          VITERBI_RX_ENDED <= '0'; 
           OUTPUT_DATA_CNTR <= 0;
-          SIGNAL_PARITY <= '0'; -- even parity for bits 0..16 (0..17 with itself)
 
-          
-          -- COUNTER_OFDM_SYMBOL <= 0;
-          -- COUNTER_BYTES       <= 0;
+          VITERBI_SIGNAL_VALID <= '0';
+          VITERBI_SIGNAL <= (others => '0');
 
-
+          COUNTER_OFDM_SYMBOL <= 0;
 
 
-          
-
+          if DEINTERLEAVER_START_MARKER = '1' then
+            STATE <= RX_SIGNAL;
+          end if;
 
         -- process SIGNAL field
         when RX_SIGNAL =>
@@ -326,18 +246,18 @@ begin
             VITERBI_INPUT <= INPUT_BPSK_BUFFER(2*INPUT_DATA_CNTR to 2*INPUT_DATA_CNTR+1);
 
             -- build both distances from their bits
-            VITERBI_INPUT_DIST(0) <= (INPUT_BPSK_DIST_1B_BUFFER(2*INPUT_DATA_CNTR)   & INPUT_BPSK_DIST_0B_BUFFER(2*INPUT_DATA_CNTR)  );
-            VITERBI_INPUT_DIST(1) <= (INPUT_BPSK_DIST_1B_BUFFER(2*INPUT_DATA_CNTR+1) & INPUT_BPSK_DIST_0B_BUFFER(2*INPUT_DATA_CNTR+1));
+            VITERBI_INPUT_DIST_0 <= (INPUT_BPSK_DIST_1B_BUFFER(2*INPUT_DATA_CNTR)   & INPUT_BPSK_DIST_0B_BUFFER(2*INPUT_DATA_CNTR)  );
+            VITERBI_INPUT_DIST_1 <= (INPUT_BPSK_DIST_1B_BUFFER(2*INPUT_DATA_CNTR+1) & INPUT_BPSK_DIST_0B_BUFFER(2*INPUT_DATA_CNTR+1));
 
             INPUT_DATA_CNTR <= INPUT_DATA_CNTR +1;
           else 
-            -- feed with 0 with max confidence (the state machine should be in zero)
+            -- feed with 0s with max confidence (the state machine should be in zero)
             VITERBI_INPUT <= "00";
 
-            VITERBI_INPUT_DIST(0) <= "00";
-            VITERBI_INPUT_DIST(1) <= "00";
-            
+            VITERBI_INPUT_DIST_0 <= "00";
+            VITERBI_INPUT_DIST_1 <= "00";
           end if;
+
 
 
           -- Get Viterbi SIGNAL Output (LENGTH, RATE, check PARITY)
@@ -355,26 +275,21 @@ begin
 
             -- check parity
             elsif SIGNAL_PARITY = '0' then
-              RX_SIGNAL_DONE <= '1';
+              STATE <= PROCESS_RATE;
             else
-              RX_SIGNAL_FAILED <= '1';
-
               -- stop rx in previous blocks
               VITERBI_RX_ENDED <= '1'; 
-
+              STATE <= IDLE;
             end if;
 
           end if;
 
 
-
-        -- process RATE and LENGTH in SIGNAL (parity OK)
         when PROCESS_RATE =>
-          -- reset viterbi_process
+          -- reset viterbi
           VITERBI_RESET <= '1';
           VITERBI_INPUT_VALID <= '0';
 
-          -- reset rx states
           COUNTER_OFDM_SYMBOL <= 0;
 
           -- process RATE
@@ -384,31 +299,37 @@ begin
               CODE_RATE <= RATE_1_2;
               N_CBPS <= 48;
               N_DBPS <= 24;
+              STATE <= WAIT_FOR_VITERBI_RESET;
             when "1111" => --rate 9
               MODULATION <= BPSK;
               CODE_RATE <= RATE_3_4;
               N_CBPS <= 48;
               N_DBPS <= 36;
+              STATE <= WAIT_FOR_VITERBI_RESET;
             when "0101" => -- rate 12
               MODULATION <= QPSK;
               CODE_RATE <= RATE_1_2;
               N_CBPS <= 96;
               N_DBPS <= 48;
+              STATE <= WAIT_FOR_VITERBI_RESET;
             when "0111" => -- rate 18
               MODULATION <= QPSK;
               CODE_RATE <= RATE_3_4;
               N_CBPS <= 96;
               N_DBPS <= 72;
+              STATE <= WAIT_FOR_VITERBI_RESET;
             when "1001" => --rate 24
               MODULATION <= QAM16;
               CODE_RATE <= RATE_1_2;
               N_CBPS <= 192;
               N_DBPS <= 96;
+              STATE <= WAIT_FOR_VITERBI_RESET;
             when "1011" => -- rate 36
               MODULATION <= QAM16;
               CODE_RATE <= RATE_3_4;
               N_CBPS <= 192;
               N_DBPS <= 144;
+              STATE <= WAIT_FOR_VITERBI_RESET;
             when others =>
               -- QAM64 and RATE_2_3 unsupported ! (check MODULATION in state_update_process)
               MODULATION <= UNSUPPORTED;
@@ -416,8 +337,8 @@ begin
 
               -- stop rx in previous blocks
               VITERBI_RX_ENDED <= '1'; 
+              STATE <= IDLE;
           end case;
-
 
           -- process LENGTH -- bits 15..26 --> 1..4095
           LENGTH_BYTES <= to_integer(unsigned( (VITERBI_SIGNAL_OUTPUT_BUFFER(15 downto 15) & VITERBI_SIGNAL_OUTPUT_BUFFER(16) & 
@@ -427,85 +348,70 @@ begin
                                                 VITERBI_SIGNAL_OUTPUT_BUFFER(23) & VITERBI_SIGNAL_OUTPUT_BUFFER(24) &
                                                 VITERBI_SIGNAL_OUTPUT_BUFFER(25) & VITERBI_SIGNAL_OUTPUT_BUFFER(26) ) )) + 1; 
 
-          
           -- output valid SIGNAL
           VITERBI_SIGNAL_VALID <= '1';
           VITERBI_SIGNAL <= VITERBI_SIGNAL_OUTPUT_BUFFER;
 
-        -- wait for DATA
-        when WAIT_FOR_DATA =>
+        -- just wait one cycle for viterbi_core output low
+        when WAIT_FOR_VITERBI_RESET =>
+          -- reset SIGNAL output
+          VITERBI_SIGNAL_VALID <= '0';
 
-          -- enable viterbi
+          STATE <= WAIT_FOR_DATA;
+
+
+        when WAIT_FOR_DATA =>
+          -- enable viterbi but do nothing
           VITERBI_RESET <= '0';
           VITERBI_INPUT_VALID <= '0';
-
-          -- reset intenal states
-          VITERBI_INPUT_VALID_OLD <= '0';
-          VITERBI_OUTPUT_VALID_OLD <= '0';
-
+        
           INPUT_DATA_CNTR <= 0;
-          OUTPUT_DATA_CNTR <= 0;
-
-          VITERBI_INPUT_RESET_VALID_NEXT_CLOCK <= '0';
-
           PUNCTURING_STATE <= BOTH; 
 
-          -- reset states (state_update_process)
-          RX_LAST_SYMBOL_DONE <= '0'; 
-          RX_SYMBOL_DONE <= '0';
 
-          -- reset outputs
-          VITERBI_DECODED_OUTPUT_VALID <= '0';
-          VITERBI_SIGNAL_VALID <= '0';
-          
 
-        -- process DATA
-        when RX_DATA =>
+          -- Check if this is the last incomming OFDM symbol
+          if 16+8*LENGTH_BYTES+6 <= (COUNTER_OFDM_SYMBOL+1)*N_DBPS then -- last ofdm symbol done (this symbol already had encoded tail + SCRAMBLED padding --> random data at output)
+            STATE <= END_DECODING;
+          elsif DEINTERLEAVER_STROBE = '1' then
+            STATE <= FEED_DATA;
+          end if;
+
+
+        -- feed input of Viterbi_core
+        when FEED_DATA =>
+          VITERBI_INPUT_VALID     <= '1';
 
           -- Forward data in (update control signals)
-          if CODE_RATE = RATE_1_2 then -- CODE_RATE = 1/2
+          if CODE_RATE = RATE_1_2 then
 
-            if INPUT_DATA_CNTR < N_CBPS-2 then
               -- PUNCTURING_STATE <= BOTH; -- no change
               INPUT_DATA_CNTR <= INPUT_DATA_CNTR + 2; 
-              
 
-            else -- keep VITERBI_INPUT_VALID = '1' for N_CBPS-1 !!!!
-              VITERBI_INPUT_RESET_VALID_NEXT_CLOCK <= '1';
-            end if;
- 
-            -- keep VITERBI_INPUT_VALID = '1' for N_CBPS-1 !!!!
-            if VITERBI_INPUT_RESET_VALID_NEXT_CLOCK = '1' then
-              VITERBI_INPUT_VALID <= '0';
-            else
-              VITERBI_INPUT_VALID <= '1';
-            end if;
-
+              -- last bits --> exit
+              if INPUT_DATA_CNTR >= N_CBPS-2 then
+                STATE <= WAIT_FOR_DATA;
+                COUNTER_OFDM_SYMBOL <= COUNTER_OFDM_SYMBOL+1;
+              end if;
 
           else -- CODE_RATE = 3/4
             
-            if INPUT_DATA_CNTR < N_CBPS-1 then
-              case PUNCTURING_STATE is
-                when BOTH =>
-                  INPUT_DATA_CNTR <= INPUT_DATA_CNTR + 2; 
-                  PUNCTURING_STATE <= FIRST;
-                when FIRST =>
-                  INPUT_DATA_CNTR <= INPUT_DATA_CNTR + 1; 
-                  PUNCTURING_STATE <= SECOND;
-                when SECOND =>
-                  INPUT_DATA_CNTR <= INPUT_DATA_CNTR + 1; 
-                  PUNCTURING_STATE <= BOTH;
-              end case;
+            case PUNCTURING_STATE is
+              when BOTH =>
+                INPUT_DATA_CNTR <= INPUT_DATA_CNTR + 2; 
+                PUNCTURING_STATE <= FIRST;
+              when FIRST =>
+                INPUT_DATA_CNTR <= INPUT_DATA_CNTR + 1; 
+                PUNCTURING_STATE <= SECOND;
+              when SECOND =>
+                INPUT_DATA_CNTR <= INPUT_DATA_CNTR + 1; 
+                PUNCTURING_STATE <= BOTH;
+            end case;
 
-            else -- keep VITERBI_INPUT_VALID = '1' for N_CBPS-1 !!!!
-              VITERBI_INPUT_RESET_VALID_NEXT_CLOCK <= '1';
-            end if;
- 
-            -- keep VITERBI_INPUT_VALID = '1' for N_CBPS-1 !!!!
-            if VITERBI_INPUT_RESET_VALID_NEXT_CLOCK = '1' then
-              VITERBI_INPUT_VALID <= '0';
-            else
-              VITERBI_INPUT_VALID <= '1';
+            -- last bits --> exit
+            if INPUT_DATA_CNTR >= N_CBPS-1 then
+              STATE <= WAIT_FOR_DATA;
+              COUNTER_OFDM_SYMBOL <= COUNTER_OFDM_SYMBOL+1;
             end if;
 
           end if;
@@ -517,293 +423,118 @@ begin
                 when BOTH =>
                   VITERBI_INPUT <= INPUT_BPSK_BUFFER(INPUT_DATA_CNTR to INPUT_DATA_CNTR+1); 
                   -- build both distances from their bits
-                  VITERBI_INPUT_DIST(0) <= (INPUT_BPSK_DIST_1B_BUFFER(INPUT_DATA_CNTR)   & INPUT_BPSK_DIST_0B_BUFFER(INPUT_DATA_CNTR));
-                  VITERBI_INPUT_DIST(1) <= (INPUT_BPSK_DIST_1B_BUFFER(INPUT_DATA_CNTR+1) & INPUT_BPSK_DIST_0B_BUFFER(INPUT_DATA_CNTR+1));
+                  VITERBI_INPUT_DIST_0 <= (INPUT_BPSK_DIST_1B_BUFFER(INPUT_DATA_CNTR)   & INPUT_BPSK_DIST_0B_BUFFER(INPUT_DATA_CNTR));
+                  VITERBI_INPUT_DIST_1 <= (INPUT_BPSK_DIST_1B_BUFFER(INPUT_DATA_CNTR+1) & INPUT_BPSK_DIST_0B_BUFFER(INPUT_DATA_CNTR+1));
                 when FIRST =>
                   VITERBI_INPUT <= INPUT_BPSK_BUFFER(INPUT_DATA_CNTR to INPUT_DATA_CNTR) & '0'; 
                   -- build first distance from its bits
-                  VITERBI_INPUT_DIST(0) <= (INPUT_BPSK_DIST_1B_BUFFER(INPUT_DATA_CNTR)   & INPUT_BPSK_DIST_0B_BUFFER(INPUT_DATA_CNTR));
-                  VITERBI_INPUT_DIST(1) <= "11"; -- 100% uncertain distance
+                  VITERBI_INPUT_DIST_0 <= (INPUT_BPSK_DIST_1B_BUFFER(INPUT_DATA_CNTR)   & INPUT_BPSK_DIST_0B_BUFFER(INPUT_DATA_CNTR));
+                  VITERBI_INPUT_DIST_1 <= "11"; -- 100% uncertain distance
                 when SECOND =>
                   VITERBI_INPUT <= '0' & INPUT_BPSK_BUFFER(INPUT_DATA_CNTR to INPUT_DATA_CNTR); 
                   -- build second distance from its bits
-                  VITERBI_INPUT_DIST(0) <= "11"; -- 100% uncertain distance
-                  VITERBI_INPUT_DIST(1) <= (INPUT_BPSK_DIST_1B_BUFFER(INPUT_DATA_CNTR)   & INPUT_BPSK_DIST_0B_BUFFER(INPUT_DATA_CNTR));
+                  VITERBI_INPUT_DIST_0 <= "11"; -- 100% uncertain distance
+                  VITERBI_INPUT_DIST_1 <= (INPUT_BPSK_DIST_1B_BUFFER(INPUT_DATA_CNTR)   & INPUT_BPSK_DIST_0B_BUFFER(INPUT_DATA_CNTR));
               end case;
             when QPSK =>
               case PUNCTURING_STATE is
                 when BOTH =>
                   VITERBI_INPUT <= INPUT_QPSK_BUFFER(INPUT_DATA_CNTR to INPUT_DATA_CNTR+1); 
                   -- build both distances from their bits
-                  VITERBI_INPUT_DIST(0) <= (INPUT_QPSK_DIST_1B_BUFFER(INPUT_DATA_CNTR)   & INPUT_QPSK_DIST_0B_BUFFER(INPUT_DATA_CNTR));
-                  VITERBI_INPUT_DIST(1) <= (INPUT_QPSK_DIST_1B_BUFFER(INPUT_DATA_CNTR+1) & INPUT_QPSK_DIST_0B_BUFFER(INPUT_DATA_CNTR+1));
+                  VITERBI_INPUT_DIST_0 <= (INPUT_QPSK_DIST_1B_BUFFER(INPUT_DATA_CNTR)   & INPUT_QPSK_DIST_0B_BUFFER(INPUT_DATA_CNTR));
+                  VITERBI_INPUT_DIST_1 <= (INPUT_QPSK_DIST_1B_BUFFER(INPUT_DATA_CNTR+1) & INPUT_QPSK_DIST_0B_BUFFER(INPUT_DATA_CNTR+1));
                 when FIRST =>
                   VITERBI_INPUT <= INPUT_QPSK_BUFFER(INPUT_DATA_CNTR to INPUT_DATA_CNTR) & '0'; 
                   -- build first distance from its bits
-                  VITERBI_INPUT_DIST(0) <= (INPUT_QPSK_DIST_1B_BUFFER(INPUT_DATA_CNTR)   & INPUT_QPSK_DIST_0B_BUFFER(INPUT_DATA_CNTR));
-                  VITERBI_INPUT_DIST(1) <= "11"; -- 100% uncertain distance
+                  VITERBI_INPUT_DIST_0 <= (INPUT_QPSK_DIST_1B_BUFFER(INPUT_DATA_CNTR)   & INPUT_QPSK_DIST_0B_BUFFER(INPUT_DATA_CNTR));
+                  VITERBI_INPUT_DIST_1 <= "11"; -- 100% uncertain distance
                 when SECOND =>
                   VITERBI_INPUT <= '0' & INPUT_QPSK_BUFFER(INPUT_DATA_CNTR to INPUT_DATA_CNTR); 
                   -- build second distance from its bits
-                  VITERBI_INPUT_DIST(0) <= "11"; -- 100% uncertain distance
-                  VITERBI_INPUT_DIST(1) <= (INPUT_QPSK_DIST_1B_BUFFER(INPUT_DATA_CNTR)   & INPUT_QPSK_DIST_0B_BUFFER(INPUT_DATA_CNTR));
+                  VITERBI_INPUT_DIST_0 <= "11"; -- 100% uncertain distance
+                  VITERBI_INPUT_DIST_1 <= (INPUT_QPSK_DIST_1B_BUFFER(INPUT_DATA_CNTR)   & INPUT_QPSK_DIST_0B_BUFFER(INPUT_DATA_CNTR));
               end case;            
             when QAM16 =>
               case PUNCTURING_STATE is
                 when BOTH =>
                   VITERBI_INPUT <= INPUT_16QAM_BUFFER(INPUT_DATA_CNTR to INPUT_DATA_CNTR+1); 
                   -- build both distances from their bits
-                  VITERBI_INPUT_DIST(0) <= (INPUT_16QAM_DIST_1B_BUFFER(INPUT_DATA_CNTR)   & INPUT_16QAM_DIST_0B_BUFFER(INPUT_DATA_CNTR));
-                  VITERBI_INPUT_DIST(1) <= (INPUT_16QAM_DIST_1B_BUFFER(INPUT_DATA_CNTR+1) & INPUT_16QAM_DIST_0B_BUFFER(INPUT_DATA_CNTR+1));
+                  VITERBI_INPUT_DIST_0 <= (INPUT_16QAM_DIST_1B_BUFFER(INPUT_DATA_CNTR)   & INPUT_16QAM_DIST_0B_BUFFER(INPUT_DATA_CNTR));
+                  VITERBI_INPUT_DIST_1 <= (INPUT_16QAM_DIST_1B_BUFFER(INPUT_DATA_CNTR+1) & INPUT_16QAM_DIST_0B_BUFFER(INPUT_DATA_CNTR+1));
                 when FIRST =>
                   VITERBI_INPUT <= INPUT_16QAM_BUFFER(INPUT_DATA_CNTR to INPUT_DATA_CNTR) & '0'; 
                   -- build first distance from its bits
-                  VITERBI_INPUT_DIST(0) <= (INPUT_16QAM_DIST_1B_BUFFER(INPUT_DATA_CNTR)   & INPUT_16QAM_DIST_0B_BUFFER(INPUT_DATA_CNTR));
-                  VITERBI_INPUT_DIST(1) <= "11"; -- 100% uncertain distance
+                  VITERBI_INPUT_DIST_0 <= (INPUT_16QAM_DIST_1B_BUFFER(INPUT_DATA_CNTR)   & INPUT_16QAM_DIST_0B_BUFFER(INPUT_DATA_CNTR));
+                  VITERBI_INPUT_DIST_1 <= "11"; -- 100% uncertain distance
                 when SECOND =>
                   VITERBI_INPUT <= '0' & INPUT_16QAM_BUFFER(INPUT_DATA_CNTR to INPUT_DATA_CNTR); 
                   -- build second distance from its bits
-                  VITERBI_INPUT_DIST(0) <= "11"; -- 100% uncertain distance
-                  VITERBI_INPUT_DIST(1) <= (INPUT_16QAM_DIST_1B_BUFFER(INPUT_DATA_CNTR)   & INPUT_16QAM_DIST_0B_BUFFER(INPUT_DATA_CNTR));
+                  VITERBI_INPUT_DIST_0 <= "11"; -- 100% uncertain distance
+                  VITERBI_INPUT_DIST_1 <= (INPUT_16QAM_DIST_1B_BUFFER(INPUT_DATA_CNTR)   & INPUT_16QAM_DIST_0B_BUFFER(INPUT_DATA_CNTR));
               end case;
             when others =>
           end case;
+     
 
-
-          -- Forward data out (control signals)  Note: in BPSK with 24 viterbi inputs --> no viterbi output (see VITERBI_FIRST_VALID_OUTPUT and traceback depth) !
-          if (VITERBI_OUTPUT_VALID = '0' and VITERBI_OUTPUT_VALID_OLD = '1') or (VITERBI_FIRST_VALID_CNTR <= VITERBI_FIRST_VALID_OUTPUT and VITERBI_INPUT_VALID = '0' and VITERBI_INPUT_VALID_OLD = '1') then
-            RX_SYMBOL_DONE <= '1';
-            COUNTER_OFDM_SYMBOL <= COUNTER_OFDM_SYMBOL + 1;
-
-            if 16+8*LENGTH_BYTES+6 <= (COUNTER_OFDM_SYMBOL+1)*N_DBPS then -- last ofdm symbol done (this symbol already had encoded tail + SCRAMBLED padding --> random data at output)
-              RX_LAST_SYMBOL_DONE <= '1';
-            end if;
-
-          end if;
-          VITERBI_INPUT_VALID_OLD  <= VITERBI_INPUT_VALID;
-          VITERBI_OUTPUT_VALID_OLD <= VITERBI_OUTPUT_VALID;
-
-
-          -- Forward data out (Note: OUTPUT_DATA_CNTR not used !)
-          VITERBI_DECODED_OUTPUT <= VITERBI_OUTPUT;
-          VITERBI_DECODED_OUTPUT_VALID <= VITERBI_OUTPUT_VALID;
-
-
-        -- feed decoder with zeros to get last bits 
         when END_DECODING =>
-          VITERBI_INPUT_VALID <= '1';
-          VITERBI_INPUT <= "00"; 
 
-          -- max confidence
-          VITERBI_INPUT_DIST(0) <= "00";
-          VITERBI_INPUT_DIST(1) <= "00";
+          -- feed with 0s with max confidence (the state machine should be in zero)
+          VITERBI_INPUT_VALID  <= '1';
+          VITERBI_INPUT        <= "00";
 
-          
-          
-          
-          -- Forward data out (control signals)
-          if VITERBI_OUTPUT_VALID = '1' then
-            OUTPUT_DATA_CNTR <= OUTPUT_DATA_CNTR  + 1;
+          VITERBI_INPUT_DIST_0 <= "00";
+          VITERBI_INPUT_DIST_1 <= "00";
 
-            -- go to idle
-            if OUTPUT_DATA_CNTR = VITERBI_FIRST_VALID_OUTPUT+1 then
-              END_DECODING_DONE <= '1';
-              VITERBI_RX_ENDED <= '1'; -- stop rx in previous blocks (and descrambler !)
-            end if;
 
+          -- Observe the end of decoding
+          if END_DECODING_DONE = '1' then
+            VITERBI_RX_ENDED <= '1'; 
+            STATE <= IDLE;
           end if;
 
-          -- Forward data out
-          if END_DECODING_DONE = '1' then 
-            -- VITERBI_RX_ENDED <= '0'; -- cannot do here --> 2 pulses ok
-            VITERBI_DECODED_OUTPUT_VALID <= '0'; -- ensure immediate stopping after VITERBI_RX_ENDED !
-          else
-            VITERBI_DECODED_OUTPUT_VALID <= VITERBI_OUTPUT_VALID;
-            VITERBI_DECODED_OUTPUT <= VITERBI_OUTPUT;
-          end if;
-
-
+        when others =>
+          STATE <= IDLE;
 
       end case;
 
-        
 
-    end if;
-  
-  end process input_output_process;
+      -- Forward done decoding out (halfly outside of the state machine !!)
+      if STATE = WAIT_FOR_DATA or STATE = FEED_DATA or STATE = END_DECODING then
+        if VITERBI_OUTPUT_VALID = '1' and END_DECODING_DONE = '0' then
+          VITERBI_DECODED_OUTPUT_VALID <= '1';
+          VITERBI_DECODED_OUTPUT       <= VITERBI_OUTPUT;
 
-
-
-
-  viterbi_process : process(CLOCK)
-    variable VAR_PATH_0_DIFFERENCE : std_logic_vector(0 to 1) := "00";
-    variable VAR_PATH_1_DIFFERENCE : std_logic_vector(0 to 1) := "00";
-
-    -- variable VAR_PATH_0_HAMMING_DISTANCE : integer range 0  to 2 := 0;
-    -- variable VAR_PATH_1_HAMMING_DISTANCE : integer range 0 to 2 := 0;
-    -- variable VAR_PATH_0_SOFT_DISTANCE : integer range 0 to 15 := 0;
-    -- variable VAR_PATH_1_SOFT_DISTANCE : integer range 0 to 15 := 0;
-
-  begin
-    
-    if rising_edge(CLOCK) then
-      -- synchronous reset
-      if VITERBI_RESET = '1' then
-        --reset outputs
-        -- VITERBI_OUTPUT_VALID <= '0'; -- is reset with VITERBI_FIRST_VALID_OUTPUT
-        -- VITERBI_OUTPUT <= '0';
-
-        -- reset states !!
-        STATE_DISTANCE <= (0 => 0, others => 32700); 
-        VITERBI_FIRST_VALID_CNTR <= 0;
-
-      else
-        
-
-
-        -- Compute the NEWEST state (Recurrent phase)
-        if VITERBI_INPUT_VALID = '1' then
-          -- update Viterbi input valid history
-          VITERBI_FIRST_VALID_CNTR <= VITERBI_FIRST_VALID_CNTR + 1;
-
-          for state in 0 to 63 loop
-            VAR_PATH_0_DIFFERENCE := VITERBI_BACKWARD_MEM(state) xor VITERBI_INPUT;
-            VAR_PATH_1_DIFFERENCE := VITERBI_BACKWARD_MEM(64+state) xor VITERBI_INPUT;
-
-            -- VAR_PATH_0_HAMMING_DISTANCE := to_integer(unsigned(VAR_PATH_0_DIFFERENCE(0 to 0))) + to_integer(unsigned(VAR_PATH_0_DIFFERENCE(1 to 1)));
-            -- VAR_PATH_1_HAMMING_DISTANCE := to_integer(unsigned(VAR_PATH_1_DIFFERENCE(0 to 0))) + to_integer(unsigned(VAR_PATH_1_DIFFERENCE(1 to 1)));
-            case VAR_PATH_0_DIFFERENCE is
-              when "00" =>
-                PATH_0_SOFT_DISTANCE(state) <= to_integer(VITERBI_INPUT_DIST(0)) + to_integer(unsigned(VITERBI_INPUT_DIST(1)));
-              when "01" =>
-                PATH_0_SOFT_DISTANCE(state) <= to_integer(VITERBI_INPUT_DIST(0)) + 6 - to_integer(unsigned(VITERBI_INPUT_DIST(1)));
-              when "10" =>
-                PATH_0_SOFT_DISTANCE(state) <= 6 - to_integer(VITERBI_INPUT_DIST(0)) + to_integer(unsigned(VITERBI_INPUT_DIST(1)));
-              when others =>
-                PATH_0_SOFT_DISTANCE(state) <= 6 - to_integer(VITERBI_INPUT_DIST(0)) + 6 - to_integer(unsigned(VITERBI_INPUT_DIST(1)));
-            end case;
-
-            case VAR_PATH_1_DIFFERENCE is
-              when "00" =>
-                PATH_1_SOFT_DISTANCE(state) <= to_integer(VITERBI_INPUT_DIST(0)) + to_integer(unsigned(VITERBI_INPUT_DIST(1)));
-              when "01" =>
-                PATH_1_SOFT_DISTANCE(state) <= to_integer(VITERBI_INPUT_DIST(0)) + 6 - to_integer(unsigned(VITERBI_INPUT_DIST(1)));
-              when "10" =>
-                PATH_1_SOFT_DISTANCE(state) <= 6 - to_integer(VITERBI_INPUT_DIST(0)) + to_integer(unsigned(VITERBI_INPUT_DIST(1)));
-              when others =>
-                PATH_1_SOFT_DISTANCE(state) <= 6 - to_integer(VITERBI_INPUT_DIST(0)) + 6 - to_integer(unsigned(VITERBI_INPUT_DIST(1)));
-            end case;
-
-
-            -- for all states: 1) compute least hamming distance, 2) remember originating state !!!!!!
-            if VITERBI_FIRST_VALID_CNTR > 0 then
-              if STATE_DISTANCE(state/2) + PATH_0_SOFT_DISTANCE(state) < STATE_DISTANCE(32+state/2) + PATH_1_SOFT_DISTANCE(state) then -- originating state_1 + path_1 < originating state_2 + path_2 
-                if STATE_DISTANCE(state/2)  < 32700 then -- no overflow !!
-                  STATE_DISTANCE(state) <= STATE_DISTANCE(state/2) + PATH_0_SOFT_DISTANCE(state);
-                end if;
-                STATE_TRACEBACK_REGISTERS(state) <= ('0' & STATE_TRACEBACK_REGISTERS(state/2)(0 to VITERBI_TRACEBACK_DEPTH-2));
-              else
-                if STATE_DISTANCE(32+state/2) < 32700 then -- no overflow !!
-                  STATE_DISTANCE(state) <= STATE_DISTANCE(32+state/2) + PATH_1_SOFT_DISTANCE(state); 
-                end if;
-                STATE_TRACEBACK_REGISTERS(state) <= ('1' & STATE_TRACEBACK_REGISTERS(32+state/2)(0 to VITERBI_TRACEBACK_DEPTH-2));
-              end if;
-            end if;
-
-          end loop;
-
-        end if;
-
-
-      end if; -- no reset (below is resetted automatically)
-
-      
-      if VITERBI_INPUT_VALID = '1' then
-        -- Decode the value from the OLDEST state (Forward phase)
-        --    Collect all bits from STATE_TRACEBACK_REGISTERS() -- originating in the best NEWEST state !!! (how to find best ???) !!!
-
-      -- if VITERBI_FIRST_VALID_OUTPUT(VITERBI_FIRST_VALID_OUTPUT'LENGTH-3) = '1' then
-      -- Compare all 64 distances --> 16 (--> then select correct tracebacked bit)
-      for i in 0 to 15 loop
-          if STATE_DISTANCE(i) <= STATE_DISTANCE(16+i) and STATE_DISTANCE(i) <= STATE_DISTANCE(32+i) and STATE_DISTANCE(i) <= STATE_DISTANCE(48+i) then
-              COMPARE16_TRACEBACK_DISTANCE_REGISTER(i) <= STATE_DISTANCE(i);
-              -- COMPARE16_TRACEBACK_STATE_REGISTER(i) <= i;
-              COMPARE16_TRACEBACK_BIT_REGISTER(i) <= STATE_TRACEBACK_REGISTERS(i)(VITERBI_TRACEBACK_DEPTH-1);
-          elsif STATE_DISTANCE(16+i) <= STATE_DISTANCE(i) and STATE_DISTANCE(16+i) <= STATE_DISTANCE(32+i) and STATE_DISTANCE(16+i) <= STATE_DISTANCE(48+i) then
-              COMPARE16_TRACEBACK_DISTANCE_REGISTER(i) <= STATE_DISTANCE(16+i);
-              -- COMPARE16_TRACEBACK_STATE_REGISTER(i) <= 16+i;
-              COMPARE16_TRACEBACK_BIT_REGISTER(i) <= STATE_TRACEBACK_REGISTERS(16+i)(VITERBI_TRACEBACK_DEPTH-1);
-          elsif STATE_DISTANCE(32+i) <= STATE_DISTANCE(i) and STATE_DISTANCE(32+i) <= STATE_DISTANCE(16+i) and STATE_DISTANCE(32+i) <= STATE_DISTANCE(48+i) then
-              COMPARE16_TRACEBACK_DISTANCE_REGISTER(i) <= STATE_DISTANCE(32+i);
-              -- COMPARE16_TRACEBACK_STATE_REGISTER(i) <= 32+i;
-              COMPARE16_TRACEBACK_BIT_REGISTER(i) <= STATE_TRACEBACK_REGISTERS(32+i)(VITERBI_TRACEBACK_DEPTH-1);
+          if COUNTER_DECODED_BITS = 7 then
+            COUNTER_DECODED_BYTES <= COUNTER_DECODED_BYTES + 1;
+            COUNTER_DECODED_BITS <= 0;
           else
-              COMPARE16_TRACEBACK_DISTANCE_REGISTER(i) <= STATE_DISTANCE(48+i);
-              -- COMPARE16_TRACEBACK_STATE_REGISTER(i) <= 48+i; 
-              COMPARE16_TRACEBACK_BIT_REGISTER(i) <= STATE_TRACEBACK_REGISTERS(48+i)(VITERBI_TRACEBACK_DEPTH-1);   
+            COUNTER_DECODED_BITS <= COUNTER_DECODED_BITS + 1;
           end if;
-      end loop;
 
+          if COUNTER_DECODED_BYTES >= LENGTH_BYTES then
+            END_DECODING_DONE <= '1';
+          end if;
 
-
-      --if VITERBI_FIRST_VALID_OUTPUT(VITERBI_FIRST_VALID_OUTPUT'LENGTH-2) = '1' then
-      -- Compare precompared 16 distances --> 4
-      for i in 0 to 3 loop
-        if COMPARE16_TRACEBACK_DISTANCE_REGISTER(i) <= COMPARE16_TRACEBACK_DISTANCE_REGISTER(4+i) and COMPARE16_TRACEBACK_DISTANCE_REGISTER(i) <= COMPARE16_TRACEBACK_DISTANCE_REGISTER(8+i) and COMPARE16_TRACEBACK_DISTANCE_REGISTER(i) <= COMPARE16_TRACEBACK_DISTANCE_REGISTER(12+i) then
-            COMPARE4_TRACEBACK_DISTANCE_REGISTER(i) <= COMPARE16_TRACEBACK_DISTANCE_REGISTER(i);
-            -- COMPARE4_TRACEBACK_STATE_REGISTER(i) <= COMPARE16_TRACEBACK_STATE_REGISTER(i);
-            COMPARE4_TRACEBACK_BIT_REGISTER(i) <= COMPARE16_TRACEBACK_BIT_REGISTER(i);
-        elsif COMPARE16_TRACEBACK_DISTANCE_REGISTER(4+i) <= COMPARE16_TRACEBACK_DISTANCE_REGISTER(i) and COMPARE16_TRACEBACK_DISTANCE_REGISTER(4+i) <= COMPARE16_TRACEBACK_DISTANCE_REGISTER(8+i) and COMPARE16_TRACEBACK_DISTANCE_REGISTER(4+i) <= COMPARE16_TRACEBACK_DISTANCE_REGISTER(12+i) then
-            COMPARE4_TRACEBACK_DISTANCE_REGISTER(i) <= COMPARE16_TRACEBACK_DISTANCE_REGISTER(4+i);
-            -- COMPARE4_TRACEBACK_STATE_REGISTER(i) <= COMPARE16_TRACEBACK_STATE_REGISTER(4+i);
-            COMPARE4_TRACEBACK_BIT_REGISTER(i) <= COMPARE16_TRACEBACK_BIT_REGISTER(4+i);
-        elsif COMPARE16_TRACEBACK_DISTANCE_REGISTER(8+i) <= COMPARE16_TRACEBACK_DISTANCE_REGISTER(i) and COMPARE16_TRACEBACK_DISTANCE_REGISTER(8+i) <= COMPARE16_TRACEBACK_DISTANCE_REGISTER(4+i) and COMPARE16_TRACEBACK_DISTANCE_REGISTER(8+i) <= COMPARE16_TRACEBACK_DISTANCE_REGISTER(12+i) then
-            COMPARE4_TRACEBACK_DISTANCE_REGISTER(i) <= COMPARE16_TRACEBACK_DISTANCE_REGISTER(8+i);
-            -- COMPARE4_TRACEBACK_STATE_REGISTER(i) <= COMPARE16_TRACEBACK_STATE_REGISTER(8+i);
-            COMPARE4_TRACEBACK_BIT_REGISTER(i) <= COMPARE16_TRACEBACK_BIT_REGISTER(8+i);
         else
-            COMPARE4_TRACEBACK_DISTANCE_REGISTER(i) <= COMPARE16_TRACEBACK_DISTANCE_REGISTER(12+i);
-            -- COMPARE4_TRACEBACK_STATE_REGISTER(i) <= COMPARE16_TRACEBACK_STATE_REGISTER(12+i); 
-            COMPARE4_TRACEBACK_BIT_REGISTER(i) <= COMPARE16_TRACEBACK_BIT_REGISTER(12+i);   
+          VITERBI_DECODED_OUTPUT_VALID <= '0';
+        
         end if;
-      end loop;
-
-      
-
-      -- Compare precompared 4 distances --> 1  +  OUTPUT the selected bit
-      if COMPARE4_TRACEBACK_DISTANCE_REGISTER(0) <= COMPARE4_TRACEBACK_DISTANCE_REGISTER(1) and COMPARE4_TRACEBACK_DISTANCE_REGISTER(0) <= COMPARE4_TRACEBACK_DISTANCE_REGISTER(2) and COMPARE4_TRACEBACK_DISTANCE_REGISTER(0) <= COMPARE4_TRACEBACK_DISTANCE_REGISTER(3) then
-          -- <= COMPARE4_TRACEBACK_DISTANCE_REGISTER(0);
-          -- <= COMPARE4_TRACEBACK_STATE_REGISTER(0);
-          VITERBI_OUTPUT <= COMPARE4_TRACEBACK_BIT_REGISTER(0);
-      elsif COMPARE4_TRACEBACK_DISTANCE_REGISTER(1) <= COMPARE4_TRACEBACK_DISTANCE_REGISTER(0) and COMPARE4_TRACEBACK_DISTANCE_REGISTER(1) <= COMPARE4_TRACEBACK_DISTANCE_REGISTER(2) and COMPARE4_TRACEBACK_DISTANCE_REGISTER(1) <= COMPARE4_TRACEBACK_DISTANCE_REGISTER(3) then
-          -- <= COMPARE4_TRACEBACK_DISTANCE_REGISTER(1);
-          -- <= COMPARE4_TRACEBACK_STATE_REGISTER(1);
-          VITERBI_OUTPUT <= COMPARE4_TRACEBACK_BIT_REGISTER(1);
-      elsif COMPARE4_TRACEBACK_DISTANCE_REGISTER(2) <= COMPARE4_TRACEBACK_DISTANCE_REGISTER(0) and COMPARE4_TRACEBACK_DISTANCE_REGISTER(2) <= COMPARE4_TRACEBACK_DISTANCE_REGISTER(1) and COMPARE4_TRACEBACK_DISTANCE_REGISTER(2) <= COMPARE4_TRACEBACK_DISTANCE_REGISTER(3) then
-          -- <= COMPARE4_TRACEBACK_DISTANCE_REGISTER(2);
-          -- <= COMPARE4_TRACEBACK_STATE_REGISTER(2);
-          VITERBI_OUTPUT <= COMPARE4_TRACEBACK_BIT_REGISTER(2);
-      else
-          -- <= COMPARE4_TRACEBACK_DISTANCE_REGISTER(3);
-          -- <= COMPARE4_TRACEBACK_STATE_REGISTER(3);
-          VITERBI_OUTPUT <= COMPARE4_TRACEBACK_BIT_REGISTER(3); 
-      end if;
-      
-
-      if VITERBI_FIRST_VALID_CNTR > VITERBI_FIRST_VALID_OUTPUT then         
-        VITERBI_OUTPUT_VALID <= '1';
-      else
-        VITERBI_OUTPUT_VALID <= '0';
-      end if;
 
       else
-        VITERBI_OUTPUT_VALID <= '0';
+        END_DECODING_DONE <= '0';
+        COUNTER_DECODED_BYTES <= 0;
+        COUNTER_DECODED_BITS <= 0;
+
       end if;
-      
+
+
+
+
+      end if; -- reset
+    
+
     end if;
-  
+     
   end process viterbi_process;
-
-
 
 end Behavioral;

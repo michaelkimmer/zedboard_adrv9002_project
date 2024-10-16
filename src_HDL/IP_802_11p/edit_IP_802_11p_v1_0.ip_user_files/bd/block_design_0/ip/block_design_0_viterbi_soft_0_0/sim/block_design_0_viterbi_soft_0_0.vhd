@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:module_ref:viterbi_soft:1.0
--- IP Revision: 1715949487
+-- IP Revision: 1727106861
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -80,6 +80,9 @@ ARCHITECTURE block_design_0_viterbi_soft_0_0_arch OF block_design_0_viterbi_soft
   ATTRIBUTE DowngradeIPIdentifiedWarnings : STRING;
   ATTRIBUTE DowngradeIPIdentifiedWarnings OF block_design_0_viterbi_soft_0_0_arch: ARCHITECTURE IS "yes";
   COMPONENT viterbi_soft IS
+    GENERIC (
+      VITERBI_TRACEBACK_DEPTH : INTEGER
+    );
     PORT (
       RESET : IN STD_LOGIC;
       CLOCK : IN STD_LOGIC;
@@ -109,6 +112,9 @@ ARCHITECTURE block_design_0_viterbi_soft_0_0_arch OF block_design_0_viterbi_soft
   ATTRIBUTE X_INTERFACE_INFO OF RESET: SIGNAL IS "xilinx.com:signal:reset:1.0 RESET RST";
 BEGIN
   U0 : viterbi_soft
+    GENERIC MAP (
+      VITERBI_TRACEBACK_DEPTH => 96
+    )
     PORT MAP (
       RESET => RESET,
       CLOCK => CLOCK,

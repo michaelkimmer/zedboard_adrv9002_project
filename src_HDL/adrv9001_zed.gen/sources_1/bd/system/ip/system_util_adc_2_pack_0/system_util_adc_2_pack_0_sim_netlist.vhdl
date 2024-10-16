@@ -2,10 +2,10 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
--- Date        : Sat Apr  6 00:35:49 2024
--- Host        : ASUS_ROG running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim -rename_top system_util_adc_2_pack_0 -prefix
---               system_util_adc_2_pack_0_ system_util_adc_2_pack_0_sim_netlist.vhdl
+-- Date        : Mon Sep 23 20:32:29 2024
+-- Host        : lab817_01 running 64-bit major release  (build 9200)
+-- Command     : write_vhdl -force -mode funcsim
+--               c:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.gen/sources_1/bd/system/ip/system_util_adc_2_pack_0/system_util_adc_2_pack_0_sim_netlist.vhdl
 -- Design      : system_util_adc_2_pack_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -22,6 +22,8 @@ entity system_util_adc_2_pack_0_pack_interconnect is
     p_0_in : in STD_LOGIC;
     fifo_wr_data_1 : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_util_adc_2_pack_0_pack_interconnect : entity is "pack_interconnect";
 end system_util_adc_2_pack_0_pack_interconnect;
 
 architecture STRUCTURE of system_util_adc_2_pack_0_pack_interconnect is
@@ -396,6 +398,8 @@ entity system_util_adc_2_pack_0_pack_network is
     fifo_wr_data_0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     fifo_wr_data_1 : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_util_adc_2_pack_0_pack_network : entity is "pack_network";
 end system_util_adc_2_pack_0_pack_network;
 
 architecture STRUCTURE of system_util_adc_2_pack_0_pack_network is
@@ -458,6 +462,8 @@ entity system_util_adc_2_pack_0_pack_shell is
     fifo_wr_data_0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     fifo_wr_data_1 : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_util_adc_2_pack_0_pack_shell : entity is "pack_shell";
 end system_util_adc_2_pack_0_pack_shell;
 
 architecture STRUCTURE of system_util_adc_2_pack_0_pack_shell is
@@ -828,6 +834,8 @@ entity system_util_adc_2_pack_0_util_cpack2_impl is
     fifo_wr_data_0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     fifo_wr_data_1 : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_util_adc_2_pack_0_util_cpack2_impl : entity is "util_cpack2_impl";
 end system_util_adc_2_pack_0_util_cpack2_impl;
 
 architecture STRUCTURE of system_util_adc_2_pack_0_util_cpack2_impl is
@@ -1242,6 +1250,8 @@ entity system_util_adc_2_pack_0_util_cpack2 is
     fifo_wr_data_0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     fifo_wr_data_1 : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_util_adc_2_pack_0_util_cpack2 : entity is "util_cpack2";
 end system_util_adc_2_pack_0_util_cpack2;
 
 architecture STRUCTURE of system_util_adc_2_pack_0_util_cpack2 is

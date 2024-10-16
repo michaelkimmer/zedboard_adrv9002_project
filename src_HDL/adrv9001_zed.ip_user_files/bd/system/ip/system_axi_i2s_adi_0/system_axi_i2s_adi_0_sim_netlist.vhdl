@@ -2,10 +2,10 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
--- Date        : Sat Apr  6 00:31:26 2024
--- Host        : ASUS_ROG running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim -rename_top system_axi_i2s_adi_0 -prefix
---               system_axi_i2s_adi_0_ system_axi_i2s_adi_0_sim_netlist.vhdl
+-- Date        : Mon Sep 23 20:33:18 2024
+-- Host        : lab817_01 running 64-bit major release  (build 9200)
+-- Command     : write_vhdl -force -mode funcsim
+--               c:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_i2s_adi_0/system_axi_i2s_adi_0_sim_netlist.vhdl
 -- Design      : system_axi_i2s_adi_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -54,6 +54,8 @@ entity system_axi_i2s_adi_0_axi_ctrlif is
     s_axi_bready : in STD_LOGIC;
     s_axi_araddr : in STD_LOGIC_VECTOR ( 3 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_i2s_adi_0_axi_ctrlif : entity is "axi_ctrlif";
 end system_axi_i2s_adi_0_axi_ctrlif;
 
 architecture STRUCTURE of system_axi_i2s_adi_0_axi_ctrlif is
@@ -888,6 +890,8 @@ entity system_axi_i2s_adi_0_dma_fifo is
     \state[0]_i_2_1\ : in STD_LOGIC;
     s_axi_wdata : in STD_LOGIC_VECTOR ( 23 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_i2s_adi_0_dma_fifo : entity is "dma_fifo";
 end system_axi_i2s_adi_0_dma_fifo;
 
 architecture STRUCTURE of system_axi_i2s_adi_0_dma_fifo is
@@ -1858,6 +1862,8 @@ entity system_axi_i2s_adi_0_fifo_synchronizer is
     tx_tick : in STD_LOGIC;
     in_data : in STD_LOGIC_VECTOR ( 4 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_i2s_adi_0_fifo_synchronizer : entity is "fifo_synchronizer";
 end system_axi_i2s_adi_0_fifo_synchronizer;
 
 architecture STRUCTURE of system_axi_i2s_adi_0_fifo_synchronizer is
@@ -2398,6 +2404,8 @@ entity system_axi_i2s_adi_0_i2s_clkgen is
     enable_int_reg_0 : in STD_LOGIC;
     tx_stb : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_i2s_adi_0_i2s_clkgen : entity is "i2s_clkgen";
 end system_axi_i2s_adi_0_i2s_clkgen;
 
 architecture STRUCTURE of system_axi_i2s_adi_0_i2s_clkgen is
@@ -3415,6 +3423,8 @@ entity system_axi_i2s_adi_0_i2s_rx is
     E : in STD_LOGIC_VECTOR ( 0 to 0 );
     rx_ack : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_i2s_adi_0_i2s_rx : entity is "i2s_rx";
 end system_axi_i2s_adi_0_i2s_rx;
 
 architecture STRUCTURE of system_axi_i2s_adi_0_i2s_rx is
@@ -4053,6 +4063,8 @@ entity system_axi_i2s_adi_0_i2s_tx is
     \gen[0].data_int_reg[0][8]_0\ : in STD_LOGIC;
     D : in STD_LOGIC_VECTOR ( 23 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_i2s_adi_0_i2s_tx : entity is "i2s_tx";
 end system_axi_i2s_adi_0_i2s_tx;
 
 architecture STRUCTURE of system_axi_i2s_adi_0_i2s_tx is
@@ -4358,6 +4370,8 @@ entity system_axi_i2s_adi_0_i2s_controller is
     D : in STD_LOGIC_VECTOR ( 0 to 0 );
     sdata_i : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_i2s_adi_0_i2s_controller : entity is "i2s_controller";
 end system_axi_i2s_adi_0_i2s_controller;
 
 architecture STRUCTURE of system_axi_i2s_adi_0_i2s_controller is
@@ -4788,6 +4802,8 @@ entity system_axi_i2s_adi_0_pl330_dma_fifo is
     dma_req_tx_aclk : in STD_LOGIC;
     s_axi_wdata : in STD_LOGIC_VECTOR ( 23 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_i2s_adi_0_pl330_dma_fifo : entity is "pl330_dma_fifo";
 end system_axi_i2s_adi_0_pl330_dma_fifo;
 
 architecture STRUCTURE of system_axi_i2s_adi_0_pl330_dma_fifo is
@@ -5195,6 +5211,8 @@ entity system_axi_i2s_adi_0_axi_i2s_adi is
   attribute LRCLK_POL of system_axi_i2s_adi_0_axi_i2s_adi : entity is 0;
   attribute NUM_OF_CHANNEL : integer;
   attribute NUM_OF_CHANNEL of system_axi_i2s_adi_0_axi_i2s_adi : entity is 1;
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of system_axi_i2s_adi_0_axi_i2s_adi : entity is "axi_i2s_adi";
   attribute SLOT_WIDTH : integer;
   attribute SLOT_WIDTH of system_axi_i2s_adi_0_axi_i2s_adi : entity is 24;
   attribute S_AXI_ADDRESS_WIDTH : integer;

@@ -2,7 +2,7 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
--- Date        : Thu May 16 18:37:31 2024
+-- Date        : Tue Sep 10 14:22:03 2024
 -- Host        : lab817_01 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_data_delay_0_0/block_design_0_data_delay_0_0_sim_netlist.vhdl
@@ -27,6 +27,8 @@ entity block_design_0_data_delay_0_0_data_delay is
     QDATA_OUT_DELAY_48 : out STD_LOGIC_VECTOR ( 15 downto 0 );
     IDATA_OUT_DELAY_64 : out STD_LOGIC_VECTOR ( 15 downto 0 );
     QDATA_OUT_DELAY_64 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    IDATA_OUT_DELAY_80 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    QDATA_OUT_DELAY_80 : out STD_LOGIC_VECTOR ( 15 downto 0 );
     DATA_OUT_STROBE : out STD_LOGIC;
     DATA_IN_STROBE : in STD_LOGIC;
     IDATA_IN : in STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -91,7 +93,24 @@ architecture STRUCTURE of block_design_0_data_delay_0_0_data_delay is
   signal \DELAY_REG_I_reg[46][8]_srl15_n_0\ : STD_LOGIC;
   signal \DELAY_REG_I_reg[46][9]_srl15_n_0\ : STD_LOGIC;
   signal \DELAY_REG_I_reg[47]\ : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal \DELAY_REG_I_reg[62][0]_srl15_n_0\ : STD_LOGIC;
+  signal \DELAY_REG_I_reg[62][10]_srl15_n_0\ : STD_LOGIC;
+  signal \DELAY_REG_I_reg[62][11]_srl15_n_0\ : STD_LOGIC;
+  signal \DELAY_REG_I_reg[62][12]_srl15_n_0\ : STD_LOGIC;
+  signal \DELAY_REG_I_reg[62][13]_srl15_n_0\ : STD_LOGIC;
+  signal \DELAY_REG_I_reg[62][14]_srl15_n_0\ : STD_LOGIC;
+  signal \DELAY_REG_I_reg[62][15]_srl15_n_0\ : STD_LOGIC;
+  signal \DELAY_REG_I_reg[62][1]_srl15_n_0\ : STD_LOGIC;
+  signal \DELAY_REG_I_reg[62][2]_srl15_n_0\ : STD_LOGIC;
+  signal \DELAY_REG_I_reg[62][3]_srl15_n_0\ : STD_LOGIC;
+  signal \DELAY_REG_I_reg[62][4]_srl15_n_0\ : STD_LOGIC;
+  signal \DELAY_REG_I_reg[62][5]_srl15_n_0\ : STD_LOGIC;
+  signal \DELAY_REG_I_reg[62][6]_srl15_n_0\ : STD_LOGIC;
+  signal \DELAY_REG_I_reg[62][7]_srl15_n_0\ : STD_LOGIC;
+  signal \DELAY_REG_I_reg[62][8]_srl15_n_0\ : STD_LOGIC;
+  signal \DELAY_REG_I_reg[62][9]_srl15_n_0\ : STD_LOGIC;
   signal \DELAY_REG_I_reg[63]\ : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal \DELAY_REG_I_reg[79]\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal \DELAY_REG_Q_reg[14][0]_srl15_n_0\ : STD_LOGIC;
   signal \DELAY_REG_Q_reg[14][10]_srl15_n_0\ : STD_LOGIC;
   signal \DELAY_REG_Q_reg[14][11]_srl15_n_0\ : STD_LOGIC;
@@ -143,7 +162,24 @@ architecture STRUCTURE of block_design_0_data_delay_0_0_data_delay is
   signal \DELAY_REG_Q_reg[46][8]_srl15_n_0\ : STD_LOGIC;
   signal \DELAY_REG_Q_reg[46][9]_srl15_n_0\ : STD_LOGIC;
   signal \DELAY_REG_Q_reg[47]\ : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal \DELAY_REG_Q_reg[62][0]_srl15_n_0\ : STD_LOGIC;
+  signal \DELAY_REG_Q_reg[62][10]_srl15_n_0\ : STD_LOGIC;
+  signal \DELAY_REG_Q_reg[62][11]_srl15_n_0\ : STD_LOGIC;
+  signal \DELAY_REG_Q_reg[62][12]_srl15_n_0\ : STD_LOGIC;
+  signal \DELAY_REG_Q_reg[62][13]_srl15_n_0\ : STD_LOGIC;
+  signal \DELAY_REG_Q_reg[62][14]_srl15_n_0\ : STD_LOGIC;
+  signal \DELAY_REG_Q_reg[62][15]_srl15_n_0\ : STD_LOGIC;
+  signal \DELAY_REG_Q_reg[62][1]_srl15_n_0\ : STD_LOGIC;
+  signal \DELAY_REG_Q_reg[62][2]_srl15_n_0\ : STD_LOGIC;
+  signal \DELAY_REG_Q_reg[62][3]_srl15_n_0\ : STD_LOGIC;
+  signal \DELAY_REG_Q_reg[62][4]_srl15_n_0\ : STD_LOGIC;
+  signal \DELAY_REG_Q_reg[62][5]_srl15_n_0\ : STD_LOGIC;
+  signal \DELAY_REG_Q_reg[62][6]_srl15_n_0\ : STD_LOGIC;
+  signal \DELAY_REG_Q_reg[62][7]_srl15_n_0\ : STD_LOGIC;
+  signal \DELAY_REG_Q_reg[62][8]_srl15_n_0\ : STD_LOGIC;
+  signal \DELAY_REG_Q_reg[62][9]_srl15_n_0\ : STD_LOGIC;
   signal \DELAY_REG_Q_reg[63]\ : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal \DELAY_REG_Q_reg[79]\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute srl_bus_name : string;
   attribute srl_bus_name of \DELAY_REG_I_reg[14][0]_srl15\ : label is "\U0/DELAY_REG_I_reg[14] ";
   attribute srl_name : string;
@@ -242,38 +278,70 @@ architecture STRUCTURE of block_design_0_data_delay_0_0_data_delay is
   attribute srl_name of \DELAY_REG_I_reg[46][8]_srl15\ : label is "\U0/DELAY_REG_I_reg[46][8]_srl15 ";
   attribute srl_bus_name of \DELAY_REG_I_reg[46][9]_srl15\ : label is "\U0/DELAY_REG_I_reg[46] ";
   attribute srl_name of \DELAY_REG_I_reg[46][9]_srl15\ : label is "\U0/DELAY_REG_I_reg[46][9]_srl15 ";
-  attribute srl_bus_name of \DELAY_REG_I_reg[63][0]_srl16\ : label is "\U0/DELAY_REG_I_reg[63] ";
-  attribute srl_name of \DELAY_REG_I_reg[63][0]_srl16\ : label is "\U0/DELAY_REG_I_reg[63][0]_srl16 ";
-  attribute srl_bus_name of \DELAY_REG_I_reg[63][10]_srl16\ : label is "\U0/DELAY_REG_I_reg[63] ";
-  attribute srl_name of \DELAY_REG_I_reg[63][10]_srl16\ : label is "\U0/DELAY_REG_I_reg[63][10]_srl16 ";
-  attribute srl_bus_name of \DELAY_REG_I_reg[63][11]_srl16\ : label is "\U0/DELAY_REG_I_reg[63] ";
-  attribute srl_name of \DELAY_REG_I_reg[63][11]_srl16\ : label is "\U0/DELAY_REG_I_reg[63][11]_srl16 ";
-  attribute srl_bus_name of \DELAY_REG_I_reg[63][12]_srl16\ : label is "\U0/DELAY_REG_I_reg[63] ";
-  attribute srl_name of \DELAY_REG_I_reg[63][12]_srl16\ : label is "\U0/DELAY_REG_I_reg[63][12]_srl16 ";
-  attribute srl_bus_name of \DELAY_REG_I_reg[63][13]_srl16\ : label is "\U0/DELAY_REG_I_reg[63] ";
-  attribute srl_name of \DELAY_REG_I_reg[63][13]_srl16\ : label is "\U0/DELAY_REG_I_reg[63][13]_srl16 ";
-  attribute srl_bus_name of \DELAY_REG_I_reg[63][14]_srl16\ : label is "\U0/DELAY_REG_I_reg[63] ";
-  attribute srl_name of \DELAY_REG_I_reg[63][14]_srl16\ : label is "\U0/DELAY_REG_I_reg[63][14]_srl16 ";
-  attribute srl_bus_name of \DELAY_REG_I_reg[63][15]_srl16\ : label is "\U0/DELAY_REG_I_reg[63] ";
-  attribute srl_name of \DELAY_REG_I_reg[63][15]_srl16\ : label is "\U0/DELAY_REG_I_reg[63][15]_srl16 ";
-  attribute srl_bus_name of \DELAY_REG_I_reg[63][1]_srl16\ : label is "\U0/DELAY_REG_I_reg[63] ";
-  attribute srl_name of \DELAY_REG_I_reg[63][1]_srl16\ : label is "\U0/DELAY_REG_I_reg[63][1]_srl16 ";
-  attribute srl_bus_name of \DELAY_REG_I_reg[63][2]_srl16\ : label is "\U0/DELAY_REG_I_reg[63] ";
-  attribute srl_name of \DELAY_REG_I_reg[63][2]_srl16\ : label is "\U0/DELAY_REG_I_reg[63][2]_srl16 ";
-  attribute srl_bus_name of \DELAY_REG_I_reg[63][3]_srl16\ : label is "\U0/DELAY_REG_I_reg[63] ";
-  attribute srl_name of \DELAY_REG_I_reg[63][3]_srl16\ : label is "\U0/DELAY_REG_I_reg[63][3]_srl16 ";
-  attribute srl_bus_name of \DELAY_REG_I_reg[63][4]_srl16\ : label is "\U0/DELAY_REG_I_reg[63] ";
-  attribute srl_name of \DELAY_REG_I_reg[63][4]_srl16\ : label is "\U0/DELAY_REG_I_reg[63][4]_srl16 ";
-  attribute srl_bus_name of \DELAY_REG_I_reg[63][5]_srl16\ : label is "\U0/DELAY_REG_I_reg[63] ";
-  attribute srl_name of \DELAY_REG_I_reg[63][5]_srl16\ : label is "\U0/DELAY_REG_I_reg[63][5]_srl16 ";
-  attribute srl_bus_name of \DELAY_REG_I_reg[63][6]_srl16\ : label is "\U0/DELAY_REG_I_reg[63] ";
-  attribute srl_name of \DELAY_REG_I_reg[63][6]_srl16\ : label is "\U0/DELAY_REG_I_reg[63][6]_srl16 ";
-  attribute srl_bus_name of \DELAY_REG_I_reg[63][7]_srl16\ : label is "\U0/DELAY_REG_I_reg[63] ";
-  attribute srl_name of \DELAY_REG_I_reg[63][7]_srl16\ : label is "\U0/DELAY_REG_I_reg[63][7]_srl16 ";
-  attribute srl_bus_name of \DELAY_REG_I_reg[63][8]_srl16\ : label is "\U0/DELAY_REG_I_reg[63] ";
-  attribute srl_name of \DELAY_REG_I_reg[63][8]_srl16\ : label is "\U0/DELAY_REG_I_reg[63][8]_srl16 ";
-  attribute srl_bus_name of \DELAY_REG_I_reg[63][9]_srl16\ : label is "\U0/DELAY_REG_I_reg[63] ";
-  attribute srl_name of \DELAY_REG_I_reg[63][9]_srl16\ : label is "\U0/DELAY_REG_I_reg[63][9]_srl16 ";
+  attribute srl_bus_name of \DELAY_REG_I_reg[62][0]_srl15\ : label is "\U0/DELAY_REG_I_reg[62] ";
+  attribute srl_name of \DELAY_REG_I_reg[62][0]_srl15\ : label is "\U0/DELAY_REG_I_reg[62][0]_srl15 ";
+  attribute srl_bus_name of \DELAY_REG_I_reg[62][10]_srl15\ : label is "\U0/DELAY_REG_I_reg[62] ";
+  attribute srl_name of \DELAY_REG_I_reg[62][10]_srl15\ : label is "\U0/DELAY_REG_I_reg[62][10]_srl15 ";
+  attribute srl_bus_name of \DELAY_REG_I_reg[62][11]_srl15\ : label is "\U0/DELAY_REG_I_reg[62] ";
+  attribute srl_name of \DELAY_REG_I_reg[62][11]_srl15\ : label is "\U0/DELAY_REG_I_reg[62][11]_srl15 ";
+  attribute srl_bus_name of \DELAY_REG_I_reg[62][12]_srl15\ : label is "\U0/DELAY_REG_I_reg[62] ";
+  attribute srl_name of \DELAY_REG_I_reg[62][12]_srl15\ : label is "\U0/DELAY_REG_I_reg[62][12]_srl15 ";
+  attribute srl_bus_name of \DELAY_REG_I_reg[62][13]_srl15\ : label is "\U0/DELAY_REG_I_reg[62] ";
+  attribute srl_name of \DELAY_REG_I_reg[62][13]_srl15\ : label is "\U0/DELAY_REG_I_reg[62][13]_srl15 ";
+  attribute srl_bus_name of \DELAY_REG_I_reg[62][14]_srl15\ : label is "\U0/DELAY_REG_I_reg[62] ";
+  attribute srl_name of \DELAY_REG_I_reg[62][14]_srl15\ : label is "\U0/DELAY_REG_I_reg[62][14]_srl15 ";
+  attribute srl_bus_name of \DELAY_REG_I_reg[62][15]_srl15\ : label is "\U0/DELAY_REG_I_reg[62] ";
+  attribute srl_name of \DELAY_REG_I_reg[62][15]_srl15\ : label is "\U0/DELAY_REG_I_reg[62][15]_srl15 ";
+  attribute srl_bus_name of \DELAY_REG_I_reg[62][1]_srl15\ : label is "\U0/DELAY_REG_I_reg[62] ";
+  attribute srl_name of \DELAY_REG_I_reg[62][1]_srl15\ : label is "\U0/DELAY_REG_I_reg[62][1]_srl15 ";
+  attribute srl_bus_name of \DELAY_REG_I_reg[62][2]_srl15\ : label is "\U0/DELAY_REG_I_reg[62] ";
+  attribute srl_name of \DELAY_REG_I_reg[62][2]_srl15\ : label is "\U0/DELAY_REG_I_reg[62][2]_srl15 ";
+  attribute srl_bus_name of \DELAY_REG_I_reg[62][3]_srl15\ : label is "\U0/DELAY_REG_I_reg[62] ";
+  attribute srl_name of \DELAY_REG_I_reg[62][3]_srl15\ : label is "\U0/DELAY_REG_I_reg[62][3]_srl15 ";
+  attribute srl_bus_name of \DELAY_REG_I_reg[62][4]_srl15\ : label is "\U0/DELAY_REG_I_reg[62] ";
+  attribute srl_name of \DELAY_REG_I_reg[62][4]_srl15\ : label is "\U0/DELAY_REG_I_reg[62][4]_srl15 ";
+  attribute srl_bus_name of \DELAY_REG_I_reg[62][5]_srl15\ : label is "\U0/DELAY_REG_I_reg[62] ";
+  attribute srl_name of \DELAY_REG_I_reg[62][5]_srl15\ : label is "\U0/DELAY_REG_I_reg[62][5]_srl15 ";
+  attribute srl_bus_name of \DELAY_REG_I_reg[62][6]_srl15\ : label is "\U0/DELAY_REG_I_reg[62] ";
+  attribute srl_name of \DELAY_REG_I_reg[62][6]_srl15\ : label is "\U0/DELAY_REG_I_reg[62][6]_srl15 ";
+  attribute srl_bus_name of \DELAY_REG_I_reg[62][7]_srl15\ : label is "\U0/DELAY_REG_I_reg[62] ";
+  attribute srl_name of \DELAY_REG_I_reg[62][7]_srl15\ : label is "\U0/DELAY_REG_I_reg[62][7]_srl15 ";
+  attribute srl_bus_name of \DELAY_REG_I_reg[62][8]_srl15\ : label is "\U0/DELAY_REG_I_reg[62] ";
+  attribute srl_name of \DELAY_REG_I_reg[62][8]_srl15\ : label is "\U0/DELAY_REG_I_reg[62][8]_srl15 ";
+  attribute srl_bus_name of \DELAY_REG_I_reg[62][9]_srl15\ : label is "\U0/DELAY_REG_I_reg[62] ";
+  attribute srl_name of \DELAY_REG_I_reg[62][9]_srl15\ : label is "\U0/DELAY_REG_I_reg[62][9]_srl15 ";
+  attribute srl_bus_name of \DELAY_REG_I_reg[79][0]_srl16\ : label is "\U0/DELAY_REG_I_reg[79] ";
+  attribute srl_name of \DELAY_REG_I_reg[79][0]_srl16\ : label is "\U0/DELAY_REG_I_reg[79][0]_srl16 ";
+  attribute srl_bus_name of \DELAY_REG_I_reg[79][10]_srl16\ : label is "\U0/DELAY_REG_I_reg[79] ";
+  attribute srl_name of \DELAY_REG_I_reg[79][10]_srl16\ : label is "\U0/DELAY_REG_I_reg[79][10]_srl16 ";
+  attribute srl_bus_name of \DELAY_REG_I_reg[79][11]_srl16\ : label is "\U0/DELAY_REG_I_reg[79] ";
+  attribute srl_name of \DELAY_REG_I_reg[79][11]_srl16\ : label is "\U0/DELAY_REG_I_reg[79][11]_srl16 ";
+  attribute srl_bus_name of \DELAY_REG_I_reg[79][12]_srl16\ : label is "\U0/DELAY_REG_I_reg[79] ";
+  attribute srl_name of \DELAY_REG_I_reg[79][12]_srl16\ : label is "\U0/DELAY_REG_I_reg[79][12]_srl16 ";
+  attribute srl_bus_name of \DELAY_REG_I_reg[79][13]_srl16\ : label is "\U0/DELAY_REG_I_reg[79] ";
+  attribute srl_name of \DELAY_REG_I_reg[79][13]_srl16\ : label is "\U0/DELAY_REG_I_reg[79][13]_srl16 ";
+  attribute srl_bus_name of \DELAY_REG_I_reg[79][14]_srl16\ : label is "\U0/DELAY_REG_I_reg[79] ";
+  attribute srl_name of \DELAY_REG_I_reg[79][14]_srl16\ : label is "\U0/DELAY_REG_I_reg[79][14]_srl16 ";
+  attribute srl_bus_name of \DELAY_REG_I_reg[79][15]_srl16\ : label is "\U0/DELAY_REG_I_reg[79] ";
+  attribute srl_name of \DELAY_REG_I_reg[79][15]_srl16\ : label is "\U0/DELAY_REG_I_reg[79][15]_srl16 ";
+  attribute srl_bus_name of \DELAY_REG_I_reg[79][1]_srl16\ : label is "\U0/DELAY_REG_I_reg[79] ";
+  attribute srl_name of \DELAY_REG_I_reg[79][1]_srl16\ : label is "\U0/DELAY_REG_I_reg[79][1]_srl16 ";
+  attribute srl_bus_name of \DELAY_REG_I_reg[79][2]_srl16\ : label is "\U0/DELAY_REG_I_reg[79] ";
+  attribute srl_name of \DELAY_REG_I_reg[79][2]_srl16\ : label is "\U0/DELAY_REG_I_reg[79][2]_srl16 ";
+  attribute srl_bus_name of \DELAY_REG_I_reg[79][3]_srl16\ : label is "\U0/DELAY_REG_I_reg[79] ";
+  attribute srl_name of \DELAY_REG_I_reg[79][3]_srl16\ : label is "\U0/DELAY_REG_I_reg[79][3]_srl16 ";
+  attribute srl_bus_name of \DELAY_REG_I_reg[79][4]_srl16\ : label is "\U0/DELAY_REG_I_reg[79] ";
+  attribute srl_name of \DELAY_REG_I_reg[79][4]_srl16\ : label is "\U0/DELAY_REG_I_reg[79][4]_srl16 ";
+  attribute srl_bus_name of \DELAY_REG_I_reg[79][5]_srl16\ : label is "\U0/DELAY_REG_I_reg[79] ";
+  attribute srl_name of \DELAY_REG_I_reg[79][5]_srl16\ : label is "\U0/DELAY_REG_I_reg[79][5]_srl16 ";
+  attribute srl_bus_name of \DELAY_REG_I_reg[79][6]_srl16\ : label is "\U0/DELAY_REG_I_reg[79] ";
+  attribute srl_name of \DELAY_REG_I_reg[79][6]_srl16\ : label is "\U0/DELAY_REG_I_reg[79][6]_srl16 ";
+  attribute srl_bus_name of \DELAY_REG_I_reg[79][7]_srl16\ : label is "\U0/DELAY_REG_I_reg[79] ";
+  attribute srl_name of \DELAY_REG_I_reg[79][7]_srl16\ : label is "\U0/DELAY_REG_I_reg[79][7]_srl16 ";
+  attribute srl_bus_name of \DELAY_REG_I_reg[79][8]_srl16\ : label is "\U0/DELAY_REG_I_reg[79] ";
+  attribute srl_name of \DELAY_REG_I_reg[79][8]_srl16\ : label is "\U0/DELAY_REG_I_reg[79][8]_srl16 ";
+  attribute srl_bus_name of \DELAY_REG_I_reg[79][9]_srl16\ : label is "\U0/DELAY_REG_I_reg[79] ";
+  attribute srl_name of \DELAY_REG_I_reg[79][9]_srl16\ : label is "\U0/DELAY_REG_I_reg[79][9]_srl16 ";
   attribute srl_bus_name of \DELAY_REG_Q_reg[14][0]_srl15\ : label is "\U0/DELAY_REG_Q_reg[14] ";
   attribute srl_name of \DELAY_REG_Q_reg[14][0]_srl15\ : label is "\U0/DELAY_REG_Q_reg[14][0]_srl15 ";
   attribute srl_bus_name of \DELAY_REG_Q_reg[14][10]_srl15\ : label is "\U0/DELAY_REG_Q_reg[14] ";
@@ -370,38 +438,70 @@ architecture STRUCTURE of block_design_0_data_delay_0_0_data_delay is
   attribute srl_name of \DELAY_REG_Q_reg[46][8]_srl15\ : label is "\U0/DELAY_REG_Q_reg[46][8]_srl15 ";
   attribute srl_bus_name of \DELAY_REG_Q_reg[46][9]_srl15\ : label is "\U0/DELAY_REG_Q_reg[46] ";
   attribute srl_name of \DELAY_REG_Q_reg[46][9]_srl15\ : label is "\U0/DELAY_REG_Q_reg[46][9]_srl15 ";
-  attribute srl_bus_name of \DELAY_REG_Q_reg[63][0]_srl16\ : label is "\U0/DELAY_REG_Q_reg[63] ";
-  attribute srl_name of \DELAY_REG_Q_reg[63][0]_srl16\ : label is "\U0/DELAY_REG_Q_reg[63][0]_srl16 ";
-  attribute srl_bus_name of \DELAY_REG_Q_reg[63][10]_srl16\ : label is "\U0/DELAY_REG_Q_reg[63] ";
-  attribute srl_name of \DELAY_REG_Q_reg[63][10]_srl16\ : label is "\U0/DELAY_REG_Q_reg[63][10]_srl16 ";
-  attribute srl_bus_name of \DELAY_REG_Q_reg[63][11]_srl16\ : label is "\U0/DELAY_REG_Q_reg[63] ";
-  attribute srl_name of \DELAY_REG_Q_reg[63][11]_srl16\ : label is "\U0/DELAY_REG_Q_reg[63][11]_srl16 ";
-  attribute srl_bus_name of \DELAY_REG_Q_reg[63][12]_srl16\ : label is "\U0/DELAY_REG_Q_reg[63] ";
-  attribute srl_name of \DELAY_REG_Q_reg[63][12]_srl16\ : label is "\U0/DELAY_REG_Q_reg[63][12]_srl16 ";
-  attribute srl_bus_name of \DELAY_REG_Q_reg[63][13]_srl16\ : label is "\U0/DELAY_REG_Q_reg[63] ";
-  attribute srl_name of \DELAY_REG_Q_reg[63][13]_srl16\ : label is "\U0/DELAY_REG_Q_reg[63][13]_srl16 ";
-  attribute srl_bus_name of \DELAY_REG_Q_reg[63][14]_srl16\ : label is "\U0/DELAY_REG_Q_reg[63] ";
-  attribute srl_name of \DELAY_REG_Q_reg[63][14]_srl16\ : label is "\U0/DELAY_REG_Q_reg[63][14]_srl16 ";
-  attribute srl_bus_name of \DELAY_REG_Q_reg[63][15]_srl16\ : label is "\U0/DELAY_REG_Q_reg[63] ";
-  attribute srl_name of \DELAY_REG_Q_reg[63][15]_srl16\ : label is "\U0/DELAY_REG_Q_reg[63][15]_srl16 ";
-  attribute srl_bus_name of \DELAY_REG_Q_reg[63][1]_srl16\ : label is "\U0/DELAY_REG_Q_reg[63] ";
-  attribute srl_name of \DELAY_REG_Q_reg[63][1]_srl16\ : label is "\U0/DELAY_REG_Q_reg[63][1]_srl16 ";
-  attribute srl_bus_name of \DELAY_REG_Q_reg[63][2]_srl16\ : label is "\U0/DELAY_REG_Q_reg[63] ";
-  attribute srl_name of \DELAY_REG_Q_reg[63][2]_srl16\ : label is "\U0/DELAY_REG_Q_reg[63][2]_srl16 ";
-  attribute srl_bus_name of \DELAY_REG_Q_reg[63][3]_srl16\ : label is "\U0/DELAY_REG_Q_reg[63] ";
-  attribute srl_name of \DELAY_REG_Q_reg[63][3]_srl16\ : label is "\U0/DELAY_REG_Q_reg[63][3]_srl16 ";
-  attribute srl_bus_name of \DELAY_REG_Q_reg[63][4]_srl16\ : label is "\U0/DELAY_REG_Q_reg[63] ";
-  attribute srl_name of \DELAY_REG_Q_reg[63][4]_srl16\ : label is "\U0/DELAY_REG_Q_reg[63][4]_srl16 ";
-  attribute srl_bus_name of \DELAY_REG_Q_reg[63][5]_srl16\ : label is "\U0/DELAY_REG_Q_reg[63] ";
-  attribute srl_name of \DELAY_REG_Q_reg[63][5]_srl16\ : label is "\U0/DELAY_REG_Q_reg[63][5]_srl16 ";
-  attribute srl_bus_name of \DELAY_REG_Q_reg[63][6]_srl16\ : label is "\U0/DELAY_REG_Q_reg[63] ";
-  attribute srl_name of \DELAY_REG_Q_reg[63][6]_srl16\ : label is "\U0/DELAY_REG_Q_reg[63][6]_srl16 ";
-  attribute srl_bus_name of \DELAY_REG_Q_reg[63][7]_srl16\ : label is "\U0/DELAY_REG_Q_reg[63] ";
-  attribute srl_name of \DELAY_REG_Q_reg[63][7]_srl16\ : label is "\U0/DELAY_REG_Q_reg[63][7]_srl16 ";
-  attribute srl_bus_name of \DELAY_REG_Q_reg[63][8]_srl16\ : label is "\U0/DELAY_REG_Q_reg[63] ";
-  attribute srl_name of \DELAY_REG_Q_reg[63][8]_srl16\ : label is "\U0/DELAY_REG_Q_reg[63][8]_srl16 ";
-  attribute srl_bus_name of \DELAY_REG_Q_reg[63][9]_srl16\ : label is "\U0/DELAY_REG_Q_reg[63] ";
-  attribute srl_name of \DELAY_REG_Q_reg[63][9]_srl16\ : label is "\U0/DELAY_REG_Q_reg[63][9]_srl16 ";
+  attribute srl_bus_name of \DELAY_REG_Q_reg[62][0]_srl15\ : label is "\U0/DELAY_REG_Q_reg[62] ";
+  attribute srl_name of \DELAY_REG_Q_reg[62][0]_srl15\ : label is "\U0/DELAY_REG_Q_reg[62][0]_srl15 ";
+  attribute srl_bus_name of \DELAY_REG_Q_reg[62][10]_srl15\ : label is "\U0/DELAY_REG_Q_reg[62] ";
+  attribute srl_name of \DELAY_REG_Q_reg[62][10]_srl15\ : label is "\U0/DELAY_REG_Q_reg[62][10]_srl15 ";
+  attribute srl_bus_name of \DELAY_REG_Q_reg[62][11]_srl15\ : label is "\U0/DELAY_REG_Q_reg[62] ";
+  attribute srl_name of \DELAY_REG_Q_reg[62][11]_srl15\ : label is "\U0/DELAY_REG_Q_reg[62][11]_srl15 ";
+  attribute srl_bus_name of \DELAY_REG_Q_reg[62][12]_srl15\ : label is "\U0/DELAY_REG_Q_reg[62] ";
+  attribute srl_name of \DELAY_REG_Q_reg[62][12]_srl15\ : label is "\U0/DELAY_REG_Q_reg[62][12]_srl15 ";
+  attribute srl_bus_name of \DELAY_REG_Q_reg[62][13]_srl15\ : label is "\U0/DELAY_REG_Q_reg[62] ";
+  attribute srl_name of \DELAY_REG_Q_reg[62][13]_srl15\ : label is "\U0/DELAY_REG_Q_reg[62][13]_srl15 ";
+  attribute srl_bus_name of \DELAY_REG_Q_reg[62][14]_srl15\ : label is "\U0/DELAY_REG_Q_reg[62] ";
+  attribute srl_name of \DELAY_REG_Q_reg[62][14]_srl15\ : label is "\U0/DELAY_REG_Q_reg[62][14]_srl15 ";
+  attribute srl_bus_name of \DELAY_REG_Q_reg[62][15]_srl15\ : label is "\U0/DELAY_REG_Q_reg[62] ";
+  attribute srl_name of \DELAY_REG_Q_reg[62][15]_srl15\ : label is "\U0/DELAY_REG_Q_reg[62][15]_srl15 ";
+  attribute srl_bus_name of \DELAY_REG_Q_reg[62][1]_srl15\ : label is "\U0/DELAY_REG_Q_reg[62] ";
+  attribute srl_name of \DELAY_REG_Q_reg[62][1]_srl15\ : label is "\U0/DELAY_REG_Q_reg[62][1]_srl15 ";
+  attribute srl_bus_name of \DELAY_REG_Q_reg[62][2]_srl15\ : label is "\U0/DELAY_REG_Q_reg[62] ";
+  attribute srl_name of \DELAY_REG_Q_reg[62][2]_srl15\ : label is "\U0/DELAY_REG_Q_reg[62][2]_srl15 ";
+  attribute srl_bus_name of \DELAY_REG_Q_reg[62][3]_srl15\ : label is "\U0/DELAY_REG_Q_reg[62] ";
+  attribute srl_name of \DELAY_REG_Q_reg[62][3]_srl15\ : label is "\U0/DELAY_REG_Q_reg[62][3]_srl15 ";
+  attribute srl_bus_name of \DELAY_REG_Q_reg[62][4]_srl15\ : label is "\U0/DELAY_REG_Q_reg[62] ";
+  attribute srl_name of \DELAY_REG_Q_reg[62][4]_srl15\ : label is "\U0/DELAY_REG_Q_reg[62][4]_srl15 ";
+  attribute srl_bus_name of \DELAY_REG_Q_reg[62][5]_srl15\ : label is "\U0/DELAY_REG_Q_reg[62] ";
+  attribute srl_name of \DELAY_REG_Q_reg[62][5]_srl15\ : label is "\U0/DELAY_REG_Q_reg[62][5]_srl15 ";
+  attribute srl_bus_name of \DELAY_REG_Q_reg[62][6]_srl15\ : label is "\U0/DELAY_REG_Q_reg[62] ";
+  attribute srl_name of \DELAY_REG_Q_reg[62][6]_srl15\ : label is "\U0/DELAY_REG_Q_reg[62][6]_srl15 ";
+  attribute srl_bus_name of \DELAY_REG_Q_reg[62][7]_srl15\ : label is "\U0/DELAY_REG_Q_reg[62] ";
+  attribute srl_name of \DELAY_REG_Q_reg[62][7]_srl15\ : label is "\U0/DELAY_REG_Q_reg[62][7]_srl15 ";
+  attribute srl_bus_name of \DELAY_REG_Q_reg[62][8]_srl15\ : label is "\U0/DELAY_REG_Q_reg[62] ";
+  attribute srl_name of \DELAY_REG_Q_reg[62][8]_srl15\ : label is "\U0/DELAY_REG_Q_reg[62][8]_srl15 ";
+  attribute srl_bus_name of \DELAY_REG_Q_reg[62][9]_srl15\ : label is "\U0/DELAY_REG_Q_reg[62] ";
+  attribute srl_name of \DELAY_REG_Q_reg[62][9]_srl15\ : label is "\U0/DELAY_REG_Q_reg[62][9]_srl15 ";
+  attribute srl_bus_name of \DELAY_REG_Q_reg[79][0]_srl16\ : label is "\U0/DELAY_REG_Q_reg[79] ";
+  attribute srl_name of \DELAY_REG_Q_reg[79][0]_srl16\ : label is "\U0/DELAY_REG_Q_reg[79][0]_srl16 ";
+  attribute srl_bus_name of \DELAY_REG_Q_reg[79][10]_srl16\ : label is "\U0/DELAY_REG_Q_reg[79] ";
+  attribute srl_name of \DELAY_REG_Q_reg[79][10]_srl16\ : label is "\U0/DELAY_REG_Q_reg[79][10]_srl16 ";
+  attribute srl_bus_name of \DELAY_REG_Q_reg[79][11]_srl16\ : label is "\U0/DELAY_REG_Q_reg[79] ";
+  attribute srl_name of \DELAY_REG_Q_reg[79][11]_srl16\ : label is "\U0/DELAY_REG_Q_reg[79][11]_srl16 ";
+  attribute srl_bus_name of \DELAY_REG_Q_reg[79][12]_srl16\ : label is "\U0/DELAY_REG_Q_reg[79] ";
+  attribute srl_name of \DELAY_REG_Q_reg[79][12]_srl16\ : label is "\U0/DELAY_REG_Q_reg[79][12]_srl16 ";
+  attribute srl_bus_name of \DELAY_REG_Q_reg[79][13]_srl16\ : label is "\U0/DELAY_REG_Q_reg[79] ";
+  attribute srl_name of \DELAY_REG_Q_reg[79][13]_srl16\ : label is "\U0/DELAY_REG_Q_reg[79][13]_srl16 ";
+  attribute srl_bus_name of \DELAY_REG_Q_reg[79][14]_srl16\ : label is "\U0/DELAY_REG_Q_reg[79] ";
+  attribute srl_name of \DELAY_REG_Q_reg[79][14]_srl16\ : label is "\U0/DELAY_REG_Q_reg[79][14]_srl16 ";
+  attribute srl_bus_name of \DELAY_REG_Q_reg[79][15]_srl16\ : label is "\U0/DELAY_REG_Q_reg[79] ";
+  attribute srl_name of \DELAY_REG_Q_reg[79][15]_srl16\ : label is "\U0/DELAY_REG_Q_reg[79][15]_srl16 ";
+  attribute srl_bus_name of \DELAY_REG_Q_reg[79][1]_srl16\ : label is "\U0/DELAY_REG_Q_reg[79] ";
+  attribute srl_name of \DELAY_REG_Q_reg[79][1]_srl16\ : label is "\U0/DELAY_REG_Q_reg[79][1]_srl16 ";
+  attribute srl_bus_name of \DELAY_REG_Q_reg[79][2]_srl16\ : label is "\U0/DELAY_REG_Q_reg[79] ";
+  attribute srl_name of \DELAY_REG_Q_reg[79][2]_srl16\ : label is "\U0/DELAY_REG_Q_reg[79][2]_srl16 ";
+  attribute srl_bus_name of \DELAY_REG_Q_reg[79][3]_srl16\ : label is "\U0/DELAY_REG_Q_reg[79] ";
+  attribute srl_name of \DELAY_REG_Q_reg[79][3]_srl16\ : label is "\U0/DELAY_REG_Q_reg[79][3]_srl16 ";
+  attribute srl_bus_name of \DELAY_REG_Q_reg[79][4]_srl16\ : label is "\U0/DELAY_REG_Q_reg[79] ";
+  attribute srl_name of \DELAY_REG_Q_reg[79][4]_srl16\ : label is "\U0/DELAY_REG_Q_reg[79][4]_srl16 ";
+  attribute srl_bus_name of \DELAY_REG_Q_reg[79][5]_srl16\ : label is "\U0/DELAY_REG_Q_reg[79] ";
+  attribute srl_name of \DELAY_REG_Q_reg[79][5]_srl16\ : label is "\U0/DELAY_REG_Q_reg[79][5]_srl16 ";
+  attribute srl_bus_name of \DELAY_REG_Q_reg[79][6]_srl16\ : label is "\U0/DELAY_REG_Q_reg[79] ";
+  attribute srl_name of \DELAY_REG_Q_reg[79][6]_srl16\ : label is "\U0/DELAY_REG_Q_reg[79][6]_srl16 ";
+  attribute srl_bus_name of \DELAY_REG_Q_reg[79][7]_srl16\ : label is "\U0/DELAY_REG_Q_reg[79] ";
+  attribute srl_name of \DELAY_REG_Q_reg[79][7]_srl16\ : label is "\U0/DELAY_REG_Q_reg[79][7]_srl16 ";
+  attribute srl_bus_name of \DELAY_REG_Q_reg[79][8]_srl16\ : label is "\U0/DELAY_REG_Q_reg[79] ";
+  attribute srl_name of \DELAY_REG_Q_reg[79][8]_srl16\ : label is "\U0/DELAY_REG_Q_reg[79][8]_srl16 ";
+  attribute srl_bus_name of \DELAY_REG_Q_reg[79][9]_srl16\ : label is "\U0/DELAY_REG_Q_reg[79] ";
+  attribute srl_name of \DELAY_REG_Q_reg[79][9]_srl16\ : label is "\U0/DELAY_REG_Q_reg[79][9]_srl16 ";
 begin
 DATA_OUT_STROBE_i_1: unisim.vcomponents.LUT2
     generic map(
@@ -1623,217 +1723,407 @@ DATA_OUT_STROBE_reg: unisim.vcomponents.FDRE
       Q => \DELAY_REG_I_reg[47]\(9),
       R => '0'
     );
-\DELAY_REG_I_reg[63][0]_srl16\: unisim.vcomponents.SRL16E
+\DELAY_REG_I_reg[62][0]_srl15\: unisim.vcomponents.SRL16E
     generic map(
       INIT => X"0000"
     )
         port map (
-      A0 => '1',
+      A0 => '0',
       A1 => '1',
       A2 => '1',
       A3 => '1',
       CE => DATA_IN_STROBE,
       CLK => CLOCK,
       D => \DELAY_REG_I_reg[47]\(0),
-      Q => \DELAY_REG_I_reg[63]\(0)
+      Q => \DELAY_REG_I_reg[62][0]_srl15_n_0\
     );
-\DELAY_REG_I_reg[63][10]_srl16\: unisim.vcomponents.SRL16E
+\DELAY_REG_I_reg[62][10]_srl15\: unisim.vcomponents.SRL16E
     generic map(
       INIT => X"0000"
     )
         port map (
-      A0 => '1',
+      A0 => '0',
       A1 => '1',
       A2 => '1',
       A3 => '1',
       CE => DATA_IN_STROBE,
       CLK => CLOCK,
       D => \DELAY_REG_I_reg[47]\(10),
-      Q => \DELAY_REG_I_reg[63]\(10)
+      Q => \DELAY_REG_I_reg[62][10]_srl15_n_0\
     );
-\DELAY_REG_I_reg[63][11]_srl16\: unisim.vcomponents.SRL16E
+\DELAY_REG_I_reg[62][11]_srl15\: unisim.vcomponents.SRL16E
     generic map(
       INIT => X"0000"
     )
         port map (
-      A0 => '1',
+      A0 => '0',
       A1 => '1',
       A2 => '1',
       A3 => '1',
       CE => DATA_IN_STROBE,
       CLK => CLOCK,
       D => \DELAY_REG_I_reg[47]\(11),
-      Q => \DELAY_REG_I_reg[63]\(11)
+      Q => \DELAY_REG_I_reg[62][11]_srl15_n_0\
     );
-\DELAY_REG_I_reg[63][12]_srl16\: unisim.vcomponents.SRL16E
+\DELAY_REG_I_reg[62][12]_srl15\: unisim.vcomponents.SRL16E
     generic map(
       INIT => X"0000"
     )
         port map (
-      A0 => '1',
+      A0 => '0',
       A1 => '1',
       A2 => '1',
       A3 => '1',
       CE => DATA_IN_STROBE,
       CLK => CLOCK,
       D => \DELAY_REG_I_reg[47]\(12),
-      Q => \DELAY_REG_I_reg[63]\(12)
+      Q => \DELAY_REG_I_reg[62][12]_srl15_n_0\
     );
-\DELAY_REG_I_reg[63][13]_srl16\: unisim.vcomponents.SRL16E
+\DELAY_REG_I_reg[62][13]_srl15\: unisim.vcomponents.SRL16E
     generic map(
       INIT => X"0000"
     )
         port map (
-      A0 => '1',
+      A0 => '0',
       A1 => '1',
       A2 => '1',
       A3 => '1',
       CE => DATA_IN_STROBE,
       CLK => CLOCK,
       D => \DELAY_REG_I_reg[47]\(13),
-      Q => \DELAY_REG_I_reg[63]\(13)
+      Q => \DELAY_REG_I_reg[62][13]_srl15_n_0\
     );
-\DELAY_REG_I_reg[63][14]_srl16\: unisim.vcomponents.SRL16E
+\DELAY_REG_I_reg[62][14]_srl15\: unisim.vcomponents.SRL16E
     generic map(
       INIT => X"0000"
     )
         port map (
-      A0 => '1',
+      A0 => '0',
       A1 => '1',
       A2 => '1',
       A3 => '1',
       CE => DATA_IN_STROBE,
       CLK => CLOCK,
       D => \DELAY_REG_I_reg[47]\(14),
-      Q => \DELAY_REG_I_reg[63]\(14)
+      Q => \DELAY_REG_I_reg[62][14]_srl15_n_0\
     );
-\DELAY_REG_I_reg[63][15]_srl16\: unisim.vcomponents.SRL16E
+\DELAY_REG_I_reg[62][15]_srl15\: unisim.vcomponents.SRL16E
     generic map(
       INIT => X"0000"
     )
         port map (
-      A0 => '1',
+      A0 => '0',
       A1 => '1',
       A2 => '1',
       A3 => '1',
       CE => DATA_IN_STROBE,
       CLK => CLOCK,
       D => \DELAY_REG_I_reg[47]\(15),
-      Q => \DELAY_REG_I_reg[63]\(15)
+      Q => \DELAY_REG_I_reg[62][15]_srl15_n_0\
     );
-\DELAY_REG_I_reg[63][1]_srl16\: unisim.vcomponents.SRL16E
+\DELAY_REG_I_reg[62][1]_srl15\: unisim.vcomponents.SRL16E
     generic map(
       INIT => X"0000"
     )
         port map (
-      A0 => '1',
+      A0 => '0',
       A1 => '1',
       A2 => '1',
       A3 => '1',
       CE => DATA_IN_STROBE,
       CLK => CLOCK,
       D => \DELAY_REG_I_reg[47]\(1),
-      Q => \DELAY_REG_I_reg[63]\(1)
+      Q => \DELAY_REG_I_reg[62][1]_srl15_n_0\
     );
-\DELAY_REG_I_reg[63][2]_srl16\: unisim.vcomponents.SRL16E
+\DELAY_REG_I_reg[62][2]_srl15\: unisim.vcomponents.SRL16E
     generic map(
       INIT => X"0000"
     )
         port map (
-      A0 => '1',
+      A0 => '0',
       A1 => '1',
       A2 => '1',
       A3 => '1',
       CE => DATA_IN_STROBE,
       CLK => CLOCK,
       D => \DELAY_REG_I_reg[47]\(2),
-      Q => \DELAY_REG_I_reg[63]\(2)
+      Q => \DELAY_REG_I_reg[62][2]_srl15_n_0\
     );
-\DELAY_REG_I_reg[63][3]_srl16\: unisim.vcomponents.SRL16E
+\DELAY_REG_I_reg[62][3]_srl15\: unisim.vcomponents.SRL16E
     generic map(
       INIT => X"0000"
     )
         port map (
-      A0 => '1',
+      A0 => '0',
       A1 => '1',
       A2 => '1',
       A3 => '1',
       CE => DATA_IN_STROBE,
       CLK => CLOCK,
       D => \DELAY_REG_I_reg[47]\(3),
-      Q => \DELAY_REG_I_reg[63]\(3)
+      Q => \DELAY_REG_I_reg[62][3]_srl15_n_0\
     );
-\DELAY_REG_I_reg[63][4]_srl16\: unisim.vcomponents.SRL16E
+\DELAY_REG_I_reg[62][4]_srl15\: unisim.vcomponents.SRL16E
     generic map(
       INIT => X"0000"
     )
         port map (
-      A0 => '1',
+      A0 => '0',
       A1 => '1',
       A2 => '1',
       A3 => '1',
       CE => DATA_IN_STROBE,
       CLK => CLOCK,
       D => \DELAY_REG_I_reg[47]\(4),
-      Q => \DELAY_REG_I_reg[63]\(4)
+      Q => \DELAY_REG_I_reg[62][4]_srl15_n_0\
     );
-\DELAY_REG_I_reg[63][5]_srl16\: unisim.vcomponents.SRL16E
+\DELAY_REG_I_reg[62][5]_srl15\: unisim.vcomponents.SRL16E
     generic map(
       INIT => X"0000"
     )
         port map (
-      A0 => '1',
+      A0 => '0',
       A1 => '1',
       A2 => '1',
       A3 => '1',
       CE => DATA_IN_STROBE,
       CLK => CLOCK,
       D => \DELAY_REG_I_reg[47]\(5),
-      Q => \DELAY_REG_I_reg[63]\(5)
+      Q => \DELAY_REG_I_reg[62][5]_srl15_n_0\
     );
-\DELAY_REG_I_reg[63][6]_srl16\: unisim.vcomponents.SRL16E
+\DELAY_REG_I_reg[62][6]_srl15\: unisim.vcomponents.SRL16E
     generic map(
       INIT => X"0000"
     )
         port map (
-      A0 => '1',
+      A0 => '0',
       A1 => '1',
       A2 => '1',
       A3 => '1',
       CE => DATA_IN_STROBE,
       CLK => CLOCK,
       D => \DELAY_REG_I_reg[47]\(6),
-      Q => \DELAY_REG_I_reg[63]\(6)
+      Q => \DELAY_REG_I_reg[62][6]_srl15_n_0\
     );
-\DELAY_REG_I_reg[63][7]_srl16\: unisim.vcomponents.SRL16E
+\DELAY_REG_I_reg[62][7]_srl15\: unisim.vcomponents.SRL16E
     generic map(
       INIT => X"0000"
     )
         port map (
-      A0 => '1',
+      A0 => '0',
       A1 => '1',
       A2 => '1',
       A3 => '1',
       CE => DATA_IN_STROBE,
       CLK => CLOCK,
       D => \DELAY_REG_I_reg[47]\(7),
-      Q => \DELAY_REG_I_reg[63]\(7)
+      Q => \DELAY_REG_I_reg[62][7]_srl15_n_0\
     );
-\DELAY_REG_I_reg[63][8]_srl16\: unisim.vcomponents.SRL16E
+\DELAY_REG_I_reg[62][8]_srl15\: unisim.vcomponents.SRL16E
     generic map(
       INIT => X"0000"
     )
         port map (
-      A0 => '1',
+      A0 => '0',
       A1 => '1',
       A2 => '1',
       A3 => '1',
       CE => DATA_IN_STROBE,
       CLK => CLOCK,
       D => \DELAY_REG_I_reg[47]\(8),
-      Q => \DELAY_REG_I_reg[63]\(8)
+      Q => \DELAY_REG_I_reg[62][8]_srl15_n_0\
     );
-\DELAY_REG_I_reg[63][9]_srl16\: unisim.vcomponents.SRL16E
+\DELAY_REG_I_reg[62][9]_srl15\: unisim.vcomponents.SRL16E
+    generic map(
+      INIT => X"0000"
+    )
+        port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '1',
+      A3 => '1',
+      CE => DATA_IN_STROBE,
+      CLK => CLOCK,
+      D => \DELAY_REG_I_reg[47]\(9),
+      Q => \DELAY_REG_I_reg[62][9]_srl15_n_0\
+    );
+\DELAY_REG_I_reg[63][0]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_IN_STROBE,
+      D => \DELAY_REG_I_reg[62][0]_srl15_n_0\,
+      Q => \DELAY_REG_I_reg[63]\(0),
+      R => '0'
+    );
+\DELAY_REG_I_reg[63][10]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_IN_STROBE,
+      D => \DELAY_REG_I_reg[62][10]_srl15_n_0\,
+      Q => \DELAY_REG_I_reg[63]\(10),
+      R => '0'
+    );
+\DELAY_REG_I_reg[63][11]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_IN_STROBE,
+      D => \DELAY_REG_I_reg[62][11]_srl15_n_0\,
+      Q => \DELAY_REG_I_reg[63]\(11),
+      R => '0'
+    );
+\DELAY_REG_I_reg[63][12]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_IN_STROBE,
+      D => \DELAY_REG_I_reg[62][12]_srl15_n_0\,
+      Q => \DELAY_REG_I_reg[63]\(12),
+      R => '0'
+    );
+\DELAY_REG_I_reg[63][13]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_IN_STROBE,
+      D => \DELAY_REG_I_reg[62][13]_srl15_n_0\,
+      Q => \DELAY_REG_I_reg[63]\(13),
+      R => '0'
+    );
+\DELAY_REG_I_reg[63][14]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_IN_STROBE,
+      D => \DELAY_REG_I_reg[62][14]_srl15_n_0\,
+      Q => \DELAY_REG_I_reg[63]\(14),
+      R => '0'
+    );
+\DELAY_REG_I_reg[63][15]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_IN_STROBE,
+      D => \DELAY_REG_I_reg[62][15]_srl15_n_0\,
+      Q => \DELAY_REG_I_reg[63]\(15),
+      R => '0'
+    );
+\DELAY_REG_I_reg[63][1]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_IN_STROBE,
+      D => \DELAY_REG_I_reg[62][1]_srl15_n_0\,
+      Q => \DELAY_REG_I_reg[63]\(1),
+      R => '0'
+    );
+\DELAY_REG_I_reg[63][2]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_IN_STROBE,
+      D => \DELAY_REG_I_reg[62][2]_srl15_n_0\,
+      Q => \DELAY_REG_I_reg[63]\(2),
+      R => '0'
+    );
+\DELAY_REG_I_reg[63][3]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_IN_STROBE,
+      D => \DELAY_REG_I_reg[62][3]_srl15_n_0\,
+      Q => \DELAY_REG_I_reg[63]\(3),
+      R => '0'
+    );
+\DELAY_REG_I_reg[63][4]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_IN_STROBE,
+      D => \DELAY_REG_I_reg[62][4]_srl15_n_0\,
+      Q => \DELAY_REG_I_reg[63]\(4),
+      R => '0'
+    );
+\DELAY_REG_I_reg[63][5]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_IN_STROBE,
+      D => \DELAY_REG_I_reg[62][5]_srl15_n_0\,
+      Q => \DELAY_REG_I_reg[63]\(5),
+      R => '0'
+    );
+\DELAY_REG_I_reg[63][6]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_IN_STROBE,
+      D => \DELAY_REG_I_reg[62][6]_srl15_n_0\,
+      Q => \DELAY_REG_I_reg[63]\(6),
+      R => '0'
+    );
+\DELAY_REG_I_reg[63][7]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_IN_STROBE,
+      D => \DELAY_REG_I_reg[62][7]_srl15_n_0\,
+      Q => \DELAY_REG_I_reg[63]\(7),
+      R => '0'
+    );
+\DELAY_REG_I_reg[63][8]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_IN_STROBE,
+      D => \DELAY_REG_I_reg[62][8]_srl15_n_0\,
+      Q => \DELAY_REG_I_reg[63]\(8),
+      R => '0'
+    );
+\DELAY_REG_I_reg[63][9]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_IN_STROBE,
+      D => \DELAY_REG_I_reg[62][9]_srl15_n_0\,
+      Q => \DELAY_REG_I_reg[63]\(9),
+      R => '0'
+    );
+\DELAY_REG_I_reg[79][0]_srl16\: unisim.vcomponents.SRL16E
     generic map(
       INIT => X"0000"
     )
@@ -1844,8 +2134,218 @@ DATA_OUT_STROBE_reg: unisim.vcomponents.FDRE
       A3 => '1',
       CE => DATA_IN_STROBE,
       CLK => CLOCK,
-      D => \DELAY_REG_I_reg[47]\(9),
-      Q => \DELAY_REG_I_reg[63]\(9)
+      D => \DELAY_REG_I_reg[63]\(0),
+      Q => \DELAY_REG_I_reg[79]\(0)
+    );
+\DELAY_REG_I_reg[79][10]_srl16\: unisim.vcomponents.SRL16E
+    generic map(
+      INIT => X"0000"
+    )
+        port map (
+      A0 => '1',
+      A1 => '1',
+      A2 => '1',
+      A3 => '1',
+      CE => DATA_IN_STROBE,
+      CLK => CLOCK,
+      D => \DELAY_REG_I_reg[63]\(10),
+      Q => \DELAY_REG_I_reg[79]\(10)
+    );
+\DELAY_REG_I_reg[79][11]_srl16\: unisim.vcomponents.SRL16E
+    generic map(
+      INIT => X"0000"
+    )
+        port map (
+      A0 => '1',
+      A1 => '1',
+      A2 => '1',
+      A3 => '1',
+      CE => DATA_IN_STROBE,
+      CLK => CLOCK,
+      D => \DELAY_REG_I_reg[63]\(11),
+      Q => \DELAY_REG_I_reg[79]\(11)
+    );
+\DELAY_REG_I_reg[79][12]_srl16\: unisim.vcomponents.SRL16E
+    generic map(
+      INIT => X"0000"
+    )
+        port map (
+      A0 => '1',
+      A1 => '1',
+      A2 => '1',
+      A3 => '1',
+      CE => DATA_IN_STROBE,
+      CLK => CLOCK,
+      D => \DELAY_REG_I_reg[63]\(12),
+      Q => \DELAY_REG_I_reg[79]\(12)
+    );
+\DELAY_REG_I_reg[79][13]_srl16\: unisim.vcomponents.SRL16E
+    generic map(
+      INIT => X"0000"
+    )
+        port map (
+      A0 => '1',
+      A1 => '1',
+      A2 => '1',
+      A3 => '1',
+      CE => DATA_IN_STROBE,
+      CLK => CLOCK,
+      D => \DELAY_REG_I_reg[63]\(13),
+      Q => \DELAY_REG_I_reg[79]\(13)
+    );
+\DELAY_REG_I_reg[79][14]_srl16\: unisim.vcomponents.SRL16E
+    generic map(
+      INIT => X"0000"
+    )
+        port map (
+      A0 => '1',
+      A1 => '1',
+      A2 => '1',
+      A3 => '1',
+      CE => DATA_IN_STROBE,
+      CLK => CLOCK,
+      D => \DELAY_REG_I_reg[63]\(14),
+      Q => \DELAY_REG_I_reg[79]\(14)
+    );
+\DELAY_REG_I_reg[79][15]_srl16\: unisim.vcomponents.SRL16E
+    generic map(
+      INIT => X"0000"
+    )
+        port map (
+      A0 => '1',
+      A1 => '1',
+      A2 => '1',
+      A3 => '1',
+      CE => DATA_IN_STROBE,
+      CLK => CLOCK,
+      D => \DELAY_REG_I_reg[63]\(15),
+      Q => \DELAY_REG_I_reg[79]\(15)
+    );
+\DELAY_REG_I_reg[79][1]_srl16\: unisim.vcomponents.SRL16E
+    generic map(
+      INIT => X"0000"
+    )
+        port map (
+      A0 => '1',
+      A1 => '1',
+      A2 => '1',
+      A3 => '1',
+      CE => DATA_IN_STROBE,
+      CLK => CLOCK,
+      D => \DELAY_REG_I_reg[63]\(1),
+      Q => \DELAY_REG_I_reg[79]\(1)
+    );
+\DELAY_REG_I_reg[79][2]_srl16\: unisim.vcomponents.SRL16E
+    generic map(
+      INIT => X"0000"
+    )
+        port map (
+      A0 => '1',
+      A1 => '1',
+      A2 => '1',
+      A3 => '1',
+      CE => DATA_IN_STROBE,
+      CLK => CLOCK,
+      D => \DELAY_REG_I_reg[63]\(2),
+      Q => \DELAY_REG_I_reg[79]\(2)
+    );
+\DELAY_REG_I_reg[79][3]_srl16\: unisim.vcomponents.SRL16E
+    generic map(
+      INIT => X"0000"
+    )
+        port map (
+      A0 => '1',
+      A1 => '1',
+      A2 => '1',
+      A3 => '1',
+      CE => DATA_IN_STROBE,
+      CLK => CLOCK,
+      D => \DELAY_REG_I_reg[63]\(3),
+      Q => \DELAY_REG_I_reg[79]\(3)
+    );
+\DELAY_REG_I_reg[79][4]_srl16\: unisim.vcomponents.SRL16E
+    generic map(
+      INIT => X"0000"
+    )
+        port map (
+      A0 => '1',
+      A1 => '1',
+      A2 => '1',
+      A3 => '1',
+      CE => DATA_IN_STROBE,
+      CLK => CLOCK,
+      D => \DELAY_REG_I_reg[63]\(4),
+      Q => \DELAY_REG_I_reg[79]\(4)
+    );
+\DELAY_REG_I_reg[79][5]_srl16\: unisim.vcomponents.SRL16E
+    generic map(
+      INIT => X"0000"
+    )
+        port map (
+      A0 => '1',
+      A1 => '1',
+      A2 => '1',
+      A3 => '1',
+      CE => DATA_IN_STROBE,
+      CLK => CLOCK,
+      D => \DELAY_REG_I_reg[63]\(5),
+      Q => \DELAY_REG_I_reg[79]\(5)
+    );
+\DELAY_REG_I_reg[79][6]_srl16\: unisim.vcomponents.SRL16E
+    generic map(
+      INIT => X"0000"
+    )
+        port map (
+      A0 => '1',
+      A1 => '1',
+      A2 => '1',
+      A3 => '1',
+      CE => DATA_IN_STROBE,
+      CLK => CLOCK,
+      D => \DELAY_REG_I_reg[63]\(6),
+      Q => \DELAY_REG_I_reg[79]\(6)
+    );
+\DELAY_REG_I_reg[79][7]_srl16\: unisim.vcomponents.SRL16E
+    generic map(
+      INIT => X"0000"
+    )
+        port map (
+      A0 => '1',
+      A1 => '1',
+      A2 => '1',
+      A3 => '1',
+      CE => DATA_IN_STROBE,
+      CLK => CLOCK,
+      D => \DELAY_REG_I_reg[63]\(7),
+      Q => \DELAY_REG_I_reg[79]\(7)
+    );
+\DELAY_REG_I_reg[79][8]_srl16\: unisim.vcomponents.SRL16E
+    generic map(
+      INIT => X"0000"
+    )
+        port map (
+      A0 => '1',
+      A1 => '1',
+      A2 => '1',
+      A3 => '1',
+      CE => DATA_IN_STROBE,
+      CLK => CLOCK,
+      D => \DELAY_REG_I_reg[63]\(8),
+      Q => \DELAY_REG_I_reg[79]\(8)
+    );
+\DELAY_REG_I_reg[79][9]_srl16\: unisim.vcomponents.SRL16E
+    generic map(
+      INIT => X"0000"
+    )
+        port map (
+      A0 => '1',
+      A1 => '1',
+      A2 => '1',
+      A3 => '1',
+      CE => DATA_IN_STROBE,
+      CLK => CLOCK,
+      D => \DELAY_REG_I_reg[63]\(9),
+      Q => \DELAY_REG_I_reg[79]\(9)
     );
 \DELAY_REG_Q_reg[14][0]_srl15\: unisim.vcomponents.SRL16E
     generic map(
@@ -3047,217 +3547,407 @@ DATA_OUT_STROBE_reg: unisim.vcomponents.FDRE
       Q => \DELAY_REG_Q_reg[47]\(9),
       R => '0'
     );
-\DELAY_REG_Q_reg[63][0]_srl16\: unisim.vcomponents.SRL16E
+\DELAY_REG_Q_reg[62][0]_srl15\: unisim.vcomponents.SRL16E
     generic map(
       INIT => X"0000"
     )
         port map (
-      A0 => '1',
+      A0 => '0',
       A1 => '1',
       A2 => '1',
       A3 => '1',
       CE => DATA_IN_STROBE,
       CLK => CLOCK,
       D => \DELAY_REG_Q_reg[47]\(0),
-      Q => \DELAY_REG_Q_reg[63]\(0)
+      Q => \DELAY_REG_Q_reg[62][0]_srl15_n_0\
     );
-\DELAY_REG_Q_reg[63][10]_srl16\: unisim.vcomponents.SRL16E
+\DELAY_REG_Q_reg[62][10]_srl15\: unisim.vcomponents.SRL16E
     generic map(
       INIT => X"0000"
     )
         port map (
-      A0 => '1',
+      A0 => '0',
       A1 => '1',
       A2 => '1',
       A3 => '1',
       CE => DATA_IN_STROBE,
       CLK => CLOCK,
       D => \DELAY_REG_Q_reg[47]\(10),
-      Q => \DELAY_REG_Q_reg[63]\(10)
+      Q => \DELAY_REG_Q_reg[62][10]_srl15_n_0\
     );
-\DELAY_REG_Q_reg[63][11]_srl16\: unisim.vcomponents.SRL16E
+\DELAY_REG_Q_reg[62][11]_srl15\: unisim.vcomponents.SRL16E
     generic map(
       INIT => X"0000"
     )
         port map (
-      A0 => '1',
+      A0 => '0',
       A1 => '1',
       A2 => '1',
       A3 => '1',
       CE => DATA_IN_STROBE,
       CLK => CLOCK,
       D => \DELAY_REG_Q_reg[47]\(11),
-      Q => \DELAY_REG_Q_reg[63]\(11)
+      Q => \DELAY_REG_Q_reg[62][11]_srl15_n_0\
     );
-\DELAY_REG_Q_reg[63][12]_srl16\: unisim.vcomponents.SRL16E
+\DELAY_REG_Q_reg[62][12]_srl15\: unisim.vcomponents.SRL16E
     generic map(
       INIT => X"0000"
     )
         port map (
-      A0 => '1',
+      A0 => '0',
       A1 => '1',
       A2 => '1',
       A3 => '1',
       CE => DATA_IN_STROBE,
       CLK => CLOCK,
       D => \DELAY_REG_Q_reg[47]\(12),
-      Q => \DELAY_REG_Q_reg[63]\(12)
+      Q => \DELAY_REG_Q_reg[62][12]_srl15_n_0\
     );
-\DELAY_REG_Q_reg[63][13]_srl16\: unisim.vcomponents.SRL16E
+\DELAY_REG_Q_reg[62][13]_srl15\: unisim.vcomponents.SRL16E
     generic map(
       INIT => X"0000"
     )
         port map (
-      A0 => '1',
+      A0 => '0',
       A1 => '1',
       A2 => '1',
       A3 => '1',
       CE => DATA_IN_STROBE,
       CLK => CLOCK,
       D => \DELAY_REG_Q_reg[47]\(13),
-      Q => \DELAY_REG_Q_reg[63]\(13)
+      Q => \DELAY_REG_Q_reg[62][13]_srl15_n_0\
     );
-\DELAY_REG_Q_reg[63][14]_srl16\: unisim.vcomponents.SRL16E
+\DELAY_REG_Q_reg[62][14]_srl15\: unisim.vcomponents.SRL16E
     generic map(
       INIT => X"0000"
     )
         port map (
-      A0 => '1',
+      A0 => '0',
       A1 => '1',
       A2 => '1',
       A3 => '1',
       CE => DATA_IN_STROBE,
       CLK => CLOCK,
       D => \DELAY_REG_Q_reg[47]\(14),
-      Q => \DELAY_REG_Q_reg[63]\(14)
+      Q => \DELAY_REG_Q_reg[62][14]_srl15_n_0\
     );
-\DELAY_REG_Q_reg[63][15]_srl16\: unisim.vcomponents.SRL16E
+\DELAY_REG_Q_reg[62][15]_srl15\: unisim.vcomponents.SRL16E
     generic map(
       INIT => X"0000"
     )
         port map (
-      A0 => '1',
+      A0 => '0',
       A1 => '1',
       A2 => '1',
       A3 => '1',
       CE => DATA_IN_STROBE,
       CLK => CLOCK,
       D => \DELAY_REG_Q_reg[47]\(15),
-      Q => \DELAY_REG_Q_reg[63]\(15)
+      Q => \DELAY_REG_Q_reg[62][15]_srl15_n_0\
     );
-\DELAY_REG_Q_reg[63][1]_srl16\: unisim.vcomponents.SRL16E
+\DELAY_REG_Q_reg[62][1]_srl15\: unisim.vcomponents.SRL16E
     generic map(
       INIT => X"0000"
     )
         port map (
-      A0 => '1',
+      A0 => '0',
       A1 => '1',
       A2 => '1',
       A3 => '1',
       CE => DATA_IN_STROBE,
       CLK => CLOCK,
       D => \DELAY_REG_Q_reg[47]\(1),
-      Q => \DELAY_REG_Q_reg[63]\(1)
+      Q => \DELAY_REG_Q_reg[62][1]_srl15_n_0\
     );
-\DELAY_REG_Q_reg[63][2]_srl16\: unisim.vcomponents.SRL16E
+\DELAY_REG_Q_reg[62][2]_srl15\: unisim.vcomponents.SRL16E
     generic map(
       INIT => X"0000"
     )
         port map (
-      A0 => '1',
+      A0 => '0',
       A1 => '1',
       A2 => '1',
       A3 => '1',
       CE => DATA_IN_STROBE,
       CLK => CLOCK,
       D => \DELAY_REG_Q_reg[47]\(2),
-      Q => \DELAY_REG_Q_reg[63]\(2)
+      Q => \DELAY_REG_Q_reg[62][2]_srl15_n_0\
     );
-\DELAY_REG_Q_reg[63][3]_srl16\: unisim.vcomponents.SRL16E
+\DELAY_REG_Q_reg[62][3]_srl15\: unisim.vcomponents.SRL16E
     generic map(
       INIT => X"0000"
     )
         port map (
-      A0 => '1',
+      A0 => '0',
       A1 => '1',
       A2 => '1',
       A3 => '1',
       CE => DATA_IN_STROBE,
       CLK => CLOCK,
       D => \DELAY_REG_Q_reg[47]\(3),
-      Q => \DELAY_REG_Q_reg[63]\(3)
+      Q => \DELAY_REG_Q_reg[62][3]_srl15_n_0\
     );
-\DELAY_REG_Q_reg[63][4]_srl16\: unisim.vcomponents.SRL16E
+\DELAY_REG_Q_reg[62][4]_srl15\: unisim.vcomponents.SRL16E
     generic map(
       INIT => X"0000"
     )
         port map (
-      A0 => '1',
+      A0 => '0',
       A1 => '1',
       A2 => '1',
       A3 => '1',
       CE => DATA_IN_STROBE,
       CLK => CLOCK,
       D => \DELAY_REG_Q_reg[47]\(4),
-      Q => \DELAY_REG_Q_reg[63]\(4)
+      Q => \DELAY_REG_Q_reg[62][4]_srl15_n_0\
     );
-\DELAY_REG_Q_reg[63][5]_srl16\: unisim.vcomponents.SRL16E
+\DELAY_REG_Q_reg[62][5]_srl15\: unisim.vcomponents.SRL16E
     generic map(
       INIT => X"0000"
     )
         port map (
-      A0 => '1',
+      A0 => '0',
       A1 => '1',
       A2 => '1',
       A3 => '1',
       CE => DATA_IN_STROBE,
       CLK => CLOCK,
       D => \DELAY_REG_Q_reg[47]\(5),
-      Q => \DELAY_REG_Q_reg[63]\(5)
+      Q => \DELAY_REG_Q_reg[62][5]_srl15_n_0\
     );
-\DELAY_REG_Q_reg[63][6]_srl16\: unisim.vcomponents.SRL16E
+\DELAY_REG_Q_reg[62][6]_srl15\: unisim.vcomponents.SRL16E
     generic map(
       INIT => X"0000"
     )
         port map (
-      A0 => '1',
+      A0 => '0',
       A1 => '1',
       A2 => '1',
       A3 => '1',
       CE => DATA_IN_STROBE,
       CLK => CLOCK,
       D => \DELAY_REG_Q_reg[47]\(6),
-      Q => \DELAY_REG_Q_reg[63]\(6)
+      Q => \DELAY_REG_Q_reg[62][6]_srl15_n_0\
     );
-\DELAY_REG_Q_reg[63][7]_srl16\: unisim.vcomponents.SRL16E
+\DELAY_REG_Q_reg[62][7]_srl15\: unisim.vcomponents.SRL16E
     generic map(
       INIT => X"0000"
     )
         port map (
-      A0 => '1',
+      A0 => '0',
       A1 => '1',
       A2 => '1',
       A3 => '1',
       CE => DATA_IN_STROBE,
       CLK => CLOCK,
       D => \DELAY_REG_Q_reg[47]\(7),
-      Q => \DELAY_REG_Q_reg[63]\(7)
+      Q => \DELAY_REG_Q_reg[62][7]_srl15_n_0\
     );
-\DELAY_REG_Q_reg[63][8]_srl16\: unisim.vcomponents.SRL16E
+\DELAY_REG_Q_reg[62][8]_srl15\: unisim.vcomponents.SRL16E
     generic map(
       INIT => X"0000"
     )
         port map (
-      A0 => '1',
+      A0 => '0',
       A1 => '1',
       A2 => '1',
       A3 => '1',
       CE => DATA_IN_STROBE,
       CLK => CLOCK,
       D => \DELAY_REG_Q_reg[47]\(8),
-      Q => \DELAY_REG_Q_reg[63]\(8)
+      Q => \DELAY_REG_Q_reg[62][8]_srl15_n_0\
     );
-\DELAY_REG_Q_reg[63][9]_srl16\: unisim.vcomponents.SRL16E
+\DELAY_REG_Q_reg[62][9]_srl15\: unisim.vcomponents.SRL16E
+    generic map(
+      INIT => X"0000"
+    )
+        port map (
+      A0 => '0',
+      A1 => '1',
+      A2 => '1',
+      A3 => '1',
+      CE => DATA_IN_STROBE,
+      CLK => CLOCK,
+      D => \DELAY_REG_Q_reg[47]\(9),
+      Q => \DELAY_REG_Q_reg[62][9]_srl15_n_0\
+    );
+\DELAY_REG_Q_reg[63][0]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_IN_STROBE,
+      D => \DELAY_REG_Q_reg[62][0]_srl15_n_0\,
+      Q => \DELAY_REG_Q_reg[63]\(0),
+      R => '0'
+    );
+\DELAY_REG_Q_reg[63][10]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_IN_STROBE,
+      D => \DELAY_REG_Q_reg[62][10]_srl15_n_0\,
+      Q => \DELAY_REG_Q_reg[63]\(10),
+      R => '0'
+    );
+\DELAY_REG_Q_reg[63][11]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_IN_STROBE,
+      D => \DELAY_REG_Q_reg[62][11]_srl15_n_0\,
+      Q => \DELAY_REG_Q_reg[63]\(11),
+      R => '0'
+    );
+\DELAY_REG_Q_reg[63][12]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_IN_STROBE,
+      D => \DELAY_REG_Q_reg[62][12]_srl15_n_0\,
+      Q => \DELAY_REG_Q_reg[63]\(12),
+      R => '0'
+    );
+\DELAY_REG_Q_reg[63][13]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_IN_STROBE,
+      D => \DELAY_REG_Q_reg[62][13]_srl15_n_0\,
+      Q => \DELAY_REG_Q_reg[63]\(13),
+      R => '0'
+    );
+\DELAY_REG_Q_reg[63][14]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_IN_STROBE,
+      D => \DELAY_REG_Q_reg[62][14]_srl15_n_0\,
+      Q => \DELAY_REG_Q_reg[63]\(14),
+      R => '0'
+    );
+\DELAY_REG_Q_reg[63][15]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_IN_STROBE,
+      D => \DELAY_REG_Q_reg[62][15]_srl15_n_0\,
+      Q => \DELAY_REG_Q_reg[63]\(15),
+      R => '0'
+    );
+\DELAY_REG_Q_reg[63][1]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_IN_STROBE,
+      D => \DELAY_REG_Q_reg[62][1]_srl15_n_0\,
+      Q => \DELAY_REG_Q_reg[63]\(1),
+      R => '0'
+    );
+\DELAY_REG_Q_reg[63][2]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_IN_STROBE,
+      D => \DELAY_REG_Q_reg[62][2]_srl15_n_0\,
+      Q => \DELAY_REG_Q_reg[63]\(2),
+      R => '0'
+    );
+\DELAY_REG_Q_reg[63][3]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_IN_STROBE,
+      D => \DELAY_REG_Q_reg[62][3]_srl15_n_0\,
+      Q => \DELAY_REG_Q_reg[63]\(3),
+      R => '0'
+    );
+\DELAY_REG_Q_reg[63][4]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_IN_STROBE,
+      D => \DELAY_REG_Q_reg[62][4]_srl15_n_0\,
+      Q => \DELAY_REG_Q_reg[63]\(4),
+      R => '0'
+    );
+\DELAY_REG_Q_reg[63][5]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_IN_STROBE,
+      D => \DELAY_REG_Q_reg[62][5]_srl15_n_0\,
+      Q => \DELAY_REG_Q_reg[63]\(5),
+      R => '0'
+    );
+\DELAY_REG_Q_reg[63][6]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_IN_STROBE,
+      D => \DELAY_REG_Q_reg[62][6]_srl15_n_0\,
+      Q => \DELAY_REG_Q_reg[63]\(6),
+      R => '0'
+    );
+\DELAY_REG_Q_reg[63][7]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_IN_STROBE,
+      D => \DELAY_REG_Q_reg[62][7]_srl15_n_0\,
+      Q => \DELAY_REG_Q_reg[63]\(7),
+      R => '0'
+    );
+\DELAY_REG_Q_reg[63][8]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_IN_STROBE,
+      D => \DELAY_REG_Q_reg[62][8]_srl15_n_0\,
+      Q => \DELAY_REG_Q_reg[63]\(8),
+      R => '0'
+    );
+\DELAY_REG_Q_reg[63][9]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_IN_STROBE,
+      D => \DELAY_REG_Q_reg[62][9]_srl15_n_0\,
+      Q => \DELAY_REG_Q_reg[63]\(9),
+      R => '0'
+    );
+\DELAY_REG_Q_reg[79][0]_srl16\: unisim.vcomponents.SRL16E
     generic map(
       INIT => X"0000"
     )
@@ -3268,8 +3958,218 @@ DATA_OUT_STROBE_reg: unisim.vcomponents.FDRE
       A3 => '1',
       CE => DATA_IN_STROBE,
       CLK => CLOCK,
-      D => \DELAY_REG_Q_reg[47]\(9),
-      Q => \DELAY_REG_Q_reg[63]\(9)
+      D => \DELAY_REG_Q_reg[63]\(0),
+      Q => \DELAY_REG_Q_reg[79]\(0)
+    );
+\DELAY_REG_Q_reg[79][10]_srl16\: unisim.vcomponents.SRL16E
+    generic map(
+      INIT => X"0000"
+    )
+        port map (
+      A0 => '1',
+      A1 => '1',
+      A2 => '1',
+      A3 => '1',
+      CE => DATA_IN_STROBE,
+      CLK => CLOCK,
+      D => \DELAY_REG_Q_reg[63]\(10),
+      Q => \DELAY_REG_Q_reg[79]\(10)
+    );
+\DELAY_REG_Q_reg[79][11]_srl16\: unisim.vcomponents.SRL16E
+    generic map(
+      INIT => X"0000"
+    )
+        port map (
+      A0 => '1',
+      A1 => '1',
+      A2 => '1',
+      A3 => '1',
+      CE => DATA_IN_STROBE,
+      CLK => CLOCK,
+      D => \DELAY_REG_Q_reg[63]\(11),
+      Q => \DELAY_REG_Q_reg[79]\(11)
+    );
+\DELAY_REG_Q_reg[79][12]_srl16\: unisim.vcomponents.SRL16E
+    generic map(
+      INIT => X"0000"
+    )
+        port map (
+      A0 => '1',
+      A1 => '1',
+      A2 => '1',
+      A3 => '1',
+      CE => DATA_IN_STROBE,
+      CLK => CLOCK,
+      D => \DELAY_REG_Q_reg[63]\(12),
+      Q => \DELAY_REG_Q_reg[79]\(12)
+    );
+\DELAY_REG_Q_reg[79][13]_srl16\: unisim.vcomponents.SRL16E
+    generic map(
+      INIT => X"0000"
+    )
+        port map (
+      A0 => '1',
+      A1 => '1',
+      A2 => '1',
+      A3 => '1',
+      CE => DATA_IN_STROBE,
+      CLK => CLOCK,
+      D => \DELAY_REG_Q_reg[63]\(13),
+      Q => \DELAY_REG_Q_reg[79]\(13)
+    );
+\DELAY_REG_Q_reg[79][14]_srl16\: unisim.vcomponents.SRL16E
+    generic map(
+      INIT => X"0000"
+    )
+        port map (
+      A0 => '1',
+      A1 => '1',
+      A2 => '1',
+      A3 => '1',
+      CE => DATA_IN_STROBE,
+      CLK => CLOCK,
+      D => \DELAY_REG_Q_reg[63]\(14),
+      Q => \DELAY_REG_Q_reg[79]\(14)
+    );
+\DELAY_REG_Q_reg[79][15]_srl16\: unisim.vcomponents.SRL16E
+    generic map(
+      INIT => X"0000"
+    )
+        port map (
+      A0 => '1',
+      A1 => '1',
+      A2 => '1',
+      A3 => '1',
+      CE => DATA_IN_STROBE,
+      CLK => CLOCK,
+      D => \DELAY_REG_Q_reg[63]\(15),
+      Q => \DELAY_REG_Q_reg[79]\(15)
+    );
+\DELAY_REG_Q_reg[79][1]_srl16\: unisim.vcomponents.SRL16E
+    generic map(
+      INIT => X"0000"
+    )
+        port map (
+      A0 => '1',
+      A1 => '1',
+      A2 => '1',
+      A3 => '1',
+      CE => DATA_IN_STROBE,
+      CLK => CLOCK,
+      D => \DELAY_REG_Q_reg[63]\(1),
+      Q => \DELAY_REG_Q_reg[79]\(1)
+    );
+\DELAY_REG_Q_reg[79][2]_srl16\: unisim.vcomponents.SRL16E
+    generic map(
+      INIT => X"0000"
+    )
+        port map (
+      A0 => '1',
+      A1 => '1',
+      A2 => '1',
+      A3 => '1',
+      CE => DATA_IN_STROBE,
+      CLK => CLOCK,
+      D => \DELAY_REG_Q_reg[63]\(2),
+      Q => \DELAY_REG_Q_reg[79]\(2)
+    );
+\DELAY_REG_Q_reg[79][3]_srl16\: unisim.vcomponents.SRL16E
+    generic map(
+      INIT => X"0000"
+    )
+        port map (
+      A0 => '1',
+      A1 => '1',
+      A2 => '1',
+      A3 => '1',
+      CE => DATA_IN_STROBE,
+      CLK => CLOCK,
+      D => \DELAY_REG_Q_reg[63]\(3),
+      Q => \DELAY_REG_Q_reg[79]\(3)
+    );
+\DELAY_REG_Q_reg[79][4]_srl16\: unisim.vcomponents.SRL16E
+    generic map(
+      INIT => X"0000"
+    )
+        port map (
+      A0 => '1',
+      A1 => '1',
+      A2 => '1',
+      A3 => '1',
+      CE => DATA_IN_STROBE,
+      CLK => CLOCK,
+      D => \DELAY_REG_Q_reg[63]\(4),
+      Q => \DELAY_REG_Q_reg[79]\(4)
+    );
+\DELAY_REG_Q_reg[79][5]_srl16\: unisim.vcomponents.SRL16E
+    generic map(
+      INIT => X"0000"
+    )
+        port map (
+      A0 => '1',
+      A1 => '1',
+      A2 => '1',
+      A3 => '1',
+      CE => DATA_IN_STROBE,
+      CLK => CLOCK,
+      D => \DELAY_REG_Q_reg[63]\(5),
+      Q => \DELAY_REG_Q_reg[79]\(5)
+    );
+\DELAY_REG_Q_reg[79][6]_srl16\: unisim.vcomponents.SRL16E
+    generic map(
+      INIT => X"0000"
+    )
+        port map (
+      A0 => '1',
+      A1 => '1',
+      A2 => '1',
+      A3 => '1',
+      CE => DATA_IN_STROBE,
+      CLK => CLOCK,
+      D => \DELAY_REG_Q_reg[63]\(6),
+      Q => \DELAY_REG_Q_reg[79]\(6)
+    );
+\DELAY_REG_Q_reg[79][7]_srl16\: unisim.vcomponents.SRL16E
+    generic map(
+      INIT => X"0000"
+    )
+        port map (
+      A0 => '1',
+      A1 => '1',
+      A2 => '1',
+      A3 => '1',
+      CE => DATA_IN_STROBE,
+      CLK => CLOCK,
+      D => \DELAY_REG_Q_reg[63]\(7),
+      Q => \DELAY_REG_Q_reg[79]\(7)
+    );
+\DELAY_REG_Q_reg[79][8]_srl16\: unisim.vcomponents.SRL16E
+    generic map(
+      INIT => X"0000"
+    )
+        port map (
+      A0 => '1',
+      A1 => '1',
+      A2 => '1',
+      A3 => '1',
+      CE => DATA_IN_STROBE,
+      CLK => CLOCK,
+      D => \DELAY_REG_Q_reg[63]\(8),
+      Q => \DELAY_REG_Q_reg[79]\(8)
+    );
+\DELAY_REG_Q_reg[79][9]_srl16\: unisim.vcomponents.SRL16E
+    generic map(
+      INIT => X"0000"
+    )
+        port map (
+      A0 => '1',
+      A1 => '1',
+      A2 => '1',
+      A3 => '1',
+      CE => DATA_IN_STROBE,
+      CLK => CLOCK,
+      D => \DELAY_REG_Q_reg[63]\(9),
+      Q => \DELAY_REG_Q_reg[79]\(9)
     );
 \IDATA_OUT_DELAY_16_reg[0]\: unisim.vcomponents.FDRE
     generic map(
@@ -3973,6 +4873,182 @@ DATA_OUT_STROBE_reg: unisim.vcomponents.FDRE
       CE => DATA_OUT_STROBE_i_1_n_0,
       D => \DELAY_REG_I_reg[63]\(9),
       Q => IDATA_OUT_DELAY_64(9),
+      R => '0'
+    );
+\IDATA_OUT_DELAY_80_reg[0]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_OUT_STROBE_i_1_n_0,
+      D => \DELAY_REG_I_reg[79]\(0),
+      Q => IDATA_OUT_DELAY_80(0),
+      R => '0'
+    );
+\IDATA_OUT_DELAY_80_reg[10]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_OUT_STROBE_i_1_n_0,
+      D => \DELAY_REG_I_reg[79]\(10),
+      Q => IDATA_OUT_DELAY_80(10),
+      R => '0'
+    );
+\IDATA_OUT_DELAY_80_reg[11]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_OUT_STROBE_i_1_n_0,
+      D => \DELAY_REG_I_reg[79]\(11),
+      Q => IDATA_OUT_DELAY_80(11),
+      R => '0'
+    );
+\IDATA_OUT_DELAY_80_reg[12]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_OUT_STROBE_i_1_n_0,
+      D => \DELAY_REG_I_reg[79]\(12),
+      Q => IDATA_OUT_DELAY_80(12),
+      R => '0'
+    );
+\IDATA_OUT_DELAY_80_reg[13]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_OUT_STROBE_i_1_n_0,
+      D => \DELAY_REG_I_reg[79]\(13),
+      Q => IDATA_OUT_DELAY_80(13),
+      R => '0'
+    );
+\IDATA_OUT_DELAY_80_reg[14]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_OUT_STROBE_i_1_n_0,
+      D => \DELAY_REG_I_reg[79]\(14),
+      Q => IDATA_OUT_DELAY_80(14),
+      R => '0'
+    );
+\IDATA_OUT_DELAY_80_reg[15]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_OUT_STROBE_i_1_n_0,
+      D => \DELAY_REG_I_reg[79]\(15),
+      Q => IDATA_OUT_DELAY_80(15),
+      R => '0'
+    );
+\IDATA_OUT_DELAY_80_reg[1]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_OUT_STROBE_i_1_n_0,
+      D => \DELAY_REG_I_reg[79]\(1),
+      Q => IDATA_OUT_DELAY_80(1),
+      R => '0'
+    );
+\IDATA_OUT_DELAY_80_reg[2]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_OUT_STROBE_i_1_n_0,
+      D => \DELAY_REG_I_reg[79]\(2),
+      Q => IDATA_OUT_DELAY_80(2),
+      R => '0'
+    );
+\IDATA_OUT_DELAY_80_reg[3]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_OUT_STROBE_i_1_n_0,
+      D => \DELAY_REG_I_reg[79]\(3),
+      Q => IDATA_OUT_DELAY_80(3),
+      R => '0'
+    );
+\IDATA_OUT_DELAY_80_reg[4]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_OUT_STROBE_i_1_n_0,
+      D => \DELAY_REG_I_reg[79]\(4),
+      Q => IDATA_OUT_DELAY_80(4),
+      R => '0'
+    );
+\IDATA_OUT_DELAY_80_reg[5]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_OUT_STROBE_i_1_n_0,
+      D => \DELAY_REG_I_reg[79]\(5),
+      Q => IDATA_OUT_DELAY_80(5),
+      R => '0'
+    );
+\IDATA_OUT_DELAY_80_reg[6]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_OUT_STROBE_i_1_n_0,
+      D => \DELAY_REG_I_reg[79]\(6),
+      Q => IDATA_OUT_DELAY_80(6),
+      R => '0'
+    );
+\IDATA_OUT_DELAY_80_reg[7]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_OUT_STROBE_i_1_n_0,
+      D => \DELAY_REG_I_reg[79]\(7),
+      Q => IDATA_OUT_DELAY_80(7),
+      R => '0'
+    );
+\IDATA_OUT_DELAY_80_reg[8]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_OUT_STROBE_i_1_n_0,
+      D => \DELAY_REG_I_reg[79]\(8),
+      Q => IDATA_OUT_DELAY_80(8),
+      R => '0'
+    );
+\IDATA_OUT_DELAY_80_reg[9]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_OUT_STROBE_i_1_n_0,
+      D => \DELAY_REG_I_reg[79]\(9),
+      Q => IDATA_OUT_DELAY_80(9),
       R => '0'
     );
 \IDATA_OUT_reg[0]\: unisim.vcomponents.FDRE
@@ -4855,6 +5931,182 @@ DATA_OUT_STROBE_reg: unisim.vcomponents.FDRE
       Q => QDATA_OUT_DELAY_64(9),
       R => '0'
     );
+\QDATA_OUT_DELAY_80_reg[0]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_OUT_STROBE_i_1_n_0,
+      D => \DELAY_REG_Q_reg[79]\(0),
+      Q => QDATA_OUT_DELAY_80(0),
+      R => '0'
+    );
+\QDATA_OUT_DELAY_80_reg[10]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_OUT_STROBE_i_1_n_0,
+      D => \DELAY_REG_Q_reg[79]\(10),
+      Q => QDATA_OUT_DELAY_80(10),
+      R => '0'
+    );
+\QDATA_OUT_DELAY_80_reg[11]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_OUT_STROBE_i_1_n_0,
+      D => \DELAY_REG_Q_reg[79]\(11),
+      Q => QDATA_OUT_DELAY_80(11),
+      R => '0'
+    );
+\QDATA_OUT_DELAY_80_reg[12]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_OUT_STROBE_i_1_n_0,
+      D => \DELAY_REG_Q_reg[79]\(12),
+      Q => QDATA_OUT_DELAY_80(12),
+      R => '0'
+    );
+\QDATA_OUT_DELAY_80_reg[13]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_OUT_STROBE_i_1_n_0,
+      D => \DELAY_REG_Q_reg[79]\(13),
+      Q => QDATA_OUT_DELAY_80(13),
+      R => '0'
+    );
+\QDATA_OUT_DELAY_80_reg[14]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_OUT_STROBE_i_1_n_0,
+      D => \DELAY_REG_Q_reg[79]\(14),
+      Q => QDATA_OUT_DELAY_80(14),
+      R => '0'
+    );
+\QDATA_OUT_DELAY_80_reg[15]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_OUT_STROBE_i_1_n_0,
+      D => \DELAY_REG_Q_reg[79]\(15),
+      Q => QDATA_OUT_DELAY_80(15),
+      R => '0'
+    );
+\QDATA_OUT_DELAY_80_reg[1]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_OUT_STROBE_i_1_n_0,
+      D => \DELAY_REG_Q_reg[79]\(1),
+      Q => QDATA_OUT_DELAY_80(1),
+      R => '0'
+    );
+\QDATA_OUT_DELAY_80_reg[2]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_OUT_STROBE_i_1_n_0,
+      D => \DELAY_REG_Q_reg[79]\(2),
+      Q => QDATA_OUT_DELAY_80(2),
+      R => '0'
+    );
+\QDATA_OUT_DELAY_80_reg[3]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_OUT_STROBE_i_1_n_0,
+      D => \DELAY_REG_Q_reg[79]\(3),
+      Q => QDATA_OUT_DELAY_80(3),
+      R => '0'
+    );
+\QDATA_OUT_DELAY_80_reg[4]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_OUT_STROBE_i_1_n_0,
+      D => \DELAY_REG_Q_reg[79]\(4),
+      Q => QDATA_OUT_DELAY_80(4),
+      R => '0'
+    );
+\QDATA_OUT_DELAY_80_reg[5]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_OUT_STROBE_i_1_n_0,
+      D => \DELAY_REG_Q_reg[79]\(5),
+      Q => QDATA_OUT_DELAY_80(5),
+      R => '0'
+    );
+\QDATA_OUT_DELAY_80_reg[6]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_OUT_STROBE_i_1_n_0,
+      D => \DELAY_REG_Q_reg[79]\(6),
+      Q => QDATA_OUT_DELAY_80(6),
+      R => '0'
+    );
+\QDATA_OUT_DELAY_80_reg[7]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_OUT_STROBE_i_1_n_0,
+      D => \DELAY_REG_Q_reg[79]\(7),
+      Q => QDATA_OUT_DELAY_80(7),
+      R => '0'
+    );
+\QDATA_OUT_DELAY_80_reg[8]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_OUT_STROBE_i_1_n_0,
+      D => \DELAY_REG_Q_reg[79]\(8),
+      Q => QDATA_OUT_DELAY_80(8),
+      R => '0'
+    );
+\QDATA_OUT_DELAY_80_reg[9]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => CLOCK,
+      CE => DATA_OUT_STROBE_i_1_n_0,
+      D => \DELAY_REG_Q_reg[79]\(9),
+      Q => QDATA_OUT_DELAY_80(9),
+      R => '0'
+    );
 \QDATA_OUT_reg[0]\: unisim.vcomponents.FDRE
     generic map(
       INIT => '0'
@@ -5053,7 +6305,9 @@ entity block_design_0_data_delay_0_0 is
     IDATA_OUT_DELAY_48 : out STD_LOGIC_VECTOR ( 15 downto 0 );
     QDATA_OUT_DELAY_48 : out STD_LOGIC_VECTOR ( 15 downto 0 );
     IDATA_OUT_DELAY_64 : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    QDATA_OUT_DELAY_64 : out STD_LOGIC_VECTOR ( 15 downto 0 )
+    QDATA_OUT_DELAY_64 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    IDATA_OUT_DELAY_80 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    QDATA_OUT_DELAY_80 : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   attribute NotValidForBitStream : boolean;
   attribute NotValidForBitStream of block_design_0_data_delay_0_0 : entity is true;
@@ -5086,12 +6340,14 @@ U0: entity work.block_design_0_data_delay_0_0_data_delay
       IDATA_OUT_DELAY_32(15 downto 0) => IDATA_OUT_DELAY_32(15 downto 0),
       IDATA_OUT_DELAY_48(15 downto 0) => IDATA_OUT_DELAY_48(15 downto 0),
       IDATA_OUT_DELAY_64(15 downto 0) => IDATA_OUT_DELAY_64(15 downto 0),
+      IDATA_OUT_DELAY_80(15 downto 0) => IDATA_OUT_DELAY_80(15 downto 0),
       QDATA_IN(15 downto 0) => QDATA_IN(15 downto 0),
       QDATA_OUT(15 downto 0) => QDATA_OUT(15 downto 0),
       QDATA_OUT_DELAY_16(15 downto 0) => QDATA_OUT_DELAY_16(15 downto 0),
       QDATA_OUT_DELAY_32(15 downto 0) => QDATA_OUT_DELAY_32(15 downto 0),
       QDATA_OUT_DELAY_48(15 downto 0) => QDATA_OUT_DELAY_48(15 downto 0),
       QDATA_OUT_DELAY_64(15 downto 0) => QDATA_OUT_DELAY_64(15 downto 0),
+      QDATA_OUT_DELAY_80(15 downto 0) => QDATA_OUT_DELAY_80(15 downto 0),
       RESET => RESET
     );
 end STRUCTURE;

@@ -2,10 +2,10 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-// Date        : Sat Apr  6 00:37:26 2024
-// Host        : ASUS_ROG running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim -rename_top system_util_dac_1_upack_0 -prefix
-//               system_util_dac_1_upack_0_ system_util_dac_1_upack_0_sim_netlist.v
+// Date        : Mon Sep 23 20:31:35 2024
+// Host        : lab817_01 running 64-bit major release  (build 9200)
+// Command     : write_verilog -force -mode funcsim
+//               c:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.gen/sources_1/bd/system/ip/system_util_dac_1_upack_0/system_util_dac_1_upack_0_sim_netlist.v
 // Design      : system_util_dac_1_upack_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -13,6 +13,75 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
+(* CHECK_LICENSE_TYPE = "system_util_dac_1_upack_0,util_upack2,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* IP_DEFINITION_SOURCE = "package_project" *) 
+(* X_CORE_INFO = "util_upack2,Vivado 2023.2.2" *) 
+(* NotValidForBitStream *)
+module system_util_dac_1_upack_0
+   (clk,
+    reset,
+    enable_0,
+    enable_1,
+    enable_2,
+    enable_3,
+    fifo_rd_en,
+    fifo_rd_valid,
+    fifo_rd_underflow,
+    fifo_rd_data_0,
+    fifo_rd_data_1,
+    fifo_rd_data_2,
+    fifo_rd_data_3,
+    s_axis_valid,
+    s_axis_ready,
+    s_axis_data);
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 s_axis_signal_clock CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s_axis_signal_clock, ASSOCIATED_BUSIF s_axis, ASSOCIATED_RESET reset, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_axi_adrv9001_0_dac_1_clk, INSERT_VIP 0" *) input clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 s_axis_signal_reset RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s_axis_signal_reset, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *) input reset;
+  input enable_0;
+  input enable_1;
+  input enable_2;
+  input enable_3;
+  input fifo_rd_en;
+  output fifo_rd_valid;
+  output fifo_rd_underflow;
+  output [15:0]fifo_rd_data_0;
+  output [15:0]fifo_rd_data_1;
+  output [15:0]fifo_rd_data_2;
+  output [15:0]fifo_rd_data_3;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis TVALID" *) input s_axis_valid;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis TREADY" *) output s_axis_ready;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis TDATA" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s_axis, TDATA_NUM_BYTES 8, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN system_axi_adrv9001_0_dac_1_clk, LAYERED_METADATA undef, INSERT_VIP 0" *) input [63:0]s_axis_data;
+
+  wire clk;
+  wire enable_0;
+  wire enable_1;
+  wire enable_2;
+  wire enable_3;
+  wire [15:0]fifo_rd_data_0;
+  wire [15:0]fifo_rd_data_1;
+  wire [15:0]fifo_rd_data_2;
+  wire [15:0]fifo_rd_data_3;
+  wire fifo_rd_en;
+  wire fifo_rd_underflow;
+  wire fifo_rd_valid;
+  wire reset;
+  wire [63:0]s_axis_data;
+  wire s_axis_ready;
+  wire s_axis_valid;
+
+  system_util_dac_1_upack_0_util_upack2 inst
+       (.D({enable_2,enable_1,enable_0}),
+        .Q({fifo_rd_data_3,fifo_rd_data_2,fifo_rd_data_1,fifo_rd_data_0}),
+        .clk(clk),
+        .enable_3(enable_3),
+        .fifo_rd_en(fifo_rd_en),
+        .fifo_rd_underflow(fifo_rd_underflow),
+        .fifo_rd_valid(fifo_rd_valid),
+        .reset(reset),
+        .s_axis_data(s_axis_data),
+        .s_axis_ready(s_axis_ready),
+        .s_axis_valid(s_axis_valid));
+endmodule
+
+(* ORIG_REF_NAME = "pack_network" *) 
 module system_util_dac_1_upack_0_pack_network
    (E,
     \ctrl_reg[3]_0 ,
@@ -1370,6 +1439,7 @@ module system_util_dac_1_upack_0_pack_network__parameterized0
         .R(1'b0));
 endmodule
 
+(* ORIG_REF_NAME = "pack_shell" *) 
 module system_util_dac_1_upack_0_pack_shell
    (reset_data_reg_0,
     s_axis_valid_0,
@@ -2065,74 +2135,7 @@ module system_util_dac_1_upack_0_pack_shell
         .R(1'b0));
 endmodule
 
-(* CHECK_LICENSE_TYPE = "system_util_dac_1_upack_0,util_upack2,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* IP_DEFINITION_SOURCE = "package_project" *) 
-(* X_CORE_INFO = "util_upack2,Vivado 2023.2.2" *) 
-(* NotValidForBitStream *)
-module system_util_dac_1_upack_0
-   (clk,
-    reset,
-    enable_0,
-    enable_1,
-    enable_2,
-    enable_3,
-    fifo_rd_en,
-    fifo_rd_valid,
-    fifo_rd_underflow,
-    fifo_rd_data_0,
-    fifo_rd_data_1,
-    fifo_rd_data_2,
-    fifo_rd_data_3,
-    s_axis_valid,
-    s_axis_ready,
-    s_axis_data);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 s_axis_signal_clock CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s_axis_signal_clock, ASSOCIATED_BUSIF s_axis, ASSOCIATED_RESET reset, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_axi_adrv9001_0_dac_1_clk, INSERT_VIP 0" *) input clk;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 s_axis_signal_reset RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s_axis_signal_reset, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *) input reset;
-  input enable_0;
-  input enable_1;
-  input enable_2;
-  input enable_3;
-  input fifo_rd_en;
-  output fifo_rd_valid;
-  output fifo_rd_underflow;
-  output [15:0]fifo_rd_data_0;
-  output [15:0]fifo_rd_data_1;
-  output [15:0]fifo_rd_data_2;
-  output [15:0]fifo_rd_data_3;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis TVALID" *) input s_axis_valid;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis TREADY" *) output s_axis_ready;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis TDATA" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s_axis, TDATA_NUM_BYTES 8, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN system_axi_adrv9001_0_dac_1_clk, LAYERED_METADATA undef, INSERT_VIP 0" *) input [63:0]s_axis_data;
-
-  wire clk;
-  wire enable_0;
-  wire enable_1;
-  wire enable_2;
-  wire enable_3;
-  wire [15:0]fifo_rd_data_0;
-  wire [15:0]fifo_rd_data_1;
-  wire [15:0]fifo_rd_data_2;
-  wire [15:0]fifo_rd_data_3;
-  wire fifo_rd_en;
-  wire fifo_rd_underflow;
-  wire fifo_rd_valid;
-  wire reset;
-  wire [63:0]s_axis_data;
-  wire s_axis_ready;
-  wire s_axis_valid;
-
-  system_util_dac_1_upack_0_util_upack2 inst
-       (.D({enable_2,enable_1,enable_0}),
-        .Q({fifo_rd_data_3,fifo_rd_data_2,fifo_rd_data_1,fifo_rd_data_0}),
-        .clk(clk),
-        .enable_3(enable_3),
-        .fifo_rd_en(fifo_rd_en),
-        .fifo_rd_underflow(fifo_rd_underflow),
-        .fifo_rd_valid(fifo_rd_valid),
-        .reset(reset),
-        .s_axis_data(s_axis_data),
-        .s_axis_ready(s_axis_ready),
-        .s_axis_valid(s_axis_valid));
-endmodule
-
+(* ORIG_REF_NAME = "util_upack2" *) 
 module system_util_dac_1_upack_0_util_upack2
    (Q,
     s_axis_ready,
@@ -2182,6 +2185,7 @@ module system_util_dac_1_upack_0_util_upack2
         .s_axis_valid(s_axis_valid));
 endmodule
 
+(* ORIG_REF_NAME = "util_upack2_impl" *) 
 module system_util_dac_1_upack_0_util_upack2_impl
    (Q,
     s_axis_ready,

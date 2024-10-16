@@ -4,11 +4,15 @@
     "xci_name": "block_design_0_viterbi_soft_0_0",
     "cell_name": "viterbi_soft_0",
     "component_reference": "xilinx.com:module_ref:viterbi_soft:1.0",
-    "ip_revision": "1715949487",
+    "ip_revision": "1727116934",
     "gen_directory": "../../../../../../edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_viterbi_soft_0_0",
     "parameters": {
       "component_parameters": {
+        "VITERBI_TRACEBACK_DEPTH": [ { "value": "96", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "Component_Name": [ { "value": "block_design_0_viterbi_soft_0_0", "resolve_type": "user", "usage": "all" } ]
+      },
+      "model_parameters": {
+        "VITERBI_TRACEBACK_DEPTH": [ { "value": "96", "resolve_type": "generated", "format": "long", "usage": "all" } ]
       },
       "project_parameters": {
         "ARCHITECTURE": [ { "value": "zynq" } ],
@@ -25,7 +29,7 @@
       },
       "runtime_parameters": {
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],
-        "IPREVISION": [ { "value": "1715949487" } ],
+        "IPREVISION": [ { "value": "1727116934" } ],
         "MANAGED": [ { "value": "TRUE" } ],
         "OUTPUTDIR": [ { "value": "../../../../../../edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_viterbi_soft_0_0" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
