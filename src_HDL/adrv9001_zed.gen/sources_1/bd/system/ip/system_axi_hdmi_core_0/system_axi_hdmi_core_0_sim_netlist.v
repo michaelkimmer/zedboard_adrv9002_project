@@ -2,10 +2,10 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-// Date        : Mon Sep 23 20:33:27 2024
+// Date        : Mon Sep 23 20:33:26 2024
 // Host        : lab817_01 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               c:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_hdmi_core_0/system_axi_hdmi_core_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top system_axi_hdmi_core_0 -prefix
+//               system_axi_hdmi_core_0_ system_axi_hdmi_core_0_sim_netlist.v
 // Design      : system_axi_hdmi_core_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -13,188 +13,6 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "system_axi_hdmi_core_0,axi_hdmi_tx,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* IP_DEFINITION_SOURCE = "package_project" *) 
-(* X_CORE_INFO = "axi_hdmi_tx,Vivado 2023.2.2" *) 
-(* NotValidForBitStream *)
-module system_axi_hdmi_core_0
-   (reference_clk,
-    hdmi_out_clk,
-    hdmi_16_hsync,
-    hdmi_16_vsync,
-    hdmi_16_data_e,
-    hdmi_16_data,
-    vdma_clk,
-    vdma_end_of_frame,
-    vdma_valid,
-    vdma_data,
-    vdma_ready,
-    s_axi_aclk,
-    s_axi_aresetn,
-    s_axi_awvalid,
-    s_axi_awaddr,
-    s_axi_awprot,
-    s_axi_awready,
-    s_axi_wvalid,
-    s_axi_wdata,
-    s_axi_wstrb,
-    s_axi_wready,
-    s_axi_bvalid,
-    s_axi_bresp,
-    s_axi_bready,
-    s_axi_arvalid,
-    s_axi_araddr,
-    s_axi_arprot,
-    s_axi_arready,
-    s_axi_rvalid,
-    s_axi_rresp,
-    s_axi_rdata,
-    s_axi_rready);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 reference_clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reference_clk, FREQ_HZ 148484848.4848485, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_axi_hdmi_clkgen_0_clk_0, INSERT_VIP 0" *) input reference_clk;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 hdmi_out_clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME hdmi_out_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_axi_hdmi_core_0_hdmi_out_clk, INSERT_VIP 0" *) output hdmi_out_clk;
-  output hdmi_16_hsync;
-  output hdmi_16_vsync;
-  output hdmi_16_data_e;
-  output [15:0]hdmi_16_data;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 vdma_clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME vdma_clk, ASSOCIATED_BUSIF s_axis, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, INSERT_VIP 0" *) input vdma_clk;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis TLAST" *) input vdma_end_of_frame;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis TVALID" *) input vdma_valid;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis TDATA" *) input [63:0]vdma_data;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis TREADY" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s_axis, TDATA_NUM_BYTES 8, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 1, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, LAYERED_METADATA undef, INSERT_VIP 0" *) output vdma_ready;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 s_axi_aclk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s_axi_aclk, ASSOCIATED_BUSIF s_axi, ASSOCIATED_RESET s_axi_aresetn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, INSERT_VIP 0" *) input s_axi_aclk;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 s_axi_aresetn RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s_axi_aresetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input s_axi_aresetn;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi AWVALID" *) input s_axi_awvalid;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi AWADDR" *) input [15:0]s_axi_awaddr;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi AWPROT" *) input [2:0]s_axi_awprot;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi AWREADY" *) output s_axi_awready;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi WVALID" *) input s_axi_wvalid;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi WDATA" *) input [31:0]s_axi_wdata;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi WSTRB" *) input [3:0]s_axi_wstrb;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi WREADY" *) output s_axi_wready;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi BVALID" *) output s_axi_bvalid;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi BRESP" *) output [1:0]s_axi_bresp;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi BREADY" *) input s_axi_bready;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi ARVALID" *) input s_axi_arvalid;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi ARADDR" *) input [15:0]s_axi_araddr;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi ARPROT" *) input [2:0]s_axi_arprot;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi ARREADY" *) output s_axi_arready;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi RVALID" *) output s_axi_rvalid;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi RRESP" *) output [1:0]s_axi_rresp;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi RDATA" *) output [31:0]s_axi_rdata;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi RREADY" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s_axi, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 100000000, ID_WIDTH 0, ADDR_WIDTH 16, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 1, NUM_WRITE_OUTSTANDING 1, MAX_BURST_LENGTH 1, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0" *) input s_axi_rready;
-
-  wire \<const0> ;
-  wire [15:0]hdmi_16_data;
-  wire hdmi_16_data_e;
-  wire hdmi_16_hsync;
-  wire hdmi_16_vsync;
-  wire hdmi_out_clk;
-  wire reference_clk;
-  wire s_axi_aclk;
-  wire [15:0]s_axi_araddr;
-  wire s_axi_aresetn;
-  wire s_axi_arready;
-  wire s_axi_arvalid;
-  wire [15:0]s_axi_awaddr;
-  wire s_axi_awready;
-  wire s_axi_awvalid;
-  wire s_axi_bready;
-  wire s_axi_bvalid;
-  wire [31:0]s_axi_rdata;
-  wire s_axi_rready;
-  wire s_axi_rvalid;
-  wire [31:0]s_axi_wdata;
-  wire s_axi_wready;
-  wire s_axi_wvalid;
-  wire vdma_clk;
-  wire [63:0]vdma_data;
-  wire vdma_end_of_frame;
-  wire vdma_ready;
-  wire vdma_valid;
-  wire NLW_inst_hdmi_24_data_e_UNCONNECTED;
-  wire NLW_inst_hdmi_24_hsync_UNCONNECTED;
-  wire NLW_inst_hdmi_24_vsync_UNCONNECTED;
-  wire NLW_inst_hdmi_36_data_e_UNCONNECTED;
-  wire NLW_inst_hdmi_36_hsync_UNCONNECTED;
-  wire NLW_inst_hdmi_36_vsync_UNCONNECTED;
-  wire NLW_inst_vga_hsync_UNCONNECTED;
-  wire NLW_inst_vga_out_clk_UNCONNECTED;
-  wire NLW_inst_vga_vsync_UNCONNECTED;
-  wire [15:0]NLW_inst_hdmi_16_es_data_UNCONNECTED;
-  wire [23:0]NLW_inst_hdmi_24_data_UNCONNECTED;
-  wire [35:0]NLW_inst_hdmi_36_data_UNCONNECTED;
-  wire [1:0]NLW_inst_s_axi_bresp_UNCONNECTED;
-  wire [1:0]NLW_inst_s_axi_rresp_UNCONNECTED;
-  wire [7:0]NLW_inst_vga_blue_UNCONNECTED;
-  wire [7:0]NLW_inst_vga_green_UNCONNECTED;
-  wire [7:0]NLW_inst_vga_red_UNCONNECTED;
-
-  assign s_axi_bresp[1] = \<const0> ;
-  assign s_axi_bresp[0] = \<const0> ;
-  assign s_axi_rresp[1] = \<const0> ;
-  assign s_axi_rresp[0] = \<const0> ;
-  GND GND
-       (.G(\<const0> ));
-  (* CR_CB_N = "0" *) 
-  (* EMBEDDED_SYNC = "0" *) 
-  (* FPGA_TECHNOLOGY = "1" *) 
-  (* ID = "0" *) 
-  (* INTEL_5SERIES = "101" *) 
-  (* INTERFACE = "16_BIT" *) 
-  (* OUT_CLK_POLARITY = "0" *) 
-  (* XILINX_7SERIES = "1" *) 
-  (* XILINX_ULTRASCALE = "2" *) 
-  (* XILINX_ULTRASCALE_PLUS = "3" *) 
-  system_axi_hdmi_core_0_axi_hdmi_tx inst
-       (.hdmi_16_data(hdmi_16_data),
-        .hdmi_16_data_e(hdmi_16_data_e),
-        .hdmi_16_es_data(NLW_inst_hdmi_16_es_data_UNCONNECTED[15:0]),
-        .hdmi_16_hsync(hdmi_16_hsync),
-        .hdmi_16_vsync(hdmi_16_vsync),
-        .hdmi_24_data(NLW_inst_hdmi_24_data_UNCONNECTED[23:0]),
-        .hdmi_24_data_e(NLW_inst_hdmi_24_data_e_UNCONNECTED),
-        .hdmi_24_hsync(NLW_inst_hdmi_24_hsync_UNCONNECTED),
-        .hdmi_24_vsync(NLW_inst_hdmi_24_vsync_UNCONNECTED),
-        .hdmi_36_data(NLW_inst_hdmi_36_data_UNCONNECTED[35:0]),
-        .hdmi_36_data_e(NLW_inst_hdmi_36_data_e_UNCONNECTED),
-        .hdmi_36_hsync(NLW_inst_hdmi_36_hsync_UNCONNECTED),
-        .hdmi_36_vsync(NLW_inst_hdmi_36_vsync_UNCONNECTED),
-        .hdmi_out_clk(hdmi_out_clk),
-        .reference_clk(reference_clk),
-        .s_axi_aclk(s_axi_aclk),
-        .s_axi_araddr({s_axi_araddr[15:2],1'b0,1'b0}),
-        .s_axi_aresetn(s_axi_aresetn),
-        .s_axi_arprot({1'b0,1'b0,1'b0}),
-        .s_axi_arready(s_axi_arready),
-        .s_axi_arvalid(s_axi_arvalid),
-        .s_axi_awaddr({s_axi_awaddr[15:2],1'b0,1'b0}),
-        .s_axi_awprot({1'b0,1'b0,1'b0}),
-        .s_axi_awready(s_axi_awready),
-        .s_axi_awvalid(s_axi_awvalid),
-        .s_axi_bready(s_axi_bready),
-        .s_axi_bresp(NLW_inst_s_axi_bresp_UNCONNECTED[1:0]),
-        .s_axi_bvalid(s_axi_bvalid),
-        .s_axi_rdata(s_axi_rdata),
-        .s_axi_rready(s_axi_rready),
-        .s_axi_rresp(NLW_inst_s_axi_rresp_UNCONNECTED[1:0]),
-        .s_axi_rvalid(s_axi_rvalid),
-        .s_axi_wdata(s_axi_wdata),
-        .s_axi_wready(s_axi_wready),
-        .s_axi_wstrb({1'b0,1'b0,1'b0,1'b0}),
-        .s_axi_wvalid(s_axi_wvalid),
-        .vdma_clk(vdma_clk),
-        .vdma_data({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,vdma_data[55:32],1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,vdma_data[23:0]}),
-        .vdma_end_of_frame(vdma_end_of_frame),
-        .vdma_ready(vdma_ready),
-        .vdma_valid(vdma_valid),
-        .vga_blue(NLW_inst_vga_blue_UNCONNECTED[7:0]),
-        .vga_green(NLW_inst_vga_green_UNCONNECTED[7:0]),
-        .vga_hsync(NLW_inst_vga_hsync_UNCONNECTED),
-        .vga_out_clk(NLW_inst_vga_out_clk_UNCONNECTED),
-        .vga_red(NLW_inst_vga_red_UNCONNECTED[7:0]),
-        .vga_vsync(NLW_inst_vga_vsync_UNCONNECTED));
-endmodule
-
-(* ORIG_REF_NAME = "ad_csc" *) 
 module system_axi_hdmi_core_0_ad_csc
    (s_data_3_reg_0,
     hdmi_hsync_reg,
@@ -684,7 +502,6 @@ module system_axi_hdmi_core_0_ad_csc
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "ad_csc_RGB2CrYCb" *) 
 module system_axi_hdmi_core_0_ad_csc_RGB2CrYCb
    (P,
     s_data_3_reg,
@@ -1529,7 +1346,6 @@ module system_axi_hdmi_core_0_ad_csc__parameterized0_0
         .UNDERFLOW(NLW_s_data_3_reg_UNDERFLOW_UNCONNECTED));
 endmodule
 
-(* ORIG_REF_NAME = "ad_mem" *) 
 module system_axi_hdmi_core_0_ad_mem
    (S,
     m_ram_reg_0,
@@ -2001,7 +1817,6 @@ module system_axi_hdmi_core_0_ad_mem
         .O(m_ram_reg_16));
 endmodule
 
-(* ORIG_REF_NAME = "ad_rst" *) 
 module system_axi_hdmi_core_0_ad_rst
    (rst_reg_0,
     rst_reg_1,
@@ -2145,7 +1960,6 @@ module system_axi_hdmi_core_0_ad_rst__xdcDup__1
         .Q(rst_sync));
 endmodule
 
-(* ORIG_REF_NAME = "ad_ss_444to422" *) 
 module system_axi_hdmi_core_0_ad_ss_444to422
    (hdmi_clip_hs_d_reg,
     hdmi_clip_vs_d_reg,
@@ -3563,8 +3377,8 @@ endmodule
 
 (* CR_CB_N = "0" *) (* EMBEDDED_SYNC = "0" *) (* FPGA_TECHNOLOGY = "1" *) 
 (* ID = "0" *) (* INTEL_5SERIES = "101" *) (* INTERFACE = "16_BIT" *) 
-(* ORIG_REF_NAME = "axi_hdmi_tx" *) (* OUT_CLK_POLARITY = "0" *) (* XILINX_7SERIES = "1" *) 
-(* XILINX_ULTRASCALE = "2" *) (* XILINX_ULTRASCALE_PLUS = "3" *) 
+(* OUT_CLK_POLARITY = "0" *) (* XILINX_7SERIES = "1" *) (* XILINX_ULTRASCALE = "2" *) 
+(* XILINX_ULTRASCALE_PLUS = "3" *) 
 module system_axi_hdmi_core_0_axi_hdmi_tx
    (reference_clk,
     hdmi_out_clk,
@@ -4454,7 +4268,6 @@ module system_axi_hdmi_core_0_axi_hdmi_tx
         .\vdma_wdata_reg[47]_0 (vdma_wdata_s));
 endmodule
 
-(* ORIG_REF_NAME = "axi_hdmi_tx_core" *) 
 module system_axi_hdmi_core_0_axi_hdmi_tx_core
    (hdmi_16_hsync,
     hdmi_16_vsync,
@@ -9063,7 +8876,6 @@ module system_axi_hdmi_core_0_axi_hdmi_tx_core
         .\s422_data_reg[15]_0 (s422_data));
 endmodule
 
-(* ORIG_REF_NAME = "axi_hdmi_tx_vdma" *) 
 module system_axi_hdmi_core_0_axi_hdmi_tx_vdma
    (E,
     vdma_fs,
@@ -10847,7 +10659,187 @@ module system_axi_hdmi_core_0_axi_hdmi_tx_vdma
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "up_axi" *) 
+(* CHECK_LICENSE_TYPE = "system_axi_hdmi_core_0,axi_hdmi_tx,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* IP_DEFINITION_SOURCE = "package_project" *) 
+(* X_CORE_INFO = "axi_hdmi_tx,Vivado 2023.2.2" *) 
+(* NotValidForBitStream *)
+module system_axi_hdmi_core_0
+   (reference_clk,
+    hdmi_out_clk,
+    hdmi_16_hsync,
+    hdmi_16_vsync,
+    hdmi_16_data_e,
+    hdmi_16_data,
+    vdma_clk,
+    vdma_end_of_frame,
+    vdma_valid,
+    vdma_data,
+    vdma_ready,
+    s_axi_aclk,
+    s_axi_aresetn,
+    s_axi_awvalid,
+    s_axi_awaddr,
+    s_axi_awprot,
+    s_axi_awready,
+    s_axi_wvalid,
+    s_axi_wdata,
+    s_axi_wstrb,
+    s_axi_wready,
+    s_axi_bvalid,
+    s_axi_bresp,
+    s_axi_bready,
+    s_axi_arvalid,
+    s_axi_araddr,
+    s_axi_arprot,
+    s_axi_arready,
+    s_axi_rvalid,
+    s_axi_rresp,
+    s_axi_rdata,
+    s_axi_rready);
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 reference_clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reference_clk, FREQ_HZ 148484848.4848485, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_axi_hdmi_clkgen_0_clk_0, INSERT_VIP 0" *) input reference_clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 hdmi_out_clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME hdmi_out_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_axi_hdmi_core_0_hdmi_out_clk, INSERT_VIP 0" *) output hdmi_out_clk;
+  output hdmi_16_hsync;
+  output hdmi_16_vsync;
+  output hdmi_16_data_e;
+  output [15:0]hdmi_16_data;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 vdma_clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME vdma_clk, ASSOCIATED_BUSIF s_axis, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, INSERT_VIP 0" *) input vdma_clk;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis TLAST" *) input vdma_end_of_frame;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis TVALID" *) input vdma_valid;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis TDATA" *) input [63:0]vdma_data;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis TREADY" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s_axis, TDATA_NUM_BYTES 8, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 1, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, LAYERED_METADATA undef, INSERT_VIP 0" *) output vdma_ready;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 s_axi_aclk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s_axi_aclk, ASSOCIATED_BUSIF s_axi, ASSOCIATED_RESET s_axi_aresetn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, INSERT_VIP 0" *) input s_axi_aclk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 s_axi_aresetn RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s_axi_aresetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input s_axi_aresetn;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi AWVALID" *) input s_axi_awvalid;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi AWADDR" *) input [15:0]s_axi_awaddr;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi AWPROT" *) input [2:0]s_axi_awprot;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi AWREADY" *) output s_axi_awready;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi WVALID" *) input s_axi_wvalid;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi WDATA" *) input [31:0]s_axi_wdata;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi WSTRB" *) input [3:0]s_axi_wstrb;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi WREADY" *) output s_axi_wready;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi BVALID" *) output s_axi_bvalid;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi BRESP" *) output [1:0]s_axi_bresp;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi BREADY" *) input s_axi_bready;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi ARVALID" *) input s_axi_arvalid;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi ARADDR" *) input [15:0]s_axi_araddr;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi ARPROT" *) input [2:0]s_axi_arprot;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi ARREADY" *) output s_axi_arready;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi RVALID" *) output s_axi_rvalid;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi RRESP" *) output [1:0]s_axi_rresp;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi RDATA" *) output [31:0]s_axi_rdata;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi RREADY" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s_axi, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 100000000, ID_WIDTH 0, ADDR_WIDTH 16, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 1, NUM_WRITE_OUTSTANDING 1, MAX_BURST_LENGTH 1, PHASE 0.0, CLK_DOMAIN system_sys_ps7_0_FCLK_CLK0, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0" *) input s_axi_rready;
+
+  wire \<const0> ;
+  wire [15:0]hdmi_16_data;
+  wire hdmi_16_data_e;
+  wire hdmi_16_hsync;
+  wire hdmi_16_vsync;
+  wire hdmi_out_clk;
+  wire reference_clk;
+  wire s_axi_aclk;
+  wire [15:0]s_axi_araddr;
+  wire s_axi_aresetn;
+  wire s_axi_arready;
+  wire s_axi_arvalid;
+  wire [15:0]s_axi_awaddr;
+  wire s_axi_awready;
+  wire s_axi_awvalid;
+  wire s_axi_bready;
+  wire s_axi_bvalid;
+  wire [31:0]s_axi_rdata;
+  wire s_axi_rready;
+  wire s_axi_rvalid;
+  wire [31:0]s_axi_wdata;
+  wire s_axi_wready;
+  wire s_axi_wvalid;
+  wire vdma_clk;
+  wire [63:0]vdma_data;
+  wire vdma_end_of_frame;
+  wire vdma_ready;
+  wire vdma_valid;
+  wire NLW_inst_hdmi_24_data_e_UNCONNECTED;
+  wire NLW_inst_hdmi_24_hsync_UNCONNECTED;
+  wire NLW_inst_hdmi_24_vsync_UNCONNECTED;
+  wire NLW_inst_hdmi_36_data_e_UNCONNECTED;
+  wire NLW_inst_hdmi_36_hsync_UNCONNECTED;
+  wire NLW_inst_hdmi_36_vsync_UNCONNECTED;
+  wire NLW_inst_vga_hsync_UNCONNECTED;
+  wire NLW_inst_vga_out_clk_UNCONNECTED;
+  wire NLW_inst_vga_vsync_UNCONNECTED;
+  wire [15:0]NLW_inst_hdmi_16_es_data_UNCONNECTED;
+  wire [23:0]NLW_inst_hdmi_24_data_UNCONNECTED;
+  wire [35:0]NLW_inst_hdmi_36_data_UNCONNECTED;
+  wire [1:0]NLW_inst_s_axi_bresp_UNCONNECTED;
+  wire [1:0]NLW_inst_s_axi_rresp_UNCONNECTED;
+  wire [7:0]NLW_inst_vga_blue_UNCONNECTED;
+  wire [7:0]NLW_inst_vga_green_UNCONNECTED;
+  wire [7:0]NLW_inst_vga_red_UNCONNECTED;
+
+  assign s_axi_bresp[1] = \<const0> ;
+  assign s_axi_bresp[0] = \<const0> ;
+  assign s_axi_rresp[1] = \<const0> ;
+  assign s_axi_rresp[0] = \<const0> ;
+  GND GND
+       (.G(\<const0> ));
+  (* CR_CB_N = "0" *) 
+  (* EMBEDDED_SYNC = "0" *) 
+  (* FPGA_TECHNOLOGY = "1" *) 
+  (* ID = "0" *) 
+  (* INTEL_5SERIES = "101" *) 
+  (* INTERFACE = "16_BIT" *) 
+  (* OUT_CLK_POLARITY = "0" *) 
+  (* XILINX_7SERIES = "1" *) 
+  (* XILINX_ULTRASCALE = "2" *) 
+  (* XILINX_ULTRASCALE_PLUS = "3" *) 
+  system_axi_hdmi_core_0_axi_hdmi_tx inst
+       (.hdmi_16_data(hdmi_16_data),
+        .hdmi_16_data_e(hdmi_16_data_e),
+        .hdmi_16_es_data(NLW_inst_hdmi_16_es_data_UNCONNECTED[15:0]),
+        .hdmi_16_hsync(hdmi_16_hsync),
+        .hdmi_16_vsync(hdmi_16_vsync),
+        .hdmi_24_data(NLW_inst_hdmi_24_data_UNCONNECTED[23:0]),
+        .hdmi_24_data_e(NLW_inst_hdmi_24_data_e_UNCONNECTED),
+        .hdmi_24_hsync(NLW_inst_hdmi_24_hsync_UNCONNECTED),
+        .hdmi_24_vsync(NLW_inst_hdmi_24_vsync_UNCONNECTED),
+        .hdmi_36_data(NLW_inst_hdmi_36_data_UNCONNECTED[35:0]),
+        .hdmi_36_data_e(NLW_inst_hdmi_36_data_e_UNCONNECTED),
+        .hdmi_36_hsync(NLW_inst_hdmi_36_hsync_UNCONNECTED),
+        .hdmi_36_vsync(NLW_inst_hdmi_36_vsync_UNCONNECTED),
+        .hdmi_out_clk(hdmi_out_clk),
+        .reference_clk(reference_clk),
+        .s_axi_aclk(s_axi_aclk),
+        .s_axi_araddr({s_axi_araddr[15:2],1'b0,1'b0}),
+        .s_axi_aresetn(s_axi_aresetn),
+        .s_axi_arprot({1'b0,1'b0,1'b0}),
+        .s_axi_arready(s_axi_arready),
+        .s_axi_arvalid(s_axi_arvalid),
+        .s_axi_awaddr({s_axi_awaddr[15:2],1'b0,1'b0}),
+        .s_axi_awprot({1'b0,1'b0,1'b0}),
+        .s_axi_awready(s_axi_awready),
+        .s_axi_awvalid(s_axi_awvalid),
+        .s_axi_bready(s_axi_bready),
+        .s_axi_bresp(NLW_inst_s_axi_bresp_UNCONNECTED[1:0]),
+        .s_axi_bvalid(s_axi_bvalid),
+        .s_axi_rdata(s_axi_rdata),
+        .s_axi_rready(s_axi_rready),
+        .s_axi_rresp(NLW_inst_s_axi_rresp_UNCONNECTED[1:0]),
+        .s_axi_rvalid(s_axi_rvalid),
+        .s_axi_wdata(s_axi_wdata),
+        .s_axi_wready(s_axi_wready),
+        .s_axi_wstrb({1'b0,1'b0,1'b0,1'b0}),
+        .s_axi_wvalid(s_axi_wvalid),
+        .vdma_clk(vdma_clk),
+        .vdma_data({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,vdma_data[55:32],1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,vdma_data[23:0]}),
+        .vdma_end_of_frame(vdma_end_of_frame),
+        .vdma_ready(vdma_ready),
+        .vdma_valid(vdma_valid),
+        .vga_blue(NLW_inst_vga_blue_UNCONNECTED[7:0]),
+        .vga_green(NLW_inst_vga_green_UNCONNECTED[7:0]),
+        .vga_hsync(NLW_inst_vga_hsync_UNCONNECTED),
+        .vga_out_clk(NLW_inst_vga_out_clk_UNCONNECTED),
+        .vga_red(NLW_inst_vga_red_UNCONNECTED[7:0]),
+        .vga_vsync(NLW_inst_vga_vsync_UNCONNECTED));
+endmodule
+
 module system_axi_hdmi_core_0_up_axi
    (s_axi_bvalid,
     s_axi_awready,
@@ -14703,7 +14695,6 @@ module system_axi_hdmi_core_0_up_axi
         .S(p_0_in));
 endmodule
 
-(* ORIG_REF_NAME = "up_clock_mon" *) 
 module system_axi_hdmi_core_0_up_clock_mon
    (\up_d_count_reg[31]_0 ,
     reference_clk,
@@ -15970,7 +15961,6 @@ module system_axi_hdmi_core_0_up_clock_mon
         .R(\up_d_count[31]_i_1_n_0 ));
 endmodule
 
-(* ORIG_REF_NAME = "up_hdmi_tx" *) 
 module system_axi_hdmi_core_0_up_hdmi_tx
    (p_0_in,
     up_resetn,
@@ -19080,7 +19070,6 @@ module system_axi_hdmi_core_0_up_hdmi_tx
         .Q(up_wack_s));
 endmodule
 
-(* ORIG_REF_NAME = "up_xfer_cntrl" *) 
 module system_axi_hdmi_core_0_up_xfer_cntrl
    (s_axi_aresetn_0,
     \d_data_cntrl_int_reg[191]_0 ,
@@ -23803,7 +23792,6 @@ module system_axi_hdmi_core_0_up_xfer_cntrl
         .R(s_axi_aresetn_0));
 endmodule
 
-(* ORIG_REF_NAME = "up_xfer_status" *) 
 module system_axi_hdmi_core_0_up_xfer_status
    (\up_data_status_int_reg[0]_0 ,
     data7,

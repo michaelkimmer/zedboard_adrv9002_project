@@ -2,7 +2,7 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-// Date        : Tue Sep 10 14:31:47 2024
+// Date        : Wed Oct 16 15:28:26 2024
 // Host        : lab817_01 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_timing_acquisition_8_0_0/block_design_0_timing_acquisition_8_0_0_stub.v
@@ -16,11 +16,10 @@
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
 (* x_core_info = "timing_acquisition_802_11p,Vivado 2023.2.2" *)
 module block_design_0_timing_acquisition_8_0_0(RESET, CLOCK, DATA_STROBE, IDATA, QDATA, 
-  IDATA_DELAY_16, QDATA_DELAY_16, IDATA_DELAY_32, QDATA_DELAY_32, IDATA_DELAY_48, 
-  QDATA_DELAY_48, IDATA_DELAY_64, QDATA_DELAY_64, IDATA_DELAY_80, QDATA_DELAY_80, 
-  DETECTION_THRESHOLD, DETECTION_STROBE, DETECTION_SIGNAL_DETECTED, DETECTION_XCORR, 
-  CONTINUOUS_XCORR, DETECTION_STS_AUTOCORR_I, DETECTION_STS_AUTOCORR_Q)
-/* synthesis syn_black_box black_box_pad_pin="RESET,DATA_STROBE,IDATA[15:0],QDATA[15:0],IDATA_DELAY_16[15:0],QDATA_DELAY_16[15:0],IDATA_DELAY_32[15:0],QDATA_DELAY_32[15:0],IDATA_DELAY_48[15:0],QDATA_DELAY_48[15:0],IDATA_DELAY_64[15:0],QDATA_DELAY_64[15:0],IDATA_DELAY_80[15:0],QDATA_DELAY_80[15:0],DETECTION_THRESHOLD[63:0],DETECTION_STROBE,DETECTION_SIGNAL_DETECTED,DETECTION_XCORR[63:0],CONTINUOUS_XCORR[63:0],DETECTION_STS_AUTOCORR_I[35:0],DETECTION_STS_AUTOCORR_Q[35:0]" */
+  IDATA_DELAY_16, QDATA_DELAY_16, DETECTION_THRESHOLD, DETECTION_STROBE, 
+  DETECTION_SIGNAL_DETECTED, DETECTION_XCORR, CONTINUOUS_XCORR, DETECTION_STS_AUTOCORR_I, 
+  DETECTION_STS_AUTOCORR_Q)
+/* synthesis syn_black_box black_box_pad_pin="RESET,DATA_STROBE,IDATA[15:0],QDATA[15:0],IDATA_DELAY_16[15:0],QDATA_DELAY_16[15:0],DETECTION_THRESHOLD[63:0],DETECTION_STROBE,DETECTION_SIGNAL_DETECTED,DETECTION_XCORR[63:0],CONTINUOUS_XCORR[63:0],DETECTION_STS_AUTOCORR_I[35:0],DETECTION_STS_AUTOCORR_Q[35:0]" */
 /* synthesis syn_force_seq_prim="CLOCK" */;
   input RESET;
   input CLOCK /* synthesis syn_isclock = 1 */;
@@ -29,14 +28,6 @@ module block_design_0_timing_acquisition_8_0_0(RESET, CLOCK, DATA_STROBE, IDATA,
   input [15:0]QDATA;
   input [15:0]IDATA_DELAY_16;
   input [15:0]QDATA_DELAY_16;
-  input [15:0]IDATA_DELAY_32;
-  input [15:0]QDATA_DELAY_32;
-  input [15:0]IDATA_DELAY_48;
-  input [15:0]QDATA_DELAY_48;
-  input [15:0]IDATA_DELAY_64;
-  input [15:0]QDATA_DELAY_64;
-  input [15:0]IDATA_DELAY_80;
-  input [15:0]QDATA_DELAY_80;
   input [63:0]DETECTION_THRESHOLD;
   output DETECTION_STROBE;
   output DETECTION_SIGNAL_DETECTED;

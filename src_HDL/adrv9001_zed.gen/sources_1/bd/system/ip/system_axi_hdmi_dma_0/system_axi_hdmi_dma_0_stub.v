@@ -4,8 +4,8 @@
 // Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
 // Date        : Mon Sep 23 20:33:21 2024
 // Host        : lab817_01 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub
-//               c:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.gen/sources_1/bd/system/ip/system_axi_hdmi_dma_0/system_axi_hdmi_dma_0_stub.v
+// Command     : write_verilog -force -mode synth_stub -rename_top system_axi_hdmi_dma_0 -prefix
+//               system_axi_hdmi_dma_0_ system_axi_hdmi_dma_0_stub.v
 // Design      : system_axi_hdmi_dma_0
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7z020clg484-1

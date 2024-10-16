@@ -590,7 +590,7 @@
       },
       "timing_acquisition_8_0": {
         "vlnv": "xilinx.com:module_ref:timing_acquisition_802_11p:1.0",
-        "ip_revision": "1725971285",
+        "ip_revision": "1729085247",
         "xci_name": "block_design_0_timing_acquisition_8_0_0",
         "xci_path": "ip\\block_design_0_timing_acquisition_8_0_0\\block_design_0_timing_acquisition_8_0_0.xci",
         "inst_hier_path": "timing_acquisition_8_0",
@@ -637,46 +637,6 @@
             "right": "0"
           },
           "QDATA_DELAY_16": {
-            "direction": "I",
-            "left": "15",
-            "right": "0"
-          },
-          "IDATA_DELAY_32": {
-            "direction": "I",
-            "left": "15",
-            "right": "0"
-          },
-          "QDATA_DELAY_32": {
-            "direction": "I",
-            "left": "15",
-            "right": "0"
-          },
-          "IDATA_DELAY_48": {
-            "direction": "I",
-            "left": "15",
-            "right": "0"
-          },
-          "QDATA_DELAY_48": {
-            "direction": "I",
-            "left": "15",
-            "right": "0"
-          },
-          "IDATA_DELAY_64": {
-            "direction": "I",
-            "left": "15",
-            "right": "0"
-          },
-          "QDATA_DELAY_64": {
-            "direction": "I",
-            "left": "15",
-            "right": "0"
-          },
-          "IDATA_DELAY_80": {
-            "direction": "I",
-            "left": "15",
-            "right": "0"
-          },
-          "QDATA_DELAY_80": {
             "direction": "I",
             "left": "15",
             "right": "0"
@@ -2260,7 +2220,7 @@
       },
       "equalizer_time_frequ_0": {
         "vlnv": "xilinx.com:module_ref:equalizer_time_frequency:1.0",
-        "ip_revision": "1723638874",
+        "ip_revision": "1729084722",
         "xci_name": "block_design_0_equalizer_time_frequ_0_0",
         "xci_path": "ip\\block_design_0_equalizer_time_frequ_0_0\\block_design_0_equalizer_time_frequ_0_0.xci",
         "inst_hier_path": "equalizer_time_frequ_0",
@@ -2299,9 +2259,6 @@
             "right": "0"
           },
           "DATA_IN_STROBE": {
-            "direction": "I"
-          },
-          "DETECTION_STROBE": {
             "direction": "I"
           },
           "DETECTION_SIGNAL_DETECTED": {
@@ -4222,11 +4179,11 @@
           "deinterleaver_soft_0/CLOCK",
           "demapper_soft_0/CLOCK",
           "constellation_tracker_0/CLOCK",
-          "equalizer_time_frequ_0/CLOCK",
           "data_delay_0/CLOCK",
-          "timing_acquisition_8_0/CLOCK",
           "descrambler_0/CLOCK",
-          "viterbi_soft_0/CLOCK"
+          "viterbi_soft_0/CLOCK",
+          "equalizer_time_frequ_0/CLOCK",
+          "timing_acquisition_8_0/CLOCK"
         ]
       },
       "DETECTION_THRESHOLD_0_1": {
@@ -4251,11 +4208,11 @@
           "deinterleaver_soft_0/RESET",
           "demapper_soft_0/RESET",
           "constellation_tracker_0/RESET",
-          "equalizer_time_frequ_0/RESET",
           "data_delay_0/RESET",
-          "timing_acquisition_8_0/RESET",
           "descrambler_0/RESET",
-          "viterbi_soft_0/RESET"
+          "viterbi_soft_0/RESET",
+          "equalizer_time_frequ_0/RESET",
+          "timing_acquisition_8_0/RESET"
         ]
       },
       "RX_CLOCK_0_1": {
@@ -4429,30 +4386,6 @@
           "timing_acquisition_8_0/IDATA_DELAY_16"
         ]
       },
-      "data_delay_0_IDATA_OUT_DELAY_32": {
-        "ports": [
-          "data_delay_0/IDATA_OUT_DELAY_32",
-          "timing_acquisition_8_0/IDATA_DELAY_32"
-        ]
-      },
-      "data_delay_0_IDATA_OUT_DELAY_48": {
-        "ports": [
-          "data_delay_0/IDATA_OUT_DELAY_48",
-          "timing_acquisition_8_0/IDATA_DELAY_48"
-        ]
-      },
-      "data_delay_0_IDATA_OUT_DELAY_64": {
-        "ports": [
-          "data_delay_0/IDATA_OUT_DELAY_64",
-          "timing_acquisition_8_0/IDATA_DELAY_64"
-        ]
-      },
-      "data_delay_0_IDATA_OUT_DELAY_80": {
-        "ports": [
-          "data_delay_0/IDATA_OUT_DELAY_80",
-          "timing_acquisition_8_0/IDATA_DELAY_80"
-        ]
-      },
       "data_delay_0_QDATA_OUT": {
         "ports": [
           "data_delay_0/QDATA_OUT",
@@ -4466,30 +4399,6 @@
         "ports": [
           "data_delay_0/QDATA_OUT_DELAY_16",
           "timing_acquisition_8_0/QDATA_DELAY_16"
-        ]
-      },
-      "data_delay_0_QDATA_OUT_DELAY_32": {
-        "ports": [
-          "data_delay_0/QDATA_OUT_DELAY_32",
-          "timing_acquisition_8_0/QDATA_DELAY_32"
-        ]
-      },
-      "data_delay_0_QDATA_OUT_DELAY_48": {
-        "ports": [
-          "data_delay_0/QDATA_OUT_DELAY_48",
-          "timing_acquisition_8_0/QDATA_DELAY_48"
-        ]
-      },
-      "data_delay_0_QDATA_OUT_DELAY_64": {
-        "ports": [
-          "data_delay_0/QDATA_OUT_DELAY_64",
-          "timing_acquisition_8_0/QDATA_DELAY_64"
-        ]
-      },
-      "data_delay_0_QDATA_OUT_DELAY_80": {
-        "ports": [
-          "data_delay_0/QDATA_OUT_DELAY_80",
-          "timing_acquisition_8_0/QDATA_DELAY_80"
         ]
       },
       "data_interleaver_0_DATA_OUT_STROBE": {
@@ -4931,12 +4840,6 @@
           "equalizer_time_frequ_0/DETECTION_SIGNAL_DETECTED"
         ]
       },
-      "timing_acquisition_8_0_DETECTION_STROBE": {
-        "ports": [
-          "timing_acquisition_8_0/DETECTION_STROBE",
-          "equalizer_time_frequ_0/DETECTION_STROBE"
-        ]
-      },
       "timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I": {
         "ports": [
           "timing_acquisition_8_0/DETECTION_STS_AUTOCORR_I",
@@ -4952,8 +4855,8 @@
       "viterbi_hard_0_VITERBI_RX_ENDED": {
         "ports": [
           "viterbi_soft_0/VITERBI_RX_ENDED",
-          "equalizer_time_frequ_0/STOP_RX_DONE",
-          "descrambler_0/VITERBI_RX_ENDED"
+          "descrambler_0/VITERBI_RX_ENDED",
+          "equalizer_time_frequ_0/STOP_RX_DONE"
         ]
       },
       "viterbi_hard_0_VITERBI_SIGNAL_VALID": {

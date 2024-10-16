@@ -4,8 +4,8 @@
 -- Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
 -- Date        : Mon Sep 23 20:32:29 2024
 -- Host        : lab817_01 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub
---               c:/zedboard_adrv9002_project/src_HDL/adrv9001_zed.gen/sources_1/bd/system/ip/system_util_adc_2_pack_0/system_util_adc_2_pack_0_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top system_util_adc_2_pack_0 -prefix
+--               system_util_adc_2_pack_0_ system_util_adc_2_pack_0_stub.vhdl
 -- Design      : system_util_adc_2_pack_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7z020clg484-1

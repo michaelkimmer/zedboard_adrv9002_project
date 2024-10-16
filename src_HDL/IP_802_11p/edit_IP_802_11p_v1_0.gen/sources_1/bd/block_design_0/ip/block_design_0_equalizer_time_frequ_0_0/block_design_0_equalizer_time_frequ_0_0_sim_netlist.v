@@ -2,7 +2,7 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-// Date        : Tue Sep 10 14:21:47 2024
+// Date        : Wed Oct 16 15:20:34 2024
 // Host        : lab817_01 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_equalizer_time_frequ_0_0/block_design_0_equalizer_time_frequ_0_0_sim_netlist.v
@@ -22,7 +22,6 @@ module block_design_0_equalizer_time_frequ_0_0
     IDATA_IN,
     QDATA_IN,
     DATA_IN_STROBE,
-    DETECTION_STROBE,
     DETECTION_SIGNAL_DETECTED,
     DETECTION_STS_AUTOCORR_I,
     DETECTION_STS_AUTOCORR_Q,
@@ -55,7 +54,6 @@ module block_design_0_equalizer_time_frequ_0_0
   input [15:0]IDATA_IN;
   input [15:0]QDATA_IN;
   input DATA_IN_STROBE;
-  input DETECTION_STROBE;
   input DETECTION_SIGNAL_DETECTED;
   input [35:0]DETECTION_STS_AUTOCORR_I;
   input [35:0]DETECTION_STS_AUTOCORR_Q;
