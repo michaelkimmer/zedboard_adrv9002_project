@@ -44,7 +44,8 @@
       "blk_mem_gen_0": "",
       "demapper_soft_0": "",
       "deinterleaver_soft_0": "",
-      "viterbi_soft_0": ""
+      "viterbi_soft_0": "",
+      "Schmiedl_Cox_0": ""
     },
     "interface_ports": {
       "BRAM_PORTA": {
@@ -2260,7 +2261,7 @@
       },
       "equalizer_time_frequ_0": {
         "vlnv": "xilinx.com:module_ref:equalizer_time_frequency:1.0",
-        "ip_revision": "1723638874",
+        "ip_revision": "1728043887",
         "xci_name": "block_design_0_equalizer_time_frequ_0_0",
         "xci_path": "ip\\block_design_0_equalizer_time_frequ_0_0\\block_design_0_equalizer_time_frequ_0_0.xci",
         "inst_hier_path": "equalizer_time_frequ_0",
@@ -2299,9 +2300,6 @@
             "right": "0"
           },
           "DATA_IN_STROBE": {
-            "direction": "I"
-          },
-          "DETECTION_STROBE": {
             "direction": "I"
           },
           "DETECTION_SIGNAL_DETECTED": {
@@ -4189,6 +4187,79 @@
             "direction": "O"
           }
         }
+      },
+      "Schmiedl_Cox_0": {
+        "vlnv": "xilinx.com:module_ref:Schmiedl_Cox:1.0",
+        "ip_revision": "1728397945",
+        "xci_name": "block_design_0_Schmiedl_Cox_0_0",
+        "xci_path": "ip\\block_design_0_Schmiedl_Cox_0_0\\block_design_0_Schmiedl_Cox_0_0.xci",
+        "inst_hier_path": "Schmiedl_Cox_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "Schmiedl_Cox",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "RESET": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "CLOCK": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "RESET",
+                "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "block_design_0_CLOCK",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "DATA_STROBE": {
+            "direction": "I"
+          },
+          "IDATA": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "QDATA": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "IDATA_DELAY_16": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "QDATA_DELAY_16": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "DETECTION_THRESHOLD": {
+            "direction": "I",
+            "left": "63",
+            "right": "0"
+          },
+          "DETECTION_SIGNAL_DETECTED": {
+            "direction": "O"
+          },
+          "DETECTION_STS_AUTOCORR_I": {
+            "direction": "O",
+            "left": "35",
+            "right": "0"
+          },
+          "DETECTION_STS_AUTOCORR_Q": {
+            "direction": "O",
+            "left": "35",
+            "right": "0"
+          }
+        }
       }
     },
     "interface_nets": {
@@ -4222,17 +4293,19 @@
           "deinterleaver_soft_0/CLOCK",
           "demapper_soft_0/CLOCK",
           "constellation_tracker_0/CLOCK",
-          "equalizer_time_frequ_0/CLOCK",
           "data_delay_0/CLOCK",
           "timing_acquisition_8_0/CLOCK",
           "descrambler_0/CLOCK",
-          "viterbi_soft_0/CLOCK"
+          "viterbi_soft_0/CLOCK",
+          "equalizer_time_frequ_0/CLOCK",
+          "Schmiedl_Cox_0/CLOCK"
         ]
       },
       "DETECTION_THRESHOLD_0_1": {
         "ports": [
           "DETECTION_THRESHOLD",
-          "timing_acquisition_8_0/DETECTION_THRESHOLD"
+          "timing_acquisition_8_0/DETECTION_THRESHOLD",
+          "Schmiedl_Cox_0/DETECTION_THRESHOLD"
         ]
       },
       "RESET_0_1": {
@@ -4251,11 +4324,12 @@
           "deinterleaver_soft_0/RESET",
           "demapper_soft_0/RESET",
           "constellation_tracker_0/RESET",
-          "equalizer_time_frequ_0/RESET",
           "data_delay_0/RESET",
           "timing_acquisition_8_0/RESET",
           "descrambler_0/RESET",
-          "viterbi_soft_0/RESET"
+          "viterbi_soft_0/RESET",
+          "equalizer_time_frequ_0/RESET",
+          "Schmiedl_Cox_0/RESET"
         ]
       },
       "RX_CLOCK_0_1": {
@@ -4298,6 +4372,24 @@
         "ports": [
           "SELECT_AXI_REGS_MODE",
           "axi_regs_mux_0/SELECT_AXI_REGS_MODE"
+        ]
+      },
+      "Schmiedl_Cox_0_DETECTION_SIGNAL_DETECTED": {
+        "ports": [
+          "Schmiedl_Cox_0/DETECTION_SIGNAL_DETECTED",
+          "equalizer_time_frequ_0/DETECTION_SIGNAL_DETECTED"
+        ]
+      },
+      "Schmiedl_Cox_0_DETECTION_STS_AUTOCORR_I": {
+        "ports": [
+          "Schmiedl_Cox_0/DETECTION_STS_AUTOCORR_I",
+          "equalizer_time_frequ_0/DETECTION_STS_AUTOCORR_I"
+        ]
+      },
+      "Schmiedl_Cox_0_DETECTION_STS_AUTOCORR_Q": {
+        "ports": [
+          "Schmiedl_Cox_0/DETECTION_STS_AUTOCORR_Q",
+          "equalizer_time_frequ_0/DETECTION_STS_AUTOCORR_Q"
         ]
       },
       "act_power_0_POWER": {
@@ -4410,8 +4502,9 @@
           "data_delay_0/DATA_OUT_STROBE",
           "act_power_0/DATA_STROBE",
           "axi_regs_mux_0/DATA_STROBE",
+          "timing_acquisition_8_0/DATA_STROBE",
           "equalizer_time_frequ_0/DATA_IN_STROBE",
-          "timing_acquisition_8_0/DATA_STROBE"
+          "Schmiedl_Cox_0/DATA_STROBE"
         ]
       },
       "data_delay_0_IDATA_OUT": {
@@ -4419,14 +4512,16 @@
           "data_delay_0/IDATA_OUT",
           "act_power_0/IDATA",
           "axi_regs_mux_0/IDATA",
+          "timing_acquisition_8_0/IDATA",
           "equalizer_time_frequ_0/IDATA_IN",
-          "timing_acquisition_8_0/IDATA"
+          "Schmiedl_Cox_0/IDATA"
         ]
       },
       "data_delay_0_IDATA_OUT_DELAY_16": {
         "ports": [
           "data_delay_0/IDATA_OUT_DELAY_16",
-          "timing_acquisition_8_0/IDATA_DELAY_16"
+          "timing_acquisition_8_0/IDATA_DELAY_16",
+          "Schmiedl_Cox_0/IDATA_DELAY_16"
         ]
       },
       "data_delay_0_IDATA_OUT_DELAY_32": {
@@ -4458,14 +4553,16 @@
           "data_delay_0/QDATA_OUT",
           "act_power_0/QDATA",
           "axi_regs_mux_0/QDATA",
+          "timing_acquisition_8_0/QDATA",
           "equalizer_time_frequ_0/QDATA_IN",
-          "timing_acquisition_8_0/QDATA"
+          "Schmiedl_Cox_0/QDATA"
         ]
       },
       "data_delay_0_QDATA_OUT_DELAY_16": {
         "ports": [
           "data_delay_0/QDATA_OUT_DELAY_16",
-          "timing_acquisition_8_0/QDATA_DELAY_16"
+          "timing_acquisition_8_0/QDATA_DELAY_16",
+          "Schmiedl_Cox_0/QDATA_DELAY_16"
         ]
       },
       "data_delay_0_QDATA_OUT_DELAY_32": {
@@ -4925,35 +5022,11 @@
           "data_interleaver_0/QDATA_IN"
         ]
       },
-      "timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED": {
-        "ports": [
-          "timing_acquisition_8_0/DETECTION_SIGNAL_DETECTED",
-          "equalizer_time_frequ_0/DETECTION_SIGNAL_DETECTED"
-        ]
-      },
-      "timing_acquisition_8_0_DETECTION_STROBE": {
-        "ports": [
-          "timing_acquisition_8_0/DETECTION_STROBE",
-          "equalizer_time_frequ_0/DETECTION_STROBE"
-        ]
-      },
-      "timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I": {
-        "ports": [
-          "timing_acquisition_8_0/DETECTION_STS_AUTOCORR_I",
-          "equalizer_time_frequ_0/DETECTION_STS_AUTOCORR_I"
-        ]
-      },
-      "timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q": {
-        "ports": [
-          "timing_acquisition_8_0/DETECTION_STS_AUTOCORR_Q",
-          "equalizer_time_frequ_0/DETECTION_STS_AUTOCORR_Q"
-        ]
-      },
       "viterbi_hard_0_VITERBI_RX_ENDED": {
         "ports": [
           "viterbi_soft_0/VITERBI_RX_ENDED",
-          "equalizer_time_frequ_0/STOP_RX_DONE",
-          "descrambler_0/VITERBI_RX_ENDED"
+          "descrambler_0/VITERBI_RX_ENDED",
+          "equalizer_time_frequ_0/STOP_RX_DONE"
         ]
       },
       "viterbi_hard_0_VITERBI_SIGNAL_VALID": {

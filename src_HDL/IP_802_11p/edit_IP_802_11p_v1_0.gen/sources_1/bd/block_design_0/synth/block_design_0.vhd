@@ -2,7 +2,7 @@
 --Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
---Date        : Wed Oct  2 19:45:29 2024
+--Date        : Tue Oct  8 16:32:37 2024
 --Host        : lab817_01 running 64-bit major release  (build 9200)
 --Command     : generate_target block_design_0.bd
 --Design      : block_design_0
@@ -683,10 +683,10 @@ entity block_design_0 is
     RX_VALID : in STD_LOGIC;
     SELECT_AXI_REGS_MODE : in STD_LOGIC_VECTOR ( 7 downto 0 )
   );
-  attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of block_design_0 : entity is "block_design_0,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=block_design_0,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=29,numReposBlks=24,numNonXlnxBlks=0,numHierBlks=5,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=18,numPkgbdBlks=0,bdsource=USER,synth_mode=Hierarchical}";
-  attribute HW_HANDOFF : string;
-  attribute HW_HANDOFF of block_design_0 : entity is "block_design_0.hwdef";
+  attribute core_generation_info : string;
+  attribute core_generation_info of block_design_0 : entity is "block_design_0,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=block_design_0,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=30,numReposBlks=25,numNonXlnxBlks=0,numHierBlks=5,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=19,numPkgbdBlks=0,bdsource=USER,synth_mode=Hierarchical}";
+  attribute hw_handoff : string;
+  attribute hw_handoff of block_design_0 : entity is "block_design_0.hwdef";
 end block_design_0;
 
 architecture STRUCTURE of block_design_0 is
@@ -783,7 +783,6 @@ architecture STRUCTURE of block_design_0 is
     IDATA_IN : in STD_LOGIC_VECTOR ( 15 downto 0 );
     QDATA_IN : in STD_LOGIC_VECTOR ( 15 downto 0 );
     DATA_IN_STROBE : in STD_LOGIC;
-    DETECTION_STROBE : in STD_LOGIC;
     DETECTION_SIGNAL_DETECTED : in STD_LOGIC;
     DETECTION_STS_AUTOCORR_I : in STD_LOGIC_VECTOR ( 35 downto 0 );
     DETECTION_STS_AUTOCORR_Q : in STD_LOGIC_VECTOR ( 35 downto 0 );
@@ -988,6 +987,21 @@ architecture STRUCTURE of block_design_0 is
     VITERBI_RX_ENDED : out STD_LOGIC
   );
   end component block_design_0_viterbi_soft_0_0;
+  component block_design_0_Schmiedl_Cox_0_0 is
+  port (
+    RESET : in STD_LOGIC;
+    CLOCK : in STD_LOGIC;
+    DATA_STROBE : in STD_LOGIC;
+    IDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    QDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    IDATA_DELAY_16 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    QDATA_DELAY_16 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    DETECTION_THRESHOLD : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    DETECTION_SIGNAL_DETECTED : out STD_LOGIC;
+    DETECTION_STS_AUTOCORR_I : out STD_LOGIC_VECTOR ( 35 downto 0 );
+    DETECTION_STS_AUTOCORR_Q : out STD_LOGIC_VECTOR ( 35 downto 0 )
+  );
+  end component block_design_0_Schmiedl_Cox_0_0;
   signal BRAM_PORTA_0_1_ADDR : STD_LOGIC_VECTOR ( 11 downto 0 );
   signal BRAM_PORTA_0_1_CLK : STD_LOGIC;
   signal BRAM_PORTA_0_1_DIN : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -1007,6 +1021,9 @@ architecture STRUCTURE of block_design_0 is
   signal RX_RESET_0_1 : STD_LOGIC;
   signal RX_VALID_0_1 : STD_LOGIC;
   signal SELECT_AXI_REGS_MODE_0_1 : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal Schmiedl_Cox_0_DETECTION_SIGNAL_DETECTED : STD_LOGIC;
+  signal Schmiedl_Cox_0_DETECTION_STS_AUTOCORR_I : STD_LOGIC_VECTOR ( 35 downto 0 );
+  signal Schmiedl_Cox_0_DETECTION_STS_AUTOCORR_Q : STD_LOGIC_VECTOR ( 35 downto 0 );
   signal act_power_0_POWER : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal axi_regs_mux_0_FPGA_REG_WRITE_DATA : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal axi_regs_mux_0_FPGA_REG_WRITE_STROBE : STD_LOGIC;
@@ -1108,10 +1125,6 @@ architecture STRUCTURE of block_design_0 is
   signal rx_clock_domain_cros_0_DATA_STROBE : STD_LOGIC;
   signal rx_clock_domain_cros_0_IDATA : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal rx_clock_domain_cros_0_QDATA : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED : STD_LOGIC;
-  signal timing_acquisition_8_0_DETECTION_STROBE : STD_LOGIC;
-  signal timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I : STD_LOGIC_VECTOR ( 35 downto 0 );
-  signal timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q : STD_LOGIC_VECTOR ( 35 downto 0 );
   signal viterbi_hard_0_VITERBI_RX_ENDED : STD_LOGIC;
   signal viterbi_hard_0_VITERBI_SIGNAL_VALID : STD_LOGIC;
   signal viterbi_soft_0_VITERBI_DECODED_OUTPUT : STD_LOGIC;
@@ -1122,29 +1135,33 @@ architecture STRUCTURE of block_design_0 is
   signal NLW_hier_fft_ofdm_event_frame_started_UNCONNECTED : STD_LOGIC;
   signal NLW_hier_fft_ofdm_event_tlast_missing_UNCONNECTED : STD_LOGIC;
   signal NLW_hier_fft_ofdm_event_tlast_unexpected_UNCONNECTED : STD_LOGIC;
+  signal NLW_timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED_UNCONNECTED : STD_LOGIC;
+  signal NLW_timing_acquisition_8_0_DETECTION_STROBE_UNCONNECTED : STD_LOGIC;
   signal NLW_timing_acquisition_8_0_CONTINUOUS_XCORR_UNCONNECTED : STD_LOGIC_VECTOR ( 63 downto 0 );
+  signal NLW_timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I_UNCONNECTED : STD_LOGIC_VECTOR ( 35 downto 0 );
+  signal NLW_timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q_UNCONNECTED : STD_LOGIC_VECTOR ( 35 downto 0 );
   signal NLW_timing_acquisition_8_0_DETECTION_XCORR_UNCONNECTED : STD_LOGIC_VECTOR ( 63 downto 0 );
-  attribute X_INTERFACE_INFO : string;
-  attribute X_INTERFACE_INFO of BRAM_PORTA_clk : signal is "xilinx.com:interface:bram:1.0 BRAM_PORTA CLK";
-  attribute X_INTERFACE_INFO of BRAM_PORTA_en : signal is "xilinx.com:interface:bram:1.0 BRAM_PORTA EN";
-  attribute X_INTERFACE_INFO of BRAM_PORTB_clk : signal is "xilinx.com:interface:bram:1.0 BRAM_PORTB CLK";
-  attribute X_INTERFACE_INFO of BRAM_PORTB_en : signal is "xilinx.com:interface:bram:1.0 BRAM_PORTB EN";
-  attribute X_INTERFACE_INFO of CLOCK : signal is "xilinx.com:signal:clock:1.0 CLK.CLOCK CLK";
-  attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of CLOCK : signal is "XIL_INTERFACENAME CLK.CLOCK, ASSOCIATED_RESET RESET, CLK_DOMAIN block_design_0_CLOCK, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0";
-  attribute X_INTERFACE_INFO of RESET : signal is "xilinx.com:signal:reset:1.0 RST.RESET RST";
-  attribute X_INTERFACE_PARAMETER of RESET : signal is "XIL_INTERFACENAME RST.RESET, INSERT_VIP 0, POLARITY ACTIVE_LOW";
-  attribute X_INTERFACE_INFO of RX_CLOCK : signal is "xilinx.com:signal:clock:1.0 CLK.RX_CLOCK CLK";
-  attribute X_INTERFACE_PARAMETER of RX_CLOCK : signal is "XIL_INTERFACENAME CLK.RX_CLOCK, ASSOCIATED_RESET RX_RESET, CLK_DOMAIN block_design_0_RX_CLOCK, FREQ_HZ 10000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0";
-  attribute X_INTERFACE_INFO of RX_RESET : signal is "xilinx.com:signal:reset:1.0 RST.RX_RESET RST";
-  attribute X_INTERFACE_PARAMETER of RX_RESET : signal is "XIL_INTERFACENAME RST.RX_RESET, INSERT_VIP 0, POLARITY ACTIVE_LOW";
-  attribute X_INTERFACE_INFO of BRAM_PORTA_addr : signal is "xilinx.com:interface:bram:1.0 BRAM_PORTA ADDR";
-  attribute X_INTERFACE_PARAMETER of BRAM_PORTA_addr : signal is "XIL_INTERFACENAME BRAM_PORTA, MASTER_TYPE OTHER, MEM_ECC NONE, MEM_SIZE 8192, MEM_WIDTH 32, READ_LATENCY 1";
-  attribute X_INTERFACE_INFO of BRAM_PORTA_din : signal is "xilinx.com:interface:bram:1.0 BRAM_PORTA DIN";
-  attribute X_INTERFACE_INFO of BRAM_PORTA_we : signal is "xilinx.com:interface:bram:1.0 BRAM_PORTA WE";
-  attribute X_INTERFACE_INFO of BRAM_PORTB_addr : signal is "xilinx.com:interface:bram:1.0 BRAM_PORTB ADDR";
-  attribute X_INTERFACE_PARAMETER of BRAM_PORTB_addr : signal is "XIL_INTERFACENAME BRAM_PORTB, MASTER_TYPE OTHER, MEM_ECC NONE, MEM_SIZE 8192, MEM_WIDTH 32, READ_LATENCY 1";
-  attribute X_INTERFACE_INFO of BRAM_PORTB_dout : signal is "xilinx.com:interface:bram:1.0 BRAM_PORTB DOUT";
+  attribute x_interface_info : string;
+  attribute x_interface_info of BRAM_PORTA_clk : signal is "xilinx.com:interface:bram:1.0 BRAM_PORTA CLK";
+  attribute x_interface_info of BRAM_PORTA_en : signal is "xilinx.com:interface:bram:1.0 BRAM_PORTA EN";
+  attribute x_interface_info of BRAM_PORTB_clk : signal is "xilinx.com:interface:bram:1.0 BRAM_PORTB CLK";
+  attribute x_interface_info of BRAM_PORTB_en : signal is "xilinx.com:interface:bram:1.0 BRAM_PORTB EN";
+  attribute x_interface_info of CLOCK : signal is "xilinx.com:signal:clock:1.0 CLK.CLOCK CLK";
+  attribute x_interface_parameter : string;
+  attribute x_interface_parameter of CLOCK : signal is "XIL_INTERFACENAME CLK.CLOCK, ASSOCIATED_RESET RESET, CLK_DOMAIN block_design_0_CLOCK, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0";
+  attribute x_interface_info of RESET : signal is "xilinx.com:signal:reset:1.0 RST.RESET RST";
+  attribute x_interface_parameter of RESET : signal is "XIL_INTERFACENAME RST.RESET, INSERT_VIP 0, POLARITY ACTIVE_LOW";
+  attribute x_interface_info of RX_CLOCK : signal is "xilinx.com:signal:clock:1.0 CLK.RX_CLOCK CLK";
+  attribute x_interface_parameter of RX_CLOCK : signal is "XIL_INTERFACENAME CLK.RX_CLOCK, ASSOCIATED_RESET RX_RESET, CLK_DOMAIN block_design_0_RX_CLOCK, FREQ_HZ 10000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0";
+  attribute x_interface_info of RX_RESET : signal is "xilinx.com:signal:reset:1.0 RST.RX_RESET RST";
+  attribute x_interface_parameter of RX_RESET : signal is "XIL_INTERFACENAME RST.RX_RESET, INSERT_VIP 0, POLARITY ACTIVE_LOW";
+  attribute x_interface_info of BRAM_PORTA_addr : signal is "xilinx.com:interface:bram:1.0 BRAM_PORTA ADDR";
+  attribute x_interface_parameter of BRAM_PORTA_addr : signal is "XIL_INTERFACENAME BRAM_PORTA, MASTER_TYPE OTHER, MEM_ECC NONE, MEM_SIZE 8192, MEM_WIDTH 32, READ_LATENCY 1";
+  attribute x_interface_info of BRAM_PORTA_din : signal is "xilinx.com:interface:bram:1.0 BRAM_PORTA DIN";
+  attribute x_interface_info of BRAM_PORTA_we : signal is "xilinx.com:interface:bram:1.0 BRAM_PORTA WE";
+  attribute x_interface_info of BRAM_PORTB_addr : signal is "xilinx.com:interface:bram:1.0 BRAM_PORTB ADDR";
+  attribute x_interface_parameter of BRAM_PORTB_addr : signal is "XIL_INTERFACENAME BRAM_PORTB, MASTER_TYPE OTHER, MEM_ECC NONE, MEM_SIZE 8192, MEM_WIDTH 32, READ_LATENCY 1";
+  attribute x_interface_info of BRAM_PORTB_dout : signal is "xilinx.com:interface:bram:1.0 BRAM_PORTB DOUT";
 begin
   BRAM_PORTA_0_1_ADDR(11 downto 0) <= BRAM_PORTA_addr(11 downto 0);
   BRAM_PORTA_0_1_CLK <= BRAM_PORTA_clk;
@@ -1169,6 +1186,20 @@ begin
   RX_RESET_0_1 <= RX_RESET;
   RX_VALID_0_1 <= RX_VALID;
   SELECT_AXI_REGS_MODE_0_1(7 downto 0) <= SELECT_AXI_REGS_MODE(7 downto 0);
+Schmiedl_Cox_0: component block_design_0_Schmiedl_Cox_0_0
+     port map (
+      CLOCK => CLOCK_0_1,
+      DATA_STROBE => data_delay_0_DATA_OUT_STROBE,
+      DETECTION_SIGNAL_DETECTED => Schmiedl_Cox_0_DETECTION_SIGNAL_DETECTED,
+      DETECTION_STS_AUTOCORR_I(35 downto 0) => Schmiedl_Cox_0_DETECTION_STS_AUTOCORR_I(35 downto 0),
+      DETECTION_STS_AUTOCORR_Q(35 downto 0) => Schmiedl_Cox_0_DETECTION_STS_AUTOCORR_Q(35 downto 0),
+      DETECTION_THRESHOLD(63 downto 0) => DETECTION_THRESHOLD_0_1(63 downto 0),
+      IDATA(15 downto 0) => data_delay_0_IDATA_OUT(15 downto 0),
+      IDATA_DELAY_16(15 downto 0) => data_delay_0_IDATA_OUT_DELAY_16(15 downto 0),
+      QDATA(15 downto 0) => data_delay_0_QDATA_OUT(15 downto 0),
+      QDATA_DELAY_16(15 downto 0) => data_delay_0_QDATA_OUT_DELAY_16(15 downto 0),
+      RESET => RESET_0_1
+    );
 act_power_0: component block_design_0_act_power_0_0
      port map (
       CLOCK => CLOCK_0_1,
@@ -1354,10 +1385,9 @@ equalizer_time_frequ_0: component block_design_0_equalizer_time_frequ_0_0
       ATAN_PHASE_OUT_STROBE => hier_atan_ATAN_PHASE_OUT_STROBE,
       CLOCK => CLOCK_0_1,
       DATA_IN_STROBE => data_delay_0_DATA_OUT_STROBE,
-      DETECTION_SIGNAL_DETECTED => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
-      DETECTION_STROBE => timing_acquisition_8_0_DETECTION_STROBE,
-      DETECTION_STS_AUTOCORR_I(35 downto 0) => timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I(35 downto 0),
-      DETECTION_STS_AUTOCORR_Q(35 downto 0) => timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q(35 downto 0),
+      DETECTION_SIGNAL_DETECTED => Schmiedl_Cox_0_DETECTION_SIGNAL_DETECTED,
+      DETECTION_STS_AUTOCORR_I(35 downto 0) => Schmiedl_Cox_0_DETECTION_STS_AUTOCORR_I(35 downto 0),
+      DETECTION_STS_AUTOCORR_Q(35 downto 0) => Schmiedl_Cox_0_DETECTION_STS_AUTOCORR_Q(35 downto 0),
       FFT_DATA_IN_FIRST_SYMBOL_MARKER => equalizer_time_frequ_0_FFT_DATA_IN_FIRST_SYMBOL_MARKER,
       FFT_DATA_IN_START => receiver_802_11p_0_FFT_DATA_IN_START,
       FFT_DATA_IN_STROBE => receiver_802_11p_0_FFT_DATA_IN_STROBE,
@@ -1483,10 +1513,10 @@ timing_acquisition_8_0: component block_design_0_timing_acquisition_8_0_0
       CLOCK => CLOCK_0_1,
       CONTINUOUS_XCORR(63 downto 0) => NLW_timing_acquisition_8_0_CONTINUOUS_XCORR_UNCONNECTED(63 downto 0),
       DATA_STROBE => data_delay_0_DATA_OUT_STROBE,
-      DETECTION_SIGNAL_DETECTED => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
-      DETECTION_STROBE => timing_acquisition_8_0_DETECTION_STROBE,
-      DETECTION_STS_AUTOCORR_I(35 downto 0) => timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I(35 downto 0),
-      DETECTION_STS_AUTOCORR_Q(35 downto 0) => timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q(35 downto 0),
+      DETECTION_SIGNAL_DETECTED => NLW_timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED_UNCONNECTED,
+      DETECTION_STROBE => NLW_timing_acquisition_8_0_DETECTION_STROBE_UNCONNECTED,
+      DETECTION_STS_AUTOCORR_I(35 downto 0) => NLW_timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I_UNCONNECTED(35 downto 0),
+      DETECTION_STS_AUTOCORR_Q(35 downto 0) => NLW_timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q_UNCONNECTED(35 downto 0),
       DETECTION_THRESHOLD(63 downto 0) => DETECTION_THRESHOLD_0_1(63 downto 0),
       DETECTION_XCORR(63 downto 0) => NLW_timing_acquisition_8_0_DETECTION_XCORR_UNCONNECTED(63 downto 0),
       IDATA(15 downto 0) => data_delay_0_IDATA_OUT(15 downto 0),

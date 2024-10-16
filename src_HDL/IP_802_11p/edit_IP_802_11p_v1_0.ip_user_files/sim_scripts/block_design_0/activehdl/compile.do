@@ -134,6 +134,7 @@ vcom -work xil_defaultlib -93  \
 "../../../bd/block_design_0/ip/block_design_0_demapper_soft_0_0/sim/block_design_0_demapper_soft_0_0.vhd" \
 "../../../bd/block_design_0/ip/block_design_0_deinterleaver_soft_0_0/sim/block_design_0_deinterleaver_soft_0_0.vhd" \
 "../../../bd/block_design_0/ip/block_design_0_viterbi_soft_0_0/sim/block_design_0_viterbi_soft_0_0.vhd" \
+"../../../bd/block_design_0/ip/block_design_0_Schmiedl_Cox_0_0/sim/block_design_0_Schmiedl_Cox_0_0.vhd" \
 "../../../bd/block_design_0/sim/block_design_0.vhd" \
 
 vlog -work xil_defaultlib \

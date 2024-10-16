@@ -37,7 +37,7 @@ DEFAULT_TX_GAIN = -10
 READ_UPDATE_INTERVAL_MS = 500
 
 #default detection threshold after 802.11p block reset
-DEFAULT_DETECTION_THRESHOLD = 100e3
+DEFAULT_DETECTION_THRESHOLD = 2563  # eg: 100e3 for cross-correlation detection, 2563 for auto-correlation detection (its 3/10 for Schmiedl-Cox)
 
 # IIO parameters
 IIO_uri="ip:192.168.1.12" # uri="ip:192.168.1.12", uri="ip:analog.local"
