@@ -332,7 +332,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>260ba639</spirit:value>
+            <spirit:value>fb40d3df</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -360,7 +360,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>6e2547cb</spirit:value>
+            <spirit:value>b8ef22b9</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1100,14 +1100,14 @@
         <spirit:userFileType>CHECKSUM_4e9ae043</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>hdl/IP_802_11p_v1_0.vhd</spirit:name>
-        <spirit:fileType>vhdlSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_aba2d5c3</spirit:userFileType>
-      </spirit:file>
-      <spirit:file>
         <spirit:name>../edit_IP_802_11p_v1_0.srcs/sources_802_11p/viterbi_core.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>CHECKSUM_c332f637</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>hdl/IP_802_11p_v1_0.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:userFileType>CHECKSUM_aba2d5c3</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
@@ -1343,11 +1343,11 @@
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>hdl/IP_802_11p_v1_0.vhd</spirit:name>
+        <spirit:name>../edit_IP_802_11p_v1_0.srcs/sources_802_11p/viterbi_core.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../edit_IP_802_11p_v1_0.srcs/sources_802_11p/viterbi_core.vhd</spirit:name>
+        <spirit:name>hdl/IP_802_11p_v1_0.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
     </spirit:fileSet>
@@ -1518,14 +1518,14 @@
       <xilinx:xpmLibraries>
         <xilinx:xpmLibrary>XPM_MEMORY</xilinx:xpmLibrary>
       </xilinx:xpmLibraries>
-      <xilinx:coreRevision>74</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2024-09-23T18:44:42Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>76</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2024-10-02T17:47:28Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2023.2.2</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="52e76a8a"/>
       <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="233ead04"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="1b2f9725"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="a0e98c1f"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="b1c33d18"/>
       <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="cb9cd76d"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="98a5b890"/>

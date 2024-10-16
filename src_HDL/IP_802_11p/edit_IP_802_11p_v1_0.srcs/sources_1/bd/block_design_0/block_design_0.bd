@@ -4092,7 +4092,7 @@
       },
       "viterbi_soft_0": {
         "vlnv": "xilinx.com:module_ref:viterbi_soft:1.0",
-        "ip_revision": "1727116934",
+        "ip_revision": "1727891116",
         "xci_name": "block_design_0_viterbi_soft_0_0",
         "xci_path": "ip\\block_design_0_viterbi_soft_0_0\\block_design_0_viterbi_soft_0_0.xci",
         "inst_hier_path": "viterbi_soft_0",

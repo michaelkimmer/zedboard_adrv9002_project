@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Sep 23 20:42:29 2024" VIVADOVERSION="2023.2.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Oct  2 19:45:30 2024" VIVADOVERSION="2023.2.2">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z020" NAME="block_design_0" PACKAGE="clg484" SPEEDGRADE="-1"/>
 
@@ -3273,7 +3273,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1727116934" FULLNAME="/viterbi_soft_0" HWVERSION="1.0" INSTANCE="viterbi_soft_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="viterbi_soft" VLNV="xilinx.com:module_ref:viterbi_soft:1.0">
+    <MODULE COREREVISION="1727891116" FULLNAME="/viterbi_soft_0" HWVERSION="1.0" INSTANCE="viterbi_soft_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="viterbi_soft" VLNV="xilinx.com:module_ref:viterbi_soft:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="VITERBI_TRACEBACK_DEPTH" VALUE="96"/>
