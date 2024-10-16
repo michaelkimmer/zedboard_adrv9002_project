@@ -2,7 +2,7 @@
 //Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-//Date        : Wed Oct 16 15:32:20 2024
+//Date        : Wed Oct 16 19:17:54 2024
 //Host        : lab817_01 running 64-bit major release  (build 9200)
 //Command     : generate_target system.bd
 //Design      : system
@@ -3326,8 +3326,10 @@ module system
         .LEDS(IP_802_11p_0_LEDS),
         .RX_CLOCK(axi_adrv9001_adc_1_clk),
         .RX_ENABLE(axi_adrv9001_adc_1_enable_i0),
-        .RX_IDATA(axi_adrv9001_adc_1_data_i0),
-        .RX_QDATA(axi_adrv9001_adc_1_data_q0),
+        .RX_IDATA_0(axi_adrv9001_adc_1_data_i0),
+        .RX_IDATA_1(axi_adrv9001_adc_1_data_i1),
+        .RX_QDATA_0(axi_adrv9001_adc_1_data_q0),
+        .RX_QDATA_1(axi_adrv9001_adc_1_data_q1),
         .RX_RESET(axi_adrv9001_adc_1_rst),
         .RX_VALID(axi_adrv9001_adc_1_valid_i0),
         .SW(SW_1),

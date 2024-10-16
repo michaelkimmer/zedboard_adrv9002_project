@@ -37,10 +37,11 @@ DEFAULT_TX_GAIN = -10
 READ_UPDATE_INTERVAL_MS = 500
 
 #default detection threshold after 802.11p block reset
-DEFAULT_DETECTION_THRESHOLD = 100e3
+DEFAULT_DETECTION_THRESHOLD = 1.2e6
 
 # IIO parameters
 IIO_uri="ip:192.168.1.12" # uri="ip:192.168.1.12", uri="ip:analog.local"
+DUAL_CHANNEL = True # Selects profile, stream, initializations
 
 
 
@@ -499,8 +500,12 @@ class Settings_Tab(ttk.Frame):
         
         # Load Stream and Profile
         if btn_idx == 0:
-            stream = './data/stream_1.bin'
-            profile = './data/profile_1.json'
+            if DUAL_CHANNEL:
+                stream = './data/stream_2.bin'
+                profile = './data/profile_2.json'
+            else:
+                stream = './data/stream_1.bin'
+                profile = './data/profile_1.json'
             try:
                 # Check connection + (if not -- try to connect first) 
                 if root.iio_context is None:
@@ -512,10 +517,16 @@ class Settings_Tab(ttk.Frame):
                 # Turn off RX and TX
                 root.iio_context.rx_ensm_mode_chan0 = "calibrated"
                 root.iio_context.tx_ensm_mode_chan0 = "calibrated"
+                if DUAL_CHANNEL: 
+                    root.iio_context.rx_ensm_mode_chan1 = "calibrated"
+                    root.iio_context.tx_ensm_mode_chan1 = "calibrated"
 
-                # Set default carrier frequency
+                # Set default carrier frequency 
                 root.iio_context._set_iio_attr("altvoltage0", "RX1_LO_frequency", True, str(round(DEFAULT_CARRIER_FREQ)))
                 root.iio_context._set_iio_attr("altvoltage2", "TX1_LO_frequency", True, str(round(DEFAULT_CARRIER_FREQ)))
+                if DUAL_CHANNEL: #Note: the frequency doesnt change without this! (second channel shares the oscilators RX1+RX2, TX1+TX2)
+                    root.iio_context._set_iio_attr("altvoltage1", "RX2_LO_frequency", True, str(round(DEFAULT_CARRIER_FREQ)))
+                    root.iio_context._set_iio_attr("altvoltage3", "TX2_LO_frequency", True, str(round(DEFAULT_CARRIER_FREQ)))
 
                 self.input_fields_matrix.value_labels[0].config(text = f"{DEFAULT_CARRIER_FREQ/1e6} MHz")
                 self.input_fields_matrix.value_labels[1].config(text = f"{DEFAULT_CARRIER_FREQ/1e6} MHz")
@@ -523,6 +534,9 @@ class Settings_Tab(ttk.Frame):
                 # Set default RX and TX gain
                 root.iio_context.gain_control_mode_chan0 = "automatic" # AGC On
                 root.iio_context.tx_hardwaregain_chan0 = DEFAULT_TX_GAIN
+                if DUAL_CHANNEL: #TODO: Independent control !!!
+                    root.iio_context.gain_control_mode_chan1 = "automatic" # AGC On
+                    root.iio_context.tx_hardwaregain_chan1 = DEFAULT_TX_GAIN                  
 
                 self.input_fields_matrix.value_labels[2].config(text = f"AGC")
                 self.input_fields_matrix.value_labels[3].config(text = f"{DEFAULT_TX_GAIN} dB")
@@ -566,6 +580,8 @@ class Settings_Tab(ttk.Frame):
         elif btn_idx == 2:
             try:
                 root.iio_context.gain_control_mode_chan0 = "automatic" # AGC On
+                if DUAL_CHANNEL: #TODO: Independent control !!!
+                    root.iio_context.gain_control_mode_chan1 = "automatic" # AGC On
             except:
                 self.log_write_line("RX AGC On: Failed !")
             else:  
@@ -591,15 +607,20 @@ class Settings_Tab(ttk.Frame):
             if idx == 0:
                 if value == "RX calibrated":
                     self.root.iio_context.rx_ensm_mode_chan0 = "calibrated"
+                    if DUAL_CHANNEL: #TODO: Independent control !!!
+                        self.root.iio_context.rx_ensm_mode_chan1 = "calibrated"
 
                 elif value == "RX primed":
                     self.root.iio_context.rx_ensm_mode_chan0 = "primed"
+                    if DUAL_CHANNEL: #TODO: Independent control !!!
+                        self.root.iio_context.rx_ensm_mode_chan1 = "primed"
 
                 elif value == "RX rf_enabled":
                     self.root.iio_context.rx_ensm_mode_chan0 = "rf_enabled"
+                    if DUAL_CHANNEL: #TODO: Independent control !!!
+                        self.root.iio_context.rx_ensm_mode_chan1 = "rf_enabled"     
 
-
-            # Change TX state
+            # Change TX state -- Note: only TX1 (TX2 stays calibrated)
             elif idx == 1:
                 if value == "TX calibrated":
                     self.root.iio_context.tx_ensm_mode_chan0 = "calibrated"
@@ -661,6 +682,9 @@ class Settings_Tab(ttk.Frame):
             try:
                 root.iio_context.gain_control_mode_chan0 = "spi" # AGC Off
                 root.iio_context.rx_hardwaregain_chan0 = value
+                if DUAL_CHANNEL: #TODO: Independent control !!!
+                    root.iio_context.gain_control_mode_chan1 = "spi" # AGC Off
+                    root.iio_context.rx_hardwaregain_chan1 = value
             except:
                 self.log_write_line("Change RX Gain: Failed !")
             else:
@@ -673,9 +697,11 @@ class Settings_Tab(ttk.Frame):
         elif idx == 3:
             value_tx_gain = value #dB
 
-            # Change TX Attenuation 
+            # Change TX Attenuation
             try:
                 root.iio_context.tx_hardwaregain_chan0 = value_tx_gain
+                if DUAL_CHANNEL: #TODO: Independent control !!!
+                    root.iio_context.tx_hardwaregain_chan1 = value_tx_gain
             except:
                 self.log_write_line("Change TX Attenuation: Failed !")
             else:
@@ -966,8 +992,12 @@ class Reception_Tab(ttk.Frame):
         input_fields.append(input_field)
     
         # Read button
-        connect_button = tk.Button(self, text="Read IIO", command=lambda: self.read_iio_button_clicked(root))
-        connect_button.grid(row=self.act_row, column=2, padx=5, pady=5, sticky="WE") 
+        connect_button_1 = tk.Button(self, text="Read IIO RX1", command=lambda: self.read_iio_button_clicked(root, idx=0))
+        connect_button_1.grid(row=self.act_row, column=2, padx=5, pady=5, sticky="WE") 
+
+        if DUAL_CHANNEL:
+            connect_button_2 = tk.Button(self, text="Read IIO RX2", command=lambda: self.read_iio_button_clicked(root, idx=1))
+            connect_button_2.grid(row=self.act_row, column=3, padx=5, pady=5, sticky="WE")     
 
 
         self.act_row += 1
@@ -1100,7 +1130,7 @@ class Reception_Tab(ttk.Frame):
 
 
     # Read new data from IIO Rx
-    def read_iio_button_clicked(self, root):
+    def read_iio_button_clicked(self, root, idx):
         #confirm the entries (the last changed can be not refreshed)
         self.iio_entries[0]._add_placeholder(None)
 
@@ -1120,14 +1150,24 @@ class Reception_Tab(ttk.Frame):
 
         # READ IIO rx
         try:
-            fs = int(root.iio_context.rx0_sample_rate)
-            if fs == 20000000:
-                N_samples = 2*N_data # rx fs==20e6 --> leave every second sample
-            else:
-                N_samples = N_data
-            root.iio_context.rx_destroy_buffer()
-            root.iio_context.rx_buffer_size = N_samples
-            x = root.iio_context.rx()
+            if idx == 0: # channel 0
+                fs = int(root.iio_context.rx0_sample_rate)
+                if fs == 20000000:
+                    N_samples = 2*N_data # rx fs==20e6 --> leave every second sample
+                else:
+                    N_samples = N_data
+                root.iio_context.rx_destroy_buffer()
+                root.iio_context.rx_buffer_size = N_samples
+                x = root.iio_context.rx()
+            else: # channel 0
+                fs = int(root.iio_context.rx1_sample_rate)
+                if fs == 20000000:
+                    N_samples = 2*N_data # rx fs==20e6 --> leave every second sample
+                else:
+                    N_samples = N_data
+                root.iio_context.rx2_destroy_buffer()
+                root.iio_context.rx2_buffer_size = N_samples
+                x = root.iio_context.rx2()
         except:
             self.log_write_line(f"Reading IIO RX samples Error !")
             return

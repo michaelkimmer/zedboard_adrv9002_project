@@ -22,8 +22,10 @@ entity IP_802_11p_v1_0_S00_AXI is
 		--  ADRV9002 signals
 		RX_CLOCK : in STD_LOGIC;
 		RX_ENABLE : in STD_LOGIC;
-		RX_IDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
-		RX_QDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
+		RX_IDATA_0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+		RX_QDATA_0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+		RX_IDATA_1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+		RX_QDATA_1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
 		RX_RESET : in STD_LOGIC;
 		RX_VALID : in STD_LOGIC;
 		-- ZedBoard Switches + LEDs
@@ -163,8 +165,10 @@ architecture arch_imp of IP_802_11p_v1_0_S00_AXI is
         RESET : in STD_LOGIC;
         RX_CLOCK : in STD_LOGIC;
         RX_ENABLE : in STD_LOGIC;
-        RX_IDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
-        RX_QDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
+        RX_IDATA_0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+        RX_QDATA_0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+        RX_IDATA_1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+        RX_QDATA_1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
         RX_RESET : in STD_LOGIC;
         RX_VALID : in STD_LOGIC;
 		FPGA_REG_WRITE_STROBE : out STD_LOGIC;
@@ -488,8 +492,10 @@ begin
 		RX_RESET => RX_RESET,
 		RX_ENABLE => RX_ENABLE,
 		RX_VALID => RX_VALID,
-        RX_IDATA => RX_IDATA,
-        RX_QDATA => RX_QDATA,
+        RX_IDATA_0 => RX_IDATA_0,
+        RX_QDATA_0 => RX_QDATA_0,
+        RX_IDATA_1 => RX_IDATA_1,
+        RX_QDATA_1 => RX_QDATA_1,
 
 		POWER => LEDS, -- Connect POWER to LEDS here
 

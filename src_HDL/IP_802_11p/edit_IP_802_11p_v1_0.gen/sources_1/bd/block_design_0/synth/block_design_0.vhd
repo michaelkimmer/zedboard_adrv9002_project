@@ -2,7 +2,7 @@
 --Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
---Date        : Wed Oct 16 15:27:34 2024
+--Date        : Wed Oct 16 19:14:52 2024
 --Host        : lab817_01 running 64-bit major release  (build 9200)
 --Command     : generate_target block_design_0.bd
 --Design      : block_design_0
@@ -657,54 +657,25 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity block_design_0 is
+entity rx_0_imp_1YH694A is
   port (
-    BRAM_PORTA_addr : in STD_LOGIC_VECTOR ( 11 downto 0 );
-    BRAM_PORTA_clk : in STD_LOGIC;
-    BRAM_PORTA_din : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    BRAM_PORTA_en : in STD_LOGIC;
-    BRAM_PORTA_we : in STD_LOGIC_VECTOR ( 0 to 0 );
-    BRAM_PORTB_addr : in STD_LOGIC_VECTOR ( 11 downto 0 );
-    BRAM_PORTB_clk : in STD_LOGIC;
-    BRAM_PORTB_dout : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    BRAM_PORTB_en : in STD_LOGIC;
     CLOCK : in STD_LOGIC;
-    DETECTION_THRESHOLD : in STD_LOGIC_VECTOR ( 63 downto 0 );
-    FPGA_REG_WRITE_ADDRESS : out STD_LOGIC_VECTOR ( 11 downto 0 );
-    FPGA_REG_WRITE_DATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    FPGA_REG_WRITE_STROBE : out STD_LOGIC;
-    POWER : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    DATA_OUT_STROBE : out STD_LOGIC;
+    IDATA_OUT : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    IDATA_OUT_DELAY_16 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    QDATA_OUT : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    QDATA_OUT_DELAY_16 : out STD_LOGIC_VECTOR ( 15 downto 0 );
     RESET : in STD_LOGIC;
     RX_CLOCK : in STD_LOGIC;
     RX_ENABLE : in STD_LOGIC;
     RX_IDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
     RX_QDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
     RX_RESET : in STD_LOGIC;
-    RX_VALID : in STD_LOGIC;
-    SELECT_AXI_REGS_MODE : in STD_LOGIC_VECTOR ( 7 downto 0 )
+    RX_VALID : in STD_LOGIC
   );
-  attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of block_design_0 : entity is "block_design_0,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=block_design_0,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=29,numReposBlks=24,numNonXlnxBlks=0,numHierBlks=5,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=18,numPkgbdBlks=0,bdsource=USER,synth_mode=Hierarchical}";
-  attribute HW_HANDOFF : string;
-  attribute HW_HANDOFF of block_design_0 : entity is "block_design_0.hwdef";
-end block_design_0;
+end rx_0_imp_1YH694A;
 
-architecture STRUCTURE of block_design_0 is
-  component block_design_0_rx_clock_domain_cros_0_0 is
-  port (
-    RESET : in STD_LOGIC;
-    CLOCK : in STD_LOGIC;
-    RX_CLOCK : in STD_LOGIC;
-    RX_RESET : in STD_LOGIC;
-    RX_ENABLE : in STD_LOGIC;
-    RX_VALID : in STD_LOGIC;
-    RX_IDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    RX_QDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    IDATA : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    QDATA : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    DATA_STROBE : out STD_LOGIC
-  );
-  end component block_design_0_rx_clock_domain_cros_0_0;
+architecture STRUCTURE of rx_0_imp_1YH694A is
   component block_design_0_data_interleaver_0_0 is
   port (
     RESET : in STD_LOGIC;
@@ -739,6 +710,308 @@ architecture STRUCTURE of block_design_0 is
     QDATA_OUT_DELAY_80 : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component block_design_0_data_delay_0_0;
+  component block_design_0_rx_clock_domain_cros_0_0 is
+  port (
+    RESET : in STD_LOGIC;
+    CLOCK : in STD_LOGIC;
+    RX_CLOCK : in STD_LOGIC;
+    RX_RESET : in STD_LOGIC;
+    RX_ENABLE : in STD_LOGIC;
+    RX_VALID : in STD_LOGIC;
+    RX_IDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    RX_QDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    IDATA : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    QDATA : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    DATA_STROBE : out STD_LOGIC
+  );
+  end component block_design_0_rx_clock_domain_cros_0_0;
+  signal CLOCK_0_1 : STD_LOGIC;
+  signal RESET_0_1 : STD_LOGIC;
+  signal RX_CLOCK_0_1 : STD_LOGIC;
+  signal RX_ENABLE_0_1 : STD_LOGIC;
+  signal RX_IDATA_0_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal RX_QDATA_0_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal RX_RESET_0_1 : STD_LOGIC;
+  signal RX_VALID_0_1 : STD_LOGIC;
+  signal data_delay_0_DATA_OUT_STROBE : STD_LOGIC;
+  signal data_delay_0_IDATA_OUT : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal data_delay_0_IDATA_OUT_DELAY_16 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal data_delay_0_QDATA_OUT : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal data_delay_0_QDATA_OUT_DELAY_16 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal data_interleaver_0_DATA_OUT_STROBE : STD_LOGIC;
+  signal data_interleaver_0_IDATA_OUT : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal data_interleaver_0_QDATA_OUT : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal rx_clock_domain_cros_0_DATA_STROBE : STD_LOGIC;
+  signal rx_clock_domain_cros_0_IDATA : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal rx_clock_domain_cros_0_QDATA : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal NLW_data_delay_0_IDATA_OUT_DELAY_32_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal NLW_data_delay_0_IDATA_OUT_DELAY_48_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal NLW_data_delay_0_IDATA_OUT_DELAY_64_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal NLW_data_delay_0_IDATA_OUT_DELAY_80_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal NLW_data_delay_0_QDATA_OUT_DELAY_32_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal NLW_data_delay_0_QDATA_OUT_DELAY_48_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal NLW_data_delay_0_QDATA_OUT_DELAY_64_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal NLW_data_delay_0_QDATA_OUT_DELAY_80_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
+begin
+  CLOCK_0_1 <= CLOCK;
+  DATA_OUT_STROBE <= data_delay_0_DATA_OUT_STROBE;
+  IDATA_OUT(15 downto 0) <= data_delay_0_IDATA_OUT(15 downto 0);
+  IDATA_OUT_DELAY_16(15 downto 0) <= data_delay_0_IDATA_OUT_DELAY_16(15 downto 0);
+  QDATA_OUT(15 downto 0) <= data_delay_0_QDATA_OUT(15 downto 0);
+  QDATA_OUT_DELAY_16(15 downto 0) <= data_delay_0_QDATA_OUT_DELAY_16(15 downto 0);
+  RESET_0_1 <= RESET;
+  RX_CLOCK_0_1 <= RX_CLOCK;
+  RX_ENABLE_0_1 <= RX_ENABLE;
+  RX_IDATA_0_1(15 downto 0) <= RX_IDATA(15 downto 0);
+  RX_QDATA_0_1(15 downto 0) <= RX_QDATA(15 downto 0);
+  RX_RESET_0_1 <= RX_RESET;
+  RX_VALID_0_1 <= RX_VALID;
+data_delay_0: component block_design_0_data_delay_0_0
+     port map (
+      CLOCK => CLOCK_0_1,
+      DATA_IN_STROBE => data_interleaver_0_DATA_OUT_STROBE,
+      DATA_OUT_STROBE => data_delay_0_DATA_OUT_STROBE,
+      IDATA_IN(15 downto 0) => data_interleaver_0_IDATA_OUT(15 downto 0),
+      IDATA_OUT(15 downto 0) => data_delay_0_IDATA_OUT(15 downto 0),
+      IDATA_OUT_DELAY_16(15 downto 0) => data_delay_0_IDATA_OUT_DELAY_16(15 downto 0),
+      IDATA_OUT_DELAY_32(15 downto 0) => NLW_data_delay_0_IDATA_OUT_DELAY_32_UNCONNECTED(15 downto 0),
+      IDATA_OUT_DELAY_48(15 downto 0) => NLW_data_delay_0_IDATA_OUT_DELAY_48_UNCONNECTED(15 downto 0),
+      IDATA_OUT_DELAY_64(15 downto 0) => NLW_data_delay_0_IDATA_OUT_DELAY_64_UNCONNECTED(15 downto 0),
+      IDATA_OUT_DELAY_80(15 downto 0) => NLW_data_delay_0_IDATA_OUT_DELAY_80_UNCONNECTED(15 downto 0),
+      QDATA_IN(15 downto 0) => data_interleaver_0_QDATA_OUT(15 downto 0),
+      QDATA_OUT(15 downto 0) => data_delay_0_QDATA_OUT(15 downto 0),
+      QDATA_OUT_DELAY_16(15 downto 0) => data_delay_0_QDATA_OUT_DELAY_16(15 downto 0),
+      QDATA_OUT_DELAY_32(15 downto 0) => NLW_data_delay_0_QDATA_OUT_DELAY_32_UNCONNECTED(15 downto 0),
+      QDATA_OUT_DELAY_48(15 downto 0) => NLW_data_delay_0_QDATA_OUT_DELAY_48_UNCONNECTED(15 downto 0),
+      QDATA_OUT_DELAY_64(15 downto 0) => NLW_data_delay_0_QDATA_OUT_DELAY_64_UNCONNECTED(15 downto 0),
+      QDATA_OUT_DELAY_80(15 downto 0) => NLW_data_delay_0_QDATA_OUT_DELAY_80_UNCONNECTED(15 downto 0),
+      RESET => RESET_0_1
+    );
+data_interleaver_0: component block_design_0_data_interleaver_0_0
+     port map (
+      CLOCK => CLOCK_0_1,
+      DATA_IN_STROBE => rx_clock_domain_cros_0_DATA_STROBE,
+      DATA_OUT_STROBE => data_interleaver_0_DATA_OUT_STROBE,
+      IDATA_IN(15 downto 0) => rx_clock_domain_cros_0_IDATA(15 downto 0),
+      IDATA_OUT(15 downto 0) => data_interleaver_0_IDATA_OUT(15 downto 0),
+      QDATA_IN(15 downto 0) => rx_clock_domain_cros_0_QDATA(15 downto 0),
+      QDATA_OUT(15 downto 0) => data_interleaver_0_QDATA_OUT(15 downto 0),
+      RESET => RESET_0_1
+    );
+rx_clock_domain_cros_0: component block_design_0_rx_clock_domain_cros_0_0
+     port map (
+      CLOCK => CLOCK_0_1,
+      DATA_STROBE => rx_clock_domain_cros_0_DATA_STROBE,
+      IDATA(15 downto 0) => rx_clock_domain_cros_0_IDATA(15 downto 0),
+      QDATA(15 downto 0) => rx_clock_domain_cros_0_QDATA(15 downto 0),
+      RESET => RESET_0_1,
+      RX_CLOCK => RX_CLOCK_0_1,
+      RX_ENABLE => RX_ENABLE_0_1,
+      RX_IDATA(15 downto 0) => RX_IDATA_0_1(15 downto 0),
+      RX_QDATA(15 downto 0) => RX_QDATA_0_1(15 downto 0),
+      RX_RESET => RX_RESET_0_1,
+      RX_VALID => RX_VALID_0_1
+    );
+end STRUCTURE;
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+library UNISIM;
+use UNISIM.VCOMPONENTS.ALL;
+entity rx_1_imp_JYZYGY is
+  port (
+    CLOCK : in STD_LOGIC;
+    DATA_OUT_STROBE : out STD_LOGIC;
+    IDATA_OUT : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    IDATA_OUT_DELAY_16 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    QDATA_OUT : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    QDATA_OUT_DELAY_16 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    RESET : in STD_LOGIC;
+    RX_CLOCK : in STD_LOGIC;
+    RX_ENABLE : in STD_LOGIC;
+    RX_IDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    RX_QDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    RX_RESET : in STD_LOGIC;
+    RX_VALID : in STD_LOGIC
+  );
+end rx_1_imp_JYZYGY;
+
+architecture STRUCTURE of rx_1_imp_JYZYGY is
+  component block_design_0_data_interleaver_0_1 is
+  port (
+    RESET : in STD_LOGIC;
+    CLOCK : in STD_LOGIC;
+    IDATA_IN : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    QDATA_IN : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    DATA_IN_STROBE : in STD_LOGIC;
+    IDATA_OUT : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    QDATA_OUT : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    DATA_OUT_STROBE : out STD_LOGIC
+  );
+  end component block_design_0_data_interleaver_0_1;
+  component block_design_0_data_delay_0_1 is
+  port (
+    RESET : in STD_LOGIC;
+    CLOCK : in STD_LOGIC;
+    IDATA_IN : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    QDATA_IN : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    DATA_IN_STROBE : in STD_LOGIC;
+    DATA_OUT_STROBE : out STD_LOGIC;
+    IDATA_OUT : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    QDATA_OUT : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    IDATA_OUT_DELAY_16 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    QDATA_OUT_DELAY_16 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    IDATA_OUT_DELAY_32 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    QDATA_OUT_DELAY_32 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    IDATA_OUT_DELAY_48 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    QDATA_OUT_DELAY_48 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    IDATA_OUT_DELAY_64 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    QDATA_OUT_DELAY_64 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    IDATA_OUT_DELAY_80 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    QDATA_OUT_DELAY_80 : out STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component block_design_0_data_delay_0_1;
+  component block_design_0_rx_clock_domain_cros_0_1 is
+  port (
+    RESET : in STD_LOGIC;
+    CLOCK : in STD_LOGIC;
+    RX_CLOCK : in STD_LOGIC;
+    RX_RESET : in STD_LOGIC;
+    RX_ENABLE : in STD_LOGIC;
+    RX_VALID : in STD_LOGIC;
+    RX_IDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    RX_QDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    IDATA : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    QDATA : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    DATA_STROBE : out STD_LOGIC
+  );
+  end component block_design_0_rx_clock_domain_cros_0_1;
+  signal CLOCK_0_1 : STD_LOGIC;
+  signal RESET_0_1 : STD_LOGIC;
+  signal RX_CLOCK_0_1 : STD_LOGIC;
+  signal RX_ENABLE_0_1 : STD_LOGIC;
+  signal RX_IDATA_0_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal RX_QDATA_0_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal RX_RESET_0_1 : STD_LOGIC;
+  signal RX_VALID_0_1 : STD_LOGIC;
+  signal data_delay_0_DATA_OUT_STROBE : STD_LOGIC;
+  signal data_delay_0_IDATA_OUT : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal data_delay_0_IDATA_OUT_DELAY_16 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal data_delay_0_QDATA_OUT : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal data_delay_0_QDATA_OUT_DELAY_16 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal data_interleaver_0_DATA_OUT_STROBE : STD_LOGIC;
+  signal data_interleaver_0_IDATA_OUT : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal data_interleaver_0_QDATA_OUT : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal rx_clock_domain_cros_0_DATA_STROBE : STD_LOGIC;
+  signal rx_clock_domain_cros_0_IDATA : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal rx_clock_domain_cros_0_QDATA : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal NLW_data_delay_0_IDATA_OUT_DELAY_32_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal NLW_data_delay_0_IDATA_OUT_DELAY_48_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal NLW_data_delay_0_IDATA_OUT_DELAY_64_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal NLW_data_delay_0_IDATA_OUT_DELAY_80_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal NLW_data_delay_0_QDATA_OUT_DELAY_32_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal NLW_data_delay_0_QDATA_OUT_DELAY_48_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal NLW_data_delay_0_QDATA_OUT_DELAY_64_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal NLW_data_delay_0_QDATA_OUT_DELAY_80_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
+begin
+  CLOCK_0_1 <= CLOCK;
+  DATA_OUT_STROBE <= data_delay_0_DATA_OUT_STROBE;
+  IDATA_OUT(15 downto 0) <= data_delay_0_IDATA_OUT(15 downto 0);
+  IDATA_OUT_DELAY_16(15 downto 0) <= data_delay_0_IDATA_OUT_DELAY_16(15 downto 0);
+  QDATA_OUT(15 downto 0) <= data_delay_0_QDATA_OUT(15 downto 0);
+  QDATA_OUT_DELAY_16(15 downto 0) <= data_delay_0_QDATA_OUT_DELAY_16(15 downto 0);
+  RESET_0_1 <= RESET;
+  RX_CLOCK_0_1 <= RX_CLOCK;
+  RX_ENABLE_0_1 <= RX_ENABLE;
+  RX_IDATA_0_1(15 downto 0) <= RX_IDATA(15 downto 0);
+  RX_QDATA_0_1(15 downto 0) <= RX_QDATA(15 downto 0);
+  RX_RESET_0_1 <= RX_RESET;
+  RX_VALID_0_1 <= RX_VALID;
+data_delay_0: component block_design_0_data_delay_0_1
+     port map (
+      CLOCK => CLOCK_0_1,
+      DATA_IN_STROBE => data_interleaver_0_DATA_OUT_STROBE,
+      DATA_OUT_STROBE => data_delay_0_DATA_OUT_STROBE,
+      IDATA_IN(15 downto 0) => data_interleaver_0_IDATA_OUT(15 downto 0),
+      IDATA_OUT(15 downto 0) => data_delay_0_IDATA_OUT(15 downto 0),
+      IDATA_OUT_DELAY_16(15 downto 0) => data_delay_0_IDATA_OUT_DELAY_16(15 downto 0),
+      IDATA_OUT_DELAY_32(15 downto 0) => NLW_data_delay_0_IDATA_OUT_DELAY_32_UNCONNECTED(15 downto 0),
+      IDATA_OUT_DELAY_48(15 downto 0) => NLW_data_delay_0_IDATA_OUT_DELAY_48_UNCONNECTED(15 downto 0),
+      IDATA_OUT_DELAY_64(15 downto 0) => NLW_data_delay_0_IDATA_OUT_DELAY_64_UNCONNECTED(15 downto 0),
+      IDATA_OUT_DELAY_80(15 downto 0) => NLW_data_delay_0_IDATA_OUT_DELAY_80_UNCONNECTED(15 downto 0),
+      QDATA_IN(15 downto 0) => data_interleaver_0_QDATA_OUT(15 downto 0),
+      QDATA_OUT(15 downto 0) => data_delay_0_QDATA_OUT(15 downto 0),
+      QDATA_OUT_DELAY_16(15 downto 0) => data_delay_0_QDATA_OUT_DELAY_16(15 downto 0),
+      QDATA_OUT_DELAY_32(15 downto 0) => NLW_data_delay_0_QDATA_OUT_DELAY_32_UNCONNECTED(15 downto 0),
+      QDATA_OUT_DELAY_48(15 downto 0) => NLW_data_delay_0_QDATA_OUT_DELAY_48_UNCONNECTED(15 downto 0),
+      QDATA_OUT_DELAY_64(15 downto 0) => NLW_data_delay_0_QDATA_OUT_DELAY_64_UNCONNECTED(15 downto 0),
+      QDATA_OUT_DELAY_80(15 downto 0) => NLW_data_delay_0_QDATA_OUT_DELAY_80_UNCONNECTED(15 downto 0),
+      RESET => RESET_0_1
+    );
+data_interleaver_0: component block_design_0_data_interleaver_0_1
+     port map (
+      CLOCK => CLOCK_0_1,
+      DATA_IN_STROBE => rx_clock_domain_cros_0_DATA_STROBE,
+      DATA_OUT_STROBE => data_interleaver_0_DATA_OUT_STROBE,
+      IDATA_IN(15 downto 0) => rx_clock_domain_cros_0_IDATA(15 downto 0),
+      IDATA_OUT(15 downto 0) => data_interleaver_0_IDATA_OUT(15 downto 0),
+      QDATA_IN(15 downto 0) => rx_clock_domain_cros_0_QDATA(15 downto 0),
+      QDATA_OUT(15 downto 0) => data_interleaver_0_QDATA_OUT(15 downto 0),
+      RESET => RESET_0_1
+    );
+rx_clock_domain_cros_0: component block_design_0_rx_clock_domain_cros_0_1
+     port map (
+      CLOCK => CLOCK_0_1,
+      DATA_STROBE => rx_clock_domain_cros_0_DATA_STROBE,
+      IDATA(15 downto 0) => rx_clock_domain_cros_0_IDATA(15 downto 0),
+      QDATA(15 downto 0) => rx_clock_domain_cros_0_QDATA(15 downto 0),
+      RESET => RESET_0_1,
+      RX_CLOCK => RX_CLOCK_0_1,
+      RX_ENABLE => RX_ENABLE_0_1,
+      RX_IDATA(15 downto 0) => RX_IDATA_0_1(15 downto 0),
+      RX_QDATA(15 downto 0) => RX_QDATA_0_1(15 downto 0),
+      RX_RESET => RX_RESET_0_1,
+      RX_VALID => RX_VALID_0_1
+    );
+end STRUCTURE;
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+library UNISIM;
+use UNISIM.VCOMPONENTS.ALL;
+entity block_design_0 is
+  port (
+    BRAM_PORTA_addr : in STD_LOGIC_VECTOR ( 11 downto 0 );
+    BRAM_PORTA_clk : in STD_LOGIC;
+    BRAM_PORTA_din : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    BRAM_PORTA_en : in STD_LOGIC;
+    BRAM_PORTA_we : in STD_LOGIC_VECTOR ( 0 to 0 );
+    BRAM_PORTB_addr : in STD_LOGIC_VECTOR ( 11 downto 0 );
+    BRAM_PORTB_clk : in STD_LOGIC;
+    BRAM_PORTB_dout : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    BRAM_PORTB_en : in STD_LOGIC;
+    CLOCK : in STD_LOGIC;
+    DETECTION_THRESHOLD : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    FPGA_REG_WRITE_ADDRESS : out STD_LOGIC_VECTOR ( 11 downto 0 );
+    FPGA_REG_WRITE_DATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    FPGA_REG_WRITE_STROBE : out STD_LOGIC;
+    POWER : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    RESET : in STD_LOGIC;
+    RX_CLOCK : in STD_LOGIC;
+    RX_ENABLE : in STD_LOGIC;
+    RX_IDATA_0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    RX_IDATA_1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    RX_QDATA_0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    RX_QDATA_1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    RX_RESET : in STD_LOGIC;
+    RX_VALID : in STD_LOGIC;
+    SELECT_AXI_REGS_MODE : in STD_LOGIC_VECTOR ( 7 downto 0 )
+  );
+  attribute CORE_GENERATION_INFO : string;
+  attribute CORE_GENERATION_INFO of block_design_0 : entity is "block_design_0,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=block_design_0,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=36,numReposBlks=29,numNonXlnxBlks=0,numHierBlks=7,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=23,numPkgbdBlks=0,bdsource=USER,synth_mode=Hierarchical}";
+  attribute HW_HANDOFF : string;
+  attribute HW_HANDOFF of block_design_0 : entity is "block_design_0.hwdef";
+end block_design_0;
+
+architecture STRUCTURE of block_design_0 is
   component block_design_0_act_power_0_0 is
   port (
     RESET : in STD_LOGIC;
@@ -979,6 +1252,49 @@ architecture STRUCTURE of block_design_0 is
     VITERBI_RX_ENDED : out STD_LOGIC
   );
   end component block_design_0_viterbi_soft_0_0;
+  component block_design_0_timing_acquisition_8_0_1 is
+  port (
+    RESET : in STD_LOGIC;
+    CLOCK : in STD_LOGIC;
+    DATA_STROBE : in STD_LOGIC;
+    IDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    QDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    IDATA_DELAY_16 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    QDATA_DELAY_16 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    DETECTION_THRESHOLD : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    DETECTION_STROBE : out STD_LOGIC;
+    DETECTION_SIGNAL_DETECTED : out STD_LOGIC;
+    DETECTION_XCORR : out STD_LOGIC_VECTOR ( 63 downto 0 );
+    CONTINUOUS_XCORR : out STD_LOGIC_VECTOR ( 63 downto 0 );
+    DETECTION_STS_AUTOCORR_I : out STD_LOGIC_VECTOR ( 35 downto 0 );
+    DETECTION_STS_AUTOCORR_Q : out STD_LOGIC_VECTOR ( 35 downto 0 )
+  );
+  end component block_design_0_timing_acquisition_8_0_1;
+  component block_design_0_channel_signal_combi_0_0 is
+  port (
+    RESET : in STD_LOGIC;
+    CLOCK : in STD_LOGIC;
+    DATA_IN_STROBE_0 : in STD_LOGIC;
+    IDATA_IN_0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    QDATA_IN_0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    DETECTION_SIGNAL_DETECTED_0 : in STD_LOGIC;
+    DETECTION_STS_AUTOCORR_I_0 : in STD_LOGIC_VECTOR ( 35 downto 0 );
+    DETECTION_STS_AUTOCORR_Q_0 : in STD_LOGIC_VECTOR ( 35 downto 0 );
+    DATA_IN_STROBE_1 : in STD_LOGIC;
+    IDATA_IN_1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    QDATA_IN_1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    DETECTION_SIGNAL_DETECTED_1 : in STD_LOGIC;
+    DETECTION_STS_AUTOCORR_I_1 : in STD_LOGIC_VECTOR ( 35 downto 0 );
+    DETECTION_STS_AUTOCORR_Q_1 : in STD_LOGIC_VECTOR ( 35 downto 0 );
+    DATA_OUT_STROBE : out STD_LOGIC;
+    IDATA_OUT : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    QDATA_OUT : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    DETECTION_SIGNAL_DETECTED : out STD_LOGIC;
+    DETECTION_STS_AUTOCORR_I : out STD_LOGIC_VECTOR ( 35 downto 0 );
+    DETECTION_STS_AUTOCORR_Q : out STD_LOGIC_VECTOR ( 35 downto 0 );
+    STOP_RX_DONE : in STD_LOGIC
+  );
+  end component block_design_0_channel_signal_combi_0_0;
   signal BRAM_PORTA_0_1_ADDR : STD_LOGIC_VECTOR ( 11 downto 0 );
   signal BRAM_PORTA_0_1_CLK : STD_LOGIC;
   signal BRAM_PORTA_0_1_DIN : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -994,13 +1310,21 @@ architecture STRUCTURE of block_design_0 is
   signal RX_CLOCK_0_1 : STD_LOGIC;
   signal RX_ENABLE_0_1 : STD_LOGIC;
   signal RX_IDATA_0_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal RX_IDATA_1_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal RX_QDATA_0_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal RX_QDATA_1_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal RX_RESET_0_1 : STD_LOGIC;
   signal RX_VALID_0_1 : STD_LOGIC;
   signal SELECT_AXI_REGS_MODE_0_1 : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal act_power_0_POWER : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal axi_regs_mux_0_FPGA_REG_WRITE_DATA : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal axi_regs_mux_0_FPGA_REG_WRITE_STROBE : STD_LOGIC;
+  signal channel_signal_combi_0_DATA_OUT_STROBE : STD_LOGIC;
+  signal channel_signal_combi_0_DETECTION_SIGNAL_DETECTED : STD_LOGIC;
+  signal channel_signal_combi_0_DETECTION_STS_AUTOCORR_I : STD_LOGIC_VECTOR ( 35 downto 0 );
+  signal channel_signal_combi_0_DETECTION_STS_AUTOCORR_Q : STD_LOGIC_VECTOR ( 35 downto 0 );
+  signal channel_signal_combi_0_IDATA_OUT : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal channel_signal_combi_0_QDATA_OUT : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal constellation_tracker_0_ATAN_CONSTELLATION_IN_CNTR : STD_LOGIC_VECTOR ( 5 downto 0 );
   signal constellation_tracker_0_ATAN_CONSTELLATION_IN_I : STD_LOGIC_VECTOR ( 23 downto 0 );
   signal constellation_tracker_0_ATAN_CONSTELLATION_IN_Q : STD_LOGIC_VECTOR ( 23 downto 0 );
@@ -1020,9 +1344,6 @@ architecture STRUCTURE of block_design_0 is
   signal data_delay_0_IDATA_OUT_DELAY_16 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal data_delay_0_QDATA_OUT : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal data_delay_0_QDATA_OUT_DELAY_16 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal data_interleaver_0_DATA_OUT_STROBE : STD_LOGIC;
-  signal data_interleaver_0_IDATA_OUT : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal data_interleaver_0_QDATA_OUT : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal deinterleaver_soft_0_DEINTERLEAVER_16QAM : STD_LOGIC_VECTOR ( 0 to 191 );
   signal deinterleaver_soft_0_DEINTERLEAVER_16QAM_DIST_0B : STD_LOGIC_VECTOR ( 0 to 191 );
   signal deinterleaver_soft_0_DEINTERLEAVER_16QAM_DIST_1B : STD_LOGIC_VECTOR ( 0 to 191 );
@@ -1088,26 +1409,23 @@ architecture STRUCTURE of block_design_0 is
   signal rotation_block_0_ROTATION_DATA_OUT_STROBE : STD_LOGIC;
   signal rotation_block_0_ROTATION_IDATA_OUT : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal rotation_block_0_ROTATION_QDATA_OUT : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal rx_clock_domain_cros_0_DATA_STROBE : STD_LOGIC;
-  signal rx_clock_domain_cros_0_IDATA : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal rx_clock_domain_cros_0_QDATA : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal rx_1_DATA_OUT_STROBE : STD_LOGIC;
+  signal rx_1_IDATA_OUT : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal rx_1_IDATA_OUT_DELAY_16 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal rx_1_QDATA_OUT : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal rx_1_QDATA_OUT_DELAY_16 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED : STD_LOGIC;
   signal timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I : STD_LOGIC_VECTOR ( 35 downto 0 );
   signal timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q : STD_LOGIC_VECTOR ( 35 downto 0 );
+  signal timing_acquisition_8_1_DETECTION_SIGNAL_DETECTED : STD_LOGIC;
+  signal timing_acquisition_8_1_DETECTION_STS_AUTOCORR_I : STD_LOGIC_VECTOR ( 35 downto 0 );
+  signal timing_acquisition_8_1_DETECTION_STS_AUTOCORR_Q : STD_LOGIC_VECTOR ( 35 downto 0 );
   signal viterbi_hard_0_VITERBI_RX_ENDED : STD_LOGIC;
   signal viterbi_hard_0_VITERBI_SIGNAL_VALID : STD_LOGIC;
   signal viterbi_soft_0_VITERBI_DECODED_OUTPUT : STD_LOGIC;
   signal viterbi_soft_0_VITERBI_DECODED_OUTPUT_VALID : STD_LOGIC;
   signal viterbi_soft_0_VITERBI_SIGNAL : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_act_power_0_POWER_STROBE_UNCONNECTED : STD_LOGIC;
-  signal NLW_data_delay_0_IDATA_OUT_DELAY_32_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal NLW_data_delay_0_IDATA_OUT_DELAY_48_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal NLW_data_delay_0_IDATA_OUT_DELAY_64_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal NLW_data_delay_0_IDATA_OUT_DELAY_80_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal NLW_data_delay_0_QDATA_OUT_DELAY_32_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal NLW_data_delay_0_QDATA_OUT_DELAY_48_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal NLW_data_delay_0_QDATA_OUT_DELAY_64_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal NLW_data_delay_0_QDATA_OUT_DELAY_80_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal NLW_hier_fft_ofdm_event_data_in_channel_halt_UNCONNECTED : STD_LOGIC;
   signal NLW_hier_fft_ofdm_event_frame_started_UNCONNECTED : STD_LOGIC;
   signal NLW_hier_fft_ofdm_event_tlast_missing_UNCONNECTED : STD_LOGIC;
@@ -1115,6 +1433,9 @@ architecture STRUCTURE of block_design_0 is
   signal NLW_timing_acquisition_8_0_DETECTION_STROBE_UNCONNECTED : STD_LOGIC;
   signal NLW_timing_acquisition_8_0_CONTINUOUS_XCORR_UNCONNECTED : STD_LOGIC_VECTOR ( 63 downto 0 );
   signal NLW_timing_acquisition_8_0_DETECTION_XCORR_UNCONNECTED : STD_LOGIC_VECTOR ( 63 downto 0 );
+  signal NLW_timing_acquisition_8_1_DETECTION_STROBE_UNCONNECTED : STD_LOGIC;
+  signal NLW_timing_acquisition_8_1_CONTINUOUS_XCORR_UNCONNECTED : STD_LOGIC_VECTOR ( 63 downto 0 );
+  signal NLW_timing_acquisition_8_1_DETECTION_XCORR_UNCONNECTED : STD_LOGIC_VECTOR ( 63 downto 0 );
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of BRAM_PORTA_clk : signal is "xilinx.com:interface:bram:1.0 BRAM_PORTA CLK";
   attribute X_INTERFACE_INFO of BRAM_PORTA_en : signal is "xilinx.com:interface:bram:1.0 BRAM_PORTA EN";
@@ -1155,19 +1476,21 @@ begin
   RESET_0_1 <= RESET;
   RX_CLOCK_0_1 <= RX_CLOCK;
   RX_ENABLE_0_1 <= RX_ENABLE;
-  RX_IDATA_0_1(15 downto 0) <= RX_IDATA(15 downto 0);
-  RX_QDATA_0_1(15 downto 0) <= RX_QDATA(15 downto 0);
+  RX_IDATA_0_1(15 downto 0) <= RX_IDATA_0(15 downto 0);
+  RX_IDATA_1_1(15 downto 0) <= RX_IDATA_1(15 downto 0);
+  RX_QDATA_0_1(15 downto 0) <= RX_QDATA_0(15 downto 0);
+  RX_QDATA_1_1(15 downto 0) <= RX_QDATA_1(15 downto 0);
   RX_RESET_0_1 <= RX_RESET;
   RX_VALID_0_1 <= RX_VALID;
   SELECT_AXI_REGS_MODE_0_1(7 downto 0) <= SELECT_AXI_REGS_MODE(7 downto 0);
 act_power_0: component block_design_0_act_power_0_0
      port map (
       CLOCK => CLOCK_0_1,
-      DATA_STROBE => data_delay_0_DATA_OUT_STROBE,
-      IDATA(15 downto 0) => data_delay_0_IDATA_OUT(15 downto 0),
+      DATA_STROBE => channel_signal_combi_0_DATA_OUT_STROBE,
+      IDATA(15 downto 0) => channel_signal_combi_0_IDATA_OUT(15 downto 0),
       POWER(7 downto 0) => act_power_0_POWER(7 downto 0),
       POWER_STROBE => NLW_act_power_0_POWER_STROBE_UNCONNECTED,
-      QDATA(15 downto 0) => data_delay_0_QDATA_OUT(15 downto 0),
+      QDATA(15 downto 0) => channel_signal_combi_0_QDATA_OUT(15 downto 0),
       RESET => RESET_0_1
     );
 axi_regs_mux_0: component block_design_0_axi_regs_mux_0_0
@@ -1176,7 +1499,7 @@ axi_regs_mux_0: component block_design_0_axi_regs_mux_0_0
       CONSTELLATION_DATA_VALID => constellation_tracker_0_CONSTELLATION_DATA_OUT_VALID,
       CONSTELLATION_IDATA(23 downto 0) => constellation_tracker_0_CONSTELLATION_IDATA_OUT(23 downto 0),
       CONSTELLATION_QDATA(23 downto 0) => constellation_tracker_0_CONSTELLATION_QDATA_OUT(23 downto 0),
-      DATA_STROBE => data_delay_0_DATA_OUT_STROBE,
+      DATA_STROBE => channel_signal_combi_0_DATA_OUT_STROBE,
       DEINTERLEAVER_16QAM(0 to 191) => deinterleaver_soft_0_DEINTERLEAVER_16QAM(0 to 191),
       DEINTERLEAVER_BPSK(0 to 47) => deinterleaver_soft_0_DEINTERLEAVER_BPSK(0 to 47),
       DEINTERLEAVER_QPSK(0 to 95) => deinterleaver_soft_0_DEINTERLEAVER_QPSK(0 to 95),
@@ -1190,11 +1513,11 @@ axi_regs_mux_0: component block_design_0_axi_regs_mux_0_0
       FPGA_REG_WRITE_ADDRESS(11 downto 0) => receiver_802_11p_0_FPGA_REG_WRITE_ADDRESS(11 downto 0),
       FPGA_REG_WRITE_DATA(31 downto 0) => axi_regs_mux_0_FPGA_REG_WRITE_DATA(31 downto 0),
       FPGA_REG_WRITE_STROBE => axi_regs_mux_0_FPGA_REG_WRITE_STROBE,
-      IDATA(15 downto 0) => data_delay_0_IDATA_OUT(15 downto 0),
+      IDATA(15 downto 0) => channel_signal_combi_0_IDATA_OUT(15 downto 0),
       PARALLEL_OUTPUT(31 downto 0) => output_ser2par_0_PARALLEL_OUTPUT(31 downto 0),
       PARALLEL_OUTPUT_LAST => output_ser2par_0_PARALLEL_OUTPUT_LAST,
       PARALLEL_OUTPUT_VALID => output_ser2par_0_PARALLEL_OUTPUT_VALID,
-      QDATA(15 downto 0) => data_delay_0_QDATA_OUT(15 downto 0),
+      QDATA(15 downto 0) => channel_signal_combi_0_QDATA_OUT(15 downto 0),
       RESET => RESET_0_1,
       SELECT_AXI_REGS_MODE(7 downto 0) => SELECT_AXI_REGS_MODE_0_1(7 downto 0),
       VITERBI_SIGNAL(31 downto 0) => viterbi_soft_0_VITERBI_SIGNAL(31 downto 0),
@@ -1211,6 +1534,30 @@ blk_mem_gen_0: component block_design_0_blk_mem_gen_0_0
       ena => BRAM_PORTA_0_1_EN,
       enb => BRAM_PORTB_0_1_EN,
       wea(0) => BRAM_PORTA_0_1_WE(0)
+    );
+channel_signal_combi_0: component block_design_0_channel_signal_combi_0_0
+     port map (
+      CLOCK => CLOCK_0_1,
+      DATA_IN_STROBE_0 => data_delay_0_DATA_OUT_STROBE,
+      DATA_IN_STROBE_1 => rx_1_DATA_OUT_STROBE,
+      DATA_OUT_STROBE => channel_signal_combi_0_DATA_OUT_STROBE,
+      DETECTION_SIGNAL_DETECTED => channel_signal_combi_0_DETECTION_SIGNAL_DETECTED,
+      DETECTION_SIGNAL_DETECTED_0 => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
+      DETECTION_SIGNAL_DETECTED_1 => timing_acquisition_8_1_DETECTION_SIGNAL_DETECTED,
+      DETECTION_STS_AUTOCORR_I(35 downto 0) => channel_signal_combi_0_DETECTION_STS_AUTOCORR_I(35 downto 0),
+      DETECTION_STS_AUTOCORR_I_0(35 downto 0) => timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I(35 downto 0),
+      DETECTION_STS_AUTOCORR_I_1(35 downto 0) => timing_acquisition_8_1_DETECTION_STS_AUTOCORR_I(35 downto 0),
+      DETECTION_STS_AUTOCORR_Q(35 downto 0) => channel_signal_combi_0_DETECTION_STS_AUTOCORR_Q(35 downto 0),
+      DETECTION_STS_AUTOCORR_Q_0(35 downto 0) => timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q(35 downto 0),
+      DETECTION_STS_AUTOCORR_Q_1(35 downto 0) => timing_acquisition_8_1_DETECTION_STS_AUTOCORR_Q(35 downto 0),
+      IDATA_IN_0(15 downto 0) => data_delay_0_IDATA_OUT(15 downto 0),
+      IDATA_IN_1(15 downto 0) => rx_1_IDATA_OUT(15 downto 0),
+      IDATA_OUT(15 downto 0) => channel_signal_combi_0_IDATA_OUT(15 downto 0),
+      QDATA_IN_0(15 downto 0) => data_delay_0_QDATA_OUT(15 downto 0),
+      QDATA_IN_1(15 downto 0) => rx_1_QDATA_OUT(15 downto 0),
+      QDATA_OUT(15 downto 0) => channel_signal_combi_0_QDATA_OUT(15 downto 0),
+      RESET => RESET_0_1,
+      STOP_RX_DONE => viterbi_hard_0_VITERBI_RX_ENDED
     );
 constellation_tracker_0: component block_design_0_constellation_tracker_0_0
      port map (
@@ -1243,38 +1590,6 @@ constellation_tracker_0: component block_design_0_constellation_tracker_0_0
       ROTATION_CONSTELLATION_PHASE_IN(23 downto 0) => constellation_tracker_0_ROTATION_CONSTELLATION_PHASE_IN(23 downto 0),
       ROTATION_CONSTELLATION_QDATA_IN(23 downto 0) => constellation_tracker_0_ROTATION_CONSTELLATION_QDATA_IN(23 downto 0),
       ROTATION_CONSTELLATION_QDATA_OUT(23 downto 0) => hier_rotation_constellation_ROTATION_CONSTELLATION_QDATA_OUT(23 downto 0)
-    );
-data_delay_0: component block_design_0_data_delay_0_0
-     port map (
-      CLOCK => CLOCK_0_1,
-      DATA_IN_STROBE => data_interleaver_0_DATA_OUT_STROBE,
-      DATA_OUT_STROBE => data_delay_0_DATA_OUT_STROBE,
-      IDATA_IN(15 downto 0) => data_interleaver_0_IDATA_OUT(15 downto 0),
-      IDATA_OUT(15 downto 0) => data_delay_0_IDATA_OUT(15 downto 0),
-      IDATA_OUT_DELAY_16(15 downto 0) => data_delay_0_IDATA_OUT_DELAY_16(15 downto 0),
-      IDATA_OUT_DELAY_32(15 downto 0) => NLW_data_delay_0_IDATA_OUT_DELAY_32_UNCONNECTED(15 downto 0),
-      IDATA_OUT_DELAY_48(15 downto 0) => NLW_data_delay_0_IDATA_OUT_DELAY_48_UNCONNECTED(15 downto 0),
-      IDATA_OUT_DELAY_64(15 downto 0) => NLW_data_delay_0_IDATA_OUT_DELAY_64_UNCONNECTED(15 downto 0),
-      IDATA_OUT_DELAY_80(15 downto 0) => NLW_data_delay_0_IDATA_OUT_DELAY_80_UNCONNECTED(15 downto 0),
-      QDATA_IN(15 downto 0) => data_interleaver_0_QDATA_OUT(15 downto 0),
-      QDATA_OUT(15 downto 0) => data_delay_0_QDATA_OUT(15 downto 0),
-      QDATA_OUT_DELAY_16(15 downto 0) => data_delay_0_QDATA_OUT_DELAY_16(15 downto 0),
-      QDATA_OUT_DELAY_32(15 downto 0) => NLW_data_delay_0_QDATA_OUT_DELAY_32_UNCONNECTED(15 downto 0),
-      QDATA_OUT_DELAY_48(15 downto 0) => NLW_data_delay_0_QDATA_OUT_DELAY_48_UNCONNECTED(15 downto 0),
-      QDATA_OUT_DELAY_64(15 downto 0) => NLW_data_delay_0_QDATA_OUT_DELAY_64_UNCONNECTED(15 downto 0),
-      QDATA_OUT_DELAY_80(15 downto 0) => NLW_data_delay_0_QDATA_OUT_DELAY_80_UNCONNECTED(15 downto 0),
-      RESET => RESET_0_1
-    );
-data_interleaver_0: component block_design_0_data_interleaver_0_0
-     port map (
-      CLOCK => CLOCK_0_1,
-      DATA_IN_STROBE => rx_clock_domain_cros_0_DATA_STROBE,
-      DATA_OUT_STROBE => data_interleaver_0_DATA_OUT_STROBE,
-      IDATA_IN(15 downto 0) => rx_clock_domain_cros_0_IDATA(15 downto 0),
-      IDATA_OUT(15 downto 0) => data_interleaver_0_IDATA_OUT(15 downto 0),
-      QDATA_IN(15 downto 0) => rx_clock_domain_cros_0_QDATA(15 downto 0),
-      QDATA_OUT(15 downto 0) => data_interleaver_0_QDATA_OUT(15 downto 0),
-      RESET => RESET_0_1
     );
 deinterleaver_soft_0: component block_design_0_deinterleaver_soft_0_0
      port map (
@@ -1344,10 +1659,10 @@ equalizer_time_frequ_0: component block_design_0_equalizer_time_frequ_0_0
       ATAN_PHASE_OUT(19 downto 0) => hier_atan_ATAN_PHASE_OUT(19 downto 0),
       ATAN_PHASE_OUT_STROBE => hier_atan_ATAN_PHASE_OUT_STROBE,
       CLOCK => CLOCK_0_1,
-      DATA_IN_STROBE => data_delay_0_DATA_OUT_STROBE,
-      DETECTION_SIGNAL_DETECTED => timing_acquisition_8_0_DETECTION_SIGNAL_DETECTED,
-      DETECTION_STS_AUTOCORR_I(35 downto 0) => timing_acquisition_8_0_DETECTION_STS_AUTOCORR_I(35 downto 0),
-      DETECTION_STS_AUTOCORR_Q(35 downto 0) => timing_acquisition_8_0_DETECTION_STS_AUTOCORR_Q(35 downto 0),
+      DATA_IN_STROBE => channel_signal_combi_0_DATA_OUT_STROBE,
+      DETECTION_SIGNAL_DETECTED => channel_signal_combi_0_DETECTION_SIGNAL_DETECTED,
+      DETECTION_STS_AUTOCORR_I(35 downto 0) => channel_signal_combi_0_DETECTION_STS_AUTOCORR_I(35 downto 0),
+      DETECTION_STS_AUTOCORR_Q(35 downto 0) => channel_signal_combi_0_DETECTION_STS_AUTOCORR_Q(35 downto 0),
       FFT_DATA_IN_FIRST_SYMBOL_MARKER => equalizer_time_frequ_0_FFT_DATA_IN_FIRST_SYMBOL_MARKER,
       FFT_DATA_IN_START => receiver_802_11p_0_FFT_DATA_IN_START,
       FFT_DATA_IN_STROBE => receiver_802_11p_0_FFT_DATA_IN_STROBE,
@@ -1356,8 +1671,8 @@ equalizer_time_frequ_0: component block_design_0_equalizer_time_frequ_0_0
       FPGA_REG_WRITE_DATA(31 downto 0) => equalizer_time_frequ_0_FPGA_REG_WRITE_DATA(31 downto 0),
       FPGA_REG_WRITE_STROBE_PHASE_1 => equalizer_time_frequ_0_FPGA_REG_WRITE_STROBE_PHASE_1,
       FPGA_REG_WRITE_STROBE_PHASE_2 => equalizer_time_frequ_0_FPGA_REG_WRITE_STROBE_PHASE_2,
-      IDATA_IN(15 downto 0) => data_delay_0_IDATA_OUT(15 downto 0),
-      QDATA_IN(15 downto 0) => data_delay_0_QDATA_OUT(15 downto 0),
+      IDATA_IN(15 downto 0) => channel_signal_combi_0_IDATA_OUT(15 downto 0),
+      QDATA_IN(15 downto 0) => channel_signal_combi_0_QDATA_OUT(15 downto 0),
       RESET => RESET_0_1,
       ROTATION_DATA_IN_MARKER => equalizer_time_frequ_0_ROTATION_DATA_IN_MARKER,
       ROTATION_DATA_IN_STROBE => equalizer_time_frequ_0_ROTATION_DATA_IN_STROBE,
@@ -1454,17 +1769,35 @@ output_ser2par_0: component block_design_0_output_ser2par_0_0
       RESET => RESET_0_1,
       VITERBI_SIGNAL_VALID => viterbi_hard_0_VITERBI_SIGNAL_VALID
     );
-rx_clock_domain_cros_0: component block_design_0_rx_clock_domain_cros_0_0
+rx_0: entity work.rx_0_imp_1YH694A
      port map (
       CLOCK => CLOCK_0_1,
-      DATA_STROBE => rx_clock_domain_cros_0_DATA_STROBE,
-      IDATA(15 downto 0) => rx_clock_domain_cros_0_IDATA(15 downto 0),
-      QDATA(15 downto 0) => rx_clock_domain_cros_0_QDATA(15 downto 0),
+      DATA_OUT_STROBE => data_delay_0_DATA_OUT_STROBE,
+      IDATA_OUT(15 downto 0) => data_delay_0_IDATA_OUT(15 downto 0),
+      IDATA_OUT_DELAY_16(15 downto 0) => data_delay_0_IDATA_OUT_DELAY_16(15 downto 0),
+      QDATA_OUT(15 downto 0) => data_delay_0_QDATA_OUT(15 downto 0),
+      QDATA_OUT_DELAY_16(15 downto 0) => data_delay_0_QDATA_OUT_DELAY_16(15 downto 0),
       RESET => RESET_0_1,
       RX_CLOCK => RX_CLOCK_0_1,
       RX_ENABLE => RX_ENABLE_0_1,
       RX_IDATA(15 downto 0) => RX_IDATA_0_1(15 downto 0),
       RX_QDATA(15 downto 0) => RX_QDATA_0_1(15 downto 0),
+      RX_RESET => RX_RESET_0_1,
+      RX_VALID => RX_VALID_0_1
+    );
+rx_1: entity work.rx_1_imp_JYZYGY
+     port map (
+      CLOCK => CLOCK_0_1,
+      DATA_OUT_STROBE => rx_1_DATA_OUT_STROBE,
+      IDATA_OUT(15 downto 0) => rx_1_IDATA_OUT(15 downto 0),
+      IDATA_OUT_DELAY_16(15 downto 0) => rx_1_IDATA_OUT_DELAY_16(15 downto 0),
+      QDATA_OUT(15 downto 0) => rx_1_QDATA_OUT(15 downto 0),
+      QDATA_OUT_DELAY_16(15 downto 0) => rx_1_QDATA_OUT_DELAY_16(15 downto 0),
+      RESET => RESET_0_1,
+      RX_CLOCK => RX_CLOCK_0_1,
+      RX_ENABLE => RX_ENABLE_0_1,
+      RX_IDATA(15 downto 0) => RX_IDATA_1_1(15 downto 0),
+      RX_QDATA(15 downto 0) => RX_QDATA_1_1(15 downto 0),
       RX_RESET => RX_RESET_0_1,
       RX_VALID => RX_VALID_0_1
     );
@@ -1483,6 +1816,23 @@ timing_acquisition_8_0: component block_design_0_timing_acquisition_8_0_0
       IDATA_DELAY_16(15 downto 0) => data_delay_0_IDATA_OUT_DELAY_16(15 downto 0),
       QDATA(15 downto 0) => data_delay_0_QDATA_OUT(15 downto 0),
       QDATA_DELAY_16(15 downto 0) => data_delay_0_QDATA_OUT_DELAY_16(15 downto 0),
+      RESET => RESET_0_1
+    );
+timing_acquisition_8_1: component block_design_0_timing_acquisition_8_0_1
+     port map (
+      CLOCK => CLOCK_0_1,
+      CONTINUOUS_XCORR(63 downto 0) => NLW_timing_acquisition_8_1_CONTINUOUS_XCORR_UNCONNECTED(63 downto 0),
+      DATA_STROBE => rx_1_DATA_OUT_STROBE,
+      DETECTION_SIGNAL_DETECTED => timing_acquisition_8_1_DETECTION_SIGNAL_DETECTED,
+      DETECTION_STROBE => NLW_timing_acquisition_8_1_DETECTION_STROBE_UNCONNECTED,
+      DETECTION_STS_AUTOCORR_I(35 downto 0) => timing_acquisition_8_1_DETECTION_STS_AUTOCORR_I(35 downto 0),
+      DETECTION_STS_AUTOCORR_Q(35 downto 0) => timing_acquisition_8_1_DETECTION_STS_AUTOCORR_Q(35 downto 0),
+      DETECTION_THRESHOLD(63 downto 0) => DETECTION_THRESHOLD_0_1(63 downto 0),
+      DETECTION_XCORR(63 downto 0) => NLW_timing_acquisition_8_1_DETECTION_XCORR_UNCONNECTED(63 downto 0),
+      IDATA(15 downto 0) => rx_1_IDATA_OUT(15 downto 0),
+      IDATA_DELAY_16(15 downto 0) => rx_1_IDATA_OUT_DELAY_16(15 downto 0),
+      QDATA(15 downto 0) => rx_1_QDATA_OUT(15 downto 0),
+      QDATA_DELAY_16(15 downto 0) => rx_1_QDATA_OUT_DELAY_16(15 downto 0),
       RESET => RESET_0_1
     );
 viterbi_soft_0: component block_design_0_viterbi_soft_0_0

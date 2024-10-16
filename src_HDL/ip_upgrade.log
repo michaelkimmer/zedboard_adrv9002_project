@@ -1,6 +1,69 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
+| Date         : Wed Oct 16 19:16:40 2024
+| Host         : lab817_01 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'system_IP_802_11p_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of system_IP_802_11p_0_1 (xilinx.com:user:IP_802_11p:1.0) from (Rev. 79) to (Rev. 80)
+
+
+
+
+
+
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
+| Date         : Wed Oct 16 17:21:07 2024
+| Host         : lab817_01 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'system_IP_802_11p_0_1'
+
+1. Summary
+----------
+
+CAUTION (success, with warnings) in the upgrade of system_IP_802_11p_0_1 (xilinx.com:user:IP_802_11p:1.0) from (Rev. 78) to (Rev. 79)
+
+After upgrade, an IP may have parameter and port differences compared to the original customization. Please review the parameters within the IP customization GUI to ensure proper functionality. Also, please review the updated IP instantiation template to ensure proper connectivity, and update your design if required.
+
+2. Connection Warnings
+----------------------
+
+Detected external port differences while upgrading 'system_IP_802_11p_0_1'. These changes may impact your design.
+
+
+-Upgrade has removed port 'RX_IDATA'
+
+-Upgrade has removed port 'RX_QDATA'
+
+-Upgrade has added port 'RX_IDATA_0'
+
+-Upgrade has added port 'RX_IDATA_1'
+
+-Upgrade has added port 'RX_QDATA_0'
+
+-Upgrade has added port 'RX_QDATA_1'
+
+
+
+
+
+
+
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
 | Date         : Wed Oct 16 15:30:57 2024
 | Host         : lab817_01 running 64-bit major release  (build 9200)
 | Command      : upgrade_ip

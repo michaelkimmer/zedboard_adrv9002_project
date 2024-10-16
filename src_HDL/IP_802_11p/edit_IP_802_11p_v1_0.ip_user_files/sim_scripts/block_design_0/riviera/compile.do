@@ -135,6 +135,11 @@ vcom -work xil_defaultlib -93  -incr \
 "../../../bd/block_design_0/ip/block_design_0_deinterleaver_soft_0_0/sim/block_design_0_deinterleaver_soft_0_0.vhd" \
 "../../../bd/block_design_0/ip/block_design_0_viterbi_soft_0_0/sim/block_design_0_viterbi_soft_0_0.vhd" \
 "../../../bd/block_design_0/sim/block_design_0.vhd" \
+"../../../bd/block_design_0/ip/block_design_0_data_interleaver_0_1/sim/block_design_0_data_interleaver_0_1.vhd" \
+"../../../bd/block_design_0/ip/block_design_0_data_delay_0_1/sim/block_design_0_data_delay_0_1.vhd" \
+"../../../bd/block_design_0/ip/block_design_0_rx_clock_domain_cros_0_1/sim/block_design_0_rx_clock_domain_cros_0_1.vhd" \
+"../../../bd/block_design_0/ip/block_design_0_timing_acquisition_8_0_1/sim/block_design_0_timing_acquisition_8_0_1.vhd" \
+"../../../bd/block_design_0/ip/block_design_0_channel_signal_combi_0_0/sim/block_design_0_channel_signal_combi_0_0.vhd" \
 
 vlog -work xil_defaultlib \
 "glbl.v"

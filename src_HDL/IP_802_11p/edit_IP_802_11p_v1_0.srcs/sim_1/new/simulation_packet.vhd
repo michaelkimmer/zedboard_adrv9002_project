@@ -56,8 +56,10 @@ architecture Behavioral of simulation_packet is
 		--  ADRV9002 signals
 		RX_CLOCK : in STD_LOGIC;
 		RX_ENABLE : in STD_LOGIC;
-		RX_IDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
-		RX_QDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
+		RX_IDATA_0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+		RX_QDATA_0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+		RX_IDATA_1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+		RX_QDATA_1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
 		RX_RESET : in STD_LOGIC;
 		RX_VALID : in STD_LOGIC;
 		-- ZedBoard Switches + LEDs
@@ -97,8 +99,10 @@ architecture Behavioral of simulation_packet is
     -- Define Input signals
     signal RX_CLOCK : STD_LOGIC := '0';
     -- signal RX_ENABLE : in STD_LOGIC;
-    signal RX_IDATA : STD_LOGIC_VECTOR ( 15 downto 0 ) := (others => '0');
-    signal RX_QDATA : STD_LOGIC_VECTOR ( 15 downto 0 ) := (others => '0');
+    signal RX_IDATA_0 : STD_LOGIC_VECTOR ( 15 downto 0 ) := (others => '0');
+    signal RX_QDATA_0 : STD_LOGIC_VECTOR ( 15 downto 0 ) := (others => '0');
+    signal RX_IDATA_1 : STD_LOGIC_VECTOR ( 15 downto 0 ) := (others => '0');
+    signal RX_QDATA_1 : STD_LOGIC_VECTOR ( 15 downto 0 ) := (others => '0');
     -- signal RX_RESET : in STD_LOGIC;
     -- signal RX_VALID : in STD_LOGIC
 
@@ -116,8 +120,10 @@ begin
 		--  ADRV9002 signals
         RX_CLOCK => RX_CLOCK,
         RX_ENABLE => '1',
-        RX_IDATA => RX_IDATA,
-        RX_QDATA => RX_QDATA,
+        RX_IDATA_0 => RX_IDATA_0,
+        RX_QDATA_0 => RX_QDATA_0,      
+        RX_IDATA_1 => RX_IDATA_1,
+        RX_QDATA_1 => RX_QDATA_1,
         RX_RESET => '0',
         RX_VALID => '1',
 		-- ZedBoard Switches + LEDs
@@ -156,10 +162,14 @@ begin
     
     simulation_process : process(CLOCK)
         -- files & define lines
-        constant filename : string := "signal_802_11p_9_int.txt"; -- signal_802_11p_6_int.txt / signal_802_11p_6_rotated_int.txt / signal_802_11p_9_int.txt
-        FILE in_file : TEXT OPEN READ_MODE IS filename;
-        VARIABLE in_line : LINE;
-        VARIABLE a, b : integer;
+        constant filename_0 : string := "signal_802_11p_6_int.txt"; -- signal_802_11p_6_int.txt / signal_802_11p_6_rotated_int.txt / signal_802_11p_9_int.txt
+        constant filename_1 : string := "signal_802_11p_6_rotated_int.txt"; -- signal_802_11p_6_int.txt / signal_802_11p_6_rotated_int.txt / signal_802_11p_9_int.txt
+        FILE in_file_0 : TEXT OPEN READ_MODE IS filename_0;
+        FILE in_file_1 : TEXT OPEN READ_MODE IS filename_1;
+        VARIABLE in_line_0 : LINE;
+        VARIABLE in_line_1 : LINE;
+        VARIABLE a_0, b_0 : integer;
+        VARIABLE a_1, b_1 : integer;
 
         variable WAIT_NOW : std_logic := '0';
 
@@ -167,18 +177,39 @@ begin
         if rising_edge(RX_CLOCK) then
         
             -- Read data from file until EOF reached
-            if not endfile(in_file)  then
+            if not endfile(in_file_0) or not endfile(in_file_1)  then
                 
                 if WAIT_NOW = '0' then
+                    
+                    if not endfile(in_file_0) then
+                        -- read IQ samples from signal_802_11p_int.txt/signal_802_11p_rotated_int.txt (repeat each sample twice --> 10MHz by interleaving inside)
+                        READLINE(in_file_0, in_line_0); --get line of input stimulus
+                        READ(in_line_0, a_0); --get first operand
+                        READ(in_line_0, b_0); --get second operand
 
-                    -- read IQ samples from signal_802_11p_int.txt/signal_802_11p_rotated_int.txt (repeat each sample twice --> 10MHz by interleaving inside)
-                    READLINE(in_file, in_line); --get line of input stimulus
-                    READ(in_line, a); --get first operand
-                    READ(in_line, b); --get second operand
+                        -- Convert and assign to respective signals
+                        -- RX_IDATA_0 <= std_logic_vector(to_signed(a_0, 16));
+                        -- RX_QDATA_0 <= std_logic_vector(to_signed(b_0, 16));
+						RX_IDATA_0 <= std_logic_vector(to_signed(0, 16));
+                        RX_QDATA_0 <= std_logic_vector(to_signed(0, 16)); 
+					else
+                        RX_IDATA_0 <= std_logic_vector(to_signed(0, 16));
+                        RX_QDATA_0 <= std_logic_vector(to_signed(0, 16));
+                     end if;
+                     
+                     if not endfile(in_file_1) then
+                        -- read IQ samples from signal_802_11p_int.txt/signal_802_11p_rotated_int.txt (repeat each sample twice --> 10MHz by interleaving inside)
+                        READLINE(in_file_1, in_line_1); --get line of input stimulus
+                        READ(in_line_1, a_1); --get first operand
+                        READ(in_line_1, b_1); --get second operand
 
-                    -- Convert and assign to respective signals
-                    RX_IDATA <= std_logic_vector(to_signed(a, 16));
-                    RX_QDATA <= std_logic_vector(to_signed(b, 16));
+                        -- Convert and assign to respective signals
+                        RX_IDATA_1 <= std_logic_vector(to_signed(a_1, 16));
+                        RX_QDATA_1 <= std_logic_vector(to_signed(b_1, 16));
+                     else
+                        RX_IDATA_1 <= std_logic_vector(to_signed(0, 16));
+                        RX_QDATA_1 <= std_logic_vector(to_signed(0, 16));
+                     end if;
 
                 end if;
 
@@ -186,12 +217,14 @@ begin
                 WAIT_NOW := not WAIT_NOW;
 
             else
-                -- End of file reached
+                -- End of both files reached
                 --file_close(in_file);  -- Close the file (optional)
 
                 -- jump to start of packet (reopen)
-                file_close(in_file);
-                file_open(in_file, filename, READ_MODE);
+                file_close(in_file_0);
+                file_open(in_file_0, filename_0, READ_MODE);
+                file_close(in_file_1);
+                file_open(in_file_1, filename_1, READ_MODE);
                 
 
             end if;

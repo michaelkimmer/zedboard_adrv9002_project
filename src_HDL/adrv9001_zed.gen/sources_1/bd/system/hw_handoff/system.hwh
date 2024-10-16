@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Oct 16 15:32:37 2024" VIVADOVERSION="2023.2.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Oct 16 19:18:11 2024" VIVADOVERSION="2023.2.2">
 
   <SYSTEMINFO ARCH="zynq" BOARD="avnet.com:zedboard:part0:1.4" DEVICE="7z020" NAME="system" PACKAGE="clg484" SPEEDGRADE="-1"/>
 
@@ -702,7 +702,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="78" FULLNAME="/IP_802_11p_0" HWVERSION="1.0" INSTANCE="IP_802_11p_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="IP_802_11p" VLNV="xilinx.com:user:IP_802_11p:1.0">
+    <MODULE COREREVISION="80" FULLNAME="/IP_802_11p_0" HWVERSION="1.0" INSTANCE="IP_802_11p_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="IP_802_11p" VLNV="xilinx.com:user:IP_802_11p:1.0">
       <DOCUMENTS/>
       <ADDRESSBLOCKS>
         <ADDRESSBLOCK ACCESS="" INTERFACE="S00_AXI" NAME="S00_AXI_reg" RANGE="16384" USAGE="register"/>
@@ -736,14 +736,24 @@
             <CONNECTION INSTANCE="axi_adrv9001" PORT="adc_1_enable_i0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="RX_IDATA" RIGHT="0" SIGIS="undef" SIGNAME="axi_adrv9001_adc_1_data_i0">
+        <PORT DIR="I" LEFT="15" NAME="RX_IDATA_0" RIGHT="0" SIGIS="undef" SIGNAME="axi_adrv9001_adc_1_data_i0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_adrv9001" PORT="adc_1_data_i0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="RX_QDATA" RIGHT="0" SIGIS="undef" SIGNAME="axi_adrv9001_adc_1_data_q0">
+        <PORT DIR="I" LEFT="15" NAME="RX_IDATA_1" RIGHT="0" SIGIS="undef" SIGNAME="axi_adrv9001_adc_1_data_i1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_adrv9001" PORT="adc_1_data_i1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="RX_QDATA_0" RIGHT="0" SIGIS="undef" SIGNAME="axi_adrv9001_adc_1_data_q0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_adrv9001" PORT="adc_1_data_q0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="RX_QDATA_1" RIGHT="0" SIGIS="undef" SIGNAME="axi_adrv9001_adc_1_data_q1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_adrv9001" PORT="adc_1_data_q1"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="RX_RESET" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="axi_adrv9001_adc_1_rst">
@@ -968,23 +978,25 @@
         <PORT DIR="O" LEFT="15" NAME="adc_1_data_i0" RIGHT="0" SIGIS="undef" SIGNAME="axi_adrv9001_adc_1_data_i0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="util_adc_1_pack" PORT="fifo_wr_data_0"/>
-            <CONNECTION INSTANCE="IP_802_11p_0" PORT="RX_IDATA"/>
+            <CONNECTION INSTANCE="IP_802_11p_0" PORT="RX_IDATA_0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="adc_1_data_i1" RIGHT="0" SIGIS="undef" SIGNAME="axi_adrv9001_adc_1_data_i1">
           <CONNECTIONS>
             <CONNECTION INSTANCE="util_adc_1_pack" PORT="fifo_wr_data_2"/>
+            <CONNECTION INSTANCE="IP_802_11p_0" PORT="RX_IDATA_1"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="adc_1_data_q0" RIGHT="0" SIGIS="undef" SIGNAME="axi_adrv9001_adc_1_data_q0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="util_adc_1_pack" PORT="fifo_wr_data_1"/>
-            <CONNECTION INSTANCE="IP_802_11p_0" PORT="RX_QDATA"/>
+            <CONNECTION INSTANCE="IP_802_11p_0" PORT="RX_QDATA_0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="adc_1_data_q1" RIGHT="0" SIGIS="undef" SIGNAME="axi_adrv9001_adc_1_data_q1">
           <CONNECTIONS>
             <CONNECTION INSTANCE="util_adc_1_pack" PORT="fifo_wr_data_3"/>
+            <CONNECTION INSTANCE="IP_802_11p_0" PORT="RX_QDATA_1"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="adc_1_dovf" SIGIS="undef" SIGNAME="util_adc_1_pack_fifo_wr_overflow">

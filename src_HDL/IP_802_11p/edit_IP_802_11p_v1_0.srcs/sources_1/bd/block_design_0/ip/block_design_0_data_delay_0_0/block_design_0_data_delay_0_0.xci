@@ -2,7 +2,7 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "block_design_0_data_delay_0_0",
-    "cell_name": "data_delay_0",
+    "cell_name": "rx_0/data_delay_0",
     "component_reference": "xilinx.com:module_ref:data_delay:1.0",
     "ip_revision": "1723654439",
     "gen_directory": "../../../../../../edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_data_delay_0_0",

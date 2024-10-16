@@ -42,4 +42,9 @@ block_design_0_demapper_soft_0_0.vhd,vhdl,xil_defaultlib,../../../bd/block_desig
 block_design_0_deinterleaver_soft_0_0.vhd,vhdl,xil_defaultlib,../../../bd/block_design_0/ip/block_design_0_deinterleaver_soft_0_0/sim/block_design_0_deinterleaver_soft_0_0.vhd,
 block_design_0_viterbi_soft_0_0.vhd,vhdl,xil_defaultlib,../../../bd/block_design_0/ip/block_design_0_viterbi_soft_0_0/sim/block_design_0_viterbi_soft_0_0.vhd,
 block_design_0.vhd,vhdl,xil_defaultlib,../../../bd/block_design_0/sim/block_design_0.vhd,
+block_design_0_data_interleaver_0_1.vhd,vhdl,xil_defaultlib,../../../bd/block_design_0/ip/block_design_0_data_interleaver_0_1/sim/block_design_0_data_interleaver_0_1.vhd,
+block_design_0_data_delay_0_1.vhd,vhdl,xil_defaultlib,../../../bd/block_design_0/ip/block_design_0_data_delay_0_1/sim/block_design_0_data_delay_0_1.vhd,
+block_design_0_rx_clock_domain_cros_0_1.vhd,vhdl,xil_defaultlib,../../../bd/block_design_0/ip/block_design_0_rx_clock_domain_cros_0_1/sim/block_design_0_rx_clock_domain_cros_0_1.vhd,
+block_design_0_timing_acquisition_8_0_1.vhd,vhdl,xil_defaultlib,../../../bd/block_design_0/ip/block_design_0_timing_acquisition_8_0_1/sim/block_design_0_timing_acquisition_8_0_1.vhd,
+block_design_0_channel_signal_combi_0_0.vhd,vhdl,xil_defaultlib,../../../bd/block_design_0/ip/block_design_0_channel_signal_combi_0_0/sim/block_design_0_channel_signal_combi_0_0.vhd,
 glbl.v,Verilog,xil_defaultlib,glbl.v

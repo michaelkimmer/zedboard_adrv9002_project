@@ -4588,7 +4588,7 @@
       },
       "IP_802_11p_0": {
         "vlnv": "xilinx.com:user:IP_802_11p:1.0",
-        "ip_revision": "78",
+        "ip_revision": "80",
         "xci_name": "system_IP_802_11p_0_1",
         "xci_path": "ip\\system_IP_802_11p_0_1\\system_IP_802_11p_0_1.xci",
         "inst_hier_path": "IP_802_11p_0"
@@ -4864,26 +4864,28 @@
         "ports": [
           "axi_adrv9001/adc_1_data_i0",
           "util_adc_1_pack/fifo_wr_data_0",
-          "IP_802_11p_0/RX_IDATA"
+          "IP_802_11p_0/RX_IDATA_0"
         ]
       },
       "axi_adrv9001_adc_1_data_i1": {
         "ports": [
           "axi_adrv9001/adc_1_data_i1",
-          "util_adc_1_pack/fifo_wr_data_2"
+          "util_adc_1_pack/fifo_wr_data_2",
+          "IP_802_11p_0/RX_IDATA_1"
         ]
       },
       "axi_adrv9001_adc_1_data_q0": {
         "ports": [
           "axi_adrv9001/adc_1_data_q0",
           "util_adc_1_pack/fifo_wr_data_1",
-          "IP_802_11p_0/RX_QDATA"
+          "IP_802_11p_0/RX_QDATA_0"
         ]
       },
       "axi_adrv9001_adc_1_data_q1": {
         "ports": [
           "axi_adrv9001/adc_1_data_q1",
-          "util_adc_1_pack/fifo_wr_data_3"
+          "util_adc_1_pack/fifo_wr_data_3",
+          "IP_802_11p_0/RX_QDATA_1"
         ]
       },
       "axi_adrv9001_adc_1_enable_i0": {
