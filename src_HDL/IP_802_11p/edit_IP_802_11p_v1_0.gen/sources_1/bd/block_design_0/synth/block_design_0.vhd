@@ -2,7 +2,7 @@
 --Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
---Date        : Tue May 21 11:11:54 2024
+--Date        : Wed Aug 14 18:54:44 2024
 --Host        : lab817_01 running 64-bit major release  (build 9200)
 --Command     : generate_target block_design_0.bd
 --Design      : block_design_0
@@ -734,7 +734,9 @@ architecture STRUCTURE of block_design_0 is
     IDATA_OUT_DELAY_48 : out STD_LOGIC_VECTOR ( 15 downto 0 );
     QDATA_OUT_DELAY_48 : out STD_LOGIC_VECTOR ( 15 downto 0 );
     IDATA_OUT_DELAY_64 : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    QDATA_OUT_DELAY_64 : out STD_LOGIC_VECTOR ( 15 downto 0 )
+    QDATA_OUT_DELAY_64 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    IDATA_OUT_DELAY_80 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    QDATA_OUT_DELAY_80 : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component block_design_0_data_delay_0_0;
   component block_design_0_act_power_0_0 is
@@ -763,6 +765,8 @@ architecture STRUCTURE of block_design_0 is
     QDATA_DELAY_48 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     IDATA_DELAY_64 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     QDATA_DELAY_64 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    IDATA_DELAY_80 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    QDATA_DELAY_80 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     DETECTION_THRESHOLD : in STD_LOGIC_VECTOR ( 63 downto 0 );
     DETECTION_STROBE : out STD_LOGIC;
     DETECTION_SIGNAL_DETECTED : out STD_LOGIC;
@@ -1026,11 +1030,13 @@ architecture STRUCTURE of block_design_0 is
   signal data_delay_0_IDATA_OUT_DELAY_32 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal data_delay_0_IDATA_OUT_DELAY_48 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal data_delay_0_IDATA_OUT_DELAY_64 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal data_delay_0_IDATA_OUT_DELAY_80 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal data_delay_0_QDATA_OUT : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal data_delay_0_QDATA_OUT_DELAY_16 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal data_delay_0_QDATA_OUT_DELAY_32 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal data_delay_0_QDATA_OUT_DELAY_48 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal data_delay_0_QDATA_OUT_DELAY_64 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal data_delay_0_QDATA_OUT_DELAY_80 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal data_interleaver_0_DATA_OUT_STROBE : STD_LOGIC;
   signal data_interleaver_0_IDATA_OUT : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal data_interleaver_0_QDATA_OUT : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -1258,12 +1264,14 @@ data_delay_0: component block_design_0_data_delay_0_0
       IDATA_OUT_DELAY_32(15 downto 0) => data_delay_0_IDATA_OUT_DELAY_32(15 downto 0),
       IDATA_OUT_DELAY_48(15 downto 0) => data_delay_0_IDATA_OUT_DELAY_48(15 downto 0),
       IDATA_OUT_DELAY_64(15 downto 0) => data_delay_0_IDATA_OUT_DELAY_64(15 downto 0),
+      IDATA_OUT_DELAY_80(15 downto 0) => data_delay_0_IDATA_OUT_DELAY_80(15 downto 0),
       QDATA_IN(15 downto 0) => data_interleaver_0_QDATA_OUT(15 downto 0),
       QDATA_OUT(15 downto 0) => data_delay_0_QDATA_OUT(15 downto 0),
       QDATA_OUT_DELAY_16(15 downto 0) => data_delay_0_QDATA_OUT_DELAY_16(15 downto 0),
       QDATA_OUT_DELAY_32(15 downto 0) => data_delay_0_QDATA_OUT_DELAY_32(15 downto 0),
       QDATA_OUT_DELAY_48(15 downto 0) => data_delay_0_QDATA_OUT_DELAY_48(15 downto 0),
       QDATA_OUT_DELAY_64(15 downto 0) => data_delay_0_QDATA_OUT_DELAY_64(15 downto 0),
+      QDATA_OUT_DELAY_80(15 downto 0) => data_delay_0_QDATA_OUT_DELAY_80(15 downto 0),
       RESET => RESET_0_1
     );
 data_interleaver_0: component block_design_0_data_interleaver_0_0
@@ -1486,11 +1494,13 @@ timing_acquisition_8_0: component block_design_0_timing_acquisition_8_0_0
       IDATA_DELAY_32(15 downto 0) => data_delay_0_IDATA_OUT_DELAY_32(15 downto 0),
       IDATA_DELAY_48(15 downto 0) => data_delay_0_IDATA_OUT_DELAY_48(15 downto 0),
       IDATA_DELAY_64(15 downto 0) => data_delay_0_IDATA_OUT_DELAY_64(15 downto 0),
+      IDATA_DELAY_80(15 downto 0) => data_delay_0_IDATA_OUT_DELAY_80(15 downto 0),
       QDATA(15 downto 0) => data_delay_0_QDATA_OUT(15 downto 0),
       QDATA_DELAY_16(15 downto 0) => data_delay_0_QDATA_OUT_DELAY_16(15 downto 0),
       QDATA_DELAY_32(15 downto 0) => data_delay_0_QDATA_OUT_DELAY_32(15 downto 0),
       QDATA_DELAY_48(15 downto 0) => data_delay_0_QDATA_OUT_DELAY_48(15 downto 0),
       QDATA_DELAY_64(15 downto 0) => data_delay_0_QDATA_OUT_DELAY_64(15 downto 0),
+      QDATA_DELAY_80(15 downto 0) => data_delay_0_QDATA_OUT_DELAY_80(15 downto 0),
       RESET => RESET_0_1
     );
 viterbi_soft_0: component block_design_0_viterbi_soft_0_0

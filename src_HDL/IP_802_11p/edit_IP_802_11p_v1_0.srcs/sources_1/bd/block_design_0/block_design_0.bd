@@ -429,7 +429,7 @@
       },
       "data_delay_0": {
         "vlnv": "xilinx.com:module_ref:data_delay:1.0",
-        "ip_revision": "1715434520",
+        "ip_revision": "1723654439",
         "xci_name": "block_design_0_data_delay_0_0",
         "xci_path": "ip\\block_design_0_data_delay_0_0\\block_design_0_data_delay_0_0.xci",
         "inst_hier_path": "data_delay_0",
@@ -522,6 +522,16 @@
             "direction": "O",
             "left": "15",
             "right": "0"
+          },
+          "IDATA_OUT_DELAY_80": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "QDATA_OUT_DELAY_80": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
           }
         }
       },
@@ -580,7 +590,7 @@
       },
       "timing_acquisition_8_0": {
         "vlnv": "xilinx.com:module_ref:timing_acquisition_802_11p:1.0",
-        "ip_revision": "1715435183",
+        "ip_revision": "1723654440",
         "xci_name": "block_design_0_timing_acquisition_8_0_0",
         "xci_path": "ip\\block_design_0_timing_acquisition_8_0_0\\block_design_0_timing_acquisition_8_0_0.xci",
         "inst_hier_path": "timing_acquisition_8_0",
@@ -657,6 +667,16 @@
             "right": "0"
           },
           "QDATA_DELAY_64": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "IDATA_DELAY_80": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "QDATA_DELAY_80": {
             "direction": "I",
             "left": "15",
             "right": "0"
@@ -2240,7 +2260,7 @@
       },
       "equalizer_time_frequ_0": {
         "vlnv": "xilinx.com:module_ref:equalizer_time_frequency:1.0",
-        "ip_revision": "1715435467",
+        "ip_revision": "1723638874",
         "xci_name": "block_design_0_equalizer_time_frequ_0_0",
         "xci_path": "ip\\block_design_0_equalizer_time_frequ_0_0\\block_design_0_equalizer_time_frequ_0_0.xci",
         "inst_hier_path": "equalizer_time_frequ_0",
@@ -4196,17 +4216,17 @@
           "hier_rotation_constellation/CLOCK",
           "act_power_0/CLOCK",
           "data_interleaver_0/CLOCK",
-          "data_delay_0/CLOCK",
           "axi_regs_mux_0/CLOCK",
           "descrambler_0/CLOCK",
           "output_ser2par_0/CLOCK",
           "rx_clock_domain_cros_0/CLOCK",
-          "timing_acquisition_8_0/CLOCK",
-          "equalizer_time_frequ_0/CLOCK",
           "deinterleaver_soft_0/CLOCK",
           "demapper_soft_0/CLOCK",
           "viterbi_soft_0/CLOCK",
-          "constellation_tracker_0/CLOCK"
+          "constellation_tracker_0/CLOCK",
+          "equalizer_time_frequ_0/CLOCK",
+          "data_delay_0/CLOCK",
+          "timing_acquisition_8_0/CLOCK"
         ]
       },
       "DETECTION_THRESHOLD_0_1": {
@@ -4225,17 +4245,17 @@
           "hier_rotation_constellation/RESET",
           "act_power_0/RESET",
           "data_interleaver_0/RESET",
-          "data_delay_0/RESET",
           "axi_regs_mux_0/RESET",
           "descrambler_0/RESET",
           "output_ser2par_0/RESET",
           "rx_clock_domain_cros_0/RESET",
-          "timing_acquisition_8_0/RESET",
-          "equalizer_time_frequ_0/RESET",
           "deinterleaver_soft_0/RESET",
           "demapper_soft_0/RESET",
           "viterbi_soft_0/RESET",
-          "constellation_tracker_0/RESET"
+          "constellation_tracker_0/RESET",
+          "equalizer_time_frequ_0/RESET",
+          "data_delay_0/RESET",
+          "timing_acquisition_8_0/RESET"
         ]
       },
       "RX_CLOCK_0_1": {
@@ -4390,8 +4410,8 @@
           "data_delay_0/DATA_OUT_STROBE",
           "act_power_0/DATA_STROBE",
           "axi_regs_mux_0/DATA_STROBE",
-          "timing_acquisition_8_0/DATA_STROBE",
-          "equalizer_time_frequ_0/DATA_IN_STROBE"
+          "equalizer_time_frequ_0/DATA_IN_STROBE",
+          "timing_acquisition_8_0/DATA_STROBE"
         ]
       },
       "data_delay_0_IDATA_OUT": {
@@ -4399,8 +4419,8 @@
           "data_delay_0/IDATA_OUT",
           "act_power_0/IDATA",
           "axi_regs_mux_0/IDATA",
-          "timing_acquisition_8_0/IDATA",
-          "equalizer_time_frequ_0/IDATA_IN"
+          "equalizer_time_frequ_0/IDATA_IN",
+          "timing_acquisition_8_0/IDATA"
         ]
       },
       "data_delay_0_IDATA_OUT_DELAY_16": {
@@ -4427,13 +4447,19 @@
           "timing_acquisition_8_0/IDATA_DELAY_64"
         ]
       },
+      "data_delay_0_IDATA_OUT_DELAY_80": {
+        "ports": [
+          "data_delay_0/IDATA_OUT_DELAY_80",
+          "timing_acquisition_8_0/IDATA_DELAY_80"
+        ]
+      },
       "data_delay_0_QDATA_OUT": {
         "ports": [
           "data_delay_0/QDATA_OUT",
           "act_power_0/QDATA",
           "axi_regs_mux_0/QDATA",
-          "timing_acquisition_8_0/QDATA",
-          "equalizer_time_frequ_0/QDATA_IN"
+          "equalizer_time_frequ_0/QDATA_IN",
+          "timing_acquisition_8_0/QDATA"
         ]
       },
       "data_delay_0_QDATA_OUT_DELAY_16": {
@@ -4458,6 +4484,12 @@
         "ports": [
           "data_delay_0/QDATA_OUT_DELAY_64",
           "timing_acquisition_8_0/QDATA_DELAY_64"
+        ]
+      },
+      "data_delay_0_QDATA_OUT_DELAY_80": {
+        "ports": [
+          "data_delay_0/QDATA_OUT_DELAY_80",
+          "timing_acquisition_8_0/QDATA_DELAY_80"
         ]
       },
       "data_interleaver_0_DATA_OUT_STROBE": {

@@ -2,7 +2,7 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-// Date        : Tue May 21 11:12:44 2024
+// Date        : Wed Aug 14 18:55:36 2024
 // Host        : lab817_01 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/zedboard_adrv9002_project/src_HDL/IP_802_11p/edit_IP_802_11p_v1_0.gen/sources_1/bd/block_design_0/ip/block_design_0_data_delay_0_0/block_design_0_data_delay_0_0_sim_netlist.v
@@ -32,7 +32,9 @@ module block_design_0_data_delay_0_0
     IDATA_OUT_DELAY_48,
     QDATA_OUT_DELAY_48,
     IDATA_OUT_DELAY_64,
-    QDATA_OUT_DELAY_64);
+    QDATA_OUT_DELAY_64,
+    IDATA_OUT_DELAY_80,
+    QDATA_OUT_DELAY_80);
   (* x_interface_info = "xilinx.com:signal:reset:1.0 RESET RST" *) (* x_interface_parameter = "XIL_INTERFACENAME RESET, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input RESET;
   (* x_interface_info = "xilinx.com:signal:clock:1.0 CLOCK CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME CLOCK, ASSOCIATED_RESET RESET, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN block_design_0_CLOCK, INSERT_VIP 0" *) input CLOCK;
   input [15:0]IDATA_IN;
@@ -49,6 +51,8 @@ module block_design_0_data_delay_0_0
   output [15:0]QDATA_OUT_DELAY_48;
   output [15:0]IDATA_OUT_DELAY_64;
   output [15:0]QDATA_OUT_DELAY_64;
+  output [15:0]IDATA_OUT_DELAY_80;
+  output [15:0]QDATA_OUT_DELAY_80;
 
   wire CLOCK;
   wire DATA_IN_STROBE;
@@ -59,12 +63,14 @@ module block_design_0_data_delay_0_0
   wire [15:0]IDATA_OUT_DELAY_32;
   wire [15:0]IDATA_OUT_DELAY_48;
   wire [15:0]IDATA_OUT_DELAY_64;
+  wire [15:0]IDATA_OUT_DELAY_80;
   wire [15:0]QDATA_IN;
   wire [15:0]QDATA_OUT;
   wire [15:0]QDATA_OUT_DELAY_16;
   wire [15:0]QDATA_OUT_DELAY_32;
   wire [15:0]QDATA_OUT_DELAY_48;
   wire [15:0]QDATA_OUT_DELAY_64;
+  wire [15:0]QDATA_OUT_DELAY_80;
   wire RESET;
 
   block_design_0_data_delay_0_0_data_delay U0
@@ -77,12 +83,14 @@ module block_design_0_data_delay_0_0
         .IDATA_OUT_DELAY_32(IDATA_OUT_DELAY_32),
         .IDATA_OUT_DELAY_48(IDATA_OUT_DELAY_48),
         .IDATA_OUT_DELAY_64(IDATA_OUT_DELAY_64),
+        .IDATA_OUT_DELAY_80(IDATA_OUT_DELAY_80),
         .QDATA_IN(QDATA_IN),
         .QDATA_OUT(QDATA_OUT),
         .QDATA_OUT_DELAY_16(QDATA_OUT_DELAY_16),
         .QDATA_OUT_DELAY_32(QDATA_OUT_DELAY_32),
         .QDATA_OUT_DELAY_48(QDATA_OUT_DELAY_48),
         .QDATA_OUT_DELAY_64(QDATA_OUT_DELAY_64),
+        .QDATA_OUT_DELAY_80(QDATA_OUT_DELAY_80),
         .RESET(RESET));
 endmodule
 
@@ -98,6 +106,8 @@ module block_design_0_data_delay_0_0_data_delay
     QDATA_OUT_DELAY_48,
     IDATA_OUT_DELAY_64,
     QDATA_OUT_DELAY_64,
+    IDATA_OUT_DELAY_80,
+    QDATA_OUT_DELAY_80,
     DATA_OUT_STROBE,
     DATA_IN_STROBE,
     IDATA_IN,
@@ -114,6 +124,8 @@ module block_design_0_data_delay_0_0_data_delay
   output [15:0]QDATA_OUT_DELAY_48;
   output [15:0]IDATA_OUT_DELAY_64;
   output [15:0]QDATA_OUT_DELAY_64;
+  output [15:0]IDATA_OUT_DELAY_80;
+  output [15:0]QDATA_OUT_DELAY_80;
   output DATA_OUT_STROBE;
   input DATA_IN_STROBE;
   input [15:0]IDATA_IN;
@@ -176,7 +188,24 @@ module block_design_0_data_delay_0_0_data_delay
   wire \DELAY_REG_I_reg[46][8]_srl15_n_0 ;
   wire \DELAY_REG_I_reg[46][9]_srl15_n_0 ;
   wire [15:0]\DELAY_REG_I_reg[47] ;
+  wire \DELAY_REG_I_reg[62][0]_srl15_n_0 ;
+  wire \DELAY_REG_I_reg[62][10]_srl15_n_0 ;
+  wire \DELAY_REG_I_reg[62][11]_srl15_n_0 ;
+  wire \DELAY_REG_I_reg[62][12]_srl15_n_0 ;
+  wire \DELAY_REG_I_reg[62][13]_srl15_n_0 ;
+  wire \DELAY_REG_I_reg[62][14]_srl15_n_0 ;
+  wire \DELAY_REG_I_reg[62][15]_srl15_n_0 ;
+  wire \DELAY_REG_I_reg[62][1]_srl15_n_0 ;
+  wire \DELAY_REG_I_reg[62][2]_srl15_n_0 ;
+  wire \DELAY_REG_I_reg[62][3]_srl15_n_0 ;
+  wire \DELAY_REG_I_reg[62][4]_srl15_n_0 ;
+  wire \DELAY_REG_I_reg[62][5]_srl15_n_0 ;
+  wire \DELAY_REG_I_reg[62][6]_srl15_n_0 ;
+  wire \DELAY_REG_I_reg[62][7]_srl15_n_0 ;
+  wire \DELAY_REG_I_reg[62][8]_srl15_n_0 ;
+  wire \DELAY_REG_I_reg[62][9]_srl15_n_0 ;
   wire [15:0]\DELAY_REG_I_reg[63] ;
+  wire [15:0]\DELAY_REG_I_reg[79] ;
   wire \DELAY_REG_Q_reg[14][0]_srl15_n_0 ;
   wire \DELAY_REG_Q_reg[14][10]_srl15_n_0 ;
   wire \DELAY_REG_Q_reg[14][11]_srl15_n_0 ;
@@ -228,19 +257,38 @@ module block_design_0_data_delay_0_0_data_delay
   wire \DELAY_REG_Q_reg[46][8]_srl15_n_0 ;
   wire \DELAY_REG_Q_reg[46][9]_srl15_n_0 ;
   wire [15:0]\DELAY_REG_Q_reg[47] ;
+  wire \DELAY_REG_Q_reg[62][0]_srl15_n_0 ;
+  wire \DELAY_REG_Q_reg[62][10]_srl15_n_0 ;
+  wire \DELAY_REG_Q_reg[62][11]_srl15_n_0 ;
+  wire \DELAY_REG_Q_reg[62][12]_srl15_n_0 ;
+  wire \DELAY_REG_Q_reg[62][13]_srl15_n_0 ;
+  wire \DELAY_REG_Q_reg[62][14]_srl15_n_0 ;
+  wire \DELAY_REG_Q_reg[62][15]_srl15_n_0 ;
+  wire \DELAY_REG_Q_reg[62][1]_srl15_n_0 ;
+  wire \DELAY_REG_Q_reg[62][2]_srl15_n_0 ;
+  wire \DELAY_REG_Q_reg[62][3]_srl15_n_0 ;
+  wire \DELAY_REG_Q_reg[62][4]_srl15_n_0 ;
+  wire \DELAY_REG_Q_reg[62][5]_srl15_n_0 ;
+  wire \DELAY_REG_Q_reg[62][6]_srl15_n_0 ;
+  wire \DELAY_REG_Q_reg[62][7]_srl15_n_0 ;
+  wire \DELAY_REG_Q_reg[62][8]_srl15_n_0 ;
+  wire \DELAY_REG_Q_reg[62][9]_srl15_n_0 ;
   wire [15:0]\DELAY_REG_Q_reg[63] ;
+  wire [15:0]\DELAY_REG_Q_reg[79] ;
   wire [15:0]IDATA_IN;
   wire [15:0]IDATA_OUT;
   wire [15:0]IDATA_OUT_DELAY_16;
   wire [15:0]IDATA_OUT_DELAY_32;
   wire [15:0]IDATA_OUT_DELAY_48;
   wire [15:0]IDATA_OUT_DELAY_64;
+  wire [15:0]IDATA_OUT_DELAY_80;
   wire [15:0]QDATA_IN;
   wire [15:0]QDATA_OUT;
   wire [15:0]QDATA_OUT_DELAY_16;
   wire [15:0]QDATA_OUT_DELAY_32;
   wire [15:0]QDATA_OUT_DELAY_48;
   wire [15:0]QDATA_OUT_DELAY_64;
+  wire [15:0]QDATA_OUT_DELAY_80;
   wire RESET;
 
   LUT2 #(
@@ -1265,214 +1313,550 @@ module block_design_0_data_delay_0_0_data_delay
         .D(\DELAY_REG_I_reg[46][9]_srl15_n_0 ),
         .Q(\DELAY_REG_I_reg[47] [9]),
         .R(1'b0));
-  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[63] " *) 
-  (* srl_name = "\\U0/DELAY_REG_I_reg[63][0]_srl16 " *) 
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[62][0]_srl15 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
-    \DELAY_REG_I_reg[63][0]_srl16 
-       (.A0(1'b1),
+    \DELAY_REG_I_reg[62][0]_srl15 
+       (.A0(1'b0),
         .A1(1'b1),
         .A2(1'b1),
         .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(\DELAY_REG_I_reg[47] [0]),
-        .Q(\DELAY_REG_I_reg[63] [0]));
-  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[63] " *) 
-  (* srl_name = "\\U0/DELAY_REG_I_reg[63][10]_srl16 " *) 
+        .Q(\DELAY_REG_I_reg[62][0]_srl15_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[62][10]_srl15 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
-    \DELAY_REG_I_reg[63][10]_srl16 
-       (.A0(1'b1),
+    \DELAY_REG_I_reg[62][10]_srl15 
+       (.A0(1'b0),
         .A1(1'b1),
         .A2(1'b1),
         .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(\DELAY_REG_I_reg[47] [10]),
-        .Q(\DELAY_REG_I_reg[63] [10]));
-  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[63] " *) 
-  (* srl_name = "\\U0/DELAY_REG_I_reg[63][11]_srl16 " *) 
+        .Q(\DELAY_REG_I_reg[62][10]_srl15_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[62][11]_srl15 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
-    \DELAY_REG_I_reg[63][11]_srl16 
-       (.A0(1'b1),
+    \DELAY_REG_I_reg[62][11]_srl15 
+       (.A0(1'b0),
         .A1(1'b1),
         .A2(1'b1),
         .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(\DELAY_REG_I_reg[47] [11]),
-        .Q(\DELAY_REG_I_reg[63] [11]));
-  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[63] " *) 
-  (* srl_name = "\\U0/DELAY_REG_I_reg[63][12]_srl16 " *) 
+        .Q(\DELAY_REG_I_reg[62][11]_srl15_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[62][12]_srl15 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
-    \DELAY_REG_I_reg[63][12]_srl16 
-       (.A0(1'b1),
+    \DELAY_REG_I_reg[62][12]_srl15 
+       (.A0(1'b0),
         .A1(1'b1),
         .A2(1'b1),
         .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(\DELAY_REG_I_reg[47] [12]),
-        .Q(\DELAY_REG_I_reg[63] [12]));
-  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[63] " *) 
-  (* srl_name = "\\U0/DELAY_REG_I_reg[63][13]_srl16 " *) 
+        .Q(\DELAY_REG_I_reg[62][12]_srl15_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[62][13]_srl15 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
-    \DELAY_REG_I_reg[63][13]_srl16 
-       (.A0(1'b1),
+    \DELAY_REG_I_reg[62][13]_srl15 
+       (.A0(1'b0),
         .A1(1'b1),
         .A2(1'b1),
         .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(\DELAY_REG_I_reg[47] [13]),
-        .Q(\DELAY_REG_I_reg[63] [13]));
-  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[63] " *) 
-  (* srl_name = "\\U0/DELAY_REG_I_reg[63][14]_srl16 " *) 
+        .Q(\DELAY_REG_I_reg[62][13]_srl15_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[62][14]_srl15 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
-    \DELAY_REG_I_reg[63][14]_srl16 
-       (.A0(1'b1),
+    \DELAY_REG_I_reg[62][14]_srl15 
+       (.A0(1'b0),
         .A1(1'b1),
         .A2(1'b1),
         .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(\DELAY_REG_I_reg[47] [14]),
-        .Q(\DELAY_REG_I_reg[63] [14]));
-  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[63] " *) 
-  (* srl_name = "\\U0/DELAY_REG_I_reg[63][15]_srl16 " *) 
+        .Q(\DELAY_REG_I_reg[62][14]_srl15_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[62][15]_srl15 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
-    \DELAY_REG_I_reg[63][15]_srl16 
-       (.A0(1'b1),
+    \DELAY_REG_I_reg[62][15]_srl15 
+       (.A0(1'b0),
         .A1(1'b1),
         .A2(1'b1),
         .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(\DELAY_REG_I_reg[47] [15]),
-        .Q(\DELAY_REG_I_reg[63] [15]));
-  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[63] " *) 
-  (* srl_name = "\\U0/DELAY_REG_I_reg[63][1]_srl16 " *) 
+        .Q(\DELAY_REG_I_reg[62][15]_srl15_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[62][1]_srl15 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
-    \DELAY_REG_I_reg[63][1]_srl16 
-       (.A0(1'b1),
+    \DELAY_REG_I_reg[62][1]_srl15 
+       (.A0(1'b0),
         .A1(1'b1),
         .A2(1'b1),
         .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(\DELAY_REG_I_reg[47] [1]),
-        .Q(\DELAY_REG_I_reg[63] [1]));
-  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[63] " *) 
-  (* srl_name = "\\U0/DELAY_REG_I_reg[63][2]_srl16 " *) 
+        .Q(\DELAY_REG_I_reg[62][1]_srl15_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[62][2]_srl15 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
-    \DELAY_REG_I_reg[63][2]_srl16 
-       (.A0(1'b1),
+    \DELAY_REG_I_reg[62][2]_srl15 
+       (.A0(1'b0),
         .A1(1'b1),
         .A2(1'b1),
         .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(\DELAY_REG_I_reg[47] [2]),
-        .Q(\DELAY_REG_I_reg[63] [2]));
-  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[63] " *) 
-  (* srl_name = "\\U0/DELAY_REG_I_reg[63][3]_srl16 " *) 
+        .Q(\DELAY_REG_I_reg[62][2]_srl15_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[62][3]_srl15 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
-    \DELAY_REG_I_reg[63][3]_srl16 
-       (.A0(1'b1),
+    \DELAY_REG_I_reg[62][3]_srl15 
+       (.A0(1'b0),
         .A1(1'b1),
         .A2(1'b1),
         .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(\DELAY_REG_I_reg[47] [3]),
-        .Q(\DELAY_REG_I_reg[63] [3]));
-  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[63] " *) 
-  (* srl_name = "\\U0/DELAY_REG_I_reg[63][4]_srl16 " *) 
+        .Q(\DELAY_REG_I_reg[62][3]_srl15_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[62][4]_srl15 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
-    \DELAY_REG_I_reg[63][4]_srl16 
-       (.A0(1'b1),
+    \DELAY_REG_I_reg[62][4]_srl15 
+       (.A0(1'b0),
         .A1(1'b1),
         .A2(1'b1),
         .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(\DELAY_REG_I_reg[47] [4]),
-        .Q(\DELAY_REG_I_reg[63] [4]));
-  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[63] " *) 
-  (* srl_name = "\\U0/DELAY_REG_I_reg[63][5]_srl16 " *) 
+        .Q(\DELAY_REG_I_reg[62][4]_srl15_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[62][5]_srl15 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
-    \DELAY_REG_I_reg[63][5]_srl16 
-       (.A0(1'b1),
+    \DELAY_REG_I_reg[62][5]_srl15 
+       (.A0(1'b0),
         .A1(1'b1),
         .A2(1'b1),
         .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(\DELAY_REG_I_reg[47] [5]),
-        .Q(\DELAY_REG_I_reg[63] [5]));
-  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[63] " *) 
-  (* srl_name = "\\U0/DELAY_REG_I_reg[63][6]_srl16 " *) 
+        .Q(\DELAY_REG_I_reg[62][5]_srl15_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[62][6]_srl15 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
-    \DELAY_REG_I_reg[63][6]_srl16 
-       (.A0(1'b1),
+    \DELAY_REG_I_reg[62][6]_srl15 
+       (.A0(1'b0),
         .A1(1'b1),
         .A2(1'b1),
         .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(\DELAY_REG_I_reg[47] [6]),
-        .Q(\DELAY_REG_I_reg[63] [6]));
-  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[63] " *) 
-  (* srl_name = "\\U0/DELAY_REG_I_reg[63][7]_srl16 " *) 
+        .Q(\DELAY_REG_I_reg[62][6]_srl15_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[62][7]_srl15 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
-    \DELAY_REG_I_reg[63][7]_srl16 
-       (.A0(1'b1),
+    \DELAY_REG_I_reg[62][7]_srl15 
+       (.A0(1'b0),
         .A1(1'b1),
         .A2(1'b1),
         .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(\DELAY_REG_I_reg[47] [7]),
-        .Q(\DELAY_REG_I_reg[63] [7]));
-  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[63] " *) 
-  (* srl_name = "\\U0/DELAY_REG_I_reg[63][8]_srl16 " *) 
+        .Q(\DELAY_REG_I_reg[62][7]_srl15_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[62][8]_srl15 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
-    \DELAY_REG_I_reg[63][8]_srl16 
-       (.A0(1'b1),
+    \DELAY_REG_I_reg[62][8]_srl15 
+       (.A0(1'b0),
         .A1(1'b1),
         .A2(1'b1),
         .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(\DELAY_REG_I_reg[47] [8]),
-        .Q(\DELAY_REG_I_reg[63] [8]));
-  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[63] " *) 
-  (* srl_name = "\\U0/DELAY_REG_I_reg[63][9]_srl16 " *) 
+        .Q(\DELAY_REG_I_reg[62][8]_srl15_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[62][9]_srl15 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
-    \DELAY_REG_I_reg[63][9]_srl16 
-       (.A0(1'b1),
+    \DELAY_REG_I_reg[62][9]_srl15 
+       (.A0(1'b0),
         .A1(1'b1),
         .A2(1'b1),
         .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(\DELAY_REG_I_reg[47] [9]),
-        .Q(\DELAY_REG_I_reg[63] [9]));
+        .Q(\DELAY_REG_I_reg[62][9]_srl15_n_0 ));
+  FDRE #(
+    .INIT(1'b0)) 
+    \DELAY_REG_I_reg[63][0] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_I_reg[62][0]_srl15_n_0 ),
+        .Q(\DELAY_REG_I_reg[63] [0]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \DELAY_REG_I_reg[63][10] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_I_reg[62][10]_srl15_n_0 ),
+        .Q(\DELAY_REG_I_reg[63] [10]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \DELAY_REG_I_reg[63][11] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_I_reg[62][11]_srl15_n_0 ),
+        .Q(\DELAY_REG_I_reg[63] [11]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \DELAY_REG_I_reg[63][12] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_I_reg[62][12]_srl15_n_0 ),
+        .Q(\DELAY_REG_I_reg[63] [12]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \DELAY_REG_I_reg[63][13] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_I_reg[62][13]_srl15_n_0 ),
+        .Q(\DELAY_REG_I_reg[63] [13]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \DELAY_REG_I_reg[63][14] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_I_reg[62][14]_srl15_n_0 ),
+        .Q(\DELAY_REG_I_reg[63] [14]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \DELAY_REG_I_reg[63][15] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_I_reg[62][15]_srl15_n_0 ),
+        .Q(\DELAY_REG_I_reg[63] [15]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \DELAY_REG_I_reg[63][1] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_I_reg[62][1]_srl15_n_0 ),
+        .Q(\DELAY_REG_I_reg[63] [1]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \DELAY_REG_I_reg[63][2] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_I_reg[62][2]_srl15_n_0 ),
+        .Q(\DELAY_REG_I_reg[63] [2]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \DELAY_REG_I_reg[63][3] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_I_reg[62][3]_srl15_n_0 ),
+        .Q(\DELAY_REG_I_reg[63] [3]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \DELAY_REG_I_reg[63][4] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_I_reg[62][4]_srl15_n_0 ),
+        .Q(\DELAY_REG_I_reg[63] [4]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \DELAY_REG_I_reg[63][5] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_I_reg[62][5]_srl15_n_0 ),
+        .Q(\DELAY_REG_I_reg[63] [5]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \DELAY_REG_I_reg[63][6] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_I_reg[62][6]_srl15_n_0 ),
+        .Q(\DELAY_REG_I_reg[63] [6]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \DELAY_REG_I_reg[63][7] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_I_reg[62][7]_srl15_n_0 ),
+        .Q(\DELAY_REG_I_reg[63] [7]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \DELAY_REG_I_reg[63][8] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_I_reg[62][8]_srl15_n_0 ),
+        .Q(\DELAY_REG_I_reg[63] [8]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \DELAY_REG_I_reg[63][9] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_I_reg[62][9]_srl15_n_0 ),
+        .Q(\DELAY_REG_I_reg[63] [9]),
+        .R(1'b0));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[79] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[79][0]_srl16 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[79][0]_srl16 
+       (.A0(1'b1),
+        .A1(1'b1),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(\DELAY_REG_I_reg[63] [0]),
+        .Q(\DELAY_REG_I_reg[79] [0]));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[79] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[79][10]_srl16 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[79][10]_srl16 
+       (.A0(1'b1),
+        .A1(1'b1),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(\DELAY_REG_I_reg[63] [10]),
+        .Q(\DELAY_REG_I_reg[79] [10]));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[79] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[79][11]_srl16 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[79][11]_srl16 
+       (.A0(1'b1),
+        .A1(1'b1),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(\DELAY_REG_I_reg[63] [11]),
+        .Q(\DELAY_REG_I_reg[79] [11]));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[79] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[79][12]_srl16 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[79][12]_srl16 
+       (.A0(1'b1),
+        .A1(1'b1),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(\DELAY_REG_I_reg[63] [12]),
+        .Q(\DELAY_REG_I_reg[79] [12]));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[79] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[79][13]_srl16 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[79][13]_srl16 
+       (.A0(1'b1),
+        .A1(1'b1),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(\DELAY_REG_I_reg[63] [13]),
+        .Q(\DELAY_REG_I_reg[79] [13]));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[79] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[79][14]_srl16 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[79][14]_srl16 
+       (.A0(1'b1),
+        .A1(1'b1),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(\DELAY_REG_I_reg[63] [14]),
+        .Q(\DELAY_REG_I_reg[79] [14]));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[79] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[79][15]_srl16 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[79][15]_srl16 
+       (.A0(1'b1),
+        .A1(1'b1),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(\DELAY_REG_I_reg[63] [15]),
+        .Q(\DELAY_REG_I_reg[79] [15]));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[79] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[79][1]_srl16 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[79][1]_srl16 
+       (.A0(1'b1),
+        .A1(1'b1),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(\DELAY_REG_I_reg[63] [1]),
+        .Q(\DELAY_REG_I_reg[79] [1]));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[79] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[79][2]_srl16 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[79][2]_srl16 
+       (.A0(1'b1),
+        .A1(1'b1),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(\DELAY_REG_I_reg[63] [2]),
+        .Q(\DELAY_REG_I_reg[79] [2]));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[79] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[79][3]_srl16 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[79][3]_srl16 
+       (.A0(1'b1),
+        .A1(1'b1),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(\DELAY_REG_I_reg[63] [3]),
+        .Q(\DELAY_REG_I_reg[79] [3]));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[79] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[79][4]_srl16 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[79][4]_srl16 
+       (.A0(1'b1),
+        .A1(1'b1),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(\DELAY_REG_I_reg[63] [4]),
+        .Q(\DELAY_REG_I_reg[79] [4]));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[79] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[79][5]_srl16 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[79][5]_srl16 
+       (.A0(1'b1),
+        .A1(1'b1),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(\DELAY_REG_I_reg[63] [5]),
+        .Q(\DELAY_REG_I_reg[79] [5]));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[79] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[79][6]_srl16 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[79][6]_srl16 
+       (.A0(1'b1),
+        .A1(1'b1),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(\DELAY_REG_I_reg[63] [6]),
+        .Q(\DELAY_REG_I_reg[79] [6]));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[79] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[79][7]_srl16 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[79][7]_srl16 
+       (.A0(1'b1),
+        .A1(1'b1),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(\DELAY_REG_I_reg[63] [7]),
+        .Q(\DELAY_REG_I_reg[79] [7]));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[79] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[79][8]_srl16 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[79][8]_srl16 
+       (.A0(1'b1),
+        .A1(1'b1),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(\DELAY_REG_I_reg[63] [8]),
+        .Q(\DELAY_REG_I_reg[79] [8]));
+  (* srl_bus_name = "\\U0/DELAY_REG_I_reg[79] " *) 
+  (* srl_name = "\\U0/DELAY_REG_I_reg[79][9]_srl16 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_I_reg[79][9]_srl16 
+       (.A0(1'b1),
+        .A1(1'b1),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(\DELAY_REG_I_reg[63] [9]),
+        .Q(\DELAY_REG_I_reg[79] [9]));
   (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[14] " *) 
   (* srl_name = "\\U0/DELAY_REG_Q_reg[14][0]_srl15 " *) 
   SRL16E #(
@@ -2481,214 +2865,550 @@ module block_design_0_data_delay_0_0_data_delay
         .D(\DELAY_REG_Q_reg[46][9]_srl15_n_0 ),
         .Q(\DELAY_REG_Q_reg[47] [9]),
         .R(1'b0));
-  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[63] " *) 
-  (* srl_name = "\\U0/DELAY_REG_Q_reg[63][0]_srl16 " *) 
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][0]_srl15 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
-    \DELAY_REG_Q_reg[63][0]_srl16 
-       (.A0(1'b1),
+    \DELAY_REG_Q_reg[62][0]_srl15 
+       (.A0(1'b0),
         .A1(1'b1),
         .A2(1'b1),
         .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(\DELAY_REG_Q_reg[47] [0]),
-        .Q(\DELAY_REG_Q_reg[63] [0]));
-  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[63] " *) 
-  (* srl_name = "\\U0/DELAY_REG_Q_reg[63][10]_srl16 " *) 
+        .Q(\DELAY_REG_Q_reg[62][0]_srl15_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][10]_srl15 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
-    \DELAY_REG_Q_reg[63][10]_srl16 
-       (.A0(1'b1),
+    \DELAY_REG_Q_reg[62][10]_srl15 
+       (.A0(1'b0),
         .A1(1'b1),
         .A2(1'b1),
         .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(\DELAY_REG_Q_reg[47] [10]),
-        .Q(\DELAY_REG_Q_reg[63] [10]));
-  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[63] " *) 
-  (* srl_name = "\\U0/DELAY_REG_Q_reg[63][11]_srl16 " *) 
+        .Q(\DELAY_REG_Q_reg[62][10]_srl15_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][11]_srl15 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
-    \DELAY_REG_Q_reg[63][11]_srl16 
-       (.A0(1'b1),
+    \DELAY_REG_Q_reg[62][11]_srl15 
+       (.A0(1'b0),
         .A1(1'b1),
         .A2(1'b1),
         .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(\DELAY_REG_Q_reg[47] [11]),
-        .Q(\DELAY_REG_Q_reg[63] [11]));
-  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[63] " *) 
-  (* srl_name = "\\U0/DELAY_REG_Q_reg[63][12]_srl16 " *) 
+        .Q(\DELAY_REG_Q_reg[62][11]_srl15_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][12]_srl15 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
-    \DELAY_REG_Q_reg[63][12]_srl16 
-       (.A0(1'b1),
+    \DELAY_REG_Q_reg[62][12]_srl15 
+       (.A0(1'b0),
         .A1(1'b1),
         .A2(1'b1),
         .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(\DELAY_REG_Q_reg[47] [12]),
-        .Q(\DELAY_REG_Q_reg[63] [12]));
-  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[63] " *) 
-  (* srl_name = "\\U0/DELAY_REG_Q_reg[63][13]_srl16 " *) 
+        .Q(\DELAY_REG_Q_reg[62][12]_srl15_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][13]_srl15 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
-    \DELAY_REG_Q_reg[63][13]_srl16 
-       (.A0(1'b1),
+    \DELAY_REG_Q_reg[62][13]_srl15 
+       (.A0(1'b0),
         .A1(1'b1),
         .A2(1'b1),
         .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(\DELAY_REG_Q_reg[47] [13]),
-        .Q(\DELAY_REG_Q_reg[63] [13]));
-  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[63] " *) 
-  (* srl_name = "\\U0/DELAY_REG_Q_reg[63][14]_srl16 " *) 
+        .Q(\DELAY_REG_Q_reg[62][13]_srl15_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][14]_srl15 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
-    \DELAY_REG_Q_reg[63][14]_srl16 
-       (.A0(1'b1),
+    \DELAY_REG_Q_reg[62][14]_srl15 
+       (.A0(1'b0),
         .A1(1'b1),
         .A2(1'b1),
         .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(\DELAY_REG_Q_reg[47] [14]),
-        .Q(\DELAY_REG_Q_reg[63] [14]));
-  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[63] " *) 
-  (* srl_name = "\\U0/DELAY_REG_Q_reg[63][15]_srl16 " *) 
+        .Q(\DELAY_REG_Q_reg[62][14]_srl15_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][15]_srl15 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
-    \DELAY_REG_Q_reg[63][15]_srl16 
-       (.A0(1'b1),
+    \DELAY_REG_Q_reg[62][15]_srl15 
+       (.A0(1'b0),
         .A1(1'b1),
         .A2(1'b1),
         .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(\DELAY_REG_Q_reg[47] [15]),
-        .Q(\DELAY_REG_Q_reg[63] [15]));
-  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[63] " *) 
-  (* srl_name = "\\U0/DELAY_REG_Q_reg[63][1]_srl16 " *) 
+        .Q(\DELAY_REG_Q_reg[62][15]_srl15_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][1]_srl15 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
-    \DELAY_REG_Q_reg[63][1]_srl16 
-       (.A0(1'b1),
+    \DELAY_REG_Q_reg[62][1]_srl15 
+       (.A0(1'b0),
         .A1(1'b1),
         .A2(1'b1),
         .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(\DELAY_REG_Q_reg[47] [1]),
-        .Q(\DELAY_REG_Q_reg[63] [1]));
-  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[63] " *) 
-  (* srl_name = "\\U0/DELAY_REG_Q_reg[63][2]_srl16 " *) 
+        .Q(\DELAY_REG_Q_reg[62][1]_srl15_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][2]_srl15 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
-    \DELAY_REG_Q_reg[63][2]_srl16 
-       (.A0(1'b1),
+    \DELAY_REG_Q_reg[62][2]_srl15 
+       (.A0(1'b0),
         .A1(1'b1),
         .A2(1'b1),
         .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(\DELAY_REG_Q_reg[47] [2]),
-        .Q(\DELAY_REG_Q_reg[63] [2]));
-  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[63] " *) 
-  (* srl_name = "\\U0/DELAY_REG_Q_reg[63][3]_srl16 " *) 
+        .Q(\DELAY_REG_Q_reg[62][2]_srl15_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][3]_srl15 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
-    \DELAY_REG_Q_reg[63][3]_srl16 
-       (.A0(1'b1),
+    \DELAY_REG_Q_reg[62][3]_srl15 
+       (.A0(1'b0),
         .A1(1'b1),
         .A2(1'b1),
         .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(\DELAY_REG_Q_reg[47] [3]),
-        .Q(\DELAY_REG_Q_reg[63] [3]));
-  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[63] " *) 
-  (* srl_name = "\\U0/DELAY_REG_Q_reg[63][4]_srl16 " *) 
+        .Q(\DELAY_REG_Q_reg[62][3]_srl15_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][4]_srl15 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
-    \DELAY_REG_Q_reg[63][4]_srl16 
-       (.A0(1'b1),
+    \DELAY_REG_Q_reg[62][4]_srl15 
+       (.A0(1'b0),
         .A1(1'b1),
         .A2(1'b1),
         .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(\DELAY_REG_Q_reg[47] [4]),
-        .Q(\DELAY_REG_Q_reg[63] [4]));
-  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[63] " *) 
-  (* srl_name = "\\U0/DELAY_REG_Q_reg[63][5]_srl16 " *) 
+        .Q(\DELAY_REG_Q_reg[62][4]_srl15_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][5]_srl15 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
-    \DELAY_REG_Q_reg[63][5]_srl16 
-       (.A0(1'b1),
+    \DELAY_REG_Q_reg[62][5]_srl15 
+       (.A0(1'b0),
         .A1(1'b1),
         .A2(1'b1),
         .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(\DELAY_REG_Q_reg[47] [5]),
-        .Q(\DELAY_REG_Q_reg[63] [5]));
-  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[63] " *) 
-  (* srl_name = "\\U0/DELAY_REG_Q_reg[63][6]_srl16 " *) 
+        .Q(\DELAY_REG_Q_reg[62][5]_srl15_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][6]_srl15 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
-    \DELAY_REG_Q_reg[63][6]_srl16 
-       (.A0(1'b1),
+    \DELAY_REG_Q_reg[62][6]_srl15 
+       (.A0(1'b0),
         .A1(1'b1),
         .A2(1'b1),
         .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(\DELAY_REG_Q_reg[47] [6]),
-        .Q(\DELAY_REG_Q_reg[63] [6]));
-  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[63] " *) 
-  (* srl_name = "\\U0/DELAY_REG_Q_reg[63][7]_srl16 " *) 
+        .Q(\DELAY_REG_Q_reg[62][6]_srl15_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][7]_srl15 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
-    \DELAY_REG_Q_reg[63][7]_srl16 
-       (.A0(1'b1),
+    \DELAY_REG_Q_reg[62][7]_srl15 
+       (.A0(1'b0),
         .A1(1'b1),
         .A2(1'b1),
         .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(\DELAY_REG_Q_reg[47] [7]),
-        .Q(\DELAY_REG_Q_reg[63] [7]));
-  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[63] " *) 
-  (* srl_name = "\\U0/DELAY_REG_Q_reg[63][8]_srl16 " *) 
+        .Q(\DELAY_REG_Q_reg[62][7]_srl15_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][8]_srl15 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
-    \DELAY_REG_Q_reg[63][8]_srl16 
-       (.A0(1'b1),
+    \DELAY_REG_Q_reg[62][8]_srl15 
+       (.A0(1'b0),
         .A1(1'b1),
         .A2(1'b1),
         .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(\DELAY_REG_Q_reg[47] [8]),
-        .Q(\DELAY_REG_Q_reg[63] [8]));
-  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[63] " *) 
-  (* srl_name = "\\U0/DELAY_REG_Q_reg[63][9]_srl16 " *) 
+        .Q(\DELAY_REG_Q_reg[62][8]_srl15_n_0 ));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[62] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[62][9]_srl15 " *) 
   SRL16E #(
     .INIT(16'h0000)) 
-    \DELAY_REG_Q_reg[63][9]_srl16 
-       (.A0(1'b1),
+    \DELAY_REG_Q_reg[62][9]_srl15 
+       (.A0(1'b0),
         .A1(1'b1),
         .A2(1'b1),
         .A3(1'b1),
         .CE(DATA_IN_STROBE),
         .CLK(CLOCK),
         .D(\DELAY_REG_Q_reg[47] [9]),
-        .Q(\DELAY_REG_Q_reg[63] [9]));
+        .Q(\DELAY_REG_Q_reg[62][9]_srl15_n_0 ));
+  FDRE #(
+    .INIT(1'b0)) 
+    \DELAY_REG_Q_reg[63][0] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_Q_reg[62][0]_srl15_n_0 ),
+        .Q(\DELAY_REG_Q_reg[63] [0]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \DELAY_REG_Q_reg[63][10] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_Q_reg[62][10]_srl15_n_0 ),
+        .Q(\DELAY_REG_Q_reg[63] [10]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \DELAY_REG_Q_reg[63][11] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_Q_reg[62][11]_srl15_n_0 ),
+        .Q(\DELAY_REG_Q_reg[63] [11]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \DELAY_REG_Q_reg[63][12] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_Q_reg[62][12]_srl15_n_0 ),
+        .Q(\DELAY_REG_Q_reg[63] [12]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \DELAY_REG_Q_reg[63][13] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_Q_reg[62][13]_srl15_n_0 ),
+        .Q(\DELAY_REG_Q_reg[63] [13]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \DELAY_REG_Q_reg[63][14] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_Q_reg[62][14]_srl15_n_0 ),
+        .Q(\DELAY_REG_Q_reg[63] [14]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \DELAY_REG_Q_reg[63][15] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_Q_reg[62][15]_srl15_n_0 ),
+        .Q(\DELAY_REG_Q_reg[63] [15]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \DELAY_REG_Q_reg[63][1] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_Q_reg[62][1]_srl15_n_0 ),
+        .Q(\DELAY_REG_Q_reg[63] [1]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \DELAY_REG_Q_reg[63][2] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_Q_reg[62][2]_srl15_n_0 ),
+        .Q(\DELAY_REG_Q_reg[63] [2]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \DELAY_REG_Q_reg[63][3] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_Q_reg[62][3]_srl15_n_0 ),
+        .Q(\DELAY_REG_Q_reg[63] [3]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \DELAY_REG_Q_reg[63][4] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_Q_reg[62][4]_srl15_n_0 ),
+        .Q(\DELAY_REG_Q_reg[63] [4]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \DELAY_REG_Q_reg[63][5] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_Q_reg[62][5]_srl15_n_0 ),
+        .Q(\DELAY_REG_Q_reg[63] [5]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \DELAY_REG_Q_reg[63][6] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_Q_reg[62][6]_srl15_n_0 ),
+        .Q(\DELAY_REG_Q_reg[63] [6]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \DELAY_REG_Q_reg[63][7] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_Q_reg[62][7]_srl15_n_0 ),
+        .Q(\DELAY_REG_Q_reg[63] [7]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \DELAY_REG_Q_reg[63][8] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_Q_reg[62][8]_srl15_n_0 ),
+        .Q(\DELAY_REG_Q_reg[63] [8]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \DELAY_REG_Q_reg[63][9] 
+       (.C(CLOCK),
+        .CE(DATA_IN_STROBE),
+        .D(\DELAY_REG_Q_reg[62][9]_srl15_n_0 ),
+        .Q(\DELAY_REG_Q_reg[63] [9]),
+        .R(1'b0));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[79] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[79][0]_srl16 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[79][0]_srl16 
+       (.A0(1'b1),
+        .A1(1'b1),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(\DELAY_REG_Q_reg[63] [0]),
+        .Q(\DELAY_REG_Q_reg[79] [0]));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[79] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[79][10]_srl16 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[79][10]_srl16 
+       (.A0(1'b1),
+        .A1(1'b1),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(\DELAY_REG_Q_reg[63] [10]),
+        .Q(\DELAY_REG_Q_reg[79] [10]));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[79] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[79][11]_srl16 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[79][11]_srl16 
+       (.A0(1'b1),
+        .A1(1'b1),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(\DELAY_REG_Q_reg[63] [11]),
+        .Q(\DELAY_REG_Q_reg[79] [11]));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[79] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[79][12]_srl16 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[79][12]_srl16 
+       (.A0(1'b1),
+        .A1(1'b1),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(\DELAY_REG_Q_reg[63] [12]),
+        .Q(\DELAY_REG_Q_reg[79] [12]));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[79] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[79][13]_srl16 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[79][13]_srl16 
+       (.A0(1'b1),
+        .A1(1'b1),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(\DELAY_REG_Q_reg[63] [13]),
+        .Q(\DELAY_REG_Q_reg[79] [13]));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[79] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[79][14]_srl16 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[79][14]_srl16 
+       (.A0(1'b1),
+        .A1(1'b1),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(\DELAY_REG_Q_reg[63] [14]),
+        .Q(\DELAY_REG_Q_reg[79] [14]));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[79] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[79][15]_srl16 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[79][15]_srl16 
+       (.A0(1'b1),
+        .A1(1'b1),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(\DELAY_REG_Q_reg[63] [15]),
+        .Q(\DELAY_REG_Q_reg[79] [15]));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[79] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[79][1]_srl16 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[79][1]_srl16 
+       (.A0(1'b1),
+        .A1(1'b1),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(\DELAY_REG_Q_reg[63] [1]),
+        .Q(\DELAY_REG_Q_reg[79] [1]));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[79] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[79][2]_srl16 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[79][2]_srl16 
+       (.A0(1'b1),
+        .A1(1'b1),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(\DELAY_REG_Q_reg[63] [2]),
+        .Q(\DELAY_REG_Q_reg[79] [2]));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[79] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[79][3]_srl16 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[79][3]_srl16 
+       (.A0(1'b1),
+        .A1(1'b1),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(\DELAY_REG_Q_reg[63] [3]),
+        .Q(\DELAY_REG_Q_reg[79] [3]));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[79] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[79][4]_srl16 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[79][4]_srl16 
+       (.A0(1'b1),
+        .A1(1'b1),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(\DELAY_REG_Q_reg[63] [4]),
+        .Q(\DELAY_REG_Q_reg[79] [4]));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[79] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[79][5]_srl16 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[79][5]_srl16 
+       (.A0(1'b1),
+        .A1(1'b1),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(\DELAY_REG_Q_reg[63] [5]),
+        .Q(\DELAY_REG_Q_reg[79] [5]));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[79] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[79][6]_srl16 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[79][6]_srl16 
+       (.A0(1'b1),
+        .A1(1'b1),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(\DELAY_REG_Q_reg[63] [6]),
+        .Q(\DELAY_REG_Q_reg[79] [6]));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[79] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[79][7]_srl16 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[79][7]_srl16 
+       (.A0(1'b1),
+        .A1(1'b1),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(\DELAY_REG_Q_reg[63] [7]),
+        .Q(\DELAY_REG_Q_reg[79] [7]));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[79] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[79][8]_srl16 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[79][8]_srl16 
+       (.A0(1'b1),
+        .A1(1'b1),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(\DELAY_REG_Q_reg[63] [8]),
+        .Q(\DELAY_REG_Q_reg[79] [8]));
+  (* srl_bus_name = "\\U0/DELAY_REG_Q_reg[79] " *) 
+  (* srl_name = "\\U0/DELAY_REG_Q_reg[79][9]_srl16 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \DELAY_REG_Q_reg[79][9]_srl16 
+       (.A0(1'b1),
+        .A1(1'b1),
+        .A2(1'b1),
+        .A3(1'b1),
+        .CE(DATA_IN_STROBE),
+        .CLK(CLOCK),
+        .D(\DELAY_REG_Q_reg[63] [9]),
+        .Q(\DELAY_REG_Q_reg[79] [9]));
   FDRE #(
     .INIT(1'b0)) 
     \IDATA_OUT_DELAY_16_reg[0] 
@@ -3200,6 +3920,134 @@ module block_design_0_data_delay_0_0_data_delay
         .CE(DATA_OUT_STROBE_i_1_n_0),
         .D(\DELAY_REG_I_reg[63] [9]),
         .Q(IDATA_OUT_DELAY_64[9]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \IDATA_OUT_DELAY_80_reg[0] 
+       (.C(CLOCK),
+        .CE(DATA_OUT_STROBE_i_1_n_0),
+        .D(\DELAY_REG_I_reg[79] [0]),
+        .Q(IDATA_OUT_DELAY_80[0]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \IDATA_OUT_DELAY_80_reg[10] 
+       (.C(CLOCK),
+        .CE(DATA_OUT_STROBE_i_1_n_0),
+        .D(\DELAY_REG_I_reg[79] [10]),
+        .Q(IDATA_OUT_DELAY_80[10]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \IDATA_OUT_DELAY_80_reg[11] 
+       (.C(CLOCK),
+        .CE(DATA_OUT_STROBE_i_1_n_0),
+        .D(\DELAY_REG_I_reg[79] [11]),
+        .Q(IDATA_OUT_DELAY_80[11]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \IDATA_OUT_DELAY_80_reg[12] 
+       (.C(CLOCK),
+        .CE(DATA_OUT_STROBE_i_1_n_0),
+        .D(\DELAY_REG_I_reg[79] [12]),
+        .Q(IDATA_OUT_DELAY_80[12]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \IDATA_OUT_DELAY_80_reg[13] 
+       (.C(CLOCK),
+        .CE(DATA_OUT_STROBE_i_1_n_0),
+        .D(\DELAY_REG_I_reg[79] [13]),
+        .Q(IDATA_OUT_DELAY_80[13]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \IDATA_OUT_DELAY_80_reg[14] 
+       (.C(CLOCK),
+        .CE(DATA_OUT_STROBE_i_1_n_0),
+        .D(\DELAY_REG_I_reg[79] [14]),
+        .Q(IDATA_OUT_DELAY_80[14]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \IDATA_OUT_DELAY_80_reg[15] 
+       (.C(CLOCK),
+        .CE(DATA_OUT_STROBE_i_1_n_0),
+        .D(\DELAY_REG_I_reg[79] [15]),
+        .Q(IDATA_OUT_DELAY_80[15]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \IDATA_OUT_DELAY_80_reg[1] 
+       (.C(CLOCK),
+        .CE(DATA_OUT_STROBE_i_1_n_0),
+        .D(\DELAY_REG_I_reg[79] [1]),
+        .Q(IDATA_OUT_DELAY_80[1]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \IDATA_OUT_DELAY_80_reg[2] 
+       (.C(CLOCK),
+        .CE(DATA_OUT_STROBE_i_1_n_0),
+        .D(\DELAY_REG_I_reg[79] [2]),
+        .Q(IDATA_OUT_DELAY_80[2]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \IDATA_OUT_DELAY_80_reg[3] 
+       (.C(CLOCK),
+        .CE(DATA_OUT_STROBE_i_1_n_0),
+        .D(\DELAY_REG_I_reg[79] [3]),
+        .Q(IDATA_OUT_DELAY_80[3]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \IDATA_OUT_DELAY_80_reg[4] 
+       (.C(CLOCK),
+        .CE(DATA_OUT_STROBE_i_1_n_0),
+        .D(\DELAY_REG_I_reg[79] [4]),
+        .Q(IDATA_OUT_DELAY_80[4]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \IDATA_OUT_DELAY_80_reg[5] 
+       (.C(CLOCK),
+        .CE(DATA_OUT_STROBE_i_1_n_0),
+        .D(\DELAY_REG_I_reg[79] [5]),
+        .Q(IDATA_OUT_DELAY_80[5]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \IDATA_OUT_DELAY_80_reg[6] 
+       (.C(CLOCK),
+        .CE(DATA_OUT_STROBE_i_1_n_0),
+        .D(\DELAY_REG_I_reg[79] [6]),
+        .Q(IDATA_OUT_DELAY_80[6]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \IDATA_OUT_DELAY_80_reg[7] 
+       (.C(CLOCK),
+        .CE(DATA_OUT_STROBE_i_1_n_0),
+        .D(\DELAY_REG_I_reg[79] [7]),
+        .Q(IDATA_OUT_DELAY_80[7]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \IDATA_OUT_DELAY_80_reg[8] 
+       (.C(CLOCK),
+        .CE(DATA_OUT_STROBE_i_1_n_0),
+        .D(\DELAY_REG_I_reg[79] [8]),
+        .Q(IDATA_OUT_DELAY_80[8]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \IDATA_OUT_DELAY_80_reg[9] 
+       (.C(CLOCK),
+        .CE(DATA_OUT_STROBE_i_1_n_0),
+        .D(\DELAY_REG_I_reg[79] [9]),
+        .Q(IDATA_OUT_DELAY_80[9]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -3840,6 +4688,134 @@ module block_design_0_data_delay_0_0_data_delay
         .CE(DATA_OUT_STROBE_i_1_n_0),
         .D(\DELAY_REG_Q_reg[63] [9]),
         .Q(QDATA_OUT_DELAY_64[9]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \QDATA_OUT_DELAY_80_reg[0] 
+       (.C(CLOCK),
+        .CE(DATA_OUT_STROBE_i_1_n_0),
+        .D(\DELAY_REG_Q_reg[79] [0]),
+        .Q(QDATA_OUT_DELAY_80[0]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \QDATA_OUT_DELAY_80_reg[10] 
+       (.C(CLOCK),
+        .CE(DATA_OUT_STROBE_i_1_n_0),
+        .D(\DELAY_REG_Q_reg[79] [10]),
+        .Q(QDATA_OUT_DELAY_80[10]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \QDATA_OUT_DELAY_80_reg[11] 
+       (.C(CLOCK),
+        .CE(DATA_OUT_STROBE_i_1_n_0),
+        .D(\DELAY_REG_Q_reg[79] [11]),
+        .Q(QDATA_OUT_DELAY_80[11]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \QDATA_OUT_DELAY_80_reg[12] 
+       (.C(CLOCK),
+        .CE(DATA_OUT_STROBE_i_1_n_0),
+        .D(\DELAY_REG_Q_reg[79] [12]),
+        .Q(QDATA_OUT_DELAY_80[12]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \QDATA_OUT_DELAY_80_reg[13] 
+       (.C(CLOCK),
+        .CE(DATA_OUT_STROBE_i_1_n_0),
+        .D(\DELAY_REG_Q_reg[79] [13]),
+        .Q(QDATA_OUT_DELAY_80[13]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \QDATA_OUT_DELAY_80_reg[14] 
+       (.C(CLOCK),
+        .CE(DATA_OUT_STROBE_i_1_n_0),
+        .D(\DELAY_REG_Q_reg[79] [14]),
+        .Q(QDATA_OUT_DELAY_80[14]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \QDATA_OUT_DELAY_80_reg[15] 
+       (.C(CLOCK),
+        .CE(DATA_OUT_STROBE_i_1_n_0),
+        .D(\DELAY_REG_Q_reg[79] [15]),
+        .Q(QDATA_OUT_DELAY_80[15]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \QDATA_OUT_DELAY_80_reg[1] 
+       (.C(CLOCK),
+        .CE(DATA_OUT_STROBE_i_1_n_0),
+        .D(\DELAY_REG_Q_reg[79] [1]),
+        .Q(QDATA_OUT_DELAY_80[1]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \QDATA_OUT_DELAY_80_reg[2] 
+       (.C(CLOCK),
+        .CE(DATA_OUT_STROBE_i_1_n_0),
+        .D(\DELAY_REG_Q_reg[79] [2]),
+        .Q(QDATA_OUT_DELAY_80[2]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \QDATA_OUT_DELAY_80_reg[3] 
+       (.C(CLOCK),
+        .CE(DATA_OUT_STROBE_i_1_n_0),
+        .D(\DELAY_REG_Q_reg[79] [3]),
+        .Q(QDATA_OUT_DELAY_80[3]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \QDATA_OUT_DELAY_80_reg[4] 
+       (.C(CLOCK),
+        .CE(DATA_OUT_STROBE_i_1_n_0),
+        .D(\DELAY_REG_Q_reg[79] [4]),
+        .Q(QDATA_OUT_DELAY_80[4]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \QDATA_OUT_DELAY_80_reg[5] 
+       (.C(CLOCK),
+        .CE(DATA_OUT_STROBE_i_1_n_0),
+        .D(\DELAY_REG_Q_reg[79] [5]),
+        .Q(QDATA_OUT_DELAY_80[5]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \QDATA_OUT_DELAY_80_reg[6] 
+       (.C(CLOCK),
+        .CE(DATA_OUT_STROBE_i_1_n_0),
+        .D(\DELAY_REG_Q_reg[79] [6]),
+        .Q(QDATA_OUT_DELAY_80[6]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \QDATA_OUT_DELAY_80_reg[7] 
+       (.C(CLOCK),
+        .CE(DATA_OUT_STROBE_i_1_n_0),
+        .D(\DELAY_REG_Q_reg[79] [7]),
+        .Q(QDATA_OUT_DELAY_80[7]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \QDATA_OUT_DELAY_80_reg[8] 
+       (.C(CLOCK),
+        .CE(DATA_OUT_STROBE_i_1_n_0),
+        .D(\DELAY_REG_Q_reg[79] [8]),
+        .Q(QDATA_OUT_DELAY_80[8]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \QDATA_OUT_DELAY_80_reg[9] 
+       (.C(CLOCK),
+        .CE(DATA_OUT_STROBE_i_1_n_0),
+        .D(\DELAY_REG_Q_reg[79] [9]),
+        .Q(QDATA_OUT_DELAY_80[9]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
